@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -140,7 +140,6 @@
 
 <!-- vanhiep scripts main js -->
 <script src="templates/js/vanhiep_script.js"></script>
-<script type="text/javascript" src="js/affiliate-handler.js"></script>
 
 
 
@@ -550,8 +549,6 @@
 
     });
 </script> -->  
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2935799637584410" crossorigin="anonymous"></script>
 </head>
 
 

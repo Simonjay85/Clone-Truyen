@@ -969,19 +969,21 @@ function temply_ajax_regenerate_chapter() {
     $summary = isset($_POST['custom_summary']) ? sanitize_textarea_field($_POST['custom_summary']) : (get_post_meta($chuong_id, '_temply_ai_summary', true) ?: '');
     $genre = get_post_meta($truyen_id, '_temply_ai_genre', true) ?: '';
 
+    $old_post = get_post($chuong_id);
+    $old_content = wp_strip_all_tags($old_post->post_content);
+
     // Nếu không có dàn ý, lấy chính nội dung text cũ làm nguồn
     if(empty($summary)) {
-        $old_post = get_post($chuong_id);
-        $summary = "Nội dung cũ: " . wp_strip_all_tags($old_post->post_content);
+        $summary = "Biên tập viên không để lại lời nhắn.";
     }
 
-    $system_prompt = "VAI TRÒ: Bạn là THE GHOSTWRITER. Nhiệm vụ: VIẾT LẠI (Regenerate) chương truyện này sao cho mượt mà, sâu sắc và kịch tính hơn dựa trên bản tóm tắt hoặc nội dung gốc. Giữ nguyên toàn bộ diễn biến nhưng hành văn phải sắc nhọn hơn. Viết độ dài tối thiểu 800 chữ.\n\nLUẬT ĐỊNH DẠNG BẮT BUỘC TRẢ VỀ DƯỚI ĐÂY (Và KHÔNG ĐƯỢC sinh markdown code block):\n<p>Nội dung HTML của truyện với các thẻ p, strong</p>\n---COMMENTS---\nLuật Đẻ Bình Luận: Nhập vai cư dân mạng Việt Nam, Gen Z, hội mẹ tám (viết tắt, từ lóng, phẫn nộ, chửi thẳng). KHÔNG sến súa văn mẫu. Ví dụ: 'Đọc mà tức á', 'Má cái lão tác giả', 'đm con phò'.\nTên người 1|Bình luận cực mặn, nhập tâm chửi bới thật đời thường.\nTên người 2|Bình luận hóng hớt, viết tắt kiểu mạng xã hội.\n\nChú ý: Mục ---COMMENTS--- phải nằm ở DƯỚI CÙNG, tạo ra khoảng 3 bình luận giả lập sự xôn xao mạng xã hội.";
+    $system_prompt = "VAI TRÒ: Bạn là THE GHOSTWRITER. Nhiệm vụ: VIẾT LẠI (Regenerate) chương truyện này sao cho mượt mà, sâu sắc và kịch tính hơn dựa trên chuyên môn biên tập. BẮT BUỘC giữ nguyên toàn bộ cốt truyện, bối cảnh và hành động của CHƯƠNG CŨ, nhưng hành văn phải xuất sắc hơn và KHẮC PHỤC TRIỆT ĐỂ CÁC LỖI mà Biên Tập Viên đã nhắc nhở. Viết độ dài tối thiểu 800 chữ.\n\nLUẬT ĐỊNH DẠNG BẮT BUỘC TRẢ VỀ DƯỚI ĐÂY (Và KHÔNG ĐƯỢC sinh markdown code block):\n<p>Nội dung HTML của truyện với các thẻ p, strong</p>\n---COMMENTS---\nLuật Đẻ Bình Luận: Nhập vai cư dân mạng Việt Nam, Gen Z, hội mẹ tám (viết tắt, từ lóng, phẫn nộ, chửi thẳng). KHÔNG sến súa văn mẫu. Ví dụ: 'Đọc mà tức á', 'Má cái lão tác giả', 'đm con phò'.\nTên người 1|Bình luận cực mặn, nhập tâm chửi bới thật đời thường.\nTên người 2|Bình luận hóng hớt, viết tắt kiểu mạng xã hội.\n\nChú ý: Mục ---COMMENTS--- phải nằm ở DƯỚI CÙNG, tạo ra khoảng 3 bình luận giả lập sự xôn xao mạng xã hội.";
 
     if (stripos($genre, 'drama') !== false || stripos($genre, 'cẩu huyết') !== false || stripos($genre, 'vả mặt') !== false) {
         $system_prompt .= "\n\nHƯỚNG DẪN DRAMA CẨU HUYẾT: Đẩy mạnh tính cẩu huyết, mâu thuẫn gia đình gay gắt, khắc họa cực đoan những câu nói sỉ nhục, vả mặt hoặc sự uất ức. Hành văn gãy gọn sắc bén.";
     }
 
-    $user_prompt = "[HỒ SƠ NHÂN VẬT]\n$characters\n\n[BỐI CẢNH THẾ GIỚI]\n$world\n\nVIẾT LẠI CHI TIẾT Chương Truyện dựa trên dữ liệu sau:\n$summary\n\nSử dụng thẻ HTML (<p>, <strong>, <em>). Mở đầu bằng Hook hấp dẫn. Kết thúc bằng Cliffhanger kịch tính.";
+    $user_prompt = "[HỒ SƠ NHÂN VẬT]\n$characters\n\n[BỐI CẢNH THẾ GIỚI]\n$world\n\n============= NỘI DUNG CHƯƠNG CŨ (CỐT TRUYỆN GỐC TỪ TÁC GIẢ) =============\n$old_content\n=========================================================================\n\nVIẾT LẠI TOÀN BỘ CHƯƠNG TRÊN DỰA TRÊN LỜI NHẬN XÉT CỦA BIÊN TẬP VIÊN SAU ĐÂY:\n$summary\n\nSử dụng thẻ HTML (<p>, <strong>, <em>). Mở đầu bằng Hook hấp dẫn. Kết thúc bằng Cliffhanger kịch tính.";
 
     $response = temply_call_ai_quality($system_prompt, $user_prompt, 0.9);
     if(is_wp_error($response)) wp_send_json_error(['message' => 'Lỗi AI: ' . $response->get_error_message()]);
