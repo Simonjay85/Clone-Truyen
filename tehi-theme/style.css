@@ -1,0 +1,29 @@
+/*
+Theme Name: TeHi Clone
+Theme URI: https://example.com/tehi-clone
+Author: Your Name
+Author URI: https://example.com
+Description: Giao diện Clone từ con số 0 của TeHiTruyen, được tối ưu hoá cho web đọc novel.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tehiclone
+*/
+
+/* --- CSS CƠ BẢN (Reset & Typography) --- */
+:root {
+    --primary-color: #ff6b81;
+    /* Màu hồng đặc trưng của Tehi */
+    --text-color: #333;
+    --bg-color: #f7f7f7;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Các tuỳ chỉnh CSS clone từ tehi sẽ được tiếp tục dán vào đây */

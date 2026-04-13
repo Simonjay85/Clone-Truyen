@@ -1,0 +1,245 @@
+<?php
+/*
+Plugin Name: Temply AI Story Factory
+Description: Tự động sinh nội dung truyện gốc đa thể loại, tích hợp API OpenAI (GPT-4o-mini) với Multi-step Agent Workflow.
+Version: 1.0
+Author: Full-stack AI Expert
+*/
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+// Khởi tạo Menu Admin
+function temply_ai_add_admin_menu() {
+    add_menu_page(
+        'Temply AI Factory',
+        'AI Story Factory',
+        'manage_options',
+        'temply-ai-factory',
+        'temply_ai_render_admin_page',
+        'dashicons-edit-page',
+        25
+    );
+    
+    add_submenu_page(
+        'temply-ai-factory',
+        'Cỗ Máy Rặn Tự Động',
+        '🤖 Auto-Pilot',
+        'manage_options',
+        'temply-ai-auto-pilot',
+        'temply_ai_render_auto_pilot_page'
+    );
+    
+    add_submenu_page(
+        'temply-ai-factory',
+        'Đại Tu Sửa Chữa',
+        '📊 Tổng Phẫu Thuật',
+        'manage_options',
+        'temply-ai-batch-audit',
+        'temply_ai_render_batch_audit_page'
+    );
+}
+add_action('admin_menu', 'temply_ai_add_admin_menu');
+
+// Enqueue Scripts & CSS cho Admin UI
+function temply_ai_admin_assets($hook) {
+    if ($hook != 'toplevel_page_temply-ai-factory') {
+        return;
+    }
+    wp_enqueue_script('temply-agent-js', plugin_dir_url(__FILE__) . 'assets/agentic-workflow.js', ['jquery'], filemtime(plugin_dir_path(__FILE__) . 'assets/agentic-workflow.js'), true);
+    wp_localize_script('temply-agent-js', 'temply_ai_ajax', [
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('temply_ai_nonce')
+    ]);
+}
+add_action('admin_enqueue_scripts', 'temply_ai_admin_assets');
+
+// Enqueue JS cho giao diện truyện bên ngoài (Frontend - Tải ảnh Comic tuần tự)
+function temply_ai_frontend_assets() {
+    wp_enqueue_script('temply-frontend-js', plugin_dir_url(__FILE__) . 'assets/frontend-comic.js', [], filemtime(plugin_dir_path(__FILE__) . 'assets/frontend-comic.js'), true);
+}
+add_action('wp_enqueue_scripts', 'temply_ai_frontend_assets');
+
+// Enqueue JS cho Gutenberg Sidebar (Admin Edit Post)
+function temply_ai_gutenberg_assets() {
+    // Chỉ nhúng vào bài viết/trang (ở đây có thể check get_post_type)
+    wp_enqueue_script(
+        'temply-gutenberg-sidebar',
+        plugin_dir_url(__FILE__) . 'assets/gutenberg-sidebar.js',
+        ['wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-api-fetch', 'wp-notices'],
+        filemtime(plugin_dir_path(__FILE__) . 'assets/gutenberg-sidebar.js'),
+        true
+    );
+    
+    wp_localize_script('temply-gutenberg-sidebar', 'temply_ai_ajax', [
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('temply_ai_nonce')
+    ]);
+}
+add_action('enqueue_block_editor_assets', 'temply_ai_gutenberg_assets');
+
+require_once plugin_dir_path(__FILE__) . 'admin-ui.php';
+require_once plugin_dir_path(__FILE__) . 'admin/auto-pilot.php';
+require_once plugin_dir_path(__FILE__) . 'admin/batch-audit.php';
+require_once plugin_dir_path(__FILE__) . 'includes/openai-api.php';
+require_once plugin_dir_path(__FILE__) . 'includes/convert_comic.php';
+require_once plugin_dir_path(__FILE__) . 'includes/backfill.php';
+require_once plugin_dir_path(__FILE__) . 'includes/paragraph-comments.php';
+require_once plugin_dir_path(__FILE__) . 'mobile-ui.php';
+require_once plugin_dir_path(__FILE__) . 'includes/blueprint-meta.php';
+
+// Đăng ký Cron Schedules
+add_filter('cron_schedules', 'temply_ai_cron_schedules');
+function temply_ai_cron_schedules($schedules) {
+    if(!isset($schedules['every_five_minutes'])) {
+        $schedules['every_five_minutes'] = array(
+            'interval' => 300,
+            'display'  => __('Mỗi 5 phút')
+        );
+    }
+    return $schedules;
+}
+
+// Đăng ký Shortcode Mobile Creator
+add_shortcode('temply_mobile_creator', 'temply_ai_render_mobile_page');
+
+
+// Custom Column cho Danh sách Chương (CPT Chuong) để dễ dàng quản lý
+add_filter('manage_chuong_posts_columns', function($columns) {
+    $new_columns = [];
+    foreach($columns as $key => $title) {
+        if ($key === 'date') {
+            $new_columns['truyen_thuoc_ve'] = 'Thuộc Truyện Gốc';
+        }
+        $new_columns[$key] = $title;
+    }
+    return $new_columns;
+});
+
+add_action('manage_chuong_posts_custom_column', function($column, $post_id) {
+    if ($column === 'truyen_thuoc_ve') {
+        $truyen_id = get_post_meta($post_id, '_truyen_id', true);
+        if ($truyen_id) {
+            $truyen_title = get_the_title($truyen_id);
+            echo '<strong><a href="' . admin_url('post.php?post=' . $truyen_id . '&action=edit') . '" style="color: #2271b1; text-decoration: none;">' . esc_html($truyen_title) . '</a></strong>';
+        } else {
+            echo '<em style="color: #999;">Trống</em>';
+        }
+    }
+}, 10, 2);
+
+// API Backfill Auto Covers
+add_action('rest_api_init', function () {
+    register_rest_route('temply/v1', '/backfill-covers', array(
+        'methods' => 'POST',
+        'callback' => 'temply_api_backfill_covers',
+        'permission_callback' => '__return_true'
+    ));
+    register_rest_route('temply/v1', '/backfill-cover', array(
+        'methods' => 'GET',
+        'callback' => 'temply_api_backfill_cover',
+        'permission_callback' => '__return_true'
+    ));
+});
+
+// API Phân tích mồi Kịch bản Auto Pilot
+add_action('wp_ajax_temply_ajax_pilot_analyze', function() {
+    check_ajax_referer('temply_ai_nonce', 'nonce');
+    $keyword = trim(sanitize_textarea_field($_POST['keyword'] ?? ''));
+    if(empty($keyword)) wp_send_json_error(['message' => 'Keyword rỗng']);
+    
+    $model = 'gemini';
+    $sys = "Phân tích 1 kịch bản truyện dựa trên keyword.
+Chỉ trả về JSON có cấu trúc chính xác (Không kèm giải thích hay bọc trong markdown):
+{
+  \"title\": \"Đề xuất Tên truyện (dưới 15 chữ, cực thu hút)\",
+  \"genre\": \"Chỉ được chọn 1 thể loại khớp nhất trong danh sách sau: Drama, Tâm Lý Xã Hội, Đô Thị Thực Tế, Trọng sinh, Tổng tài, Xuyên không, Tu tiên, Ngôn tình đô thị, Kinh dị Việt Nam, Sảng Văn, Vả Mặt, Giả Heo Ăn Thịt Hổ, Đô Thị Ẩn Thân\",
+  \"tone\": \"Chỉ được chọn 1 văn phong khớp nhất trong danh sách sau: Lãng mạn, Kịch tính, Hài hước, U tối\",
+  \"chapters\": [Số nguyên đại diện số chương đề xuất, VD: 20],
+  \"world\": \"Đoạn mô tả bối cảnh thế giới độc đáo\",
+  \"chars\": \"Hệ thống nhân vật chính/phụ thiết yếu\",
+  \"hook\": \"Điểm thu hút (Giả nghèo, Vả mặt tiểu tam...)\"
+}";
+    
+    // Call AI in openai-api.php (assuming it exists there)
+    require_once plugin_dir_path(__FILE__) . 'includes/openai-api.php';
+    $res = temply_call_ai($sys, $keyword, 0.7, $model);
+    if(is_wp_error($res)) {
+        wp_send_json_error(['message' => $res->get_error_message()]);
+    }
+    
+    $clean_json = trim(preg_replace('/```(?:json)?|```/', '', $res));
+    $data = json_decode($clean_json, true);
+    if(!$data) {
+        wp_send_json_error(['message' => 'Lỗi Parse JSON: ' . $clean_json]);
+    }
+    
+    wp_send_json_success($data);
+});
+
+// FEATURE: Tự động Xoá / Xoá Tạm / Phục hồi các Chương liên quan khi thao tác trên Bài Truyện
+add_action('wp_trash_post', function($post_id) {
+    if (get_post_type($post_id) === 'truyen') {
+        $chaps = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $post_id, 'posts_per_page' => -1, 'post_status' => 'any']);
+        foreach($chaps as $c) wp_trash_post($c->ID);
+    }
+});
+add_action('untrash_post', function($post_id) {
+    if (get_post_type($post_id) === 'truyen') {
+        $chaps = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $post_id, 'posts_per_page' => -1, 'post_status' => 'any']);
+        foreach($chaps as $c) wp_untrash_post($c->ID);
+    }
+});
+add_action('before_delete_post', function($post_id) {
+    if (get_post_type($post_id) === 'truyen') {
+        $chaps = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $post_id, 'posts_per_page' => -1, 'post_status' => 'any']);
+        foreach($chaps as $c) wp_delete_post($c->ID, true);
+    }
+});
+
+function temply_api_backfill_cover() {
+    $q = new WP_Query([
+        'post_type' => ['post', 'page', 'truyen'],
+        'posts_per_page' => 1,
+        'post_status' => 'publish',
+        'meta_query' => [
+            [
+                'key' => '_thumbnail_id',
+                'compare' => 'NOT EXISTS'
+            ]
+        ]
+    ]);
+    if(!$q->have_posts()) return rest_ensure_response(['status'=>'done']);
+    
+    $post = $q->posts[0];
+    
+    $title = $post->post_title;
+    $prompt = "A simple, clean, minimalist flat vector illustration representing: " . $title . " web design, corporate aesthetics, 8k";
+    if($post->post_type === 'truyen') {
+        $prompt = "Vietnamese web novel book cover art, illustration, fantasy anime style, professional digital painting, title concept: " . $title . " masterpiece";
+    }
+    
+    $img_url = "https://image.pollinations.ai/prompt/" . rawurlencode($prompt) . "?width=800&height=600&seed=" . wp_rand(1, 99999) . "&nologo=true";
+    
+    require_once(ABSPATH . 'wp-admin/includes/media.php');
+    require_once(ABSPATH . 'wp-admin/includes/file.php');
+    require_once(ABSPATH . 'wp-admin/includes/image.php');
+    
+    $tmp = download_url($img_url, 30);
+    if(is_wp_error($tmp)) return rest_ensure_response(['status'=>'error_download', 'msg' => $tmp->get_error_message()]);
+    
+    $file_array = [
+        'name' => 'cover-' . $post->ID . '-' . wp_rand(100,999) . '.jpg',
+        'tmp_name' => $tmp
+    ];
+    
+    $att_id = media_handle_sideload($file_array, $post->ID);
+    if(is_wp_error($att_id)) {
+        @unlink($tmp);
+        return rest_ensure_response(['status'=>'error_sideload', 'msg' => $att_id->get_error_message()]);
+    }
+    
+    set_post_thumbnail($post->ID, $att_id);
+    return rest_ensure_response(['status'=>'success', 'post_id'=>$post->ID, 'title'=>$title]);
+}

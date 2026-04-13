@@ -1,0 +1,1387 @@
+@media (min-width: 1400px) {
+  .story-card .card-text {
+    -webkit-line-clamp: 5;
+    -moz-line-clamp: 5;
+    -ms-line-clamp: 5;
+    -o-line-clamp: 5;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1199px) {
+  .widget {
+    padding: 35px 25px;
+  }
+
+  .pnvn-sanpham-left h3 {
+    font-size: 1.1rem;
+  }
+
+  .pnvn-sanpham-left ul {
+    padding-left: 1rem;
+  }
+
+  .msv-comic-book-item h2 {
+    width: 220px;
+  }
+  .lt-header-logo-box img {
+    max-width: 150px;
+  }
+  .mdv-nav-menu {
+    gap: 2rem !important;
+  }
+  /* truyện mới */
+  .truyen-login-btn,
+  .truyen-register-btn {
+    padding: 10px 13px;
+    font-size: 12px;
+  }
+  .story-card .card-text {
+    -webkit-line-clamp: 6;
+    -moz-line-clamp: 6;
+    -ms-line-clamp: 6;
+    -o-line-clamp: 6;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .row-cols-lg-7 > * {
+    flex: 0 0 calc(100% / 6);
+    max-width: calc(100% / 6);
+  }
+}
+
+@media (max-width: 1024px) {
+  .msv-my-wall-comic-of-user .msv-comic-book-item h2 span {
+    display: none;
+  }
+
+  /* header {
+    display: none;
+  }
+
+  .pnvn-menu-mobile {
+    display: block;
+  } */
+  section {
+    overflow: hidden;
+  }
+
+  section .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .mdv-slider-advertise-title::before {
+    right: -264px;
+  }
+
+  .swiper-mdv-comic-nominate
+    .swiper-slide.swiper-slide-prev
+    .swiper-mdv-comic-nominate-item,
+  .swiper-mdv-comic-nominate
+    .swiper-slide.swiper-slide-next
+    .swiper-mdv-comic-nominate-item {
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+  }
+
+  .nominate-navigate-next,
+  .nominate-navigate-prev {
+    scale: 0.7;
+    top: 48%;
+  }
+
+  .nominate-navigate-next {
+    right: -10px;
+  }
+
+  .nominate-navigate-prev {
+    left: -10px;
+  }
+
+  .msv-comic-book-item .left-side {
+    display: none;
+  }
+
+  .msv-comic-book-item .book:hover {
+    transform: rotate3d(0, 1, 0, 0deg);
+    -webkit-transform: rotate3d(0, 1, 0, 0deg);
+    -moz-transform: rotate3d(0, 1, 0, 0deg);
+    -ms-transform: rotate3d(0, 1, 0, 0deg);
+    -o-transform: rotate3d(0, 1, 0, 0deg);
+  }
+  .mdv-top-hot-content-item-hang-3,
+  .mdv-top-hot-content-item-hang-2 {
+    scale: 1;
+  }
+  .mdv-top-hot-content-orther-item {
+    box-shadow: none;
+  }
+  .mdv-top-hot-content-orther {
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+  }
+  .mdv-top-hot-content-orther-item-right
+    .mdv-top-hot-content-orther-item-ul
+    li:last-of-type {
+    border-bottom: none;
+  }
+  .mdv-charts-box-content {
+    padding: 30px 0;
+  }
+  .chart-frame-img-1,
+  .chart-frame-img-2 {
+    scale: 1.05;
+  }
+
+  .san-pham-book-item {
+    /* padding-left: 0.5rem;
+    padding-right: 2rem; */
+    box-sizing: border-box;
+  }
+  .san-pham-book-item-show {
+    scale: 1;
+  }
+  .mvd-san-pham-show-dsc-title {
+    text-align: center;
+  }
+  .mdv-san-pham-show-profile {
+    margin-top: 0;
+  }
+  .edit-content-comment .emojionearea .emojionearea-editor {
+    min-height: 5em;
+  }
+  .san-pham-detail-gui-binh-luan-btn button {
+    width: 100%;
+  }
+  .san-pham-detail-gui-binh-luan-btn button:hover .svg-wrapper {
+    background-color: transparent;
+    background: linear-gradient(
+      to bottom,
+      rgb(255, 97, 102) 0%,
+      rgb(235, 112, 116) 100%
+    );
+  }
+  .mdv-profile-content-information-item-card-info {
+    font-size: 1rem;
+  }
+  .btn-tai-avatar,
+  .btn-tai-anh-bia,
+  .btn-tai-cai-dat {
+    font-size: 1rem;
+  }
+  .icon-dao-donate-img {
+    width: 30px;
+  }
+  .mdv-slider-section {
+    padding-top: 100px;
+    background-position: center;
+  }
+  .msv-login-container {
+    margin: 0 auto;
+  }
+  .nh-footer {
+    /* clip-path: none; */
+    margin-top: -30px;
+    padding-top: 50px;
+  }
+  .svg-footer #footer-clip-path {
+    transform: scaleX(2.5);
+    -webkit-transform: scaleX(2.5);
+    -moz-transform: scaleX(2.5);
+    -ms-transform: scaleX(2.5);
+    -o-transform: scaleX(2.5);
+  }
+  .nh-footer .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .nh-footer-box {
+    padding-top: 50px;
+  }
+  .post-story-form h3 {
+    margin-bottom: 0.5rem !important;
+  }
+  .story-info {
+    text-align: center;
+  }
+  .chapter-item .avatar-chapter,
+  .chapter-item .chapter-item-editor-name {
+    display: none;
+  }
+  .btn-edit-chapter span {
+    display: none;
+  }
+  .da-xuat-ban-title {
+    margin: 0 auto;
+  }
+  .danh-sach-box-item .btn-xoa-dong-quan-ly {
+    opacity: 1;
+    visibility: visible;
+  }
+  .mdv-admin-doi-ten-chuong-wrapper {
+    padding: 2rem;
+  }
+  /* lenis scrollbar */
+  .lenis-scrollbar-thumb {
+    display: none;
+  }
+
+  .mdv-section-title-wrapper {
+    text-align: left !important;
+  }
+  .mdv-lasted-chapter-section {
+    padding-top: 0 !important;
+  }
+  .section-newly-released-comic-content-box {
+    padding-bottom: 0 !important;
+  }
+  .mdv-khung-slider {
+    display: none;
+  }
+  .mdv-sliders-top {
+    position: relative;
+  }
+  .mdv-sliders-top-swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .mdv-sliders-top-image {
+    position: relative;
+    --bs-aspect-ratio: calc(9 / 16 * 100%);
+    width: 100%;
+  }
+  .mdv-san-pham-show-thong-tin-truyen-wrapper {
+    border: none;
+  }
+  .mdv-san-pham-show-thong-tin-truyen-hinh-truyen {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  .mdv-sps-thong-tin-tac-gia-wrapper .mdv-san-pham-show-profile {
+    border: none;
+  }
+  .fix-padding-top {
+    padding-top: 60px;
+  }
+  .mdv-sps-tb-tac-gia-box .mvd-san-pham-show-dsc-title {
+    font-size: 1rem;
+  }
+  .mdv-top-hot-content-item-hang-2.hang-4,
+  .mdv-top-hot-content-item-hang-3.hang-5 {
+    scale: 1;
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+  }
+
+  .grid-view .col {
+    flex: 0 0 33.3333%; /* 6 cột cho màn hình lớn */
+    max-width: 33.3333%;
+  }
+  .list-view .col {
+    flex: 0 0 50%; /* 2 cột cho chế độ list-view */
+    max-width: 50%;
+  }
+  #fontSizeBoxMobile.font-size-box {
+    left: initial;
+    right: 10px;
+    z-index: 1000 !important;
+    bottom: 50px;
+  }
+  #chuongListLeftMobile.msv-chuong-list-container-left {
+    left: 10px;
+    width: 180px;
+    top: initial;
+    bottom: 80px;
+    z-index: 1000;
+  }
+  .lt-truyen-box-title {
+    text-align: center;
+  }
+  .mdv-slider-advertise::before {
+    border: none;
+  }
+  .btn-icon-swiper-prev {
+    left: -5px;
+  }
+  .btn-icon-swiper-next {
+    right: -5px;
+  }
+  section {
+    padding: 30px 0;
+  }
+  .lt-truyen-noi-bat-section {
+    padding-bottom: 0;
+  }
+  .mdv-san-pham-detail-khung-tool {
+    left: initial;
+    right: -2%;
+  }
+  /* bee truyện */
+  .container {
+    width: 95%;
+  }
+  .san-pham-detail .bee-gioi-thieu-truyen-title-box::before {
+    display: block;
+  }
+  .lt-button-mobile-tim-kiem,
+  .msv-header-account-name-text i {
+    color: var(--text-color);
+  }
+  .mat-ong-img {
+    max-width: 120px;
+  }
+  .truyen-menu-toggle {
+    padding: 0;
+    display: block;
+  }
+  .truyen-logo {
+    min-width: 100px;
+    max-width: 100px;
+  }
+
+  .story-card .card-text {
+    -webkit-line-clamp: 5;
+    -moz-line-clamp: 5;
+    -ms-line-clamp: 5;
+    -o-line-clamp: 5;
+  }
+  .san-pham-detail .btn-icon-swiper-prev {
+    display: none;
+  }
+  .san-pham-detail .btn-icon-swiper-next {
+    display: none;
+  }
+  .truyen-mo-ta.small {
+    display: -webkit-box;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .list-view {
+    gap: 10px;
+  }
+  .btn-gear-profile {
+    display: none !important;
+  }
+  .mdv-san-pham-detail-box {
+    text-align: justify;
+  }
+}
+
+@media (max-width: 768px) {
+  .mdv-slider-top-pagination-box {
+    margin-top: 40px;
+  }
+
+  .mdv-slider-advertise-title::before {
+    right: -264px;
+  }
+
+  .mdv-slider-advertise-title::before {
+    display: none;
+  }
+
+  .mdv-title-view-more-box {
+    top: 90%;
+  }
+  .mdv-top-hot-chapter-title {
+    text-align: center;
+  }
+  .chart-frame-img-1,
+  .chart-frame-img-2 {
+    display: none;
+  }
+  .mdv-charts-section {
+    padding: 80px 0;
+  }
+  .mdv-charts-box-content {
+    padding: 60px 0;
+  }
+  .title-bar-chart-img {
+    top: -60px;
+  }
+  .dmca-img {
+    height: 25px;
+  }
+  .mdv-san-pham-show-dsc-table tr th:nth-child(2),
+  .mdv-san-pham-show-dsc-table tr td:nth-child(2) {
+    display: none;
+  }
+  .icon-dao-nho {
+    width: 16px;
+  }
+  .icon-hat-nho {
+    width: 12px;
+  }
+  .mdv-san-pham-show-dsc-table-gia-dao {
+    min-width: 25px;
+    font-size: 0.8rem;
+    padding: 3px 4px;
+  }
+  .mdv-san-pham-show-dsc-table tr th:nth-child(4) {
+    width: 60px;
+  }
+  .mdv-san-pham-show-dsc-table tr td:nth-child(4) {
+    width: 45px;
+  }
+  .mdv-san-pham-show-dsc-table tr td:nth-child(4) .form-check-input {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  .san-pham-show-read-next {
+    justify-content: center;
+  }
+  .btn-mdv-button-1 {
+    min-width: 100px;
+  }
+  .mdv-san-pham-show-dsc-table tbody {
+    scrollbar-width: thin;
+  }
+  .mdv-san-pham-show-comment-list-item-comment-like-rep-right {
+    text-align: right;
+  }
+  .post-story-form {
+    padding: 1.5rem;
+  }
+  .story-list-item-image {
+    width: 35px;
+    margin: 0 auto;
+  }
+  .story-list-item-content-top {
+    text-align: center;
+  }
+  .story-list-item-box {
+    width: 100%;
+  }
+  .story-list-item-content-top-author-avatar {
+    width: 30px;
+  }
+  .mdv-up-top-info-box {
+    max-height: 230px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .mdv-thong-ke-section-item .icon-box {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  .mdv-thong-ke-section-item .icon-box img {
+    width: 30px;
+  }
+  .comment-management-table table tr th:nth-child(3),
+  .comment-management-table table tr td:nth-child(3),
+  .comment-management-table table tr th:nth-child(5),
+  .comment-management-table table tr td:nth-child(5),
+  .comment-management-table table tr th:nth-child(6),
+  .comment-management-table table tr td:nth-child(6) {
+    display: none;
+  }
+  .comment-management-table table tr th:nth-child(2),
+  .comment-management-table table tr td:nth-child(2),
+  .comment-management-table table tr th:nth-child(4),
+  .comment-management-table table tr td:nth-child(4) {
+    width: 50%;
+  }
+  .story-thumbnail {
+    max-width: 70px;
+  }
+  .mdv-product-page .container {
+    width: 95%;
+  }
+  .mdv-chuong-button {
+    min-width: 70px;
+    padding: 13px 25px;
+  }
+  .mdv-chuong-button .mdv-chuong-button-text {
+    display: none;
+  }
+  .msv-chuong-list-container {
+    transform: translateX(-30%);
+    -webkit-transform: translateX(-30%);
+    -moz-transform: translateX(-30%);
+    -ms-transform: translateX(-30%);
+    -o-transform: translateX(-30%);
+  }
+  .msv-chuong-list-container {
+    width: 100%;
+    right: auto;
+    left: 0;
+  }
+
+  .msv-chuong-number,
+  .msv-chuong-title {
+    font-size: 0.8rem;
+  }
+  .msv-chuong-list-container-left {
+    left: -180px;
+    width: 180px;
+  }
+
+  .msv-chuong-number,
+  .msv-chuong-title {
+    font-size: 0.8rem;
+  }
+  .mdv-btn-group-bao-loi-cac-kieu {
+    justify-content: center;
+  }
+
+  .mdv-btn-action {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+  .truyen-de-cu-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .truyen-de-cu-info {
+    text-align: center;
+    margin-top: 10px;
+  }
+  .profile-info-container {
+    text-align: center;
+  }
+  .profile-info.container,
+  .profile-gioi-thieu-truyen .container {
+    width: 100%;
+  }
+  .profile-info {
+    margin-top: 0px;
+  }
+  .profile-avatar-info-container-box {
+    margin-top: -90px;
+  }
+  .donate-avatar {
+    min-width: 75px;
+    max-width: 75px;
+  }
+  .mdv-post-story-section .container {
+    width: 100%;
+  }
+  .check-chapter-all {
+    display: none;
+  }
+  .mdv-san-pham-detail .container {
+    width: 93%;
+  }
+  .mdv-post-story-section {
+    overflow: hidden;
+  }
+  .combo-purchase-card {
+    padding: 15px;
+  }
+
+  .combo-title {
+    font-size: 20px;
+  }
+
+  .combo-info-section {
+    gap: 10px;
+  }
+
+  .combo-buy-button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  .combo-sell-card,
+  .combo-purchase-card {
+    padding: 15px;
+  }
+
+  .combo-title {
+    font-size: 20px;
+  }
+
+  .combo-info-section {
+    gap: 10px;
+  }
+
+  .combo-sell-button,
+  .combo-buy-button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  .mui-ten-doi-so-huu i {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+  }
+  .swiper-slider-advertise-item-time {
+    top: -67px;
+    font-size: 0.7rem;
+    width: 116px;
+    height: 70px;
+  }
+  .story-list-item-image {
+    display: none;
+  }
+  .mdv-logo-18-box {
+    width: 35px;
+    height: 35px;
+  }
+  .mdv-logo-18-top {
+    font-size: 0.45rem;
+  }
+  .mdv-logo-18-bottom {
+    font-size: 0.9rem;
+  }
+  .swiper-slider-advertise-item .mdv-logo-18-box {
+    transform: scale(0.8) translateX(20%) translateY(-20%);
+    -webkit-transform: scale(0.8) translateX(20%) translateY(-20%);
+    -moz-transform: scale(0.8) translateX(20%) translateY(-20%);
+    -ms-transform: scale(0.8) translateX(20%) translateY(-20%);
+    -o-transform: scale(0.8) translateX(20%) translateY(-20%);
+  }
+  .gioi-han-do-tuoi-buttons {
+    flex-direction: column;
+  }
+  .gioi-han-do-tuoi-btn {
+    width: 100%;
+  }
+  .gioi-han-do-tuoi-body {
+    padding: 10px;
+  }
+  .mdv-nhiem-vu-tab {
+    padding: 6px 10px;
+  }
+  .icon-section-title {
+    width: 20px;
+    transform: translateY(-4px);
+    -webkit-transform: translateY(-4px);
+    -moz-transform: translateY(-4px);
+    -ms-transform: translateY(-4px);
+    -o-transform: translateY(-4px);
+  }
+  .icon-breadcrumb-home {
+    width: 13px;
+    transform: translateY(-2px);
+    -webkit-transform: translateY(-2px);
+    -moz-transform: translateY(-2px);
+    -ms-transform: translateY(-2px);
+    -o-transform: translateY(-2px);
+  }
+  .modal-mdv img {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .danh-sach-bai-dang-table,
+  .danh-sach-bai-dang-table thead,
+  .danh-sach-bai-dang-table tbody,
+  .danh-sach-bai-dang-table th,
+  .danh-sach-bai-dang-table td,
+  .danh-sach-bai-dang-table tr {
+    display: block;
+  }
+
+  .danh-sach-bai-dang-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .danh-sach-bai-dang-table tr {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
+  }
+
+  .danh-sach-bai-dang-table td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .danh-sach-bai-dang-table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  .danh-sach-bai-dang-avatar {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  .danh-sach-bai-dang-author {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mdv-khung-tin-chi-tiet-author-info-avatar {
+    max-width: 50px;
+    min-width: 50px;
+  }
+  .khung-rank-img {
+    max-width: 130px;
+  }
+  .mdv-khung-tin-chi-tiet-date {
+    font-size: 0.8rem;
+  }
+  .mdv-khung-tin-chi-tiet-content {
+    border-left: 7px solid var(--main-color);
+    border-right: 7px solid #eeeeee;
+  }
+  .mdv-slider-section {
+    padding-top: 75px;
+  }
+  .grid-view .col {
+    flex: 0 0 50%; /* 6 cột cho màn hình lớn */
+    max-width: 50%;
+  }
+  .list-view .col {
+    flex: 0 0 100%; /* 2 cột cho chế độ list-view */
+    max-width: 100%;
+  }
+
+  .qly-the-loai-tb-responsive {
+    font-size: 0.9rem;
+  }
+
+  .tb-duyet-nap-dao-container {
+    padding: 10px;
+  }
+
+  .tb-duyet-nap-dao-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .tb-duyet-nap-dao-header th {
+    white-space: nowrap;
+    padding: 10px;
+  }
+
+  .tb-duyet-nap-dao-row td {
+    padding: 10px;
+  }
+
+  .tb-duyet-nap-dao-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .mdv-header-find-form-image {
+    overflow: hidden;
+    min-width: 30px;
+    max-width: 30px;
+  }
+  .mdv-header-find-form-mobile .mdv-header-find-form-image {
+    min-width: 40px;
+    max-width: 40px;
+  }
+  .pagination-page .pagination-sm li {
+    margin: 0 2px;
+  }
+  /* .page-item .page-link {
+  width: 27px;
+  height: 27px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+} */
+  .page-item.prev,
+  .page-item.next {
+    display: none;
+  }
+  .bee-truyen-item-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .bee-truyen-moi-cap-nhat-box-col:last-of-type .bee-truyen-item-new {
+    border-bottom: none;
+  }
+  .mdv-san-pham-detail-khung-tool {
+    right: -8px;
+  }
+  #noi_dung_truyen {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .con-ong-img {
+    max-width: 60px;
+  }
+  .mat-ong-img {
+    max-width: 110px;
+    left: -12px;
+  }
+
+  /* truyện mới */
+  .truyen-theme-toggle,
+  .truyen-search-mobile-btn {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 15px;
+  }
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .truyen-view-more-btn {
+    padding: 8px 15px;
+  }
+  .swiper-pagination-bullet {
+    width: 15px;
+    height: 15px;
+  }
+  .truyen-section-header {
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+  }
+  .top-1-card .top-1-stats {
+    gap: 8px;
+  }
+
+  .truyen-updated-section {
+    margin-bottom: 0;
+  }
+  .profile .btn-mdv-button-1,
+  .profile .btn-mdv-button-1 {
+    width: 100%;
+  }
+
+  .truyen-header.active .truyen-logo {
+    min-width: 80px;
+    max-width: 80px;
+  }
+  .story-card .card-text {
+    -webkit-line-clamp: 5;
+    -moz-line-clamp: 5;
+    -ms-line-clamp: 5;
+    -o-line-clamp: 5;
+  }
+  .icon-bxh-top-1 {
+    width: 30px !important;
+    height: 30px !important;
+    top: 6px;
+    left: 6px;
+  }
+  .top-1-card .top-1-label {
+    font-size: 13px;
+  }
+  .top-1-card .top-1-stat-label {
+    font-size: 13px;
+  }
+  .top-1-card .top-1-genre-badge {
+    font-size: 11px;
+  }
+  .top-1-number {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    transform: translateY(-1px);
+    -webkit-transform: translateY(-1px);
+    -moz-transform: translateY(-1px);
+    -ms-transform: translateY(-1px);
+    -o-transform: translateY(-1px);
+  }
+  .icon-crown {
+    width: 22px;
+    height: 22px;
+  }
+  .top-1-title-text-name {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0;
+  }
+  .mdv-san-pham-comic-info ul {
+    padding-top: 5px;
+  }
+  .story-card-new-item {
+    height: 100%;
+  }
+  .story-card .row {
+    height: 100%;
+  }
+  .story-card .card-title {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+  .story-card .genre-badge.ellipsis {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  .truyen-updated-section.truyen-moi-cap-nhat-section .truyen-section-header {
+    margin-bottom: 0;
+  }
+  .ranking-tabs .nav-link {
+    height: 100%;
+  }
+  .time-left-text {
+    display: none;
+  }
+  .setting-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .permission-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  #phan-quyen .container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  #phan-quyen .role-tabs {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  #phan-quyen .role-tabs .nav-link {
+    width: 100%;
+  }
+  #phan-quyen .role-sidebar {
+    width: 100%;
+  }
+  #phan-quyen .role-content {
+    width: 100%;
+  }
+  #phan-quyen .role-groups {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #phan-quyen .role-group-item {
+    width: calc(50% - 20px);
+  }
+  .list-view {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .profile-name-ten {
+    margin-left: 0;
+    justify-content: center;
+  }
+  .user-box-bottom {
+    flex-direction: column;
+  }
+  .so-lieu-thong-ke-box {
+    margin-top: 0;
+  }
+  .cover-section-wrapper {
+    margin-bottom: 20px;
+  }
+  .profile-quote {
+    max-width: 290px;
+  }
+  .story-list-item-hoan-thanh {
+    display: none;
+  }
+  .msv-product-page-text-special {
+    font-family: "Roboto", sans-serif;
+  }
+  /* thông báo trang chủ */
+  .hnb-notification-bar .hnb-item {
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .hnb-notification-bar .hnb-bell-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .hnb-notification-bar .hnb-notification-dot {
+    width: 10px;
+    height: 10px;
+    top: 6px;
+    right: 6px;
+  }
+
+  .hnb-notification-bar .hnb-type {
+    font-size: 0.8rem;
+  }
+
+  .hnb-notification-bar .hnb-title {
+    font-size: 1rem;
+  }
+
+  .hnb-notification-bar .hnb-detail-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .hnb-notification-bar .hnb-nav-prev,
+  .hnb-notification-bar .hnb-nav-next {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hnb-notification-bar .hnb-nav-prev {
+    left: -5px;
+  }
+
+  .hnb-notification-bar .hnb-nav-next {
+    right: -5px;
+  }
+  /* thông báo trang chủ end */
+
+  /* trang tin tức chi tiết start */
+
+  .tin-tuc-detail .tnd-bento-card {
+    padding: 1.5rem;
+  }
+
+  .tin-tuc-detail .tnd-article-title {
+    font-size: 2rem;
+  }
+
+  .tin-tuc-detail .tnd-date-day {
+    font-size: 2rem;
+  }
+
+  .tin-tuc-detail .tnd-author-info {
+    gap: 0.75rem;
+  }
+
+  .tin-tuc-detail .tnd-author-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tin-tuc-detail .tnd-content-wrapper {
+    padding: 1.5rem;
+  }
+
+  .tin-tuc-detail .tnd-comments-header {
+    padding: 1rem;
+  }
+
+  .tin-tuc-detail .tnd-comments-list {
+    padding: 1rem;
+  }
+
+  .tin-tuc-detail .tnd-comment-form-wrapper {
+    padding: 1rem;
+  }
+
+  .tin-tuc-detail .tnd-login-prompt {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tin-tuc-detail .tnd-prompt-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .tin-tuc-detail .tnd-bento-header {
+   display: flex;
+   flex-direction: column;
+   max-height: initial;
+  }
+  .tin-tuc-detail .tnd-title-card {
+    grid-column: span 8 / span 8;
+  }
+  .tin-tuc-detail .tnd-author-card {
+    grid-column: span 8 / span 8;
+    grid-row-start: 2;
+  }
+  .tin-tuc-detail .tnd-date-card {
+    grid-column: span 8 / span 8;
+    grid-row-start: 3;
+  }
+  .tin-tuc-detail .tnd-stats-card {
+    grid-column: span 8 / span 8;
+    grid-row-start: 4;
+  }
+  .tin-tuc-detail .tnd-stats-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .tin-tuc-detail .tnd-stat-item {
+    width: 48%;
+  }
+  .tnd-news-detail-wrapper .container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tnd-title-card {
+    order: 0;
+  }
+  .tnd-author-card {
+    order: 2;
+  }
+  .tnd-date-card {
+    order: 3;
+  }
+  .tnd-stats-card {
+    order: 4;
+  }
+  .tnd-article-content {
+    order: 1;
+  }
+ 
+  /* trang tin tức chi tiết end */
+}
+
+@media (max-width: 576px) {
+  .filters .form-select {
+    min-width: 110px;
+  }
+  .story-list-item-content-top-author-name {
+    text-align: center;
+  }
+  .mdv-up-top-icon {
+    justify-content: center;
+  }
+  .danh-sach-quan-ly-avatar {
+    min-width: 50px;
+    max-width: 50px;
+  }
+  .nguoi-gui-text {
+    display: none;
+  }
+  .story-list-item-list-label {
+    font-size: 0.7rem;
+    right: -50px;
+    top: 10px;
+  }
+  .combo-input {
+    width: 170px;
+    text-align: center;
+  }
+  .combo-info-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .lt-button-mobile-tim-kiem {
+    font-size: 1.1rem;
+  }
+  .truyen-logo {
+    min-width: 90px;
+    max-width: 90px;
+  }
+  .truyen-login-mobile-btn {
+    font-size: 0.8rem;
+    padding: 8px 15px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  .story-card .card-text {
+    -webkit-line-clamp: 3;
+    -moz-line-clamp: 3;
+    -ms-line-clamp: 3;
+    -o-line-clamp: 3;
+  }
+  .ranking-section .nav-item {
+    white-space: nowrap;
+  }
+  .mdv-chuong-button-text {
+    display: none;
+  }
+  .truyen-hoan-thanh-section .truyen-comic-stats {
+    padding: 2px 15px;
+  }
+  .list-view-item-info .truyen-comic-meta {
+    font-size: 0.7rem;
+  }
+  .list-view-item-image {
+    min-width: 150px;
+  }
+  .list-view-item-image .truyen-comic-stat {
+    font-size: 10px;
+  }
+  .list-view-item-image .truyen-comic-stats {
+    padding: 6px 3px;
+    justify-content: center !important;
+    border-radius: 11px;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    -ms-border-radius: 11px;
+    -o-border-radius: 11px;
+  }
+  .list-view-item-image-box-wrapper {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+  .list-view .product-card {
+    /* align-items: center; */
+  }
+  .list-view .truyen-comic-title {
+    font-size: 1rem;
+  }
+  .list-view .truyen-comic-genres span {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 0.6rem;
+  }
+  .my-wall-section-title-box {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ranking-section .ranking-title {
+    font-size: 1.4rem;
+  }
+  .ranking-section .ranking-title img {
+    height: 20px;
+    transform: translateY(-1px);
+    -webkit-transform: translateY(-1px);
+    -moz-transform: translateY(-1px);
+    -ms-transform: translateY(-1px);
+    -o-transform: translateY(-1px);
+  }
+  .ranking-section .ranking-title img.kiem {
+    height: 18px;
+    transform: translateY(-4px);
+    -webkit-transform: translateY(-4px);
+    -moz-transform: translateY(-4px);
+    -ms-transform: translateY(-4px);
+    -o-transform: translateY(-4px);
+  }
+  .icon-top-1-comic {
+    width: 39px;
+    top: 3%;
+    left: 8%;
+  }
+  .msv-product-page-products-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .list-view {
+    gap: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  body.dark-mode .list-view .product-card .truyen-comic-title a,
+  body.dark-mode .team-name-link,
+  body.dark-mode .stat-value {
+    font-weight: initial !important;
+    font-family: var(--title-font) !important;
+  }
+  .msv-product-page-content .list-view-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .msv-product-page-content .truyen-mo-ta.small {
+    display: -webkit-box;
+    -webkit-line-clamp: 4 !important;
+    -moz-line-clamp: 4 !important;
+    -ms-line-clamp: 4 !important;
+    -o-line-clamp: 4 !important;
+  }
+
+  /* thông báo trang chủ start */
+  .hnb-notification-bar .hnb-item {
+    padding: 0.6rem 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .hnb-notification-bar .hnb-bell-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .hnb-notification-bar .hnb-title {
+    font-size: 0.95rem;
+  }
+
+  .hnb-notification-bar .hnb-detail-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .hnb-notification-bar .hnb-detail-btn span {
+    display: none;
+  }
+  /* thông báo trang chủ end */
+
+  /* trang tin tức chi tiết start */
+  .tin-tuc-detail .tnd-news-detail-wrapper {
+    padding: 1rem 0;
+  }
+
+  .tin-tuc-detail .tnd-bento-card {
+    padding: 15px;
+  }
+
+  .tin-tuc-detail .tnd-article-title {
+    font-size: 1.6rem;
+  }
+
+  .tin-tuc-detail .tnd-comment-item:hover {
+    margin: 0;
+    padding: 1.5rem 0;
+    background: transparent;
+  }
+
+  .tin-tuc-detail .tnd-replies {
+    padding-left: 1rem;
+  }
+
+  .tin-tuc-detail .tnd-stats-section {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .tin-tuc-detail .tnd-stat-item {
+    padding: 0.6rem;
+  }
+
+  .tin-tuc-detail .tnd-stat-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .tin-tuc-detail .tnd-popularity-section {
+    padding: 0.75rem;
+  }
+
+  .tin-tuc-detail .tnd-date-display {
+    justify-content: start;
+  }
+  /* trang tin tức chi tiết end */
+}
+@media (max-width: 375px) {
+}
