@@ -3,6 +3,8 @@
 <!-- ─── MEOKAMMAP CLONE - front-page.php ─── -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <style>
 /* ── RESET cứng để không bị CSS cũ đè ── */
@@ -126,6 +128,12 @@
 .mkm-aside {
     width: 280px !important;
     flex-shrink: 0 !important;
+    position: sticky !important;
+    top: 80px !important;
+    align-self: flex-start !important;
+    max-height: calc(100vh - 80px) !important;
+    overflow-y: auto !important;
+    scrollbar-width: thin !important;
 }
 
 /* ── SECTION HEADER ── */
@@ -368,41 +376,117 @@
     color: #9ca3af !important;
     margin-top: 2px !important;
 }
+/* ── HERO SLIDER ── */
+.mkm-slider-wrap {
+    background: #fff !important;
+    border-radius: 24px !important;
+    padding: 20px !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
+    margin-bottom: 32px !important;
+    overflow: hidden !important;
+}
+.mkm-slider-main {
+    display: flex !important;
+    gap: 20px !important;
+    align-items: flex-start !important;
+    margin-bottom: 0 !important;
+}
+.mkm-slider-cover {
+    width: 180px !important;
+    flex-shrink: 0 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    aspect-ratio: 3/4 !important;
+}
+.mkm-slider-cover img { width:100% !important; height:100% !important; object-fit:cover !important; border-radius:16px !important; display:block !important; }
+.mkm-slider-body { flex:1 !important; min-width:0 !important; }
+.mkm-slider-title { font-size:22px !important; font-weight:800 !important; color:#111827 !important; margin:0 0 10px 0 !important; line-height:1.3 !important; }
+.mkm-slider-desc { font-size:13px !important; color:#6b7280 !important; line-height:1.7 !important; margin:0 0 14px !important;
+    display:-webkit-box !important; -webkit-line-clamp:3 !important; -webkit-box-orient:vertical !important; overflow:hidden !important; }
+.mkm-slider-meta { font-size:12px !important; color:#9ca3af !important; margin-bottom:14px !important; }
+.mkm-slider-btns { display:flex !important; gap:10px !important; flex-wrap:wrap !important; margin-bottom:16px !important; }
+/* Thumbnails swiper below */
+.mkm-thumb-swiper { margin-top:14px !important; padding-bottom:2px !important; }
+.mkm-thumb-swiper .swiper-slide { width: 60px !important; height: 80px !important; }
+.mkm-thumb-swiper .swiper-slide img { width:60px !important; height:80px !important; object-fit:cover !important; border-radius:8px !important; cursor:pointer !important; opacity:.7 !important; transition:opacity .2s !important; }
+.mkm-thumb-swiper .swiper-slide.swiper-slide-thumb-active img { opacity:1 !important; box-shadow:0 0 0 2px #4f46e5 !important; }
+/* Prev/Next buttons */
+.mkm-slider-nav { display:flex !important; gap:6px !important; margin-top:10px !important; }
+.mkm-nav-btn { width:32px !important; height:32px !important; border-radius:50% !important; border:1.5px solid #e5e7eb !important; background:#fff !important; cursor:pointer !important; display:flex !important; align-items:center !important; justify-content:center !important; color:#374151 !important; font-size:14px !important; transition:all .2s !important; }
+.mkm-nav-btn:hover { background:#4f46e5 !important; border-color:#4f46e5 !important; color:#fff !important; }
+.mkm-main-swiper .swiper-slide { width: 100% !important; } /* Fix stacking overlap issue */
 </style>
 
 <div class="mkm-wrap">
 
-    <!-- ══ HERO CARD ══ -->
+    <!-- ══ HERO SLIDER ══ -->
     <?php
-    $hero_q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 1, 'orderby' => 'rand', 'no_found_rows' => true]);
-    if ($hero_q->have_posts()) : while ($hero_q->have_posts()) : $hero_q->the_post();
-        $cover = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
-        $excerpt = wp_trim_words(get_the_excerpt(), 35, '...');
+    $slider_q = new WP_Query(['post_type'=>'truyen','posts_per_page'=>6,'orderby'=>'rand','no_found_rows'=>true]);
+    if ($slider_q->have_posts()):
     ?>
-    <div class="mkm-hero">
-        <div class="mkm-hero-cover">
-            <img src="<?php echo esc_url($cover); ?>" alt="<?php the_title_attribute(); ?>" loading="eager">
-        </div>
-        <div class="mkm-hero-body">
-            <h2 class="mkm-hero-title"><?php the_title(); ?></h2>
-            <div class="mkm-hero-meta">
-                <span class="mkm-tag mkm-tag-hot">🔥 Nổi Bật</span>
-                <span class="mkm-tag mkm-tag-full">✅ Hoàn Thành</span>
-                <span class="mkm-tag mkm-tag-new">⚡ Mới nhất</span>
+    <div class="mkm-slider-wrap">
+        <!-- MAIN SWIPER -->
+        <div class="swiper mkm-main-swiper">
+            <div class="swiper-wrapper">
+            <?php while($slider_q->have_posts()): $slider_q->the_post();
+                $s_cover = get_the_post_thumbnail_url(null,'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                $s_exc   = wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 40, '...');
+                $s_date  = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' trước';
+                $s_cats  = wp_get_post_terms(get_the_ID(),'the_loai');
+                $s_cat   = !is_wp_error($s_cats) && !empty($s_cats) ? $s_cats[0]->name : '';
+            ?>
+            <div class="swiper-slide">
+                <div class="mkm-slider-main">
+                    <div class="mkm-slider-cover">
+                        <img src="<?php echo esc_url($s_cover); ?>" alt="<?php the_title_attribute(); ?>" loading="eager">
+                    </div>
+                    <div class="mkm-slider-body">
+                        <h2 class="mkm-slider-title"><?php the_title(); ?></h2>
+                        <p class="mkm-slider-meta">
+                            <?php if($s_cat): ?><span class="mkm-tag mkm-tag-new"><?php echo esc_html($s_cat); ?></span>&nbsp;&nbsp;<?php endif; ?>
+                            📅 <?php echo $s_date; ?>
+                        </p>
+                        <p class="mkm-slider-desc"><?php echo esc_html($s_exc); ?></p>
+                        <div class="mkm-slider-btns">
+                            <a href="<?php the_permalink(); ?>" class="mkm-btn mkm-btn-prim">📖 Đọc ngay</a>
+                            <a href="<?php the_permalink(); ?>" class="mkm-btn mkm-btn-sec">Danh sách chương</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="mkm-hero-desc"><?php echo esc_html($excerpt ?: 'Đang cập nhật nội dung...'); ?></p>
-            <div class="mkm-hero-btns">
-                <a href="<?php the_permalink(); ?>" class="mkm-btn mkm-btn-prim">
-                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4 7.962 7.962 0 0010 5.389 7.962 7.962 0 009 4.804z"/></svg>
-                    Đọc ngay
-                </a>
-                <a href="<?php the_permalink(); ?>" class="mkm-btn mkm-btn-sec">
-                    Danh sách chương
-                </a>
+            <?php endwhile; wp_reset_postdata(); ?>
             </div>
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </div>
-    <?php endwhile; wp_reset_postdata(); endif; ?>
+    <style>
+        .mkm-main-swiper .swiper-button-next, .mkm-main-swiper .swiper-button-prev {
+            color: #4f46e5 !important;
+            transform: scale(0.6);
+            background: #fff;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .mkm-main-swiper .swiper-pagination-bullet-active { background: #4f46e5 !important; }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if(typeof Swiper !== 'undefined') {
+            new Swiper('.mkm-main-swiper', {
+                loop: true,
+                autoplay: { delay: 5000, disableOnInteraction: false },
+                pagination: { el: '.swiper-pagination', clickable: true },
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            });
+        }
+    });
+    </script>
+    <?php endif; ?>
 
     <div class="mkm-body">
         <!-- ══ MAIN COLUMN ══ -->

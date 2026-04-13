@@ -216,6 +216,84 @@ Viết đủ $chapters chương. KHÔNG giải thích thêm.";
     wp_send_json_success(['outline' => trim($res)]);
 });
 
+// AJAX: Bệnh Viện AI Actions (add chapters, prune, improve plot, replan, hook check)
+add_action('wp_ajax_temply_bv_ai_action', function() {
+    check_ajax_referer('temply_ai_nonce', 'nonce');
+    $context       = sanitize_textarea_field($_POST['context']       ?? '');
+    $custom_prompt = sanitize_textarea_field($_POST['custom_prompt'] ?? '');
+
+    if (empty($custom_prompt)) {
+        wp_send_json_error(['message' => 'Thiếu prompt']);
+    }
+
+    require_once plugin_dir_path(__FILE__) . 'includes/openai-api.php';
+
+    $sys  = "Bạn là CHIEF STORY EDITOR. Nhiệm vụ: Phân tích và tư vấn chiến lược sáng tác cho một bộ truyện web. Trả lời bằng Tiếng Việt, rõ ràng, có đánh số mục, và cực kỳ cụ thể với tên chương / nhân vật thực tế trong truyện.";
+    $user = "CONTEXT BỘ TRUYỆN:\n$context\n\n---\nNHIỆM VỤ:\n$custom_prompt";
+
+    $res = temply_call_ai($sys, $user, 0.9);
+    if (is_wp_error($res)) {
+        wp_send_json_error(['message' => $res->get_error_message()]);
+    }
+
+    wp_send_json_success(['result' => trim($res)]);
+});
+
+// AJAX: Bệnh Viện Save Meta
+add_action('wp_ajax_temply_bv_save_meta', function() {
+    check_ajax_referer('temply_ai_nonce', 'nonce');
+    $truyen_id = intval($_POST['truyen_id']);
+    if(!$truyen_id) wp_send_json_error(['message' => 'Lỗi ID truyện.']);
+
+    update_post_meta($truyen_id, '_temply_ai_genre', sanitize_text_field($_POST['genre']));
+    update_post_meta($truyen_id, 'truyen_theloai', sanitize_text_field($_POST['genre'])); // Legacy key
+    update_post_meta($truyen_id, '_temply_ai_tone', sanitize_text_field($_POST['tone']));
+    update_post_meta($truyen_id, '_temply_ai_hook', sanitize_textarea_field($_POST['hook']));
+    update_post_meta($truyen_id, '_temply_ai_world', sanitize_textarea_field($_POST['world']));
+    update_post_meta($truyen_id, 'truyen_boi_canh', sanitize_textarea_field($_POST['world'])); // Legacy key
+    update_post_meta($truyen_id, '_temply_ai_characters', sanitize_textarea_field($_POST['chars']));
+    update_post_meta($truyen_id, '_temply_ai_script', sanitize_textarea_field($_POST['script']));
+
+    wp_send_json_success(['message' => 'Đã lưu thông tin truyện thành công!']);
+});
+
+// AJAX: Bệnh Viện Tối Ưu SEO Rank Math
+add_action('wp_ajax_temply_bv_optimize_seo_rm', function() {
+    check_ajax_referer('temply_ai_nonce', 'nonce');
+    $truyen_id = intval($_POST['truyen_id']);
+    if(!$truyen_id) wp_send_json_error(['message' => 'Lỗi ID truyện.']);
+
+    require_once plugin_dir_path(__FILE__) . 'includes/openai-api.php';
+
+    $title = get_the_title($truyen_id);
+    $genre = sanitize_text_field($_POST['genre'] ?? '');
+    $hook = sanitize_textarea_field($_POST['hook'] ?? '');
+    $world = sanitize_textarea_field($_POST['world'] ?? '');
+
+    $sys = "Bạn là CHUYÊN GIA SEO. Nhiệm vụ: Viết tiêu đề và mô tả SEO chuẩn click-bait cho truyện web. Output CHỈ LÀ JSON: {\"title\": \"Đọc Truyện [Tên Truyện] (Mới Cập Nhật) - Cực Cuốn\", \"desc\": \"150 ký tự mô tả giật gân, chứa từ khóa Tên Truyện để tăng tỷ lệ click\", \"keyword\": \"Truyện [Tên Truyện]\"}";
+    $user = "Tên Truyện: $title\nThể loại: $genre\nHook/Bối cảnh: $hook\nViết SEO JSON ngay.";
+
+    $res = temply_call_ai($sys, $user, 0.7);
+    if(is_wp_error($res)) wp_send_json_error(['message' => $res->get_error_message()]);
+    
+    // Clean JSON markdown
+    $res = preg_replace('/```(?:json)?|```/i', '', $res);
+    $data = json_decode(trim($res), true);
+    
+    if(!$data) wp_send_json_error(['message' => 'Lỗi parse JSON từ AI.']);
+
+    update_post_meta($truyen_id, 'rank_math_title', sanitize_text_field($data['title']));
+    update_post_meta($truyen_id, 'rank_math_description', sanitize_text_field($data['desc']));
+    update_post_meta($truyen_id, 'rank_math_focus_keyword', sanitize_text_field($data['keyword']));
+    
+    // For yoast compatibility
+    update_post_meta($truyen_id, '_yoast_wpseo_title', sanitize_text_field($data['title']));
+    update_post_meta($truyen_id, '_yoast_wpseo_metadesc', sanitize_text_field($data['desc']));
+    update_post_meta($truyen_id, '_yoast_wpseo_focuskw', sanitize_text_field($data['keyword']));
+
+    wp_send_json_success(['message' => 'Đã tối ưu SEO xong! Title: ' . esc_html($data['title'])]);
+});
+
 // FEATURE: Tự động Xoá / Xoá Tạm / Phục hồi các Chương liên quan khi thao tác trên Bài Truyện
 add_action('wp_trash_post', function($post_id) {
     if (get_post_type($post_id) === 'truyen') {

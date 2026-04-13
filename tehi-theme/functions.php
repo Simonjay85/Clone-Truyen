@@ -38,6 +38,68 @@ function tehi_clone_scripts() {
 add_action( 'wp_enqueue_scripts', 'tehi_clone_scripts' );
 
 /**
+ * Inject Tailwind CDN + Material Symbols để các template cũ render đúng
+ */
+add_action('wp_head', function() {
+    // Chỉ tải trên các trang KHÔNG phải front-page (vì front-page dùng CSS riêng)
+    if (!is_front_page()) {
+        echo '<script src="https://cdn.tailwindcss.com"></script>' . "\n";
+        echo '<script>tailwind.config={corePlugins:{preflight:false},theme:{extend:{colors:{"surface-container-lowest":"#ffffff","surface-container-low":"#f6f3f2","surface-container":"#f0eded","surface-container-high":"#eae8e7","surface-container-highest":"#e4e2e1","surface-bright":"#fbf9f8","surface":"#fbf9f8","on-surface":"#1b1c1c","on-surface-variant":"#404752","outline":"#707783","outline-variant":"#c0c7d4","primary":"#0060a9","primary-container":"#3f9cfb","on-primary":"#ffffff","on-primary-container":"#00325c","secondary":"#536068","secondary-container":"#d4e2eb","on-secondary-container":"#57656c","background":"#fbf9f8","on-background":"#1b1c1c"}}}}</script>' . "\n";
+    }
+    echo '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">' . "\n";
+}, 1);
+
+/**
+ * Bật Hỗ Trợ Elementor Header & Footer Builder
+ */
+function tehi_elementor_hf_support() {
+    add_theme_support( 'header-footer-elementor' );
+    add_theme_support( 'elementor' );
+}
+add_action( 'after_setup_theme', 'tehi_elementor_hf_support' );
+
+/**
+ * Điều hướng sửa lỗi 404 cho các link .html cũ (như bang-xep-hang.html, hoan-thanh.html)
+ */
+add_filter('template_include', function($template) {
+    if (!is_admin()) {
+        $uri = $_SERVER['REQUEST_URI'];
+        if (strpos($uri, '.html') !== false) {
+            $path = parse_url($uri, PHP_URL_PATH);
+            $basename = basename($path);
+            
+            $template_map = [
+                'dang-nhap.html'           => '/page-profile.php',
+                'the-loai.html'            => '/page-directory.php',
+                'danh-muc.html'            => '/page-directory.php',
+                'theo-doi.html'            => '/page-library.php',
+                'bang-xep-hang.html'       => '/page-bxh.php',
+                'hoan-thanh.html'          => '/page-completed.php',
+                'truyen-moi-cap-nhat.html' => '/page-latest.php',
+                'nhom-dich.html'           => '/page-teams.php'
+            ];
+            
+            if (isset($template_map[$basename])) {
+                $mapped_file = get_template_directory() . $template_map[$basename];
+                
+                // Fallback nếu Bảng xếp hạng bị rỗng (0 bytes)
+                if ($basename == 'bang-xep-hang.html' && (!file_exists($mapped_file) || filesize($mapped_file) < 50)) {
+                    $mapped_file = get_template_directory() . '/page-latest.php';
+                }
+                
+                if (file_exists($mapped_file) && filesize($mapped_file) > 0) {
+                    global $wp_query;
+                    $wp_query->is_404 = false;
+                    status_header(200);
+                    return $mapped_file;
+                }
+            }
+        }
+    }
+    return $template;
+}, 99);
+
+/**
  * Đăng ký Custom Post Types: Truyện và Chương
  */
 function tehi_clone_cpt_init() {
