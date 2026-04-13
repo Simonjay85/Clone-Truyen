@@ -6,11 +6,10 @@
   <base href="https://tehitruyen.com/" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026</title>
-<meta name="keywords" content="TeHi Truyện, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, Ngôn Tình Hay Nhất 2026, Truyện Ngôn Tình Hay Nhất 2026, ngôn tình hoàn, ngontinhhay, ngon tinh sac sung sach, ngôn tình ngược, ngôn tình truyện, truyện ngôn tình, đọc truyện ngôn tình, truyện ngôn tình hay, truyện ngôn tình full, truyện ngôn tình mới nhất, truyện ngôn tình hiện đại, truyện ngôn tình cổ đại, truyện ngôn tình tổng tài, truyện ngôn tình ngược, truyện ngôn tình sủng, truyện ngôn tình HE, đọc truyện miễn phí, website đọc truyện ngôn tình, truyện ngôn tình online, tehitruyen.com, đọc truyện hay" />
-<meta name="description" content="TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026 chọn lọc, nội dung cuốn hút, giao diện mượt mà, không quảng cáo chen ngang. Cập nhật nhanh – đúng gu – đúng cảm xúc.
-"Tehitruyen.com – Đọc một lần, chạm một đời."" />
-<link href="" rel="canonical" />
+  <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
+<meta name="keywords" content="TeHi Truyện, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí" />
+<meta name="description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: 'TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
+<link href="<?php echo esc_url(get_permalink()); ?>" rel="canonical" />
 <link href="https://tehitruyen.com/img_data/images/icon_tehi_truyen_2025.png" rel="shortcut icon" type="image/x-icon" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMCE7V4VHX"></script>
@@ -21,21 +20,18 @@
 
   gtag('config', 'G-BMCE7V4VHX');
 </script><!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026">
-<meta name="twitter:site" content="@https://tehitruyen.com/">
-<meta name="twitter:description" content="TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026 chọn lọc, nội dung cuốn hút, giao diện mượt mà, không quảng cáo chen ngang. Cập nhật nhanh – đúng gu – đúng cảm xúc.
-"Tehitruyen.com – Đọc một lần, chạm một đời."">
-<meta name="twitter:image" content="https://tehitruyen.com/img_data/images/icon_tehi_truyen_2025.png">
-<meta name="twitter:image:alt" content="TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>">
+<meta name="twitter:site" content="@tehitruyen">
+<meta name="twitter:description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 25, '...')); ?>">
+<meta name="twitter:image" content="<?php echo esc_url(get_the_post_thumbnail_url() ?: 'https://tehitruyen.com/img_data/images/icon_tehi_truyen_2025.png'); ?>">
+<meta name="twitter:image:alt" content="<?php echo esc_attr(get_the_title()); ?>">
 <!-- Open Graph -->
-    <meta property="og:type" content="website">
-<meta property="og:url" content="https://tehitruyen.com/" />
-<meta property="og:title" content="TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026" />
-<meta property="og:image" content="https://tehitruyen.com/img_data/images/icon_tehi_truyen_2025.png" />
-<meta property="og:description" content="TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026 chọn lọc, nội dung cuốn hút, giao diện mượt mà, không quảng cáo chen ngang. Cập nhật nhanh – đúng gu – đúng cảm xúc.
-"Tehitruyen.com – Đọc một lần, chạm một đời."" />
-<meta property="fb:page_id" content="https://www.facebook.com/messages/t/281452188391453" />
+<meta property="og:type" content="<?php echo is_single() ? 'article' : 'website'; ?>">
+<meta property="og:url" content="<?php echo esc_url(get_permalink()); ?>" />
+<meta property="og:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>" />
+<meta property="og:image" content="<?php echo esc_url(get_the_post_thumbnail_url() ?: 'https://tehitruyen.com/img_data/images/icon_tehi_truyen_2025.png'); ?>" />
+<meta property="og:description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: 'TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
 <!-- Khai báo ngôn ngữ -->
 <script type="application/ld+json">
     {

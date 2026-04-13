@@ -1,6 +1,22 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
+<!-- CẤU TRÚC SEO SCHEMA BẮT ĐẦU -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "CreativeWorkSeries",
+  "name": "<?php echo esc_js(get_the_title()); ?>",
+  "author": {
+    "@type": "Person",
+    "name": "Tác Giả"
+  },
+  "url": "<?php echo esc_url(get_permalink()); ?>",
+  "image": "<?php echo esc_url(get_the_post_thumbnail_url() ?: 'https://tehitruyen.com/img_data/images/logo-truyen-moi-v1.png'); ?>",
+  "description": "<?php echo esc_js(wp_trim_words(wp_strip_all_tags(get_the_content()), 30, '...')); ?>"
+}
+</script>
+<!-- CẤU TRÚC SEO SCHEMA KẾT THÚC -->
 
 <!-- result search mobile form start -->
 <div class="mdv-header-find-form mdv-header-find-form-mobile p-2">
@@ -494,7 +510,7 @@
                                             <div class="san-pham-book-item-show-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/img_data/images/anh_truyen/2436.jpg" data-fancybox>
                                                     <div class="vh-skeleton vh-skeleton-image"></div>
-                                                    <img src="https://tehitruyen.com/img_data/images/anh_truyen/2436.jpg" alt="ảnh">
+                                                    <img loading="lazy" src="https://tehitruyen.com/img_data/images/anh_truyen/2436.jpg" alt="ảnh">
                                                 </a>
                                             </div>
                                         </div>
@@ -659,7 +675,7 @@
                                                         <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1">
                                                             <div class="vh-skeleton-container">
                                                                 <div class="btn-comic-read-next hvr-icon-pop btn-mdv-button-2">
-                                                                    <img src="https://tehitruyen.com/templates/images/open-book-white.png" alt="icon" class="icon-doc-truyen-spshow"> Đọc Truyện
+                                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/open-book-white.png" alt="icon" class="icon-doc-truyen-spshow"> Đọc Truyện
                                                                 </div>
                                                                 <div class="vh-skeleton vh-skeleton-text"></div>
                                                             </div>
@@ -1074,9 +1090,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1095,9 +1111,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1116,9 +1132,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1137,9 +1153,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1158,9 +1174,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1179,9 +1195,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1200,9 +1216,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1221,9 +1237,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1242,9 +1258,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1263,9 +1279,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1284,9 +1300,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1305,9 +1321,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1326,9 +1342,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1347,9 +1363,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1368,9 +1384,9 @@
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                                 <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1408,8 +1424,8 @@
                 <ul id="danhSachChuongDaChon" class="list-group mua-chuong-list-group mb-4"></ul>
                 <div class="mua-chuong-summary">
                     <p>Tổng số chương: <span id="tongSoChuong" class="fw-bold"></span></p>
-                    <p>Tổng giá <img src="https://tehitruyen.com/templates/images/dao-nho.png" alt="icon" class="icon-qua-dao-chuong">: <span id="tongGiaDao" class="fw-bold"></span></p>
-                    <p>Tổng giá <img src="https://tehitruyen.com/templates/images/hat.png" alt="icon" class="icon-hat">: <span id="tongGiaHat" class="fw-bold"></span></p>
+                    <p>Tổng giá <img loading="lazy" src="https://tehitruyen.com/templates/images/dao-nho.png" alt="icon" class="icon-qua-dao-chuong">: <span id="tongGiaDao" class="fw-bold"></span></p>
+                    <p>Tổng giá <img loading="lazy" src="https://tehitruyen.com/templates/images/hat.png" alt="icon" class="icon-hat">: <span id="tongGiaHat" class="fw-bold"></span></p>
                 </div>
             </div>
             <div class="modal-footer mua-chuong-modal-footer">
@@ -1430,12 +1446,12 @@
             </div>
             <div class="modal-body donate-modal-body">
                 <p class="donate-modal-info">Bạn đang donate cho: <strong>Lớp Trưởng ( huyenlenh94 )</strong></p>
-                <p class="donate-modal-info">Số đào hiện có của bạn: <strong><span id="so_dao_hien_co"></span> <img src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"></strong></p>
+                <p class="donate-modal-info">Số đào hiện có của bạn: <strong><span id="so_dao_hien_co"></span> <img loading="lazy" src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"></strong></p>
                 <div class="mb-3">
-                    <label for="soDaoDonate" class="form-label">Nhập số đào <img src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"> muốn donate</label>
+                    <label for="soDaoDonate" class="form-label">Nhập số đào <img loading="lazy" src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"> muốn donate</label>
                     <input type="text" class="form-control formatprice" id="soDaoDonate" min="1" max="" placeholder="Nhập số đào...">
                 </div>
-                <p class="donate-modal-remaining">Sau khi donate, số đào còn lại của bạn sẽ là: <span id="soDaoConLai"></span> <img src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"></p>
+                <p class="donate-modal-remaining">Sau khi donate, số đào còn lại của bạn sẽ là: <span id="soDaoConLai"></span> <img loading="lazy" src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"></p>
             </div>
             <div class="modal-footer donate-modal-footer">
                 <button type="button" class="btn btn-secondary donate-btn-cancel" data-bs-dismiss="modal">Hủy bỏ</button>
@@ -1460,19 +1476,19 @@
                                 <div class="combo-info-row">
                                     <label for="gia-dao-hien-tai" class="combo-label">Đào Hiện Có:</label>
                                     <div type="text" id="gia-dao-hien-tai" class="combo-input" readonly>
-                                         <img src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="dao-up-top-icon">
+                                         <img loading="lazy" src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="dao-up-top-icon">
                                     </div>
                                 </div>
                                 <div class="combo-info-row">
                                     <label for="gia-dao-tieu-ton" class="combo-label">Giá Đào Tiêu Tốn:</label>
                                     <div type="text" id="gia-dao-tieu-ton" class="combo-input" readonly>
-                                        - 0 <img src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="dao-up-top-icon">
+                                        - 0 <img loading="lazy" src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="dao-up-top-icon">
                                     </div>
                                 </div>
                                 <div class="combo-info-row">
                                     <label for="gia-dao-sau-mua" class="combo-label">Đào Sau Khi Mua:</label>
                                     <div type="text" id="gia-dao-sau-mua" class="combo-input" readonly>
-                                        Không đủ Đào <img src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="dao-up-top-icon">
+                                        Không đủ Đào <img loading="lazy" src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="dao-up-top-icon">
                                     </div>
                                 </div>
                             </div>
@@ -1509,7 +1525,7 @@
                                         <!-- Input Group for "Bông" -->
                     <div class="mb-3 d-flex align-items-center gap-2">
                         <label class="mdv-de-cu-icon" for="soBongInput">
-                            <img src="templates/images/icon-hoa.png" alt="icon" class="de-cu-bong-icon">
+                            <img loading="lazy" src="templates/images/icon-hoa.png" alt="icon" class="de-cu-bong-icon">
                             <span class="text-bong">Bông</span>
                         </label>
                         <input type="text" class="form-control mdv-de-cu-input formatprice" id="soBongInput" min="0" placeholder="Nhập số lượng muốn đề cử, tối thiểu 5000">
@@ -1517,19 +1533,19 @@
 
                     <!-- Display current "Bông" -->
                     <div class="mb-3 d-flex align-items-center gap-2">
-                        <label class="mdv-de-cu-icon" for="currentBong"><img src="templates/images/icon-hoa.png" alt="icon" class="de-cu-bong-icon"> Hiện tại</label>
+                        <label class="mdv-de-cu-icon" for="currentBong"><img loading="lazy" src="templates/images/icon-hoa.png" alt="icon" class="de-cu-bong-icon"> Hiện tại</label>
                         <input type="text" class="form-control mdv-de-cu-input" id="currentBong" value=" Bông" readonly disabled>
                     </div>
 
                     <!-- Display "Bông" after proposal -->
                     <div class="mb-3 d-flex align-items-center gap-2">
-                        <label class="mdv-de-cu-icon" for="afterProposal"><img src="templates/images/icon-hoa.png" alt="icon" class="de-cu-bong-icon"> Sau đề cử</label>
+                        <label class="mdv-de-cu-icon" for="afterProposal"><img loading="lazy" src="templates/images/icon-hoa.png" alt="icon" class="de-cu-bong-icon"> Sau đề cử</label>
                         <input type="text" class="form-control mdv-de-cu-input" id="afterProposal" value="0 Bông" readonly disabled>
                     </div>
 
                     <!-- Submit Button -->
                     <div class="text-center">
-                        <button type="button" class="btn mdv-de-cu-submit-btn hvr-shrink"><img src="templates/images/icon-hoa.png" alt="icon" class="icon-hoa-nho"> Đề Cử Ngay</button>
+                        <button type="button" class="btn mdv-de-cu-submit-btn hvr-shrink"><img loading="lazy" src="templates/images/icon-hoa.png" alt="icon" class="icon-hoa-nho"> Đề Cử Ngay</button>
                     </div>
                 </form>
             </div>
@@ -2045,8 +2061,8 @@
                     ${soChuong} - ${chapterName}
                 </div>
                 <div class="mua-chuong-item-line-2 d-flex justify-content-end align-items-center gap-2">
-                    ${giaDao > 0 ? '<img src="https://tehitruyen.com/templates/images/dao-nho.png" alt="icon" class="icon-qua-dao-chuong"> ' + giaDao : ''}
-                    ${giaHat > 0 ? '<img src="https://tehitruyen.com/templates/images/hat.png" alt="icon" class="icon-hat"> ' + giaHat : ''}
+                    ${giaDao > 0 ? '<img loading="lazy" src="https://tehitruyen.com/templates/images/dao-nho.png" alt="icon" class="icon-qua-dao-chuong"> ' + giaDao : ''}
+                    ${giaHat > 0 ? '<img loading="lazy" src="https://tehitruyen.com/templates/images/hat.png" alt="icon" class="icon-hat"> ' + giaHat : ''}
                 </div>
             </li>`;
             });
@@ -2557,9 +2573,9 @@
                             <div class="col-2">
                                 <div class="mdv-san-pham-show-comment-form-avatar mdv-san-pham-show-comment-form-avatar-list-bl ratio ratio-1x1">
                                     <a href="${response.avatar}" data-fancybox>
-                                        <img src="${response.avatar}" alt="png" class="avatar">
+                                        <img loading="lazy" src="${response.avatar}" alt="png" class="avatar">
                                     </a>
-                                    <img src="${response.khung_avatar}" alt="khung avatar" class="frame">
+                                    <img loading="lazy" src="${response.khung_avatar}" alt="khung avatar" class="frame">
                                 </div>
                             </div>
                             <div class="col-10">
@@ -2625,9 +2641,9 @@
                     <div class="col-1">
                         <div class="mdv-san-pham-show-comment-form-avatar mdv-san-pham-show-comment-form-avatar-list-bl ratio ratio-1x1">
                             <a href="" data-fancybox>
-                                <img src="" alt="png" class="avatar">
+                                <img loading="lazy" src="" alt="png" class="avatar">
                             </a>
-                            <img src="" alt="khung avatar" class="frame">
+                            <img loading="lazy" src="" alt="khung avatar" class="frame">
                         </div>
                     </div>
                     <div class="col-9">
@@ -2746,9 +2762,9 @@
                 <div class="col-2">
                     <div class="mdv-san-pham-show-comment-form-avatar mdv-san-pham-show-comment-form-avatar-list-bl ratio ratio-1x1">
                         <a href="${response.avatar}" data-fancybox>
-                            <img src="${response.avatar}" alt="png" class="avatar">
+                            <img loading="lazy" src="${response.avatar}" alt="png" class="avatar">
                         </a>
-                        <img src="${response.khung_avatar}" alt="khung avatar" class="frame">
+                        <img loading="lazy" src="${response.khung_avatar}" alt="khung avatar" class="frame">
                     </div>
                 </div>
                 <div class="col-10">
@@ -2918,9 +2934,9 @@
                                 <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                     <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
                                         <a href="${user.avatar}" data-fancybox>
-                                            <img src="${user.avatar}" alt="png" class="avatar">
+                                            <img loading="lazy" src="${user.avatar}" alt="png" class="avatar">
                                         </a>
-                                        <img src="${user.khung_avatar}" alt="khung avatar" class="frame">
+                                        <img loading="lazy" src="${user.khung_avatar}" alt="khung avatar" class="frame">
                                     </div>
                                     <!-- tên -->
                                     <div class="modal-danh-sach-thich-content-item-name">
@@ -3634,7 +3650,7 @@
                 <div class="">
                     <div class="nh-footer-ads-box-wrapper p-2">
                         <div class="nh-footer-ads-box position-relative ">
-                            <img src="https://tehitruyen.com/img_data/images/Me_Zhihu_-_O_nha_be_Chanh_TeHi_Truyen_1.png" alt="Banner quảng cáo dưới footer" class="nh-footer-ads-img">
+                            <img loading="lazy" src="https://tehitruyen.com/img_data/images/Me_Zhihu_-_O_nha_be_Chanh_TeHi_Truyen_1.png" alt="Banner quảng cáo dưới footer" class="nh-footer-ads-img">
 
                             <!-- theo dõi button start -->
                             <div class="theo-doi-footer-box d-flex justify-content-between align-items-end gap-2">
