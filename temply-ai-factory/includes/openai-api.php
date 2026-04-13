@@ -1199,6 +1199,7 @@ function temply_process_auto_pilot() {
         $genre = $curr_item['genre'] ?? 'Hỗn hợp';
         $tone = $curr_item['tone'] ?? 'Lôi cuốn';
         $world = $curr_item['world'] ?? '';
+        $script = $curr_item['script'] ?? '';
         $chars = $curr_item['chars'] ?? '';
         
         // Tất cả Data bối cảnh đã có sẵn từ lưới Staging, không cần gọi AI rặn nữa! Đỡ được 20s.
@@ -1215,6 +1216,7 @@ function temply_process_auto_pilot() {
         update_post_meta($truyen_id, '_temply_ai_genre', $genre);
         update_post_meta($truyen_id, '_temply_ai_tone', $tone);
         update_post_meta($truyen_id, '_temply_ai_world', $world);
+        update_post_meta($truyen_id, '_temply_ai_script', $script);
         update_post_meta($truyen_id, '_temply_ai_characters', $chars);
 
         // Đổi trang thái Hàng Đợi -> Writing (Sẽ viết ở nhịp sau)
@@ -1255,11 +1257,12 @@ function temply_process_auto_pilot() {
 
     $world = get_post_meta($truyen_id, '_temply_ai_world', true) ?: '';
     $characters = get_post_meta($truyen_id, '_temply_ai_characters', true) ?: '';
+    $script = get_post_meta($truyen_id, '_temply_ai_script', true) ?: '';
     $genre = get_post_meta($truyen_id, '_temply_ai_genre', true) ?: '';
 
     // A. BRAINSTORM (Haiku / Gemini)
     $br_sys = "Bạn là THE ARCHITECT. Đọc diễn biến cuối, Nghĩ ra Dàn Ý cho Chương $next_chap_num.\nChỉ trả về 1 đoạn 100 chữ tóm tắt diễn biến. KHÔNG JSON.";
-    $br_user = "[Bối Cảnh]\n$world\n\n[Nhân vật]\n$characters\n\n[Diễn biến cũ/Ghi chú]\n$last_content\n\nViết tóm tắt chương $next_chap_num.";
+    $br_user = "[Bối Cảnh]\n$world\n\n[Kịch bản gốc / Cốt truyện]\n$script\n\n[Nhân vật]\n$characters\n\n[Diễn biến cũ/Ghi chú]\n$last_content\n\nViết tóm tắt chương $next_chap_num.";
     $next_summary = temply_call_ai($br_sys, $br_user, 0.9, $model);
     if(is_wp_error($next_summary)) {
         error_log('TEMPLY AUTO PILOT ERROR: Lỗi Brainstorm ' . $next_summary->get_error_message());
@@ -1271,7 +1274,7 @@ function temply_process_auto_pilot() {
     if (stripos($genre, 'drama') !== false || stripos($genre, 'cẩu huyết') !== false) {
         $system_prompt .= "\n\nDRAMA: Đẩy mạnh cẩu huyết, mâu thuẫn.";
     }
-    $user_prompt = "[NHÂN VẬT]\n$characters\n\n[BỐI CẢNH]\n$world\n\nViết Chương $next_chap_num bám theo:\n$next_summary";
+    $user_prompt = "[CHỈ ĐẠO KỊCH BẢN CHUNG]\n$script\n\n[NHÂN VẬT]\n$characters\n\n[BỐI CẢNH]\n$world\n\nViết Chương $next_chap_num bám theo:\n$next_summary";
     
     $response = temply_call_ai_quality($system_prompt, $user_prompt, 0.9, $model);
     if(is_wp_error($response)) {

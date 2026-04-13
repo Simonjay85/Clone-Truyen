@@ -1,280 +1,536 @@
 <?php get_header(); ?>
 
-<!-- MEOKAMMAP CLONE LAYOUT -->
+<!-- ─── MEOKAMMAP CLONE - front-page.php ─── -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-    body { background-color: #f7f9fa; }
-    .mkm-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-    
-    /* Hero Section */
-    .mkm-hero-card { display: flex; background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; margin-top: 20px;}
-    .mkm-hero-img-wrap { width: 250px; flex-shrink: 0; margin-right: 20px; border-radius: 8px; overflow: hidden;}
-    .mkm-hero-img-wrap img { width: 100%; height: auto; object-fit: cover; }
-    .mkm-hero-info { flex-grow: 1; display: flex; flex-direction: column;}
-    .mkm-hero-title { font-size: 24px; font-weight: 700; color: #333; margin-top: 0; margin-bottom: 10px;}
-    .mkm-hero-meta { font-size: 13px; color: #888; margin-bottom: 15px; }
-    .mkm-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-right: 5px; }
-    .mkm-badge-hot { background: #ff4d4f; color: #fff; }
-    .mkm-badge-full { background: #52c41a; color: #fff; }
-    .mkm-badge-new { background: #1890ff; color: #fff; }
-    .mkm-hero-desc { font-size: 14px; color: #555; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 20px;}
-    .mkm-hero-actions .btn { border-radius: 20px; padding: 6px 20px; font-weight: 600; font-size: 14px; margin-right: 10px;}
-    .mkm-btn-primary { background-color: #1890ff; color: #fff; border: 1px solid #1890ff;}
-    .mkm-btn-outline { background-color: transparent; color: #1890ff; border: 1px solid #1890ff;}
-    
-    /* Section Title */
-    .mkm-section-title { font-size: 20px; font-weight: 700; color: #333; margin-bottom: 15px; display: flex; align-items: center;}
-    .mkm-section-title i { color: #1890ff; margin-right: 8px; }
-    .mkm-section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px;}
-    .mkm-view-all { font-size: 13px; color: #1890ff; text-decoration: none; font-weight: 600;}
-    
-    /* Grid System */
-    .mkm-row { display: flex; flex-wrap: wrap; margin: -10px; }
-    .mkm-col-main { width: 75%; padding: 0 10px; }
-    .mkm-col-side { width: 25%; padding: 0 10px; }
-    
-    @media (max-width: 991px) {
-        .mkm-col-main, .mkm-col-side { width: 100%; }
-        .mkm-hero-card { flex-direction: column; }
-        .mkm-hero-img-wrap { width: 100%; margin-right: 0; margin-bottom: 15px;}
-    }
+/* ── RESET cứng để không bị CSS cũ đè ── */
+.mkm-wrap, .mkm-wrap * {
+    box-sizing: border-box !important;
+    font-family: 'Be Vietnam Pro', sans-serif !important;
+}
 
-    /* Grid Items */
-    .mkm-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px;}
-    @media (max-width: 768px) { .mkm-grid { grid-template-columns: repeat(2, 1fr); } }
-    
-    .mkm-item { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: relative;}
-    .mkm-item-img-wrap { position: relative; padding-top: 133%; /* 3:4 aspect ratio */ overflow: hidden;}
-    .mkm-item-img-wrap img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-    .mkm-item:hover .mkm-item-img-wrap img { transform: scale(1.05); }
-    
-    .mkm-item-badge-top { position: absolute; top: 8px; left: 8px; z-index: 2; }
-    .mkm-item-badge-right { position: absolute; top: 8px; right: 8px; z-index: 2; }
-    
-    .mkm-item-stats { position: absolute; bottom: 0; left: 0; width: 100%; padding: 8px; background: linear-gradient(transparent, rgba(0,0,0,0.7)); color: #fff; font-size: 11px; display: flex; justify-content: space-between; z-index: 2;}
-    .mkm-item-info { padding: 10px; }
-    .mkm-item-title { font-size: 14px; font-weight: 700; color: #333; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration: none;}
-    .mkm-item-title:hover { color: #1890ff; }
-    .mkm-item-chapter { font-size: 12px; color: #888; margin-top: 4px;}
+/* ── Layout Container ── */
+.mkm-wrap {
+    max-width: 1200px !important;
+    margin: 20px auto !important;
+    padding: 0 16px !important;
+    background: transparent !important;
+}
 
-    /* Sidebar */
-    .mkm-widget { background: #fff; border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);}
-    .mkm-bxh-list { list-style: none; padding: 0; margin: 0; }
-    .mkm-bxh-item { display: flex; align-items: center; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #eee;}
-    .mkm-bxh-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none;}
-    .mkm-bxh-rank { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; font-size: 12px; margin-right: 10px; flex-shrink: 0;}
-    .mkm-rank-1 { background: #ff4d4f; color: #fff; }
-    .mkm-rank-2 { background: #ff7a45; color: #fff; }
-    .mkm-rank-3 { background: #ffa940; color: #fff; }
-    .mkm-rank-other { background: #f0f0f0; color: #888; }
-    
-    .mkm-bxh-img { width: 40px; height: 50px; border-radius: 4px; object-fit: cover; margin-right: 10px; flex-shrink: 0;}
-    .mkm-bxh-info { flex-grow: 1; overflow: hidden; }
-    .mkm-bxh-title { font-size: 13px; font-weight: 600; color: #333; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-    .mkm-bxh-meta { font-size: 11px; color: #888; margin-top: 3px; }
+/* ── HERO CARD ── */
+.mkm-hero {
+    display: flex !important;
+    gap: 20px !important;
+    background: #fff !important;
+    border-radius: 24px !important;
+    padding: 20px !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
+    margin-bottom: 32px !important;
+    align-items: flex-start !important;
+}
+.mkm-hero-cover {
+    width: 160px !important;
+    flex-shrink: 0 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    aspect-ratio: 3/4 !important;
+}
+.mkm-hero-cover img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+    display: block !important;
+}
+.mkm-hero-body {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+.mkm-hero-title {
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+    margin: 0 0 8px 0 !important;
+    line-height: 1.35 !important;
+}
+.mkm-hero-meta {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin-bottom: 10px !important;
+    align-items: center !important;
+}
+.mkm-tag {
+    display: inline-block !important;
+    padding: 2px 10px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 1.6 !important;
+}
+.mkm-tag-hot { background: #fef3f2 !important; color: #e03d2b !important; border: 1px solid #fecaca !important; }
+.mkm-tag-full { background: #f0fdf4 !important; color: #16a34a !important; border: 1px solid #bbf7d0 !important; }
+.mkm-tag-new { background: #eef2ff !important; color: #4f46e5 !important; border: 1px solid #c7d2fe !important; }
+.mkm-hero-desc {
+    font-size: 13px !important;
+    color: #6b7280 !important;
+    line-height: 1.7 !important;
+    margin-bottom: 16px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+}
+.mkm-hero-btns {
+    display: flex !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+}
+.mkm-btn {
+    padding: 8px 20px !important;
+    border-radius: 12px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all .2s !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+.mkm-btn-prim {
+    background: #4f46e5 !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(79,70,229,.25) !important;
+}
+.mkm-btn-prim:hover { background: #4338ca !important; color: #fff !important; }
+.mkm-btn-sec {
+    background: #f4f4f5 !important;
+    color: #374151 !important;
+}
+.mkm-btn-sec:hover { background: #e4e4e7 !important; color: #374151 !important; }
 
-    /* Tabs */
-    .mkm-tabs { display: flex; background: #f0f2f5; border-radius: 20px; padding: 2px; margin-bottom: 15px;}
-    .mkm-tab { flex: 1; text-align: center; font-size: 12px; font-weight: 600; padding: 6px 0; border-radius: 18px; cursor: pointer; color: #888;}
-    .mkm-tab.active { background: #fff; color: #1890ff; box-shadow: 0 1px 3px rgba(0,0,0,0.1);}
+/* ── MAIN LAYOUT ── */
+.mkm-body {
+    display: flex !important;
+    gap: 24px !important;
+    align-items: flex-start !important;
+}
+.mkm-main {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+.mkm-aside {
+    width: 280px !important;
+    flex-shrink: 0 !important;
+}
 
-    /* User BXH */
-    .mkm-user-item { display: flex; align-items: center; margin-bottom: 12px;}
-    .mkm-user-avatar { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #ffd700; margin-right: 10px; object-fit: cover;}
-    .mkm-user-meta { font-size: 11px; color: #ff4d4f; font-weight: 600; display: flex; align-items: center;}
+/* ── SECTION HEADER ── */
+.mkm-sec-hdr {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 14px !important;
+    margin-top: 30px !important;
+}
+.mkm-sec-hdr:first-child { margin-top: 0 !important; }
+.mkm-sec-title {
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    margin: 0 !important;
+}
+.mkm-view-all {
+    font-size: 13px !important;
+    color: #4f46e5 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+.mkm-view-all:hover { text-decoration: underline !important; }
+
+/* ── GRID ── */
+.mkm-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 14px !important;
+    margin-bottom: 0 !important;
+}
+@media (max-width: 900px) {
+    .mkm-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    .mkm-body { flex-direction: column !important; }
+    .mkm-aside { width: 100% !important; }
+    .mkm-hero { flex-direction: column !important; }
+    .mkm-hero-cover { width: 100% !important; max-width: 200px !important; }
+}
+@media (max-width: 600px) {
+    .mkm-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ── BOOK CARD ── */
+.mkm-card {
+    background: #fff !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
+    transition: box-shadow .2s, transform .2s !important;
+    text-decoration: none !important;
+    display: block !important;
+}
+.mkm-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important;
+    transform: translateY(-2px) !important;
+}
+.mkm-card-img {
+    position: relative !important;
+    aspect-ratio: 3/4 !important;
+    overflow: hidden !important;
+}
+.mkm-card-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform .3s !important;
+}
+.mkm-card:hover .mkm-card-img img { transform: scale(1.05) !important; }
+.mkm-badge-tl {
+    position: absolute !important;
+    top: 8px !important;
+    left: 8px !important;
+    background: #10b981 !important;
+    color: #fff !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    padding: 2px 7px !important;
+    border-radius: 6px !important;
+    z-index: 2 !important;
+}
+.mkm-badge-tr {
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    background: #ef4444 !important;
+    color: #fff !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    padding: 2px 7px !important;
+    border-radius: 6px !important;
+    z-index: 2 !important;
+}
+.mkm-badge-full-pos {
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    background: #e11d48 !important;
+    color: #fff !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    padding: 2px 7px !important;
+    border-radius: 6px !important;
+    z-index: 2 !important;
+}
+.mkm-card-overlay {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 20px 8px 8px 8px !important;
+    background: linear-gradient(transparent, rgba(0,0,0,.7)) !important;
+    color: #fff !important;
+    font-size: 11px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+}
+.mkm-card-info {
+    padding: 10px 10px 12px 10px !important;
+}
+.mkm-card-name {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    line-height: 1.4 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin: 0 0 4px 0 !important;
+}
+.mkm-card-chap {
+    font-size: 12px !important;
+    color: #9ca3af !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* ── SIDEBAR ── */
+.mkm-widget {
+    background: #fff !important;
+    border-radius: 20px !important;
+    padding: 16px !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
+    margin-bottom: 20px !important;
+}
+.mkm-widget-title {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+    margin: 0 0 14px 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+}
+.mkm-tabs {
+    display: flex !important;
+    gap: 4px !important;
+    background: #f4f4f5 !important;
+    border-radius: 10px !important;
+    padding: 3px !important;
+    margin-bottom: 14px !important;
+}
+.mkm-tab {
+    flex: 1 !important;
+    text-align: center !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    padding: 5px 0 !important;
+    border-radius: 8px !important;
+    color: #6b7280 !important;
+    cursor: pointer !important;
+}
+.mkm-tab.active {
+    background: #fff !important;
+    color: #4f46e5 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+.mkm-rank-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.mkm-rank-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 8px 6px !important;
+    border-radius: 12px !important;
+    margin-bottom: 4px !important;
+    transition: background .15s !important;
+    text-decoration: none !important;
+}
+.mkm-rank-item.top1 {
+    background: #fffbeb !important;
+    border: 1px solid #fde68a !important;
+}
+.mkm-rank-item:hover { background: #f9fafb !important; }
+.mkm-rank-num {
+    width: 22px !important;
+    height: 22px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    flex-shrink: 0 !important;
+}
+.rn1 { background: #f59e0b !important; color: #fff !important; }
+.rn2 { background: #9ca3af !important; color: #fff !important; }
+.rn3 { background: #b45309 !important; color: #fff !important; }
+.rn-other { background: #f4f4f5 !important; color: #6b7280 !important; }
+.mkm-rank-thumb {
+    width: 38px !important;
+    height: 50px !important;
+    border-radius: 8px !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+}
+.mkm-rank-info {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+.mkm-rank-name {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+.mkm-rank-views {
+    font-size: 11px !important;
+    color: #9ca3af !important;
+    margin-top: 2px !important;
+}
 </style>
 
-<div class="mkm-container">
+<div class="mkm-wrap">
 
-    <!-- HERO SECTION -->
+    <!-- ══ HERO CARD ══ -->
     <?php
-    // Fetch 1 featured post
-    $hero_args = array( 'post_type' => 'truyen', 'posts_per_page' => 1, 'orderby' => 'rand' ); // Replace logic to get 'featured'
-    $hero_query = new WP_Query($hero_args);
-    if ($hero_query->have_posts()) : while ($hero_query->have_posts()) : $hero_query->the_post();
-        $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+    $hero_q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 1, 'orderby' => 'rand', 'no_found_rows' => true]);
+    if ($hero_q->have_posts()) : while ($hero_q->have_posts()) : $hero_q->the_post();
+        $cover = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+        $excerpt = wp_trim_words(get_the_excerpt(), 35, '...');
     ?>
-    <div class="mkm-hero-card">
-        <div class="mkm-hero-img-wrap">
-            <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title(); ?>" loading="lazy">
+    <div class="mkm-hero">
+        <div class="mkm-hero-cover">
+            <img src="<?php echo esc_url($cover); ?>" alt="<?php the_title_attribute(); ?>" loading="eager">
         </div>
-        <div class="mkm-hero-info">
-            <h1 class="mkm-hero-title"><?php the_title(); ?></h1>
+        <div class="mkm-hero-body">
+            <h2 class="mkm-hero-title"><?php the_title(); ?></h2>
             <div class="mkm-hero-meta">
-                <span class="mkm-badge mkm-badge-hot">Đề Cử</span>
-                <span class="mkm-badge mkm-badge-full">Hoàn Thành</span>
-                <span style="margin-left: 10px;"><i class="fa fa-user"></i> Tác giả: Đang cập nhật</span>
-                <span style="margin-left: 10px;"><i class="fa fa-layer-group"></i> Chương: 1230</span>
+                <span class="mkm-tag mkm-tag-hot">🔥 Nổi Bật</span>
+                <span class="mkm-tag mkm-tag-full">✅ Hoàn Thành</span>
+                <span class="mkm-tag mkm-tag-new">⚡ Mới nhất</span>
             </div>
-            <div class="mkm-hero-desc">
-                <?php echo wp_trim_words(get_the_excerpt(), 40, '...'); ?>
-            </div>
-            <div class="mkm-hero-actions mt-auto">
-                <a href="<?php the_permalink(); ?>" class="btn mkm-btn-primary"><i class="fa fa-book-open"></i> Đọc ngay</a>
-                <a href="<?php the_permalink(); ?>#review" class="btn mkm-btn-outline">Xem đánh giá</a>
+            <p class="mkm-hero-desc"><?php echo esc_html($excerpt ?: 'Đang cập nhật nội dung...'); ?></p>
+            <div class="mkm-hero-btns">
+                <a href="<?php the_permalink(); ?>" class="mkm-btn mkm-btn-prim">
+                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4 7.962 7.962 0 0010 5.389 7.962 7.962 0 009 4.804z"/></svg>
+                    Đọc ngay
+                </a>
+                <a href="<?php the_permalink(); ?>" class="mkm-btn mkm-btn-sec">
+                    Danh sách chương
+                </a>
             </div>
         </div>
     </div>
     <?php endwhile; wp_reset_postdata(); endif; ?>
 
-    <div class="mkm-row">
-        <!-- MAIN CONTENT (Trái 75%) -->
-        <div class="mkm-col-main">
-            
+    <div class="mkm-body">
+        <!-- ══ MAIN COLUMN ══ -->
+        <div class="mkm-main">
+
             <!-- MỚI CẬP NHẬT -->
-            <div class="mkm-section-header">
-                <div class="mkm-section-title"><i class="fa-solid fa-cloud-arrow-up"></i> Mới cập nhật</div>
-                <a href="<?php echo get_site_url(); ?>/truyen-moi-cap-nhat.html" class="mkm-view-all">Xem tất cả <i class="fa fa-angle-right"></i></a>
+            <div class="mkm-sec-hdr">
+                <h2 class="mkm-sec-title">
+                    <svg width="18" height="18" fill="none" stroke="#4f46e5" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Mới cập nhật
+                </h2>
+                <a href="<?php echo get_site_url(); ?>/truyen-moi-cap-nhat.html" class="mkm-view-all">Xem tất cả →</a>
             </div>
-            
             <div class="mkm-grid">
                 <?php
-                $new_args = array( 'post_type' => 'truyen', 'posts_per_page' => 8 );
-                $new_query = new WP_Query($new_args);
-                if ($new_query->have_posts()) : while ($new_query->have_posts()) : $new_query->the_post();
-                    $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                $q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 8, 'no_found_rows' => true]);
+                while ($q->have_posts()) : $q->the_post();
+                    $img = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
                 ?>
-                <div class="mkm-item">
-                    <a href="<?php the_permalink(); ?>" rel="bookmark">
-                        <div class="mkm-item-img-wrap">
-                            <span class="mkm-badge mkm-badge-new mkm-item-badge-top">MỚI</span>
-                            <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title(); ?>" loading="lazy">
-                            <div class="mkm-item-stats">
-                                <span><i class="fa fa-eye"></i> <?php echo rand(1000, 5000); ?></span>
-                                <span><i class="fa fa-list"></i> <?php echo rand(100, 500); ?></span>
-                            </div>
+                <a href="<?php the_permalink(); ?>" class="mkm-card">
+                    <div class="mkm-card-img">
+                        <span class="mkm-badge-tl">MỚI</span>
+                        <img src="<?php echo esc_url($img); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
+                        <div class="mkm-card-overlay">
+                            <span>👁 <?php echo number_format(rand(1000,9999)); ?></span>
+                            <span>📖 <?php echo rand(50,500); ?></span>
                         </div>
-                    </a>
-                    <div class="mkm-item-info">
-                        <a href="<?php the_permalink(); ?>" class="mkm-item-title"><?php the_title(); ?></a>
-                        <div class="mkm-item-chapter text-muted text-truncate">Chương mới nhất</div>
                     </div>
-                </div>
-                <?php endwhile; wp_reset_postdata(); endif; ?>
+                    <div class="mkm-card-info">
+                        <p class="mkm-card-name"><?php the_title(); ?></p>
+                        <p class="mkm-card-chap">Chương mới nhất</p>
+                    </div>
+                </a>
+                <?php endwhile; wp_reset_postdata(); ?>
             </div>
 
             <!-- TRUYỆN HOT -->
-            <div class="mkm-section-header" style="margin-top: 40px;">
-                <div class="mkm-section-title"><i class="fa-solid fa-fire" style="color: #ff4d4f;"></i> Truyện hot</div>
-                <a href="#" class="mkm-view-all">Xem tất cả <i class="fa fa-angle-right"></i></a>
+            <div class="mkm-sec-hdr">
+                <h2 class="mkm-sec-title">
+                    <svg width="18" height="18" fill="#ef4444" viewBox="0 0 24 24"><path d="M17.657 9.343a1 1 0 00-1.414 0l-.707.707A8 8 0 006.5 20H18a1 1 0 000-2h-1.343A8.004 8.004 0 0018 12.5V11a1 1 0 00-.343-.657z"/></svg>
+                    Truyện hot
+                </h2>
+                <a href="#" class="mkm-view-all">Xem tất cả →</a>
             </div>
-            
             <div class="mkm-grid">
                 <?php
-                $hot_args = array( 'post_type' => 'truyen', 'posts_per_page' => 4, 'orderby' => 'comment_count' );
-                $hot_query = new WP_Query($hot_args);
-                if ($hot_query->have_posts()) : while ($hot_query->have_posts()) : $hot_query->the_post();
-                    $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                $q2 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 4, 'orderby' => 'comment_count', 'no_found_rows' => true]);
+                while ($q2->have_posts()) : $q2->the_post();
+                    $img2 = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
                 ?>
-                <div class="mkm-item">
-                    <a href="<?php the_permalink(); ?>">
-                        <div class="mkm-item-img-wrap">
-                            <span class="mkm-badge mkm-badge-hot mkm-item-badge-top">HOT</span>
-                            <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title(); ?>" loading="lazy">
-                            <div class="mkm-item-stats">
-                                <span><i class="fa fa-eye"></i> <?php echo rand(5000, 20000); ?></span>
-                            </div>
+                <a href="<?php the_permalink(); ?>" class="mkm-card">
+                    <div class="mkm-card-img">
+                        <span class="mkm-badge-tr">HOT 🔥</span>
+                        <img src="<?php echo esc_url($img2); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
+                        <div class="mkm-card-overlay">
+                            <span>👁 <?php echo number_format(rand(10000, 50000)); ?></span>
                         </div>
-                    </a>
-                    <div class="mkm-item-info">
-                        <a href="<?php the_permalink(); ?>" class="mkm-item-title"><?php the_title(); ?></a>
                     </div>
-                </div>
-                <?php endwhile; wp_reset_postdata(); endif; ?>
+                    <div class="mkm-card-info">
+                        <p class="mkm-card-name"><?php the_title(); ?></p>
+                        <p class="mkm-card-chap">Đang hot</p>
+                    </div>
+                </a>
+                <?php endwhile; wp_reset_postdata(); ?>
             </div>
 
             <!-- TRUYỆN FULL -->
-            <div class="mkm-section-header" style="margin-top: 40px;">
-                <div class="mkm-section-title"><i class="fa-solid fa-check-circle" style="color: #52c41a;"></i> Truyện full</div>
-                <a href="<?php echo get_site_url(); ?>/hoan-thanh.html" class="mkm-view-all">Xem tất cả <i class="fa fa-angle-right"></i></a>
+            <div class="mkm-sec-hdr">
+                <h2 class="mkm-sec-title">
+                    <svg width="18" height="18" fill="#10b981" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    Truyện full
+                </h2>
+                <a href="<?php echo get_site_url(); ?>/hoan-thanh.html" class="mkm-view-all">Xem tất cả →</a>
             </div>
-            
             <div class="mkm-grid">
                 <?php
-                $full_args = array( 'post_type' => 'truyen', 'posts_per_page' => 4 );
-                $full_query = new WP_Query($full_args);
-                if ($full_query->have_posts()) : while ($full_query->have_posts()) : $full_query->the_post();
-                    $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                $q3 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 4, 'offset' => 12, 'no_found_rows' => true]);
+                while ($q3->have_posts()) : $q3->the_post();
+                    $img3 = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
                 ?>
-                <div class="mkm-item">
-                    <a href="<?php the_permalink(); ?>">
-                        <div class="mkm-item-img-wrap">
-                            <span class="mkm-badge mkm-badge-full mkm-item-badge-top">FULL</span>
-                            <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title(); ?>" loading="lazy">
-                        </div>
-                    </a>
-                    <div class="mkm-item-info">
-                        <a href="<?php the_permalink(); ?>" class="mkm-item-title"><?php the_title(); ?></a>
+                <a href="<?php the_permalink(); ?>" class="mkm-card">
+                    <div class="mkm-card-img">
+                        <span class="mkm-badge-full-pos">FULL</span>
+                        <img src="<?php echo esc_url($img3); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
                     </div>
-                </div>
-                <?php endwhile; wp_reset_postdata(); endif; ?>
+                    <div class="mkm-card-info">
+                        <p class="mkm-card-name"><?php the_title(); ?></p>
+                        <p class="mkm-card-chap">Hoàn thành</p>
+                    </div>
+                </a>
+                <?php endwhile; wp_reset_postdata(); ?>
             </div>
 
         </div>
 
-        <!-- SIDEBAR (Phải 25%) -->
-        <div class="mkm-col-side">
-            
-            <!-- Widget BXH -->
+        <!-- ══ SIDEBAR ══ -->
+        <div class="mkm-aside">
             <div class="mkm-widget">
-                <div class="mkm-section-title" style="font-size: 16px;"><i class="fa-solid fa-ranking-star" style="color: #ffaa00;"></i> Bảng xếp hạng</div>
+                <h3 class="mkm-widget-title">
+                    <svg width="18" height="18" fill="#f59e0b" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+                    Bảng xếp hạng
+                </h3>
                 <div class="mkm-tabs">
-                    <div class="mkm-tab active">Thứ Ảo</div>
-                    <div class="mkm-tab">Lượt Thích</div>
-                    <div class="mkm-tab">Đọc Nhiều</div>
+                    <div class="mkm-tab active">Ngày</div>
+                    <div class="mkm-tab">Tuần</div>
+                    <div class="mkm-tab">Tháng</div>
                 </div>
-                
-                <ul class="mkm-bxh-list">
+                <ul class="mkm-rank-list">
                     <?php
-                    $bxh_args = array( 'post_type' => 'truyen', 'posts_per_page' => 10 );
-                    $bxh_query = new WP_Query($bxh_args);
-                    $rank = 1;
-                    if ($bxh_query->have_posts()) : while ($bxh_query->have_posts()) : $bxh_query->the_post();
-                        $thumb = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
-                        $rank_class = ($rank <= 3) ? "mkm-rank-$rank" : "mkm-rank-other";
+                    $bxh = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 10, 'no_found_rows' => true]);
+                    $ri = 1;
+                    while ($bxh->have_posts()) : $bxh->the_post();
+                        $rthumb = get_the_post_thumbnail_url(null, 'thumbnail') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                        $rclass = ($ri === 1) ? 'rn1' : (($ri === 2) ? 'rn2' : (($ri === 3) ? 'rn3' : 'rn-other'));
                     ?>
-                    <li class="mkm-bxh-item">
-                        <div class="mkm-bxh-rank <?php echo $rank_class; ?>"><?php echo $rank; ?></div>
-                        <img src="<?php echo esc_url($thumb); ?>" class="mkm-bxh-img" alt="" loading="lazy">
-                        <div class="mkm-bxh-info">
-                            <a href="<?php the_permalink(); ?>" class="mkm-bxh-title" style="text-decoration: none; display: block;"><?php the_title(); ?></a>
-                            <div class="mkm-bxh-meta"><i class="fa fa-eye"></i> <?php echo rand(10000, 99999); ?></div>
-                        </div>
+                    <li>
+                        <a href="<?php the_permalink(); ?>" class="mkm-rank-item<?php if($ri===1) echo ' top1'; ?>">
+                            <span class="mkm-rank-num <?php echo $rclass; ?>"><?php echo $ri <= 3 ? ['🥇','🥈','🥉'][$ri-1] : $ri; ?></span>
+                            <img src="<?php echo esc_url($rthumb); ?>" class="mkm-rank-thumb" alt="" loading="lazy">
+                            <div class="mkm-rank-info">
+                                <div class="mkm-rank-name"><?php the_title(); ?></div>
+                                <div class="mkm-rank-views">👁 <?php echo number_format(rand(1000,99999)); ?> lượt đọc</div>
+                            </div>
+                        </a>
                     </li>
-                    <?php $rank++; endwhile; wp_reset_postdata(); endif; ?>
+                    <?php $ri++; endwhile; wp_reset_postdata(); ?>
                 </ul>
             </div>
-
-            <!-- Widget User BXH (Mock) -->
-            <div class="mkm-widget">
-                <div class="mkm-section-title" style="font-size: 16px;"><i class="fa-solid fa-crown" style="color: #ffaa00;"></i> Bảng xếp hạng User</div>
-                <div class="mkm-tabs">
-                    <div class="mkm-tab active">Cống hiến</div>
-                    <div class="mkm-tab">Đề cử</div>
-                </div>
-                
-                <div class="mkm-user-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/templates/images/meo.png" class="mkm-user-avatar" alt="user">
-                    <div>
-                        <div style="font-size: 13px; font-weight: 600; color: #333;">Lão Nhị Tehi</div>
-                        <div class="mkm-user-meta"><i class="fa-solid fa-chess-queen" style="color: #ffd700; margin-right: 4px;"></i> Đại Thánh 8 Đời</div>
-                    </div>
-                </div>
-                <div class="mkm-user-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/templates/images/meo.png" class="mkm-user-avatar" alt="user" style="border-color: #c0c0c0;">
-                    <div>
-                        <div style="font-size: 13px; font-weight: 600; color: #333;">Thẩm Nguyệt</div>
-                        <div class="mkm-user-meta" style="color: #888;"><i class="fa-solid fa-star" style="margin-right: 4px;"></i> Trúc Cơ Kỳ</div>
-                    </div>
-                </div>
-                <div class="mkm-user-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/templates/images/meo.png" class="mkm-user-avatar" alt="user" style="border-color: #cd7f32;">
-                    <div>
-                        <div style="font-size: 13px; font-weight: 600; color: #333;">Nhiếp Phong</div>
-                        <div class="mkm-user-meta" style="color: #888;"><i class="fa-solid fa-star" style="margin-right: 4px;"></i> Luyện Khí Kỳ</div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>

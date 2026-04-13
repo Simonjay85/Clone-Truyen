@@ -178,6 +178,44 @@ Chỉ trả về JSON có cấu trúc chính xác (Không kèm giải thích hay
     wp_send_json_success($data);
 });
 
+// AJAX: Generate Chapter-by-Chapter Outline (Step 3 of Wizard)
+add_action('wp_ajax_temply_ajax_pilot_generate_outline', function() {
+    check_ajax_referer('temply_ai_nonce', 'nonce');
+    $keyword  = sanitize_textarea_field($_POST['keyword']  ?? '');
+    $title    = sanitize_text_field($_POST['title']    ?? '');
+    $genre    = sanitize_text_field($_POST['genre']    ?? '');
+    $tone     = sanitize_text_field($_POST['tone']     ?? '');
+    $chars    = sanitize_textarea_field($_POST['chars']    ?? '');
+    $world    = sanitize_textarea_field($_POST['world']    ?? '');
+    $chapters = max(1, intval($_POST['chapters'] ?? 20));
+
+    if (empty($keyword) && empty($title)) {
+        wp_send_json_error(['message' => 'Thiếu nội dung ý tưởng']);
+    }
+
+    require_once plugin_dir_path(__FILE__) . 'includes/openai-api.php';
+
+    $sys = "Bạn là THE PLOT ARCHITECT. Nhiệm vụ: Lập dàn ý chi tiết từng chương cho một bộ truyện.
+Trả về DANH SÁCH có đánh số từng chương, mỗi chương 1-2 câu tóm tắt ngắn gọn sự kiện chính.
+Định dạng: Chương N: [Tên chương] — [Sự kiện chính]
+Viết đủ $chapters chương. KHÔNG giải thích thêm.";
+
+    $user = "ĐỀ TÀI / Ý TƯỞNG GỐC:\n$keyword\n\n" .
+            "TÊN TRUYỆN: $title\n" .
+            "THỂ LOẠI: $genre\n" .
+            "GIỌNG VĂN: $tone\n" .
+            "NHÂN VẬT:\n$chars\n\n" .
+            "BỐI CẢNH:\n$world\n\n" .
+            "Hãy lập dàn ý chi tiết $chapters chương. Mỗi chương phải có sự kiện sự vụ rõ ràng, twist đủ để giữ chân đọc giả.";
+
+    $res = temply_call_ai($sys, $user, 0.9);
+    if (is_wp_error($res)) {
+        wp_send_json_error(['message' => $res->get_error_message()]);
+    }
+
+    wp_send_json_success(['outline' => trim($res)]);
+});
+
 // FEATURE: Tự động Xoá / Xoá Tạm / Phục hồi các Chương liên quan khi thao tác trên Bài Truyện
 add_action('wp_trash_post', function($post_id) {
     if (get_post_type($post_id) === 'truyen') {
