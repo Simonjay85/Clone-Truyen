@@ -16,7 +16,7 @@
     "name": "TeHi Truyện",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://tehitruyen.com/img_data/images/logo-truyen-moi-v1.png"
+      "url": "<?php echo get_site_url(); ?>/img_data/images/logo-truyen-moi-v1.png"
     }
   },
   "url": "<?php echo esc_url(get_permalink()); ?>",
@@ -59,22 +59,22 @@
 
     <ul class="truyen-mobile-nav-list">
                     <li class="truyen-mobile-nav-item">
-                <a href="https://tehitruyen.com/truyen-de-cu.html">Truyện đề cử</a>
+                <a href="<?php echo get_site_url(); ?>/truyen-de-cu.html">Truyện đề cử</a>
             </li>
                     <li class="truyen-mobile-nav-item">
-                <a href="https://tehitruyen.com/truyen-moi-cap-nhat.html">Truyện mới cập nhật</a>
+                <a href="<?php echo get_site_url(); ?>/truyen-moi-cap-nhat.html">Truyện mới cập nhật</a>
             </li>
                     <li class="truyen-mobile-nav-item">
-                <a href="https://tehitruyen.com/the-loai.html">Thể loại</a>
+                <a href="<?php echo get_site_url(); ?>/the-loai.html">Thể loại</a>
             </li>
                     <li class="truyen-mobile-nav-item">
-                <a href="https://tehitruyen.com/hoan-thanh.html">Truyện hoàn thành</a>
+                <a href="<?php echo get_site_url(); ?>/hoan-thanh.html">Truyện hoàn thành</a>
             </li>
                     <li class="truyen-mobile-nav-item">
-                <a href="https://tehitruyen.com/team.html">Team</a>
+                <a href="<?php echo get_site_url(); ?>/team.html">Team</a>
             </li>
                     <li class="truyen-mobile-nav-item">
-                <a href="https://tehitruyen.com/tu-truyen.html">Tủ truyện</a>
+                <a href="<?php echo get_site_url(); ?>/tu-truyen.html">Tủ truyện</a>
             </li>
         
 
@@ -198,7 +198,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Redirect to the logout URL
-                    window.location.href = "https://tehitruyen.com/dang-xuat";
+                    window.location.href = "<?php echo get_site_url(); ?>/dang-xuat";
                 }
             });
         });
@@ -544,47 +544,47 @@
                     <div class="msv-chuong-list-container-left" id="chuongListLeft">
                         <ul class="msv-chuong-list p-0">
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1" class="msv-chuong-link">
                                         <span class="msv-chuong-title ">Chương 1:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" class="msv-chuong-link">
                                         <span class="msv-chuong-title ">Chương 2:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=3" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=3" class="msv-chuong-link">
                                         <span class="msv-chuong-title ">Chương 3:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=4" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=4" class="msv-chuong-link">
                                         <span class="msv-chuong-title ">Chương 4:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=5" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=5" class="msv-chuong-link">
                                         <span class="msv-chuong-title ">Chương 5:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=6" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=6" class="msv-chuong-link">
                                         <span class="msv-chuong-title ">Chương 6:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=7" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=7" class="msv-chuong-link">
                                         <span class="msv-chuong-title ">Chương 7:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=8" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=8" class="msv-chuong-link">
                                         <span class="msv-chuong-title ">Chương 8:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=9" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=9" class="msv-chuong-link">
                                         <span class="msv-chuong-title ">Chương 9:</span>
                                     </a>
                                 </li>
@@ -598,10 +598,10 @@
             <!-- breadcrumb start -->
                         <nav aria-label="breadcrumb " class="mdv-doc-truyen-breadcrumb px-3 py-2 rounded-3 ">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="https://tehitruyen.com/">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href='https://tehitruyen.com/hoan-thanh.html' >Truyện hoàn thành</a></li>
-                    <li class="breadcrumb-item"><a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html">Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1">Chương 1</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo get_site_url(); ?>">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href='<?php echo get_site_url(); ?>/hoan-thanh.html' >Truyện hoàn thành</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html">Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1">Chương 1</a></li>
                 </ol>
             </nav>
             <!-- breadcrumb end -->
@@ -644,47 +644,47 @@
                     <div class="msv-chuong-list-container position-absolute" id="chuongList" style="display: none;">
                         <ul class="msv-chuong-list p-0">
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1" title="Chương 1:" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1" title="Chương 1:" class="msv-chuong-link">
                                         <span class="msv-chuong-number ">Chương 1:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" title="Chương 2:" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" title="Chương 2:" class="msv-chuong-link">
                                         <span class="msv-chuong-number ">Chương 2:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=3" title="Chương 3:" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=3" title="Chương 3:" class="msv-chuong-link">
                                         <span class="msv-chuong-number ">Chương 3:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=4" title="Chương 4:" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=4" title="Chương 4:" class="msv-chuong-link">
                                         <span class="msv-chuong-number ">Chương 4:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=5" title="Chương 5:" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=5" title="Chương 5:" class="msv-chuong-link">
                                         <span class="msv-chuong-number ">Chương 5:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=6" title="Chương 6:" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=6" title="Chương 6:" class="msv-chuong-link">
                                         <span class="msv-chuong-number ">Chương 6:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=7" title="Chương 7:" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=7" title="Chương 7:" class="msv-chuong-link">
                                         <span class="msv-chuong-number ">Chương 7:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=8" title="Chương 8:" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=8" title="Chương 8:" class="msv-chuong-link">
                                         <span class="msv-chuong-number ">Chương 8:</span>
                                     </a>
                                 </li>
                                                             <li class="msv-chuong-item">
-                                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=9" title="Chương 9:" class="msv-chuong-link">
+                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=9" title="Chương 9:" class="msv-chuong-link">
                                         <span class="msv-chuong-number ">Chương 9:</span>
                                     </a>
                                 </li>
@@ -693,7 +693,7 @@
                 </div>
 
                 <!-- Nút Chương Sau -->
-                <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" class="d-inline-flex mdv-chuong-button mdv-chuong-button-sau hvr-icon-forward " style="">
+                <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" class="d-inline-flex mdv-chuong-button mdv-chuong-button-sau hvr-icon-forward " style="">
                     <span class="mdv-chuong-button-text">Sau</span>
                     <i class="fa-solid fa-arrow-right-long hvr-icon"></i>
                 </a>
@@ -715,7 +715,7 @@
                         <div class="affiliate-modal">
                             <div class="affiliate-modal-header">
                                 <div class="affiliate-logo">
-                                                                        <img loading="lazy" src="https://tehitruyen.com/img_data/images/logo-tehitruyen-v1-nen_anh.png" alt="Logo">
+                                                                        <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/logo-tehitruyen-v1-nen_anh.png" alt="Logo">
                                 </div>
                                 <h3 class="affiliate-title">Thông Báo Đặc Biệt</h3>
                             </div>
@@ -967,47 +967,47 @@
                         <div class="msv-chuong-list-container msv-chuong-list-container-2 position-absolute" id="chuongList2" style="display: none;">
                             <ul class="msv-chuong-list p-0">
                                                                     <li class="msv-chuong-item">
-                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1" title="Chương 1:" class="msv-chuong-link">
+                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1" title="Chương 1:" class="msv-chuong-link">
                                             <span class="msv-chuong-number ">Chương 1:</span>
                                         </a>
                                     </li>
                                                                     <li class="msv-chuong-item">
-                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" title="Chương 2:" class="msv-chuong-link">
+                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" title="Chương 2:" class="msv-chuong-link">
                                             <span class="msv-chuong-number ">Chương 2:</span>
                                         </a>
                                     </li>
                                                                     <li class="msv-chuong-item">
-                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=3" title="Chương 3:" class="msv-chuong-link">
+                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=3" title="Chương 3:" class="msv-chuong-link">
                                             <span class="msv-chuong-number ">Chương 3:</span>
                                         </a>
                                     </li>
                                                                     <li class="msv-chuong-item">
-                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=4" title="Chương 4:" class="msv-chuong-link">
+                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=4" title="Chương 4:" class="msv-chuong-link">
                                             <span class="msv-chuong-number ">Chương 4:</span>
                                         </a>
                                     </li>
                                                                     <li class="msv-chuong-item">
-                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=5" title="Chương 5:" class="msv-chuong-link">
+                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=5" title="Chương 5:" class="msv-chuong-link">
                                             <span class="msv-chuong-number ">Chương 5:</span>
                                         </a>
                                     </li>
                                                                     <li class="msv-chuong-item">
-                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=6" title="Chương 6:" class="msv-chuong-link">
+                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=6" title="Chương 6:" class="msv-chuong-link">
                                             <span class="msv-chuong-number ">Chương 6:</span>
                                         </a>
                                     </li>
                                                                     <li class="msv-chuong-item">
-                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=7" title="Chương 7:" class="msv-chuong-link">
+                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=7" title="Chương 7:" class="msv-chuong-link">
                                             <span class="msv-chuong-number ">Chương 7:</span>
                                         </a>
                                     </li>
                                                                     <li class="msv-chuong-item">
-                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=8" title="Chương 8:" class="msv-chuong-link">
+                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=8" title="Chương 8:" class="msv-chuong-link">
                                             <span class="msv-chuong-number ">Chương 8:</span>
                                         </a>
                                     </li>
                                                                     <li class="msv-chuong-item">
-                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=9" title="Chương 9:" class="msv-chuong-link">
+                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=9" title="Chương 9:" class="msv-chuong-link">
                                             <span class="msv-chuong-number ">Chương 9:</span>
                                         </a>
                                     </li>
@@ -1019,7 +1019,7 @@
 
 
                     <!-- Nút Chương Sau -->
-                    <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" class="mdv-chuong-button mdv-chuong-button-sau hvr-icon-forward " style="">
+                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" class="mdv-chuong-button mdv-chuong-button-sau hvr-icon-forward " style="">
                         <span class="mdv-chuong-button-text">Sau</span>
                         <i class="fa-solid fa-arrow-right-long hvr-icon"></i>
                     </a>
@@ -1064,7 +1064,7 @@
                                                 <div class="comment-login-prompt mb-3">
                                                     <h5 class="mb-2">Chia sẻ cảm nghĩ của bạn nhé!</h5>
                                                     <p class="mb-4">Vui lòng đăng nhập để tham gia bình luận cùng chúng mình 💗</p>
-                                                    <button type="button" class="btn btn-pink-login" onclick="window.location.href='https://tehitruyen.com/dang-nhap.html' ">
+                                                    <button type="button" class="btn btn-pink-login" onclick="window.location.href='<?php echo get_site_url(); ?>/dang-nhap.html' ">
                                                         Đăng Nhập Ngay
                                                     </button>
                                                 </div>
@@ -1123,14 +1123,14 @@
                                     <div class="truyen-de-cu-image">
                                         <div class="top-item-comic-image-book-cover position-relative">
                                             <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html">
-                                                    <img loading="lazy" src="https://tehitruyen.com/img_data/images/anh_truyen/2436.jpg" alt="Trận Văn Trường Sinh">
+                                                <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html">
+                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2436.jpg" alt="Trận Văn Trường Sinh">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="truyen-de-cu-info">
-                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" class="truyen-de-cu-title-link">Triều Đình Không Dung Nữ Nh...</a>
+                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" class="truyen-de-cu-title-link">Triều Đình Không Dung Nữ Nh...</a>
                                         <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
                                             <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
                                             <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 409</span>
@@ -1141,14 +1141,14 @@
                                     <div class="truyen-de-cu-image">
                                         <div class="top-item-comic-image-book-cover position-relative">
                                             <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/thanh-chu-hoang-mac-da-la-gi.html">
-                                                    <img loading="lazy" src="https://tehitruyen.com/img_data/images/anh_truyen/2249.jpg" alt="Trận Văn Trường Sinh">
+                                                <a href="<?php echo get_site_url(); ?>/thanh-chu-hoang-mac-da-la-gi.html">
+                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2249.jpg" alt="Trận Văn Trường Sinh">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="truyen-de-cu-info">
-                                        <a href="https://tehitruyen.com/thanh-chu-hoang-mac-da-la-gi.html" class="truyen-de-cu-title-link">Thành Chủ Hoang Mạc Đã Là Gì</a>
+                                        <a href="<?php echo get_site_url(); ?>/thanh-chu-hoang-mac-da-la-gi.html" class="truyen-de-cu-title-link">Thành Chủ Hoang Mạc Đã Là Gì</a>
                                         <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
                                             <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
                                             <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 894</span>
@@ -1159,14 +1159,14 @@
                                     <div class="truyen-de-cu-image">
                                         <div class="top-item-comic-image-book-cover position-relative">
                                             <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html">
-                                                    <img loading="lazy" src="https://tehitruyen.com/img_data/images/anh_truyen/2250.jpg" alt="Trận Văn Trường Sinh">
+                                                <a href="<?php echo get_site_url(); ?>/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html">
+                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2250.jpg" alt="Trận Văn Trường Sinh">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="truyen-de-cu-info">
-                                        <a href="https://tehitruyen.com/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html" class="truyen-de-cu-title-link">Ta Cùng Ca Ca Trọng Sinh Th...</a>
+                                        <a href="<?php echo get_site_url(); ?>/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html" class="truyen-de-cu-title-link">Ta Cùng Ca Ca Trọng Sinh Th...</a>
                                         <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
                                             <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
                                             <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 484</span>
@@ -1177,14 +1177,14 @@
                                     <div class="truyen-de-cu-image">
                                         <div class="top-item-comic-image-book-cover position-relative">
                                             <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/nhi-cong-tu-len-lut-giau-ta.html">
-                                                    <img loading="lazy" src="https://tehitruyen.com/img_data/images/anh_truyen/2251.jpg" alt="Trận Văn Trường Sinh">
+                                                <a href="<?php echo get_site_url(); ?>/nhi-cong-tu-len-lut-giau-ta.html">
+                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2251.jpg" alt="Trận Văn Trường Sinh">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="truyen-de-cu-info">
-                                        <a href="https://tehitruyen.com/nhi-cong-tu-len-lut-giau-ta.html" class="truyen-de-cu-title-link">Nhị Công Tử Lén Lút Giấu Ta</a>
+                                        <a href="<?php echo get_site_url(); ?>/nhi-cong-tu-len-lut-giau-ta.html" class="truyen-de-cu-title-link">Nhị Công Tử Lén Lút Giấu Ta</a>
                                         <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
                                             <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
                                             <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 944</span>
@@ -1195,14 +1195,14 @@
                                     <div class="truyen-de-cu-image">
                                         <div class="top-item-comic-image-book-cover position-relative">
                                             <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/ta-nhat-duoc-hoang-de-mat-tri-nho.html">
-                                                    <img loading="lazy" src="https://tehitruyen.com/img_data/images/anh_truyen/2252.jpg" alt="Trận Văn Trường Sinh">
+                                                <a href="<?php echo get_site_url(); ?>/ta-nhat-duoc-hoang-de-mat-tri-nho.html">
+                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2252.jpg" alt="Trận Văn Trường Sinh">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="truyen-de-cu-info">
-                                        <a href="https://tehitruyen.com/ta-nhat-duoc-hoang-de-mat-tri-nho.html" class="truyen-de-cu-title-link">Ta Nhặt Được Hoàng Đế Mất T...</a>
+                                        <a href="<?php echo get_site_url(); ?>/ta-nhat-duoc-hoang-de-mat-tri-nho.html" class="truyen-de-cu-title-link">Ta Nhặt Được Hoàng Đế Mất T...</a>
                                         <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
                                             <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
                                             <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 560</span>
@@ -1213,14 +1213,14 @@
                                     <div class="truyen-de-cu-image">
                                         <div class="top-item-comic-image-book-cover position-relative">
                                             <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/nhi-thieu-gia-la-hac-xa.html">
-                                                    <img loading="lazy" src="https://tehitruyen.com/img_data/images/anh_truyen/2253.jpg" alt="Trận Văn Trường Sinh">
+                                                <a href="<?php echo get_site_url(); ?>/nhi-thieu-gia-la-hac-xa.html">
+                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2253.jpg" alt="Trận Văn Trường Sinh">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="truyen-de-cu-info">
-                                        <a href="https://tehitruyen.com/nhi-thieu-gia-la-hac-xa.html" class="truyen-de-cu-title-link">Nhị Thiếu Gia Là Hắc Xà</a>
+                                        <a href="<?php echo get_site_url(); ?>/nhi-thieu-gia-la-hac-xa.html" class="truyen-de-cu-title-link">Nhị Thiếu Gia Là Hắc Xà</a>
                                         <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
                                             <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
                                             <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 776</span>
@@ -1231,14 +1231,14 @@
                                     <div class="truyen-de-cu-image">
                                         <div class="top-item-comic-image-book-cover position-relative">
                                             <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/anh-trang-sang-roi-bui-tran.html">
-                                                    <img loading="lazy" src="https://tehitruyen.com/img_data/images/anh_truyen/2254.jpg" alt="Trận Văn Trường Sinh">
+                                                <a href="<?php echo get_site_url(); ?>/anh-trang-sang-roi-bui-tran.html">
+                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2254.jpg" alt="Trận Văn Trường Sinh">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="truyen-de-cu-info">
-                                        <a href="https://tehitruyen.com/anh-trang-sang-roi-bui-tran.html" class="truyen-de-cu-title-link">Ánh Trăng Sáng Rọi Bụi Trần</a>
+                                        <a href="<?php echo get_site_url(); ?>/anh-trang-sang-roi-bui-tran.html" class="truyen-de-cu-title-link">Ánh Trăng Sáng Rọi Bụi Trần</a>
                                         <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
                                             <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
                                             <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 2,029</span>
@@ -1249,14 +1249,14 @@
                                     <div class="truyen-de-cu-image">
                                         <div class="top-item-comic-image-book-cover position-relative">
                                             <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html">
-                                                    <img loading="lazy" src="https://tehitruyen.com/img_data/images/anh_truyen/2256.jpg" alt="Trận Văn Trường Sinh">
+                                                <a href="<?php echo get_site_url(); ?>/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html">
+                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2256.jpg" alt="Trận Văn Trường Sinh">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="truyen-de-cu-info">
-                                        <a href="https://tehitruyen.com/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html" class="truyen-de-cu-title-link">Ta Bị Ép Cải Trang Thành Qu...</a>
+                                        <a href="<?php echo get_site_url(); ?>/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html" class="truyen-de-cu-title-link">Ta Bị Ép Cải Trang Thành Qu...</a>
                                         <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
                                             <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
                                             <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 3,541</span>
@@ -1267,14 +1267,14 @@
                                     <div class="truyen-de-cu-image">
                                         <div class="top-item-comic-image-book-cover position-relative">
                                             <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html">
-                                                    <img loading="lazy" src="https://tehitruyen.com/img_data/images/anh_truyen/2257.jpg" alt="Trận Văn Trường Sinh">
+                                                <a href="<?php echo get_site_url(); ?>/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html">
+                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2257.jpg" alt="Trận Văn Trường Sinh">
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="truyen-de-cu-info">
-                                        <a href="https://tehitruyen.com/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html" class="truyen-de-cu-title-link">Cưới Phụ Thân Kinh Diễm Của...</a>
+                                        <a href="<?php echo get_site_url(); ?>/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html" class="truyen-de-cu-title-link">Cưới Phụ Thân Kinh Diễm Của...</a>
                                         <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
                                             <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
                                             <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 1,219</span>
@@ -1298,12 +1298,12 @@
                                                     <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
                                                         <!-- hình -->
                                                         <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" title="Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">
-                                                                <img loading="lazy" data-src="https://tehitruyen.com/img_data/images/anh_truyen/2436.jpg" alt="truyện Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">
+                                                            <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" title="Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">
+                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2436.jpg" alt="truyện Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">
                                                             </a>
                                                         </div>
                                                         <!-- tên -->
-                                                        <a href="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" class="name-comic-advertise" title="Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">Triều Đình Khô...</a>
+                                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" class="name-comic-advertise" title="Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">Triều Đình Khô...</a>
 
                                                         <!-- logo 18+ start -->
                                                                                                                 <!-- logo 18+ end -->
@@ -1319,12 +1319,12 @@
                                                     <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
                                                         <!-- hình -->
                                                         <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="https://tehitruyen.com/thanh-chu-hoang-mac-da-la-gi.html" title="Thành Chủ Hoang Mạc Đã Là Gì">
-                                                                <img loading="lazy" data-src="https://tehitruyen.com/img_data/images/anh_truyen/2249.jpg" alt="truyện Thành Chủ Hoang Mạc Đã Là Gì">
+                                                            <a href="<?php echo get_site_url(); ?>/thanh-chu-hoang-mac-da-la-gi.html" title="Thành Chủ Hoang Mạc Đã Là Gì">
+                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2249.jpg" alt="truyện Thành Chủ Hoang Mạc Đã Là Gì">
                                                             </a>
                                                         </div>
                                                         <!-- tên -->
-                                                        <a href="https://tehitruyen.com/thanh-chu-hoang-mac-da-la-gi.html" class="name-comic-advertise" title="Thành Chủ Hoang Mạc Đã Là Gì">Thành Chủ Hoan...</a>
+                                                        <a href="<?php echo get_site_url(); ?>/thanh-chu-hoang-mac-da-la-gi.html" class="name-comic-advertise" title="Thành Chủ Hoang Mạc Đã Là Gì">Thành Chủ Hoan...</a>
 
                                                         <!-- logo 18+ start -->
                                                                                                                 <!-- logo 18+ end -->
@@ -1340,12 +1340,12 @@
                                                     <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
                                                         <!-- hình -->
                                                         <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="https://tehitruyen.com/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html" title="Ta Cùng Ca Ca Trọng Sinh Thay Đổi Kết Cục">
-                                                                <img loading="lazy" data-src="https://tehitruyen.com/img_data/images/anh_truyen/2250.jpg" alt="truyện Ta Cùng Ca Ca Trọng Sinh Thay Đổi Kết Cục">
+                                                            <a href="<?php echo get_site_url(); ?>/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html" title="Ta Cùng Ca Ca Trọng Sinh Thay Đổi Kết Cục">
+                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2250.jpg" alt="truyện Ta Cùng Ca Ca Trọng Sinh Thay Đổi Kết Cục">
                                                             </a>
                                                         </div>
                                                         <!-- tên -->
-                                                        <a href="https://tehitruyen.com/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html" class="name-comic-advertise" title="Ta Cùng Ca Ca Trọng Sinh Thay Đổi Kết Cục">Ta Cùng Ca Ca ...</a>
+                                                        <a href="<?php echo get_site_url(); ?>/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html" class="name-comic-advertise" title="Ta Cùng Ca Ca Trọng Sinh Thay Đổi Kết Cục">Ta Cùng Ca Ca ...</a>
 
                                                         <!-- logo 18+ start -->
                                                                                                                 <!-- logo 18+ end -->
@@ -1361,12 +1361,12 @@
                                                     <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
                                                         <!-- hình -->
                                                         <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="https://tehitruyen.com/nhi-cong-tu-len-lut-giau-ta.html" title="Nhị Công Tử Lén Lút Giấu Ta">
-                                                                <img loading="lazy" data-src="https://tehitruyen.com/img_data/images/anh_truyen/2251.jpg" alt="truyện Nhị Công Tử Lén Lút Giấu Ta">
+                                                            <a href="<?php echo get_site_url(); ?>/nhi-cong-tu-len-lut-giau-ta.html" title="Nhị Công Tử Lén Lút Giấu Ta">
+                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2251.jpg" alt="truyện Nhị Công Tử Lén Lút Giấu Ta">
                                                             </a>
                                                         </div>
                                                         <!-- tên -->
-                                                        <a href="https://tehitruyen.com/nhi-cong-tu-len-lut-giau-ta.html" class="name-comic-advertise" title="Nhị Công Tử Lén Lút Giấu Ta">Nhị Công Tử Lé...</a>
+                                                        <a href="<?php echo get_site_url(); ?>/nhi-cong-tu-len-lut-giau-ta.html" class="name-comic-advertise" title="Nhị Công Tử Lén Lút Giấu Ta">Nhị Công Tử Lé...</a>
 
                                                         <!-- logo 18+ start -->
                                                                                                                 <!-- logo 18+ end -->
@@ -1382,12 +1382,12 @@
                                                     <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
                                                         <!-- hình -->
                                                         <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="https://tehitruyen.com/ta-nhat-duoc-hoang-de-mat-tri-nho.html" title="Ta Nhặt Được Hoàng Đế Mất Trí Nhớ">
-                                                                <img loading="lazy" data-src="https://tehitruyen.com/img_data/images/anh_truyen/2252.jpg" alt="truyện Ta Nhặt Được Hoàng Đế Mất Trí Nhớ">
+                                                            <a href="<?php echo get_site_url(); ?>/ta-nhat-duoc-hoang-de-mat-tri-nho.html" title="Ta Nhặt Được Hoàng Đế Mất Trí Nhớ">
+                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2252.jpg" alt="truyện Ta Nhặt Được Hoàng Đế Mất Trí Nhớ">
                                                             </a>
                                                         </div>
                                                         <!-- tên -->
-                                                        <a href="https://tehitruyen.com/ta-nhat-duoc-hoang-de-mat-tri-nho.html" class="name-comic-advertise" title="Ta Nhặt Được Hoàng Đế Mất Trí Nhớ">Ta Nhặt Được H...</a>
+                                                        <a href="<?php echo get_site_url(); ?>/ta-nhat-duoc-hoang-de-mat-tri-nho.html" class="name-comic-advertise" title="Ta Nhặt Được Hoàng Đế Mất Trí Nhớ">Ta Nhặt Được H...</a>
 
                                                         <!-- logo 18+ start -->
                                                                                                                 <!-- logo 18+ end -->
@@ -1403,12 +1403,12 @@
                                                     <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
                                                         <!-- hình -->
                                                         <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="https://tehitruyen.com/nhi-thieu-gia-la-hac-xa.html" title="Nhị Thiếu Gia Là Hắc Xà">
-                                                                <img loading="lazy" data-src="https://tehitruyen.com/img_data/images/anh_truyen/2253.jpg" alt="truyện Nhị Thiếu Gia Là Hắc Xà">
+                                                            <a href="<?php echo get_site_url(); ?>/nhi-thieu-gia-la-hac-xa.html" title="Nhị Thiếu Gia Là Hắc Xà">
+                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2253.jpg" alt="truyện Nhị Thiếu Gia Là Hắc Xà">
                                                             </a>
                                                         </div>
                                                         <!-- tên -->
-                                                        <a href="https://tehitruyen.com/nhi-thieu-gia-la-hac-xa.html" class="name-comic-advertise" title="Nhị Thiếu Gia Là Hắc Xà">Nhị Thiếu Gia ...</a>
+                                                        <a href="<?php echo get_site_url(); ?>/nhi-thieu-gia-la-hac-xa.html" class="name-comic-advertise" title="Nhị Thiếu Gia Là Hắc Xà">Nhị Thiếu Gia ...</a>
 
                                                         <!-- logo 18+ start -->
                                                                                                                 <!-- logo 18+ end -->
@@ -1424,12 +1424,12 @@
                                                     <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
                                                         <!-- hình -->
                                                         <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="https://tehitruyen.com/anh-trang-sang-roi-bui-tran.html" title="Ánh Trăng Sáng Rọi Bụi Trần">
-                                                                <img loading="lazy" data-src="https://tehitruyen.com/img_data/images/anh_truyen/2254.jpg" alt="truyện Ánh Trăng Sáng Rọi Bụi Trần">
+                                                            <a href="<?php echo get_site_url(); ?>/anh-trang-sang-roi-bui-tran.html" title="Ánh Trăng Sáng Rọi Bụi Trần">
+                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2254.jpg" alt="truyện Ánh Trăng Sáng Rọi Bụi Trần">
                                                             </a>
                                                         </div>
                                                         <!-- tên -->
-                                                        <a href="https://tehitruyen.com/anh-trang-sang-roi-bui-tran.html" class="name-comic-advertise" title="Ánh Trăng Sáng Rọi Bụi Trần">Ánh Trăng Sáng...</a>
+                                                        <a href="<?php echo get_site_url(); ?>/anh-trang-sang-roi-bui-tran.html" class="name-comic-advertise" title="Ánh Trăng Sáng Rọi Bụi Trần">Ánh Trăng Sáng...</a>
 
                                                         <!-- logo 18+ start -->
                                                                                                                 <!-- logo 18+ end -->
@@ -1445,12 +1445,12 @@
                                                     <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
                                                         <!-- hình -->
                                                         <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="https://tehitruyen.com/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html" title="Ta Bị Ép Cải Trang Thành Quý Phi Nào Ngờ Bị Hoàng Thượng Để Mắt Đến">
-                                                                <img loading="lazy" data-src="https://tehitruyen.com/img_data/images/anh_truyen/2256.jpg" alt="truyện Ta Bị Ép Cải Trang Thành Quý Phi Nào Ngờ Bị Hoàng Thượng Để Mắt Đến">
+                                                            <a href="<?php echo get_site_url(); ?>/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html" title="Ta Bị Ép Cải Trang Thành Quý Phi Nào Ngờ Bị Hoàng Thượng Để Mắt Đến">
+                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2256.jpg" alt="truyện Ta Bị Ép Cải Trang Thành Quý Phi Nào Ngờ Bị Hoàng Thượng Để Mắt Đến">
                                                             </a>
                                                         </div>
                                                         <!-- tên -->
-                                                        <a href="https://tehitruyen.com/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html" class="name-comic-advertise" title="Ta Bị Ép Cải Trang Thành Quý Phi Nào Ngờ Bị Hoàng Thượng Để Mắt Đến">Ta Bị Ép Cải T...</a>
+                                                        <a href="<?php echo get_site_url(); ?>/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html" class="name-comic-advertise" title="Ta Bị Ép Cải Trang Thành Quý Phi Nào Ngờ Bị Hoàng Thượng Để Mắt Đến">Ta Bị Ép Cải T...</a>
 
                                                         <!-- logo 18+ start -->
                                                                                                                 <!-- logo 18+ end -->
@@ -1466,12 +1466,12 @@
                                                     <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
                                                         <!-- hình -->
                                                         <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="https://tehitruyen.com/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html" title="Cưới Phụ Thân Kinh Diễm Của Vị Hôn Phu">
-                                                                <img loading="lazy" data-src="https://tehitruyen.com/img_data/images/anh_truyen/2257.jpg" alt="truyện Cưới Phụ Thân Kinh Diễm Của Vị Hôn Phu">
+                                                            <a href="<?php echo get_site_url(); ?>/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html" title="Cưới Phụ Thân Kinh Diễm Của Vị Hôn Phu">
+                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2257.jpg" alt="truyện Cưới Phụ Thân Kinh Diễm Của Vị Hôn Phu">
                                                             </a>
                                                         </div>
                                                         <!-- tên -->
-                                                        <a href="https://tehitruyen.com/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html" class="name-comic-advertise" title="Cưới Phụ Thân Kinh Diễm Của Vị Hôn Phu">Cưới Phụ Thân ...</a>
+                                                        <a href="<?php echo get_site_url(); ?>/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html" class="name-comic-advertise" title="Cưới Phụ Thân Kinh Diễm Của Vị Hôn Phu">Cưới Phụ Thân ...</a>
 
                                                         <!-- logo 18+ start -->
                                                                                                                 <!-- logo 18+ end -->
@@ -1487,8 +1487,8 @@
                                     </div>
                                 </div>
                                 <!-- swiper slide end -->
-                                <img loading="lazy" src="https://tehitruyen.com/templates/images/btn-lt-prev.png" alt="icon" class="btn-icon-swiper-prev btn-swiper-truyen-cung-tac-gia-prev ">
-                                <img loading="lazy" src="https://tehitruyen.com/templates/images/btn-lt-next.png" alt="icon" class="btn-icon-swiper-next btn-swiper-truyen-cung-tac-gia-next ">
+                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/btn-lt-prev.png" alt="icon" class="btn-icon-swiper-prev btn-swiper-truyen-cung-tac-gia-prev ">
+                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/btn-lt-next.png" alt="icon" class="btn-icon-swiper-next btn-swiper-truyen-cung-tac-gia-next ">
                             </div>
                         </div>
                         <!-- mobile end -->
@@ -1515,12 +1515,12 @@
             </div>
             <div class="modal-body donate-modal-body">
                                 <p class="donate-modal-info">Tặng Đào cho: <strong>Lớp Trưởng (huyenlenh94)</strong></p>
-                <p class="donate-modal-info">Số đào hiện có của bạn: <strong><span id="so_dao_hien_co"></span> <img loading="lazy" src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"></strong></p>
+                <p class="donate-modal-info">Số đào hiện có của bạn: <strong><span id="so_dao_hien_co"></span> <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"></strong></p>
                 <div class="mb-3">
-                    <label for="soDaoDonate" class="form-label">Nhập số đào <img loading="lazy" src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"> muốn tặng</label>
+                    <label for="soDaoDonate" class="form-label">Nhập số đào <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"> muốn tặng</label>
                     <input type="text" class="form-control formatprice" id="soDaoDonate" min="1" max="" placeholder="Nhập số đào...">
                 </div>
-                <p class="donate-modal-remaining">Sau khi tặng, số đào còn lại của bạn sẽ là: <span id="soDaoConLai"></span> <img loading="lazy" src="https://tehitruyen.com/templates/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"></p>
+                <p class="donate-modal-remaining">Sau khi tặng, số đào còn lại của bạn sẽ là: <span id="soDaoConLai"></span> <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"></p>
             </div>
             <div class="modal-footer donate-modal-footer">
                 <button type="button" class="btn btn-secondary donate-btn-cancel" data-bs-dismiss="modal">Hủy bỏ</button>
@@ -1547,10 +1547,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1568,10 +1568,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1589,10 +1589,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1610,10 +1610,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1631,10 +1631,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1652,10 +1652,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1673,10 +1673,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1694,10 +1694,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1715,10 +1715,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1736,10 +1736,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1757,10 +1757,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1778,10 +1778,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1799,10 +1799,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1820,10 +1820,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1841,10 +1841,10 @@
                                         <!-- avatar -->
                                         <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
                                             <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="https://tehitruyen.com/templates/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="https://tehitruyen.com/templates/images/meo.png" alt="png" class="avatar">
+                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
+                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
                                                 </a>
-                                                <img loading="lazy" src="https://tehitruyen.com/templates/images/s3.webp" alt="khung avatar" class="frame">
+                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
                                             </div>
                                             <!-- tên -->
                                             <div class="modal-danh-sach-thich-content-item-name">
@@ -1880,8 +1880,8 @@
                 <div class="mua-chuong-summary">
                     <p><strong>Tên truyện:</strong> Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ</p>
                     <p><strong>Tên chương:</strong> Chương 1:</p>
-                    <p><strong>Giá đào:</strong> 0 <img loading="lazy" src="https://tehitruyen.com/templates/images/dao-nho.png" alt="icon" class="icon-qua-dao-chuong "> </p>
-                    <p><strong>Giá hạt:</strong> 0 <img loading="lazy" src="https://tehitruyen.com/templates/images/hat.png" alt="icon" class="icon-hat"> </p>
+                    <p><strong>Giá đào:</strong> 0 <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/dao-nho.png" alt="icon" class="icon-qua-dao-chuong "> </p>
+                    <p><strong>Giá hạt:</strong> 0 <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/hat.png" alt="icon" class="icon-hat"> </p>
                 </div>
             </div>
             <div class="modal-footer mua-chuong-modal-footer">
@@ -1905,7 +1905,7 @@
                     <input type="hidden" name="id_truyen" value="2436">
                     <input type="hidden" name="pnvn_token" value="462a07709ff85bdcb946dfda56451dd281620f04">
                     <input type="hidden" name="ten_truyen" value="Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">
-                    <input type="hidden" name="link_truyen" value="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html">
+                    <input type="hidden" name="link_truyen" value="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html">
                     <input type="hidden" name="id_chapter" value="13365">
 
                     <div class="mb-3">
@@ -1915,7 +1915,7 @@
 
                     <div class="mb-3">
                         <label for="linkTruyen" class="form-label">Link Truyện</label>
-                        <input type="text" class="form-control form-control-pretty" id="linkTruyen" value="https://tehitruyen.com/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" disabled>
+                        <input type="text" class="form-control form-control-pretty" id="linkTruyen" value="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" disabled>
                     </div>
 
                     <div class="mb-3">
@@ -2213,7 +2213,7 @@
                         if (response === 'success') {
                             button.removeClass('bo-luu').addClass('luu');
                             button.find('.icon-tu-truyen-img-tool').addClass('active');
-                            // button.find('.icon-tu-truyen-img-tool').attr('src', 'https://tehitruyen.com/templates/images/school-organe-saved.png');
+                            // button.find('.icon-tu-truyen-img-tool').attr('src', '<?php echo get_template_directory_uri(); ?>/images/school-organe-saved.png');
                             FuiToast.success('Lưu thành công vào Tủ Truyện!');
                         } else {
                             FuiToast.error('Có lỗi xảy ra! Vui lòng thử lại sau.');
@@ -2330,7 +2330,7 @@
                             <div class="col-10">
                                 <div class="mdv-san-pham-show-comment-list-item-comment p-3 d-flex flex-column gap-2 ">
                                     <div class="mdv-san-pham-show-comment-list-item-comment-name">
-                                        <a href="https://tehitruyen.com/my-wall/${response.username}" class="ten-doc-gia ten-tac-gia">${response.ten_doc_gia}</a> <span class="dang-cho-duyet">(Vừa gửi xong)</span>
+                                        <a href="<?php echo get_site_url(); ?>/my-wall/${response.username}" class="ten-doc-gia ten-tac-gia">${response.ten_doc_gia}</a> <span class="dang-cho-duyet">(Vừa gửi xong)</span>
                                     </div>
                                     <div class="mdv-san-pham-show-comment-list-item-comment-des">
                                         ${noiDung}
@@ -2519,7 +2519,7 @@
                 <div class="col-10">
                     <div class="mdv-san-pham-show-comment-list-item-comment p-3 d-flex flex-column gap-2">
                         <div class="mdv-san-pham-show-comment-list-item-comment-name">
-                            <a href="https://tehitruyen.com/my-wall/${response.username}" class="ten-doc-gia">${response.ten_doc_gia}</a>
+                            <a href="<?php echo get_site_url(); ?>/my-wall/${response.username}" class="ten-doc-gia">${response.ten_doc_gia}</a>
                             <span class="tra-loi-tag">(Vừa gửi xong)</span>
                         </div>
                         <div class="mdv-san-pham-show-comment-list-item-comment-des">
@@ -2689,7 +2689,7 @@
                                     </div>
                                     <!-- tên -->
                                     <div class="modal-danh-sach-thich-content-item-name">
-                                        <a href="https://tehitruyen.com/my-wall/${user.username}" class="ten-doc-gia">${user.ten_hien_thi}</a>
+                                        <a href="<?php echo get_site_url(); ?>/my-wall/${user.username}" class="ten-doc-gia">${user.ten_hien_thi}</a>
                                     </div>
                                 </div>
                                 <!-- theo dõi -->
@@ -3954,14 +3954,14 @@
 
     
 <!-- quảng cáo footer start -->
-<div class="tm-footer-wrapper" style="--background-footer: url('https://tehitruyen.com/img_data/images/nen_trang.jpg')">
+<div class="tm-footer-wrapper" style="--background-footer: url('<?php echo get_site_url(); ?>/img_data/images/nen_trang.jpg')">
     <div class="tm-footer-wrapper-container container px-0">
 
                     <div class="nh-footer-ads">
                 <div class="">
                     <div class="nh-footer-ads-box-wrapper p-2">
                         <div class="nh-footer-ads-box position-relative ">
-                            <img loading="lazy" src="https://tehitruyen.com/img_data/images/Me_Zhihu_-_O_nha_be_Chanh_TeHi_Truyen_1.png" alt="Banner quảng cáo dưới footer" class="nh-footer-ads-img">
+                            <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/Me_Zhihu_-_O_nha_be_Chanh_TeHi_Truyen_1.png" alt="Banner quảng cáo dưới footer" class="nh-footer-ads-img">
 
                             <!-- theo dõi button start -->
                             <div class="theo-doi-footer-box d-flex justify-content-between align-items-end gap-2">

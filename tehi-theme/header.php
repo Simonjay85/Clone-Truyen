@@ -3,14 +3,14 @@
 <html lang="vi">
 
 <head>
-  <base href="https://tehitruyen.com/" />
+  <base href="<?php echo get_site_url(); ?>" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
-<meta name="keywords" content="TeHi Truyện, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí" />
-<meta name="description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: 'TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
+<meta name="keywords" content="<?php bloginfo('name'); ?>, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí" />
+<meta name="description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: '<?php bloginfo(\'name\'); ?> – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
 <link href="<?php echo esc_url(get_permalink()); ?>" rel="canonical" />
-<link href="https://tehitruyen.com/img_data/images/icon_tehi_truyen_2025.png" rel="shortcut icon" type="image/x-icon" />
+<link href="<?php echo get_site_url(); ?>/img_data/images/icon_tehi_truyen_2025.png" rel="shortcut icon" type="image/x-icon" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMCE7V4VHX"></script>
 <script>
@@ -22,23 +22,23 @@
 </script><!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>">
-<meta name="twitter:site" content="@tehitruyen">
+<meta name="twitter:site" content="@<?php bloginfo('name'); ?>">
 <meta name="twitter:description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 25, '...')); ?>">
-<meta name="twitter:image" content="<?php echo esc_url(get_the_post_thumbnail_url() ?: 'https://tehitruyen.com/img_data/images/icon_tehi_truyen_2025.png'); ?>">
+<meta name="twitter:image" content="<?php echo esc_url(get_the_post_thumbnail_url() ?: get_site_url() . '/img_data/images/icon_tehi_truyen_2025.png'); ?>">
 <meta name="twitter:image:alt" content="<?php echo esc_attr(get_the_title()); ?>">
 <!-- Open Graph -->
 <meta property="og:type" content="<?php echo is_single() ? 'article' : 'website'; ?>">
 <meta property="og:url" content="<?php echo esc_url(get_permalink()); ?>" />
 <meta property="og:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>" />
-<meta property="og:image" content="<?php echo esc_url(get_the_post_thumbnail_url() ?: 'https://tehitruyen.com/img_data/images/icon_tehi_truyen_2025.png'); ?>" />
-<meta property="og:description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: 'TeHi Truyện – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
+<meta property="og:image" content="<?php echo esc_url(get_the_post_thumbnail_url() ?: get_site_url() . '/img_data/images/icon_tehi_truyen_2025.png'); ?>" />
+<meta property="og:description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: '<?php bloginfo(\'name\'); ?> – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
 <!-- Khai báo ngôn ngữ -->
 <script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "Organization",
-        "legalname": "Tehitruyen",
-        "url": "Tehitruyen.com",
+        "legalname": "<?php bloginfo('name'); ?>",
+        "url": "<?php echo get_site_url(); ?>",
         "contactPoint": [{
             "@type": "ContactPoint",
             "telephone": "+840373685221",
@@ -46,7 +46,7 @@
             "contactOption": "TollFree",
             "areaServed": "VN"
         }],
-        "logo": "https://tehitruyen.com/img_data/images/logo-truyen-moi-v1.png"
+        "logo": "<?php echo get_site_url(); ?>/img_data/images/logo-truyen-moi-v1.png"
     }
 </script>  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -548,7 +548,7 @@
 </head>
 
 
-<body class="index  position-relative" style="--background-body: url(https://tehitruyen.com/img_data/images/background-repeat-2.png)">
+<body class="index  position-relative" style="--background-body: url(<?php echo get_site_url(); ?>/img_data/images/background-repeat-2.png)">
   <!-- <div class="anh-nen lt-truyen-body"></div> -->
   <!-- lenis scroll bar start -->
   <div class="lenis-scrollbar">
@@ -566,96 +566,49 @@
 
 
 <!-- Header Navigation -->
-<header class="truyen-header" style="--header-background: url(https://tehitruyen.com/img_data/images/anh_nen_header-nen_anh-tehitruyen.png);">
-    <div class="container">
-        <div class="truyen-header-content-box">
-            <!-- header top -->
-            <div class="row align-items-center truyen-header-top">
-                <div class="col-6 col-md-8 text-center text-md-start">
-                    <div class="truyen-menu-toggle-container d-flex align-items-center gap-2">
-                        <!-- menu toggle -->
-                        <button class="truyen-menu-toggle d-inline-flex d-md-none" id="menuToggle">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="40"
-                                height="40"
-                                fill="currentColor"
-                                class="bi bi-list"
-                                viewBox="0 0 16 16">
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                            </svg>
-                        </button>
-                        <div class="truyen-logo-container d-flex align-items-center gap-3">
-                            <a href="https://tehitruyen.com/">
-                                <div class="truyen-logo ">
-                                    <img src="https://tehitruyen.com/img_data/images/logo-truyen-moi-v1.png" alt="logo">
-                                </div>
-                            </a>
 
-                            <!-- thông báo cá nhân start -->
-                                                        <div class="truyen-notification-container">
-                                <div class="truyen-notification-item position-relative">
-                                    <a href="https://tehitruyen.com/thong-bao-2.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Thông báo cá nhân" class="truyen-notification-btn  d-inline-flex justify-content-center align-items-center">
-                                        <i class="fa-solid fa-bell"></i>
-                                    </a>
-                                                                    </div>
-                            </div>
-                            <!-- thông báo cá nhân end -->
+<style>
+/* Meokammap Header Styles */
+.mkm-header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+.mkm-header-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.mkm-logo img { height: 40px; }
+.mkm-search-form { flex-grow: 1; max-width: 400px; margin: 0 20px; position: relative; }
+.mkm-search-form input { width: 100%; border: 1px solid #e1e4e8; border-radius: 20px; padding: 8px 15px 8px 35px; outline: none; transition: border-color 0.2s; }
+.mkm-search-form input:focus { border-color: #1890ff; }
+.mkm-search-form i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #888; }
+.mkm-nav { display: flex; align-items: center; gap: 20px; }
+.mkm-nav a { color: #333; font-weight: 600; font-size: 14px; text-decoration: none; transition: color 0.2s; }
+.mkm-nav a:hover { color: #1890ff; }
+.mkm-nav-login { color: #1890ff !important; display: flex; align-items: center; gap: 5px; }
 
-                            <div class="d-none d-lg-flex align-items-center gap-1 ">
-                                <div class="truyen-search-container position-relative">
-                                    <input type="text" class="truyen-search-input d-none d-lg-block" placeholder="Tìm tên truyện, tên người đăng,.." />
+@media (max-width: 768px) {
+    .mkm-nav { display: none; }
+    .mkm-search-form { display: none; }
+}
+</style>
 
-                                    <button class="truyen-search-btn d-none d-lg-inline-flex">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="bi bi-search"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                        </svg>
-                                    </button>
-
-
-
-
-                                    <!-- form tìm kiếm start -->
-                                    <div class="mdv-header-find-form mdv-header-find-form-pc  p-2">
-                                        <ul class="vanhiep-ul d-flex flex-column gap-1 mdv-header-find-form-ul vh-scrollbar" id="result-tim-kiem">
-                                            <!-- item start -->
-                                            <a href="">
-                                                <li class="mdv-header-find-form-li d-flex align-items-center gap-2 p-2">
-                                                    <div class="mdv-header-find-form-image ratio ratio-1x1 rounded-2 overflow-hidden">
-                                                        <img src="https://tehitruyen.com/templates/images/no-image-cover.png" alt="">
-                                                    </div>
-                                                    <div class="mdv-header-find-form-info d-inline-flex flex-column gap-2">
-                                                        <div class="mdv-header-find-form-name catchuoi2">
-                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-
-                                                        </div>
-                                                        <div class="mdv-header-find-form-author ">
-                                                            <i class="fa-solid fa-user text-muted me-1"></i> <a href="" class="text-muted">Xuân Nhật Phụ Huyên</a>
-                                                        </div>
-
-                                                    </div>
-                                                </li>
-                                            </a>
-                                            <!-- item end -->
-                                        </ul>
-                                    </div>
-                                    <!-- form tìm kiếm end -->
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<header class="mkm-header">
+    <div class="mkm-header-container">
+        <a href="<?php echo get_site_url(); ?>" class="mkm-logo">
+            <img src="<?php echo get_site_url(); ?>/img_data/images/logo-truyen-moi-v1.png" alt="Logo">
+        </a>
+        
+        <div class="mkm-search-form d-none d-md-block">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" placeholder="Tìm tên truyện, tên người đăng..">
         </div>
+        
+        <div class="mkm-nav d-none d-md-flex">
+            <a href="<?php echo get_site_url(); ?>/the-loai.html"><i class="fa-solid fa-list"></i> Thể loại</a>
+            <a href="<?php echo get_site_url(); ?>/hoan-thanh.html"><i class="fa-solid fa-check-circle"></i> Truyện full</a>
+            <a href="<?php echo get_site_url(); ?>/bang-xep-hang.html"><i class="fa-solid fa-트로피"></i> BXH</a>
+            <a href="<?php echo get_site_url(); ?>/theo-doi.html"><i class="fa-solid fa-bookmark"></i> Theo dõi</a>
+            <a href="<?php echo get_site_url(); ?>/dang-nhap" class="mkm-nav-login"><i class="fa-solid fa-user-circle"></i> Đăng nhập</a>
+        </div>
+        <!-- Mobile Toggle -->
+        <button class="btn btn-link d-md-none text-dark">
+            <i class="fa-solid fa-bars fs-3"></i>
+        </button>
     </div>
 </header>
+
