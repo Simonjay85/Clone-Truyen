@@ -274,8 +274,6 @@
         let startScroll = 0;
         scrollbarThumb.addEventListener('mousedown', (e) => {
             isDragging = true;
-<?php wp_head(); ?>
-</head><body>
         });
         document.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
@@ -661,3 +659,10 @@
                                 </div>
 
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
