@@ -17,9 +17,9 @@
 
 /* ── Layout Container ── */
 .mkm-wrap {
-    max-width: 1200px !important;
+    max-width: 1400px !important;
     margin: 20px auto !important;
-    padding: 0 16px !important;
+    padding: 0 10px !important;
     background: transparent !important;
 }
 
@@ -76,7 +76,7 @@
 }
 .mkm-tag-hot { background: #fef3f2 !important; color: #e03d2b !important; border: 1px solid #fecaca !important; }
 .mkm-tag-full { background: #f0fdf4 !important; color: #16a34a !important; border: 1px solid #bbf7d0 !important; }
-.mkm-tag-new { background: #eef2ff !important; color: #4f46e5 !important; border: 1px solid #c7d2fe !important; }
+.mkm-tag-new { background: #fef3c7 !important; color: #d97706 !important; border: 1px solid #fcd34d !important; }
 .mkm-hero-desc {
     font-size: 13px !important;
     color: #6b7280 !important;
@@ -105,12 +105,8 @@
     align-items: center !important;
     gap: 6px !important;
 }
-.mkm-btn-prim {
-    background: #4f46e5 !important;
-    color: #fff !important;
-    box-shadow: 0 2px 8px rgba(79,70,229,.25) !important;
-}
-.mkm-btn-prim:hover { background: #4338ca !important; color: #fff !important; }
+.mkm-btn-prim { background: #f97316 !important; color: #fff !important; box-shadow: none !important; }
+.mkm-btn-prim:hover { background: #b45309 !important; color: #fff !important; }
 .mkm-btn-sec {
     background: #f4f4f5 !important;
     color: #374151 !important;
@@ -161,8 +157,32 @@
     color: #4f46e5 !important;
     font-weight: 600 !important;
     text-decoration: none !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 9999px !important;
+    padding: 6px 16px !important;
+    background: #fff !important;
+    transition: all 0.2s !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
 }
-.mkm-view-all:hover { text-decoration: underline !important; }
+.mkm-view-all:hover {
+    background: #f9fafb !important;
+    border-color: #d1d5db !important;
+    text-decoration: none !important;
+}
+.mkm-load-more {
+    display: inline-block !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 9999px !important;
+    padding: 10px 24px !important;
+    color: #374151 !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    background: #fff !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+    transition: all 0.2s !important;
+}
+.mkm-load-more:hover { background: #f9fafb !important; }
 
 /* ── GRID ── */
 .mkm-grid {
@@ -218,7 +238,7 @@
     font-size: 10px !important;
     font-weight: 700 !important;
     padding: 2px 7px !important;
-    border-radius: 6px !important;
+    border-radius: 10px !important;
     z-index: 2 !important;
 }
 .mkm-badge-tr {
@@ -230,7 +250,7 @@
     font-size: 10px !important;
     font-weight: 700 !important;
     padding: 2px 7px !important;
-    border-radius: 6px !important;
+    border-radius: 10px !important;
     z-index: 2 !important;
 }
 .mkm-badge-full-pos {
@@ -242,7 +262,7 @@
     font-size: 10px !important;
     font-weight: 700 !important;
     padding: 2px 7px !important;
-    border-radius: 6px !important;
+    border-radius: 10px !important;
     z-index: 2 !important;
 }
 .mkm-card-overlay {
@@ -316,7 +336,7 @@
 }
 .mkm-tab.active {
     background: #fff !important;
-    color: #4f46e5 !important;
+    color: #d97706 !important;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
 }
 .mkm-rank-list {
@@ -394,29 +414,48 @@
     margin-bottom: 0 !important;
 }
 .mkm-slider-cover {
-    width: 180px !important;
+    width: 380px !important;
     flex-shrink: 0 !important;
     border-radius: 16px !important;
     overflow: hidden !important;
-    aspect-ratio: 3/4 !important;
+    aspect-ratio: 4/3 !important;
 }
 .mkm-slider-cover img { width:100% !important; height:100% !important; object-fit:cover !important; border-radius:16px !important; display:block !important; }
 .mkm-slider-body { flex:1 !important; min-width:0 !important; }
 .mkm-slider-title { font-size:22px !important; font-weight:800 !important; color:#111827 !important; margin:0 0 10px 0 !important; line-height:1.3 !important; }
-.mkm-slider-desc { font-size:13px !important; color:#6b7280 !important; line-height:1.7 !important; margin:0 0 14px !important;
-    display:-webkit-box !important; -webkit-line-clamp:3 !important; -webkit-box-orient:vertical !important; overflow:hidden !important; }
-.mkm-slider-meta { font-size:12px !important; color:#9ca3af !important; margin-bottom:14px !important; }
+.mkm-slider-desc { font-size:13px !important; color:#6b7280 !important; line-height:1.7 !important; margin:0 0 16px !important;
+    display:-webkit-box !important; -webkit-line-clamp:6 !important; -webkit-box-orient:vertical !important; overflow:hidden !important; }
+.mkm-slider-meta { font-size:12px !important; color:#9ca3af !important; margin-bottom:12px !important; }
 .mkm-slider-btns { display:flex !important; gap:10px !important; flex-wrap:wrap !important; margin-bottom:16px !important; }
 /* Thumbnails swiper below */
 .mkm-thumb-swiper { margin-top:14px !important; padding-bottom:2px !important; }
 .mkm-thumb-swiper .swiper-slide { width: 60px !important; height: 80px !important; }
 .mkm-thumb-swiper .swiper-slide img { width:60px !important; height:80px !important; object-fit:cover !important; border-radius:8px !important; cursor:pointer !important; opacity:.7 !important; transition:opacity .2s !important; }
-.mkm-thumb-swiper .swiper-slide.swiper-slide-thumb-active img { opacity:1 !important; box-shadow:0 0 0 2px #4f46e5 !important; }
+.mkm-thumb-swiper .swiper-slide.swiper-slide-thumb-active img { opacity:1 !important; box-shadow:0 0 0 2px #d97706 !important; }
 /* Prev/Next buttons */
-.mkm-slider-nav { display:flex !important; gap:6px !important; margin-top:10px !important; }
-.mkm-nav-btn { width:32px !important; height:32px !important; border-radius:50% !important; border:1.5px solid #e5e7eb !important; background:#fff !important; cursor:pointer !important; display:flex !important; align-items:center !important; justify-content:center !important; color:#374151 !important; font-size:14px !important; transition:all .2s !important; }
-.mkm-nav-btn:hover { background:#4f46e5 !important; border-color:#4f46e5 !important; color:#fff !important; }
-.mkm-main-swiper .swiper-slide { width: 100% !important; } /* Fix stacking overlap issue */
+.mkm-slider-wrap { position: relative !important; }
+.mkm-main-swiper .swiper-button-next,
+.mkm-main-swiper .swiper-button-prev {
+    width: 44px !important; height: 44px !important;
+    background: #fff !important; border: 1px solid #e5e7eb !important;
+    border-radius: 10px !important; color: #4b5563 !important;
+    transition: all .2s !important;
+    box-sizing: border-box !important;
+    position: absolute !important;
+    bottom: 0px !important;
+    top: auto !important;
+    margin-top: 0 !important;
+}
+.mkm-main-swiper .swiper-button-next:after,
+.mkm-main-swiper .swiper-button-prev:after { font-size: 17px !important; font-weight: 900 !important; }
+.mkm-main-swiper .swiper-button-next:hover,
+.mkm-main-swiper .swiper-button-prev:hover {
+    background: #f97316 !important; border-color: #f97316 !important; color: #fff !important;
+}
+.mkm-main-swiper .swiper-button-prev { left: auto !important; right: 58px !important; }
+.mkm-main-swiper .swiper-button-next { right: 4px !important; }
+/* Remove unused static nav */
+.mkm-slider-nav { display:none !important; }
 
 /* ── SLIDER MOBILE RESPONSIVE ── */
 @media (max-width: 640px) {
@@ -430,7 +469,7 @@
         width: 100% !important;
         height: auto !important;
         border-radius: 0 !important;
-        aspect-ratio: 3/2 !important;
+        aspect-ratio: 1/1 !important;
     }
     .mkm-slider-cover img {
         width: 100% !important;
@@ -464,24 +503,31 @@
         <div class="swiper mkm-main-swiper">
             <div class="swiper-wrapper">
             <?php while($slider_q->have_posts()): $slider_q->the_post();
-                $s_cover = get_the_post_thumbnail_url(null,'large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
-                $s_exc   = wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 40, '...');
+                $s_cover = get_the_post_thumbnail_url(null,'large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
+                $s_exc   = wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 100, '...');
                 $s_date  = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' trước';
                 $s_cats  = wp_get_post_terms(get_the_ID(),'the_loai');
                 $s_cat   = !is_wp_error($s_cats) && !empty($s_cats) ? $s_cats[0]->name : '';
+                $a_terms = wp_get_post_terms(get_the_ID(), 'tac_gia');
+                $s_author= (!is_wp_error($a_terms) && !empty($a_terms)) ? $a_terms[0]->name : 'Đang cập nhật';
+                $s_views = get_post_meta(get_the_ID(), 'tieuthuyet_views', true) ?: rand(150, 1500);
             ?>
             <div class="swiper-slide">
                 <div class="mkm-slider-main">
                     <div class="mkm-slider-cover">
-                        <img src="<?php echo esc_url($s_cover); ?>" alt="<?php the_title_attribute(); ?>" width="200" height="267" loading="eager" fetchpriority="high" decoding="async">
+                        <img src="<?php echo esc_url($s_cover); ?>" alt="<?php the_title_attribute(); ?>" width="250" height="250" loading="eager" fetchpriority="high" decoding="async">
                     </div>
                     <div class="mkm-slider-body">
                         <h2 class="mkm-slider-title"><?php the_title(); ?></h2>
-                        <p class="mkm-slider-meta">
-                            <?php if($s_cat): ?><span class="mkm-tag mkm-tag-new"><?php echo esc_html($s_cat); ?></span>&nbsp;&nbsp;<?php endif; ?>
-                            📅 <?php echo $s_date; ?>
-                        </p>
+                        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; font-size:11px; color:#4b5563;">
+                            <?php if($s_cat): ?><span style="color:#d97706; font-weight:700; border:1px solid #fcd34d; padding:2px 8px; border-radius:12px; background:#fef3c7;"><?php echo esc_html($s_cat); ?></span><?php endif; ?>
+                            <span style="display:flex; align-items:center;">📅 <?php echo $s_date; ?></span>
+                        </div>
                         <p class="mkm-slider-desc"><?php echo esc_html($s_exc); ?></p>
+                        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; font-size:12px; color:#374151;">
+                            <span style="background:#f4f4f5; padding:4px 10px; border-radius:6px; font-weight:600;"><i class="fa-solid fa-pen-nib" style="color:#9ca3af; margin-right:4px;"></i> <?php echo esc_html($s_author); ?></span>
+                            <span style="background:#f4f4f5; padding:4px 10px; border-radius:6px; font-weight:600;"><i class="fa-solid fa-eye" style="color:#9ca3af; margin-right:4px;"></i> <?php echo number_format((int)$s_views); ?> xem</span>
+                        </div>
                         <div class="mkm-slider-btns">
                             <a href="<?php the_permalink(); ?>" class="mkm-btn mkm-btn-prim">📖 Đọc ngay</a>
                             <a href="<?php the_permalink(); ?>" class="mkm-btn mkm-btn-sec">Danh sách chương</a>
@@ -500,14 +546,14 @@
     </div>
     <style>
         .mkm-main-swiper .swiper-button-next, .mkm-main-swiper .swiper-button-prev {
-            color: #4f46e5 !important;
+            color: #d97706 !important;
             transform: scale(0.6);
             background: #fff;
             width: 40px; height: 40px;
             border-radius: 50%;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        .mkm-main-swiper .swiper-pagination-bullet-active { background: #4f46e5 !important; }
+        .mkm-main-swiper .swiper-pagination-bullet-active { background: #d97706 !important; }
     </style>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -530,16 +576,16 @@
             <!-- MỚI CẬP NHẬT -->
             <div class="mkm-sec-hdr">
                 <h2 class="mkm-sec-title">
-                    <svg width="18" height="18" fill="none" stroke="#4f46e5" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <svg width="18" height="18" fill="none" stroke="#d97706" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     Mới cập nhật
                 </h2>
-                <a href="<?php echo get_site_url(); ?>/truyen-moi-cap-nhat.html" class="mkm-view-all">Xem tất cả →</a>
+                <a href="<?php echo get_site_url(); ?>/truyen-moi-cap-nhat.html" class="mkm-view-all">Xem tất cả ></a>
             </div>
             <div class="mkm-grid">
                 <?php
                 $q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 8, 'no_found_rows' => true]);
                 while ($q->have_posts()) : $q->the_post();
-                    $img = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
+                    $img = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
                     $fake_chap = rand(10, 150); $fake_hours = rand(1, 24); $fake_views = rand(100, 9999); $fake_likes = rand(0, 50);
                 ?>
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
@@ -553,17 +599,18 @@
                     </div>
                     <div class="mkm-card-info">
                         <p class="mkm-card-name"><?php the_title(); ?></p>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                            <div style="display:flex; gap:10px; color:#9ca3af; font-size:11px; align-items:center; font-weight:500;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px; flex-wrap:nowrap; gap:2px;">
+                            <div style="display:flex; gap:5px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
                                 <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
                                 <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
                             </div>
-                            <span style="background:rgba(79, 70, 229, 0.1); color:#4f46e5; border:1px solid rgba(79, 70, 229, 0.2); font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px; letter-spacing:0.5px;">Chương mới</span>
+                            <span style="background:rgba(79, 70, 229, 0.1); color:#d97706; border:1px solid rgba(79, 70, 229, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Chương mới</span>
                         </div>
                     </div>
                 </a>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
+            <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/the-loai.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
 
             <!-- TRUYỆN HOT -->
             <div class="mkm-sec-hdr">
@@ -571,13 +618,13 @@
                     <svg width="18" height="18" fill="#ef4444" viewBox="0 0 24 24"><path d="M17.657 9.343a1 1 0 00-1.414 0l-.707.707A8 8 0 006.5 20H18a1 1 0 000-2h-1.343A8.004 8.004 0 0018 12.5V11a1 1 0 00-.343-.657z"/></svg>
                     Truyện hot
                 </h2>
-                <a href="#" class="mkm-view-all">Xem tất cả →</a>
+                <a href="<?php echo get_site_url(); ?>/bang-xep-hang.html" class="mkm-view-all">Xem tất cả &rang;</a>
             </div>
             <div class="mkm-grid">
                 <?php
                 $q2 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 4, 'orderby' => 'comment_count', 'no_found_rows' => true]);
                 while ($q2->have_posts()) : $q2->the_post();
-                    $img2 = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
+                    $img2 = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
                     $fake_chap = rand(50, 300); $fake_hours = rand(1, 24); $fake_views = rand(10000, 50000); $fake_likes = rand(50, 900);
                 ?>
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
@@ -591,17 +638,18 @@
                     </div>
                     <div class="mkm-card-info">
                         <p class="mkm-card-name"><?php the_title(); ?></p>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                            <div style="display:flex; gap:10px; color:#9ca3af; font-size:11px; align-items:center; font-weight:500;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px; flex-wrap:nowrap; gap:2px;">
+                            <div style="display:flex; gap:5px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
                                 <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
                                 <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
                             </div>
-                            <span style="background:rgba(239, 68, 68, 0.1); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.2); font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px; letter-spacing:0.5px;">Đang Hot</span>
+                            <span style="background:rgba(239, 68, 68, 0.1); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Đang Hot</span>
                         </div>
                     </div>
                 </a>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
+            <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/bang-xep-hang.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
 
             <!-- TRUYỆN FULL -->
             <div class="mkm-sec-hdr">
@@ -609,13 +657,13 @@
                     <svg width="18" height="18" fill="#10b981" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                     Truyện full
                 </h2>
-                <a href="<?php echo get_site_url(); ?>/hoan-thanh.html" class="mkm-view-all">Xem tất cả →</a>
+                <a href="<?php echo get_site_url(); ?>/hoan-thanh.html" class="mkm-view-all">Xem tất cả ></a>
             </div>
             <div class="mkm-grid">
                 <?php
                 $q3 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 4, 'offset' => 12, 'no_found_rows' => true]);
                 while ($q3->have_posts()) : $q3->the_post();
-                    $img3 = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
+                    $img3 = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
                     $fake_chap = rand(80, 500); $fake_views = rand(20000, 99999); $fake_likes = rand(100, 2000);
                 ?>
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
@@ -629,17 +677,18 @@
                     </div>
                     <div class="mkm-card-info">
                         <p class="mkm-card-name"><?php the_title(); ?></p>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                            <div style="display:flex; gap:10px; color:#9ca3af; font-size:11px; align-items:center; font-weight:500;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px; flex-wrap:nowrap; gap:2px;">
+                            <div style="display:flex; gap:5px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
                                 <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
                                 <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
                             </div>
-                            <span style="background:rgba(16, 185, 129, 0.1); color:#10b981; border:1px solid rgba(16, 185, 129, 0.2); font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px; letter-spacing:0.5px;">Hoàn thành</span>
+                            <span style="background:rgba(16, 185, 129, 0.1); color:#10b981; border:1px solid rgba(16, 185, 129, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Hoàn thành</span>
                         </div>
                     </div>
                 </a>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
+            <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/hoan-thanh.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
 
         </div>
 
@@ -673,7 +722,7 @@
                     $ri = 1;
                     $max_views = 20000;
                     while ($bxh->have_posts()) : $bxh->the_post();
-                        $rthumb = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
+                        $rthumb = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
                         $views = (int)get_post_meta(get_the_ID(), '_views', true);
                         if($views < 1000) $views = rand(1000, 20000); // mock data if empty
                         

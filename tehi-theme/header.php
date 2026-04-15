@@ -18,7 +18,6 @@ if (!is_user_logged_in() && !is_admin()) {
 <meta name="keywords" content="<?php bloginfo('name'); ?>, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí" />
 <meta name="description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: '<?php bloginfo(\'name\'); ?> – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
 <link href="<?php echo esc_url(get_permalink()); ?>" rel="canonical" />
-<link href="<?php echo get_site_url(); ?>/img_data/images/icon_tehi_truyen_2025.png" rel="shortcut icon" type="image/x-icon" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMCE7V4VHX"></script>
 <script>
@@ -32,13 +31,11 @@ if (!is_user_logged_in() && !is_admin()) {
 <meta name="twitter:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>">
 <meta name="twitter:site" content="@<?php bloginfo('name'); ?>">
 <meta name="twitter:description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 25, '...')); ?>">
-<meta name="twitter:image" content="<?php echo esc_url(get_the_post_thumbnail_url() ?: get_site_url() . '/img_data/images/icon_tehi_truyen_2025.png'); ?>">
 <meta name="twitter:image:alt" content="<?php echo esc_attr(get_the_title()); ?>">
 <!-- Open Graph -->
 <meta property="og:type" content="<?php echo is_single() ? 'article' : 'website'; ?>">
 <meta property="og:url" content="<?php echo esc_url(get_permalink()); ?>" />
 <meta property="og:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>" />
-<meta property="og:image" content="<?php echo esc_url(get_the_post_thumbnail_url() ?: get_site_url() . '/img_data/images/icon_tehi_truyen_2025.png'); ?>" />
 <meta property="og:description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: '<?php bloginfo(\'name\'); ?> – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
 <!-- Khai báo ngôn ngữ -->
 <script type="application/ld+json">
@@ -231,79 +228,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 
     // Hàm khởi tạo Lenis 
     function initLenis() {
-        lenis = new Lenis({
-            autoRaf: true, // Use modern automatic RequestAnimationFrame handling
-            lerp: 0.1, // Optimal standard smoothing value
-            smoothWheel: true, // Smooth on desktop
-            smoothTouch: false, // Standard mobile scrolling
-        });
-        
-        // lenis scroll bar start (vanilla JS – no jQuery dependency)
-        const scrollbarEl = document.querySelector('.lenis-scrollbar');
-        if (scrollbarEl) {
-            let isScrollingTimer;
-            window.addEventListener('scroll', function() {
-                scrollbarEl.classList.add('visible');
-                clearTimeout(isScrollingTimer);
-                isScrollingTimer = setTimeout(function() {
-                    scrollbarEl.classList.remove('visible');
-                }, 1000);
-            });
-            scrollbarEl.addEventListener('mouseenter', function() {
-                scrollbarEl.classList.add('visible');
-            });
-            scrollbarEl.addEventListener('mouseleave', function() {
-                isScrollingTimer = setTimeout(function() {
-                    scrollbarEl.classList.remove('visible');
-                }, 1000);
-            });
-        }
-        const scrollbar = document.querySelector('.lenis-scrollbar');
-        const scrollbarThumb = document.querySelector('.lenis-scrollbar-thumb');
-        if (scrollbar && scrollbarThumb) {
-            lenis.on('scroll', ({
-                scroll,
-                limit
-            }) => {
-                const scrollRatio = scroll / limit;
-                const thumbPosition = scrollRatio * (scrollbar.clientHeight - scrollbarThumb.clientHeight);
-                scrollbarThumb.style.transform = `translateY(${thumbPosition}px)`;
-            });
-            // Drag functionality for scrollbar thumb
-            let isDragging = false;
-            let startY = 0;
-            let startScroll = 0;
-            scrollbarThumb.addEventListener('mousedown', (e) => {
-                isDragging = true;
-            });
-            document.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                const deltaY = e.clientY - startY;
-                const scrollAmount = deltaY * (lenis.limit / (scrollbar.clientHeight - scrollbarThumb.clientHeight));
-                lenis.scrollTo(startScroll + scrollAmount, { immediate: true });
-            });
-            document.addEventListener('mouseup', () => {
-                if (isDragging) {
-                    isDragging = false;
-                    document.body.style.userSelect = '';
-                }
-            });
-        }
-        // lenis scroll bar end
-        // Đồng bộ GSAP với Lenis (only if GSAP available)
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-            lenis.on('scroll', ScrollTrigger.update);
-            ScrollTrigger.scrollerProxy(document.body, {
-                scrollTop(value) {
-                    return arguments.length ? lenis.scrollTo(value) : lenis.scroll;
-                },
-                getBoundingClientRect() {
-                    return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-                },
-            });
-        }
-        console.log('Lenis initialized');
+        // [MINIMAL MODE] Đã tắt Lenis theo yêu cầu để dùng cuộn mặc định của trình duyệt cho nhẹ web
+        console.log('Lenis disabled, using native smooth scrolling');
     }
 
     // ── Wait for Lenis library to load (deferred) before calling initLenis ──

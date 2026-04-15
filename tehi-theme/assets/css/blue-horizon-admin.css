@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* SIMPLE MINIMALIST ADMIN UI */
+body.wp-admin { 
+    background-color: #f1f5f9 !important; 
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Sidebar Navigation */
+#adminmenuback, #adminmenuwrap, #adminmenu {
+    background-color: #ffffff !important;
+    border-right: 1px solid #e2e8f0 !important;
+}
+#adminmenu a { color: #475569 !important; font-family: 'Inter', sans-serif; font-weight: 500; }
+#adminmenu a:hover, #adminmenu li.menu-top:hover > a { 
+    color: #0f172a !important; 
+    background-color: #f8fafc !important; 
+}
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+#adminmenu li.current a.menu-top,
+.wp-responsive #adminmenu li.current a.menu-top {
+    background-color: #eff6ff !important;
+    color: #2563eb !important;
+    font-weight: 600;
+}
+#adminmenu .wp-submenu { 
+    background-color: #ffffff !important; 
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+#adminmenu .wp-submenu a.current { color: #2563eb !important; }
+
+/* WP Admin Bar - Simple & Standard */
+#wpadminbar {
+    background-color: #1e293b !important; /* Dark solid color */
+    color: #f8fafc !important;
+}
+#wpadminbar * { 
+    font-family: 'Inter', sans-serif; 
+}
+#wpadminbar .ab-item, #wpadminbar a.ab-item {
+    color: #e2e8f0 !important;
+}
+#wpadminbar .hover .ab-item, #wpadminbar a:hover { 
+    color: #ffffff !important;
+}
+/* Ensure Dropdowns in WP Admin Bar are visible */
+#wpadminbar .menupop .ab-sub-wrapper {
+    background-color: #1e293b !important;
+}
+#wpadminbar .menupop .ab-sub-wrapper .ab-item {
+    color: #cbd5e1 !important;
+}
+#wpadminbar .menupop .ab-sub-wrapper .ab-item:hover {
+    color: #ffffff !important;
+    background-color: #334155 !important;
+}
+
+/* Postboxes & UI Cards */
+.postbox, .welcome-panel, .card {
+    border: 1px solid #e2e8f0 !important;
+    background: #ffffff !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+}
+.welcome-panel-content, .welcome-panel-header, .welcome-panel-column {
+    background: transparent !important;
+    color: #334155 !important;
+}
+.welcome-panel *, .welcome-panel-content * {
+    color: #334155 !important;
+}
+.postbox-header {
+    border-bottom: 1px solid #f1f5f9 !important;
+    padding: 12px 16px !important;
+}
+.postbox .hndle {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
+}
+
+/* Primary CTAs - Flat */
+.wp-core-ui .button-primary {
+    background: #2563eb !important;
+    border: none !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    color: #fff !important;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+.wp-core-ui .button-primary:hover {
+    background: #1d4ed8 !important;
+}
+.wp-core-ui .button-secondary {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+    border-radius: 4px !important;
+}
+
+/* Inputs fields */
+input[type=text], input[type=search], input[type=password], input[type=email], input[type=number], textarea, select {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+    padding: 6px 10px;
+    font-family: 'Inter', sans-serif;
+    color: #0f172a;
+}
+input[type=text]:focus, input[type=search]:focus, input[type=password]:focus, textarea:focus, select:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 1px #2563eb !important;
+    outline: none !important;
+}
+
+/* Data Tables */
+table.wp-list-table {
+    border: 1px solid #e2e8f0 !important;
+    background: #ffffff !important;
+}
+.wp-list-table th {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+.wp-list-table td {
+    border-bottom: 1px solid #f1f5f9 !important;
+}
+.wp-list-table tr:hover td { background-color: #f8fafc; }
+
+/* Hide messy footers */
+#wpfooter { display: none; }

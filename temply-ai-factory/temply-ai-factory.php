@@ -40,7 +40,7 @@ function temply_ai_add_admin_menu() {
         'temply_ai_render_batch_audit_page'
     );
 }
-add_action('admin_menu', 'temply_ai_add_admin_menu');
+// add_action('admin_menu', 'temply_ai_add_admin_menu'); // Đã chuyển sang Frontend Studio
 
 // Enqueue Scripts & CSS cho Admin UI
 function temply_ai_admin_assets($hook) {

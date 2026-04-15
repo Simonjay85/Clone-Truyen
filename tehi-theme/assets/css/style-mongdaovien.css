@@ -11670,3 +11670,37 @@ body.dark-mode .btn-che-do-sang-toi i {
     align-items: center;
     gap: 8px;
 }
+
+/* ── LITRPG SYSTEM PANEL ── */
+.mkm-sys-panel {
+    background: rgba(15, 23, 42, 0.9) !important;
+    border: 2px solid #3b82f6 !important;
+    border-radius: 12px !important;
+    padding: 16px 22px !important;
+    margin: 24px 0 !important;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.25), inset 0 0 15px rgba(59, 130, 246, 0.1) !important;
+    color: #93c5fd !important;
+    font-family: 'Consolas', 'Courier New', monospace !important;
+    text-shadow: 0 0 4px rgba(147, 197, 253, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    line-height: 1.8 !important;
+    backdrop-filter: blur(8px) !important;
+}
+.mkm-sys-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+    animation: sysGlow 2s infinite alternate;
+}
+.mkm-sys-panel strong, .mkm-sys-panel b {
+    color: #bfdbfe !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 6px rgba(191, 219, 254, 0.6) !important;
+}
+@keyframes sysGlow {
+    from { opacity: 0.5; }
+    to { opacity: 1; box-shadow: 0 0 10px #60a5fa; }
+}

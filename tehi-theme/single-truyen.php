@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <?php
-$cover = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
+$fallback = "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
+$cover = get_the_post_thumbnail_url(null, 'medium_large') ?: $fallback;
 $terms_loai = wp_get_post_terms(get_the_ID(), 'loai_truyen'); // Might not exist, fallback to "Truyện Chữ"
 $terms_tl = wp_get_post_terms(get_the_ID(), 'the_loai');
 $terms_nhom = wp_get_post_terms(get_the_ID(), 'nhom_dich');
@@ -54,6 +55,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 
 /* ===== HERO CARD ===== */
 .mkm-hero {
+    background: #2a221f; /* Vintage dark fallback */
     position: relative;
     border-radius: 16px;
     overflow: hidden;
@@ -80,7 +82,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-cover-col { flex-shrink: 0; }
 .mkm-cover-col img {
     width: 100%; border-radius: 12px; display: block;
-    aspect-ratio: 3/2; object-fit: cover; object-position: center;
+    aspect-ratio: 2/3; object-fit: cover; object-position: center;
     box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 .mkm-cover-badge {
@@ -192,7 +194,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-rel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .mkm-rel-card { border-radius: 10px; overflow: hidden; transition: box-shadow .2s; text-decoration: none; display: block; background: #fff; border: 1px solid #e5e7eb; }
 .mkm-rel-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
-.mkm-rel-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+.mkm-rel-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; }
 .mkm-rel-body { padding: 10px 12px; }
 .mkm-rel-title { font-weight: 700; color: #111827; margin: 0 0 4px 0; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mkm-rel-desc { font-size: 12px; color: #6b7280; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -204,10 +206,11 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     .mkm-rel-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
-    .mkm-hero { padding: 20px 0; }
+    .mkm-hero {
+    background: #2a221f; /* Vintage dark fallback */ padding: 20px 0; }
     .mkm-hero-inner { grid-template-columns: 1fr; gap: 20px; }
     .mkm-cover-col { max-width: 100%; margin: 0 auto; width: 100%; }
-    .mkm-cover-col img { aspect-ratio: 3/2; width: 100%; }
+    .mkm-cover-col img { aspect-ratio: 2/3; width: 100%; }
     .mkm-action-btns { flex-direction: row; }
     .mkm-info-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .mkm-chaps-grid { grid-template-columns: 1fr !important; }

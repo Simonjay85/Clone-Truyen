@@ -303,14 +303,13 @@ function temply_ai_render_admin_page() {
                     </div>
                 </div>
             </div>
-            
+
             <!-- Magic Text-to-Comic Converter Card -->
             <div class="mt-8 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
                 <h2 class="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
                     🪄 Pháp Bảo: Hóa Phàm Thành Tiên (Text to Comic)
                 </h2>
                 <p class="text-sm text-slate-500 mb-6">Chọn một bộ truyện chữ có sẵn trên hệ thống của bạn để siêu máy tính AI phân rã nội dung, tự đạo diễn kịch bản Manga và sinh ra ảnh ghép thành 1 bộ truyện tranh Comic hoàn toàn mới.</p>
-                
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div class="col-span-2">
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Chọn truyện chữ làm Gốc rễ:</label>
@@ -323,7 +322,6 @@ function temply_ai_render_admin_page() {
                             ?>
                         </select>
                     </div>
-                    
                     <div class="col-span-1">
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Độ dài Panel ảnh:</label>
                         <select id="temply-magic-num-panels" class="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none text-sm bg-orange-50 font-semibold shadow-sm">
@@ -332,7 +330,6 @@ function temply_ai_render_admin_page() {
                             <option value="20-25">Chi tiết (20-25 ảnh)</option>
                         </select>
                     </div>
-                    
                     <div class="col-span-1 flex items-end">
                         <button id="temply-magic-convert-btn" type="button" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold h-[46px] rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
                             <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
@@ -342,7 +339,213 @@ function temply_ai_render_admin_page() {
                 </div>
             </div>
 
+
+            <div class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden" id="gemini-usage-dashboard">
+                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-white">🌌 Gemini Free Tier Monitor</h2>
+                            <p class="text-blue-100 text-xs">Theo dõi hạn mức miễn phí · Tự fallback Flash → Pro</p>
+                        </div>
+                    </div>
+                    <button onclick="templyLoadGeminiUsage()" id="gemini-refresh-btn" class="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                        Làm mới
+                    </button>
+                </div>
+
+                <!-- Alert Banner (hidden by default) -->
+                <div id="gemini-alert-banner" class="hidden px-6 py-3 bg-red-50 border-b border-red-200 flex items-center gap-3">
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                    <span id="gemini-alert-text" class="text-sm font-semibold text-red-700"></span>
+                </div>
+
+                <div class="p-6">
+                    <!-- Today's Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="gemini-today-cards">
+                        <div class="animate-pulse bg-slate-100 rounded-xl h-28"></div>
+                        <div class="animate-pulse bg-slate-100 rounded-xl h-28"></div>
+                        <div class="animate-pulse bg-slate-100 rounded-xl h-28"></div>
+                    </div>
+
+                    <!-- 7-Day History Table -->
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-600 mb-3 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            Lịch Sử 7 Ngày Gần Nhất
+                        </h3>
+                        <div class="overflow-x-auto rounded-xl border border-slate-200">
+                            <table class="w-full text-sm" id="gemini-history-table">
+                                <thead class="bg-slate-50 border-b border-slate-200">
+                                    <tr>
+                                        <th class="text-left px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Ngày</th>
+                                        <th class="text-center px-4 py-3 text-xs font-bold text-blue-500 uppercase tracking-wider">Flash 2.5</th>
+                                        <th class="text-center px-4 py-3 text-xs font-bold text-indigo-500 uppercase tracking-wider">Flash 2.0</th>
+                                        <th class="text-center px-4 py-3 text-xs font-bold text-purple-500 uppercase tracking-wider">Pro 1.5</th>
+                                        <th class="text-center px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Tổng</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="gemini-history-body" class="divide-y divide-slate-100">
+                                    <tr><td colspan="5" class="text-center py-8 text-slate-400">Đang tải...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Fallback Explanation -->
+                    <div class="mt-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100">
+                        <p class="text-xs font-bold text-blue-800 mb-2">🔄 Cơ Chế Auto-Fallback</p>
+                        <div class="flex items-center gap-2 flex-wrap text-xs text-blue-700">
+                            <span class="bg-blue-100 px-2 py-1 rounded-full font-semibold">Flash 2.5 (500/ngày)</span>
+                            <span class="text-blue-400">→ hết quota →</span>
+                            <span class="bg-indigo-100 px-2 py-1 rounded-full font-semibold">Flash 2.0 (1500/ngày)</span>
+                            <span class="text-blue-400">→ hết quota →</span>
+                            <span class="bg-purple-100 px-2 py-1 rounded-full font-semibold">Pro 1.5 (50/ngày)</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2">Quota reset lúc 00:00 UTC (07:00 SA giờ VN). Tất cả miễn phí với Google AI Studio API Key.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+    <script>
+    const GEMINI_MODELS = {
+        'gemini-2.5-flash-preview-04-17': { label: 'Flash 2.5', color: 'blue',   limit: 500  },
+        'gemini-2.0-flash':               { label: 'Flash 2.0', color: 'indigo', limit: 1500 },
+        'gemini-1.5-pro':                 { label: 'Pro 1.5',   color: 'purple', limit: 50   },
+    };
+
+    const COLOR_MAP = {
+        blue:   { bg: 'bg-blue-500',  light: 'bg-blue-50',  text: 'text-blue-700',  border: 'border-blue-200',  badge: 'bg-blue-100 text-blue-700' },
+        indigo: { bg: 'bg-indigo-500',light: 'bg-indigo-50',text: 'text-indigo-700',border: 'border-indigo-200',badge: 'bg-indigo-100 text-indigo-700' },
+        purple: { bg: 'bg-purple-500',light: 'bg-purple-50',text: 'text-purple-700',border: 'border-purple-200',badge: 'bg-purple-100 text-purple-700' },
+    };
+
+    function templyLoadGeminiUsage() {
+        const btn = document.getElementById('gemini-refresh-btn');
+        btn.classList.add('opacity-60');
+
+        jQuery.post(temply_ai_ajax.ajax_url, {
+            action: 'temply_gemini_usage_stats',
+            nonce: temply_ai_ajax.nonce
+        }).done(function(res) {
+            btn.classList.remove('opacity-60');
+            if (!res.success) return;
+            const { days, limits, today } = res.data;
+            renderTodayCards(days[today] || { usage: {}, exhausted: [] }, today);
+            renderHistoryTable(days, today);
+            checkAlerts(days[today] || { exhausted: [] });
+        }).fail(function() {
+            btn.classList.remove('opacity-60');
+        });
+    }
+
+    function renderTodayCards(todayData, today) {
+        const container = document.getElementById('gemini-today-cards');
+        let html = '';
+        Object.entries(GEMINI_MODELS).forEach(([modelId, meta]) => {
+            const used      = todayData.usage[modelId] || 0;
+            const limit     = meta.limit;
+            const pct       = Math.min(100, Math.round(used / limit * 100));
+            const remaining = Math.max(0, limit - used);
+            const exhausted = todayData.exhausted.includes(modelId);
+            const c         = COLOR_MAP[meta.color];
+
+            const barColor = exhausted ? 'bg-red-500' : (pct >= 80 ? 'bg-orange-500' : c.bg);
+            const statusBadge = exhausted
+                ? '<span class="text-xs bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded-full">❌ HẾT QUOTA</span>'
+                : (pct >= 80
+                    ? '<span class="text-xs bg-orange-100 text-orange-700 font-bold px-2 py-0.5 rounded-full">⚠ GẦN HẾT</span>'
+                    : '<span class="text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full">✅ Sẵn sàng</span>');
+
+            html += `
+            <div class="rounded-xl border ${c.border} ${c.light} p-4">
+                <div class="flex items-start justify-between mb-3">
+                    <div>
+                        <p class="text-xs font-bold ${c.text} uppercase tracking-wide">${meta.label}</p>
+                        <p class="text-xs text-slate-500 mt-0.5">${modelId.split('-').slice(0,2).join('-')}</p>
+                    </div>
+                    ${statusBadge}
+                </div>
+                <div class="mb-2">
+                    <div class="flex justify-between text-xs text-slate-500 mb-1">
+                        <span>Đã dùng</span>
+                        <span class="font-bold ${c.text}">${used} / ${limit}</span>
+                    </div>
+                    <div class="h-2.5 bg-white rounded-full overflow-hidden border border-slate-200">
+                        <div class="h-full rounded-full transition-all duration-700 ${barColor}" style="width: ${pct}%"></div>
+                    </div>
+                </div>
+                <p class="text-xs ${exhausted ? 'text-red-600 font-bold' : 'text-slate-500'}">
+                    ${exhausted ? '🚨 Đã chuyển sang model tiếp theo' : `Còn lại <strong>${remaining}</strong> requests hôm nay`}
+                </p>
+            </div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    function renderHistoryTable(days, today) {
+        const tbody = document.getElementById('gemini-history-body');
+        const models = Object.keys(GEMINI_MODELS);
+        let rows = '';
+        Object.entries(days).reverse().forEach(([date, data]) => {
+            const isToday = date === today;
+            const dayLabel = isToday ? `<strong>${date}</strong> <span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 ml-1">Hôm nay</span>` : date;
+            let total = 0;
+            const cells = models.map(m => {
+                const used = data.usage[m] || 0;
+                const exhausted = data.exhausted.includes(m);
+                total += used;
+                if (used === 0 && !exhausted) return '<td class="text-center px-4 py-2.5 text-slate-300">—</td>';
+                const c = COLOR_MAP[GEMINI_MODELS[m].color];
+                const badge = exhausted
+                    ? `<span class="text-xs text-red-600 font-bold">${used} <span class="text-red-400">❌</span></span>`
+                    : `<span class="${c.badge} text-xs font-bold px-2 py-0.5 rounded-full">${used}</span>`;
+                return `<td class="text-center px-4 py-2.5">${badge}</td>`;
+            }).join('');
+            rows += `<tr class="${isToday ? 'bg-blue-50/50' : 'hover:bg-slate-50'} transition-colors">
+                <td class="px-4 py-2.5 text-sm text-slate-700">${dayLabel}</td>
+                ${cells}
+                <td class="text-center px-4 py-2.5 text-sm font-bold text-slate-600">${total > 0 ? total : '—'}</td>
+            </tr>`;
+        });
+        tbody.innerHTML = rows || '<tr><td colspan="5" class="text-center py-6 text-slate-400">Chưa có dữ liệu</td></tr>';
+    }
+
+    function checkAlerts(todayData) {
+        const banner = document.getElementById('gemini-alert-banner');
+        const alertText = document.getElementById('gemini-alert-text');
+        const exhausted = todayData.exhausted || [];
+        const flash25 = 'gemini-2.5-flash-preview-04-17';
+        const pro15   = 'gemini-1.5-pro';
+
+        if (exhausted.includes(pro15)) {
+            banner.classList.remove('hidden');
+            alertText.textContent = '🚨 TẤT CẢ GEMINI MODELS ĐÃ HẾT QUOTA HÔM NAY! Vui lòng dùng Claude hoặc OpenAI, hoặc đợi reset lúc 07:00 SA.';
+            banner.querySelector('svg').className = 'w-5 h-5 text-red-500 flex-shrink-0';
+        } else if (exhausted.includes(flash25)) {
+            banner.classList.remove('hidden');
+            alertText.textContent = '⚠️ Flash 2.5 đã hết quota — hệ thống đang tự động dùng Flash 2.0 / Pro 1.5 thay thế.';
+            banner.style.background = '#fffbeb';
+            banner.style.borderColor = '#fcd34d';
+            alertText.style.color = '#92400e';
+        } else {
+            banner.classList.add('hidden');
+        }
+    }
+
+    // Auto-load khi trang mở
+    jQuery(document).ready(function() {
+        templyLoadGeminiUsage();
+        // Auto-refresh mỗi 60 giây
+        setInterval(templyLoadGeminiUsage, 60000);
+    });
+    </script>
     <?php
 }
+
+

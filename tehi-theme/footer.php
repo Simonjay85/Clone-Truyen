@@ -32,7 +32,7 @@
         <!-- BRAND -->
         <div class="mkm-footer-brand">
             <a href="<?php echo esc_url(home_url('/')); ?>">
-                <img src="<?php echo get_site_url(); ?>/img_data/images/logo-truyen-moi-v1.png" alt="<?php bloginfo('name'); ?>">
+                <img src="<?php echo get_template_directory_uri(); ?>/img_data/images/logo-truyen-moi-v1.png" alt="<?php bloginfo('name'); ?>">
             </a>
             <p>Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.</p>
         </div>
@@ -117,6 +117,7 @@
 <?php endif; ?>
 
 <!-- AUTH MODAL -->
+<style>#mkmAuthModal { opacity: 0; pointer-events: none; visibility: hidden; transition: all 0.3s ease; } #mkmAuthModal.active { opacity: 1; pointer-events: auto; visibility: visible; }</style>
 <div class="mkm-auth-overlay" id="mkmAuthModal">
     <div class="mkm-auth-modal">
         <!-- Header -->

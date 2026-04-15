@@ -48,58 +48,140 @@ function temply_call_openai($system_prompt, $user_prompt, $temperature = 0.7) {
 
 
 /**
- * Gọi API Google Gemini (1.5 Flash).
+/**
+ * Gọi API Google Gemini với auto-fallback và usage tracking.
+ * Thứ tự fallback: gemini-2.5-flash → gemini-2.0-flash-lite → gemini-1.5-pro
  */
-function temply_call_gemini($system_prompt, $user_prompt, $temperature = 0.7) {
+function temply_call_gemini($system_prompt, $user_prompt, $temperature = 0.7, $force_model = '') {
     $api_key = get_option('temply_gemini_api_key', '');
     if(empty($api_key)) return new WP_Error('no_api_key', 'Chưa cấu hình Gemini API Key');
 
-    $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" . $api_key;
-    
-    $payload = [
-        "system_instruction" => [
-            "parts" => [
-                ["text" => $system_prompt]
-            ]
-        ],
-        "contents" => [
-            [
-                "role" => "user",
-                "parts" => [
-                    ["text" => $user_prompt]
-                ]
-            ]
-        ],
-        "generationConfig" => [
-            "temperature" => $temperature
-        ]
+    // Danh sách model theo ưu tiên fallback
+    $model_chain = [
+        'gemini-2.5-flash-preview-04-17',  // Flash 2.5 (mới nhất, miễn phí)
+        'gemini-2.0-flash',                // Flash 2.0 (dự phòng “nheẹ”)
+        'gemini-1.5-pro',                  // Pro 1.5 (fallback chất lượng cao)
     ];
 
-    $response = wp_remote_post($url, [
-        'headers' => [
-            'Content-Type' => 'application/json'
-        ],
-        'body'    => json_encode($payload),
-        'timeout' => 90
-    ]);
-
-    if(is_wp_error($response)) {
-        return $response;
+    if (!empty($force_model)) {
+        $model_chain = [$force_model];
     }
 
-    $body = wp_remote_retrieve_body($response);
-    $data = json_decode($body, true);
+    $last_error = null;
+    foreach ($model_chain as $model_id) {
+        $url = "https://generativelanguage.googleapis.com/v1beta/models/{$model_id}:generateContent?key=" . $api_key;
 
-    if(isset($data['error'])) {
-        return new WP_Error('api_error', $data['error']['message']);
+        $payload = [
+            "system_instruction" => ["parts" => [["text" => $system_prompt]]],
+            "contents"           => [["role" => "user", "parts" => [["text" => $user_prompt]]]],
+            "generationConfig"   => ["temperature" => $temperature]
+        ];
+
+        $response = wp_remote_post($url, [
+            'headers' => ['Content-Type' => 'application/json'],
+            'body'    => json_encode($payload),
+            'timeout' => 120
+        ]);
+
+        if (is_wp_error($response)) {
+            $last_error = $response;
+            continue; // Thử model tiếp theo
+        }
+
+        $http_code = wp_remote_retrieve_response_code($response);
+        $body      = wp_remote_retrieve_body($response);
+        $data      = json_decode($body, true);
+
+        // 429 hoặc RESOURCE_EXHAUSTED = hết quota Flash → fallback
+        $is_quota_error = ($http_code === 429)
+            || (isset($data['error']['status']) && in_array($data['error']['status'], ['RESOURCE_EXHAUSTED', 'QUOTA_EXCEEDED']))
+            || (isset($data['error']['code'])   && $data['error']['code'] === 429);
+
+        if ($is_quota_error) {
+            // Ghi flag ”Flash đã hết quota hôm nay”
+            temply_gemini_mark_model_exhausted($model_id);
+            $last_error = new WP_Error('quota_exceeded', "[{$model_id}] Hết quota - tự chuyển model...");
+            continue;
+        }
+
+        if (isset($data['error'])) {
+            $last_error = new WP_Error('api_error', $data['error']['message'] ?? json_encode($data['error']));
+            // Lỗi khác (không phải quota) → không fallback
+            return $last_error;
+        }
+
+        if (isset($data['candidates'][0]['content']['parts'][0]['text'])) {
+            // ✅ Thành công - ghi usage
+            temply_gemini_log_usage($model_id);
+            return $data['candidates'][0]['content']['parts'][0]['text'];
+        }
+
+        $last_error = new WP_Error('parse_error', "Không đọc được phản hồi từ Gemini [{$model_id}]");
     }
 
-    if(isset($data['candidates'][0]['content']['parts'][0]['text'])) {
-        return $data['candidates'][0]['content']['parts'][0]['text'];
-    }
-
-    return new WP_Error('parse_error', 'Không đọc được phản hồi từ Gemini AI');
+    return $last_error ?? new WP_Error('all_models_failed', 'Tất cả Gemini models đều thất bại');
 }
+
+/**
+ * Ghi lại lượt gọi thành công theo model và ngày
+ */
+function temply_gemini_log_usage($model_id) {
+    $today = gmdate('Y-m-d');
+    $key   = '_temply_gemini_usage_' . $today;
+    $usage = get_option($key, []);
+    if (!is_array($usage)) $usage = [];
+    $usage[$model_id] = ($usage[$model_id] ?? 0) + 1;
+    $usage['_updated'] = time();
+    update_option($key, $usage, false);
+}
+
+/**
+ * Đánh dấu model đã bị giới hạn quota hôm nay (reset lúc 0h)
+ */
+function temply_gemini_mark_model_exhausted($model_id) {
+    $today = gmdate('Y-m-d');
+    $key   = '_temply_gemini_exhausted_' . $today;
+    $list  = get_option($key, []);
+    if (!is_array($list)) $list = [];
+    if (!in_array($model_id, $list)) $list[] = $model_id;
+    update_option($key, $list, false);
+}
+
+/**
+ * Endpoint AJAX: Lấy thống kê usage Gemini 7 ngày gần nhất
+ */
+add_action('wp_ajax_temply_gemini_usage_stats', function() {
+    check_ajax_referer('temply_ai_nonce', 'nonce');
+
+    // Gemini free-tier limits (per day)
+    $limits = [
+        'gemini-2.5-flash-preview-04-17' => 500,  // ~500 RPD miễn phí
+        'gemini-2.0-flash'               => 1500, // 1500 RPD miễn phí
+        'gemini-1.5-pro'                 => 50,   // 50 RPD miễn phí (strict)
+    ];
+
+    $days = [];
+    for ($i = 6; $i >= 0; $i--) {
+        $d     = gmdate('Y-m-d', strtotime("-{$i} days"));
+        $key   = '_temply_gemini_usage_' . $d;
+        $ex_key= '_temply_gemini_exhausted_' . $d;
+        $usage = get_option($key, []);
+        $exhausted = get_option($ex_key, []);
+        if (!is_array($usage)) $usage = [];
+        unset($usage['_updated']);
+        $days[$d] = [
+            'usage'     => $usage,
+            'exhausted' => is_array($exhausted) ? $exhausted : [],
+        ];
+    }
+
+    wp_send_json_success([
+        'days'   => $days,
+        'limits' => $limits,
+        'today'  => gmdate('Y-m-d'),
+    ]);
+});
+
 
 /**
  * Gọi API Anthropic Claude.
@@ -408,23 +490,69 @@ function temply_ajax_oracle() {
 
 /**
  * STEP 2: The Puppet Master - Characters
+ * Trả về JSON 2 lớp:
+ *   - character_bible_json: object key-value TÊN CỐ ĐỊNH để Ghostwriter lock cứng
+ *   - character_full_text: văn xuôi miêu tả đầy đủ để làm context phong phú
  */
 add_action('wp_ajax_temply_step_puppet', 'temply_ajax_puppet');
 function temply_ajax_puppet() {
     check_ajax_referer('temply_ai_nonce', 'nonce');
-    $world = sanitize_textarea_field($_POST['world'] ?? '');
+    $world    = sanitize_textarea_field($_POST['world']    ?? '');
     $keywords = sanitize_textarea_field($_POST['keywords'] ?? '');
-    
-    $system_prompt = "Bạn là THE PUPPET MASTER - Bậc thầy tâm lý học và sáng tạo nhân vật. Bạn tạo ra những nhân vật có chiều sâu, góc khuất và động cơ rõ ràng. QUY TẮC TỐI THƯỢNG CỦA GIA ĐÌNH: Nếu các nhân vật là CHA CON, ANH CHỊ EM hoặc người cùng một gia tộc, họ BẮT BUỘC PHẢI MANG CÙNG MỘT HỌ (Ví dụ: cha họ Dương thì con cũng phải họ Dương), tuyệt đối không được lệch họ trừ khi kịch bản yêu cầu rõ là con nuôi/con riêng/cha dượng.";
-    $user_prompt = "Dựa vào bối cảnh thế giới sau:\n$world\n\n VÀ CỐT TRUYỆN MONG MUỐN BẮT BUỘC PHẢI KHỚP: $keywords\n\nHãy tạo ra 2-4 nhân vật (kể cả gia đình nếu có): Nhân vật chính và Nhân vật phản diện (hoặc cản trở lớn nhất). Chỉ định tên, ngoại hình, tính cách bề ngoài, tổn thương sâu kín bên trong, và mục tiêu tối thượng của họ (phải gắn chặt với cốt truyện mong muốn). BẮT BUỘC SỬ DỤNG TÊN THUẦN VIỆT HOẶC HÁN VIỆT ĐẬM CHẤT CHÂU Á. TUYỆT ĐỐI KHÔNG SỬ DỤNG TÊN TIẾNG ANH (như Orion, Vesper...) HAY VĂN HOÁ PHƯƠNG TÂY. Đảm bảo logic tuyệt đối về huyết thống và Họ (Surname) của các thành viên trong gia đình.";
 
-    $response = temply_call_ai($system_prompt, $user_prompt, 0.8);
-    if(is_wp_error($response)) wp_send_json_error(['message' => 'Lỗi kết nối AI: ' . $response->get_error_message()]);
-    
-    if(is_wp_error($response)) {
-        wp_send_json_error(['message' => $response->get_error_message()]);
+    // --- BƯỚC 2a: Sinh hồ sơ nhân vật có cấu trúc JSON ---
+    $system_json = "Bạn là THE PUPPET MASTER. Nhiệm vụ: Thiết kế bộ nhân vật CỐT LÕI cho truyện web Việt Nam.
+
+QUY TẮC BẮT BUỘC:
+- TÊN: Thuần Việt hoặc Hán Việt đậm chất Châu Á. NGHIÊM CẤM tên Tiếng Anh/Phương Tây.
+- HỌ: Thành viên cùng gia tộc PHẢI cùng họ.
+- TÊN TẬP ĐOÀN: Chọn 1 tên duy nhất, nhất quán xuyên suốt. KHÔNG phải tên nước ngoài.
+- Phản diện hoặc tình địch phải có động cơ thực tế, không ác một màu.
+
+TRẢ VỀ ĐÚNG JSON SAU (không có markdown block, không có text thừa):
+{
+  \"protagonist_name\": \"Họ và Tên đầy đủ của Nam/Nữ Chính (VD: Lâm Tuấn Kiệt)\",
+  \"antagonist_name\": \"Họ và Tên đầy đủ của Phản Diện Chính (VD: Khải Minh)\",
+  \"love_interest_name\": \"Họ và Tên đầy đủ của Nhân Vật Tình Yêu/Ex (VD: Hạ Vy) hoặc để trống nếu không có\",
+  \"support_name\": \"Họ và Tên của Nhân Vật Phụ Hỗ Trợ (VD: Đỗ Quân - trợ lý) hoặc để trống\",
+  \"company_name\": \"Tên TẬP ĐOÀN/CÔNG TY của Nhân Vật Chính (VD: V-Tech, Thiên Anh Corp...) - 1 tên DUY NHẤT\",
+  \"rival_company\": \"Tên tập đoàn đối thủ nếu có, để trống nếu không\",
+  \"character_profiles\": \"Mô tả đầy đủ TẤT CẢ nhân vật: ngoại hình, tính cách, tổn thương, động cơ. Viết văn xuôi, tối thiểu 200 chữ.\"
+}";
+
+    $user_json = "[BỐI CẢNH THẾ GIỚI]\n$world\n\n[CỐT TRUYỆN YÊU CẦU]\n$keywords\n\nHãy thiết kế bộ nhân vật và trả về JSON ngay.";
+
+    $response = temply_call_ai($system_json, $user_json, 0.75);
+    if (is_wp_error($response)) wp_send_json_error(['message' => 'Lỗi AI Puppet Master: ' . $response->get_error_message()]);
+
+    // Parse JSON
+    $clean = trim(preg_replace('/```(?:json)?|```/', '', $response));
+    $parsed = json_decode($clean, true);
+
+    if (!$parsed || !isset($parsed['protagonist_name'])) {
+        // Fallback: trả về text thô nếu parse lỗi
+        wp_send_json_success([
+            'result'               => $response,
+            'character_bible_json' => null,
+        ]);
+        return;
     }
-    wp_send_json_success(['result' => $response]);
+
+    // Tách character_profiles ra thành full_text, giữ JSON key-value sạch
+    $bible_json = [
+        'protagonist_name'  => sanitize_text_field($parsed['protagonist_name']  ?? ''),
+        'antagonist_name'   => sanitize_text_field($parsed['antagonist_name']   ?? ''),
+        'love_interest_name'=> sanitize_text_field($parsed['love_interest_name']?? ''),
+        'support_name'      => sanitize_text_field($parsed['support_name']       ?? ''),
+        'company_name'      => sanitize_text_field($parsed['company_name']       ?? ''),
+        'rival_company'     => sanitize_text_field($parsed['rival_company']      ?? ''),
+    ];
+    $full_text = sanitize_textarea_field($parsed['character_profiles'] ?? $response);
+
+    wp_send_json_success([
+        'result'               => $full_text,          // Text mô tả đầy đủ (dùng trên UI)
+        'character_bible_json' => $bible_json,          // JSON tên khoá cứng
+    ]);
 }
 
 /**
@@ -552,7 +680,6 @@ function temply_ajax_create_story() {
 
     if(!empty($data['seo_desc'])) {
         $seo_text = sanitize_text_field($data['seo_desc']);
-        // Ép buộc chứa Focus Keyword nếu AI quên
         if (stripos($seo_text, $seo_keyword) === false) {
             $seo_text = 'Đọc ' . $seo_keyword . ': ' . $seo_text;
             if (mb_strlen($seo_text, 'UTF-8') > 160) {
@@ -568,6 +695,15 @@ function temply_ajax_create_story() {
     update_post_meta($post_id, '_temply_ai_characters', $characters);
     update_post_meta($post_id, '_temply_ai_genre', $genre);
     update_post_meta($post_id, '_temply_ai_keywords', $keywords);
+
+    // ── Lưu Character Bible JSON (khoá cứng tên nhân vật) ──
+    $bible_json_raw = sanitize_textarea_field(wp_unslash($_POST['character_bible_json'] ?? ''));
+    if (!empty($bible_json_raw)) {
+        $bible_decoded = json_decode($bible_json_raw, true);
+        if ($bible_decoded) {
+            update_post_meta($post_id, '_temply_character_bible_json', $bible_decoded);
+        }
+    }
 
     // 2. Set Taxonomy (Thể loại)
     $term = get_term_by('name', $genre, 'the_loai');
@@ -585,7 +721,7 @@ function temply_ajax_create_story() {
     $escaped_prompt = rawurlencode($cover_full_prompt);
     $image_url = "https://image.pollinations.ai/prompt/" . $escaped_prompt . "?width=600&height=900&nologo=true";
     
-    $thumb_id = temply_upload_external_image($image_url, $post_id, $seo_keyword); // Đặt Alt là Focus Keyword
+    $thumb_id = temply_upload_external_image($image_url, $post_id, $seo_keyword);
     
     wp_send_json_success([
         'truyen_id' => $post_id,
@@ -593,6 +729,58 @@ function temply_ajax_create_story() {
         'thumb' => $thumb_id ? 'Đã cài Cover Ảnh AI' : 'Lỗi cài Cover'
     ]);
 }
+
+/**
+ * ============================================================
+ * HELPER: Xây dựng CHARACTER BIBLE nhúng vào system prompt
+ * Ưu tiên dùng JSON khoá cứng từ Puppet Master nếu có.
+ * ============================================================
+ */
+function temply_extract_character_bible($characters_text, $world_text, $bible_json = null) {
+    // ── Nếu có JSON khoá cứng từ Puppet Master ──
+
+    if (!empty($bible_json) && is_array($bible_json)) {
+        $pname  = $bible_json['protagonist_name']   ?? '';
+        $aname  = $bible_json['antagonist_name']    ?? '';
+        $lname  = $bible_json['love_interest_name'] ?? '';
+        $sname  = $bible_json['support_name']       ?? '';
+        $cname  = $bible_json['company_name']       ?? '';
+        $rname  = $bible_json['rival_company']      ?? '';
+
+        $locked_names = "\n\n╔" . str_repeat("═", 50) . "╗\n";
+        $locked_names .= "║   CHARACTER BIBLE - BẢNG TÊN KHOÁ CỨNG (BUỘC PHẢI TUÂN THỦ)   ║\n";
+        $locked_names .= "╚" . str_repeat("═", 50) . "╝\n";
+        $locked_names .= "❌ LUẬT TỐI THƯỢNG - QUAN TRỌNG HƠN MỌI THỨ KHÁC:\n\n";
+        $locked_names .= "► TÊN NHÂN VẬT CHÍNH THỨC (NGHIÊM CẤM ĐỔI TÊN):\n";
+        if ($pname) $locked_names .= "- NAM/NỮ CHÍNH: {$pname}\n";
+        if ($aname) $locked_names .= "- PHẢN DIỆN CHÍNH: {$aname}\n";
+        if ($lname) $locked_names .= "- TÌNH YÊU / EX: {$lname}\n";
+        if ($sname) $locked_names .= "- TRỢ LÝ / NHÂN VẬT PHỤ: {$sname}\n";
+        if ($cname) $locked_names .= "\n► TẬP ĐOÀN CHÍNH THỨC (KHÔNG ĐỔI TÊN): {$cname}\n";
+        if ($rname) $locked_names .= "► TẬP ĐOÀN ĐỐI THỦ: {$rname}\n";
+        $locked_names .= "\n❌ NGHIÊM CẤM TUYỆT ĐỐI:\n";
+        $locked_names .= "  - Dùng bất kỳ tên nào khác ngoài danh sách trên\n";
+        $locked_names .= "  - Dùng tên Tiếng Anh/nước ngoài cho nhân vật Việt/Á Đông\n";
+        $locked_names .= "  - Tạo cảnh 'CEO ngoại quốc cúi đầu 50 triệu USD' nếu dàn ý không yêu cầu\n";
+        $locked_names .= "  - Đổi tên tập đoàn giữa các chương\n";
+        $locked_names .= "\n[HỒ SƠ NHÂN VẬT ĐẦY ĐỦ]\n{$characters_text}\n";
+        return $locked_names;
+    }
+
+    // ── Fallback (chưa có JSON) ──
+    $company_lock = '';
+    if (!empty($world_text)) {
+        $company_lock = "\n[TÊN CÔNG TY/TẬP ĐOÀN CHÍNH THỨC - BẤT BIẾN]\nLấy từ bối cảnh thế giới đã được xây dựng ở trên. TUYỆT ĐỐI không tự ý thêm tên công ty/tổ chức mới nào.";
+    }
+    $out  = "\n\n╔" . str_repeat("═", 38) . "╗\n";
+    $out .= "║   CHARACTER BIBLE - DANH SÁCH TÊN BẤT BIẾN   ║\n";
+    $out .= "╚" . str_repeat("═", 38) . "╝\n";
+    $out .= "✅ CHỈ ĐƯỢC PHÉP dùng đúng tên/họ nhân vật trong danh sách này.\n";
+    $out .= "❌ NGHIÊM CẤM: đổi tên, dùng tên nước ngoài, đổi tên tập đoàn giữa chương.\n";
+    $out .= "$company_lock\n[HỒ SƠ NHÂN VẬT ĐẦY ĐỦ]\n$characters_text\n";
+    return $out;
+}
+
 
 /**
  * STEP 5: The Ghostwriter - Viết các Chương nội dung
@@ -617,6 +805,12 @@ function temply_ajax_write_chapter() {
 
     if(!$truyen_id) wp_send_json_error(['message' => 'Mất ID Truyện.']);
 
+    // ── BUILD CHARACTER BIBLE: Ưu tiên JSON khoá cứng từ DB ──
+    $bible_json = get_post_meta($truyen_id, '_temply_character_bible_json', true);
+    if (!is_array($bible_json)) $bible_json = null;
+    $character_bible = temply_extract_character_bible($characters, $world, $bible_json);
+
+
     // Thiết lập luật định dạng Comments
     if (!empty($custom_comments)) {
         $comment_rules = "SỬ DỤNG CHÍNH XÁC Y XÌ ĐÚC Danh sách Comment sau, KHÔNG ĐƯỢC THÊM BỚT HAY CHẾ CHÁO GÌ THÊM:\n" . $custom_comments;
@@ -624,9 +818,55 @@ function temply_ajax_write_chapter() {
         $comment_rules = "Luật Bình Luận: KHÔNG ĐƯỢC màu mè sến súa. AI phải nhập vai Hội bà tám mạng xã hội, mẹ bỉm sữa hoặc thanh niên Gen Z. Dùng văn phong chửi đổng, viết tắt (vcl, đm, má ơi, khứa, trời ơi, đọc mà tức), bực dọc vì nhân vật ác, hoặc hóng chờ bẻ lái. Ví dụ: 'Má nó đọc đoạn con tiểu tam mà sôi máu, nam chính bị mù hả?'.\nNamdeptrai|Má nó con tiểu tam trơ trẽn vđ, nam chính bị mù hả trời?\nHoinangdau|Tr ơi đọc mà nước mắt lưng tròng, thương nữ chính quá.\nBinhlunx|Khứa tác giả bẻ lái khét lẹt... hóng chương sau!";
     }
 
+
+    // ── ANTI-REPETITION: Lấy lịch sử cảnh đã viết ──
+    $previous_summaries = get_post_meta($truyen_id, '_temply_written_chapter_summaries', true);
+    if (!is_array($previous_summaries)) $previous_summaries = [];
+    
+    // Lấy riêng danh sách "cấu trúc kịch tính" đã dùng (lưu suốt truyện)
+    $used_plot_structures = get_post_meta($truyen_id, '_temply_used_plot_structures', true);
+    if (!is_array($used_plot_structures)) $used_plot_structures = [];
+
+    $anti_repeat_block = '';
+    
+    // Block 1: Các cảnh cụ thể gần đây (3 chương gần nhất)
+    if (!empty($previous_summaries)) {
+        $anti_repeat_block .= "\n\n[CẢNH ĐÃ DÙNG GẦN ĐÂY - NGHIÊM CẤM LẶP LẠI]\n";
+        foreach (array_slice($previous_summaries, -3) as $prev) {
+            $anti_repeat_block .= "- " . $prev . "\n";
+        }
+    }
+    
+    // Block 2: Cấu trúc kịch tính đã dùng (cấm suốt cả truyện)
+    if (!empty($used_plot_structures)) {
+        $anti_repeat_block .= "\n\n[CẤU TRÚC KỊCH TÍNH ĐÃ KHAI THÁC - TỨYT ĐỐI KHÔNG TÁI SọNG DỤNG ĐUỦI BẤT KỲ HÌNH THỨC NÀO]\n";
+        foreach ($used_plot_structures as $idx => $ps) {
+            $anti_repeat_block .= ($idx + 1) . ". " . $ps . "\n";
+        }
+        $anti_repeat_block .= "\n➤ BẮt buộc tạo cắt KHAI THÁC MỚI HOÀN TOÀN \u2014 dùng sự kiện khác, yếu tố bất ngờ khác, cách phùng phất khác.\n";
+    }
+    
+    // Block 3: Cấm cứng cấu trúc lặp phiếu nhất
+    $hard_forbidden = [
+        "CEO / lãnh đạo nước ngoài bước vào tiệc, cúi đầu trước nam chính, công bố hợp đồng 50 triệu USD",
+        "Phản diện bị sa thải ngay tại chỗ trước mặt đám đông",
+        "Nam chính ngồi vẽ sticker ở góc khuất, bị chế giễu, sau đó lất kèo bằng cách tiết lộ danh tính",
+    ];
+    
+    // Chỉ thêm forbidden nếu đã xuất hiện trong used_plot_structures
+    $active_forbidden = array_intersect($hard_forbidden, $used_plot_structures);
+    if (!empty($active_forbidden)) {
+        $anti_repeat_block .= "\n[CẤM TỨYT ĐỐI - ĐÃ KHAI THÁC OUỞ ỚT]\n";
+        foreach ($active_forbidden as $f) {
+            $anti_repeat_block .= "\u274c " . $f . "\n";
+        }
+        $anti_repeat_block .= "\u27a4 Thay vào đó: Dùng các cách lật kèo KHÁC: tiết lộ qua phương tiện truyền thông, qua cuộc gọi bộc phát, qua tài liệu bí mật lộ ra, qua đối thủ đỏnh chính, qua cách xử lý khủng hoảng của công ty...\n";
+    }
+
+
     $system_prompt = "Bạn là THE GHOSTWRITER. Bậc thầy văn học mạng, có khả năng viết cực kỳ lôi cuốn, mượt mà và tôn trọng sát thể loại được yêu cầu. HÃY MÔ TẢ ĐỦ ĐẦY, CẢ VỀ KHÔNG GIAN LẪN NỘI TÂM. Viết thật dài (tối thiểu 800 chữ).
     Mục tiêu 1: MỞ ĐẦU CHƯƠNG BẰNG 1 CÂU HOOK GÂY TÒ MÒ ĐỂ LÔI KÉO ĐỘC GIẢ.
-    Mục tiêu 2: TUYỆT ĐỐI TUÂN THỦ TÊN NHÂN VẬT ĐÃ ĐƯỢC THIẾT LẬP (ĐẶC BIỆT LÀ HỌ CỦA GIA ĐÌNH) VÀ KẾT THÚC BẰNG MỘT CÚ TWIST/CLIFFHANGER ĐỂ LƯU GIỮ SỰ TÒ MÒ.
+    Mục tiêu 2: TUYỆT ĐỐI TUÂN THỦ DANH SÁCH TÊN NHÂN VẬT TRONG CHARACTER BIBLE VÀ KẾT THÚC BẰNG MỘT CÚ TWIST/CLIFFHANGER ĐỂ LƯU GIỮ SỰ TÒ MÒ.
     LUẬT VĂN HOÁ: BẮT BUỘC đặt bối cảnh Việt Nam hoặc Á Đông. Lời thoại, cách hành xử thuần Việt 100%. NGUYÊM CẤM dùng từ tiếng Anh (như hello, murmured...).
     LUẬT ĐỊNH DẠNG PHẢN HỒI:
     - Dòng 1: TITLE: [Tên chương ấn tượng không có số chương]
@@ -634,7 +874,8 @@ function temply_ajax_write_chapter() {
     - SUY NGHĨ NHƯ MỘT HỌA SĨ: BẮT BUỘC chèn ĐÚNG 1 ĐẾN 2 BỨC ẢNH minh họa nằm rải rác ở những phân đoạn đắt giá (Cao trào, mô tả nhân vật, bối cảnh ngộp thở). Cú pháp bắt buộc ĐỂ CHÈN ẢNH: [IMAGE: Mô_tả_chi_tiết_cảnh_vật_hoặc_nhân_vật_bằng_Tiếng_Anh]. Ví dụ: [IMAGE: A highly detailed illustration of a handsome CEO crying in the rain, cinematic lighting, masterpiece] (phải tự đứng trên 1 dòng riêng biệt).
     - Cuối cùng là khối sau:
 ---COMMENTS---
-$comment_rules";
+$comment_rules
+$character_bible$anti_repeat_block";
 
     if (stripos($genre, 'drama') !== false || stripos($genre, 'cẩu huyết') !== false || stripos($genre, 'vả mặt') !== false) {
         $system_prompt = "VAI TRÒ: Bạn là THE GHOSTWRITER - Đại sư biên kịch chuyên về Webnovel thể loại \"Cẩu Huyết\", \"Gia Đấu\" và \"Đô Thị Vả Mặt\" hàng đầu Việt Nam.
@@ -657,7 +898,8 @@ TITLE: [Tên chương siêu ấn tượng không có số]
 ---COMMENTS---
 $comment_rules
 
-Chú ý: Mục ---COMMENTS--- phải nằm ở DƯỚI CÙNG.";
+Chú ý: Mục ---COMMENTS--- phải nằm ở DƯỚI CÙNG.
+$character_bible$anti_repeat_block";
     }
 
     if ($is_final == 1) {
@@ -667,7 +909,7 @@ Chú ý: Mục ---COMMENTS--- phải nằm ở DƯỚI CÙNG.";
         $ending_phrase = "KẾT THÚC BẰNG MỘT KILLER HOOK HOẶC CLIFFHANGER GÂY SỐC.";
     }
 
-    $user_prompt = "[HỒ SƠ NHÂN VẬT]\n$characters\n\n[BỐI CẢNH THẾ GIỚI]\n$world\n\n[Ý TƯỞNG CỐT LÕI (BẮT BUỘC BÁM SÁT)]\n$keywords\n\nVIẾT CHI TIẾT Chương $chap_num dành cho Thể loại $genre, văn phong $tone, dựa theo Dàn Ý sau:\n$summary\n\nSử dụng thẻ HTML (<p>, <strong>, <em>). $ending_phrase Định dạng bắt buộc:\nTITLE: [tên chương]\n[nội dung HTML]";
+    $user_prompt = "[CHARACTER BIBLE - BẮT BUỘC XEM TRƯỚC KHI VIẾT]\n(Xem trong System Prompt)\n\n[BỐI CẢNH THẾ GIỚI]\n$world\n\n[Ý TƯỞNG CỐT LÕI (BẮT BUỘC BÁM SÁT)]\n$keywords\n\nVIẾT CHI TIẾT Chương $chap_num dành cho Thể loại $genre, văn phong $tone, dựa theo Dàn Ý sau:\n$summary\n\nSử dụng thẻ HTML (<p>, <strong>, <em>). $ending_phrase Định dạng bắt buộc:\nTITLE: [tên chương]\n[nội dung HTML]";
 
     $response = temply_call_ai_quality($system_prompt, $user_prompt, 0.9);
     if(is_wp_error($response)) wp_send_json_error(['message' => 'Lỗi kết nối AI: ' . $response->get_error_message()]);
@@ -737,7 +979,41 @@ Chú ý: Mục ---COMMENTS--- phải nằm ở DƯỚI CÙNG.";
     ]);
 
     update_post_meta($post_id, '_truyen_id', $truyen_id); // Liên kết chương với truyện
-    update_post_meta($post_id, '_temply_ai_summary', $summary); // Lưu Dàn ý để phục vụ tính năng "Viết Lại"
+    update_post_meta($post_id, '_temply_ai_summary', $summary);
+
+    // ── GHI NHỚ CẢNH ĐÃ DÙNG (Anti-Repeat cho chương tiếp theo) ──
+    $existing_summaries = get_post_meta($truyen_id, '_temply_written_chapter_summaries', true);
+    if (!is_array($existing_summaries)) $existing_summaries = [];
+    $existing_summaries[] = "Chương $chap_num: " . mb_substr(strip_tags($summary), 0, 100, 'UTF-8');
+    if (count($existing_summaries) > 15) {
+        $existing_summaries = array_slice($existing_summaries, -15);
+    }
+    update_post_meta($truyen_id, '_temply_written_chapter_summaries', $existing_summaries);
+
+    // ── GHI NHỚ CẤU TRÚC KỊCH TÍNH ĐÃ DÙNG (Lưu suốt cả truyện) ──
+    $summary_lower = mb_strtolower(strip_tags($summary), 'UTF-8');
+    $patterns_to_check = [
+        'ceo / lãnh đạo nước ngoài bước vào tiệc, cúi đầu trước nam chính, công bố hợp đồng 50 triệu usd'
+            => ['cúi đầu', 'tiệc', '50 triệu', 'hợp đồng'],
+        'phản diện bị sa thải ngay tại chỗ trước mặt đám đông'
+            => ['sa thải', 'đám đông', 'buổi tiệc'],
+        'nam chính ngồi vẽ sticker ở góc khuất, bị chế giễu, sau đó lất kèo bằng cách tiết lộ danh tính'
+            => ['sticker', 'chế giễu', 'góc khuất', 'danh tính'],
+    ];
+    $used_plot_structures = get_post_meta($truyen_id, '_temply_used_plot_structures', true);
+    if (!is_array($used_plot_structures)) $used_plot_structures = [];
+    foreach ($patterns_to_check as $label => $keywords) {
+        $match_count = 0;
+        foreach ($keywords as $kw) {
+            if (mb_strpos($summary_lower, $kw) !== false) $match_count++;
+        }
+        if ($match_count >= 2 && !in_array($label, $used_plot_structures)) {
+            $used_plot_structures[] = $label;
+        }
+    }
+    update_post_meta($truyen_id, '_temply_used_plot_structures', $used_plot_structures);
+
+
 
     wp_send_json_success([
         'chuong_id' => $post_id,

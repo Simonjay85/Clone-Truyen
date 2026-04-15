@@ -1,0 +1,66 @@
+/* VINTAGE ADMIN COLOR SCHEME FOR WORDPRESS
+   Focus: Zero structural interference, only color variables overrides where needed.
+   Performance: Absolute maximum (built on top of WP native css).
+*/
+
+/* Only set the core colors of the WordPress Sidebar and Admin Bar to a Vintage Coffee palette */
+
+#wpadminbar {
+    background-color: #3e2723 !important; /* Dark Vintage Brown */
+    color: #f5f5dc !important; /* Beige/Parchment */
+}
+#wpadminbar .ab-item, #wpadminbar a.ab-item {
+    color: #d7ccc8 !important;
+}
+#wpadminbar .menupop .ab-sub-wrapper {
+    background-color: #4e342e !important;
+}
+#wpadminbar .menupop .ab-sub-wrapper .ab-item {
+    color: #efebe9 !important;
+}
+#wpadminbar .menupop .ab-sub-wrapper .ab-item:hover,
+#wpadminbar .hover .ab-item, #wpadminbar a:hover {
+    color: #fff !important;
+    background-color: #5d4037 !important;
+}
+
+/* Sidebar Menu */
+#adminmenu, #adminmenuback, #adminmenuwrap {
+    background-color: #4e342e !important;
+}
+#adminmenu a {
+    color: #d7ccc8 !important;
+}
+#adminmenu a:hover, #adminmenu li.menu-top:hover, #adminmenu li.opensub > a.menu-top, #adminmenu li > a.menu-top:focus {
+    color: #fff !important;
+    background-color: #3e2723 !important;
+}
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+#adminmenu li.current a.menu-top,
+.wp-responsive #adminmenu li.current a.menu-top,
+#adminmenu .wp-has-current-submenu .wp-submenu,
+#adminmenu .wp-has-current-submenu .wp-submenu.sub-open,
+#adminmenu .wp-has-current-submenu.opensub .wp-submenu,
+#adminmenu a.wp-has-current-submenu:focus + .wp-submenu {
+    background-color: #3e2723 !important;
+    color: #fff !important;
+}
+
+/* Primary Button Override */
+.wp-core-ui .button-primary {
+    background: #8d6e63 !important;
+    border-color: #795548 !important;
+    color: #fff !important;
+    box-shadow: 0 1px 0 #795548 !important;
+    text-shadow: none !important;
+}
+.wp-core-ui .button-primary:hover, .wp-core-ui .button-primary:focus {
+    background: #795548 !important;
+    border-color: #5d4037 !important;
+    color: #fff !important;
+}
+
+/* Background Paper Soft Tone */
+body.wp-admin {
+    background-color: #f7f3ec !important; /* Creamy paper */
+}

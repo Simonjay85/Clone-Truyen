@@ -246,6 +246,8 @@ jQuery(document).ready(function($) {
             }).done(function(res2) {
                 if (!res2.success) return abort(res2.data.message);
                 charData = res2.data.result;
+                // Lưu JSON khoá cứng từa Puppet Master (nếu có)
+                let charBibleJson = res2.data.character_bible_json ? JSON.stringify(res2.data.character_bible_json) : '';
                 logTerminal(`[The Puppet Master] Xong!`, 'success');
 
                 // AJAX 3
@@ -336,7 +338,7 @@ jQuery(document).ready(function($) {
                         // AJAX 4: Create Story (Parent) + Image
                         logTerminal(`> [STEP 4] The Publisher (Tạo Truyện & Dùng AI Đẻ Ảnh Bìa)...`, 'warning');
                     $.post(temply_ai_ajax.ajax_url, {
-                        action: 'temply_step_create_story', nonce: temply_ai_ajax.nonce, ai_model: aiModel, world: worldData, characters: charData, genre: genre, tone: tone, art: art, keywords: keywords
+                        action: 'temply_step_create_story', nonce: temply_ai_ajax.nonce, ai_model: aiModel, world: worldData, characters: charData, genre: genre, tone: tone, art: art, keywords: keywords, character_bible_json: charBibleJson
                     }).done(function(res4) {
                         if (!res4.success) return abort(res4.data.message);
                         truyenId = res4.data.truyen_id;
@@ -384,6 +386,7 @@ jQuery(document).ready(function($) {
                                 custom_comments: $('#temply-source-comments').val(),
                                 world: worldData, characters: charData,
                                 genre: genre, tone: tone, keywords: keywords,
+                                character_bible_json: charBibleJson,
                                 is_final_chapter: (currentChapIndex === outlineArr.length - 1 ? 1 : 0)
                             }).done(function(resChap) {
                                 if (!resChap.success) {

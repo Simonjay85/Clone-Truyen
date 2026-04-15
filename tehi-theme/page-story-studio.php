@@ -689,6 +689,9 @@ $nonce = wp_create_nonce('temply_ai_nonce');
             <span class="studio-logo-badge">AI</span>
         </a>
         <div class="studio-nav-right">
+            <button onclick="document.getElementById('ss-usage-overlay').style.display='flex'; templyLoadGeminiUsage();" style="background:rgba(99,102,241,0.15); border:1px solid rgba(99,102,241,0.5); padding:6px 14px; border-radius:20px; font-size:13px; color:#a5b4fc; cursor:pointer; font-weight:bold; display:flex; gap:6px; align-items:center; transition:all 0.2s;" onmouseover="this.style.background='rgba(99,102,241,0.3)'" onmouseout="this.style.background='rgba(99,102,241,0.15)'">
+                📊 API Quota
+            </button>
             <span class="studio-user-chip">👤 <?php echo esc_html($current_user->display_name); ?></span>
             <a href="<?php echo home_url(); ?>" class="studio-home-link">← Về trang chủ</a>
         </div>
@@ -703,7 +706,7 @@ $nonce = wp_create_nonce('temply_ai_nonce');
             <!-- Mode tabs -->
             <div style="display:flex;gap:6px;margin-bottom:14px;">
                 <button id="tab-create" onclick="switchTab('create')" style="flex:1;padding:9px;border-radius:8px;border:none;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;">✨ Sáng Tác</button>
-                <button id="tab-scrape" onclick="switchTab('scrape')" style="flex:1;padding:9px;border-radius:8px;border:1px solid rgba(251,191,36,0.4);background:rgba(251,191,36,0.07);color:#fbbf24;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;">🕷️ Cào & Viết Lại</button>
+                <button id="tab-scrape" onclick="switchTab('scrape')" style="flex:1;padding:9px;border-radius:8px;border:1px solid rgba(251,191,36,0.4);background:rgba(251,191,36,0.07);color:#fbbf24;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;">🕷️ Cào Truyện</button>
             </div>
 
             <!-- PANEL: Sáng Tác (default) -->
@@ -712,24 +715,30 @@ $nonce = wp_create_nonce('temply_ai_nonce');
                 <p class="panel-title">⚙️ Cấu hình Truyện</p>
 
                 <div class="ctrl-group" style="margin-bottom: 12px;">
-                    <label class="ctrl-label">Engine AI Sáng Tác</label>
+                    <label class="ctrl-label" style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>Engine AI Sáng Tác</span>
+                        <button onclick="document.getElementById('ss-usage-overlay').style.display='flex'; templyLoadGeminiUsage();" style="background:rgba(99,102,241,0.15); border:1px solid rgba(99,102,241,0.5); padding:3px 8px; border-radius:12px; font-size:11px; color:#a5b4fc; cursor:pointer; font-weight:bold; display:flex; gap:4px; align-items:center; transition:all 0.2s;" onmouseover="this.style.background='rgba(99,102,241,0.3)'" onmouseout="this.style.background='rgba(99,102,241,0.15)'" type="button">
+                            📊 Xem Quota
+                        </button>
+                    </label>
                     <select class="ctrl-select" id="ss-ai-model">
                         <option value="gemini-2.5-flash">Google Gemini Flash (Miễn phí - Nên dùng)</option>
-                        <option value="gemini-2.5-pro">Google Gemini Pro (Trả phí - Chất lượng cao)</option>
-                        <option value="openai">OpenAI ChatGPT (Qua Pollinations)</option>
+                        <option value="gemini-2.0-flash">Google Gemini 2.0 Flash (Dự phòng)</option>
+                        <option value="gemini-1.5-pro">Google Gemini Pro (Trả phí - Chất lượng cao)</option>
                     </select>
                 </div>
 
                 <div class="ctrl-group" style="margin-bottom: 12px;">
                     <label class="ctrl-label">Tiêu đề / Tên Truyện</label>
                     <input type="text" class="ctrl-input" id="ss-title" placeholder="Ví dụ: Chiếc Nhẫn Quyền Năng...">
+                    <div id="title-suggestions" style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;"></div>
                 </div>
 
                 <div class="ctrl-group" style="margin-bottom: 12px;">
                     <label class="ctrl-label">Ý tưởng cốt truyện (Prompt)</label>
                     <textarea class="ctrl-textarea" id="ss-prompt" placeholder="Mô tả ngắn gọn: Nhân vật, bối cảnh, xung đột chính..."></textarea>
                     <button id="ss-btn-autodetect" style="margin-top:8px;width:100%;padding:8px 12px;border-radius:8px;border:1px solid rgba(251,191,36,0.4);background:rgba(251,191,36,0.07);color:#fbbf24;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;" onmouseover="this.style.background='rgba(251,191,36,0.14)'" onmouseout="this.style.background='rgba(251,191,36,0.07)'">
-                        <span id="ss-autodetect-icon">🤖</span> Gợi ý Thể loại & Giọng văn tự động
+                        <span id="ss-autodetect-icon">🤖</span> Gợi ý Tên Truyện, Thể loại & Giọng văn
                     </button>
                 </div>
 
@@ -837,9 +846,15 @@ $nonce = wp_create_nonce('temply_ai_nonce');
                 <span id="ss-btn-text">Bắt đầu Sáng Tác</span>
             </button>
 
-            <button class="btn-split" id="ss-btn-split" disabled>
-                ✂️ Tách thành các Chương & Đăng lên
-            </button>
+            <!-- Two-mode action area -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;">
+                <button class="btn-split" id="ss-btn-split" disabled style="font-size:12px;">
+                    ✂️ Tách & Đăng ngay
+                </button>
+                <button id="ss-btn-autopilot" disabled style="padding:12px;border-radius:10px;border:1px solid rgba(16,185,129,0.5);background:rgba(16,185,129,0.08);color:#10b981;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;" onmouseover="this.disabled||this.style.setProperty('background','rgba(16,185,129,0.2)')" onmouseout="this.style.setProperty('background','rgba(16,185,129,0.08)')">
+                    🤖 Lên lịch Auto-Pilot
+                </button>
+            </div>
 
             <button class="btn-new" id="ss-btn-new" style="display:none;">
                 ↺ Tạo truyện mới
@@ -953,6 +968,8 @@ $nonce = wp_create_nonce('temply_ai_nonce');
             </div>
             <!-- /panel-scrape -->
 
+            <!-- panel-factory removed: merged into panel-create -->
+
         </aside>
 
         <!-- EDITOR PANEL -->
@@ -978,6 +995,11 @@ $nonce = wp_create_nonce('temply_ai_nonce');
                 <div class="story-output" id="ss-story-output">
                     <h1 class="story-post-title" id="ss-story-title-display"></h1>
                     <div class="story-text" id="ss-story-text" contenteditable="true" spellcheck="false" style="outline:none; border-radius:8px; transition:background 0.2s;" onfocus="this.style.background='rgba(255,255,255,0.02)'" onblur="this.style.background='transparent'"></div>
+                </div>
+
+                <!-- Agentic Terminal Area -->
+                <div id="ss-agentic-terminal" style="display:none; flex-direction:column; background:#000; border:1px solid rgba(16,185,129,0.3); border-radius:12px; height:100%; min-height:400px; overflow-y:auto; padding:20px; font-family:'Courier New', Courier, monospace; font-size:13px; line-height:1.6;">
+                    <div style="color:#10b981; font-weight:bold; margin-bottom:12px;">> SYSTEM READY. WAITING FOR AGENTIC COMMAND...</div>
                 </div>
 
             </div>
@@ -1022,46 +1044,290 @@ $nonce = wp_create_nonce('temply_ai_nonce');
         </div>
     </div>
 
+    <!-- Usage Monitor Modal -->
+    <div id="ss-usage-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:10000; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
+        <div style="background:#0f0f17; border:1px solid rgba(99,102,241,0.3); border-radius:16px; max-width:900px; width:95%; max-height:90vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 60px rgba(0,0,0,0.7);">
+            
+            <div style="background:linear-gradient(90deg, #3730a3, #4338ca); padding:16px 24px; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; justify-content:space-between;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <div style="width:36px; height:36px; background:rgba(255,255,255,0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px;">🌌</div>
+                    <div>
+                        <div style="font-size:16px; font-weight:800; color:#fff;">Gemini Free Tier Monitor</div>
+                        <div style="font-size:12px; color:#c7d2fe; margin-top:2px;">Theo dõi hạn mức tự động fallback (Flash → Pro)</div>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <button id="gemini-refresh-btn" onclick="templyLoadGeminiUsage()" style="background:rgba(255,255,255,0.2); border:none; color:#fff; font-size:13px; font-weight:600; cursor:pointer; padding:8px 16px; border-radius:8px; display:flex; gap:6px; align-items:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                        <svg class="w-4 h-4" style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                        Làm mới
+                    </button>
+                    <button onclick="document.getElementById('ss-usage-overlay').style.display='none'" style="background:none; border:none; color:#c7d2fe; font-size:24px; cursor:pointer; padding:0 8px; line-height:1;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c7d2fe'">✕</button>
+                </div>
+            </div>
+
+            <!-- Alert Banner -->
+            <div id="gemini-alert-banner" style="display:none; padding:12px 24px; background:rgba(239,68,68,0.1); border-bottom:1px solid rgba(239,68,68,0.2); align-items:center; gap:10px;">
+                <svg style="width:20px;height:20px;color:#ef4444;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                <span id="gemini-alert-text" style="font-size:13px; font-weight:700; color:#ef4444;"></span>
+            </div>
+
+            <div style="padding:24px; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:24px;">
+                <!-- Today Cards -->
+                <div id="gemini-today-cards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:16px;">
+                    <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:12px; height:120px; display:flex; align-items:center; justify-content:center; color:#6b7280;">Đang tải...</div>
+                </div>
+
+                <!-- History Table -->
+                <div>
+                    <h3 style="font-size:14px; font-weight:800; color:#94a3b8; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+                        <svg style="width:16px;height:16px;color:#8b5cf6;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        Lịch Sử 7 Ngày Gần Nhất
+                    </h3>
+                    <div style="overflow-x:auto; border-radius:12px; border:1px solid rgba(255,255,255,0.06); background:rgba(0,0,0,0.2);">
+                        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:13px; color:#cce2ff;">
+                            <thead style="background:rgba(255,255,255,0.03); border-bottom:1px solid rgba(255,255,255,0.06);">
+                                <tr>
+                                    <th style="padding:12px 16px; font-weight:700; color:#94a3b8; text-transform:uppercase; font-size:11px;">Ngày</th>
+                                    <th style="padding:12px 16px; font-weight:800; color:#60a5fa; text-align:center;">FLASH 2.5</th>
+                                    <th style="padding:12px 16px; font-weight:800; color:#818cf8; text-align:center;">FLASH 2.0</th>
+                                    <th style="padding:12px 16px; font-weight:800; color:#c084fc; text-align:center;">PRO 1.5</th>
+                                    <th style="padding:12px 16px; font-weight:800; color:#94a3b8; text-align:center;">Tổng</th>
+                                </tr>
+                            </thead>
+                            <tbody id="gemini-history-body">
+                                <tr><td colspan="5" style="text-align:center; padding:30px; color:#4b5563;">Đang tải dữ liệu...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Explanation -->
+                <div style="background:rgba(99,102,241,0.04); border:1px solid rgba(99,102,241,0.15); border-radius:12px; padding:16px;">
+                    <p style="font-size:12px; font-weight:800; color:#818cf8; margin-bottom:8px;">🔄 Tự Động Fallback</p>
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:12px; color:#94a3b8;">
+                        <span style="background:rgba(59,130,246,0.15); color:#60a5fa; padding:4px 10px; border-radius:20px; font-weight:600; border:1px solid rgba(59,130,246,0.3);">Flash 2.5 (500)</span>
+                        <span>→ hết quota →</span>
+                        <span style="background:rgba(99,102,241,0.15); color:#818cf8; padding:4px 10px; border-radius:20px; font-weight:600; border:1px solid rgba(99,102,241,0.3);">Flash 2.0 (1500)</span>
+                        <span>→ hết quota →</span>
+                        <span style="background:rgba(168,85,247,0.15); color:#c084fc; padding:4px 10px; border-radius:20px; font-weight:600; border:1px solid rgba(168,85,247,0.3);">Pro 1.5 (50)</span>
+                    </div>
+                    <p style="font-size:11px; color:#6b7280; margin-top:8px;">Quota làm mới lúc 00:00 UTC (07:00 SA giờ Việt Nam).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast container -->
     <div class="toast-wrap" id="ss-toasts"></div>
 
 
     <script>
+    const GEMINI_MODELS = {
+        'gemini-2.5-flash-preview-04-17': { label: 'Flash 2.5', color: 'blue',   limit: 500  },
+        'gemini-2.0-flash':               { label: 'Flash 2.0', color: 'indigo', limit: 1500 },
+        'gemini-1.5-pro':                 { label: 'Pro 1.5',   color: 'purple', limit: 50   },
+    };
+
+    function templyLoadGeminiUsage() {
+        const btn = document.getElementById('gemini-refresh-btn');
+        btn.style.opacity = '0.5';
+
+        fetch('<?php echo esc_url($ajax_url); ?>', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: new URLSearchParams({
+                action: 'temply_gemini_usage_stats',
+                nonce: '<?php echo esc_js($nonce); ?>'
+            })
+        }).then(async res => {
+            const text = await res.text();
+            try {
+                return JSON.parse(text);
+            } catch(e) {
+                throw new Error('Server returned invalid JSON: ' + text);
+            }
+        }).then(res => {
+            btn.style.opacity = '1';
+            const tbody = document.getElementById('gemini-history-body');
+            const todayCards = document.getElementById('gemini-today-cards');
+            if (res === -1 || res === "-1") {
+                tbody.innerHTML = '<tr><td colspan="5" style="color:#ef4444;text-align:center;">Lỗi xác thực Nonce (-1). Hãy load lại trang.</td></tr>';
+                todayCards.innerHTML = '';
+                return;
+            }
+            if (!res.success) {
+                tbody.innerHTML = `<tr><td colspan="5" style="color:#ef4444;text-align:center;">Lỗi backend: ${res.data?.message || JSON.stringify(res.data) || 'Không thể tải'}</td></tr>`;
+                todayCards.innerHTML = '';
+                return;
+            }
+            const { days, limits, today } = res.data;
+            renderTodayCards(days[today] || { usage: {}, exhausted: [] }, today);
+            renderHistoryTable(days, today);
+            checkAlerts(days[today] || { exhausted: [] });
+        }).catch((err) => {
+            btn.style.opacity = '1';
+            document.getElementById('gemini-history-body').innerHTML = `<tr><td colspan="5" style="color:#ef4444;text-align:center;">${err.message}</td></tr>`;
+            document.getElementById('gemini-today-cards').innerHTML = '';
+        });
+    }
+
+    function renderTodayCards(todayData, today) {
+        const container = document.getElementById('gemini-today-cards');
+        let html = '';
+        Object.entries(GEMINI_MODELS).forEach(([modelId, meta]) => {
+            const used      = todayData.usage[modelId] || 0;
+            const limit     = meta.limit;
+            const pct       = Math.min(100, Math.round(used / limit * 100));
+            const remaining = Math.max(0, limit - used);
+            const exhausted = todayData.exhausted.includes(modelId);
+            
+            let colorHex = meta.color === 'blue' ? '#3b82f6' : (meta.color === 'indigo' ? '#6366f1' : '#a855f7');
+            let bgLight  = meta.color === 'blue' ? 'rgba(59,130,246,0.05)' : (meta.color === 'indigo' ? 'rgba(99,102,241,0.05)' : 'rgba(168,85,247,0.05)');
+            let bdColor  = meta.color === 'blue' ? 'rgba(59,130,246,0.2)' : (meta.color === 'indigo' ? 'rgba(99,102,241,0.2)' : 'rgba(168,85,247,0.2)');
+
+            const barColor = exhausted ? '#ef4444' : (pct >= 80 ? '#f59e0b' : colorHex);
+            const statusBadge = exhausted
+                ? `<span style="font-size:10px; background:rgba(239,68,68,0.2); color:#fca5a5; padding:2px 8px; border-radius:12px; font-weight:800; border:1px solid rgba(239,68,68,0.4);">❌ HẾT QUOTA</span>`
+                : (pct >= 80
+                    ? `<span style="font-size:10px; background:rgba(245,158,11,0.2); color:#fcd34d; padding:2px 8px; border-radius:12px; font-weight:800; border:1px solid rgba(245,158,11,0.4);">⚠ GẦN HẾT</span>`
+                    : `<span style="font-size:10px; background:rgba(16,185,129,0.2); color:#6ee7b7; padding:2px 8px; border-radius:12px; font-weight:800; border:1px solid rgba(16,185,129,0.4);">✅ Sẵn sàng</span>`);
+
+            html += `
+            <div style="background:${bgLight}; border:1px solid ${bdColor}; border-radius:12px; padding:16px;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+                    <div>
+                        <div style="font-size:13px; font-weight:800; color:${colorHex}; text-transform:uppercase; letter-spacing:1px;">${meta.label}</div>
+                        <div style="font-size:11px; color:#6b7280; margin-top:2px;">${modelId.substring(0, 15)}...</div>
+                    </div>
+                    ${statusBadge}
+                </div>
+                <div style="margin-bottom:12px;">
+                    <div style="display:flex; justify-content:space-between; font-size:12px; color:#94a3b8; margin-bottom:6px;">
+                        <span>Đã dùng</span>
+                        <span style="font-weight:800; color:${colorHex};">${used} / ${limit}</span>
+                    </div>
+                    <div style="height:6px; background:rgba(255,255,255,0.05); border-radius:10px; overflow:hidden;">
+                        <div style="height:100%; background:${barColor}; width:${pct}%; transition:width 0.5s ease;"></div>
+                    </div>
+                </div>
+                <div style="font-size:11px; ${exhausted ? 'color:#f87171; font-weight:700;' : 'color:#6b7280;'}">
+                    ${exhausted ? '🚨 Đã chuyển sang model dự phòng' : `Còn lại <strong style="color:#d1d5db;">${remaining}</strong> requests`}
+                </div>
+            </div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    function renderHistoryTable(days, today) {
+        const tbody = document.getElementById('gemini-history-body');
+        const models = Object.keys(GEMINI_MODELS);
+        let rows = '';
+        Object.entries(days).reverse().forEach(([date, data]) => {
+            const isToday = date === today;
+            const dayLabel = isToday ? `<strong style="color:#fff;">${date}</strong> <span style="font-size:10px; background:rgba(99,102,241,0.2); color:#a5b4fc; padding:2px 6px; border-radius:10px; margin-left:6px;">Hôm nay</span>` : date;
+            let total = 0;
+            const cells = models.map(m => {
+                const used = data.usage[m] || 0;
+                const exhausted = data.exhausted.includes(m);
+                total += used;
+                if (used === 0 && !exhausted) return `<td style="text-align:center; padding:12px 16px; color:#4b5563;">—</td>`;
+                const meta = GEMINI_MODELS[m];
+                const c = meta.color === 'blue' ? 'color:#60a5fa;' : (meta.color === 'indigo' ? 'color:#818cf8;' : 'color:#c084fc;');
+                
+                const badge = exhausted
+                    ? `<span style="font-size:13px; font-weight:800; color:#ef4444;">${used} <span style="font-size:10px;">❌</span></span>`
+                    : `<span style="font-size:13px; font-weight:800; ${c}">${used}</span>`;
+                return `<td style="text-align:center; padding:12px 16px;">${badge}</td>`;
+            }).join('');
+            
+            rows += `<tr style="${isToday ? 'background:rgba(255,255,255,0.05);' : 'border-bottom:1px solid rgba(255,255,255,0.02);'}">
+                <td style="padding:12px 16px; color:#94a3b8;">${dayLabel}</td>
+                ${cells}
+                <td style="text-align:center; padding:12px 16px; font-weight:800; color:#cbd5e1;">${total > 0 ? total : '—'}</td>
+            </tr>`;
+        });
+        tbody.innerHTML = rows || '<tr><td colspan="5" style="text-align:center; padding:30px; color:#4b5563;">Chưa có dữ liệu lịch sử</td></tr>';
+    }
+
+    function checkAlerts(todayData) {
+        const banner = document.getElementById('gemini-alert-banner');
+        const alertText = document.getElementById('gemini-alert-text');
+        const exhausted = todayData.exhausted || [];
+        const flash25 = 'gemini-2.5-flash-preview-04-17';
+        const pro15   = 'gemini-1.5-pro';
+
+        if (exhausted.includes(pro15)) {
+            banner.style.display = 'flex';
+            alertText.innerHTML = '🚨 TẤT CẢ GEMINI ĐÃ HẾT QUOTA HÔM NAY! Toàn bộ yêu cầu sẽ thất bại cho đến khi reset lúc 07:00 SA.';
+            banner.style.background = 'rgba(239, 68, 68, 0.15)';
+            banner.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+            alertText.style.color = '#f87171';
+        } else if (exhausted.includes(flash25)) {
+            banner.style.display = 'flex';
+            alertText.innerHTML = '⚠️ Flash 2.5 đã hết quota — hệ thống tự động đổi sang dùng model đắt hơn là Flash 2.0 / Pro 1.5.';
+            banner.style.background = 'rgba(245, 158, 11, 0.15)';
+            banner.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+            alertText.style.color = '#fbbf24';
+        } else {
+            banner.style.display = 'none';
+        }
+    }
+
+    window.templyLoadGeminiUsage = templyLoadGeminiUsage;
+
     (function() {
         const AJAX_URL = '<?php echo esc_url($ajax_url); ?>';
         const NONCE = '<?php echo esc_js($nonce); ?>';
 
         // ---- Helper: Call Gemini directly from browser ----
         async function callGeminiFromBrowser(prompt, gemini_key, ai_model) {
-            const model = ai_model || 'gemini-2.5-flash';
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${gemini_key}`;
+            let model = ai_model || 'gemini-2.5-flash';
+            let fallbackChain = [];
+            if (model.includes('flash') && model !== 'gemini-2.0-flash') fallbackChain = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-pro'];
+            else if (model === 'gemini-2.0-flash') fallbackChain = ['gemini-2.0-flash', 'gemini-1.5-pro'];
+            else fallbackChain = [model];
             
-            // Timeout: 90s for Flash, 180s for Pro
-            const timeoutMs = model.includes('flash') ? 90000 : 180000;
-            const controller = new AbortController();
-            const timer = setTimeout(() => controller.abort(), timeoutMs);
-            
-            let resp;
-            try {
-                resp = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
-                    signal: controller.signal
-                });
-            } catch(netErr) {
-                clearTimeout(timer);
-                if (netErr.name === 'AbortError') {
-                    throw new Error('AI mất quá lâu để phản hồi (>90 giây). Hãy giảm số chương xuống hoặc chọn Flash.');
+            let lastError = null;
+            for (let i = 0; i < fallbackChain.length; i++) {
+                let currentModel = fallbackChain[i];
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${currentModel}:generateContent?key=${gemini_key}`;
+                const timeoutMs = currentModel.includes('flash') ? 180000 : 360000;
+                const controller = new AbortController();
+                const timer = setTimeout(() => controller.abort(), timeoutMs);
+                
+                try {
+                    let resp = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+                        signal: controller.signal
+                    });
+                    clearTimeout(timer);
+                    const data = await resp.json();
+                    
+                    if (data.error) {
+                        if (data.error.code === 429 && i < fallbackChain.length - 1) {
+                            console.warn(`[Gemini Fallback] Quota exhausted for ${currentModel}. Switching to ${fallbackChain[i+1]}...`);
+                            showToast(`⚠️ Hết giới hạn ${currentModel}, tự động chuyển sang ${fallbackChain[i+1]}!`, 'error');
+                            continue; // Try next model
+                        }
+                        throw new Error('❌ Gemini API: ' + data.error.message + ' (Mã: ' + data.error.code + ')');
+                    }
+                    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+                    if (!text) throw new Error('Gemini trả về rỗng. Kiểm tra lại API Key và Quota.');
+                    return text;
+                } catch(netErr) {
+                    clearTimeout(timer);
+                    if (netErr.name === 'AbortError') {
+                        lastError = new Error(`AI mất quá lâu để phản hồi (>${timeoutMs/1000} giây). Hãy giảm dung lượng văn bản.`);
+                    } else {
+                        lastError = new Error('Không thể kết nối Gemini từ trình duyệt: ' + netErr.message);
+                    }
+                    // Do NOT continue the loop on pure network/abort errors unless it's a 429 Quota exhausted
+                    throw lastError;
                 }
-                throw new Error('Không thể kết nối Gemini từ trình duyệt: ' + netErr.message);
             }
-            clearTimeout(timer);
-            const data = await resp.json();
-            if (data.error) throw new Error('❌ Gemini API: ' + data.error.message + ' (Mã: ' + data.error.code + ')');
-            const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-            if (!text) throw new Error('Gemini trả về rỗng. Kiểm tra lại API Key và Quota.');
-            return text;
+            throw lastError;
         }
 
         let generatedHTML = '';
@@ -1163,19 +1429,24 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
         }
 
         window.switchTab = function(tab) {
-            const activeStyle = 'flex:1;padding:9px;border-radius:8px;border:none;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;';
-            const inactiveStyle = (color) => `flex:1;padding:9px;border-radius:8px;border:1px solid rgba(${color},0.4);background:rgba(${color},0.07);color:rgb(${color});font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;`;
-            if (tab === 'create') {
-                document.getElementById('panel-create').style.display = 'block';
-                document.getElementById('panel-scrape').style.display = 'none';
-                document.getElementById('tab-create').style.cssText = activeStyle;
-                document.getElementById('tab-scrape').style.cssText = inactiveStyle('251,191,36');
-            } else {
-                document.getElementById('panel-create').style.display = 'none';
-                document.getElementById('panel-scrape').style.display = 'block';
-                document.getElementById('tab-scrape').style.cssText = 'flex:1;padding:9px;border-radius:8px;border:none;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;';
-                document.getElementById('tab-create').style.cssText = inactiveStyle('99,102,241');
+            const activeStyle = (color1, color2) => `flex:1;padding:9px;border-radius:8px;border:none;background:linear-gradient(135deg,${color1},${color2});color:#fff;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;`;
+            const inactiveStyle = (r, g, b, hex) => `flex:1;padding:9px;border-radius:8px;border:1px solid rgba(${r},${g},${b},0.4);background:rgba(${r},${g},${b},0.07);color:${hex};font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;`;
+            
+            document.getElementById('panel-create').style.display = (tab === 'create') ? 'block' : 'none';
+            document.getElementById('panel-scrape').style.display = (tab === 'scrape') ? 'block' : 'none';
+            
+            document.getElementById('tab-create').style.cssText = (tab === 'create') ? activeStyle('#6366f1', '#8b5cf6') : inactiveStyle(99, 102, 241, '#6366f1');
+            document.getElementById('tab-scrape').style.cssText = (tab === 'scrape') ? activeStyle('#f59e0b', '#d97706') : inactiveStyle(251, 191, 36, '#fbbf24');
+
+            // Hide terminal when switching away from create (terminal only shows when auto-pilot is running)
+            if (tab !== 'create') {
+                document.getElementById('ss-agentic-terminal').style.display = 'none';
+                if (!generatedHTML) {
+                    document.getElementById('ss-empty-state').style.display = 'flex';
+                    document.getElementById('ss-story-output').classList.remove('visible');
+                }
             }
+            document.getElementById('ss-status-text').textContent = isGenerating ? 'Đang viết...' : 'Chờ lệnh';
         };
 
         // ---- Scrape word counter ----
@@ -1356,8 +1627,9 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
 
         // ---- DOM refs ----
         const btnGenerate = document.getElementById('ss-btn-generate');
-        const btnSplit    = document.getElementById('ss-btn-split');
-        const btnNew      = document.getElementById('ss-btn-new');
+        const btnSplit     = document.getElementById('ss-btn-split');
+        const btnAutoPilot = document.getElementById('ss-btn-autopilot');
+        const btnNew       = document.getElementById('ss-btn-new');
         const statusDot   = document.getElementById('ss-status-dot');
         const statusText  = document.getElementById('ss-status-text');
         const progressWrap = document.getElementById('ss-progress');
@@ -1410,7 +1682,7 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
 
                     const { ai_prompt: autoPrompt, gemini_key } = keyRes.data;
 
-                    const rawJson = await callGeminiFromBrowser(autoPrompt + '\n\nRespond ONLY in valid JSON: {"genres":["..."],"tone":"..."}', gemini_key, aiModel);
+                    const rawJson = await callGeminiFromBrowser(autoPrompt + '\n\nRespond ONLY in valid JSON: {"genres":["..."],"tone":"...", "titles":["..."]}', gemini_key, aiModel);
 
                     // Extract JSON
                     const match = rawJson.match(/\{[\s\S]*\}/);
@@ -1418,8 +1690,31 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
 
                     const genres = data.genres || [];
                     const tone = data.tone || '';
+                    const titles = data.titles || [];
 
-                    // Clear old selections
+                    // 1. Suggest Titles
+                    const titleInput = document.getElementById('ss-title');
+                    const suggestionsWrap = document.getElementById('title-suggestions');
+                    if (titleInput && suggestionsWrap) {
+                        suggestionsWrap.innerHTML = '';
+                        if (titles.length > 0) {
+                            if (!titleInput.value.trim()) {
+                                titleInput.value = titles[0]; // Auto-fill first
+                            }
+                            // Render clickable tags
+                            titles.forEach(t => {
+                                const span = document.createElement('span');
+                                span.style.cssText = 'font-size:11px; padding:4px 8px; border-radius:6px; background:rgba(99,102,241,0.1); color:#a5b4fc; cursor:pointer; border:1px solid rgba(99,102,241,0.3); transition:all 0.2s';
+                                span.onmouseover = () => span.style.background = 'rgba(99,102,241,0.2)';
+                                span.onmouseout = () => span.style.background = 'rgba(99,102,241,0.1)';
+                                span.textContent = t;
+                                span.onclick = () => { titleInput.value = t; };
+                                suggestionsWrap.appendChild(span);
+                            });
+                        }
+                    }
+
+                    // 2. Clear & Apply old selections
                     selectedGenres = [];
                     document.querySelectorAll('.genre-tag').forEach(t => t.classList.remove('active'));
 
@@ -1429,7 +1724,7 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
                         if (tag) { tag.classList.add('active'); selectedGenres.push(g); }
                     });
 
-                    // Apply tone
+                    // 3. Apply tone
                     const toneSelect = document.getElementById('ss-tone');
                     for (let opt of toneSelect.options) {
                         if (opt.value.includes(tone) || tone.includes(opt.value.split(',')[0])) { opt.selected = true; break; }
@@ -1503,6 +1798,7 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
             isGenerating = true;
             btnGenerate.disabled = true;
             btnSplit.disabled = true;
+            if (btnAutoPilot) btnAutoPilot.disabled = true;
             document.getElementById('ss-btn-icon').textContent = '⏳';
             document.getElementById('ss-btn-text').textContent = 'Đang sáng tác...';
 
@@ -1561,9 +1857,21 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
                         setProgress(batchPct, `Viết chương ${chStart}–${chEnd} / ${totalChaps}...`);
 
                         // Build batch prompt
-                        const batchPrompt = aiPrompt
+                        let batchPrompt = aiPrompt
                             .replace(`Viết đúng ${totalChaps} chương`, `Viết đúng ${chEnd - chStart + 1} chương (từ Chương ${chStart} đến Chương ${chEnd})`)
-                            .replace('Hãy bắt đầu viết ngay bây giờ:', `Ghi nhớ: đây là phần ${batch + 1}/${totalBatches} của bộ truyện. Tiếp tục mạch truyện tự nhiên nếu đây không phải phần đầu.\nHãy bắt đầu viết ngay từ Chương ${chStart}:`);
+                            .replace('Hãy bắt đầu viết ngay bây giờ:', `Ghi nhớ: đây là phần ${batch + 1}/${totalBatches} của bộ truyện. Tiếp tục xây dựng tình tiết hấp dẫn, TUYỆT ĐỐI KHÔNG BẮT ĐẦU LẠI TỪ ĐẦU.\nHãy bắt đầu viết NGAY TỪ Chương ${chStart}:`);
+
+                        // If not the first batch, don't ask for Title and Description again
+                        // AND MUST INCLUDE THE PREVIOUS GENERATED CONTEXT SO IT DOESN'T REPEAT PLOTS!
+                        if (batch > 0) {
+                            batchPrompt = batchPrompt.replace(/1\. BẮT BUỘC bắt đầu bằng dòng: "Tiêu đề:.*?\n/g, '')
+                                                     .replace(/2\. BẮT BUỘC dòng thứ hai là: "Mô tả:.*?\n/g, '');
+                                                     
+                            let safeContext = rawContent;
+                            if (safeContext.length > 5000) safeContext = "..." + safeContext.slice(-5000);
+                            
+                            batchPrompt = `[CỐT TRUYỆN ĐÃ XẢY RA TRONG CÁC CHƯƠNG TRƯỚC - HÃY ĐỌC THẬT KỸ ĐỂ DUY TRÌ TÍNH NHẤT QUÁN CỦA TÊN NHÂN VẬT VÀ TÌNH TIẾT, TUYỆT ĐỐI KHÔNG LẶP LẠI VÀ KHÔNG VIẾT LẠI DOẠN MỞ ĐẦU NÀY NỮA]:\n${safeContext}\n\n[HẾT TÓM TẮT TRƯỚC HÃY TIẾP TỤC] MỤC TIÊU TIẾP THEO:\n\n` + batchPrompt;
+                        }
 
                         const batchContent = await callGeminiFromBrowser(batchPrompt, gemini_key, aiModel);
                         rawContent += (rawContent ? '\n\n' : '') + batchContent;
@@ -1628,6 +1936,7 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
 
                 statsEl.style.display = 'flex';
                 btnSplit.disabled = false;
+                if (btnAutoPilot) btnAutoPilot.disabled = false;
                 btnNew.style.display = 'block';
                 document.getElementById('ss-btn-review').style.display = 'block';
                 setStatus('Truyện đã sẵn sàng để duyệt', 'active');
@@ -1718,13 +2027,18 @@ ${storyContent.slice(0, 25000)}`;
 
                     reviewContent.innerHTML = '<p style="margin:8px 0;">' + formatted + '</p>';
                     
-                    // Add Fix Button
+                    // Add Fix Button & Custom User Request Field
                     reviewContent.innerHTML += `
-                        <div style="margin-top:30px; text-align:center; padding-top:20px; border-top:1px solid rgba(255,255,255,0.05);">
-                            <button id="ss-btn-apply-fix" style="padding:14px 28px; border-radius:10px; border:none; background:linear-gradient(135deg, #fbbf24, #f59e0b); color:#111827; font-weight:800; font-size:15px; cursor:pointer; box-shadow:0 4px 15px rgba(245,158,11,0.3); transition:transform 0.2s;">
-                                ✨ Áp dụng Góp ý & Viết lại Truyện
-                            </button>
-                            <div style="font-size:11px; color:#6b7280; margin-top:8px;">Hệ thống sẽ giữ nguyên dàn ý và sửa lại văn bản dựa trên các hạt sạn được nêu.</div>
+                        <div style="margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.05);">
+                            <label style="display:block; font-size:13px; font-weight:700; color:#fbbf24; margin-bottom:8px;">💡 Yêu cầu bổ sung của bạn (tuỳ chọn):</label>
+                            <textarea id="ss-custom-fix-prompt" placeholder="Ví dụ: Đổi kết truyện bi thảm hơn, cho nhân vật nam phụ ác hơn, hay lược bỏ đoạn miêu tả cảnh tĩnh tĩnh..." style="width:100%; height:80px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:12px; color:#fff; font-family:inherit; font-size:13px; resize:vertical; margin-bottom:16px; box-sizing:border-box;"></textarea>
+                            
+                            <div style="text-align:center;">
+                                <button id="ss-btn-apply-fix" style="padding:14px 28px; border-radius:10px; border:none; background:linear-gradient(135deg, #fbbf24, #f59e0b); color:#111827; font-weight:800; font-size:15px; cursor:pointer; box-shadow:0 4px 15px rgba(245,158,11,0.3); transition:transform 0.2s;">
+                                    ✨ Áp dụng Góp ý & Viết lại Truyện
+                                </button>
+                                <div style="font-size:11px; color:#6b7280; margin-top:8px;">Hệ thống sẽ giữ nguyên dàn ý và sửa lại văn bản dựa trên các hạt sạn được nêu.</div>
+                            </div>
                         </div>
                     `;
 
@@ -1737,6 +2051,8 @@ ${storyContent.slice(0, 25000)}`;
                             this.style.opacity = '0.7';
 
                             try {
+                                const customRequest = document.getElementById('ss-custom-fix-prompt')?.value.trim() || '';
+                                
                                 // Extract chapters from current text
                                 const contentText = storyText.innerText || '';
                                 // Split by "Chương " but keep it (using positive regex if possible, or manual slice)
@@ -1769,13 +2085,15 @@ Dựa vào BÀI NHẬN XÉT GÓP Ý TRUYỆN sau đây:
 --- NHẬN XÉT ---
 ${review.slice(0, 4000)}
 --- HẾT NHẬN XÉT ---
+${customRequest ? `\n--- YÊU CẦU THÊM TỪ TÁC GIẢ BẮT BUỘC PHẢI NGHE THEO ---\n${customRequest}\n----------------------------------------------------\n` : ''}
 
 YÊU CẦU:
 Hãy SỬA CHỮA, TỐI ƯU VÀ VIẾT LẠI hoàn chỉnh đoạn truyện bên dưới.
 1. Khắc phục triệt để các "Hạt sạn" và mâu thuẫn được nêu trong nhận xét.
 2. Thêm thắt chi tiết miêu tả, chiều sâu tâm lý nhân vật nếu nhận xét có gợi ý.
-3. BẮT BUỘC giữ nguyên cấu trúc tiêu đề "Chương X: [Tên]" ở đầu mỗi chương.
-4. Trả về toàn bộ phần văn bản đã sửa (không giải thích thêm).
+${customRequest ? '3. BẮT BUỘC SỬA ĐỔI dựa trên "YÊU CẦU THÊM TỪ TÁC GIẢ".' : ''}
+4. BẮT BUỘC giữ nguyên cấu trúc tiêu đề "Chương X: [Tên]" ở đầu mỗi chương.
+5. Trả về toàn bộ phần văn bản đã sửa (không giải thích thêm).
 
 --- ĐOẠN TRUYỆN CẦN SỬA ---
 ${chunkChaps}`;
@@ -2023,8 +2341,6 @@ ${chunkChaps}`;
         if (btnPublishNow) btnPublishNow.addEventListener('click', () => handleSchedule(true));
         if (btnSchedule)   btnSchedule.addEventListener('click',   () => handleSchedule(false));
 
-    })();
-
     // ---- Bookmarklet receiver (postMessage from external sites) ----
     window.addEventListener('message', function(e) {
         try {
@@ -2052,6 +2368,124 @@ ${chunkChaps}`;
             document.getElementById('scrape-status').textContent = '✅ Nội dung từ ' + (data.source || 'trang web') + ' đã được tải vào. Chọn chế độ AI và bấm xử lý!';
         } catch(e2) { /* ignore non-JSON messages */ }
     });
+
+    // ==============================================
+    // AUTO-PILOT / AGENTIC WORKFLOW SYSTEM
+    // (Triggered by "Lên lịch Auto-Pilot" button in Sáng Tác panel)
+    // ==============================================
+    const agenticTerminal = document.getElementById('ss-agentic-terminal');
+    
+    function logTerminal(msg, type = 'info') {
+        const line = document.createElement('div');
+        line.style.marginBottom = '6px';
+        if (type === 'success') { line.style.color = '#10b981'; line.textContent = '✓ ' + msg; }
+        else if (type === 'error') { line.style.color = '#ef4444'; line.style.fontWeight = 'bold'; line.textContent = '✗ ' + msg; }
+        else if (type === 'action') { line.style.color = '#fbbf24'; line.style.fontWeight = 'bold'; line.textContent = '> ' + msg; }
+        else { line.style.color = '#d1d5db'; line.textContent = '- ' + msg; }
+        agenticTerminal.appendChild(line);
+        agenticTerminal.scrollTop = agenticTerminal.scrollHeight;
+    }
+
+    if (btnAutoPilot) {
+        btnAutoPilot.addEventListener('click', async function() {
+            // Read ALL values from the Sáng Tác panel
+            const aiModel    = document.getElementById('ss-ai-model')?.value || 'gemini-2.5-flash';
+            const promptStr  = document.getElementById('ss-prompt')?.value?.trim() || '';
+            const tone       = document.getElementById('ss-tone')?.value || 'hùng tráng, mạnh mẽ';
+            const numChapters = document.getElementById('ss-chapters')?.value || '5';
+            const genre = selectedGenres.length > 0 ? selectedGenres.join(', ') : (document.querySelector('.genre-tag.active')?.dataset?.genre || 'Tu Tiên');
+
+            btnAutoPilot.disabled = true;
+            btnAutoPilot.innerHTML = '⚙️ Đang Auto-Pilot...';
+            btnSplit.disabled = true;
+
+            // Switch editor view to terminal
+            storyOutput.classList.remove('visible');
+            emptyState.style.display = 'none';
+            agenticTerminal.innerHTML = '<div style="color:#10b981; font-weight:bold; margin-bottom:12px;">> AUTO-PILOT MODE ACTIVE — Chạy Agentic Pipeline...</div>';
+            agenticTerminal.style.display = 'flex';
+            setStatus('Agentic Auto-Pilot đang chạy...', 'loading');
+
+            try {
+                // STEP 1: Oracle (World Building)
+                logTerminal('[1] The Oracle — Khởi tạo Bối cảnh / Thế giới...', 'info');
+                let r1 = await fetch(AJAX_URL, {
+                    method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    body: new URLSearchParams({action: 'temply_step_oracle', nonce: NONCE, ai_model: aiModel, genre: genre, tone: tone, keywords: promptStr})
+                }).then(r => r.json());
+                if (!r1.success) throw new Error(r1.data?.message || 'Lỗi Oracle');
+                const worldData = r1.data.result;
+                logTerminal('Thế giới đã được định hình!', 'success');
+
+                // STEP 2: Puppet Master (Characters)
+                logTerminal('[2] The Puppet Master — Đúc nhân vật...', 'info');
+                let r2 = await fetch(AJAX_URL, {
+                    method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    body: new URLSearchParams({action: 'temply_step_puppet', nonce: NONCE, ai_model: aiModel, world: worldData, keywords: promptStr})
+                }).then(r => r.json());
+                if (!r2.success) throw new Error(r2.data?.message || 'Lỗi Puppet');
+                const charData = r2.data.result;
+                logTerminal('Dàn nhân vật đã sẵn sàng!', 'success');
+
+                // STEP 3: Architect (Chapter Outline)
+                logTerminal(`[3] The Architect — Lên khung ${numChapters} chương...`, 'info');
+                let r3 = await fetch(AJAX_URL, {
+                    method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    body: new URLSearchParams({action: 'temply_step_architect', nonce: NONCE, ai_model: aiModel, world: worldData, characters: charData, num_chapters: numChapters, keywords: promptStr})
+                }).then(r => r.json());
+                if (!r3.success) throw new Error(r3.data?.message || 'Lỗi Architect');
+                const outlineArr = r3.data.result;
+                if (!Array.isArray(outlineArr) || outlineArr.length === 0) throw new Error('Dàn ý trả về rỗng.');
+                logTerminal(`Chốt xong dàn ý ${outlineArr.length} chương!`, 'success');
+
+                // STEP 4: Publisher (Create Parent Post)
+                logTerminal('[4] The Publisher — Tạo bài viết gốc + ảnh bìa...', 'info');
+                let r4 = await fetch(AJAX_URL, {
+                    method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    body: new URLSearchParams({action: 'temply_step_create_story', nonce: NONCE, ai_model: aiModel, world: worldData, characters: charData, genre: genre, tone: tone, keywords: promptStr})
+                }).then(r => r.json());
+                if (!r4.success) throw new Error(r4.data?.message || 'Lỗi Publisher');
+                const truyenId = r4.data.truyen_id;
+                logTerminal(`Truyện gốc đã tạo: "${r4.data.title}" (ID: ${truyenId})`, 'success');
+
+                // STEP 5: Ghostwriter Loop
+                logTerminal(`[5] The Ghostwriter — Bắt đầu viết ${outlineArr.length} chương...`, 'action');
+                for (let i = 0; i < outlineArr.length; i++) {
+                    const chapMeta = outlineArr[i];
+                    logTerminal(`Đang viết Chương ${chapMeta.chap_num}: "${chapMeta.title}"...`, 'info');
+                    let rChap = await fetch(AJAX_URL, {
+                        method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                        body: new URLSearchParams({
+                            action: 'temply_step_write_chapter', nonce: NONCE, ai_model: aiModel,
+                            truyen_id: truyenId, chap_num: chapMeta.chap_num, chap_title: chapMeta.title, summary: chapMeta.summary,
+                            world: worldData, characters: charData, genre: genre, tone: tone, keywords: promptStr, custom_comments: '',
+                            is_final_chapter: (i === outlineArr.length - 1 ? 1 : 0)
+                        })
+                    }).then(r => r.json());
+                    if (!rChap.success) {
+                        logTerminal(`Lỗi chương ${chapMeta.chap_num}: ${rChap.data?.message}. Bỏ qua & tiếp tục.`, 'error');
+                    } else {
+                        logTerminal(`✓ Xong: "${rChap.data.title}"`, 'success');
+                    }
+                }
+
+                logTerminal(`\n🎉 AUTO-PILOT HOÀN TẤT! Truyện ID ${truyenId} đã có ${outlineArr.length} chương trên website.`, 'action');
+                showToast('🤖 Auto-Pilot hoàn tất! Kiểm tra truyện mới trên website.', 'success');
+                setStatus('Auto-Pilot hoàn tất!', 'active');
+
+            } catch(e) {
+                logTerminal('LỖI: ' + e.message, 'error');
+                showToast('❌ ' + e.message, 'error');
+                setStatus('Lỗi Auto-Pilot', '');
+            } finally {
+                btnAutoPilot.disabled = false;
+                btnAutoPilot.innerHTML = '🤖 Lên lịch Auto-Pilot';
+                btnSplit.disabled = false;
+            }
+        });
+    }
+    
+    })(); // End main IIFE containing Story Studio logic
     </script>
 
     <!-- Bookmarklet Install Guide -->

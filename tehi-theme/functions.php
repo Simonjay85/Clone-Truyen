@@ -192,6 +192,49 @@ function temply_handle_like_chapter() {
 }
 
 // ==========================================
+// MINIMALIST ADMIN UI
+// ==========================================
+
+/**
+ * 1. Dọn dẹp Dashboard & Ẩn các menu không cần thiết
+ */
+add_action('wp_dashboard_setup', 'minimalist_clean_dashboard');
+function minimalist_clean_dashboard() {
+    global $wp_meta_boxes;
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+}
+
+// Ẩn bớt thông báo rác (Admin Notices)
+add_action('admin_head', 'minimalist_hide_notices');
+function minimalist_hide_notices() {
+    echo '<style>.notice, .update-nag { display: none !important; }</style>';
+}
+
+// ───────────────────────────────────────────
+// 4. BỘ GIAO DIỆN QUẢN TRỊ (ADMIN) - VINTAGE MODE
+// ───────────────────────────────────────────
+function tehi_vintage_admin_styles() {
+    // Gọi file CSS đổi màu hoài cổ (giữ nguyên cấu trúc HTML gốc để max tốc độ)
+    wp_enqueue_style(
+        'tehi-vintage-admin-css',
+        get_template_directory_uri() . '/assets/css/vintage-admin.css',
+        array(),
+        '1.0.0'
+    );
+}
+add_action('admin_enqueue_scripts', 'tehi_vintage_admin_styles');
+
+/**
+ * 2.1. Nạp Giao diện màn hình Đăng nhập (Login screen)
+ */
+function blue_horizon_login_enqueue() {
+    wp_enqueue_style( 'blue-horizon-login-css', get_template_directory_uri() . '/assets/css/blue-horizon-login.css', array(), '1.0', 'all' );
+}
+add_action( 'login_enqueue_scripts', 'blue_horizon_login_enqueue' );
+// ==========================================
 // TEMPLY AI ASSISTANT INTEGRATION
 // ==========================================
 
@@ -496,72 +539,65 @@ function temply_handle_ai_split_chapters() {
         wp_send_json_error(array('message' => 'Lỗi kết nối hoặc nội dung trống.'));
     }
 
-    // ── Strategy 1: split by <h2>/<h3> tags ─────────────────────────────────
-    $parts = preg_split('/(<h[1-6][^>]*>.*?<\/h[1-6]>)/is', $content, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
-
     $chapters = [];
-    $current_chapter_title   = '';
-    $current_chapter_content = '';
     $count = 1;
+    $current_chapter_title = '';
+    $current_chapter_content = '';
+    $story_title = '';
+    $story_desc = '';
+    $parsing_state = 'init';
 
-    foreach ($parts as $part) {
-        if (preg_match('/<h[1-6][^>]*>(.*?)<\/h[1-6]>/is', $part, $matches)) {
-            $text_title = trim(strip_tags($matches[1]));
-            if (preg_match('/(?:Chương|Chapter|Hồi)\s*\d+/iu', $text_title)) {
-                if (!empty(trim($current_chapter_content)) || !empty($current_chapter_title)) {
-                    $chapters[] = array(
-                        'title'   => $current_chapter_title ?: ('Chương ' . $count),
-                        'content' => $current_chapter_content
-                    );
-                    $count++;
-                }
-                $current_chapter_title   = $text_title;
-                $current_chapter_content = '';
-                continue;
-            }
+    // Strip tags and markdown
+    $plain_text = wp_strip_all_tags($content);
+    $plain_text = str_replace(["\r\n", "\r"], "\n", $plain_text);
+    // Strip markdown heading markers
+    $plain_text = preg_replace('/^#{1,6}\s+/m', '', $plain_text);
+    $lines = explode("\n", $plain_text);
+
+    foreach ($lines as $line) {
+        $trim_line = trim($line);
+        if (empty($trim_line)) continue;
+
+        if (preg_match('/^(?:Tiêu đề|Title|Tên truyện):\s*(.+)/iu', $trim_line, $m)) {
+            $story_title = trim($m[1]);
+            $story_title = preg_replace('/^["\']|["\']$/', '', $story_title);
+            continue;
         }
-        $current_chapter_content .= $part . "\n";
-    }
-    if (!empty(trim($current_chapter_content)) || !empty($current_chapter_title)) {
-        $chapters[] = array(
-            'title'   => $current_chapter_title ?: ('Chương ' . $count),
-            'content' => $current_chapter_content
-        );
-    }
 
-    // ── Strategy 2 (fallback): scan plain text for "Chương N" (even with markdown #) ─
-    if (count($chapters) <= 1) {
-        $chapters = [];
-        $count    = 1;
-        $current_chapter_title   = '';
-        $current_chapter_content = '';
+        if (preg_match('/^(?:Mô tả|Synopsis|Description|Tóm tắt):\s*(.*)/iu', $trim_line, $m)) {
+            $story_desc = '';
+            if (!empty(trim($m[1]))) {
+                $story_desc .= '<p>' . esc_html(trim($m[1])) . '</p>' . "\n";
+            }
+            $parsing_state = 'desc';
+            continue;
+        }
 
-        // Strip tags and markdown
-        $plain_text = wp_strip_all_tags($content);
-        $plain_text = str_replace(["\r\n", "\r"], "\n", $plain_text);
-        // Strip markdown heading markers
-        $plain_text = preg_replace('/^#{1,6}\s+/m', '', $plain_text);
-        $lines = explode("\n", $plain_text);
-
-        foreach ($lines as $line) {
-            $line = trim($line);
-            if (empty($line)) continue;
-
-            // Match: optional markdown # then "Chương N" with optional title
-            if (preg_match('/^#*\s*((?:Chương|Chapter|Hồi)\s*\d+[^\r\n]*)/iu', $line, $hm)) {
+        // Match: "Chương N" with optional title
+        if (preg_match('/^(?:#|\*)*\s*((?:Chương|Chapter|Hồi)\s*\d+[^\r\n]*)/iu', $trim_line, $hm)) {
+            if ($parsing_state === 'chapter') {
                 if (!empty(trim($current_chapter_content)) || !empty($current_chapter_title)) {
                     $chapters[] = ['title' => $current_chapter_title ?: ('Chương ' . $count), 'content' => $current_chapter_content];
                     $count++;
                 }
-                $current_chapter_title   = trim($hm[1]);
-                $current_chapter_content = '';
-            } else {
-                $current_chapter_content .= '<p>' . esc_html($line) . '</p>' . "\n";
             }
+            $current_chapter_title   = trim($hm[1]);
+            $current_chapter_title   = preg_replace('/^[*_]+|[*_]+$/', '', $current_chapter_title); // remove markdown bolds in title
+            $current_chapter_content = '';
+            $parsing_state = 'chapter';
+            continue;
         }
-        if (!empty(trim($current_chapter_content)) || !empty($current_chapter_title)) {
-            $chapters[] = ['title' => $current_chapter_title ?: ('Chương ' . $count), 'content' => $current_chapter_content];
+
+        // Append text based on current state
+        if ($parsing_state === 'desc') {
+            $story_desc .= '<p>' . esc_html($trim_line) . '</p>' . "\n";
+        } elseif ($parsing_state === 'chapter') {
+            $current_chapter_content .= '<p>' . esc_html($trim_line) . '</p>' . "\n";
         }
+    }
+
+    if ($parsing_state === 'chapter' && (!empty(trim($current_chapter_content)) || !empty($current_chapter_title))) {
+        $chapters[] = ['title' => $current_chapter_title ?: ('Chương ' . $count), 'content' => $current_chapter_content];
     }
 
     if (count($chapters) === 0) {
@@ -592,11 +628,16 @@ function temply_handle_ai_split_chapters() {
     // ── Clear the parent truyen post_content (replace with short synopsis) ──
     // This prevents the story page from showing 10,000+ words in the intro box
     if ($created > 0) {
-        wp_update_post(array(
+        $final_desc = !empty($story_desc) ? $story_desc : $first_chapter_excerpt;
+        $update_payload = array(
             'ID'           => $truyen_id,
-            'post_content' => $first_chapter_excerpt,
-            'post_excerpt' => $first_chapter_excerpt,
-        ));
+            'post_content' => $final_desc,
+            'post_excerpt' => wp_trim_words(wp_strip_all_tags($final_desc), 50, '...'),
+        );
+        if (!empty($story_title)) {
+            $update_payload['post_title'] = $story_title;
+        }
+        wp_update_post($update_payload);
     }
 
     wp_send_json_success(array(
@@ -625,6 +666,13 @@ function temply_studio_create_draft() {
         wp_send_json_error(array('message' => 'Không tạo được bài viết: ' . $post_id->get_error_message()));
     }
 
+    // Auto-assign random categories if none exist
+    $categories = array('Đô Thị Ẩn Thân', 'Drama', 'Ngôn tình đô thị', 'Sảng Văn', 'Trọng sinh', 'Vả Mặt', 'Hệ thống', 'Xuyên Không');
+    shuffle($categories);
+    $selected_terms = array_slice($categories, 0, rand(2, 3));
+    // Assign to taxonomy 'the_loai' (append = false to set them exactly)
+    wp_set_object_terms($post_id, $selected_terms, 'the_loai', false);
+
     wp_send_json_success(array('post_id' => $post_id));
 }
 
@@ -648,16 +696,18 @@ function temply_studio_get_prompt() {
     $chapters = max(3, min(20, $chapters));
 
     $ai_prompt  = "Bạn là một nhà văn sáng tác truyện chuyên nghiệp người Việt.\n";
-    $ai_prompt .= "Hãy viết một bộ truyện hoàn chỉnh với tiêu đề: \"$title\".\n";
+    $ai_prompt .= "Nhiệm vụ của bạn là sáng tác một bộ truyện mạch lạc, lôi cuốn.\n";
+    $ai_prompt .= "Cố định Tiêu đề truyện: \"$title\". TUYỆT ĐỐI GIỮ NGUYÊN tiêu đề này, KHÔNG tự ý đổi tên.\n";
     $ai_prompt .= "Thể loại: $genre. Giọng văn: $tone.\n";
     $ai_prompt .= "Ý tưởng cốt lõi: $prompt\n\n";
     $ai_prompt .= "YÊU CẦU BẮT BUỘC:\n";
-    $ai_prompt .= "1. Viết đúng $chapters chương, mỗi chương khoảng 1500-2500 từ tiếng Việt (đủ nội dung, hấp dẫn, không tóm tắt sơ sài).\n";
-    $ai_prompt .= "2. Mỗi chương BẮT BUỘC phải bắt đầu bằng TIÊU ĐỀ theo format CHÍNH XÁC: \"Chương [số]: [tên chương]\" trên một dòng riêng biệt.\n";
-    $ai_prompt .= "3. Các chương phải liên kết mạch lạc, cốt truyện nhất quán, không mâu thuẫn.\n";
-    $ai_prompt .= "4. Phong cách viết hấp dẫn, có đối thoại, mô tả cảm xúc sinh động.\n";
-    $ai_prompt .= "5. Kết thúc chương cuối phải hoàn chỉnh, có hậu (Happy ending hoặc Open ending).\n";
-    $ai_prompt .= "6. KHÔNG viết thêm bất kỳ ghi chú nào ngoài nội dung truyện.\n";
+    $ai_prompt .= "1. BẮT BUỘC bắt đầu bằng dòng: \"Tiêu đề: $title\"\n";
+    $ai_prompt .= "2. BẮT BUỘC dòng thứ hai là: \"Mô tả: [Đoạn tóm tắt giới thiệu truyện ngắn gọn, hấp dẫn]\"\n";
+    $ai_prompt .= "3. Viết đúng $chapters chương, mỗi chương khoảng 1500-2500 từ tiếng Việt (đủ nội dung, hấp dẫn, không tóm tắt sơ sài).\n";
+    $ai_prompt .= "4. Mỗi chương BẮT BUỘC phải bắt đầu bằng dòng ĐÚNG FORMAT: \"Chương [số]: [tên chương]\" trên một dòng riêng biệt.\n";
+    $ai_prompt .= "5. Các chương phải liên kết mạch lạc, cốt truyện nhất quán, không mâu thuẫn.\n";
+    $ai_prompt .= "6. Kết thúc chương cuối phải hoàn chỉnh, có hậu (Happy ending hoặc Open ending).\n";
+    $ai_prompt .= "7. KHÔNG viết thêm bất kỳ ghi chú nào ngoài nội dung truyện.\n";
     $ai_prompt .= "Hãy bắt đầu viết ngay bây giờ:";
 
     $gemini_key = tehi_get_gemini_key();
@@ -691,16 +741,20 @@ function temply_studio_generate_story() {
 
     // Build AI prompt
     $ai_prompt  = "Bạn là một nhà văn sáng tác truyện chuyên nghiệp người Việt.\n";
-    $ai_prompt .= "Hãy viết một bộ truyện hoàn chỉnh với tiêu đề: \"$title\".\n";
+    $ai_prompt .= "Nhiệm vụ của bạn là sáng tác một bộ truyện mạch lạc, lôi cuốn.\n";
+    if ($title && $title !== 'Truyện chưa đặt tên') {
+        $ai_prompt .= "Gợi ý tiêu đề: \"$title\" (Bạn có thể tinh chỉnh cho hay hơn).\n";
+    }
     $ai_prompt .= "Thể loại: $genre. Giọng văn: $tone.\n";
     $ai_prompt .= "Ý tưởng cốt lõi: $prompt\n\n";
     $ai_prompt .= "YÊU CẦU BẮT BUỘC:\n";
-    $ai_prompt .= "1. Viết đúng $chapters chương, mỗi chương khoảng 1500-2500 từ tiếng Việt (đủ nội dung, hấp dẫn, không tóm tắt sơ sài).\n";
-    $ai_prompt .= "2. Mỗi chương BẮT BUỘC phải bắt đầu bằng TIÊU ĐỀ theo format CHÍNH XÁC: \"Chương [số]: [tên chương]\" trên một dòng riêng biệt.\n";
-    $ai_prompt .= "3. Các chương phải liên kết mạch lạc, cốt truyện nhất quán, không mâu thuẫn.\n";
-    $ai_prompt .= "4. Phong cách viết hấp dẫn, có đối thoại, mô tả cảm xúc sinh động.\n";
-    $ai_prompt .= "5. Kết thúc chương cuối phải hoàn chỉnh, có hậu (Happy ending hoặc Open ending).\n";
-    $ai_prompt .= "6. KHÔNG viết thêm bất kỳ ghi chú nào ngoài nội dung truyện.\n";
+    $ai_prompt .= "1. BẮT BUỘC bắt đầu bằng dòng: \"Tiêu đề: [Tên truyện ấn tượng do bạn nghĩ ra]\"\n";
+    $ai_prompt .= "2. BẮT BUỘC dòng thứ hai là: \"Mô tả: [Đoạn tóm tắt giới thiệu truyện ngắn gọn, hấp dẫn]\"\n";
+    $ai_prompt .= "3. Viết đúng $chapters chương, mỗi chương khoảng 1500-2500 từ tiếng Việt (đủ nội dung, hấp dẫn, không tóm tắt sơ sài).\n";
+    $ai_prompt .= "4. Mỗi chương BẮT BUỘC phải bắt đầu bằng TIÊU ĐỀ theo format CHÍNH XÁC: \"Chương [số]: [tên chương]\" trên một dòng riêng biệt.\n";
+    $ai_prompt .= "5. Các chương phải liên kết mạch lạc, cốt truyện nhất quán, không mâu thuẫn.\n";
+    $ai_prompt .= "6. Kết thúc chương cuối phải hoàn chỉnh, có hậu (Happy ending hoặc Open ending).\n";
+    $ai_prompt .= "7. KHÔNG viết thêm bất kỳ ghi chú nào ngoài nội dung truyện.\n";
     $ai_prompt .= "Hãy bắt đầu viết ngay bây giờ:";
 
     $raw_text = tehi_call_ai_api($ai_prompt, false, 90, $ai_model);
@@ -815,8 +869,9 @@ function temply_studio_autodetect_prompt() {
     $ai_prompt .= "\"$prompt\"\n\n";
     $ai_prompt .= "Danh sách thể loại có thể chọn: $genre_list\n";
     $ai_prompt .= "Danh sách giọng văn có thể chọn: $tone_list\n\n";
+    $ai_prompt .= "Cũng gợi ý 3 tựa đề truyện thu hút, phù hợp với nội dung.\n";
     $ai_prompt .= "Trả về CHỈ MỘT JSON hợp lệ (không giải thích thêm):\n";
-    $ai_prompt .= '{"genres": ["Thể loại 1", "Thể loại 2"], "tone": "giọng văn phù hợp nhất"}';
+    $ai_prompt .= '{"genres": ["Thể loại 1", "Thể loại 2"], "tone": "giọng văn phù hợp nhất", "titles": ["Tựa đề 1", "Tựa đề 2", "Tựa đề 3"]}';
 
     $gemini_key = tehi_get_gemini_key();
 
