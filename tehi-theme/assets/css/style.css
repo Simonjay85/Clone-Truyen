@@ -1,5 +1,4 @@
-@import "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap";
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Titillium+Web:wght@900&display=swap");
+/* Google Fonts are loaded in header.php via preload - removed @import to fix render-blocking */
 
 @font-face {
   font-family: "utm-a";

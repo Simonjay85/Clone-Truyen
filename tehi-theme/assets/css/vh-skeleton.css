@@ -1,0 +1,62 @@
+/* skeleton văn hiệp */
+
+.vh-skeleton-container {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+}
+
+.vh-skeleton-container-scroll {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+}
+.vh-skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(90deg, #ddd 25%, #eee 50%, #ddd 75%);
+  background-size: 200% 100%;
+  animation: vh-skeleton-loading 1.5s infinite linear;
+  z-index: 10;
+}
+
+@keyframes vh-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.vh-skeleton-image {
+  width: 100%;
+  height: 100%;
+}
+.vh-skeleton-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -ms-border-radius: 50% !important;
+  -o-border-radius: 50% !important;
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+
+.vh-skeleton-text {
+  height: calc(100% + 2px);
+  width: 100%;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+  -moz-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  -o-transform: translateY(-2px);
+}

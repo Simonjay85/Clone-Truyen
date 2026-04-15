@@ -18,7 +18,7 @@ if (!is_user_logged_in() && !is_admin()) {
 <meta name="keywords" content="<?php bloginfo('name'); ?>, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí" />
 <meta name="description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: '<?php bloginfo(\'name\'); ?> – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
 <link href="<?php echo esc_url(get_permalink()); ?>" rel="canonical" />
-<link href="https://tehitruyen.com/img_data/images/icon_tehi_truyen_2025.png" rel="shortcut icon" type="image/x-icon" />
+<link href="<?php echo get_site_url(); ?>/img_data/images/icon_tehi_truyen_2025.png" rel="shortcut icon" type="image/x-icon" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMCE7V4VHX"></script>
 <script>
@@ -54,13 +54,12 @@ if (!is_user_logged_in() && !is_admin()) {
             "contactOption": "TollFree",
             "areaServed": "VN"
         }],
-        "logo": "https://tehitruyen.com/img_data/images/logo-truyen-moi-v1.png"
+        "logo": "<?php echo get_site_url(); ?>/img_data/images/logo-truyen-moi-v1.png"
     }
 </script>
 <!-- DNS Prefetch for speed -->
 <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-<link rel="dns-prefetch" href="//tehitruyen.com">
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,42 +78,67 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 }
 .fas, .fa-solid { font-weight: 900 !important; }
 .fa-brands { font-family: "Font Awesome 6 Brands" !important; }
+}
 </style>
 
-<!-- ══ CRITICAL CSS (blocking – above fold) ══ -->
-<link rel="stylesheet" href="https://tehitruyen.com/templates/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://tehitruyen.com/templates/module/fontawesome-free-6.3.0-web/css/all.css">
-<link rel="stylesheet" href="https://tehitruyen.com/templates/css/style.css?ver=1119">
-<link rel="stylesheet" href="https://tehitruyen.com/templates/css/style-mongdaovien.css?ver=1119">
-<link rel="stylesheet" href="https://tehitruyen.com/templates/css/style-truyen-moi-v1.css?ver=1119">
-<link rel="stylesheet" href="https://tehitruyen.com/templates/css/media.css?ver=1119">
+<!-- ══ CRITICAL CSS - Only what's needed for above-fold render ══ -->
+<!-- bootstrap: grid + utilities needed before render -->
+<link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/bootstrap.min.css">
+<!-- base theme vars + body font (6.8KB) -->
+<link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/style.css?ver=1120">
 
-<!-- ══ NON-CRITICAL CSS (async – does not block render) ══ -->
-<link rel="preload" href="https://tehitruyen.com/templates/css/vh-skeleton.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://tehitruyen.com/templates/css/hover-min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<!-- ══ NON-CRITICAL CSS (async via print trick - most reliable) ══ -->
+<!-- FontAwesome - icons not above-fold critical -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+<!-- style-truyen-moi-v1.css - page-specific -->
+<link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/style-truyen-moi-v1.css?ver=1120" media="print" onload="this.media='all'">
+<!-- media.css - responsive breakpoints only -->
+<link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/media.css?ver=1120" media="print" onload="this.media='all'">
+<!-- style-mongdaovien.css - large 280KB, non-critical -->
+<link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/style-mongdaovien.css?ver=1120" media="print" onload="this.media='all'">
+<!-- bootstrap-icons - icon pack -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" media="print" onload="this.media='all'">
+<!-- swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" media="print" onload="this.media='all'">
+<!-- misc UI extras -->
+<link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/vh-skeleton.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/hover-min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
 <noscript>
-  <link rel="stylesheet" href="https://tehitruyen.com/templates/css/vh-skeleton.css">
-  <link rel="stylesheet" href="https://tehitruyen.com/templates/css/hover-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/style-truyen-moi-v1.css?ver=1120">
+  <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/media.css?ver=1120">
+  <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/style-mongdaovien.css?ver=1120">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/vh-skeleton.css">
+  <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/hover-min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
 </noscript>
 
 <!-- ══ PAGE-SPECIFIC CSS (not on reading page) ══ -->
 <?php if (!is_singular('chuong')): ?>
-<link rel="preload" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://tehitruyen.com/templates/css/emojionearea.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/emojionearea.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css" media="print" onload="this.media='all'">
 <noscript>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
-  <link rel="stylesheet" href="https://tehitruyen.com/templates/css/emojionearea.css">
+  <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/emojionearea.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css">
 </noscript>
 <?php endif; ?>
 
-<!-- ══ JQUERY: blocking (must run before other scripts) ══ -->
-<script src="https://tehitruyen.com/templates/js/jquery.min.js"></script>
+<!-- ══ JQUERY: async – loaded early but non-blocking ══ -->
+<script>
+// jQuery async loader - non-blocking
+(function(){
+  var s = document.createElement('script');
+  s.src = '<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/js/jquery.min.js';
+  s.async = true;
+  s.onload = function(){ window.jQueryReady = true; document.dispatchEvent(new Event('jQueryLoaded')); };
+  document.head.appendChild(s);
+})();
+</script>
 
 <!-- ══ ALL JS: defer (won't block render) ══ -->
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
@@ -123,18 +147,16 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
-<script defer src="https://tehitruyen.com/templates/js/vh-skeleton.js"></script>
-<script defer src="https://tehitruyen.com/templates/js/vanhiep_script.js"></script>
+<script defer src="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/js/vh-skeleton.js"></script>
+<script defer src="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/js/vanhiep_script.js"></script>
 
 <!-- ══ PAGE-SPECIFIC JS (not on reading page) ══ -->
 <?php if (!is_singular('chuong')): ?>
 <script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script defer src="https://tehitruyen.com/templates/js/emojionearea.js"></script>
+<script defer src="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/js/emojionearea.js"></script>
 <script defer src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"></script>
-<script defer src="https://tehitruyen.com/templates/module/sweetalert/sweetalert2.min.js"></script>
+<script defer src="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/templates/module/sweetalert/sweetalert2.min.js"></script>
 <?php endif; ?>
-
-
 
 
 
@@ -219,96 +241,100 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
     // Hàm khởi tạo Lenis 
     function initLenis() {
         lenis = new Lenis({
-            duration: toc_do, // Thời gian cuộn mượt
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing mượt mà
-            smoothWheel: true, // Kích hoạt cuộn mượt với chuột
-            smoothTouch: false, // Không mượt trên cảm ứng
+            autoRaf: true, // Use modern automatic RequestAnimationFrame handling
+            lerp: 0.1, // Optimal standard smoothing value
+            smoothWheel: true, // Smooth on desktop
+            smoothTouch: false, // Standard mobile scrolling
         });
-        // Vòng lặp cập nhật Lenis
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-        // lenis scroll bar start 
-        $(document).ready(function() {
-            const scrollbar = $('.lenis-scrollbar');
-            let isScrolling;
-            $(window).on('scroll', function() {
-                scrollbar.addClass('visible');
-                clearTimeout(isScrolling);
-                isScrolling = setTimeout(function() {
-                    scrollbar.removeClass('visible');
+        
+        // lenis scroll bar start (vanilla JS – no jQuery dependency)
+        const scrollbarEl = document.querySelector('.lenis-scrollbar');
+        if (scrollbarEl) {
+            let isScrollingTimer;
+            window.addEventListener('scroll', function() {
+                scrollbarEl.classList.add('visible');
+                clearTimeout(isScrollingTimer);
+                isScrollingTimer = setTimeout(function() {
+                    scrollbarEl.classList.remove('visible');
                 }, 1000);
             });
-            scrollbar.hover(
-                function() {
-                    scrollbar.addClass('visible');
-                },
-                function() {
-                    isScrolling = setTimeout(function() {
-                        scrollbar.removeClass('visible');
-                    }, 1000);
-                }
-            );
-        });
+            scrollbarEl.addEventListener('mouseenter', function() {
+                scrollbarEl.classList.add('visible');
+            });
+            scrollbarEl.addEventListener('mouseleave', function() {
+                isScrollingTimer = setTimeout(function() {
+                    scrollbarEl.classList.remove('visible');
+                }, 1000);
+            });
+        }
         const scrollbar = document.querySelector('.lenis-scrollbar');
         const scrollbarThumb = document.querySelector('.lenis-scrollbar-thumb');
-        lenis.on('scroll', ({
-            scroll,
-            limit
-        }) => {
-            const scrollRatio = scroll / limit;
-            const thumbPosition = scrollRatio * (scrollbar.clientHeight - scrollbarThumb.clientHeight);
-            scrollbarThumb.style.transform = `translateY(${thumbPosition}px)`;
-        });
-        // Drag functionality for scrollbar thumb
-        let isDragging = false;
-        let startY = 0;
-        let startScroll = 0;
-        scrollbarThumb.addEventListener('mousedown', (e) => {
-            isDragging = true;
-        });
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const deltaY = e.clientY - startY;
-            const scrollAmount = deltaY * (lenis.limit / (scrollbar.clientHeight - scrollbarThumb.clientHeight));
-            lenis.scrollTo(startScroll + scrollAmount, {
-                immediate: true
+        if (scrollbar && scrollbarThumb) {
+            lenis.on('scroll', ({
+                scroll,
+                limit
+            }) => {
+                const scrollRatio = scroll / limit;
+                const thumbPosition = scrollRatio * (scrollbar.clientHeight - scrollbarThumb.clientHeight);
+                scrollbarThumb.style.transform = `translateY(${thumbPosition}px)`;
             });
-        });
-        document.addEventListener('mouseup', () => {
-            if (isDragging) {
-                isDragging = false;
-                document.body.style.userSelect = ''; // Re-enable text selection
-            }
-        });
+            // Drag functionality for scrollbar thumb
+            let isDragging = false;
+            let startY = 0;
+            let startScroll = 0;
+            scrollbarThumb.addEventListener('mousedown', (e) => {
+                isDragging = true;
+            });
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaY = e.clientY - startY;
+                const scrollAmount = deltaY * (lenis.limit / (scrollbar.clientHeight - scrollbarThumb.clientHeight));
+                lenis.scrollTo(startScroll + scrollAmount, { immediate: true });
+            });
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    document.body.style.userSelect = '';
+                }
+            });
+        }
         // lenis scroll bar end
-        // Đồng bộ GSAP với Lenis
-        gsap.registerPlugin(ScrollTrigger);
-        lenis.on('scroll', ScrollTrigger.update);
-        ScrollTrigger.scrollerProxy(document.body, {
-            scrollTop(value) {
-                return arguments.length ? lenis.scrollTo(value) : lenis.scroll;
-            },
-            getBoundingClientRect() {
-                return {
-                    top: 0,
-                    left: 0,
-                    width: window.innerWidth,
-                    height: window.innerHeight,
-                };
-            },
-        });
+        // Đồng bộ GSAP với Lenis (only if GSAP available)
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            lenis.on('scroll', ScrollTrigger.update);
+            ScrollTrigger.scrollerProxy(document.body, {
+                scrollTop(value) {
+                    return arguments.length ? lenis.scrollTo(value) : lenis.scroll;
+                },
+                getBoundingClientRect() {
+                    return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+                },
+            });
+        }
         console.log('Lenis initialized');
+    }
+
+    // ── Wait for Lenis library to load (deferred) before calling initLenis ──
+    function tryInitLenis(attempt) {
+        attempt = attempt || 0;
+        if (typeof Lenis !== 'undefined') {
+            initLenis();
+        } else if (attempt < 50) {
+            // Retry every 100ms for up to 5 seconds
+            setTimeout(function() { tryInitLenis(attempt + 1); }, 100);
+        } else {
+            console.warn('Lenis library did not load in time');
+        }
     }
 
     document.addEventListener("DOMContentLoaded", function() {
         // Initialize fonts first, then other components
         initializeFonts();
         
-        // Gọi hàm khởi tạo Lenis lần đầu tiên
-        initLenis();
+        // Gọi hàm khởi tạo Lenis với retry (vì Lenis load defer)
+        tryInitLenis();
+
 
         // Kiểm tra nếu phần tử scrollbarThumb tồn tại trước khi thêm sự kiện
         const scrollbarThumb = document.querySelector('.lenis-scrollbar-thumb');
@@ -604,7 +630,7 @@ if (!empty($tehi_tailwind_page)):
 </head>
 
 
-<body class="index  position-relative" style="--background-body: url(https://tehitruyen.com/img_data/images/background-repeat-2.png)">
+<body class="index  position-relative" style="--background-body: url(<?php echo get_template_directory_uri(); ?>/img_data/images/background-repeat-2.png)">
   <!-- <div class="anh-nen lt-truyen-body"></div> -->
   <!-- lenis scroll bar start -->
   <div class="lenis-scrollbar">
@@ -641,6 +667,63 @@ if (!empty($tehi_tailwind_page)):
     .mkm-nav { display: none; }
     .mkm-search-form { display: none; }
 }
+
+/* Mobile Menu Styles */
+.mkm-mobile-menu {
+    display: none;
+    background: #fff;
+    border-top: 1px solid #f3f4f6;
+    padding: 16px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+.mkm-mobile-menu.open {
+    display: block;
+    animation: slideDown 0.2s ease-out;
+}
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.mkm-mobile-search {
+    display: flex;
+    margin-bottom: 16px;
+}
+.mkm-mobile-search input {
+    flex: 1;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px 0 0 8px;
+    padding: 10px 14px;
+    outline: none;
+    font-size: 14px;
+}
+.mkm-mobile-search button {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    padding: 0 16px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+.mkm-mobile-nav {
+    display: flex;
+    flex-direction: column;
+}
+.mkm-mobile-nav a {
+    color: #374151;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 12px 6px;
+    border-bottom: 1px dashed #e5e7eb;
+}
+.mkm-mobile-nav a:last-child {
+    border-bottom: none;
+}
 </style>
 
 <header class="mkm-header">
@@ -662,12 +745,40 @@ if (!empty($tehi_tailwind_page)):
             <a href="<?php echo get_site_url(); ?>/hoan-thanh.html"><i class="fa-solid fa-check-circle"></i> Truyện full</a>
             <a href="<?php echo get_site_url(); ?>/bang-xep-hang.html"><i class="fa-solid fa-trophy"></i> BXH</a>
             <a href="<?php echo get_site_url(); ?>/theo-doi.html"><i class="fa-solid fa-bookmark"></i> Theo dõi</a>
-            <a href="<?php echo esc_url(wp_login_url()); ?>" class="mkm-nav-login"><i class="fa-solid fa-user-circle"></i> Đăng nhập</a>
+            <?php if(is_user_logged_in()): ?>
+                <a href="<?php echo admin_url('profile.php'); ?>" class="mkm-nav-login"><img src="<?php echo esc_url(get_avatar_url(get_current_user_id())); ?>" style="width:24px;height:24px;border-radius:50%;object-fit:cover;"> Tài khoản</a>
+            <?php else: ?>
+                <a href="javascript:void(0)" onclick="mkmOpenAuthModal('login')" class="mkm-nav-login"><i class="fa-solid fa-user-circle"></i> Đăng nhập</a>
+            <?php endif; ?>
         </div>
-        <!-- Mobile Toggle (always visible on mobile both in Bootstrap and Tailwind) -->
-        <button class="btn btn-link d-md-none md:hidden text-dark" style="background:transparent; border:none; padding:10px;">
-            <i class="fa-solid fa-bars fs-3" style="font-size:24px; color:#1e1e2d;"></i>
+        <button id="mkm-mobile-menu-btn" class="btn btn-link d-md-none" onclick="document.getElementById('mkm-mobile-menu').classList.toggle('open')" aria-label="Mở menu" style="background:transparent; border:none; padding:10px; display:flex; align-items:center; justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1e1e2d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
         </button>
+    </div>
+    
+    <!-- Mobile Dropdown Menu -->
+    <div id="mkm-mobile-menu" class="mkm-mobile-menu">
+        <form class="mkm-mobile-search" action="<?php echo esc_url(home_url('/')); ?>" method="get">
+            <input type="text" name="s" placeholder="Tìm tên truyện...">
+            <button type="submit"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+        </form>
+        <div class="mkm-mobile-nav">
+            <a href="<?php echo get_site_url(); ?>/the-loai.html">Thể loại</a>
+            <a href="<?php echo get_site_url(); ?>/hoan-thanh.html">Truyện full</a>
+            <a href="<?php echo get_site_url(); ?>/bang-xep-hang.html">Bảng xếp hạng</a>
+            <a href="<?php echo get_site_url(); ?>/theo-doi.html">Theo dõi</a>
+            <?php if(is_user_logged_in()): ?>
+                <a href="<?php echo admin_url('profile.php'); ?>" style="color:#4f46e5; display:flex; align-items:center; gap:8px;">
+                    <img src="<?php echo esc_url(get_avatar_url(get_current_user_id())); ?>" style="width:28px;height:28px;border-radius:50%;object-fit:cover;"> Tài khoản
+                </a>
+            <?php else: ?>
+                <a href="javascript:void(0)" onclick="mkmOpenAuthModal('login')" style="color:#4f46e5;">Đăng nhập</a>
+            <?php endif; ?>
+        </div>
     </div>
 </header>
 

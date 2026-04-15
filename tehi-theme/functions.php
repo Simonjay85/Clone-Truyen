@@ -277,6 +277,72 @@ function temply_handle_ai_rewrite() {
     wp_send_json_success(array('rewritten_content' => $rewritten));
 }
 
+// ========== AI HELPER CONFIGURATION ==========
+// Lấy thẻ API Key từ DB của Plugin Temply AI Factory
+// Fallback key nếu DB rỗng
+define('TEMPLY_GEMINI_FALLBACK_KEY', 'AIzaSyDD7JDTkTp9872jQkKGT2A6PPOhfp5M4Q4');
+
+function tehi_get_gemini_key() {
+    $key = get_option('temply_gemini_api_key', '');
+    return !empty($key) ? $key : TEMPLY_GEMINI_FALLBACK_KEY;
+}
+function tehi_call_ai_api($prompt, $jsonMode = false, $timeout = 60, $ai_model = 'gemini-2.5-pro') {
+    $gemini_key = get_option('temply_gemini_api_key', '');
+    
+    if ($ai_model !== 'openai' && !empty($gemini_key)) {
+        // Connect to Google Gemini API
+        $url = 'https://generativelanguage.googleapis.com/v1beta/models/' . $ai_model . ':generateContent?key=' . $gemini_key;
+        
+        if ($jsonMode) {
+            $prompt .= "\n\nPlease respond in pure JSON format only, without Markdown formatting. Start with { and end with }";
+        }
+
+        $body = json_encode([
+            'contents' => [
+                ['parts' => [['text' => $prompt]]]
+            ]
+        ]);
+
+        $response = wp_remote_post($url, [
+            'body'    => $body,
+            'headers' => ['Content-Type' => 'application/json'],
+            'timeout' => $timeout,
+            'sslverify' => false
+        ]);
+
+        if (is_wp_error($response)) { return 'CURL_ERROR|' . $response->get_error_message(); }
+        
+        $res_body = wp_remote_retrieve_body($response);
+        $data = json_decode($res_body, true);
+        
+        if (isset($data['error'])) {
+            // Return API error string for debugging
+            return 'API_ERROR|' . $data['error']['message'];
+        }
+        
+        return isset($data['candidates'][0]['content']['parts'][0]['text']) ? $data['candidates'][0]['content']['parts'][0]['text'] : '';
+    } else {
+        // Fallback to Pollinations API
+        $args = array(
+            'body' => json_encode(array(
+                'messages' => array(array('role' => 'user', 'content' => $prompt)),
+                'model' => 'openai',
+                'jsonMode' => $jsonMode,
+                'seed' => wp_rand(1000, 9999)
+            )),
+            'headers' => array('Content-Type' => 'application/json'),
+            'timeout' => $timeout
+        );
+        $response = wp_remote_post('https://text.pollinations.ai/openai', $args);
+        
+        if (is_wp_error($response)) return 'CURL_ERROR|' . $response->get_error_message();
+        
+        $body = wp_remote_retrieve_body($response);
+        $json_res = json_decode($body, true);
+        return isset($json_res['choices'][0]['message']['content']) ? $json_res['choices'][0]['message']['content'] : $body;
+    }
+}
+
 // AJAX Handler: Generate SEO
 add_action('wp_ajax_temply_ai_generate_seo', 'temply_handle_ai_generate_seo');
 function temply_handle_ai_generate_seo() {
@@ -287,14 +353,36 @@ function temply_handle_ai_generate_seo() {
     
     // Simulate AI generation Latency
     sleep(1);
+    $prompt = "Bạn là chuyên gia SEO xuất sắc. Hãy tối ưu hoá cho bài viết có Tiêu đề: '" . $title . "' và nội dung: '" . mb_substr($content, 0, 1000) . "'.\n";
+    $prompt .= "Yêu cầu trả về CHỈ MỘT cục JSON hợp lệ với 3 trường (không giải thích thêm):\n";
+    $prompt .= '{"title": "Viết lại 1 tiêu đề SEO hấp dẫn dưới 60 ký tự", "slug": "tao-duong-dan-khong-dau-duoi-75-ky-tu", "description": "Viết 1 đoạn tóm tắt SEO thu hút dưới 160 ký tự"}';
+
+    $gpt_text = tehi_call_ai_api($prompt, true, 15);
+
+    if ($gpt_text === false) {
+        wp_send_json_error(array('message' => 'Lỗi kết nối tới AI.'));
+    }
+    if (is_string($gpt_text) && strpos($gpt_text, 'CURL_ERROR|') === 0) {
+        wp_send_json_error(array('message' => 'Lỗi kết nối tới AI: ' . str_replace('CURL_ERROR|', '', $gpt_text)));
+    }
+    if (is_string($gpt_text) && strpos($gpt_text, 'API_ERROR|') === 0) {
+        wp_send_json_error(array('message' => 'API Error: ' . str_replace('API_ERROR|', '', $gpt_text)));
+    }
     
-    // Limits based on user requirements: Title < 60, Slug < 75, Description < 60
-    // Mock SEO Data:
-    $seo_data = array(
-        'title' => "MOCK (Tối đa 60 kí tự): $title", // Will be overridden via real API later
-        'slug'  => sanitize_title("mock-slug-toi-da-75-ky-tu-cho-bai-viet-nay"),
-        'description' => "MOCK Mô tả cực kỳ ngắn gọn và dễ hiểu với 60 kí tự.", 
-    );
+    // Extract JSON from response text if it contains markdown ticks
+    preg_match('/\{.*\}/s', $gpt_text, $matches);
+    $clean_json = !empty($matches) ? $matches[0] : '';
+    
+    $seo_data = json_decode($clean_json, true);
+
+    if (!$seo_data || !isset($seo_data['title'])) {
+         // Fallback if AI didn't return valid JSON
+         $seo_data = array(
+             'title' => mb_substr($title, 0, 60),
+             'slug'  => sanitize_title($title),
+             'description' => mb_substr($content, 0, 150) . '...'
+         );
+    }
     
     wp_send_json_success($seo_data);
 }
@@ -305,35 +393,492 @@ function temply_handle_ai_thumbnail() {
     check_ajax_referer('temply_ai_nonce', 'action_nonce');
     
     $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
-    $title = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : 'Artwork';
+    $title = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : 'Fantasy Novel';
+    $keyword = isset($_POST['keyword']) ? sanitize_text_field($_POST['keyword']) : '';
     
     if (!$post_id) {
         wp_send_json_error(array('message' => 'Lỗi ID truyện.'));
     }
 
-    // MOCK AI IMAGE GENERATION
-    sleep(3); // Simulate diffusion generation
+    // Include required WP files for media sideloading
+    require_once(ABSPATH . 'wp-admin/includes/media.php');
+    require_once(ABSPATH . 'wp-admin/includes/file.php');
+    require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+    // Mở rộng prompt để render Chibi/Anime dễ thương hoặc theo keyword của user.
+    if (!empty($keyword)) {
+        $prompt = $title . " " . $keyword . " , ultra detailed, masterpiece, vibrant high quality";
+    } else {
+        $prompt = $title . " comic book style cover, fantasy novel art, highly detailed, vivid colors";
+    }
     
-    // Simulate downloading an image and attaching to WP Media
-    // For demonstration, we simply return a successful mock image ID if we can't sideload.
-    // However, to make it actually work in Gutenberg, we need to return a valid attachment ID.
-    // Let's find any existing attachment or return a placeholder URL.
-    $mock_attachment_url = "https://placehold.co/600x900/6366f1/ffffff?text=AI+Generated+Cover";
+    // Nếu keyword có chữ chibi, nhồi thêm từ khóa cute để đảm bảo nét vẽ dễ thương
+    if (stripos($keyword, 'chibi') !== false) {
+        $prompt .= ", incredibly cute adorable chibi character, kawaii anime style, soft lighting, pastel colors";
+    }
     
-    // Since sideloading requires external HTTP which might break in local test without specific configurations,
-    // we return the URL and instruct Gutenberg to set the block or background if Featured Media fails without ID.
-    // Wait, Gutenberg's `editPost({ featured_media: id })` strictly requires an integer ID.
-    // We will attempt to find the LAST attached image to use as ID to fool Gutenberg!
-    global $wpdb;
-    $attachment_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_type = 'attachment' AND post_mime_type LIKE 'image/%' ORDER BY post_date DESC LIMIT 1");
+    // Use Pollinations AI (Free, no API key needed). Append random seed to ensure unique generation every time.
+    $seed = wp_rand(10000, 99999);
+    $image_url = 'https://image.pollinations.ai/prompt/' . urlencode($prompt) . '.jpg?width=1200&height=800&nologo=true&seed=' . $seed;
     
-    if (!$attachment_id) {
-        $attachment_id = 0; // fallback if no images exist in media library at all
+    // Download and attach the image to the post
+    $attachment_id = media_sideload_image($image_url, $post_id, 'Cover for ' . $title, 'id');
+    
+    if (is_wp_error($attachment_id)) {
+        wp_send_json_error(array('message' => 'Lỗi tải ảnh từ AI: ' . $attachment_id->get_error_message()));
+    }
+
+    // Also forcefully set the featured image of the post in backend
+    set_post_thumbnail($post_id, $attachment_id);
+    
+    $attachment_url = wp_get_attachment_url($attachment_id);
+
+    wp_send_json_success(array(
+        'message' => 'Đã tạo và gắn ảnh bìa AI thành công!',
+        'attachment_id' => $attachment_id,
+        'image_url' => $attachment_url
+    ));
+}
+
+// ==========================================
+// Authentication System: Login & Register
+// ==========================================
+
+add_action('wp_ajax_nopriv_tehi_ajax_login', 'tehi_ajax_login');
+function tehi_ajax_login() {
+    $email = isset($_POST['user_email']) ? sanitize_email($_POST['user_email']) : '';
+    $pass = isset($_POST['user_pass']) ? $_POST['user_pass'] : '';
+
+    if (empty($email) || empty($pass)) {
+        wp_send_json_error(['message' => 'Vui lòng nhập đầy đủ thông tin.']);
+    }
+
+    $login_data = array();
+    $login_data['user_login'] = $email;
+    $login_data['user_password'] = $pass;
+    $login_data['remember'] = true;
+
+    $user_verify = wp_signon($login_data, false);
+
+    if (is_wp_error($user_verify)) {
+        wp_send_json_error(['message' => 'Email hoặc Mật khẩu không chính xác.']);
+    }
+
+    wp_send_json_success(['message' => 'Đăng nhập thành công! Đang tải lại...']);
+}
+
+add_action('wp_ajax_nopriv_tehi_ajax_register', 'tehi_ajax_register');
+function tehi_ajax_register() {
+    $email = isset($_POST['user_email']) ? sanitize_email($_POST['user_email']) : '';
+    $pass = isset($_POST['user_pass']) ? $_POST['user_pass'] : '';
+    $display_map = isset($_POST['user_display']) ? sanitize_text_field($_POST['user_display']) : '';
+
+    if (empty($email) || empty($pass) || empty($display_map)) {
+        wp_send_json_error(['message' => 'Vui lòng nhập đầy đủ thông tin.']);
+    }
+    
+    if (strlen($pass) < 6) {
+        wp_send_json_error(['message' => 'Mật khẩu phải có tối thiểu 6 ký tự.']);
+    }
+
+    if (email_exists($email) || username_exists($email)) {
+        wp_send_json_error(['message' => 'Email này đã được sử dụng.']);
+    }
+
+    $user_id = wp_create_user($email, $pass, $email);
+
+    if (is_wp_error($user_id)) {
+        wp_send_json_error(['message' => $user_id->get_error_message()]);
+    }
+
+    // Update display name
+    wp_update_user(array('ID' => $user_id, 'display_name' => $display_map, 'nickname' => $display_map));
+
+    // Send WordPress default welcome email to the user, and notify admin
+    wp_new_user_notification($user_id, null, 'both');
+
+    // Auto login
+    $login_data = array(
+        'user_login' => $email,
+        'user_password' => $pass,
+        'remember' => true
+    );
+    wp_signon($login_data, false);
+
+    wp_send_json_success(['message' => 'Tạo tài khoản thành công! Đang tải lại...']);
+}
+
+// ==========================================
+// AI Story Splitter Handler
+// ==========================================
+add_action('wp_ajax_temply_ai_split_chapters', 'temply_handle_ai_split_chapters');
+function temply_handle_ai_split_chapters() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $truyen_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+    $content = isset($_POST['content']) ? wp_unslash($_POST['content']) : '';
+
+    if (!$truyen_id || empty($content)) {
+        wp_send_json_error(array('message' => 'Lỗi kết nối hoặc nội dung trống.'));
+    }
+
+    // Split logic based on WP blocks or H tags
+    $parts = preg_split('/(<!-- wp:heading.*?<\/h[1-6]>.*?<!-- \/wp:heading -->|<h[1-6][^>]*>.*?<\/h[1-6]>)/is', $content, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
+
+    $chapters = [];
+    $current_chapter_title = '';
+    $current_chapter_content = '';
+    $count = 1;
+
+    foreach ($parts as $part) {
+        if (preg_match('/<h[1-6][^>]*>(.*?)<\/h[1-6]>/is', $part, $matches)) {
+            $text_title = strip_tags($matches[1]);
+            // Detect boundaries like "Chương 1", "Chương 02", etc.
+            if (preg_match('/(?:Chương|Chapter|Hồi)\s*\d+/iu', $text_title)) {
+                if (!empty(trim($current_chapter_content)) || !empty($current_chapter_title)) {
+                    $chapters[] = array(
+                        'title' => $current_chapter_title ?: ("Chương " . $count),
+                        'content' => $current_chapter_content
+                    );
+                    $count++;
+                }
+                $current_chapter_title = trim($text_title);
+                $current_chapter_content = '';
+                continue;
+            }
+        }
+        $current_chapter_content .= $part . "\n";
+    }
+
+    // Push the final chunk
+    if (!empty(trim($current_chapter_content)) || !empty($current_chapter_title)) {
+        $chapters[] = array(
+            'title' => $current_chapter_title ?: ("Chương " . $count),
+            'content' => $current_chapter_content
+        );
+    }
+
+    if (count($chapters) == 0 || (count($chapters) == 1 && empty($chapters[0]['title']))) {
+        wp_send_json_error(array('message' => 'Không tìm thấy thẻ Tiêu đề (Heading 2,3) nào chứa chữ "Chương" để cắt.'));
+    }
+
+    $created = 0;
+    foreach ($chapters as $ch) {
+        $post_data = array(
+            'post_title'    => wp_strip_all_tags($ch['title']),
+            'post_content'  => trim($ch['content']),
+            'post_status'   => 'publish',
+            'post_type'     => 'chuong'
+        );
+        $chuong_id = wp_insert_post($post_data);
+        if ($chuong_id && !is_wp_error($chuong_id)) {
+            update_post_meta($chuong_id, '_truyen_id', $truyen_id);
+            $created++;
+        }
     }
 
     wp_send_json_success(array(
-        'message' => 'Đã tạo ảnh bìa AI thành công!',
-        'attachment_id' => $attachment_id,
-        'image_url' => $mock_attachment_url
+        'count' => $created,
+        'message' => 'Thành công'
+    ));
+}
+
+// ==========================================
+// STORY STUDIO: Create Draft Post
+// ==========================================
+add_action('wp_ajax_temply_studio_create_draft', 'temply_studio_create_draft');
+function temply_studio_create_draft() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+    
+    $title = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : 'Truyện chưa đặt tên';
+
+    $post_id = wp_insert_post(array(
+        'post_title'  => $title,
+        'post_status' => 'draft',
+        'post_type'   => 'truyen',
+        'post_author' => get_current_user_id()
+    ));
+
+    if (is_wp_error($post_id)) {
+        wp_send_json_error(array('message' => 'Không tạo được bài viết: ' . $post_id->get_error_message()));
+    }
+
+    wp_send_json_success(array('post_id' => $post_id));
+}
+
+// ==========================================
+// STORY STUDIO: Get Prompt + Key (JS will call Gemini directly)
+// ==========================================
+add_action('wp_ajax_temply_studio_get_prompt', 'temply_studio_get_prompt');
+function temply_studio_get_prompt() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $title    = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : '';
+    $prompt   = isset($_POST['prompt']) ? sanitize_textarea_field($_POST['prompt']) : '';
+    $genre    = isset($_POST['genre']) ? sanitize_text_field($_POST['genre']) : 'Phổ thông';
+    $chapters = isset($_POST['chapters']) ? intval($_POST['chapters']) : 10;
+    $tone     = isset($_POST['tone']) ? sanitize_text_field($_POST['tone']) : 'Hài hước, sảng văn';
+
+    if (!$title || !$prompt) {
+        wp_send_json_error(array('message' => 'Thiếu thông tin.'));
+    }
+
+    $chapters = max(3, min(20, $chapters));
+
+    $ai_prompt  = "Bạn là một nhà văn sáng tác truyện chuyên nghiệp người Việt.\n";
+    $ai_prompt .= "Hãy viết một bộ truyện hoàn chỉnh với tiêu đề: \"$title\".\n";
+    $ai_prompt .= "Thể loại: $genre. Giọng văn: $tone.\n";
+    $ai_prompt .= "Ý tưởng cốt lõi: $prompt\n\n";
+    $ai_prompt .= "YÊU CẦU BẮT BUỘC:\n";
+    $ai_prompt .= "1. Viết đúng $chapters chương, mỗi chương khoảng 3000-5000 từ tiếng Việt (bắt buộc viết đủ dài, chi tiết, không tóm tắt).\n";
+    $ai_prompt .= "2. Mỗi chương BẮT BUỘC phải bắt đầu bằng TIÊU ĐỀ theo format CHÍNH XÁC: \"Chương [số]: [tên chương]\" trên một dòng riêng biệt.\n";
+    $ai_prompt .= "3. Các chương phải liên kết mạch lạc, cốt truyện nhất quán, không mâu thuẫn.\n";
+    $ai_prompt .= "4. Phong cách viết hấp dẫn, có đối thoại, mô tả cảm xúc sinh động.\n";
+    $ai_prompt .= "5. Kết thúc chương cuối phải hoàn chỉnh, có hậu (Happy ending hoặc Open ending).\n";
+    $ai_prompt .= "6. KHÔNG viết thêm bất kỳ ghi chú nào ngoài nội dung truyện.\n";
+    $ai_prompt .= "Hãy bắt đầu viết ngay bây giờ:";
+
+    $gemini_key = tehi_get_gemini_key();
+
+    wp_send_json_success(array(
+        'prompt'      => $ai_prompt,
+        'gemini_key'  => $gemini_key,
+        'has_key'     => true
+    ));
+}
+
+
+add_action('wp_ajax_temply_studio_generate_story', 'temply_studio_generate_story');
+function temply_studio_generate_story() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $post_id  = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+    $title    = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : '';
+    $prompt   = isset($_POST['prompt']) ? sanitize_textarea_field($_POST['prompt']) : '';
+    $genre    = isset($_POST['genre']) ? sanitize_text_field($_POST['genre']) : 'Phổ thông';
+    $chapters = isset($_POST['chapters']) ? intval($_POST['chapters']) : 10;
+    $tone     = isset($_POST['tone']) ? sanitize_text_field($_POST['tone']) : 'Hài hước, sảng văn';
+    $ai_model = isset($_POST['ai_model']) ? sanitize_text_field($_POST['ai_model']) : 'gemini-2.5-pro';
+
+    if (!$post_id || !$title || !$prompt) {
+        wp_send_json_error(array('message' => 'Thiếu thông tin đầu vào.'));
+    }
+
+    // Clamp chapters to valid range
+    $chapters = max(3, min(20, $chapters));
+
+    // Build AI prompt
+    $ai_prompt  = "Bạn là một nhà văn sáng tác truyện chuyên nghiệp người Việt.\n";
+    $ai_prompt .= "Hãy viết một bộ truyện hoàn chỉnh với tiêu đề: \"$title\".\n";
+    $ai_prompt .= "Thể loại: $genre. Giọng văn: $tone.\n";
+    $ai_prompt .= "Ý tưởng cốt lõi: $prompt\n\n";
+    $ai_prompt .= "YÊU CẦU BẮT BUỘC:\n";
+    $ai_prompt .= "1. Viết đúng $chapters chương, mỗi chương khoảng 3000-5000 từ tiếng Việt (bắt buộc viết đủ dài, chi tiết, không tóm tắt).\n";
+    $ai_prompt .= "2. Mỗi chương BẮT BUỘC phải bắt đầu bằng TIÊU ĐỀ theo format CHÍNH XÁC: \"Chương [số]: [tên chương]\" trên một dòng riêng biệt.\n";
+    $ai_prompt .= "3. Các chương phải liên kết mạch lạc, cốt truyện nhất quán, không mâu thuẫn.\n";
+    $ai_prompt .= "4. Phong cách viết hấp dẫn, có đối thoại, mô tả cảm xúc sinh động.\n";
+    $ai_prompt .= "5. Kết thúc chương cuối phải hoàn chỉnh, có hậu (Happy ending hoặc Open ending).\n";
+    $ai_prompt .= "6. KHÔNG viết thêm bất kỳ ghi chú nào ngoài nội dung truyện.\n";
+    $ai_prompt .= "Hãy bắt đầu viết ngay bây giờ:";
+
+    $raw_text = tehi_call_ai_api($ai_prompt, false, 90, $ai_model);
+
+    if ($raw_text === false) {
+        wp_send_json_error(array('message' => 'Lỗi mạng nội bộ không xác định.'));
+    }
+    if (strpos($raw_text, 'CURL_ERROR|') === 0) {
+        wp_send_json_error(array('message' => 'Lỗi hệ thống: ' . str_replace('CURL_ERROR|', '', $raw_text)));
+    }
+    if (strpos($raw_text, 'API_ERROR|') === 0) {
+        wp_send_json_error(array('message' => 'Google Gemini báo lỗi: ' . str_replace('API_ERROR|', '', $raw_text)));
+    }
+
+    if (empty(trim($raw_text))) {
+        wp_send_json_error(array('message' => 'AI không trả về nội dung. Thử lại sau giây lát.'));
+    }
+
+    // Convert plain-text story to clean HTML for the editor
+    // Split by chapter headings
+    $lines    = explode("\n", $raw_text);
+    $html     = '';
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if (empty($line)) continue;
+
+        if (preg_match('/^(Chương\s+\d+[:\-–.]\s*.+)$/iu', $line)) {
+            $html .= '<h2>' . esc_html($line) . '</h2>' . "\n";
+        } else {
+            $html .= '<p>' . esc_html($line) . '</p>' . "\n";
+        }
+    }
+
+    // Save content to the draft post
+    wp_update_post(array(
+        'ID'           => $post_id,
+        'post_content' => $html,
+        'post_status'  => 'draft'
+    ));
+
+    wp_send_json_success(array(
+        'content' => $html,
+        'post_id' => $post_id
+    ));
+}
+
+// ==========================================
+// STORY STUDIO: Save Content sent from Browser
+// ==========================================
+add_action('wp_ajax_temply_studio_save_content', 'temply_studio_save_content');
+function temply_studio_save_content() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $post_id  = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+    $raw_text = isset($_POST['raw_text']) ? wp_unslash($_POST['raw_text']) : '';
+
+    if (!$post_id || empty($raw_text)) {
+        wp_send_json_error(array('message' => 'Thiếu dữ liệu.'));
+    }
+
+    // Convert plain-text story to clean HTML
+    $lines = explode("\n", $raw_text);
+    $html  = '';
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if (empty($line)) continue;
+        if (preg_match('/^(Chương\s+\d+[:\-–.]\s*.+)$/iu', $line)) {
+            $html .= '<h2>' . esc_html($line) . '</h2>' . "\n";
+        } else {
+            $html .= '<p>' . esc_html($line) . '</p>' . "\n";
+        }
+    }
+
+    wp_update_post(array(
+        'ID'           => $post_id,
+        'post_content' => $html,
+        'post_status'  => 'draft'
+    ));
+
+    wp_send_json_success(array(
+        'content' => $html,
+        'post_id' => $post_id
+    ));
+}
+
+// ==========================================
+// STORY STUDIO: Get Autodetect Prompt (Browser-side AI)
+// ==========================================
+add_action('wp_ajax_temply_studio_autodetect_prompt', 'temply_studio_autodetect_prompt');
+function temply_studio_autodetect_prompt() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $prompt = isset($_POST['prompt']) ? sanitize_textarea_field($_POST['prompt']) : '';
+    if (empty($prompt)) {
+        wp_send_json_error(array('message' => 'Prompt rỗng.'));
+    }
+
+    $genre_list = 'Ngôn Tình, Tiên Hiệp, Hài Hước, Trinh Thám, Kiếm Hiệp, Huyền Huyễn, Trọng Sinh, Đô Thị, Dị Giới, Võ Hiệp, Xuyên Không, Gia Đấu, Học Đường, Cung Đấu, Mạt Thế, Zombie, Quân Sự, Khoa Huyễn, Kinh Dị, Game, Điền Văn, Đam Mỹ, Nữ Cường, Lịch Sử, Thể Thao, Vả Mặt, Hệ Thống, Không Gian';
+    $tone_list  = 'lãng mạn, huyền bí, hài hước, hùng tráng, kinh dị, trinh thám, hồi hộp, nhẹ nhàng, cuồng nhiệt, triết lý';
+
+    $ai_prompt  = "Phân tích ý tưởng truyện sau và gợi ý phù hợp nhất:\n";
+    $ai_prompt .= "\"$prompt\"\n\n";
+    $ai_prompt .= "Danh sách thể loại có thể chọn: $genre_list\n";
+    $ai_prompt .= "Danh sách giọng văn có thể chọn: $tone_list\n\n";
+    $ai_prompt .= "Trả về CHỈ MỘT JSON hợp lệ (không giải thích thêm):\n";
+    $ai_prompt .= '{"genres": ["Thể loại 1", "Thể loại 2"], "tone": "giọng văn phù hợp nhất"}';
+
+    $gemini_key = tehi_get_gemini_key();
+
+    wp_send_json_success(array(
+        'ai_prompt'  => $ai_prompt,
+        'gemini_key' => $gemini_key,
+        'has_key'    => true
+    ));
+}
+
+// ==========================================
+// STORY STUDIO: Schedule Post Publishing
+// ==========================================
+add_action('wp_ajax_temply_studio_schedule', 'temply_studio_schedule');
+function temply_studio_schedule() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $post_id      = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+    $publish_date = isset($_POST['publish_date']) ? sanitize_text_field($_POST['publish_date']) : '';
+    $status       = isset($_POST['status']) ? sanitize_text_field($_POST['status']) : 'publish';
+
+    if (!$post_id) {
+        wp_send_json_error(array('message' => 'Không có ID bài viết.'));
+    }
+
+    $update_data = array('ID' => $post_id);
+
+    if (!empty($publish_date)) {
+        // Schedule for specific date/time
+        $date_gmt = get_gmt_from_date($publish_date);
+        $update_data['post_date']     = $publish_date;
+        $update_data['post_date_gmt'] = $date_gmt;
+        $update_data['post_status']   = 'future'; // WordPress scheduled
+        $msg = 'Lịch đăng đã được cài vào: ' . $publish_date;
+    } else {
+        // Publish now
+        $update_data['post_status'] = 'publish';
+        $msg = 'Đã đăng bài ngay!';
+    }
+
+    $result = wp_update_post($update_data);
+
+    if (is_wp_error($result)) {
+        wp_send_json_error(array('message' => 'Lỗi: ' . $result->get_error_message()));
+    }
+
+    wp_send_json_success(array('message' => $msg, 'post_id' => $post_id));
+}
+
+// ==========================================
+// STORY STUDIO: Auto-detect Genre & Tone
+// ==========================================
+add_action('wp_ajax_temply_studio_autodetect', 'temply_studio_autodetect');
+function temply_studio_autodetect() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $prompt   = isset($_POST['prompt']) ? sanitize_textarea_field($_POST['prompt']) : '';
+    $ai_model = isset($_POST['ai_model']) ? sanitize_text_field($_POST['ai_model']) : 'gemini-2.5-pro';
+
+    if (empty($prompt)) {
+        wp_send_json_error(array('message' => 'Prompt rỗng.'));
+    }
+
+    $genre_list = 'Ngôn Tình, Tiên Hiệp, Hài Hước, Trinh Thám, Kiếm Hiệp, Huyền Huyễn, Trọng Sinh, Đô Thị, Dị Giới, Võ Hiệp, Xuyên Không, Gia Đấu, Học Đường, Cung Đấu, Mạt Thế, Zombie, Quân Sự, Khoa Huyễn, Kinh Dị, Game, Điền Văn, Đam Mỹ, Nữ Cường, Lịch Sử, Thể Thao, Vả Mặt, Hệ Thống, Không Gian';
+    $tone_list  = 'lãng mạn, huyền bí, hài hước, hùng tráng, kinh dị, trinh thám, hồi hộp, nhẹ nhàng, cuồng nhiệt, triết lý';
+
+    $ai_prompt = "Phân tích ý tưởng truyện sau và gợi ý phù hợp nhất:\n";
+    $ai_prompt .= "\"$prompt\"\n\n";
+    $ai_prompt .= "Danh sách thể loại có thể chọn: $genre_list\n";
+    $ai_prompt .= "Trọng tâm là 30 ký tự cuối. Hãy suy luận.\n";
+    $ai_prompt .= "Trả về CHỈ MỘT JSON hợp lệ (không giải thích thêm):\n";
+    $ai_prompt .= '{"genres": ["Thể loại 1", "Thể loại 2"], "tone": "giọng văn phù hợp nhất"}';
+
+    $raw = tehi_call_ai_api($ai_prompt, true, 25, $ai_model);
+
+    if ($raw === false) {
+        wp_send_json_error(array('message' => 'Lỗi kết nối AI.'));
+    }
+    if (is_string($raw) && strpos($raw, 'CURL_ERROR|') === 0) {
+        wp_send_json_error(array('message' => 'Lỗi kết nối AI: ' . str_replace('CURL_ERROR|', '', $raw)));
+    }
+    if (is_string($raw) && strpos($raw, 'API_ERROR|') === 0) {
+        wp_send_json_error(array('message' => 'API Error: ' . str_replace('API_ERROR|', '', $raw)));
+    }
+
+    preg_match('/\{.*\}/s', $raw, $matches);
+    $data = json_decode(!empty($matches) ? $matches[0] : $raw, true);
+
+    if (!$data || !isset($data['genres'])) {
+        wp_send_json_error(array('message' => 'AI không gợi ý được. Thử lại.'));
+    }
+
+    wp_send_json_success(array(
+        'genres' => array_slice((array)$data['genres'], 0, 3),
+        'tone'   => isset($data['tone']) ? $data['tone'] : 'lãng mạn'
     ));
 }

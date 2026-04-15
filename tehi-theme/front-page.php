@@ -198,7 +198,7 @@
 }
 .mkm-card-img {
     position: relative !important;
-    aspect-ratio: 3/4 !important;
+    aspect-ratio: 3/2 !important;
     overflow: hidden !important;
 }
 .mkm-card-img img {
@@ -417,6 +417,39 @@
 .mkm-nav-btn { width:32px !important; height:32px !important; border-radius:50% !important; border:1.5px solid #e5e7eb !important; background:#fff !important; cursor:pointer !important; display:flex !important; align-items:center !important; justify-content:center !important; color:#374151 !important; font-size:14px !important; transition:all .2s !important; }
 .mkm-nav-btn:hover { background:#4f46e5 !important; border-color:#4f46e5 !important; color:#fff !important; }
 .mkm-main-swiper .swiper-slide { width: 100% !important; } /* Fix stacking overlap issue */
+
+/* ── SLIDER MOBILE RESPONSIVE ── */
+@media (max-width: 640px) {
+    .mkm-slider-wrap { padding: 0 !important; border-radius: 20px !important; overflow: hidden !important; }
+    .mkm-slider-main {
+        flex-direction: column !important;
+        gap: 0 !important;
+        position: relative !important;
+    }
+    .mkm-slider-cover {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 0 !important;
+        aspect-ratio: 3/2 !important;
+    }
+    .mkm-slider-cover img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 0 !important;
+        object-position: center !important;
+    }
+    .mkm-slider-body {
+        padding: 16px !important;
+        background: #fff !important;
+    }
+    .mkm-slider-title { font-size: 17px !important; }
+    .mkm-slider-desc { -webkit-line-clamp: 2 !important; font-size: 12px !important; }
+    .mkm-nav-btn { display: none !important; }
+    .mkm-main-swiper .swiper-button-next,
+    .mkm-main-swiper .swiper-button-prev { display: none !important; }
+}
+
 </style>
 
 <div class="mkm-wrap">
@@ -431,7 +464,7 @@
         <div class="swiper mkm-main-swiper">
             <div class="swiper-wrapper">
             <?php while($slider_q->have_posts()): $slider_q->the_post();
-                $s_cover = get_the_post_thumbnail_url(null,'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                $s_cover = get_the_post_thumbnail_url(null,'large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
                 $s_exc   = wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 40, '...');
                 $s_date  = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' trước';
                 $s_cats  = wp_get_post_terms(get_the_ID(),'the_loai');
@@ -506,20 +539,27 @@
                 <?php
                 $q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 8, 'no_found_rows' => true]);
                 while ($q->have_posts()) : $q->the_post();
-                    $img = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $img = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $fake_chap = rand(10, 150); $fake_hours = rand(1, 24); $fake_views = rand(100, 9999); $fake_likes = rand(0, 50);
                 ?>
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
                     <div class="mkm-card-img">
                         <span class="mkm-badge-tl">MỚI</span>
-                        <img src="<?php echo esc_url($img); ?>" alt="<?php the_title_attribute(); ?>" width="150" height="200" loading="lazy" decoding="async">
+                        <img src="<?php echo esc_url($img); ?>" alt="<?php the_title_attribute(); ?>" width="300" height="200" loading="lazy" decoding="async">
                         <div class="mkm-card-overlay">
-                            <span>👁 <?php echo number_format(rand(1000,9999)); ?></span>
-                            <span>📖 <?php echo rand(50,500); ?></span>
+                            <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
+                            <span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo $fake_hours; ?> giờ trước</span>
                         </div>
                     </div>
                     <div class="mkm-card-info">
                         <p class="mkm-card-name"><?php the_title(); ?></p>
-                        <p class="mkm-card-chap">Chương mới nhất</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+                            <div style="display:flex; gap:10px; color:#9ca3af; font-size:11px; align-items:center; font-weight:500;">
+                                <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
+                                <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
+                            </div>
+                            <span style="background:rgba(79, 70, 229, 0.1); color:#4f46e5; border:1px solid rgba(79, 70, 229, 0.2); font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px; letter-spacing:0.5px;">Chương mới</span>
+                        </div>
                     </div>
                 </a>
                 <?php endwhile; wp_reset_postdata(); ?>
@@ -537,19 +577,27 @@
                 <?php
                 $q2 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 4, 'orderby' => 'comment_count', 'no_found_rows' => true]);
                 while ($q2->have_posts()) : $q2->the_post();
-                    $img2 = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $img2 = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $fake_chap = rand(50, 300); $fake_hours = rand(1, 24); $fake_views = rand(10000, 50000); $fake_likes = rand(50, 900);
                 ?>
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
                     <div class="mkm-card-img">
                         <span class="mkm-badge-tr">HOT 🔥</span>
-                        <img src="<?php echo esc_url($img2); ?>" alt="<?php the_title_attribute(); ?>" width="150" height="200" loading="lazy" decoding="async">
+                        <img src="<?php echo esc_url($img2); ?>" alt="<?php the_title_attribute(); ?>" width="300" height="200" loading="lazy" decoding="async">
                         <div class="mkm-card-overlay">
-                            <span>👁 <?php echo number_format(rand(10000, 50000)); ?></span>
+                            <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
+                            <span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo $fake_hours; ?> giờ trước</span>
                         </div>
                     </div>
                     <div class="mkm-card-info">
                         <p class="mkm-card-name"><?php the_title(); ?></p>
-                        <p class="mkm-card-chap">Đang hot</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+                            <div style="display:flex; gap:10px; color:#9ca3af; font-size:11px; align-items:center; font-weight:500;">
+                                <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
+                                <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
+                            </div>
+                            <span style="background:rgba(239, 68, 68, 0.1); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.2); font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px; letter-spacing:0.5px;">Đang Hot</span>
+                        </div>
                     </div>
                 </a>
                 <?php endwhile; wp_reset_postdata(); ?>
@@ -567,16 +615,27 @@
                 <?php
                 $q3 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 4, 'offset' => 12, 'no_found_rows' => true]);
                 while ($q3->have_posts()) : $q3->the_post();
-                    $img3 = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $img3 = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $fake_chap = rand(80, 500); $fake_views = rand(20000, 99999); $fake_likes = rand(100, 2000);
                 ?>
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
                     <div class="mkm-card-img">
                         <span class="mkm-badge-full-pos">FULL</span>
-                        <img src="<?php echo esc_url($img3); ?>" alt="<?php the_title_attribute(); ?>" width="150" height="200" loading="lazy" decoding="async">
+                        <img src="<?php echo esc_url($img3); ?>" alt="<?php the_title_attribute(); ?>" width="300" height="200" loading="lazy" decoding="async">
+                        <div class="mkm-card-overlay">
+                            <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
+                            <span style="display:flex;align-items:center;gap:4px;color:#10b981;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Đã đủ bộ</span>
+                        </div>
                     </div>
                     <div class="mkm-card-info">
                         <p class="mkm-card-name"><?php the_title(); ?></p>
-                        <p class="mkm-card-chap">Hoàn thành</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+                            <div style="display:flex; gap:10px; color:#9ca3af; font-size:11px; align-items:center; font-weight:500;">
+                                <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
+                                <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
+                            </div>
+                            <span style="background:rgba(16, 185, 129, 0.1); color:#10b981; border:1px solid rgba(16, 185, 129, 0.2); font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px; letter-spacing:0.5px;">Hoàn thành</span>
+                        </div>
                     </div>
                 </a>
                 <?php endwhile; wp_reset_postdata(); ?>
@@ -614,7 +673,7 @@
                     $ri = 1;
                     $max_views = 20000;
                     while ($bxh->have_posts()) : $bxh->the_post();
-                        $rthumb = get_the_post_thumbnail_url(null, 'thumbnail') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                        $rthumb = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
                         $views = (int)get_post_meta(get_the_ID(), '_views', true);
                         if($views < 1000) $views = rand(1000, 20000); // mock data if empty
                         

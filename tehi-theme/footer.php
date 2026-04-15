@@ -32,7 +32,7 @@
         <!-- BRAND -->
         <div class="mkm-footer-brand">
             <a href="<?php echo esc_url(home_url('/')); ?>">
-                <img src="https://tehitruyen.com/img_data/images/logo-truyen-moi-v1.png" alt="<?php bloginfo('name'); ?>">
+                <img src="<?php echo get_site_url(); ?>/img_data/images/logo-truyen-moi-v1.png" alt="<?php bloginfo('name'); ?>">
             </a>
             <p>Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.</p>
         </div>
@@ -115,6 +115,182 @@
     </div>
 </footer>
 <?php endif; ?>
+
+<!-- AUTH MODAL -->
+<div class="mkm-auth-overlay" id="mkmAuthModal">
+    <div class="mkm-auth-modal">
+        <!-- Header -->
+        <div class="mkm-auth-header">
+            <div class="mkm-auth-tabs">
+                <button class="mkm-auth-tab active" data-tab="login" onclick="mkmSwitchAuthTab('login')">Đăng nhập</button>
+                <div class="mkm-auth-tab-divider">/</div>
+                <button class="mkm-auth-tab" data-tab="register" onclick="mkmSwitchAuthTab('register')">Đăng ký</button>
+            </div>
+            <button class="mkm-auth-close" onclick="mkmCloseAuthModal()">×</button>
+        </div>
+        
+        <div class="mkm-auth-body">
+            <!-- LOGIN FORM -->
+            <form id="mkmLoginForm" class="mkm-auth-form active" onsubmit="mkmSubmitAuth(event, 'login')">
+                <div class="mkm-form-group">
+                    <label>Email</label>
+                    <div class="mkm-input-wrap">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" name="user_email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+                <div class="mkm-form-group">
+                    <label>Mật khẩu</label>
+                    <div class="mkm-input-wrap">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="user_pass" placeholder="••••••••" required>
+                        <i class="fa-regular fa-eye mkm-pwd-toggle" onclick="mkmTogglePwd(this)"></i>
+                    </div>
+                </div>
+                
+                <div class="mkm-auth-options">
+                    <a href="<?php echo wp_lostpassword_url(); ?>" class="mkm-auth-link">Quên mật khẩu?</a>
+                </div>
+                
+                <div class="mkm-auth-alert" id="mkmLoginAlert" style="display:none;"></div>
+                
+                <button type="submit" class="mkm-btn-primary mkm-btn-submit">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Đăng nhập
+                </button>
+                
+                <!-- Google Login Button (Requires Nextend Social Login) -->
+                <a href="<?php echo get_site_url(); ?>/?loginSocial=google" class="mkm-btn-google">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"> Tiếp tục với Google
+                </a>
+                
+                <div class="mkm-auth-footer-text">
+                    Chưa có tài khoản? <a href="javascript:void(0)" onclick="mkmSwitchAuthTab('register')">Đăng ký</a>
+                </div>
+                
+                <div class="mkm-auth-close-text" onclick="mkmCloseAuthModal()">Đóng</div>
+            </form>
+
+            <!-- REGISTER FORM -->
+            <form id="mkmRegisterForm" class="mkm-auth-form" onsubmit="mkmSubmitAuth(event, 'register')">
+                <div class="mkm-form-group">
+                    <label>Tên hiển thị</label>
+                    <div class="mkm-input-wrap">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" name="user_display" placeholder="VD: Mèo Mập" required>
+                    </div>
+                </div>
+                <div class="mkm-form-group">
+                    <label>Email</label>
+                    <div class="mkm-input-wrap">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" name="user_email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+                <div class="mkm-form-group">
+                    <label>Mật khẩu</label>
+                    <div class="mkm-input-wrap">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="user_pass" placeholder="Tối thiểu 6 ký tự" minlength="6" required>
+                         <i class="fa-regular fa-eye mkm-pwd-toggle" onclick="mkmTogglePwd(this)"></i>
+                    </div>
+                </div>
+                
+                <div class="mkm-auth-alert" id="mkmRegisterAlert" style="display:none;"></div>
+                
+                <button type="submit" class="mkm-btn-primary mkm-btn-submit">
+                    <i class="fa-solid fa-user-plus"></i> Đăng ký
+                </button>
+                
+                <!-- Google Login Button -->
+                <a href="<?php echo get_site_url(); ?>/?loginSocial=google" class="mkm-btn-google">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"> Tiếp tục với Google
+                </a>
+                
+                <div class="mkm-auth-footer-text">
+                    Đã có tài khoản? <a href="javascript:void(0)" onclick="mkmSwitchAuthTab('login')">Đăng nhập</a>
+                </div>
+                
+                <div class="mkm-auth-close-text" onclick="mkmCloseAuthModal()">Đóng</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// JS Logic for the Auth Modal
+function mkmOpenAuthModal(tab = 'login') {
+    document.getElementById('mkmAuthModal').classList.add('active');
+    mkmSwitchAuthTab(tab);
+    document.body.style.overflow = 'hidden';
+}
+function mkmCloseAuthModal() {
+    document.getElementById('mkmAuthModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+function mkmSwitchAuthTab(tab) {
+    // Reset tabs
+    document.querySelectorAll('.mkm-auth-tab').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.mkm-auth-form').forEach(el => el.classList.remove('active'));
+    // Set active
+    document.querySelector('.mkm-auth-tab[data-tab="'+tab+'"]').classList.add('active');
+    document.getElementById(tab === 'login' ? 'mkmLoginForm' : 'mkmRegisterForm').classList.add('active');
+}
+function mkmTogglePwd(icon) {
+    const input = icon.previousElementSibling;
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+}
+function mkmSubmitAuth(e, type) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.mkm-btn-submit');
+    const alertBox = form.querySelector('.mkm-auth-alert');
+    const formData = new FormData(form);
+    formData.append('action', type === 'login' ? 'tehi_ajax_login' : 'tehi_ajax_register');
+    
+    // UI Loading state
+    const originalBtnText = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Đang xử lý...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    alertBox.style.display = 'none';
+
+    fetch('<?php echo admin_url("admin-ajax.php"); ?>', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        alertBox.style.display = 'block';
+        if(data.success) {
+            alertBox.style.backgroundColor = '#d1fae5';
+            alertBox.style.color = '#065f46';
+            alertBox.innerHTML = '<i class="fa-solid fa-check-circle"></i> ' + data.data.message;
+            setTimeout(() => { window.location.reload(); }, 1000);
+        } else {
+            alertBox.style.backgroundColor = '#fee2e2';
+            alertBox.style.color = '#991b1b';
+            alertBox.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> ' + data.data.message;
+            btn.innerHTML = originalBtnText;
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        }
+    })
+    .catch(err => {
+        alert("Lỗi kết nối máy chủ!");
+        btn.innerHTML = originalBtnText;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+    });
+}
+</script>
 
 <?php wp_footer(); ?>
 </body>

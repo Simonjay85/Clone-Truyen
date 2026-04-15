@@ -59,6 +59,14 @@
                             </div>
                         </button>
 
+                        <button class="ai-action-btn" data-action="split_chapters" style="background: #f8fafc; border: 1px dashed #6366f1; padding: 12px; border-radius: 10px; text-align: left; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 18px; background: #ede9fe; color: #8b5cf6; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">✂️</span>
+                            <div>
+                                <div style="font-weight: 700; font-size: 13px; color: #4338ca;">Chia thành các Chương</div>
+                                <div style="font-size: 11px; color: #64748b; margin-top:2px;">Cắt văn bản hiện tại thành các chương con tự động</div>
+                            </div>
+                        </button>
+
                     </div>
 
                     <!-- Loader overlay -->
@@ -104,6 +112,8 @@
                 processThumbnail();
             } else if (action === 'seo_generate') {
                 processSEO();
+            } else if (action === 'split_chapters') {
+                processSplitChapters();
             }
         });
 
@@ -263,24 +273,47 @@
                 if(response.success) {
                     const seo = response.data;
                     
-                    // Attempt to set RankMath values if it exists in data store
-                    if(wp.data.select('rank-math')) {
-                        wp.data.dispatch('rank-math').updateSnippet({
-                            title: seo.title,
-                            description: seo.description
+                    // 1. Write direct to meta for WP Core
+                    try {
+                        wp.data.dispatch('core/editor').editPost({ 
+                            slug: seo.slug,
+                            meta: {
+                                rank_math_title: seo.title,
+                                rank_math_description: seo.description
+                            }
                         });
-                    } else {
-                        // Fallback to hidden inputs if RankMath store not available
-                        const titleInput = document.querySelector('input[name="rank_math_title"]');
-                        const descInput = document.querySelector('textarea[name="rank_math_description"]');
-                        if (titleInput) titleInput.value = seo.title;
-                        if (descInput) descInput.value = seo.description;
-                    }
-                    
-                    // Default WP Slug
-                    wp.data.dispatch('core/editor').editPost({ slug: seo.slug });
+                    } catch(e) {}
 
-                    showNotification('Đã tối ưu Tiêu đề (60 kí tự), Slug (75), và Mô tả (60)!');
+                    // 2. Force DOM updates for RankMath inputs with React Synthetic Events
+                    const setNativeValue = (element, value) => {
+                        const valueSetter = Object.getOwnPropertyDescriptor(element, 'value').set;
+                        const prototype = Object.getPrototypeOf(element);
+                        const prototypeValueSetter = Object.getOwnPropertyDescriptor(prototype, 'value') ? Object.getOwnPropertyDescriptor(prototype, 'value').set : null;
+                        
+                        if (valueSetter && valueSetter !== prototypeValueSetter) {
+                            prototypeValueSetter.call(element, value);
+                        } else {
+                            valueSetter.call(element, value);
+                        }
+                    };
+
+                    const titleInputs = document.querySelectorAll('input[id*="rank_math_title"], input.components-text-control__input[id*="rank_math"]');
+                    titleInputs.forEach(el => {
+                        if(el.closest('.rank-math-title-snippet, .rank-math-snippet-editor')) {
+                            setNativeValue(el, seo.title);
+                            el.dispatchEvent(new Event('input', { bubbles: true }));
+                        }
+                    });
+
+                    const descInputs = document.querySelectorAll('textarea[id*="rank_math_description"], textarea.components-textarea-control__input[id*="rank_math"]');
+                    descInputs.forEach(el => {
+                        if(el.closest('.rank-math-description-snippet, .rank-math-snippet-editor')) {
+                            setNativeValue(el, seo.description);
+                            el.dispatchEvent(new Event('input', { bubbles: true }));
+                        }
+                    });
+
+                    showNotification('Đã tạo và gắn Tiêu đề, Slug, Mô tả SEO thành công!');
                     $('#temply-ai-panel').fadeOut();
                 } else {
                     showNotification(response.data.message || 'Lỗi SEO AI', true);
@@ -288,6 +321,57 @@
             }).fail(function() {
                 hideAILoader();
                 showNotification('Lỗi server AI', true);
+            });
+        }
+
+        // 5. SPLIT CHAPTERS
+        function processSplitChapters() {
+            if(!confirm("Hệ thống sẽ dựa vào các tựa đề (Ví dụ: 'Chương 1: ABC') trong bài viết để chia tách thành các bài viết con (Chương truyện). Văn bản hiện tại trong Editor này KHÔNG BỊ XOÁ để đảm bảo an toàn. Bạn có chắc chắn muốn Tách Chương ngay bây giờ?")) {
+                return;
+            }
+
+            const blocks = select('core/block-editor').getBlocks();
+            if(blocks.length === 0) {
+                showNotification('Trình soạn thảo đang trống, không có gì để cắt.', true);
+                return;
+            }
+
+            // Serialize blocks back to raw HTML for backend parsing
+            const rawHTML = wp.blocks.serialize(blocks);
+
+            showAILoader();
+            $('#ai-loader p').text('Đang nhào nặn & cắt chương...');
+
+            $.post(templyAIParams.ajaxurl, {
+                action: 'temply_ai_split_chapters',
+                action_nonce: templyAIParams.nonce,
+                post_id: templyAIParams.postId, // ID of the parent 'truyen'
+                content: rawHTML
+            }, function(response) {
+                hideAILoader();
+                $('#ai-loader p').text('AI đang xử lý phép thuật...'); // Reset string
+
+                if(response.success) {
+                    const message = `Tuyệt vời! Đã phân tách thành công ${response.data.count} chương con. Mở danh sách bài viết để xem.`;
+                    showNotification(message);
+                    $('#temply-ai-panel').fadeOut();
+
+                    // Prompt if they want to clear the master text
+                    setTimeout(() => {
+                        if(confirm(`Quá trình cắt thành công ${response.data.count} chương! Bạn có muốn xoá bỏ toàn bộ văn bản trong Trình soạn thảo này cho gọn không? (Nên xoá nếu Master Story đã sinh xong chương)`)) {
+                            dispatch('core/block-editor').resetBlocks([]);
+                            dispatch('core/editor').savePost();
+                        }
+                    }, 500);
+
+                } else {
+                    showNotification(response.data.message || 'Lỗi khi chia chương. Hãy đảm bảo bạn có cú pháp "Chương 1", "Chương 2"... trong bài.', true);
+                }
+            }).fail(function(xhr, status, error) {
+                hideAILoader();
+                $('#ai-loader p').text('AI đang xử lý phép thuật...');
+                showNotification('Lỗi kết nối máy chủ khi cắt chương.', true);
+                console.error(error);
             });
         }
 

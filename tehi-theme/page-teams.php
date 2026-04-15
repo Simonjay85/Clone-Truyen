@@ -19,7 +19,7 @@ get_header();
                 <h1 class="text-4xl md:text-5xl font-extrabold font-headline text-on-background tracking-tight mb-4 leading-tight">
                     Những Người Truyền Tải <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-container">Cảm Hứng Số.</span>
                 </h1>
-                <p class="text-on-surface-variant text-lg mb-8 leading-relaxed">Khám phá các nhóm dịch tâm huyết, những người đứng sau hàng ngàn chương truyện hấp dẫn tại tehitruyen.com.</p>
+                <p class="text-on-surface-variant text-lg mb-8 leading-relaxed">Khám phá các nhóm dịch tâm huyết, những người đứng sau hàng ngàn chương truyện hấp dẫn tại <?php bloginfo('name'); ?>.</p>
                 
                 <div class="flex items-center gap-4 bg-surface-container-highest/50 w-fit p-2 rounded-full border border-outline-variant/20 shadow-sm">
                     <div class="flex -space-x-3 pl-2">
