@@ -828,11 +828,10 @@ function temply_ajax_write_chapter() {
     if (!is_array($used_plot_structures)) $used_plot_structures = [];
 
     $anti_repeat_block = '';
-    
-    // Block 1: Các cảnh cụ thể gần đây (3 chương gần nhất)
+    // Block 1: Tóm tắt đại cương để AI hiểu tiến trình truyện (Tránh lặp vô thức)
     if (!empty($previous_summaries)) {
-        $anti_repeat_block .= "\n\n[CẢNH ĐÃ DÙNG GẦN ĐÂY - NGHIÊM CẤM LẶP LẠI]\n";
-        foreach (array_slice($previous_summaries, -3) as $prev) {
+        $anti_repeat_block .= "\n\n[TÓM TẮT DIỄN BIẾN CÁC CHƯƠNG ĐÃ QUA - TUYỆT ĐỐI KHÔNG TÁI DIỄN LẠI TÌNH TIẾT ĐÃ CÓ]:\n";
+        foreach ($previous_summaries as $prev) {
             $anti_repeat_block .= "- " . $prev . "\n";
         }
     }
@@ -848,9 +847,9 @@ function temply_ajax_write_chapter() {
     
     // Block 3: Cấm cứng cấu trúc lặp phiếu nhất
     $hard_forbidden = [
-        "CEO / lãnh đạo nước ngoài bước vào tiệc, cúi đầu trước nam chính, công bố hợp đồng 50 triệu USD",
-        "Phản diện bị sa thải ngay tại chỗ trước mặt đám đông",
-        "Nam chính ngồi vẽ sticker ở góc khuất, bị chế giễu, sau đó lất kèo bằng cách tiết lộ danh tính",
+        "ceo / lãnh đạo nước ngoài bước vào tiệc, cúi đầu trước nam chính, công bố hợp đồng 50 triệu usd",
+        "phản diện bị sa thải ngay tại chỗ trước mặt đám đông",
+        "nam chính ngồi vẽ sticker ở góc khuất, bị chế giễu, sau đó lất kèo bằng cách tiết lộ danh tính",
     ];
     
     // Chỉ thêm forbidden nếu đã xuất hiện trong used_plot_structures

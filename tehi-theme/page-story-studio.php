@@ -1817,6 +1817,8 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
                 draftFD.append('action', 'temply_studio_create_draft');
                 draftFD.append('action_nonce', NONCE);
                 draftFD.append('title', title);
+                const genre = selectedGenres.join(', ') || 'Phổ thông';
+                draftFD.append('genre', genre);
                 const draftRes = await fetch(AJAX_URL, { method: 'POST', body: draftFD }).then(r => r.json());
 
                 if (!draftRes.success) throw new Error(draftRes.data?.message || 'Không tạo được bài viết!');

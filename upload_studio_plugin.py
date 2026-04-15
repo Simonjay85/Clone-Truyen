@@ -4,9 +4,15 @@ try:
     ftp = ftplib.FTP("51.79.53.190")
     ftp.login("alotoinghe", "Nghia234!")
     
+    # Upload Theme Functions
+    local_func = "tehi-theme/functions.php"
+    ftp.cwd("/wp-content/themes/tehi-theme/")
+    with open(local_func, 'rb') as f:
+        ftp.storbinary("STOR functions.php", f)
+    print(f"✓ Upload thành công: /wp-content/themes/tehi-theme/functions.php")
+    
     # Upload Theme File
     local1 = "tehi-theme/page-story-studio.php"
-    ftp.cwd("/wp-content/themes/tehi-theme/")
     with open(local1, 'rb') as f:
         ftp.storbinary("STOR page-story-studio.php", f)
     print(f"✓ Upload thành công: /wp-content/themes/tehi-theme/page-story-studio.php")

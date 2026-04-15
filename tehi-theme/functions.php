@@ -666,10 +666,19 @@ function temply_studio_create_draft() {
         wp_send_json_error(array('message' => 'Không tạo được bài viết: ' . $post_id->get_error_message()));
     }
 
-    // Auto-assign random categories if none exist
-    $categories = array('Đô Thị Ẩn Thân', 'Drama', 'Ngôn tình đô thị', 'Sảng Văn', 'Trọng sinh', 'Vả Mặt', 'Hệ thống', 'Xuyên Không');
-    shuffle($categories);
-    $selected_terms = array_slice($categories, 0, rand(2, 3));
+    // ── Update Categories/Genres ──
+    $genre_str = isset($_POST['genre']) ? sanitize_text_field($_POST['genre']) : '';
+    if (!empty($genre_str)) {
+        // Split comma-separated string, trim whitespace
+        $selected_terms = array_map('trim', explode(',', $genre_str));
+        $selected_terms = array_filter($selected_terms);
+    } else {
+        // Fallback random genres
+        $categories = array('Đô Thị Ẩn Thân', 'Drama', 'Ngôn tình đô thị', 'Sảng Văn');
+        shuffle($categories);
+        $selected_terms = array_slice($categories, 0, rand(2, 3));
+    }
+    
     // Assign to taxonomy 'the_loai' (append = false to set them exactly)
     wp_set_object_terms($post_id, $selected_terms, 'the_loai', false);
 
