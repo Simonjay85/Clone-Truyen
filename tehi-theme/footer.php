@@ -25,12 +25,14 @@
 @media (max-width: 600px) { .mkm-footer-top { grid-template-columns: 1fr; } }
 </style>
 
+<?php if (!is_singular('chuong')): ?>
 <footer class="mkm-footer">
     <div class="mkm-footer-top">
+        <!-- ... inside stays the same ... -->
         <!-- BRAND -->
         <div class="mkm-footer-brand">
             <a href="<?php echo esc_url(home_url('/')); ?>">
-                <img src="<?php echo get_site_url(); ?>/img_data/images/logo-truyen-moi-v1.png" alt="<?php bloginfo('name'); ?>">
+                <img src="https://tehitruyen.com/img_data/images/logo-truyen-moi-v1.png" alt="<?php bloginfo('name'); ?>">
             </a>
             <p>Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.</p>
         </div>
@@ -112,6 +114,7 @@
         © <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. All rights reserved.
     </div>
 </footer>
+<?php endif; ?>
 
 <?php wp_footer(); ?>
 </body>

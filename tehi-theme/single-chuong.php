@@ -1,3984 +1,652 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php
+// Lấy Truyen ID từ meta của chương
+$truyen_id = get_post_meta(get_the_ID(), '_truyen_id', true);
+$truyen_title = $truyen_id ? get_the_title($truyen_id) : 'Truyện Không Rõ';
+$truyen_link = $truyen_id ? get_permalink($truyen_id) : '#';
 
-<!-- CẤU TRÚC SEO SCHEMA BẮT ĐẦU -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Article",
-  "headline": "<?php echo esc_js(get_the_title()); ?>",
-  "author": {
-    "@type": "Person",
-    "name": "Tác Giả"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "TeHi Truyện",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "<?php echo get_site_url(); ?>/img_data/images/logo-truyen-moi-v1.png"
-    }
-  },
-  "url": "<?php echo esc_url(get_permalink()); ?>",
-  "description": "Đọc ngay chương <?php echo esc_js(get_the_title()); ?> hấp dẫn tại website."
+// Lấy danh sách toàn bộ chương của truyện để làm nút Prev/Next
+$chapters = [];
+if ($truyen_id) {
+    $chapters = get_posts([
+        'post_type'      => 'chuong',
+        'posts_per_page' => -1,
+        'meta_key'       => '_truyen_id',
+        'meta_value'     => $truyen_id,
+        'orderby'        => 'ID', 
+        'order'          => 'ASC'
+    ]);
 }
-</script>
-<!-- CẤU TRÚC SEO SCHEMA KẾT THÚC -->
 
-<!-- result search mobile form start -->
-<div class="mdv-header-find-form mdv-header-find-form-mobile p-2">
-    <!-- input search -->
-    <input type="text" class="text-search-mobile mb-2" placeholder="Tìm kiếm truyện...">
-    <!-- result -->
-    <ul class="vanhiep-ul d-flex flex-column gap-1 mdv-header-find-form-ul vh-scrollbar" id="result-tim-kiem-mobile">
-        <!-- item start -->
-        <!--  -->
+$prev_chap = null;
+$next_chap = null;
+$curr_id = get_the_ID();
 
-        <!-- item end -->
-    </ul>
-</div>
+// Tìm vị trí của chương hiện tại
+for($i=0; $i<count($chapters); $i++) {
+    if($chapters[$i]->ID == $curr_id) {
+        if($i > 0) $prev_chap = $chapters[$i-1];
+        if($i < count($chapters)-1) $next_chap = $chapters[$i+1];
+        break;
+    }
+}
+?>
 
-<!-- result search mobile form end -->
+<style>
+/* Reading Mode UI */
+header.mkm-header { display: none !important; }
+.r-wrap { width: 100% !important; display: block !important; clear: both !important; background: #fdfbf7; min-height: 100vh; font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif; position: relative; }
+.r-hdr { background: #fff; height: 60px; padding: 0 16px; border-bottom: 1px solid #e5e7eb; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+.r-hdr-left { display: flex; align-items: center; gap: 12px; font-family: ui-sans-serif, system-ui, sans-serif; }
+.r-back-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; color: #374151; text-decoration: none; background: #f3f4f6; transition: background .2s; }
+.r-back-btn:hover { background: #e5e7eb; }
+.r-story-name { font-size: 15px; font-weight: 700; color: #111827; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px; text-decoration: none; }
+.r-story-name:hover { color: #6366f1; text-decoration: underline; }
 
-<!-- Mobile Navigation Menu (Off-canvas) -->
-<div class="truyen-mobile-nav" id="mobileNav">
-    <div class="truyen-mobile-nav-header">
-        <button class="truyen-mobile-close" id="mobileClose">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="38"
-                height="38"
-                fill="currentColor"
-                class="bi bi-x"
-                viewBox="0 0 16 16">
-                <path
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-            </svg>
+.r-hdr-right { display: flex; gap: 8px; }
+.r-icon-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; border: none; background: #fff; color: #374151; cursor: pointer; transition: background .2s; font-size: 18px; }
+.r-icon-btn:hover { background: #f3f4f6; }
+
+/* Content Area */
+.r-container { max-width: 800px; margin: 20px auto; padding: 40px 20px 80px 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+.r-title { text-align: center; font-size: 28px; font-weight: 700; color: #111827; margin-bottom: 24px; line-height: 1.4; font-family: ui-sans-serif, system-ui, sans-serif; }
+.r-content { font-size: 22px; line-height: 1.8; color: #333; text-align: justify; word-wrap: break-word; }
+.r-content p { margin-bottom: 1.5em; }
+.r-content img { border-radius: 10px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: block; margin: 0 auto; max-width: 100%; height: auto; }
+
+/* Navigation Inline */
+.r-nav { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 40px; padding-top: 30px; border-top: 1px dashed #d1d5db; font-family: ui-sans-serif, system-ui, sans-serif; }
+.r-nav a { padding: 10px 20px; border-radius: 20px; font-weight: 600; text-decoration: none; display:flex; align-items:center; justify-content:center; gap:8px; transition:all .2s; font-size: 14px;}
+.r-nav-prev, .r-nav-next { background: #f97316; color: #fff; flex: 1; max-width: 200px; }
+.r-nav-prev.dis, .r-nav-next.dis { background: #e5e7eb; color: #9ca3af; pointer-events: none; }
+.r-nav-list { background: #10b981; color: #fff; padding: 10px 16px; border-radius: 20px; }
+.r-nav a:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+/* Floating Actions */
+.r-fab-top { position: fixed; bottom: 100px; left: 30px; width: 44px; height: 44px; background: #111827; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 20px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: none; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 100;}
+.r-fab-top.show { opacity: 1; pointer-events: all; }
+
+/* Mobile Navigation Bar */
+.r-mob-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-top: 1px solid #e5e7eb; z-index: 190; padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -4px 10px rgba(0,0,0,0.05); }
+.r-mob-nav-inner { display: flex; justify-content: space-between; align-items: center; height: 60px; padding: 0 10px; }
+.r-mob-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6b7280; text-decoration: none; font-size: 10px; gap: 4px; border: none; background: none; }
+.r-mob-nav-item.active { color: #6366f1; }
+.r-mob-nav-item svg { width: 22px; height: 22px; }
+.r-mob-nav-item.dis { opacity: 0.4; pointer-events: none; }
+.r-mob-nav-center { width: auto; margin: -20px 5px 0 5px; padding: 6px 16px; background: #fff; border: 1px solid #e0e7ff; color: #6366f1; border-radius: 20px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 11px; box-shadow: 0 4px 6px rgba(99,102,241,0.1); cursor:pointer;}
+.r-mob-nav-center span.chap-progress { color: #9ca3af; font-weight: 500; font-size: 9px; margin-top:2px; }
+
+/* FAB & Speed Dial */
+.r-speed-dial { position: fixed; right: 20px; bottom: 85px; z-index: 195; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; transition: all 0.3s; display:none; }
+.r-sd-actions { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; opacity: 0; pointer-events: none; transform: translateY(20px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.r-speed-dial.open .r-sd-actions { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.r-sd-btn { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #e5e7eb; padding: 6px 12px 6px 6px; border-radius: 30px; color: #374151; font-size: 13px; font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.08); cursor: pointer; white-space:nowrap; }
+.r-sd-icon { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #e5e7eb; background:#f9fafb; margin-right:4px;}
+.r-sd-fab { width: 48px; height: 48px; border-radius: 50%; background: #9253ff; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(146, 83, 255, 0.4); border: none; font-size: 24px; transition: transform 0.3s; }
+.r-speed-dial.open .r-sd-fab { transform: rotate(45deg); background: #374151; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+@media (max-width: 800px) {
+    .r-nav { display: none !important; }
+    .r-mob-nav { display: block; }
+    .r-speed-dial { display: flex; }
+    .r-container { padding-bottom: 90px; }
+}
+
+/* Modals */
+.r-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; display: none; opacity: 0; transition: opacity 0.3s; }
+.r-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.95); background: #fff; width: 90%; max-width: 400px; border-radius: 16px; z-index: 101; display: none; opacity: 0; transition: all 0.3s; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); overflow:hidden; font-family: ui-sans-serif, system-ui, sans-serif;}
+.r-modal-hdr { padding: 16px 20px; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; background: #f9fafb; font-weight: 700; color: #111827; }
+.r-modal-close { background: none; border: none; font-size: 24px; color: #6b7280; cursor: pointer; line-height: 1; }
+.r-modal-body { padding: 20px; max-height: 60vh; overflow-y: auto; }
+.r-show .r-overlay, .r-show .r-modal { display: block; }
+.r-show.r-active .r-overlay { opacity: 1; }
+.r-show.r-active .r-modal { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+/* TOC Styles */
+.r-toc-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.r-toc-item { padding: 12px; border-radius: 8px; border: 1px solid #f3f4f6; text-decoration: none; color: #374151; font-size: 14px; font-weight: 500; transition: background .2s; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.r-toc-item:hover { background: #f9fafb; border-color: #e5e7eb; }
+.r-toc-item.active { background: #e0e7ff; border-color: #c7d2fe; color: #4f46e5; font-weight: 600; }
+.r-toc-search { width: 100%; padding: 10px 16px; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 16px; outline: none; font-size: 14px; }
+
+/* Settings Styles */
+.r-set-row { margin-bottom: 20px; }
+.r-set-label { font-size: 13px; font-weight: 600; color: #6b7280; margin-bottom: 10px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+.r-set-group { display: flex; gap: 12px; }
+.r-set-btn { flex: 1; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; cursor: pointer; font-weight: 600; font-size: 14px; color: #374151; transition: all .2s; }
+.r-set-btn:hover { border-color: #9ca3af; }
+.r-bg-theme1 { background: #f5f3f7 !important; color: #111827 !important; } /* Light Purple Pink background */
+.r-bg-theme2 { background: #000000 !important; color: #e5e7eb !important; border-color: #374151 !important;}
+.r-bg-theme2 .r-container { background: #111827 !important; box-shadow: none !important; border: 1px solid #1f2937; }
+.r-bg-theme2 .r-hdr { background: #111827 !important; border-bottom-color: #1f2937 !important; }
+.r-bg-theme2 .r-hdr .r-story-name { color: #e5e7eb !important; }
+.r-bg-theme2 .r-icon-btn, .r-bg-theme2 .r-back-btn, .r-bg-theme2 .r-sd-btn { background: #1f2937 !important; color: #e5e7eb !important; border-color: #374151 !important; }
+.r-bg-theme2 .r-title { color: #f3f4f6 !important; }
+.r-bg-theme3 { background: #edf2f7 !important; color: #111827 !important; }
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+    .r-story-name { max-width: 180px; font-size: 14px;}
+    .r-title { font-size: 22px; margin-bottom: 20px;}
+    .r-content { font-size: 20px; line-height: 1.6; }
+    .r-container { padding: 20px 15px 80px 15px; }
+    .r-nav { gap: 8px; }
+    .r-nav a { padding: 10px 12px; font-size: 13px; }
+    .r-nav-prev::before { content: '← '; }
+    .r-nav-next::after { content: ' →'; }
+    .r-nav-prev span, .r-nav-next span { display: none; }
+}
+/* Paragraph Comments */
+.r-para-wrap { position: relative; }
+.r-para-wrap:hover .r-para-btn { opacity: 1; }
+.r-para-btn { opacity: 0; position: absolute; right: -44px; top: 2px; width: 32px; height: 32px; border-radius: 50%; background: #6366f1; border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; box-shadow: 0 2px 6px rgba(99,102,241,0.3); z-index: 10; }
+@media (max-width: 800px) { 
+    .r-para-btn { opacity: 0; right: 0; top: -20px; left: auto; width: 26px; height: 26px; font-size: 11px; } 
+}
+.r-cmt-count { position: absolute; right: -46px; top: 36px; background: #ef4444; color: #fff; font-size: 10px; font-weight: 700; border-radius: 10px; padding: 1px 5px; font-family: ui-sans-serif, sans-serif; display: none; }
+@media (max-width: 800px) {
+    .r-cmt-count { right: 0; top: 8px; }
+}
+/* Comments Panel */
+.r-cmt-panel { position: fixed; right: 0; top: 0; height: 100%; width: 360px; background: #fff; z-index: 200; box-shadow: -8px 0 24px rgba(0,0,0,0.1); transform: translateX(100%); transition: transform 0.3s ease; font-family: ui-sans-serif, system-ui, sans-serif; display: flex; flex-direction: column; }
+.r-cmt-panel.open { transform: translateX(0); }
+.r-cmt-panel-hdr { padding: 20px; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; background: #f9fafb; }
+.r-cmt-panel-title { font-weight: 700; color: #111827; font-size: 15px; }
+.r-cmt-close { background: none; border: none; font-size: 24px; color: #6b7280; cursor: pointer; }
+.r-cmt-body { flex: 1; overflow-y: auto; padding: 20px; }
+.r-cmt-form { padding: 16px 20px; border-top: 1px solid #e5e7eb; }
+.r-cmt-form textarea { width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; font-size: 14px; resize: none; outline: none; font-family: inherit; }
+.r-cmt-form-btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+.r-cmt-submit { background: #6366f1; color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; }
+.r-cmt-item { padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.r-cmt-item:last-child { border: none; }
+.r-cmt-author { font-weight: 700; font-size: 13px; color: #111827; }
+.r-cmt-date { font-size: 11px; color: #9ca3af; margin-left: 8px; }
+.r-cmt-text { font-size: 14px; color: #374151; margin-top: 4px; line-height: 1.5; }
+.r-cmt-empty { text-align: center; padding: 40px 20px; color: #9ca3af; font-size: 14px; }
+.r-cmt-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 199; display:none; }
+.r-cmt-overlay.open { display: block; }
+</style>
+
+<div class="r-wrap" id="rWrap">
+    <!-- Header -->
+    <div class="r-hdr" id="rHdr">
+        <div class="r-hdr-left">
+            <a href="<?php echo esc_url($truyen_link); ?>" class="r-back-btn" title="Quay lại Truyện">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </a>
+            <a href="<?php echo esc_url($truyen_link); ?>" class="r-story-name" title="<?php echo esc_attr($truyen_title); ?>">
+                <?php echo esc_html($truyen_title); ?>
+            </a>
+        </div>
+        <div class="r-hdr-right">
+            <button class="r-icon-btn" onclick="appModal.open('tocModal')" title="Mục lục">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <button class="r-icon-btn" onclick="appModal.open('setModal')" title="Cài đặt">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Reading Area -->
+    <div class="r-container">
+        <h1 class="r-title"><?php the_title(); ?></h1>
+        
+        <div class="r-nav" style="margin-top:0; border:none; padding:0; margin-bottom:30px;">
+            <a href="<?php echo $prev_chap ? get_permalink($prev_chap->ID) : '#'; ?>" class="r-nav-prev <?php echo $prev_chap ? '' : 'dis'; ?>"><span>Chương trước</span></a>
+            <a href="javascript:void(0)" onclick="appModal.open('tocModal')" class="r-nav-list"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></a>
+            <a href="<?php echo $next_chap ? get_permalink($next_chap->ID) : '#'; ?>" class="r-nav-next <?php echo $next_chap ? '' : 'dis'; ?>"><span>Chương sau</span></a>
+        </div>
+
+        <div class="r-content" id="rContent">
+            <?php 
+            // Render nội dung với hỗ trợ Bình luận Theo Đoạn
+            $raw_content = get_the_content();
+            $paragraphs = preg_split('/(<\/p>\s*<p[^>]*>|<br\s*\/?><br\s*\/?>)/i', $raw_content);
+            $p_idx = 0;
+            foreach ($paragraphs as $ptext) {
+                $ptext = trim($ptext);
+                if (empty($ptext)) continue;
+                // Ensure wrapped in <p>
+                if (!preg_match('/^<p/i', $ptext)) $ptext = '<p>' . $ptext;
+                if (!preg_match('/<\/p>\s*$/i', $ptext)) $ptext .= '</p>';
+                echo '<div class="r-para-wrap" data-pidx="' . $p_idx . '">';
+                echo $ptext;
+                echo '<button class="r-para-btn" onclick="pCmt.open(' . $p_idx . ')" title="Bình luận đoạn này">💬</button>';
+                echo '</div>';
+                $p_idx++;
+            }
+            ?>
+        </div>
+
+        <div class="r-nav">
+            <a href="<?php echo $prev_chap ? get_permalink($prev_chap->ID) : '#'; ?>" class="r-nav-prev <?php echo $prev_chap ? '' : 'dis'; ?>"><span>Chương trước</span></a>
+            <a href="javascript:void(0)" onclick="appModal.open('tocModal')" class="r-nav-list"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></a>
+            <a href="<?php echo $next_chap ? get_permalink($next_chap->ID) : '#'; ?>" class="r-nav-next <?php echo $next_chap ? '' : 'dis'; ?>"><span>Chương sau</span></a>
+        </div>
+    </div>
+    
+    
+    <!-- Speed Dial Mobile HTML -->
+    <div class="r-speed-dial" id="speedDial">
+        
+        <div class="r-sd-actions">
+            <button class="r-sd-btn" onclick="appTTS.toggle()" id="ttsBtn">
+                <span class="r-sd-icon"><svg width="18" height="18" fill="none" stroke="#6366f1" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2a6 6 0 00-6 6v4a6 6 0 0012 0V8a6 6 0 00-6-6zM8 12h8M12 22v-4"/></svg></span>
+                <span id="ttsLabel">Nghe truyện</span>
+            </button>
+            <button class="r-sd-btn" onclick="pCmt.openMode('all')">
+                <span class="r-sd-icon"><svg width="18" height="18" fill="none" stroke="#6366f1" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></span>
+                Bình luận
+            </button>
+            <button class="r-sd-btn" onclick="appLike.toggle()">
+                <span class="r-sd-icon"><svg id="likeIcon" width="18" height="18" fill="none" stroke="#ef4444" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></span>
+                <span id="likeCount"><?php echo (int)get_post_meta($truyen_id, 'truyen_yeu_thich', true); ?></span> lượt thích
+            </button>
+        </div>
+        <button class="r-sd-fab" onclick="this.parentElement.classList.toggle('open')">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
         </button>
     </div>
 
-    <ul class="truyen-mobile-nav-list">
-                    <li class="truyen-mobile-nav-item">
-                <a href="<?php echo get_site_url(); ?>/truyen-de-cu.html">Truyện đề cử</a>
-            </li>
-                    <li class="truyen-mobile-nav-item">
-                <a href="<?php echo get_site_url(); ?>/truyen-moi-cap-nhat.html">Truyện mới cập nhật</a>
-            </li>
-                    <li class="truyen-mobile-nav-item">
-                <a href="<?php echo get_site_url(); ?>/the-loai.html">Thể loại</a>
-            </li>
-                    <li class="truyen-mobile-nav-item">
-                <a href="<?php echo get_site_url(); ?>/hoan-thanh.html">Truyện hoàn thành</a>
-            </li>
-                    <li class="truyen-mobile-nav-item">
-                <a href="<?php echo get_site_url(); ?>/team.html">Team</a>
-            </li>
-                    <li class="truyen-mobile-nav-item">
-                <a href="<?php echo get_site_url(); ?>/tu-truyen.html">Tủ truyện</a>
-            </li>
-        
+    <!-- Mobile Tab HTML -->
+    <div class="r-mob-nav">
+        <div class="r-mob-nav-inner">
+            <a href="<?php echo get_site_url(); ?>" class="r-mob-nav-item">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                Home
+            </a>
+            <a href="<?php echo $prev_chap ? get_permalink($prev_chap->ID) : 'javascript:void(0)'; ?>" class="r-mob-nav-item <?php echo $prev_chap ? '' : 'dis'; ?>">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                Trước
+            </a>
+            <button class="r-mob-nav-item r-mob-nav-center" onclick="appModal.open('tocModal')">
+                <div style="display:flex;align-items:center;gap:4px;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253A10.024 10.024 0 0113.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Chương</div>
+                <?php 
+                    $curr_index = array_search($curr_id, array_column($chapters, 'ID'));
+                    $chap_txt = ($curr_index !== false) ? 'Ch. ' . ($curr_index + 1) . ' / ' . count($chapters) : 'TOC';
+                ?>
+                <span class="chap-progress"><?php echo $chap_txt; ?></span>
+            </button>
+            <a href="<?php echo $next_chap ? get_permalink($next_chap->ID) : 'javascript:void(0)'; ?>" class="r-mob-nav-item <?php echo $next_chap ? '' : 'dis'; ?>">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                Sau
+            </a>
+            <button class="r-mob-nav-item" onclick="appModal.open('setModal')">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35H12a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Cài đặt
+            </button>
+        </div>
+    </div>
 
-        <!-- profile -->
-                <!-- admin dashboard -->
-        
-    </ul>
-
-
-
+    <!-- Float to top -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="r-fab-top" id="fabTop">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+    </button>
 </div>
 
-<!-- overlay -->
-<div class="truyen-overlay"></div>
-
-<script>
-    if (localStorage.getItem('dark-mode') == 'true') {
-        $('body').addClass('dark-mode');
-        $('.btn-dark-mode-toggle').html('<i class="fa-solid fa-sun"></i>');
-    }
-    $(document).ready(function() {
-
-        // dark mode toggle
-        $('.btn-dark-mode-toggle').on('click', function() {
-            $('body').toggleClass('dark-mode');
-            // change icon
-            // change background color
-            // nếu có class mode thì button này khi click trở về icon ban đầu
-            if ($('body').hasClass('dark-mode')) {
-                $(this).html('<i class="fa-solid fa-sun"></i>');
-
-                $(this).css('transform', 'rotate(360deg)');
-                localStorage.setItem('dark-mode', 'true');
-            } else {
-                $(this).html('<i class="fa-solid fa-moon"></i>');
-
-                $(this).css('transform', 'rotate(0deg)');
-                localStorage.setItem('dark-mode', 'false');
-            }
-            $(this).css('transition', 'all 0.5s ease');
-
-            // rotate icon
-
-            // transition
-        });
-
-        // Mobile Menu Toggle
-        $("#menuToggle").on("click", () => {
-            openMobileMenu();
-        });
-
-        $("#mobileClose").on("click", () => {
-            closeMobileMenu();
-        });
-
-        // Create overlay element
-        $("body").append('<div class="truyen-overlay"></div>');
-
-        // Close menu when clicking overlay
-        $(".truyen-overlay").on("click", () => {
-            closeMobileMenu();
-        });
-
-        function openMobileMenu() {
-            // Use GSAP for animation
-            gsap.to(".truyen-mobile-nav", {
-                left: 0,
-                duration: 0.3,
-                ease: "power2.out",
-            });
-
-            // Animate menu items
-            gsap.fromTo(
-                ".truyen-mobile-nav-item", {
-                    opacity: 0,
-                    x: -20,
-                }, {
-                    opacity: 1,
-                    x: 0,
-                    stagger: 0.05,
-                    duration: 0.5,
-                    delay: 0.2,
-                    ease: "power2.out",
-                }
-            );
-
-            $(".truyen-overlay").addClass("active");
-            $("body").css("overflow", "hidden");
-        }
-
-        function closeMobileMenu() {
-            gsap.to(".truyen-mobile-nav", {
-                left: -280,
-                duration: 0.3,
-                ease: "power2.in",
-            });
-
-            $(".truyen-overlay").removeClass("active");
-            $("body").css("overflow", "");
-        }
-    });
-</script>
-
-
-
-<script>
-    $(document).ready(function() {
-        // Logout confirmation
-        $('.logout-link').click(function(e) {
-            e.preventDefault(); // Prevent default link behavior
-
-            Swal.fire({
-                title: 'Bạn có chắc chắn muốn đăng xuất?',
-                text: "Bạn sẽ cần đăng nhập lại để truy cập vào tài khoản!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Đồng ý',
-                cancelButtonText: 'Hủy bỏ'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Redirect to the logout URL
-                    window.location.href = "<?php echo get_site_url(); ?>/dang-xuat";
-                }
-            });
-        });
-
-
-        // TÌM KIẾM START
-        if (window.innerWidth > 1024) {
-            let typingTimer; // Timer để kiểm soát thời gian chờ
-            const debounceTime = 700; // Thời gian chờ (ms)
-            const $inputSearch = $('.truyen-search-input'); // Trường input tìm kiếm
-            const $resultContainer = $('#result-tim-kiem'); // Kết quả tìm kiếm
-            const $resultContainerBox = $('.mdv-header-find-form-pc');
-            let currentKeyword = ''; // Biến lưu từ khóa tìm kiếm hiện tại
-
-            // focus addclass overplay active
-            $inputSearch.focus(function() {
-                $('.truyen-overlay').addClass('active');
-            });
-
-            // blur removeclass overplay active
-            $inputSearch.blur(function() {
-                $('.truyen-overlay').removeClass('active');
-            });
-
-            // Xử lý nút "Xem thêm" cho desktop
-            $(document).on('click', '.mdv-header-find-form-pc .load-more-results', function(e) {
-                e.preventDefault();
-                const $btn = $(this);
-                const nextPage = parseInt($btn.data('page'));
-                const keyword = currentKeyword;
-
-                $btn.html('<i class="fas fa-spinner fa-spin"></i> Đang tải...').prop('disabled', true);
-
-                $.ajax({
-                    url: 'sources/ajax/mongdaovien/tim-kiem-truyen.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        keyword: keyword,
-                        page: nextPage
-                    },
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            // Xóa nút "Xem thêm" cũ
-                            $('.mdv-header-find-form-pc .search-load-more').remove();
-
-                            // Thêm kết quả mới
-                            $resultContainer.append(response.html);
-
-                            // Cập nhật trạng thái
-                            if (!response.has_more) {
-                                $('.mdv-header-find-form-pc .search-load-more').remove();
-                            }
-                        }
-                    },
-                    error: function() {
-                        $btn.html('Xem thêm kết quả <i class="fas fa-chevron-down"></i>').prop('disabled', false);
-                        alert('Đã xảy ra lỗi, vui lòng thử lại!');
-                    }
-                });
-            });
-
-            // Lắng nghe sự kiện nhập liệu
-            $inputSearch.on('input', function() {
-                clearTimeout(typingTimer);
-                currentKeyword = $(this).val().trim(); // Cập nhật từ khóa hiện tại
-                $resultContainer.fadeOut('fast', function() {
-                    $resultContainer.html('<div class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>').fadeIn('fast');
-                });
-                typingTimer = setTimeout(function() {
-                    if (currentKeyword.length > 0) {
-                        $resultContainerBox.addClass('active');
-                        $resultContainerBox.fadeIn('fast');
-                        searchTruyen(currentKeyword);
-                    } else {
-                        $resultContainer.fadeOut('fast', function() {
-                            $resultContainer.empty();
-                        });
-
-                        $resultContainerBox.removeClass('active').fadeOut('fast', function() {
-                            $resultContainer.empty();
-                        });
-                    }
-                }, debounceTime);
-            });
-
-            function searchTruyen(query) {
-                $.ajax({
-                    url: 'sources/ajax/mongdaovien/tim-kiem-truyen.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        keyword: query,
-                        page: 1
-                    },
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            $resultContainer.fadeOut('fast', function() {
-                                $resultContainer.html(response.html).fadeIn('fast');
-                            });
-                        } else {
-                            $resultContainer.fadeOut('fast', function() {
-                                $resultContainer.html('<li class="p-2 text-center text-muted">Không tìm thấy kết quả nào!</li>').fadeIn('fast');
-                            });
-                        }
-                    },
-                    error: function() {
-                        $resultContainer.fadeOut('fast', function() {
-                            $resultContainer.html('<li class="p-2 text-center text-danger">Lỗi khi tải dữ liệu, vui lòng thử lại!</li>').fadeIn('fast');
-                        });
-                    }
-                });
-            }
-        } else {
-            // Mobile search handling
-            let currentKeyword = ''; // Biến lưu từ khóa tìm kiếm hiện tại cho mobile
-
-            $(document).on('click', '.truyen-search-mobile-btn', function() {
-                const $searchBox = $('.mdv-header-find-form-mobile');
-
-                if ($searchBox.hasClass('active')) {
-                    // Đóng box tìm kiếm
-                    $searchBox.addClass('hide-results');
-                    $('.truyen-overlay').removeClass('active');
-                    $('body').removeClass('overflow-hidden');
-                    setTimeout(() => {
-                        $searchBox.removeClass('active');
-                    }, 300);
-                } else {
-                    // Mở box tìm kiếm
-                    $searchBox.removeClass('hide-results').addClass('active').css('display', 'block');
-                    $('.truyen-overlay').addClass('active');
-                    $('body').addClass('overflow-hidden');
-                    setTimeout(() => {
-                        $('.text-search-mobile').focus();
-                    }, 100);
-                }
-            });
-
-            // Xử lý nút "Xem thêm" cho mobile
-            $(document).on('click', '.mdv-header-find-form-mobile .load-more-results', function(e) {
-                e.preventDefault();
-                const $btn = $(this);
-                const nextPage = parseInt($btn.data('page'));
-                const keyword = currentKeyword;
-
-                $btn.html('<i class="fas fa-spinner fa-spin"></i> Đang tải...').prop('disabled', true);
-
-                $.ajax({
-                    url: 'sources/ajax/mongdaovien/tim-kiem-truyen.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        keyword: keyword,
-                        page: nextPage
-                    },
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            // Xóa nút "Xem thêm" cũ
-                            $('.mdv-header-find-form-mobile .search-load-more').remove();
-
-                            // Thêm kết quả mới
-                            $('#result-tim-kiem-mobile').append(response.html);
-
-                            // Cập nhật trạng thái
-                            if (!response.has_more) {
-                                $('.mdv-header-find-form-mobile .search-load-more').remove();
-                            }
-                        }
-                    },
-                    error: function() {
-                        $btn.html('Xem thêm kết quả <i class="fas fa-chevron-down"></i>').prop('disabled', false);
-                        alert('Đã xảy ra lỗi, vui lòng thử lại!');
-                    }
-                });
-            });
-
-            // Đóng form tìm kiếm khi click vào overlay
-            $(document).on('click', '.truyen-overlay', function() {
-                const $searchBox = $('.mdv-header-find-form-mobile');
-                $searchBox.addClass('hide-results');
-                $('.truyen-overlay').removeClass('active');
-                $('body').removeClass('overflow-hidden');
-                setTimeout(() => {
-                    $searchBox.removeClass('active');
-                }, 300);
-            });
-
-            // Xử lý tìm kiếm trên mobile
-            let typingTimer;
-            const debounceTime = 700;
-            const $inputSearch = $('.text-search-mobile');
-            const $resultContainer = $('#result-tim-kiem-mobile');
-
-            $inputSearch.on('input', function() {
-                clearTimeout(typingTimer);
-                currentKeyword = $(this).val().trim(); // Cập nhật từ khóa hiện tại
-                $resultContainer.html('<div class="text-center py-4"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Đang tìm kiếm...</span></div></div>');
-
-                typingTimer = setTimeout(function() {
-                    if (currentKeyword.length > 0) {
-                        searchTruyen(currentKeyword);
-                    } else {
-                        $resultContainer.html('<div class="text-center py-4 text-muted">Nhập từ khóa để tìm kiếm...</div>');
-                    }
-                }, debounceTime);
-            });
-
-            function searchTruyen(query) {
-                $.ajax({
-                    url: 'sources/ajax/mongdaovien/tim-kiem-truyen.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        keyword: query,
-                        page: 1
-                    },
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            $resultContainer.html(response.html);
-                        } else {
-                            $resultContainer.html('<div class="text-center py-4 text-muted">Không tìm thấy kết quả nào!</div>');
-                        }
-                    },
-                    error: function() {
-                        $resultContainer.html('<div class="text-center py-4 text-danger">Đã xảy ra lỗi, vui lòng thử lại!</div>');
-                    }
-                });
-            }
-        }
-
-        // TÌM KIẾM END
-
-
-        $(document).ready(function() {
-            if (window.innerWidth > 1024) {
-                const header = document.querySelector(".truyen-header");
-                // header top height
-                const headerTopHeight = document.querySelector(".truyen-header-top");
-                const headerHeight = header.offsetHeight;
-                window.addEventListener("scroll", function() {
-                    if (window.scrollY > headerHeight) {
-                        header.classList.add("active");
-                        header.style.transform = "translateY(-" + (headerTopHeight.offsetHeight + 2) + "px)";
-                        header.style.transition = "all 0.5s ease-in-out";
-                    } else {
-                        header.classList.remove("active");
-                        header.style.transform = "translateY(0px)";
-                        header.style.transition = "all 0.5s ease-in-out";
-                    }
-                });
-
-            } else {
-                const header = document.querySelector(".truyen-header");
-                const headerHeight = header.offsetHeight;
-                window.addEventListener("scroll", function() {
-                    if (window.scrollY > headerHeight) {
-                        header.classList.add("active");
-                        header.style.transition = "all 0.5s ease-in-out";
-                    } else {
-                        header.classList.remove("active");
-                        header.style.transition = "all 0.5s ease-in-out";
-                    }
-                });
-            }
-
-        });
-
-        // HÀM CẬP NHẬT SỐ THÔNG BÁO CHƯA ĐỌC TRONG HEADER
-        function updateHeaderNotificationCount() {
-            $.ajax({
-                url: "sources/ajax/mongdaovien/cap-nhat-so-thong-bao-header.php",
-                type: "POST",
-                dataType: "json",
-                success: function(response) {
-                    if (response.status === "success") {
-                        const $countElement = $('.so-thong-bao-cua-doc');
-                        const $countContainer = $('.truyen-notification-item-count');
-
-                        if (response.unreadCount > 0) {
-                            $countElement.text(response.displayCount);
-                            $countContainer.show();
-                        } else {
-                            $countContainer.hide();
-                        }
-                    }
-                },
-                error: function() {
-                    console.error("Không thể cập nhật số thông báo header.");
-                }
-            });
-        }
-
-        // Tự động cập nhật số thông báo mỗi 30 giây nếu đã đăng nhập
-        
-    });
-</script>  <!-- Menu mobi start -->
-    <!-- Menu mobile end -->
-  
-  <div class="wrapper wrapper-detail">
-    
-
-<section class="msv-san-pham-detail mdv-san-pham-detail ">
-    <div class="container">
-        <div class="mdv-san-pham-detail-box rounded p-3 position-relative mb-5 mb-lg-5">
-            <!-- khung tool start -->
-            <div class="mdv-san-pham-detail-khung-tool ">
-                <div class="mdv-san-pham-detail-khung-tool-box ">
-                    <ul class="vanhiep-ul d-flex flex-column mdv-san-pham-detail-khung-tool-box-ul ">
-
-
-                        <!-- chế độ sáng tối -->
-                        <li class="btn-che-do-sang-toi">
-                            <a class="d-inline-flex " data-bs-toggle="tooltip" data-bs-placement="left" title="Chế độ sáng/tối">
-                                <i class="fa-solid fa-moon"></i>
-                            </a>
-                        </li>
-                        <!-- chỉnh cỡ chữ -->
-                        <li class="btn-chinh-co-chu-tool position-relative">
-                            <a class="d-inline-flex ">
-                                <i class="fa-solid fa-a"></i>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                    <!-- Box chỉnh cỡ chữ nằm bên trái của nút chỉnh cỡ chữ -->
-                    <div id="fontSizeBox" class="font-size-box d-none">
-                        <label for="fontSizeRange" class="font-size-label">Chỉnh cỡ chữ</label>
-                        <input type="range" id="fontSizeRange" min="12" max="32" value="18"
-                            style=" border-radius: 15px; outline: none; cursor: pointer; touch-action: manipulation;">
-
-                        <!-- HTML -->
-                        <div class="toggle-switch">
-                            <label for="removeBreaksToggle" class="font-size-label">Ẩn Dấu Xuống Dòng</label>
-                            <input type="checkbox" id="removeBreaksToggle">
-                            <span class="slider"></span>
-                        </div>
-
-                    </div>
-
-                    <!-- Danh sách chương, sẽ ẩn khi trang tải -->
-                    <div class="msv-chuong-list-container-left" id="chuongListLeft">
-                        <ul class="msv-chuong-list p-0">
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1" class="msv-chuong-link">
-                                        <span class="msv-chuong-title ">Chương 1:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" class="msv-chuong-link">
-                                        <span class="msv-chuong-title ">Chương 2:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=3" class="msv-chuong-link">
-                                        <span class="msv-chuong-title ">Chương 3:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=4" class="msv-chuong-link">
-                                        <span class="msv-chuong-title ">Chương 4:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=5" class="msv-chuong-link">
-                                        <span class="msv-chuong-title ">Chương 5:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=6" class="msv-chuong-link">
-                                        <span class="msv-chuong-title ">Chương 6:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=7" class="msv-chuong-link">
-                                        <span class="msv-chuong-title ">Chương 7:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=8" class="msv-chuong-link">
-                                        <span class="msv-chuong-title ">Chương 8:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=9" class="msv-chuong-link">
-                                        <span class="msv-chuong-title ">Chương 9:</span>
-                                    </a>
-                                </li>
-                                                    </ul>
-                    </div>
-
-
-                </div>
-            </div>
-            <!-- khung tool end -->
-            <!-- breadcrumb start -->
-                        <nav aria-label="breadcrumb " class="mdv-doc-truyen-breadcrumb px-3 py-2 rounded-3 ">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?php echo get_site_url(); ?>">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href='<?php echo get_site_url(); ?>/hoan-thanh.html' >Truyện hoàn thành</a></li>
-                    <li class="breadcrumb-item"><a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html">Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1">Chương 1</a></li>
-                </ol>
-            </nav>
-            <!-- breadcrumb end -->
-            <!-- Chương title start -->
-            <div class="mdv-san-pham-detail-chuong-title text-center">
-                <span class="mdv-san-pham-detail-chuong-title-label"><span class="mdv-san-pham-detail-chuong-title-text">Chương 1:</span>
-            </div>
-            <!-- Chương Title End -->
-            <!-- thời gian đăng,lượt xem, bình luận start -->
-            <div class="mdv-san-pham-detail-tgian-lx-bl-box mb-3 mb-lg-3 d-flex flex-column flex-md-row justify-content-center align-items-center gap-1 gap-md-3">
-                <div class="mdv-san-pham-detail-tgian">
-                    <small> <i class="fa-regular fa-clock"></i> Đăng lúc 17:31 - 10/04/2026</small>
-                </div>
-                <div class="mdv-san-pham-detail-lx-bl d-inline-flex align-items-center gap-2">
-                    <div class="mdv-san-pham-detail-lx">
-                        <small><i class="fa-solid fa-eye"></i> 16</small>
-                    </div>
-                    <div class="mdv-san-pham-detail-bl">
-                        <small> <i class="fa-solid fa-comments"></i> 0</small>
-                    </div>
-                </div>
-            </div>
-            <!-- thời gian đăng,lượt xem, bình luận end -->
-
-            <!-- Chương Trước, Sau Start -->
-            <div class="mdv-breadcrumb-chuong-box d-flex justify-content-center  gap-1 position-relative">
-                <!-- Nút Chương Trước -->
-                <a href="#" class="d-inline-flex  mdv-chuong-button mdv-chuong-button-truoc hvr-icon-back disabled" style="pointer-events: none; filter: grayscale(100%); background-color: #d3d3d3;">
-                    <i class="fa-solid fa-arrow-left-long hvr-icon"></i>
-                    <span class="mdv-chuong-button-text">Trước</span>
+<!-- Modal TOC -->
+<div id="tocModal" class="r-modal-wrap">
+    <div class="r-overlay" onclick="appModal.close('tocModal')"></div>
+    <div class="r-modal">
+        <div class="r-modal-hdr">
+            <span>Danh sách chương</span>
+            <button class="r-modal-close" onclick="appModal.close('tocModal')">&times;</button>
+        </div>
+        <div class="r-modal-body">
+            <input type="text" class="r-toc-search" id="qCh" placeholder="Tìm chương nhanh...">
+            <div class="r-toc-list">
+                <?php foreach($chapters as $chap): ?>
+                <a href="<?php echo get_permalink($chap->ID); ?>" class="r-toc-item <?php echo ($chap->ID == $curr_id) ? 'active' : ''; ?>">
+                    <?php echo esc_html($chap->post_title); ?>
                 </a>
-
-                <!-- Nút Tìm Chương -->
-                <div class="h-100 mdv-chuong-button-tim-box position-relative">
-                    <a class="mdv-chuong-button mdv-chuong-button-tim hvr-icon-pulse-grow" id="timChuongBtn">
-                        <i class="fa-solid fa-list hvr-icon"></i>
-                        <span class="mdv-chuong-button-text">Chương 1</span>
-                    </a>
-                    <!-- Danh sách chương, sẽ ẩn khi trang tải -->
-                    <div class="msv-chuong-list-container position-absolute" id="chuongList" style="display: none;">
-                        <ul class="msv-chuong-list p-0">
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1" title="Chương 1:" class="msv-chuong-link">
-                                        <span class="msv-chuong-number ">Chương 1:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" title="Chương 2:" class="msv-chuong-link">
-                                        <span class="msv-chuong-number ">Chương 2:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=3" title="Chương 3:" class="msv-chuong-link">
-                                        <span class="msv-chuong-number ">Chương 3:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=4" title="Chương 4:" class="msv-chuong-link">
-                                        <span class="msv-chuong-number ">Chương 4:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=5" title="Chương 5:" class="msv-chuong-link">
-                                        <span class="msv-chuong-number ">Chương 5:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=6" title="Chương 6:" class="msv-chuong-link">
-                                        <span class="msv-chuong-number ">Chương 6:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=7" title="Chương 7:" class="msv-chuong-link">
-                                        <span class="msv-chuong-number ">Chương 7:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=8" title="Chương 8:" class="msv-chuong-link">
-                                        <span class="msv-chuong-number ">Chương 8:</span>
-                                    </a>
-                                </li>
-                                                            <li class="msv-chuong-item">
-                                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=9" title="Chương 9:" class="msv-chuong-link">
-                                        <span class="msv-chuong-number ">Chương 9:</span>
-                                    </a>
-                                </li>
-                                                    </ul>
-                    </div>
-                </div>
-
-                <!-- Nút Chương Sau -->
-                <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" class="d-inline-flex mdv-chuong-button mdv-chuong-button-sau hvr-icon-forward " style="">
-                    <span class="mdv-chuong-button-text">Sau</span>
-                    <i class="fa-solid fa-arrow-right-long hvr-icon"></i>
-                </a>
-            </div>
-            <!-- Chương Trước, Sau End -->
-
-
-
-            <!-- KHUNG TRUYỆN START -->
-            <div class="msv-khung-truyen mdv-khung-truyen px-2  p-lg-3 pt-4 ">
-                <input type="hidden" name="coin_chapter" id="coin_chapter" value="0">
-                <input type="hidden" name="id_truyen" id="id_truyen" value="2436">
-                <input type="hidden" name="chapter_tap" id="chapter_tap" value="1">
-                <input type="hidden" name="username" id="username" value="">
-
-                <!-- Thông báo affiliate Shopee -->
-                                    <div id="affiliate-notification" class="affiliate-notification">
-                        <div class="affiliate-overlay"></div>
-                        <div class="affiliate-modal">
-                            <div class="affiliate-modal-header">
-                                <div class="affiliate-logo">
-                                                                        <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/logo-tehitruyen-v1-nen_anh.png" alt="Logo">
-                                </div>
-                                <h3 class="affiliate-title">Thông Báo Đặc Biệt</h3>
-                            </div>
-                            <div class="affiliate-modal-body">
-                                <div class="affiliate-content">
-                                                                <p style="text-align: center;">
-                                <span style="font-size: 18px; font-weight: bold; color: #e43f5a;">Chương này có quảng cáo!</span>
-                            </p>
-                            <p><br></p><ol>
-                                <li>Nội dung chương sẽ tự động hiển thị sau khi bạn nhấp vào liên kết</li>
-                            </ol>
-                            <p style="text-align: center;"><strong>Cảm ơn bạn đã ủng hộ chúng tôi!</strong></p>
-                                                        </div>
-                                <div class="affiliate-cta">
-                                    <a href="https://s.shopee.vn/1BHSFYKG55"
-                                        class="affiliate-button"
-                                        target="_blank"
-                                        id="affiliate-link"
-                                        data-truyen-id="2436"
-                                        onclick="return trackAffiliateClick(2436)">
-                                        <span class="affiliate-button-text">Tiếp Tục Đọc Truyện</span>
-                                        <span class="affiliate-button-icon">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="affiliate-modal-footer">
-                                <div class="affiliate-disclaimer">
-                                    <p>Đây là liên kết quảng cáo từ nhà tài trợ của chúng tôi</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                <style>
-                    .affiliate-notification {
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        z-index: 9999;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-
-                    .affiliate-overlay {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0, 0, 0, 0.7);
-                        backdrop-filter: blur(5px);
-                    }
-
-                    .affiliate-modal {
-                        position: relative;
-                        width: 90%;
-                        max-width: 550px;
-                        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-                        border-radius: 15px;
-                        overflow: hidden;
-                        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-                        color: #fff;
-                        border: 1px solid rgba(255, 255, 255, 0.1);
-                        animation: modalFadeIn 0.5s ease forwards;
-                    }
-
-                    @keyframes modalFadeIn {
-                        from {
-                            opacity: 0;
-                            transform: translateY(50px);
-                        }
-
-                        to {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-
-                    .affiliate-modal-header {
-                        padding: 25px;
-                        text-align: center;
-                        background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
-                        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                        position: relative;
-                    }
-
-                    .affiliate-logo {
-                        margin-bottom: 15px;
-                    }
-
-                    .affiliate-logo img {
-                        height: 60px;
-                        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-                    }
-
-                    .affiliate-title {
-                        margin: 0;
-                        font-size: 24px;
-                        font-weight: 700;
-                        color: #fff;
-                        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-                        letter-spacing: 1px;
-                    }
-
-                    .affiliate-modal-body {
-                        padding: 30px;
-                    }
-
-                    .affiliate-content {
-                        margin-bottom: 25px;
-                        font-size: 16px;
-                        line-height: 1.6;
-                        color: rgba(255, 255, 255, 0.9);
-                        text-align: center;
-                    }
-
-                    .affiliate-content img {
-                        max-width: 100%;
-                        border-radius: 8px;
-                        margin: 15px 0;
-                    }
-
-                    .affiliate-cta {
-                        text-align: center;
-                        margin: 30px 0 15px;
-                    }
-
-                    .affiliate-button {
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 14px 32px;
-                        background: linear-gradient(135deg, #e94560 0%, #e43f5a 100%);
-                        color: #fff;
-                        text-decoration: none;
-                        border-radius: 50px;
-                        font-weight: 600;
-                        font-size: 16px;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 10px 20px rgba(233, 69, 96, 0.3);
-                        border: none;
-                        cursor: pointer;
-                        position: relative;
-                        overflow: hidden;
-                    }
-
-                    .affiliate-button::before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: -100%;
-                        width: 100%;
-                        height: 100%;
-                        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-                        transition: all 0.6s ease;
-                    }
-
-                    .affiliate-button:hover {
-                        transform: translateY(-5px);
-                        box-shadow: 0 15px 25px rgba(233, 69, 96, 0.4);
-                        color: #fff;
-                        text-decoration: none;
-                    }
-
-                    .affiliate-button:hover::before {
-                        left: 100%;
-                    }
-
-                    .affiliate-button-text {
-                        margin-right: 10px;
-                    }
-
-                    .affiliate-button-icon {
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-
-                    .affiliate-modal-footer {
-                        padding: 15px 30px;
-                        background: rgba(0, 0, 0, 0.2);
-                        border-top: 1px solid rgba(255, 255, 255, 0.05);
-                    }
-
-                    .affiliate-disclaimer {
-                        font-size: 12px;
-                        color: rgba(255, 255, 255, 0.5);
-                        text-align: center;
-                    }
-
-                    /* Hiệu ứng pulsating cho nút */
-                    @keyframes pulse {
-                        0% {
-                            box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.7);
-                        }
-
-                        70% {
-                            box-shadow: 0 0 0 15px rgba(233, 69, 96, 0);
-                        }
-
-                        100% {
-                            box-shadow: 0 0 0 0 rgba(233, 69, 96, 0);
-                        }
-                    }
-
-                    .affiliate-button {
-                        animation: pulse 1.5s infinite;
-                    }
-
-                    .hidden-content {
-                        display: none;
-                    }
-                </style>
-
-
-
-                <!-- Nội dung truyện -->
-                <div class="msv-khung-truyen-noi-dung py-3 doc-quyen watermarked-content" style="--text-copyright: 'Độc quyền tại Tehitruyen'">
-
-                    <div id="noi_dung_truyen" class="hidden-content">
-                        
-                            <?php the_content(); ?>
-</div>
-
-                </div>
-                <!-- Nội dung Truyện end -->
-
-
-
-                <!-- chương trước, sau 2 start -->
-                <div class="mdv-breadcrumb-chuong-box mdv-breadcrumb-chuong-box-2 mt-3 d-flex justify-content-center align-items-center gap-1 position-relative">
-                    <!-- Nút Chương Trước -->
-                    <a href="#" class="mdv-chuong-button mdv-chuong-button-truoc hvr-icon-back disabled" style="pointer-events: none; filter: grayscale(100%); background-color: #d3d3d3;">
-                        <i class="fa-solid fa-arrow-left-long hvr-icon"></i>
-                        <span class="mdv-chuong-button-text">Trước</span>
-                    </a>
-                    <!-- Nút Tìm Chương -->
-                    <div class="mdv-chuong-button-tim-box position-relative">
-                        <a class="mdv-chuong-button mdv-chuong-button-tim hvr-icon-pulse-grow" id="timChuongBtn2">
-                            <i class="fa-solid fa-list hvr-icon"></i>
-                            <span class="mdv-chuong-button-text"> Chương 1</span>
-                        </a>
-                        <!-- Danh sách chương, sẽ ẩn khi trang tải -->
-                        <div class="msv-chuong-list-container msv-chuong-list-container-2 position-absolute" id="chuongList2" style="display: none;">
-                            <ul class="msv-chuong-list p-0">
-                                                                    <li class="msv-chuong-item">
-                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=1" title="Chương 1:" class="msv-chuong-link">
-                                            <span class="msv-chuong-number ">Chương 1:</span>
-                                        </a>
-                                    </li>
-                                                                    <li class="msv-chuong-item">
-                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" title="Chương 2:" class="msv-chuong-link">
-                                            <span class="msv-chuong-number ">Chương 2:</span>
-                                        </a>
-                                    </li>
-                                                                    <li class="msv-chuong-item">
-                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=3" title="Chương 3:" class="msv-chuong-link">
-                                            <span class="msv-chuong-number ">Chương 3:</span>
-                                        </a>
-                                    </li>
-                                                                    <li class="msv-chuong-item">
-                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=4" title="Chương 4:" class="msv-chuong-link">
-                                            <span class="msv-chuong-number ">Chương 4:</span>
-                                        </a>
-                                    </li>
-                                                                    <li class="msv-chuong-item">
-                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=5" title="Chương 5:" class="msv-chuong-link">
-                                            <span class="msv-chuong-number ">Chương 5:</span>
-                                        </a>
-                                    </li>
-                                                                    <li class="msv-chuong-item">
-                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=6" title="Chương 6:" class="msv-chuong-link">
-                                            <span class="msv-chuong-number ">Chương 6:</span>
-                                        </a>
-                                    </li>
-                                                                    <li class="msv-chuong-item">
-                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=7" title="Chương 7:" class="msv-chuong-link">
-                                            <span class="msv-chuong-number ">Chương 7:</span>
-                                        </a>
-                                    </li>
-                                                                    <li class="msv-chuong-item">
-                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=8" title="Chương 8:" class="msv-chuong-link">
-                                            <span class="msv-chuong-number ">Chương 8:</span>
-                                        </a>
-                                    </li>
-                                                                    <li class="msv-chuong-item">
-                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=9" title="Chương 9:" class="msv-chuong-link">
-                                            <span class="msv-chuong-number ">Chương 9:</span>
-                                        </a>
-                                    </li>
-                                                            </ul>
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Nút Chương Sau -->
-                    <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html?chuong=2" class="mdv-chuong-button mdv-chuong-button-sau hvr-icon-forward " style="">
-                        <span class="mdv-chuong-button-text">Sau</span>
-                        <i class="fa-solid fa-arrow-right-long hvr-icon"></i>
-                    </a>
-                </div>
-                <!-- chương trước, sau 2 end -->
-
-
-
-            </div>
-
-            <!-- KHUNG TRUYỆN END -->
-
-        </div>
-
-
-        <!-- bình luận, truyện đề cử start -->
-        <div class="mdv-binh-luan-truyen-de-cu-container overflow-visible mt-3 mt-lg-4">
-            <div class="row gx-4 gy-5">
-
-                <!-- bình luận start -->
-                <div class="col-12 col-lg-8 position-relative" style="z-index:6">
-                    <div class="mdv-san-pham-show-comment pt-0 pt-lg-0 px-0">
-
-                                                <!-- title start -->
-                        <div class="bee-gioi-thieu-truyen-title-box w-100 position-relative text-center ">
-                            <div class="bee-gioi-thieu-truyen-title d-inline-flex text-uppercase px-3 py-2 rounded-pill">
-                                Bình Luận (<span class="bl-number">0</span>)
-                            </div>
-                        </div>
-                        <!-- title end -->
-
-
-
-                        <!-- content start -->
-                        <div class="mdv-san-pham-show-comment-box p-2">
-                            <!-- bình luận form -->
-                            <div class="row mb-3">
-                                <div class="col-12 col-lg-12">
-                                    <div class="mdv-san-pham-show-comment-form">
-                                                                                    <!-- nếu chưa đăng nhập -->
-                                                                                        <div class="mdv-san-pham-show-binh-luan-chua-dang-nhap p-4 text-center">
-                                                <div class="comment-login-prompt mb-3">
-                                                    <h5 class="mb-2">Chia sẻ cảm nghĩ của bạn nhé!</h5>
-                                                    <p class="mb-4">Vui lòng đăng nhập để tham gia bình luận cùng chúng mình 💗</p>
-                                                    <button type="button" class="btn btn-pink-login" onclick="window.location.href='<?php echo get_site_url(); ?>/dang-nhap.html' ">
-                                                        Đăng Nhập Ngay
-                                                    </button>
-                                                </div>
-                                            </div>
-
-
-                                                                            </div>
-                                </div>
-                            </div>
-                            <!-- bình luận form -->
-
-                            <!-- list bình luận start -->
-                            <div class="mdv-san-pham-show-comment-box-list ">
-                                <div class="row">
-                                    <div class="col-12 col-lg-12">
-                                        <div class="mdv-san-pham-show-comment-list-box pt-3">
-                                            <div class="row row-cols-1 gy-3 gy-lg-4" id="result-binh-luan">
-
-                                                <!-- kiểm tra xem đã đăng nhập chưa và có bình luận đang chờ không start -->
-                                                                                                <!-- kiểm tra xem đã đăng nhập chưa và có bình luận đang chờ không end -->
-
-                                                                                                    <div class="vh-notification text-center p-3 fs-6">
-                                                        Chương này chưa có bình luận nào
-                                                    </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- list bình luận end -->
-                            </div>
-                            <!-- content end -->
-                        </div>
-                        <!-- bình luận end -->
-
-                    </div>
-                </div>
-
-                <!-- bình luận end -->
-
-
-                <!-- truyện đề cử start -->
-                                <div class="col-12 col-lg-4">
-                    <div class="mdv-san-pham-detail-truyen-de-cu-container rounded px-0 pt-0 pb-3">
-                        <!-- title start -->
-                        <div class="bee-gioi-thieu-truyen-title-box w-100 position-relative text-center d-block d-lg-none ">
-                            <div class="bee-gioi-thieu-truyen-title d-inline-flex text-uppercase px-3 py-2 rounded-pill">
-                                Truyện Cùng Thể Loại
-                            </div>
-                        </div>
-                        <!-- title end -->
-                        <h5 class="truyen-de-cu-title mb-4 d-none d-lg-block pt-3">truyện cùng thể loại</h5>
-                        <!-- pc start -->
-                        <div class="truyen-de-cu-list d-none d-lg-block px-3">
-                                                            <div class="truyen-de-cu-item d-flex align-items-center gap-3 mb-3">
-                                    <div class="truyen-de-cu-image">
-                                        <div class="top-item-comic-image-book-cover position-relative">
-                                            <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html">
-                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2436.jpg" alt="Trận Văn Trường Sinh">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="truyen-de-cu-info">
-                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" class="truyen-de-cu-title-link">Triều Đình Không Dung Nữ Nh...</a>
-                                        <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
-                                            <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
-                                            <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 409</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="truyen-de-cu-item d-flex align-items-center gap-3 mb-3">
-                                    <div class="truyen-de-cu-image">
-                                        <div class="top-item-comic-image-book-cover position-relative">
-                                            <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="<?php echo get_site_url(); ?>/thanh-chu-hoang-mac-da-la-gi.html">
-                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2249.jpg" alt="Trận Văn Trường Sinh">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="truyen-de-cu-info">
-                                        <a href="<?php echo get_site_url(); ?>/thanh-chu-hoang-mac-da-la-gi.html" class="truyen-de-cu-title-link">Thành Chủ Hoang Mạc Đã Là Gì</a>
-                                        <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
-                                            <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
-                                            <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 894</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="truyen-de-cu-item d-flex align-items-center gap-3 mb-3">
-                                    <div class="truyen-de-cu-image">
-                                        <div class="top-item-comic-image-book-cover position-relative">
-                                            <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="<?php echo get_site_url(); ?>/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html">
-                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2250.jpg" alt="Trận Văn Trường Sinh">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="truyen-de-cu-info">
-                                        <a href="<?php echo get_site_url(); ?>/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html" class="truyen-de-cu-title-link">Ta Cùng Ca Ca Trọng Sinh Th...</a>
-                                        <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
-                                            <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
-                                            <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 484</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="truyen-de-cu-item d-flex align-items-center gap-3 mb-3">
-                                    <div class="truyen-de-cu-image">
-                                        <div class="top-item-comic-image-book-cover position-relative">
-                                            <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="<?php echo get_site_url(); ?>/nhi-cong-tu-len-lut-giau-ta.html">
-                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2251.jpg" alt="Trận Văn Trường Sinh">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="truyen-de-cu-info">
-                                        <a href="<?php echo get_site_url(); ?>/nhi-cong-tu-len-lut-giau-ta.html" class="truyen-de-cu-title-link">Nhị Công Tử Lén Lút Giấu Ta</a>
-                                        <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
-                                            <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
-                                            <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 944</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="truyen-de-cu-item d-flex align-items-center gap-3 mb-3">
-                                    <div class="truyen-de-cu-image">
-                                        <div class="top-item-comic-image-book-cover position-relative">
-                                            <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="<?php echo get_site_url(); ?>/ta-nhat-duoc-hoang-de-mat-tri-nho.html">
-                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2252.jpg" alt="Trận Văn Trường Sinh">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="truyen-de-cu-info">
-                                        <a href="<?php echo get_site_url(); ?>/ta-nhat-duoc-hoang-de-mat-tri-nho.html" class="truyen-de-cu-title-link">Ta Nhặt Được Hoàng Đế Mất T...</a>
-                                        <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
-                                            <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
-                                            <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 560</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="truyen-de-cu-item d-flex align-items-center gap-3 mb-3">
-                                    <div class="truyen-de-cu-image">
-                                        <div class="top-item-comic-image-book-cover position-relative">
-                                            <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="<?php echo get_site_url(); ?>/nhi-thieu-gia-la-hac-xa.html">
-                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2253.jpg" alt="Trận Văn Trường Sinh">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="truyen-de-cu-info">
-                                        <a href="<?php echo get_site_url(); ?>/nhi-thieu-gia-la-hac-xa.html" class="truyen-de-cu-title-link">Nhị Thiếu Gia Là Hắc Xà</a>
-                                        <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
-                                            <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
-                                            <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 776</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="truyen-de-cu-item d-flex align-items-center gap-3 mb-3">
-                                    <div class="truyen-de-cu-image">
-                                        <div class="top-item-comic-image-book-cover position-relative">
-                                            <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="<?php echo get_site_url(); ?>/anh-trang-sang-roi-bui-tran.html">
-                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2254.jpg" alt="Trận Văn Trường Sinh">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="truyen-de-cu-info">
-                                        <a href="<?php echo get_site_url(); ?>/anh-trang-sang-roi-bui-tran.html" class="truyen-de-cu-title-link">Ánh Trăng Sáng Rọi Bụi Trần</a>
-                                        <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
-                                            <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
-                                            <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 2,029</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="truyen-de-cu-item d-flex align-items-center gap-3 mb-3">
-                                    <div class="truyen-de-cu-image">
-                                        <div class="top-item-comic-image-book-cover position-relative">
-                                            <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="<?php echo get_site_url(); ?>/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html">
-                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2256.jpg" alt="Trận Văn Trường Sinh">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="truyen-de-cu-info">
-                                        <a href="<?php echo get_site_url(); ?>/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html" class="truyen-de-cu-title-link">Ta Bị Ép Cải Trang Thành Qu...</a>
-                                        <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
-                                            <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
-                                            <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 3,541</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                                            <div class="truyen-de-cu-item d-flex align-items-center gap-3 mb-3">
-                                    <div class="truyen-de-cu-image">
-                                        <div class="top-item-comic-image-book-cover position-relative">
-                                            <div class="top-item-comic-image ratio ratio-1x1">
-                                                <a href="<?php echo get_site_url(); ?>/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html">
-                                                    <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2257.jpg" alt="Trận Văn Trường Sinh">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="truyen-de-cu-info">
-                                        <a href="<?php echo get_site_url(); ?>/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html" class="truyen-de-cu-title-link">Cưới Phụ Thân Kinh Diễm Của...</a>
-                                        <div class="truyen-de-cu-meta d-flex flex-column align-items-center align-items-lg-start">
-                                            <span class="truyen-tacgia"><i class="fa-solid fa-book-open"></i> Tác giả: <span class="truyen-tacgia-text">Đang cập nhật</span></span>
-                                            <span class="truyen-luotxem"><i class="fa-solid fa-eye"></i> <span class="luot-xem-span me-1">Lượt xem:</span> 1,219</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                                    </div>
-                        <!-- pc end -->
-
-                        <!-- mobile start -->
-                        <div class="truyen-de-cu-list-mobile d-block d-lg-none px-3">
-                            <!-- swiper slide start -->
-                            <div class="lt-swiper-box-container position-relative">
-
-                                <!-- Swiper -->
-                                <div class="swiper swiper-slider-truyen-cung-tac-gia">
-                                    <div class="swiper-wrapper py-3">
-                                                                                    <!-- item start -->
-                                            <div class="swiper-slide px-1">
-                                                <div class="swiper-slider-advertise-item rounded-3  overflow-hidden ">
-                                                    <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
-                                                        <!-- hình -->
-                                                        <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" title="Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">
-                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2436.jpg" alt="truyện Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">
-                                                            </a>
-                                                        </div>
-                                                        <!-- tên -->
-                                                        <a href="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" class="name-comic-advertise" title="Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">Triều Đình Khô...</a>
-
-                                                        <!-- logo 18+ start -->
-                                                                                                                <!-- logo 18+ end -->
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <!-- item end -->
-                                                                                    <!-- item start -->
-                                            <div class="swiper-slide px-1">
-                                                <div class="swiper-slider-advertise-item rounded-3  overflow-hidden ">
-                                                    <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
-                                                        <!-- hình -->
-                                                        <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="<?php echo get_site_url(); ?>/thanh-chu-hoang-mac-da-la-gi.html" title="Thành Chủ Hoang Mạc Đã Là Gì">
-                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2249.jpg" alt="truyện Thành Chủ Hoang Mạc Đã Là Gì">
-                                                            </a>
-                                                        </div>
-                                                        <!-- tên -->
-                                                        <a href="<?php echo get_site_url(); ?>/thanh-chu-hoang-mac-da-la-gi.html" class="name-comic-advertise" title="Thành Chủ Hoang Mạc Đã Là Gì">Thành Chủ Hoan...</a>
-
-                                                        <!-- logo 18+ start -->
-                                                                                                                <!-- logo 18+ end -->
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <!-- item end -->
-                                                                                    <!-- item start -->
-                                            <div class="swiper-slide px-1">
-                                                <div class="swiper-slider-advertise-item rounded-3  overflow-hidden ">
-                                                    <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
-                                                        <!-- hình -->
-                                                        <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="<?php echo get_site_url(); ?>/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html" title="Ta Cùng Ca Ca Trọng Sinh Thay Đổi Kết Cục">
-                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2250.jpg" alt="truyện Ta Cùng Ca Ca Trọng Sinh Thay Đổi Kết Cục">
-                                                            </a>
-                                                        </div>
-                                                        <!-- tên -->
-                                                        <a href="<?php echo get_site_url(); ?>/ta-cung-ca-ca-trong-sinh-thay-doi-ket-cuc.html" class="name-comic-advertise" title="Ta Cùng Ca Ca Trọng Sinh Thay Đổi Kết Cục">Ta Cùng Ca Ca ...</a>
-
-                                                        <!-- logo 18+ start -->
-                                                                                                                <!-- logo 18+ end -->
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <!-- item end -->
-                                                                                    <!-- item start -->
-                                            <div class="swiper-slide px-1">
-                                                <div class="swiper-slider-advertise-item rounded-3  overflow-hidden ">
-                                                    <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
-                                                        <!-- hình -->
-                                                        <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="<?php echo get_site_url(); ?>/nhi-cong-tu-len-lut-giau-ta.html" title="Nhị Công Tử Lén Lút Giấu Ta">
-                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2251.jpg" alt="truyện Nhị Công Tử Lén Lút Giấu Ta">
-                                                            </a>
-                                                        </div>
-                                                        <!-- tên -->
-                                                        <a href="<?php echo get_site_url(); ?>/nhi-cong-tu-len-lut-giau-ta.html" class="name-comic-advertise" title="Nhị Công Tử Lén Lút Giấu Ta">Nhị Công Tử Lé...</a>
-
-                                                        <!-- logo 18+ start -->
-                                                                                                                <!-- logo 18+ end -->
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <!-- item end -->
-                                                                                    <!-- item start -->
-                                            <div class="swiper-slide px-1">
-                                                <div class="swiper-slider-advertise-item rounded-3  overflow-hidden ">
-                                                    <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
-                                                        <!-- hình -->
-                                                        <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="<?php echo get_site_url(); ?>/ta-nhat-duoc-hoang-de-mat-tri-nho.html" title="Ta Nhặt Được Hoàng Đế Mất Trí Nhớ">
-                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2252.jpg" alt="truyện Ta Nhặt Được Hoàng Đế Mất Trí Nhớ">
-                                                            </a>
-                                                        </div>
-                                                        <!-- tên -->
-                                                        <a href="<?php echo get_site_url(); ?>/ta-nhat-duoc-hoang-de-mat-tri-nho.html" class="name-comic-advertise" title="Ta Nhặt Được Hoàng Đế Mất Trí Nhớ">Ta Nhặt Được H...</a>
-
-                                                        <!-- logo 18+ start -->
-                                                                                                                <!-- logo 18+ end -->
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <!-- item end -->
-                                                                                    <!-- item start -->
-                                            <div class="swiper-slide px-1">
-                                                <div class="swiper-slider-advertise-item rounded-3  overflow-hidden ">
-                                                    <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
-                                                        <!-- hình -->
-                                                        <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="<?php echo get_site_url(); ?>/nhi-thieu-gia-la-hac-xa.html" title="Nhị Thiếu Gia Là Hắc Xà">
-                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2253.jpg" alt="truyện Nhị Thiếu Gia Là Hắc Xà">
-                                                            </a>
-                                                        </div>
-                                                        <!-- tên -->
-                                                        <a href="<?php echo get_site_url(); ?>/nhi-thieu-gia-la-hac-xa.html" class="name-comic-advertise" title="Nhị Thiếu Gia Là Hắc Xà">Nhị Thiếu Gia ...</a>
-
-                                                        <!-- logo 18+ start -->
-                                                                                                                <!-- logo 18+ end -->
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <!-- item end -->
-                                                                                    <!-- item start -->
-                                            <div class="swiper-slide px-1">
-                                                <div class="swiper-slider-advertise-item rounded-3  overflow-hidden ">
-                                                    <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
-                                                        <!-- hình -->
-                                                        <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="<?php echo get_site_url(); ?>/anh-trang-sang-roi-bui-tran.html" title="Ánh Trăng Sáng Rọi Bụi Trần">
-                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2254.jpg" alt="truyện Ánh Trăng Sáng Rọi Bụi Trần">
-                                                            </a>
-                                                        </div>
-                                                        <!-- tên -->
-                                                        <a href="<?php echo get_site_url(); ?>/anh-trang-sang-roi-bui-tran.html" class="name-comic-advertise" title="Ánh Trăng Sáng Rọi Bụi Trần">Ánh Trăng Sáng...</a>
-
-                                                        <!-- logo 18+ start -->
-                                                                                                                <!-- logo 18+ end -->
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <!-- item end -->
-                                                                                    <!-- item start -->
-                                            <div class="swiper-slide px-1">
-                                                <div class="swiper-slider-advertise-item rounded-3  overflow-hidden ">
-                                                    <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
-                                                        <!-- hình -->
-                                                        <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="<?php echo get_site_url(); ?>/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html" title="Ta Bị Ép Cải Trang Thành Quý Phi Nào Ngờ Bị Hoàng Thượng Để Mắt Đến">
-                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2256.jpg" alt="truyện Ta Bị Ép Cải Trang Thành Quý Phi Nào Ngờ Bị Hoàng Thượng Để Mắt Đến">
-                                                            </a>
-                                                        </div>
-                                                        <!-- tên -->
-                                                        <a href="<?php echo get_site_url(); ?>/ta-bi-ep-cai-trang-thanh-quy-phi-nao-ngo-bi-hoang-thuong-de-mat-den.html" class="name-comic-advertise" title="Ta Bị Ép Cải Trang Thành Quý Phi Nào Ngờ Bị Hoàng Thượng Để Mắt Đến">Ta Bị Ép Cải T...</a>
-
-                                                        <!-- logo 18+ start -->
-                                                                                                                <!-- logo 18+ end -->
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <!-- item end -->
-                                                                                    <!-- item start -->
-                                            <div class="swiper-slide px-1">
-                                                <div class="swiper-slider-advertise-item rounded-3  overflow-hidden ">
-                                                    <div class="swiper-slider-advertise-item-box overflow-hidden d-flex flex-column gap-2 position-relative">
-                                                        <!-- hình -->
-                                                        <div class="swiper-slider-advertise-item-image ratio ratio-1x1">
-                                                            <a href="<?php echo get_site_url(); ?>/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html" title="Cưới Phụ Thân Kinh Diễm Của Vị Hôn Phu">
-                                                                <img loading="lazy" data-src="<?php echo get_site_url(); ?>/img_data/images/anh_truyen/2257.jpg" alt="truyện Cưới Phụ Thân Kinh Diễm Của Vị Hôn Phu">
-                                                            </a>
-                                                        </div>
-                                                        <!-- tên -->
-                                                        <a href="<?php echo get_site_url(); ?>/cuoi-phu-than-kinh-diem-cua-vi-hon-phu.html" class="name-comic-advertise" title="Cưới Phụ Thân Kinh Diễm Của Vị Hôn Phu">Cưới Phụ Thân ...</a>
-
-                                                        <!-- logo 18+ start -->
-                                                                                                                <!-- logo 18+ end -->
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <!-- item end -->
-                                                                            </div>
-                                    <div class="lt-pagination-box swiper-pagination-truyen-noi-bat-box text-center">
-                                        <div class="swiper-pagination-truyen-cung-tac-gia"></div>
-                                    </div>
-                                </div>
-                                <!-- swiper slide end -->
-                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/btn-lt-prev.png" alt="icon" class="btn-icon-swiper-prev btn-swiper-truyen-cung-tac-gia-prev ">
-                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/btn-lt-next.png" alt="icon" class="btn-icon-swiper-next btn-swiper-truyen-cung-tac-gia-next ">
-                            </div>
-                        </div>
-                        <!-- mobile end -->
-                    </div>
-                </div>
-                <!-- truyện đề cử end -->
-
-
-            </div>
-        </div>
-        <!-- bình luận, truyện đề cử end -->
-
-    </div>
-</section>
-
-
-<!-- Modal Donate -->
-<div class="modal fade donate-modal" data-bs-backdrop="static" id="donateModal" tabindex="-1" aria-labelledby="donateModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content donate-modal-content">
-            <div class="modal-header donate-modal-header">
-                <h5 class="modal-title donate-modal-title" id="donateModalLabel">Tặng Đào</h5>
-                <button type="button" class="btn-close donate-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body donate-modal-body">
-                                <p class="donate-modal-info">Tặng Đào cho: <strong>Lớp Trưởng (huyenlenh94)</strong></p>
-                <p class="donate-modal-info">Số đào hiện có của bạn: <strong><span id="so_dao_hien_co"></span> <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"></strong></p>
-                <div class="mb-3">
-                    <label for="soDaoDonate" class="form-label">Nhập số đào <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"> muốn tặng</label>
-                    <input type="text" class="form-control formatprice" id="soDaoDonate" min="1" max="" placeholder="Nhập số đào...">
-                </div>
-                <p class="donate-modal-remaining">Sau khi tặng, số đào còn lại của bạn sẽ là: <span id="soDaoConLai"></span> <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/icon-qua-dao.png" alt="icon" class="icon-qua-dao"></p>
-            </div>
-            <div class="modal-footer donate-modal-footer">
-                <button type="button" class="btn btn-secondary donate-btn-cancel" data-bs-dismiss="modal">Hủy bỏ</button>
-                <button type="button" class="btn btn-primary donate-btn-confirm">Tặng Đào</button>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- Modal xem lượt thích -->
-<div class="modal fade modal-danh-sach-thich" id="listMemberLike" tabindex="-1" aria-labelledby="listMemberLikeLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-            <div class="modal-body">
-                <div class="modal-danh-sach-thich-box">
-                    <div class="fs-5 mb-2">Danh sách yêu thích</div>
-                    <div class="modal-danh-sach-thich-content w-100 px-3">
-                        <div class="row row-cols-1 gy-1">
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                                                            <!-- item start -->
-                                <div class="col">
-                                    <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                        <!-- avatar -->
-                                        <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                            <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                                <a href="<?php echo get_template_directory_uri(); ?>/images/meo.png" data-fancybox>
-                                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/meo.png" alt="png" class="avatar">
-                                                </a>
-                                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/s3.webp" alt="khung avatar" class="frame">
-                                            </div>
-                                            <!-- tên -->
-                                            <div class="modal-danh-sach-thich-content-item-name">
-                                                <a href="" class="ten-doc-gia">Vladimir Putin</a>
-                                            </div>
-                                        </div>
-                                        <!-- theo doõi -->
-                                        <button class="btn btn-theo-doi-tv hvr-icon-bounce"><i class="hvr-icon fa-solid fa-user-plus"></i></button>
-                                    </div>
-                                </div>
-                                <!-- item end -->
-                            
-                        </div>
-                    </div>
+<!-- Modal Settings -->
+<div id="setModal" class="r-modal-wrap">
+    <div class="r-overlay" onclick="appModal.close('setModal')"></div>
+    <div class="r-modal">
+        <div class="r-modal-hdr">
+            <span>Cài đặt Đọc truyện</span>
+            <button class="r-modal-close" onclick="appModal.close('setModal')">&times;</button>
+        </div>
+        <div class="r-modal-body">
+            <div class="r-set-row">
+                <span class="r-set-label">Cỡ chữ</span>
+                <div class="r-set-group">
+                    <button class="r-set-btn" onclick="rSet.font(-2)">Nhỏ (A-)</button>
+                    <button class="r-set-btn" onclick="rSet.font(2)">Lớn (A+)</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng lại</button>
+            <div class="r-set-row">
+                <span class="r-set-label">Kiểu Chữ</span>
+                <div class="r-set-group" style="flex-wrap: wrap;">
+                    <button class="r-set-btn" onclick="rSet.fontFamily('Be Vietnam Pro')">Vietnam Pro</button>
+                    <button class="r-set-btn" onclick="rSet.fontFamily('Georgia, serif')">Georgia</button>
+                    <button class="r-set-btn" onclick="rSet.fontFamily('Palatino Linotype, Book Antiqua, Palatino, serif')">Palatino</button>
+                </div>
+            </div>
+            <div class="r-set-row">
+                <span class="r-set-label">Phông Nền</span>
+                <div class="r-set-group" style="flex-wrap: wrap;">
+                    <button class="r-set-btn r-bg-theme1" onclick="rSet.bg('theme1')">Sáng</button>
+                    <button class="r-set-btn r-bg-theme3" onclick="rSet.bg('theme3')">Mắt</button>
+                    <button class="r-set-btn r-bg-theme2" onclick="rSet.bg('theme2')">Ban đêm</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal Mua Chương -->
-<div class="modal fade mua-chuong-modal" data-bs-backdrop="static" id="muaChuongModal" tabindex="-1" aria-labelledby="muaChuongModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content mua-chuong-modal-content">
-            <div class="modal-header mua-chuong-modal-header">
-                <h5 class="modal-title mua-chuong-modal-title" id="muaChuongModalLabel">Mua Chương</h5>
-                <button type="button" class="btn-close mua-chuong-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body mua-chuong-modal-body">
-                <div class="mua-chuong-summary">
-                    <p><strong>Tên truyện:</strong> Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ</p>
-                    <p><strong>Tên chương:</strong> Chương 1:</p>
-                    <p><strong>Giá đào:</strong> 0 <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/dao-nho.png" alt="icon" class="icon-qua-dao-chuong "> </p>
-                    <p><strong>Giá hạt:</strong> 0 <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/images/hat.png" alt="icon" class="icon-hat"> </p>
-                </div>
-            </div>
-            <div class="modal-footer mua-chuong-modal-footer">
-                <button type="button" class="btn btn-secondary mua-chuong-btn-cancel" data-bs-dismiss="modal">Hủy bỏ</button>
-                <button type="button" class="btn btn-primary mua-chuong-btn-pay">Thanh Toán</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Báo lỗi truyện -->
-<div class="modal fade" id="baoLoiModal" tabindex="-1" aria-labelledby="baoLoiModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content modal-content-pretty">
-            <div class="modal-header modal-header-pretty">
-                <h5 class="modal-title" id="baoLoiModalLabel">Báo Lỗi Truyện</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body modal-body-pretty">
-                <form id="baoCaoTruyenForm">
-                    <input type="hidden" name="id_truyen" value="2436">
-                    <input type="hidden" name="pnvn_token" value="462a07709ff85bdcb946dfda56451dd281620f04">
-                    <input type="hidden" name="ten_truyen" value="Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ">
-                    <input type="hidden" name="link_truyen" value="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html">
-                    <input type="hidden" name="id_chapter" value="13365">
-
-                    <div class="mb-3">
-                        <label for="tenTruyen" class="form-label">Tên Truyện</label>
-                        <input type="text" class="form-control form-control-pretty" id="tenTruyen" value="Triều Đình Không Dung Nữ Nhân? Ta Là Ngoại Lệ" disabled>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="linkTruyen" class="form-label">Link Truyện</label>
-                        <input type="text" class="form-control form-control-pretty" id="linkTruyen" value="<?php echo get_site_url(); ?>/trieu-dinh-khong-dung-nu-nhan-ta-la-ngoai-le.html" disabled>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="tenChapter" class="form-label">Tên Chapter</label>
-                        <input type="text" class="form-control form-control-pretty" id="tenChapter" value="Chương 1:" disabled>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="noiDung" class="form-label">Nội dung lời nhắn</label>
-                        <textarea class="form-control form-control-pretty" id="noiDung" name="noi_dung" rows="4" placeholder="Nhập nội dung lỗi truyện..." required></textarea>
-                    </div>
-
-                    <div class="modal-footer text-center">
-                        <button type="submit" class="btn btn-primary btn-primary-pretty">Gửi Báo Cáo</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal đề cử bông -->
-<div class="modal fade" id="deCuTruyenModal" tabindex="-1" aria-labelledby="deCuTruyenModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content combo-purchase-card p-4 rounded-md" style="background-color: #fff0f5; border-radius: 15px; border: 1px solid rgb(255, 182, 193);">
-            <div class="modal-header border-0">
-                <h5 class="modal-title" id="deCuTruyenModalLabel">Đề Cử Truyện</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                                <!-- Notification box -->
-                <div class="alert alert-danger d-flex align-items-start gap-2 p-3 mb-4 mdv-de-cu-info-box" role="alert">
-                    <i class="fa-solid fa-circle-info pt-1"></i>
-                    <span>
-                                            </span>
-                </div>
-
-
-                <form id="deCuTruyenForm">
-                                        <!-- Input Group for "Bông" -->
-                    <div class="mb-3 d-flex align-items-center gap-2">
-                        <label class="mdv-de-cu-icon" for="soBongInput">
-                            <img loading="lazy" src="templates/images/icon-hoa.png" alt="icon" class="de-cu-bong-icon">
-                            <span class="text-bong">Bông</span>
-                        </label>
-                        <input type="text" class="form-control mdv-de-cu-input formatprice" id="soBongInput" min="0" placeholder="Nhập số lượng muốn đề cử, tối thiểu 5000">
-                    </div>
-
-                    <!-- Display current "Bông" -->
-                    <div class="mb-3 d-flex align-items-center gap-2">
-                        <label class="mdv-de-cu-icon" for="currentBong"><img loading="lazy" src="templates/images/icon-hoa.png" alt="icon" class="de-cu-bong-icon"> Hiện tại</label>
-                        <input type="text" class="form-control mdv-de-cu-input" id="currentBong" value=" Bông" readonly disabled>
-                    </div>
-
-                    <!-- Display "Bông" after proposal -->
-                    <div class="mb-3 d-flex align-items-center gap-2">
-                        <label class="mdv-de-cu-icon" for="afterProposal"><img loading="lazy" src="templates/images/icon-hoa.png" alt="icon" class="de-cu-bong-icon"> Sau đề cử</label>
-                        <input type="text" class="form-control mdv-de-cu-input" id="afterProposal" value="0 Bông" readonly disabled>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="text-center">
-                        <button type="button" class="btn mdv-de-cu-submit-btn hvr-shrink"><img loading="lazy" src="templates/images/icon-hoa.png" alt="icon" class="icon-hoa-nho"> Đề Cử Ngay</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-<!-- mộng đào viên -->
-<!-- kích hoạt tooltips -->
 <script>
-    $(document).ready(function() {
-        var parent_code = '193';
-        $(".menu-code-" + parent_code).addClass('active');
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        });
+const appModal = {
+    open: (id) => {
+        let el = document.getElementById(id);
+        el.classList.add('r-show');
+        setTimeout(() => el.classList.add('r-active'), 10);
+        document.body.style.overflow = 'hidden';
+    },
+    close: (id) => {
+        let el = document.getElementById(id);
+        el.classList.remove('r-active');
+        setTimeout(() => { el.classList.remove('r-show'); document.body.style.overflow = ''; }, 300);
+    }
+}
 
-        // Khi nhấn vào nút "Tìm chương" - cho #timChuongBtn
-        $('#timChuongBtn').on('click', function() {
-            // Toggle hiển thị danh sách chương
-            $('#chuongList').slideToggle(300);
-        });
+// Float Top Visibility
+window.addEventListener('scroll', () => {
+    let fab = document.getElementById('fabTop');
+    if(window.scrollY > 500) fab.classList.add('show');
+    else fab.classList.remove('show');
+});
 
-        // Đóng danh sách chương khi nhấn ngoài khu vực
-        $(document).on('click', function(event) {
-            if (!$(event.target).closest('#timChuongBtn, #chuongList').length) {
-                $('#chuongList').slideUp(300);
-            }
-        });
+// Search chapters
+document.getElementById('qCh').addEventListener('keyup', function() {
+    let val = this.value.toLowerCase();
+    document.querySelectorAll('.r-toc-item').forEach(el => {
+        el.style.display = el.innerText.toLowerCase().includes(val) ? 'block' : 'none';
+    });
+});
 
-        // Khi nhấn vào nút "Tìm chương" - cho #timChuongBtn2
-        $('#timChuongBtn2').on('click', function() {
-            // Toggle hiển thị danh sách chương phía trên nút
-            $('#chuongList2').slideToggle(300);
-        });
-
-        // Đóng danh sách chương khi nhấn ngoài khu vực
-        $(document).on('click', function(event) {
-            if (!$(event.target).closest('#timChuongBtn2, #chuongList2').length) {
-                $('#chuongList2').slideUp(300);
-            }
-        });
-    })
+// Reading Settings Controller
+let currSize = 22;
+const rSet = {
+    fontFamily: (fm) => {
+        document.getElementById('rWrap').style.fontFamily = fm;
+        localStorage.setItem('rfm', fm);
+    },
+    font: (diff) => {
+        currSize += diff;
+        if(currSize < 14) currSize = 14;
+        if(currSize > 40) currSize = 40;
+        document.getElementById('rContent').style.fontSize = currSize + 'px';
+        localStorage.setItem('rsz', currSize);
+    },
+    bg: (theme) => {
+        let wr = document.getElementById('rWrap');
+        let hd = document.getElementById('rHdr');
+        let ct = document.getElementById('rContent');
+        if(theme === 'theme2') { // Dark mode
+            wr.style.background = '#111827';
+            hd.style.background = '#1f2937'; hd.style.borderColor = '#374151';
+            ct.style.color = '#d1d5db';
+            document.querySelector('.r-title').style.color = '#f3f4f6';
+            document.querySelector('.r-story-name').style.color = '#f3f4f6';
+            document.querySelector('.r-back-btn').style.background = '#374151';
+            document.querySelector('.r-back-btn').style.color = '#d1d5db';
+            document.querySelectorAll('.r-icon-btn').forEach(e => { e.style.background='#374151'; e.style.color='#d1d5db'; });
+        } else if(theme === 'theme3') { // Eye care
+            wr.style.background = '#f3f6f4';
+            hd.style.background = '#fff'; hd.style.borderColor = '#e5e7eb';
+            ct.style.color = '#2d3748';
+            document.querySelector('.r-title').style.color = '#111827';
+            document.querySelector('.r-story-name').style.color = '#111827';
+            document.querySelector('.r-back-btn').style.background = '#f3f4f6';
+            document.querySelector('.r-back-btn').style.color = '#111827';
+            document.querySelectorAll('.r-icon-btn').forEach(e => { e.style.background='#fff'; e.style.color='#111827'; });
+        } else { // Light mode (theme1)
+            wr.style.background = '#fdfbf7';
+            hd.style.background = '#fff'; hd.style.borderColor = '#e5e7eb';
+            ct.style.color = '#333';
+            document.querySelector('.r-title').style.color = '#111827';
+            document.querySelector('.r-story-name').style.color = '#111827';
+            document.querySelector('.r-back-btn').style.background = '#f3f4f6';
+            document.querySelector('.r-back-btn').style.color = '#111827';
+            document.querySelectorAll('.r-icon-btn').forEach(e => { e.style.background='#fff'; e.style.color='#111827'; });
+        }
+        localStorage.setItem('rbg', theme);
+    },
+    init: () => {
+        let sz = localStorage.getItem('rsz');
+        if(sz) { currSize = parseInt(sz); document.getElementById('rContent').style.fontSize = currSize + 'px'; }
+        let bg = localStorage.getItem('rbg');
+        if(bg) rSet.bg(bg);
+        let fm = localStorage.getItem('rfm');
+        if(fm) rSet.fontFamily(fm);
+    }
+}
+rSet.init();
 </script>
 
-<!-- tool bar bên phải -->
-<script>
-    $(document).ready(function() {
-        // Biến kiểm tra người dùng có quyền đọc chương không
-        const isUserAuthorized = false;
-        // Khi nhấn vào nút "Danh sách chương"
-        $('.mdv-btn-danh-sach-chuong-xem').on('click', function() {
-            // Toggle hiển thị danh sách chương
-            $('#chuongListLeft').toggleClass('show');
-
-            // Ẩn hoặc hiện tooltip dựa vào trạng thái của danh sách chương
-            if ($('#chuongListLeft').hasClass('show')) {
-                $(this).tooltip('hide'); // Ẩn tooltip
-            } else {
-                $(this).tooltip('show'); // Hiện lại tooltip
-            }
-        });
-
-        $('.mdv-btn-danh-sach-chuong-xem-mobile').on('click', function() {
-            // Toggle hiển thị danh sách chương
-            $('#chuongListLeftMobile').toggleClass('show');
-
-            // Ẩn hoặc hiện tooltip dựa vào trạng thái của danh sách chương
-            if ($('#chuongListLeftMobile').hasClass('show')) {
-                $(this).tooltip('hide'); // Ẩn tooltip
-            } else {
-                $(this).tooltip('show'); // Hiện lại tooltip
-            }
-        });
-
-        // Đóng danh sách chương khi nhấn ngoài khu vực
-        $(document).on('click', function(event) {
-            if (!$(event.target).closest('.mdv-btn-danh-sach-chuong-xem, #chuongListLeft').length) {
-                $('#chuongListLeft').removeClass('show');
-                $('.mdv-btn-danh-sach-chuong-xem').tooltip('hide'); // Hiện lại tooltip khi đóng danh sách
-            }
-
-            if (!$(event.target).closest('.mdv-btn-danh-sach-chuong-xem-mobile, #chuongListLeftMobile').length) {
-                $('#chuongListLeftMobile').removeClass('show');
-                $('.mdv-btn-danh-sach-chuong-xem-mobile').tooltip('hide'); // Hiện lại tooltip khi đóng danh sách
-            }
-        });
-    });
-</script>
-
-<!-- bình luận -->
-
-<script>
-    $(document).ready(function() {
-        // Kiểm tra xem người dùng đã đăng nhập chưa
-        const isLoggedIn = false;
-
-        // Xử lý khi nhấn vào nút xác nhận mật khẩu
-        $('#btnSubmitPassword').click(function() {
-            const password = $('#chapterPassword').val();
-
-            $.ajax({
-                url: 'sources/ajax/mongdaovien/check-password.php',
-                type: 'POST',
-                data: {
-                    id_chapter: 13365,
-                    password: password
-                },
-                success: function(response) {
-                    if (response.status === 'success') {
-                        FuiToast.success('Mật khẩu chính xác!');
-
-                        // Lưu thông tin rằng người dùng đã nhập đúng mật khẩu để không yêu cầu lại
-                        sessionStorage.setItem('chapter_' + response.id_chapter + '_unlocked', true);
-
-                        $('#passwordFormContainer').fadeOut('slow', function() {
-                            // Nếu chương có giá trị thì hiển thị form mua chương
-                            if (response.vip_notice === true) {
-                                $('#noi_dung_truyen').html(response.vip_content).fadeIn('slow');
-                            } else {
-                                // Nếu chương không có giá trị, hiển thị nội dung chương
-                                $('#noi_dung_truyen').html(response.noi_dung).fadeIn('slow');
-                            }
-                        });
-                    } else {
-                        FuiToast.error('Mật khẩu không chính xác, vui lòng thử lại.');
-                    }
-                },
-                error: function() {
-                    FuiToast.error('Có lỗi xảy ra, vui lòng thử lại sau.');
-                }
-            });
-        });
-
-        // xử lý mua chương start
-        $(document).on('click', '#btnMuaChuong', function() {
-            if (!isLoggedIn) {
-                FuiToast.error('Bạn cần đăng nhập để mua chương!');
-                return;
-            }
-            $('#muaChuongModal').modal('show');
-        });
-
-        $(document).on('click', '.mua-chuong-btn-pay', function() {
-            $.ajax({
-                url: 'sources/ajax/mongdaovien/mua-chuong-detail.php',
-                type: 'POST',
-                data: {
-                    id_truyen: 2436,
-                    chapters: [13365],
-                    tong_gia_dao: 0,
-                    tong_gia_hat: 0,
-                    id_user: 0                },
-                success: function(response) {
-                    if (response.status === 'success') {
-                        FuiToast.success('Thanh toán thành công! Chương đã được mở khóa.');
-
-                        $('#muaChuongModal').modal('hide');
-                        $('#vipNotice').fadeOut('slow', function() {
-                            $('#noi_dung_truyen').html(`
-                            <p>Ta cải nam trang vào quân doanh, vô tình cứu được Tiêu Càn từ đống x.á.c c.h.e.t trở về. </p><p><br></p>Trong tiệc khánh công, bệ hạ hỏi hắn muốn được ban thưởng gì. <p><br></p>Hắn vì muốn cưới công chúa, liền dùng kiếm hất tung lớp vải bó ngực của ta.<p><br></p>Trước mặt mọi người vạch trần thân phận nữ nhi của ta. <p><br></p>"Nàng khi quân phạm thượng, nay vừa hay có thể thay công chúa gả đến biên tái, coi như chuộc tội lập công." <p><br></p>Ta bị giam trong ngục tối, xiềng xích xuyên qua xương bả vai. <p><br></p>Công chúa mỉm cười nghiền nát xương ngón tay của ta, thả chuột cắn nuốt da thịt ta. <p><br></p>"Dù sao cũng là ngươi cứu Tiêu lang, mới thúc đẩy được mối lương duyên của hắn và ta."<p><br></p>"Bản cung từ bi nhân hậu, đây là thưởng cho ngươi, coi như tạ lễ."<p><br></p>Mùa xuân năm sau, Tiêu Càn cưới công chúa, thăng quan tiến chức, quyền khuynh triều dã. <p><br></p>Còn ta chịu hết nhục nhã, c.h.e.t thảm trong chuồng dê nơi biên tái. <p><br></p>Trở lại một đời, ta quay về ngày bị Tiêu Càn vạch trần thân phận. <p><br></p>1<p><br></p>Ngày Tiêu Càn cưới công chúa, cỏ xuân xanh mơn mởn. <p><br></p>Kinh thành mười dặm hồng trang, rầm rộ phô trương. <p><br></p>Còn ta quần áo rách rưới, toàn thân đầy vết thương, bị xích sắt trói buộc, mỗi bước chân in một dấu m.á.u. <p><br></p>Đại Tống nghị hòa với Kim triều, Kim triều trả lại một tòa thành, đổi lấy Đại Tống hòa thân. <p><br></p>Bệ hạ có chỉ, lệnh cho ta thay công chúa đến biên tái xa xôi. <p><br></p>Bách tính không hiểu chuyện thì thầm chỉ trỏ. <p><br></p>Có đồng cảm, cũng có khinh bỉ. <p><br></p>Gió xuân se lạnh, trên người ta chỉ có một lớp áo mỏng, lạnh đến tím tái cả người. <p><br></p>Thủ lĩnh người Kim phụ trách đón tiếp bị mù một mắt. <p><br></p>Ta nhớ hắn là Hoàn Nhan Liệt, chủ soái năm đó ở Bạch Đầu Nhai. <p><br></p>Năm đó, ta mười bảy tuổi được thăng chức làm phó tướng cho tướng quân Tiêu Càn. <p><br></p>Trận chiến ở Bạch Đầu Nhai, chủ lực triều đình bị tập kích, chủ tướng Tiêu Càn mất tích. <p><br></p>Ta một mình một ngựa, từ trong đống xác c.h.e.t moi Tiêu Càn toàn thân đầy m.á.u, mười ngón tay ta cũng nhuốm đầy m.á.u tươi. <p><br></p>Cõng hắn đi trong Tuyết Sơn suốt một đêm. <p><br></p>Khi viện quân Đại Tống đến, tóc mai ta đóng đầy băng sương, lạnh đến mức gần như ngất đi. <p><br></p>Năm đó, để cứu Tiêu Càn, ta từng bắn một mũi tên xuyên qua mắt trái của Hoàn Nhan Liệt. <p><br></p>Hắn hận không thể ăn tươi n.u.ố.t sống ta. <p><br></p>Nay mới qua ba năm, ta lại rơi vào tay kẻ thù. <p><br></p>Ánh mắt thèm thuồng của Hoàn Nhan Liệt đảo qua người ta. <p><br></p>Hắn kéo ta vào lòng cười ha hả. <p><br></p>"Tiểu phó tướng lại là nữ nhân!"<p><br></p>"Không ngủ được với công chúa kim chi ngọc diệp của các ngươi, ngủ với ngươi hình như cũng không tồi!"<p><br></p>Hắn lấy ra một mũi tên, như mèo vờn chuột miêu tả hốc mắt của ta. <p><br></p>"Nghe nói ngươi là bị nghiệm thân ngay tại Kim Loan điện, vậy chẳng phải rất nhiều nam nhân đã nhìn thấy thân thể của ngươi rồi sao?"<p><br></p>"Nữ nhân Đại Tống coi trọng trinh tiết nhất, ngươi như vậy, có phải nên gọi là..."<p><br></p>Hắn cắn vào tai ta một cách mờ ám, lưỡi ướt át liếm láp vành tai, từ kẽ răng nghiến ra hai chữ đó. <p><br></p>"Phế phẩm."<p><br></p>Vừa dứt lời, cây trâm vàng trong tay ta đã đâm thẳng vào yết hầu hắn. <p><br></p>Trong chớp mắt, chỉ cần thêm một tấc nữa là có thể lấy mạng hắn. <p><br></p>Nhưng trước khi đi, xương ngón tay của ta đã bị nghiền nát, mất đi sự chính xác. <p><br></p>Hoàn Nhan Liệt đẩy ta ra. <p><br></p>Cơn giận dữ khiến hắn liên tục đá vào người ta. <p><br></p>M.á.u không ngừng tuôn ra từ miệng và mũi ta. <p><br></p>Hắn nắm lấy cánh tay ta bẻ mạnh một cái, cơn đau khiến ta hét lên. <p><br></p>"Không phải là bách bộ xuyên dương, Hồng Anh Thương đứng đầu quân đội sao?"<p><br></p>"Bây giờ ngươi chỉ là một phế nhân, ta muốn xem xem xương cốt của ngươi cứng đến đâu."<p><br></p>Hắn hạ lệnh nhốt ta vào chuồng dê, đêm nay ta chính là con dê chờ bị g.i.e.t thịt. <p><br></p>Vô số đôi mắt u ám như những con thú đang ẩn nấp, thèm thuồng nhìn chằm chằm vào làn da lộ ra ngoài lớp áo của ta. <p><br></p>Giữa mùa đông tháng chạp, tuyết lớn rơi không ngớt. <p><br></p>Ta đột nhiên đập đầu vào tảng đá trong chuồng dê. <p><br></p>Một tiếng vang giòn tan, âm thanh của xương sọ vỡ vụn. <p><br></p>Trước mắt là một màu đỏ trắng. <p><br></p>Vô số oán hận thiêu đốt ta. <p><br></p>Trước khi c.h.e.t, những ký ức như đèn kéo quân hiện lên. <p><br></p>Năm đó chạy trốn trong Tuyết Sơn, ta cứu được Tiêu Càn. <p><br></p>Khi đó cũng có tuyết lớn như vậy. <p><br></p>Ta và Tiêu Càn ôm nhau sưởi ấm trong băng tuyết. <p><br></p>Ta vừa khát vừa mệt, sắp mất đi ý thức. <p><br></p>Hắn thoi thóp, dùng chút sức lực cuối cùng r.ạ.c.h cổ tay. <p><br></p>Đưa m.á.u ấm vào miệng ta. <p><br></p>Khi đó, mọi thứ đều hiện rõ trước mắt. <p><br></p>Nhưng tất cả những điều này đã khiến ta hiểu lầm hắn. <p><br></p>Tiêu Càn, chính là một kẻ ti tiện. <p><br></p>2<p><br></p>Cơn đau trước khi c.h.e.t dường như vẫn còn đó. <p><br></p>Ta mở mắt ra. <p><br></p>Cung điện nguy nga, bậc thang bằng ngọc. <p><br></p>Ta vậy mà đã quay về ngày yến tiệc khánh công. <p><br></p>Cơn thịnh nộ ngập trời khiến ta siết chặt miếng ngọc bội trong tay. <p><br></p>Là miếng ngọc bội Tiêu Càn tặng ta. <p><br></p>Mười ngón tay ghim vào lòng bàn tay đến bật m.á.u. <p><br></p>Ta đã quay về khởi điểm của mọi bất hạnh. <p><br></p>Năm đó, ta mười bảy tuổi, cứu được Tiêu Càn, khi ta hôn mê, hắn biết ta là nữ nhân. <p><br></p>Khi ta tỉnh lại, hắn mặt mày tái nhợt, tự tay đút thuốc đến bên môi ta. <p><br></p>Ngọn nến trong trướng lay động, chiếu vào đôi mắt hắn đang mỉm cười. <p><br></p>"Không ngờ Tuyết tiểu phó tướng dũng mãnh, lại là một cô nương."<p><br></p>Hắn không vạch trần ta, chúng ta cùng nhau vượt qua ba năm c.h.é.m g.i.e.t trên chiến trường.<p></p>
-                        `).fadeIn('slow');
-                        });
-                    } else {
-                        FuiToast.error(`Thanh toán thất bại: ${response.message}`);
-                    }
-                },
-                error: function() {
-                    FuiToast.error('Có lỗi xảy ra, vui lòng thử lại sau!');
-                }
-            });
-        });
-        // xử lý mua chương end
-
-        // xử lý lưu vào tủ truyện start
-
-        // Lưu hoặc bỏ lưu vào Tủ Truyện
-        $('.btn-them-vao-tu-truyen-tool').on('click', function() {
-            const button = $(this);
-            const id_truyen = 2436;
-            const id_user = null;
-
-            if (id_user == null) {
-                FuiToast.error('Bạn cần đăng nhập để sử dụng tính năng này!');
-                return;
-            }
-
-            if (button.hasClass('luu')) {
-                // Gọi AJAX để xóa khỏi Tủ Truyện
-                $.ajax({
-                    url: 'sources/ajax/mongdaovien/bo-theo-doi-truyen.php',
-                    type: 'POST',
-                    data: {
-                        id_truyen: id_truyen,
-                        id_user: id_user
-                    },
-                    success: function(response) {
-                        if (response === 'success') {
-                            button.removeClass('luu').addClass('bo-luu');
-                            button.find('.icon-tu-truyen-img-tool').removeClass('active');
-                            FuiToast.success('Bỏ lưu thành công!');
-                        } else {
-                            FuiToast.error('Có lỗi xảy ra! Vui lòng thử lại sau.');
-                        }
-                    },
-                    error: function() {
-                        FuiToast.error('Đã xảy ra lỗi trong quá trình gửi yêu cầu.');
-                    }
-                });
-
-            } else {
-                // Gọi AJAX để thêm vào Tủ Truyện
-                $.ajax({
-                    url: 'sources/ajax/mongdaovien/theo-doi-truyen.php',
-                    type: 'POST',
-                    data: {
-                        id_truyen: id_truyen,
-                        id_user: id_user,
-                        time: Math.floor(Date.now() / 1000),
-                        thong_bao: 1
-                    },
-                    success: function(response) {
-                        if (response === 'success') {
-                            button.removeClass('bo-luu').addClass('luu');
-                            button.find('.icon-tu-truyen-img-tool').addClass('active');
-                            // button.find('.icon-tu-truyen-img-tool').attr('src', '<?php echo get_template_directory_uri(); ?>/images/school-organe-saved.png');
-                            FuiToast.success('Lưu thành công vào Tủ Truyện!');
-                        } else {
-                            FuiToast.error('Có lỗi xảy ra! Vui lòng thử lại sau.');
-                        }
-                    },
-                    error: function() {
-                        FuiToast.error('Đã xảy ra lỗi trong quá trình gửi yêu cầu.');
-                    }
-                });
-            }
-        });
-        // xử lý lưu vào tủ truyện end
-
-
-
-        // bình luận truyện start
-        // emoji
-        if (window.innerWidth > 1024) {
-            $("#emojionearea").emojioneArea({
-                pickerPosition: "right",
-                filtersPosition: "bottom",
-                tonesStyle: "square",
-                placeholder: "Nhận xét..."
-            });
-            $(".emojionearea-rep").emojioneArea({
-                pickerPosition: "right",
-                filtersPosition: "bottom",
-                tonesStyle: "square",
-                placeholder: "Trả lời..."
-            });
-        } else {
-            $("#emojionearea").emojioneArea({
-                pickerPosition: "top",
-                filtersPosition: "bottom",
-                tonesStyle: "square",
-                placeholder: "Nhận xét..."
-            });
-            $(".emojionearea-rep").emojioneArea({
-                pickerPosition: "top",
-                filtersPosition: "bottom",
-                tonesStyle: "square",
-                placeholder: "Trả lời..."
-            });
-        }
-
-        // xử lý bình luận truyện start
-        $(document).on('click', '.btn-gui-binh-luan-truyen', function() {
-            // Kiểm tra đăng nhập
-            const isLoggedIn = false;
-            if (!isLoggedIn) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Bạn chưa đăng nhập!',
-                });
-                return;
-            }
-
-            // Lấy nội dung bình luận và làm sạch bằng DOMPurify
-            let noiDung = $('#emojionearea')[0].emojioneArea.getText();
-            noiDung = DOMPurify.sanitize(noiDung);
-
-            let soTu = noiDung.trim().split(/\s+/).length;
-
-            // Kiểm tra nội dung quá dài
-            if (soTu > 500) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Nội dung quá dài',
-                    text: 'Bình luận của bạn không được dài quá 500 từ.',
-                });
-                return;
-            }
-
-            // Ngăn chặn spam bình luận liên tục
-            if (this.disabled) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Spam bình luận',
-                    text: 'Bạn đang bình luận quá nhanh. Vui lòng đợi một chút!',
-                });
-                return;
-            }
-            this.disabled = true;
-            setTimeout(() => {
-                this.disabled = false;
-            }, 5000);
-
-            // Gửi AJAX
-            $.ajax({
-                url: 'sources/ajax/mongdaovien/gui-binh-luan-truyen.php',
-                type: 'POST',
-                data: {
-                    id_truyen: 2436,
-                    id_user: 0,
-                    noi_dung: noiDung,
-                    id_chapter: 13365                },
-                success: function(response) {
-                    if (response.status === 'success') {
-                        FuiToast.success('Bình luận của bạn đã được gửi thành công.');
-
-                        // Thêm bình luận mới vào danh sách
-                        $('#result-binh-luan').prepend(`
-                    <div class="mdv-san-pham-show-comment-list-item" style="opacity: 1;">
-                        <div class="row ">
-                            <div class="col-2">
-                                <div class="mdv-san-pham-show-comment-form-avatar mdv-san-pham-show-comment-form-avatar-list-bl ratio ratio-1x1">
-                                    <a href="${response.avatar}" data-fancybox>
-                                        <img loading="lazy" src="${response.avatar}" alt="png" class="avatar">
-                                    </a>
-                                    <img loading="lazy" src="${response.khung_avatar}" alt="khung avatar" class="frame">
-                                </div>
-                            </div>
-                            <div class="col-10">
-                                <div class="mdv-san-pham-show-comment-list-item-comment p-3 d-flex flex-column gap-2 ">
-                                    <div class="mdv-san-pham-show-comment-list-item-comment-name">
-                                        <a href="<?php echo get_site_url(); ?>/my-wall/${response.username}" class="ten-doc-gia ten-tac-gia">${response.ten_doc_gia}</a> <span class="dang-cho-duyet">(Vừa gửi xong)</span>
-                                    </div>
-                                    <div class="mdv-san-pham-show-comment-list-item-comment-des">
-                                        ${noiDung}
-                                    </div>
-                                </div>
-                                <div class="mdv-san-pham-show-comment-list-item-comment-like-rep p-2 d-flex flex-column flex-md-row align-items-md-center gap-1 gap-md-3 justify-content-md-between">
-                                    <div class="mdv-san-pham-show-comment-list-item-comment-like-rep-left d-inline-flex align-items-center gap-3">
-                                       
-                                        <div class="mdv-san-pham-show-comment-list-item-comment-time">Vừa xong</div>
-                                    </div>
-                                  
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `);
-                        // Làm trống khung nhập bình luận
-                        $('#emojionearea')[0].emojioneArea.setText('');
-                        $(".vh-notification").html('');
-                    } else {
-                        FuiToast.error(response.message);
-                    }
-                },
-                error: function() {
-                    FuiToast.error('Có lỗi xảy ra, vui lòng thử lại sau.');
-                }
-            });
-        });
-
-        // xử lý bình luận truyện end
-
-
-        // Xử lý trả lời bình luận start
-        $(document).on('click', '.mdv-san-pham-show-comment-list-item-comment-rep', function() {
-            // Kiểm tra người dùng đã đăng nhập hay chưa
-            const idUser = null;
-            if (idUser === null) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Bạn cần đăng nhập để sử dụng tính năng này!',
-                });
-                return;
-            }
-
-            const $replyButton = $(this);
-            // Tìm phần tử cha gần nhất là `.col-10`
-            const $commentItemContainer = $replyButton.closest('.col-10');
-            let $replyBox = $commentItemContainer.find('.mdv-san-pham-show-tra-loi');
-
-            // Nếu chưa có hộp trả lời, thì thêm vào
-            if ($replyBox.length === 0) {
-                // Tạo HTML cho phần trả lời
-                const replyHtml = `
-        <div class="mdv-san-pham-show-tra-loi mb-3">
-            <div class="mdv-san-pham-show-tra-loi-content">
-                <div class="row gx-3">
-                    <div class="col-1">
-                        <div class="mdv-san-pham-show-comment-form-avatar mdv-san-pham-show-comment-form-avatar-list-bl ratio ratio-1x1">
-                            <a href="" data-fancybox>
-                                <img loading="lazy" src="" alt="png" class="avatar">
-                            </a>
-                            <img loading="lazy" src="" alt="khung avatar" class="frame">
-                        </div>
-                    </div>
-                    <div class="col-9">
-                        <div class="mdv-san-pham-show-tra-loi-content-form h-100">
-                            <textarea class="emojionearea-rep form-control" rows="3" placeholder="Trả lời..."></textarea>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <button type="button" class="btn btn-gui-tra-loi d-flex justify-content-center align-items-center w-100 h-100" 
-                            data-level-binhluan="${parseInt($replyButton.data('level-binhluan')) + 1}" 
-                            data-id-parent="${$replyButton.data('id-binhluan')}">
-                            Gửi
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>`;
-
-                // Append vào `.col-10` gần nhất
-                $replyBox = $(replyHtml).hide();
-                // Khởi tạo emojiArea cho phần reply vừa được thêm vào
-                $replyBox.find('.emojionearea-rep').emojioneArea({
-                    pickerPosition: 'right',
-                    filtersPosition: 'bottom',
-                    tonesStyle: 'square',
-                    placeholder: 'Trả lời...',
-                });
-                $commentItemContainer.append($replyBox);
-                $replyBox.fadeIn('slow', function() {
-                    // Chỉ cuộn đến phần tử nếu chiều cao của `.col-10` lớn hơn 600px
-                    if ($commentItemContainer.height() > 600) {
-                        const offsetTop = $replyBox.offset().top - 100; // Điều chỉnh giá trị này để phù hợp với giao diện
-
-                        // Kiểm tra nếu biến lenis đã được khởi tạo
-                        if (typeof lenis !== 'undefined') {
-                            lenis.scrollTo(offsetTop, {
-                                duration: 3.5, // Tăng thời gian để cuộn mượt hơn
-                                easing: (t) => Math.min(1, 1 - Math.pow(2, -15 * t)), // Easing giống với Lenis
-                            });
-                        } else {
-                            // Sử dụng jQuery nếu Lenis không có
-                            $('html, body').animate({
-                                scrollTop: offsetTop
-                            }, 800); // 800ms để cuộn xuống mượt
-                        }
-                    }
-
-                    // Focus vào textarea của hộp trả lời
-                    $replyBox.find('.emojionearea-rep').focus();
-
-                });
-            }
-        });
-
-
-
-
-        // Xử lý gửi trả lời bình luận
-        $(document).on('click', '.btn-gui-tra-loi', function() {
-            const $replyButton = $(this);
-            const $replyBox = $replyButton.closest('.mdv-san-pham-show-tra-loi');
-            const idTruyen = 2436;
-            const idUser = null;
-
-            // Lấy level và id parent từ button "Gửi"
-            const levelBinhLuan = $replyButton.data('level-binhluan');
-            const idParent = $replyButton.data('id-parent');
-
-            // Lấy nội dung bình luận từ emojiArea
-            let noiDung = $replyBox.find('.emojionearea-rep').data("emojioneArea").getText().trim();
-            noiDung = DOMPurify.sanitize(noiDung);
-
-            // Kiểm tra nội dung không được rỗng
-            if (!noiDung) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Nội dung trả lời không được để trống!',
-                });
-                return;
-            }
-
-            // Kiểm tra người dùng đã đăng nhập chưa
-            if (idUser === null) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Bạn cần đăng nhập để sử dụng tính năng này!',
-                });
-                return;
-            }
-
-            // Ajax gửi dữ liệu trả lời bình luận
-            $.ajax({
-                url: 'sources/ajax/mongdaovien/gui-tra-loi-binh-luan-truyen.php',
-                type: 'POST',
-                data: {
-                    id_truyen: idTruyen,
-                    id_user: idUser,
-                    noi_dung: noiDung,
-                    parent: idParent,
-                    level: levelBinhLuan,
-                    thoi_gian: Math.floor(Date.now() / 1000), // Thời gian hiện tại (UNIX timestamp),
-                    id_chapter: 13365                },
-                success: function(response) {
-                    if (response.status === 'success') {
-                        // Thông báo thành công bằng FuiToast
-                        FuiToast.success(response.message);
-
-                        // Tạo phần tử bình luận mới từ mẫu đã cung cấp
-                        const commentItemHtml = `
-        <!-- subitem -->
-        <div class="mdv-san-pham-show-comment-list-item" style="opacity: 1;">
-            <div class="row">
-                <div class="col-2">
-                    <div class="mdv-san-pham-show-comment-form-avatar mdv-san-pham-show-comment-form-avatar-list-bl ratio ratio-1x1">
-                        <a href="${response.avatar}" data-fancybox>
-                            <img loading="lazy" src="${response.avatar}" alt="png" class="avatar">
-                        </a>
-                        <img loading="lazy" src="${response.khung_avatar}" alt="khung avatar" class="frame">
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="mdv-san-pham-show-comment-list-item-comment p-3 d-flex flex-column gap-2">
-                        <div class="mdv-san-pham-show-comment-list-item-comment-name">
-                            <a href="<?php echo get_site_url(); ?>/my-wall/${response.username}" class="ten-doc-gia">${response.ten_doc_gia}</a>
-                            <span class="tra-loi-tag">(Vừa gửi xong)</span>
-                        </div>
-                        <div class="mdv-san-pham-show-comment-list-item-comment-des">
-                            ${noiDung}
-                        </div>
-                    </div>
-                    <!-- thích, bình luận, time -->
-                    <div class="mdv-san-pham-show-comment-list-item-comment-like-rep p-2 d-flex flex-column flex-md-row align-items-md-center gap-1 gap-md-3 justify-content-md-between">
-                        <div class="mdv-san-pham-show-comment-list-item-comment-like-rep-left d-inline-flex align-items-center gap-3">
-                            <div class="mdv-san-pham-show-comment-list-item-comment-time">
-                                Vừa xong
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-                        // Kiểm tra cấp độ của bình luận
-                        if (levelBinhLuan >= 3) {
-                            // Tìm phần tử cha gần nhất để thêm bình luận (cấp 3 hoặc cao hơn)
-                            const $subItemBox = $replyButton.closest('.mdv-san-pham-show-comment-list-subitem-box').first();
-
-                            // Thêm bình luận mới vào phần subitem dưới bình luận cha
-                            if ($subItemBox.length > 0) {
-                                const $newComment = $(commentItemHtml);
-                                $newComment.hide().appendTo($subItemBox).fadeIn('slow');
-                            }
-                        } else {
-                            // Tìm phần tử cha gần nhất để thêm bình luận (cấp 1 hoặc 2)
-                            const $commentItemContainer = $replyButton.closest('.mdv-san-pham-show-comment-list-item');
-                            const $subItemBox = $commentItemContainer.find('.mdv-san-pham-show-comment-list-subitem-box').first();
-
-                            // Thêm bình luận mới vào phần subitem dưới bình luận cha
-                            if ($subItemBox.length > 0) {
-                                const $newComment = $(commentItemHtml);
-                                $newComment.hide().prependTo($subItemBox).fadeIn('slow');
-                            }
-                        }
-
-                        // Ẩn hộp trả lời sau khi thêm bình luận thành công
-                        $replyBox.fadeOut('slow', function() {
-                            $(this).remove();
-                        });
-                    } else {
-                        FuiToast.error(response.message);
-                    }
-                },
-                error: function() {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-                    });
-                }
-            });
-        });
-        // Xử lý trả lời bình luận end
-
-
-        // xử lý thích bình luận start
-        // Xử lý thích/bỏ thích bình luận
-        $(document).on('click', '.mdv-san-pham-show-comment-list-item-comment-like', function() {
-            const $likeButton = $(this);
-            const idBinhLuan = $likeButton.data('id-binhluan');
-            const idUser = null;
-
-            // Kiểm tra người dùng đã đăng nhập chưa
-            if (idUser === null) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Bạn cần đăng nhập để sử dụng tính năng này!',
-                });
-                return;
-            }
-
-            // Ajax gửi dữ liệu thích/bỏ thích
-            $.ajax({
-                url: 'sources/ajax/mongdaovien/like-binh-luan-truyen.php',
-                type: 'POST',
-                data: {
-                    id_binhluan: idBinhLuan,
-                    id_user: idUser,
-                },
-                success: function(response) {
-                    if (response.status === 'success') {
-                        // Thông báo thành công bằng FuiToast
-                        FuiToast.success(response.message);
-
-                        // Cập nhật text nút thích/bỏ thích
-                        if (response.action === 'like') {
-                            $likeButton.text('Bỏ thích');
-                        } else {
-                            $likeButton.text('Thích');
-                        }
-
-                        // Cập nhật số lượt thích cho phần tử tương ứng
-                        const $likeCountContainer = $likeButton.closest('.mdv-san-pham-show-comment-list-item').find('.danh-sach-thich-binh-luan').first();
-                        if (response.like_count > 0) {
-                            const likeCountHtml = `
-                        <span class="mdv-luot-thich" data-id-binhluan="${idBinhLuan}" data-bs-toggle="modal" data-bs-target="#listMemberLike">${response.like_count} lượt thích</span>
-                    `;
-                            $likeCountContainer.html(likeCountHtml).fadeIn('slow');
-                        } else {
-                            $likeCountContainer.fadeOut('slow', function() {
-                                $(this).empty();
-                            });
-                        }
-                    } else {
-                        FuiToast.error(response.message);
-                    }
-                },
-                error: function() {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-                    });
-                }
-            });
-        });
-        // Xử lý thích/bỏ thích bình luận end
-
-
-        // xử lý thích bình luận end
-
-
-        // Xử lý khi click vào "xem lượt thích" để mở modal danh sách thích
-        $(document).on('click', '.mdv-luot-thich', function() {
-            const idBinhLuan = $(this).data('id-binhluan');
-
-            // Ajax để lấy danh sách những người thích bình luận
-            $.ajax({
-                url: 'sources/ajax/mongdaovien/lay-danh-sach-thich.php',
-                type: 'POST',
-                data: {
-                    id_binhluan: idBinhLuan,
-                },
-                success: function(response) {
-                    if (response.status === 'success') {
-                        // Tạo danh sách người dùng từ dữ liệu trả về
-                        let memberListHtml = '';
-
-                        response.data.forEach(user => {
-                            let followButtonHtml = '';
-
-                            // Kiểm tra nếu đã theo dõi thì hiển thị nút bỏ theo dõi
-                            if (user.da_theo_doi) {
-                                followButtonHtml = `<button class="btn btn-bo-theo-doi-tv hvr-icon-bounce" data-id-user="${user.id}"><i class="hvr-icon fa-solid fa-user-minus"></i></button>`;
-                            } else {
-                                followButtonHtml = `<button class="btn btn-theo-doi-tv hvr-icon-bounce" data-id-user="${user.id}"><i class="hvr-icon fa-solid fa-user-plus"></i></button>`;
-                            }
-
-                            memberListHtml += `
-                        <!-- item start -->
-                        <div class="col">
-                            <div class="modal-danh-sach-thich-content-item d-flex align-items-center justify-content-between gap-3">
-                                <!-- avatar -->
-                                <div class="modal-danh-sach-thich-content-item-avatar d-inline-flex align-items-center gap-2">
-                                    <div class="mdv-san-pham-show-comment-form-avatar modal-danh-sach-thich-content-item-avatar-image ratio ratio-1x1">
-                                        <a href="${user.avatar}" data-fancybox>
-                                            <img loading="lazy" src="${user.avatar}" alt="png" class="avatar">
-                                        </a>
-                                        <img loading="lazy" src="${user.khung_avatar}" alt="khung avatar" class="frame">
-                                    </div>
-                                    <!-- tên -->
-                                    <div class="modal-danh-sach-thich-content-item-name">
-                                        <a href="<?php echo get_site_url(); ?>/my-wall/${user.username}" class="ten-doc-gia">${user.ten_hien_thi}</a>
-                                    </div>
-                                </div>
-                                <!-- theo dõi -->
-                                ${followButtonHtml}
-                            </div>
-                        </div>
-                        <!-- item end -->
-                    `;
-                        });
-
-                        // Chèn HTML mới vào modal
-                        $('.modal-danh-sach-thich-content .row').html(memberListHtml);
-                        // Hiển thị modal
-                        $('#listMemberLike').modal('show');
-                    } else {
-                        FuiToast.error(response.message);
-                    }
-                },
-                error: function() {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-                    });
-                }
-            });
-        });
-        // Xử lý sự kiện click "xem lượt thích" end
-
-
-
-
-        // Xử lý khi nhấn vào nút "Theo dõi" trong modal danh sách thích
-        $(document).on('click', '.btn-theo-doi-tv', function() {
-            const $followButton = $(this);
-            const id_user = null;
-            const id_user_to_follow = $followButton.data('id-user');
-
-            if (id_user == null) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Bạn cần đăng nhập để sử dụng tính năng này!',
-                });
-                return;
-            }
-
-            // Kiểm tra nếu người dùng cố gắng theo dõi chính mình
-            if (id_user === id_user_to_follow) {
-                FuiToast.error('Bạn không thể theo dõi chính mình');
-                return;
-            }
-
-            Swal.fire({
-                title: 'Bạn có chắc muốn theo dõi người chơi này?',
-                text: "Sau khi theo dõi, bạn có thể hủy bỏ bất cứ lúc nào!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Đồng ý',
-                cancelButtonText: 'Hủy bỏ'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "sources/ajax/mongdaovien/theo-doi-nguoi-choi.php",
-                        type: 'POST',
-                        data: {
-                            id_user: id_user_to_follow
-                        },
-                        success: function(response) {
-                            if (response.status === 'success') {
-                                FuiToast.success('Bạn đã theo dõi thành công');
-                                $followButton.replaceWith('<button class="btn btn-bo-theo-doi-tv hvr-icon-bounce" data-id-user="' + id_user_to_follow + '"><i class="hvr-icon fa-solid fa-user-minus"></i></button>');
-                            } else {
-                                FuiToast.error(response.message);
-                            }
-                        },
-                        error: function() {
-                            FuiToast.error('Có lỗi xảy ra, vui lòng thử lại');
-                        }
-                    });
-                }
-            });
-        });
-
-        // Xử lý khi nhấn vào nút "Bỏ theo dõi" trong modal danh sách thích
-        $(document).on('click', '.btn-bo-theo-doi-tv', function() {
-            const $unfollowButton = $(this);
-            const id_user = null;
-            const id_user_to_unfollow = $unfollowButton.data('id-user');
-
-            if (id_user == null) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Bạn cần đăng nhập để sử dụng tính năng này!',
-                });
-                return;
-            }
-
-            Swal.fire({
-                title: 'Bạn có chắc muốn bỏ theo dõi người chơi này?',
-                text: "Sau khi bỏ theo dõi, bạn có thể theo dõi lại bất cứ lúc nào!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Đồng ý',
-                cancelButtonText: 'Hủy bỏ'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "sources/ajax/mongdaovien/bo-theo-doi-nguoi-choi.php",
-                        type: 'POST',
-                        data: {
-                            id_user: id_user_to_unfollow
-                        },
-                        success: function(response) {
-                            if (response.status === 'success') {
-                                FuiToast.success('Bạn đã bỏ theo dõi thành công');
-                                $unfollowButton.replaceWith('<button class="btn btn-theo-doi-tv hvr-icon-bounce" data-id-user="' + id_user_to_unfollow + '"><i class="hvr-icon fa-solid fa-user-plus"></i></button>');
-                            } else {
-                                FuiToast.error(response.message);
-                            }
-                        },
-                        error: function() {
-                            FuiToast.error('Có lỗi xảy ra, vui lòng thử lại');
-                        }
-                    });
-                }
-            });
-        });
-
-        // xử lý load thêm bình luận start
-
-        $(document).on('click', '.btn-xem-them-binh-luan', function() {
-            const $button = $(this);
-            const offset = $button.data('offset');
-            const idTruyen = 2436;
-
-            // Ajax để tải thêm bình luận
-            $.ajax({
-                url: 'sources/ajax/mongdaovien/load-them-binh-luan-truyen.php',
-                type: 'POST',
-                data: {
-                    id_truyen: idTruyen,
-                    offset: offset,
-                    id_chapter: 13365                },
-                success: function(response) {
-                    if (response.status === 'success') {
-                        // Thêm HTML bình luận mới vào dưới cùng của danh sách bình luận
-                        $(response.html).hide().appendTo('#result-binh-luan').fadeIn('slow');
-
-                        // Tăng giá trị offset lên 3
-                        $button.data('offset', offset + 3);
-
-                        // Kiểm tra nếu không còn bình luận nào thì ẩn nút "Xem thêm"
-                        if (!response.has_more) {
-                            $button.fadeOut('slow', function() {
-                                $(this).remove();
-                            });
-                        }
-                    } else {
-                        FuiToast.error(response.message);
-                        $button.fadeOut('slow', function() {
-                            $(this).remove();
-                        });
-                    }
-                },
-                error: function() {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-                    });
-                }
-            });
-        });
-
-        // xử lý load thêm bình luận end
-
-
-        // bình luận truyện end
-
-
-        // khi click vào button tool bình luận scroll xuống start
-        // Khi nhấn vào nút bình luận
-        $('.btn-scroll-binh-luan-tool a').on('click', function(e) {
-            e.preventDefault(); // Ngăn chặn hành động mặc định của thẻ <a>
-
-            // Kiểm tra xem Lenis có tồn tại không
-            if (window.lenis) {
-                const target = document.querySelector('.mdv-san-pham-show-comment');
-                if (target) {
-                    window.lenis.scrollTo(target, {
-                        offset: 0,
-                        duration: 2.5,
-                        immediate: false,
-                    });
-                }
-            } else {
-                // Trường hợp không có Lenis, cuộn bằng jQuery như bình thường
-                $('html, body').animate({
-                    scrollTop: $('.mdv-san-pham-show-comment').offset().top
-                }, 800); // 800ms để cuộn xuống mượt
-            }
-        });
-
-
-        // khi click vào button tool bình luận scroll xuống end
-
-
-        // xử lý báo lỗi truyện start
-        // Xử lý form gửi báo cáo truyện
-        $('#baoCaoTruyenForm').on('submit', function(event) {
-            event.preventDefault();
-
-            // Gửi AJAX
-            $.ajax({
-                url: 'sources/ajax/mongdaovien/gui-bao-cao-truyen.php',
-                type: 'POST',
-                dataType: 'json',
-                data: $(this).serialize(),
-                beforeSend: function() {
-                    // Disable button để tránh người dùng click nhiều lần
-                    $('#baoCaoTruyenForm button[type="submit"]').prop('disabled', true);
-                },
-                success: function(response) {
-                    // Reset lại form và đóng modal
-                    $('#baoCaoTruyenForm')[0].reset();
-                    $('#baoLoiModal').modal('hide');
-
-                    if (response.status === 'success') {
-                        // Thông báo thành công
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Gửi thành công',
-                            text: 'Báo cáo của bạn đã được gửi. Cảm ơn bạn!',
-                        });
-                    } else {
-                        // Thông báo thất bại
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Không thể gửi báo cáo!',
-                        });
-                    }
-                },
-                error: function(xhr, status, error) {
-                    // Thông báo lỗi nếu xảy ra
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Đã có lỗi xảy ra. Vui lòng thử lại sau.',
-                    });
-                },
-                complete: function() {
-                    // Enable lại button sau khi xử lý
-                    $('#baoCaoTruyenForm button[type="submit"]').prop('disabled', false);
-                }
-            });
-        });
-        // xử lý báo lỗi truyện end
-
-    });
-</script>
-
-<!-- chế độ sáng tối start -->
-<script>
-    // Kiểm tra chế độ đã lưu trong localStorage và đặt lại cho trang
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        $('body').addClass('dark-mode');
-        $('.btn-che-do-sang-toi i').removeClass('fa-moon').addClass('fa-sun');
-    }
-
-    // Xử lý khi click vào nút chuyển chế độ sáng/tối
-    $('.btn-che-do-sang-toi').on('click', function() {
-        $('body').toggleClass('dark-mode');
-
-        // Thay đổi icon giữa mặt trời và mặt trăng
-        const icon = $(this).find('i');
-        if ($('body').hasClass('dark-mode')) {
-            icon.removeClass('fa-moon').addClass('fa-sun');
-            // Lưu trạng thái chế độ tối vào localStorage
-            localStorage.setItem('darkMode', 'enabled');
-            // hide tooltip
-            $('[data-bs-toggle="tooltip"]').tooltip('hide');
-        } else {
-            icon.removeClass('fa-sun').addClass('fa-moon');
-            // Xóa trạng thái chế độ tối khỏi localStorage
-            localStorage.setItem('darkMode', 'disabled');
-            // hide tooltip
-            $('[data-bs-toggle="tooltip"]').tooltip('hide');
-        }
-    });
-    //
-
-    // XỬ LÝ TẶNG QUÀ START
-
-    // Show modal when clicking on "Tặng Quà"
-    $(document).on('click', '.btn-tang-qua', function() {
-        const userId = null;
-        const authorId = 1044; // Replace with appropriate author ID
-        let so_dao_hien_co = 0;
-        if (userId === null) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Bạn cần đăng nhập để sử dụng tính năng này!',
-            });
-            return;
-        }
-
-        $.ajax({
-            url: 'sources/ajax/mongdaovien/load-tai-khoan.php',
-            type: 'POST',
-            data: {
-                id_user: userId
-            },
-            success: function(response) {
-                if (response.status === 'success') {
-                    const userInfo = response.tai_khoan;
-                    // Cập nhật modal với số đào hiện có của người dùng
-                    so_dao_hien_co = userInfo.dao;
-                    $('#so_dao_hien_co').html(number_format(userInfo.dao));
-                    $('#soDaoConLai').text(number_format(userInfo.dao));
-                    $('#donateModal').modal('show');
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Không thể tải thông tin tài khoản của bạn.',
-                    });
-                }
-            },
-            error: function() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Có lỗi xảy ra khi truy vấn tài khoản.',
-                });
-            },
-        });
-
-        $('.formatprice').priceFormat({
-            prefix: '',
-            thousandsSeparator: ',',
-            centsLimit: 0,
-        });
-
-        function number_format(number) {
-            return new Intl.NumberFormat('vi-VN').format(number);
-        }
-
-        $('#soDaoDonate').on('input', function() {
-            // Lấy giá trị người dùng nhập vào và loại bỏ dấu phẩy
-            let soDaoDonate = $(this).val().replace(/,/g, '');
-            soDaoDonate = parseInt(soDaoDonate) || 0; // Chuyển chuỗi thành số nguyên
-
-            // Lấy số đào hiện có và loại bỏ dấu phẩy
-            let soDaoHienCo = parseInt(so_dao_hien_co) || 0;
-
-            // // Kiểm tra nếu số đào muốn donate lớn hơn số đào hiện có
-            if (soDaoDonate > soDaoHienCo) {
-                soDaoDonate = soDaoHienCo;
-                $(this).val(soDaoDonate); // Cập nhật lại giá trị nhập vào với dấu phẩy
-            }
-
-            // // Tính số đào còn lại sau khi donate
-            let soDaoConLai = soDaoHienCo - soDaoDonate;
-            $('#soDaoConLai').text(number_format(soDaoConLai));
-
-
-        });
-
-        $('.donate-btn-confirm').on('click', function() {
-            const donateAmount = parseInt($('#soDaoDonate').val().replace(/,/g, '')) || 0;
-
-            if (donateAmount <= 0) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Vui lòng nhập số đào hợp lệ để donate.',
-                });
-                return;
-            }
-
-            $.ajax({
-                url: 'sources/ajax/mongdaovien/donate-dao-editor.php',
-                type: 'POST',
-                data: {
-                    user_duoc_donate: authorId,
-                    so_dao: donateAmount,
-                    id_truyen: '2436',
-                    id_chapter: '13365'
-                },
-                success: function(response) {
-                    if (response.status === 'success') {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Thành công!',
-                            text: response.message,
-                        });
-
-                        $('.dao-dang-co').text(response.dao_hien_tai);
-                        $('#donateModal').modal('hide');
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: response.message,
-                        });
-                    }
-                },
-                error: function() {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Có lỗi xảy ra, vui lòng thử lại sau.',
-                    });
-                },
-            });
-        });
-    });
-
-    // XỬ LÝ TẶNG QUÀ END
-
-
-
-    // đề cử truyện start
-    // Example: Updating the 'Sau đề cử' field when input changes
-    // Định dạng giá trị nhập vào bằng thư viện priceFormat
-    $('.formatprice').priceFormat({
-        limit: 8,
-        prefix: '',
-        centsLimit: 0
-    });
-
-    // Hàm định dạng số thành số có dấu phẩy
-    function number_format(number) {
-        return new Intl.NumberFormat('vi-VN').format(number);
-    }
-
-    // Xử lý khi người dùng nhập vào số bông muốn đề cử
-    $('#soBongInput').on('input', function() {
-        // Lấy giá trị người dùng nhập vào và loại bỏ dấu phẩy
-        let soBongDeCu = $(this).val().replace(/,/g, '');
-        soBongDeCu = parseInt(soBongDeCu) || 0; // Chuyển chuỗi thành số nguyên
-
-        // Lấy số bông hiện có và loại bỏ dấu phẩy
-        let soBongHienCo = parseInt("") || 0;
-
-        // Kiểm tra nếu số bông muốn đề cử lớn hơn số bông hiện có
-        if (soBongDeCu > soBongHienCo) {
-            soBongDeCu = soBongHienCo; // Giới hạn lại số bông đề cử
-            $(this).val(number_format(soBongDeCu)); // Cập nhật lại giá trị nhập vào với dấu phẩy
-        } else {
-            $(this).val(number_format(soBongDeCu)); // Cập nhật lại giá trị nhập vào với dấu phẩy
-        }
-
-        // Tính số bông còn lại sau khi đề cử
-        let soBongConLai = soBongHienCo - soBongDeCu;
-        $('#afterProposal').val(number_format(soBongConLai) + ' Bông');
-    });
-
-    // Xử lý click nút đề cử
-    $('.btn-de-cu-bong').on('click', function() {
-        const id_truyen = 2436;
-        const id_user = null;
-
-        if (id_user == null) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Bạn cần đăng nhập để sử dụng tính năng này!',
-            });
-            return;
-        }
-
-        // Mở modal
-        $('#deCuTruyenModal').modal('show');
-    });
-
-    // Xử lý khi bấm nút "Đề Cử Ngay"
-    $('.mdv-de-cu-submit-btn').on('click', function() {
-        const soBongDeCu = parseInt($('#soBongInput').val().replace(/,/g, '')) || 0;
-
-        if (soBongDeCu < 5000) {
-            FuiToast.error('Vui lòng nhập số bông lớn hơn hoặc bằng 5.000 để đề cử.');
-            return;
-        }
-
-        $.ajax({
-            url: 'sources/ajax/mongdaovien/de-cu-bong.php',
-            type: 'POST',
-            data: {
-                id_truyen: 2436,
-                so_bong: soBongDeCu,
-                pnvn_token: "462a07709ff85bdcb946dfda56451dd281620f04"
-            },
-            success: function(response) {
-                if (response.status === 'success') {
-                    // Cập nhật lại số bông hiện tại và số bông còn lại sau khi đề cử
-                    FuiToast.success('Bạn đã đề cử thành công!');
-                    $('#deCuTruyenModal').modal('hide');
-
-                    $('#currentBong').val(number_format(response.so_bong_moi) + ' Bông');
-                    $('#afterProposal').val(number_format(response.so_bong_moi) + ' Bông');
-                    $("#soBongInput").val('');
-
-                    $(".bong-de-cu-number").html(response.tong_bong_truyen);
-
-                    // Cập nhật Đào, Hạt và Bông của tài khoản
-                    $(".dao-dang-co").text(response.dao_hien_tai);
-                    $(".hat-dang-co").text(response.hat_hien_tai);
-                    $(".bong-dang-co").text(response.bong_hien_tai);
-                } else {
-                    FuiToast.error(response.message);
-                }
-            },
-            error: function() {
-                FuiToast.error('Có lỗi xảy ra, vui lòng thử lại sau.');
-            }
-        });
-    });
-    // đề cử truyện end
-</script>
-<!-- chế độ sáng tối end -->
-
-<!-- <script src="https://code.responsivevoice.org/responsivevoice.js?key=240jsndI"></script> -->
-<style>
-    /* Style cho thanh range với phần đã chọn */
-    #fontSizeRange {
-        width: 100%;
-        height: 6px;
-        border-radius: 3px;
-        background: linear-gradient(to right, var(--primary-color) 0%, var(--primary-color) 50%, #ddd 50%, #ddd 100%);
-        outline: none;
-        -webkit-appearance: none;
-    }
-
-    #fontSizeRange::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: var(--primary-color);
-        cursor: pointer;
-        border: 2px solid white;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    #fontSizeRange::-moz-range-thumb {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: var(--primary-color);
-        cursor: pointer;
-        border: 2px solid white;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .font-size-value {
-        text-align: center;
-        margin-top: 8px;
-        font-size: 0.9rem;
-        color: #666;
-    }
-</style>
-<script>
-    // Script chính
-    (function() {
-        // DOM Elements
-        const fontSizeBox = document.getElementById("fontSizeBox");
-        const fontSizeRange = document.getElementById("fontSizeRange");
-        const fontSizeValue = document.getElementById("fontSizeValue");
-        const contentElement = document.getElementById("noi_dung_truyen");
-        const removeBreaksToggle = document.getElementById("removeBreaksToggle");
-
-        // Kiểm tra phần tử tồn tại
-        if (!fontSizeBox || !fontSizeRange || !contentElement) {
-            console.error("❌ Một hoặc nhiều phần tử cần thiết không tồn tại trong DOM");
-            return;
-        }
-
-        // Hàm cập nhật màu nền cho thanh range
-        function updateRangeBackground(value) {
-            const min = parseInt(fontSizeRange.min);
-            const max = parseInt(fontSizeRange.max);
-            const percentage = ((value - min) / (max - min)) * 100;
-            fontSizeRange.style.background = `linear-gradient(to right, var(--primary-color) 0%, var(--primary-color) ${percentage}%, #ddd ${percentage}%, #ddd 100%)`;
-        }
-
-        // Hàm cập nhật cỡ chữ
-        function updateFontSize(value) {
-            const newSize = parseInt(value);
-            if (isNaN(newSize)) return;
-
-            try {
-                // Áp dụng font-size cho phần tử nội dung
-                contentElement.style.fontSize = newSize + "px";
-
-                // Cập nhật giá trị hiển thị
-                if (fontSizeValue) {
-                    fontSizeValue.textContent = newSize;
-                }
-
-                // Cập nhật màu nền cho thanh range
-                updateRangeBackground(newSize);
-
-                // Lưu vào localStorage
-                try {
-                    localStorage.setItem("fontSize", newSize);
-                    console.log('💾 Đã lưu cỡ chữ:', newSize + "px");
-                } catch (e) {
-                    console.warn('⚠️ Không thể lưu vào localStorage:', e.message);
-                }
-
-                console.log(`🎨 Đã áp dụng cỡ chữ: ${newSize}px`);
-            } catch (e) {
-                console.error('❌ Lỗi khi cập nhật cỡ chữ:', e);
-            }
-        }
-
-        // Hàm áp dụng trạng thái ẩn xuống dòng
-        function triggerBreakToggle() {
-            if (!contentElement) return;
-
-            if (removeBreaksToggle && removeBreaksToggle.checked) {
-                // Ẩn các thẻ <br>
-                contentElement.classList.add("remove-breaks");
-
-                // Xóa thẻ <br> trong các thẻ <p> chỉ chứa <br>
-                const paragraphs = contentElement.querySelectorAll('p');
-                paragraphs.forEach(p => {
-                    // Kiểm tra nếu đoạn chỉ chứa <br> (có thể có khoảng trắng)
-                    const innerHTMLTrimmed = p.innerHTML.replace(/\s/g, '');
-                    if (innerHTMLTrimmed === '<br>') {
-                        // Giữ lại thẻ <p> nhưng xóa thẻ <br> bên trong
-                        p.innerHTML = '';
-                    }
-                });
-            } else {
-                // Khi tắt, khôi phục lại nội dung ban đầu
-                contentElement.classList.remove("remove-breaks");
-
-                // Khôi phục lại các thẻ <br> đã bị xóa (nếu có lưu trữ)
-                const paragraphs = contentElement.querySelectorAll('p');
-                paragraphs.forEach(p => {
-                    // Nếu đoạn trống và trước đó có thể là <br>
-                    if (p.innerHTML === '') {
-                        // Kiểm tra xem đoạn này có data attribute lưu trữ nội dung cũ không
-                        const originalContent = p.getAttribute('data-original-content');
-                        if (originalContent) {
-                            p.innerHTML = originalContent;
-                            p.removeAttribute('data-original-content');
-                        }
-                    }
-                });
-            }
-        }
-
-
-        // Thiết lập sự kiện cho thanh trượt
-        function setupFontSizeEvents() {
-            const updateAndSave = function() {
-                updateFontSize(this.value);
-            };
-
-            fontSizeRange.addEventListener('input', updateAndSave);
-            fontSizeRange.addEventListener('change', updateAndSave);
-
-            // Xử lý chạm trên thiết bị di động
-            let touchStartValue = null;
-            fontSizeRange.addEventListener('touchstart', function(e) {
-                touchStartValue = this.value;
-                this.style.zIndex = '1000';
-            }, {
-                passive: true
-            });
-
-            fontSizeRange.addEventListener('touchend', function(e) {
-                this.style.zIndex = '';
-                if (touchStartValue !== null && this.value !== touchStartValue) {
-                    updateAndSave.call(this);
-                }
-                touchStartValue = null;
-            }, {
-                passive: true
-            });
-        }
-
-        // Xử lý sự kiện toggle ẩn xuống dòng
-        function setupRemoveBreaksToggle() {
-            if (!removeBreaksToggle) return;
-
-            // Lưu trữ nội dung gốc trước khi thay đổi
-            const paragraphs = contentElement.querySelectorAll('p');
-            paragraphs.forEach(p => {
-                const innerHTMLTrimmed = p.innerHTML.replace(/\s/g, '');
-                if (innerHTMLTrimmed === '<br>' && !p.hasAttribute('data-original-content')) {
-                    p.setAttribute('data-original-content', '<br>');
-                }
-            });
-
-            // Xử lý khi thay đổi trạng thái checkbox
-            removeBreaksToggle.addEventListener('change', function() {
-                triggerBreakToggle();
-                try {
-                    localStorage.setItem("removeBreaks", this.checked);
-                    console.log('💾 Đã lưu trạng thái ẩn xuống dòng:', this.checked);
-                } catch (e) {
-                    console.warn('⚠️ Không thể lưu trạng thái ẩn xuống dòng:', e.message);
-                }
-            });
-
-            // Xử lý khi click vào slider (toggle switch)
-            const slider = document.querySelector(".toggle-switch .slider");
-            if (slider) {
-                slider.addEventListener("click", function(e) {
-                    // Ngăn sự kiện click lan ra ngoài
-                    e.stopPropagation();
-                    // Đảo ngược trạng thái của checkbox
-                    removeBreaksToggle.checked = !removeBreaksToggle.checked;
-                    // Kích hoạt sự kiện change
-                    removeBreaksToggle.dispatchEvent(new Event('change'));
-                });
-            }
-        }
-
-        // Xử lý khi nhấn vào nút chỉnh cỡ chữ
-        function setupToolButtonEvent() {
-            const toolButton = document.querySelector(".btn-chinh-co-chu-tool");
-            if (!toolButton) return;
-
-            toolButton.addEventListener("click", function(e) {
-                e.stopPropagation();
-                fontSizeBox.classList.toggle("d-none");
-
-                if (!fontSizeBox.classList.contains("d-none")) {
-                    // Hiển thị với animation
-                    gsap.fromTo(fontSizeBox, {
-                        opacity: 0,
-                        y: 20
-                    }, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
-                }
-            });
-        }
-
-        // Ẩn box khi click bên ngoài
-        function setupAutoHide() {
-            document.addEventListener('click', function(e) {
-                if (fontSizeBox && !fontSizeBox.classList.contains("d-none")) {
-                    const isClickInside = fontSizeBox.contains(e.target) ||
-                        document.querySelector(".btn-chinh-co-chu-tool")?.contains(e.target);
-
-                    if (!isClickInside) {
-                        gsap.to(fontSizeBox, {
-                            opacity: 0,
-                            y: 20,
-                            duration: 0.3,
-                            ease: "power2.in",
-                            onComplete: () => {
-                                fontSizeBox.classList.add("d-none");
-                            }
-                        });
-                    }
-                }
-            });
-        }
-
-        // Khởi tạo khi DOM sẵn sàng
-        document.addEventListener("DOMContentLoaded", function() {
-            // Thiết lập sự kiện
-            setupFontSizeEvents();
-            setupToolButtonEvent();
-            setupAutoHide();
-            setupRemoveBreaksToggle();
-
-            // Áp dụng cỡ chữ đã lưu
-            try {
-                const savedFontSize = localStorage.getItem("fontSize");
-                if (savedFontSize) {
-                    const numericSize = parseInt(savedFontSize);
-                    if (!isNaN(numericSize) && numericSize >= 12 && numericSize <= 32) {
-                        fontSizeRange.value = numericSize;
-                        updateFontSize(numericSize);
-                    }
-                } else {
-                    // Áp dụng giá trị mặc định
-                    updateFontSize(fontSizeRange.value);
-                }
-            } catch (e) {
-                console.warn('⚠️ Không thể đọc cỡ chữ đã lưu:', e.message);
-            }
-
-            // Áp dụng trạng thái ẩn xuống dòng đã lưu
-            try {
-                const removeBreaksStored = localStorage.getItem("removeBreaks");
-                if (removeBreaksStored !== null) {
-                    const isChecked = removeBreaksStored === "true";
-                    if (removeBreaksToggle) {
-                        removeBreaksToggle.checked = isChecked;
-                        triggerBreakToggle();
-                    }
-                }
-            } catch (e) {
-                console.warn('⚠️ Không thể đọc trạng thái ẩn xuống dòng:', e.message);
-            }
-
-            // Kiểm tra thiết bị di động & bật mặc định "ẩn xuống dòng"
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            if (isMobile && localStorage.getItem("removeBreaks") === null && removeBreaksToggle) {
-                removeBreaksToggle.checked = true;
-                triggerBreakToggle();
-                try {
-                    localStorage.setItem("removeBreaks", "true");
-                    console.log('💾 Đã bật mặc định ẩn xuống dòng cho thiết bị di động');
-                } catch (e) {
-                    console.warn('⚠️ Không thể lưu trạng thái ẩn xuống dòng mặc định:', e.message);
-                }
-            }
-        });
-    })();
-</script>
-
-
-<script>
-    // Hủy bỏ user-select và ngăn chặn các hành động không mong muốn
-    setInterval(function() {
-        // Hủy bỏ vùng chọn văn bản
-        const selection = window.getSelection();
-        if (selection && selection.rangeCount > 0) {
-            const selectedText = selection.toString();
-            if (selectedText.length > 0) {
-                selection.removeAllRanges(); // Hủy bỏ vùng chọn
-            }
-        }
-
-
-
-    }, 1000); // Kiểm tra mỗi 1000ms
-
-    document.addEventListener("copy", (event) => {
-        event.clipboardData.setData("text/plain", "Nội dung đã bị chặn sao chép!");
-        event.preventDefault(); // Ngăn sao chép nội dung thực tế
-        console.warn("Hành động sao chép đã bị thay thế.");
-    });
-</script>
-    <script>
-        // Xử lý affiliate click và hiển thị nội dung
-        function trackAffiliateClick(truyen_id) {
-            // Lưu cookie trạng thái đã click
-            setCookie('affiliate_clicked', truyen_id + ':' + Math.floor(Date.now() / 1000), 30);
-
-            // Lấy các phần tử cần thao tác
-            var affiliateNotification = document.getElementById('affiliate-notification');
-            var chapterContent = document.getElementById('chapter-content');
-
-            // Gửi AJAX để lưu lượt click
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'sources/ajax/mongdaovien/action_click_affiliate.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    console.log('Đã ghi nhận lượt click affiliate');
-
-                    // Ẩn thông báo affiliate
-                    if (affiliateNotification) {
-                        affiliateNotification.style.display = 'none';
-                    }
-
-                    // Hiển thị nội dung chương
-                    if (chapterContent) {
-                        chapterContent.style.display = 'block';
-                    } else {
-                        // Tìm các phần tử chương có thể có
-                        var contentElements = document.querySelectorAll('.chapter-content, .chapter-detail, .noi-dung, .content-chapter');
-                        contentElements.forEach(function(el) {
-                            el.style.display = 'block';
-                        });
-                    }
-                }
-            };
-            xhr.send('action=track_affiliate_click&truyen_id=' + truyen_id);
-
-            // Cho phép chuyển hướng đi
-            return true;
-        }
-
-        // Hàm set cookie
-        function setCookie(name, value, days) {
-            var expires = '';
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = '; expires=' + date.toUTCString();
-            }
-            document.cookie = name + '=' + value + expires + '; path=/';
-        }
-
-        // Hàm kiểm tra trạng thái cookie khi tải trang
-        function checkAffiliateStatus() {
-            // Lấy trạng thái đã click từ cookie
-            var clicked = getCookie('affiliate_clicked');
-            var truyen_id = 2436;
-
-            // Nếu là admin, không hiển thị affiliate
-            
-            if (clicked) {
-                // Kiểm tra thời gian đã click
-                var parts = clicked.split(':');
-                if (parts.length === 2) {
-                    var clickedTruyenId = parts[0];
-                    var timestamp = parseInt(parts[1]);
-                    var timeInterval = 30;
-
-                    // Nếu truyện giống nhau và chưa hết thời gian
-                    if (clickedTruyenId == truyen_id && (Date.now() / 1000 - timestamp) <= (timeInterval * 60)) {
-                        hideAffiliateNotice();
-                        return;
-                    }
-                }
-            }
-
-            // Nếu chưa click, hiển thị thông báo affiliate
-            showAffiliateNotice();
-        }
-
-        // Hàm lấy cookie
-        function getCookie(name) {
-            var nameEQ = name + '=';
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        // Ẩn thông báo affiliate và hiển thị nội dung
-        function hideAffiliateNotice() {
-            var notification = document.getElementById('affiliate-notification');
-            if (notification) {
-                notification.style.display = 'none';
-            }
-
-            // Hiển thị nội dung chương
-            var chapterContent = document.getElementById('chapter-content');
-            if (chapterContent) {
-                chapterContent.style.display = 'block';
-            } else {
-                // Tìm các phần tử nội dung có thể có
-                var contentElements = document.querySelectorAll('.chapter-content, .chapter-detail, .noi-dung, .content-chapter');
-                contentElements.forEach(function(el) {
-                    el.style.display = 'block';
-                });
-            }
-        }
-
-        // Hiển thị thông báo affiliate
-        function showAffiliateNotice() {
-            var notification = document.getElementById('affiliate-notification');
-            if (notification) {
-                // Ẩn nội dung chương
-                var chapterContent = document.getElementById('chapter-content');
-                if (chapterContent) {
-                    chapterContent.style.display = 'none';
-                } else {
-                    // Tìm các phần tử nội dung có thể có
-                    var contentElements = document.querySelectorAll('.chapter-content, .chapter-detail, .noi-dung, .content-chapter');
-                    contentElements.forEach(function(el) {
-                        el.style.display = 'none';
-                    });
-                }
-
-                // Hiển thị thông báo
-                notification.style.display = 'flex';
-            }
-        }
-
-        // Kiểm tra khi trang đã tải xong
-        document.addEventListener('DOMContentLoaded', function() {
-
-        });
-        // Kiểm tra trạng thái affiliate
-        if (document.getElementById('affiliate-notification')) {
-            checkAffiliateStatus();
-        }
-    </script>
-
-    <script>
-        // Biến toàn cục để lưu trữ trạng thái
-        var affiliateCookieName = 'affiliate_clicked';
-
-        // Hàm xử lý click vào liên kết affiliate
-        function trackAffiliateClick(truyen_id) {
-            // Lưu cookie
-            setCookie(affiliateCookieName, truyen_id + ':' + Math.floor(Date.now() / 1000), 30);
-
-            // Gửi AJAX theo dõi click
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'sources/ajax/mongdaovien/action_click_affiliate.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    console.log('Đã ghi nhận affiliate click thành công');
-
-                    // Ẩn modal affiliate
-                    var affiliateNotification = document.getElementById('affiliate-notification');
-                    if (affiliateNotification) {
-                        affiliateNotification.style.display = 'none';
-                    }
-
-                    // Hiển thị nội dung chương
-                    showChapterContent();
-                }
-            };
-
-            xhr.send('action=track_affiliate_click&truyen_id=' + truyen_id);
-
-            // Hiển thị nội dung ngay lập tức, không đợi AJAX hoàn thành
-            showChapterContent();
-
-            // Trả về true để cho phép mở link trong tab mới
-            return true;
-        }
-
-        // Hiển thị nội dung chương
-        function showChapterContent() {
-            // Hiển thị nội dung chương
-            var content = document.getElementById('noi_dung_truyen');
-            if (content) {
-                content.classList.remove('hidden-content');
-            }
-        }
-
-        // Hàm kiểm tra cookie khi tải trang
-        function checkAffiliateStatus() {
-            var truyen_id = 2436;
-            var clicked = getCookie(affiliateCookieName);
-
-            // Nếu là admin, luôn hiển thị nội dung
-            
-            if (clicked) {
-                // Đã click trước đó, kiểm tra ID truyện và thời gian
-                var parts = clicked.split(':');
-                if (parts.length === 2) {
-                    var clickedTruyenId = parts[0];
-                    var timestamp = parseInt(parts[1]);
-                    var timeInterval = 30;
-
-                    // Nếu là truyện hiện tại và chưa hết thời gian
-                    if (clickedTruyenId == truyen_id && (Date.now() / 1000 - timestamp) <= (timeInterval * 60)) {
-                        // Hiển thị nội dung và ẩn modal
-                        showChapterContent();
-                        hideAffiliateModal();
-                        return;
-                    }
-                }
-            }
-
-            // Chưa click hoặc đã hết hạn, ẩn nội dung và hiển thị modal
-            hideChapterContent();
-            showAffiliateModal();
-        }
-
-        // Ẩn modal affiliate
-        function hideAffiliateModal() {
-            var modal = document.getElementById('affiliate-notification');
-            if (modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        // Hiển thị modal affiliate
-        function showAffiliateModal() {
-            var modal = document.getElementById('affiliate-notification');
-            if (modal) {
-                modal.style.display = 'flex';
-            }
-        }
-
-        // Ẩn nội dung chương
-        function hideChapterContent() {
-            var content = document.getElementById('noi_dung_truyen');
-            if (content) {
-                content.classList.add('hidden-content');
-            }
-        }
-
-        // Hàm lấy cookie
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        // Hàm đặt cookie
-        function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
-
-        // Kiểm tra khi trang tải xong
-        document.addEventListener('DOMContentLoaded', function() {
-            // Kiểm tra trạng thái affiliate để hiển thị/ẩn nội dung
-            checkAffiliateStatus();
-        });
-    </script>
-
-<!-- Thêm JavaScript để kiểm tra thời gian đọc -->
-<script>
-    $(document).ready(function() {
-        // Kiểm tra xem đã có session lưu lượt đọc chưa
-                    const startTime = Math.floor(Date.now() / 1000);
-            let requiredTime = 100;
-            let hasIncremented = false;
-            let showDisplay = 0;
-            console.log('Bắt đầu đếm thời gian đọc');
-
-            // Hiển thị thời gian còn lại cho người dùng
-            let timeLeftDisplay = $('<div>', {
-                class: 'time-left-display',
-                css: {
-                    position: 'fixed',
-                    bottom: '20px',
-                    left: '20px',
-                    padding: '10px 15px',
-                    background: 'rgba(0, 0, 0, 0.7)',
-                    color: '#fff',
-                    borderRadius: '5px',
-                    zIndex: 1000,
-                    fontSize: '14px',
-                    display: showDisplay ? 'block' : 'none'
-                }
-            }).appendTo('body');
-
-            // Kiểm tra thời gian mỗi giây
-            const timer = setInterval(function() {
-                if (hasIncremented) {
-                    clearInterval(timer);
-                    return;
-                }
-
-                let currentTime = Math.floor(Date.now() / 1000);
-                let timeSpent = currentTime - startTime;
-                let timeLeft = requiredTime - timeSpent;
-
-                // Hiển thị thời gian còn lại
-                if (timeLeft > 0 && showDisplay) {
-                    timeLeftDisplay.html(`<i class="fas fa-clock me-2"></i><span class="time-left-text">Thời gian còn lại:</span> ${timeLeft} giây`).fadeIn();
-                }
-
-                // Nếu đã đọc đủ thời gian
-                if (timeSpent >= requiredTime && !hasIncremented) {
-                    hasIncremented = true;
-
-                    // Gửi request tăng lượt đọc
-                    $.ajax({
-                        url: 'sources/ajax/mongdaovien/tang-luot-doc.php',
-                        type: 'POST',
-                        data: {
-                            chapter_id: 13365,
-                            id_truyen: 2436                        },
-                        success: function(response) {
-                            try {
-                                let result = JSON.parse(response);
-                                if (result.status === 'success') {
-                                    // Hiển thị thông báo thành công (chỉ khi cấu hình cho phép)
-                                    if (showDisplay) {
-                                        timeLeftDisplay.html('<i class="fas fa-check-circle me-2"></i>Đã ghi nhận lượt đọc')
-                                            .css('background', 'rgba(40, 167, 69, 0.7)')
-                                            .delay(3000)
-                                            .fadeOut();
-                                    }
-                                }
-                            } catch (e) {
-                                console.error('Error parsing response:', e);
-                            }
-                        },
-                        error: function() {
-                            // Hiển thị thông báo lỗi (chỉ khi cấu hình cho phép)
-                            if (showDisplay) {
-                                timeLeftDisplay.html('<i class="fas fa-exclamation-circle me-2"></i>Lỗi ghi nhận lượt đọc')
-                                    .css('background', 'rgba(220, 53, 69, 0.7)')
-                                    .delay(3000)
-                                    .fadeOut();
-                            }
-                        }
-                    });
-
-                    clearInterval(timer);
-                }
-            }, 1000);
-
-            // Thêm CSS cho hiệu ứng
-            $('<style>')
-                .text(`
-                .time-left-display {
-                    animation: fadeInUp 0.3s ease-out;
-                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-                    backdrop-filter: blur(5px);
-                }
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-                .time-left-display i {
-                    animation: pulse 1s infinite;
-                }
-                @keyframes pulse {
-                    0% { transform: scale(1); }
-                    50% { transform: scale(1.1); }
-                    100% { transform: scale(1); }
-                }
-            `)
-                .appendTo('head');
-
-            // Xử lý khi người dùng rời trang
-            $(window).on('beforeunload', function() {
-                clearInterval(timer);
-            });
-            });
-</script>  </div>
-
-  <!-- Google AdSense Display -->
-  <div class="adsense-container">
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-format="autorelaxed"
-      data-ad-client="ca-pub-2935799637584410"
-      data-ad-slot="8234900970"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
-
-    
-<!-- quảng cáo footer start -->
-<div class="tm-footer-wrapper" style="--background-footer: url('<?php echo get_site_url(); ?>/img_data/images/nen_trang.jpg')">
-    <div class="tm-footer-wrapper-container container px-0">
-
-                    <div class="nh-footer-ads">
-                <div class="">
-                    <div class="nh-footer-ads-box-wrapper p-2">
-                        <div class="nh-footer-ads-box position-relative ">
-                            <img loading="lazy" src="<?php echo get_site_url(); ?>/img_data/images/Me_Zhihu_-_O_nha_be_Chanh_TeHi_Truyen_1.png" alt="Banner quảng cáo dưới footer" class="nh-footer-ads-img">
-
-                            <!-- theo dõi button start -->
-                            <div class="theo-doi-footer-box d-flex justify-content-between align-items-end gap-2">
-                                                                    <a href='https://web.facebook.com/chanhvotree05'  rel='follow'  class="nh-footer-ads-btn">
-                                        Page Chanh                                    </a>
-                                                                    <a href='https://www.facebook.com/groups/490110827304708'  rel='follow'  class="nh-footer-ads-btn">
-                                        Mê Zhihu                                    </a>
-                                                            </div>
-
-                            <!-- theo dõi button end -->
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- quảng cáo footer end -->
-        
-        
 <?php endwhile; endif; ?>
+
+<!-- Paragraph Comments Slide Panel -->
+<div class="r-cmt-overlay" id="cmtOverlay" onclick="pCmt.close()"></div>
+<div class="r-cmt-panel" id="cmtPanel">
+    <div class="r-cmt-panel-hdr">
+        <span class="r-cmt-panel-title" id="cmtPanelTitle">💬 Bình luận đoạn</span>
+        <button class="r-cmt-close" onclick="pCmt.close()">&times;</button>
+    </div>
+    <div class="r-cmt-body" id="cmtBody">
+        <div class="r-cmt-empty">Đang tải bình luận...</div>
+    </div>
+    <div class="r-cmt-form">
+        <textarea id="cmtInput" rows="3" placeholder="Viết cảm nhận của bạn về đoạn này..."></textarea>
+        <div class="r-cmt-form-btns">
+            <button class="r-cmt-submit" onclick="pCmt.submit()">Gửi bình luận</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const pCmt = {
+    postId: <?php echo get_the_ID(); ?>,
+    nonce: '<?php echo wp_create_nonce("temply_ai_nonce"); ?>',
+    ajaxUrl: '<?php echo admin_url("admin-ajax.php"); ?>',
+    currentP: -1,
+    
+    open(p_idx) {
+        this.currentP = p_idx;
+        document.getElementById('cmtPanelTitle').textContent = `💬 Bình luận đoạn #${p_idx + 1}`;
+        document.getElementById('cmtPanel').classList.add('open');
+        document.getElementById('cmtOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        this.load(p_idx);
+    },
+    
+    close() {
+        document.getElementById('cmtPanel').classList.remove('open');
+        document.getElementById('cmtOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+        this.currentP = -1;
+    },
+    
+    async load(p_idx) {
+        const body = document.getElementById('cmtBody');
+        body.innerHTML = '<div class="r-cmt-empty">⏳ Đang tải...</div>';
+        
+        const fd = new FormData();
+        fd.append('action', 'temply_load_paragraph_comments');
+        fd.append('post_id', this.postId);
+        fd.append('p_index', p_idx);
+        fd.append('request_type', 'chunk');
+        
+        try {
+            const r = await fetch(this.ajaxUrl, { method: 'POST', body: fd });
+            const res = await r.json();
+            if (res.success) {
+                body.innerHTML = res.data.html || '<div class="r-cmt-empty">Chưa có bình luận nào. Bạn hãy là người đầu tiên!</div>';
+            }
+        } catch(e) {
+            body.innerHTML = '<div class="r-cmt-empty">Không tải được bình luận.</div>';
+        }
+    },
+    
+    async submit() {
+        if (this.currentP < 0) return;
+        const input = document.getElementById('cmtInput');
+        const text = input.value.trim();
+        if (!text) return alert('Vui lòng nhập nội dung bình luận!');
+        
+        const btn = document.querySelector('.r-cmt-submit');
+        btn.disabled = true; btn.textContent = 'Đang gửi...';
+        
+        const fd = new FormData();
+        fd.append('action', 'temply_add_paragraph_comment');
+        fd.append('nonce', this.nonce);
+        fd.append('post_id', this.postId);
+        fd.append('p_index', this.currentP);
+        fd.append('comment_content', text);
+        fd.append('author_name', 'Độc giả');
+        
+        try {
+            const r = await fetch(this.ajaxUrl, { method: 'POST', body: fd });
+            const res = await r.json();
+            if (res.success) {
+                input.value = '';
+                this.load(this.currentP); // Reload comments
+            } else {
+                alert(res.data?.message || 'Gửi thất bại!');
+            }
+        } catch(e) {
+            alert('Lỗi kết nối!');
+        } finally {
+            btn.disabled = false; btn.textContent = 'Gửi bình luận';
+        }
+    }
+};
+</script>
+
+
+<script>
+// --- Nghe Truyện (TTS API) ---
+const appTTS = {
+    isPlaying: false,
+    utterance: null,
+    paragraphs: [],
+    currentIndex: 0,
+    
+    init() {
+        this.paragraphs = Array.from(document.querySelectorAll('.r-para-wrap')).map(el => el.textContent.replace('💬', '').trim()).filter(t => t.length > 0);
+    },
+    
+    toggle() {
+        if (!('speechSynthesis' in window)) return alert('Trình duyệt của bạn không hỗ trợ đọc Text-to-Speech!');
+        if (this.paragraphs.length === 0) this.init();
+        
+        const btnL = document.getElementById('ttsLabel');
+        if (this.isPlaying) {
+            window.speechSynthesis.cancel();
+            this.isPlaying = false;
+            btnL.textContent = 'Nghe truyện';
+            this.currentIndex = 0;
+            return;
+        }
+        
+        this.isPlaying = true;
+        btnL.textContent = 'Đang đọc (Chạm dừng)';
+        this.playNext();
+    },
+    
+    playNext() {
+        if (!this.isPlaying) return;
+        if (this.currentIndex >= this.paragraphs.length) {
+            this.isPlaying = false;
+            document.getElementById('ttsLabel').textContent = 'Nghe truyện';
+            this.currentIndex = 0;
+            return;
+        }
+        
+        const text = this.paragraphs[this.currentIndex];
+        this.utterance = new SpeechSynthesisUtterance(text);
+        this.utterance.lang = 'vi-VN';
+        this.utterance.rate = 1.0;
+        this.utterance.pitch = 1.0;
+        
+        // Highlight paragraph
+        document.querySelectorAll('.r-para-wrap').forEach(el => el.style.backgroundColor = 'transparent');
+        const currentParaHtml = document.querySelectorAll('.r-para-wrap')[this.currentIndex];
+        if(currentParaHtml) {
+            currentParaHtml.style.backgroundColor = 'rgba(99, 102, 241, 0.1)';
+            currentParaHtml.scrollIntoView({behavior:'smooth', block:'center'});
+        }
+        
+        this.utterance.onend = () => {
+            this.currentIndex++;
+            this.playNext();
+        };
+        
+        this.utterance.onerror = () => {
+            console.error('SpeechSynthesis API Error');
+            this.currentIndex++;
+            this.playNext();
+        };
+        
+        window.speechSynthesis.speak(this.utterance);
+    }
+};
+
+// --- Yêu Thích ---
+const appLike = {
+    toggle() {
+        let lkey = 'liked_' + <?php echo $truyen_id; ?>;
+        if (localStorage.getItem(lkey)) return alert('Bạn đã thích truyện này rồi!');
+        
+        const fd = new FormData();
+        fd.append('action', 'temply_like_chapter');
+        fd.append('post_id', <?php echo $truyen_id; ?>);
+        
+        fetch('<?php echo admin_url('admin-ajax.php'); ?>', { method: 'POST', body: fd })
+        .then(r => r.json())
+        .then(res => {
+            if (res.success) {
+                document.getElementById('likeCount').textContent = res.data.likes;
+                document.getElementById('likeIcon').style.fill = '#ef4444';
+                localStorage.setItem(lkey, '1');
+            }
+        });
+    }
+};
+
+// Modify pCmt to support mode 'all'
+if (typeof pCmt !== 'undefined') {
+    pCmt.openMode = function(mode) {
+        if (mode === 'all') {
+            document.getElementById('cmtPanelTitle').textContent = `💬 Bình luận chung`;
+            this.currentP = -1; // -1 represents global chapter comment
+            document.getElementById('cmtPanel').classList.add('open');
+            document.getElementById('cmtOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            this.load(-1);
+            document.querySelector('.r-speed-dial').classList.remove('open');
+        } else {
+            this.open(mode);
+        }
+    };
+    
+    // Check if already liked
+    window.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('liked_' + <?php echo $truyen_id; ?>)) {
+            document.getElementById('likeIcon').style.fill = '#ef4444';
+        }
+    });
+}
+</script>
+
 <?php get_footer(); ?>

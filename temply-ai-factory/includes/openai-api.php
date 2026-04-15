@@ -1483,9 +1483,9 @@ function temply_ajax_auto_review_chapter() {
 
     $excerpt = mb_substr($content_text, 0, 5000);
 
-    $system_prompt = "B\u1ea1n l\u00e0 BI\u00caN T\u1eacP VI\u00caN TI\u1ec2U THUY\u1ebeT chuy\u00ean nghi\u1ec7p, chuy\u00ean \u0111\u1ecdc v\u00e0 \u0111\u00e1nh gi\u00e1 v\u0103n ch\u01b0\u01a1ng web Vi\u1ec7t Nam.\nNhi\u1ec7m v\u1ee5: \u0110\u1ecdc \u0111o\u1ea1n truy\u1ec7n th\u1ec3 lo\u1ea1i [{$genre}] d\u01b0\u1edbi \u0111\u00e2y v\u00e0 \u0111\u01b0a ra NH\u1eacN X\u00c9T BI\u00caN T\u1eacP ng\u1eafn g\u1ecdn, t\u1eadp trung v\u00e0o:\n1. \u0110i\u1ec3m y\u1ebfu l\u1edbn nh\u1ea5t c\u1ee7a ch\u01b0\u01a1ng (h\u00e0nh v\u0103n, c\u1ea3m x\u00fac, logic, nh\u1ecbp \u0111i\u1ec7u)\n2. C\u1ee5 th\u1ec3 c\u1ea7n s\u1eeda g\u00ec (v\u00ed d\u1ee5: 'th\u00eam n\u1ed9i t\u00e2m nh\u00e2n v\u1eadt X \u1edf \u0111o\u1ea1n Y', 'c\u1eaft b\u1ecf ph\u1ea7n d\u00e0i d\u00f2ng ku\u1eaft Z')\n3. Y\u1ebfu t\u1ed1 c\u1ea7n t\u0103ng c\u01b0\u1eddng \u0111\u1ec3 ch\u01b0\u01a1ng h\u1ea5p d\u1eabn h\u01a1n\n\nQUAN TR\u1eccNG: Nh\u1eadn x\u00e9t ph\u1ea3i NG\u1eafN G\u1eccN (d\u01b0\u1edbi 300 t\u1eeb), TR\u1ef0C TI\u1ebeP v\u00e0 D\u00c1M CH\u1ec8 t\u00ean \u0111i\u1ec3m y\u1ebfu. Kh\u00f4ng khen l\u1ea5y l\u1ec7. Vi\u1ebft b\u1eb1ng ti\u1ebfng Vi\u1ec7t.";
+    $system_prompt = "Bạn là BIÊN TẬP VIÊN TIỂU THUYẾT chuyên nghiệp, chuyên đọc và đánh giá văn chương web Việt Nam.\nNhiệm vụ: Đọc đoạn truyện thể loại [{$genre}] dưới đây và đưa ra NHẬN XÉT.\n\nNẾU CHƯƠNG ĐÃ RẤT HAY, LOGIC MƯỢT MÀ, HÀNH VĂN CUỐN HÚT: Chỉ cần trả về duy nhất cụm từ 'ĐẠT CHUẨN - Không cần sửa thêm'.\n\nNẾU CHƯƠNG KÉM HAY CẦN SỬA, MỚI LIỆT KÊ:\n1. Điểm yếu lớn nhất (hành văn, logic)\n2. Cụ thể cần sửa gì\n\nQUAN TRỌNG: Nhận xét NGẮN GỌN (dưới 300 từ), TRỰC TIẾP. Viết bằng tiếng Việt.";
 
-    $user_prompt = "N\u1ed9i dung ch\u01b0\u01a1ng truy\u1ec7n c\u1ea7n \u0111\u00e1nh gi\u00e1:\n\n" . $excerpt;
+    $user_prompt = "Nội dung chương truyện cần đánh giá:\n\n" . $excerpt;
 
     $response = temply_call_ai($system_prompt, $user_prompt, 0.7);
     if (is_wp_error($response)) {

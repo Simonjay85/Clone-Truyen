@@ -1,10 +1,12 @@
 <?php get_header(); ?>
 
 <!-- ─── MEOKAMMAP CLONE - front-page.php ─── -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Font + Swiper already loaded in header.php - no duplicate needed -->
+<!-- Preload LCP hero image hint -->
+<link rel="preload" as="image" href="<?php 
+  $lcp_q = new WP_Query(['post_type'=>'truyen','posts_per_page'=>1,'no_found_rows'=>true]); 
+  if($lcp_q->have_posts()) { $lcp_q->the_post(); echo esc_url(get_the_post_thumbnail_url(null,'medium')); wp_reset_postdata(); } 
+?>" fetchpriority="high">
 
 <style>
 /* ── RESET cứng để không bị CSS cũ đè ── */
@@ -438,7 +440,7 @@
             <div class="swiper-slide">
                 <div class="mkm-slider-main">
                     <div class="mkm-slider-cover">
-                        <img src="<?php echo esc_url($s_cover); ?>" alt="<?php the_title_attribute(); ?>" loading="eager">
+                        <img src="<?php echo esc_url($s_cover); ?>" alt="<?php the_title_attribute(); ?>" width="200" height="267" loading="eager" fetchpriority="high" decoding="async">
                     </div>
                     <div class="mkm-slider-body">
                         <h2 class="mkm-slider-title"><?php the_title(); ?></h2>
@@ -509,7 +511,7 @@
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
                     <div class="mkm-card-img">
                         <span class="mkm-badge-tl">MỚI</span>
-                        <img src="<?php echo esc_url($img); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
+                        <img src="<?php echo esc_url($img); ?>" alt="<?php the_title_attribute(); ?>" width="150" height="200" loading="lazy" decoding="async">
                         <div class="mkm-card-overlay">
                             <span>👁 <?php echo number_format(rand(1000,9999)); ?></span>
                             <span>📖 <?php echo rand(50,500); ?></span>
@@ -540,7 +542,7 @@
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
                     <div class="mkm-card-img">
                         <span class="mkm-badge-tr">HOT 🔥</span>
-                        <img src="<?php echo esc_url($img2); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
+                        <img src="<?php echo esc_url($img2); ?>" alt="<?php the_title_attribute(); ?>" width="150" height="200" loading="lazy" decoding="async">
                         <div class="mkm-card-overlay">
                             <span>👁 <?php echo number_format(rand(10000, 50000)); ?></span>
                         </div>
@@ -570,7 +572,7 @@
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
                     <div class="mkm-card-img">
                         <span class="mkm-badge-full-pos">FULL</span>
-                        <img src="<?php echo esc_url($img3); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
+                        <img src="<?php echo esc_url($img3); ?>" alt="<?php the_title_attribute(); ?>" width="150" height="200" loading="lazy" decoding="async">
                     </div>
                     <div class="mkm-card-info">
                         <p class="mkm-card-name"><?php the_title(); ?></p>
@@ -584,36 +586,228 @@
 
         <!-- ══ SIDEBAR ══ -->
         <div class="mkm-aside">
-            <div class="mkm-widget">
-                <h3 class="mkm-widget-title">
-                    <svg width="18" height="18" fill="#f59e0b" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
-                    Bảng xếp hạng
+            <div class="mkm-widget" style="padding: 20px; background: #fff; border: 1px solid #f3f4f6; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); margin-bottom: 24px;">
+                <h3 class="mkm-widget-title" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid #f9fafb;">
+                    <span style="display:flex; align-items:center; gap:8px; font-size: 16px; font-weight: 800; color:#111827;">
+                        <svg width="20" height="20" fill="none" stroke="#ea580c" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>
+                        Bảng xếp hạng
+                    </span>
+                    <span style="font-size: 11px; color:#9ca3af; font-weight: 500;">Top 10</span>
                 </h3>
-                <div class="mkm-tabs">
-                    <div class="mkm-tab active">Ngày</div>
-                    <div class="mkm-tab">Tuần</div>
-                    <div class="mkm-tab">Tháng</div>
+                
+                <div class="mkm-tabs-new" style="display:flex; justify-content:space-between; margin-bottom: 20px; align-items:center;">
+                    <div class="mkm-tab-new active" style="background:#5546ff; color:#fff; border-radius:24px; padding: 6px 20px; font-size:13px; font-weight:700; cursor:pointer;">Ngày</div>
+                    <div class="mkm-tab-new" style="color:#6b7280; font-size:13px; font-weight:600; cursor:pointer; padding: 6px 12px; transition:color .2s;">Tuần</div>
+                    <div class="mkm-tab-new" style="color:#6b7280; font-size:13px; font-weight:600; cursor:pointer; padding: 6px 12px; transition:color .2s;">Tháng</div>
+                    <div class="mkm-tab-new" style="color:#6b7280; font-size:13px; font-weight:600; cursor:pointer; padding: 6px 12px; transition:color .2s;">Năm</div>
                 </div>
-                <ul class="mkm-rank-list">
+
+                <style>
+                    .mkm-tab-new:not(.active):hover { color: #5546ff !important; }
+                    .mkm-bxh-item { text-decoration: none !important; display: flex !important; align-items: center !important; gap: 12px !important; transition: transform 0.2s !important; }
+                    .mkm-bxh-item:hover { transform: translateX(2px) !important; }
+                </style>
+
+                <div class="mkm-rank-list-new" style="display:flex; flex-direction:column; gap:8px;">
                     <?php
                     $bxh = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 10, 'no_found_rows' => true]);
                     $ri = 1;
+                    $max_views = 20000;
                     while ($bxh->have_posts()) : $bxh->the_post();
                         $rthumb = get_the_post_thumbnail_url(null, 'thumbnail') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
-                        $rclass = ($ri === 1) ? 'rn1' : (($ri === 2) ? 'rn2' : (($ri === 3) ? 'rn3' : 'rn-other'));
+                        $views = (int)get_post_meta(get_the_ID(), '_views', true);
+                        if($views < 1000) $views = rand(1000, 20000); // mock data if empty
+                        
+                        // Fake descending views
+                        $mock_views = round((20000 - ($ri * 1500) + rand(-500, 500)));
+                        $formatted_views = number_format($mock_views, 0, ',', '.');
+                        $percent = round(($mock_views / $max_views) * 100);
                     ?>
-                    <li>
-                        <a href="<?php the_permalink(); ?>" class="mkm-rank-item<?php if($ri===1) echo ' top1'; ?>">
-                            <span class="mkm-rank-num <?php echo $rclass; ?>"><?php echo $ri <= 3 ? ['🥇','🥈','🥉'][$ri-1] : $ri; ?></span>
-                            <img src="<?php echo esc_url($rthumb); ?>" class="mkm-rank-thumb" alt="" loading="lazy">
-                            <div class="mkm-rank-info">
-                                <div class="mkm-rank-name"><?php the_title(); ?></div>
-                                <div class="mkm-rank-views">👁 <?php echo number_format(rand(1000,99999)); ?> lượt đọc</div>
+                    
+                    <?php if($ri === 1): ?>
+                    <!-- Tốp 1 -->
+                    <a href="<?php the_permalink(); ?>" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #fde047; background: #fff; box-shadow: 0 4px 12px rgba(253,224,71,0.15);">
+                        <div style="position:relative; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <div style="position:absolute; top:-2px; left:6px; width:6px; height:10px; background:#ef4444; border-radius:1px; transform:rotate(-25deg);"></div>
+                            <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
+                            <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #fcd34d, #d97706); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(217,119,6,0.3); border:1.5px solid #fff; z-index:2;">1</div>
+                        </div>
+                        <img src="<?php echo esc_url($rthumb); ?>" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+                        <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                            <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php the_title(); ?></div>
+                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                                <?php echo $formatted_views; ?>
                             </div>
-                        </a>
-                    </li>
+                        </div>
+                    </a>
+
+                    <?php elseif($ri === 2): ?>
+                    <!-- Tốp 2 -->
+                    <a href="<?php the_permalink(); ?>" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #e5e7eb; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                        <div style="position:relative; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <div style="position:absolute; top:-2px; left:6px; width:6px; height:10px; background:#ef4444; border-radius:1px; transform:rotate(-25deg);"></div>
+                            <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
+                            <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #e5e7eb, #6b7280); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(107,114,128,0.3); border:1.5px solid #fff; z-index:2;">2</div>
+                        </div>
+                        <img src="<?php echo esc_url($rthumb); ?>" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+                        <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                            <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php the_title(); ?></div>
+                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                                <?php echo $formatted_views; ?>
+                            </div>
+                        </div>
+                    </a>
+
+                    <?php elseif($ri === 3): ?>
+                    <!-- Tốp 3 -->
+                    <a href="<?php the_permalink(); ?>" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #fed7aa; background: #fff; box-shadow: 0 4px 12px rgba(254,215,170,0.15);">
+                        <div style="position:relative; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <div style="position:absolute; top:-2px; left:6px; width:6px; height:10px; background:#ef4444; border-radius:1px; transform:rotate(-25deg);"></div>
+                            <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
+                            <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #fdba74, #c2410c); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(194,65,12,0.3); border:1.5px solid #fff; z-index:2;">3</div>
+                        </div>
+                        <img src="<?php echo esc_url($rthumb); ?>" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+                        <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                            <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php the_title(); ?></div>
+                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                                <?php echo $formatted_views; ?>
+                            </div>
+                        </div>
+                    </a>
+
+                    <?php else: ?>
+                    <!-- Tốp 4 - 10 -->
+                    <a href="<?php the_permalink(); ?>" class="mkm-bxh-item" style="padding:6px 0;">
+                        <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $ri; ?></div>
+                        <img src="<?php echo esc_url($rthumb); ?>" style="width:32px; height:42px; border-radius:4px; object-fit:cover; flex-shrink:0;">
+                        <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                            <div style="font-size:13px; font-weight:600; color:#4b5563; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom:8px;"><?php the_title(); ?></div>
+                            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+                                <!-- Bar -->
+                                <div style="flex:1; height:6px; background:#f3f4f6; border-radius:3px; overflow:hidden; display:flex;">
+                                    <div style="width:<?php echo $percent; ?>%; height:100%; background:#818cf8; border-radius:3px;"></div>
+                                </div>
+                                <!-- Number -->
+                                <div style="font-size:11px; color:#9ca3af; font-family: ui-sans-serif, sans-serif; font-weight:500; min-width:35px; text-align:right;"><?php echo $formatted_views; ?></div>
+                            </div>
+                        </div>
+                    </a>
+                    <?php endif; ?>
+
                     <?php $ri++; endwhile; wp_reset_postdata(); ?>
-                </ul>
+                </div>
+            </div>
+
+            <!-- ══ BẢNG XẾP HẠNG TEAM ══ -->
+            <div class="mkm-widget" style="padding: 20px; background: #fff; border: 1px solid #f3f4f6; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
+                <h3 class="mkm-widget-title" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid #f9fafb;">
+                    <span style="display:flex; align-items:center; gap:8px; font-size: 16px; font-weight: 800; color:#111827;">
+                        <!-- Team Icon -->
+                        <svg width="20" height="20" fill="none" stroke="#a855f7" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        Bảng xếp hạng team
+                    </span>
+                    <span style="font-size: 11px; color:#9ca3af; font-weight: 500;">Hôm nay</span>
+                </h3>
+
+                <div class="mkm-rank-list-new" style="display:flex; flex-direction:column; gap:8px;">
+                    <?php
+                    $teams = [
+                        ['name' => 'Mèo Kam Mập', 'views' => 36697, 'avatar' => get_template_directory_uri() . '/templates/images/team1.jpeg'],
+                        ['name' => 'Lạc Giới Tinh Thư', 'views' => 29293, 'avatar' => get_template_directory_uri() . '/templates/images/team2.jpeg'],
+                        ['name' => 'Mỗi Ngày Chỉ Muốn...', 'views' => 10969, 'avatar' => get_template_directory_uri() . '/templates/images/team3.jpeg'],
+                        ['name' => 'Cá Chép Ngắm Mưa', 'views' => 6578, 'avatar' => get_template_directory_uri() . '/templates/images/team4.jpeg'],
+                        ['name' => 'Trong Tim Có Cậu', 'views' => 5507, 'avatar' => get_template_directory_uri() . '/templates/images/team5.jpeg'],
+                        ['name' => 'Ổ Mật Mật', 'views' => 4725, 'avatar' => get_template_directory_uri() . '/templates/images/team6.jpeg'],
+                        ['name' => 'Nguyệt Sát Tinh C...', 'views' => 2500, 'avatar' => get_template_directory_uri() . '/templates/images/team7.jpeg'],
+                        ['name' => 'Mèo Bủng Beo', 'views' => 1300, 'avatar' => get_template_directory_uri() . '/templates/images/team8.jpeg']
+                    ];
+                    $tri = 1;
+                    $team_max = 36697;
+                    foreach ($teams as $team):
+                        $t_views = number_format($team['views'], 0, ',', '.');
+                        $t_percent = round(($team['views'] / $team_max) * 100);
+                        // Mock avatar fallback if not exist
+                        $t_avatar = 'https://ui-avatars.com/api/?name='.urlencode($team['name']).'&background=random&color=fff';
+                    ?>
+                    
+                    <?php if($tri === 1): ?>
+                    <!-- Team Top 1 -->
+                    <a href="#" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #fde047; background: #fff; box-shadow: 0 4px 12px rgba(253,224,71,0.15);">
+                        <div style="position:relative; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <div style="position:absolute; top:-2px; left:6px; width:6px; height:10px; background:#ef4444; border-radius:1px; transform:rotate(-25deg);"></div>
+                            <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
+                            <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #fcd34d, #d97706); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(217,119,6,0.3); border:1.5px solid #fff; z-index:2;">1</div>
+                        </div>
+                        <img src="<?php echo esc_url($t_avatar); ?>" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                        <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                            <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                                <?php echo $t_views; ?>
+                            </div>
+                        </div>
+                    </a>
+
+                    <?php elseif($tri === 2): ?>
+                    <!-- Team Top 2 -->
+                    <a href="#" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #e5e7eb; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                        <div style="position:relative; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <div style="position:absolute; top:-2px; left:6px; width:6px; height:10px; background:#ef4444; border-radius:1px; transform:rotate(-25deg);"></div>
+                            <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
+                            <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #e5e7eb, #6b7280); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(107,114,128,0.3); border:1.5px solid #fff; z-index:2;">2</div>
+                        </div>
+                        <img src="<?php echo esc_url($t_avatar); ?>" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                        <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                            <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                                <?php echo $t_views; ?>
+                            </div>
+                        </div>
+                    </a>
+
+                    <?php elseif($tri === 3): ?>
+                    <!-- Team Top 3 -->
+                    <a href="#" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #fed7aa; background: #fff; box-shadow: 0 4px 12px rgba(254,215,170,0.15);">
+                        <div style="position:relative; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <div style="position:absolute; top:-2px; left:6px; width:6px; height:10px; background:#ef4444; border-radius:1px; transform:rotate(-25deg);"></div>
+                            <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
+                            <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #fdba74, #c2410c); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(194,65,12,0.3); border:1.5px solid #fff; z-index:2;">3</div>
+                        </div>
+                        <img src="<?php echo esc_url($t_avatar); ?>" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                        <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                            <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                                <?php echo $t_views; ?>
+                            </div>
+                        </div>
+                    </a>
+
+                    <?php else: ?>
+                    <!-- Team Top 4 - 8 -->
+                    <a href="#" class="mkm-bxh-item" style="padding:6px 0;">
+                        <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $tri; ?></div>
+                        <img src="<?php echo esc_url($t_avatar); ?>" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                        <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                            <div style="font-size:13px; font-weight:600; color:#4b5563; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom:8px;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+                                <!-- Bar -->
+                                <div style="flex:1; height:6px; background:#f3f4f6; border-radius:3px; overflow:hidden; display:flex;">
+                                    <div style="width:<?php echo $t_percent; ?>%; height:100%; background:#d8b4fe; border-radius:3px;"></div>
+                                </div>
+                                <!-- Number -->
+                                <div style="font-size:11px; color:#9ca3af; font-family: ui-sans-serif, sans-serif; font-weight:500; min-width:35px; text-align:right;"><?php echo $t_views; ?></div>
+                            </div>
+                        </div>
+                    </a>
+                    <?php endif; ?>
+
+                    <?php $tri++; endforeach; ?>
+                </div>
             </div>
         </div>
     </div>

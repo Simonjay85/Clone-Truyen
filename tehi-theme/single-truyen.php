@@ -17,7 +17,7 @@ $chapters = get_posts([
     'posts_per_page' => -1,
     'meta_key'       => '_truyen_id',
     'meta_value'     => get_the_ID(),
-    'orderby'        => 'name',
+    'orderby'        => 'ID',
     'order'          => 'ASC' // we can reverse it for display
 ]);
 
@@ -45,16 +45,27 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 <style>
 /* Scoped CSS to override preflight issues on this specific wrapper */
 .mkm-single-wrap {
-    max-width: 1100px; /* Matched to Meo Xam Map UI */
+    width: 100% !important;
+    display: block !important;
+    clear: both !important;
+    box-sizing: border-box !important;
+    max-width: 1100px;
     margin: 30px auto;
     padding: 0 15px;
-    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-family: inherit;
     color: #374151;
+    overflow: hidden;
 }
-.mkm-detail-box { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px; margin-bottom: 24px; display:flex; gap: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
-.mkm-cover-col { width: 240px; flex-shrink: 0; }
+/* Ensure absolute grid separation */
+.mkm-detail-box { 
+    background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px; 
+    margin-bottom: 24px; display: grid; grid-template-columns: 240px 1fr; gap: 30px; 
+    width: 100%; box-shadow: 0 1px 3px rgba(0,0,0,0.02); 
+    clear: both !important;
+}
+.mkm-cover-col { width: 100%; }
 .mkm-cover-col img { width: 100%; border-radius: 12px; display:block; aspect-ratio: 3/4; object-fit: cover; }
-.mkm-info-col { flex: 1; min-width: 0; }
+.mkm-info-col { width: 100%; overflow: hidden; }
 .mkm-book-title { font-size: 24px; font-weight: 800; color: #111827; margin: 0 0 16px 0; line-height: 1.3; }
 .mkm-meta-row { display: flex; align-items: flex-start; margin-bottom: 12px; font-size: 13px; }
 .mkm-meta-label { width: 100px; color: #6b7280; display:flex; align-items:center; gap:6px; flex-shrink:0; }
@@ -70,23 +81,29 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-synopsis { font-size: 14px; color: #4b5563; line-height: 1.6; }
 
 /* Chapters Grid */
-.mkm-chaps-box { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+.mkm-chaps-box { width: 100% !important; clear: both !important; display: block !important; background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
 .mkm-chaps-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
 .mkm-chaps-hdr select { padding: 8px 12px; border-radius: 8px; border: 1px solid #e5e7eb; font-size: 13px; color: #374151; background:#fff; outline:none;}
 .mkm-chaps-hdr input { padding: 8px 12px; border-radius: 8px; border: 1px solid #e5e7eb; font-size: 13px; width: 220px; outline:none; }
-.mkm-chaps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
-@media (max-width: 768px) {
-    .mkm-detail-box { flex-direction: column; gap:16px;}
-    .mkm-cover-col { width: 140px; margin: 0 auto; }
+.mkm-chaps-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 20px; box-sizing: border-box; width: 100%; }
+@media (max-width: 540px) {
+    .mkm-detail-box { grid-template-columns: minmax(0, 1fr) !important; gap:16px; min-width:0; }
+    .mkm-cover-col { width: 120px; margin: 0 auto; }
     .mkm-book-title { text-align: center; }
-    .mkm-chaps-grid { grid-template-columns: 1fr; }
     .mkm-action-btns { flex-direction: column; }
+    .mkm-chaps-grid { grid-template-columns: 1fr !important; }
+    .mkm-chaps-hdr > div { width: 100%; margin-bottom: 10px; }
+    .mkm-chaps-hdr input { flex: 1; width: auto; }
 }
-.mkm-chap-card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; transition: border-color .2s; }
+/* Prevent overflow from theme wrapper */
+.mkm-single-wrap * { box-sizing: border-box; }
+body { overflow-x: hidden !important; }
+
+.mkm-chap-card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; transition: border-color .2s; min-width: 0; overflow: hidden; }
 .mkm-chap-card:hover { border-color: #6366f1; }
 .mkm-chap-icon { width: 40px; height: 40px; background: #6366f1; border-radius: 10px; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.mkm-chap-txt { flex: 1; min-width: 0; }
-.mkm-chap-t { font-size: 12px; color: #9ca3af; margin: 0 0 4px 0; display:flex; justify-content:space-between; align-items:center;}
+.mkm-chap-txt { flex: 1; min-width: 0; overflow: hidden; }
+.mkm-chap-t { font-size: 12px; color: #9ca3af; margin: 0 0 4px 0; display:flex; justify-content:space-between; align-items:center;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mkm-chap-n { font-size: 14px; font-weight: 700; color: #111827; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* Rel stories */
@@ -102,7 +119,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     <!-- Block 1: Info -->
     <div class="mkm-detail-box">
         <div class="mkm-cover-col">
-            <img src="<?php echo esc_url($cover); ?>" alt="<?php the_title_attribute(); ?>">
+            <img src="<?php echo esc_url($cover); ?>" alt="<?php the_title_attribute(); ?>" width="200" height="267" loading="eager" fetchpriority="high" decoding="async">
         </div>
         <div class="mkm-info-col">
             <h1 class="mkm-book-title"><?php the_title(); ?></h1>
@@ -118,13 +135,6 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
                     <?php if(!empty($terms_tl) && !is_wp_error($terms_tl)): foreach($terms_tl as $t): ?>
                     <a href="<?php echo get_term_link($t); ?>" class="mkm-meta-tag"><?php echo esc_html($t->name); ?></a>
                     <?php endforeach; else: ?><span class="mkm-meta-tag">Truyện Hay</span><?php endif; ?>
-                </div>
-            </div>
-            
-            <div class="mkm-meta-row">
-                <div class="mkm-meta-label">👥 Nhóm dịch</div>
-                <div class="mkm-tags">
-                    <span class="mkm-meta-tag" style="color:#6366f1; font-weight:600; border-color:#e0e7ff; background:#e0e7ff; cursor:pointer;">Mỗi Ngày Chỉ Muốn Quạc...</span>
                 </div>
             </div>
             
@@ -161,7 +171,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     <div class="mkm-chaps-box">
         <div class="mkm-chaps-hdr">
             <div style="display:flex; gap:10px;">
-                <select><option>↑↓ Giảm dần</option><option>↑↓ Tăng dần</option></select>
+                <select id="sortChap"><option value="desc">↑↓ Giảm dần</option><option value="asc">↑↓ Tăng dần</option></select>
                 <input id="qChap" type="text" placeholder="🔍 Tìm chương">
             </div>
             <div style="font-size:13px; color:#6b7280;">Tổng: <strong><?php echo count($chapters); ?></strong> chương • Trang 1 / 1</div>
@@ -173,6 +183,13 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
             document.querySelectorAll('.mkm-chap-card').forEach(function(el) {
                 if(el.innerText.toLowerCase().includes(val)) el.style.display = 'flex';
                 else el.style.display = 'none';
+            });
+        });
+        document.getElementById('sortChap').addEventListener('change', function() {
+            var order = this.value;
+            var numBlocks = document.querySelectorAll('.mkm-chap-card').length;
+            document.querySelectorAll('.mkm-chap-card').forEach(function(el, idx) {
+                el.style.order = (order === 'asc') ? (numBlocks - idx) : idx;
             });
         });
         </script>
@@ -193,16 +210,21 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
                 </div>
             </a>
             <?php endforeach; else: ?>
-            <p style="grid-column: span 3; text-align:center; color:#9ca3af; font-size:14px; padding: 20px 0;">Đang cập nhật chương mới.</p>
+            <p style="grid-column: span 2; text-align:center; color:#9ca3af; font-size:14px; padding: 20px 0;">Đang cập nhật chương mới.</p>
             <?php endif; ?>
         </div>
         
-        <!-- Pagination Mock -->
-        <div style="display:flex; justify-content:center; gap:10px; margin-top:30px;">
-            <button style="padding:8px 20px; border:1px solid #e5e7eb; border-radius:24px; background:#fff; color:#9ca3af; font-size:13px;" disabled>&lsaquo; Trước</button>
-            <span style="font-size:14px; align-self:center; margin: 0 10px; color:#374151;">Trang 1 / 1</span>
-            <button style="padding:8px 20px; border:1px solid #e5e7eb; border-radius:24px; background:#fff; color:#9ca3af; font-size:13px;" disabled>Sau &rsaquo;</button>
-        </div>
+        <script>
+        // Chapter search filter
+        document.getElementById('qChap').addEventListener('keyup', function() {
+            var val = this.value.toLowerCase();
+            var all = document.querySelectorAll('.mkm-chap-card');
+            all.forEach(function(el) {
+                var match = el.innerText.toLowerCase().includes(val);
+                el.style.display = match ? 'flex' : 'none';
+            });
+        });
+        </script>
     </div>
     
     <!-- Block 3: Comments -->

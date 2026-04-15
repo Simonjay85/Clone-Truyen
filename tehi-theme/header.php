@@ -1,16 +1,24 @@
-
+<?php
+// ── Browser Cache Headers for static pages ──
+if (!is_user_logged_in() && !is_admin()) {
+    header('Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800');
+    header('Vary: Accept-Encoding');
+}
+?>
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
-  <base href="<?php echo get_site_url(); ?>" />
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
 <meta name="keywords" content="<?php bloginfo('name'); ?>, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí" />
 <meta name="description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: '<?php bloginfo(\'name\'); ?> – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
 <link href="<?php echo esc_url(get_permalink()); ?>" rel="canonical" />
-<link href="<?php echo get_site_url(); ?>/img_data/images/icon_tehi_truyen_2025.png" rel="shortcut icon" type="image/x-icon" />
+<link href="https://tehitruyen.com/img_data/images/icon_tehi_truyen_2025.png" rel="shortcut icon" type="image/x-icon" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMCE7V4VHX"></script>
 <script>
@@ -46,96 +54,87 @@
             "contactOption": "TollFree",
             "areaServed": "VN"
         }],
-        "logo": "<?php echo get_site_url(); ?>/img_data/images/logo-truyen-moi-v1.png"
+        "logo": "https://tehitruyen.com/img_data/images/logo-truyen-moi-v1.png"
     }
-</script>  <link rel="preconnect" href="https://fonts.googleapis.com">
+</script>
+<!-- DNS Prefetch for speed -->
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="//tehitruyen.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Preload critical Google Fonts for iOS -->
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Arial:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<!-- Be Vietnam Pro - non-blocking -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<style>
+/* System font fallback while web font loads */
+body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, label, strong, b, i, em {
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+.fa, .fas, .far, .fal, .fad, .fab, .fa-solid, .fa-brands, .fa-regular {
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
+}
+.fas, .fa-solid { font-weight: 900 !important; }
+.fa-brands { font-family: "Font Awesome 6 Brands" !important; }
+</style>
 
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="templates/css/bootstrap.min.css">
-<link rel="stylesheet" href="templates/css/hover-min.css" />
-<link rel="stylesheet" href="templates/module/swiper/swiper.min.css" />
-<link rel="stylesheet" href="templates/css/emojionearea.css">
-<!-- Lenis -->
-<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.14/dist/lenis.css">
+<!-- ══ CRITICAL CSS (blocking – above fold) ══ -->
+<link rel="stylesheet" href="https://tehitruyen.com/templates/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://tehitruyen.com/templates/module/fontawesome-free-6.3.0-web/css/all.css">
+<link rel="stylesheet" href="https://tehitruyen.com/templates/css/style.css?ver=1119">
+<link rel="stylesheet" href="https://tehitruyen.com/templates/css/style-mongdaovien.css?ver=1119">
+<link rel="stylesheet" href="https://tehitruyen.com/templates/css/style-truyen-moi-v1.css?ver=1119">
+<link rel="stylesheet" href="https://tehitruyen.com/templates/css/media.css?ver=1119">
 
-<link rel="stylesheet" href="templates/module/fontawesome-free-6.3.0-web/css/all.css">
-<link rel="stylesheet" href="templates/module/sweetalert/sweetalert2.min.css">
-<link rel="stylesheet" href="assets/css/nice-select.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<script src="templates/js/jquery.min.js"></script>
+<!-- ══ NON-CRITICAL CSS (async – does not block render) ══ -->
+<link rel="preload" href="https://tehitruyen.com/templates/css/vh-skeleton.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://tehitruyen.com/templates/css/hover-min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://tehitruyen.com/templates/css/vh-skeleton.css">
+  <link rel="stylesheet" href="https://tehitruyen.com/templates/css/hover-min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+</noscript>
 
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<!-- ══ PAGE-SPECIFIC CSS (not on reading page) ══ -->
+<?php if (!is_singular('chuong')): ?>
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://tehitruyen.com/templates/css/emojionearea.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+  <link rel="stylesheet" href="https://tehitruyen.com/templates/css/emojionearea.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css">
+</noscript>
+<?php endif; ?>
 
+<!-- ══ JQUERY: blocking (must run before other scripts) ══ -->
+<script src="https://tehitruyen.com/templates/js/jquery.min.js"></script>
 
-<!-- emoji -->
-<script src="templates/js/emojionearea.js"></script>
+<!-- ══ ALL JS: defer (won't block render) ══ -->
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.4/bundled/lenis.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
+<script defer src="https://tehitruyen.com/templates/js/vh-skeleton.js"></script>
+<script defer src="https://tehitruyen.com/templates/js/vanhiep_script.js"></script>
 
-<!-- maginify -->
-<link rel="stylesheet" href="templates/css/magnify.css">
-<script src="templates/js/jquery.magnify.js"></script>
-
-<!-- select2 -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-<!-- fui toast -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"></script>
-
-<!-- DOMPURIFY -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
-
-<!-- scroll mượt -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/bundled/lenis.min.js"></script> -->
-
-
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-
-
-<!-- swiper -->
-<script src="templates/module/swiper/swiper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-
-<!-- style main -->
-<link rel="stylesheet" href="templates/css/style.css?ver=1118">
-<link rel="stylesheet" href="templates/css/style-mongdaovien.css?ver=1118">
-<link rel="stylesheet" href="templates/css/style-truyen-moi-v1.css?ver=1118">
-<link rel="stylesheet" href="templates/css/media.css?ver=1118">
-
-
-<!-- priceformat -->
-<script rel="stylesheet" src="admin/public/js/jquery.priceformat.js"></script>
-
-
-<!-- gsap -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-<!-- Thêm Lenis từ CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.4/bundled/lenis.min.js"></script>
-<!-- cắt chữ split type -->
-<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+<!-- ══ PAGE-SPECIFIC JS (not on reading page) ══ -->
+<?php if (!is_singular('chuong')): ?>
+<script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script defer src="https://tehitruyen.com/templates/js/emojionearea.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"></script>
+<script defer src="https://tehitruyen.com/templates/module/sweetalert/sweetalert2.min.js"></script>
+<?php endif; ?>
 
 
-<!-- văn hiệp skeleton -->
-<link rel="stylesheet" href="templates/css/vh-skeleton.css">
-<script src="templates/js/vh-skeleton.js"></script>
-
-
-
-<!-- vanhiep scripts main js -->
-<script src="templates/js/vanhiep_script.js"></script>
 
 
 
@@ -544,11 +543,68 @@
 
 
     });
-</script> -->  
+</script> -->
+
+<?php 
+global $tehi_tailwind_page;
+if (!empty($tehi_tailwind_page)): 
+?>
+<!-- Inject Tailwind for generated pages only -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#0060a9",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#d3e3fd",
+                    "on-primary-container": "#001c39",
+                    "secondary": "#535f70",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#d7e3f8",
+                    "on-secondary-container": "#101c2b",
+                    "error": "#ba1a1a",
+                    "background": "#fdfcff",
+                    "on-background": "#1a1c1e",
+                    "surface": "#fdfcff",
+                    "on-surface": "#1a1c1e",
+                    "surface-variant": "#dfe2eb",
+                    "on-surface-variant": "#43474e",
+                    "outline": "#73777f",
+                    "outline-variant": "#c3c6cf",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f7f2fa",
+                    "surface-container": "#f3edf7",
+                    "surface-container-high": "#ece6f0",
+                    "surface-container-highest": "#e6e0e9"
+                },
+                fontFamily: {
+                    sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    headline: ['"Be Vietnam Pro"', 'sans-serif']
+                }
+</script>
+<style>
+/* Prevent Tailwind from overriding Material Icon font */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+</style>
+<?php endif; ?>
 </head>
 
 
-<body class="index  position-relative" style="--background-body: url(<?php echo get_site_url(); ?>/img_data/images/background-repeat-2.png)">
+<body class="index  position-relative" style="--background-body: url(https://tehitruyen.com/img_data/images/background-repeat-2.png)">
   <!-- <div class="anh-nen lt-truyen-body"></div> -->
   <!-- lenis scroll bar start -->
   <div class="lenis-scrollbar">
@@ -589,25 +645,28 @@
 
 <header class="mkm-header">
     <div class="mkm-header-container">
-        <a href="<?php echo get_site_url(); ?>" class="mkm-logo">
-            <img src="<?php echo get_site_url(); ?>/img_data/images/logo-truyen-moi-v1.png" alt="Logo">
+        <!-- Text Logo "DTT" as requested -->
+        <a href="<?php echo get_site_url(); ?>" class="mkm-logo" style="text-decoration: none;">
+            <span style="font-weight: 900; font-size: 24px; color: #1e1e2d; letter-spacing: -1px;">
+                DTT<span style="color: #6366f1;">.</span>
+            </span>
         </a>
         
-        <div class="mkm-search-form d-none d-md-block">
+        <form class="mkm-search-form d-none d-md-block hidden md:block" action="<?php echo esc_url(home_url('/')); ?>" method="get">
             <i class="fa-solid fa-search"></i>
-            <input type="text" placeholder="Tìm tên truyện, tên người đăng..">
-        </div>
+            <input type="text" name="s" placeholder="Tìm tên truyện, tên người đăng..">
+        </form>
         
-        <div class="mkm-nav d-none d-md-flex">
+        <div class="mkm-nav d-none d-md-flex hidden md:flex">
             <a href="<?php echo get_site_url(); ?>/the-loai.html"><i class="fa-solid fa-list"></i> Thể loại</a>
             <a href="<?php echo get_site_url(); ?>/hoan-thanh.html"><i class="fa-solid fa-check-circle"></i> Truyện full</a>
-            <a href="<?php echo get_site_url(); ?>/bang-xep-hang.html"><i class="fa-solid fa-트로피"></i> BXH</a>
+            <a href="<?php echo get_site_url(); ?>/bang-xep-hang.html"><i class="fa-solid fa-trophy"></i> BXH</a>
             <a href="<?php echo get_site_url(); ?>/theo-doi.html"><i class="fa-solid fa-bookmark"></i> Theo dõi</a>
-            <a href="<?php echo get_site_url(); ?>/dang-nhap" class="mkm-nav-login"><i class="fa-solid fa-user-circle"></i> Đăng nhập</a>
+            <a href="<?php echo esc_url(wp_login_url()); ?>" class="mkm-nav-login"><i class="fa-solid fa-user-circle"></i> Đăng nhập</a>
         </div>
-        <!-- Mobile Toggle -->
-        <button class="btn btn-link d-md-none text-dark">
-            <i class="fa-solid fa-bars fs-3"></i>
+        <!-- Mobile Toggle (always visible on mobile both in Bootstrap and Tailwind) -->
+        <button class="btn btn-link d-md-none md:hidden text-dark" style="background:transparent; border:none; padding:10px;">
+            <i class="fa-solid fa-bars fs-3" style="font-size:24px; color:#1e1e2d;"></i>
         </button>
     </div>
 </header>
