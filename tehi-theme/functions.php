@@ -286,7 +286,7 @@ function tehi_get_gemini_key() {
     $key = get_option('temply_gemini_api_key', '');
     return !empty($key) ? $key : TEMPLY_GEMINI_FALLBACK_KEY;
 }
-function tehi_call_ai_api($prompt, $jsonMode = false, $timeout = 60, $ai_model = 'gemini-2.5-pro') {
+function tehi_call_ai_api($prompt, $jsonMode = false, $timeout = 60, $ai_model = 'gemini-2.5-flash') {
     $gemini_key = get_option('temply_gemini_api_key', '');
     
     if ($ai_model !== 'openai' && !empty($gemini_key)) {
@@ -630,7 +630,7 @@ function temply_studio_get_prompt() {
     $ai_prompt .= "Thể loại: $genre. Giọng văn: $tone.\n";
     $ai_prompt .= "Ý tưởng cốt lõi: $prompt\n\n";
     $ai_prompt .= "YÊU CẦU BẮT BUỘC:\n";
-    $ai_prompt .= "1. Viết đúng $chapters chương, mỗi chương khoảng 3000-5000 từ tiếng Việt (bắt buộc viết đủ dài, chi tiết, không tóm tắt).\n";
+    $ai_prompt .= "1. Viết đúng $chapters chương, mỗi chương khoảng 1500-2500 từ tiếng Việt (đủ nội dung, hấp dẫn, không tóm tắt sơ sài).\n";
     $ai_prompt .= "2. Mỗi chương BẮT BUỘC phải bắt đầu bằng TIÊU ĐỀ theo format CHÍNH XÁC: \"Chương [số]: [tên chương]\" trên một dòng riêng biệt.\n";
     $ai_prompt .= "3. Các chương phải liên kết mạch lạc, cốt truyện nhất quán, không mâu thuẫn.\n";
     $ai_prompt .= "4. Phong cách viết hấp dẫn, có đối thoại, mô tả cảm xúc sinh động.\n";
@@ -658,7 +658,7 @@ function temply_studio_generate_story() {
     $genre    = isset($_POST['genre']) ? sanitize_text_field($_POST['genre']) : 'Phổ thông';
     $chapters = isset($_POST['chapters']) ? intval($_POST['chapters']) : 10;
     $tone     = isset($_POST['tone']) ? sanitize_text_field($_POST['tone']) : 'Hài hước, sảng văn';
-    $ai_model = isset($_POST['ai_model']) ? sanitize_text_field($_POST['ai_model']) : 'gemini-2.5-pro';
+    $ai_model = isset($_POST['ai_model']) ? sanitize_text_field($_POST['ai_model']) : 'gemini-2.5-flash';
 
     if (!$post_id || !$title || !$prompt) {
         wp_send_json_error(array('message' => 'Thiếu thông tin đầu vào.'));
@@ -673,7 +673,7 @@ function temply_studio_generate_story() {
     $ai_prompt .= "Thể loại: $genre. Giọng văn: $tone.\n";
     $ai_prompt .= "Ý tưởng cốt lõi: $prompt\n\n";
     $ai_prompt .= "YÊU CẦU BẮT BUỘC:\n";
-    $ai_prompt .= "1. Viết đúng $chapters chương, mỗi chương khoảng 3000-5000 từ tiếng Việt (bắt buộc viết đủ dài, chi tiết, không tóm tắt).\n";
+    $ai_prompt .= "1. Viết đúng $chapters chương, mỗi chương khoảng 1500-2500 từ tiếng Việt (đủ nội dung, hấp dẫn, không tóm tắt sơ sài).\n";
     $ai_prompt .= "2. Mỗi chương BẮT BUỘC phải bắt đầu bằng TIÊU ĐỀ theo format CHÍNH XÁC: \"Chương [số]: [tên chương]\" trên một dòng riêng biệt.\n";
     $ai_prompt .= "3. Các chương phải liên kết mạch lạc, cốt truyện nhất quán, không mâu thuẫn.\n";
     $ai_prompt .= "4. Phong cách viết hấp dẫn, có đối thoại, mô tả cảm xúc sinh động.\n";
@@ -796,6 +796,121 @@ function temply_studio_autodetect_prompt() {
 }
 
 // ==========================================
+// STORY STUDIO: Server-side URL Scraper
+// (Works for tehitruyen.com + non-Cloudflare sites)
+// ==========================================
+add_action('wp_ajax_temply_studio_scrape_url', 'temply_studio_scrape_url');
+function temply_studio_scrape_url() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $url         = isset($_POST['url']) ? esc_url_raw($_POST['url']) : '';
+    $multi_count = isset($_POST['chapters']) ? intval($_POST['chapters']) : 1;
+
+    if (empty($url)) {
+        wp_send_json_error(array('message' => 'Thiếu URL.'));
+    }
+
+    // Security: Only allow whitelisted Vietnamese story sites
+    $allowed_hosts = array('tehitruyen.com', 'truyenfull.vn', 'metruyenchu.com', 'truyencv.com', 'tangthuvien.vn', 'metruyenhot.com');
+    $host = parse_url($url, PHP_URL_HOST);
+    $host = preg_replace('/^www\./', '', $host);
+    if (!in_array($host, $allowed_hosts)) {
+        wp_send_json_error(array('message' => "Site '$host' chưa được hỗ trợ cào server-side. Dùng Bookmarklet để cào."));
+    }
+
+    $multi_count = max(1, min(10, $multi_count)); // max 10 chapters at once
+
+    // Selectors per domain (priority order)
+    $selectors = array(
+        'tehitruyen.com'   => array('#noi_dung_truyen', '.chapter-content', '#box_doc'),
+        'truyenfull.vn'    => array('#chapter-c', '.chapter-c', '#box_doc'),
+        'default'          => array('#chapter-c', '.chapter-c', '#box_doc', '.content', 'article'),
+    );
+    $domain_selectors = isset($selectors[$host]) ? $selectors[$host] : $selectors['default'];
+
+    // Chapter URL pattern for tehitruyen: ?chuong=N
+    $all_text  = '';
+    $title     = '';
+    $errors    = 0;
+
+    for ($i = 0; $i < $multi_count; $i++) {
+        // Build chapter URL
+        if ($i === 0) {
+            $chapter_url = $url;
+        } else {
+            // Try to increment chapter number in URL
+            if (strpos($url, '?chuong=') !== false) {
+                $base   = preg_replace('/\?chuong=\d+/', '', $url);
+                $cur_ch = intval(preg_replace('/.*\?chuong=/', '', $url));
+                $chapter_url = $base . '?chuong=' . ($cur_ch + $i);
+            } elseif (preg_match('/chuong-(\d+)/', $url, $m)) {
+                $chapter_url = str_replace('chuong-' . $m[1], 'chuong-' . ($m[1] + $i), $url);
+            } else {
+                break; // Can't determine next chapter URL
+            }
+        }
+
+        $response = wp_remote_get($chapter_url, array(
+            'timeout'    => 20,
+            'sslverify'  => false,
+            'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+            'headers'    => array('Accept-Language' => 'vi-VN,vi;q=0.9'),
+        ));
+
+        if (is_wp_error($response)) { $errors++; continue; }
+
+        $html = wp_remote_retrieve_body($response);
+        if (empty($html)) { $errors++; continue; }
+
+        // Extract title from first chapter
+        if ($i === 0 && preg_match('/<h1[^>]*>(.*?)<\/h1>/is', $html, $tm)) {
+            $title = trim(strip_tags($tm[1]));
+        }
+        if ($i === 0 && empty($title) && preg_match('/<title>(.*?)<\/title>/is', $html, $tm)) {
+            $title = trim(strip_tags($tm[1]));
+        }
+
+        // Extract content using domain selectors
+        $text = '';
+        foreach ($domain_selectors as $selector) {
+            // Convert CSS selector to regex pattern (simple ID/class)
+            if (strpos($selector, '#') === 0) {
+                $id = substr($selector, 1);
+                if (preg_match('/id="' . preg_quote($id, '/') . '"[^>]*>(.*?)(?=<div\s+id="|<footer|<\/main)/is', $html, $m)) {
+                    $text = strip_tags($m[1], '');
+                    $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                    $text = preg_replace('/[ \t]+/', ' ', $text);
+                    $text = preg_replace('/\n{3,}/', "\n\n", $text);
+                    $text = trim($text);
+                }
+            }
+            if (strlen($text) > 200) break;
+        }
+
+        if (strlen($text) > 200) {
+            $all_text .= "\n\n" . $text;
+        }
+
+        usleep(300000); // 0.3s delay between requests
+    }
+
+    $all_text = trim($all_text);
+    if (empty($all_text)) {
+        wp_send_json_error(array('message' => 'Không trích xuất được nội dung. Hãy thử Bookmarklet hoặc paste thủ công.'));
+    }
+
+    $words = str_word_count($all_text);
+
+    wp_send_json_success(array(
+        'text'      => $all_text,
+        'title'     => $title,
+        'source'    => $host,
+        'wordCount' => $words,
+        'chapters'  => $multi_count - $errors,
+    ));
+}
+
+// ==========================================
 // STORY STUDIO: Schedule Post Publishing
 // ==========================================
 add_action('wp_ajax_temply_studio_schedule', 'temply_studio_schedule');
@@ -842,7 +957,7 @@ function temply_studio_autodetect() {
     check_ajax_referer('temply_ai_nonce', 'action_nonce');
 
     $prompt   = isset($_POST['prompt']) ? sanitize_textarea_field($_POST['prompt']) : '';
-    $ai_model = isset($_POST['ai_model']) ? sanitize_text_field($_POST['ai_model']) : 'gemini-2.5-pro';
+    $ai_model = isset($_POST['ai_model']) ? sanitize_text_field($_POST['ai_model']) : 'gemini-2.5-flash';
 
     if (empty($prompt)) {
         wp_send_json_error(array('message' => 'Prompt rỗng.'));
