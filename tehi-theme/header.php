@@ -128,19 +128,10 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 </noscript>
 <?php endif; ?>
 
-<!-- ══ JQUERY: async – loaded early but non-blocking ══ -->
-<script>
-// jQuery async loader - non-blocking
-(function(){
-  var s = document.createElement('script');
-  s.src = '<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/js/jquery.min.js';
-  s.async = true;
-  s.onload = function(){ window.jQueryReady = true; document.dispatchEvent(new Event('jQueryLoaded')); };
-  document.head.appendChild(s);
-})();
-</script>
+<!-- ══ JQUERY: defer first – guarantees load order before other defer scripts ══ -->
+<script defer src="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/js/jquery.min.js"></script>
 
-<!-- ══ ALL JS: defer (won't block render) ══ -->
+<!-- ══ ALL JS: defer (won't block render, runs in order after jQuery) ══ -->
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.4/bundled/lenis.min.js"></script>
@@ -364,29 +355,41 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
                 }
             });
         }
-        Fancybox.bind("[data-fancybox]", {
-            // Your custom options
-        });
+        // Init Fancybox safely (may be deferred)
+        if (typeof Fancybox !== 'undefined') {
+            Fancybox.bind("[data-fancybox]", {});
+        } else {
+            window.addEventListener('load', function() {
+                if (typeof Fancybox !== 'undefined') Fancybox.bind("[data-fancybox]", {});
+            });
+        }
 
-        // Khởi tạo skeletons
-        initializeVHSkeleton();
-        initializeSkeletonOnScroll();
+        // Khởi tạo skeletons – only when jQuery is available
+        if (typeof $ !== 'undefined') {
+            initializeVHSkeleton();
+            initializeSkeletonOnScroll();
+        } else {
+            window.addEventListener('load', function() {
+                if (typeof initializeVHSkeleton === 'function') initializeVHSkeleton();
+                if (typeof initializeSkeletonOnScroll === 'function') initializeSkeletonOnScroll();
+            });
+        }
 
         // Kiểm tra vị trí cuộn và hiển thị hoặc ẩn nút "Back to Top"
-        $('body').append('<div id="toTop"><i class="fa-solid fa-chevron-up"></i></div> ');
-        $('#toTop').fadeOut();
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 500) {
-                $('#toTop').fadeIn();
-            } else {
-                $('#toTop').fadeOut();
-            }
-        });
-        // Handle "Back to Top" button click
-        $('#toTop').click(function() {
-            scrollToElement('body', 1.2);
-            return false;
-        });
+        function initToTopButton() {
+            var toTopHtml = '<div id="toTop"><i class="fa-solid fa-chevron-up"></i></div>';
+            if (!document.getElementById('toTop')) document.body.insertAdjacentHTML('beforeend', toTopHtml);
+            var toTopEl = document.getElementById('toTop');
+            if (!toTopEl) return;
+            toTopEl.style.display = 'none';
+            window.addEventListener('scroll', function() {
+                toTopEl.style.display = window.scrollY > 500 ? 'flex' : 'none';
+            });
+            toTopEl.addEventListener('click', function() {
+                scrollToElement('body', 1.2);
+            });
+        }
+        initToTopButton();
 
 
 
@@ -466,21 +469,30 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 
         // hover vào box scrollbar dừng lại
         // Xử lý hover trên phần tử .ql-editor
-        $(document).on('mouseenter', '.ql-editor , .vh-scrollbar, .select2-results__options, .emojionearea-scroll-area, .emojionearea .emojionearea-editor, .mdv-charts-box-content-item-content, .msv-chuong-list-container, .danh-sach-the-loai-chinh-ul, .tim-kiem-thanh-vien-result, #modalDanhSachChuong .modal-dialog-scrollable .modal-body', function() {
-            // Khi hover vào, hủy bỏ Lenis scroll
-            if (typeof lenis !== 'undefined' && lenis) {
-                lenis.destroy();
-                console.log('Lenis destroyed on hover');
+        // Pause/resume Lenis when hovering scrollable elements (no jQuery needed)
+        var scrollableSelectors = [
+            '.ql-editor', '.vh-scrollbar', '.select2-results__options',
+            '.emojionearea-scroll-area', '.msv-chuong-list-container',
+            '.danh-sach-the-loai-chinh-ul', '#modalDanhSachChuong .modal-body'
+        ];
+        document.addEventListener('mouseenter', function(e) {
+            var target = e.target;
+            var isScrollable = scrollableSelectors.some(function(sel) {
+                return target.matches && target.matches(sel);
+            });
+            if (isScrollable && typeof lenis !== 'undefined' && lenis) {
+                lenis.stop();
             }
-        });
-
-        $(document).on('mouseleave', '.ql-editor, .vh-scrollbar, .select2-results__options, .emojionearea-scroll-area, .emojionearea .emojionearea-editor, .mdv-charts-box-content-item-content, .msv-chuong-list-container, .danh-sach-the-loai-chinh-ul, .tim-kiem-thanh-vien-result, #modalDanhSachChuong .modal-dialog-scrollable .modal-body', function() {
-            // Khi mouseout, khởi tạo lại Lenis scroll
-            if (typeof initLenis === 'function') {
-                initLenis();
-                console.log('Lenis re-initialized on mouseout');
+        }, true);
+        document.addEventListener('mouseleave', function(e) {
+            var target = e.target;
+            var isScrollable = scrollableSelectors.some(function(sel) {
+                return target.matches && target.matches(sel);
+            });
+            if (isScrollable && typeof lenis !== 'undefined' && lenis) {
+                lenis.start();
             }
-        });
+        }, true);
 
     });
 

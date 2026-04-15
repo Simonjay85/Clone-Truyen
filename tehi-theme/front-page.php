@@ -464,7 +464,7 @@
         <div class="swiper mkm-main-swiper">
             <div class="swiper-wrapper">
             <?php while($slider_q->have_posts()): $slider_q->the_post();
-                $s_cover = get_the_post_thumbnail_url(null,'large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                $s_cover = get_the_post_thumbnail_url(null,'large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
                 $s_exc   = wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 40, '...');
                 $s_date  = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' trước';
                 $s_cats  = wp_get_post_terms(get_the_ID(),'the_loai');
@@ -539,7 +539,7 @@
                 <?php
                 $q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 8, 'no_found_rows' => true]);
                 while ($q->have_posts()) : $q->the_post();
-                    $img = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $img = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
                     $fake_chap = rand(10, 150); $fake_hours = rand(1, 24); $fake_views = rand(100, 9999); $fake_likes = rand(0, 50);
                 ?>
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
@@ -577,7 +577,7 @@
                 <?php
                 $q2 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 4, 'orderby' => 'comment_count', 'no_found_rows' => true]);
                 while ($q2->have_posts()) : $q2->the_post();
-                    $img2 = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $img2 = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
                     $fake_chap = rand(50, 300); $fake_hours = rand(1, 24); $fake_views = rand(10000, 50000); $fake_likes = rand(50, 900);
                 ?>
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
@@ -615,7 +615,7 @@
                 <?php
                 $q3 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 4, 'offset' => 12, 'no_found_rows' => true]);
                 while ($q3->have_posts()) : $q3->the_post();
-                    $img3 = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $img3 = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
                     $fake_chap = rand(80, 500); $fake_views = rand(20000, 99999); $fake_likes = rand(100, 2000);
                 ?>
                 <a href="<?php the_permalink(); ?>" class="mkm-card">
@@ -673,7 +673,7 @@
                     $ri = 1;
                     $max_views = 20000;
                     while ($bxh->have_posts()) : $bxh->the_post();
-                        $rthumb = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                        $rthumb = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
                         $views = (int)get_post_meta(get_the_ID(), '_views', true);
                         if($views < 1000) $views = rand(1000, 20000); // mock data if empty
                         

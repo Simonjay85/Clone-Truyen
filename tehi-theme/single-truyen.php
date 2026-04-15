@@ -286,10 +286,20 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
                 </div>
 
                 <!-- Synopsis -->
+                <?php
+                // Clean content: decode HTML entities first (fix double-escaped <p> tags), then strip
+                $raw_synopsis = get_the_content();
+                $raw_synopsis = html_entity_decode($raw_synopsis, ENT_QUOTES, 'UTF-8');
+                $raw_synopsis = wp_strip_all_tags($raw_synopsis);
+                $raw_synopsis = preg_replace('/^#{1,6}\s+/m', '', $raw_synopsis);
+                $raw_synopsis = trim($raw_synopsis);
+                $synopsis_short = wp_trim_words($raw_synopsis, 50, '...');
+                $synopsis_full  = wp_trim_words($raw_synopsis, 500, '...');
+                ?>
                 <div class="mkm-synopsis-box">
-                    <div id="synopFull" style="display:none;"><?php echo nl2br(esc_html(wp_strip_all_tags(get_the_content()))); ?></div>
-                    <div id="synopShort"><?php echo nl2br(esc_html(wp_trim_words(wp_strip_all_tags(get_the_content()), 50, '...'))); ?></div>
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('synopShort').style.display=document.getElementById('synopShort').style.display==='none'?'block':'none'; document.getElementById('synopFull').style.display=document.getElementById('synopFull').style.display==='none'?'block':'none'; this.textContent=document.getElementById('synopFull').style.display==='block'?'▲ Thu gọn':'▼ Xem toàn bộ';">▼ Xem toàn bộ</a>
+                    <div id="synopFull" style="display:none;"><?php echo nl2br(esc_html($synopsis_full)); ?></div>
+                    <div id="synopShort"><?php echo nl2br(esc_html($synopsis_short)); ?></div>
+                    <a href="#" onclick="event.preventDefault(); var s=document.getElementById('synopShort'),f=document.getElementById('synopFull'),b=this.closest('.mkm-synopsis-box'); if(f.style.display==='none'){f.style.display='block';s.style.display='none';b.style.maxHeight='400px';this.textContent='▲ Thu gọn';}else{f.style.display='none';s.style.display='block';b.style.maxHeight='200px';this.textContent='▼ Xem toàn bộ';}">▼ Xem toàn bộ</a>
                 </div>
 
                 <!-- Action buttons moved to left column -->

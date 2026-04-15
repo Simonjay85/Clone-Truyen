@@ -190,33 +190,7 @@ function temply_handle_like_chapter() {
     }
     wp_send_json_error();
 }
-// Custom WP Admin Style injected for modern clean UI
-function dtt_custom_wp_admin_style() {
-    echo '<style>
-        #adminmenu { background-color: #1e1e2d; }
-        #adminmenu .menu-top { border-bottom: 2px solid transparent; }
-        #adminmenu a { color: #a4a6b3; }
-        #adminmenu li.menu-top:hover, #adminmenu li.opensub>a.menu-top, #adminmenu li>a.menu-top:focus { background-color: #2b2b40; color: #fff; }
-        #adminmenu .wp-has-current-submenu .wp-submenu, #adminmenu .wp-has-current-submenu .wp-submenu.sub-open, #adminmenu .wp-has-current-submenu.opensub .wp-submenu, #adminmenu a.wp-has-current-submenu:focus+.wp-submenu { background-color: #1c1c2a; }
-        #adminmenu .wp-has-current-submenu a.wp-has-current-submenu { background-color: #6366f1; color: #fff; }
-        #adminmenu .wp-has-current-submenu .wp-submenu a:hover { color: #fff; }
-        #wpadminbar { background-color: #1e1e2d; }
-        body.wp-admin { font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f3f6f9; }
-        #wpcontent, #wpbody-content { background: #f3f6f9; }
-        .postbox { border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: none; }
-        .button-primary { background: #6366f1 !important; border-color: #6366f1 !important; box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2) !important; border-radius: 6px !important; text-shadow: none !important; }
-        .button-primary:hover { background: #4f46e5 !important; border-color: #4f46e5 !important; }
-        div.updated, div.error, div.notice { border-left-width: 4px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-        h1, h2, h3, h4, h5, h6 { font-family: "Be Vietnam Pro", sans-serif; font-weight: 700; color: #111827; }
-        #wpwrap { font-size: 14px; }
-        /* Clean up table rows */
-        .wp-list-table th { background: #fff; padding: 12px 10px; font-weight: 600; color: #374151; }
-        .wp-list-table tr { border-bottom: 1px solid #f3f4f6; }
-        .wp-list-table td { padding: 12px 10px; }
-    </style>';
-}
-add_action('admin_head', 'dtt_custom_wp_admin_style');
-add_action('login_enqueue_scripts', 'dtt_custom_wp_admin_style'); // also style login
+
 // ==========================================
 // TEMPLY AI ASSISTANT INTEGRATION
 // ==========================================
@@ -595,7 +569,8 @@ function temply_handle_ai_split_chapters() {
     }
 
     $created = 0;
-    foreach ($chapters as $ch) {
+    $first_chapter_excerpt = '';
+    foreach ($chapters as $idx => $ch) {
         $post_data = array(
             'post_title'    => wp_strip_all_tags($ch['title']),
             'post_content'  => trim($ch['content']),
@@ -606,11 +581,26 @@ function temply_handle_ai_split_chapters() {
         if ($chuong_id && !is_wp_error($chuong_id)) {
             update_post_meta($chuong_id, '_truyen_id', $truyen_id);
             $created++;
+            // Grab first few words from chapter 1 to use as story synopsis
+            if ($idx === 0 && empty($first_chapter_excerpt)) {
+                $plain = wp_strip_all_tags(trim($ch['content']));
+                $first_chapter_excerpt = wp_trim_words($plain, 120, '...');
+            }
         }
     }
 
+    // ── Clear the parent truyen post_content (replace with short synopsis) ──
+    // This prevents the story page from showing 10,000+ words in the intro box
+    if ($created > 0) {
+        wp_update_post(array(
+            'ID'           => $truyen_id,
+            'post_content' => $first_chapter_excerpt,
+            'post_excerpt' => $first_chapter_excerpt,
+        ));
+    }
+
     wp_send_json_success(array(
-        'count' => $created,
+        'count'   => $created,
         'message' => 'Thành công'
     ));
 }

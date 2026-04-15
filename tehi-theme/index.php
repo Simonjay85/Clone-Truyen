@@ -91,7 +91,7 @@
     $hero_args = array( 'post_type' => 'truyen', 'posts_per_page' => 1, 'orderby' => 'rand' ); // Replace logic to get 'featured'
     $hero_query = new WP_Query($hero_args);
     if ($hero_query->have_posts()) : while ($hero_query->have_posts()) : $hero_query->the_post();
-        $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+        $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
     ?>
     <div class="mkm-hero-card">
         <div class="mkm-hero-img-wrap">
@@ -131,7 +131,7 @@
                 $new_args = array( 'post_type' => 'truyen', 'posts_per_page' => 8 );
                 $new_query = new WP_Query($new_args);
                 if ($new_query->have_posts()) : while ($new_query->have_posts()) : $new_query->the_post();
-                    $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
                 ?>
                 <div class="mkm-item">
                     <a href="<?php the_permalink(); ?>" rel="bookmark">
@@ -163,7 +163,7 @@
                 $hot_args = array( 'post_type' => 'truyen', 'posts_per_page' => 4, 'orderby' => 'comment_count' );
                 $hot_query = new WP_Query($hot_args);
                 if ($hot_query->have_posts()) : while ($hot_query->have_posts()) : $hot_query->the_post();
-                    $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
                 ?>
                 <div class="mkm-item">
                     <a href="<?php the_permalink(); ?>">
@@ -193,7 +193,7 @@
                 $full_args = array( 'post_type' => 'truyen', 'posts_per_page' => 4 );
                 $full_query = new WP_Query($full_args);
                 if ($full_query->have_posts()) : while ($full_query->have_posts()) : $full_query->the_post();
-                    $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                    $thumb_url = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
                 ?>
                 <div class="mkm-item">
                     <a href="<?php the_permalink(); ?>">
@@ -229,7 +229,7 @@
                     $bxh_query = new WP_Query($bxh_args);
                     $rank = 1;
                     if ($bxh_query->have_posts()) : while ($bxh_query->have_posts()) : $bxh_query->the_post();
-                        $thumb = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+                        $thumb = get_the_post_thumbnail_url() ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
                         $rank_class = ($rank <= 3) ? "mkm-rank-$rank" : "mkm-rank-other";
                     ?>
                     <li class="mkm-bxh-item">
