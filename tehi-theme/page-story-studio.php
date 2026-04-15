@@ -340,10 +340,13 @@ $nonce = wp_create_nonce('temply_ai_nonce');
 
         /* ====== MAIN LAYOUT ====== */
         .studio-layout {
-            display: grid;
-            grid-template-columns: 360px 1fr;
+            display: grid !important;
+            grid-template-columns: 360px 1fr !important;
             height: calc(100vh - 60px);
+            overflow: hidden;
         }
+        .studio-layout > aside { grid-column: 1; grid-row: 1; }
+        .studio-layout > main  { grid-column: 2; grid-row: 1; min-width: 0; }
 
         /* ====== SIDEBAR (Control Panel) ====== */
         .studio-sidebar {
@@ -522,6 +525,8 @@ $nonce = wp_create_nonce('temply_ai_nonce');
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            background: #0f0f17;
+            min-height: 0;
         }
         .editor-toolbar {
             background: #17172a;
@@ -778,15 +783,29 @@ $nonce = wp_create_nonce('temply_ai_nonce');
 
                 <div class="ctrl-group" style="margin-bottom: 16px;">
                     <label class="ctrl-label">Số chương muốn tạo</label>
-                    <select class="ctrl-select" id="ss-chapters">
-                        <option value="3">3 chương (~3,000–5,000 từ/chương)</option>
-                        <option value="5" selected>5 chương (~3,000–5,000 từ/chương)</option>
-                        <option value="8">8 chương (~3,000 từ/chương)</option>
-                        <option value="10">10 chương (~2,500 từ/chương)</option>
-                        <option value="15">15 chương (~2,000 từ/chương)</option>
+                    <select class="ctrl-select" id="ss-chapters" onchange="updateChapterNote(this.value)">
+                        <option value="3">3 chương (~2,500 từ/chương)</option>
+                        <option value="5" selected>5 chương (~2,500 từ/chương)</option>
+                        <option value="8">8 chương (~2,000 từ/chương)</option>
+                        <option value="10">10 chương (~2,000 từ/chương)</option>
+                        <option value="15">15 chương (~1,500 từ/chương)</option>
                     </select>
-                    <div style="font-size:11px;color:#6b7a99;margin-top:6px;">⚡ Truyện dài hơn = thời gian tạo lâu hơn (1-3 phút)</div>
+                    <div id="chapter-count-note" style="font-size:11px;color:#6b7a99;margin-top:6px;">⚡ AI sẽ tạo từng batch 3 chương — tự động ghép lại</div>
                 </div>
+                <script>
+                function updateChapterNote(v) {
+                    const note = document.getElementById('chapter-count-note');
+                    const batches = Math.ceil(parseInt(v) / 3);
+                    if (parseInt(v) > 3) {
+                        note.innerHTML = `⚡ Sẽ gọi AI <strong>${batches} lần</strong> (mỗi lần 3 chương) — thời gian khoảng <strong>${batches * 30}-${batches * 60}s</strong>`;
+                        note.style.color = '#f59e0b';
+                    } else {
+                        note.innerHTML = '⚡ AI sẽ tạo 1 lần — nhanh (~20-30s)';
+                        note.style.color = '#6b7a99';
+                    }
+                }
+                updateChapterNote(document.getElementById('ss-chapters').value);
+                </script>
             </div>
 
             <!-- Progress indicator -->
@@ -806,6 +825,11 @@ $nonce = wp_create_nonce('temply_ai_nonce');
                     <div class="lbl">Chương</div>
                 </div>
             </div>
+
+            <!-- AI Review Button -->
+            <button id="ss-btn-review" style="display:none; width:100%; margin-top:10px; padding:10px 14px; border-radius:10px; border:1px solid rgba(251,191,36,0.4); background:rgba(251,191,36,0.08); color:#fbbf24; font-family:inherit; font-size:13px; font-weight:700; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='rgba(251,191,36,0.18)'" onmouseout="this.style.background='rgba(251,191,36,0.08)'">
+                🔍 AI Nhận xét & Góp ý truyện
+            </button>
 
             <!-- Main CTA -->
             <button class="btn-generate" id="ss-btn-generate">
@@ -978,6 +1002,22 @@ $nonce = wp_create_nonce('temply_ai_nonce');
             <div class="confirm-btns">
                 <button class="confirm-btn-yes" id="ss-confirm-yes">✅ Tách ngay!</button>
                 <button class="confirm-btn-no" id="ss-confirm-no">Kiểm tra thêm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Review Modal -->
+    <div id="ss-review-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:10000; align-items:center; justify-content:center;">
+        <div style="background:#13131f; border:1px solid rgba(251,191,36,0.3); border-radius:16px; max-width:680px; width:95%; max-height:85vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 60px rgba(0,0,0,0.6);">
+            <div style="padding:20px 24px; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; justify-content:space-between; background:rgba(251,191,36,0.06);">
+                <div>
+                    <div style="font-size:16px; font-weight:800; color:#fbbf24;">🔍 AI Nhận xét & Góp ý</div>
+                    <div style="font-size:12px; color:#6b7280; margin-top:2px;">Phân tích chuyên sâu từ Gemini AI</div>
+                </div>
+                <button onclick="document.getElementById('ss-review-overlay').style.display='none'" style="background:none; border:none; color:#6b7280; font-size:20px; cursor:pointer; padding:4px 8px; border-radius:6px;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">✕</button>
+            </div>
+            <div id="ss-review-content" style="padding:24px; overflow-y:auto; flex:1; line-height:1.8; font-size:14px; color:#d1d5db;">
+                <div style="text-align:center; padding:40px; color:#6b7280;">⏳ AI đang phân tích truyện...</div>
             </div>
         </div>
     </div>
@@ -1508,11 +1548,34 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
 
                 let rawContent = '';
 
-                setProgress(35, `Đang viết ${chapCount} chương...`);
+                const totalChaps = parseInt(chapCount);
+                const BATCH_SIZE = 3; // chapters per Gemini call
+                const totalBatches = Math.ceil(totalChaps / BATCH_SIZE);
 
                 if (has_key && aiModel !== 'openai') {
-                    // Step 2b: Call Gemini directly from browser
-                    rawContent = await callGeminiFromBrowser(aiPrompt, gemini_key, aiModel);
+                    // Batch generation: call Gemini once per batch of 3 chapters
+                    for (let batch = 0; batch < totalBatches; batch++) {
+                        const chStart = batch * BATCH_SIZE + 1;
+                        const chEnd   = Math.min(chStart + BATCH_SIZE - 1, totalChaps);
+                        const batchPct = 35 + Math.floor((batch / totalBatches) * 45);
+                        setProgress(batchPct, `Viết chương ${chStart}–${chEnd} / ${totalChaps}...`);
+
+                        // Build batch prompt
+                        const batchPrompt = aiPrompt
+                            .replace(`Viết đúng ${totalChaps} chương`, `Viết đúng ${chEnd - chStart + 1} chương (từ Chương ${chStart} đến Chương ${chEnd})`)
+                            .replace('Hãy bắt đầu viết ngay bây giờ:', `Ghi nhớ: đây là phần ${batch + 1}/${totalBatches} của bộ truyện. Tiếp tục mạch truyện tự nhiên nếu đây không phải phần đầu.\nHãy bắt đầu viết ngay từ Chương ${chStart}:`);
+
+                        const batchContent = await callGeminiFromBrowser(batchPrompt, gemini_key, aiModel);
+                        rawContent += (rawContent ? '\n\n' : '') + batchContent;
+
+                        // Show preview as it's generated
+                        if (batch === 0) {
+                            storyText.innerHTML = '<p style="color:#a5b4fc;font-size:13px;">⏳ Đang tạo thêm chương... (' + (batch+1) + '/' + totalBatches + ' batch)</p>' + batchContent.replace(/\n/g,'<br>');
+                        } else {
+                            const prog = storyText.querySelector('p[style]');
+                            if (prog) prog.textContent = '⏳ Đang tạo thêm chương... (' + (batch+1) + '/' + totalBatches + ' batch)';
+                        }
+                    }
                 } else {
                     // Fallback: ask server to use Pollinations
                     const storyFD = new FormData();
@@ -1566,8 +1629,11 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
                 statsEl.style.display = 'flex';
                 btnSplit.disabled = false;
                 btnNew.style.display = 'block';
+                document.getElementById('ss-btn-review').style.display = 'block';
                 setStatus('Truyện đã sẵn sàng để duyệt', 'active');
-                showToast(`✨ Đã tạo xong truyện "${title}"! Đọc duyệt và nhấn Tách Chương khi OK.`);
+
+                const {chapters: chapDone} = updateWordCount();
+                showToast(`✨ Đã tạo xong ${chapDone} chương truyện "${title}"! Đọc duyệt và nhấn Tách Chương khi OK.`);
 
                 // Show scheduling panel
                 const schedPanel = document.getElementById('ss-schedule-panel');
@@ -1589,6 +1655,168 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
                 setTimeout(hideProgress, 1200);
             }
         });
+
+        // ---- AI Review Handler ----
+        const btnReviewStory = document.getElementById('ss-btn-review');
+        if (btnReviewStory) {
+            btnReviewStory.addEventListener('click', async () => {
+                const storyContent = storyText.innerText || '';
+                const storyTitle = storyTitleDisplay.textContent || 'Truyện chưa đặt tên';
+                if (storyContent.length < 200) { showToast('Chưa có nội dung để nhận xét!', 'error'); return; }
+
+                const overlay = document.getElementById('ss-review-overlay');
+                const reviewContent = document.getElementById('ss-review-content');
+                overlay.style.display = 'flex';
+                reviewContent.innerHTML = '<div style="text-align:center;padding:40px;color:#6b7280;">⏳ Gemini AI đang đọc và phân tích truyện của anh...</div>';
+
+                btnReviewStory.textContent = '⏳ Đang nhận xét...';
+                btnReviewStory.disabled = true;
+
+                try {
+                    const keyFD = new FormData();
+                    keyFD.append('action', 'temply_studio_autodetect_prompt');
+                    keyFD.append('action_nonce', NONCE);
+                    keyFD.append('prompt', storyTitle);
+                    const keyRes = await fetch(AJAX_URL, { method: 'POST', body: keyFD }).then(r => r.json());
+                    if (!keyRes.success) throw new Error('Không lấy được key AI');
+
+                    const aiModel = document.getElementById('ss-ai-model')?.value || 'gemini-2.5-flash';
+                    const reviewPrompt = `Bạn là một biên tập viên văn học chuyên nghiệp, có kinh nghiệm đánh giá truyện mạng Việt Nam.
+
+Hãy đọc bộ truyện có tiêu đề: "${storyTitle}" và viết bài NHẬN XÉT CHUYÊN SÂU theo cấu trúc sau:
+
+## 1. ✅ Điểm Mạnh Nổi Bật
+(Liệt kê 3-5 điểm hay, cụ thể về tình tiết, nhân vật, giọng văn, hook)
+
+## 2. 🔧 Hạt Sạn Cần Điều Chỉnh  
+(Phân tích từng vấn đề: logic dòng thời gian, tính nhất quán bối cảnh, nhân vật thiếu chiều sâu, v.v. — góp ý cụ thể từng điểm kèm gợi ý sửa)
+
+## 3. 💡 Gợi Ý Phát Triển
+(3-5 hướng mở rộng hoặc cải thiện để câu chuyện hấp dẫn hơn)
+
+## 4. 🎯 Điểm Tiềm Năng Viral
+(Yếu tố nào có thể viral trên mạng xã hội Việt Nam)
+
+## 5. ⭐ Tổng Điểm
+(Chấm điểm từng hạng mục: Cốt truyện /10, Nhân vật /10, Văn phong /10, Độc tính /10)
+
+Viết bằng tiếng Việt, thẳng thắn nhưng mang tính xây dựng. KHÔNG khen chung chung.
+
+--- NỘI DUNG TRUYỆN ---
+${storyContent.slice(0, 25000)}`;
+
+                    const review = await callGeminiFromBrowser(reviewPrompt, keyRes.data.gemini_key, aiModel);
+
+                    // Format markdown-ish output
+                    const formatted = review
+                        .replace(/## (\d+\..+)/g, '<h3 style="color:#fbbf24;margin:20px 0 10px;font-size:15px;">$1</h3>')
+                        .replace(/\*\*(.+?)\*\*/g, '<strong style="color:#e5e7eb;">$1</strong>')
+                        .replace(/^(\d+\..+)$/gm, '<div style="margin:6px 0;">$1</div>')
+                        .replace(/^[-–•]\s(.+)$/gm, '<li style="margin:5px 0 5px 16px;list-style:disc;">$1</li>')
+                        .replace(/\n{2,}/g, '</p><p style="margin:8px 0;">')
+                        .replace(/\n/g, '<br>');
+
+                    reviewContent.innerHTML = '<p style="margin:8px 0;">' + formatted + '</p>';
+                    
+                    // Add Fix Button
+                    reviewContent.innerHTML += `
+                        <div style="margin-top:30px; text-align:center; padding-top:20px; border-top:1px solid rgba(255,255,255,0.05);">
+                            <button id="ss-btn-apply-fix" style="padding:14px 28px; border-radius:10px; border:none; background:linear-gradient(135deg, #fbbf24, #f59e0b); color:#111827; font-weight:800; font-size:15px; cursor:pointer; box-shadow:0 4px 15px rgba(245,158,11,0.3); transition:transform 0.2s;">
+                                ✨ Áp dụng Góp ý & Viết lại Truyện
+                            </button>
+                            <div style="font-size:11px; color:#6b7280; margin-top:8px;">Hệ thống sẽ giữ nguyên dàn ý và sửa lại văn bản dựa trên các hạt sạn được nêu.</div>
+                        </div>
+                    `;
+
+                    // Handle Fix feature
+                    const btnApplyFix = document.getElementById('ss-btn-apply-fix');
+                    if (btnApplyFix) {
+                        btnApplyFix.addEventListener('click', async function() {
+                            this.disabled = true;
+                            this.innerHTML = '⏳ Hệ thống đang viết lại... (Vui lòng không đóng hộp thoại)';
+                            this.style.opacity = '0.7';
+
+                            try {
+                                // Extract chapters from current text
+                                const contentText = storyText.innerText || '';
+                                // Split by "Chương " but keep it (using positive regex if possible, or manual slice)
+                                let chapters = [];
+                                const parts = contentText.split(/(?=Chương\s+\d+[:\-–.])/i);
+                                if (parts.length > 1 && parts[0].trim().length < 50) {
+                                    // Remove empty first chunk
+                                    parts.shift();
+                                }
+                                
+                                if (parts.length <= 1) {
+                                    chapters = [contentText]; // No clear chapter structure, chunk as 1
+                                } else {
+                                    chapters = parts;
+                                }
+
+                                // We batch rewrite 2 chapters at a time to avoid Gemini output truncation
+                                const BATCH_SIZE = 2;
+                                const totalBatches = Math.ceil(chapters.length / BATCH_SIZE);
+                                let newFullStory = '';
+
+                                for (let i = 0; i < totalBatches; i++) {
+                                    this.textContent = `⏳ Đang sửa phần ${i+1}/${totalBatches}...`;
+                                    
+                                    const chunkChaps = chapters.slice(i * BATCH_SIZE, (i + 1) * BATCH_SIZE).join('\n\n');
+                                    
+                                    const fixPrompt = `Bạn là một biên tập viên văn học tinh tế.
+Dựa vào BÀI NHẬN XÉT GÓP Ý TRUYỆN sau đây:
+
+--- NHẬN XÉT ---
+${review.slice(0, 4000)}
+--- HẾT NHẬN XÉT ---
+
+YÊU CẦU:
+Hãy SỬA CHỮA, TỐI ƯU VÀ VIẾT LẠI hoàn chỉnh đoạn truyện bên dưới.
+1. Khắc phục triệt để các "Hạt sạn" và mâu thuẫn được nêu trong nhận xét.
+2. Thêm thắt chi tiết miêu tả, chiều sâu tâm lý nhân vật nếu nhận xét có gợi ý.
+3. BẮT BUỘC giữ nguyên cấu trúc tiêu đề "Chương X: [Tên]" ở đầu mỗi chương.
+4. Trả về toàn bộ phần văn bản đã sửa (không giải thích thêm).
+
+--- ĐOẠN TRUYỆN CẦN SỬA ---
+${chunkChaps}`;
+
+                                    const chunkRewritten = await callGeminiFromBrowser(fixPrompt, keyRes.data.gemini_key, aiModel);
+                                    newFullStory += (newFullStory ? '\n\n' : '') + chunkRewritten;
+                                }
+
+                                // Replace editor content with fixed story
+                                storyText.innerHTML = newFullStory.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+                                // Wrap in <p> if not already
+                                if (!storyText.innerHTML.startsWith('<p>')) {
+                                    storyText.innerHTML = '<p>' + storyText.innerHTML + '</p>';
+                                }
+                                
+                                // Clean up formatting for headings 
+                                storyText.innerHTML = storyText.innerHTML.replace(/<p>(Chương\s+\d+[:\-–.].*?)<\/p>/gi, '<h2>$1</h2>');
+
+                                showToast('✨ Truyện đã được cải thiện theo góp ý!', 'success');
+                                document.getElementById('ss-review-overlay').style.display = 'none';
+                                updateWordCount();
+
+                            } catch (err) {
+                                alert('Lỗi khi sửa truyện: ' + err.message);
+                            } finally {
+                                this.innerHTML = '✨ Áp dụng Góp ý & Viết lại Truyện';
+                                this.disabled = false;
+                                this.style.opacity = '1';
+                            }
+                        });
+                    }
+
+                    showToast('✅ AI đã nhận xét xong!', 'success');
+                } catch(e) {
+                    reviewContent.innerHTML = `<p style="color:#f87171;">❌ Lỗi: ${e.message}</p>`;
+                } finally {
+                    btnReviewStory.textContent = '🔍 AI Nhận xét & Góp ý truyện';
+                    btnReviewStory.disabled = false;
+                }
+            });
+        }
 
         // ---- Split chapters ----
         btnSplit.addEventListener('click', () => {

@@ -33,10 +33,13 @@ for($i=0; $i<count($chapters); $i++) {
 }
 ?>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 /* Reading Mode UI */
 header.mkm-header { display: none !important; }
-.r-wrap { width: 100% !important; display: block !important; clear: both !important; background: #fdfbf7; min-height: 100vh; font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif; position: relative; }
+.r-wrap { width: 100% !important; display: block !important; clear: both !important; background: #FFFDF0; min-height: 100vh; font-family: 'Lora', Georgia, serif; position: relative; }
 .r-hdr { background: #fff; height: 60px; padding: 0 16px; border-bottom: 1px solid #e5e7eb; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
 .r-hdr-left { display: flex; align-items: center; gap: 12px; font-family: ui-sans-serif, system-ui, sans-serif; }
 .r-back-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; color: #374151; text-decoration: none; background: #f3f4f6; transition: background .2s; }
@@ -49,9 +52,9 @@ header.mkm-header { display: none !important; }
 .r-icon-btn:hover { background: #f3f4f6; }
 
 /* Content Area */
-.r-container { max-width: 800px; margin: 20px auto; padding: 40px 20px 80px 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
-.r-title { text-align: center; font-size: 28px; font-weight: 700; color: #111827; margin-bottom: 24px; line-height: 1.4; font-family: ui-sans-serif, system-ui, sans-serif; }
-.r-content { font-size: 22px; line-height: 1.8; color: #333; text-align: justify; word-wrap: break-word; }
+.r-container { max-width: 800px; margin: 20px auto; padding: 40px 20px 80px 20px; background: #FFFDF0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+.r-title { text-align: center; font-size: 26px; font-weight: 700; color: #2d1f0e; margin-bottom: 24px; line-height: 1.4; font-family: 'Lora', Georgia, serif; }
+.r-content { font-size: 20px; line-height: 1.9; color: #2d2116; text-align: justify; word-wrap: break-word; font-family: 'Lora', Georgia, serif; letter-spacing: 0.01em; }
 .r-content p { margin-bottom: 1.5em; }
 .r-content img { border-radius: 10px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: block; margin: 0 auto; max-width: 100%; height: auto; }
 
@@ -327,9 +330,9 @@ header.mkm-header { display: none !important; }
             <div class="r-set-row">
                 <span class="r-set-label">Kiểu Chữ</span>
                 <div class="r-set-group" style="flex-wrap: wrap;">
-                    <button class="r-set-btn" onclick="rSet.fontFamily('Be Vietnam Pro')">Vietnam Pro</button>
-                    <button class="r-set-btn" onclick="rSet.fontFamily('Georgia, serif')">Georgia</button>
-                    <button class="r-set-btn" onclick="rSet.fontFamily('Palatino Linotype, Book Antiqua, Palatino, serif')">Palatino</button>
+                    <button class="r-set-btn" onclick="rSet.fontFamily('Lora, Georgia, serif')" style="font-family:Lora,serif;">Lora (Mặc định)</button>
+                    <button class="r-set-btn" onclick="rSet.fontFamily('Be Vietnam Pro, sans-serif')">Vietnam Pro</button>
+                    <button class="r-set-btn" onclick="rSet.fontFamily('Georgia, serif')" style="font-family:Georgia,serif;">Georgia</button>
                 </div>
             </div>
             <div class="r-set-row">
@@ -375,7 +378,7 @@ document.getElementById('qCh').addEventListener('keyup', function() {
 });
 
 // Reading Settings Controller
-let currSize = 22;
+let currSize = 20;
 const rSet = {
     fontFamily: (fm) => {
         document.getElementById('rWrap').style.fontFamily = fm;

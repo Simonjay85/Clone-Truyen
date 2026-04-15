@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <?php
-$cover = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+$cover = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
 $terms_loai = wp_get_post_terms(get_the_ID(), 'loai_truyen'); // Might not exist, fallback to "Truyện Chữ"
 $terms_tl = wp_get_post_terms(get_the_ID(), 'the_loai');
 $terms_nhom = wp_get_post_terms(get_the_ID(), 'nhom_dich');
@@ -412,7 +412,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
             // random 4 stories
             $rel_q = new WP_Query(['post_type'=>'truyen','posts_per_page'=>4,'orderby'=>'rand','no_found_rows'=>true,'post__not_in'=>[get_the_ID()]]);
             if($rel_q->have_posts()): while($rel_q->have_posts()): $rel_q->the_post();
-            $rel_cover = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/templates/images/no-image-cover.png';
+            $rel_cover = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
             ?>
             <a href="<?php the_permalink(); ?>" class="mkm-rel-card">
                 <img src="<?php echo esc_url($rel_cover); ?>" alt="<?php the_title_attribute(); ?>" class="mkm-rel-img" loading="lazy">

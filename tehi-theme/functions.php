@@ -522,44 +522,76 @@ function temply_handle_ai_split_chapters() {
         wp_send_json_error(array('message' => 'Lỗi kết nối hoặc nội dung trống.'));
     }
 
-    // Split logic based on WP blocks or H tags
-    $parts = preg_split('/(<!-- wp:heading.*?<\/h[1-6]>.*?<!-- \/wp:heading -->|<h[1-6][^>]*>.*?<\/h[1-6]>)/is', $content, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
+    // ── Strategy 1: split by <h2>/<h3> tags ─────────────────────────────────
+    $parts = preg_split('/(<h[1-6][^>]*>.*?<\/h[1-6]>)/is', $content, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
     $chapters = [];
-    $current_chapter_title = '';
+    $current_chapter_title   = '';
     $current_chapter_content = '';
     $count = 1;
 
     foreach ($parts as $part) {
         if (preg_match('/<h[1-6][^>]*>(.*?)<\/h[1-6]>/is', $part, $matches)) {
-            $text_title = strip_tags($matches[1]);
-            // Detect boundaries like "Chương 1", "Chương 02", etc.
+            $text_title = trim(strip_tags($matches[1]));
             if (preg_match('/(?:Chương|Chapter|Hồi)\s*\d+/iu', $text_title)) {
                 if (!empty(trim($current_chapter_content)) || !empty($current_chapter_title)) {
                     $chapters[] = array(
-                        'title' => $current_chapter_title ?: ("Chương " . $count),
+                        'title'   => $current_chapter_title ?: ('Chương ' . $count),
                         'content' => $current_chapter_content
                     );
                     $count++;
                 }
-                $current_chapter_title = trim($text_title);
+                $current_chapter_title   = $text_title;
                 $current_chapter_content = '';
                 continue;
             }
         }
         $current_chapter_content .= $part . "\n";
     }
-
-    // Push the final chunk
     if (!empty(trim($current_chapter_content)) || !empty($current_chapter_title)) {
         $chapters[] = array(
-            'title' => $current_chapter_title ?: ("Chương " . $count),
+            'title'   => $current_chapter_title ?: ('Chương ' . $count),
             'content' => $current_chapter_content
         );
     }
 
-    if (count($chapters) == 0 || (count($chapters) == 1 && empty($chapters[0]['title']))) {
-        wp_send_json_error(array('message' => 'Không tìm thấy thẻ Tiêu đề (Heading 2,3) nào chứa chữ "Chương" để cắt.'));
+    // ── Strategy 2 (fallback): scan plain text for "Chương N" (even with markdown #) ─
+    if (count($chapters) <= 1) {
+        $chapters = [];
+        $count    = 1;
+        $current_chapter_title   = '';
+        $current_chapter_content = '';
+
+        // Strip tags and markdown
+        $plain_text = wp_strip_all_tags($content);
+        $plain_text = str_replace(["\r\n", "\r"], "\n", $plain_text);
+        // Strip markdown heading markers
+        $plain_text = preg_replace('/^#{1,6}\s+/m', '', $plain_text);
+        $lines = explode("\n", $plain_text);
+
+        foreach ($lines as $line) {
+            $line = trim($line);
+            if (empty($line)) continue;
+
+            // Match: optional markdown # then "Chương N" with optional title
+            if (preg_match('/^#*\s*((?:Chương|Chapter|Hồi)\s*\d+[^\r\n]*)/iu', $line, $hm)) {
+                if (!empty(trim($current_chapter_content)) || !empty($current_chapter_title)) {
+                    $chapters[] = ['title' => $current_chapter_title ?: ('Chương ' . $count), 'content' => $current_chapter_content];
+                    $count++;
+                }
+                $current_chapter_title   = trim($hm[1]);
+                $current_chapter_content = '';
+            } else {
+                $current_chapter_content .= '<p>' . esc_html($line) . '</p>' . "\n";
+            }
+        }
+        if (!empty(trim($current_chapter_content)) || !empty($current_chapter_title)) {
+            $chapters[] = ['title' => $current_chapter_title ?: ('Chương ' . $count), 'content' => $current_chapter_content];
+        }
+    }
+
+    if (count($chapters) === 0) {
+        wp_send_json_error(array('message' => 'Không tìm thấy tiêu đề "Chương N" nào để tách. Hãy kiểm tra lại nội dung.'));
     }
 
     $created = 0;
@@ -739,13 +771,23 @@ function temply_studio_save_content() {
         wp_send_json_error(array('message' => 'Thiếu dữ liệu.'));
     }
 
-    // Convert plain-text story to clean HTML
+    // 1. Normalize Windows/Mac line endings
+    $raw_text = str_replace(["\r\n", "\r"], "\n", $raw_text);
+
+    // 2. Strip any HTML tags (browser contenteditable may send HTML)
+    $raw_text = wp_strip_all_tags($raw_text);
+
+    // 3. Strip markdown heading markers (# ## ### at line start)
+    $raw_text = preg_replace('/^#{1,6}\s+/m', '', $raw_text);
+
+    // 4. Convert plain text to clean HTML
     $lines = explode("\n", $raw_text);
     $html  = '';
     foreach ($lines as $line) {
         $line = trim($line);
         if (empty($line)) continue;
-        if (preg_match('/^(Chương\s+\d+[:\-–.]\s*.+)$/iu', $line)) {
+        // Match "Chương N" with optional separator and optional title
+        if (preg_match('/^(Chương\s+\d+(?:[:\-–.].*)?)\s*$/iu', $line)) {
             $html .= '<h2>' . esc_html($line) . '</h2>' . "\n";
         } else {
             $html .= '<p>' . esc_html($line) . '</p>' . "\n";
@@ -870,20 +912,32 @@ function temply_studio_scrape_url() {
             $title = trim(strip_tags($tm[1]));
         }
 
-        // Extract content using domain selectors
+        // Extract content using domain selectors (supports both #id and .class)
         $text = '';
         foreach ($domain_selectors as $selector) {
-            // Convert CSS selector to regex pattern (simple ID/class)
             if (strpos($selector, '#') === 0) {
-                $id = substr($selector, 1);
-                if (preg_match('/id="' . preg_quote($id, '/') . '"[^>]*>(.*?)(?=<div\s+id="|<footer|<\/main)/is', $html, $m)) {
+                // ID selector: <div id="...">
+                $id = preg_quote(substr($selector, 1), '/');
+                if (preg_match('/<[^>]+id=["\']' . $id . '["\'][^>]*>(.*?)<\/(?:div|section|article)>/is', $html, $m)) {
                     $text = strip_tags($m[1], '');
-                    $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-                    $text = preg_replace('/[ \t]+/', ' ', $text);
-                    $text = preg_replace('/\n{3,}/', "\n\n", $text);
-                    $text = trim($text);
+                } elseif (preg_match('/id=["\']' . $id . '["\'][^>]*>([\s\S]{200,}?)(?=<div(?:\s[^>]*)?\s+id="|<footer|<\/main|<\/body)/i', $html, $m)) {
+                    $text = strip_tags($m[1], '');
+                }
+            } elseif (strpos($selector, '.') === 0) {
+                // Class selector: <div class="...">
+                $cls = preg_quote(substr($selector, 1), '/');
+                if (preg_match('/<[^>]+class=["\'][^"\']*' . $cls . '[^"\']*["\'][^>]*>([\s\S]{200,}?)(?=<div(?:\s[^>]*)?\s+(?:id|class)="|<footer|<\/main|<\/body)/i', $html, $m)) {
+                    $text = strip_tags($m[1], '');
                 }
             }
+
+            if (!empty($text)) {
+                $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $text = preg_replace('/[ \t]+/', ' ', $text);
+                $text = preg_replace('/\n{3,}/', "\n\n", $text);
+                $text = trim($text);
+            }
+
             if (strlen($text) > 200) break;
         }
 
