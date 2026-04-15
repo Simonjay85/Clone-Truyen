@@ -835,7 +835,6 @@ $nonce = wp_create_nonce('temply_ai_nonce');
                     <button id="ss-btn-publish-now" style="padding:9px 12px;border-radius:8px;border:none;background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;">🚀 Đăng ngay</button>
                     <button id="ss-btn-schedule" style="padding:9px 12px;border-radius:8px;border:none;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;">📅 Lên lịch</button>
                 </div>
-                </div>
             </div>
 
             </div> <!-- /panel-create -->
