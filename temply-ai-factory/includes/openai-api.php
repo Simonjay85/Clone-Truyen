@@ -1480,30 +1480,44 @@ function temply_ajax_generate_next_chapter() {
  */
 add_action('temply_auto_pilot_cron_hook', 'temply_process_auto_pilot');
 function temply_process_auto_pilot() {
-    $config = get_option('temply_auto_pilot_queue_config', false);
+    set_time_limit(0); // Chống ngắt kịch bản lưng chừng do PHP timeout
+    global $wpdb;
+    
+    // Đọc trực tiếp từ DB để BỎ QUA MEMCACHED/REDIS CACHE (Tránh lấy nhầm State cũ)
+    $row = $wpdb->get_row("SELECT option_value FROM {$wpdb->options} WHERE option_name = 'temply_auto_pilot_queue_config' LIMIT 1");
+    if (!$row) return;
+    
+    $config = maybe_unserialize($row->option_value);
+    
     if (!$config || $config['status'] !== 'running' || empty($config['queue'])) {
         wp_clear_scheduled_hook('temply_auto_pilot_cron_hook');
         return;
     }
 
-    // Tìm Truyện đang làm dở (writing) hoặc chờ mổ (pending) KHÔNG bị khóa
-    $active_idx = -1;
-    $lock_key_assigned = '';
+    // KIỂM SOÁT RATE LIMIT (Bảo vệ API Google Free Tier & Token Limit / Phút)
+    if (get_transient('temply_ap_global_cooldown')) {
+        return; // Đang trong nhịp thở 20s/chương, bỏ qua tick cron này để kéo dãn phân bổ Token.
+    }
+
+    $max_concurrent = 1; // Rút xuống TỐI ĐA 1 truyện cày tại một thời điểm để tránh burst token API
+    $running_count = 0;
     $has_pending = false;
+
+    // 1. Đếm số luồng đang bóc lột API (đang có lock)
     foreach($config['queue'] as $i => $item) {
         if ($item['status'] === 'draft_outline' || $item['status'] === 'pending' || $item['status'] === 'writing') {
             $has_pending = true;
             $lock_key = 'temply_ap_lock_' . ($item['uuid'] ?? md5($item['prompt']));
-            if (get_transient($lock_key)) {
-                continue; // Process khác đang cày bộ này, bỏ qua tìm bộ khác
+            
+            // Check atomic lock & fallback transient
+            $lock_time = get_option($lock_key);
+            if (get_transient($lock_key) || ($lock_time && (time() - intval($lock_time) <= 400))) {
+                $running_count++;
             }
-            $active_idx = $i;
-            $lock_key_assigned = $lock_key;
-            break; // Tìm thấy thì dừng
         }
     }
 
-    // Nếu thực sự đẻ xong tất cả (Không còn item nào pending)
+    // Nếu thực sự đẻ xong tất cả (Không còn item nào cần chạy)
     if (!$has_pending) {
         $config['status'] = 'completed';
         update_option('temply_auto_pilot_queue_config', $config);
@@ -1511,26 +1525,74 @@ function temply_process_auto_pilot() {
         return;
     }
 
-    // Nếu vẫn còn pending nhưng HỆ THỐNG ĐANG BỊ KHÓA TOÀN BỘ (Do các Cron khác đang giành chạy)
-    if ($active_idx === -1) {
-        return; // Thoát nhịp này, chờ nhịp Cron kế tiếp (KHÔNG THỂ CLEAR HOOK)
+    // 2. Chặn đánh spam: Nếu đã có đủ 3 máy cày đang chạy, nhịp Cron này tự sát để không đẻ thêm
+    if ($running_count >= $max_concurrent) {
+        return; 
     }
 
-    // Khóa tiến trình 90s để chống Race Condition, nhưng không cản trở tiến trình tiếp theo quá lâu
-    set_transient($lock_key_assigned, 1, 90);
+    // 3. Tìm 1 mỏ trống chưa khóa để cày tiếp (sử dụng ATOMIC LOCK)
+    $active_idx = -1;
+    $lock_key_assigned = '';
+    foreach($config['queue'] as $i => $item) {
+        if ($item['status'] === 'draft_outline' || $item['status'] === 'pending' || $item['status'] === 'writing') {
+            $lock_key = 'temply_ap_lock_' . ($item['uuid'] ?? md5($item['prompt']));
+            
+            $lock_time = get_option($lock_key);
+            $is_locked = get_transient($lock_key) || ($lock_time && (time() - intval($lock_time) <= 400));
+
+            if (!$is_locked) {
+                // Thử chiếm cờ Atomic Lock Database để block triệt để Race Condition.
+                // Tránh tình trạng 2 Cron chạy cùng lúc vồ chung 1 truyệt và đẻ ra Bản sao.
+                if ($lock_time) delete_option($lock_key);
+                
+                if (add_option($lock_key, time(), '', 'no')) {
+                    $active_idx = $i;
+                    $lock_key_assigned = $lock_key;
+                    break;
+                }
+            }
+        }
+    }
+
+    // Tình huống dự phòng: Nếu không tìm thấy (do vừa chạy xong hoặc kẹt)
+    if ($active_idx === -1) {
+        return;
+    }
+
+    // Fallback khóa hệ thống tạm thời để trói những script cũ đang đọc transient
+    set_transient($lock_key_assigned, 1, 400);
+
+    // Kích hoạt phanh điện tử Rate-Limiter: Khóa toàn hệ thống trong 20 giây tới (Chỉ 3 API Request/Phút tối đa)
+    set_transient('temply_ap_global_cooldown', 1, 20);
 
     // Tham chiếu để thay đổi update lưu lại
     $curr_item = &$config['queue'][$active_idx];
     $model = 'gemini'; 
 
     // CHỐNG GHI ĐÈ XÓA TAY BẰNG LƯU AN TOÀN
-    $save_progress = function() use (&$curr_item) {
-        $latest = get_option('temply_auto_pilot_queue_config', false);
+    $save_progress = function() use (&$curr_item, $lock_key_assigned) {
+        global $wpdb;
+        $row2 = $wpdb->get_row("SELECT option_value FROM {$wpdb->options} WHERE option_name = 'temply_auto_pilot_queue_config' LIMIT 1");
+        $latest = $row2 ? maybe_unserialize($row2->option_value) : false;
+        
         if ($latest && isset($latest['queue'])) {
-            // Khớp chính xác kịch bản (Vì nếu user xóa 1 phần tử giữa chừng, thứ tự Index bị đổi)
+            // Khớp chính xác kịch bản bằng UUID hoặc Fallback bằng Prompt
             foreach($latest['queue'] as $i => $q) {
-                if ($q['prompt'] === $curr_item['prompt'] && $q['title'] === $curr_item['title']) {
-                    $latest['queue'][$i] = $curr_item;
+                $match = false;
+                if (!empty($q['uuid']) && !empty($curr_item['uuid'])) {
+                    if ($q['uuid'] === $curr_item['uuid']) $match = true;
+                } else {
+                    // Fallback nếu rủi ro thiếu UUID (nhưng không xài Title nữa vì Title bị đổi ở Stage 0)
+                    if ($q['prompt'] === $curr_item['prompt']) $match = true;
+                }
+
+                if ($match) {
+                    if ($curr_item['status'] === 'completed') {
+                        unset($latest['queue'][$i]);
+                        $latest['queue'] = array_values($latest['queue']);
+                    } else {
+                        $latest['queue'][$i] = $curr_item;
+                    }
                     update_option('temply_auto_pilot_queue_config', $latest);
                     return;
                 }
@@ -1545,6 +1607,7 @@ function temply_process_auto_pilot() {
         $raw_prompt = $curr_item['prompt'] ?? '';
         $hint_genre = $curr_item['genre'] ?? '';
         $hint_tone  = $curr_item['tone'] ?? '';
+        $hint_title = $curr_item['title'] ?? '';
 
         $target_chaps = isset($curr_item['target']) ? intval($curr_item['target']) : 25;
         $final_chap_start = max(1, $target_chaps - 2);
@@ -1554,7 +1617,7 @@ QUY TẮC:
 - Nhân vật & Bối cảnh BẮT BUỘC phải mang đậm nét văn hóa Châu Á (Việt Nam, Trung Quốc...). 
 - Nghiêm cấm dùng tên Phương Tây/Tiếng Anh. Tên nhân vật, tổ chức, bản đồ phải thuần Việt hoặc Hán Việt.
 - PACING CHẬM & LÂU DÀI (SLOW-BURN): Truyện này ĐƯỢC YÊU CẦU DÀI ĐÚNG $target_chaps CHƯƠNG. Hãy dàn trải mâu thuẫn ra thật dài. KHÔNG ĐƯỢC lật bài ngửa hoặc hạ gục TRÙM CUỐI ngay từ nửa đầu truyện. Kéo dài sự chèn ép, và chỉ cho phép nhân vật chính giải quyết mâu thuẫn tột đỉnh ở những chương cuối cùng (Chương $final_chap_start - $target_chaps).";
-        $usr = "Ý TƯỞNG CỐT LÕI:\n$raw_prompt\n\nThể loại: $hint_genre\nGiọng văn: $hint_tone\n\nYÊU CẦU JSON ĐẦU RA:\n{\n  \"title\": \"Tên truyện (Giật gân, hấp dẫn, độ dài vừa phải)\",\n  \"synopsis\": \"Tóm tắt/Văn án truyện CỤC KỲ GIẬT GÂN, gây sốc và khơi gợi tò mò tột độ để người đọc lao vào ngay. Ngắn gọn dưới 100 chữ.\",\n  \"seo_keyword\": \"1 đến 2 từ khóa ngắn (Ví dụ: Trọng sinh, Báo thù, Huyền huyễn) để làm Focus Keyword cho SEO.\",\n  \"seo_desc\": \"Đoạn mô tả ngắn dưới 160 ký tự, ưu tiên có chứa từ khóa ở trên vào thật tự nhiên để tối ưu SEO Rank Math.\",\n  \"world\": \"Bối cảnh thế giới chi tiết (Luật lệ, quy tắc, gia tộc, bản đồ mang đậm nét Châu Á...)\",\n  \"chars\": \"Tuyến nhân vật chính (Ngoại hình, tính cách, vũ khí/khả năng). Tên nhân vật thuần Châu Á.\",\n  \"script\": \"Dàn ý sự kiện chính của toàn bộ tác phẩm từ mở đầu đến kết thúc. Phải rải đều biến cố, KHÔNG ĐƯỢC để trùm cuối bay màu sớm.\"\n}";
+        $usr = "Ý TƯỞNG CỐT LÕI (Xoay quanh cái tên: $hint_title):\n$raw_prompt\n\nThể loại: $hint_genre\nGiọng văn: $hint_tone\n\nYÊU CẦU JSON ĐẦU RA:\n{\n  \"title\": \"Dựa trên tựa đề gốc là '$hint_title', giữ nguyên hoặc hãy làm cho tựa đề dài hơn, giật gân, khốc liệt và cực kỳ hấp dẫn (clickbait).\",\n  \"synopsis\": \"Tóm tắt/Văn án truyện DÀI (khoảng 3-4 đoạn, tối thiểu 300 chữ), CỰC KỲ GIẬT GÂN. Bắt buộc chèn các Hooks (Điểm nhấn chấn động), đặt ra hàng loạt câu hỏi bí ẩn khơi gợi sự tò mò tột độ. Sử dụng thẻ <p> để xuống dòng cho dễ đọc.\",\n  \"seo_keyword\": \"1 đến 2 từ khóa ngắn (Ví dụ: Trọng sinh, Báo thù, Huyền huyễn) để làm Focus Keyword cho SEO.\",\n  \"seo_desc\": \"Đoạn mô tả ngắn dưới 160 ký tự, ưu tiên có chứa từ khóa ở trên vào thật tự nhiên để tối ưu SEO Rank Math.\",\n  \"world\": \"Bối cảnh thế giới chi tiết (Luật lệ, quy tắc, gia tộc, bản đồ mang đậm nét Châu Á...)\",\n  \"chars\": \"Tuyến nhân vật chính (Ngoại hình, tính cách, vũ khí/khả năng). Tên nhân vật thuần Châu Á.\",\n  \"script\": \"Dàn ý sự kiện chính của toàn bộ tác phẩm từ mở đầu đến kết thúc. Phải rải đều biến cố, KHÔNG ĐƯỢC để trùm cuối bay màu sớm.\",\n  \"reviews\": [\n    \"Tên Độc Giả 1|Bình luận quá khích, khen ngợi cốt truyện đỉnh cao, hóng siêu phẩm.\",\n    \"Tên Độc Giả 2|Bình luận sắc sảo, tò mò về nhân vật chính.\",\n    \"Tên Độc Giả 3|Đánh giá 5 sao cho mô-típ.\"\n  ] // Yêu cầu sinh ĐÚNG 5 cái bình luận mồi (Tên | Nội dung bình luận)\n}";
         
         $ai_data = temply_call_ai($sys, $usr, 0.7, $model);
         if(!is_wp_error($ai_data)) {
@@ -1569,6 +1632,7 @@ QUY TẮC:
                 $curr_item['world']  = sanitize_textarea_field($parsed['world'] ?? '');
                 $curr_item['chars']  = sanitize_textarea_field($parsed['chars'] ?? '');
                 $curr_item['script'] = sanitize_textarea_field($parsed['script'] ?? '');
+                $curr_item['reviews'] = is_array($parsed['reviews'] ?? null) ? $parsed['reviews'] : [];
                 $curr_item['status'] = 'pending'; // Nâng lên pending để chờ sinh truyện
                 $save_progress();
             } else {
@@ -1596,6 +1660,25 @@ QUY TẮC:
         $world = $curr_item['world'] ?? '';
         $script = $curr_item['script'] ?? '';
         $chars = $curr_item['chars'] ?? '';
+        $curr_uuid = $curr_item['uuid'] ?? '';
+        
+        // KIỂM TRA CHỐNG LẶP DO LỖI CACHE
+        if (!empty($curr_uuid)) {
+            $existing = get_posts([
+                'post_type'      => 'truyen',
+                'meta_key'       => '_temply_ai_uuid',
+                'meta_value'     => $curr_uuid,
+                'fields'         => 'ids',
+                'posts_per_page' => 1
+            ]);
+            if (!empty($existing)) {
+                // Post đã tồn tại do 1 tiến trình trước đó đã chèn (nhưng queue chưa kịp Update UI). Bỏ qua chèn mới.
+                $curr_item['truyen_id'] = $existing[0];
+                $curr_item['status'] = 'writing';
+                $save_progress();
+                return;
+            }
+        }
         
         // Tất cả Data bối cảnh đã có sẵn từ lưới Staging, không cần gọi AI rặn nữa! Đỡ được 20s.
         $truyen_id = wp_insert_post([
@@ -1608,6 +1691,8 @@ QUY TẮC:
         ]);
         
         if (is_wp_error($truyen_id)) return;
+
+        update_post_meta($truyen_id, '_temply_ai_uuid', $curr_uuid);
 
         update_post_meta($truyen_id, '_temply_ai_genre', $genre);
         update_post_meta($truyen_id, '_temply_ai_tone', $tone);
@@ -1636,6 +1721,28 @@ QUY TẮC:
             'headline' => $title,
             'description' => $seo_text
         ));
+
+        // Bơm Comment Nhử Mồi vào trang Truyện chính
+        if (!empty($curr_item['reviews']) && is_array($curr_item['reviews'])) {
+            foreach ($curr_item['reviews'] as $r) {
+                $split = explode('|', $r, 2);
+                if (count($split) === 2) {
+                    $author = trim(wp_strip_all_tags($split[0]));
+                    $content = trim(wp_strip_all_tags($split[1]));
+                    if (!empty($author) && !empty($content)) {
+                        wp_insert_comment([
+                            'comment_post_ID'      => $truyen_id,
+                            'comment_author'       => $author,
+                            'comment_author_email' => sanitize_title($author) . mt_rand(10,99) . '@yopmail.com',
+                            'comment_content'      => $content,
+                            'comment_type'         => 'comment',
+                            'comment_approved'     => 1,
+                            'comment_date'         => date('Y-m-d H:i:s', current_time('timestamp') - mt_rand(60, 86400))
+                        ]);
+                    }
+                }
+            }
+        }
 
         // Đổi trang thái Hàng Đợi -> Writing (Sẽ viết ở nhịp sau)
         $curr_item['status'] = 'writing';
@@ -1704,8 +1811,10 @@ QUY TẮC:
 
     // A. BRAINSTORM (Haiku / Gemini)
     $br_sys = "Bạn là THE ARCHITECT - Bậc thầy xây dựng cốt truyện kịch tính nảy lửa. 
-Nhiệm vụ: Nghĩ ra Dàn Ý cho Chương $next_chap_num.
+Nhiệm vụ: Nghĩ ra Dàn Ý chi tiết cho MỘT PHÂN CẢNH DUY NHẤT của Chương $next_chap_num.
 YÊU CẦU BẮT BUỘC: 
+- TRUNG THÀNH VỚI NHÂN VẬT: Bắt buộc sử dụng CHÍNH XÁC tên các nhân vật trong phần [Nhân vật]. Cấm tuyệt đối đẻ ra nhân vật chính mới hoặc gọi sai tên.
+- RÚT PHANH (PACING SIÊU CHẬM): Chỉ được phép triển khai 1% của toàn bộ Kịch Bản. Cấm chạy nước rút. Chương này chỉ tập trung vào 1 sự kiện nhỏ, 1 góc khuất, hoặc 1 cuộc đối thoại gây chia rẽ. 
 - Phải có RỦI RO (Stakes) và XUNG ĐỘT (Conflict). Tuyệt đối không để nhân vật ngồi im tâm sự nhẹ nhàng, không viết kiểu tản văn hay trị liệu tâm lý. 
 - Phải có biến cố, hành động hoặc bí mật được hé lộ gây rúng động, bám sát sát điệu thể loại.
 Chỉ trả về 1 đoạn 100 chữ tóm tắt diễn biến. KHÔNG JSON.";
@@ -1713,16 +1822,19 @@ Chỉ trả về 1 đoạn 100 chữ tóm tắt diễn biến. KHÔNG JSON.";
     $next_summary = temply_call_ai($br_sys, $br_user, 0.9, $model);
     if(is_wp_error($next_summary)) {
         error_log('TEMPLY AUTO PILOT ERROR: Lỗi Brainstorm ' . $next_summary->get_error_message());
+        $curr_item['status'] = 'error';
+        $curr_item['error_log'] = 'Lỗi Brainstorm (API Timeout hoặc Lỗi Tải): ' . $next_summary->get_error_message();
+        $save_progress();
         return; // Dừng cron lần này, chờ lần sau
     }
 
     // B. RẶN CHỮ
-    $system_prompt = "VAI TRÒ: THE GHOSTWRITER. Bạn là Tiểu Thuyết Gia Hàng Đầu. Viết tiếp Chương $next_chap_num dựa trên tóm tắt. Viết dài tối thiểu 800 chữ.
-LUẬT BẮT BUỘC VỀ VĂN PHONG:
-- Cốt truyện phải logic, liên kết chặt chẽ với tên truyện và thể loại. Hành động dứt khoát, âm mưu sâu sắc, tuyệt đối không loanh quanh tự kỷ.
-- Nếu là trinh thám/hành động, phải có máu, sự đen tối và rượt đuổi. Nếu là gia đấu/cẩu huyết, phải có đấu trí và lật lọng. 
-- CHÓT VÓT CAO TRÀO: Không bao giờ để mọi thứ trôi qua êm đềm. Giải quyết 1 khó khăn thì phải nảy sinh tiểu xảo, bẫy rập mới.
-- SLOW-BURN (QUAN TRỌNG): Xây dựng nhịp độ vả mặt TỪ TỪ. Phản diện phải tàn ác, thông minh và có thế lực chèn ép liên tục. Nam/Nữ chính chỉ giải quyết từng biến cố nhỏ, bảo mật thân phận, KHÔNG lật bài ngửa hay dùng quyền lực/sức mạnh lớn nhất ngay từ những tập đầu. Kéo dài sự cay cú để độc giả phải thèm khát đọc tập tiếp theo!
+    $system_prompt = "VAI TRÒ: THE GHOSTWRITER. Bạn là Tiểu Thuyết Gia Hàng Đầu. Viết tiếp Chương $next_chap_num dựa trên tóm tắt. Cố gắng viết dài tối thiểu 1000 - 1500 chữ.
+LUẬT BẮT BUỘC VỀ VĂN PHONG VÀ CỐT TRUYỆN:
+- TÊN NHÂN VẬT LÀ CỐT TỦY: Bắt buộc gọi đúng tên các nhân vật từ Dàn ý/Bối cảnh. Phải nhắc đến họ ngay từ đoạn đầu tiên để neo giữ mạch truyện. Việc tự chế nhân vật mới (hallucination) là TỘI ÁC.
+- ĐẠP PHANH (SLOW-BURN CỰC ĐỘ): Chỉ được phép phát triển 1 phân cảnh/tình huống nhỏ trong thời gian thực. Không tua nhanh thời gian (skip timezone). MIÊU TẢ SÂU vào ánh mắt, nội tâm, tiếng thở, tiếng mưa... Không cho phép giải quyết mâu thuẫn chính sớm.
+- CHÓT VÓT CAO TRÀO: Không bao giờ để mọi thứ trôi qua êm đềm. Xong một cảnh phải ném vào một cái cliffhanger (ẩn số) để làm mồi cho chương sau.
+- CẤM TỰ HỦY: Phản diện phải gian xảo, thông minh, không được bị hạ gục hay chịu thua ngay lúc này. Nam/nữ chính phải luôn trong thế bị chèn ép, nghi ngờ, phải vận dụng não bộ để luồn lách.
 FORMAT BẮT BUỘC CHÍNH XÁC (KHÔNG THỪA KHÔNG THIẾU):
 TITLE: [Tên chương ấn tượng, đầy bí ẩn]
 <p>Nội dung HTML</p>
@@ -1739,7 +1851,8 @@ User2|hóng
     $response = temply_call_ai_quality($system_prompt, $user_prompt, 0.9, $model);
     if(is_wp_error($response)) {
         error_log('TEMPLY AUTO PILOT ERROR: Lỗi Viết nội dung ' . $response->get_error_message());
-        $curr_item['status'] = 'failed';
+        $curr_item['status'] = 'error';
+        $curr_item['error_log'] = 'Lỗi Viết AI (Timeout hoặc Lỗi Mạng): ' . $response->get_error_message();
         $save_progress();
         return;
     }

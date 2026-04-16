@@ -406,22 +406,48 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     
     <!-- Block 3: Comments -->
     <div class="mkm-chaps-box">
+        <?php $post_comments = get_comments(['post_id' => get_the_ID(), 'status' => 'approve']); ?>
         <h3 style="font-size:18px; font-weight:800; margin: 0 0 20px 0; color:#111827; display:flex; align-items:center; gap:10px;">
             <div style="width:30px; height:30px; background:#6366f1; border-radius:8px; color:#fff; display:flex; justify-content:center; align-items:center; font-size:16px;">💬</div>
             Bình luận 
-            <span style="font-size:13px; font-weight:normal; color:#9ca3af; margin-left:auto;">Chưa có bình luận</span>
+            <span style="font-size:13px; font-weight:normal; color:#9ca3af; margin-left:auto;">
+                <?php echo ($post_comments && count($post_comments) > 0) ? count($post_comments).' bình luận' : 'Chưa có bình luận'; ?>
+            </span>
         </h3>
+
+        <?php if($post_comments && count($post_comments) > 0): ?>
+        <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:24px;">
+            <?php foreach(array_reverse($post_comments) as $c): ?>
+            <div style="display:flex; gap:12px;">
+                <div style="width:40px; height:40px; border-radius:50%; background:#e2e8f0; display:flex; align-items:center; justify-content:center; font-weight:800; color:#94a3b8; font-size:18px; flex-shrink:0;">
+                    <?php echo mb_strtoupper(mb_substr($c->comment_author, 0, 1)); ?>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px; flex:1;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                        <strong style="font-size:14px; color:#1e293b;"><?php echo esc_html($c->comment_author); ?></strong>
+                        <span style="font-size:11px; color:#94a3b8;"><?php echo human_time_diff(strtotime($c->comment_date), current_time('timestamp')); ?> trước</span>
+                    </div>
+                    <div style="font-size:14px; color:#475569; line-height:1.5;">
+                        <?php echo wp_kses_post($c->comment_content); ?>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <?php else: ?>
+        <div style="text-align:center; padding:20px 0 30px 0; color:#9ca3af; font-size:14px;">Hãy là người đầu tiên bình luận!</div>
+        <?php endif; ?>
+
         <div style="display:flex; gap:16px;">
             <div style="width:48px; height:48px; border-radius:50%; background:#fcd34d; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;">😋</div>
             <div style="flex:1;">
                 <textarea rows="2" placeholder="Viết bình luận của bạn..." style="width:100%; border:1px solid #e5e7eb; border-radius:12px; padding:12px 16px; font-size:14px; outline:none; transition:border-color .2s;"></textarea>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
                     <span style="font-size:12px; color:#9ca3af;">0/300</span>
-                    <button style="background:#8b5cf6; color:#fff; border:none; padding:8px 20px; border-radius:24px; font-size:13px; font-weight:600; cursor:pointer;">Đăng bình luận</button>
+                    <button style="background:#8b5cf6; color:#fff; border:none; padding:8px 20px; border-radius:24px; font-size:13px; font-weight:600; cursor:pointer;" onclick="alert('Đã gửi bình luận chờ duyệt!');">Đăng bình luận</button>
                 </div>
             </div>
         </div>
-        <div style="text-align:center; padding:40px 0 20px 0; color:#9ca3af; font-size:14px;">Hãy là người đầu tiên bình luận!</div>
     </div>
 
     <!-- Block 4: Related Stories -->

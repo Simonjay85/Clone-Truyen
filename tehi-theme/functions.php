@@ -227,6 +227,13 @@ function tehi_vintage_admin_styles() {
 }
 add_action('admin_enqueue_scripts', 'tehi_vintage_admin_styles');
 
+// Apply the same admin bar style to the frontend if the admin bar is showing
+add_action('wp_enqueue_scripts', function() {
+    if ( is_admin_bar_showing() ) {
+        tehi_vintage_admin_styles();
+    }
+});
+
 /**
  * 2.1. Nạp Giao diện màn hình Đăng nhập (Login screen)
  */
@@ -987,7 +994,7 @@ function temply_studio_brainstorm_prompts() {
 
     $ai_prompt .= "NHIỆM VỤ TỐI THƯỢNG:\n";
     $ai_prompt .= "Nhiệm vụ của bạn là nghiên cứu các THỊ HIẾU VÀ MÔ-TÍP ĐANG THỊNH HÀNH NHẤT ở Châu Á (như: Xuyên không, Hệ thống, Tổng tài, Nữ cường, Võng du...).\n";
-    $ai_prompt .= "BẮT BUỘC SÁNG TẠO ĐA DẠNG TUYỆT ĐỐI: Dù chung một Ý tưởng Cốt lõi, nhưng MỖI kịch bản phải là một vũ trụ HOÀN TOÀN KHÁC NHAU. KHÔNG ĐƯỢC lặp lại tên nhân vật (ví dụ: nếu dàn 1 dùng tên Chiêu Đệ, thì dàn 2 phải tên khác hẳn, dàn 3 bối cảnh Tây Âu...). KHÔNG ĐƯỢC lặp lại cùng một mô-típ cốt truyện. Phải liên tục thay đổi Góc Nhìn, Thời Đại, Tuổi Tác, Tên Gọi, Hoàn Cảnh Xuất Thân để {$count} kịch bản này là {$count} kiệt tác riêng biệt.\n";
+    $ai_prompt .= "BẮT BUỘC SÁNG TẠO ĐA DẠNG TUYỆT ĐỐI: Dù chung một Ý tưởng Cốt lõi, nhưng MỖI kịch bản phải là một vũ trụ HOÀN TOÀN KHÁC NHAU. KHÔNG ĐƯỢC lặp lại tên nhân vật (ví dụ: dàn 1 tên Mai, thì dàn 2 tên Lan, dàn 3 bối cảnh Cổ Đại, dàn 4 bối cảnh Đô Thị...). TUYỆT ĐỐI CHỈ SỬ DỤNG TÊN (VIỆT NAM/TRUNG QUỐC) VÀ BỐI CẢNH CHÂU Á (KHÔNG dùng tên phương Tây, KHÔNG dùng bối cảnh Châu Âu). Phải liên tục thay đổi Góc Nhìn, Thời Đại, Tuổi Tác, Tên Gọi, Hoàn Cảnh Xuất Thân để {$count} kịch bản này là {$count} kiệt tác riêng biệt.\n";
     $ai_prompt .= "Mỗi kịch bản dài khoảng 3-5 câu: Mở đầu bằng thiết lập hấp dẫn, xây dựng kịch tính và chốt bằng mâu thuẫn khốc liệt.\n";
     $ai_prompt .= "BẮT BUỘC trả về CHỈ MỘT MẢNG JSON gồm {$count} Object (KHÔNG TEXT THỪA, KHÔNG GIẢI THÍCH).\n";
     $ai_prompt .= "Ví dụ định dạng trả về:\n";
@@ -1050,6 +1057,7 @@ function temply_studio_batch_autopilot_push() {
 
         // Trạng thái 'draft_outline' để auto-pilot tự động gọi AI phân tích Dàn ý & Nhân vật ngầm!
         $config['queue'][]  = [
+            'uuid'            => wp_generate_uuid4(),
             'status'          => 'draft_outline', 
             'prompt'          => $p_prompt,
             'title'           => $p_title,
@@ -1145,6 +1153,27 @@ function temply_studio_evaluate_prompts() {
     wp_send_json_success(array(
         'ai_sys_prompt' => $sys,
         'ai_usr_prompt' => $usr,
+        'gemini_key'    => $gemini_key
+    ));
+}
+
+// ==========================================
+// STORY STUDIO: Cải Thiện Kịch Bản (AI Enhance)
+// ==========================================
+add_action('wp_ajax_temply_studio_improve_prompt', 'temply_studio_improve_prompt');
+function temply_studio_improve_prompt() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $sys = "Bạn là Bậc Thầy Kịch Bản. Hãy nhận đoạn kịch bản do Lò vớt ra sau đây và tái cấu trúc nó thành phiên bản KỊCH TÍNH, HẤP DẪN, và ĐỈNH CAO hơn gấp 10 lần.
+YÊU CẦU:
+- Không viết thành truyện chữ, chỉ viết tóm tắt diễn biến (outline).
+- Độ dài vừa phải, súc tích. Tôn trọng thể loại và chủ đề ban đầu.
+- Trả về ĐÚNG 1 ĐOẠN VĂN THEO TEXT THUẦN TÚY, không sinh JSON, không kèm định dạng Markdown hay lời chào.";
+    
+    $gemini_key = tehi_get_gemini_key();
+    
+    wp_send_json_success(array(
+        'ai_sys_prompt' => $sys,
         'gemini_key'    => $gemini_key
     ));
 }
@@ -1415,4 +1444,77 @@ function temply_studio_autodetect() {
         'genres' => array_slice((array)$data['genres'], 0, 3),
         'tone'   => isset($data['tone']) ? $data['tone'] : 'lãng mạn'
     ));
+}
+
+// ==========================================
+// AUTO PILOT DASHBOARD WIDGET
+// ==========================================
+function tehi_register_autopilot_dashboard_widget() {
+    wp_add_dashboard_widget(
+        'tehi_autopilot_dashboard_widget', 
+        '🚀 Trạm Giám Sát Auto-Pilot', 
+        'tehi_render_autopilot_dashboard_widget'
+    );
+}
+add_action('wp_dashboard_setup', 'tehi_register_autopilot_dashboard_widget');
+
+function tehi_render_autopilot_dashboard_widget() {
+    $config_raw = get_option('temply_auto_pilot_queue_config');
+    $config = $config_raw ? maybe_unserialize($config_raw) : null;
+    $queue = isset($config['queue']) ? $config['queue'] : [];
+    
+    $published_count = wp_count_posts('truyen')->publish;
+
+    echo '<div style="background:#1d2327; color:#fff; padding:16px; border-radius:0 0 4px 4px; margin:-12px; max-height: 400px; overflow-y:auto; box-sizing:border-box;">';
+    
+    echo '<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:12px; margin-bottom:16px;">';
+    echo '<div><strong style="color:#10b981; font-size:12px;">Đã xuất bản:</strong> <span style="font-size:18px; font-weight:800; color:#fff; display:block;">' . intval($published_count) . ' bộ</span></div>';
+    echo '<div style="text-align:right;"><strong style="color:#a5b4fc; font-size:12px;">Đang nằm Lò:</strong> <span style="font-size:18px; font-weight:800; color:#fff; display:block;">' . count($queue) . ' truyện</span></div>';
+    echo '</div>';
+
+    if (empty($queue)) {
+        echo '<div style="padding:40px 0; text-align:center; color:#9ca3af; font-size:13px;">Lò ấp Auto-Pilot đang trống.<br><br>Hãy vào <strong style="color:#a5b4fc;">Story Studio</strong> ở trang chủ để đẩy thêm kịch bản vào chờ cày chữ tự động nhé!</div>';
+    } else {
+        foreach ($queue as $idx => $q) {
+            $target = isset($q['target_chapters']) ? intval($q['target_chapters']) : 20;
+            $left = isset($q['chapters_left']) ? intval($q['chapters_left']) : $target;
+            $done = max(0, $target - $left);
+            $pct = floor(($done / max(1, $target)) * 100);
+            
+            $statusColor = '#94a3b8';
+            $statusText = isset($q['status']) ? $q['status'] : 'Lỗi';
+            
+            if($statusText === 'draft_outline') { 
+                $statusColor = '#f59e0b'; $statusText = 'Đang xếp Dàn Ý'; 
+            } else if($statusText === 'writing') { 
+                $statusColor = '#10b981'; $statusText = 'Đang Cày Chữ'; 
+            } else if($statusText === 'pending') { 
+                $statusColor = '#3b82f6'; $statusText = 'Đang chờ'; 
+            } else if($statusText === 'error' || $statusText === 'failed') {
+                $statusColor = '#ef4444'; 
+                $statusText = !empty($q['error_log']) ? substr($q['error_log'], 0, 30).'...' : 'Lỗi không xác định'; 
+            }
+
+            $title = !empty($q['title']) ? esc_html($q['title']) : 'Sáng Tác Chờ Tên';
+            $genre = !empty($q['genre']) ? esc_html($q['genre']) : 'Chưa định hình';
+            $idx_display = $idx + 1;
+            
+            echo '<div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:12px; margin-bottom:12px; display:flex; gap:12px; align-items:center;">';
+            echo '<div style="width:36px; height:36px; background:rgba(79,70,229,0.2); color:#a5b4fc; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;">#'.$idx_display.'</div>';
+            echo '<div style="flex:1; min-width:0;">'; 
+            echo '<div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">'.$title.'</div>';
+            echo '<div style="display:flex; gap:6px; font-size:11px; margin-bottom:8px; flex-wrap:wrap; align-items:center;">';
+            echo '<span style="background:rgba(255,255,255,0.1); color:'.$statusColor.'; padding:2px 6px; border-radius:12px; font-weight:bold;">'.$statusText.'</span>';
+            echo '<span style="background:rgba(255,255,255,0.1); color:#cbd5e1; padding:2px 6px; border-radius:12px; white-space:nowrap;">'.$genre.'</span>';
+            echo '</div>';
+            echo '<div style="background:rgba(0,0,0,0.5); height:6px; border-radius:3px; overflow:hidden; position:relative;">';
+            echo '<div style="background:linear-gradient(90deg, #4f46e5, #ec4899); position:absolute; top:0; left:0; bottom:0; width:'.$pct.'%;"></div>';
+            echo '</div>';
+            echo '<div style="font-size:10px; color:#cbd5e1; margin-top:4px; text-align:right;">Tiến độ: '.$done.'/'.$target.' ('.$pct.'%)</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+    }
+
+    echo '</div>'; 
 }

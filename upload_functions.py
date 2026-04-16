@@ -1,4 +1,5 @@
 import ftplib
+import urllib.request
 
 try:
     ftp = ftplib.FTP("51.79.53.190")
@@ -9,7 +10,8 @@ try:
     with open("tehi-theme/functions.php", 'rb') as f:
         ftp.storbinary("STOR functions.php", f)
         
-    print("✓ Upload functions.php thành công!")
+    print(f"✓ Upload thành công functions.php")
     ftp.quit()
+
 except Exception as e:
     print("Lỗi:", e)
