@@ -1486,22 +1486,38 @@ function temply_process_auto_pilot() {
         return;
     }
 
-    // Tìm Truyện đang làm dở (writing) hoặc chờ mổ (pending)
+    // Tìm Truyện đang làm dở (writing) hoặc chờ mổ (pending) KHÔNG bị khóa
     $active_idx = -1;
+    $lock_key_assigned = '';
+    $has_pending = false;
     foreach($config['queue'] as $i => $item) {
         if ($item['status'] === 'draft_outline' || $item['status'] === 'pending' || $item['status'] === 'writing') {
+            $has_pending = true;
+            $lock_key = 'temply_ap_lock_' . ($item['uuid'] ?? md5($item['prompt']));
+            if (get_transient($lock_key)) {
+                continue; // Process khác đang cày bộ này, bỏ qua tìm bộ khác
+            }
             $active_idx = $i;
+            $lock_key_assigned = $lock_key;
             break; // Tìm thấy thì dừng
         }
     }
 
-    // Nếu xong hết cmnr
-    if ($active_idx === -1) {
+    // Nếu thực sự đẻ xong tất cả (Không còn item nào pending)
+    if (!$has_pending) {
         $config['status'] = 'completed';
         update_option('temply_auto_pilot_queue_config', $config);
         wp_clear_scheduled_hook('temply_auto_pilot_cron_hook');
         return;
     }
+
+    // Nếu vẫn còn pending nhưng HỆ THỐNG ĐANG BỊ KHÓA TOÀN BỘ (Do các Cron khác đang giành chạy)
+    if ($active_idx === -1) {
+        return; // Thoát nhịp này, chờ nhịp Cron kế tiếp (KHÔNG THỂ CLEAR HOOK)
+    }
+
+    // Khóa tiến trình 90s để chống Race Condition, nhưng không cản trở tiến trình tiếp theo quá lâu
+    set_transient($lock_key_assigned, 1, 90);
 
     // Tham chiếu để thay đổi update lưu lại
     $curr_item = &$config['queue'][$active_idx];

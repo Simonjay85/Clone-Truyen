@@ -1,23 +1,26 @@
 import urllib.request
 import re
 
-urls = [
-    "https://doctieuthuyet.com/chuong/chuong-2-luoi-bay-tien-bac-va-cu-go-nhe-kinh-hoang/",
-    "https://doctieuthuyet.com/chuong/chuong-3-tieng-tho-dai-cua-thuong-de-khi-phap-luat-hoa-tro-he/",
-    "https://doctieuthuyet.com/chuong/chuong-10-giong-bao-cuong-no-khi-su-that-chi-la-mot-kich-ban/",
-    "https://doctieuthuyet.com/chuong/chuong-12-dai-hoi-de-vuong-ban-tiec-cua-nhung-vi-than/"
-]
-
+url = "https://doctieuthuyet.com/truyen/di-chuc-vo-hinh-tran-chien-tai-san/"
 headers = {'User-Agent': 'Mozilla/5.0'}
 
-for u in urls:
+req = urllib.request.Request(url, headers=headers)
+html = urllib.request.urlopen(req).read().decode('utf-8')
+
+# Find all chapter links
+links = re.findall(r'<a[^>]+href="(https://doctieuthuyet.com/chuong/[^"]+)"[^>]*>Chương', html)
+# Remove duplicates while preserving order
+unique_links = list(dict.fromkeys(links))
+unique_links.reverse()  # Since recent ones are typically listed first
+
+for u in unique_links:
     try:
-        req = urllib.request.Request(u, headers=headers)
-        html = urllib.request.urlopen(req).read().decode('utf-8')
-        ps = re.findall(r'<p>(.*?)</p>', html, re.DOTALL)
-        content = "\n".join([re.sub(r'<[^>]+>', '', p).strip() for p in ps])
+        creq = urllib.request.Request(u, headers=headers)
+        chtml = urllib.request.urlopen(creq).read().decode('utf-8')
+        ps = re.findall(r'<p>(.*?)</p>', chtml, re.DOTALL)
+        content = "\n".join([re.sub(r'<[^>]+>', '', p).strip() for p in ps if len(p.strip()) > 20])
         
         print("\n=== " + u.split('/')[-2] + " ===")
-        print(content[:800] + "...\n")
+        print(content[:500] + "...\n")
     except Exception as e:
         print("Error fetching", u, e)

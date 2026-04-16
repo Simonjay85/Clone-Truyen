@@ -986,10 +986,9 @@ function temply_studio_brainstorm_prompts() {
     if (!empty($prompt)) $ai_prompt .= "- Ý tưởng Cốt lõi của người dùng: $prompt\n\n";
 
     $ai_prompt .= "NHIỆM VỤ TỐI THƯỢNG:\n";
-    $ai_prompt .= "Nhiệm vụ của bạn là nghiên cứu các THỊ HIẾU VÀ MÔ-TÍP ĐANG THỊNH HÀNH NHẤT ở Châu Á (Trung Quốc, Hàn Quốc, Việt Nam...), ví dụ như: Xuyên không, Hệ thống, Tổng tài, Rể phế vật, Thực tập sinh, Nghệ sĩ giấu mặt...\n";
-    $ai_prompt .= "TUY NHIÊN, không được rập khuôn một cách máy móc (mì ăn liền hời hợt). Với mỗi mô-típ, bạn PHẢI ĐẦU TƯ SÂU VÀO KỊCH BẢN, xây dựng những mâu thuẫn chặt chẽ, tình tiết lớp lang, nhân vật có chiều sâu và đặc biệt lồng ghép những 'Cú Twist' hoặc cách giải quyết vấn đề sáng tạo, đột phá.\n";
-    $ai_prompt .= "Hãy đề xuất ĐÚNG {$count} kịch bản (prompt ideas) cuốn hút, thỏa mãn được thị hiếu của đại đa số độc giả.\n";
-    $ai_prompt .= "Mỗi kịch bản ưu tiên dài khoảng 3-5 câu: Mở đầu bằng một thiết lập hấp dẫn theo trend, xây dựng tình huống kịch tính, và chốt bằng một mâu thuẫn khốc liệt khiến người xem không thể cưỡng lại mà phải đọc ngay lập tức.\n";
+    $ai_prompt .= "Nhiệm vụ của bạn là nghiên cứu các THỊ HIẾU VÀ MÔ-TÍP ĐANG THỊNH HÀNH NHẤT ở Châu Á (như: Xuyên không, Hệ thống, Tổng tài, Nữ cường, Võng du...).\n";
+    $ai_prompt .= "BẮT BUỘC SÁNG TẠO ĐA DẠNG TUYỆT ĐỐI: Dù chung một Ý tưởng Cốt lõi, nhưng MỖI kịch bản phải là một vũ trụ HOÀN TOÀN KHÁC NHAU. KHÔNG ĐƯỢC lặp lại tên nhân vật (ví dụ: nếu dàn 1 dùng tên Chiêu Đệ, thì dàn 2 phải tên khác hẳn, dàn 3 bối cảnh Tây Âu...). KHÔNG ĐƯỢC lặp lại cùng một mô-típ cốt truyện. Phải liên tục thay đổi Góc Nhìn, Thời Đại, Tuổi Tác, Tên Gọi, Hoàn Cảnh Xuất Thân để {$count} kịch bản này là {$count} kiệt tác riêng biệt.\n";
+    $ai_prompt .= "Mỗi kịch bản dài khoảng 3-5 câu: Mở đầu bằng thiết lập hấp dẫn, xây dựng kịch tính và chốt bằng mâu thuẫn khốc liệt.\n";
     $ai_prompt .= "BẮT BUỘC trả về CHỈ MỘT MẢNG JSON gồm {$count} Object (KHÔNG TEXT THỪA, KHÔNG GIẢI THÍCH).\n";
     $ai_prompt .= "Ví dụ định dạng trả về:\n";
     $ai_prompt .= "[\n";
