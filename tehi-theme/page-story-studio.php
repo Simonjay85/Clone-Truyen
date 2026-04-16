@@ -741,11 +741,22 @@ $nonce = wp_create_nonce('temply_ai_nonce');
                 </div>
 
                 <div class="ctrl-group" style="margin-bottom: 12px;">
-                    <label class="ctrl-label">Ý tưởng cốt truyện (Prompt)</label>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+                        <label class="ctrl-label">Ý tưởng cốt truyện (Prompt)</label>
+                        <button onclick="renderAutoPilotModal()" style="padding:4px 10px; border-radius:6px; border:1px solid rgba(79,70,229,0.4); background:rgba(79,70,229,0.15); color:#818cf8; font-weight:700; font-size:11px; cursor:pointer;" title="Mở bảng theo dõi hàng đợi Auto-Pilot">🚀 Trạm Auto-Pilot</button>
+                    </div>
                     <textarea class="ctrl-textarea" id="ss-prompt" placeholder="Mô tả ngắn gọn: Nhân vật, bối cảnh, xung đột chính..."></textarea>
-                    <button id="ss-btn-autodetect" style="margin-top:8px;width:100%;padding:8px 12px;border-radius:8px;border:1px solid rgba(251,191,36,0.4);background:rgba(251,191,36,0.07);color:#fbbf24;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;" onmouseover="this.style.background='rgba(251,191,36,0.14)'" onmouseout="this.style.background='rgba(251,191,36,0.07)'">
-                        <span id="ss-autodetect-icon">🤖</span> Gợi ý Tên Truyện, Thể loại & Giọng văn
-                    </button>
+                    <div style="display:flex; gap:8px; margin-top:8px;">
+                        <div style="flex:1; display:flex; align-items:center;">
+                            <input type="number" id="ss-brainstorm-count" value="10" min="3" max="30" style="width:40px; padding:8px 4px; border-radius:8px 0 0 8px; border:1px solid rgba(16,185,129,0.4); border-right:none; background:rgba(16,185,129,0.03); color:#10b981; font-weight:700; text-align:center; font-size:12px; outline:none;" title="Số lượng Idea">
+                            <button id="ss-btn-brainstorm" style="flex:1;padding:8px;border-radius:0 8px 8px 0;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.07);color:#10b981;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;" onmouseover="this.style.background='rgba(16,185,129,0.14)'" onmouseout="this.style.background='rgba(16,185,129,0.07)'">
+                                <span id="ss-brainstorm-icon">💡</span> Gợi ý Kịch Bản
+                            </button>
+                        </div>
+                        <button id="ss-btn-autodetect" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(251,191,36,0.4);background:rgba(251,191,36,0.07);color:#fbbf24;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;" onmouseover="this.style.background='rgba(251,191,36,0.14)'" onmouseout="this.style.background='rgba(251,191,36,0.07)'">
+                            <span id="ss-autodetect-icon">🤖</span> Gợi ý Tiêu đề
+                        </button>
+                    </div>
                 </div>
 
                 <div class="ctrl-group" style="margin-bottom: 12px;">
@@ -1123,7 +1134,7 @@ $nonce = wp_create_nonce('temply_ai_nonce');
 
     <script>
     const GEMINI_MODELS = {
-        'gemini-2.5-flash-preview-04-17': { label: 'Flash 2.5', color: 'blue',   limit: 500  },
+        'gemini-2.5-flash': { label: 'Flash 2.5', color: 'blue',   limit: 500  },
         'gemini-2.0-flash':               { label: 'Flash 2.0', color: 'indigo', limit: 1500 },
         'gemini-1.5-pro':                 { label: 'Pro 1.5',   color: 'purple', limit: 50   },
     };
@@ -1253,7 +1264,7 @@ $nonce = wp_create_nonce('temply_ai_nonce');
         const banner = document.getElementById('gemini-alert-banner');
         const alertText = document.getElementById('gemini-alert-text');
         const exhausted = todayData.exhausted || [];
-        const flash25 = 'gemini-2.5-flash-preview-04-17';
+        const flash25 = 'gemini-2.5-flash';
         const pro15   = 'gemini-1.5-pro';
 
         if (exhausted.includes(pro15)) {
@@ -2300,7 +2311,7 @@ ${chunkChaps}`;
                     showToast('✨ Đoạn văn đã được cải thiện!', 'success');
                 } catch(err) {
                     showToast('Lỗi AI: ' + err.message, 'error');
-                } finally {
+} finally {
                     btn.textContent = origText;
                     floatToolbar.style.display = 'none';
                     floatToolbar.style.pointerEvents = 'auto';
@@ -2309,6 +2320,363 @@ ${chunkChaps}`;
                 }
             });
         });
+
+        // ---- Helper: Extract JSON from text ----
+        function extractJsonFromArrayText(text) {
+            try {
+                const s = text.substring(text.indexOf('['), text.lastIndexOf(']') + 1);
+                return JSON.parse(s);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        // ==========================================
+        // FEATURE: Brainstorm Prompts
+        // ==========================================
+        document.getElementById('ss-btn-brainstorm').addEventListener('click', async function() {
+            const promptBox = document.getElementById('ss-prompt');
+            const userKeyword = promptBox.value.trim();
+            const selectedGenres = Array.from(document.querySelectorAll('#ss-genres .genre-tag.active')).map(el => el.dataset.genre).join(', ');
+            const selectedTone = document.getElementById('ss-tone').value;
+            const bCount = document.getElementById('ss-brainstorm-count').value || 10;
+
+            if (!selectedGenres && !userKeyword) {
+                showToast('🚨 Vui lòng chọn ít nhất 1 Thể loại hoặc gõ vài từ khóa trước khi Brainstorm!', 'error');
+                return;
+            }
+
+            const btn = this;
+            const icon = document.getElementById('ss-brainstorm-icon');
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            icon.innerHTML = '⏳';
+            showToast(`💡 Đang suy nghĩ ${bCount} kịch bản...`, 'info');
+
+            try {
+                // 1. Fetch AI Prompt from Server
+                const fd = new FormData();
+                fd.append('action', 'temply_studio_brainstorm_prompts');
+                fd.append('action_nonce', NONCE);
+                fd.append('genres', selectedGenres);
+                fd.append('tone', selectedTone);
+                fd.append('prompt', userKeyword);
+                fd.append('count', bCount);
+
+                const res = await fetch(AJAX_URL, { method: 'POST', body: fd }).then(r => r.json());
+                if (!res.success) throw new Error(res.data.message || 'Lỗi lấy Brainstorm Prompt');
+
+                const systemPrompt = res.data.ai_prompt;
+                const apiKey = res.data.gemini_key;
+                const aiModel = document.getElementById('ss-ai-model').value || 'gemini-2.5-flash';
+
+                // 2. Call Gemini
+                showToast('🤖 Đang yêu cầu AI đẻ idea...', 'info');
+                const aiResult = await callGeminiFromBrowser(systemPrompt, apiKey, aiModel);
+                
+                // 3. Parse Result
+                let prompts = extractJsonFromArrayText(aiResult);
+                if (!prompts || !Array.isArray(prompts) || prompts.length === 0) {
+                    console.error("AI Result Parsing Error:", aiResult);
+                    throw new Error('AI không trả về đúng định dạng Mảng JSON.');
+                }
+
+                // 4. Render UI Modal
+                renderBrainstormModal(prompts);
+                
+                showToast(`✅ Đã tạo xong ${bCount} kịch bản!`, 'success');
+            } catch (err) {
+                showToast('❌ Lỗi: ' + err.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                icon.innerHTML = '💡';
+            }
+        });
+
+        function renderBrainstormModal(prompts) {
+            let existingParams = document.getElementById('ss-brainstorm-modal');
+            if (existingParams) existingParams.remove();
+
+            const c = document.createElement('div');
+            c.id = 'ss-brainstorm-modal';
+            c.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;';
+            
+            let listHtml = '';
+            window.__currentBrainstormPrompts = prompts; // Lưu tạm để AI Evaluate gọi lại
+
+            prompts.forEach((pObj, index) => {
+                if(typeof pObj === 'string') pObj = { title: 'Kịch bản #' + (index+1), genres: 'Mặc định', prompt: pObj };
+                const safePayload = encodeURIComponent(JSON.stringify(pObj));
+                const encodedPromptText = pObj.prompt.replace(/"/g, '&quot;');
+                
+                listHtml += `
+                <label id="bs-prompt-card-${index}" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:16px; margin-bottom:12px; display:flex; gap:12px; cursor:pointer; align-items:flex-start; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+                    <input type="checkbox" class="brainstorm-checkbox" data-payload="${safePayload}" value="${encodedPromptText}" style="margin-top:2px; width:18px; height:18px;">
+                    <div style="flex:1;">
+                        <div style="font-size:14px; font-weight:800; color:#10b981; margin-bottom:4px;">${pObj.title || ('Kịch bản #' + (index+1))}</div>
+                        <div style="font-size:11px; font-weight:700; color:#cbd5e1; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); padding:2px 8px; border-radius:20px; display:inline-block; margin-bottom:8px;">🏷️ ${pObj.genres || 'Đa thể loại'}</div>
+                        <p style="font-size:13px; color:#94a3b8; line-height:1.6; margin:0;">${pObj.prompt}</p>
+                        <div id="bs-prompt-eval-${index}" style="margin-top:10px;"></div>
+                    </div>
+                </label>`;
+            });
+
+            c.innerHTML = `
+                <div style="background:#1e293b; border:1px solid rgba(255,255,255,0.1); border-radius:16px; width:100%; max-width:850px; max-height:85vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);">
+                    <div style="padding:20px; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <h2 style="margin:0; font-size:18px; color:#fff; font-weight:800;">💡 Gợi Ý Kịch Bản</h2>
+                            <button onclick="handleBrainstormEvaluate()" id="bs-btn-evaluate" style="background:rgba(217,70,239,0.15); color:#d946ef; border:1px solid rgba(217,70,239,0.3); padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer;" title="AI tự động phân tích độ Mặn/Nhạt của các idea này">🤖 AI Đánh Giá Cốt Truyện</button>
+                        </div>
+                        <button onclick="document.getElementById('ss-brainstorm-modal').remove()" style="background:transparent; border:none; color:#94a3b8; font-size:24px; cursor:pointer; line-height:1;">&times;</button>
+                    </div>
+                    <div style="padding:16px; background:rgba(0,0,0,0.2); border-bottom:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; color:#10b981; font-size:13px; font-weight:700;">
+                            <input type="checkbox" id="bs-check-all" onchange="document.querySelectorAll('.brainstorm-checkbox').forEach(cb => cb.checked = this.checked)" style="width:16px;height:16px;"> Chọn tất cả
+                        </label>
+                        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="color:#94a3b8; font-size:13px;">Độ dài:</span>
+                                <input type="number" id="bs-chapters-min" value="20" min="5" style="width:45px; background:transparent; border:1px solid rgba(255,255,255,0.2); color:#fff; border-radius:6px; padding:4px; text-align:center; font-size:13px;">
+                                <span style="color:#94a3b8; font-size:13px;">-</span>
+                                <input type="number" id="bs-chapters-max" value="40" min="5" style="width:45px; background:transparent; border:1px solid rgba(255,255,255,0.2); color:#fff; border-radius:6px; padding:4px; text-align:center; font-size:13px;">
+                                <span style="color:#94a3b8; font-size:13px;">chương</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="color:#94a3b8; font-size:13px;">Tốc độ:</span>
+                                <select id="bs-interval" style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:#fff; border-radius:6px; padding:4px; font-size:13px;">
+                                    <option value="every_five_minutes" style="color:#000;">5 Phút/Chương</option>
+                                    <option value="hourly" style="color:#000;">1 Giờ/Chương</option>
+                                    <option value="twicedaily" style="color:#000;">12 Giờ/Chương</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding:20px; overflow-y:auto; flex:1;">
+                        ${listHtml}
+                    </div>
+                    <div style="padding:16px; border-top:1px solid rgba(255,255,255,0.1); display:flex; justify-content:flex-end; gap:12px; background:rgba(0,0,0,0.2);">
+                        <button onclick="handleBrainstormAction('replace')" id="bs-btn-replace" style="background:rgba(255,255,255,0.1); color:#fff; border:none; padding:10px 16px; border-radius:8px; font-weight:700; cursor:pointer;">✏️ Thay thế vào ô Sáng Tác</button>
+                        <button onclick="handleBrainstormAction('autopilot')" id="bs-btn-autopilot" style="background:#4f46e5; color:#fff; border:none; padding:10px 16px; border-radius:8px; font-weight:700; cursor:pointer;">🚀 Đẩy các kịch bản vào phần Auto-Pilot</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(c);
+        }
+
+        window.handleBrainstormAction = async function(type) {
+            const checks = document.querySelectorAll('.brainstorm-checkbox:checked');
+            if(checks.length === 0) {
+                showToast('Chưa chọn kịch bản nào!', 'error'); return;
+            }
+
+            if(type === 'replace') {
+                if(checks.length > 1) {
+                    showToast('Cảnh báo: Chỉ cho phép chọn 1 kịch bản để thay thế vào ô Sáng tác!', 'warning'); return;
+                }
+                const pObj = JSON.parse(decodeURIComponent(checks[0].getAttribute('data-payload')));
+                let formattedPrompt = `[TÊN TRUYỆN]\n${pObj.title}\n\n[THỂ LOẠI]\n${pObj.genres}\n\n[TÓM TẮT]\n${pObj.prompt}`;
+                document.getElementById('ss-prompt').value = formattedPrompt;
+                document.getElementById('ss-brainstorm-modal').remove();
+                showToast('✅ Đã chọn kịch bản mồi!');
+                return;
+            }
+
+            if(type === 'autopilot') {
+                const btn = document.getElementById('bs-btn-autopilot');
+                btn.disabled = true; btn.innerHTML = '⏳ Đang lên Hàng Đợi...';
+                
+                const selectedPrompts = Array.from(checks).map(el => {
+                    return JSON.parse(decodeURIComponent(el.getAttribute('data-payload')));
+                });
+                const bs_chapters_min = document.getElementById('bs-chapters-min').value;
+                const bs_chapters_max = document.getElementById('bs-chapters-max').value;
+                const bs_interval = document.getElementById('bs-interval').value;
+
+                try {
+                    const fd = new FormData();
+                    fd.append('action', 'temply_studio_batch_autopilot_push');
+                    fd.append('action_nonce', NONCE);
+                    fd.append('payload', JSON.stringify({
+                        prompts: selectedPrompts,
+                        chapters_min: bs_chapters_min,
+                        chapters_max: bs_chapters_max,
+                        interval: bs_interval
+                    }));
+                    
+                    const res = await fetch(AJAX_URL, { method: 'POST', body: fd }).then(r => r.json());
+                    if(!res.success) throw new Error(res.data.message || 'Lỗi server');
+
+                    document.getElementById('ss-brainstorm-modal').remove();
+                    
+                    // Hiển thị Dialog thay vì Toast để user biết cái gì vừa xảy ra
+                    const successModal = document.createElement('div');
+                    successModal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(5px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;';
+                    successModal.innerHTML = `
+                        <div style="background:#1e293b; border:1px solid rgba(16,185,129,0.3); border-radius:16px; padding:32px; text-align:center; max-width:400px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);">
+                            <div style="font-size:48px; margin-bottom:16px;">🚀</div>
+                            <h3 style="color:#10b981; margin:0 0 12px 0; font-size:20px; font-weight:800;">Đẩy Lên Auto-Pilot Thành Công!</h3>
+                            <p style="color:#cbd5e1; font-size:14px; line-height:1.6; margin:0 0 24px 0;">Đã lên lịch sản xuất tự động cho <b>${selectedPrompts.length}</b> truyện vào hàng chờ. AI sẽ âm thầm phân tích và viết từng chương phía sau hệ thống.</p>
+                            <div style="display:flex; gap:12px; justify-content:center;">
+                                <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background:rgba(255,255,255,0.1); color:#fff; border:none; padding:10px 16px; border-radius:8px; font-weight:700; cursor:pointer; flex:1;">Đóng</button>
+                                <button onclick="this.parentElement.parentElement.parentElement.remove(); renderAutoPilotModal()" style="background:#4f46e5; color:#fff; border:none; padding:10px 16px; border-radius:8px; font-weight:700; cursor:pointer; flex:1;">Mở Trạm Giám Sát</button>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(successModal);
+
+                } catch(e) {
+                    btn.disabled = false; btn.innerHTML = '🚀 Đẩy vào Auto-Pilot';
+                    showToast('❌ Lỗi: ' + e.message, 'error');
+                }
+            }
+        };
+
+        window.handleBrainstormEvaluate = async function() {
+            const btn = document.getElementById('bs-btn-evaluate');
+            btn.disabled = true;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⏳ AI đang săm soi...';
+            showToast('🤖 AI đang phân tích toàn bộ kịch bản...', 'info');
+
+            try {
+                const fd = new FormData();
+                fd.append('action', 'temply_studio_evaluate_prompts');
+                fd.append('action_nonce', NONCE);
+                fd.append('payload', JSON.stringify(window.__currentBrainstormPrompts));
+
+                const res = await fetch(AJAX_URL, { method: 'POST', body: fd }).then(r => r.json());
+                if(!res.success) throw new Error(res.data.message || 'Lỗi lấy Evaluate Prompt');
+
+                const sys = res.data.ai_sys_prompt;
+                const usr = res.data.ai_usr_prompt;
+                const apiKey = res.data.gemini_key;
+                const aiModel = document.getElementById('ss-ai-model').value || 'gemini-2.5-flash';
+
+                const aiResult = await callGeminiFromBrowser(sys + "\n" + usr, apiKey, aiModel);
+                
+                let evals = extractJsonFromArrayText(aiResult);
+                if (!evals || !Array.isArray(evals)) throw new Error('AI trả về sai định dạng.');
+
+                evals.forEach((ev, idx) => {
+                    const box = document.getElementById('bs-prompt-eval-' + idx);
+                    if(box) {
+                        box.innerHTML = `
+                            <div style="background:rgba(217,70,239,0.08); border:1px solid rgba(217,70,239,0.2); padding:10px 12px; border-radius:8px; display:flex; gap:10px; align-items:flex-start;">
+                                <div style="font-size:16px; font-weight:900; color:#d946ef; white-space:nowrap;">${ev.score}</div>
+                                <div style="font-size:12px; color:#fdf4ff; line-height:1.5;">${ev.review}</div>
+                            </div>
+                        `;
+                    }
+                });
+                showToast('✨ Đã chấm điểm xong!', 'success');
+                btn.innerHTML = '✅ Đã Đánh Giá';
+            } catch(e) {
+                showToast('❌ Đánh giá lỗi: ' + e.message, 'error');
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        };
+
+        // ==========================================
+        // AUTO-PILOT QUEUE VIEWER (FRONT-END)
+        // ==========================================
+        window.renderAutoPilotModal = async function() {
+            try {
+                showToast('Đang tải dữ liệu Hàng đợi Auto-Pilot...', 'info');
+                const fd = new FormData();
+                fd.append('action', 'temply_studio_get_autopilot_queue');
+                fd.append('action_nonce', NONCE);
+
+                const res = await fetch(AJAX_URL, { method: 'POST', body: fd }).then(r => r.json());
+                if(!res.success) throw new Error(res.data?.message || 'Lỗi lấy queue');
+
+                const config = res.data.config;
+                const queue = config?.queue || [];
+                
+                const c = document.createElement('div');
+                c.id = 'ss-autopilot-modal';
+                c.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;';
+                
+                let listHtml = '';
+                if(queue.length === 0) {
+                    listHtml = `<div style="padding:40px; text-align:center; color:#94a3b8;">Hàng đợi đang trống. Hãy dùng Gợi ý kịch bản để đẩy thêm truyện vào Lò nhé!</div>`;
+                } else {
+                    queue.forEach((q, idx) => {
+                        const target = q.target_chapters || 20;
+                        const left = q.chapters_left || target;
+                        const done = target - left;
+                        const pct = Math.floor((done / target) * 100);
+                        let statusColor = '#94a3b8';
+                        let statusText = q.status;
+                        if(statusText === 'draft_outline') { statusColor = '#f59e0b'; statusText = 'Đang xếp Dàn Ý'; }
+                        else if(statusText === 'writing') { statusColor = '#10b981'; statusText = 'Đang Cày Chữ'; }
+                        else if(statusText === 'pending') { statusColor = '#3b82f6'; statusText = 'Đang chờ Tới Lượt'; }
+
+                        listHtml += `
+                        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:16px; margin-bottom:12px; display:flex; gap:16px; align-items:center;">
+                            <div style="width:40px; height:40px; background:rgba(79,70,229,0.2); color:#818cf8; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:16px; flex-shrink:0;">
+                                #${idx+1}
+                            </div>
+                            <div style="flex:1;">
+                                <div style="font-size:15px; font-weight:800; color:#fff; margin-bottom:4px;">${q.title || 'Truyện Chờ Phân Tích'}</div>
+                                <div style="display:flex; gap:8px; font-size:12px; margin-bottom:12px;">
+                                    <span style="background:rgba(16,185,129,0.1); color:#10b981; padding:2px 8px; border-radius:12px;">${statusText}</span>
+                                    <span style="background:rgba(255,255,255,0.1); color:#cbd5e1; padding:2px 8px; border-radius:12px;">${q.genre || 'Chưa định hình'}</span>
+                                </div>
+                                <div style="background:rgba(0,0,0,0.5); height:8px; border-radius:4px; overflow:hidden; position:relative;">
+                                    <div style="background:linear-gradient(90deg, #4f46e5, #ec4899); position:absolute; top:0; left:0; bottom:0; width:${pct}%; transition:width 0.5s;"></div>
+                                </div>
+                                <div style="font-size:11px; color:#64748b; margin-top:6px; text-align:right;">Tiến độ: ${done}/${target} (${pct}%)</div>
+                            </div>
+                            <button onclick="handleAutoPilotRemove(${idx})" style="background:rgba(239,68,68,0.1); color:#ef4444; border:1px solid rgba(239,68,68,0.3); padding:8px; border-radius:8px; cursor:pointer;" title="Xoá truyện này khỏi hàng đợi">❌</button>
+                        </div>`;
+                    });
+                }
+
+                c.innerHTML = `
+                    <div style="background:#1e293b; border:1px solid rgba(255,255,255,0.1); border-radius:16px; width:100%; max-width:700px; max-height:85vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);">
+                        <div style="padding:20px; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
+                            <h2 style="margin:0; font-size:20px; color:#fff; font-weight:800;">🚀 Trạm Giám Sát Auto-Pilot</h2>
+                            <button onclick="document.getElementById('ss-autopilot-modal').remove()" style="background:transparent; border:none; color:#94a3b8; font-size:24px; cursor:pointer; line-height:1;">&times;</button>
+                        </div>
+                        <div style="padding:16px; background:rgba(0,0,0,0.2); border-bottom:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; font-size:13px; color:#cbd5e1;">
+                            <div>Tốc độ cấu hình chung: <b style="color:#10b981;">${config.interval || 'every_five_minutes'}</b></div>
+                            <div>Tổng đang chạy: <b style="color:#d946ef;">${queue.length} truyện</b></div>
+                        </div>
+                        <div style="padding:20px; overflow-y:auto; flex:1; background:#0f172a;">
+                            ${listHtml}
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(c);
+            } catch(e) {
+                showToast('Lỗi: ' + e.message, 'error');
+            }
+        };
+
+        window.handleAutoPilotRemove = async function(idx) {
+            if(!confirm('Bạn có chắc xoá truyện này khỏi Hàng Đợi không?')) return;
+            try {
+                const fd = new FormData();
+                fd.append('action', 'temply_studio_remove_autopilot_item');
+                fd.append('action_nonce', NONCE);
+                fd.append('index', idx);
+                const res = await fetch(AJAX_URL, { method: 'POST', body: fd }).then(r => r.json());
+                if(!res.success) throw new Error(res.data?.message || 'Lỗi server');
+                showToast(res.data.message, 'success');
+                document.getElementById('ss-autopilot-modal').remove();
+                renderAutoPilotModal(); // re-render
+            } catch(e) {
+                showToast(e.message, 'error');
+            }
+        };
+
+        // ==========================================
+        // ACTION: Auto Detect (Autofill Title, Genre, Tone)
+        // ==========================================
 
         // ---- Schedule / Publish Now buttons ----
         async function handleSchedule(publishNow) {

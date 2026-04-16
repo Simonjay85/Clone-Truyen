@@ -414,7 +414,7 @@ function temply_ai_render_admin_page() {
     </div>
     <script>
     const GEMINI_MODELS = {
-        'gemini-2.5-flash-preview-04-17': { label: 'Flash 2.5', color: 'blue',   limit: 500  },
+        'gemini-2.5-flash': { label: 'Flash 2.5', color: 'blue',   limit: 500  },
         'gemini-2.0-flash':               { label: 'Flash 2.0', color: 'indigo', limit: 1500 },
         'gemini-1.5-pro':                 { label: 'Pro 1.5',   color: 'purple', limit: 50   },
     };
@@ -520,7 +520,7 @@ function temply_ai_render_admin_page() {
         const banner = document.getElementById('gemini-alert-banner');
         const alertText = document.getElementById('gemini-alert-text');
         const exhausted = todayData.exhausted || [];
-        const flash25 = 'gemini-2.5-flash-preview-04-17';
+        const flash25 = 'gemini-2.5-flash';
         const pro15   = 'gemini-1.5-pro';
 
         if (exhausted.includes(pro15)) {

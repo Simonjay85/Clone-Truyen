@@ -291,6 +291,29 @@ function mkmSubmitAuth(e, type) {
         btn.style.opacity = '1';
     });
 }
+// Scroll to top logic
+document.addEventListener("DOMContentLoaded", function() {
+    let mkmScrollBtn = document.createElement("button");
+    mkmScrollBtn.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>';
+    mkmScrollBtn.title = "Lên đầu trang";
+    mkmScrollBtn.style.cssText = "display:none; position:fixed; bottom:30px; right:30px; z-index:99; width:45px; height:45px; border:none; outline:none; background:linear-gradient(135deg, #f97316, #ea580c); color:white; cursor:pointer; border-radius:50%; box-shadow:0 4px 12px rgba(234,88,12,0.3); transition:all 0.3s; align-items:center; justify-content:center;";
+    document.body.appendChild(mkmScrollBtn);
+
+    mkmScrollBtn.addEventListener("mouseover", () => mkmScrollBtn.style.transform = "translateY(-3px)");
+    mkmScrollBtn.addEventListener("mouseout", () => mkmScrollBtn.style.transform = "translateY(0)");
+
+    window.addEventListener("scroll", function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            mkmScrollBtn.style.display = "flex";
+        } else {
+            mkmScrollBtn.style.display = "none";
+        }
+    });
+
+    mkmScrollBtn.addEventListener("click", function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
 </script>
 
 <?php wp_footer(); ?>

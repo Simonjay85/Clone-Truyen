@@ -947,7 +947,7 @@ function temply_studio_autodetect_prompt() {
     $ai_prompt .= "Danh sách thể loại có thể chọn: $genre_list\n";
     $ai_prompt .= "Danh sách giọng văn có thể chọn: $tone_list\n\n";
     $ai_prompt .= "Yêu cầu:\n";
-    $ai_prompt .= "- Gợi ý 3 tựa đề truyện: Hấp dẫn, gợi tò mò, sang trọng, mang phong cách văn học mảng web novel chuyên nghiệp. KHÔNG ĐƯỢC dùng các từ quá sến, sáo rỗng hoặc quá trẻ con (chuối).\n";
+    $ai_prompt .= "- Gợi ý 3 tựa đề truyện: Hấp dẫn, gợi tò mò, sang trọng, mang phong cách văn học mảng web novel chuyên nghiệp. Tiêu đề NÊN dài một chút (thường cấu trúc Nửa chính - Nửa phụ) ví dụ: 'Thương Vụ Sticker Tỷ Đô: Kẻ Ngạo Mạn Phải Cúi Đầu', hoặc 'Sự Trở Lại Của Kẻ Bị Ruồng Bỏ'. KHÔNG ĐƯỢC dùng các từ quá sến, sáo rỗng hoặc quá trẻ con (chuối).\n";
     $ai_prompt .= "- Dựa vào độ dài và độ phức tạp của cốt truyện, hãy đề xuất số lượng chương phù hợp nhất để triển khai (ví dụ: 5, 10, 15, hoặc 20, 30 nếu truyện cần không gian rông).\n";
     $ai_prompt .= "Trả về CHỈ MỘT JSON hợp lệ (không giải thích thêm):\n";
     $ai_prompt .= '{"genres": ["Thể loại 1", "Thể loại 2"], "tone": "giọng văn phù hợp nhất", "titles": ["Tựa đề 1", "Tựa đề 2", "Tựa đề 3"], "chapters": 10}';
@@ -959,6 +959,175 @@ function temply_studio_autodetect_prompt() {
         'gemini_key' => $gemini_key,
         'has_key'    => true
     ));
+}
+
+// ==========================================
+// STORY STUDIO: Brainstorm 10 Idea Kịch Bản
+// ==========================================
+add_action('wp_ajax_temply_studio_brainstorm_prompts', 'temply_studio_brainstorm_prompts');
+function temply_studio_brainstorm_prompts() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $genres = isset($_POST['genres']) ? sanitize_text_field($_POST['genres']) : '';
+    $tone   = isset($_POST['tone']) ? sanitize_text_field($_POST['tone']) : '';
+    $prompt = isset($_POST['prompt']) ? sanitize_textarea_field($_POST['prompt']) : ''; // Keyword ngắn do user gõ
+
+    $count  = isset($_POST['count']) ? intval($_POST['count']) : 10;
+    if ($count < 1) $count = 1;
+    if ($count > 30) $count = 30; // Giới hạn toi da 30
+
+    $ai_prompt  = "Bạn là một biên tập viên sáng tạo (Creative Editor) và tác giả truyện mạng chuyên sâu. Người dùng đang muốn viết một truyện mới dựa trên các thông số sau:\n";
+    if (!empty($genres)) $ai_prompt .= "- Thể loại mong muốn: $genres\n";
+    if (!empty($tone))   $ai_prompt .= "- Giọng văn/Không khí hướng tới: $tone\n";
+    if (!empty($prompt)) $ai_prompt .= "- Từ khóa / Tóm tắt cơ bản: $prompt\n\n";
+
+    $ai_prompt .= "Nhiệm vụ của bạn là suy nghĩ (brainstorm) và đề xuất ĐÚNG {$count} kịch bản (prompt ideas) khác nhau, đa dạng về bối cảnh, nhân vật và điểm nhấn cao trào (twist) để người dùng chọn.\n";
+    $ai_prompt .= "Mỗi kịch bản nên khoảng 3-5 câu, lột tả rõ bối cảnh, mâu thuẫn chính và tính cách nhân vật trọng tâm, có sự kịch tính hoặc sâu sắc.\n";
+    $ai_prompt .= "Trả về CHỈ MỘT MẢNG JSON gồm {$count} Object (KHÔNG GIẢI THÍCH THÊM).\n";
+    $ai_prompt .= "Ví dụ định dạng trả về:\n";
+    $ai_prompt .= "[\n";
+    $ai_prompt .= "  {\n";
+    $ai_prompt .= "    \"title\": \"Tên truyện gợi ý (cấu trúc hấp dẫn)\",\n";
+    $ai_prompt .= "    \"genres\": \"Thể loại 1, Thể loại 2...\",\n";
+    $ai_prompt .= "    \"prompt\": \"Kịch bản chi tiết...\"\n";
+    $ai_prompt .= "  }\n";
+    $ai_prompt .= "]";
+
+    $gemini_key = tehi_get_gemini_key();
+
+    wp_send_json_success(array(
+        'ai_prompt'  => $ai_prompt,
+        'gemini_key' => $gemini_key,
+        'has_key'    => true
+    ));
+}
+
+// ==========================================
+// STORY STUDIO: Đẩy Batch Kịch Bản vào Auto-Pilot
+// ==========================================
+add_action('wp_ajax_temply_studio_batch_autopilot_push', 'temply_studio_batch_autopilot_push');
+function temply_studio_batch_autopilot_push() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $raw_payload = isset($_POST['payload']) ? wp_unslash($_POST['payload']) : '';
+    if(empty($raw_payload)) wp_send_json_error(['message' => 'Lỗi: Payload trống']);
+
+    $data = json_decode($raw_payload, true);
+    if(!$data || !isset($data['prompts']) || !is_array($data['prompts'])) {
+        wp_send_json_error(['message' => 'Lỗi Data formats']);
+    }
+
+    $prompts      = $data['prompts']; // Array of objects
+    $chapters_min = intval($data['chapters_min'] ?? 20);
+    $chapters_max = intval($data['chapters_max'] ?? $chapters_min);
+    $interval     = sanitize_text_field($data['interval'] ?? 'every_five_minutes');
+    if($chapters_min < 1) $chapters_min = 20;
+    if($chapters_max < $chapters_min) $chapters_max = $chapters_min;
+
+    $config = get_option('temply_auto_pilot_queue_config', false);
+    if (!$config) {
+        $config = ['interval' => $interval, 'queue' => [], 'status' => 'running', 'last_run' => time()];
+    }
+    
+    // Ghi đè interval nếu tốc độ mới nhanh hơn/chậm hơn theo quyết định user
+    $config['interval'] = $interval;
+    $config['status']   = 'running';
+
+    foreach($prompts as $p) {
+        if(!is_array($p) || empty(trim($p['prompt'] ?? ''))) continue;
+
+        $p_title  = sanitize_text_field($p['title'] ?? 'Truyện chờ phân tích...');
+        $p_genres = sanitize_text_field($p['genres'] ?? '');
+        $p_prompt = sanitize_textarea_field(trim($p['prompt']));
+        $target_c = rand($chapters_min, $chapters_max);
+
+        // Trạng thái 'draft_outline' để auto-pilot tự động gọi AI phân tích Dàn ý & Nhân vật ngầm!
+        $config['queue'][]  = [
+            'status'          => 'draft_outline', 
+            'prompt'          => $p_prompt,
+            'title'           => $p_title,
+            'genre'           => $p_genres,
+            'tone'            => '',
+            'world'           => '',
+            'chars'           => '',
+            'script'          => '',
+            'hook'            => '',
+            'truyen_id'       => 0,
+            'target_chapters' => $target_c,
+            'chapters_left'   => $target_c,
+            'enable_audit'    => 1, // mặc định bật audit
+        ];
+    }
+    
+    update_option('temply_auto_pilot_queue_config', $config);
+
+    if (!wp_next_scheduled('temply_auto_pilot_cron_hook')) {
+        wp_schedule_event(time(), $interval, 'temply_auto_pilot_cron_hook');
+    }
+
+    wp_send_json_success(['message' => 'Đã đưa ' . count($prompts) . ' kịch bản vào hàng chờ!']);
+}
+
+// ==========================================
+// STORY STUDIO: Đánh Giá Độ Ăn Khách (AI Evaluation)
+// ==========================================
+add_action('wp_ajax_temply_studio_evaluate_prompts', 'temply_studio_evaluate_prompts');
+function temply_studio_evaluate_prompts() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+
+    $raw_payload = isset($_POST['payload']) ? wp_unslash($_POST['payload']) : '';
+    if(empty($raw_payload)) wp_send_json_error(['message' => 'Lỗi: Payload trống']);
+    
+    $prompts = json_decode($raw_payload, true);
+    if(!$prompts || !is_array($prompts)) {
+        wp_send_json_error(['message' => 'Lỗi Data formats']);
+    }
+
+    $str_payload = "";
+    foreach($prompts as $idx => $p) {
+        $str_payload .= "Kịch bản số {$idx}: " . ($p['title'] ?? '') . "\n" . ($p['prompt'] ?? '') . "\n\n";
+    }
+
+    $sys = "Bạn là NỮ BIÊN TẬP VIÊN KIÊU KÌ, KHẮT KHE chuyên phân tích độ 'ĂN KHÁCH' của kịch bản truyện chữ mạng. Hãy đọc danh sách kịch bản dưới đây.\n";
+    $sys .= "BẮT BUỘC trả về CHỈ MỘT MẢNG JSON các Object tương ứng với các kịch bản.\n";
+    $sys .= "Ví dụ: [\n { \"score\": \"9.0\", \"review\": \"Cốt truyện xuất sắc, twist vả mặt gãy gọn, phù hợp độc giả trẻ.\" },\n { \"score\": \"5.5\", \"review\": \"Mô típ quá cũ, thiếu điểm nhấn, khó cạnh tranh.\" }\n]";
+    $usr = $str_payload;
+
+    $gemini_key = tehi_get_gemini_key();
+    
+    // We send back the system prompt and user prompt to let the browser call AI (save bandwidth/timeouts)
+    wp_send_json_success(array(
+        'ai_sys_prompt' => $sys,
+        'ai_usr_prompt' => $usr,
+        'gemini_key'    => $gemini_key
+    ));
+}
+
+// ==========================================
+// STORY STUDIO: Quản Lý Hàng Đợi Auto-Pilot (Frontend)
+// ==========================================
+add_action('wp_ajax_temply_studio_get_autopilot_queue', 'temply_studio_get_autopilot_queue');
+function temply_studio_get_autopilot_queue() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+    $config = get_option('temply_auto_pilot_queue_config', false);
+    if (!$config) $config = ['queue' => []];
+    wp_send_json_success(['config' => $config]);
+}
+
+add_action('wp_ajax_temply_studio_remove_autopilot_item', 'temply_studio_remove_autopilot_item');
+function temply_studio_remove_autopilot_item() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+    $index = isset($_POST['index']) ? intval($_POST['index']) : -1;
+    if ($index < 0) wp_send_json_error(['message' => 'Lỗi index']);
+
+    $config = get_option('temply_auto_pilot_queue_config', false);
+    if ($config && isset($config['queue']) && isset($config['queue'][$index])) {
+        unset($config['queue'][$index]);
+        $config['queue'] = array_values($config['queue']); // reindex
+        update_option('temply_auto_pilot_queue_config', $config);
+        wp_send_json_success(['message' => 'Đã xoá truyện khỏi hàng chờ.']);
+    }
+    wp_send_json_error(['message' => 'Không tìm thấy truyện này.']);
 }
 
 // ==========================================

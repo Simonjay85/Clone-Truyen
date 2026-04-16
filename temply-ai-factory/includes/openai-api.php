@@ -58,7 +58,7 @@ function temply_call_gemini($system_prompt, $user_prompt, $temperature = 0.7, $f
 
     // Danh sách model theo ưu tiên fallback
     $model_chain = [
-        'gemini-2.5-flash-preview-04-17',  // Flash 2.5 (mới nhất, miễn phí)
+        'gemini-2.5-flash',  // Flash 2.5 (mới nhất, miễn phí)
         'gemini-2.0-flash',                // Flash 2.0 (dự phòng “nheẹ”)
         'gemini-1.5-pro',                  // Pro 1.5 (fallback chất lượng cao)
     ];
@@ -155,7 +155,7 @@ add_action('wp_ajax_temply_gemini_usage_stats', function() {
 
     // Gemini free-tier limits (per day)
     $limits = [
-        'gemini-2.5-flash-preview-04-17' => 500,  // ~500 RPD miễn phí
+        'gemini-2.5-flash' => 500,  // ~500 RPD miễn phí
         'gemini-2.0-flash'               => 1500, // 1500 RPD miễn phí
         'gemini-1.5-pro'                 => 50,   // 50 RPD miễn phí (strict)
     ];
@@ -1473,7 +1473,7 @@ function temply_process_auto_pilot() {
     // Tìm Truyện đang làm dở (writing) hoặc chờ mổ (pending)
     $active_idx = -1;
     foreach($config['queue'] as $i => $item) {
-        if ($item['status'] === 'pending' || $item['status'] === 'writing') {
+        if ($item['status'] === 'draft_outline' || $item['status'] === 'pending' || $item['status'] === 'writing') {
             $active_idx = $i;
             break; // Tìm thấy thì dừng
         }
@@ -1490,6 +1490,36 @@ function temply_process_auto_pilot() {
     // Tham chiếu để thay đổi update lưu lại
     $curr_item = &$config['queue'][$active_idx];
     $model = 'gemini'; 
+
+    // ===============================================
+    // STAGE 0: DRAFT OUTLINE (Sinh Tự Động Metadata từ Kịch Bản Raw)
+    // ===============================================
+    if ($curr_item['status'] === 'draft_outline') {
+        $raw_prompt = $curr_item['prompt'] ?? '';
+        $hint_genre = $curr_item['genre'] ?? '';
+        $hint_tone  = $curr_item['tone'] ?? '';
+
+        $sys = "Bạn là NHÀ THIẾT KẾ KỊCH BẢN TRUYỆN MẠNG. Dựa trên Ý TƯỞNG CỐT LÕI (Prompt) dưới đây, hãy phát triển thành một hệ thống thông tin đầy đủ để viết một tác phẩm dài kỳ. TRẢ VỀ CHỈ 1 MẢNG JSON duy nhất, KHÔNG giải thích thêm.";
+        $usr = "Ý TƯỞNG CỐT LÕI:\n$raw_prompt\n\nThể loại: $hint_genre\nGiọng văn: $hint_tone\n\nYÊU CẦU JSON ĐẦU RA:\n{\n  \"title\": \"Tên truyện (Giật gân, hấp dẫn, độ dài vừa phải)\",\n  \"world\": \"Bối cảnh thế giới chi tiết (Luật lệ, quy tắc, gia tộc, bản đồ...)\",\n  \"chars\": \"Tuyến nhân vật chính (Ngoại hình, tính cách, vũ khí/khả năng, gia thế)\",\n  \"script\": \"Dàn ý sự kiện chính của toàn bộ tác phẩm (Outline từ mở bài tới cao trào)\"\n}";
+        
+        $ai_data = temply_call_ai($sys, $usr, 0.7, $model);
+        if(!is_wp_error($ai_data)) {
+            // Trim and extract json 
+            $ai_data = preg_replace('/```(?:json)?|```/', '', $ai_data);
+            $parsed = json_decode(trim($ai_data), true);
+            if($parsed && isset($parsed['title'])) {
+                $curr_item['title']  = sanitize_text_field($parsed['title']);
+                $curr_item['world']  = sanitize_textarea_field($parsed['world'] ?? '');
+                $curr_item['chars']  = sanitize_textarea_field($parsed['chars'] ?? '');
+                $curr_item['script'] = sanitize_textarea_field($parsed['script'] ?? '');
+                $curr_item['status'] = 'pending'; // Nâng lên pending để chờ sinh truyện
+                update_option('temply_auto_pilot_queue_config', $config);
+            }
+        } else {
+            error_log('TEMPLY AUTO PILOT ERROR: Lỗi tạo Dàn Ý Tự động ' . $ai_data->get_error_message());
+        }
+        return; // Dừng cron lần này, chờ cron sau tạo post
+    }
 
     // ===============================================
     // STAGE 1: INITIATION (Khởi Tạo Truyện Mới Từ Data Staging Đã Duyệt)
