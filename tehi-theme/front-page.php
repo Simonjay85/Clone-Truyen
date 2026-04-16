@@ -414,7 +414,7 @@
     margin-bottom: 0 !important;
 }
 .mkm-slider-cover {
-    width: 380px !important;
+    width: 430px !important;
     flex-shrink: 0 !important;
     border-radius: 16px !important;
     overflow: hidden !important;
@@ -458,7 +458,7 @@
 .mkm-slider-nav { display:none !important; }
 
 /* ── SLIDER MOBILE RESPONSIVE ── */
-@media (max-width: 640px) {
+@media (max-width: 900px) {
     .mkm-slider-wrap { padding: 0 !important; border-radius: 20px !important; overflow: hidden !important; }
     .mkm-slider-main {
         flex-direction: column !important;
@@ -469,17 +469,17 @@
         width: 100% !important;
         height: auto !important;
         border-radius: 0 !important;
-        aspect-ratio: auto !important;
+        aspect-ratio: 4/3 !important;
         display: flex !important;
-        justify-content: center !important;
         background: #111827 !important;
     }
     .mkm-slider-cover img {
-        width: auto !important;
+        width: 100% !important;
         max-width: 100% !important;
-        height: auto !important;
-        max-height: 350px !important;
-        object-fit: contain !important;
+        height: 100% !important;
+        max-height: none !important;
+        object-fit: cover !important;
+        object-position: center top !important;
         border-radius: 0 !important;
     }
     .mkm-slider-body {
@@ -487,8 +487,8 @@
         background: #fff !important;
     }
     .mkm-slider-title { font-size: 18px !important; }
-    .mkm-slider-desc { -webkit-line-clamp: 4 !important; font-size: 13px !important; }
-    .mkm-slider-btns { justify-content: center !important; }
+    .mkm-slider-desc { -webkit-line-clamp: 6 !important; font-size: 13px !important; }
+    .mkm-slider-btns { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
     .mkm-nav-btn { display: none !important; }
     .mkm-main-swiper .swiper-button-next,
     .mkm-main-swiper .swiper-button-prev { display: none !important; }
@@ -530,17 +530,14 @@
                         </div>
                         <p class="mkm-slider-desc"><?php echo esc_html($s_exc); ?></p>
                         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px; font-size:12px; color:#374151;">
-                            <span style="background:#f4f4f5; padding:4px 10px; border-radius:6px; font-weight:600; display:flex; align-items:center; gap:4px;">
-                                <svg width="12" height="12" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg> 
-                                <?php echo esc_html($s_author); ?>
+                            <span style="background:#f4f4f5; padding:6px 10px; border-radius:6px; font-weight:600; display:flex; align-items:center; gap:6px;">
+                                ✍️ <?php echo esc_html($s_author); ?>
                             </span>
-                            <span style="background:#f4f4f5; padding:4px 10px; border-radius:6px; font-weight:600; display:flex; align-items:center; gap:4px;">
-                                <svg width="12" height="12" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> 
-                                <?php echo number_format((int)$s_views); ?> xem
+                            <span style="background:#f4f4f5; padding:6px 10px; border-radius:6px; font-weight:600; display:flex; align-items:center; gap:6px;">
+                                👁️ <?php echo number_format((int)$s_views); ?> xem
                             </span>
-                            <span style="background:#f4f4f5; padding:4px 10px; border-radius:6px; font-weight:600; display:flex; align-items:center; gap:4px;">
-                                <svg width="12" height="12" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> 
-                                <?php echo rand(5, 45); ?> bình luận
+                            <span style="background:#f4f4f5; padding:6px 10px; border-radius:6px; font-weight:600; display:flex; align-items:center; gap:6px;">
+                                💬 <?php echo rand(5, 45); ?> bình luận
                             </span>
                         </div>
                         <div class="mkm-slider-btns">

@@ -341,7 +341,7 @@ $nonce = wp_create_nonce('temply_ai_nonce');
         /* ====== MAIN LAYOUT ====== */
         .studio-layout {
             display: grid !important;
-            grid-template-columns: 360px 1fr !important;
+            grid-template-columns: 440px 1fr !important;
             height: calc(100vh - 60px);
             overflow: hidden;
         }
@@ -746,14 +746,14 @@ $nonce = wp_create_nonce('temply_ai_nonce');
                         <button onclick="renderAutoPilotModal()" style="padding:4px 10px; border-radius:6px; border:1px solid rgba(79,70,229,0.4); background:rgba(79,70,229,0.15); color:#818cf8; font-weight:700; font-size:11px; cursor:pointer;" title="Mở bảng theo dõi hàng đợi Auto-Pilot">🚀 Trạm Auto-Pilot</button>
                     </div>
                     <textarea class="ctrl-textarea" id="ss-prompt" placeholder="Mô tả ngắn gọn: Nhân vật, bối cảnh, xung đột chính..."></textarea>
-                    <div style="display:flex; gap:8px; margin-top:8px;">
+                    <div style="display:flex; gap:6px; margin-top:8px;">
                         <div style="flex:1; display:flex; align-items:center;">
-                            <input type="number" id="ss-brainstorm-count" value="10" min="3" max="30" style="width:40px; padding:8px 4px; border-radius:8px 0 0 8px; border:1px solid rgba(16,185,129,0.4); border-right:none; background:rgba(16,185,129,0.03); color:#10b981; font-weight:700; text-align:center; font-size:12px; outline:none;" title="Số lượng Idea">
-                            <button id="ss-btn-brainstorm" style="flex:1;padding:8px;border-radius:0 8px 8px 0;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.07);color:#10b981;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;" onmouseover="this.style.background='rgba(16,185,129,0.14)'" onmouseout="this.style.background='rgba(16,185,129,0.07)'">
+                            <input type="number" id="ss-brainstorm-count" value="10" min="3" max="30" style="width:40px; padding:6px 4px; border-radius:6px 0 0 6px; border:1px solid rgba(16,185,129,0.4); border-right:none; background:rgba(16,185,129,0.03); color:#10b981; font-weight:700; text-align:center; font-size:11px; outline:none;" title="Số lượng Idea">
+                            <button id="ss-btn-brainstorm" style="flex:1;padding:6px;border-radius:0 6px 6px 0;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.07);color:#10b981;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:all .2s;" onmouseover="this.style.background='rgba(16,185,129,0.14)'" onmouseout="this.style.background='rgba(16,185,129,0.07)'">
                                 <span id="ss-brainstorm-icon">💡</span> Gợi ý Kịch Bản
                             </button>
                         </div>
-                        <button id="ss-btn-autodetect" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(251,191,36,0.4);background:rgba(251,191,36,0.07);color:#fbbf24;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;" onmouseover="this.style.background='rgba(251,191,36,0.14)'" onmouseout="this.style.background='rgba(251,191,36,0.07)'">
+                        <button id="ss-btn-autodetect" style="flex:1;padding:6px;border-radius:6px;border:1px solid rgba(251,191,36,0.4);background:rgba(251,191,36,0.07);color:#fbbf24;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:all .2s;" onmouseover="this.style.background='rgba(251,191,36,0.14)'" onmouseout="this.style.background='rgba(251,191,36,0.07)'">
                             <span id="ss-autodetect-icon">🤖</span> Gợi ý Tiêu đề
                         </button>
                     </div>
@@ -859,11 +859,11 @@ $nonce = wp_create_nonce('temply_ai_nonce');
 
             <!-- Two-mode action area -->
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;">
-                <button class="btn-split" id="ss-btn-split" disabled style="font-size:12px;">
+                <button class="btn-split" id="ss-btn-split" disabled style="font-size:12px; padding:10px;">
                     ✂️ Tách & Đăng ngay
                 </button>
-                <button id="ss-btn-autopilot" disabled style="padding:12px;border-radius:10px;border:1px solid rgba(16,185,129,0.5);background:rgba(16,185,129,0.08);color:#10b981;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;" onmouseover="this.disabled||this.style.setProperty('background','rgba(16,185,129,0.2)')" onmouseout="this.style.setProperty('background','rgba(16,185,129,0.08)')">
-                    🤖 Lên lịch Auto-Pilot
+                <button id="ss-btn-autopilot" disabled style="padding:10px;border-radius:10px;border:1px solid rgba(16,185,129,0.5);background:rgba(16,185,129,0.08);color:#10b981;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;" onmouseover="this.disabled||this.style.setProperty('background','rgba(16,185,129,0.2)')" onmouseout="this.style.setProperty('background','rgba(16,185,129,0.08)')">
+                    🤖 Lên Lịch Auto-Pilot
                 </button>
             </div>
 
@@ -2582,80 +2582,124 @@ ${chunkChaps}`;
         // ==========================================
         // AUTO-PILOT QUEUE VIEWER (FRONT-END)
         // ==========================================
+        window.autoPilotInterval = null;
+        window.autoPilotPingInterval = null;
+
+        window.closeAutoPilotModal = function() {
+            if(window.autoPilotInterval) clearInterval(window.autoPilotInterval);
+            if(window.autoPilotPingInterval) clearInterval(window.autoPilotPingInterval);
+            const m = document.getElementById('ss-autopilot-modal');
+            if(m) m.remove();
+        };
+
         window.renderAutoPilotModal = async function() {
             try {
-                showToast('Đang tải dữ liệu Hàng đợi Auto-Pilot...', 'info');
-                const fd = new FormData();
-                fd.append('action', 'temply_studio_get_autopilot_queue');
-                fd.append('action_nonce', NONCE);
-
-                const res = await fetch(AJAX_URL, { method: 'POST', body: fd }).then(r => r.json());
-                if(!res.success) throw new Error(res.data?.message || 'Lỗi lấy queue');
-
-                const config = res.data.config;
-                const queue = config?.queue || [];
-                
-                const c = document.createElement('div');
-                c.id = 'ss-autopilot-modal';
-                c.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;';
-                
-                let listHtml = '';
-                if(queue.length === 0) {
-                    listHtml = `<div style="padding:40px; text-align:center; color:#94a3b8;">Hàng đợi đang trống. Hãy dùng Gợi ý kịch bản để đẩy thêm truyện vào Lò nhé!</div>`;
-                } else {
-                    queue.forEach((q, idx) => {
-                        const target = q.target_chapters || 20;
-                        const left = q.chapters_left || target;
-                        const done = target - left;
-                        const pct = Math.floor((done / target) * 100);
-                        let statusColor = '#94a3b8';
-                        let statusText = q.status;
-                        if(statusText === 'draft_outline') { statusColor = '#f59e0b'; statusText = 'Đang xếp Dàn Ý'; }
-                        else if(statusText === 'writing') { statusColor = '#10b981'; statusText = 'Đang Cày Chữ'; }
-                        else if(statusText === 'pending') { statusColor = '#3b82f6'; statusText = 'Đang chờ Tới Lượt'; }
-
-                        listHtml += `
-                        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:16px; margin-bottom:12px; display:flex; gap:16px; align-items:center;">
-                            <div style="width:40px; height:40px; background:rgba(79,70,229,0.2); color:#818cf8; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:16px; flex-shrink:0;">
-                                #${idx+1}
+                if(!document.getElementById('ss-autopilot-modal')) {
+                    const c = document.createElement('div');
+                    c.id = 'ss-autopilot-modal';
+                    c.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;';
+                    c.innerHTML = `
+                        <div style="background:#1e293b; border:1px solid rgba(255,255,255,0.1); border-radius:16px; width:100%; max-width:700px; max-height:85vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);">
+                            <div style="padding:20px; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
+                                <h2 style="margin:0; font-size:20px; color:#fff; font-weight:800;">🚀 Trạm Giám Sát Auto-Pilot</h2>
+                                <button onclick="closeAutoPilotModal()" style="background:transparent; border:none; color:#94a3b8; font-size:24px; cursor:pointer; line-height:1;">&times;</button>
                             </div>
-                            <div style="flex:1;">
-                                <div style="font-size:15px; font-weight:800; color:#fff; margin-bottom:4px;">${q.title || 'Truyện Chờ Phân Tích'}</div>
-                                <div style="display:flex; gap:8px; font-size:12px; margin-bottom:12px;">
-                                    <span style="background:rgba(16,185,129,0.1); color:#10b981; padding:2px 8px; border-radius:12px;">${statusText}</span>
-                                    <span style="background:rgba(255,255,255,0.1); color:#cbd5e1; padding:2px 8px; border-radius:12px;">${q.genre || 'Chưa định hình'}</span>
+                            <div id="ap-header-stats" style="padding:16px; background:rgba(0,0,0,0.2); border-bottom:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; font-size:13px; color:#cbd5e1;">
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    Đang bóc lột máy chủ cấp tốc... 
+                                    <svg width="16" height="16" stroke="#10b981" viewBox="0 0 24 24" fill="none" class="fa-spin"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </div>
-                                <div style="background:rgba(0,0,0,0.5); height:8px; border-radius:4px; overflow:hidden; position:relative;">
-                                    <div style="background:linear-gradient(90deg, #4f46e5, #ec4899); position:absolute; top:0; left:0; bottom:0; width:${pct}%; transition:width 0.5s;"></div>
-                                </div>
-                                <div style="font-size:11px; color:#64748b; margin-top:6px; text-align:right;">Tiến độ: ${done}/${target} (${pct}%)</div>
+                                <div id="ap-total-count">Đang tải...</div>
                             </div>
-                            <button onclick="handleAutoPilotRemove(${idx})" style="background:rgba(239,68,68,0.1); color:#ef4444; border:1px solid rgba(239,68,68,0.3); padding:8px; border-radius:8px; cursor:pointer;" title="Xoá truyện này khỏi hàng đợi">❌</button>
-                        </div>`;
-                    });
+                            <div id="ap-list-container" style="padding:20px; overflow-y:auto; flex:1; background:#0f172a;">
+                                <div style="text-align:center; padding:40px; color:#94a3b8;">Đang kết nối lò ấp...</div>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(c);
+
+                    // Interval to ping AI trigger silently to bypass WordPress cron constraints
+                    window.autoPilotPingInterval = setInterval(async () => {
+                        const fd = new FormData();
+                        fd.append('action', 'temply_studio_trigger_cron');
+                        fd.append('action_nonce', NONCE);
+                        fetch(AJAX_URL, { method: 'POST', body: fd }).catch(()=>null);
+                    }, 5000); // Pulse every 5 seconds
+
+                    // Set up refresh interval
+                    window.autoPilotInterval = setInterval(() => {
+                        fetchAutoPilotData();
+                    }, 5000); // refresh UI every 5 seconds
                 }
-
-                c.innerHTML = `
-                    <div style="background:#1e293b; border:1px solid rgba(255,255,255,0.1); border-radius:16px; width:100%; max-width:700px; max-height:85vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);">
-                        <div style="padding:20px; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
-                            <h2 style="margin:0; font-size:20px; color:#fff; font-weight:800;">🚀 Trạm Giám Sát Auto-Pilot</h2>
-                            <button onclick="document.getElementById('ss-autopilot-modal').remove()" style="background:transparent; border:none; color:#94a3b8; font-size:24px; cursor:pointer; line-height:1;">&times;</button>
-                        </div>
-                        <div style="padding:16px; background:rgba(0,0,0,0.2); border-bottom:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; font-size:13px; color:#cbd5e1;">
-                            <div>Tốc độ cấu hình chung: <b style="color:#10b981;">${config.interval || 'every_five_minutes'}</b></div>
-                            <div>Tổng đang chạy: <b style="color:#d946ef;">${queue.length} truyện</b></div>
-                        </div>
-                        <div style="padding:20px; overflow-y:auto; flex:1; background:#0f172a;">
-                            ${listHtml}
-                        </div>
-                    </div>
-                `;
                 
-                document.body.appendChild(c);
+                // Immediately fetch data
+                await fetchAutoPilotData();
+
             } catch(e) {
                 showToast('Lỗi: ' + e.message, 'error');
             }
         };
+
+        async function fetchAutoPilotData() {
+            if(!document.getElementById('ss-autopilot-modal')) return;
+            const fd = new FormData();
+            fd.append('action', 'temply_studio_get_autopilot_queue');
+            fd.append('action_nonce', NONCE);
+            const res = await fetch(AJAX_URL, { method: 'POST', body: fd }).then(r => r.json());
+            if(!res.success) return;
+
+            const config = res.data.config;
+            const queue = config?.queue || [];
+            
+            document.getElementById('ap-total-count').innerHTML = `Tổng đang chạy: <b style="color:#d946ef;">${queue.length} truyện</b>`;
+            
+            let listHtml = '';
+            if(queue.length === 0) {
+                listHtml = `<div style="padding:40px; text-align:center; color:#94a3b8;">Hàng đợi đang trống. Hãy dùng Gợi ý kịch bản để đẩy thêm truyện vào Lò nhé!</div>`;
+            } else {
+                queue.forEach((q, idx) => {
+                    const target = q.target_chapters || 20;
+                    const left = q.chapters_left || target;
+                    const done = target - left;
+                    const pct = Math.floor((done / target) * 100);
+                    let statusColor = '#94a3b8';
+                    let statusText = q.status;
+                    let animation = '';
+                    if(statusText === 'draft_outline') { 
+                        statusColor = '#f59e0b'; statusText = 'Đang xếp Dàn Ý'; animation = '<span style="display:inline-block;animation:spin 2s linear infinite;">⏳</span>'; 
+                    }
+                    else if(statusText === 'writing') { 
+                        statusColor = '#10b981'; statusText = 'Đang Cày Chữ'; animation = '<span style="display:inline-block;animation:bounce 1s infinite;">✍️</span>'; 
+                    }
+                    else if(statusText === 'pending') { 
+                        statusColor = '#3b82f6'; statusText = 'Đang chờ Tới Lượt'; animation = '📌'; 
+                    }
+                    else if(statusText === 'error') {
+                        statusColor = '#ef4444'; statusText = 'Bị cúp điện'; animation = '⚠️';
+                    }
+
+                    listHtml += `
+                    <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:16px; margin-bottom:12px; display:flex; gap:16px; align-items:center;">
+                        <div style="width:40px; height:40px; background:rgba(79,70,229,0.2); color:#818cf8; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:16px; flex-shrink:0;">
+                            #${idx+1}
+                        </div>
+                        <div style="flex:1;">
+                            <div style="font-size:15px; font-weight:800; color:#fff; margin-bottom:4px;">${q.title || 'Truyện Chờ Tên'}</div>
+                            <div style="display:flex; gap:8px; font-size:12px; margin-bottom:12px; flex-wrap:wrap;">
+                                <span style="background:rgba(255,255,255,0.1); color:${statusColor}; padding:2px 8px; border-radius:12px; display:flex; align-items:center; gap:4px; font-weight:700;">${animation} ${statusText}</span>
+                                <span style="background:rgba(255,255,255,0.1); color:#cbd5e1; padding:2px 8px; border-radius:12px;">${q.genre || 'Chưa định hình'}</span>
+                            </div>
+                            <div style="background:rgba(0,0,0,0.5); height:8px; border-radius:4px; overflow:hidden; position:relative;">
+                                <div style="background:linear-gradient(90deg, #4f46e5, #ec4899); position:absolute; top:0; left:0; bottom:0; width:${pct}%; transition:width 1s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+                            </div>
+                            <div style="font-size:11px; color:#64748b; margin-top:6px; text-align:right;">Tiến độ: ${done}/${target} (${pct}%)</div>
+                        </div>
+                        <button onclick="handleAutoPilotRemove(${idx})" style="background:rgba(239,68,68,0.1); color:#ef4444; border:1px solid rgba(239,68,68,0.3); padding:8px; border-radius:8px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='rgba(239,68,68,0.2)'" onmouseout="this.style.background='rgba(239,68,68,0.1)'" title="Xoá truyện này khỏi hàng đợi">❌</button>
+                    </div>`;
+                });
+            }
+            document.getElementById('ap-list-container').innerHTML = listHtml;
+        }
 
         window.handleAutoPilotRemove = async function(idx) {
             if(!confirm('Bạn có chắc xoá truyện này khỏi Hàng Đợi không?')) return;
@@ -2667,8 +2711,12 @@ ${chunkChaps}`;
                 const res = await fetch(AJAX_URL, { method: 'POST', body: fd }).then(r => r.json());
                 if(!res.success) throw new Error(res.data?.message || 'Lỗi server');
                 showToast(res.data.message, 'success');
-                document.getElementById('ss-autopilot-modal').remove();
-                renderAutoPilotModal(); // re-render
+                if(window.autoPilotInterval) {
+                   fetchAutoPilotData();
+                } else {
+                   document.getElementById('ss-autopilot-modal').remove();
+                   renderAutoPilotModal(); // fallback
+                }
             } catch(e) {
                 showToast(e.message, 'error');
             }

@@ -1,0 +1,22 @@
+Fetching IDs...
+Tracking 20 missing synopses...
+OK - 438
+OK - 427
+OK - 416
+OK - 405
+OK - 390
+OK - 377
+OK - 304
+OK - 285
+OK - 271
+OK - 261
+OK - 230
+OK - 223
+OK - 210
+OK - 202
+OK - 184
+OK - 178
+OK - 172
+OK - 166
+OK - 155
+OK - 149

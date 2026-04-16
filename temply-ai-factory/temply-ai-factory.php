@@ -314,6 +314,15 @@ add_action('before_delete_post', function($post_id) {
     }
 });
 
+function temply_api_backfill_covers() {
+    $args = ['post_type' => 'truyen', 'posts_per_page' => 5, 'meta_query' => [['key' => '_thumbnail_id', 'compare' => 'NOT EXISTS']]];
+    $posts = get_posts($args);
+    foreach($posts as $p) {
+        wp_remote_get(home_url('/wp-json/temply/v1/backfill-cover?id=' . $p->ID), ['blocking' => false]);
+    }
+    return ['success' => true, 'count' => count($posts)];
+}
+
 function temply_api_backfill_cover() {
     $q = new WP_Query([
         'post_type' => ['post', 'page', 'truyen'],

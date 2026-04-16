@@ -1130,6 +1130,16 @@ function temply_studio_remove_autopilot_item() {
     wp_send_json_error(['message' => 'Không tìm thấy truyện này.']);
 }
 
+// Bơm xung hệ thống: Ép WP Cron chạy lập tức khi user đang mở bảng theo dõi
+add_action('wp_ajax_temply_studio_trigger_cron', 'temply_studio_trigger_cron');
+function temply_studio_trigger_cron() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+    if (function_exists('temply_process_auto_pilot')) {
+        temply_process_auto_pilot();
+    }
+    wp_send_json_success(['message' => 'Đã ép xung lò ấp.']);
+}
+
 // ==========================================
 // STORY STUDIO: Server-side URL Scraper
 // (Works for tehitruyen.com + non-Cloudflare sites)

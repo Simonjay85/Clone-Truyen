@@ -1537,7 +1537,8 @@ function temply_process_auto_pilot() {
         $truyen_id = wp_insert_post([
             'post_type' => 'truyen',
             'post_title' => $title,
-            'post_content' => wp_kses_post("<h3>1. Bối cảnh Thế Giới</h3>" . wp_strip_all_tags($world) . "<br><br><h3>2. Nhân Vật</h3>" . wp_strip_all_tags($chars)),
+            'post_excerpt' => mb_substr(wp_strip_all_tags($script), 0, 300),
+            'post_content' => wp_kses_post("<h3>1. Bối cảnh Thế Giới</h3><p>" . nl2br(esc_html($world)) . "</p><br><h3>2. Nhân Vật</h3><p>" . nl2br(esc_html($chars)) . "</p><br><h3>3. Kịch Bản</h3><p>" . nl2br(esc_html($script)) . "</p>"),
             'post_status' => 'publish',
             'post_author' => 1
         ]);
@@ -1592,8 +1593,13 @@ function temply_process_auto_pilot() {
     $genre = get_post_meta($truyen_id, '_temply_ai_genre', true) ?: '';
 
     // A. BRAINSTORM (Haiku / Gemini)
-    $br_sys = "Bạn là THE ARCHITECT. Đọc diễn biến cuối, Nghĩ ra Dàn Ý cho Chương $next_chap_num.\nChỉ trả về 1 đoạn 100 chữ tóm tắt diễn biến. KHÔNG JSON.";
-    $br_user = "[Bối Cảnh]\n$world\n\n[Kịch bản gốc / Cốt truyện]\n$script\n\n[Nhân vật]\n$characters\n\n[Diễn biến cũ/Ghi chú]\n$last_content\n\nViết tóm tắt chương $next_chap_num.";
+    $br_sys = "Bạn là THE ARCHITECT - Bậc thầy xây dựng cốt truyện kịch tính nảy lửa. 
+Nhiệm vụ: Nghĩ ra Dàn Ý cho Chương $next_chap_num.
+YÊU CẦU BẮT BUỘC: 
+- Phải có RỦI RO (Stakes) và XUNG ĐỘT (Conflict). Tuyệt đối không để nhân vật ngồi im tâm sự nhẹ nhàng, không viết kiểu tản văn hay trị liệu tâm lý. 
+- Phải có biến cố, hành động hoặc bí mật được hé lộ gây rúng động, bám sát sát điệu thể loại.
+Chỉ trả về 1 đoạn 100 chữ tóm tắt diễn biến. KHÔNG JSON.";
+    $br_user = "[THỂ LOẠI TÁC PHẨM]\n$genre\n\n[Bối Cảnh]\n$world\n\n[Kịch bản gốc / Cốt truyện]\n$script\n\n[Nhân vật]\n$characters\n\n[Diễn biến cũ/Ghi chú]\n$last_content\n\nViết tóm tắt mạch truyện ĐẬM ĐẶC KỊCH TÍNH cho trương $next_chap_num.";
     $next_summary = temply_call_ai($br_sys, $br_user, 0.9, $model);
     if(is_wp_error($next_summary)) {
         error_log('TEMPLY AUTO PILOT ERROR: Lỗi Brainstorm ' . $next_summary->get_error_message());
@@ -1601,9 +1607,19 @@ function temply_process_auto_pilot() {
     }
 
     // B. RẶN CHỮ
-    $system_prompt = "VAI TRÒ: THE GHOSTWRITER. Viết tiếp Chương $next_chap_num dựa trên tóm tắt. Viết dài tối thiểu 800 chữ.\n\nLUẬT BẮT BUỘC:\nTITLE: [Tên chương ấn tượng]\n<p>Nội dung HTML</p>\n---COMMENTS---\nUser1|chửi\nUser2|hóng";
-    if (stripos($genre, 'drama') !== false || stripos($genre, 'cẩu huyết') !== false) {
-        $system_prompt .= "\n\nDRAMA: Đẩy mạnh cẩu huyết, mâu thuẫn.";
+    $system_prompt = "VAI TRÒ: THE GHOSTWRITER. Bạn là Tiểu Thuyết Gia Hàng Đầu. Viết tiếp Chương $next_chap_num dựa trên tóm tắt. Viết dài tối thiểu 800 chữ.
+LUẬT BẮT BUỘC VỀ VĂN PHONG:
+- Cốt truyện phải logic, liên kết chặt chẽ với tên truyện và thể loại. Hành động dứt khoát, âm mưu sâu sắc, tuyệt đối không loanh quanh tự kỷ.
+- Nếu là trinh thám/hành động, phải có máu, sự đen tối và rượt đuổi. Nếu là gia đấu/cẩu huyết, phải có đấu trí và lật lọng. 
+- CHÓT VÓT CAO TRÀO: Không bao giờ để mọi thứ trôi qua êm đềm. Giải quyết 1 khó khăn thì phải nảy sinh tiểu xảo, bẫy rập mới.
+FORMAT BẮT BUỘC:
+TITLE: [Tên chương ấn tượng, đầy bí ẩn]
+<p>Nội dung HTML</p>
+---COMMENTS---
+User1|chửi
+User2|hóng";
+    if (stripos($genre, 'drama') !== false || stripos($genre, 'cẩu huyết') !== false || stripos($genre, 'hành động') !== false || stripos($genre, 'trinh thám') !== false) {
+        $system_prompt .= "\n\nHARDCORE MODE: Đẩy mạnh cẩu huyết, mâu thuẫn, máu me, đổ vỡ, hoặc đấu trí rùng rợn. Phản diện phải tàn ác và thông minh.";
     }
     $user_prompt = "[CHỈ ĐẠO KỊCH BẢN CHUNG]\n$script\n\n[NHÂN VẬT]\n$characters\n\n[BỐI CẢNH]\n$world\n\nViết Chương $next_chap_num bám theo:\n$next_summary";
     
@@ -1657,6 +1673,7 @@ Trả về bài review lỗi chi tiết.";
     }
 
     // D. Lên Sóng Publish
+    $chap_title = trim(preg_replace('/\s+/', ' ', str_replace(['*', '#', '[', ']', 'TITLE:', 'TITLE :', 'Title:', 'title:'], '', $chap_title)));
     $post_id = wp_insert_post([
         'post_title'   => "Chương $next_chap_num: $chap_title",
         'post_content' => wp_kses_post('Đang tạo...'),

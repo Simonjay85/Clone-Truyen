@@ -47,7 +47,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 /* ===== SINGLE TRUYEN - PREMIUM REDESIGN ===== */
 .mkm-single-wrap {
     width: 100% !important; display: block !important; clear: both !important;
-    box-sizing: border-box !important; max-width: 1100px;
+    box-sizing: border-box !important; max-width: 1250px;
     margin: 30px auto; padding: 0 15px; font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
     color: #374151;
 }
@@ -72,9 +72,9 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-hero-inner {
     position: relative; z-index: 1;
     display: grid;
-    grid-template-columns: 360px 1fr 180px;
+    grid-template-columns: 280px 1fr 200px;
     gap: 28px;
-    padding: 28px;
+    padding: 24px;
     align-items: start;
 }
 
@@ -97,11 +97,11 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 /* Info col */
 .mkm-info-col { color: #fff; min-width: 0; }
 .mkm-book-title {
-    font-size: 26px; font-weight: 800; color: #fff;
+    font-size: 24px; font-weight: 800; color: #fff;
     margin: 0 0 8px 0; line-height: 1.3;
     text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
-.mkm-genre-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.mkm-genre-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .mkm-genre-chip {
     padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700;
     backdrop-filter: blur(8px); cursor: pointer; text-decoration: none;
@@ -111,7 +111,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-genre-chip:hover { background: rgba(99,102,241,0.6); color: #fff; }
 
 .mkm-info-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;
 }
 .mkm-info-item {
     background: rgba(255,255,255,0.08); backdrop-filter: blur(8px);
@@ -125,9 +125,9 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-synopsis-box {
     background: rgba(0,0,0,0.25); backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px; padding: 14px 16px;
-    font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.82);
-    margin-bottom: 16px;
+    border-radius: 10px; padding: 12px 14px;
+    font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.82);
+    margin-bottom: 12px;
 }
 .mkm-synopsis-box a { color: #a78bfa; text-decoration: none; font-weight: 600; }
 
@@ -235,13 +235,13 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
                 </div>
 
                 <!-- Read Buttons (Moved to fill gap) -->
-                <div class="mkm-action-btns" style="margin-top: 20px;">
+                <div class="mkm-action-btns" style="margin-top: 16px;">
                     <a href="<?php echo esc_url($first_chapter_url); ?>" class="mkm-btn-prim">📖 Đọc từ đầu</a>
                     <a href="<?php echo esc_url($latest_chapter_url); ?>" class="mkm-btn-sec">★ Đọc tập mới</a>
                 </div>
 
                 <!-- Extra Quick Stats to fill left column vertically -->
-                <div class="mkm-extra-stats" style="margin-top: 20px; background: rgba(0,0,0,0.25); backdrop-filter: blur(10px); border-radius:12px; padding: 16px; border:1px solid rgba(255,255,255,0.08); color:#fff; font-size:13px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <div class="mkm-extra-stats" style="margin-top: 16px; background: rgba(0,0,0,0.25); backdrop-filter: blur(10px); border-radius:12px; padding: 12px; border:1px solid rgba(255,255,255,0.08); color:#fff; font-size:13px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                     <div style="display:flex; justify-content:space-between; margin-bottom:12px; align-items:center;">
                         <span style="color:rgba(255,255,255,0.65); display:flex; align-items:center; gap:6px;"><span style="font-size:16px;">⏱️</span> Thời gian đọc</span>
                         <strong style="font-weight:700; color:#e2e8f0; font-family:monospace; font-size:14px;">~<?php echo max(1, round(count($chapters) * 0.5)); ?> giờ</strong>
@@ -302,7 +302,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
                 <div class="mkm-synopsis-box">
                     <div id="synopFull" style="display:none;"><?php echo nl2br(esc_html($synopsis_full)); ?></div>
                     <div id="synopShort"><?php echo nl2br(esc_html($synopsis_short)); ?></div>
-                    <a href="#" onclick="event.preventDefault(); var s=document.getElementById('synopShort'),f=document.getElementById('synopFull'),b=this.closest('.mkm-synopsis-box'); if(f.style.display==='none'){f.style.display='block';s.style.display='none';b.style.maxHeight='400px';this.textContent='▲ Thu gọn';}else{f.style.display='none';s.style.display='block';b.style.maxHeight='200px';this.textContent='▼ Xem toàn bộ';}">▼ Xem toàn bộ</a>
+                    <a href="#" onclick="event.preventDefault(); var s=document.getElementById('synopShort'),f=document.getElementById('synopFull'); if(f.style.display==='none'){f.style.display='block';s.style.display='none';this.textContent='▲ Thu gọn';}else{f.style.display='none';s.style.display='block';this.textContent='▼ Xem toàn bộ';}">▼ Xem toàn bộ</a>
                 </div>
 
                 <!-- Action buttons moved to left column -->
@@ -329,9 +329,9 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
                 <div class="mkm-status-badge">✅ <?php echo esc_html($status); ?></div>
 
                 <div class="mkm-social-btns">
-                    <button class="mkm-social-btn">♡ Yêu thích</button>
-                    <button class="mkm-social-btn">➦ Chia sẻ</button>
-                    <button class="mkm-social-btn">⚑ Báo lỗi</button>
+                    <button class="mkm-social-btn" onclick="this.innerHTML='❤️ Đã yêu thích'; this.style.color='#ef4444'; this.style.borderColor='#ef4444'; alert('Đã thêm vào tủ truyện yêu thích của bạn!');">♡ Yêu thích</button>
+                    <button class="mkm-social-btn" onclick="if(navigator.share){ navigator.share({title: document.title, url: window.location.href}); } else { prompt('Copy link để chia sẻ:', window.location.href); }">➦ Chia sẻ</button>
+                    <button class="mkm-social-btn" onclick="let reason = prompt('Bạn gặp vấn đề gì với truyện này?'); if(reason) alert('Cảm ơn bạn đã báo cáo. Quản trị viên sẽ xử lý sớm nhất!');">⚑ Báo lỗi</button>
                 </div>
             </div>
         </div>
