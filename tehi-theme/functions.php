@@ -717,6 +717,8 @@ function temply_studio_get_prompt() {
     $ai_prompt .= "5. Các chương phải liên kết mạch lạc, cốt truyện nhất quán, không mâu thuẫn.\n";
     $ai_prompt .= "6. Kết thúc chương cuối phải hoàn chỉnh, có hậu (Happy ending hoặc Open ending).\n";
     $ai_prompt .= "7. KHÔNG viết thêm bất kỳ ghi chú nào ngoài nội dung truyện.\n";
+    $ai_prompt .= "8. SHOW, DON'T TELL (Quan trọng): Tuyệt đối KHÔNG viết một đoạn văn dài dòng chỉ để kể lể tóm tắt lại quá khứ của nhân vật. Hãy để nhân vật tự bộc bạch qua lời thoại ngập ngừng, rưng rưng nước mắt, hoặc qua hành động, những mảnh hồi ức chớp nhoáng đan xen với hiện tại để câu chuyện chân thực và 'điện ảnh' hơn.\n";
+    $ai_prompt .= "9. NGHỆ THUẬT XỬ LÝ CAO TRÀO: Nếu truyện theo hướng tâm lý hoặc chữa lành (Healing/Dark Healing), hồi kết và cao trào phải thiên về sự giằng xé nội tâm sâu sắc, ảo giác tâm lý hoặc sự tự thức tỉnh. TUYỆT ĐỐI KHÔNG biến cao trào thành các trận đánh nhau phép thuật kiểu 'siêu anh hùng' hay 'shounen manga' với quái vật hiện hình gầm rú phá hoại vật lý.\n";
     $ai_prompt .= "Hãy bắt đầu viết ngay bây giờ:";
 
     $gemini_key = tehi_get_gemini_key();
@@ -764,6 +766,8 @@ function temply_studio_generate_story() {
     $ai_prompt .= "5. Các chương phải liên kết mạch lạc, cốt truyện nhất quán, không mâu thuẫn.\n";
     $ai_prompt .= "6. Kết thúc chương cuối phải hoàn chỉnh, có hậu (Happy ending hoặc Open ending).\n";
     $ai_prompt .= "7. KHÔNG viết thêm bất kỳ ghi chú nào ngoài nội dung truyện.\n";
+    $ai_prompt .= "8. SHOW, DON'T TELL (Quan trọng): Tuyệt đối KHÔNG viết một đoạn văn dài dòng chỉ để kể lể tóm tắt lại quá khứ của nhân vật. Hãy để nhân vật tự bộc bạch qua lời thoại ngập ngừng, rưng rưng nước mắt, hoặc qua hành động, những mảnh hồi ức chớp nhoáng đan xen với hiện tại để câu chuyện chân thực và 'điện ảnh' hơn.\n";
+    $ai_prompt .= "9. NGHỆ THUẬT XỬ LÝ CAO TRÀO: Nếu truyện theo hướng tâm lý hoặc chữa lành (Healing/Dark Healing), hồi kết và cao trào phải thiên về sự giằng xé nội tâm sâu sắc, ảo giác tâm lý hoặc sự tự thức tỉnh. TUYỆT ĐỐI KHÔNG biến cao trào thành các trận đánh nhau phép thuật kiểu 'siêu anh hùng' hay 'shounen manga' với quái vật hiện hình gầm rú phá hoại vật lý.\n";
     $ai_prompt .= "Hãy bắt đầu viết ngay bây giờ:";
 
     $raw_text = tehi_call_ai_api($ai_prompt, false, 90, $ai_model);
@@ -819,9 +823,73 @@ function temply_studio_save_content() {
 
     $post_id  = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
     $raw_text = isset($_POST['raw_text']) ? wp_unslash($_POST['raw_text']) : '';
+    $title    = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : 'Truyện Sáng Tác Nhanh';
+    $genre_str= isset($_POST['genre']) ? sanitize_text_field($_POST['genre']) : '';
 
-    if (!$post_id || empty($raw_text)) {
-        wp_send_json_error(array('message' => 'Thiếu dữ liệu.'));
+    if (empty($raw_text)) {
+        wp_send_json_error(array('message' => 'Nội dung truyện rỗng.'));
+    }
+
+    if (!$post_id) {
+        $post_id = wp_insert_post(array(
+            'post_title'   => $title,
+            'post_status'  => 'draft',
+            'post_type'    => 'truyen',
+            'post_author'  => get_current_user_id()
+        ));
+        
+        if (is_wp_error($post_id)) {
+            wp_send_json_error(array('message' => 'Lỗi tạo bài viết: ' . $post_id->get_error_message()));
+        }
+
+        // Apply Genres
+        if (!empty($genre_str)) {
+            $selected_terms = array_map('trim', explode(',', $genre_str));
+            $selected_terms = array_filter($selected_terms);
+        } else {
+            $categories = array('Đô Thị Ẩn Thân', 'Drama', 'Ngôn tình đô thị', 'Sảng Văn');
+            shuffle($categories);
+            $selected_terms = array_slice($categories, 0, rand(2, 3));
+        }
+        wp_set_object_terms($post_id, $selected_terms, 'the_loai', false);
+
+        // Parse Tiêu đề / Mô tả từ AI content để cấu hình SEO
+        $extracted_title = $title;
+        $extracted_desc = '';
+        foreach (explode("\n", current(array_slice(explode("Chương", $raw_text), 0, 1))) as $line) {
+            if (preg_match('/^Tiêu\s*đề:?\s*(.*)$/iu', trim($line), $m)) {
+                $extracted_title = trim($m[1]);
+            }
+            if (preg_match('/^Mô\s*tả:?\s*(.*)$/iu', trim($line), $m)) {
+                $extracted_desc = trim($m[1]);
+            }
+        }
+
+        $seo_keyword = sprintf('Truyện %s', $extracted_title);
+        $seo_title = sprintf('Đọc Ngay Truyện %s (Mới Nhất) - Cực Cuốn', $extracted_title);
+        
+        update_post_meta($post_id, 'rank_math_title', $seo_title);
+        update_post_meta($post_id, 'rank_math_focus_keyword', $seo_keyword);
+        update_post_meta($post_id, '_yoast_wpseo_title', $seo_title);
+        update_post_meta($post_id, '_yoast_wpseo_focuskw', $seo_keyword);
+        
+        if (!empty($extracted_desc)) {
+            $seo_text = $extracted_desc;
+            if (mb_strlen($seo_text, 'UTF-8') > 160) {
+                $seo_text = mb_substr($seo_text, 0, 157, 'UTF-8') . '...';
+            }
+            update_post_meta($post_id, 'rank_math_description', $seo_text);
+            update_post_meta($post_id, '_yoast_wpseo_metadesc', $seo_text);
+        }
+
+        // Bật Schema Article cho Rank Math
+        update_post_meta($post_id, 'rank_math_rich_snippet', 'article');
+        $schema_data = array(
+            '@type' => 'Article',
+            'headline' => $seo_title,
+            'description' => !empty($seo_text) ? $seo_text : ''
+        );
+        update_post_meta($post_id, 'rank_math_schema_Article', $schema_data);
     }
 
     // 1. Normalize Windows/Mac line endings
@@ -878,9 +946,11 @@ function temply_studio_autodetect_prompt() {
     $ai_prompt .= "\"$prompt\"\n\n";
     $ai_prompt .= "Danh sách thể loại có thể chọn: $genre_list\n";
     $ai_prompt .= "Danh sách giọng văn có thể chọn: $tone_list\n\n";
-    $ai_prompt .= "Cũng gợi ý 3 tựa đề truyện thu hút, phù hợp với nội dung.\n";
+    $ai_prompt .= "Yêu cầu:\n";
+    $ai_prompt .= "- Gợi ý 3 tựa đề truyện: Hấp dẫn, gợi tò mò, sang trọng, mang phong cách văn học mảng web novel chuyên nghiệp. KHÔNG ĐƯỢC dùng các từ quá sến, sáo rỗng hoặc quá trẻ con (chuối).\n";
+    $ai_prompt .= "- Dựa vào độ dài và độ phức tạp của cốt truyện, hãy đề xuất số lượng chương phù hợp nhất để triển khai (ví dụ: 5, 10, 15, hoặc 20, 30 nếu truyện cần không gian rông).\n";
     $ai_prompt .= "Trả về CHỈ MỘT JSON hợp lệ (không giải thích thêm):\n";
-    $ai_prompt .= '{"genres": ["Thể loại 1", "Thể loại 2"], "tone": "giọng văn phù hợp nhất", "titles": ["Tựa đề 1", "Tựa đề 2", "Tựa đề 3"]}';
+    $ai_prompt .= '{"genres": ["Thể loại 1", "Thể loại 2"], "tone": "giọng văn phù hợp nhất", "titles": ["Tựa đề 1", "Tựa đề 2", "Tựa đề 3"], "chapters": 10}';
 
     $gemini_key = tehi_get_gemini_key();
 

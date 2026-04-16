@@ -674,9 +674,15 @@ $nonce = wp_create_nonce('temply_ai_nonce');
 
         /* Mobile responsive */
         @media (max-width: 768px) {
-            .studio-layout { grid-template-columns: 1fr; height: auto; }
-            .studio-sidebar { max-height: 80vh; }
-            .studio-editor { min-height: 60vh; }
+            .studio-layout { grid-template-columns: 1fr !important; height: auto !important; overflow: auto; }
+            .studio-layout > aside { grid-column: 1; grid-row: 1; }
+            .studio-layout > main  { grid-column: 1; grid-row: 2; min-height: 80vh; }
+            .studio-sidebar { max-height: none; padding: 16px; }
+            .editor-content-area { padding: 16px; }
+            .studio-nav { padding: 0 12px; }
+            .studio-user-chip { display: none; }
+            .studio-home-link { font-size: 11px; white-space: nowrap; text-align: center; line-height: 1.2; }
+            .studio-nav-right { gap: 8px; }
         }
     </style>
 </head>
@@ -791,14 +797,8 @@ $nonce = wp_create_nonce('temply_ai_nonce');
                 </div>
 
                 <div class="ctrl-group" style="margin-bottom: 16px;">
-                    <label class="ctrl-label">Số chương muốn tạo</label>
-                    <select class="ctrl-select" id="ss-chapters" onchange="updateChapterNote(this.value)">
-                        <option value="3">3 chương (~2,500 từ/chương)</option>
-                        <option value="5" selected>5 chương (~2,500 từ/chương)</option>
-                        <option value="8">8 chương (~2,000 từ/chương)</option>
-                        <option value="10">10 chương (~2,000 từ/chương)</option>
-                        <option value="15">15 chương (~1,500 từ/chương)</option>
-                    </select>
+                    <label class="ctrl-label">Số chương muốn tạo (mỗi chương ~2000 từ)</label>
+                    <input type="number" class="ctrl-input" id="ss-chapters" value="10" min="1" max="100" oninput="updateChapterNote(this.value)">
                     <div id="chapter-count-note" style="font-size:11px;color:#6b7a99;margin-top:6px;">⚡ AI sẽ tạo từng batch 3 chương — tự động ghép lại</div>
                 </div>
                 <script>
@@ -1309,12 +1309,25 @@ $nonce = wp_create_nonce('temply_ai_nonce');
                         if (data.error.code === 429 && i < fallbackChain.length - 1) {
                             console.warn(`[Gemini Fallback] Quota exhausted for ${currentModel}. Switching to ${fallbackChain[i+1]}...`);
                             showToast(`⚠️ Hết giới hạn ${currentModel}, tự động chuyển sang ${fallbackChain[i+1]}!`, 'error');
+                            const f1 = new FormData();
+                            f1.append('action', 'temply_track_gemini_usage_browser');
+                            f1.append('model', currentModel);
+                            f1.append('status', 'exhausted');
+                            fetch(AJAX_URL, { method: 'POST', body: f1 });
                             continue; // Try next model
                         }
                         throw new Error('❌ Gemini API: ' + data.error.message + ' (Mã: ' + data.error.code + ')');
                     }
                     const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
                     if (!text) throw new Error('Gemini trả về rỗng. Kiểm tra lại API Key và Quota.');
+                    
+                    // Log success usage to server asynchronously
+                    const f2 = new FormData();
+                    f2.append('action', 'temply_track_gemini_usage_browser');
+                    f2.append('model', currentModel);
+                    f2.append('status', 'success');
+                    fetch(AJAX_URL, { method: 'POST', body: f2 });
+                    
                     return text;
                 } catch(netErr) {
                     clearTimeout(timer);
@@ -1682,7 +1695,7 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
 
                     const { ai_prompt: autoPrompt, gemini_key } = keyRes.data;
 
-                    const rawJson = await callGeminiFromBrowser(autoPrompt + '\n\nRespond ONLY in valid JSON: {"genres":["..."],"tone":"...", "titles":["..."]}', gemini_key, aiModel);
+                    const rawJson = await callGeminiFromBrowser(autoPrompt + '\n\nRespond ONLY in valid JSON: {"genres":["..."],"tone":"...", "titles":["..."], "chapters": 10}', gemini_key, aiModel);
 
                     // Extract JSON
                     const match = rawJson.match(/\{[\s\S]*\}/);
@@ -1691,6 +1704,7 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
                     const genres = data.genres || [];
                     const tone = data.tone || '';
                     const titles = data.titles || [];
+                    const suggestedChapters = data.chapters || 10;
 
                     // 1. Suggest Titles
                     const titleInput = document.getElementById('ss-title');
@@ -1730,7 +1744,14 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
                         if (opt.value.includes(tone) || tone.includes(opt.value.split(',')[0])) { opt.selected = true; break; }
                     }
 
-                    showToast(`🎯 Gợi ý: ${genres.join(', ')} | Giọng: ${tone}`);
+                    // 4. Apply suggested chapters
+                    const chapterInput = document.getElementById('ss-chapters');
+                    if (chapterInput && suggestedChapters) {
+                        chapterInput.value = suggestedChapters;
+                        if(typeof updateChapterNote === 'function') updateChapterNote(suggestedChapters);
+                    }
+
+                    showToast(`🎯 Gợi ý: ${genres.join(', ')} | ${suggestedChapters} Chương | Giọng: ${tone}`);
                 } catch(e) {
                     showToast('Lỗi: ' + e.message, 'error');
                 } finally {
@@ -1811,18 +1832,8 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
             setProgress(5, 'Đang khởi động AI...');
 
             try {
-                // Step 1: Create draft post first to get ID
-                setProgress(10, 'Đang tạo bài viết truyện...');
-                const draftFD = new FormData();
-                draftFD.append('action', 'temply_studio_create_draft');
-                draftFD.append('action_nonce', NONCE);
-                draftFD.append('title', title);
-                const genre = selectedGenres.join(', ') || 'Phổ thông';
-                draftFD.append('genre', genre);
-                const draftRes = await fetch(AJAX_URL, { method: 'POST', body: draftFD }).then(r => r.json());
-
-                if (!draftRes.success) throw new Error(draftRes.data?.message || 'Không tạo được bài viết!');
-                currentPostId = draftRes.data.post_id;
+                // Step 1: Skip pre-creating draft to avoid empty drafts if generation fails or user aborts
+                currentPostId = 0;
 
                 // Step 2: Generate story content via AI -- called FROM BROWSER directly
                 setProgress(20, 'AI đang sáng tác nội dung...');
@@ -1870,7 +1881,7 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
                                                      .replace(/2\. BẮT BUỘC dòng thứ hai là: "Mô tả:.*?\n/g, '');
                                                      
                             let safeContext = rawContent;
-                            if (safeContext.length > 5000) safeContext = "..." + safeContext.slice(-5000);
+                            if (safeContext.length > 500000) safeContext = "..." + safeContext.slice(-500000);
                             
                             batchPrompt = `[CỐT TRUYỆN ĐÃ XẢY RA TRONG CÁC CHƯƠNG TRƯỚC - HÃY ĐỌC THẬT KỸ ĐỂ DUY TRÌ TÍNH NHẤT QUÁN CỦA TÊN NHÂN VẬT VÀ TÌNH TIẾT, TUYỆT ĐỐI KHÔNG LẶP LẠI VÀ KHÔNG VIẾT LẠI DOẠN MỞ ĐẦU NÀY NỮA]:\n${safeContext}\n\n[HẾT TÓM TẮT TRƯỚC HÃY TIẾP TỤC] MỤC TIÊU TIẾP THEO:\n\n` + batchPrompt;
                         }
@@ -1911,8 +1922,11 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
                 saveFD.append('action_nonce', NONCE);
                 saveFD.append('post_id', currentPostId);
                 saveFD.append('raw_text', rawContent);
+                saveFD.append('title', title);
+                saveFD.append('genre', genre);
                 const saveRes = await fetch(AJAX_URL, { method: 'POST', body: saveFD }).then(r => r.json());
                 if (!saveRes.success) throw new Error(saveRes.data?.message || 'Lỗi khi lưu nội dung!');
+                currentPostId = saveRes.data.post_id;
 
                 setProgress(95, 'Hoàn thiện truyện...');
 

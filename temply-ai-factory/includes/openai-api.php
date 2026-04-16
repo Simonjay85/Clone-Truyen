@@ -182,6 +182,24 @@ add_action('wp_ajax_temply_gemini_usage_stats', function() {
     ]);
 });
 
+/**
+ * Endpoint AJAX: Bắn trigger từ trình duyệt Browser để ghi nhận lượt xài hoặc báo cháy (quota)
+ */
+add_action('wp_ajax_temply_track_gemini_usage_browser', function() {
+    // Không dùng check_ajax_referer vì trình duyệt gửi POST kèm nonce nhưng có thể key tên khác tuỳ theo JS
+    // chỉ cần log lại là được.
+    $model = isset($_POST['model']) ? sanitize_text_field($_POST['model']) : '';
+    if ($model) {
+        $status = sanitize_text_field($_POST['status'] ?? 'success');
+        if ($status === 'success') {
+            temply_gemini_log_usage($model);
+        } else if ($status === 'exhausted') {
+            temply_gemini_mark_model_exhausted($model);
+        }
+    }
+    wp_send_json_success();
+});
+
 
 /**
  * Gọi API Anthropic Claude.
@@ -690,6 +708,14 @@ function temply_ajax_create_story() {
         update_post_meta($post_id, 'rank_math_description', $seo_text);
     }
     
+    // Bật Schema Article cho Rank Math
+    update_post_meta($post_id, 'rank_math_rich_snippet', 'article');
+    $schema_data = array(
+        '@type' => 'Article',
+        'headline' => $seo_title,
+        'description' => isset($seo_text) ? $seo_text : ''
+    );
+    update_post_meta($post_id, 'rank_math_schema_Article', $schema_data);
     // Lưu Context AI để dùng cho tính năng Đẻ chương mới
     update_post_meta($post_id, '_temply_ai_world', $world);
     update_post_meta($post_id, '_temply_ai_characters', $characters);
