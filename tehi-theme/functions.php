@@ -980,14 +980,17 @@ function temply_studio_brainstorm_prompts() {
     if ($count < 1) $count = 1;
     if ($count > 30) $count = 30; // Giới hạn toi da 30
 
-    $ai_prompt  = "Bạn là một biên tập viên sáng tạo (Creative Editor) và tác giả truyện mạng chuyên sâu. Người dùng đang muốn viết một truyện mới dựa trên các thông số sau:\n";
+    $ai_prompt  = "Bạn là một NHÀ BIÊN KỊCH THIÊN TÀI, chuyên tạo ra những kịch bản truyện mạng (Web Novel) VƯỢT TẦM và gây sốc nhất. Người dùng đang muốn viết một truyện mới dựa trên các thông số sau:\n";
     if (!empty($genres)) $ai_prompt .= "- Thể loại mong muốn: $genres\n";
     if (!empty($tone))   $ai_prompt .= "- Giọng văn/Không khí hướng tới: $tone\n";
-    if (!empty($prompt)) $ai_prompt .= "- Từ khóa / Tóm tắt cơ bản: $prompt\n\n";
+    if (!empty($prompt)) $ai_prompt .= "- Ý tưởng Cốt lõi của người dùng: $prompt\n\n";
 
-    $ai_prompt .= "Nhiệm vụ của bạn là suy nghĩ (brainstorm) và đề xuất ĐÚNG {$count} kịch bản (prompt ideas) khác nhau, đa dạng về bối cảnh, nhân vật và điểm nhấn cao trào (twist) để người dùng chọn.\n";
-    $ai_prompt .= "Mỗi kịch bản nên khoảng 3-5 câu, lột tả rõ bối cảnh, mâu thuẫn chính và tính cách nhân vật trọng tâm, có sự kịch tính hoặc sâu sắc.\n";
-    $ai_prompt .= "Trả về CHỈ MỘT MẢNG JSON gồm {$count} Object (KHÔNG GIẢI THÍCH THÊM).\n";
+    $ai_prompt .= "NHIỆM VỤ TỐI THƯỢNG:\n";
+    $ai_prompt .= "Nhiệm vụ của bạn là nghiên cứu các THỊ HIẾU VÀ MÔ-TÍP ĐANG THỊNH HÀNH NHẤT ở Châu Á (Trung Quốc, Hàn Quốc, Việt Nam...), ví dụ như: Xuyên không, Hệ thống, Tổng tài, Rể phế vật, Thực tập sinh, Nghệ sĩ giấu mặt...\n";
+    $ai_prompt .= "TUY NHIÊN, không được rập khuôn một cách máy móc (mì ăn liền hời hợt). Với mỗi mô-típ, bạn PHẢI ĐẦU TƯ SÂU VÀO KỊCH BẢN, xây dựng những mâu thuẫn chặt chẽ, tình tiết lớp lang, nhân vật có chiều sâu và đặc biệt lồng ghép những 'Cú Twist' hoặc cách giải quyết vấn đề sáng tạo, đột phá.\n";
+    $ai_prompt .= "Hãy đề xuất ĐÚNG {$count} kịch bản (prompt ideas) cuốn hút, thỏa mãn được thị hiếu của đại đa số độc giả.\n";
+    $ai_prompt .= "Mỗi kịch bản ưu tiên dài khoảng 3-5 câu: Mở đầu bằng một thiết lập hấp dẫn theo trend, xây dựng tình huống kịch tính, và chốt bằng một mâu thuẫn khốc liệt khiến người xem không thể cưỡng lại mà phải đọc ngay lập tức.\n";
+    $ai_prompt .= "BẮT BUỘC trả về CHỈ MỘT MẢNG JSON gồm {$count} Object (KHÔNG TEXT THỪA, KHÔNG GIẢI THÍCH).\n";
     $ai_prompt .= "Ví dụ định dạng trả về:\n";
     $ai_prompt .= "[\n";
     $ai_prompt .= "  {\n";
@@ -1044,6 +1047,7 @@ function temply_studio_batch_autopilot_push() {
         $p_genres = sanitize_text_field($p['genres'] ?? '');
         $p_prompt = sanitize_textarea_field(trim($p['prompt']));
         $target_c = rand($chapters_min, $chapters_max);
+        if ($target_c > 25) $target_c = 25; // MAX 25 chapters hard limit
 
         // Trạng thái 'draft_outline' để auto-pilot tự động gọi AI phân tích Dàn ý & Nhân vật ngầm!
         $config['queue'][]  = [
@@ -1070,6 +1074,45 @@ function temply_studio_batch_autopilot_push() {
     }
 
     wp_send_json_success(['message' => 'Đã đưa ' . count($prompts) . ' kịch bản vào hàng chờ!']);
+}
+
+// ==========================================
+// RESUME AUTO PILOT ERROR
+// ==========================================
+add_action('wp_ajax_temply_studio_resume_error_queue', 'temply_studio_resume_error_queue');
+function temply_studio_resume_error_queue() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+    if (!current_user_can('edit_posts')) wp_send_json_error(['message' => 'Không đủ quyền.']);
+
+    $index = isset($_POST['index']) ? intval($_POST['index']) : -1;
+    $config = get_option('temply_auto_pilot_queue_config', false);
+    
+    if ($config && isset($config['queue'][$index])) {
+        if ($config['queue'][$index]['status'] === 'error') {
+            $config['queue'][$index]['status'] = 'writing'; // Quay lại trạm làm việc
+            $config['queue'][$index]['error_log'] = ''; // Xóa vết nhơ
+            update_option('temply_auto_pilot_queue_config', $config);
+            wp_send_json_success(['message' => 'Đã phục hồi tiến trình! AutoPilot sẽ thử lại.']);
+        } else {
+            wp_send_json_error(['message' => 'Tiến trình này không ở trạng thái Lỗi.']);
+        }
+    } else {
+        wp_send_json_error(['message' => 'Không tìm thấy tiến trình trong Hàng Đợi.']);
+    }
+}
+
+// ==========================================
+// THÔNG TIN TRẠM GIÁM SÁT (UI)
+// ==========================================
+add_action('wp_ajax_temply_studio_clear_auto_pilot', 'temply_studio_clear_auto_pilot');
+function temply_studio_clear_auto_pilot() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+    if (!current_user_can('edit_posts')) wp_send_json_error(['message' => 'Không đủ quyền.']);
+
+    delete_option('temply_auto_pilot_queue_config');
+    wp_clear_scheduled_hook('temply_auto_pilot_cron_hook');
+    
+    wp_send_json_success(['message' => 'Đã thu dọn sạch sẽ Lò Ấp và giải phóng tiến trình gốc!']);
 }
 
 // ==========================================

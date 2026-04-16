@@ -618,7 +618,7 @@ $nonce = wp_create_nonce('temply_ai_nonce');
         @keyframes blink { 50%{opacity:0} }
 
         /* Notification Toast */
-        .toast-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+        .toast-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 9999999; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
         .toast {
             background: #1e1e2e;
             border: 1px solid rgba(255,255,255,0.1);
@@ -755,6 +755,9 @@ $nonce = wp_create_nonce('temply_ai_nonce');
                         </div>
                         <button id="ss-btn-autodetect" style="flex:1;padding:6px;border-radius:6px;border:1px solid rgba(251,191,36,0.4);background:rgba(251,191,36,0.07);color:#fbbf24;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:all .2s;" onmouseover="this.style.background='rgba(251,191,36,0.14)'" onmouseout="this.style.background='rgba(251,191,36,0.07)'">
                             <span id="ss-autodetect-icon">🤖</span> Gợi ý Tiêu đề
+                        </button>
+                        <button id="ss-btn-bulk-manual" onclick="renderManualBulkModal()" style="flex:1;padding:6px;border-radius:6px;border:1px solid rgba(236,72,153,0.4);background:rgba(236,72,153,0.07);color:#ec4899;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:all .2s;" onmouseover="this.style.background='rgba(236,72,153,0.14)'" onmouseout="this.style.background='rgba(236,72,153,0.07)'">
+                            <span>📝</span> Nhập sỉ Kịch Bản
                         </button>
                     </div>
                 </div>
@@ -2533,6 +2536,165 @@ ${chunkChaps}`;
             }
         };
 
+        window.resumeErrorQueue = async function(index) {
+            if(!confirm("Bạn đã xóa TAY các chương bị dư/lặp trong Danh sách Chương truyện chưa? Nếu chắc chắn đã xóa, hệ thống sẽ khôi phục kịch bản này!")) return;
+            try {
+                const fd = new FormData();
+                fd.append('action', 'temply_studio_resume_error_queue');
+                fd.append('index', index);
+                fd.append('action_nonce', templyAiParams.nonce);
+
+                showToast('Đang khôi phục...');
+                const resp = await fetch(templyAiParams.ajax_url, { method: 'POST', body: fd });
+                const res = await resp.json();
+                
+                if(res.success) {
+                    showToast(res.data.message);
+                    renderAutoPilotModal(); // Refresh the list
+                } else {
+                    showToast(res.data.message, 'error');
+                }
+            } catch(e) {
+                showToast('Lỗi: ' + e.message, 'error');
+            }
+        };
+
+        // ==========================================
+        // FEATURE: Manual Bulk Prompts
+        // ==========================================
+        window.renderManualBulkModal = function() {
+            let existingParams = document.getElementById('ss-manual-bulk-modal');
+            if(existingParams) existingParams.remove();
+
+            let c = document.createElement('div');
+            c.id = 'ss-manual-bulk-modal';
+            c.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(15,23,42,0.8); backdrop-filter:blur(8px); z-index:99999; display:flex; justify-content:center; align-items:center; padding:20px; box-sizing:border-box;';
+
+            c.innerHTML = `
+                <div style="background:#1e293b; border:1px solid rgba(255,255,255,0.1); border-radius:16px; width:100%; max-width:850px; display:flex; flex-direction:column; box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);">
+                    <div style="padding:20px; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
+                        <h2 style="margin:0; font-size:18px; color:#fff; font-weight:800;">📝 Nhập Kịch Bản Hàng Loạt (Súng Máy Chạy Cơm)</h2>
+                        <button onclick="document.getElementById('ss-manual-bulk-modal').remove()" style="background:transparent; border:none; color:#94a3b8; font-size:24px; cursor:pointer; line-height:1;">&times;</button>
+                    </div>
+                    <div style="padding:16px; background:rgba(0,0,0,0.2); border-bottom:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+                        <div style="color:#10b981; font-size:13px; font-weight:700;">
+                            💡 Ngăn cách mỗi truyện bằng hàng rào <code>===</code> hoặc 2 dòng trống.
+                        </div>
+                        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="color:#94a3b8; font-size:13px;">Độ dài:</span>
+                                <input type="number" id="mb-chapters-min" value="15" min="5" style="width:45px; background:transparent; border:1px solid rgba(255,255,255,0.2); color:#fff; border-radius:6px; padding:4px; text-align:center; font-size:13px;">
+                                <span style="color:#94a3b8; font-size:13px;">-</span>
+                                <input type="number" id="mb-chapters-max" value="25" min="5" style="width:45px; background:transparent; border:1px solid rgba(255,255,255,0.2); color:#fff; border-radius:6px; padding:4px; text-align:center; font-size:13px;">
+                                <span style="color:#94a3b8; font-size:13px;">chương</span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="color:#94a3b8; font-size:13px;">Tốc độ:</span>
+                                <select id="mb-interval" style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:#fff; border-radius:6px; padding:4px; font-size:13px;">
+                                    <option value="every_five_minutes" style="color:#000;">5 Phút/Chương</option>
+                                    <option value="hourly" style="color:#000;">1 Giờ/Chương</option>
+                                    <option value="twicedaily" style="color:#000;">12 Giờ/Chương</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding:20px;">
+                        <textarea id="mb-textarea" oninput="window.updateManualBulkCount()" style="width:100%; height:300px; padding:15px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.2); border-radius:12px; color:#fff; font-size:14px; resize:vertical; line-height:1.6; outline:none;" placeholder="Kịch bản 1: Cốt truyện A... Mâu thuẫn B...\n===\nKịch bản 2: Cốt truyện C... Mâu thuẫn D..."></textarea>
+                    </div>
+                    <div style="padding:16px; border-top:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.2); border-radius: 0 0 16px 16px;">
+                        <span id="mb-count-display" style="color:#38bdf8; font-weight:700; font-size:14px;">Đang có: 0 truyện</span>
+                        <button onclick="window.submitManualBulkPrompts()" id="mb-btn-submit" style="background:#ec4899; color:#fff; border:none; padding:10px 16px; border-radius:8px; font-weight:700; cursor:pointer; min-width: 200px;">🚀 Bơm Kịch Bản Vào Auto-Pilot</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(c);
+            window.updateManualBulkCount();
+        };
+
+        window.updateManualBulkCount = function() {
+            let val = document.getElementById('mb-textarea').value.trim();
+            if (!val) {
+                document.getElementById('mb-count-display').innerText = 'Đang có: 0 truyện';
+                return;
+            }
+            let parts;
+            if (val.includes('===')) {
+                parts = val.split('===');
+            } else {
+                parts = val.split(/\n\s*\n/);
+            }
+            // Chỉ đếm những phần text có độ dài kha khá (chống đếm nhầm các dòng Thể loại ngắn của AI)
+            let count = parts.filter(p => p.trim().length > 50).length;
+            document.getElementById('mb-count-display').innerText = 'Đang có: ' + count + ' truyện';
+        };
+
+        window.submitManualBulkPrompts = async function() {
+            let val = document.getElementById('mb-textarea').value.trim();
+            if (!val) {
+                showToast('Không có kịch bản nào để bơm!', 'error');
+                return;
+            }
+            let parts;
+            if (val.includes('===')) {
+                parts = val.split('===');
+            } else {
+                parts = val.split(/\n\s*\n/);
+            }
+            let validPrompts = parts.filter(p => p.trim().length > 50);
+            
+            if (validPrompts.length === 0) {
+                showToast('Không tìm thấy kịch bản hợp lệ (> 50 ký tự)!', 'error');
+                return;
+            }
+
+            const currentGenres = Array.from(document.querySelectorAll('#ss-genres .genre-tag.active')).map(el => el.getAttribute('data-genre')).join(', ');
+            const currentTone = Array.from(document.querySelectorAll('#ss-tones .genre-tag.active')).map(el => el.getAttribute('data-genre')).join(', ');
+            let targetChapsMin = document.getElementById('mb-chapters-min')?.value || 15;
+            let targetChapsMax = document.getElementById('mb-chapters-max')?.value || 25;
+
+            // Safe fetch of art (sometimes absent on this specific interface config)
+            let artEl = document.getElementById('ss-art');
+            let currentArt = artEl ? artEl.value : '';
+
+            let payloadPrompts = [];
+            validPrompts.forEach(p => {
+                payloadPrompts.push({
+                    title: "", // Trống để AI tự đặt tên sau này
+                    genres: currentGenres,
+                    prompt: p.trim()
+                });
+            });
+
+            const btn = document.getElementById('mb-btn-submit');
+            btn.disabled = true;
+            btn.innerHTML = '⏳ Đang Bơm...';
+
+            try {
+                const fd = new FormData();
+                fd.append('action', 'temply_studio_batch_autopilot_push');
+                fd.append('action_nonce', NONCE);
+                fd.append('payload', JSON.stringify({
+                    prompts: payloadPrompts,
+                    chapters_min: targetChapsMin,
+                    chapters_max: targetChapsMax,
+                    interval: document.getElementById('mb-interval').value || 'every_five_minutes',
+                    override_tone: currentTone,
+                    override_art: currentArt
+                }));
+
+                const res = await fetch(AJAX_URL, { method: 'POST', body: fd }).then(r => r.json());
+                if(!res.success) throw new Error(res.data?.message || 'Lỗi xử lý mảng');
+
+                showToast(res.data.message, 'success');
+                document.getElementById('ss-manual-bulk-modal').remove();
+                renderAutoPilotModal(); // Mở luôn trạm theo dõi sướng mắt
+
+            } catch(e) {
+                btn.disabled = false; btn.innerHTML = '🚀 Bơm Kịch Bản Vào Auto-Pilot';
+                showToast('❌ Lỗi: ' + e.message, 'error');
+            }
+        };
+
         window.handleBrainstormEvaluate = async function() {
             const btn = document.getElementById('bs-btn-evaluate');
             btn.disabled = true;
@@ -2590,6 +2752,32 @@ ${chunkChaps}`;
             if(window.autoPilotPingInterval) clearInterval(window.autoPilotPingInterval);
             const m = document.getElementById('ss-autopilot-modal');
             if(m) m.remove();
+        };
+
+        window.handleAutoPilotClearAll = async function() {
+            if(!confirm('Bạn chắc chắn muốn XÓA SẠCH toàn bộ kịch bản đang chạy hoặc đang lỗi/chờ trong Lò Ấp Auto-Pilot chứ? Quá trình này không thể khôi phục!')) return;
+            try {
+                showToast('Đang cưỡng chế dừng Lò Ấp...');
+                const fd = new FormData();
+                fd.append('action', 'temply_studio_clear_auto_pilot');
+                fd.append('action_nonce', templyAiParams.nonce);
+                
+                const resp = await fetch(templyAiParams.ajax_url, { method: 'POST', body: fd});
+                const res = await resp.json();
+                
+                if (res.success) {
+                    showToast(res.data.message);
+                    if (window.fetchAutoPilotData) {
+                        fetchAutoPilotData();
+                    } else {
+                        closeAutoPilotModal();
+                    }
+                } else {
+                    showToast(res.data.message, 'error');
+                }
+            } catch(e) {
+                showToast('Lỗi: ' + e.message, 'error');
+            }
         };
 
         window.renderAutoPilotModal = async function() {
@@ -2678,7 +2866,9 @@ ${chunkChaps}`;
                         statusColor = '#3b82f6'; statusText = 'Đang chờ Tới Lượt'; animation = '📌'; 
                     }
                     else if(statusText === 'error') {
-                        statusColor = '#ef4444'; statusText = 'Bị cúp điện'; animation = '⚠️';
+                        statusColor = '#ef4444'; 
+                        statusText = q.error_log ? q.error_log : 'Lỗi không xác định'; 
+                        animation = '⚠️';
                     }
 
                     listHtml += `
@@ -2688,9 +2878,10 @@ ${chunkChaps}`;
                         </div>
                         <div style="flex:1;">
                             <div style="font-size:15px; font-weight:800; color:#fff; margin-bottom:4px;">${q.title || 'Truyện Chờ Tên'}</div>
-                            <div style="display:flex; gap:8px; font-size:12px; margin-bottom:12px; flex-wrap:wrap;">
+                            <div style="display:flex; gap:8px; font-size:12px; margin-bottom:12px; flex-wrap:wrap; align-items:center;">
                                 <span style="background:rgba(255,255,255,0.1); color:${statusColor}; padding:2px 8px; border-radius:12px; display:flex; align-items:center; gap:4px; font-weight:700;">${animation} ${statusText}</span>
                                 <span style="background:rgba(255,255,255,0.1); color:#cbd5e1; padding:2px 8px; border-radius:12px;">${q.genre || 'Chưa định hình'}</span>
+                                ${statusText.includes('Lỗi') ? `<button onclick="window.resumeErrorQueue(${idx})" style="background:#fecdd3; color:#e11d48; border:1px solid #fda4af; padding:2px 8px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:11px;">🛠 Bỏ qua lỗi & Chạy Tiếp</button>` : ''}
                             </div>
                             <div style="background:rgba(0,0,0,0.5); height:8px; border-radius:4px; overflow:hidden; position:relative;">
                                 <div style="background:linear-gradient(90deg, #4f46e5, #ec4899); position:absolute; top:0; left:0; bottom:0; width:${pct}%; transition:width 1s cubic-bezier(0.4, 0, 0.2, 1);"></div>

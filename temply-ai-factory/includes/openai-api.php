@@ -1507,6 +1507,21 @@ function temply_process_auto_pilot() {
     $curr_item = &$config['queue'][$active_idx];
     $model = 'gemini'; 
 
+    // CHỐNG GHI ĐÈ XÓA TAY BẰNG LƯU AN TOÀN
+    $save_progress = function() use (&$curr_item) {
+        $latest = get_option('temply_auto_pilot_queue_config', false);
+        if ($latest && isset($latest['queue'])) {
+            // Khớp chính xác kịch bản (Vì nếu user xóa 1 phần tử giữa chừng, thứ tự Index bị đổi)
+            foreach($latest['queue'] as $i => $q) {
+                if ($q['prompt'] === $curr_item['prompt'] && $q['title'] === $curr_item['title']) {
+                    $latest['queue'][$i] = $curr_item;
+                    update_option('temply_auto_pilot_queue_config', $latest);
+                    return;
+                }
+            }
+        }
+    };
+
     // ===============================================
     // STAGE 0: DRAFT OUTLINE (Sinh Tự Động Metadata từ Kịch Bản Raw)
     // ===============================================
@@ -1515,35 +1530,41 @@ function temply_process_auto_pilot() {
         $hint_genre = $curr_item['genre'] ?? '';
         $hint_tone  = $curr_item['tone'] ?? '';
 
+        $target_chaps = isset($curr_item['target']) ? intval($curr_item['target']) : 25;
+        $final_chap_start = max(1, $target_chaps - 2);
+
         $sys = "Bạn là NHÀ THIẾT KẾ KỊCH BẢN TRUYỆN MẠNG. Dựa trên Ý TƯỞNG CỐT LÕI (Prompt) dưới đây, hãy phát triển thành một hệ thống thông tin đầy đủ để viết một tác phẩm dài kỳ. TRẢ VỀ CHỈ 1 MẢNG JSON duy nhất, KHÔNG giải thích thêm.
 QUY TẮC:
 - Nhân vật & Bối cảnh BẮT BUỘC phải mang đậm nét văn hóa Châu Á (Việt Nam, Trung Quốc...). 
-- Nghiêm cấm dùng tên Phương Tây/Tiếng Anh. Tên nhân vật, tổ chức, bản đồ phải thuần Việt hoặc Hán Việt.";
-        $usr = "Ý TƯỞNG CỐT LÕI:\n$raw_prompt\n\nThể loại: $hint_genre\nGiọng văn: $hint_tone\n\nYÊU CẦU JSON ĐẦU RA:\n{\n  \"title\": \"Tên truyện (Giật gân, hấp dẫn, độ dài vừa phải)\",\n  \"synopsis\": \"Tóm tắt/Văn án truyện CỤC KỲ GIẬT GÂN, gây sốc và khơi gợi tò mò tột độ để người đọc lao vào ngay. Ngắn gọn dưới 100 chữ.\",\n  \"world\": \"Bối cảnh thế giới chi tiết (Luật lệ, quy tắc, gia tộc, bản đồ mang đậm nét Châu Á...)\",\n  \"chars\": \"Tuyến nhân vật chính (Ngoại hình, tính cách, vũ khí/khả năng). Tên nhân vật thuần Châu Á.\",\n  \"script\": \"Dàn ý sự kiện chính của toàn bộ tác phẩm (Outline)\"\n}";
+- Nghiêm cấm dùng tên Phương Tây/Tiếng Anh. Tên nhân vật, tổ chức, bản đồ phải thuần Việt hoặc Hán Việt.
+- PACING CHẬM & LÂU DÀI (SLOW-BURN): Truyện này ĐƯỢC YÊU CẦU DÀI ĐÚNG $target_chaps CHƯƠNG. Hãy dàn trải mâu thuẫn ra thật dài. KHÔNG ĐƯỢC lật bài ngửa hoặc hạ gục TRÙM CUỐI ngay từ nửa đầu truyện. Kéo dài sự chèn ép, và chỉ cho phép nhân vật chính giải quyết mâu thuẫn tột đỉnh ở những chương cuối cùng (Chương $final_chap_start - $target_chaps).";
+        $usr = "Ý TƯỞNG CỐT LÕI:\n$raw_prompt\n\nThể loại: $hint_genre\nGiọng văn: $hint_tone\n\nYÊU CẦU JSON ĐẦU RA:\n{\n  \"title\": \"Tên truyện (Giật gân, hấp dẫn, độ dài vừa phải)\",\n  \"synopsis\": \"Tóm tắt/Văn án truyện CỤC KỲ GIẬT GÂN, gây sốc và khơi gợi tò mò tột độ để người đọc lao vào ngay. Ngắn gọn dưới 100 chữ.\",\n  \"seo_keyword\": \"1 đến 2 từ khóa ngắn (Ví dụ: Trọng sinh, Báo thù, Huyền huyễn) để làm Focus Keyword cho SEO.\",\n  \"seo_desc\": \"Đoạn mô tả ngắn dưới 160 ký tự, ưu tiên có chứa từ khóa ở trên vào thật tự nhiên để tối ưu SEO Rank Math.\",\n  \"world\": \"Bối cảnh thế giới chi tiết (Luật lệ, quy tắc, gia tộc, bản đồ mang đậm nét Châu Á...)\",\n  \"chars\": \"Tuyến nhân vật chính (Ngoại hình, tính cách, vũ khí/khả năng). Tên nhân vật thuần Châu Á.\",\n  \"script\": \"Dàn ý sự kiện chính của toàn bộ tác phẩm từ mở đầu đến kết thúc. Phải rải đều biến cố, KHÔNG ĐƯỢC để trùm cuối bay màu sớm.\"\n}";
         
         $ai_data = temply_call_ai($sys, $usr, 0.7, $model);
         if(!is_wp_error($ai_data)) {
             // Trim and extract json 
             $ai_data = preg_replace('/```(?:json)?|```/', '', $ai_data);
             $parsed = json_decode(trim($ai_data), true);
-            if($parsed && isset($parsed['title'])) {
+            if($parsed && !empty(trim($parsed['title'] ?? '')) && !empty(trim($parsed['synopsis'] ?? ''))) {
                 $curr_item['title']  = sanitize_text_field($parsed['title']);
                 $curr_item['synopsis'] = sanitize_textarea_field($parsed['synopsis'] ?? '');
+                $curr_item['seo_keyword'] = sanitize_text_field($parsed['seo_keyword'] ?? '');
+                $curr_item['seo_desc'] = sanitize_textarea_field($parsed['seo_desc'] ?? '');
                 $curr_item['world']  = sanitize_textarea_field($parsed['world'] ?? '');
                 $curr_item['chars']  = sanitize_textarea_field($parsed['chars'] ?? '');
                 $curr_item['script'] = sanitize_textarea_field($parsed['script'] ?? '');
                 $curr_item['status'] = 'pending'; // Nâng lên pending để chờ sinh truyện
-                update_option('temply_auto_pilot_queue_config', $config);
+                $save_progress();
             } else {
                 error_log('TEMPLY AUTO PILOT ERROR: Lỗi parse JSON ' . $ai_data);
                 $curr_item['status'] = 'failed';
                 $curr_item['error_log'] = 'Lỗi Parse JSON (Tắt cẩu huyết/văn mẫu quá mức).';
-                update_option('temply_auto_pilot_queue_config', $config);
+                $save_progress();
             }
         } else {
             error_log('TEMPLY AUTO PILOT ERROR: Lỗi tạo Dàn Ý Tự động ' . $ai_data->get_error_message());
             $curr_item['status'] = 'failed';
-            update_option('temply_auto_pilot_queue_config', $config);
+            $save_progress();
         }
         return; // Dừng cron lần này, chờ cron sau tạo post
     }
@@ -1553,8 +1574,8 @@ QUY TẮC:
     // ===============================================
     if ($curr_item['status'] === 'pending') {
         $prompt = $curr_item['prompt'] ?? '';
-        $title = $curr_item['title'] ?? 'Truyện Mới';
-        $genre = $curr_item['genre'] ?? 'Hỗn hợp';
+        $title = !empty(trim($curr_item['title'] ?? '')) ? trim($curr_item['title']) : 'Truyện Vô Danh ' . wp_rand(100, 999);
+        $genre = !empty(trim($curr_item['genre'] ?? '')) ? trim($curr_item['genre']) : 'Hỗn hợp';
         $tone = $curr_item['tone'] ?? 'Lôi cuốn';
         $world = $curr_item['world'] ?? '';
         $script = $curr_item['script'] ?? '';
@@ -1564,7 +1585,7 @@ QUY TẮC:
         $truyen_id = wp_insert_post([
             'post_type' => 'truyen',
             'post_title' => $title,
-            'post_excerpt' => $curr_item['synopsis'] ?? mb_substr(wp_strip_all_tags($script), 0, 300),
+            'post_excerpt' => !empty($curr_item['synopsis']) ? $curr_item['synopsis'] : mb_substr(wp_strip_all_tags($script), 0, 300),
             'post_content' => wp_kses_post("<h3>1. Bối cảnh Thế Giới</h3><p>" . nl2br(esc_html($world)) . "</p><br><h3>2. Nhân Vật</h3><p>" . nl2br(esc_html($chars)) . "</p><br><h3>3. Kịch Bản</h3><p>" . nl2br(esc_html($script)) . "</p>"),
             'post_status' => 'publish',
             'post_author' => 1
@@ -1578,12 +1599,34 @@ QUY TẮC:
         update_post_meta($truyen_id, '_temply_ai_script', $script);
         update_post_meta($truyen_id, '_temply_ai_characters', $chars);
 
+        // RANK MATH SEO (Phân bổ meta)
+        $seo_keyword = $curr_item['seo_keyword'] ?? '';
+        $seo_text = $curr_item['seo_desc'] ?? '';
+        
+        update_post_meta($truyen_id, 'rank_math_title', $title);
+        update_post_meta($truyen_id, 'rank_math_focus_keyword', $seo_keyword);
+        update_post_meta($truyen_id, '_yoast_wpseo_title', $title);
+        update_post_meta($truyen_id, '_yoast_wpseo_focuskw', $seo_keyword);
+        
+        if (!empty($seo_text)) {
+            update_post_meta($truyen_id, 'rank_math_description', $seo_text);
+            update_post_meta($truyen_id, '_yoast_wpseo_metadesc', $seo_text);
+        }
+        
+        // Bật Schema Article
+        update_post_meta($truyen_id, 'rank_math_rich_snippet', 'article');
+        update_post_meta($truyen_id, 'rank_math_schema_Article', array(
+            '@type' => 'Article',
+            'headline' => $title,
+            'description' => $seo_text
+        ));
+
         // Đổi trang thái Hàng Đợi -> Writing (Sẽ viết ở nhịp sau)
         $curr_item['status'] = 'writing';
         $curr_item['truyen_id'] = $truyen_id;
         
         // Lưu Config cẩn thận!
-        update_option('temply_auto_pilot_queue_config', $config);
+        $save_progress();
         
         // Bắn Lệnh Đẻ Ảnh Bìa Bối Cảnh (Chạy ngầm không đợi)
         wp_remote_post(home_url('/wp-json/temply/v1/backfill-covers'), ['blocking' => false]);
@@ -1597,10 +1640,34 @@ QUY TẮC:
     $truyen_id = intval($curr_item['truyen_id']);
     $enable_audit = intval($curr_item['enable_audit']);
     
-    // Tự động đếm tổng số chương hiện có để tính số chương tiếp theo (Bền bỉ hơn menu_order)
+    // Tự động đếm tổng số chương hiện có để tính số chương tiếp theo
     $args = ['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $truyen_id, 'posts_per_page' => -1, 'fields' => 'ids'];
     $all_chap_ids = get_posts($args);
     $next_chap_num = count($all_chap_ids) + 1;
+    
+    // Giới hạn cứng tối đa 25 chương
+    if ($next_chap_num > 25) {
+        $curr_item['status'] = 'completed';
+        $save_progress();
+        return;
+    }
+    
+    // PHÁT HIỆN LỖI LẶP CHƯƠNG (Race Condition Bug)
+    $recent_chapters = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $truyen_id, 'posts_per_page' => 5, 'orderby' => 'date', 'order' => 'DESC']);
+    $seen_indexes = [];
+    foreach($recent_chapters as $rc) {
+        if (preg_match('/^Chương\s+(\d+):/iu', trim($rc->post_title), $m)) {
+            $idx = intval($m[1]);
+            // Nếu phát hiện DB đã có Chương X (bằng với next_chap_num hoặc đã từng có lỗi trùng)
+            if ($idx >= $next_chap_num || isset($seen_indexes[$idx])) {
+                $curr_item['status'] = 'error';
+                $curr_item['error_log'] = "Lỗi lặp Chương $idx. Cần xóa tay chương dư ở WP Admin!";
+                $save_progress();
+                return;
+            }
+            $seen_indexes[$idx] = 1;
+        }
+    }
     $last_content = '';
     
     // Lấy nội dung chương gần nhất (nếu có)
@@ -1639,12 +1706,15 @@ LUẬT BẮT BUỘC VỀ VĂN PHONG:
 - Cốt truyện phải logic, liên kết chặt chẽ với tên truyện và thể loại. Hành động dứt khoát, âm mưu sâu sắc, tuyệt đối không loanh quanh tự kỷ.
 - Nếu là trinh thám/hành động, phải có máu, sự đen tối và rượt đuổi. Nếu là gia đấu/cẩu huyết, phải có đấu trí và lật lọng. 
 - CHÓT VÓT CAO TRÀO: Không bao giờ để mọi thứ trôi qua êm đềm. Giải quyết 1 khó khăn thì phải nảy sinh tiểu xảo, bẫy rập mới.
-FORMAT BẮT BUỘC:
+- SLOW-BURN (QUAN TRỌNG): Xây dựng nhịp độ vả mặt TỪ TỪ. Phản diện phải tàn ác, thông minh và có thế lực chèn ép liên tục. Nam/Nữ chính chỉ giải quyết từng biến cố nhỏ, bảo mật thân phận, KHÔNG lật bài ngửa hay dùng quyền lực/sức mạnh lớn nhất ngay từ những tập đầu. Kéo dài sự cay cú để độc giả phải thèm khát đọc tập tiếp theo!
+FORMAT BẮT BUỘC CHÍNH XÁC (KHÔNG THỪA KHÔNG THIẾU):
 TITLE: [Tên chương ấn tượng, đầy bí ẩn]
 <p>Nội dung HTML</p>
 ---COMMENTS---
 User1|chửi
-User2|hóng";
+User2|hóng
+---MEMORY---
+[Hồ sơ tóm tắt Tình Trạng Hiện Tại của TẤT CẢ nhân vật sau khi hết chương. (Còn sống/chết, giàu/nghèo, bị hành hạ/vui vẻ...). Để AI phiên sau lấy Căn Cứ!]";
     if (stripos($genre, 'drama') !== false || stripos($genre, 'cẩu huyết') !== false || stripos($genre, 'hành động') !== false || stripos($genre, 'trinh thám') !== false) {
         $system_prompt .= "\n\nHARDCORE MODE: Đẩy mạnh cẩu huyết, mâu thuẫn, máu me, đổ vỡ, hoặc đấu trí rùng rợn. Phản diện phải tàn ác và thông minh.";
     }
@@ -1654,21 +1724,31 @@ User2|hóng";
     if(is_wp_error($response)) {
         error_log('TEMPLY AUTO PILOT ERROR: Lỗi Viết nội dung ' . $response->get_error_message());
         $curr_item['status'] = 'failed';
-        update_option('temply_auto_pilot_queue_config', $config);
+        $save_progress();
         return;
     }
 
     $response_trimmed = trim(preg_replace('/```(?:html|json)?|```/', '', $response));
     $chap_title = "Kì Tiếp Theo";
-    if(preg_match('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*(.*)/i', $response_trimmed, $m)) {
+    
+    // Tách ---MEMORY--- ra khỏi $response_trimmed
+    $mem_parts = explode('---MEMORY---', $response_trimmed);
+    $response_parsed = trim($mem_parts[0]);
+    $new_memory = isset($mem_parts[1]) ? trim($mem_parts[1]) : '';
+    // Lữu trữ Trí nhớ động
+    if(!empty($new_memory)) {
+        update_post_meta($truyen_id, '_temply_ai_characters', trim($new_memory));
+    }
+
+    if(preg_match('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*(.*)/i', $response_parsed, $m)) {
         $chap_title = trim($m[1]);
-        $parts = preg_split('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*.*\n/i', $response_trimmed, 2);
+        $parts = preg_split('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*.*\n/i', $response_parsed, 2);
         $chap_content = trim($parts[1] ?? '');
-        if(empty($chap_content)) $chap_content = trim(preg_replace('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*.*/i', '', $response_trimmed, 1));
+        if(empty($chap_content)) $chap_content = trim(preg_replace('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*.*/i', '', $response_parsed, 1));
     } else {
-        $lines = explode("\n", $response_trimmed);
+        $lines = explode("\n", $response_parsed);
         if(count($lines)>2) { $chap_title = trim(array_shift($lines)); $chap_content = trim(implode("\n", $lines)); } 
-        else { $chap_content = $response_trimmed; }
+        else { $chap_content = $response_parsed; }
     }
 
     // C. KIỂM DUYỆT KHẮT KHE (Tự Khen Tự Chê)
@@ -1683,19 +1763,29 @@ Trả về bài review lỗi chi tiết.";
         
         if(!is_wp_error($review_feedback)) {
             // Tự sửa lại dựa trên lỗi
-            $rewrite_user = "BỐI CẢNH:\n$world\n\nNHẬN XÉT CỦA BIÊN TẬP:\n$review_feedback\n\nHãy VIẾT LẠI HOÀN TOÀN TỪ ĐẦU nội dung chương truyện này. Sửa sạch các lỗi trên, viết sâu sắc, bùng nổ hơn.\nGiữ nguyên định dạng TITLE: [Tên] \n <p>...</p>\n---COMMENTS---...";
+            $rewrite_user = "BỐI CẢNH:\n$world\n\nNHẬN XÉT CỦA BIÊN TẬP:\n$review_feedback\n\nHãy VIẾT LẠI HOÀN TOÀN TỪ ĐẦU nội dung chương truyện này. Sửa sạch các lỗi trên, viết sâu sắc, bùng nổ hơn.\nGiữ nguyên định dạng đầy đủ gồm TITLE, nội dung HTML, ---COMMENTS---, và khối ---MEMORY---.";
             $rewritten_response = temply_call_ai_quality($system_prompt, $rewrite_user, 0.9, $model);
             
             if(!is_wp_error($rewritten_response)) {
                 $rewritten_trimmed = trim(preg_replace('/```(?:html|json)?|```/', '', $rewritten_response));
-                if(preg_match('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*(.*)/i', $rewritten_trimmed, $m2)) {
+                
+                // Tách ---MEMORY---
+                $rewritten_mem_parts = explode('---MEMORY---', $rewritten_trimmed);
+                $rewritten_parsed = trim($rewritten_mem_parts[0]);
+                $rewritten_new_memory = isset($rewritten_mem_parts[1]) ? trim($rewritten_mem_parts[1]) : '';
+                
+                if(!empty($rewritten_new_memory)) {
+                    update_post_meta($truyen_id, '_temply_ai_characters', trim($rewritten_new_memory));
+                }
+
+                if(preg_match('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*(.*)/i', $rewritten_parsed, $m2)) {
                     $chap_title = trim($m2[1]);
-                    $parts2 = preg_split('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*.*\n/i', $rewritten_trimmed, 2);
+                    $parts2 = preg_split('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*.*\n/i', $rewritten_parsed, 2);
                     $chap_content = trim($parts2[1] ?? '');
                 } else {
-                    $lines2 = explode("\n", $rewritten_trimmed);
+                    $lines2 = explode("\n", $rewritten_parsed);
                     if(count($lines2)>2) { $chap_title = trim(array_shift($lines2)); $chap_content = trim(implode("\n", $lines2)); } 
-                    else { $chap_content = $rewritten_trimmed; }
+                    else { $chap_content = $rewritten_parsed; }
                 }
             }
         }
@@ -1730,7 +1820,7 @@ Trả về bài review lỗi chi tiết.";
             $curr_item['status'] = 'completed';
         }
         
-        update_option('temply_auto_pilot_queue_config', $config);
+        $save_progress();
     }
 }
 

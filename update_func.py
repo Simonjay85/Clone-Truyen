@@ -7,10 +7,10 @@ try:
     
     ftp.cwd("/wp-content/themes/tehi-theme/")
     
-    with open("tehi-theme/page-story-studio.php", 'rb') as f:
-        ftp.storbinary("STOR page-story-studio.php", f)
+    with open("tehi-theme/functions.php", 'rb') as f:
+        ftp.storbinary("STOR functions.php", f)
         
-    print(f"✓ Upload thành công page-story-studio.php")
+    print(f"✓ Upload thành công functions.php")
     ftp.quit()
 
 except Exception as e:
