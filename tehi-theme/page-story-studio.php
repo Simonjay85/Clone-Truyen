@@ -341,7 +341,7 @@ $nonce = wp_create_nonce('temply_ai_nonce');
         /* ====== MAIN LAYOUT ====== */
         .studio-layout {
             display: grid !important;
-            grid-template-columns: 440px 1fr !important;
+            grid-template-columns: 640px 1fr !important;
             height: calc(100vh - 60px);
             overflow: hidden;
         }
@@ -2602,7 +2602,10 @@ ${chunkChaps}`;
                         <div style="background:#1e293b; border:1px solid rgba(255,255,255,0.1); border-radius:16px; width:100%; max-width:700px; max-height:85vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);">
                             <div style="padding:20px; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
                                 <h2 style="margin:0; font-size:20px; color:#fff; font-weight:800;">🚀 Trạm Giám Sát Auto-Pilot</h2>
-                                <button onclick="closeAutoPilotModal()" style="background:transparent; border:none; color:#94a3b8; font-size:24px; cursor:pointer; line-height:1;">&times;</button>
+                                <div style="display:flex; gap:12px; align-items:center;">
+                                    <button onclick="handleAutoPilotClearAll()" style="background:rgba(239,68,68,0.2); color:#ef4444; border:1px solid #ef4444; padding:6px 12px; border-radius:6px; font-weight:700; font-size:12px; cursor:pointer; transition:all .2s;" onmouseover="this.style.background='#ef4444';this.style.color='#fff'" onmouseout="this.style.background='rgba(239,68,68,0.2)';this.style.color='#ef4444'">Xoá & Dừng Tất Cả</button>
+                                    <button onclick="closeAutoPilotModal()" style="background:transparent; border:none; color:#94a3b8; font-size:24px; cursor:pointer; line-height:1;">&times;</button>
+                                </div>
                             </div>
                             <div id="ap-header-stats" style="padding:16px; background:rgba(0,0,0,0.2); border-bottom:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; font-size:13px; color:#cbd5e1;">
                                 <div style="display:flex; align-items:center; gap:8px;">
@@ -2717,6 +2720,20 @@ ${chunkChaps}`;
                    document.getElementById('ss-autopilot-modal').remove();
                    renderAutoPilotModal(); // fallback
                 }
+            } catch(e) {
+                showToast(e.message, 'error');
+            }
+        };
+
+        window.handleAutoPilotClearAll = async function() {
+            if(!confirm('Xoá tất cả Truyện đang chạy và DỪNG HẲN chế độ đẻ truyện tự động?')) return;
+            try {
+                const fd = new FormData();
+                fd.append('action', 'temply_studio_clear_autopilot_queue');
+                fd.append('action_nonce', NONCE);
+                const res = await fetch(AJAX_URL, { method: 'POST', body: fd }).then(r => r.json());
+                showToast(res.data?.message || 'Đã xoá hàng đợi.', res.success ? 'success' : 'error');
+                if(window.autoPilotInterval) fetchAutoPilotData();
             } catch(e) {
                 showToast(e.message, 'error');
             }

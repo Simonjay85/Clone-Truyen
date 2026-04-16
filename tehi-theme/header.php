@@ -470,13 +470,17 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
             });
         } else {
             // Cuộn bằng cách sử dụng Lenis cho PC, Laptop
-            if (typeof lenis !== 'undefined') {
+            if (typeof lenis !== 'undefined' && lenis) {
                 lenis.scrollTo(selector, {
                     duration: duration,
                     offset: -80,
                 });
             } else {
-                console.warn('Lenis chưa được khởi tạo.');
+                const offsetTop = element.offsetTop;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
             }
         }
     }

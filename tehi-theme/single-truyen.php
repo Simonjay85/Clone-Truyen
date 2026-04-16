@@ -72,7 +72,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-hero-inner {
     position: relative; z-index: 1;
     display: grid;
-    grid-template-columns: 280px 1fr 200px;
+    grid-template-columns: 440px 1fr 115px;
     gap: 28px;
     padding: 24px;
     align-items: start;
@@ -82,7 +82,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-cover-col { flex-shrink: 0; }
 .mkm-cover-col img {
     width: 100%; border-radius: 12px; display: block;
-    aspect-ratio: 2/3; object-fit: cover; object-position: center;
+    aspect-ratio: 3/2; object-fit: cover; object-position: center;
     box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 .mkm-cover-badge {
@@ -97,13 +97,13 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 /* Info col */
 .mkm-info-col { color: #fff; min-width: 0; }
 .mkm-book-title {
-    font-size: 24px; font-weight: 800; color: #fff;
+    font-size: 28px; font-weight: 800; color: #fff;
     margin: 0 0 8px 0; line-height: 1.3;
     text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 .mkm-genre-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .mkm-genre-chip {
-    padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700;
+    padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 700;
     backdrop-filter: blur(8px); cursor: pointer; text-decoration: none;
     background: rgba(99,102,241,0.35); border: 1px solid rgba(99,102,241,0.5); color: #e0e7ff;
     transition: background .2s;
@@ -119,45 +119,46 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     border-radius: 10px; padding: 10px 14px;
     display: flex; flex-direction: column; gap: 3px;
 }
-.mkm-info-item .lbl { font-size: 10px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: .8px; font-weight: 600; }
-.mkm-info-item .val { font-size: 14px; font-weight: 700; color: #fff; }
+.mkm-info-item .lbl { font-size: 13px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: .8px; font-weight: 600; }
+.mkm-info-item .val { font-size: 16px; font-weight: 700; color: #fff; }
 
 .mkm-synopsis-box {
     background: rgba(0,0,0,0.25); backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px; padding: 12px 14px;
-    font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.82);
-    margin-bottom: 12px;
+    border-radius: 10px; padding: 16px 18px;
+    font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.82);
+    margin-bottom: 16px;
 }
 .mkm-synopsis-box a { color: #a78bfa; text-decoration: none; font-weight: 600; }
 
-.mkm-action-btns { display: flex; gap: 12px; }
+.mkm-action-btns { display: flex; gap: 16px; margin-top: 20px; }
 .mkm-btn-prim {
-    flex: 1; text-align: center; background: #f97316; color: #fff;
-    padding: 12px 0; border-radius: 10px; font-weight: 700; text-decoration: none;
-    transition: all .2s; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 6px;
+    flex: 1; text-align: center; background: #ea580c; color: #fff;
+    padding: 18px 0; border-radius: 12px; font-weight: 800; text-decoration: none;
+    transition: all .2s; font-size: 17px; display: flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: 0 4px 12px rgba(234,88,12,0.3);
 }
 .mkm-btn-prim:hover { background: #ea580c; color: #fff; transform: translateY(-1px); }
 .mkm-btn-sec {
     flex: 1; text-align: center; background: #10b981; color: #fff;
-    padding: 12px 0; border-radius: 10px; font-weight: 700; text-decoration: none;
-    transition: all .2s; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 14px 0; border-radius: 10px; font-weight: 700; text-decoration: none;
+    transition: all .2s; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 6px;
 }
 .mkm-btn-sec:hover { background: #059669; color: #fff; transform: translateY(-1px); }
 
 /* Stats col */
 .mkm-stats-col {
-    display: flex; flex-direction: column; gap: 10px;
+    display: flex; flex-direction: column; gap: 8px;
 }
 .mkm-stat-card {
     background: rgba(255,255,255,0.09); backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 12px; padding: 14px 16px;
+    border-radius: 10px; padding: 10px 8px;
     text-align: center; color: #fff;
 }
-.mkm-stat-card .sv { font-size: 22px; font-weight: 800; color: #fff; line-height: 1; }
-.mkm-stat-card .sl { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .8px; }
-.mkm-stat-card .si { font-size: 20px; margin-bottom: 4px; }
+.mkm-stat-card .sv { font-size: 18px; font-weight: 800; color: #fff; line-height: 1; }
+.mkm-stat-card .sl { font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.mkm-stat-card .si { font-size: 16px; margin-bottom: 2px; }
 
 .mkm-status-badge {
     background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4);
@@ -187,8 +188,8 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-chap-card:hover { border-color: #6366f1; box-shadow: 0 2px 8px rgba(99,102,241,0.1); }
 .mkm-chap-icon { width: 40px; height: 40px; background: #6366f1; border-radius: 10px; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .mkm-chap-txt { flex: 1; min-width: 0; overflow: hidden; }
-.mkm-chap-t { font-size: 12px; color: #9ca3af; margin: 0 0 4px 0; display:flex; justify-content:space-between; align-items:center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mkm-chap-n { font-size: 14px; font-weight: 700; color: #111827; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mkm-chap-t { font-size: 13px; color: #9ca3af; margin: 0 0 4px 0; display:flex; justify-content:space-between; align-items:center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mkm-chap-n { font-size: 16px; font-weight: 700; color: #111827; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* Rel stories */
 .mkm-rel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -235,26 +236,31 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
                 </div>
 
                 <!-- Read Buttons (Moved to fill gap) -->
-                <div class="mkm-action-btns" style="margin-top: 16px;">
+                <div class="mkm-action-btns" style="margin-top: 20px;">
                     <a href="<?php echo esc_url($first_chapter_url); ?>" class="mkm-btn-prim">📖 Đọc từ đầu</a>
                     <a href="<?php echo esc_url($latest_chapter_url); ?>" class="mkm-btn-sec">★ Đọc tập mới</a>
                 </div>
 
-                <!-- Extra Quick Stats to fill left column vertically -->
-                <div class="mkm-extra-stats" style="margin-top: 16px; background: rgba(0,0,0,0.25); backdrop-filter: blur(10px); border-radius:12px; padding: 12px; border:1px solid rgba(255,255,255,0.08); color:#fff; font-size:13px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:12px; align-items:center;">
-                        <span style="color:rgba(255,255,255,0.65); display:flex; align-items:center; gap:6px;"><span style="font-size:16px;">⏱️</span> Thời gian đọc</span>
+                <!-- Extra Quick Stats moved under the buttons and minimized -->
+                <div class="mkm-extra-stats" style="margin-top: 16px; background: rgba(0,0,0,0.25); backdrop-filter: blur(10px); border-radius:10px; padding: 12px 16px; border:1px solid rgba(255,255,255,0.08); color:#fff; font-size:12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display:flex; gap: 12px; justify-content: space-between; align-items: center;">
+                    <div style="display:flex; flex-direction:column; gap:2px; align-items:center;">
+                        <span style="color:rgba(255,255,255,0.65); display:flex; align-items:center; gap:4px; font-size:11px;">⏱️ Thời gian</span>
                         <strong style="font-weight:700; color:#e2e8f0; font-family:monospace; font-size:14px;">~<?php echo max(1, round(count($chapters) * 0.5)); ?> giờ</strong>
                     </div>
-                    <div style="display:flex; justify-content:space-between; margin-bottom:12px; align-items:center;">
-                        <span style="color:rgba(255,255,255,0.65); display:flex; align-items:center; gap:6px;"><span style="font-size:16px;">💬</span> Thảo luận</span>
+                    <div style="width:1px; height:24px; background:rgba(255,255,255,0.1);"></div>
+                    <div style="display:flex; flex-direction:column; gap:2px; align-items:center;">
+                        <span style="color:rgba(255,255,255,0.65); display:flex; align-items:center; gap:4px; font-size:11px;">💬 Thảo luận</span>
                         <strong style="font-weight:700; color:#e2e8f0; font-family:monospace; font-size:14px;"><?php echo get_comments_number(); ?> lượt</strong>
                     </div>
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="color:rgba(255,255,255,0.65); display:flex; align-items:center; gap:6px;"><span style="font-size:16px;">⭐</span> Đánh giá</span>
-                        <strong style="color:#fbbf24; font-weight:800; font-family:monospace; font-size:14px;">4.9/5 <span style="font-size:11px; font-weight:500; font-family:'Be Vietnam Pro',sans-serif; color:rgba(255,255,255,0.5);">(<?php echo rand(120, 999); ?>)</span></strong>
+                    <div style="width:1px; height:24px; background:rgba(255,255,255,0.1);"></div>
+                    <div style="display:flex; flex-direction:column; gap:2px; align-items:center;">
+                        <span style="color:rgba(255,255,255,0.65); display:flex; align-items:center; gap:4px; font-size:11px;">⭐ Đánh giá</span>
+                        <strong style="color:#fbbf24; font-weight:800; font-family:monospace; font-size:14px;">4.9/5 <span style="font-size:10px; font-weight:500; font-family:'Be Vietnam Pro',sans-serif; color:rgba(255,255,255,0.5);">(<?php echo rand(120, 999); ?>)</span></strong>
                     </div>
                 </div>
+
+
+
             </div>
 
             <!-- Info Column -->
@@ -291,12 +297,13 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
                 <!-- Synopsis -->
                 <?php
                 // Clean content: decode HTML entities first (fix double-escaped <p> tags), then strip
-                $raw_synopsis = get_the_content();
+                $raw_synopsis = has_excerpt() ? get_the_excerpt() : get_the_content();
                 $raw_synopsis = html_entity_decode($raw_synopsis, ENT_QUOTES, 'UTF-8');
                 $raw_synopsis = wp_strip_all_tags($raw_synopsis);
                 $raw_synopsis = preg_replace('/^#{1,6}\s+/m', '', $raw_synopsis);
-                $raw_synopsis = trim($raw_synopsis);
-                $synopsis_short = wp_trim_words($raw_synopsis, 50, '...');
+                $raw_synopsis = str_replace(array('_', '*', '1. Bối cảnh Thế Giới', '2. Nhân Vật', '3. Kịch Bản'), '', $raw_synopsis);
+                $raw_synopsis = trim(preg_replace('/\s+/', ' ', $raw_synopsis));
+                $synopsis_short = wp_trim_words($raw_synopsis, 90, '...');
                 $synopsis_full  = wp_trim_words($raw_synopsis, 500, '...');
                 ?>
                 <div class="mkm-synopsis-box">

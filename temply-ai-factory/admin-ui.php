@@ -5,15 +5,18 @@ function temply_ai_render_admin_page() {
     // Get existing key
     $openai_key = get_option('temply_openai_api_key', '');
     $gemini_key = get_option('temply_gemini_api_key', '');
+    $gemini_free_key = get_option('temply_gemini_api_key_free', '');
     $claude_key = get_option('temply_claude_api_key', '');
     
     // Save key if submitted
     if (isset($_POST['temply_submit_key']) && check_admin_referer('temply_save_key')) {
         $openai_key = sanitize_text_field($_POST['temply_openai_api_key']);
         $gemini_key = sanitize_text_field($_POST['temply_gemini_api_key']);
+        $gemini_free_key = sanitize_text_field($_POST['temply_gemini_api_key_free']);
         $claude_key = sanitize_text_field($_POST['temply_claude_api_key']);
         update_option('temply_openai_api_key', $openai_key);
         update_option('temply_gemini_api_key', $gemini_key);
+        update_option('temply_gemini_api_key_free', $gemini_free_key);
         update_option('temply_claude_api_key', $claude_key);
         echo '<div class="notice notice-success is-dismissible"><p>Đã lưu cấu hình API Key thiên hà!</p></div>';
     }
@@ -52,8 +55,11 @@ function temply_ai_render_admin_page() {
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">OpenAI API Key (GPT-4o-mini)</label>
                                 <input type="password" name="temply_openai_api_key" value="<?php echo esc_attr($openai_key); ?>" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all mb-4 text-sm" placeholder="sk-proj-...">
                                 
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">Google Gemini API Key (2.5 Flash)</label>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Google Gemini API Key (Paid Tier - Dự phòng)</label>
                                 <input type="password" name="temply_gemini_api_key" value="<?php echo esc_attr($gemini_key); ?>" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all mb-4 text-sm" placeholder="AIzaSy...">
+
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Google Gemini API Key (Free Tier - Ưu tiên)</label>
+                                <input type="password" name="temply_gemini_api_key_free" value="<?php echo esc_attr($gemini_free_key); ?>" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all mb-4 text-sm" placeholder="AIzaSy (Optional)...">
                                 
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Anthropic Claude API Key (3.5 Sonnet)</label>
                                 <input type="password" name="temply_claude_api_key" value="<?php echo esc_attr($claude_key); ?>" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all mb-4 text-sm" placeholder="sk-ant-...">
@@ -347,8 +353,8 @@ function temply_ai_render_admin_page() {
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                         </div>
                         <div>
-                            <h2 class="text-lg font-bold text-white">🌌 Gemini Free Tier Monitor</h2>
-                            <p class="text-blue-100 text-xs">Theo dõi hạn mức miễn phí · Tự fallback Flash → Pro</p>
+                            <h2 class="text-lg font-bold text-white">🌌 Gemini Fleet Monitor</h2>
+                            <p class="text-blue-100 text-xs">Theo dõi hạn mức Free vs Paid · Tự động Fallback đa API Key</p>
                         </div>
                     </div>
                     <button onclick="templyLoadGeminiUsage()" id="gemini-refresh-btn" class="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all">
@@ -365,7 +371,8 @@ function temply_ai_render_admin_page() {
 
                 <div class="p-6">
                     <!-- Today's Stats Cards -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="gemini-today-cards">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" id="gemini-today-cards">
+                        <div class="animate-pulse bg-slate-100 rounded-xl h-28"></div>
                         <div class="animate-pulse bg-slate-100 rounded-xl h-28"></div>
                         <div class="animate-pulse bg-slate-100 rounded-xl h-28"></div>
                         <div class="animate-pulse bg-slate-100 rounded-xl h-28"></div>
@@ -382,9 +389,10 @@ function temply_ai_render_admin_page() {
                                 <thead class="bg-slate-50 border-b border-slate-200">
                                     <tr>
                                         <th class="text-left px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Ngày</th>
-                                        <th class="text-center px-4 py-3 text-xs font-bold text-blue-500 uppercase tracking-wider">Flash 2.5</th>
-                                        <th class="text-center px-4 py-3 text-xs font-bold text-indigo-500 uppercase tracking-wider">Flash 2.0</th>
-                                        <th class="text-center px-4 py-3 text-xs font-bold text-purple-500 uppercase tracking-wider">Pro 1.5</th>
+                                        <th class="text-center px-4 py-3 text-xs font-bold text-cyan-600 uppercase tracking-wider">Free Flash 2.5</th>
+                                        <th class="text-center px-4 py-3 text-xs font-bold text-teal-600 uppercase tracking-wider">Free Flash 2.0</th>
+                                        <th class="text-center px-4 py-3 text-xs font-bold text-blue-600 uppercase tracking-wider">Paid Flash 2.5</th>
+                                        <th class="text-center px-4 py-3 text-xs font-bold text-purple-600 uppercase tracking-wider">Paid Pro 1.5</th>
                                         <th class="text-center px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Tổng</th>
                                     </tr>
                                 </thead>
@@ -397,15 +405,17 @@ function temply_ai_render_admin_page() {
 
                     <!-- Fallback Explanation -->
                     <div class="mt-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100">
-                        <p class="text-xs font-bold text-blue-800 mb-2">🔄 Cơ Chế Auto-Fallback</p>
+                        <p class="text-xs font-bold text-blue-800 mb-2">🔄 Cơ Chế Auto-Fallback Toàn Diện</p>
                         <div class="flex items-center gap-2 flex-wrap text-xs text-blue-700">
-                            <span class="bg-blue-100 px-2 py-1 rounded-full font-semibold">Flash 2.5 (500/ngày)</span>
-                            <span class="text-blue-400">→ hết quota →</span>
-                            <span class="bg-indigo-100 px-2 py-1 rounded-full font-semibold">Flash 2.0 (1500/ngày)</span>
-                            <span class="text-blue-400">→ hết quota →</span>
-                            <span class="bg-purple-100 px-2 py-1 rounded-full font-semibold">Pro 1.5 (50/ngày)</span>
+                            <span class="bg-cyan-100 px-2 py-1 rounded-full font-semibold">Free Flash 2.5 (500)</span>
+                            <span class="text-blue-400">→</span>
+                            <span class="bg-teal-100 px-2 py-1 rounded-full font-semibold">Free Flash 2.0 (1500)</span>
+                            <span class="text-blue-400">→ hết Free API →</span>
+                            <span class="bg-blue-100 px-2 py-1 rounded-full font-semibold">Paid Flash 2.5 (∞)</span>
+                            <span class="text-blue-400">→</span>
+                            <span class="bg-purple-100 px-2 py-1 rounded-full font-semibold">Paid Pro 1.5 (∞)</span>
                         </div>
-                        <p class="text-xs text-slate-500 mt-2">Quota reset lúc 00:00 UTC (07:00 SA giờ VN). Tất cả miễn phí với Google AI Studio API Key.</p>
+                        <p class="text-xs text-slate-500 mt-2">Hệ thống sẽ chạy cạn kiệt năng lượng của API Phụ (Miễn phí) rồi mới đá sang API Chính (Trả phí). Quota Reset lúc 07:00 SA.</p>
                     </div>
                 </div>
             </div>
@@ -414,14 +424,16 @@ function temply_ai_render_admin_page() {
     </div>
     <script>
     const GEMINI_MODELS = {
-        'gemini-2.5-flash': { label: 'Flash 2.5', color: 'blue',   limit: 500  },
-        'gemini-2.0-flash':               { label: 'Flash 2.0', color: 'indigo', limit: 1500 },
-        'gemini-1.5-pro':                 { label: 'Pro 1.5',   color: 'purple', limit: 50   },
+        'free_gemini-2.5-flash':  { label: 'Free Flash 2.5', color: 'cyan',   limit: 500  },
+        'free_gemini-2.0-flash':  { label: 'Free Flash 2.0', color: 'teal',   limit: 1500 },
+        'paid_gemini-2.5-flash':  { label: 'Paid Flash 2.5', color: 'blue',   limit: '∞'  },
+        'paid_gemini-1.5-pro':    { label: 'Paid Pro 1.5',   color: 'purple', limit: '∞'  },
     };
 
     const COLOR_MAP = {
+        cyan:   { bg: 'bg-cyan-500',  light: 'bg-cyan-50',  text: 'text-cyan-700',  border: 'border-cyan-200',  badge: 'bg-cyan-100 text-cyan-700' },
+        teal:   { bg: 'bg-teal-500',  light: 'bg-teal-50',  text: 'text-teal-700',  border: 'border-teal-200',  badge: 'bg-teal-100 text-teal-700' },
         blue:   { bg: 'bg-blue-500',  light: 'bg-blue-50',  text: 'text-blue-700',  border: 'border-blue-200',  badge: 'bg-blue-100 text-blue-700' },
-        indigo: { bg: 'bg-indigo-500',light: 'bg-indigo-50',text: 'text-indigo-700',border: 'border-indigo-200',badge: 'bg-indigo-100 text-indigo-700' },
         purple: { bg: 'bg-purple-500',light: 'bg-purple-50',text: 'text-purple-700',border: 'border-purple-200',badge: 'bg-purple-100 text-purple-700' },
     };
 
@@ -450,15 +462,16 @@ function temply_ai_render_admin_page() {
         Object.entries(GEMINI_MODELS).forEach(([modelId, meta]) => {
             const used      = todayData.usage[modelId] || 0;
             const limit     = meta.limit;
-            const pct       = Math.min(100, Math.round(used / limit * 100));
-            const remaining = Math.max(0, limit - used);
+            const isInfinite= limit === '∞';
+            const pct       = isInfinite ? 0 : Math.min(100, Math.round(used / limit * 100));
+            const remaining = isInfinite ? '∞' : Math.max(0, limit - used);
             const exhausted = todayData.exhausted.includes(modelId);
             const c         = COLOR_MAP[meta.color];
 
-            const barColor = exhausted ? 'bg-red-500' : (pct >= 80 ? 'bg-orange-500' : c.bg);
+            const barColor = exhausted ? 'bg-red-500' : (pct >= 80 && !isInfinite ? 'bg-orange-500' : c.bg);
             const statusBadge = exhausted
                 ? '<span class="text-xs bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded-full">❌ HẾT QUOTA</span>'
-                : (pct >= 80
+                : ((pct >= 80 && !isInfinite)
                     ? '<span class="text-xs bg-orange-100 text-orange-700 font-bold px-2 py-0.5 rounded-full">⚠ GẦN HẾT</span>'
                     : '<span class="text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full">✅ Sẵn sàng</span>');
 
@@ -467,7 +480,7 @@ function temply_ai_render_admin_page() {
                 <div class="flex items-start justify-between mb-3">
                     <div>
                         <p class="text-xs font-bold ${c.text} uppercase tracking-wide">${meta.label}</p>
-                        <p class="text-xs text-slate-500 mt-0.5">${modelId.split('-').slice(0,2).join('-')}</p>
+                        <p class="text-xs text-slate-500 mt-0.5">${modelId.replace('free_', '').replace('paid_', '').split('-').slice(0,2).join('-')}</p>
                     </div>
                     ${statusBadge}
                 </div>
@@ -480,8 +493,8 @@ function temply_ai_render_admin_page() {
                         <div class="h-full rounded-full transition-all duration-700 ${barColor}" style="width: ${pct}%"></div>
                     </div>
                 </div>
-                <p class="text-xs ${exhausted ? 'text-red-600 font-bold' : 'text-slate-500'}">
-                    ${exhausted ? '🚨 Đã chuyển sang model tiếp theo' : `Còn lại <strong>${remaining}</strong> requests hôm nay`}
+                <p class="text-[11px] ${exhausted ? 'text-red-600 font-bold' : 'text-slate-500'}">
+                    ${exhausted ? '🚨 Đã bay màu, chuyển Fallback' : `Còn lại <strong>${remaining}</strong> request hôm nay`}
                 </p>
             </div>`;
         });
@@ -520,16 +533,17 @@ function temply_ai_render_admin_page() {
         const banner = document.getElementById('gemini-alert-banner');
         const alertText = document.getElementById('gemini-alert-text');
         const exhausted = todayData.exhausted || [];
-        const flash25 = 'gemini-2.5-flash';
-        const pro15   = 'gemini-1.5-pro';
+        const freeFlash = 'free_gemini-2.5-flash';
+        const freeFlash2 = 'free_gemini-2.0-flash';
+        const paidPro = 'paid_gemini-1.5-pro';
 
-        if (exhausted.includes(pro15)) {
+        if (exhausted.includes(paidPro)) {
             banner.classList.remove('hidden');
-            alertText.textContent = '🚨 TẤT CẢ GEMINI MODELS ĐÃ HẾT QUOTA HÔM NAY! Vui lòng dùng Claude hoặc OpenAI, hoặc đợi reset lúc 07:00 SA.';
+            alertText.textContent = '🚨 TẤT CẢ GEMINI API (GỒM CẢ PAID TIER) ĐÃ SẬP! Vui lòng kiểm tra lại Billing trên Google Console!';
             banner.querySelector('svg').className = 'w-5 h-5 text-red-500 flex-shrink-0';
-        } else if (exhausted.includes(flash25)) {
+        } else if (exhausted.includes(freeFlash) || exhausted.includes(freeFlash2)) {
             banner.classList.remove('hidden');
-            alertText.textContent = '⚠️ Flash 2.5 đã hết quota — hệ thống đang tự động dùng Flash 2.0 / Pro 1.5 thay thế.';
+            alertText.textContent = '⚠️ Free API Tier đã cạn kiệt Quota — hệ thống đang tự động xài ké Paid API Tier.';
             banner.style.background = '#fffbeb';
             banner.style.borderColor = '#fcd34d';
             alertText.style.color = '#92400e';

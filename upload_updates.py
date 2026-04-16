@@ -1,22 +1,23 @@
 import ftplib
+import urllib.request
 
 try:
     ftp = ftplib.FTP("51.79.53.190")
     ftp.login("alotoinghe", "Nghia234!")
     
-    # Upload Studio PHP
-    local1 = "tehi-theme/page-story-studio.php"
     ftp.cwd("/wp-content/themes/tehi-theme/")
-    with open(local1, 'rb') as f:
-        ftp.storbinary("STOR page-story-studio.php", f)
-    print("✓ Upload thành công: page-story-studio.php")
     
-    # Upload Functions PHP
-    local2 = "tehi-theme/functions.php"
-    with open(local2, 'rb') as f:
-        ftp.storbinary("STOR functions.php", f)
-    print("✓ Upload thành công: functions.php")
-    
+    with open("tehi-theme/update_excerpt.php", 'rb') as f:
+        ftp.storbinary("STOR update_excerpt.php", f)
+        
+    with open("tehi-theme/single-truyen.php", 'rb') as f:
+        ftp.storbinary("STOR single-truyen.php", f)
+        
+    print(f"✓ Upload thành công")
     ftp.quit()
+
+    req = urllib.request.urlopen("https://doctieuthuyet.com/wp-content/themes/tehi-theme/update_excerpt.php")
+    print(req.read().decode('utf-8'))
+
 except Exception as e:
     print("Lỗi:", e)

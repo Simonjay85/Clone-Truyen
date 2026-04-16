@@ -53,22 +53,33 @@ function temply_call_openai($system_prompt, $user_prompt, $temperature = 0.7) {
  * Thứ tự fallback: gemini-2.5-flash → gemini-2.0-flash-lite → gemini-1.5-pro
  */
 function temply_call_gemini($system_prompt, $user_prompt, $temperature = 0.7, $force_model = '') {
-    $api_key = get_option('temply_gemini_api_key', '');
-    if(empty($api_key)) return new WP_Error('no_api_key', 'Chưa cấu hình Gemini API Key');
+    $paid_key = get_option('temply_gemini_api_key', '');
+    $free_key = get_option('temply_gemini_api_key_free', '');
+    
+    if(empty($paid_key) && empty($free_key)) return new WP_Error('no_api_key', 'Chưa cấu hình Gemini API Key');
 
-    // Danh sách model theo ưu tiên fallback
+    // Danh sách model theo ưu tiên fallback ngâm cứu:
     $model_chain = [
-        'gemini-2.5-flash',  // Flash 2.5 (mới nhất, miễn phí)
-        'gemini-2.0-flash',                // Flash 2.0 (dự phòng “nheẹ”)
-        'gemini-1.5-pro',                  // Pro 1.5 (fallback chất lượng cao)
+        ['tier' => 'free', 'model' => 'gemini-2.5-flash', 'id' => 'free_gemini-2.5-flash', 'key' => $free_key],
+        ['tier' => 'free', 'model' => 'gemini-2.0-flash', 'id' => 'free_gemini-2.0-flash', 'key' => $free_key],
+        ['tier' => 'paid', 'model' => 'gemini-2.5-flash', 'id' => 'paid_gemini-2.5-flash', 'key' => $paid_key],
+        ['tier' => 'paid', 'model' => 'gemini-1.5-pro',   'id' => 'paid_gemini-1.5-pro',   'key' => $paid_key],
     ];
 
     if (!empty($force_model)) {
-        $model_chain = [$force_model];
+        $model_chain = [
+            ['tier' => 'paid', 'model' => $force_model, 'id' => 'paid_' . $force_model, 'key' => $paid_key]
+        ];
     }
 
     $last_error = null;
-    foreach ($model_chain as $model_id) {
+    foreach ($model_chain as $node) {
+        $api_key = $node['key'];
+        if(empty($api_key)) continue;
+
+        $model_id  = $node['model'];
+        $record_id = $node['id'];
+
         $url = "https://generativelanguage.googleapis.com/v1beta/models/{$model_id}:generateContent?key=" . $api_key;
 
         $payload = [
@@ -99,8 +110,8 @@ function temply_call_gemini($system_prompt, $user_prompt, $temperature = 0.7, $f
 
         if ($is_quota_error) {
             // Ghi flag ”Flash đã hết quota hôm nay”
-            temply_gemini_mark_model_exhausted($model_id);
-            $last_error = new WP_Error('quota_exceeded', "[{$model_id}] Hết quota - tự chuyển model...");
+            temply_gemini_mark_model_exhausted($record_id);
+            $last_error = new WP_Error('quota_exceeded', "[{$record_id}] Hết quota - tự chuyển model...");
             continue;
         }
 
@@ -112,11 +123,11 @@ function temply_call_gemini($system_prompt, $user_prompt, $temperature = 0.7, $f
 
         if (isset($data['candidates'][0]['content']['parts'][0]['text'])) {
             // ✅ Thành công - ghi usage
-            temply_gemini_log_usage($model_id);
+            temply_gemini_log_usage($record_id);
             return $data['candidates'][0]['content']['parts'][0]['text'];
         }
 
-        $last_error = new WP_Error('parse_error', "Không đọc được phản hồi từ Gemini [{$model_id}]");
+        $last_error = new WP_Error('parse_error', "Không đọc được phản hồi từ Gemini [{$record_id}]");
     }
 
     return $last_error ?? new WP_Error('all_models_failed', 'Tất cả Gemini models đều thất bại');
@@ -155,9 +166,10 @@ add_action('wp_ajax_temply_gemini_usage_stats', function() {
 
     // Gemini free-tier limits (per day)
     $limits = [
-        'gemini-2.5-flash' => 500,  // ~500 RPD miễn phí
-        'gemini-2.0-flash'               => 1500, // 1500 RPD miễn phí
-        'gemini-1.5-pro'                 => 50,   // 50 RPD miễn phí (strict)
+        'free_gemini-2.5-flash' => 500,  
+        'free_gemini-2.0-flash' => 1500,
+        'paid_gemini-2.5-flash' => 99999999, // Vô cực cho paid
+        'paid_gemini-1.5-pro'   => 99999999,
     ];
 
     $days = [];
@@ -589,15 +601,16 @@ function temply_ajax_architect() {
     $system_prompt = "Bạn là THE ARCHITECT - Chuyên gia dựng kịch bản tài ba bậc nhất mạng lưới. TỐI THƯỢNG: TRONG MỖI CHƯƠNG, BẮT BUỘC PHẢI THIẾT KẾ RÕ 1 NÚT THẮT THEO LUẬT KILLER HOOK Ở CUỐI CHƯƠNG: Một tình huống sinh tử, một lời lật lọng, hoặc một bí mật vừa hé nửa chừng (Cliffhanger) để bắt buộc độc giả phải ấn đọc tiếp lập tức. Đặt một tiêu đề thật giật gân, khơi gợi tò tự cho mỗi chương.";
     
     $user_prompt = "Dựa vào Thế giới:\n$world\n\nVà Nhân vật:\n$characters\n\nVÀ YÊU CẦU CỐT TRUYỆN MONG MUỐN BẮT BUỘC ĐƯA VÀO Outline:\n$keywords\n\n";
+    $user_prompt .= "❌ QUY TẮC ĐẶT TÊN CHƯƠNG TỐI THƯỢNG:\n- Tuyệt đối KHÔNG lặp lại các từ vựng nghèo nàn sáo rỗng như: 'Hành trình', 'Hồi sinh', 'Bí mật', 'Sự thật', 'Khám phá', 'Quá khứ', 'Bóng ma'.\n- Tên chương phải dùng từ vựng phong phú, sắc sảo, gợi sự tò mò. KHÔNG ĐƯỢC phép có 2 chương nào trùng lặp quá 2 từ khóa chính với nhau.\n\n";
 
     if ($is_auto) {
-        $user_prompt .= "Hãy phân tích độ phức tạp của cốt truyện và TỰ ĐỘNG QUYẾT ĐỊNH số lượng chương phù hợp nhất để kể vẹn toàn câu chuyện này (Từ 3 đến tối đa 15 chương, chia đều cao trào, không lê thê). BẠN BẮT BUỘC TRẢ VỀ CHÍNH XÁC ĐỊNH DẠNG JSON MẢNG CHỨA TẤT CẢ các chương mà bạn đã tự thiết kế, KHÔNG THÊM BẤT KỲ TEXT NÀO KHÁC BÊN NGOÀI.\nVí dụ cấu trúc:\n[\n  { \"chap_num\": 1, \"title\": \"Tên chương dựa theo cốt truyện...\", \"summary\": \"Nội dung...\" },\n  ...\n  { \"chap_num\": N, \"title\": \"Tên chương cuối cùng...\", \"summary\": \"Nội dung...\" }\n]";
+        $user_prompt .= "Hãy phân tích độ phức tạp của cốt truyện và TỰ ĐỘNG QUYẾT ĐỊNH số lượng chương phù hợp nhất để kể vẹn toàn câu chuyện này (Từ 3 đến tối đa 15 chương, chia đều cao trào, không lê thê). BẠN BẮT BUỘC TRẢ VỀ CHÍNH XÁC ĐỊNH DẠNG JSON MẢNG CHỨA: Object cấu trúc { \"synopsis\": \"Tóm tắt/Văn án cực kỳ giật gân, khơi gợi tò mò tột độ (Dưới 100 chữ)\", \"script\": [ Các chương... ] }.\nVí dụ cấu trúc:\n{\n  \"synopsis\": \"...\",\n  \"script\": [\n    { \"chap_num\": 1, \"title\": \"Tên chương dựa theo cốt truyện...\", \"summary\": \"Nội dung...\" },\n    { \"chap_num\": 2, \"title\": \"Tên chương tiếp...\", \"summary\": \"Nội dung...\" }\n  ]\n}";
     } else {
         $num_chapters = intval($num_chapters_raw);
         if($num_chapters < 1) $num_chapters = 1;
         if($num_chapters > 50) $num_chapters = 50;
         
-        $user_prompt .= "Hãy lập dàn ý chi tiết cho exactly $num_chapters chương. BẠN BẮT BUỘC TRẢ VỀ CHÍNH XÁC ĐỊNH DẠNG JSON MẢNG CHỨA $num_chapters PHẦN TỬ, KHÔNG THÊM BẤT KỲ TEXT NÀO KHÁC BÊN NGOÀI.\nVí dụ cấu trúc:\n[\n  { \"chap_num\": 1, \"title\": \"Tên chương dựa theo...\", \"summary\": \"Nội dung...\" },\n  ...\n  { \"chap_num\": $num_chapters, \"title\": \"Tên chương cuối...\", \"summary\": \"Nội dung...\" }\n]";
+        $user_prompt .= "Hãy lập dàn ý chi tiết cho exactly $num_chapters chương. BẠN BẮT BUỘC TRẢ VỀ CHÍNH XÁC ĐỊNH DẠNG JSON MẢNG CHỨA: Object cấu trúc { \"synopsis\": \"Tóm tắt/Văn án cực kỳ giật gân, khơi gợi tò mò tột độ (Dưới 100 chữ)\", \"script\": [ Các chương... ] }.\nVí dụ cấu trúc:\n{\n  \"synopsis\": \"...\",\n  \"script\": [\n    { \"chap_num\": 1, \"title\": \"Tên chương...\", \"summary\": \"Nội dung...\" },\n    { \"chap_num\": $num_chapters, \"title\": \"Tên chương cuối...\", \"summary\": \"Nội dung...\" }\n  ]\n}";
     }
 
     $response = temply_call_ai($system_prompt, $user_prompt, 0.8);
@@ -1233,7 +1246,9 @@ function temply_ajax_brainstorm_world() {
     $keywords = sanitize_textarea_field($_POST['keywords'] ?? '');
 
     $system_prompt = "Bạn là AI Cố Vấn Thế Giới Quan (World Building) cho Tiểu thuyết mạng. Dựa vào Thể loại và Từ khoá cốt truyện của người dùng, hãy sáng tạo ra đúng 3 tuỳ chọn Bối Cảnh & Thế Giới thật chi tiết, có chiều sâu (mỗi ý tưởng dài 3-4 câu).
-QUY TẮC QUAN TRỌNG: Bối cảnh PHẢI TUYỆT ĐỐI TƯƠNG THÍCH với Thể loại và Cốt truyện. Nếu là truyện Đô Thị/Hiện Đại, bối cảnh phải là thành phố xa hoa, tập đoàn tài phiệt, quyền lực gia tộc mờ ám. Nếu là Tiên Hiệp/Cổ Đại, bối cảnh mới là môn phái, triều đại. Nếu là Kinh Dị, bối cảnh phải u ám, nguyền rủa.
+QUY TẮC QUAN TRỌNG: 
+1. Bối cảnh PHẢI TUYỆT ĐỐI TƯƠNG THÍCH với Thể loại và Cốt truyện. Nếu là truyện Đô Thị/Hiện Đại, bối cảnh phải là thành phố xa hoa, tập đoàn tài phiệt, quyền lực gia tộc mờ ám. Nếu là Tiên Hiệp/Cổ Đại, bối cảnh mới là môn phái, triều đại. Nếu là Kinh Dị, bối cảnh phải u ám, nguyền rủa.
+2. BẮT BUỘC SỬ DỤNG BỐI CẢNH CHÂU Á (Việt Nam, Trung Quốc, Châu Á giả tưởng...). TUYỆT ĐỐI KHÔNG dùng bối cảnh hoặc tên gọi văn hóa Phương Tây/Âu Mỹ.
 Bạn PHẢI trả về đúng định dạng JSON Array chứa 3 chuỗi. KHÔNG giải thích gì thêm.";
     $user_prompt = "Thể loại: $genre\nTừ khoá cốt truyện: $keywords\nHãy cho tôi 3 options Bối cảnh Thế giới (World building).";
 
@@ -1380,13 +1395,14 @@ function temply_ajax_generate_next_chapter() {
     $truyen_id = intval($_POST['truyen_id'] ?? 0);
     if(!$truyen_id) wp_send_json_error(['message' => 'Mất ID Truyện.']);
 
-    // Lấy chuơng mới nhất
-    $args = ['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $truyen_id, 'posts_per_page' => 1, 'orderby' => 'menu_order', 'order' => 'DESC'];
-    $last_chaps = get_posts($args);
-    if(empty($last_chaps)) wp_send_json_error(['message' => 'Truyện chưa có chương nào để viết tiếp.']);
+    // Đếm tổng chuơng
+    $args = ['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $truyen_id, 'posts_per_page' => -1, 'fields' => 'ids'];
+    $all_chap_ids = get_posts($args);
+    if(empty($all_chap_ids)) wp_send_json_error(['message' => 'Truyện chưa có chương nào để viết tiếp.']);
     
-    $last_chap = $last_chaps[0];
-    $next_chap_num = intval($last_chap->menu_order) + 1;
+    $next_chap_num = count($all_chap_ids) + 1;
+    $last_chap = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $truyen_id, 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC'])[0];
+    
     $last_content = wp_strip_all_tags($last_chap->post_content);
     // Cắt gọt text cũ nếu quá dài
     if(mb_strlen($last_content) > 3000) {
@@ -1499,8 +1515,11 @@ function temply_process_auto_pilot() {
         $hint_genre = $curr_item['genre'] ?? '';
         $hint_tone  = $curr_item['tone'] ?? '';
 
-        $sys = "Bạn là NHÀ THIẾT KẾ KỊCH BẢN TRUYỆN MẠNG. Dựa trên Ý TƯỞNG CỐT LÕI (Prompt) dưới đây, hãy phát triển thành một hệ thống thông tin đầy đủ để viết một tác phẩm dài kỳ. TRẢ VỀ CHỈ 1 MẢNG JSON duy nhất, KHÔNG giải thích thêm.";
-        $usr = "Ý TƯỞNG CỐT LÕI:\n$raw_prompt\n\nThể loại: $hint_genre\nGiọng văn: $hint_tone\n\nYÊU CẦU JSON ĐẦU RA:\n{\n  \"title\": \"Tên truyện (Giật gân, hấp dẫn, độ dài vừa phải)\",\n  \"world\": \"Bối cảnh thế giới chi tiết (Luật lệ, quy tắc, gia tộc, bản đồ...)\",\n  \"chars\": \"Tuyến nhân vật chính (Ngoại hình, tính cách, vũ khí/khả năng, gia thế)\",\n  \"script\": \"Dàn ý sự kiện chính của toàn bộ tác phẩm (Outline từ mở bài tới cao trào)\"\n}";
+        $sys = "Bạn là NHÀ THIẾT KẾ KỊCH BẢN TRUYỆN MẠNG. Dựa trên Ý TƯỞNG CỐT LÕI (Prompt) dưới đây, hãy phát triển thành một hệ thống thông tin đầy đủ để viết một tác phẩm dài kỳ. TRẢ VỀ CHỈ 1 MẢNG JSON duy nhất, KHÔNG giải thích thêm.
+QUY TẮC:
+- Nhân vật & Bối cảnh BẮT BUỘC phải mang đậm nét văn hóa Châu Á (Việt Nam, Trung Quốc...). 
+- Nghiêm cấm dùng tên Phương Tây/Tiếng Anh. Tên nhân vật, tổ chức, bản đồ phải thuần Việt hoặc Hán Việt.";
+        $usr = "Ý TƯỞNG CỐT LÕI:\n$raw_prompt\n\nThể loại: $hint_genre\nGiọng văn: $hint_tone\n\nYÊU CẦU JSON ĐẦU RA:\n{\n  \"title\": \"Tên truyện (Giật gân, hấp dẫn, độ dài vừa phải)\",\n  \"synopsis\": \"Tóm tắt/Văn án truyện CỤC KỲ GIẬT GÂN, gây sốc và khơi gợi tò mò tột độ để người đọc lao vào ngay. Ngắn gọn dưới 100 chữ.\",\n  \"world\": \"Bối cảnh thế giới chi tiết (Luật lệ, quy tắc, gia tộc, bản đồ mang đậm nét Châu Á...)\",\n  \"chars\": \"Tuyến nhân vật chính (Ngoại hình, tính cách, vũ khí/khả năng). Tên nhân vật thuần Châu Á.\",\n  \"script\": \"Dàn ý sự kiện chính của toàn bộ tác phẩm (Outline)\"\n}";
         
         $ai_data = temply_call_ai($sys, $usr, 0.7, $model);
         if(!is_wp_error($ai_data)) {
@@ -1509,14 +1528,22 @@ function temply_process_auto_pilot() {
             $parsed = json_decode(trim($ai_data), true);
             if($parsed && isset($parsed['title'])) {
                 $curr_item['title']  = sanitize_text_field($parsed['title']);
+                $curr_item['synopsis'] = sanitize_textarea_field($parsed['synopsis'] ?? '');
                 $curr_item['world']  = sanitize_textarea_field($parsed['world'] ?? '');
                 $curr_item['chars']  = sanitize_textarea_field($parsed['chars'] ?? '');
                 $curr_item['script'] = sanitize_textarea_field($parsed['script'] ?? '');
                 $curr_item['status'] = 'pending'; // Nâng lên pending để chờ sinh truyện
                 update_option('temply_auto_pilot_queue_config', $config);
+            } else {
+                error_log('TEMPLY AUTO PILOT ERROR: Lỗi parse JSON ' . $ai_data);
+                $curr_item['status'] = 'failed';
+                $curr_item['error_log'] = 'Lỗi Parse JSON (Tắt cẩu huyết/văn mẫu quá mức).';
+                update_option('temply_auto_pilot_queue_config', $config);
             }
         } else {
             error_log('TEMPLY AUTO PILOT ERROR: Lỗi tạo Dàn Ý Tự động ' . $ai_data->get_error_message());
+            $curr_item['status'] = 'failed';
+            update_option('temply_auto_pilot_queue_config', $config);
         }
         return; // Dừng cron lần này, chờ cron sau tạo post
     }
@@ -1537,7 +1564,7 @@ function temply_process_auto_pilot() {
         $truyen_id = wp_insert_post([
             'post_type' => 'truyen',
             'post_title' => $title,
-            'post_excerpt' => mb_substr(wp_strip_all_tags($script), 0, 300),
+            'post_excerpt' => $curr_item['synopsis'] ?? mb_substr(wp_strip_all_tags($script), 0, 300),
             'post_content' => wp_kses_post("<h3>1. Bối cảnh Thế Giới</h3><p>" . nl2br(esc_html($world)) . "</p><br><h3>2. Nhân Vật</h3><p>" . nl2br(esc_html($chars)) . "</p><br><h3>3. Kịch Bản</h3><p>" . nl2br(esc_html($script)) . "</p>"),
             'post_status' => 'publish',
             'post_author' => 1
@@ -1570,15 +1597,15 @@ function temply_process_auto_pilot() {
     $truyen_id = intval($curr_item['truyen_id']);
     $enable_audit = intval($curr_item['enable_audit']);
     
-    // Tự động suy luận số hiệu chương tiếp theo
-    $args = ['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $truyen_id, 'posts_per_page' => 1, 'orderby' => 'menu_order', 'order' => 'DESC'];
-    $last_chaps = get_posts($args);
-    $next_chap_num = 1;
+    // Tự động đếm tổng số chương hiện có để tính số chương tiếp theo (Bền bỉ hơn menu_order)
+    $args = ['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $truyen_id, 'posts_per_page' => -1, 'fields' => 'ids'];
+    $all_chap_ids = get_posts($args);
+    $next_chap_num = count($all_chap_ids) + 1;
     $last_content = '';
     
-    if (!empty($last_chaps)) {
-        $last_chap = $last_chaps[0];
-        $next_chap_num = intval($last_chap->menu_order) + 1;
+    // Lấy nội dung chương gần nhất (nếu có)
+    if (!empty($all_chap_ids)) {
+        $last_chap = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $truyen_id, 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC'])[0];
         $last_content = wp_strip_all_tags($last_chap->post_content);
         if(mb_strlen($last_content) > 3000) {
             $last_content = mb_substr($last_content, -3000) . '... (Cắt bớt phần đầu)';
@@ -1626,6 +1653,8 @@ User2|hóng";
     $response = temply_call_ai_quality($system_prompt, $user_prompt, 0.9, $model);
     if(is_wp_error($response)) {
         error_log('TEMPLY AUTO PILOT ERROR: Lỗi Viết nội dung ' . $response->get_error_message());
+        $curr_item['status'] = 'failed';
+        update_option('temply_auto_pilot_queue_config', $config);
         return;
     }
 

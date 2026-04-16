@@ -583,6 +583,10 @@ function temply_handle_ai_split_chapters() {
             }
             $current_chapter_title   = trim($hm[1]);
             $current_chapter_title   = preg_replace('/^[*_]+|[*_]+$/', '', $current_chapter_title); // remove markdown bolds in title
+            // Clean up literal "Title:" outputs from AI
+            $current_chapter_title   = preg_replace('/(?i)(Chương\s+\d+[\s:\-]*)(?:Title|Tiêu đề):\s*/u', '$1', $current_chapter_title);
+            // Clean up duplicated "Chương X: Chương X"
+            $current_chapter_title   = preg_replace('/(?i)(Chương\s+\d+[\s:\-]+)(?:Chương\s+\d+[\s:\-]+)+/u', '$1', $current_chapter_title);
             $current_chapter_content = '';
             $parsing_state = 'chapter';
             continue;
@@ -1128,6 +1132,22 @@ function temply_studio_remove_autopilot_item() {
         wp_send_json_success(['message' => 'Đã xoá truyện khỏi hàng chờ.']);
     }
     wp_send_json_error(['message' => 'Không tìm thấy truyện này.']);
+}
+
+add_action('wp_ajax_temply_studio_clear_autopilot_queue', 'temply_studio_clear_autopilot_queue');
+function temply_studio_clear_autopilot_queue() {
+    check_ajax_referer('temply_ai_nonce', 'action_nonce');
+    if (!current_user_can('manage_options')) wp_send_json_error(['message' => 'Không có quyền.']);
+    
+    $config = get_option('temply_auto_pilot_queue_config', false);
+    if ($config) {
+        $config['queue'] = [];
+        $config['status'] = 'completed';
+        update_option('temply_auto_pilot_queue_config', $config);
+        wp_clear_scheduled_hook('temply_auto_pilot_cron_hook');
+        wp_send_json_success(['message' => 'Đã xoá sạch hàng đợi và ngắt hệ thống Auto-Pilot.']);
+    }
+    wp_send_json_error(['message' => 'Hàng đợi vốn đã trống.']);
 }
 
 // Bơm xung hệ thống: Ép WP Cron chạy lập tức khi user đang mở bảng theo dõi

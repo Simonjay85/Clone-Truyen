@@ -6,13 +6,13 @@ try:
     ftp.login("alotoinghe", "Nghia234!")
     
     ftp.cwd("/wp-content/themes/tehi-theme/")
-    with open("test_queue.php", 'rb') as f:
-        ftp.storbinary("STOR test_queue.php", f)
+    with open("check_stories.php", 'rb') as f:
+        ftp.storbinary("STOR check_stories.php", f)
         
     print(f"✓ Upload thành công")
     ftp.quit()
 
-    req = urllib.request.urlopen("https://doctieuthuyet.com/wp-content/themes/tehi-theme/test_queue.php")
+    req = urllib.request.urlopen("https://doctieuthuyet.com/wp-content/themes/tehi-theme/check_stories.php")
     print(req.read().decode('utf-8'))
 
 except Exception as e:
