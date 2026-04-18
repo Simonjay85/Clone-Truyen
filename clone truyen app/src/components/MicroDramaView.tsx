@@ -428,7 +428,7 @@ Bạn có muốn XÓA TRẮNG Bảng kịch bản hiện tại để viết bộ
                     <BookOpen size={72} className="text-[#374151] mb-6" />
                     <h2 className="text-[22px] font-bold text-[#4b5563] mb-4">Xưởng Sáng Tác AI</h2>
                     <p className="text-[15px] text-[#374151] max-w-[420px] leading-relaxed font-medium">
-                       Nhập ý tưởng câu chuyện của bạn vào bảng điều khiển bên trái, sau đó bấm <strong>"💡 Gợi ý Kịch Bản"</strong>. Cỗ máy AI sẽ thiết lập 10 kịch bản và bạn có thể Nhờ Giám Khảo Supreme Judge chấm điểm rủi ro!
+                       Nhập ý tưởng câu chuyện của bạn vào bảng điều khiển bên trái, sau đó bấm <strong>"💡 Gợi ý Kịch Bản"</strong>. Cỗ máy AI sẽ thiết lập 5 kịch bản và bạn có thể Nhờ Giám Khảo Supreme Judge chấm điểm rủi ro!
                     </p>
                  </div>
               )}
@@ -436,7 +436,7 @@ Bạn có muốn XÓA TRẮNG Bảng kịch bản hiện tại để viết bộ
               {isGenerating && (
                  <div className="h-full flex flex-col items-center justify-center">
                     <Bot size={56} className="text-indigo-500 animate-bounce mb-5" />
-                    <div className="text-indigo-400 font-bold text-[15px] tracking-[2px] animate-pulse uppercase">AI Đang Lên 10 Kịch Bản Tuyệt Đỉnh...</div>
+                    <div className="text-indigo-400 font-bold text-[15px] tracking-[2px] animate-pulse uppercase">AI Đang Lên 5 Kịch Bản Tuyệt Đỉnh...</div>
                  </div>
               )}
 

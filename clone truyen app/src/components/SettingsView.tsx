@@ -6,7 +6,7 @@ export function SettingsView() {
   const {
     geminiKey, geminiKey2, geminiKey3, geminiPaidKey, usePaidAPI, isFreeApiExhausted, 
     openAIKey, grokKey, claudeKey,
-    wpUrl, wpUser, wpAppPassword, 
+    wpUrl, wpUser, wpAppPassword, webhookUrl,
     setSettings 
   } = useStore();
 
@@ -602,6 +602,22 @@ export function SettingsView() {
                 {testResults['wp']}
               </p>
             )}
+          </div>
+          
+          <div className="pt-6 mt-6 border-t border-slate-800">
+            <label className="block text-sm font-medium text-slate-400 mb-2 flex items-center gap-2">
+              <Globe size={14} className="text-indigo-400" /> Webhook URL (Make.com / Zapier)
+            </label>
+            <input 
+              type="url"
+              value={webhookUrl}
+              onChange={(e) => setSettings({ webhookUrl: e.target.value })}
+              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-indigo-500 transition-all font-mono text-xs"
+              placeholder="https://hook.us1.make.com/..."
+            />
+            <p className="text-xs text-slate-500 mt-2 italic">
+              Để trống nếu anh định dùng tính năng Copy thủ công ở trang Social Studio. Dán link Webhook vào đây nếu anh muốn bấm 1 phát tự động bắn dữ liệu sang Make/Zapier để tự động đăng lên Insta/Pinterest.
+            </p>
           </div>
         </div>
 

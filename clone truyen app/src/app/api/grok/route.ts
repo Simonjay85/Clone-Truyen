@@ -30,7 +30,13 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: data.error?.message || JSON.stringify(data) }, { status: response.status });
     }
 
-    return NextResponse.json({ text: data.choices[0].message.content });
+    const usage = data.usage ? {
+        promptTokens: data.usage.prompt_tokens || 0,
+        completionTokens: data.usage.completion_tokens || 0,
+        totalTokens: data.usage.total_tokens || 0
+    } : undefined;
+
+    return NextResponse.json({ text: data.choices[0].message.content, usage, chosenModel: model });
   } catch (error: unknown) {
     console.error('Grok Route Error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Internal Server Error';

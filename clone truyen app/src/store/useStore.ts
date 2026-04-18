@@ -24,6 +24,7 @@ function writeLocalKeys(state: Record<string, any>) {
     wpUrl: state.wpUrl || 'https://doctieuthuyet.com',
     wpUser: state.wpUser || '',
     wpAppPassword: state.wpAppPassword || '',
+    webhookUrl: state.webhookUrl || '',
   };
   // Merge: chỉ ghi đè nếu giá trị mới không rỗng
   const existing = readLocalKeys();
@@ -39,7 +40,8 @@ function writeLocalKeys(state: Record<string, any>) {
 const savedKeys = readLocalKeys();
 
 // Đồng bộ queue/apiLogs/draftSpaces lên Server DB (fire-and-forget)
-function syncToServer(state: { queue: any[]; apiLogs: any[]; isAutoPilotRunning: boolean; draftSpaces: Record<string, any> }) {
+function syncToServer(state: { queue: any[]; apiLogs: any[]; isAutoPilotRunning: boolean; draftSpaces: Record<string, any>; hasHydrated: boolean }) {
+  if (!state.hasHydrated) return; // Prevent overwriting DB with initial empty state
   fetch('/api/db', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -79,7 +81,7 @@ export interface QueueItem {
   chaptersDone: number;
   wordCount: number;
   finalEvaluation?: { score: number; review: string; evaluator: string };
-  publishData?: { categories: string[]; tags: string[]; coverUrl: string; seoTitle: string; seoDescription: string; seoFocusKeyword: string; finalTitle: string; coverImagePrompt?: string; };
+  publishData?: { categories: string[]; tags: string[]; coverUrl: string; seoTitle: string; seoDescription: string; seoFocusKeyword: string; finalTitle: string; coverImagePrompt?: string; blurb?: string; };
   errorLog?: string;
   comboType?: 5 | 6; // Sáng tác 5 hay 6
   isAdvancedPipeline?: boolean; // Nếu = true => Gọi 7-Module Engine Pipeline.
@@ -87,6 +89,8 @@ export interface QueueItem {
   outlineEngine: 'gemini' | 'openai' | 'grok' | 'claude'; // Gọi engine nào dựng dàn ý
   writeEngine: 'gemini' | 'openai' | 'grok' | 'claude';   // Gọi engine nào viết nội dung
   progressLogs?: string[];
+  chaptersContent?: { episode: number; title: string; content: string }[];
+  isSocialShared?: boolean; // Tự động chui vào hàng đợi Social Studio nếu = false và status = 'published'
 }
 
 interface AppState {
@@ -103,13 +107,14 @@ interface AppState {
   wpUrl: string;
   wpUser: string;
   wpAppPassword: string;
+  webhookUrl: string; // URL cho Make.com/Zapier
   
   // Queue
   queue: QueueItem[];
   apiLogs: ApiLog[];
   isAutoPilotRunning: boolean;
   draftSpaces: Record<string, any>;
-  
+  hasHydrated: boolean;
   
   // Actions
   setSettings: (settings: Partial<AppState>) => void;
@@ -137,11 +142,13 @@ export const useStore = create<AppState>()((set, get) => ({
   wpUrl:         savedKeys.wpUrl         || 'https://doctieuthuyet.com',
   wpUser:        savedKeys.wpUser        || '',
   wpAppPassword: savedKeys.wpAppPassword || '',
+  webhookUrl:    savedKeys.webhookUrl    || '',
   
   queue: [],
   apiLogs: [],
   isAutoPilotRunning: false,
   draftSpaces: {},
+  hasHydrated: false,
   
   // setSettings: cập nhật store VÀ ghi ngay vào localStorage
   setSettings: (settings) => {
@@ -219,4 +226,7 @@ export const useStore = create<AppState>()((set, get) => ({
     });
   },
 }));
+
+// trigger update
+
 

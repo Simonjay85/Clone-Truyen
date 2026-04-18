@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PenTool, Settings, Rocket, TerminalSquare, Clapperboard, BookOpen, Skull, Feather, Menu, X } from 'lucide-react';
+import { PenTool, Settings, Rocket, TerminalSquare, Clapperboard, BookOpen, Skull, Feather, Menu, X, HeartHandshake } from 'lucide-react';
 
 interface SidebarProps {
   currentTab: string;
@@ -18,6 +18,7 @@ export function Sidebar({ currentTab, setTab }: SidebarProps) {
     { id: 'combo_royal', label: 'Sáng Tác 6 (Liên Quân HG)', icon: <Rocket size={20} /> },
     { id: 'autopilot', label: 'Auto-Pilot M-Core', icon: <Rocket size={20} /> },
     { id: 'final_review', label: 'Tổng Duyệt (Review)', icon: <TerminalSquare size={20} /> },
+    { id: 'social_studio', label: 'Social Studio', icon: <HeartHandshake size={20} /> },
     { id: 'settings', label: 'Settings', icon: <Settings size={20} /> },
   ];
 

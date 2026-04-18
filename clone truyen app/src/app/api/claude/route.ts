@@ -66,7 +66,13 @@ export async function POST(req: Request) {
     }
 
     // Claude returns an array of content blocks
-    return NextResponse.json({ text: data.content?.[0]?.text || '' });
+    const usage = data.usage ? {
+        promptTokens: data.usage.input_tokens || 0,
+        completionTokens: data.usage.output_tokens || 0,
+        totalTokens: (data.usage.input_tokens || 0) + (data.usage.output_tokens || 0)
+    } : undefined;
+
+    return NextResponse.json({ text: data.content?.[0]?.text || '', usage, chosenModel: fallbackChain[fallbackChain.length-1] });
   } catch (error: any) {
     console.error('Claude Route Error:', error);
     return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });

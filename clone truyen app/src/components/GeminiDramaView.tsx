@@ -73,9 +73,9 @@ export function GeminiDramaView({ onNavigate }: { onNavigate?: (tab: string) => 
          headers: { 'Content-Type': 'application/json' },
          body: JSON.stringify({
             apiKey: geminiKey,
-            systemPrompt: `Bạn là Đạo Diễn Thiết Lập xuất sắc của Google Gemini. TẠO ĐÚNG 20 KỊCH BẢN MICRO-DRAMA.
+            systemPrompt: `Bạn là Đạo Diễn Thiết Lập xuất sắc của Google Gemini. TẠO ĐÚNG 5 KỊCH BẢN MICRO-DRAMA.
 TUYỆT ĐỐI KHÔNG DÙNG TỪ TIẾNG ANH. Viết bằng tiếng Việt hoặc Hán Việt thuần túy. Xây dựng cốt truyện mang màu sắc Châu Á (đặc biệt là Việt Nam hoặc Trung Quốc).
-BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY 20 KỊCH BẢN.
+BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY 5 KỊCH BẢN.
 {
   "pitches": [
     {
@@ -115,7 +115,7 @@ BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY 20 KỊCH BẢN.
           pitches = Array.isArray(arrVal) ? arrVal : [rawData];
       }
       
-      setPitchOptions(pitches.slice(0, 20)); 
+      setPitchOptions(pitches.slice(0, 5)); 
       if (!title && (pitches[0]?.super_title || pitches[0]?.protagonist)) setTitle(pitches[0]?.super_title || pitches[0]?.protagonist);
       
       // Auto-minimize config panel so user can read pitches
@@ -199,9 +199,9 @@ BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY 20 KỊCH BẢN.
            headers: { 'Content-Type': 'application/json' },
            body: JSON.stringify({
               apiKey: geminiKey,
-              systemPrompt: `Bạn là Đạo Diễn Thiết Lập xuất sắc của Google Gemini. TẠO ĐÚNG 20 KỊCH BẢN MICRO-DRAMA.
+              systemPrompt: `Bạn là Đạo Diễn Thiết Lập xuất sắc của Google Gemini. TẠO ĐÚNG 5 KỊCH BẢN MICRO-DRAMA.
 TUYỆT ĐỐI KHÔNG DÙNG TỪ TIẾNG ANH. Viết bằng tiếng Việt hoặc Hán Việt thuần túy. Xây dựng cốt truyện mang màu sắc Châu Á (đặc biệt là Việt Nam hoặc Trung Quốc).
-BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY 20 KỊCH BẢN.
+BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY 5 KỊCH BẢN.
 {
   "pitches": [
     {
@@ -401,7 +401,7 @@ Bạn có muốn XÓA TRẮNG Bảng kịch bản hiện tại để viết bộ
                     <BookOpen size={72} className="text-[#374151] mb-6" />
                     <h2 className="text-[22px] font-bold text-[#4b5563] mb-4">Xưởng Sáng Tác AI</h2>
                     <p className="text-[15px] text-[#374151] max-w-[420px] leading-relaxed font-medium">
-                       Nhập ý tưởng câu chuyện của bạn vào bảng điều khiển bên trái, sau đó bấm <strong>"💡 Gợi ý Kịch Bản"</strong>. Cỗ máy AI sẽ thiết lập 10 kịch bản và bạn có thể Nhờ Giám Khảo Supreme Judge chấm điểm rủi ro!
+                       Nhập ý tưởng câu chuyện của bạn vào bảng điều khiển bên trái, sau đó bấm <strong>"💡 Gợi ý Kịch Bản"</strong>. Cỗ máy AI sẽ thiết lập 5 kịch bản và bạn có thể Nhờ Giám Khảo Supreme Judge chấm điểm rủi ro!
                     </p>
                  </div>
               )}
@@ -409,7 +409,7 @@ Bạn có muốn XÓA TRẮNG Bảng kịch bản hiện tại để viết bộ
               {isGenerating && (
                  <div className="h-full flex flex-col items-center justify-center">
                     <Bot size={56} className="text-indigo-500 animate-bounce mb-5" />
-                    <div className="text-indigo-400 font-bold text-[15px] tracking-[2px] animate-pulse uppercase">AI Đang Lên 10 Kịch Bản Tuyệt Đỉnh...</div>
+                    <div className="text-indigo-400 font-bold text-[15px] tracking-[2px] animate-pulse uppercase">AI Đang Lên 5 Kịch Bản Tuyệt Đỉnh...</div>
                  </div>
               )}
 

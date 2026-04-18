@@ -1,4 +1,36 @@
 import { useStore } from "../store/useStore";
+
+// Cost Estimator Helper
+function calculateCost(model: string, inTokens: number, outTokens: number): number {
+  switch (true) {
+    case model.includes('gemini-2.5-flash'): return (inTokens * 0.075 / 1e6) + (outTokens * 0.30 / 1e6);
+    case model.includes('gemini-2.5-pro'): return (inTokens * 7.0 / 1e6) + (outTokens * 21.0 / 1e6);
+    case model.includes('gpt-4o-mini'): return (inTokens * 0.150 / 1e6) + (outTokens * 0.600 / 1e6);
+    case model.includes('gpt-4o'): return (inTokens * 5.0 / 1e6) + (outTokens * 15.0 / 1e6);
+    case model.includes('grok-beta'): return (inTokens * 5.0 / 1e6) + (outTokens * 15.0 / 1e6);
+    case model.includes('sonnet'): return (inTokens * 3.0 / 1e6) + (outTokens * 15.0 / 1e6);
+    case model.includes('haiku'): return (inTokens * 0.25 / 1e6) + (outTokens * 1.25 / 1e6);
+    default: return 0;
+  }
+}
+
+function processUsageLog(data: any, defaultModel: string) {
+  if (data && data.usage && typeof window !== 'undefined') { // Client side check only
+    const modelUsed = data.chosenModel || defaultModel;
+    let inT = data.usage.promptTokenCount || data.usage.promptTokens || 0;
+    let outT = data.usage.candidatesTokenCount || data.usage.completionTokens || 0;
+    let totalT = data.usage.totalTokenCount || data.usage.totalTokens || (inT + outT);
+    
+    useStore.getState().addApiLog({
+       model: modelUsed,
+       promptTokens: inT,
+       completionTokens: outT,
+       totalTokens: totalT,
+       cost: calculateCost(modelUsed, inT, outT)
+    });
+  }
+}
+
 // Core orchestrator that runs the 4 AI Agents
 
 export async function callGemini(params: {
@@ -37,7 +69,9 @@ export async function callGemini(params: {
       }
       throw new Error(errRaw);
     }
-    return await res.json();
+    const parsed = await res.json();
+    processUsageLog(parsed, params.model || 'gemini-2.5-flash');
+    return parsed;
   } catch (error: unknown) {
     throw error;
   }
@@ -63,7 +97,9 @@ export async function callOpenAI(params: {
       try { errData = await res.json(); } catch { errData = { error: res.statusText }; }
       throw new Error(errData.error?.message || JSON.stringify(errData.error));
     }
-    return await res.json();
+    const parsed = await res.json();
+    processUsageLog(parsed, params.model || 'gpt-4o-mini');
+    return parsed;
   } catch (e: unknown) {
     throw e;
   }
@@ -89,7 +125,9 @@ export async function callGrok(params: {
       try { errData = await res.json(); } catch { errData = { error: res.statusText }; }
       throw new Error(errData.error?.message || JSON.stringify(errData.error));
     }
-    return await res.json();
+    const parsed = await res.json();
+    processUsageLog(parsed, params.model || 'grok-beta');
+    return parsed;
   } catch (e: unknown) {
     throw e;
   }
@@ -114,7 +152,9 @@ export async function callClaude(params: {
       try { errData = await res.json(); } catch { errData = { error: res.statusText }; }
       throw new Error(errData.error?.message || JSON.stringify(errData.error));
     }
-    return await res.json();
+    const parsed = await res.json();
+    processUsageLog(parsed, params.model || 'claude-3-5-sonnet-20241022');
+    return parsed;
   } catch (e: unknown) {
     throw e;
   }

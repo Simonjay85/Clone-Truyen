@@ -11,6 +11,7 @@ import { ComboRoyalView } from '../components/ComboRoyalView';
 import { AutoPilotView } from '../components/AutoPilotView';
 import { SettingsView } from '../components/SettingsView';
 import { FinalReviewView } from '../components/FinalReviewView';
+import { SocialStudioView } from '../components/SocialStudioView';
 
 export default function StudioApp() {
   const [activeTab, setActiveTab] = useState('gemini_drama');
@@ -29,6 +30,7 @@ export default function StudioApp() {
           <div className={activeTab === 'combo_royal' ? 'block w-full h-full' : 'hidden'}><ComboRoyalView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'autopilot' ? 'block w-full h-full px-8' : 'hidden'}><AutoPilotView /></div>
           <div className={activeTab === 'final_review' ? 'block w-full h-full px-8' : 'hidden'}><FinalReviewView /></div>
+          <div className={activeTab === 'social_studio' ? 'block w-full h-full px-8' : 'hidden'}><SocialStudioView /></div>
           <div className={activeTab === 'logs' ? 'block w-full h-full px-8' : 'hidden'}>
             <div className="py-20 flex flex-col items-center text-slate-500">
                <span className="text-4xl mb-4">🖥️</span>

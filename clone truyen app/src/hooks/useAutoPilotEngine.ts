@@ -20,7 +20,7 @@ export function useAutoPilotEngine() {
     const tick = async () => {
       if (isProcessing.current) return;
       
-      const activeItem = queue.find(q => q.status === 'draft_outline' || q.status === 'pending' || q.status === 'writing' || q.status === 'final_review');
+      const activeItem = queue.find(q => q.status === 'draft_outline' || q.status === 'pending' || q.status === 'writing');
       if (!activeItem) return;
 
       isProcessing.current = true;
@@ -130,7 +130,13 @@ export function useAutoPilotEngine() {
                   title: `Tập ${currentEp}: ${shortBeatTitle}`,
                   content: finalDraft.replace(/\\n/g, '<br/>'),
                   status: 'draft',
-                  meta: { _truyen_id: activeItem.wpPostId }
+                  meta: { 
+                     _truyen_id: activeItem.wpPostId,
+                     rank_math_title: `Tập ${currentEp}: ${shortBeatTitle}`,
+                     seo_title: `Tập ${currentEp}: ${shortBeatTitle}`,
+                     rank_math_description: finalDraft.substring(0, 150).replace(/[^a-zA-Z0-9 àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ,.]/g, '').trim() + '...',
+                     seo_description: finalDraft.substring(0, 150).replace(/[^a-zA-Z0-9 àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ,.]/g, '').trim() + '...'
+                  }
                 }
               });
             }
@@ -147,10 +153,14 @@ export function useAutoPilotEngine() {
                } catch(e){}
             }
             
+            const newChaptersContent = [...(activeItem.chaptersContent || [])];
+            newChaptersContent.push({ episode: currentEp, title: `Tập ${currentEp}: ${shortBeatTitle}`, content: finalDraft });
+
             updateQueueItem(activeItem.id, {
               chaptersDone: nextEpsDone,
               status: isDone ? 'completed' : 'pending',
-              wordCount: activeItem.wordCount + finalDraft.split(' ').length
+              wordCount: activeItem.wordCount + finalDraft.split(' ').length,
+              chaptersContent: newChaptersContent
             });
             return;
           }
@@ -193,17 +203,28 @@ export function useAutoPilotEngine() {
                 title: `Tập ${currentEp}: ${shortOutlineTitle}`,
                 content: finalStr,
                 status: 'publish',
-                meta: { _truyen_id: activeItem.wpPostId }
+                meta: { 
+                   _truyen_id: activeItem.wpPostId,
+                   rank_math_title: `Tập ${currentEp}: ${shortOutlineTitle}`,
+                   seo_title: `Tập ${currentEp}: ${shortOutlineTitle}`,
+                   rank_math_description: draft.substring(0, 150).replace(/[^a-zA-Z0-9 àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ,.]/g, '').trim() + '...',
+                   seo_description: draft.substring(0, 150).replace(/[^a-zA-Z0-9 àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ,.]/g, '').trim() + '...'
+                }
               }
             });
           }
 
           const nextEpsDone = activeItem.chaptersDone + 1;
           const isDone = nextEpsDone >= activeItem.targetChapters;
+          
+          const newChaptersContent = [...(activeItem.chaptersContent || [])];
+          newChaptersContent.push({ episode: currentEp, title: `Tập ${currentEp}: ${shortOutlineTitle}`, content: draft });
+
           updateQueueItem(activeItem.id, { 
             chaptersDone: nextEpsDone,
             status: isDone ? 'final_review' : 'pending',
-            wordCount: activeItem.wordCount + draft.split(' ').length
+            wordCount: activeItem.wordCount + draft.split(' ').length,
+            chaptersContent: newChaptersContent
           });
         }
       } catch (err: unknown) {

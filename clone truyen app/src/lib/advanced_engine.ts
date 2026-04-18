@@ -192,16 +192,23 @@ Hãy đập đi xây lại kịch bản này ngay bây giờ! Chỉ trả về J
   return extractJson(res.text);
 }
 
-export async function agentStoryEvaluator(engine: string, apiKey: string, model: string, bible: any) {
-  const sys = `Bạn là Tổng Biên Tập khó tính của một nền tảng đọc truyện mạng. 
-Nhiệm vụ: Đọc toàn bộ hồ sơ thiết kế truyện (Story Bible) cốt truyện, nhân vật và dòng thời gian các chương, sau đó đưa ra 1 bài đánh giá tổng thể (Review) và điểm số (từ 1 đến 10).
+export async function agentStoryEvaluator(engine: string, apiKey: string, model: string, bible: any, chaptersContent?: any[]) {
+  const sys = `Bạn là Tổng Biên Tập siêu khó tính (Gatekeeper) của một nền tảng đọc truyện mạng hàng đầu. 
+Nhiệm vụ: Đọc toàn bộ hồ sơ thiết kế truyện (Story Bible) và NỘI DUNG TẤT CẢ CÁC CHƯƠNG ĐÃ VIẾT (nếu có).
+Hãy kiểm tra xem truyện có bám sát thiết lập ban đầu không, có mắc lỗi Plot Hole không, và mức độ cuốn hút (Sizzle) ở thực tế ra sao.
 TUYỆT ĐỐI CHỈ TRẢ VỀ JSON:
 {
   "score": "Điểm từ 1 đến 10",
-  "review": "Bài Review dài khoảng 10-15 câu, phân tích ưu nhược điểm, độ cuốn hút, có gây được cảm xúc mạnh không."
+  "review": "Bài Review dài khoảng 10-15 câu, phân tích gay gắt ưu nhược điểm, độ cuốn hút, plot hole, có thật sự gây cảm xúc mạnh ở từng tập như hứa hẹn hay không."
 }`;
 
-  const user = `Hồ sơ Truyện:\n${JSON.stringify(bible)}`;
+  let user = `Hồ sơ Truyện (Bible):\n${JSON.stringify(bible)}`;
+  if (chaptersContent && chaptersContent.length > 0) {
+      user += `\n\n--- THỰC TẾ NỘI DUNG TỪNG CHƯƠNG ĐÃ VIẾT ---\n`;
+      chaptersContent.forEach(ch => {
+          user += `\n[${ch.title}]\n${ch.content}\n`;
+      });
+  }
   
   const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.3, model });
   return extractJson(res.text);
@@ -218,7 +225,8 @@ YÊU CẦU JSON:
   "seoFocusKeyword": "Từ khóa chính (1-2 từ khóa)",
   "categories": ["Danh mục 1", "Danh mục 2"],
   "tags": ["tag1", "tag2", "tag3"],
-  "coverImagePrompt": "Mô tả ảnh bìa BẰNG TIẾNG ANH, chi tiết, cinematic, vivid colors, mô tả bối cảnh và ngoại hình nhân vật chính để Gen bằng AI."
+  "coverImagePrompt": "Mô tả ảnh bìa BẰNG TIẾNG ANH, chi tiết, cinematic, vivid colors, mô tả bối cảnh và ngoại hình nhân vật chính để Gen bằng AI.",
+  "blurb": "Đoạn văn giới thiệu truyện (Văn án), ngôn từ cực kỳ giật gân, có hook câu khách ở đầu và bỏ lửng tạo tò mò ở cuối để độc giả muốn lao vào đọc ngay. Tuyệt đối KHÔNG ĐỂ LỘ HẬU TRƯỜNG kiểu như 'Cú twist là...'. Chỉ viết kiểu teaser."
 }
 * Categories tiêu biểu: Tiên Hiệp, Đô Thị, Huyền Huyễn, Ngôn Tình, Trùng Sinh, Tổng Tài, Linh Dị... Chọn tối đa 3 danh mục.`;
 

@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
     let outText = '';
     let lastError: any = null;
     let lastData: any = null;
+    let retryCount = 0;
 
     outerLoop:
     for (let m = 0; m < fallbackChain.length; m++) {
@@ -77,6 +78,17 @@ export async function POST(req: NextRequest) {
                     }
                     if (errorMsg.includes('400') && !errorMsg.includes('API key')) {
                         break outerLoop; 
+                    }
+                    // Extract retry time if provided, or default to 15s if it's a generic 429/quota error on the last key
+                    if (k === apiKeys.length - 1 && (errorMsg.includes('429') || errorMsg.includes('Quota') || errorMsg.includes('retry'))) {
+                        if (retryCount >= 2) break outerLoop; // Max 2 retries
+                        retryCount++;
+                        const match = errorMsg.match(/retry in (\d+\.?\d*)s/);
+                        const waitSecs = match ? parseFloat(match[1]) + 1 : 20;
+                        console.log(`[Gemini API] ⏳ Hết Quote cho tất cả Key. Đợi ${waitSecs}s rồi thử lại (Lần ${retryCount}/2)...`);
+                        await new Promise(r => setTimeout(r, waitSecs * 1000));
+                        k = -1; // reset key index to retry from key 1
+                        continue;
                     }
                     // Quota or unavailable -> try next key (inner loop)
                 }

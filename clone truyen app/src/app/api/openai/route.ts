@@ -39,7 +39,13 @@ export async function POST(req: Request) {
     const data = await response.json();
     const content = data.choices[0]?.message?.content || '';
 
-    return NextResponse.json({ text: content });
+    const usage = data.usage ? {
+        promptTokens: data.usage.prompt_tokens || 0,
+        completionTokens: data.usage.completion_tokens || 0,
+        totalTokens: data.usage.total_tokens || 0
+    } : undefined;
+
+    return NextResponse.json({ text: content, usage, chosenModel: payload.model });
 
   } catch (err: any) {
     console.error("[OpenAI POST Error]:", err);
