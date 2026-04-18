@@ -1002,20 +1002,18 @@ $nonce = wp_create_nonce('temply_ai_nonce');
             <div class="editor-content-area" id="ss-content-area">
 
                 <!-- Empty state -->
-                <div class="editor-empty" id="ss-empty-state" style="display:flex; flex-direction:row; align-items:flex-start; justify-content:center; gap:40px; width:100%; text-align:left;">
+                <div class="editor-empty" id="ss-empty-state" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; width:100%; text-align:center;">
                     
-                    <div style="flex:2; display:flex; flex-direction:column; align-items:center; text-align:center;">
+                    <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                         <div class="editor-empty-icon">📖</div>
                         <div class="editor-empty-title">Xưởng Sáng Tác AI</div>
                         <div class="editor-empty-sub">Nhập ý tưởng câu chuyện của bạn vào bảng điều khiển bên trái, sau đó bấm "Bắt đầu Sáng Tác". Bạn sẽ đọc duyệt và bấm một nút để tách thành các chương!</div>
                     </div>
                     
-                    <!-- Kéo thông tin Queue ra ngoài -->
-                    <div style="flex:1; width:100%; border-left:1px dashed rgba(255,255,255,0.1); padding-left:30px;">
-                        <div id="ap-inline-container" style="display:none; width:100%;">
-                        </div>
+                    <!-- Trạm Giám Sát inline - ẩn khỏi empty state, chỉ mở qua nút Trạm Auto-Pilot -->
+                    <div id="ap-inline-container" style="display:none; width:100%;">
                     </div>
-                    </div>
+
                 </div>
 
                 <!-- Story output area -->
@@ -2432,11 +2430,11 @@ ${chunkChaps}`;
                         <div style="font-size:11px; font-weight:700; color:#cbd5e1; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); padding:2px 8px; border-radius:20px; display:inline-block; margin-bottom:8px;">🏷️ ${pObj.genres || 'Đa thể loại'}</div>
                         <textarea id="bs-prompt-text-${index}" onchange="window.__currentBrainstormPrompts[${index}].prompt = this.value" rows="4" style="width:100%; padding:10px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#94a3b8; font-size:13px; line-height:1.6; outline:none; resize:vertical; font-family:inherit;">${pObj.prompt}</textarea>
                         
-                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-top:10px;">
-                            <div id="bs-prompt-eval-${index}" style="flex:1;">
-                                <span style="font-size:12px; color:#64748b; font-style:italic;">⏳ Đang chờ AI đánh giá...</span>
-                            </div>
-                            <button onclick="handleImprovePrompt(${index})" id="bs-btn-improve-${index}" style="background:rgba(59,130,246,0.15); color:#3b82f6; border:1px solid rgba(59,130,246,0.3); padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; margin-left:12px; white-space:nowrap; transition:all 0.2s;" title="AI tự động sửa lại kịch bản này cho kịch tính hơn">✨ Phép Thuật Cải Tạo</button>
+                        <div id="bs-prompt-eval-${index}" style="margin-top:10px; width:100%;">
+                            <span style="font-size:12px; color:#64748b; font-style:italic;">⏳ Đang chờ AI đánh giá...</span>
+                        </div>
+                        <div style="display:flex; justify-content:flex-end; margin-top:10px;">
+                            <button onclick="handleImprovePrompt(${index})" id="bs-btn-improve-${index}" style="background:rgba(59,130,246,0.15); color:#3b82f6; border:1px solid rgba(59,130,246,0.3); padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; transition:all 0.2s;" title="AI tự động sửa lại kịch bản này cho kịch tính hơn">✨ Phép Thuật Cải Tạo</button>
                         </div>
                     </div>
                 </div>`;
@@ -2466,6 +2464,7 @@ ${chunkChaps}`;
                             <div style="display:flex; align-items:center; gap:8px;">
                                 <span style="color:#94a3b8; font-size:13px;">Tốc độ:</span>
                                 <select id="bs-interval" style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:#fff; border-radius:6px; padding:4px; font-size:13px;">
+                                    <option value="every_minute" style="color:#000;">1 Phút/Chương (Tốc biến)</option>
                                     <option value="every_five_minutes" style="color:#000;">5 Phút/Chương</option>
                                     <option value="hourly" style="color:#000;">1 Giờ/Chương</option>
                                     <option value="twicedaily" style="color:#000;">12 Giờ/Chương</option>
@@ -2758,7 +2757,8 @@ ${chunkChaps}`;
                     }
                 });
                 showToast('✨ Đã chấm điểm xong!', 'success');
-                btn.innerHTML = '✅ Đã Đánh Giá';
+                const statusLabelOk = document.getElementById('bs-eval-status');
+                if (statusLabelOk) statusLabelOk.innerHTML = '✅ Đã Đánh Giá Xong';
             } catch(e) {
                 const statusLabel = document.getElementById('bs-eval-status');
                 if (statusLabel) statusLabel.innerHTML = '❌ Đánh giá lỗi: ' + e.message;
@@ -2932,8 +2932,12 @@ ${chunkChaps}`;
                     document.getElementById('ap-inline-container').style.display = 'none';
                 }
             } else {
-                if (hasInline && document.getElementById('ss-empty-state').style.display !== 'none') {
-                    document.getElementById('ap-inline-container').style.display = 'block';
+                // ap-inline-container bị ẩn hoàn toàn — chỉ hiện qua modal khi bấm nút
+                if (hasInline) {
+                    document.getElementById('ap-inline-container').style.display = 'none';
+                }
+                if (false && hasInline && document.getElementById('ss-empty-state').style.display !== 'none') {
+                    // DISABLED: inline auto-pilot widget
                     inlineHtml = `
                     <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:16px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:12px;">
@@ -2993,17 +2997,12 @@ ${chunkChaps}`;
                     inlineHtml += itemHtml;
                 });
                 
-                if(hasInline && document.getElementById('ss-empty-state').style.display !== 'none') {
-                    inlineHtml += `</div></div>`;
-                }
+                // DISABLED: inline close tag (inline widget ẩn)
             }
             if(hasModal && document.getElementById('ap-list-container')) {
                 document.getElementById('ap-list-container').innerHTML = listHtml;
             }
-            if(hasInline && document.getElementById('ss-empty-state').style.display !== 'none') {
-                const inlineCont = document.getElementById('ap-inline-container');
-                if(inlineCont) inlineCont.innerHTML = inlineHtml;
-            }
+            // ap-inline-container không inject nữa — ẩn hoàn toàn
         }
 
         // Initialize polling once on load to populate the inline container if needed

@@ -109,6 +109,19 @@ add_filter('template_include', function($template) {
 }, 99);
 
 /**
+ * Đăng ký cron schedule mới: 1 Phút / Lần để ép xung Auto Pilot cực hạn
+ */
+add_filter('cron_schedules', function($schedules) {
+    if (!isset($schedules['every_minute'])) {
+        $schedules['every_minute'] = array(
+            'interval' => 60,
+            'display'  => __('Mỗi 1 Phút (Tốc biến)')
+        );
+    }
+    return $schedules;
+});
+
+/**
  * Đăng ký Custom Post Types: Truyện và Chương
  */
 function tehi_clone_cpt_init() {

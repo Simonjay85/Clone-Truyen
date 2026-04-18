@@ -1,0 +1,49 @@
+{
+  "queue": [],
+  "apiLogs": [],
+  "isAutoPilotRunning": false,
+  "draftSpaces": {
+    "gemini_drama": {
+      "title": "",
+      "prompt": "",
+      "targetChapters": 20,
+      "pitchOptions": [],
+      "gradingStatus": {}
+    },
+    "micro_drama": {
+      "title": "",
+      "prompt": "",
+      "targetChapters": 10,
+      "pitchOptions": [],
+      "gradingStatus": {}
+    },
+    "grok_drama": {
+      "title": "",
+      "prompt": "",
+      "targetChapters": 20,
+      "pitchOptions": [],
+      "gradingStatus": {}
+    },
+    "claude_drama": {
+      "title": "",
+      "prompt": "",
+      "targetChapters": 20,
+      "pitchOptions": [],
+      "gradingStatus": {}
+    },
+    "combo_eco": {
+      "title": "",
+      "prompt": "",
+      "targetChapters": 20,
+      "pitchOptions": [],
+      "gradingStatus": {}
+    },
+    "combo_royal": {
+      "title": "",
+      "prompt": "",
+      "targetChapters": 20,
+      "pitchOptions": [],
+      "gradingStatus": {}
+    }
+  }
+}

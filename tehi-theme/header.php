@@ -513,6 +513,18 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
     });
 </script> -->
 
+<?php if ( is_user_logged_in() ): ?>
+<style id="tehi-admin-bar-frontend">
+/* ── Admin Bar: Vintage Brown (chỉ khi đăng nhập) ── */
+#wpadminbar { background-color: #3e2723 !important; color: #f5f5dc !important; }
+#wpadminbar .ab-item, #wpadminbar a.ab-item { color: #d7ccc8 !important; }
+#wpadminbar .menupop .ab-sub-wrapper { background-color: #4e342e !important; }
+#wpadminbar .menupop .ab-sub-wrapper .ab-item { color: #efebe9 !important; }
+#wpadminbar .menupop .ab-sub-wrapper .ab-item:hover,
+#wpadminbar .hover .ab-item, #wpadminbar a:hover { color: #fff !important; background-color: #5d4037 !important; }
+</style>
+<?php endif; ?>
+
 <?php 
 global $tehi_tailwind_page;
 if (!empty($tehi_tailwind_page)): 

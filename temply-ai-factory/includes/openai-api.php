@@ -493,7 +493,7 @@ function temply_ajax_oracle() {
     $keywords = sanitize_textarea_field($_POST['keywords'] ?? '');
     $world_building = sanitize_textarea_field(wp_unslash($_POST['world_building'] ?? ''));
 
-    $system_prompt = "Bạn là THE ORACLE - Chuyên gia thiết lập thế giới quan (World-building) cho tiểu thuyết mạng. Hãy phản hồi thật súc tích, ngắn gọn.";
+    $system_prompt = "Bạn là THE ORACLE - Chuyên gia thiết lập thế giới quan (World-building) cho tiểu thuyết mạng. Hãy phản hồi thật súc tích, ngắn gọn.\n\n❌ LUẬT BẤT BIẾN VỀ TÊN GỌI (QUAN TRỌNG HƠN MỌI THỨ):\n- TOÀN BỘ tên người, tên gia tộc, tổ chức, địa danh BẮT BUỘC phải thuần Việt hoặc Hán Việt.\n- NGHIÊM CẤM tuyệt đối tên phương Tây/Tiếng Anh như: Mark, John, Elara, Eli, Blackwood, Rivermark, Alex, Nathan, Victor...\n- VÍ DỤ SAI: Mark Blackwood → VÍ DỤ ĐÚNG: Hà Vũ, Lạc Phong, Đỗ Quyên, Gia tộc Thương Hà, Thanh Nguyệt Bang...\n";
     if(!empty($world_building)) {
         $system_prompt .= "\n\n*** BỐI CẢNH / QUY TẮC THẾ GIỚI BẮT BUỘC PHẢI TUÂN THỦ (KHÔNG ĐƯỢC LÀM TRÁI) ***\n" . $world_building;
     }
@@ -534,10 +534,13 @@ function temply_ajax_puppet() {
     $system_json = "Bạn là THE PUPPET MASTER. Nhiệm vụ: Thiết kế bộ nhân vật CỐT LÕI cho truyện web Việt Nam.
 
 QUY TẮC BẮT BUỘC:
-- TÊN: Thuần Việt hoặc Hán Việt đậm chất Châu Á. NGHIÊM CẤM tên Tiếng Anh/Phương Tây.
+- TÊN: Thuần Việt hoặc Hán Việt đậm chất Châu Á. NGHIÊM CẤM tuyệt đối tên Tiếng Anh/Phương Tây.
+- VÍ DỤ TÊN SAI (CẤM DÙNG): Mark, Alex, Elara, Eli, Victor, Nathan, Blackwood, Rivermark, Elena
+- VÍ DỤ TÊN ĐÚNG (SỬ DỤNG): Lạc Phong, Đỗ Quyên, Thanh Vũ, Hàn Thành, Gia tộc Long Nguyệt, Bang Hắc Đao
 - HỌ: Thành viên cùng gia tộc PHẢI cùng họ.
 - TÊN TẬP ĐOÀN: Chọn 1 tên duy nhất, nhất quán xuyên suốt. KHÔNG phải tên nước ngoài.
 - Phản diện hoặc tình địch phải có động cơ thực tế, không ác một màu.
+- NẾU BẠN TRẢ VỀ BẤT KỲ TÊN NÀO CHỨA CHỮ CÁI LATINH CƠ BẢN NHƯ Mark, John, Eli... BẠN SẼ BỊ ĐÁNH GIÁ 0 ĐIỂM! TỰ ĐỔI SANG TÊN Á ĐÔNG NGAY LẬP TỨC.
 
 TRẢ VỀ ĐÚNG JSON SAU (không có markdown block, không có text thừa):
 {
@@ -601,7 +604,7 @@ function temply_ajax_architect() {
     $system_prompt = "Bạn là THE ARCHITECT - Chuyên gia dựng kịch bản tài ba bậc nhất mạng lưới. TỐI THƯỢNG: TRONG MỖI CHƯƠNG, BẮT BUỘC PHẢI THIẾT KẾ RÕ 1 NÚT THẮT THEO LUẬT KILLER HOOK Ở CUỐI CHƯƠNG: Một tình huống sinh tử, một lời lật lọng, hoặc một bí mật vừa hé nửa chừng (Cliffhanger) để bắt buộc độc giả phải ấn đọc tiếp lập tức. Đặt một tiêu đề thật giật gân, khơi gợi tò tự cho mỗi chương.";
     
     $user_prompt = "Dựa vào Thế giới:\n$world\n\nVà Nhân vật:\n$characters\n\nVÀ YÊU CẦU CỐT TRUYỆN MONG MUỐN BẮT BUỘC ĐƯA VÀO Outline:\n$keywords\n\n";
-    $user_prompt .= "❌ QUY TẮC ĐẶT TÊN CHƯƠNG TỐI THƯỢNG:\n- Tuyệt đối KHÔNG lặp lại các từ vựng nghèo nàn sáo rỗng như: 'Hành trình', 'Hồi sinh', 'Bí mật', 'Sự thật', 'Khám phá', 'Quá khứ', 'Bóng ma'.\n- Tên chương phải dùng từ vựng phong phú, sắc sảo, gợi sự tò mò. KHÔNG ĐƯỢC phép có 2 chương nào trùng lặp quá 2 từ khóa chính với nhau.\n\n";
+    $user_prompt .= "❌ QUY TẮC ĐẶT TÊN CHƯƠNG TỐI THƯỢNG:\n\u2022 NGHIÊM CẤM bất kỳ tên chương nào chứa các từ sáo rỗng: 'Hành trình', 'Hồi sinh', 'Bí mật', 'Sự thật', 'Khám phá', 'Quá khứ', 'Bóng ma', 'BÓNG', 'BÓNG TỐI', 'BÓNG HÌNH', 'Đêm tối', 'Bí ẩn', 'Tối tăm', 'Nguy hiểm'.\n\u2022 KHÔNG ĐƯỢC phép có 2 tên chương nào BẮT ĐẦU bằng cùng 1 từ (Ví dụ: 2 chương đều bắt đầu bằng 'Bóng...' hay 'Cơn ...' là SAI).\n\u2022 Tên chương phải đa dạng về cấu trúc: Dùng xen kẽ câu hỏi tu từ, mệnh lệnh cách, danh từ + tính từ mô tả hành động. Đặt tên sao cho MỖI CHƯƠNG nghe ĐỘC LẠ hoàn toàn so với chương trước.\n\n";
 
     if ($is_auto) {
         $user_prompt .= "Hãy phân tích độ phức tạp của cốt truyện và TỰ ĐỘNG QUYẾT ĐỊNH số lượng chương phù hợp nhất để kể vẹn toàn câu chuyện này (Từ 3 đến tối đa 15 chương, chia đều cao trào, không lê thê). BẠN BẮT BUỘC TRẢ VỀ CHÍNH XÁC ĐỊNH DẠNG JSON MẢNG CHỨA: Object cấu trúc { \"synopsis\": \"Tóm tắt/Văn án cực kỳ giật gân, khơi gợi tò mò tột độ (Dưới 100 chữ)\", \"script\": [ Các chương... ] }.\nVí dụ cấu trúc:\n{\n  \"synopsis\": \"...\",\n  \"script\": [\n    { \"chap_num\": 1, \"title\": \"Tên chương dựa theo cốt truyện...\", \"summary\": \"Nội dung...\" },\n    { \"chap_num\": 2, \"title\": \"Tên chương tiếp...\", \"summary\": \"Nội dung...\" }\n  ]\n}";
@@ -1499,13 +1502,13 @@ function temply_process_auto_pilot() {
         return; // Đang trong nhịp thở 20s/chương, bỏ qua tick cron này để kéo dãn phân bổ Token.
     }
 
-    $max_concurrent = 1; // Rút xuống TỐI ĐA 1 truyện cày tại một thời điểm để tránh burst token API
+    $max_concurrent = 2; // Rút xuống TỐI ĐA 2 truyện cày tại một thời điểm để tận dụng free tier
     $running_count = 0;
     $has_pending = false;
 
     // 1. Đếm số luồng đang bóc lột API (đang có lock)
     foreach($config['queue'] as $i => $item) {
-        if ($item['status'] === 'draft_outline' || $item['status'] === 'pending' || $item['status'] === 'writing') {
+        if ($item['status'] === 'draft_outline' || $item['status'] === 'pending' || $item['status'] === 'writing' || $item['status'] === 'final_review') {
             $has_pending = true;
             $lock_key = 'temply_ap_lock_' . ($item['uuid'] ?? md5($item['prompt']));
             
@@ -1534,7 +1537,7 @@ function temply_process_auto_pilot() {
     $active_idx = -1;
     $lock_key_assigned = '';
     foreach($config['queue'] as $i => $item) {
-        if ($item['status'] === 'draft_outline' || $item['status'] === 'pending' || $item['status'] === 'writing') {
+        if ($item['status'] === 'draft_outline' || $item['status'] === 'pending' || $item['status'] === 'writing' || $item['status'] === 'final_review') {
             $lock_key = 'temply_ap_lock_' . ($item['uuid'] ?? md5($item['prompt']));
             
             $lock_time = get_option($lock_key);
@@ -1562,8 +1565,8 @@ function temply_process_auto_pilot() {
     // Fallback khóa hệ thống tạm thời để trói những script cũ đang đọc transient
     set_transient($lock_key_assigned, 1, 400);
 
-    // Kích hoạt phanh điện tử Rate-Limiter: Khóa toàn hệ thống trong 20 giây tới (Chỉ 3 API Request/Phút tối đa)
-    set_transient('temply_ap_global_cooldown', 1, 20);
+    // Kích hoạt phanh điện tử Rate-Limiter: Khóa toàn hệ thống trong 7 giây tới (An toàn trong 15 RPM của Free Tier Gemini)
+    set_transient('temply_ap_global_cooldown', 1, 7);
 
     // Tham chiếu để thay đổi update lưu lại
     $curr_item = &$config['queue'][$active_idx];
@@ -1615,7 +1618,8 @@ function temply_process_auto_pilot() {
         $sys = "Bạn là NHÀ THIẾT KẾ KỊCH BẢN TRUYỆN MẠNG. Dựa trên Ý TƯỞNG CỐT LÕI (Prompt) dưới đây, hãy phát triển thành một hệ thống thông tin đầy đủ để viết một tác phẩm dài kỳ. TRẢ VỀ CHỈ 1 MẢNG JSON duy nhất, KHÔNG giải thích thêm.
 QUY TẮC:
 - Nhân vật & Bối cảnh BẮT BUỘC phải mang đậm nét văn hóa Châu Á (Việt Nam, Trung Quốc...). 
-- Nghiêm cấm dùng tên Phương Tây/Tiếng Anh. Tên nhân vật, tổ chức, bản đồ phải thuần Việt hoặc Hán Việt.
+- NGHIÊM CẤM TUYỆT ĐỐI tên Phương Tây/Tiếng Anh. Tên nhân vật, tổ chức, bản đồ phải thuần Việt hoặc Hán Việt. CẤM DÙNG các tên như: Mark, Alex, Eli, Elara, Victor, Blackwood, Rivermark hoặc bất kỳ tên nào đọc kiểu Tây.
+- NẾU PHÁT HIỆN TÊN TÂY TRONG KỊCH BẢN TỰ ĐỘNG SINH (Mark, John...), HÃY TỰ ĐỔI THÀNH TÊN Á ĐÔNG! Tên đúng: Lạc Phong, Đỗ Quyên, Triệu Vũ, gia tộc Thanh Long, Bang Học Hải...
 - PACING CHẬM & LÂU DÀI (SLOW-BURN): Truyện này ĐƯỢC YÊU CẦU DÀI ĐÚNG $target_chaps CHƯƠNG. Hãy dàn trải mâu thuẫn ra thật dài. KHÔNG ĐƯỢC lật bài ngửa hoặc hạ gục TRÙM CUỐI ngay từ nửa đầu truyện. Kéo dài sự chèn ép, và chỉ cho phép nhân vật chính giải quyết mâu thuẫn tột đỉnh ở những chương cuối cùng (Chương $final_chap_start - $target_chaps).";
         $usr = "Ý TƯỞNG CỐT LÕI (Xoay quanh cái tên: $hint_title):\n$raw_prompt\n\nThể loại: $hint_genre\nGiọng văn: $hint_tone\n\nYÊU CẦU JSON ĐẦU RA:\n{\n  \"title\": \"Dựa trên tựa đề gốc là '$hint_title', giữ nguyên hoặc hãy làm cho tựa đề dài hơn, giật gân, khốc liệt và cực kỳ hấp dẫn (clickbait).\",\n  \"synopsis\": \"Tóm tắt/Văn án truyện DÀI (khoảng 3-4 đoạn, tối thiểu 300 chữ), CỰC KỲ GIẬT GÂN. Bắt buộc chèn các Hooks (Điểm nhấn chấn động), đặt ra hàng loạt câu hỏi bí ẩn khơi gợi sự tò mò tột độ. Sử dụng thẻ <p> để xuống dòng cho dễ đọc.\",\n  \"seo_keyword\": \"1 đến 2 từ khóa ngắn (Ví dụ: Trọng sinh, Báo thù, Huyền huyễn) để làm Focus Keyword cho SEO.\",\n  \"seo_desc\": \"Đoạn mô tả ngắn dưới 160 ký tự, ưu tiên có chứa từ khóa ở trên vào thật tự nhiên để tối ưu SEO Rank Math.\",\n  \"world\": \"Bối cảnh thế giới chi tiết (Luật lệ, quy tắc, gia tộc, bản đồ mang đậm nét Châu Á...)\",\n  \"chars\": \"Tuyến nhân vật chính (Ngoại hình, tính cách, vũ khí/khả năng). Tên nhân vật thuần Châu Á.\",\n  \"script\": \"Dàn ý sự kiện chính của toàn bộ tác phẩm từ mở đầu đến kết thúc. Phải rải đều biến cố, KHÔNG ĐƯỢC để trùm cuối bay màu sớm.\",\n  \"reviews\": [\n    \"Tên Độc Giả 1|Bình luận quá khích, khen ngợi cốt truyện đỉnh cao, hóng siêu phẩm.\",\n    \"Tên Độc Giả 2|Bình luận sắc sảo, tò mò về nhân vật chính.\",\n    \"Tên Độc Giả 3|Đánh giá 5 sao cho mô-típ.\"\n  ] // Yêu cầu sinh ĐÚNG 5 cái bình luận mồi (Tên | Nội dung bình luận)\n}";
         
@@ -1680,17 +1684,33 @@ QUY TẮC:
             }
         }
         
-        // Tất cả Data bối cảnh đã có sẵn từ lưới Staging, không cần gọi AI rặn nữa! Đỡ được 20s.
+        // Tạo nội dung giới thiệu đẹp từ synopsis (giống pipeline admin-ui.php)
+        $synopsis = !empty($curr_item['synopsis']) ? wp_kses_post($curr_item['synopsis']) : '';
+        $seo_keyword_display = sprintf('Truyện %s', $title);
+        
+        if (!empty($synopsis)) {
+            // Đầy đủ: Hidden SEO tags + Synopsis đẹp + Internal link
+            $post_content = '<h2 style="display:none;">Giới thiệu ' . esc_html($seo_keyword_display) . '</h2>';
+            $post_content .= '<p style="display:none;">Chào mừng bạn đến với góc đọc <strong>' . esc_html($seo_keyword_display) . '</strong>.</p>';
+            $post_content .= $synopsis;
+            $post_content .= '<p style="margin-top:20px; font-style:italic;">Mời bạn khám phá thêm các bộ <a href="' . home_url() . '" title="Truyện hay">truyện hay</a> khác tại Hệ thống.</p>';
+        } else {
+            // Fallback nếu không có synopsis: dùng script/world nhưng bọc gọn hơn
+            $post_content = wp_kses_post('<h2 style="display:none;">Giới thiệu ' . esc_html($seo_keyword_display) . '</h2>');
+            $post_content .= wp_kses_post('<p>' . nl2br(esc_html(mb_substr(wp_strip_all_tags($script), 0, 500))) . '</p>');
+        }
+        
         $truyen_id = wp_insert_post([
             'post_type' => 'truyen',
             'post_title' => $title,
-            'post_excerpt' => !empty($curr_item['synopsis']) ? $curr_item['synopsis'] : mb_substr(wp_strip_all_tags($script), 0, 300),
-            'post_content' => wp_kses_post("<h3>1. Bối cảnh Thế Giới</h3><p>" . nl2br(esc_html($world)) . "</p><br><h3>2. Nhân Vật</h3><p>" . nl2br(esc_html($chars)) . "</p><br><h3>3. Kịch Bản</h3><p>" . nl2br(esc_html($script)) . "</p>"),
-            'post_status' => 'publish',
+            'post_excerpt' => !empty($curr_item['synopsis']) ? mb_substr(wp_strip_all_tags($curr_item['synopsis']), 0, 200) : mb_substr(wp_strip_all_tags($script), 0, 200),
+            'post_content' => $post_content,
+            'post_status' => 'draft',
             'post_author' => 1
         ]);
         
         if (is_wp_error($truyen_id)) return;
+
 
         update_post_meta($truyen_id, '_temply_ai_uuid', $curr_uuid);
 
@@ -1763,14 +1783,16 @@ QUY TẮC:
     $truyen_id = intval($curr_item['truyen_id']);
     $enable_audit = intval($curr_item['enable_audit']);
     
-    // Tự động đếm tổng số chương hiện có để tính số chương tiếp theo
-    $args = ['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $truyen_id, 'posts_per_page' => -1, 'fields' => 'ids'];
-    $all_chap_ids = get_posts($args);
-    $next_chap_num = count($all_chap_ids) + 1;
+    // Tự động đếm tổng số chương bằng WPDB để XUYÊN THỦNG CACHE (Chống lỗi lặp do Object Cache)
+    global $wpdb;
+    $count_query = $wpdb->prepare("SELECT COUNT(p.ID) FROM {$wpdb->posts} p INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id WHERE pm.meta_key = '_truyen_id' AND pm.meta_value = %s AND p.post_type = 'chuong' AND p.post_status IN ('publish','draft')", $truyen_id);
+    $chap_count = (int) $wpdb->get_var($count_query);
+    $next_chap_num = $chap_count + 1;
     
-    // Giới hạn cứng tối đa 25 chương
-    if ($next_chap_num > 25) {
-        $curr_item['status'] = 'completed';
+    // Giới hạn dựa trên chỉ tiêu đặt ra
+    $target_chaps = isset($curr_item['target']) ? intval($curr_item['target']) : 25;
+    if ($next_chap_num > $target_chaps) {
+        $curr_item['status'] = 'final_review';
         $save_progress();
         return;
     }
@@ -1869,14 +1891,23 @@ User2|hóng
         update_post_meta($truyen_id, '_temply_ai_characters', trim($new_memory));
     }
 
-    if(preg_match('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*(.*)/i', $response_parsed, $m)) {
+    // Dọn dẹp tiêu đề với Regex an toàn hơn (Tránh bị kẹt vì missing "TITLE:")
+    if(preg_match('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*(.+)/i', $response_parsed, $m)) {
         $chap_title = trim($m[1]);
+        // Tẩy bớt chữ "Chương X: " nếu AI lỡ rặn ra
+        $chap_title = preg_replace('/^Chương\s+\d+[\s:]*/iu', '', $chap_title);
         $parts = preg_split('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*.*\n/i', $response_parsed, 2);
         $chap_content = trim($parts[1] ?? '');
         if(empty($chap_content)) $chap_content = trim(preg_replace('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*.*/i', '', $response_parsed, 1));
     } else {
-        $lines = explode("\n", $response_parsed);
-        if(count($lines)>2) { $chap_title = trim(array_shift($lines)); $chap_content = trim(implode("\n", $lines)); } 
+        // Fallback: Lấy dứt điểm dòng đầu tiên TÓP LẠI (không lấy dòng trống) có chữ 
+        $lines = array_filter(explode("\n", $response_parsed), 'trim');
+        if(count($lines) > 2) { 
+            $first_line = array_shift($lines);
+            $chap_title = trim(preg_replace('/^.*?Chương\s+\d+[\s:]*/iu', '', $first_line)); 
+            if(empty($chap_title)) $chap_title = "Kì Tiếp Theo";
+            $chap_content = trim(implode("\n", $lines)); 
+        } 
         else { $chap_content = $response_parsed; }
     }
 
@@ -1907,13 +1938,19 @@ Trả về bài review lỗi chi tiết.";
                     update_post_meta($truyen_id, '_temply_ai_characters', trim($rewritten_new_memory));
                 }
 
-                if(preg_match('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*(.*)/i', $rewritten_parsed, $m2)) {
+                if(preg_match('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*(.+)/i', $rewritten_parsed, $m2)) {
                     $chap_title = trim($m2[1]);
+                    $chap_title = preg_replace('/^Chương\s+\d+[\s:]*/iu', '', $chap_title);
                     $parts2 = preg_split('/(?:^|\n)\s*(?:\*\*|#)?\s*TITLE\s*:\s*(?:\*\*)?\s*.*\n/i', $rewritten_parsed, 2);
                     $chap_content = trim($parts2[1] ?? '');
                 } else {
-                    $lines2 = explode("\n", $rewritten_parsed);
-                    if(count($lines2)>2) { $chap_title = trim(array_shift($lines2)); $chap_content = trim(implode("\n", $lines2)); } 
+                    $lines2 = array_filter(explode("\n", $rewritten_parsed), 'trim');
+                    if(count($lines2) > 2) { 
+                        $first_line = array_shift($lines2);
+                        $chap_title = trim(preg_replace('/^.*?Chương\s+\d+[\s:]*/iu', '', $first_line)); 
+                        if(empty($chap_title)) $chap_title = "Kì Tiếp Theo";
+                        $chap_content = trim(implode("\n", $lines2)); 
+                    } 
                     else { $chap_content = $rewritten_parsed; }
                 }
             }
@@ -1922,10 +1959,15 @@ Trả về bài review lỗi chi tiết.";
 
     // D. Lên Sóng Publish
     $chap_title = trim(preg_replace('/\s+/', ' ', str_replace(['*', '#', '[', ']', 'TITLE:', 'TITLE :', 'Title:', 'title:'], '', $chap_title)));
+    
+    // Ép chuẩn hóa In Hoa Chữ Cái Đầu (Title Case) đề phòng AI in hoa Toàn Bộ (Caps Lock)
+    if (mb_strtoupper($chap_title, 'UTF-8') === $chap_title && mb_strlen($chap_title) > 2) {
+        $chap_title = mb_convert_case(mb_strtolower($chap_title, 'UTF-8'), MB_CASE_TITLE, 'UTF-8');
+    }
     $post_id = wp_insert_post([
         'post_title'   => "Chương $next_chap_num: $chap_title",
         'post_content' => wp_kses_post('Đang tạo...'),
-        'post_status'  => 'publish',
+        'post_status'  => 'draft',
         'post_type'    => 'chuong',
         'menu_order'   => $next_chap_num,
         'post_author'  => 1
@@ -1945,11 +1987,88 @@ Trả về bài review lỗi chi tiết.";
         $curr_item['chapters_left'] = $curr_item['chapters_left'] - 1;
         $config['last_run'] = time();
         
-        if ($curr_item['chapters_left'] <= 0) {
-            $curr_item['status'] = 'completed';
+        $target_chaps = isset($curr_item['target']) ? intval($curr_item['target']) : 25;
+        if ($next_chap_num >= $target_chaps) {
+            $curr_item['status'] = 'final_review';
         }
         
         $save_progress();
+    }
+    return; // Kết thúc Nhịp Viết
+
+    // ===============================================
+    // STAGE 3: FINAL REVIEW (Tổng Duyệt)
+    // ===============================================
+    if ($curr_item['status'] === 'final_review') {
+        $truyen_id = intval($curr_item['truyen_id']);
+        
+        $script = get_post_meta($truyen_id, '_temply_ai_script', true) ?: '';
+        $characters = get_post_meta($truyen_id, '_temply_ai_characters', true) ?: '';
+        
+        // Lấy danh sách tên chương để dò mạch
+        $args = ['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => $truyen_id, 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC'];
+        $chaps = get_posts($args);
+        $chap_list_str = "";
+        foreach($chaps as $c) {
+            $chap_list_str .= "- " . $c->post_title . "\n";
+        }
+        
+        $sys = "Bạn là THE SUPREME JUDGE (Thẩm Phán Tối Cao). Đánh giá chất lượng chung của một bộ tiểu thuyết vừa hoàn thành (Chỉ có Dàn ý và Cấu trúc chương, không có nội dung chữ).
+CĂN CỨ ĐÁNH GIÁ:
+1. Dựa trên Dàn ý gốc, các Tiêu đề chương có phản ánh đúng nhịp độ không? Có bị rushing end (kết thúc quá nhanh) không?
+2. Có lỗi lặp chương, lặp từ, hay cấu trúc bất thường không?
+Bạn rất công tâm. Nếu mọi thứ cơ bản OK, hãy duyệt. Nếu vi phạm lớn mới Reject. BẮT BUỘC TRẢ VỀ JSON:
+{
+  \"decision\": \"APPROVE hoặc REJECT\",
+  \"review_report\": \"Đánh giá chi tiết (khắt khe, trung thực) (Vài dòng)\",
+  \"prompt_fix_suggestion\": \"Đề xuất viết lại prompt... (nếu Reject)\"
+}";
+        $user = "[DÀN Ý GỐC]\n$script\n\n[TRẠNG THÁI NHÂN VẬT CUỐI]\n$characters\n\n[DANH SÁCH CHƯƠNG ĐÃ VIẾT]\n$chap_list_str\n\nHãy quyết định số phận của câu chuyện này.";
+
+        $ai_data = temply_call_ai($sys, $user, 0.5, $model);
+        if(!is_wp_error($ai_data)) {
+            $ai_data = preg_replace('/```(?:json)?|```/', '', $ai_data);
+            $parsed = json_decode(trim($ai_data), true);
+            if($parsed && isset($parsed['decision'])) {
+                if(strtoupper($parsed['decision']) === 'APPROVE') {
+                    wp_update_post(['ID' => $truyen_id, 'post_status' => 'publish']);
+                    foreach($chaps as $c) {
+                        wp_update_post(['ID' => $c->ID, 'post_status' => 'publish']);
+                    }
+                    delete_post_meta($truyen_id, '_temply_ai_final_review');
+                    $curr_item['status'] = 'completed';
+                    $curr_item['error_log'] = ''; // Xong xuôi
+                } else {
+                    $report = $parsed['review_report'] ?? 'Lỗi';
+                    $sugg = $parsed['prompt_fix_suggestion'] ?? '';
+                    update_post_meta($truyen_id, '_temply_ai_final_review', "$report\n\nGợi ý: $sugg");
+                    $curr_item['status'] = 'failed';
+                    $curr_item['error_log'] = 'SUPREME JUDGE REJECTED: Tác phẩm bị kẹt ở Bản Nháp.';
+                    
+                    // GỬI EMAIL KHẨN CẤP CHO ADMIN
+                    $admin_email = get_option('admin_email');
+                    $story_title = get_the_title($truyen_id);
+                    $subject = "🚨 [Temply AI] Thẩm Phan Toi Cao vua danh rot mot Truyen!";
+                    $message = "Hệ thống Auto-Pilot vừa hoàn thành một bộ truyện nhưng SUPREME JUDGE đã chế tài từ chối xuất bản vì hệ thống phát hiện Lỗi Cấu Trúc (nhịp độ gãy, Tây hóa, mâu thuẫn khập khiễng,...).\n\n";
+                    $message .= "📚 Tên truyện: $story_title (ID: $truyen_id)\n\n";
+                    $message .= "⚖️ LỜI PHÁN XÉT CỦA AI:\n$report\n\n";
+                    $message .= "📌 GỢI Ý SỬA PROMPT:\n$sugg\n\n";
+                    $message .= "👉 Trạng thái: Truyện đang bị khóa ở chế độ Bản Nháp (Draft).\nXin hãy truy cập WP Admin để kiểm tra và quyết định xuất bản hay xóa bỏ!";
+                    
+                    wp_mail($admin_email, $subject, $message);
+                }
+                $save_progress();
+            } else {
+                $curr_item['status'] = 'failed';
+                $curr_item['error_log'] = 'Supreme Judge JSON parse error.';
+                $save_progress();
+            }
+        } else {
+             $curr_item['status'] = 'failed';
+             $curr_item['error_log'] = 'Supreme Judge API Timeout.';
+             $save_progress();
+        }
+        return;
     }
 }
 
