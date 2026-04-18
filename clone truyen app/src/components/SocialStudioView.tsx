@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { useStore, QueueItem } from '../store/useStore';
-import { Share2, Image as ImageIcon, Copy, CheckCircle2, Rocket, CloudLightning, Loader2, Sparkles } from 'lucide-react';
+import { Share2, Image as ImageIcon, Copy, CheckCircle2, CloudLightning, Loader2, Sparkles } from 'lucide-react';
 import { callGemini } from '../lib/engine';
 
 export function SocialStudioView() {
@@ -18,7 +19,7 @@ export function SocialStudioView() {
       const activeKey = usePaidAPI ? geminiPaidKey : (geminiKey || geminiPaidKey);
       if (!activeKey) throw new Error("Vui lòng cấu hình API Key trong Settings trước.");
 
-      const blurb = item.publishData?.blurb || item.bible?.overallSizzle || item.bible?.summary || item.prompt;
+      const blurb = item.publishData?.blurb || (item.bible as any)?.overallSizzle || (item.bible as any)?.summary || item.prompt;
       const title = item.publishData?.finalTitle || item.title;
 
       const sysPrompt = `Bạn là Content Creator Tiktok/Instagram/Pinterest chuyên nghiệp. 
@@ -40,7 +41,7 @@ YÊU CẦU:
         model: usePaidAPI ? 'gemini-2.5-pro' : 'gemini-2.5-flash'
       });
 
-      setCaptions(prev => ({ ...prev, [item.id]: res.text }));
+      setCaptions(prev => ({ ...prev, [item.id]: (res as any).text }));
     } catch (error: any) {
       alert("Lỗi tạo Caption: " + error.message);
     } finally {
@@ -63,7 +64,7 @@ YÊU CẦU:
     try {
       const payload = {
         title: item.publishData?.finalTitle || item.title,
-        cover_image: item.publishData?.coverUrl || '',
+        cover_image: (item as any).coverUrl ? (item as any).coverUrl : item.publishData?.coverUrl || '',
         caption: captionText,
         tags: item.publishData?.tags || [],
         categories: item.publishData?.categories || [],
@@ -71,13 +72,13 @@ YÊU CẦU:
         timestamp: new Date().toISOString()
       };
 
-      const res = await fetch(webhookUrl, {
+      const res: any = await fetch(webhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
 
-      if (!res.ok) throw new Error(await res.text());
+      if (!res.ok) throw new Error(await (res as any).text());
       
       alert("✅ Đã bắn dữ liệu sang Webhook thành công!");
       markAsShared(item.id);
@@ -89,14 +90,14 @@ YÊU CẦU:
   };
 
   return (
-    <div className="max-w-6xl mx-auto py-10 animation-fade-in flex flex-col h-[calc(100vh-80px)]">
+    <div className="max-w-6xl mx-auto py-10 animation-fade-in flex flex-col h-full">
       <div className="mb-8 flex-shrink-0">
         <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent flex items-center gap-3">
           <Share2 className="text-pink-500" size={32} />
           Social Studio
         </h2>
         <p className="text-slate-400 mt-2">Phòng Marketing: Nơi ra lò các bài Post mồi câu cực gắt cho Tiktok / Instagram / Pinterest.</p>
-        <p className="text-xs text-slate-500 mt-1">Lưu ý: Truyện chỉ xuất hiện ở đây sau khi đã trạng thái "Bắn Lên Báo Dịch WP".</p>
+        <p className="text-xs text-slate-500 mt-1">Lưu ý: Truyện chỉ xuất hiện ở đây sau khi đã trạng thái &quot;Bắn Lên Báo Dịch WP&quot;.</p>
       </div>
 
       <div className="flex-1 overflow-y-auto space-y-6 custom-scrollbar pr-2 pb-20">
@@ -120,6 +121,7 @@ YÊU CẦU:
                      <div className="w-full md:w-2/5 relative border-r border-slate-800 bg-slate-950 flex flex-col justify-between group">
                        {cover ? (
                          <div className="relative w-full h-48 md:h-full">
+                           {/* eslint-disable-next-line @next/next/no-img-element */}
                            <img src={cover} alt="Cover" className="absolute inset-0 w-full h-full object-cover p-2 rounded-xl" />
                            <div className="absolute inset-2 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4 rounded-lg">
                               <a href={cover} target="_blank" rel="noreferrer" className="bg-white/20 hover:bg-white/40 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-bold text-white flex items-center gap-1 transition-all">

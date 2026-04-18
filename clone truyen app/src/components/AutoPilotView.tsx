@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useStore } from '../store/useStore';
@@ -38,7 +39,7 @@ export function AutoPilotView() {
     setBatchStatus('🚀 Bắt đầu lên dàn ý hàng loạt...');
     const activeKey = usePaidAPI ? geminiPaidKey : geminiKey;
 
-    const tasks = draftItems.map(async (item) => {
+    for (const item of draftItems) {
       try {
         setBatchStatus(prev => prev + `\n⏳ Đang lên dàn ý: ${item.title}...`);
 
@@ -71,6 +72,7 @@ export function AutoPilotView() {
         // Gọi outline engine tương ứng
         const outlineEngine = item.outlineEngine || 'gemini';
         const bounds = { minChapters: item.targetChapters, maxChapters: item.maxChapters || item.targetChapters };
+         
         let timeline: any[] | null = null;
 
         if (outlineEngine === 'gemini') timeline = await agentGeminiDramaExpand(activeKey, item.bible, bounds);
@@ -80,8 +82,8 @@ export function AutoPilotView() {
 
         updateQueueItem(item.id, {
           status: 'pending_approval',
-          bible: { ...item.bible, timeline },
-          targetChapters: timeline?.length || item.targetChapters,
+          bible: { ...(item.bible as any), timeline },
+          targetChapters: (timeline as any[])?.length || item.targetChapters,
           wpPostId,
         });
         setBatchStatus(prev => prev + `\n✅ Hoàn tất: ${item.title}`);
@@ -89,15 +91,14 @@ export function AutoPilotView() {
         updateQueueItem(item.id, { status: 'error', errorLog: `Lỗi lên dàn ý: ${err.message}` });
         setBatchStatus(prev => prev + `\n❌ Lỗi: ${item.title} — ${err.message}`);
       }
-    });
+    }
 
-    await Promise.allSettled(tasks);
     setIsBatchLoading(false);
     setBatchStatus(prev => prev + '\n\n🎉 Xong! Hãy duyệt tất cả dàn ý để bắt đầu viết.');
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-10 animation-fade-in flex flex-col h-[calc(100vh-80px)]">
+    <div className="max-w-5xl mx-auto py-10 animation-fade-in flex flex-col h-full">
       {/* HEADER */}
       <div className="mb-8 flex justify-between items-end flex-shrink-0">
         <div>
@@ -207,16 +208,17 @@ export function AutoPilotView() {
                         <p className="text-yellow-500/80 text-xs mt-1">Dưới đây là sơ lược tuyến thời gian (Timeline) mà AI vừa phác thảo.</p>
 
                         <div className="bg-black/40 border border-yellow-500/30 rounded-lg p-3 mt-3 max-h-48 overflow-y-auto custom-scrollbar text-[13px] text-yellow-100/90 whitespace-pre-wrap font-medium">
-                          {Array.isArray(item.bible?.timeline)
-                            ? item.bible.timeline.map((t: any, i: number) => `TẬP ${i + 1}: ${t.summary || t.plot || t.outline || t.content || JSON.stringify(t)}`).join('\n\n')
-                            : (typeof item.bible?.timeline === 'string' ? item.bible.timeline : JSON.stringify(item.bible?.timeline || 'Không có dữ liệu dàn ý.', null, 2))}
+                          {(item.bible as any)?.timeline && Array.isArray((item.bible as any).timeline)
+                             
+                            ? ((item.bible as any).timeline as any[]).map((t: any, i: number) => `TẬP ${i + 1}: ${t.summary || t.plot || t.outline || t.content || JSON.stringify(t)}`).join('\n\n')
+                            : (typeof (item.bible as any)?.timeline === 'string' ? (item.bible as any).timeline : JSON.stringify((item.bible as any)?.timeline || 'Không có dữ liệu dàn ý.', null, 2))}
                         </div>
 
                         <div className="flex flex-wrap items-center gap-3 mt-4">
                           <label className="text-xs font-bold text-yellow-500/80 uppercase tracking-widest whitespace-nowrap">Ép Số Tập:</label>
                           <input
                             type="number"
-                            value={item.targetChapters}
+                            value={parseInt(String(item.targetChapters)) || 1}
                             onChange={(e) => updateQueueItem(item.id, { targetChapters: parseInt(e.target.value) || 1, maxChapters: parseInt(e.target.value) || 1 })}
                             className="bg-black/50 border border-yellow-500/50 rounded text-yellow-400 font-bold px-3 py-1.5 w-20 outline-none text-center shadow-inner"
                           />

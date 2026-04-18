@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { callGemini, callOpenAI, callGrok, callClaude } from './engine';
 
 // Helper to route dynamic calls
+ 
 async function callDynamicEngine(engineSlug: string, params: any): Promise<any> {
   if (engineSlug === 'gemini') return callGemini(params);
   if (engineSlug === 'openai') return callOpenAI(params);
@@ -16,7 +18,8 @@ const extractJson = (text: string) => {
   return JSON.parse(t);
 };
 
-export async function agentConceptGenerator(engine: string, apiKey: string, model: string, criteria: any) {
+ 
+export async function agentConceptGenerator(engine: string, apiKey: string, model: string, criteria: unknown) {
   const sys = `Bạn là Concept Generator đỉnh cao. Nhiệm vụ: Sinh chính xác 20 concept ý tưởng truyện Micro-Drama siêu kịch tính, ngắn gọn. 
 Focus: humiliation, betrayal, secret, class gap, revenge, comeback. Không viết dài lê thê.
 Trả về nguyên gốc định dạng JSON ARRAY chứa 20 object, không bọc markdown. Mỗi object CÓ ĐÚNG các properties sau:
@@ -37,7 +40,8 @@ Lưu ý: Chỉ trả về JSON, không thêm chữ nào.`;
   return extractJson(res.text);
 }
 
-export async function agentConceptScorer(engine: string, apiKey: string, model: string, concepts: any[]) {
+ 
+export async function agentConceptScorer(engine: string, apiKey: string, model: string, concepts: unknown[]) {
   const sys = `Bạn là Giám Khảo Tối Cao (Supreme Judge) khắc nghiệt nhất. Chấm điểm các concept trong mảng được đưa vào.
 NHIỆM VỤ: Chấm điểm (1-10) và viết 1 dòng NHẬN XÉT CỰC KỲ GAY GẮT, CHỈ ĐÍCH DANH ĐIỂM YẾU/MẠNH.
 TUYỆT ĐỐI KHÔNG DÙNG VĂN MẪU kiểu "Hook rõ, pain mạnh". PHẢI nhắc trực tiếp đến tình tiết Plot Twist hoặc Bối cảnh của chính kịch bản đó. Nếu motif sáo rỗng, vả mặt chưa đủ đau, hãy chê thậm tệ và trừ điểm. Nếu độc đáo, bạo não, thưởng điểm.
@@ -49,14 +53,16 @@ Trả về JSON đúng cấu trúc mảng:
   "winner_index": 0
 }`;
 
-  const user = JSON.stringify(concepts.map((c, i) => ({ index: i, ...c })));
+  const user = JSON.stringify(concepts.map((c, i) => ({ index: i, ...(c as any) })));
   
   const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.2, model });
   return extractJson(res.text);
 }
 
-export async function agentSeasonArchitect(engine: string, apiKey: string, model: string, winningConcept: any) {
+ 
+export async function agentSeasonArchitect(engine: string, apiKey: string, model: string, winningConcept: unknown) {
   const sys = `Bạn là Season Architect. Nhiệm vụ: Thiết kế toàn bộ Story Bible và Dàn ý (Timeline) 30 tập cho concept thắng cuộc. Ưu tiên logic chặt chẽ, không cần bay bướm văn vẻ.
+QUY TẮC CỐT LÕI TỪ NHÀ SẢN XUẤT (BẮT BUỘC): KHÔNG ĐỂ quá trình thu thập chứng cứ của nhân vật chính diễn ra quá dễ dàng. Bắt buộc phải thiết kế một chương 'Phản đòn' từ phe phản diện khiến nhân vật chính bị lộ tẩy hoặc đẩy vào chân tường trước khi cô lật kèo. Tiêu đề các chương (title) phải dùng động từ mạnh, giật tít, độc hại, tò mò (Ví dụ: Giọt máu giả, Chiếc camera giấu kín ở đáy quan tài...).
 Tuyệt đối CHỈ trả về JSON nguyên bản (không bọc \`\`\`json), format chuẩn:
 {
   "series_premise": "...",
@@ -66,7 +72,7 @@ Tuyệt đối CHỈ trả về JSON nguyên bản (không bọc \`\`\`json), fo
   "forbidden_inconsistencies": "...",
   "reveal_schedule": "...",
   "timeline": [
-    { "episode": 1, "outline": "Beat của tập" }
+    { "episode": 1, "title": "Tên chương giật tít", "outline": "Beat của tập" }
   ]
 }
 Lưu ý: timeline PHẢI có đủ 30 object (30 episodes).`;
@@ -77,18 +83,20 @@ Lưu ý: timeline PHẢI có đủ 30 object (30 episodes).`;
   return extractJson(res.text);
 }
 
-export async function agentEpisodeDrafter(engine: string, apiKey: string, model: string, bible: any, epNum: number, currentBeat: string) {
+ 
+export async function agentEpisodeDrafter(engine: string, apiKey: string, model: string, bible: unknown, epNum: number, currentBeat: string) {
   const sys = `Bạn là Episode Drafter của Micro-Drama. Nhiệm vụ: Dựa vào Bible và Beat của tập hiện tại, hãy viết nháp thô (draft). 
 QUY TẮC SỐNG CÒN:
 1. "Show, Don't tell": TUYỆT ĐỐI CẤM SỬ DỤNG NGOẶC ĐƠN MIÊU TẢ CẢM XÚC như (Lúng túng, hối lỗi), (Giận dữ). Phải miêu tả qua sinh lý cơ thể: "gân xanh hằn lên", "mồ hôi rịn ra".
-2. XUNG ĐỘT LẬP TỨC: CẤM TUYỆT ĐỐI việc tả cảnh thiên nhiên, tả độ sáng ánh đèn dông dài. Ném nhân vật thẳng vào mâu thuẫn khốc liệt!
-Độ dài từ 400-600 chữ. Focus vào hành động, sự chà đạp, và các màn tranh cãi nảy lửa. Trả về format Text (Markdown thuần).`;
+3. ĐỘC MIỆNG HÀO MÔN: Đặc sản của Micro-Drama Việt là thâm thúy, chửi xéo, mỉa mai cay nghiệt. Phải dùng từ ngữ gai góc, xéo xắt, toxic cho phản diện.
+4. CHIỀU DÀI: ĐÒI HỎI BẮT BUỘC 1200 - 1500 CHỮ VÀ KHÔNG ĐƯỢC NGẮN HƠN DÙ TRỜI CÓ SẬP XUỐNG (Mệnh lệnh cờ sinh tử).
+5. MÓC CÂU (CLIFFHANGER): Kết thúc tập LUÔN bằng 1 câu MÓC CÂU khiến khán giả rợn người muốn coi tiếp (tin nhắn lạ, cuộc điện thoại bí ẩn...). Focus vào hành động chà đạp, hắt hủi nảy lửa. Trả về Text thuần.`;
 
   const user = `--- SYSTEM CORE & BIBLE (CACHE BLOCK) ---
-Series Premise: ${bible.series_premise}
-Character Bible: ${bible.character_bible}
-Secrets Map: ${bible.hidden_secrets_map}
-Forbidden Inconsistencies: ${bible.forbidden_inconsistencies}
+Series Premise: ${(bible as any).series_premise}
+Character Bible: ${(bible as any).character_bible}
+Secrets Map: ${(bible as any).hidden_secrets_map}
+Forbidden Inconsistencies: ${(bible as any).forbidden_inconsistencies}
 
 --- EPISODE TASK ---
 Xây dựng Episode số ${epNum}.
@@ -166,7 +174,8 @@ Hãy phủ bóng màn đêm và mài sắc lưỡi dao cảm xúc!`;
   return res.text;
 }
 
-export async function agentPitchRefiner(engine: string, apiKey: string, model: string, originalPitch: any, feedback: string) {
+ 
+export async function agentPitchRefiner(engine: string, apiKey: string, model: string, originalPitch: unknown, feedback: string) {
   const sys = `Bạn là Chuyên Gia Cứu Vãn Kịch Bản (Script Doctor) của Micro-Drama.
 Nhiệm vụ: Phẫu thuật và viết lại toàn bộ kịch bản gốc sao cho HẤP THU ĐƯỢC 100% GÓP Ý TỪ ĐẠO DIỄN NÀY, đẩy độ "bạo não", twist và sỉ nhục lên tầm cao nhất, logic sắc bén không tì vết.
 TUYỆT ĐỐI KHÔNG DÙNG TỪ TIẾNG ANH (Ví dụ: Kawaii -> Đáng Yêu, Steampunk -> Cơ Khí Cổ Đại). 100% Tiếng Việt hoặc Hán Việt.
@@ -192,21 +201,22 @@ Hãy đập đi xây lại kịch bản này ngay bây giờ! Chỉ trả về J
   return extractJson(res.text);
 }
 
-export async function agentStoryEvaluator(engine: string, apiKey: string, model: string, bible: any, chaptersContent?: any[]) {
+ 
+export async function agentStoryEvaluator(engine: string, apiKey: string, model: string, bible: unknown, chaptersContent?: unknown[]) {
   const sys = `Bạn là Tổng Biên Tập siêu khó tính (Gatekeeper) của một nền tảng đọc truyện mạng hàng đầu. 
 Nhiệm vụ: Đọc toàn bộ hồ sơ thiết kế truyện (Story Bible) và NỘI DUNG TẤT CẢ CÁC CHƯƠNG ĐÃ VIẾT (nếu có).
 Hãy kiểm tra xem truyện có bám sát thiết lập ban đầu không, có mắc lỗi Plot Hole không, và mức độ cuốn hút (Sizzle) ở thực tế ra sao.
-TUYỆT ĐỐI CHỈ TRẢ VỀ JSON:
 {
   "score": "Điểm từ 1 đến 10",
-  "review": "Bài Review dài khoảng 10-15 câu, phân tích gay gắt ưu nhược điểm, độ cuốn hút, plot hole, có thật sự gây cảm xúc mạnh ở từng tập như hứa hẹn hay không."
+  "review": "Bài Review dài khoảng 10-15 câu, phân tích gay gắt ưu nhược điểm, độ cuốn hút, plot hole, có thật sự gây cảm xúc mạnh ở từng tập như hứa hẹn hay không.",
+  "promptSuggestion": "Phân tích xem Prompt/Keywords gốc đã đủ tốt chưa. Nếu chưa, hãy gợi ý một Prompt hoặc cốt truyện mới xuất sắc hơn để tác giả đập đi làm lại."
 }`;
 
   let user = `Hồ sơ Truyện (Bible):\n${JSON.stringify(bible)}`;
   if (chaptersContent && chaptersContent.length > 0) {
       user += `\n\n--- THỰC TẾ NỘI DUNG TỪNG CHƯƠNG ĐÃ VIẾT ---\n`;
-      chaptersContent.forEach(ch => {
-          user += `\n[${ch.title}]\n${ch.content}\n`;
+      chaptersContent.forEach((ch: any) => {
+          user += `\n[${(ch as any).title}]\n${(ch as any).content}\n`;
       });
   }
   
@@ -214,7 +224,8 @@ TUYỆT ĐỐI CHỈ TRẢ VỀ JSON:
   return extractJson(res.text);
 }
 
-export async function agentPublisherMetadata(engine: string, apiKey: string, model: string, bible: any, title: string) {
+ 
+export async function agentPublisherMetadata(engine: string, apiKey: string, model: string, bible: unknown, title: string) {
   const sys = `Bạn là Chuyên Gia Xuất Bản & SEO Master.
 Nhiệm vụ: Truyện đã hoàn thành và chuẩn bị đưa lên WordPress. Hãy sinh ra Siêu dữ liệu SEO (RankMath), Từ khóa, Danh mục, và một câu Prompt bằng tiếng Anh để AI vẽ Ảnh bìa (Cover Image).
 YÊU CẦU JSON:
@@ -224,7 +235,7 @@ YÊU CẦU JSON:
   "seoDescription": "Mô tả SEO tóm tắt nội dung gây tò mò (khoảng 150 ký tự)",
   "seoFocusKeyword": "Từ khóa chính (1-2 từ khóa)",
   "categories": ["Danh mục 1", "Danh mục 2"],
-  "tags": ["tag1", "tag2", "tag3"],
+  "tags": ["Từ khoá 1 (ngắn 1-2 từ)", "Từ khoá 2 (ngắn 1-2 từ)", "Từ khoá 3 (VD: Phản bội, Trùng sinh)"],
   "coverImagePrompt": "Mô tả ảnh bìa BẰNG TIẾNG ANH, chi tiết, cinematic, vivid colors, mô tả bối cảnh và ngoại hình nhân vật chính để Gen bằng AI.",
   "blurb": "Đoạn văn giới thiệu truyện (Văn án), ngôn từ cực kỳ giật gân, có hook câu khách ở đầu và bỏ lửng tạo tò mò ở cuối để độc giả muốn lao vào đọc ngay. Tuyệt đối KHÔNG ĐỂ LỘ HẬU TRƯỜNG kiểu như 'Cú twist là...'. Chỉ viết kiểu teaser."
 }

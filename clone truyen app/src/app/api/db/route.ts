@@ -16,13 +16,16 @@ export async function GET() {
 
     try {
       const data = await fs.readFile(DB_PATH, 'utf-8');
+      if (!data.trim()) throw new Error('File rỗng cục bộ');
       return NextResponse.json({ success: true, data: JSON.parse(data) });
-    } catch {
-      // Nếu file chưa tồn tại, trả về rỗng không lỗi
-      return NextResponse.json({ success: true, data: null });
+    } catch (e: unknown) {
+      if (e instanceof Error && (e as NodeJS.ErrnoException).code === 'ENOENT') {
+        return NextResponse.json({ success: true, data: null });
+      }
+      return NextResponse.json({ success: false, error: e instanceof Error ? e.message : String(e) }, { status: 500 });
     }
-  } catch (error: any) {
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ success: false, error: error instanceof Error ? error.message : String(error) }, { status: 500 });
   }
 }
 
@@ -36,9 +39,12 @@ export async function POST(req: Request) {
       await fs.mkdir(path.join(process.cwd(), 'data'), { recursive: true });
     }
 
-    await fs.writeFile(DB_PATH, JSON.stringify(body, null, 2), 'utf-8');
+    const tmpPath = DB_PATH + '.' + Date.now() + Math.random() + '.tmp';
+    await fs.writeFile(tmpPath, JSON.stringify(body, null, 2), 'utf-8');
+    await fs.rename(tmpPath, DB_PATH);
+
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ success: false, error: error instanceof Error ? error.message : String(error) }, { status: 500 });
   }
 }

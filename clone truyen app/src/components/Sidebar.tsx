@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PenTool, Settings, Rocket, TerminalSquare, Clapperboard, BookOpen, Skull, Feather, Menu, X, HeartHandshake } from 'lucide-react';
+import {  Settings, Rocket, TerminalSquare, Clapperboard, BookOpen, Skull, Feather, Menu, X, HeartHandshake } from 'lucide-react';
 
 interface SidebarProps {
   currentTab: string;

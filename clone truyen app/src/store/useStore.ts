@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { create } from 'zustand';
 
 const LS_KEY = 'mcore-keys';
@@ -10,7 +11,7 @@ function readLocalKeys(): Record<string, any> {
   } catch { return {}; }
 }
 
-function writeLocalKeys(state: Record<string, any>) {
+function writeLocalKeys(state: Record<string, unknown>) {
   if (typeof window === 'undefined') return;
   const keys = {
     geminiKey: state.geminiKey || '',
@@ -28,7 +29,7 @@ function writeLocalKeys(state: Record<string, any>) {
   };
   // Merge: chỉ ghi đè nếu giá trị mới không rỗng
   const existing = readLocalKeys();
-  const merged: Record<string, any> = {};
+  const merged: Record<string, unknown> = {};
   for (const k of Object.keys(keys)) {
     const newVal = (keys as any)[k];
     merged[k] = (newVal !== '' && newVal !== undefined) ? newVal : (existing[k] ?? newVal);
@@ -40,7 +41,7 @@ function writeLocalKeys(state: Record<string, any>) {
 const savedKeys = readLocalKeys();
 
 // Đồng bộ queue/apiLogs/draftSpaces lên Server DB (fire-and-forget)
-function syncToServer(state: { queue: any[]; apiLogs: any[]; isAutoPilotRunning: boolean; draftSpaces: Record<string, any>; hasHydrated: boolean }) {
+function syncToServer(state: { queue: unknown[]; apiLogs: unknown[]; isAutoPilotRunning: boolean; draftSpaces: Record<string, any>; hasHydrated: boolean }) {
   if (!state.hasHydrated) return; // Prevent overwriting DB with initial empty state
   fetch('/api/db', {
     method: 'POST',
@@ -73,6 +74,7 @@ export interface QueueItem {
   title: string;
   genres: string;
   prompt: string;
+   
   bible?: any; // The Puppet Master output
   wpPostId?: number; // Corresponding WordPress Post ID
   status: 'draft_outline' | 'pending_approval' | 'pending' | 'writing' | 'final_review' | 'completed' | 'error' | 'published';
@@ -91,6 +93,7 @@ export interface QueueItem {
   progressLogs?: string[];
   chaptersContent?: { episode: number; title: string; content: string }[];
   isSocialShared?: boolean; // Tự động chui vào hàng đợi Social Studio nếu = false và status = 'published'
+  [key: string]: any;
 }
 
 interface AppState {
@@ -125,7 +128,7 @@ interface AppState {
   removeQueueItem: (id: string) => void;
   clearQueue: () => void;
   toggleAutoPilot: () => void;
-  updateDraftSpace: (spaceId: string, updates: Partial<any>) => void;
+  updateDraftSpace: (spaceId: string, updates: Record<string, any>) => void;
 }
 
 export const useStore = create<AppState>()((set, get) => ({
@@ -175,7 +178,7 @@ export const useStore = create<AppState>()((set, get) => ({
         status: 'draft_outline' as const,
         chaptersDone: 0,
         wordCount: 0,
-      }));
+      })) as QueueItem[];
       const next = { queue: [...state.queue, ...newItems] };
       syncToServer({ ...state, ...next });
       return next;

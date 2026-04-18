@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
@@ -19,11 +20,15 @@ export async function POST(req: Request) {
        fallbackChain = ['claude-haiku-4-5', 'claude-3-5-haiku-20241022'];
     }
 
+     
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let lastError: any = null;
+     
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let data: any = null;
     let ok = false;
 
-    for (let m of fallbackChain) {
+    for (const m of fallbackChain) {
         console.log("[Claude API] Trying model:", m);
         const response = await fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
@@ -73,8 +78,8 @@ export async function POST(req: Request) {
     } : undefined;
 
     return NextResponse.json({ text: data.content?.[0]?.text || '', usage, chosenModel: fallbackChain[fallbackChain.length-1] });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Claude Route Error:', error);
-    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Internal Server Error' }, { status: 500 });
   }
 }

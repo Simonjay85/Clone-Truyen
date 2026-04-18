@@ -1,0 +1,81 @@
+
+> mac-story-studio@0.1.0 lint
+> eslint
+
+
+/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/app/api/claude/route.ts
+  24:5  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-explicit-any')
+  27:5  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-explicit-any')
+
+/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/components/ClaudeDramaView.tsx
+   6:32  warning  'ExternalLink' is defined but never used                                                                                                                                           @typescript-eslint/no-unused-vars
+   7:10  warning  'agentPuppetMaster' is defined but never used                                                                                                                                      @typescript-eslint/no-unused-vars
+   7:29  warning  'callGemini' is defined but never used                                                                                                                                             @typescript-eslint/no-unused-vars
+  30:23  warning  'setMaxChapters' is assigned a value but never used                                                                                                                                @typescript-eslint/no-unused-vars
+  33:25  warning  'setSelectedModel' is assigned a value but never used                                                                                                                              @typescript-eslint/no-unused-vars
+  49:6   warning  React Hook React.useEffect has missing dependencies: 'gradingStatus', 'pitchOptions', 'prompt', 'targetChapters', and 'title'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  56:6   warning  React Hook React.useEffect has a missing dependency: 'updateDraftSpace'. Either include it or remove the dependency array                                                          react-hooks/exhaustive-deps
+
+/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/components/ComboEconomicView.tsx
+   4:1   warning  Unused eslint-disable directive (no problems were reported from 'react/no-unescaped-entities')
+   7:32  warning  'ExternalLink' is defined but never used                                                                                                                                           @typescript-eslint/no-unused-vars
+   8:10  warning  'agentPuppetMaster' is defined but never used                                                                                                                                      @typescript-eslint/no-unused-vars
+   8:29  warning  'callGemini' is defined but never used                                                                                                                                             @typescript-eslint/no-unused-vars
+  31:23  warning  'setMaxChapters' is assigned a value but never used                                                                                                                                @typescript-eslint/no-unused-vars
+  34:25  warning  'setSelectedModel' is assigned a value but never used                                                                                                                              @typescript-eslint/no-unused-vars
+  50:6   warning  React Hook React.useEffect has missing dependencies: 'gradingStatus', 'pitchOptions', 'prompt', 'targetChapters', and 'title'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  57:6   warning  React Hook React.useEffect has a missing dependency: 'updateDraftSpace'. Either include it or remove the dependency array                                                          react-hooks/exhaustive-deps
+
+/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/components/ComboRoyalView.tsx
+   6:32  warning  'ExternalLink' is defined but never used                                                                                                                                           @typescript-eslint/no-unused-vars
+   7:10  warning  'agentPuppetMaster' is defined but never used                                                                                                                                      @typescript-eslint/no-unused-vars
+   7:29  warning  'callGemini' is defined but never used                                                                                                                                             @typescript-eslint/no-unused-vars
+  30:23  warning  'setMaxChapters' is assigned a value but never used                                                                                                                                @typescript-eslint/no-unused-vars
+  33:25  warning  'setSelectedModel' is assigned a value but never used                                                                                                                              @typescript-eslint/no-unused-vars
+  49:6   warning  React Hook React.useEffect has missing dependencies: 'gradingStatus', 'pitchOptions', 'prompt', 'targetChapters', and 'title'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  56:6   warning  React Hook React.useEffect has a missing dependency: 'updateDraftSpace'. Either include it or remove the dependency array                                                          react-hooks/exhaustive-deps
+
+/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/components/GeminiDramaView.tsx
+   6:32  warning  'ExternalLink' is defined but never used                                                                                                                                           @typescript-eslint/no-unused-vars
+   7:10  warning  'agentPuppetMaster' is defined but never used                                                                                                                                      @typescript-eslint/no-unused-vars
+   7:29  warning  'callGemini' is defined but never used                                                                                                                                             @typescript-eslint/no-unused-vars
+  28:23  warning  'setMaxChapters' is assigned a value but never used                                                                                                                                @typescript-eslint/no-unused-vars
+  31:25  warning  'setSelectedModel' is assigned a value but never used                                                                                                                              @typescript-eslint/no-unused-vars
+  46:6   warning  React Hook React.useEffect has missing dependencies: 'gradingStatus', 'pitchOptions', 'prompt', 'targetChapters', and 'title'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  53:6   warning  React Hook React.useEffect has a missing dependency: 'updateDraftSpace'. Either include it or remove the dependency array                                                          react-hooks/exhaustive-deps
+
+/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/components/GrokDramaView.tsx
+   6:32  warning  'ExternalLink' is defined but never used                                                                                                                                           @typescript-eslint/no-unused-vars
+   7:10  warning  'agentPuppetMaster' is defined but never used                                                                                                                                      @typescript-eslint/no-unused-vars
+   7:29  warning  'callGemini' is defined but never used                                                                                                                                             @typescript-eslint/no-unused-vars
+  30:23  warning  'setMaxChapters' is assigned a value but never used                                                                                                                                @typescript-eslint/no-unused-vars
+  33:25  warning  'setSelectedModel' is assigned a value but never used                                                                                                                              @typescript-eslint/no-unused-vars
+  37:3   warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-explicit-any')
+  50:6   warning  React Hook React.useEffect has missing dependencies: 'gradingStatus', 'pitchOptions', 'prompt', 'targetChapters', and 'title'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  57:6   warning  React Hook React.useEffect has a missing dependency: 'updateDraftSpace'. Either include it or remove the dependency array                                                          react-hooks/exhaustive-deps
+
+/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/components/LiveSync.tsx
+  36:16  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/components/MicroDramaView.tsx
+   4:1  warning  Unused eslint-disable directive (no problems were reported from 'react/no-unescaped-entities')
+  47:6  warning  React Hook React.useEffect has missing dependencies: 'gradingStatus', 'pitchOptions', 'prompt', 'targetChapters', and 'title'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  54:6  warning  React Hook React.useEffect has a missing dependency: 'updateDraftSpace'. Either include it or remove the dependency array                                                          react-hooks/exhaustive-deps
+
+/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/components/SettingsView.tsx
+    6:10  warning  'Save' is defined but never used                 @typescript-eslint/no-unused-vars
+   55:18  warning  'totalPages' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  135:14  warning  'e' is defined but never used                    @typescript-eslint/no-unused-vars
+  167:14  warning  'e' is defined but never used                    @typescript-eslint/no-unused-vars
+  199:14  warning  'e' is defined but never used                    @typescript-eslint/no-unused-vars
+  229:14  warning  'e' is defined but never used                    @typescript-eslint/no-unused-vars
+  258:14  warning  'e' is defined but never used                    @typescript-eslint/no-unused-vars
+
+/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/hooks/useAutoPilotEngine.ts
+   84:19  warning  'isCombo6' is assigned a value but never used       @typescript-eslint/no-unused-vars
+  159:24  warning  'e' is defined but never used                       @typescript-eslint/no-unused-vars
+  175:17  warning  'outlineEngine' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 53 problems (0 errors, 53 warnings)
+  0 errors and 5 warnings potentially fixable with the `--fix` option.
+
