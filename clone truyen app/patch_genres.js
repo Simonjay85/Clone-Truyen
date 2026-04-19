@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 import path from 'path';
 
@@ -47,9 +48,9 @@ filesToPatch.forEach(file => {
   } else {
     // If it's already using GENRE_GROUPS, skip or handle
     if (content.includes('GENRE_GROUPS')) {
-      console.log(\`\${file} already patched.\`);
+      console.log(file + " already patched.");
     } else {
-      console.log(\`Couldn't patch JSX in \${file}\`);
+      console.log("Couldn't patch JSX in " + file);
     }
   }
 

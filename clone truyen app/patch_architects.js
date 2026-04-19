@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 
 const ruleText = `
@@ -27,11 +28,11 @@ const searchFunctions = [
 ];
 
 searchFunctions.forEach(func => {
-  const regex = new RegExp(\`(export async function \${func}[\\\\s\\\\S]*?const sys = \\\`[\\\\s\\\\S]*?)(TRẢ VỀ JSON HỢP LỆ:|\"timeline\":)\`, 'i');
+  const regex = new RegExp("(export async function " + func + "[\\\\s\\\\S]*?const sys = `[\\\\s\\\\S]*?)(TRẢ VỀ JSON HỢP LỆ:|\"timeline\":)", 'i');
   if (engine.match(regex) && !engine.includes(ruleText)) {
       // Find where to insert rule
       engine = engine.replace(regex, (match, prefix, suffix) => {
-         return \`\${prefix}\${ruleText}\\n\${suffix}\`;
+         return prefix + ruleText + "\\n" + suffix;
       });
   }
 });

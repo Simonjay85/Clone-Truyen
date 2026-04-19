@@ -21,9 +21,10 @@ export function useAutoPilotEngine() {
     const tick = async () => {
       const now = Date.now();
       if (isProcessing.current) {
-        // Failsafe: if stuck for > 60 seconds (due to hot-reload or API hang), unlock it!
-        if (now - lastProcessTime.current > 60000) {
-           console.warn("AutoPilot Auto-Unlock: isProcessing stuck for > 60s, resetting...");
+        // Failsafe: if stuck for > 5 minutes (due to hot-reload or API hang), unlock it!
+        // LLM generation can take up to 2-3 minutes, so 60s is too short and causes duplicate chapters.
+        if (now - lastProcessTime.current > 300000) {
+           console.warn("AutoPilot Auto-Unlock: isProcessing stuck for > 5 mins, resetting...");
            isProcessing.current = false;
         } else {
            return;
@@ -180,7 +181,8 @@ export function useAutoPilotEngine() {
               chaptersDone: nextEpsDone,
               status: isDone ? 'completed' : 'pending',
               wordCount: activeItem.wordCount + finalDraft.split(' ').length,
-              chaptersContent: newChaptersContent
+              chaptersContent: newChaptersContent,
+              errorLog: undefined
             });
             return;
           }
@@ -246,7 +248,8 @@ export function useAutoPilotEngine() {
             chaptersDone: nextEpsDone,
             status: isDone ? 'final_review' : 'pending',
             wordCount: activeItem.wordCount + draft.split(' ').length,
-            chaptersContent: newChaptersContent
+            chaptersContent: newChaptersContent,
+            errorLog: undefined
           });
         }
       } catch (err: unknown) {

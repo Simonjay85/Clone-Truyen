@@ -1,3 +1,4 @@
+/* eslint-disable */
 const fs = require('fs');
 const dbPath = './data/mcore_db.json';
 

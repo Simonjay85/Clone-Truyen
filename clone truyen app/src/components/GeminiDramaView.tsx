@@ -1,3 +1,6 @@
+"use client";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
@@ -89,7 +92,7 @@ BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY CÓ ĐÚNG ${pit
       "characterArc": "Vết thương lòng/Sự phát triển của nhân vật",
       "plotTwists": "Cú lật bàn không lường trước/Vả mặt",
       "overallSizzle": "Sự bạo não tóm tắt",
-      "suggestedGenres": "Thể loại phù hợp nhất (VD: Xuyên không, Vả mặt)",
+      "genres": "Gán TRỰC TIẾP 1-3 Danh mục/Thể loại chính của truyện (Ví dụ: Trọng Sinh, Vả Mặt, Đô Thị). Danh mục này sẽ đi xuyên suốt hệ thống và làm Category khi đăng lên web.",
       "suggestedChapters": "Hãy sinh ra DUY NHẤT 1 CON SỐ (Number) là số chương mục tiêu ước tính. Con số này PHẢI nằm trong khoảng từ ${targetChapters} đến ${maxChapters}."
     }
   ]
@@ -238,7 +241,7 @@ BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY CÓ ĐÚNG ${pit
     if (selectedPitches.length === 0) return alert("Vui lòng tick chọn ít nhất 1 kịch bản để xả vào hệ thống Auto-Pilot!");
     const items = selectedPitches.map(idx => ({
         title: pitchOptions[idx].super_title || `Truyện Chấn Động ${idx+1}`,
-        genres: selectedGenres.join(', ') || 'Tự do',
+        genres: pitchOptions[idx].genres || selectedGenres.join(', ') || 'Tự do',
         prompt: prompt,
         bible: pitchOptions[idx],
         targetChapters: parseInt(pitchOptions[idx].suggestedChapters) || targetChapters,
@@ -550,10 +553,10 @@ Bạn có muốn XÓA TRẮNG Bảng kịch bản hiện tại để viết bộ
                              
                              <div className="mt-4 pt-3 border-t border-white/5 flex gap-4 text-xs font-medium">
                                 <div className="bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                                   <span className="text-emerald-500">🔖</span> Thể loại gợi ý: 
+                                   <span className="text-emerald-500">🔖</span> Danh Mục WP: 
                                    <input className="bg-transparent border-b border-transparent focus:border-emerald-500 focus:bg-black/20 outline-none px-1 max-w-[150px]"
-                                        value={(pitch as any).suggestedGenres || ''}
-                                        onChange={(e) => updatePitch(idx, 'suggestedGenres', e.target.value)}
+                                        value={(pitch as any).genres || ''}
+                                        onChange={(e) => updatePitch(idx, 'genres', e.target.value)}
                                         placeholder="Nhập thể loại..."
                                    />
                                 </div>

@@ -41,7 +41,7 @@ Lưu ý: Chỉ trả về JSON, không thêm chữ nào.`;
 }
 
  
-export async function agentConceptScorer(engine: string, apiKey: string, model: string, concepts: unknown[]) {
+export async function agentConceptScorer(engine: string, apiKey: string, model: string, concepts: unknown[], apiKey2?: string, apiKey3?: string) {
   const sys = `Bạn là Giám Khảo Tối Cao (Supreme Judge) khắc nghiệt nhất. Chấm điểm các concept trong mảng được đưa vào.
 NHIỆM VỤ: Chấm điểm (1-10) và viết 1 dòng NHẬN XÉT CỰC KỲ GAY GẮT, CHỈ ĐÍCH DANH ĐIỂM YẾU/MẠNH.
 TUYỆT ĐỐI KHÔNG DÙNG VĂN MẪU kiểu "Hook rõ, pain mạnh". PHẢI nhắc trực tiếp đến tình tiết Plot Twist hoặc Bối cảnh của chính kịch bản đó. Nếu motif sáo rỗng, vả mặt chưa đủ đau, hãy chê thậm tệ và trừ điểm. Nếu độc đáo, bạo não, thưởng điểm.
@@ -55,7 +55,7 @@ Trả về JSON đúng cấu trúc mảng:
 
   const user = JSON.stringify(concepts.map((c, i) => ({ index: i, ...(c as any) })));
   
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.2, model });
+  const res = await callDynamicEngine(engine, { apiKey, apiKey2, apiKey3, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.2, model });
   return extractJson(res.text);
 }
 
@@ -176,7 +176,7 @@ Hãy phủ bóng màn đêm và mài sắc lưỡi dao cảm xúc!`;
 }
 
  
-export async function agentPitchRefiner(engine: string, apiKey: string, model: string, originalPitch: unknown, feedback: string) {
+export async function agentPitchRefiner(engine: string, apiKey: string, model: string, originalPitch: unknown, feedback: string, apiKey2?: string, apiKey3?: string) {
   const sys = `Bạn là Chuyên Gia Cứu Vãn Kịch Bản (Script Doctor) của Micro-Drama.
 Nhiệm vụ: Phẫu thuật và viết lại toàn bộ kịch bản gốc sao cho HẤP THU ĐƯỢC 100% GÓP Ý TỪ ĐẠO DIỄN NÀY, đẩy độ "bạo não", twist và sỉ nhục lên tầm cao nhất, logic sắc bén không tì vết.
 TUYỆT ĐỐI KHÔNG DÙNG TỪ TIẾNG ANH (Ví dụ: Kawaii -> Đáng Yêu, Steampunk -> Cơ Khí Cổ Đại). 100% Tiếng Việt hoặc Hán Việt.
@@ -198,7 +198,7 @@ ${feedback}
 
 Hãy đập đi xây lại kịch bản này ngay bây giờ! Chỉ trả về JSON không format code block.`;
 
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.8, model });
+  const res = await callDynamicEngine(engine, { apiKey, apiKey2, apiKey3, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.8, model });
   return extractJson(res.text);
 }
 

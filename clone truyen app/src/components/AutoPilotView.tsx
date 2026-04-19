@@ -312,7 +312,7 @@ export function AutoPilotView() {
                   </>
                 )}
 
-                {item.errorLog && (
+                {item.status === 'error' && item.errorLog && (
                   <div className="mt-3 p-2 bg-red-500/10 border border-red-500/20 rounded-md text-red-400 text-xs font-mono whitespace-pre-wrap break-words max-h-24 overflow-y-auto">
                     Biên bản lỗi: {item.errorLog}
                   </div>

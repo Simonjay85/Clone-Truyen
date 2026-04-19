@@ -14,8 +14,16 @@ export function SettingsView() {
   } = useStore();
 
   const [testResults, setTestResults] = React.useState<Record<string, string>>({});
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const [wpTargetId, setWpTargetId] = React.useState('');
   const [wpCleanStatus, setWpCleanStatus] = React.useState('');
+
+
 
   const handleCleanMarkdown = async () => {
     if (!wpUrl || !wpUser || !wpAppPassword) return alert("Chưa kết nối WP!");
@@ -272,6 +280,8 @@ export function SettingsView() {
   const topModel = Object.keys(modelStats as object).sort((a,b) => (modelStats as any)[b] - (modelStats as any)[a])[0] || "None";
   
   const [activeTab, setActiveTab] = React.useState('dashboard');
+
+  if (!mounted) return <div className="p-8 text-slate-500 font-medium h-full flex items-center justify-center">Đang nạp dữ liệu...</div>;
 
   return (
     <div className="max-w-7xl mx-auto py-10 animation-fade-in flex flex-col h-full px-4">

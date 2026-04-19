@@ -1,36 +1,35 @@
 import os
 
-files = [
-    "src/components/MicroDramaView.tsx",
-    "src/components/GeminiDramaView.tsx",
-    "src/components/GrokDramaView.tsx",
-    "src/components/ClaudeDramaView.tsx",
-    "src/components/ComboEconomicView.tsx",
-    "src/components/ComboRoyalView.tsx"
-]
+file_path = "/Users/aaronnguyen/TN/App/Clone Truyen/clone truyen app/src/lib/engine.ts"
+with open(file_path, "r", encoding="utf-8") as f:
+    content = f.read()
 
-old_title_prompt = '"super_title": "Tên truyện cực ngầu (VD: Ma Tôn Truyền Kỳ, Đại Tỷ Hồi Sinh)"'
-new_title_prompt = '"super_title": "Tự động sáng tạo 1 Tên Truyện duy nhất, chấn động, giật gân và hợp trend truyện mạng hiện nay. TUYỆT ĐỐI KHÔNG TRÙNG LẶP ĐUÔI VERSION."'
+# 1. Update Puppet Master
+content = content.replace(
+    "Thành công của truyện phụ thuộc vào Drama, tính cách nhân vật có chiều sâu, vết thương lòng trong quá khứ.",
+    "Thành công của truyện phụ thuộc vào Drama, tính cách nhân vật có chiều sâu, vết thương lòng trong quá khứ. ĐẶC BIỆT: Nhân vật phụ/phản diện khi chuyển biến phải có xung đột nội tâm sâu sắc, vật lộn với lòng kiêu ngạo, không 'quay xe' đột ngột thiếu logic."
+)
 
-old_summary_prompt = '"summary": "Tóm tắt truyện (3 câu - Phải nhồi nhét hook chấn động, giật gân, tạo sự tò mò tột độ để thu hút độc giả click vào đọc)"'
-new_summary_prompt = '"summary": "Tóm tắt truyện (Viết thật dài, miêu tả chi tiết sâu sắc nỗi đau/sự kịch tính, nhồi nhét liên tục các HOOK giật gân, đảm bảo người đọc liếc qua là máu dồn lên não lôi cuốn đọc ngay lập tức!)"'
+# 2. Update Expand Rules
+expand_rule_orig = "QUY TẮC CỐT LÕI TỪ NHÀ SẢN XUẤT: Bắt buộc thiết kế một chương 'Phản đòn' từ phe phản diện khiến nữ chính bị lộ tẩy hoặc đẩy vào chân tường trước khi cô lật kèo! VỀ TIÊU ĐỀ CHƯƠNG: TUYỆT ĐỐI KHÔNG dùng lặp lại quá 2 lần các từ chung chung như 'Bí mật', 'Bí ẩn', 'Cuộc gặp', 'Bất ngờ'. BẮT BUỘC dùng cấu trúc ĐỘNG TỪ MẠNH, SÁT THƯƠNG CAO ở mỗi đầu chương (Ví dụ: Bóc phốt, Lột mặt nạ, Tước đoạt, Đập tan tành, Xé nát sự thật, Bẫy gông cùm...)."
 
-old_auto_title = "title: (title || 'Truyện') + ` (Version ${idx+1})`"
-new_auto_title = "title: pitchOptions[idx].super_title || `Truyện Chấn Động ${idx+1}`"
+expand_rule_new = """QUY TẮC CỐT LÕI TỪ NHÀ SẢN XUẤT: 
+- CẤM LORE DUMP: Không nhồi nhét bối cảnh, rải rác 'world-building' chậm rãi qua hành động.
+- BẪY & MANH MỐI GIẢ: Xuyên suốt phải có chướng ngại vật thực sự, linh hồn lừa gạt hoặc thông tin sai. Không giải quyết quá 'tiện lợi'.
+- CẤM CLICHÉ: Kết thúc cấm dùng 'sức mạnh tình bạn/tình yêu'. Phải dựa trên luật lệ logic, có sự hy sinh (Sacrifice-based) và Plot Twist quay xe.
+- Bắt buộc thiết kế chương 'Phản đòn' đẩy nữ chính vào chân tường! VỀ TIÊU ĐỀ: BẮT BUỘC dùng ĐỘNG TỪ MẠNH (Bóc phốt, Lột mặt nạ, Tước đoạt...). Cấm lặp từ 'Bí mật', 'Bất ngờ'."""
 
-old_auto_title_2 = "title: pitchOptions[idx].super_title || (title || 'Truyện') + ` (Version ${idx+1})`"
+content = content.replace(expand_rule_orig, expand_rule_new)
 
-for p in files:
-    with open(p, "r") as f:
-        c = f.read()
-    
-    c = c.replace(old_title_prompt, new_title_prompt)
-    c = c.replace(old_summary_prompt, new_summary_prompt)
-    
-    c = c.replace(old_auto_title_2, new_auto_title)
-    c = c.replace(old_auto_title, new_auto_title)
-    
-    with open(p, "w") as f:
-        f.write(c)
-    print("Updated", p)
+# 3. Update Write/Rewrite Rules (Ghostwriter, MicroDrama, Grok, Claude, Gemini Rewrite)
+# Instead of replacing exact lines, we find the "Tỉ lệ hội thoại phải chiếm ít nhất 60% thời lượng chương" part and inject the new rule right after.
 
+content = content.replace(
+    "Tỉ lệ hội thoại phải chiếm ít nhất 60% thời lượng chương. Các nhân vật phải cãi vã, châm biếm, và đối thoại mỉa mai liên tục bằng ngôn ngữ đời thường, ngắn gọn như dao găm.",
+    "Tỉ lệ hội thoại phải chiếm ít nhất 60% thời lượng chương. [CẤM sáo rỗng: Tuyệt đối không dùng từ khinh miệt rập khuôn như 'nhà quê', 'hậu đậu'. Hãy bắt nạt bằng thế thượng đẳng, bạo lực lạnh, cô lập, nụ cười giả tạo]. Các nhân vật phải đối thoại mỉa mai, châm biếm liên tục bằng ngôn ngữ đời thường, sắc bén như dao găm."
+)
+
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write(content)
+
+print("Updated prompts successfully")

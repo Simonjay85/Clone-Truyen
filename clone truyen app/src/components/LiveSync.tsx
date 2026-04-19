@@ -22,12 +22,15 @@ export function LiveSync() {
           const activeEl = document.activeElement;
           const isTyping = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA');
 
+          // Đảm bảo không bị Race Condition làm mất local changes nếu tab này vừa lưu
+          const isLocalNewer = (localState.apiLogs?.length > (serverState.apiLogs?.length || 0)) || (localState.queue?.length > (serverState.queue?.length || 0));
+
           // Merge server vào local (luôn update hasHydrated = true sau khi pull thành công mẻ đầu)
           useStore.setState({
-              queue: serverState.queue || [],
+              queue: isLocalNewer ? localState.queue : (serverState.queue || []),
               isAutoPilotRunning: serverState.isAutoPilotRunning || false,
-              apiLogs: serverState.apiLogs || localState.apiLogs || [],
-              draftSpaces: isTyping ? localState.draftSpaces : (serverState.draftSpaces || localState.draftSpaces || {}),
+              apiLogs: isLocalNewer ? localState.apiLogs : (serverState.apiLogs || localState.apiLogs || []),
+              draftSpaces: isTyping || isLocalNewer ? localState.draftSpaces : (serverState.draftSpaces || localState.draftSpaces || {}),
               hasHydrated: true,
           });
         } else {
