@@ -146,9 +146,8 @@ $bg_image = "https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTS
                 </div>
 
                 <!-- Cover Image -->
-                <!-- Mobile: hide cover? No, keep it small! Aspect 3/4 -->
-                <div class="w-full aspect-[3/4] rounded-lg md:rounded-2xl overflow-hidden mt-3 md:mt-6 mb-2 md:mb-5 relative shadow-inner">
-                    <img src="<?php echo esc_url($cover); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div class="w-full rounded-lg md:rounded-2xl overflow-hidden mt-3 md:mt-6 mb-2 md:mb-5 relative shadow-inner" style="aspect-ratio: 3/2;">
+                    <img src="<?php echo esc_url($cover); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" style="width: 100%; height: 100%; object-fit: cover;" />
                     <!-- Decoration tag -->
                     <?php if($rank == 1): ?>
                     <div class="absolute font-headline bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent py-1 md:py-4 md:pt-10 text-center text-white font-black tracking-widest text-[8px] md:text-sm uppercase">Cực Phẩm</div>
@@ -196,7 +195,7 @@ $bg_image = "https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTS
                 $cover = has_post_thumbnail($post->ID) ? get_the_post_thumbnail_url($post->ID, 'thumbnail') : 'https://placehold.co/100x150?text=Cover';
                 $terms = get_the_terms($post->ID, 'the_loai');
                 $term_name = $terms && !is_wp_error($terms) ? $terms[0]->name : 'Thể loại';
-                $chaps = wp_count_posts('chuong')->publish;
+                $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
             ?>
             
             <a href="<?php echo get_permalink($post->ID); ?>" class="flex items-center gap-3 md:gap-6 p-3 md:px-6 md:py-4 rounded-2xl hover:bg-gray-100est border border-transparent hover:border-blue-600/20 hover:shadow-[0_4px_12px_rgba(0,96,169,0.05)] transition-all group">

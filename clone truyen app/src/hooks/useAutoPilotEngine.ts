@@ -13,12 +13,22 @@ export function useAutoPilotEngine() {
   } = useStore();
   
   const isProcessing = useRef(false);
+  const lastProcessTime = useRef(0);
 
   useEffect(() => {
     const activeKey = usePaidAPI ? geminiPaidKey : geminiKey;
     if (!isAutoPilotRunning || queue.length === 0) return;
     const tick = async () => {
-      if (isProcessing.current) return;
+      const now = Date.now();
+      if (isProcessing.current) {
+        // Failsafe: if stuck for > 60 seconds (due to hot-reload or API hang), unlock it!
+        if (now - lastProcessTime.current > 60000) {
+           console.warn("AutoPilot Auto-Unlock: isProcessing stuck for > 60s, resetting...");
+           isProcessing.current = false;
+        } else {
+           return;
+        }
+      }
       
       // Giới hạn chạy 1 truyện duy nhất tại 1 thời điểm để bảo toàn hạn mức Google Free API.
       // Khi viết xong truyện 1 nó sẽ TỰ ĐỘNG bốc truyện 2 lên viết tiếp không cần chờ anh Duyệt!
@@ -26,6 +36,7 @@ export function useAutoPilotEngine() {
       if (activeItems.length === 0) return;
 
       isProcessing.current = true;
+      lastProcessTime.current = now;
       try {
         await Promise.all(activeItems.map(async (activeItem) => {
           try {
@@ -253,7 +264,7 @@ export function useAutoPilotEngine() {
             updateQueueItem(activeItem.id, { status: 'error', errorLog: "Nghẽn API tạm thời do gọi quá nhanh! Vui lòng đợi 15 giây rồi bấm THỬ LẠI.\\nChi tiết: " + errMsg });
           } else {
             setSettings({ isFreeApiExhausted: true, isAutoPilotRunning: false });
-            updateQueueItem(activeItem.id, { errorLog: "Đã cạn tài nguyên Free API. Vui lòng bật API Trả phí!" });
+            updateQueueItem(activeItem.id, { status: 'error', errorLog: "Đã cạn tài nguyên Free API. Vui lòng bật API Trả phí hoặc đổi API Key khác ở mục Settings!" });
           }
         } else {
           updateQueueItem(activeItem.id, { status: 'error', errorLog: errMsg });

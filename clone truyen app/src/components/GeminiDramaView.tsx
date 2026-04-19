@@ -83,7 +83,7 @@ BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY CÓ ĐÚNG ${pit
 {
   "pitches": [
     {
-      "super_title": "Tự động sáng tạo 1 Tên Truyện duy nhất, chấn động, giật gân và hợp trend truyện mạng hiện nay. TUYỆT ĐỐI KHÔNG TRÙNG LẶP ĐUÔI VERSION.",
+      "super_title": "Một Tên Truyện SIÊU CUỐN HÚT, trend hiện đại (Ví dụ: 'Mẹ Chồng Khinh Bỉ, Tôi Tát Lật Mặt', 'Trùng Sinh Trở Thành Bà Trùm', 'Tổng Tài Bá Đạo Cầu Xin Tha Thứ'). TUYỆT ĐỐI KHÔNG DÙNG TỪ HÁN VIỆT CŨ KỸ, KHÔNG GẮN ĐUÔI VERSION.",
       "summary": "Tóm tắt truyện (Viết thật dài, miêu tả chi tiết sâu sắc nỗi đau/sự kịch tính, nhồi nhét liên tục các HOOK giật gân, đảm bảo người đọc liếc qua là máu dồn lên não lôi cuốn đọc ngay lập tức!)",
       "worldSettings": "Bối cảnh (1-2 câu)",
       "characterArc": "Vết thương lòng/Sự phát triển của nhân vật",

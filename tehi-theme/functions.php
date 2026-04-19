@@ -1531,3 +1531,32 @@ function tehi_render_autopilot_dashboard_widget() {
 
     echo '</div>'; 
 }
+
+/**
+ * Auto-create and assign 'the_loai' taxonomy terms from REST API String Input.
+ * M-Core sends ["Xuyên Không", "Vả Mặt"], which WP REST API ignores by default.
+ * This hook creates the terms and links them!
+ */
+add_action( 'rest_insert_truyen', function( $post, $request, $creating ) {
+    $the_loai = $request->get_param('the_loai');
+    if ( !empty($the_loai) && is_array($the_loai) ) {
+        $term_ids = array();
+        foreach ( $the_loai as $term_name ) {
+            $term_name = trim($term_name);
+            if (empty($term_name)) continue;
+            
+            $term = get_term_by('name', $term_name, 'the_loai');
+            if ( $term ) {
+                $term_ids[] = (int) $term->term_id;
+            } else {
+                $inserted = wp_insert_term( $term_name, 'the_loai' );
+                if ( !is_wp_error($inserted) ) {
+                    $term_ids[] = (int) $inserted['term_id'];
+                }
+            }
+        }
+        if ( !empty($term_ids) ) {
+            wp_set_object_terms( $post->ID, $term_ids, 'the_loai', false );
+        }
+    }
+}, 10, 3 );

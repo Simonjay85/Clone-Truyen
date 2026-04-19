@@ -16,6 +16,7 @@ export function AutoPilotView() {
   const [pulse, setPulse] = useState(false);
   const [isBatchLoading, setIsBatchLoading] = useState(false);
   const [batchStatus, setBatchStatus] = useState('');
+  const [bulkEngine, setBulkEngine] = useState('openai');
 
   // Kích hoạt Engine
   useAutoPilotEngine();
@@ -29,6 +30,7 @@ export function AutoPilotView() {
 
   const draftItems = queue.filter(q => q.status === 'draft_outline');
   const approvalItems = queue.filter(q => q.status === 'pending_approval');
+  const errorItems = queue.filter(q => q.status === 'error');
 
   // ============================================================
   // LÊN DÀN Ý HÀNG LOẠT: Xử lý song song TẤT CẢ draft_outline
@@ -113,6 +115,35 @@ export function AutoPilotView() {
           >
             <Trash2 size={16} /> Dọn Sạch Trạm
           </button>
+
+          {/* SỬA LỖI HÀNG LOẠT */}
+          {errorItems.length > 0 && (
+            <div className="flex items-center gap-2 bg-rose-500/10 border border-rose-500/30 rounded-lg pr-3 pl-1">
+              <select
+                value={bulkEngine}
+                onChange={(e) => setBulkEngine(e.target.value)}
+                className="bg-transparent border-none text-rose-200 text-sm py-2 px-2 outline-none font-medium cursor-pointer"
+                title="Chọn AI dự phòng cho toàn bộ truyện bị lỗi"
+              >
+                <option value="gemini" className="bg-slate-900 text-slate-200">🤖 Đổi tất cả sang Gemini</option>
+                <option value="openai" className="bg-slate-900 text-slate-200">🧠 Đổi tất cả sang OpenAI</option>
+                <option value="claude" className="bg-slate-900 text-slate-200">🎭 Đổi tất cả sang Claude</option>
+                <option value="grok" className="bg-slate-900 text-slate-200">⚡ Đổi tất cả sang Grok</option>
+              </select>
+              <div className="w-[1px] h-5 bg-rose-500/30"></div>
+              <button
+                onClick={() => {
+                  errorItems.forEach(item => {
+                    const newStatus = (item.chaptersDone === 0 && !item.bible) ? 'draft_outline' : 'pending';
+                    updateQueueItem(item.id, { writeEngine: bulkEngine as any, status: newStatus, errorLog: undefined });
+                  });
+                }}
+                className="text-rose-400 font-bold hover:text-rose-300 text-sm flex items-center gap-1 ml-1"
+              >
+                ↻ Cứu ({errorItems.length}) Truyện
+              </button>
+            </div>
+          )}
 
           {/* NÚT LÊN DÀN Ý HÀNG LOẠT */}
           {draftItems.length > 0 && (
@@ -252,12 +283,28 @@ export function AutoPilotView() {
                       <div className="flex items-center gap-2">
                         <span>TRẠNG THÁI: {item.status.toUpperCase()}</span>
                         {item.status === 'error' && (
-                          <button
-                            onClick={() => updateQueueItem(item.id, { status: item.chaptersDone === 0 ? 'draft_outline' : 'pending', errorLog: undefined })}
-                            className="flex items-center gap-1 bg-rose-500/10 text-rose-400 border border-rose-500/30 px-2 py-0.5 rounded font-bold hover:bg-rose-500/20 transition-all"
-                          >
-                            ↻ Thử Lại
-                          </button>
+                          <div className="flex items-center gap-2">
+                            <select
+                              value={item.writeEngine || 'gemini'}
+                              onChange={(e) => updateQueueItem(item.id, { writeEngine: e.target.value as any })}
+                              className="bg-slate-900/80 border border-slate-700 text-slate-300 text-xs rounded px-2 py-0.5 outline-none hover:border-slate-500 transition-colors"
+                              title="Chọn AI dự phòng để chạy tiếp"
+                            >
+                              <option value="gemini">🤖 Gemini</option>
+                              <option value="openai">🧠 OpenAI</option>
+                              <option value="claude">🎭 Claude</option>
+                              <option value="grok">⚡ Grok</option>
+                            </select>
+                            <button
+                              onClick={() => {
+                                const newStatus = (item.chaptersDone === 0 && !item.bible) ? 'draft_outline' : 'pending';
+                                updateQueueItem(item.id, { status: newStatus, errorLog: undefined });
+                              }}
+                              className="flex items-center gap-1 bg-rose-500/10 text-rose-400 border border-rose-500/30 px-2 py-0.5 rounded font-bold hover:bg-rose-500/20 transition-all"
+                            >
+                              ↻ Thử Lại
+                            </button>
+                          </div>
                         )}
                       </div>
                       <span>{item.chaptersDone}/{item.targetChapters} CHƯƠNG</span>

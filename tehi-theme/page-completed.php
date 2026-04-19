@@ -43,7 +43,7 @@ $all_terms = get_terms([
             <h1 class="font-headline text-5xl md:text-6xl font-black tracking-tighter text-gray-900 mb-6" style="line-height:1.2;">
                 Hành Trình <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">Trọn Vẹn</span>
             </h1>
-            <p class="text-gray-500 text-lg font-medium leading-relaxed max-w-prose border-l-4 border-blue-600/30 pl-4">
+            <p class="text-gray-700 text-lg font-medium leading-relaxed max-w-prose border-l-4 border-blue-600/30 pl-4">
                 Khám phá những bộ truyện đã đi đến hồi kết. Không còn phải chờ đợi từng chương, hãy tận hưởng trọn vẹn cảm xúc từ đầu đến cuối ngay hôm nay.
             </p>
         </div>
@@ -144,51 +144,48 @@ $all_terms = get_terms([
                 <div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-xl text-sm font-medium text-on-surface-variant border border-outline-variant/10 shadow-sm">
                     <span class="material-symbols-outlined text-[16px]">sort</span>
                     <span class="hidden sm:inline">Sắp xếp:</span>
-                    <select class="bg-transparent border-none focus:ring-0 text-primary cursor-pointer font-bold outline-none -ml-1">
+                    <select class="mkm-native-select bg-transparent border-none focus:ring-0 text-primary cursor-pointer font-bold outline-none -ml-1" style="appearance: auto; -webkit-appearance: auto;">
                         <option>Mới cập nhật</option>
-                        <option disabled>Lượt xem nhiều</option>
+                        <option>Lượt xem nhiều</option>
                     </select>
+                    <style>.mkm-native-select { display: inline-block !important; } .mkm-native-select + .nice-select, .mkm-native-select + .select2-container { display: none !important; }</style>
                 </div>
             </div>
 
             <!-- Story Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <?php 
                 if ($completed_query->have_posts()) :
                     while ($completed_query->have_posts()) : $completed_query->the_post();
                         $views = (int)get_post_meta(get_the_ID(), '_views', true);
                         $author = get_post_meta(get_the_ID(), 'truyen_tacgia', true);
                         if(!$author) $author = 'Đang cập nhật';
-                        $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x600?text=Cover';
-                        $chaps = wp_count_posts('chuong')->publish;
+                        $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://placehold.co/400x600?text=Cover';
+                        $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
                 ?>
                 <!-- Card -->
-                <div class="group cursor-pointer flex flex-col h-full bg-surface-container-lowest rounded-2xl p-2 hover:shadow-[0px_12px_32px_rgba(0,96,169,0.06)] border border-transparent hover:border-primary/10 transition-all duration-300" onclick="window.location.href='<?php the_permalink(); ?>'">
-                    <div class="relative aspect-[3/4] rounded-xl overflow-hidden mb-3 bg-surface-container-high shadow-inner">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="<?php echo esc_url($cover); ?>"/>
-                        
-                        <!-- Badges -->
-                        <div class="absolute top-2 left-2 flex gap-1 flex-col items-start">
-                            <span class="bg-primary/90 backdrop-blur-md text-white px-2.5 py-1 rounded-md text-[9px] shadow-sm font-black uppercase tracking-widest border border-white/10 shrink-0">FULL TẬP</span>
-                            <span class="bg-black/60 backdrop-blur-md text-white px-2 py-0.5 rounded text-[10px] font-bold shrink-0"><?php echo number_format($chaps); ?> Chương</span>
-                        </div>
-                        
-                        <!-- Rating Overlay -->
-                        <div class="absolute bottom-0 left-0 right-0 p-3 pt-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end">
-                            <div class="flex items-center gap-1 bg-amber-400/20 backdrop-blur-sm border border-amber-400/30 px-2 py-0.5 rounded-full text-amber-300 text-[10px]">
-                                <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="font-bold">4.9</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-col flex-grow px-1">
-                        <h3 class="font-headline font-bold text-on-surface text-[15px] group-hover:text-primary transition-colors line-clamp-2 leading-snug mb-1"><?php the_title(); ?></h3>
-                        <p class="text-xs text-outline font-medium mt-auto flex items-center gap-1">
-                            <span class="material-symbols-outlined text-[12px]">edit</span> <?php echo esc_html($author); ?>
-                        </p>
-                    </div>
+                
+        <a href="<?php the_permalink(); ?>" class="mkm-card group" style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:block; transition:transform 0.2s, box-shadow 0.2s; border: 1px solid #f3f4f6;">
+            <div class="mkm-card-img" style="position:relative; aspect-ratio:3/2; overflow:hidden; background:#f9fafb;">
+                <span style="position:absolute; top:8px; left:8px; background:#10b981; color:#fff; font-size:10px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2; box-shadow:0 2px 4px rgba(0,0,0,0.1);">FULL TẬP</span>
+                <span style="position:absolute; top:32px; left:8px; background:#111827; color:#fff; font-size:9px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2;"><?php echo $chaps; ?> Chương</span>
+                <img src="<?php echo esc_url($cover); ?>" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/>
+                <div style="position:absolute; bottom:0; left:0; right:0; padding:20px 10px 8px 10px; background:linear-gradient(transparent, rgba(0,0,0,.7)); display:flex; justify-content:space-between; align-items:center; color:#fff; font-size:11px; font-weight:600; z-index:1;">
+                    <span style="display:flex;align-items:center;gap:3px;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views); ?></span>
+                    <span style="display:flex;align-items:center;gap:3px;color:#fbbf24;"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg> 4.9</span>
                 </div>
+            </div>
+            <div style="padding:12px;">
+                <p style="font-size:14px; font-weight:700; color:#111827; margin:0 0 8px 0; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font-family: ui-sans-serif, sans-serif;"><?php the_title(); ?></p>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="background:#f3f4f6; color:#6b7280; font-size:10px; font-weight:600; padding:4px 8px; border-radius:6px;"><?php 
+                        $cats = wp_get_post_terms(get_the_ID(), 'the_loai');
+                        echo (!is_wp_error($cats) && !empty($cats)) ? esc_html($cats[0]->name) : 'Micro Drama';
+                    ?></span>
+                    <span style="background:rgba(217, 119, 6, 0.1); color:#d97706; font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px;">Hoàn thành</span>
+                </div>
+            </div>
+        </a>
                 <?php 
                     endwhile; 
                     wp_reset_postdata();

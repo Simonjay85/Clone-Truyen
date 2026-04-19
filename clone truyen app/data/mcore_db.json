@@ -1,133 +1,6 @@
 {
   "queue": [
     {
-      "id": "rewrite_a73pc6q9",
-      "title": "Khế Ước Đen Tối: Nàng Dâu Hèn Mọn Bóp Nát Đế Chế Của Mẹ Chồng",
-      "prompt": "Làm lại truyện này cực kỳ giật gân: Đằng sau danh phận “Con dâu nghìn tỷ” là tròng một cái rọ khổng lồ với mạng lưới âm mưu tàn độc nhằm tước đoạt toàn bộ nhân quyền và tài sản. Nữ chính từ hèn mọn cam chịu vùng lên bóp nát đế chế mẹ chồng.",
-      "genres": "Gia Đấu, Vả Mặt, Trả Thù, Hào Môn",
-      "status": "pending_approval",
-      "chaptersDone": 0,
-      "wordCount": 0,
-      "targetChapters": 20,
-      "maxChapters": 30,
-      "outlineEngine": "gemini",
-      "writeEngine": "gemini",
-      "isSocialShared": false,
-      "publishData": {},
-      "bible": {
-        "super_title": "Khế Ước Đen Tối: Nàng Dâu Hèn Mọn Bóp Nát Đế Chế Của Mẹ Chồng",
-        "summary": "Đằng sau danh phận “Con dâu nghìn tỷ” là một cái rọ khổng lồ với mạng lưới âm mưu tàn độc nhằm tước đoạt toàn bộ nhân quyền và sinh mạng. Nữ chính từ một con dâu cam chịu bất hạnh, phát hiện ra sự thật kinh hoàng về mẹ chồng ác độc và quyết định vùng lên. Bằng mưu trí và thủ đoạn cay nghiệt, cô từng bước lật tẩy bộ mặt giả tạo, thâu tóm cổ phần và tự tay bóp nát đế chế hào môn lừng lẫy của mụ ta.",
-        "worldSettings": "Thế giới tinh hoa hào môn, nơi cái ác được che đậy dưới những buổi tiệc xa hoa, đồng tiền mua được cả máu và danh dự.",
-        "characterArc": "Từ tuyệt vọng, khép nép -> Phẫn nộ tột độ -> Trở thành ác nữ thao túng tâm lý khét lẹt.",
-        "plotTwists": "Đứa con bị sẩy năm xưa thực ra là do chính tay mẹ chồng bỏ thuốc. Hợp đồng hôn nhân vốn dĩ là bản án tử hình máu lạnh.",
-        "overallSizzle": "Nhiều pha vả mặt trực diện, vạch trần tội ác trước mặt họ hàng, tát lật mặt tiểu tam, ép mẹ chồng quỳ lạy xin tha.",
-        "suggestedChapters": 20,
-        "timeline": [
-          {
-            "chapter": 1,
-            "title": "Xiềng Xích Hào Môn",
-            "outline": "Giới thiệu cuộc sống 'con dâu nghìn tỷ' nhưng thực chất là nô lệ của Nữ chính (NC). Cô cam chịu sự khinh miệt và những quy tắc hà khắc của Mẹ chồng (MC)."
-          },
-          {
-            "chapter": 2,
-            "title": "Đòn Khinh Miệt Công Khai",
-            "outline": "MC tổ chức một buổi tiệc xa hoa, cố tình sỉ nhục NC trước mặt giới thượng lưu, coi cô như một vật trang trí rẻ tiền. NC nén giận, bắt đầu nung nấu ý định phản kháng."
-          },
-          {
-            "chapter": 3,
-            "title": "Khám Phá Nấm Mồ Dĩ Vãng",
-            "outline": "NC tình cờ phát hiện ra những hồ sơ y tế cũ được cất giấu, gợi ý về nguyên nhân thực sự cái chết của đứa con mà cô từng sẩy không phải là tai nạn."
-          },
-          {
-            "chapter": 4,
-            "title": "Vạch Trần Án Tử Hôn Nhân",
-            "outline": "Trong quá trình điều tra, NC tìm thấy bản hợp đồng hôn nhân gốc, kinh hoàng nhận ra nó không chỉ là khế ước mà là một bản án tử hình được MC ngụy tạo để tước đoạt sinh mạng cô."
-          },
-          {
-            "chapter": 5,
-            "title": "Bùng Nổ Ngọn Lửa Thù Hận",
-            "outline": "Sự thật về đứa con bị giết và bản hợp đồng máu lạnh châm ngòi cho sự phẫn nộ tột độ trong NC. Cô thề sẽ trả thù và hủy diệt đế chế của MC, bắt đầu hành trình biến chất thành ác nữ."
-          },
-          {
-            "chapter": 6,
-            "title": "Gieo Mầm Nghi Ngờ",
-            "outline": "NC bắt đầu thu thập bằng chứng một cách âm thầm, đồng thời khéo léo gieo rắc những thông tin gây chia rẽ trong nội bộ phe MC, khiến MC bắt đầu nghi ngờ những người thân cận nhất."
-          },
-          {
-            "chapter": 7,
-            "title": "Đánh Úp Kẽ Hở",
-            "outline": "NC lợi dụng một sai lầm nhỏ của MC trong kinh doanh, khéo léo biến nó thành một lỗ hổng lớn, gây thiệt hại tài chính ban đầu cho đế chế nhà chồng, khiến MC phải nhức đầu giải quyết."
-          },
-          {
-            "chapter": 8,
-            "title": "Vả Mặt Tiểu Tam Giữa Bữa Tiệc",
-            "outline": "NC công khai vạch trần mối quan hệ mờ ám của chồng hoặc một thành viên quan trọng trong gia tộc với tiểu tam, khiến họ bị bẽ mặt và mất uy tín trước mặt toàn bộ khách mời hào môn."
-          },
-          {
-            "chapter": 9,
-            "title": "Thâu Tóm Con Cờ",
-            "outline": "NC tiếp cận và thao túng một nhân vật chủ chốt trong tập đoàn, biến người đó thành tai mắt và công cụ đắc lực cho kế hoạch trả thù của mình, tạo dựng mạng lưới hỗ trợ ngầm."
-          },
-          {
-            "chapter": 10,
-            "title": "Xé Nát Vỏ Bọc Giả Tạo",
-            "outline": "NC dàn dựng một tình huống để MC phải lộ ra bản chất độc ác, tham lam và tàn nhẫn trước mặt một số đối tác kinh doanh quan trọng, làm suy giảm nghiêm trọng uy tín và mối quan hệ của bà ta."
-          },
-          {
-            "chapter": 11,
-            "title": "Phản Kích Từ Bóng Tối",
-            "outline": "MC bắt đầu nhận ra sự thay đổi của NC và tung ra một đòn phản công bất ngờ, cố gắng cô lập NC, cắt đứt các nguồn lực và thông tin của cô, tìm cách đẩy cô vào thế yếu."
-          },
-          {
-            "chapter": 12,
-            "title": "Bẫy Gông Cùm Pháp Lý",
-            "outline": "MC dùng quyền lực và tiền bạc để tạo ra một vụ kiện tụng hoặc scandal giả, đẩy NC vào thế khó về mặt pháp luật hoặc danh dự, hòng bóp nghẹt mọi đường lui của cô."
-          },
-          {
-            "chapter": 13,
-            "title": "Lật Ngược Thế Cờ",
-            "outline": "NC đã lường trước đòn phản công của MC. Cô tung ra bằng chứng đã chuẩn bị sẵn, không chỉ thoát hiểm ngoạn mục mà còn khiến vụ kiện/scandal quay ngược lại vả mặt MC và những kẻ đồng lõa một cách đau đớn."
-          },
-          {
-            "chapter": 14,
-            "title": "Cướp Đoạt Quyền Lực",
-            "outline": "NC thực hiện một cuộc thâu tóm cổ phần lớn, hoặc một hành động pháp lý thông minh, tước đoạt một phần đáng kể quyền kiểm soát của MC trong tập đoàn, gây ra sự hỗn loạn nội bộ."
-          },
-          {
-            "chapter": 15,
-            "title": "Phơi Bày Tội Ác Trước Gia Tộc",
-            "outline": "NC triệu tập một cuộc họp gia đình khẩn cấp, công khai toàn bộ bằng chứng về hành vi độc ác của MC, bao gồm cả vụ sẩy thai và hợp đồng tử hình, khiến MC bị cô lập hoàn toàn và mất đi sự ủng hộ."
-          },
-          {
-            "chapter": 16,
-            "title": "Đập Tan Liên Minh Hắc Ám",
-            "outline": "NC tiếp tục tấn công vào các đồng minh, tay sai của MC, bóc trần những bí mật đen tối của họ, khiến liên minh của MC sụp đổ hoàn toàn, không còn một ai đứng về phía bà ta."
-          },
-          {
-            "chapter": 17,
-            "title": "Hủy Diệt Danh Tiếng",
-            "outline": "NC sử dụng truyền thông và các kênh công khai để lan truyền bằng chứng về tội ác của MC, biến bà ta thành kẻ bị xã hội ruồng bỏ, danh tiếng và sự nghiệp bị hủy hoại hoàn toàn không thể cứu vãn."
-          },
-          {
-            "chapter": 18,
-            "title": "Ép Buộc Quỳ Lạy",
-            "outline": "Trong một buổi họp cổ đông hoặc sự kiện quan trọng, NC dồn MC vào đường cùng, buộc bà ta phải quỳ lạy và xin tha thứ trước mặt tất cả mọi người để đổi lấy chút nhân nhượng cuối cùng."
-          },
-          {
-            "chapter": 19,
-            "title": "Kết Liễu Đế Chế",
-            "outline": "NC hoàn tất việc thâu tóm toàn bộ cổ phần và tài sản của MC, chính thức bóp nát đế chế hào môn lừng lẫy, đẩy MC vào cảnh trắng tay, tù tội hoặc sống trong sự khinh miệt của xã hội."
-          },
-          {
-            "chapter": 20,
-            "title": "Chiếm Lĩnh Ngai Vàng Ác Nữ",
-            "outline": "NC ngồi lên vị trí tối cao, trở thành nữ chủ nhân của đế chế. Cô nhìn lại hành trình của mình, nhận ra mình đã trở thành một 'ác nữ thao túng' nhưng không hề hối hận, chấp nhận con người mới của mình."
-          }
-        ]
-      },
-      "wpPostId": 1186
-    },
-    {
       "title": "Trò Chơi Tình Yêu Đen Tối: Âm Mưu Tàn Nhẫn",
       "genres": "Tự do",
       "prompt": "Kịch Bản: \"Mẹ Chồng Tôi Là Ảnh Hậu Giả Mạo\"\nThể loại: Gia đấu, Hiện đại, Bí mật huyết thống.\n\nCốt truyện: * Mở đầu: Vy là con dâu ngoan hiền trong một gia đình hào môn có bà mẹ chồng luôn tỏ ra quý phái, là chuẩn mực đạo đức.\n\nXung đột: Vy phát hiện mẹ chồng đang âm thầm dùng thuốc an thần liều cao để khống chế chồng mình, nhằm chiếm đoạt quyền điều hành công ty.\n\nCao trào: Vy dùng năng lực UI/UX và AI (tận dụng chất liệu đời thực của sếp) để khôi phục lại các đoạn camera bị xóa, phát hiện mẹ chồng thực chất là \"kẻ thứ ba\" năm xưa đã hại chết mẹ ruột của chồng cô để bước chân vào hào môn.\n\nCú Twist: Bà mẹ chồng định đổ tội ngoại tình cho Vy, nhưng Vy đã livestream toàn bộ cảnh bà ta đang tự thú trong cơn phê thuốc ngay trên Fanpage triệu sub của website DTT.",
@@ -684,7 +557,7 @@
       "outlineEngine": "openai",
       "writeEngine": "openai",
       "id": "js75487m",
-      "status": "final_review",
+      "status": "published",
       "chaptersDone": 10,
       "wordCount": 7094,
       "wpPostId": 1155,
@@ -816,7 +689,7 @@
       "outlineEngine": "openai",
       "writeEngine": "openai",
       "id": "e0iv40st",
-      "status": "final_review",
+      "status": "published",
       "chaptersDone": 11,
       "wordCount": 8776,
       "wpPostId": 1156,
@@ -975,7 +848,7 @@
       "outlineEngine": "openai",
       "writeEngine": "openai",
       "id": "xpyuq00v",
-      "status": "final_review",
+      "status": "published",
       "chaptersDone": 15,
       "wordCount": 10879,
       "wpPostId": 1157,
@@ -1138,7 +1011,7 @@
       "outlineEngine": "openai",
       "writeEngine": "openai",
       "id": "0xn5a4hg",
-      "status": "final_review",
+      "status": "published",
       "chaptersDone": 12,
       "wordCount": 8567,
       "wpPostId": 1158,
@@ -1207,9 +1080,9 @@
     },
     {
       "id": "4ugteyc5",
-      "status": "pending_approval",
-      "chaptersDone": 0,
-      "wordCount": 0,
+      "status": "published",
+      "chaptersDone": 13,
+      "wordCount": 8865,
       "title": "Ngôi Sao Giả Tạo Bí Mật Huyết Thống Khủng Khiếp",
       "genres": "Tự do",
       "prompt": "Kịch Bản: \"Mẹ Chồng Tôi Là Ảnh Hậu Giả Mạo\"\nThể loại: Gia đấu, Hiện đại, Bí mật huyết thống.\n\nCốt truyện: * Mở đầu: Vy là con dâu ngoan hiền trong một gia đình hào môn có bà mẹ chồng luôn tỏ ra quý phái, là chuẩn mực đạo đức.\n\nXung đột: Vy phát hiện mẹ chồng đang âm thầm dùng thuốc an thần liều cao để khống chế chồng mình, nhằm chiếm đoạt quyền điều hành công ty.\n\nCao trào: Vy dùng năng lực UI/UX và AI (tận dụng chất liệu đời thực của sếp) để khôi phục lại các đoạn camera bị xóa, phát hiện mẹ chồng thực chất là \"kẻ thứ ba\" năm xưa đã hại chết mẹ ruột của chồng cô để bước chân vào hào môn.\n\nCú Twist: Bà mẹ chồng định đổ tội ngoại tình cho Vy, nhưng Vy đã livestream toàn bộ cảnh bà ta đang tự thú trong cơn phê thuốc ngay trên Fanpage triệu sub của website DTT.",
@@ -1225,68 +1098,68 @@
         "timeline": [
           {
             "chapter": 1,
-            "title": "Xiềng Xích Hào Quang",
-            "outline": "Minh Châu, một ngôi sao tuổi teen vạn người mê, sống trong lồng son của sự nổi tiếng nhưng bị bóc lột và kiểm soát tuyệt đối bởi công ty quản lý, đặc biệt là người quản lý độc đoán. Cô trình diễn một hình ảnh hoàn hảo, trong sáng trước công chúng, nhưng bên trong là sự cô đơn và khao khát tự do."
+            "title": "Hóa Giải Xiềng Xích",
+            "outline": "Minh Châu, một ngôi sao tuổi teen vạn người mê, sống trong lồng son của sự nổi tiếng nhưng bị bóc lột và kiểm soát tuyệt đối bởi công ty quản lý, đặc biệt là người quản lý độc đoán. Cô trình diễn một hình ảnh hoàn hảo, trong sáng trước công chúng, nhưng bên trong là sự cô đơn và khao khát tự do, bắt đầu nhen nhóm ý định thoát ly."
           },
           {
             "chapter": 2,
-            "title": "Bóc Trần Thân Thế",
-            "outline": "Một bức thư nặc danh bất ngờ đến tay Minh Châu, hé lộ sự thật kinh hoàng: cô không phải con ruột của gia đình hiện tại, và người quản lý chính là kẻ đã bắt cóc cô khi còn nhỏ từ một gia đình danh giá. Sự thật này làm rung chuyển thế giới tưởng chừng hoàn hảo của cô."
+            "title": "Chấn Động Thân Phận",
+            "outline": "Một bức thư nặc danh bất ngờ đến tay Minh Châu, hé lộ sự thật kinh hoàng: cô không phải con ruột của gia đình hiện tại, và người quản lý chính là kẻ đã bắt cóc cô khi còn nhỏ từ một gia đình danh giá. Sự thật này làm rung chuyển thế giới tưởng chừng hoàn hảo của cô, gieo hạt giống của sự nổi loạn."
           },
           {
             "chapter": 3,
-            "title": "Đánh Cắp Sự Thật",
-            "outline": "Hoảng loạn và nghi ngờ, Minh Châu bắt đầu âm thầm tìm kiếm thông tin về bức thư. Cô cố gắng tiếp cận những manh mối nhỏ nhất nhưng mọi nỗ lực đều bị người quản lý tinh ranh chặn đứng, khiến cô càng thêm tuyệt vọng và cảm thấy bị giam cầm. Người quản lý khinh bỉ sự yếu ớt của cô."
+            "title": "Cản Trở Truy Tìm",
+            "outline": "Hoảng loạn và nghi ngờ, Minh Châu bắt đầu âm thầm tìm kiếm thông tin về bức thư. Cô cố gắng tiếp cận những manh mối nhỏ nhất nhưng mọi nỗ lực đều bị người quản lý tinh ranh chặn đứng một cách tàn nhẫn. Hắn ta khinh bỉ sự yếu ớt và non nớt của cô, cho rằng cô chỉ là một con rối dễ dàng điều khiển, thậm chí còn buông lời miệt thị sự 'ảo tưởng' của cô về tự do. Sự khinh thường này càng thôi thúc Minh Châu phải vùng dậy."
           },
           {
             "chapter": 4,
-            "title": "Kích Hoạt Liên Minh",
-            "outline": "Trong lúc bế tắc, một người hâm mộ trung thành nhưng bí ẩn, cũng là một cao thủ công nghệ, âm thầm tiếp cận Minh Châu và đề nghị giúp đỡ. Anh ta cung cấp những thông tin ban đầu, vén màn một phần bức màn bí mật, tạo ra tia hy vọng đầu tiên cho cô và một 'cái vả nhẹ' vào hệ thống kiểm soát của người quản lý."
+            "title": "Kích Hoạt Đồng Minh",
+            "outline": "Trong lúc bế tắc và gần như tuyệt vọng, một người hâm mộ trung thành nhưng bí ẩn, cũng là một cao thủ công nghệ, âm thầm tiếp cận Minh Châu và đề nghị giúp đỡ. Anh ta cung cấp những thông tin ban đầu không thể chối cãi, vén màn một phần bức màn bí mật, tạo ra tia hy vọng đầu tiên cho cô và giáng một 'cú vả nhẹ' vào hệ thống kiểm soát tưởng chừng bất khả xâm phạm của người quản lý, khiến hắn ta bắt đầu cảm thấy khó chịu nhưng vẫn tự tin vào quyền lực của mình."
           },
           {
             "chapter": 5,
-            "title": "Phơi Bày Dấu Vết",
-            "outline": "Với sự trợ giúp của người hâm mộ bí ẩn, Minh Châu bắt đầu tìm kiếm những bằng chứng cụ thể hơn về quá khứ của mình. Cô phát hiện ra những tài liệu, hình ảnh cũ mờ nhạt, dần dần xác nhận nội dung bức thư. Một lần cô cố gắng chất vấn người quản lý một cách gián tiếp, khiến hắn ta hơi mất bình tĩnh, nhưng nhanh chóng lấy lại quyền kiểm soát, coi thường sự 'ngây thơ' của cô."
+            "title": "Truy Lùng Dấu Vết",
+            "outline": "Với sự trợ giúp của người hâm mộ bí ẩn, Minh Châu bắt đầu tìm kiếm những bằng chứng cụ thể hơn về quá khứ của mình. Cô phát hiện ra những tài liệu, hình ảnh cũ mờ nhạt, dần dần xác nhận nội dung bức thư. Một lần cô cố gắng chất vấn người quản lý một cách gián tiếp, khiến hắn ta hơi mất bình tĩnh, nhưng nhanh chóng lấy lại quyền kiểm soát, cười khẩy và coi thường sự 'ngây thơ' và 'cố chấp' của cô, tuyên bố rằng cô không thể nào làm gì được hắn."
           },
           {
             "chapter": 6,
-            "title": "Khiêu Khích Thách Thức",
-            "outline": "Minh Châu quyết định đối mặt trực tiếp với người quản lý, yêu cầu sự thật. Người quản lý phủ nhận mọi thứ một cách trắng trợn, thậm chí còn đe dọa và siết chặt kiểm soát cô hơn nữa, coi thường sự bướng bỉnh mới chớm của cô. Hắn ta tự tin rằng cô không thể thoát khỏi bàn tay mình."
+            "title": "Khiêu Chiến Quyền Năng",
+            "outline": "Minh Châu, không còn chịu đựng được sự khinh miệt, quyết định đối mặt trực tiếp với người quản lý, yêu cầu sự thật. Người quản lý phủ nhận mọi thứ một cách trắng trợn, thậm chí còn đe dọa và siết chặt kiểm soát cô hơn nữa. Hắn ta tự tin rằng cô không thể thoát khỏi bàn tay mình, nói thẳng rằng cô 'mãi mãi là của hắn', và cười nhạo những nỗ lực vô vọng của cô, xem thường sự bướng bỉnh mới chớm của một 'ngôi sao rỗng tuếch'."
           },
           {
             "chapter": 7,
-            "title": "Tấn Công Phản Đòn",
-            "outline": "Nhận thấy Minh Châu đang cố gắng phá vỡ sự kiểm soát, người quản lý và công ty quản lý tung ra một đòn phản công tàn khốc. Một scandal giả mạo được dàn dựng để hủy hoại danh tiếng của cô, đẩy cô vào chân tường, cô lập cô khỏi công chúng và đồng nghiệp, khiến cô gần như sụp đổ."
+            "title": "Giáng Đòn Phản Công",
+            "outline": "Nhận thấy Minh Châu đang cố gắng phá vỡ sự kiểm soát, người quản lý và công ty quản lý tung ra một đòn phản công tàn khốc để dập tắt mọi hy vọng của cô. Một scandal giả mạo được dàn dựng tinh vi để hủy hoại danh tiếng của cô, đẩy cô vào chân tường, cô lập cô khỏi công chúng và đồng nghiệp, khiến cô gần như sụp đổ trong tuyệt vọng. Hắn ta công khai chế giễu cô trước truyền thông, tuyên bố cô là kẻ phản bội và không biết điều."
           },
           {
             "chapter": 8,
-            "title": "Đập Tan Âm Mưu",
-            "outline": "Trong khoảnh khắc nguy kịch nhất, Minh Châu cùng người hâm mộ bí ẩn đã phối hợp vạch trần âm mưu của người quản lý. Họ tung ra bằng chứng cho thấy scandal là giả mạo, biến công chúng từ hoài nghi sang ủng hộ cô, giáng một cú 'vả' mạnh vào uy tín của người quản lý trước truyền thông."
+            "title": "Phá Tan Âm Mưu",
+            "outline": "Trong khoảnh khắc nguy kịch nhất, Minh Châu cùng người hâm mộ bí ẩn đã phối hợp tung ra những bằng chứng không thể chối cãi, vạch trần âm mưu của người quản lý. Họ chứng minh scandal là giả mạo, biến công chúng từ hoài nghi sang ủng hộ cô mạnh mẽ. Đây là một cú 'vả mặt' đau điếng vào uy tín của người quản lý trước truyền thông và dư luận, khiến hắn ta tức tối nhưng không thể làm gì."
           },
           {
             "chapter": 9,
-            "title": "Kết Nối Huyết Thống",
-            "outline": "Dựa trên những manh mối cuối cùng, Minh Châu tìm đến gia đình ruột thịt của mình, những người mà cô phát hiện ra lại là đối thủ cạnh tranh của công ty quản lý hiện tại. Cô dần xây dựng mối quan hệ với họ một cách bí mật, cảm nhận được tình cảm gia đình đã bị đánh cắp."
+            "title": "Nối Lại Huyết Thống",
+            "outline": "Dựa trên những manh mối cuối cùng, Minh Châu tìm đến gia đình ruột thịt của mình, những người mà cô phát hiện ra lại là đối thủ cạnh tranh của công ty quản lý hiện tại. Cô dần xây dựng mối quan hệ với họ một cách bí mật, cảm nhận được tình cảm gia đình đã bị đánh cắp, chuẩn bị cho cuộc đối đầu cuối cùng."
           },
           {
             "chapter": 10,
-            "title": "Lột Mặt Nạ Kẻ Cắp",
-            "outline": "Trong một cuộc đối đầu căng thẳng, Minh Châu và gia đình ruột thịt đã dồn người quản lý vào chân tường. Sự thật động trời về mối tình sâu đậm trong quá khứ giữa người quản lý và mẹ ruột của cô, cùng với động cơ bắt cóc bi kịch, cuối cùng cũng được phơi bày hoàn toàn trước mặt mọi người, giáng một 'cái vả' đau điếng vào kẻ đã lừa dối cô suốt bao năm."
+            "title": "Vạch Trần Kẻ Chủ Mưu",
+            "outline": "Trong một cuộc đối đầu căng thẳng và đầy kịch tính, Minh Châu và gia đình ruột thịt đã dồn người quản lý vào chân tường, công khai mọi bằng chứng. Sự thật động trời về mối tình sâu đậm trong quá khứ giữa người quản lý và mẹ ruột của cô, cùng với động cơ bắt cóc bi kịch, cuối cùng cũng được phơi bày hoàn toàn trước mặt mọi người và giới truyền thông. Đây là một 'cái vả' đau điếng và nhục nhã, xé nát vỏ bọc hoàn hảo của kẻ đã lừa dối cô suốt bao năm, khiến hắn ta hoàn toàn mất mặt và không thể chối cãi."
           },
           {
             "chapter": 11,
-            "title": "Đánh Sập Đế Chế",
-            "outline": "Với tất cả bằng chứng không thể chối cãi và sự ủng hộ của công chúng, Minh Châu cùng gia đình ruột thịt chính thức đệ đơn kiện, vạch trần mọi hành vi sai trái của người quản lý và công ty quản lý. Đế chế dối trá sụp đổ, người quản lý bị trừng phạt thích đáng, và Minh Châu đã giáng đòn 'vả' cuối cùng, hủy diệt hoàn toàn quyền lực của hắn."
+            "title": "Đánh Sập Đế Chế Đen",
+            "outline": "Với tất cả bằng chứng không thể chối cãi và sự ủng hộ mạnh mẽ của công chúng, Minh Châu cùng gia đình ruột thịt chính thức đệ đơn kiện, vạch trần mọi hành vi sai trái của người quản lý và công ty quản lý. Đế chế dối trá sụp đổ hoàn toàn, người quản lý bị trừng phạt thích đáng theo pháp luật. Minh Châu đã giáng đòn 'vả' cuối cùng, hủy diệt hoàn toàn quyền lực và sự nghiệp của kẻ đã giam cầm cô."
           },
           {
             "chapter": 12,
-            "title": "Tái Sinh Tự Do",
-            "outline": "Minh Châu đoàn tụ chính thức với gia đình ruột thịt trong nước mắt. Cô phải đối mặt với dư chấn của scandal và quá trình chữa lành vết thương lòng. Cô dần học cách tin tưởng và xây dựng lại cuộc sống, không còn là con rối trong giới giải trí mà là một người con gái được yêu thương."
+            "title": "Tái Sinh Cuộc Đời",
+            "outline": "Minh Châu đoàn tụ chính thức với gia đình ruột thịt trong nước mắt và niềm hạnh phúc vỡ òa. Cô phải đối mặt với dư chấn của scandal và quá trình chữa lành vết thương lòng từ quá khứ bị lừa dối. Cô dần học cách tin tưởng và xây dựng lại cuộc sống, không còn là con rối trong giới giải trí mà là một người con gái được yêu thương, tìm lại được sự bình yên."
           },
           {
             "chapter": 13,
-            "title": "Vượt Thoát Khung Cũ",
-            "outline": "Minh Châu từ bỏ hình tượng ngôi sao giả tạo, tìm thấy giá trị thật của bản thân. Người hâm mộ bí ẩn cũng tiết lộ mục đích thật sự của mình và nhận được sự giải đáp. Minh Châu chọn con đường riêng, sống một cuộc đời tự do, hạnh phúc, không còn bị ràng buộc bởi bất kỳ xiềng xích nào, hoàn toàn vượt thoát khỏi cái bóng của quá khứ."
+            "title": "Kiến Tạo Tương Lai",
+            "outline": "Minh Châu từ bỏ hình tượng ngôi sao giả tạo, tìm thấy giá trị thật của bản thân và mục đích sống mới. Người hâm mộ bí ẩn cũng tiết lộ danh tính và mục đích thật sự của mình, nhận được sự giải đáp. Minh Châu chọn con đường riêng, sống một cuộc đời tự do, hạnh phúc, không còn bị ràng buộc bởi bất kỳ xiềng xích nào, hoàn toàn vượt thoát khỏi cái bóng của quá khứ và kiến tạo một tương lai rạng rỡ cho chính mình."
           }
         ]
       },
@@ -1294,14 +1167,81 @@
       "maxChapters": 15,
       "model": "gpt-4o-mini",
       "outlineEngine": "gemini",
-      "writeEngine": "gemini",
-      "wpPostId": 1223
+      "writeEngine": "openai",
+      "wpPostId": 1223,
+      "chaptersContent": [
+        {
+          "episode": 1,
+          "title": "Chương 1: Hóa Giải Xiềng Xích",
+          "content": "Minh Châu đứng trước gương, ánh đèn sân khấu nhấp nháy pha trộn giữa sắc đỏ rực rỡ và vàng óng ánh, phản chiếu hình ảnh của một thần tượng mà bao người hâm mộ mơ ước chạm tới. Lớp son phấn hoàn hảo che giấu mọi sự mệt mỏi, mọi giọt nước mắt đã rơi nơi hậu trường tĩnh lặng. Dưới ánh hào quang ấy, Minh Châu được giới thiệu với khán giả như một ngôi sao không tì vết, một biểu tượng của sự trong sáng và ngây thơ.\n\nNhưng không một ai biết, phía sau gương mặt ấy là một tâm hồn đang khắc khoải từng ngày. Cô đứng đó, giữa những tràng vỗ tay không ngớt, cảm nhận sự trống rỗng gặm nhấm lòng tự tôn của mình. Những lời khen ngợi từ công chúng giống như một lớp vỏ bọc mong manh, che đậy một trái tim bị bóp nghẹt bởi sự kiểm soát tàn nhẫn của công ty quản lý.\n\nNgười quản lý của cô, một người đàn ông có khuôn mặt vô cảm và đôi mắt sắc lạnh như băng, đứng trong bóng tối, quan sát từng cử động nhỏ nhặt của Minh Châu. Hắn không bao giờ để cô được tự do, không cho phép bất kỳ biểu hiện nào ra ngoài khỏi khuôn khổ của sự hoàn hảo đã được dựng lên từ trước. Những lời nói ngọt ngào trước giới truyền thông chỉ là lớp vỏ che giấu sự thao túng độc ác. \"Cô chỉ cần nhớ, đừng tự ý làm gì trái ý tôi,\" hắn thường nói, giọng điệu nhẹ nhàng nhưng bao hàm sự đe dọa ngầm.\n\nTrong nhiều đêm dài, khi mọi người đã chìm vào giấc ngủ, Minh Châu vẫn thức, ngẩng đầu nhìn lên bầu trời tối đen qua cửa sổ chật hẹp. Cô tự hỏi nếu như, có một ngày, cô có thể thoát khỏi cái lồng son này, có thể tự do bay nhảy như những con chim trời ngoài kia. Ý nghĩ ấy ban đầu chỉ là một khát khao yếu ớt, nhưng qua từng đêm từng đêm hiện diện mãi, nó bắt đầu lớn dần như một ngọn lửa âm ỉ.\n\nMột lần, sau khi kết thúc buổi diễn, cô lén giấu mình trong góc tối của hậu trường, tránh xa ánh mắt soi mói của gã quản lý. Ngón tay cô vô tình chạm vào một bức ảnh cũ, tấm ảnh chụp khi cô còn là một đứa trẻ. Đôi mắt hồn nhiên trong tấm ảnh như nói lên một điều gì đó mà cô đã quên từ lâu. Một cảm giác xa lạ nhưng ấm áp trỗi dậy, len lỏi vào tim cô, làm dậy sóng một nỗi khao khát không thể gọi tên.\n\nCảm giác ấy thôi thúc Minh Châu nhen nhóm ý định thoát ly. Cô biết rằng mọi hành động của mình đang bị giám sát chặt chẽ, nhưng nàng ngôi sao tuổi teen đã sẵn sàng bước vào trận chiến tìm lại chính mình. Sự căm ghét đối với gã quản lý ngày càng cháy bỏng, cùng với nó là quyết tâm phá vỡ mọi xiềng xích đã kìm kẹp cô suốt bao năm qua.\n\nÂm thanh bước chân của người quản lý vang lên từ xa khiến Minh Châu giật mình. Cô nhanh chóng che giấu tâm tư, quay trở lại với nụ cười hoàn hảo mà cô đã phải tạo dựng hàng ngày. Nhưng bên trong, Minh Châu biết rằng đây chỉ là khởi đầu của một cuộc hành trình. Cô phải tự mình tìm ra lối thoát, tìm đến nơi mà ánh sáng thật sự có thể soi rọi tâm hồn và xua tan bóng tối đang bủa vây.\n\nCăn phòng tĩnh lặng đột ngột bị xé toạc bởi tiếng chuông điện thoại chói tai. Minh Châu không ngờ rằng, ngay khi cầm điện thoại lên, một cuộc gọi nặc danh với giọng nói rùng rợn sẽ khiến cả thế giới của cô đảo lộn. Câu nói cuối cùng từ đầu dây bên kia khiến cô không thể nào quên: \"Sự thật không phải lúc nào cũng đẹp đẽ như ánh đèn sân khấu đâu, Minh Châu.\""
+        },
+        {
+          "episode": 2,
+          "title": "Chương 2: Chấn Động Thân Phận",
+          "content": "Minh Châu đứng giữa phòng thay đồ rộng lớn, xung quanh bao phủ bởi những bộ trang phục lấp lánh hào nhoáng. Cô vừa hoàn thành xong một buổi biểu diễn thành công, nhưng niềm vui dường như không thể len lỏi vào sâu thẳm tâm hồn cô. Ánh đèn sân khấu, tiếng hò reo của người hâm mộ, tất cả chỉ như một giấc mộng đẹp tạm thời.\n\nCô bước vào phòng, cửa sổ để mở cho gió nhẹ phả vào, mang theo một chút mùi hoa nhài dịu dàng. Trên bàn trang điểm, nơi đầy ắp mỹ phẩm và những vật dụng cá nhân, có một phong bì trắng nằm lạc lõng. Cô nhíu mày, chậm rãi tiến lại gần, ngón tay khẽ chạm vào mép phong bì. Minh Châu chưa bao giờ nhận được thư giấy thế này, nhất là một bức thư không có tên người gửi.\n\nTrái tim cô đập rộn lên sự tò mò pha lẫn chút hoảng sợ. Cô cẩn thận mở phong bì ra, những dòng chữ viết tay mực đen hiện lên rõ nét. Mắt cô lướt qua từng chữ, từng câu, đầu óc càng lúc càng choáng váng.\n\n\"Châu, con không phải là con ruột của gia đình hiện tại. Người quản lý đã bắt cóc con.\"\n\nNgón tay của cô run rẩy, bức thư rơi xuống sàn nhà, tiếng mưa ngoài trời vang vọng như để che giấu đi nụ cười nhợt nhạt trên môi cô. Chân cô như không đứng vững nữa, cả thế giới bỗng chốc đảo lộn. Từng câu chữ không ngừng xoáy sâu vào tâm trí cô, như những nhát dao cứa từng lớp niềm tin mà cô đã gây dựng bấy lâu.\n\nLòng ngập tràn mâu thuẫn, Minh Châu tự hỏi liệu đây có phải là một trò đùa ác ý nữa từ đám anti-fan không? Nhưng sao họ biết được những điều này? Tim cô đau nhói với hàng loạt câu hỏi không có lời giải đáp. Trong khoảnh khắc đó, cô không thể tin tưởng bất kỳ ai, kể cả chính bản thân mình.\n\nNhững hình ảnh từ quá khứ lướt nhanh qua đầu cô, như một cuốn phim quay chậm. Ký ức về sự khắc nghiệt của người quản lý, những lời mắng mỏ và ánh mắt đe dọa mỗi khi cô lỡ sai điều gì nhỏ nhặt nhất. Một người mà cô luôn nghĩ là người dẫn dắt, hóa ra lại là kẻ đứng sau tất cả những đau khổ cô đã phải gánh chịu. Cơ thể cô lạnh lẽo như băng, nhưng lòng lại bùng cháy một ngọn lửa mới - một ngọn lửa nổi loạn.\n\nHạt giống nghi ngờ nảy mầm, Minh Châu cảm thấy một sức mạnh mới dần dần trỗi dậy. Cô cần phải biết sự thật, cần phải tìm ra ai mới thực sự là gia đình của mình. Đôi mắt cô bừng sáng, không còn là ánh nhìn của một ngôi sao bị điều khiển mà là một thiếu nữ đang nổi loạn, quyết không để bản thân bị xỏ mũi thêm một lần nào nữa.\n\nThế nhưng, một tiếng gõ cửa bất ngờ khiến cô giật mình, kéo cô trở lại thực tại. Ai đó đứng ngoài, mang theo một bí mật khác chực chờ bùng nổ."
+        },
+        {
+          "episode": 3,
+          "title": "Chương 3: Cản Trở Truy Tìm",
+          "content": "Minh Châu ngồi thẫn thờ trong phòng, đôi mắt to đen lóng lánh giờ đây chỉ còn là cơn bão của sự hoang mang và đau khổ. Bức thư nặc danh kia như một lưỡi dao sắc bén, xé toang mọi lớp vỏ bọc mà cô từng phủ lên cuộc đời mình. Thực tại bỗng chốc biến thành một mớ hỗn độn không thể cứu vãn. Cô không thể nhớ nổi mình đã ngồi bao lâu, bất động trong căn phòng rực rỡ mà giờ đây chỉ còn là một chiếc lồng son lạnh lẽo.\n\nTrong cơn hoảng loạn, Minh Châu bắt đầu lục tung những ngăn kéo, tủ kệ, cố tìm kiếm bất cứ điều gì có thể làm sáng tỏ hơn về quá khứ mà nay bỗng dưng bị phủ đầy bóng đen. Ánh mắt cô lướt qua từng tấm ảnh, từng mảnh ký ức nhỏ bé mà cô đã từng quý trọng. Nhưng chẳng có gì khác ngoài những hình ảnh hoàn hảo đến nhức mắt, những gương mặt tươi cười dối trá.\n\nCô thử kiểm tra những tạp chí cũ, những bài phỏng vấn mà trước giờ cô chỉ lướt qua. Nhưng liệu có ích gì khi mọi thông tin đều được lập trình sẵn để phô diễn một Minh Châu mà công ty quản lý muốn người khác thấy? Thế giới hoàn hảo trước đây bỗng chốc trở thành một trò hề kệch cỡm, chỉ chực chờ để lộ ra những mảng tối kinh hoàng.\n\nNgón tay khựng lại trên bìa một tạp chí quen thuộc, những dòng tiêu đề màu sắc lòa lóa mà giờ đây chỉ là những vệt mực vô nghĩa. Cô nhớ lại những cuộc phỏng vấn dối gian, những lời nói dối đã được sắp đặt cẩn thận để xây dựng hình tượng ngôi sao sáng chói. Minh Châu bỗng cảm thấy mình như một con búp bê bị giật dây trong tay kẻ khác, không kiểm soát được số phận của chính mình.\n\nBỗng nhiên, âm thanh cửa phòng bật mở, kéo cô về thực tại. Người quản lý, với vẻ mặt đắc chí và ánh mắt sắc như dao, bước vào. Hắn nhìn cô với ánh nhìn khinh thường và giọng nói đầy giễu cợt: \"Mày đang tìm kiếm gì vậy, cô bé? Nghĩ rằng mình có thể thoát khỏi đây dễ dàng vậy sao? Đừng có mơ mộng viển vông.\"\n\nHắn ta cười khẩy, một nụ cười mà Minh Châu đã quá quen thuộc. \"Mày mãi mãi chỉ là con búp bê trong tay tao. Đừng ảo tưởng về tự do hay những thứ vớ vẩn khác. Mày không thể làm gì được đâu.\"\n\nNhững lời nói có ý nhấn vào tâm can Minh Châu, khiến lòng tự trọng của cô dâng trào phẫn nộ. Cô nhận ra mình không thể ngồi yên mà bị áp bức mãi. Sự khinh miệt mà hắn ta dành cho cô chỉ càng làm bùng lên ngọn lửa quyết tâm, thúc giục cô phải vùng dậy, phải tìm cách thoát ra khỏi chiếc lồng son này và tìm ra sự thật.\n\nKhông màng đến sự dè bỉu của hắn, Minh Châu quyết định sẽ không dừng bước. Cô cần phải mạnh mẽ hơn, cần phải tìm ra bản ngã thực sự của mình, giữa những mưu mô đáng sợ đang bủa vây. Cô biết rằng cuộc chiến này còn dài và đầy thử thách, nhưng cô sẵn sàng đối mặt với nó vì tự do và chân lý.\n\nNhưng ngay lúc đó, một tiếng cạch nhẹ vang lên từ cửa sổ, khiến cô giật mình. Một mảnh giấy nhỏ được ném vào, kèm theo một dòng chữ ngắn gọn: \"Tao có manh mối. Hãy gặp tao ở quán cà phê cũ.\" Minh Châu như bị hút vào một cơn xoáy hỗn độn mới. Ai là người gửi mảnh giấy này? Liệu đây có phải là cơ hội để cô thoát khỏi nanh vuốt của người quản lý hay chỉ là một cái bẫy mới đang chực chờ? Cô biết chỉ còn một cách để tìm câu trả lời, và đó là bước vào bóng tối bí mật đang đón chờ."
+        },
+        {
+          "episode": 4,
+          "title": "Chương 4: Kích Hoạt Đồng Minh",
+          "content": "Minh Châu ngồi co ro trong căn phòng trống trải, ánh đèn neon ngoài cửa sổ hắt bóng lung linh lên tường. Nỗi tuyệt vọng ngập tràn trong lòng cô, khi nghĩ về bức thư nặc danh đã làm đảo lộn cuộc sống của mình. Cô cảm thấy như một con chim bị nhốt trong lồng, không cách nào thoát ra được. Từng lời chế giễu từ người quản lý độc đoán ấy vẫn còn vang vọng trong đầu, khiến cô càng thêm tức giận và quyết tâm không dễ dàng bỏ cuộc.\n\nKhi cô đang chìm đắm trong suy nghĩ, bỗng dưng điện thoại vang lên âm báo tin nhắn. Ngón tay cô khẽ khựng lại khi thấy tên người gửi hoàn toàn xa lạ. Tin nhắn chỉ có vỏn vẹn vài dòng: \"Tôi có thể giúp bạn. Gặp tôi tại quán cà phê gần đây tối nay. Đừng để ai biết.\"\n\nMinh Châu cảm thấy nghi ngờ, nhưng cũng không còn lựa chọn nào khác. Cô phải thử mọi cách để tìm kiếm sự thật về quá khứ của mình. Tối hôm đó, cô mặc một bộ đồ đơn giản, cố gắng không thu hút sự chú ý, rồi lặng lẽ rời khỏi căn hộ.\n\nQuán cà phê nhỏ nằm khuất trong một con phố hẹp, ánh đèn vàng ấm áp tỏa ra từ cửa sổ. Minh Châu bước vào, mắt lia nhanh tìm kiếm người hẹn. Một người đàn ông trẻ ngồi ở góc khuất, ánh mắt sắc bén nhìn cô từ phía sau cặp kính. Anh ta vẫy tay ra hiệu, cô chậm rãi tiến lại.\n\n\"Chào em, tôi là Phong,\" anh ta giới thiệu ngắn gọn, giọng nói trầm ấm nhưng không kém phần nghiêm túc. \"Tôi biết về người đã viết bức thư đó.\"\n\nMinh Châu sững sờ, không biết phải phản ứng thế nào. \"Sao anh biết?\" cô hỏi, giọng không giấu nổi sự hoài nghi.\n\nPhong cười nhẹ, rút từ trong túi ra một chiếc laptop nhỏ. \"Tôi là người hâm mộ, cũng là một cao thủ công nghệ. Tôi đã theo dõi vụ việc này từ lâu và phát hiện ra nhiều điều đáng kinh ngạc.\"\n\nAnh ta bấm vài phím trên bàn phím, màn hình hiển thị một loạt thông tin mà Minh Châu chưa từng biết. \"Đây là một phần trong quá trình tìm kiếm của tôi. Những hình ảnh và tài liệu cho thấy em không phải là con của gia đình hiện tại.\"\n\nMinh Châu choáng váng, nhưng không thể phủ nhận sự thực rõ ràng đang hiện hữu trước mắt. \"Vậy, anh có thể giúp gì cho tôi?\"\n\nPhong nhìn sâu vào mắt cô, ánh mắt anh đầy quyết tâm. \"Tôi sẽ giúp em vạch trần sự thật. Nhưng em phải cẩn thận, vì người quản lý của em chắc chắn sẽ không để yên khi phát hiện ra.\"\n\nCô gật đầu, lòng cô bừng lên một tia hy vọng. \"Cảm ơn anh, thật sự cảm ơn.\"\n\n\"Đừng vội cảm ơn tôi sớm quá,\" Phong nói, môi cười khẽ. \"Chúng ta có cả một cuộc chiến phía trước.\"\n\nMinh Châu rời quán cà phê với tâm trạng nặng nề nhưng không kém phần quyết tâm. Bên ngoài, mưa bắt đầu rơi, từng giọt nước nặng trĩu đập vào mặt đất, nhưng cô không hề bận tâm. Những giọt nước mưa cũng không thể che lấp nụ cười nhỏ đầy thách thức trên môi cô. Phong đã gieo vào lòng cô tia sáng hy vọng đầu tiên sau bao ngày đen tối.\n\nTrở về căn hộ, cô không thể ngừng nghĩ về thông tin vừa nhận được. Người quản lý của cô vẫn đang ung dung, tự mãn với quyền lực của mình, nhưng cô biết rằng hệ thống bất khả xâm phạm ấy đang bắt đầu có những vết nứt. Cô quyết tâm phải phá vỡ nó, từng chút, từng chút một.\n\nĐêm đó, khi nằm trên giường, Minh Châu đột nhiên nghe thấy tiếng gõ cửa. Cô ngồi bật dậy, tim đập thình thịch. Ai lại đến vào giờ này? Cô rón rén bước ra, tim như muốn nhảy ra khỏi lồng ngực. Khi cô mở cửa, một bóng đen lạ lẫm đứng chờ, ánh mắt kỳ lạ nhìn cô chăm chú."
+        },
+        {
+          "episode": 5,
+          "title": "Chương 5: Truy Lùng Dấu Vết",
+          "content": "Minh Châu đứng trước gương, nhìn chằm chằm vào hình ảnh phản chiếu. Đôi mắt cô ánh lên một nỗi buồn không thể nào che giấu. Phía sau ánh hào quang sân khấu, cô chỉ là một con búp bê bị giật dây, sống cuộc đời không phải của mình. Những lời miệt thị của người quản lý vẫn văng vẳng trong tâm trí, nhưng giờ đây, nỗi sợ đã biến thành ngọn lửa âm ỉ trong lòng cô.\n\nNgười hâm mộ bí ẩn, qua những bức thư điện tử được mã hóa, đã chỉ dẫn Minh Châu tới một căn phòng cũ kỹ nằm khuất trong căn biệt thự của công ty quản lý. Cô dừng chân trước cánh cửa gỗ đã bạc màu, tay run run xoay núm cửa. Bên trong, bụi bặm phủ lên mọi thứ như một tấm màn nhung thời gian che giấu những bí mật bị lãng quên.\n\nMinh Châu lục lọi trong đống tài liệu cũ, những tấm ảnh đen trắng bị mờ nhòe. Đôi mắt cô sáng rực khi tìm thấy một tập hồ sơ từ nhiều năm trước, ghi chép chi tiết về một đứa trẻ bị mất tích. Những dòng chữ trên giấy lá vàng rơi, nét bút nghiêng nghiêng, mô tả rõ ràng hình ảnh của đứa bé gái trùng khớp với cô.\n\nGiọt nước mắt trào ra từ khóe mắt Minh Châu. Cô biết bức thư không dối lừa. Sự thật như một cú giáng mạnh vào tâm khảm, xé toạc tấm màn dối trá đã bủa vây cô biết bao năm qua. Cô cẩn thận bỏ lại mọi thứ vào chỗ cũ, như chưa từng có gì xảy ra, rồi nhanh chóng rời căn phòng trước khi ai đó phát hiện.\n\nKhi quay trở về phòng, Minh Châu quyết định phải đối mặt với kẻ đã kiểm soát cuộc đời cô. Trong một lần gặp gỡ tình cờ sau buổi diễn, cô tận dụng cơ hội, tìm cách hỏi người quản lý về những tài liệu kia một cách gián tiếp. Cô bắt đầu bằng việc hỏi về những sự kiện và tên tuổi từ lâu, cố tình đả động tới những chi tiết trong tập hồ sơ.\n\nNgười quản lý thoạt đầu không để ý, chỉ nhếch mép cười khẩy khi nghe những câu hỏi tưởng chừng ngây thơ của cô. Nhưng khi Minh Châu nhắc đến tên cụ thể, khuôn mặt hắn ta thoáng chốc chuyển sắc, đôi mắt tối sầm lại. Hắn ta khựng lại trong giây lát, nhưng nhanh chóng lấy lại vẻ tự tin, vỗ vai cô một cách giả tạo. \"Em đang tìm kiếm điều gì trong quá khứ vậy cô gái nhỏ?\" – hắn ta cười lớn, giọng nói vang vọng. \"Những thứ đó chẳng có nghĩa lý gì cả, chỉ là mớ tưởng tượng hão huyền mà thôi.\"\n\nMinh Châu nhận ra sự lạnh lẽo trong nụ cười giả tạo đó. Dù người quản lý có phủ nhận thế nào, cô cũng không còn bị lừa dối. Cô biết phải tiến lên, tự giải thoát bản thân khỏi mọi ràng buộc gian trá. Ngọn lửa quyết tâm trong lòng cô cháy sáng hơn bao giờ hết. Nhưng khi cô đóng cửa phòng sau cuộc đối đầu mệt mỏi, một ý nghĩ bất chợt lóe lên trong đầu: \"Chẳng lẽ hắn ta thực sự quá mạnh để không cúi đầu trước bất kỳ điều gì?\"\n\nLúc ấy, tiếng gõ cửa vang lên giữa màn đêm tĩnh lặng, cắt ngang dòng suy nghĩ của Minh Châu. Ai có thể đến vào giờ này?"
+        },
+        {
+          "episode": 6,
+          "title": "Chương 6: Khiêu Chiến Quyền Năng",
+          "content": "Trong căn phòng sang trọng của công ty quản lý, ánh đèn neon lạnh lẽo soi sáng từng góc khuất, Minh Châu ngồi đối diện với người quản lý, mặt đối mặt như thể trận chiến ngầm đã được khởi động từ lâu. Ngón tay cô bấu chặt cạnh bàn đến trắng bệch, mắt nhìn thẳng vào hắn, ánh lên tia quyết tâm hiếm thấy. Hôm nay, cô không còn là ngôi sao nổi tiếng với nụ cười rạng rỡ, mà là một cô gái đang tìm kiếm sự thật bị che giấu từ lâu.\n\n\"Em muốn biết sự thật,\" Minh Châu cất tiếng, giọng nói dứt khoát nhưng chất chứa nỗi niềm.\n\nNgười quản lý, một người đàn ông trung niên với đôi mắt sắc lạnh và nụ cười nham hiểm, nhếch mép cười khẩy. Hắn khoanh tay trước ngực, đôi mắt lướt qua Minh Châu như kẻ săn mồi đang ngắm con mồi yếu đuối.\n\n\"Mày đúng là ngây thơ, Minh Châu. Sự thật nào mà mày nghĩ là có thể thay đổi đây? Mày nghĩ rằng chỉ vì vài lời đồn thổi, mày có thể thoát khỏi bàn tay tao sao?\" Hắn ta cười lớn, tiếng cười đầy mỉa mai và khinh thường vọng khắp căn phòng.\n\nMinh Châu không nao núng, ánh mắt vẫn kiên định. \"Em không tin nữa đâu. Em muốn biết lý do tại sao em lại ở đây, và em biết có điều gì đó đang bị giấu diếm.\"\n\nHắn đứng dậy, bước từng bước chậm rãi về phía Minh Châu, đôi mắt lóe lên tia thâm hiểm. \"Mày vốn chỉ là một con búp bê do tao tạo dựng nên. Cha mẹ mày, người thân của mày... đều không quan trọng. Mày là của tao, và mãi mãi là như vậy.\"\n\nCô gái khẽ rùng mình, nhưng không lùi bước. \"Không. Em là người, không phải búp bê của ai cả. Và em sẽ tìm ra sự thật, cho dù có phải trả giá đắt đến đâu.\"\n\nHắn ta cười khẩy, đôi mắt nheo lại đầy thách thức. \"Mày thật dại dột, Minh Châu. Cứ thử xem ai sẽ đứng về phía mày khi tao bật đèn xanh cho truyền thông ném đá mày. Mày nghĩ mày có thể tồn tại ngoài kia mà không có tao sao? Đừng có mơ!\"\n\nÁnh đèn lạnh lẽo càng làm nổi bật sự quyết liệt của Minh Châu, khi cô cắn môi để ngăn nước mắt nuốt ngược vào trong. \"Em sẽ làm được. Em không cần những thứ hào nhoáng đó nữa.\"\n\nNgười quản lý phá lên cười, tiếng cười chói tai như dao cắt vào không gian ngột ngạt. \"Rồi mày sẽ thấy, Minh Châu ạ. Thế giới này không dành cho kẻ yếu đuối và ngu ngốc như mày.\"\n\nBầu không khí trở nên ngột ngạt, nặng nề với sự tĩnh lặng căng thẳng. Minh Châu đứng lên, đối diện với người đàn ông đã điều khiển cuộc đời cô bao năm qua, ánh mắt không còn né tránh.\n\n\"Chúng ta sẽ xem ai là kẻ mơ mộng ở đây,\" cô nói, giọng điệu lạnh lùng nhưng đầy mạnh mẽ, rồi quay lưng bước ra khỏi phòng, để lại người quản lý một mình trong cơn giận dữ không thể bộc lộ.\n\nCánh cửa khép lại sau lưng Minh Châu, cô hít một hơi thật sâu, lắng nghe tiếng mưa rơi tí tách bên ngoài, những hạt mưa lẻ loi như chính nỗi lòng của cô lúc này. Nhưng đâu đó trong từng tiếng rơi, một nụ cười nhẹ nhàng nhen nhóm trên môi cô.\n\nBước chân Minh Châu chậm rãi hơn khi cô rời khỏi tòa nhà, ý chí càng thêm vững vàng trong cuộc chiến tìm kiếm sự thật. Nhưng khi vừa tới cửa, chiếc điện thoại trong túi bỗng réo vang, hiển thị một tin nhắn lạ với nội dung ngắn gọn: \"Bắt đầu rồi, sức mạnh trở lại với em.\" Một câu nói bất ngờ khiến Minh Châu khựng lại, đôi mắt mở to kinh ngạc và đầy thắc mắc. Ai đang đứng sau âm mưu này? Cô phải chuẩn bị cho bước đi tiếp theo, vì trò chơi này chỉ mới bắt đầu."
+        },
+        {
+          "episode": 7,
+          "title": "Chương 7: Giáng Đòn Phản Công",
+          "content": "Minh Châu ngồi trên chiếc ghế bành, hai tay run rẩy cầm lấy điện thoại. Tin nhắn từ người hâm mộ bí ẩn kia vừa đến, cảnh báo cô về một kế hoạch đen tối từ phía công ty quản lý. Trong đầu cô, hàng ngàn ý nghĩ hỗn loạn xoay quanh, như một vòng xoáy không hồi kết. Cô biết họ sẽ không để cô dễ dàng thoát khỏi sự kìm kẹp của họ, nhưng cô không ngờ rằng họ sẽ đi xa đến mức này.\n\n\"Cô ta nghĩ mình là ai chứ? Một con bé như nó mà đòi phá vỡ những quy tắc của tôi sao?\" Người quản lý đứng giữa phòng họp của công ty, mặt mày sắt lạnh, ánh mắt như muốn thiêu cháy tất cả những ai dám phản kháng. Hắn ta nhếch mép, khinh bỉ nhìn vào màn hình máy chiếu đang trình bày chi tiết kế hoạch đen tối hòng bôi nhọ Minh Châu. \"Ngày mai thôi, mọi thứ sẽ được tung ra. Con nhỏ đó sẽ sụp đổ và không bao giờ còn cơ hội đứng dậy.\"\n\nMinh Châu lặng lẽ quan sát mọi động thái của công ty, lòng cô quặn thắt khi cảm nhận được sự phản bội từ những người từng cô gọi là \"gia đình\". Nhưng sự giận dữ và quyết tâm vùng dậy đang cháy bỏng trong cô. \"Mày nghĩ mày có thể đạp đổ tao dễ dàng như thế, hả?\" cô tự nhủ, nắm chặt tay lại, sẵn sàng đối chọi với bão tố.\n\nNgày hôm sau, scandal giả mạo nổ ra như một quả bom tấn, thông tin lan truyền với tốc độ chóng mặt trên các trang mạng xã hội. Hình ảnh ghép, tin nhắn bịa đặt, mọi thứ đều được dựng lên để biến Minh Châu thành một kẻ phản bội, kẻ dẫm đạp lên tất cả những giá trị mà cô từng xây dựng. Cô cảm thấy mặt đất dưới chân mình như muốn sụp đổ, tai không nghe rõ tiếng mỉa mai từ những người từng hâm mộ mình.\n\nNgười quản lý, đứng giữa ánh đèn máy ảnh và phóng viên tấp nập, giọng nói hắn chứa đầy sự chế nhạo: \"Cô ta, một thần tượng rẻ rách, giờ đây đã lộ bộ mặt thật. Phản bội, không biết điều, và tất nhiên, không còn xứng đáng với lòng tin của mọi người.\" Hắn ta cười nhạt, ánh mắt độc ác như muốn vấy bẩn lên danh dự cuối cùng của Minh Châu.\n\nMinh Châu lặng người trước những lời cáo buộc, nước mắt không thể kìm nén được nữa tràn ra như dòng suối. \"Tại sao lại là tôi? Tại sao tôi phải gánh chịu tất cả những điều này?\" Tiếng mưa rơi lộp độp ngoài cửa sổ như che lấp tiếng nức nở của cô, chỉ còn lại sự im lặng ghê rợn bên trong căn phòng tối.\n\nTrong cơn tuyệt vọng, điện thoại của cô rung lên. Một tin nhắn lạ với nội dung ngắn ngủi nhưng đủ để khơi dậy tia hy vọng cuối cùng trong cô: \"Chúng ta còn một cơ hội. Không được bỏ cuộc.\" Lòng Minh Châu dấy lên một niềm tin nhỏ nhoi, rằng đâu đó, ánh sáng vẫn còn le lói.\n\nCô nuốt nước mắt, tự nhủ mình không thể gục ngã. \"Mày nghĩ mày có thể chôn vùi tao sao? Không đâu, cuộc chiến bây giờ mới thực sự bắt đầu.\" Minh Châu hít một hơi sâu, mắt sáng lên với quyết tâm không lùi bước, chưa bao giờ cảm thấy mình mạnh mẽ đến thế. \n\nTiếng điệu của chiếc chuông cửa bất ngờ reo vang, làm cô giật mình quay ra nhìn, tự hỏi người đứng ngoài liệu có mang theo cơn giông tố hay một chút tia sáng nào đó."
+        },
+        {
+          "episode": 8,
+          "title": "Chương 8: Phá Tan Âm Mưu",
+          "content": "Minh Châu đứng lặng người giữa sân khấu, ánh đèn chói lóa hắt vào mắt làm cô tạm quên đi sự hồi hộp trong tim. Người quản lý đã ra đòn tàn khốc, một scandal giả mạo được dàn dựng hoàn hảo để hủy hoại danh tiếng của cô. Cô đứng đó, bị cáo buộc phản bội, không biết điều, trong lòng chỉ còn lại nỗi hoang mang và tức giận.\n\nNhưng trong khoảnh khắc nguy kịch nhất, khi mọi thứ dường như sụp đổ, Minh Châu nhận ra mình không cô đơn. Người hâm mộ bí ẩn, người đàn ông đã âm thầm giúp đỡ cô trong suốt thời gian qua, đã xuất hiện. Họ đứng trước mặt người quản lý, trong tay là những bằng chứng không thể chối cãi.\n\n“Mày nghĩ mày có thể hủy hoại tao bằng trò bẩn thỉu này sao?” Minh Châu hướng ánh nhìn sắc lạnh về người quản lý đang cười ngạo nghễ.\n\nHắn cười khẩy, giọng nói đầy khiêu khích: “Con rối như mày thì làm gì có khả năng đứng vững trước cơn bão. Này, đồ khố rách áo ôm, mày nghĩ mày có thể vượt qua tao sao?”\n\nNgười hâm mộ bí ẩn đưa tay lên, màn hình khổng lồ phía sau bỗng sáng lên với hàng loạt tài liệu, hình ảnh chứng minh scandal chỉ là một vở kịch gian dối. Những dòng chữ chạy liên tục, vạch trần từng chi tiết của âm mưu.\n\n“Đây là cú 'vả mặt' cho mày, thằng ranh tự mãn!” Anh ta nói, giọng điệu mỉa mai không kém phần cay độc.\n\nCả khán phòng im phăng phắc, không khí như đông cứng lại. Công chúng từ chỗ hoài nghi chuyển sang ủng hộ Minh Châu, tiếng vỗ tay vang lên như sấm dội.\n\nNgười quản lý mặt đỏ tía tai, từng cơ mặt co rúm lại vì tức giận không thể che giấu. Hắn định mở miệng phản bác nhưng tất cả chỉ là những lời ngụy biện yếu ớt. Dư luận đã quay lưng hoàn toàn, ánh đèn sân khấu giờ chú ý vào kẻ vừa bị lột trần sự giả tạo. Hắn nhìn Minh Châu, ánh mắt tức tối nhưng bất lực.\n\n“Đũa mốc cũng có ngày chòi được mâm son,” Minh Châu nhếch mép mỉa mai, giọng cô đầy uy lực.\n\nCô nhìn thẳng vào mắt người quản lý, không còn cảm giác sợ hãi hay bị áp đảo. Cô đang đứng vững, tự tin và được ủng hộ bởi sự thật.\n\nMinh Châu biết trận chiến này vẫn chưa kết thúc, nhưng cô đã chứng minh được khả năng của mình. Niềm tin từ công chúng là động lực mạnh mẽ để cô tiếp tục bước đi. Nhưng ngay lúc cô đang chìm trong niềm vui chiến thắng, một âm thanh vang lên từ phía sau cánh gà. Một tiếng hét đầy giận dữ, đe dọa cắt ngang khoảnh khắc huy hoàng.\n\n\"Được lắm, nhưng tao sẽ không để yên đâu!\" Âm thanh đó như một cú giáng mạnh vào không khí, để lại một sự lo lắng lẩn khuất trong lòng Minh Châu."
+        },
+        {
+          "episode": 9,
+          "title": "Chương 9: Nối Lại Huyết Thống",
+          "content": "Minh Châu bước ra khỏi phòng họp với ánh mắt đầy kiên quyết, lòng đầy nghẹn ngào. Từng dòng chữ trong bức thư nặc danh vẫn còn quẩn quanh trong đầu cô như một cơn ác mộng dai dẳng. Nhưng giờ đây, khi đã có manh mối vững chắc về gia đình ruột, cô biết mình không thể lùi bước nữa.\n\nBước chân Minh Châu dừng lại trước căn biệt thự nguy nga. Cánh cổng sắt nặng nề, uốn lượn hoa văn tinh xảo hiện rõ sự giàu có và quyền lực của gia đình mới phát hiện. Cô lưỡng lự trong vài giây, rồi quyết định bấm chuông. Tiếng chuông ngân dài khiến cô cảm thấy nhịp tim mình đập liên hồi.\n\nMột người giúp việc mở cổng, nhìn cô bằng ánh mắt tò mò. Minh Châu nhẹ nhàng nói, \"Cháu là Minh Châu, cháu có hẹn với ông bà.\"\n\nNgười giúp việc mỉm cười dẫn cô vào trong. Minh Châu cảm thấy từng bước chân như đang dẫm lên lớp băng mỏng manh, lo sợ rằng nó sẽ vỡ tung bất kỳ lúc nào. Cô đến phòng khách, nơi bố mẹ ruột đang ngồi chờ.\n\nÔng bà trông khá trẻ trung, lịch lãm trong trang phục đắt tiền. Họ đứng dậy khi thấy cô bước vào, ánh mắt chứa đầy hy vọng và ngóng trông. Minh Châu cúi đầu chào, lòng dâng trào nhiều cảm xúc lẫn lộn. Đây là lần đầu tiên cô gặp mặt họ, nhưng cảm giác thân thuộc lại xâm chiếm cô một cách lạ thường.\n\n\"Minh Châu phải không? Cháu ngồi xuống đi, đừng khách sáo,\" người đàn ông lên tiếng, giọng nói ấm áp nhưng vẫn có gì đó dè dặt. Minh Châu ngồi xuống đối diện họ. Ánh mắt bà mẹ ruột không rời khỏi cô, như muốn khắc sâu hình ảnh cô vào tâm trí.\n\nCô bắt đầu cuộc trò chuyện bằng những câu hỏi thăm xã giao, nhưng dần dần, mọi thứ chuyển sang câu chuyện về quá khứ. Ánh mắt họ tối sầm lại khi nhắc đến vụ bắt cóc năm xưa, nhưng Minh Châu hiểu rằng sự thật không thể bị giấu kín mãi mãi. Cô cảm thấy lòng mình nhẹ nhõm phần nào khi biết rằng họ đã không ngừng tìm kiếm cô suốt những năm tháng qua.\n\nThời gian trôi qua, Minh Châu càng cảm nhận được tình cảm gia đình ấm áp từ hai người. Cô chợt nhận ra mình đã thiếu vắng điều này biết bao lâu. Cô không dám mơ tưởng tới một nơi như thế này, nơi mà cô có thể là chính mình mà không cần giữ gìn hình ảnh của một ngôi sao hoàn hảo.\n\nKhi ánh mặt trời ngoài cửa sổ bắt đầu dịu đi, Minh Châu biết đã đến lúc mình phải ra về. Cô đứng dậy, nhìn họ bằng ánh mắt biết ơn và hứa hẹn sẽ quay lại sớm. Họ tiễn cô ra tận cổng, vẫy tay khi cô bước lên xe, nụ cười đầy yêu thương và hy vọng.\n\nTrên đường trở về, Minh Châu tự nhủ sẽ phải chuẩn bị kỹ càng cho cuộc đối đầu cuối cùng. Cô không thể để bản thân bị cuốn trôi trong cơn bão scandal hay những lời lẽ mỉa mai độc địa của người quản lý. Cô cần sự ủng hộ của cha mẹ ruột, những người mà giờ đây cô có thể tự hào gọi là gia đình.\n\nĐêm đến, Minh Châu ngã người xuống giường, mệt mỏi nhưng đầy quyết tâm. Cô biết rằng cuộc chiến chưa kết thúc, và con đường phía trước sẽ còn đầy chông gai. Nhưng ánh sáng hy vọng đã bừng lên trong cô, rực rỡ và không thể dập tắt.\n\nNgón tay cô vô thức lướt qua màn hình điện thoại, kiểm tra tin nhắn từ người hâm mộ bí ẩn - người bạn đồng hành trên hành trình này. \"Tôi đã tìm thấy thêm vài manh mối mới, thứ có thể lật đổ hắn. Hãy chuẩn bị tinh thần,\" dòng tin nhắn hiện lên. Minh Châu không khỏi rùng mình nghĩ đến những khó khăn đang chờ đợi, nhưng cô cũng mỉm cười đầy quyết tâm.\n\nTiếng chuông điện thoại bất ngờ vang lên, một số lạ, không tên. \"Chào Minh Châu, tao nghĩ đã đến lúc mày phải biết thêm một sự thật...\""
+        },
+        {
+          "episode": 10,
+          "title": "Chương 10: Vạch Trần Kẻ Chủ Mưu",
+          "content": "Minh Châu đứng lặng trước gương, căng thẳng vò đầu bứt tai. Cô biết cuộc đối đầu hôm nay sẽ là một trận chiến không dễ dàng. Những gì cô sắp phải đối mặt không chỉ là người quản lý độc đoán, mà còn là một quá khứ đau thương đã bị che giấu quá lâu. Cô hít một hơi thật sâu, tự nhủ rằng đây là lúc để nói lên sự thật, và không thể nào lùi bước nữa. \n\nBước ra khỏi căn phòng, ánh mắt cô không còn chút nào của sự hoảng loạn như trước nữa. Minh Châu đã chuẩn bị mọi thứ, và cô biết rằng không còn đường lùi. Gia đình ruột thịt của cô cũng đã có mặt, họ cùng cô tiến vào phòng họp mà công ty quản lý đã chuẩn bị cho buổi họp báo đột ngột này. Không khí nặng nề và căng thẳng bao trùm toàn bộ căn phòng, giống như bão giông đang gầm lên đòi hỏi phải bộc lộ mọi sự thật.\n\nNgười quản lý ngồi ở vị trí chủ tọa, vẻ mặt vẫn đầy lòng kiêu ngạo, tự tin rằng quyền lực của hắn ta vẫn đủ để kiểm soát cục diện. Hắn ta nở nụ cười mỉa mai khi thấy Minh Châu xuất hiện cùng cha mẹ ruột của cô. \"Thật trớ trêu! Cô lại nghĩ rằng mình có thể tự tung tự tác đấy à?\" hắn ta chế giễu, ánh mắt sắc bén như muốn đâm xuyên qua Minh Châu.\n\nMột tiếng nổ như lôi đình khi phóng viên từ các tờ báo lớn đột ngột tràn vào. Minh Châu đứng thẳng người, giọng dõng dạc: \"Tôi không phải là con của ông bà Khánh, và ông, chính ông đã bắt cóc tôi từ gia đình ruột thịt của tôi!\"\n\nNhững ánh đèn lóe sáng từ máy ảnh bị chặn lại bởi không khí nghẹn ngào của căn phòng. Người quản lý kinh ngạc, cố gắng giữ bình tĩnh nhưng không thể che giấu sự bất ổn. Hắn ta cười nhạt, \"Cô đùa đấy à? Tất cả chỉ là chuyện hoang đường!\"\n\nMinh Châu bước tới bàn họp, rút ra những giấy tờ và hình ảnh: giấy chứng nhận ADN, hình ảnh từ thời thơ ấu của mình, và bức thư nặc danh tố cáo mọi sự thật. \"Đây là bằng chứng,\" cô nói, giọng kiên quyết. \"Ông không thể che giấu mãi được.\"\n\nNgười quản lý sắc mặt tái nhợt, hắn ta liếc nhìn đám phóng viên đang ghi chép không ngừng. Hắn ta cố gắng cười, nhưng nụ cười méo mó trông thật thảm hại. \"Mày nghĩ mày có thể lật đổ tao chỉ với những bằng chứng này à? Mày quá ngây thơ rồi, Minh Châu!\"\n\nCô nhìn thẳng vào mắt hắn, không hề run. \"Không phải chỉ là những giấy tờ này. Mà là sự thật. Sự thật mà ông đã che giấu quá lâu. Sự thật khiến ông phải run rẩy trước ánh sáng.\" Cô quay sang đám phóng viên, \"Và chính các ông, các bà, những người đang theo dõi sự việc này, mới là người đưa sự thật ra ánh sáng.\"\n\nNgười quản lý, giờ đây, không còn đứng vững được nữa. Sự kiện hiển nhiên đã buộc hắn ta phải đứng dậy, điên cuồng phản biện. \"Tao sẽ kiện mày! Đũa mốc mà dám trèo mâm son, mày sẽ chẳng nhận được gì ngoài thất bại thảm hại!\"\n\nBất chợt, mẹ ruột của Minh Châu, bà Lan, tiến lên, giọng bà run rẩy nhưng đầy quyết tâm: \"Anh nghĩ rằng anh có thể thoát khỏi tất cả sao? Anh đã phá nát gia đình tôi, cướp đi con gái tôi, nhưng hôm nay, anh sẽ phải đối diện với những gì mình đã làm.\" Ánh mắt bà nhìn xoáy vào hắn ta, buộc hắn phải cúi đầu, không thể nói nên lời.\n\nCuộc họp báo kết thúc trong sự choáng váng của tất cả mọi người. Minh Châu, giờ đây đã đứng vững, cảm nhận được sự tự do và sức mạnh của mình. Cô biết rằng con đường phía trước còn nhiều khó khăn, nhưng chỉ cần gia đình cô ở bên, không điều gì có thể khuất phục được cô nữa.\n\nBên ngoài, trời đổ mưa. Minh Châu đứng dưới cơn mưa, để những giọt nước mát lạnh xóa đi những tổn thương trong lòng. Cô nhắm mắt, hít thở sâu, và khi mở mắt ra, cô cảm nhận được ánh sáng từ nụ cười của mình lần đầu tiên.\n\nVà rồi, từ phía xa, tiếng bước chân vang lên, làm giật mình Minh Châu. Cô quay lại, chỉ thấy bóng người đang đến gần, một câu nói vang vọng trong không gian: \"Châu, cô chưa biết điều gì đang chờ đón mình đâu...\""
+        },
+        {
+          "episode": 11,
+          "title": "Chương 11: Đánh Sập Đế Chế Đen",
+          "content": "Minh Châu đứng trân trối giữa phòng, ánh mắt sắc như dao lướt qua từng người hiện diện. Không khí đặc quánh căng thẳng, im lặng đến mức có thể nghe rõ tiếng kim đồng hồ tí tách trong góc phòng. Một cuộc họp báo bất ngờ đã được tổ chức, thu hút đông đảo phóng viên, nhà báo từ khắp nơi. Mọi người đều biết, hôm nay sẽ là một ngày định mệnh, không chỉ cho riêng Minh Châu mà còn cho cả ngành giải trí đang lung lay bởi sóng gió scandal.\n\nNgười quản lý - kẻ bấy lâu nay chễm chệ trong lòng thế giới hào nhoáng - nay đứng đó với gương mặt lạnh lẽo, đầy xảo trá. Gã cố tỏ ra bình thản, nhưng khóe môi giật giật, lộ rõ sự căng thẳng. Minh Châu từ từ bước lên bục, với sự tự tin và quyết tâm mạnh mẽ, ánh mắt cô chiếu rọi tới từng người, như muốn nói rằng: \"Hãy nhìn tôi chứng minh sự thật.\"\n\nCô chậm rãi giơ lên chiếc phong bì chứa đựng những bằng chứng không thể chối cãi - hình ảnh, tài liệu, tất cả đều được chuẩn bị kỹ lưỡng, đóng dấu sự thật không thể bác bỏ. \"Đây là tất cả những gì tôi cần để vạch trần sự dối trá mà tôi đã sống chung suốt bao năm. Đây là minh chứng cho sự thống khổ của một đứa trẻ bị bắt cóc, bị giam cầm trong lồng son của hào nhoáng giả tạo.\"\n\nGương mặt người quản lý thoáng tái mét, giọng hắn mang theo chút run rẩy, cố đổ lỗi cho đám thuộc hạ, nhưng đã quá muộn. Minh Châu tiếp tục: \"Và đây, một đơn kiện chính thức, sẽ được đệ trình lên tòa án ngay lập tức. Không ai có thể thoát khỏi sự trừng phạt của công lý.\"\n\nTiếng xì xào lan truyền khắp căn phòng. Phóng viên vội vàng ghi chép, máy quay khắp nơi lấp lánh ánh đèn nhấp nháy không ngừng. Người quản lý như bị dồn vào chân tường, giọng điệu gã chuyển từ bình thản sang hoảng loạn: \"Cô đang phá hoại tất cả những gì tôi đã dựng lên! Cô nghĩ cô là ai mà dám làm điều này?\"\n\nMinh Châu điềm nhiên đáp trả, từng chữ như từng nhát dao chí mạng: \"Chỉ là một đứa con gái tìm lại gia đình của mình. Và ông, kẻ đã đánh cắp cả tuổi thơ tôi, sớm muộn cũng sẽ phải trả giá.\" Cô dừng lại, ánh mắt lạnh lùng quét qua gương mặt xám xịt của gã quản lý, rồi tiếp tục: \"Tôi sẽ không dừng lại cho đến khi công lý được thực thi.\"\n\nNgười quản lý không còn giữ được bình tĩnh, bật thốt lên trong cơn tức giận và tuyệt vọng: \"Không! Tao sẽ không để mày hủy diệt tao!\" Nhưng giọng nói của hắn bị chìm lấp bởi tiếng hò reo ủng hộ từ phía công chúng, những người đến đây để chứng kiến sự sụp đổ của một đế chế dối trá.\n\nMinh Châu quay lưng bước đi, để lại phía sau người quản lý với hàng ngàn ánh mắt đang đổ dồn vào hắn. Tại thời khắc đó, cô biết rằng mình đã thực sự giải thoát. Ngón tay cô khẽ chạm vào tờ đơn kiện, như nhắc nhở bản thân rằng đây chỉ mới là khởi đầu. Số phận của cô và gia đình đang được nối lại từng chút một, từng mảnh ghép sẽ dần hoàn thiện.\n\nVà khi mọi sự hỗn loạn qua đi, một cánh cửa mới đã mở ra cho Minh Châu, rạng rỡ hy vọng và tự do. Nhưng ngay khoảnh khắc ấy, một bàn tay lạ mặt chạm vào vai cô từ phía sau, kéo cô trở lại với một câu nói đầy bí ẩn: \"Câu chuyện còn chưa kết thúc đâu.\""
+        },
+        {
+          "episode": 12,
+          "title": "Chương 12: Tái Sinh Cuộc Đời",
+          "content": "Trong phòng khách rộng lớn của ngôi biệt thự xa hoa, Minh Châu ngồi lặng lẽ trên ghế sofa. Cô cảm nhận rõ mùi hương dịu nhẹ của hoa nhài từ những bình hoa lớn trải dọc khắp căn phòng. Ánh nắng chiều vàng nhạt len qua những khung cửa sổ, tạo thành một khung cảnh bình yên nhưng cũng đầy xúc động. Mọi thứ dường như quá xa lạ mà cũng quá đỗi quen thuộc. \n\nTrước mặt cô, hai người lớn tuổi, dáng vẻ đầy đạo mạo, nhìn cô với ánh mắt chan chứa tình thương. Họ là cha mẹ ruột của cô, những người mà cô đã tìm kiếm suốt bấy lâu nay mà không hề hay biết họ cũng khao khát được gặp lại đứa con gái nhỏ đã mất tích từ lâu. \"Chúng ta đã chờ đợi ngày này quá lâu rồi,\" người đàn bà bật khóc, giọng nói rung rung vừa mừng vừa vui. Người đàn ông bên cạnh khẽ đặt tay lên vai vợ, kiềm chế những giọt nước mắt xúc động. \n\nMinh Châu cảm nhận được lồng ngực mình như bị bóp nghẹt. Cô ngập ngừng vươn tay nắm lấy tay của người đàn bà – mẹ ruột của mình. \"Con xin lỗi đã để ba mẹ chờ đợi lâu đến thế,\" cô nghẹn ngào. Một luồng cảm xúc mạnh mẽ trỗi dậy, vừa như nhẹ nhàng vỗ về, vừa như thổi bùng lên ngọn lửa ấm áp trong lòng cô. Đây là gia đình thật sự của cô, là mái ấm mà cô đã bị cướp đi từ thuở bé. \n\nNhững ngày sau đó, Minh Châu bắt đầu sống cùng gia đình ruột thịt của mình, từng bước làm quen với cuộc sống mới. Cô cảm thấy được yêu thương, được che chở trong vòng tay ấm áp của ba mẹ. Thế nhưng, trong khoảng lặng yên bình ấy, vẫn còn đó những dư chấn từ quá khứ đầy gian truân. \n\nTin đồn về scandal giả mạo và cuộc sống riêng tư bị phơi bày khắp các trang báo, làm dư luận ồn ào không dứt. Minh Châu từng bị đẩy xuống vực sâu của sự tuyệt vọng, khi công ty quản lý quyết tâm hủy hoại danh tiếng của cô, nhưng giờ đây, cô đã mạnh mẽ hơn bao giờ hết. Từng trải qua nỗi sợ hãi và đau đớn, giờ đây cô biết rằng đây chỉ là những trở ngại tạm thời. \n\nNhìn vào gương, Minh Châu thấy hình ảnh một cô gái mạnh mẽ, dẫu rằng tâm hồn có chút tổn thương nhưng không còn là con rối trong bàn tay của kẻ khác. Cô nhìn thấy những vết sẹo tâm hồn như dấu tích của một quá trình trưởng thành đầy khắc nghiệt. Cô biết rằng quá trình chữa lành sẽ không dễ dàng, nhưng cô cảm thấy được tiếp thêm sức mạnh từ chính trải nghiệm đó. \n\nMỗi sáng thức dậy, Minh Châu đứng bên cửa sổ, hít thở không khí trong lành, cảm nhận ánh sáng mặt trời chiếu lên gương mặt mình. Những tia nắng ấy như một lời nhắc nhở rằng cô đã vượt qua bao nhiêu xáo trộn để được đứng vững nơi đây. Cô học cách tin tưởng, học cách đương đầu với những thử thách mới và xây dựng lại cuộc sống của mình. \n\nTrong một buổi chiều hè dịu mát, khi cô đang ngồi dưới giàn hoa hồng nơi khu vườn yên tĩnh, Minh Châu cảm nhận được một sự bình yên lạ thường. Giờ đây, cô không còn là ngôi sao giả tạo nơi ánh đèn sân khấu chói lòa, mà là Minh Châu, một cô gái được yêu thương, được sống đúng với con người thật của mình. \n\nVà rồi, một tiếng chuông điện thoại bất chợt vang lên, cắt ngang mạch dòng suy nghĩ của cô. Không phải là tin nhắn hay cuộc gọi quen thuộc, mà là một tin nhắn nặc danh với nội dung khiến Minh Châu khựng lại. \"Kẻ đứng sau vở diễn cuộc đời mày chưa hoàn toàn bị lật tẩy.\" Tin nhắn ngắn ngủi nhưng mang theo lời cảnh báo đầy ẩn ý, không cho cô thời gian suy ngẫm sâu hơn..."
+        },
+        {
+          "episode": 13,
+          "title": "Chương 13: Kiến Tạo Tương Lai",
+          "content": "Minh Châu đứng trước gương, nhìn mình một lần cuối trong bộ trang phục lấp lánh của ngôi sao mà cô đã khoác lên suốt bao năm qua. Hình ảnh phản chiếu kia chẳng còn là cô nữa, chỉ là cái bóng giả tạo của một nhân vật công chúng mà công ty quản lý đã dựng nên. Trong tim cô dấy lên một cảm giác tự do, như một dòng suối trong lành thổi qua sa mạc cằn cỗi. Hôm nay sẽ là một ngày mới, bắt đầu của một chương đời khác, không còn bị trói buộc bởi những xiềng xích vô hình.\n\nNgười hâm mộ bí ẩn, người đã giúp đỡ cô trong suốt chặng đường gian khó vừa qua, cuối cùng cũng lộ diện. Anh ta, Hoàng, một chàng trai với nụ cười ấm áp và ánh mắt thông minh, đã giải thích mọi lý do đằng sau việc giúp đỡ Minh Châu. “Anh không chỉ là một fan hâm mộ cuồng nhiệt, Minh Châu à. Anh là người đã chứng kiến sự bất công mà em phải chịu đựng từ lâu”, Hoàng nói, giọng nói chân thành và đầy thuyết phục. Hóa ra, Hoàng từng là một trong những nạn nhân bị công ty quản lý bóc lột, nhưng anh đã thoát ra và quyết tâm giúp đỡ những người khác nếu có cơ hội.\n\nMinh Châu cảm thấy một làn sóng cảm xúc dâng trào trong lòng. Cô không còn cô đơn trong cuộc chiến này. Ngón tay của cô khẽ run lên, không phải vì sợ hãi, mà vì quyết tâm. Cô đã tìm thấy một người bạn đồng hành thật sự, một người có thể tin tưởng. \"Cảm ơn anh, Hoàng\", cô nói, giọng nói nhẹ nhàng mà đầy sự quyết đoán. \"Chúng ta đã làm được rất nhiều điều lớn lao cùng nhau, và em biết rằng đây mới chỉ là khởi đầu.\"\n\nBuổi tối hôm ấy, Minh Châu đứng trên sân khấu, trút bỏ hình tượng ngôi sao giả tạo, công khai xin lỗi và cảm ơn người hâm mộ vì đã luôn ở bên cạnh cô. Cô chia sẻ về hành trình đầy gian khó, về sự thật đã bị che giấu, và tuyên bố sẽ từ bỏ sự nghiệp ca hát để tìm lại bản thân. Đám đông khán giả dưới sân khấu không tràn ngập sự thất vọng như cô từng lo lắng, thay vào đó là những tiếng vỗ tay đồng tình và cảm xúc dâng trào như thể họ đang chứng kiến một cuộc tái sinh mạnh mẽ và chân thực.\n\nÁnh đèn sân khấu dịu đi, và cảm giác tự do bao la hòa quyện trong từng hơi thở của Minh Châu. Cô bước xuống sân khấu, không phải với cảm giác tiếc nuối, mà là với niềm vui sướng khi biết rằng mình đang bước vào một cuộc đời mới, một cuộc đời không còn bị bó buộc bởi bất kỳ ai.\n\nNgày tiếp theo, Minh Châu thức dậy với ánh mặt trời rực rỡ chiếu qua cửa sổ, cảm giác nhẹ nhàng và thanh thản. Cô quyết định dành thời gian cho gia đình ruột thịt, những người mà cô đã tìm ra sau bao năm xa cách, và viết lại cuộc đời của mình. Cô vươn vai, hít một hơi thật sâu, chuẩn bị cho một ngày bắt đầu với công việc từ thiện và các dự án cộng đồng mà cô luôn muốn thực hiện, những điều mà khi còn là ngôi sao cô không bao giờ có thời gian để theo đuổi.\n\nHoàng vẫn ở bên cô, không chỉ là một người ủng hộ trung thành, mà còn là một người bạn thật sự. Họ cùng nhau bắt tay vào các dự án mà trước đây tưởng chừng không bao giờ có thể thực hiện. Minh Châu không chỉ tìm lại được gia đình và tự do, mà còn tìm thấy một mục tiêu sống mới, một tương lai mà cô tự mình kiến tạo. Cô biết rằng sẽ còn nhiều thử thách phía trước, nhưng với sức mạnh vừa tìm lại được, cô sẵn sàng đối mặt với tất cả.\n\nMột lần nữa, Minh Châu nhìn vào gương, nhưng lần này, cô thấy một người con gái cương nghị, hạnh phúc và tự do, không còn là cái bóng của một ngôi sao giả tạo. Cô mỉm cười, rồi quay lại với cuộc sống thực, bắt đầu một hành trình hoàn toàn mới. Tiếng chuông điện thoại vang lên, Minh Châu nhấc máy và nụ cười vẫn không rời khỏi môi khi nghe giọng nói quen thuộc từ phía bên kia: “Sẵn sàng chưa? Cuộc phiêu lưu mới đang đợi em, Minh Châu à.”\n\nLời mời gọi ấy như một ngọn lửa bùng cháy trong lòng cô, một ngọn lửa không bao giờ tắt. Cô bước ra khỏi phòng, đón chào tương lai đầy hứa hẹn đang mở ra trước mặt. Nhưng đúng lúc đó, tiếng gõ cửa vang lên, mở ra một bí ẩn mới. Ai đang đợi cô bên ngoài ngưỡng cửa kia? Một thách thức mới, một nhân duyên bất ngờ hay một bí mật chưa từng được tiết lộ? Câu trả lời vẫn đang chờ đợi Minh Châu ở phía trước, trong cuộc hành trình mà chính cô sẽ là người viết nên.\n\n(Tiếng gõ cửa vang lên, mở ra một bí ẩn mới...)"
+        }
+      ]
     },
     {
       "id": "jd7uwvus",
-      "status": "writing",
-      "chaptersDone": 0,
-      "wordCount": 0,
+      "status": "pending",
+      "chaptersDone": 4,
+      "wordCount": 2922,
       "title": "Hồn Khúc Ngàn Năm Duyên Phận Oan Gia",
       "genres": "Tự do",
       "prompt": "Kịch Bản: \"Mẹ Chồng Tôi Là Ảnh Hậu Giả Mạo\"\nThể loại: Gia đấu, Hiện đại, Bí mật huyết thống.\n\nCốt truyện: * Mở đầu: Vy là con dâu ngoan hiền trong một gia đình hào môn có bà mẹ chồng luôn tỏ ra quý phái, là chuẩn mực đạo đức.\n\nXung đột: Vy phát hiện mẹ chồng đang âm thầm dùng thuốc an thần liều cao để khống chế chồng mình, nhằm chiếm đoạt quyền điều hành công ty.\n\nCao trào: Vy dùng năng lực UI/UX và AI (tận dụng chất liệu đời thực của sếp) để khôi phục lại các đoạn camera bị xóa, phát hiện mẹ chồng thực chất là \"kẻ thứ ba\" năm xưa đã hại chết mẹ ruột của chồng cô để bước chân vào hào môn.\n\nCú Twist: Bà mẹ chồng định đổ tội ngoại tình cho Vy, nhưng Vy đã livestream toàn bộ cảnh bà ta đang tự thú trong cơn phê thuốc ngay trên Fanpage triệu sub của website DTT.",
@@ -1313,18 +1253,97 @@
         "plotTwists": "Kẻ sát nhân thật sự lại là người tình kiếp trước của Quân, và cái chết của Quân là một sự hy sinh để bảo vệ người đó, một bí mật mà chính Quân cũng đã quên.",
         "overallSizzle": "Mối tình xuyên kiếp, oan hồn không siêu thoát, liệu tình yêu có thể hàn gắn nỗi đau từ hàng trăm năm và đưa những linh hồn về nơi an nghỉ cuối cùng?",
         "suggestedGenres": "Huyền bí, Lãng mạn, Tiền kiếp, Bí ẩn",
-        "suggestedChapters": 11
+        "suggestedChapters": 11,
+        "timeline": [
+          {
+            "chapter": 1,
+            "title": "Đánh Thức Ám Ảnh Cổ Xưa",
+            "outline": "Giới thiệu Hạ Lam, cô gái trẻ sống cùng khả năng đặc biệt nhìn thấy và giao tiếp với linh hồn. Cuộc sống của cô bị đảo lộn khi hồn ma Quân xuất hiện, ám ảnh cô bằng những giấc mơ và lời cầu cứu. Hạ Lam ban đầu hoảng sợ, tìm cách né tránh nhưng dần bị cuốn hút bởi nỗi bi kịch của Quân và cảm giác đồng cảm kỳ lạ."
+          },
+          {
+            "chapter": 2,
+            "title": "Lần Mở Những Mảnh Ký Ức Đứt Gãy",
+            "outline": "Hạ Lam bắt đầu tin lời Quân, nhưng khi cô chia sẻ câu chuyện với bạn bè hoặc những người thân thiết, họ chế giễu, cho rằng cô hoang tưởng hoặc bị căng thẳng. Quân cung cấp những mảnh ký ức rời rạc, dẫn Hạ Lam đến một địa điểm lịch sử cổ xưa. Cô bị coi thường, nhưng cô kiên quyết tìm kiếm manh mối, bất chấp sự khinh rẻ từ những người xung quanh."
+          },
+          {
+            "chapter": 3,
+            "title": "Vạch Trần Lớp Bụi Thời Gian",
+            "outline": "Hạ Lam tìm đến thư viện, bảo tàng, gặp gỡ những nhà nghiên cứu lịch sử nhưng bị họ gạt phăng những giả thuyết kỳ lạ của cô. Bằng sự kiên trì, cô phát hiện ra một tài liệu cổ xưa bị thất lạc, hé lộ tên một gia tộc quyền lực và một sự kiện lịch sử bị che đậy liên quan đến cái chết của Quân. Một người cao tuổi (người trông coi di tích, hoặc người yêu thích lịch sử) vô tình cung cấp cho cô manh mối quan trọng."
+          },
+          {
+            "chapter": 4,
+            "title": "Đập Tan Hoài Nghi Cố Chấp",
+            "outline": "Hạ Lam dùng những bằng chứng nhỏ vừa tìm được để đối chất với nhóm người đã từng khinh thường cô, đặc biệt là một nhà nghiên cứu lịch sử trẻ tuổi. Cô chứng minh được sự tồn tại của một chi tiết lịch sử nhỏ mà họ bỏ qua, khiến họ bất ngờ và bắt đầu nhen nhóm sự nghi ngờ về những gì họ tin. Đây là một màn 'vả mặt' nhẹ, mở đường cho những sự thật lớn hơn và khiến Hạ Lam tự tin hơn vào bản thân."
+          },
+          {
+            "chapter": 5,
+            "title": "Bẫy Rập Từ Cõi Âm",
+            "outline": "Khi Hạ Lam đào sâu hơn vào vụ án của Quân, cô bị tấn công bởi những linh hồn oán hận khác hoặc những thế lực siêu nhiên muốn ngăn cản sự thật bị phơi bày. Cô nhận ra có một âm mưu lớn hơn đang bảo vệ bí mật này. Quân cố gắng bảo vệ Hạ Lam nhưng sức lực của anh hữu hạn. Hạ Lam phải học cách tự bảo vệ mình và tìm hiểu thêm về thế giới tâm linh."
+          },
+          {
+            "chapter": 6,
+            "title": "Phanh Phui Dấu Vết Triều Đại",
+            "outline": "Hạ Lam kết nối vụ án của Quân với một vụ án hoàng tộc bị chôn vùi, một bí mật liên quan đến quyền lực và sự phản bội trong quá khứ. Cô phát hiện ra những hậu duệ của những kẻ đã che giấu sự thật vẫn còn sống và đang cố gắng bảo vệ danh tiếng gia tộc. Cô đối mặt với một thành viên trẻ tuổi, kiêu ngạo của gia tộc đó, người ban đầu khinh miệt và đe dọa cô. Hạ Lam dùng những bằng chứng không thể chối cãi để khiến người này phải im lặng."
+          },
+          {
+            "chapter": 7,
+            "title": "Vây Hãm Bằng Lời Buộc Tội",
+            "outline": "Gia tộc quyền lực bị Hạ Lam đụng chạm bắt đầu phản công mạnh mẽ. Họ dùng quyền lực và sự ảnh hưởng để bôi nhọ Hạ Lam, lan truyền tin đồn cô bị tâm thần, hoặc thậm chí tạo bằng chứng giả để đẩy cô vào thế khó khăn, đe dọa công việc hoặc cuộc sống cá nhân của cô. Hạ Lam bị cô lập, đứng trước nguy cơ mất tất cả, bị xã hội ruồng bỏ và bạn bè nghi ngờ."
+          },
+          {
+            "chapter": 8,
+            "title": "Lật Tẩy Toàn Bộ Màn Kịch Độc",
+            "outline": "Trong lúc tuyệt vọng, Hạ Lam nhận được sự giúp đỡ từ một linh hồn khác hoặc một bằng chứng không ngờ tới từ Quân. Cô công khai tất cả những gì cô đã tìm thấy, vạch trần âm mưu của gia tộc kia và chứng minh sự trong sạch của mình trước công chúng. Những kẻ từng khinh thường cô phải chứng kiến sự thật bị phơi bày, danh tiếng của họ sụp đổ, và chính họ phải đối mặt với hậu quả pháp lý hoặc xã hội. Đây là màn 'vả mặt' lớn nhất."
+          },
+          {
+            "chapter": 9,
+            "title": "Xé Nát Bức Màn Tình Ái Phản Trắc",
+            "outline": "Sau khi minh oan cho Quân về tội giết người, Hạ Lam khám phá ra bí mật đau lòng nhất: kẻ sát nhân thật sự lại là người tình kiếp trước của Quân. Quân đã tự nguyện hy sinh, chấp nhận mang tội để bảo vệ người mình yêu khỏi sự trừng phạt. Quân dần nhớ lại toàn bộ sự thật đau đớn này, đối diện với nỗi đau của sự phản bội và tình yêu mù quáng."
+          },
+          {
+            "chapter": 10,
+            "title": "Giải Cứu Linh Hồn Oan Nghiệt",
+            "outline": "Hạ Lam giúp Quân đối diện với sự thật, tha thứ cho người tình và cho chính mình. Với sự thật được phơi bày và lòng thù hận được hóa giải, linh hồn Quân cuối cùng cũng có thể siêu thoát, tìm thấy bình yên sau hàng trăm năm. Hạ Lam cũng giúp những linh hồn oan khuất khác liên quan đến vụ án tìm được bình yên, giải phóng họ khỏi gông cùm của quá khứ."
+          },
+          {
+            "chapter": 11,
+            "title": "Nối Kết Duyên Phận Ngàn Năm",
+            "outline": "Hạ Lam chấp nhận hoàn toàn khả năng của mình và con đường cô đã chọn. Cô nhận ra mối liên kết định mệnh sâu sắc giữa cô và Quân không chỉ là sự giúp đỡ đơn thuần mà còn là duyên nợ từ kiếp trước, một lời thề đã được thực hiện. Cô tìm thấy bình yên và một mục đích sống mới, tiếp tục hành trình giúp đỡ các linh hồn khác và sống một cuộc đời trọn vẹn với khả năng đặc biệt của mình."
+          }
+        ]
       },
       "targetChapters": 11,
       "maxChapters": 15,
       "model": "gpt-4o-mini",
       "outlineEngine": "gemini",
-      "writeEngine": "gemini",
-      "wpPostId": 1224
+      "writeEngine": "openai",
+      "wpPostId": 1224,
+      "chaptersContent": [
+        {
+          "episode": 1,
+          "title": "Chương 1: Đánh Thức Ám Ảnh Cổ Xưa",
+          "content": "Hạ Lam bước vào căn phòng tối tăm, nhỏ bé của mình với tâm trạng nặng nề và đầu óc rối bời. Cô ngồi bệt xuống giường, tựa lưng vào tường lạnh giá. Bóng đèn yếu ớt treo trên trần nhà phát ra ánh sáng nhợt nhạt, làm mọi thứ xung quanh trở nên mờ ảo. Trời đã tối từ lúc nào, nhưng cảm giác lạnh lùng của buổi tối hôm nay dường như len lỏi sâu hơn vào từng kẽ da. Trong không khí, mùi ẩm mốc của căn phòng chật chội khiến cô ngột ngạt, và âm thanh của thành phố phía ngoài ngày càng xa vời, như thể cả thế giới này đang dần biến mất, chỉ còn lại nỗi cô độc bao trùm.\n\nGiữa cơn mơ màng, hình ảnh Quân hiện lên, rõ mồn một. \"Cô phải giúp tôi,\" giọng nói của anh vang vọng trong tâm trí, mê hoặc, nhưng cũng đầy đau khổ. Những ký ức mờ nhạt hiện về: khung cảnh một thành phố cổ kính, những âm thanh của chiến trận, và ánh mắt như chứa đựng cả bầu trời u buồn của Quân. Hạ Lam giật mình tỉnh giấc, mồ hôi lạnh vã ra, đôi mắt mở trừng trừng nhìn trần nhà với nỗi lo sợ không tên. Cô không chắc mình còn phân biệt được đâu là thực, đâu là mơ.\n\nMày rồi cũng điên mất thôi, Hạ Lam tự nhủ, tay cố vỗ về mình nhưng không thể ngừng run rẩy. Những đêm dài không ngủ, những giấc mơ lặp lại nhiều lần như một bộ phim không lời kết thúc. Từ cái đêm định mệnh ấy, khi lần đầu tiên hồn ma Quân xuất hiện trong cơn mộng, cô đã không còn là mình. Ban đầu là kinh hãi, nhưng dần dần, cô không thể phủ nhận cảm giác lôi kéo không thể cưỡng lại từ phía Quân. Như thể giữa họ có một sợi dây vô hình, mà sợi dây ấy ngày càng siết chặt hơn.\n\n\"Quân, mày là ai?\" Hạ Lam thì thầm trong bóng tối, như thể hy vọng anh sẽ đột ngột xuất hiện và giải thích mọi điều. Nhưng đáp lại chỉ là sự im lặng nặng trĩu. Cô lắc đầu, đứng dậy, quyết định đi xuống bếp để uống một ly nước, cố gắng trấn an bản thân. Nhưng đôi chân như dính chặt xuống sàn khi cô lướt qua gương soi. Hình ảnh một cô gái trẻ với khuôn mặt bơ phờ hiện lên, đôi mắt thâm quầng tràn đầy nỗi sợ hãi và mệt mỏi.\n\nChuyện này không thể cứ tiếp diễn mãi được. Cô cần phải tìm ra sự thật, không chỉ để giải thoát cho Quân và cả cho chính mình nữa. Nhưng làm sao đây? Ai sẽ tin một câu chuyện hoang đường như vậy? Hạ Lam nhớ lại những lần mình chia sẻ với bạn bè, ánh mắt giễu cợt và những lời chế nhạo. \"Con điên\", \"Mày đọc truyện ma nhiều quá rồi\", tất cả những điều đó đến giờ vẫn còn ám ảnh. Nhưng sâu thẳm trong lòng, Hạ Lam biết: nếu cô không làm điều gì đó, cả hai sẽ mãi bị mắc kẹt trong vòng lẩn quẩn của những oan khúc chưa được giải quyết.\n\nÁnh sáng của bình minh dần ló dạng sau cửa sổ, lọt qua những khe mành rèm mỏng manh. Nhưng cảm giác kỳ lạ không biến mất, thậm chí như đang lớn dần lên. Cô biết mình phải hành động trước khi bị bóng tối nuốt chửng. Lôi từ ngăn kéo ra một cuốn sổ tay cũ, Hạ Lam ghi chép lại từng mảnh ký ức mà Quân đã kể, từng chi tiết, từng địa điểm, như thể sắp xếp các mảnh ghép trong trò chơi ghép hình phức tạp.\n\nChỉ cần một manh mối, dù nhỏ bé, cũng có thể dẫn cô tới sự thật. Cuốn sổ tay trở thành vật bất ly thân, một minh chứng cho những điều mà không ai có thể thấy ngoài cô. Hạ Lam thầm cầu nguyện rằng đây không phải là sự điên rồ, mà là cơ hội để đưa mọi thứ về đúng vị trí của nó.\n\n\"Chỉ cần một mảnh ghép nữa thôi,\" cô thì thầm, mắt nhìn ra khung cửa sổ, hy vọng rằng một lời giải đáp nào đó đang chờ mình phía trước. Nhưng khi vừa quay đi, một tiếng động nhẹ nhàng từ phía cửa sổ khiến cô giật mình quay lại. Tim Hạ Lam đập mạnh hơn, cảm giác như có ai đó đang theo dõi từng bước chân của mình. Và ngay lúc ấy, một luồng gió lạnh xuyên thấu qua khung cửa, như mang theo một lời nhắn nhủ vô hình.\n\n\"Chúng ta sẽ gặp lại,\" giọng nói quen thuộc của Quân vang lên, nhẹ như hơi thở nhưng đủ sức mạnh để khiến cả thế giới của Hạ Lam rung chuyển. Cô khựng lại, đôi mắt mở to, nhận ra rằng cuộc hành trình này chỉ mới bắt đầu."
+        },
+        {
+          "episode": 2,
+          "title": "Chương 2: Lần Mở Những Mảnh Ký Ức Đứt Gãy",
+          "content": "Hạ Lam ngồi lặng lẽ trên chiếc ghế gỗ cũ kỹ bên cạnh cửa sổ, nhìn ra ngoài trời mưa tầm tã. Những giọt nước róc rách tràn lên kính, tạo thành những dòng chảy không có điểm dừng, như chính tâm trạng của cô lúc này. Đêm qua, hồn ma Quân lại xuất hiện trong giấc mơ của Hạ Lam với đôi mắt u buồn và giọng nói trầm buồn như thoảng qua từ cõi xa xăm. Những mảnh ký ức lạ lùng anh kể đã ăn sâu vào tâm trí cô, như những hình ảnh bóng mờ từ một thế giới khác.\n\nHạ Lam rùng mình một cái khi nghĩ về lần đầu tiên cô gặp Quân. Cảm giác sợ hãi ban đầu đã nhường chỗ cho sự tò mò và đồng cảm. Nhưng liệu cô có nên tin vào một hồn ma, hay tất cả chỉ là sản phẩm của trí tưởng tượng bị ám ảnh?\n\nCô quyết định chia sẻ câu chuyện với bạn thân của mình, Linh. Nhưng đáp lại chỉ là tiếng cười châm biếm và ánh mắt xem thường. \"Mày điên rồi à? Đừng có tưởng tượng nữa. Có khi chỉ là do mày làm việc quá sức thôi, cần phải nghỉ ngơi. Hồn ma? Nghe thật là điên rồ!\" Linh lắc đầu, giọng nói pha chút khó chịu.\n\nHạ Lam cắn môi, nỗi thất vọng dâng trào. Nhưng cô không thể từ bỏ. Trong lòng, cô biết rằng Quân cần cô, và có lẽ, cô cũng cần anh để thoát khỏi sự đơn độc không tên này. Đêm đó, khi cô mơ thấy Quân một lần nữa, anh chỉ dẫn cô đến một địa điểm cổ xưa, nơi mà những ký ức rời rạc của anh có thể tìm được lời giải thích.\n\nNgày hôm sau, Hạ Lam quyết định đến địa điểm mà Quân đã chỉ dẫn trong giấc mơ. Đó là một ngôi đền nhỏ nằm sâu trong khu rừng ít người biết đến. Cô cảm nhận được một luồng khí lạ lùng bao trùm lấy nơi này, như thể thời gian đang ngưng đọng. Hạ Lam bắt đầu lục lọi từng góc nhỏ trong đền, tìm kiếm một manh mối nào đó có thể làm sáng tỏ ký ức của Quân.\n\nNhưng khi cô kể về chuyến đi kỳ lạ của mình với bạn bè, ánh mắt nghi ngờ và giễu cợt lại một lần nữa đổ dồn về phía cô. \"Mày bị ám ảnh quá rồi, Hạ Lam ạ. Thực tế đi, đừng mơ mộng nữa. Thời đại nào rồi mà còn tin vào ma quỷ!\"\n\nHạ Lam cảm thấy lòng tự tôn của mình bị tổn thương sâu sắc. Mọi người đều nghĩ cô điên rồ, nhưng cô không thể bỏ cuộc. Cô không thể quay lưng với tiếng gọi từ cõi âm. Hạ Lam quyết định rằng cô sẽ theo đuổi sự thật cho dù mọi người có nghĩ gì đi chăng nữa.\n\nTối hôm đó, khi ngọn nến trong phòng dần tắt, để lại một màn tối âm u, Hạ Lam vẫn ngồi bên bàn, nghiền ngẫm những điều đã xảy ra. Tiếng mưa rơi đều đặn bên ngoài, như tiếng thì thầm từ nơi xa xăm vọng về. Cô nhắm mắt lại, chìm đắm vào dòng suy nghĩ miên man và lời nói của Quân cứ vang vọng trong đầu.\n\nNgay lúc cô cảm thấy tuyệt vọng nhất, một giọng nói quen thuộc lạ kỳ vang lên bên tai. Không phải từ Quân mà là âm thanh của một giấc mơ cũ. \"Hạ Lam, đừng từ bỏ. Sự thật nằm trong tay mày.\" Câu nói ấy vừa là an ủi, vừa là thúc ép cô đi tiếp. Hạ Lam biết rằng hành trình phía trước sẽ không dễ dàng, nhưng cô không còn đường lùi. Chỉ có một cách duy nhất để cô tìm được bình yên, đó là vén mở bức màn bí ẩn đã được phủ kín cả thế kỷ. \n\nKhi ánh sáng của buổi sáng bắt đầu le lói qua màn sương đêm, Hạ Lam nắm chặt đôi tay, quyết tâm không để điều gì có thể dập tắt niềm tin trong cô. Đột nhiên, một tiếng gõ cửa vang lên giữa đêm tĩnh mịch, kéo cô về với thực tại. Ai có thể xuất hiện vào giờ này?"
+        },
+        {
+          "episode": 3,
+          "title": "Chương 3: Vạch Trần Lớp Bụi Thời Gian",
+          "content": "Hạ Lam ngồi lặng lẽ trong góc khuất của thư viện, ánh mắt mơ hồ lướt qua từng trang giấy cũ ố màu thời gian. Nơi đây, giữa những kệ sách cao ngất, cô cảm thấy như bị vây hãm bởi những bí ẩn u uất của quá khứ. Cô đã nghe lời Quân, nỗ lực lần theo những mảnh ký ức đứt gãy anh truyền đạt qua giấc mơ. Nhưng khi nhìn đống sách chất thành ngọn núi nhỏ trước mặt, cô không khỏi cảm thấy chán nản. Liệu có chút manh mối nào về án oan của Quân đang lẩn khuất đâu đó giữa đống giấy tờ này không?\n\nMột tiếng động nhẹ vang lên, kéo Hạ Lam ra khỏi dòng suy nghĩ. Đó là một người đàn ông cao tuổi, dáng vẻ tảo tần nhưng nét mặt nhân hậu. Ông đang kê lại những cuốn sách cũ lên kệ, một công việc dường như đã trở thành thói quen hàng ngày của ông. Hạ Lam nhớ lại những lời đồn thổi về ông, người trông coi lâu đời của thư viện này, cũng là người từng được coi như là người sống chứng kiến nhiều nhất những bí ẩn lịch sử của thành phố.\n\n\"Tôi có thể giúp gì cho cô không?\" Giọng nói từ tốn của ông vang lên, kéo theo một cơn gió nhẹ thoảng qua những dòng chữ bụi bặm. Hạ Lam ngẩng lên, đôi mắt sáng thêm vài phần.\n\n\"Cháu đang tìm kiếm về một sự kiện lịch sử từ rất lâu rồi, nhưng lại không thể tìm thấy bất kỳ tài liệu nào. Ông có thể biết chút thông tin nào không?\" Hạ Lam nói, giọng pha lẫn chút ngập ngừng.\n\nNgười đàn ông nhíu mày, nhìn cô vài giây trước khi gật đầu: \"Cô có thể nói rõ hơn không? Thời điểm nào và liên quan đến chuyện gì?\"\n\nHạ Lam không chần chừ, kể lại mọi thứ mà cô đã biết. Câu chuyện về Quân, hồn ma bị buộc tội oan, và một gia tộc bí ẩn dường như liên quan đến cái chết của anh. Ông lão nghe nhưng im lặng, đôi mắt chăm chú không rời Hạ Lam, như muốn thẩm thấu từng lời cô nói.\n\n\"Khi còn trẻ, tôi đã từng nghe qua về một gia tộc quyền lực đã sống ở đây hàng trăm năm trước,\" ông đáp, giọng đầy suy tư. \"Họ từng bị đồn đại liên quan đến nhiều sự kiện kỳ bí. Để tôi xem, có lẽ đâu đó vẫn còn lưu lại vài tài liệu.\"\n\nHạ Lam khấp khởi, hy vọng len lỏi trong lòng. Ông lão chậm rãi lục lọi trong đầu, rồi dẫn Hạ Lam đến một căn phòng nhỏ khuất sau nhiều lớp cửa gỗ. Ở đó, ông chỉ cho cô một hòm tài liệu cũ kĩ, bị bỏ quên theo thời gian.\n\n\"Đây là những gì còn lại từ thời đó. Cô nên tìm hiểu kỹ, biết đâu nó sẽ giúp cô tìm ra manh mối cần thiết,\" ông lão nói, mỉm cười yếu ớt.\n\nHạ Lam hồi hộp mở từng trang, tim đập thình thịch trong lồng ngực. Ánh sáng nhạt nhòa từ cửa sổ soi rọi từng dòng chữ đã mờ nhòe, nhưng vẫn có thể đọc được. Cô nhìn thấy tên một gia tộc mà Quân đã nhắc đến, cùng một sự kiện lịch sử đầy bất công bị che đậy tỉ mỉ.\n\nĐôi tay cô run rẩy, nhưng trong lòng lại tràn ngập quyết tâm. Cô biết mình đang đi đúng hướng, và điều này sẽ dẫn cô đến sự thật bị chôn vùi từ lâu.\n\nSau khi cảm ơn ông lão, Hạ Lam rời khỏi thư viện với một tâm trạng phức tạp. Trái tim cô rộn ràng với những suy nghĩ đan xen. Âm thanh tiếng mưa rơi lộp bộp bên ngoài không che lấp nổi nụ cười nhẹ trên môi cô. Nụ cười của một người vừa nắm được chìa khóa dẫn tới bí mật bị giấu kín. Nhưng liệu cô có đủ sức mạnh để lật tẩy tất cả không? \n\nĐúng lúc đó, điện thoại trong túi áo bất ngờ rung lên, Hạ Lam khựng lại giữa dòng người tấp nập. Một tin nhắn lạ xuất hiện trên màn hình, chỉ vỏn vẹn vài chữ nhưng khiến cô chết lặng: \"Dừng lại, nếu không muốn gặp rắc rối.\""
+        },
+        {
+          "episode": 4,
+          "title": "Chương 4: Đập Tan Hoài Nghi Cố Chấp",
+          "content": "Hạ Lam đứng trước cửa phòng họp, sự hồi hộp hiện rõ trên từng đường nét khuôn mặt. Cô đã chờ đợi giây phút này bấy lâu, để chứng minh cho những kẻ từng khinh khỉnh nhìn mình thấy rằng cô không phải hạng đầu óc hay tin vào mấy chuyện nhảm nhí. Trong tay cô là một tập tài liệu, những chứng cứ lịch sử mà cô đã dày công thu thập được, chi tiết từng dòng một. Nhưng không chỉ có vậy, cả trái tim và linh hồn cô cũng đặt cược vào đây, vào niềm tin rằng cô đang đi đúng hướng.\n\nPhòng họp chật kín người, phần lớn là các nhà nghiên cứu lịch sử, và đặc biệt là Trí - gã thanh niên trẻ tuổi với vẻ ngoài kiêu ngạo luôn coi thường cô. Trí từng không ít lần mỉa mai Hạ Lam là ảo giác, sống trong thế giới của những bóng ma và tưởng tượng. Nhưng hôm nay, anh ta sẽ phải nhìn lại tất cả.\n\n\"Con nhóc này muốn làm trò gì đây?\" Trí khinh bỉ nhìn Hạ Lam qua chiếc kính cận dày cộp.\n\nHạ Lam nhấp môi, khẽ gật đầu, bắt đầu mở lời: \"Tôi xin lỗi nếu làm phiền quý vị, nhưng sự thật tôi không thể ngồi yên khi biết có điều gì đó không đúng. Những mảnh ký ức mà Quân... tôi có được dẫn tôi đến những khám phá mà tôi nghĩ nên được chia sẻ.\"\n\nTrí cười khẩy: \"Vẫn là câu chuyện linh hồn và kiếp trước của cô à?\"\n\n\"Không phải chỉ là câu chuyện,\" Hạ Lam bày tỏ, đôi mắt sáng lên sự kiên định. \"Tôi đã tìm được bằng chứng về một sự kiện lịch sử mà chúng ta từng cho là không tồn tại.\"\n\nCô mở tập tài liệu, giọng nói rõ ràng, từng chữ vang lên mạnh mẽ. Đó là một bức thư cổ, một tài liệu mà Hạ Lam tình cờ phát hiện ra trong một cuốn sách cũ phủ đầy bụi tại thư viện. Bức thư ghi lại những toan tính và âm mưu, dấu vết còn sót lại của một gia tộc quyền lực từng thao túng triều đình.\n\nTrí nhíu mày, sự tò mò bắt đầu nhen nhóm trong ánh mắt anh ta. \"Điều này... là thật sao? Làm sao cô có được tài liệu này?\"\n\nHạ Lam nhếch môi, sự tự tin bừng sáng trên gương mặt. \"Đơn giản thôi, chỉ cần chịu khó tìm kiếm, mở mắt nhìn những điều tưởng như vô hình.\"\n\nKhông khí trong phòng dần thay đổi, những tiếng xì xầm bỗng ngừng lại, nhường chỗ cho sự tập trung tuyệt đối vào Hạ Lam. Trong tích tắc, cô đã biến mình từ cô gái bị coi thường thành một người có chính kiến, khiến cả căn phòng phải lắng nghe.\n\n\"Cần thêm bằng chứng để xác thực,\" Trí nghiêm giọng, nhưng không còn vẻ khinh khi như trước.\n\nHạ Lam cười nhạt. \"Câu chuyện này chỉ mới bắt đầu, còn rất nhiều điều đang chờ ở phía trước.\"\n\nCuộc trao đổi kết thúc, nhưng phần lớn mọi người vẫn tiếp tục dừng lại để trò chuyện với Hạ Lam, không ít người đề nghị được xem xét thêm tài liệu của cô. Cảm giác vỡ òa trong lòng, Hạ Lam biết mình đã làm được điều kỳ diệu.\n\nNhưng khi cô chuẩn bị rời đi, cánh tay bỗng khựng lại khi có một tin nhắn lạ đổ chuông trong điện thoại. \"Muốn biết sự thật?\" Nội dung tin nhắn ngắn gọn, không có số người gửi. Nhưng ký tự vừa đọc xong, một luồng khí lạnh chạy dọc sống lưng Hạ Lam. Sự tò mò lẫn lo lắng bủa vây, khiến cô không thể nào ngăn được suy nghĩ vẩn vơ về điều sẽ đến."
+        }
+      ]
     },
     {
       "id": "68pg48lo",
-      "status": "draft_outline",
+      "status": "pending",
       "chaptersDone": 0,
       "wordCount": 0,
       "title": "Dược Cấm Huyết Thống Thần Y Luân Hồi",
@@ -1338,17 +1357,85 @@
         "plotTwists": "Người đứng đầu tập đoàn dược phẩm lại chính là ông nội của cô, và loại dược cấm đó ban đầu được tạo ra để cứu chữa bệnh tật của chính mẹ cô.",
         "overallSizzle": "Cuộc chiến sinh tử nơi ranh giới giữa y đức và lợi nhuận, giữa sự sống và cái chết được định đoạt bởi một liều thuốc.",
         "suggestedGenres": "Y học, Bí ẩn, Thù hận, Đô thị",
-        "suggestedChapters": 13
+        "suggestedChapters": 13,
+        "timeline": [
+          {
+            "chapter": 1,
+            "title": "Bóc Mẽ Hồ Sơ Tử Thần",
+            "outline": "Ánh Tuyết, một bác sĩ trẻ đầy nhiệt huyết, tình cờ phát hiện những điểm bất thường nghiêm trọng trong hồ sơ y tế về cái chết bí ẩn của mẹ mình nhiều năm trước, dấy lên nghi ngờ về một bí mật bị che giấu kỹ lưỡng trong ngành y."
+          },
+          {
+            "chapter": 2,
+            "title": "Chôn Vùi Lương Tâm Y Đức",
+            "outline": "Ánh Tuyết bắt đầu điều tra nhưng ngay lập tức bị những thế lực trong bệnh viện và tập đoàn dược phẩm khổng lồ Zenith Pharma ngăn cản, khinh thường và gạt bỏ ý kiến của cô như một sự ngây thơ nông nổi. Cô nghe loáng thoáng về một loại 'dược cấm' đầy tai tiếng."
+          },
+          {
+            "chapter": 3,
+            "title": "Đánh Hơi Độc Dược Cấm",
+            "outline": "Ánh Tuyết tìm thấy những manh mối đầu tiên về loại 'dược cấm' từ những tài liệu cũ kỹ của mẹ. Trong quá trình này, cô gặp gỡ Lục Phong, một đồng nghiệp nam bí ẩn, vẻ ngoài lạnh lùng nhưng lại sở hữu kiến thức uyên bác về y học cổ truyền và dược liệu cấm."
+          },
+          {
+            "chapter": 4,
+            "title": "Trừng Phạt Sai Lầm Ngông Cuồng",
+            "outline": "Với sự giúp đỡ gián tiếp và những gợi ý tinh tế từ Lục Phong, Ánh Tuyết vạch trần một vụ sử dụng sai mục đích hoặc tác dụng phụ nguy hiểm của một loại thuốc có liên quan đến Zenith Pharma, khiến một số bác sĩ cấp cao bị khiển trách và làm lung lay niềm tin của công chúng. Đây là cú vả mặt đầu tiên vào sự coi thường của họ."
+          },
+          {
+            "chapter": 5,
+            "title": "Đẩy Ngã Kẻ Ngáng Đường",
+            "outline": "Tập đoàn Zenith Pharma không chịu buông tha. Họ phản công bằng cách tung tin đồn, làm mất uy tín của Ánh Tuyết, khiến cô bị cô lập trong ngành. Lục Phong cũng bị giám sát chặt chẽ. Cả hai bị đẩy vào chân tường, buộc phải tìm cách lật ngược tình thế."
+          },
+          {
+            "chapter": 6,
+            "title": "Giải Mã Bản Đồ Cổ Dược",
+            "outline": "Lục Phong quyết định hoàn toàn tin tưởng Ánh Tuyết, tiết lộ bí mật về kiến thức y học cổ truyền và nguồn gốc của 'dược cấm' mà anh đã nghiên cứu bấy lâu. Họ cùng nhau giải mã một bản đồ dược liệu cổ, chỉ ra mối liên hệ sâu sắc với gia tộc của Ánh Tuyết."
+          },
+          {
+            "chapter": 7,
+            "title": "Xé Toang Gia Phả Huyết Thống",
+            "outline": "Ánh Tuyết và Lục Phong đào sâu vào lịch sử gia tộc, phát hiện ra bí mật huyết thống bị chôn vùi và mối liên hệ giữa dòng họ cô với việc bào chế 'dược cấm'. Sự thật kinh hoàng hé lộ: người đứng đầu tập đoàn Zenith Pharma lại chính là ông nội của Ánh Tuyết."
+          },
+          {
+            "chapter": 8,
+            "title": "Bóc Trần Bộ Mặt Giả Dối",
+            "outline": "Ánh Tuyết và Lục Phong thu thập đủ bằng chứng về việc tập đoàn Zenith Pharma thao túng kết quả thử nghiệm và che giấu tác dụng phụ chết người của 'dược cấm'. Cô công khai đối chất với một nhân vật cấp cao trong tập đoàn tại một hội nghị y khoa, khiến họ phải cứng họng và mất mặt trước toàn ngành."
+          },
+          {
+            "chapter": 9,
+            "title": "Vồ Vập Bẫy Gông Cùm",
+            "outline": "Tập đoàn Zenith Pharma, dưới sự chỉ đạo của ông nội Ánh Tuyết, ra tay quyết liệt để dập tắt mọi sự thật. Họ dàn dựng một vụ án, vu khống Ánh Tuyết vi phạm đạo đức nghề nghiệp nghiêm trọng, làm giả chứng cứ, thậm chí là gây nguy hiểm cho bệnh nhân, đẩy cô vào vòng lao lý và khiến dư luận quay lưng hoàn toàn. Lục Phong cũng bị truy lùng gắt gao."
+          },
+          {
+            "chapter": 10,
+            "title": "Xuyên Phá Vòng Vây Hắc Ám",
+            "outline": "Ánh Tuyết và Lục Phong, bị truy đuổi gắt gao, phải ẩn mình và chiến đấu trong tuyệt vọng. Họ tìm cách liên lạc với những nạn nhân hoặc cựu nhân viên của Zenith Pharma còn sót lại lương tâm, tạo thành một liên minh bí mật để tìm cách lật ngược thế cờ trong gang tấc."
+          },
+          {
+            "chapter": 11,
+            "title": "Lột Mặt Nạ Kẻ Sáng Lập",
+            "outline": "Ánh Tuyết đối mặt trực diện với ông nội, vạch trần sự thật cay đắng: loại dược cấm ban đầu được ông tạo ra với ý định cứu mẹ cô nhưng đã bị biến chất bởi lòng tham và quyền lực. Cô buộc ông phải thừa nhận sai lầm và những tội ác đã gây ra, khiến ông ta gục ngã trong sự hổ thẹn và ân hận."
+          },
+          {
+            "chapter": 12,
+            "title": "Đập Tan Tường Thành Vô Đạo",
+            "outline": "Ánh Tuyết, với sự giúp đỡ của Lục Phong và liên minh mới, công khai toàn bộ sự thật về 'dược cấm', những âm mưu y tế đen tối và sự tham nhũng tột độ của Zenith Pharma trước truyền thông và cơ quan chức năng, gây ra một chấn động lớn rung chuyển ngành y tế toàn cầu."
+          },
+          {
+            "chapter": 13,
+            "title": "Tái Sinh Y Đức Thần Y",
+            "outline": "Tập đoàn Zenith Pharma sụp đổ hoàn toàn. Những kẻ liên quan bị trừng trị thích đáng theo pháp luật. 'Dược cấm' được nghiên cứu lại hoặc kiểm soát nghiêm ngặt để phục vụ y học chân chính. Ánh Tuyết và Lục Phong tiếp tục con đường y học, cống hiến để xây dựng một nền y đức trong sạch, bảo vệ sinh mạng con người, và cô tìm thấy sự thanh thản cho cái chết của mẹ mình."
+          }
+        ]
       },
       "targetChapters": 13,
       "maxChapters": 15,
       "model": "gpt-4o-mini",
       "outlineEngine": "gemini",
-      "writeEngine": "gemini"
+      "writeEngine": "gemini",
+      "wpPostId": 1225
     },
     {
       "id": "11a6kq72",
-      "status": "draft_outline",
+      "status": "pending",
       "chaptersDone": 0,
       "wordCount": 0,
       "title": "Hồn Nữ Quỷ Thủ Hộ Thôn Trang Tuyệt Vọng",
@@ -1362,16 +1449,316 @@
         "plotTwists": "Người trưởng làng quyền thế lại là hậu duệ của kẻ đã chôn sống nữ phù thủy, và chính em gái cô lại là chìa khóa để phong ấn hoặc giải phóng linh hồn phù thủy.",
         "overallSizzle": "Khi niềm tin trở thành xiềng xích và hủ tục là vũ khí, liệu tình yêu thương có đủ sức mạnh phá vỡ lời nguyền ngàn năm?",
         "suggestedGenres": "Huyền huyễn, Bí ẩn, Dân gian, Xã hội",
-        "suggestedChapters": 9
+        "suggestedChapters": 9,
+        "timeline": [
+          {
+            "chapter": 1,
+            "title": "Đánh Động Biến Cố: Án Tử Cho Em Gái",
+            "outline": "Giới thiệu Mai, cô gái thôn quê yếu đuối, và ngôi làng hẻo lánh chìm trong hủ tục. Em gái Mai mắc bệnh lạ, bị dân làng và trưởng làng quy kết \"quỷ nhập\" và định mang đi tế thần. Mai bị những người có quyền thế coi thường, gạt bỏ mọi lời van xin. Cô tuyệt vọng và cảm thấy bất lực trước sự áp đặt."
+          },
+          {
+            "chapter": 2,
+            "title": "Khai Quật Bí Ẩn: Lời Nguyền Sống Dậy",
+            "outline": "Trong lúc tìm kiếm hy vọng, Mai tình cờ phát hiện ra một cuốn nhật ký cổ của một nữ phù thủy bị chôn sống từ hàng trăm năm trước. Cuốn nhật ký hé lộ lời nguyền cổ xưa, cách hóa giải và những bí mật kinh hoàng về thế lực tà ác đang thao túng tâm trí dân làng. Mai bắt đầu nghi ngờ trưởng làng và những người có quyền thế. Cô bị cấm đoán, đe dọa khi cố gắng tìm hiểu sâu hơn."
+          },
+          {
+            "chapter": 3,
+            "title": "Vượt Qua Nguy Hiểm: Lộ Diện Kẻ Giúp Đỡ",
+            "outline": "Mai dấn thân vào hành trình nguy hiểm để tìm kiếm linh dược ghi trong nhật ký, đối mặt với những linh hồn oán hận và cạm bẫy trong rừng sâu. Cô gặp một chàng trai bí ẩn từ bên ngoài làng, người ban đầu hoài nghi nhưng dần bị thuyết phục bởi sự kiên cường và lòng dũng cảm của Mai. Trưởng làng và phe cánh cử người theo dõi, cố gắng cản trở Mai, thậm chí tung tin đồn xấu về cô để ngăn cản. Mai đối mặt với sự khinh thường nhưng không từ bỏ."
+          },
+          {
+            "chapter": 4,
+            "title": "Lật Tẩy Dã Tâm: Bằng Chứng Đầu Tiên",
+            "outline": "Với sự giúp đỡ của chàng trai, Mai thu thập được những bằng chứng đầu tiên về sự liên hệ giữa trưởng làng và việc lợi dụng hủ tục để trục lợi. Cô cố gắng trình bày với một số người dân có tiếng nói, nhưng bị trưởng làng bác bỏ thẳng thừng, công khai cười nhạo và uy hiếp, dọa sẽ trục xuất Mai khỏi làng nếu còn gây rối. Đây là một cú vả mặt nhẹ, nhưng Mai học được rằng cần phải có bằng chứng mạnh mẽ hơn."
+          },
+          {
+            "chapter": 5,
+            "title": "Đối Đầu Thâm Độc: Phanh Phui Hậu Duệ",
+            "outline": "Mai và chàng trai phát hiện ra bí mật kinh hoàng: Trưởng làng không chỉ lợi dụng hủ tục mà còn chính là hậu duệ của kẻ đã chôn sống nữ phù thủy. Hắn đã thao túng dân làng qua nhiều thế hệ. Mai công khai tố cáo trưởng làng trong một buổi họp làng quan trọng, trình bày những bằng chứng ban đầu. Tuy nhiên, hắn dùng quyền lực, sự mê tín của dân làng và lời lẽ xảo trá để bóp méo sự thật, khiến Mai bị cô lập, bị coi là kẻ nổi loạn và bị sỉ vả công khai. Một cú vả mặt đau đớn với Mai, nhưng cô kiên cường không lùi bước."
+          },
+          {
+            "chapter": 6,
+            "title": "Bẫy Gông Cùm: Đòn Phản Công Tàn Khốc",
+            "outline": "Trưởng làng không cam chịu, ra tay đáp trả tàn bạo. Hắn vu khống Mai là kẻ bị quỷ ám, âm mưu phá hoại làng, dùng tà thuật để hãm hại mọi người. Hắn tạo ra một bằng chứng giả mạo khiến tình trạng em gái Mai xấu đi đáng kể, đẩy Mai vào chân tường. Mai bị dân làng xa lánh, thậm chí bị bắt giữ và đối mặt với án tử hình, cùng với chàng trai bí ẩn cũng bị nghi ngờ và truy lùng. Đây là đòn phản công cực điểm, đẩy Mai vào bước đường cùng."
+          },
+          {
+            "chapter": 7,
+            "title": "Đập Tan Xiềng Xích: Sức Mạnh Bùng Nổ",
+            "outline": "Trong lúc tuyệt vọng nhất, Mai và chàng trai đã tìm ra cách thoát khỏi gông cùm nhờ sự giúp đỡ bất ngờ từ một linh hồn cổ xưa (hoặc một người dân lương thiện đã bị trưởng làng lừa gạt). Với những chứng cứ không thể chối cãi và một kế hoạch táo bạo, Mai lật ngược tình thế, phơi bày toàn bộ âm mưu, sự thật về trưởng làng và sự lừa dối của hắn trước toàn thể dân làng. Trưởng làng bị vạch trần hoàn toàn, hứng chịu cú vả mặt đau đớn nhất và mất hết quyền lực, danh dự."
+          },
+          {
+            "chapter": 8,
+            "title": "Hóa Giải Khế Ước: Chìa Khóa Nằm Trong Tay Em",
+            "outline": "Mai nhận ra rằng em gái mình không chỉ bị quỷ nhập mà chính là chìa khóa để phong ấn hoặc giải phóng linh hồn phù thủy, đồng thời là nút thắt của lời nguyền ngàn năm. Với sự hướng dẫn từ nhật ký, linh hồn phù thủy và sự hỗ trợ của chàng trai, Mai phải thực hiện nghi lễ cuối cùng. Cô đối mặt với lựa chọn sinh tử, phải đưa ra quyết định khó khăn để cứu em gái và hóa giải lời nguyền vĩnh viễn, giải thoát cho cả linh hồn phù thủy."
+          },
+          {
+            "chapter": 9,
+            "title": "Xé Nát Lời Nguyền: Bình Minh Thức Tỉnh",
+            "outline": "Mai hoàn thành nghi lễ, giải phóng linh hồn phù thủy, trừng phạt trưởng làng và những kẻ đã trục lợi từ sự mê tín của dân làng. Ngôi làng thoát khỏi sự mê tín và áp bức, bắt đầu một kỷ nguyên mới của sự thật và công bằng. Mai trở thành người hùng, không còn là cô gái thôn quê yếu đuối mà là biểu tượng của lòng dũng cảm. Tình yêu với chàng trai bí ẩn đơm hoa kết trái, mở ra một tương lai tươi sáng cho cả Mai và ngôi làng."
+          }
+        ]
       },
       "targetChapters": 9,
       "maxChapters": 15,
       "model": "gpt-4o-mini",
       "outlineEngine": "gemini",
-      "writeEngine": "gemini"
+      "writeEngine": "gemini",
+      "wpPostId": 1226
     }
   ],
   "apiLogs": [
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 2998,
+      "completionTokens": 884,
+      "totalTokens": 3882,
+      "cost": 0.028249999999999997,
+      "id": "jqv2s9c",
+      "timestamp": 1776543378540
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3013,
+      "completionTokens": 1040,
+      "totalTokens": 4053,
+      "cost": 0.030664999999999998,
+      "id": "wktyvm0",
+      "timestamp": 1776543311450
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 2997,
+      "completionTokens": 1011,
+      "totalTokens": 4008,
+      "cost": 0.03015,
+      "id": "vlcn5ft",
+      "timestamp": 1776543240697
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 2989,
+      "completionTokens": 1192,
+      "totalTokens": 4181,
+      "cost": 0.032825,
+      "id": "n7hankl",
+      "timestamp": 1776543181205
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3340,
+      "completionTokens": 1211,
+      "totalTokens": 4551,
+      "cost": 0.034865,
+      "id": "ifpn41k",
+      "timestamp": 1776542721115
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3323,
+      "completionTokens": 987,
+      "totalTokens": 4310,
+      "cost": 0.031420000000000003,
+      "id": "un6x1pw",
+      "timestamp": 1776542701248
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3344,
+      "completionTokens": 933,
+      "totalTokens": 4277,
+      "cost": 0.030715,
+      "id": "ke82hdz",
+      "timestamp": 1776542682785
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3377,
+      "completionTokens": 1153,
+      "totalTokens": 4530,
+      "cost": 0.03418,
+      "id": "6h7qma8",
+      "timestamp": 1776542666031
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3305,
+      "completionTokens": 1031,
+      "totalTokens": 4336,
+      "cost": 0.031990000000000005,
+      "id": "vo0kyyv",
+      "timestamp": 1776542646359
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3333,
+      "completionTokens": 773,
+      "totalTokens": 4106,
+      "cost": 0.02826,
+      "id": "c7xntp6",
+      "timestamp": 1776542623722
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3349,
+      "completionTokens": 902,
+      "totalTokens": 4251,
+      "cost": 0.030275,
+      "id": "epyuhis",
+      "timestamp": 1776542610939
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3354,
+      "completionTokens": 1017,
+      "totalTokens": 4371,
+      "cost": 0.032025,
+      "id": "j0ip8eq",
+      "timestamp": 1776542595202
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3356,
+      "completionTokens": 833,
+      "totalTokens": 4189,
+      "cost": 0.029275,
+      "id": "42skzoq",
+      "timestamp": 1776542578754
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3354,
+      "completionTokens": 1012,
+      "totalTokens": 4366,
+      "cost": 0.03195,
+      "id": "bz1z11m",
+      "timestamp": 1776542563621
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3357,
+      "completionTokens": 988,
+      "totalTokens": 4345,
+      "cost": 0.031605,
+      "id": "ml5ecz2",
+      "timestamp": 1776542545499
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3309,
+      "completionTokens": 787,
+      "totalTokens": 4096,
+      "cost": 0.02835,
+      "id": "krqpzc3",
+      "timestamp": 1776542482294
+    },
+    {
+      "engineType": "OpenAI",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gpt-4o",
+      "promptTokens": 3315,
+      "completionTokens": 990,
+      "totalTokens": 4305,
+      "cost": 0.031425,
+      "id": "d3ok4yq",
+      "timestamp": 1776541920565
+    },
+    {
+      "engineType": "Gemini",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gemini-2.5-flash",
+      "promptTokens": 2376,
+      "completionTokens": 1873,
+      "totalTokens": 7186,
+      "cost": 0.0007400999999999999,
+      "id": "o1xxfht",
+      "timestamp": 1776541703009
+    },
+    {
+      "engineType": "Gemini",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gemini-2.5-flash",
+      "promptTokens": 989,
+      "completionTokens": 1445,
+      "totalTokens": 4552,
+      "cost": 0.000507675,
+      "id": "1flrncf",
+      "timestamp": 1776540315110
+    },
+    {
+      "engineType": "Gemini",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gemini-2.5-flash",
+      "promptTokens": 1024,
+      "completionTokens": 1503,
+      "totalTokens": 4844,
+      "cost": 0.0005277,
+      "id": "8o65sbo",
+      "timestamp": 1776540291524
+    },
+    {
+      "engineType": "Gemini",
+      "station": "Auto-Pilot Core",
+      "project": "Sáng tác dã chiến",
+      "model": "gemini-2.5-flash",
+      "promptTokens": 1043,
+      "completionTokens": 1544,
+      "totalTokens": 4980,
+      "cost": 0.000541425,
+      "id": "3rqgqbp",
+      "timestamp": 1776540265628
+    },
     {
       "engineType": "Gemini",
       "station": "Auto-Pilot Core",
@@ -2777,7 +3164,7 @@
       "timestamp": 1776497400503
     }
   ],
-  "isAutoPilotRunning": true,
+  "isAutoPilotRunning": false,
   "draftSpaces": {
     "gemini_drama": {
       "title": "Ái Nữ Di Chúc Huyết Thệ Phá Vỡ Tông Gia",

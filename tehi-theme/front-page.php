@@ -754,7 +754,7 @@
                         </div>
                         <img src="<?php echo esc_url($rthumb); ?>" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php the_title(); ?></div>
+                            <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
                                 <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $formatted_views; ?>
@@ -772,7 +772,7 @@
                         </div>
                         <img src="<?php echo esc_url($rthumb); ?>" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php the_title(); ?></div>
+                            <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
                                 <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $formatted_views; ?>
@@ -790,7 +790,7 @@
                         </div>
                         <img src="<?php echo esc_url($rthumb); ?>" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php the_title(); ?></div>
+                            <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
                                 <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $formatted_views; ?>
@@ -804,7 +804,7 @@
                         <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $ri; ?></div>
                         <img src="<?php echo esc_url($rthumb); ?>" style="width:32px; height:42px; border-radius:4px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:600; color:#4b5563; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom:8px;"><?php the_title(); ?></div>
+                            <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; margin-bottom:8px;"><?php the_title(); ?></div>
                             <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
                                 <!-- Bar -->
                                 <div style="flex:1; height:6px; background:#f3f4f6; border-radius:3px; overflow:hidden; display:flex;">
@@ -863,7 +863,7 @@
                         </div>
                         <img src="<?php echo esc_url($t_avatar); ?>" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
                                 <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $t_views; ?>
@@ -881,7 +881,7 @@
                         </div>
                         <img src="<?php echo esc_url($t_avatar); ?>" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
                                 <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $t_views; ?>
@@ -899,7 +899,7 @@
                         </div>
                         <img src="<?php echo esc_url($t_avatar); ?>" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
                                 <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $t_views; ?>
@@ -913,7 +913,7 @@
                         <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $tri; ?></div>
                         <img src="<?php echo esc_url($t_avatar); ?>" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:600; color:#4b5563; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom:8px;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; margin-bottom:8px;"><?php echo esc_html($team['name']); ?></div>
                             <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
                                 <!-- Bar -->
                                 <div style="flex:1; height:6px; background:#f3f4f6; border-radius:3px; overflow:hidden; display:flex;">

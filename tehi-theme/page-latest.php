@@ -63,9 +63,9 @@ $hot_query = new WP_Query([
                 <?php   endif; ?>
 
                 <?php 
-                    $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x600?text=Cover';
+                    $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://placehold.co/400x600?text=Cover';
                     $genres = wp_get_post_terms(get_the_ID(), 'the_loai');
-                    $chaps = wp_count_posts('chuong')->publish;
+                    $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
                     $time_diff = human_time_diff(get_the_modified_time('U'), current_time('timestamp')) . ' trước';
                     if($display_date != 'Hôm nay' && $display_date != 'Hôm qua') $time_diff = get_the_modified_time('H:i');
                 ?>
