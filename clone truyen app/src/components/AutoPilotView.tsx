@@ -204,7 +204,7 @@ export function AutoPilotView() {
                     <div className="flex items-start gap-3">
                       <ShieldAlert className="text-yellow-400 shrink-0 mt-0.5" size={20} />
                       <div className="w-full">
-                        <h5 className="font-bold text-yellow-400 text-sm">Dàn ý đã thiết lập xong! AI chốt: {item.targetChapters} Tập.</h5>
+                        <h5 className="font-bold text-yellow-400 text-sm">Dàn ý đã thiết lập xong! AI chốt: {item.targetChapters} Chương.</h5>
                         <p className="text-yellow-500/80 text-xs mt-1">Dưới đây là sơ lược tuyến thời gian (Timeline) mà AI vừa phác thảo.</p>
 
                         <div className="bg-black/40 border border-yellow-500/30 rounded-lg p-3 mt-3 max-h-48 overflow-y-auto custom-scrollbar text-[13px] text-yellow-100/90 whitespace-pre-wrap font-medium">
@@ -215,7 +215,7 @@ export function AutoPilotView() {
                         </div>
 
                         <div className="flex flex-wrap items-center gap-3 mt-4">
-                          <label className="text-xs font-bold text-yellow-500/80 uppercase tracking-widest whitespace-nowrap">Ép Số Tập:</label>
+                          <label className="text-xs font-bold text-yellow-500/80 uppercase tracking-widest whitespace-nowrap">Số Chương:</label>
                           <input
                             type="number"
                             value={parseInt(String(item.targetChapters)) || 1}

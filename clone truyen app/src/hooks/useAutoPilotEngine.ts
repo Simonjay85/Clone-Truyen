@@ -20,12 +20,16 @@ export function useAutoPilotEngine() {
     const tick = async () => {
       if (isProcessing.current) return;
       
-      const activeItem = queue.find(q => q.status === 'draft_outline' || q.status === 'pending' || q.status === 'writing');
-      if (!activeItem) return;
+      // Giới hạn chạy 1 truyện duy nhất tại 1 thời điểm để bảo toàn hạn mức Google Free API.
+      // Khi viết xong truyện 1 nó sẽ TỰ ĐỘNG bốc truyện 2 lên viết tiếp không cần chờ anh Duyệt!
+      const activeItems = queue.filter(q => q.status === 'draft_outline' || q.status === 'pending' || q.status === 'writing').slice(0, 1);
+      if (activeItems.length === 0) return;
 
       isProcessing.current = true;
       try {
-        if (activeItem.status === 'draft_outline') {
+        await Promise.all(activeItems.map(async (activeItem) => {
+          try {
+            if (activeItem.status === 'draft_outline') {
           // Tạo bài truyen trên WP nếu chưa có
           let wpPostId = activeItem.wpPostId;
           if (!wpPostId) {
@@ -72,7 +76,7 @@ export function useAutoPilotEngine() {
           updateQueueItem(activeItem.id, { status: 'pending_approval', bible: { ...activeItem.bible, timeline }, targetChapters: (timeline as any[]).length });
         } 
 
-        else if (activeItem.status === 'pending') {
+        else if (activeItem.status === 'pending' || activeItem.status === 'writing') {
           if (activeItem.isAdvancedPipeline) {
             const currentEp = activeItem.chaptersDone + 1;
             const totalEps = activeItem.targetChapters || 30;
@@ -254,10 +258,12 @@ export function useAutoPilotEngine() {
         } else {
           updateQueueItem(activeItem.id, { status: 'error', errorLog: errMsg });
         }
-      } finally {
-        isProcessing.current = false;
       }
-    };
+    }));
+    } finally {
+      isProcessing.current = false;
+    }
+  };
 
     // If using free tier, cooldown 21s to respect rate limits (Gemini 15/min limit). If paid, push aggressively!
     const delay = 3000;

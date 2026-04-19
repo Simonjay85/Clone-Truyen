@@ -5,13 +5,61 @@ import { Share2, Image as ImageIcon, Copy, CheckCircle2, CloudLightning, Loader2
 import { callGemini } from '../lib/engine';
 
 export function SocialStudioView() {
-  const { queue, updateQueueItem, geminiPaidKey, geminiKey, usePaidAPI, webhookUrl } = useStore();
+  const { queue, updateQueueItem, addQueueItems, geminiPaidKey, geminiKey, usePaidAPI, webhookUrl } = useStore();
   const socialItems = queue.filter(q => q.status === 'published' && !q.isSocialShared);
   
   const [loadingAction, setLoadingAction] = useState<string | null>(null);
+  const [importUrl, setImportUrl] = useState('');
 
   // Auto-generate caption if not explicitly stored
   const [captions, setCaptions] = useState<Record<string, string>>({});
+
+  const handleImportStory = async () => {
+    if (!importUrl) return alert("Vui lòng nhập link truyện!");
+    
+    // trích xuất slug từ url: https://doctieuthuyet.com/truyen/nhung-dong-chay-den-toi/
+    let slug = '';
+    try {
+      const urlObj = new URL(importUrl);
+      const parts = urlObj.pathname.split('/').filter(Boolean);
+      slug = parts[parts.length - 1];
+    } catch {
+      return alert("Link không hợp lệ!");
+    }
+
+    setLoadingAction('importing');
+    try {
+      const res = await fetch(`https://doctieuthuyet.com/wp-json/wp/v2/truyen?slug=${slug}&_embed=1`);
+      const data = await res.json();
+      if (!data || data.length === 0) throw new Error("Không tìm thấy truyện này trên web.");
+      
+      const post = data[0];
+      const htmlContent = post.content.rendered || '';
+      
+      // Tạo QueueItem giả lập bọc published status
+      const publishItem: any = {
+         id: 'import_' + post.id + '_' + Date.now().toString().slice(-4),
+         status: 'published',
+         title: post.title.rendered.replace(/&#(\d+);/g, (match: any, dec: any) => String.fromCharCode(dec)),
+         wpPostId: post.id,
+         isSocialShared: false,
+         coverUrl: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '',
+         publishData: {
+             finalTitle: post.title.rendered.replace(/&#(\d+);/g, (match: any, dec: any) => String.fromCharCode(dec)),
+             blurb: htmlContent.replace(/<[^>]+>/g, '').trim().substring(0, 500) + '...',
+             categories: ['Nhập từ Web']
+         }
+      };
+      
+      addQueueItems([publishItem]);
+      setImportUrl('');
+      alert("✅ Đã kéo truyện từ Web về Social Studio thành công!");
+    } catch (e: any) {
+      alert("Lỗi khi nhập truyện: " + e.message);
+    } finally {
+      setLoadingAction(null);
+    }
+  };
 
   const generateCaption = async (item: QueueItem) => {
     setLoadingAction(`caption_${item.id}`);
@@ -22,14 +70,14 @@ export function SocialStudioView() {
       const blurb = item.publishData?.blurb || (item.bible as any)?.overallSizzle || (item.bible as any)?.summary || item.prompt;
       const title = item.publishData?.finalTitle || item.title;
 
-      const sysPrompt = `Bạn là Content Creator Tiktok/Instagram/Pinterest chuyên nghiệp. 
-Nhiệm vụ: Viết 1 bài post Social siêu cuốn dựa trên tóm tắt truyện.
+      const sysPrompt = `Bạn là một Content Creator ĐỈNH CAO chuyên làm Review Truyện trên Tiktok/Reels/Shorts. 
+Nhiệm vụ: Viết 1 bài post Social SIÊU CUỐN, GIẬT GÂN, khiến người xem KHÔNG THỂ BỎ QUA.
 YÊU CẦU:
-1. Mở đầu bằng một câu Hook cực gắt (viết IN HOA).
-2. Tóm tắt nội dung chính bằng 2-3 câu khơi gợi sự tò mò đau đớn, giật gân, vả mặt. Tuyệt đối không spoil đoạn kết.
-3. Call to Action (CTA) nảy lửa: Dẫn dắt người đọc bấm link dưới Bio/Comment để đọc trọn bộ.
-4. Thêm 5-7 Hashtags xu hướng liên quan đến: #truyenchu #ngontinh #tieu_thuyet #reviewtruyen
-5. Trả trực tiếp văn bản Text (kèm icon Emoji đẹp mắt), KHÔNG dùng Markdown code block.`;
+1. MỞ ĐẦU CHẤN ĐỘNG: Tạo ra một TIÊU ĐỀ LỪA TÌNH / DRAMA cực khét (viết IN HOA, có EMOJI). Dùng những câu Hook đánh vào sự tò mò tột độ.
+2. TÓM TẮT GIẬT GÂN: Kể lại nội dung truyện bằng 2-3 câu ngắn gọn nhưng đầy phẫn nộ, oan ức, chấn động, hoặc vả mặt sảng khoái cực độ. Tuyệt đối không spoil đoạn kết.
+3. Call to Action (CTA) ĐỈNH MỨC: Dẫn dắt người đọc bấm ngay vào link dưới Bio/Comment để đọc trọn bộ vì "tức cái lồng ngực không chịu được".
+4. Thêm 5-7 Hashtags xu hướng liên quan đến: #truyenchu #ngontinh #tieuthuyet #reviewtruyen #drama
+5. Trả trực tiếp văn bản Text (kèm icon Emoji bao đẹp, khoảng cách dòng rõ ràng dễ đọc). KHÔNG dùng Markdown code block. KHÔNG giải thích lôi thôi.`;
 
       const userPrompt = `Tên truyện: ${title}\nVăn án/Tóm tắt: ${blurb}\nHãy viết Caption ngay!`;
 
@@ -97,7 +145,26 @@ YÊU CẦU:
           Social Studio
         </h2>
         <p className="text-slate-400 mt-2">Phòng Marketing: Nơi ra lò các bài Post mồi câu cực gắt cho Tiktok / Instagram / Pinterest.</p>
-        <p className="text-xs text-slate-500 mt-1">Lưu ý: Truyện chỉ xuất hiện ở đây sau khi đã trạng thái &quot;Bắn Lên Báo Dịch WP&quot;.</p>
+        <p className="text-xs text-slate-500 mt-1">Lưu ý: Bạn phải thiết lập <span className="font-bold text-white">Webhook URL ở Settings</span> để bắn dữ liệu qua Zapier/Make đăng lên mạng xã hội.</p>
+        
+        {/* Thanh Nhập URL */}
+        <div className="mt-6 flex flex-col md:flex-row gap-2 bg-slate-900 border border-slate-800 p-3 rounded-xl shadow-inner">
+          <input 
+             type="text" 
+             value={importUrl}
+             onChange={e => setImportUrl(e.target.value)}
+             placeholder="Dán link truyện trên Web vào đây (VD: doctieuthuyet.com/truyen/ten-truyen/)..." 
+             className="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-rose-500 transition-colors"
+          />
+          <button 
+             onClick={handleImportStory}
+             disabled={loadingAction === 'importing'}
+             className="bg-rose-600 hover:bg-rose-500 disabled:opacity-50 text-white px-5 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-colors whitespace-nowrap"
+          >
+             {loadingAction === 'importing' ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}
+             Kéo Lên Social
+          </button>
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto space-y-6 custom-scrollbar pr-2 pb-20">

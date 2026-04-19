@@ -192,7 +192,7 @@ export function FinalReviewView() {
                       </div>
                       <h3 className={`font-bold line-clamp-2 leading-tight mb-2 ${selectedId === item.id ? 'text-indigo-300' : 'text-white group-hover:text-indigo-200'} transition-colors`}>{item.publishData?.finalTitle || item.title}</h3>
                       <div className="text-[11px] text-slate-500 font-medium">
-                         {item.chaptersDone}/{item.targetChapters} Tập • {item.wordCount} Chữ
+                         {item.chaptersDone}/{item.targetChapters} Chương • {item.wordCount} Chữ
                       </div>
                    </button>
                 ))

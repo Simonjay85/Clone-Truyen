@@ -1,4 +1,6 @@
 <?php
+global $tehi_tailwind_page;
+$tehi_tailwind_page = true;
 get_header();
 
 $current_term = get_queried_object();
@@ -16,11 +18,32 @@ $all_terms = get_terms([
 ?>
 
 <div class="mkm-taxonomy-page" style="margin-top:20px; margin-bottom:40px; padding:0 15px; max-width:1200px; margin-left:auto; margin-right:auto;">
-    <!-- Hero Header -->
-    <div class="mkm-tax-hero" style="background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); border-radius: 16px; padding: 40px 24px; text-align: center; margin-bottom: 24px;">
-        <h1 style="font-size:32px; font-weight:800; color:#1f2937; margin:0 0 10px 0;">Khám Phá Thế Giới Truyện</h1>
-        <p style="font-size:16px; color:#4b5563; margin:0;">Tuyển chọn hàng ngàn tác phẩm đặc sắc nhất dành riêng cho bạn.</p>
-    </div>
+    <!-- Hero / Header Section -->
+    <header class="mb-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between rounded-[2rem] bg-gradient-to-r from-surface-container-low to-surface-container-highest p-8 md:p-12 border border-gray-200 shadow-sm text-left">
+        
+        <!-- Background decorative blob -->
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-blue-600/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+        <div class="relative z-10 md:w-3/5">
+            <nav class="flex items-center gap-2 text-xs font-bold text-gray-500 mb-6 uppercase tracking-widest">
+                <a href="<?php echo home_url(); ?>" class="hover:text-blue-600 transition-colors" style="text-decoration:none;">Trang chủ</a>
+                <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                <span class="text-blue-600 border-b border-blue-600/30"><?php echo esc_html($term_name); ?></span>
+            </nav>
+            <h1 class="font-headline text-5xl md:text-6xl font-black tracking-tighter text-gray-900 mb-6" style="margin:0 0 24px 0;line-height:1.2;">
+                Thế Giới <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">Truyện</span>
+            </h1>
+            <p class="text-gray-500 text-lg font-medium leading-relaxed max-w-prose border-l-4 border-blue-600/30 pl-4" style="margin:0;">
+                Tuyển chọn hàng ngàn tác phẩm đặc sắc nhất thuộc thể loại <strong><?php echo esc_html($term_name); ?></strong> dành riêng cho bạn.
+            </p>
+        </div>
+
+        <div class="relative z-10 hidden md:block" style="margin-left: auto;">
+            <div class="w-56 h-56 rounded-full overflow-hidden border-4 border-white shadow-xl shadow-blue-600/20 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTSZmS8kWMxUUBd-Vbi2TEetTZaMs5X_QwTAja1I0K-yM2KMObZYiWz3ohHAgh0g00e9Om8UE-x3H_0iCihRdoy25RvXkpgjZuvIDQLkB2nJ-Pj6Loo4dJkr1avsg80s9n676nonOdgYCusDVhpBK0U50krmKpNGn0GBFFb1b3OFe2vaWgE_Oui4rW9m2cuyirydWRJh79PHWKIcPjm6WKnIcF9FlQ6CyrvwSe_XDrKwhVV5jGfqbVXFXVariiVeo" alt="Taxonomy Banner"/>
+            </div>
+        </div>
+    </header>
     
     <!-- Filters Section -->
     <div class="mkm-tax-filters" style="margin-bottom: 24px;">

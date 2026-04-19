@@ -5,6 +5,8 @@ import path from 'path';
 // Luôn đảm bảo mcore_db.json nằm ở thư mục root/data
 const DB_PATH = path.join(process.cwd(), 'data', 'mcore_db.json');
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     // Đảm bảo thư mục "data" tồn tại

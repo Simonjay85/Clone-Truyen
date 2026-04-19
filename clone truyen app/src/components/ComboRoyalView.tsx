@@ -8,14 +8,11 @@ import { agentPuppetMaster, callGemini } from '../lib/engine';
 import { agentConceptScorer, agentPitchRefiner } from '../lib/advanced_engine';
 // callGemini } from '../lib/engine';
 
-const GENRE_LIST = [
-  "Ngôn Tình", "Tiên Hiệp", "Hài Hước", "Trinh Thám", "Kiếm Hiệp", 
-  "Huyền Huyễn", "Trọng Sinh", "Đô Thị", "Dị Giới", "Võ Hiệp", 
-  "Xuyên Không", "Gia Đấu", "Học Đường", "Cung Đấu", "Mạt Thế", 
-  "Zombie", "Quân Sự", "Khoa Huyễn", "Kinh Dị", "Game", 
-  "Điền Văn", "Đam Mỹ", "Nữ Cường", "Lịch Sử", "Thể Thao", 
-  "Vả Mặt", "Hệ Thống", "Không Gian"
-];
+const GENRES_GROUPS = {
+  "🔥 Kịch Tính Cao": ["Vả Mặt", "Gia Đấu", "Cung Đấu", "Trọng Sinh"],
+  "🌍 Bối Cảnh": ["Đô Thị", "Xuyên Không", "Mạt Thế", "Hệ Thống", "Hợp Đồng Hôn Nhân", "Tổng Tài"],
+  "❤️ Cảm Xúc": ["Ngược Tâm", "Sủng Ngọt", "Hài Hước", "Nữ Cường", "Trà Xanh / Tiểu Tam", "Truy Thê"]
+};
 
 export function ComboRoyalView({ onNavigate }: { onNavigate?: (tab: string) => void }) {
   const { claudeKey, addQueueItems, draftSpaces, updateDraftSpace} = useStore();
@@ -364,9 +361,16 @@ Bạn có muốn XÓA TRẮNG Bảng kịch bản hiện tại để viết bộ
 
           <div className="bg-white/5 border border-white/10 rounded-xl p-5">
              <label className="block text-sm font-semibold text-[#94a3b8] mb-3 flex items-center gap-1">Thể loại <span className="font-normal text-xs">(Chọn 1 hoặc nhiều)</span></label>
-             <div className="flex flex-wrap gap-2">
-                {GENRE_LIST.map(g => (
-                   <button key={g} onClick={() => toggleGenre(g)} className={`px-3 py-1.5 rounded-full border text-xs font-medium transition-all ${selectedGenres.includes(g) ? 'border-rose-500 text-purple-400 bg-rose-500/20' : 'border-white/10 text-[#94a3b8] hover:border-rose-500/50'}`}>{g}</button>
+             <div className="flex flex-col gap-4">
+                {Object.entries(GENRES_GROUPS).map(([groupName, genres]) => (
+                   <div key={groupName}>
+                     <div className="text-[11px] font-bold text-slate-500 mb-2 uppercase tracking-wide">{groupName}</div>
+                     <div className="flex flex-wrap gap-2">
+                        {genres.map(g => (
+                           <button key={g} onClick={() => toggleGenre(g)} className={`px-3 py-1.5 rounded-full border text-xs font-semibold transition-all ${selectedGenres.includes(g) ? 'border-rose-500 text-rose-300 bg-rose-500/20 shadow-[0_0_10px_rgba(244,63,94,0.15)]' : 'border-white/10 text-slate-400 hover:border-rose-500/50 hover:text-rose-300'}`}>{g}</button>
+                        ))}
+                     </div>
+                   </div>
                 ))}
              </div>
           </div>

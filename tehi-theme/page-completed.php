@@ -2,6 +2,8 @@
 /*
 Template Name: Truyện Hoàn Thành
 */
+global $tehi_tailwind_page;
+$tehi_tailwind_page = true;
 get_header();
 
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -27,22 +29,29 @@ $all_terms = get_terms([
 
 <main class="pt-20 pb-16 px-6 w-full max-w-[95%] 2xl:max-w-[1600px] mx-auto flex-grow w-full">
     <!-- Hero / Header Section -->
-    <header class="mb-12 relative overflow-hidden rounded-3xl bg-surface-container-low p-8 md:p-12 border border-outline-variant/10">
-        <div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
-            <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTSZmS8kWMxUUBd-Vbi2TEetTZaMs5X_QwTAja1I0K-yM2KMObZYiWz3ohHAgh0g00e9Om8UE-x3H_0iCihRdoy25RvXkpgjZuvIDQLkB2nJ-Pj6Loo4dJkr1avsg80s9n676nonOdgYCusDVhpBK0U50krmKpNGn0GBFFb1b3OFe2vaWgE_Oui4rW9m2cuyirydWRJh79PHWKIcPjm6WKnIcF9FlQ6CyrvwSe_XDrKwhVV5jGfqbVXFXVariiVeo"/>
-        </div>
-        <div class="relative z-10 max-w-2xl">
-            <nav class="flex items-center gap-2 text-xs font-medium text-on-surface-variant mb-4">
-                <a href="<?php echo home_url(); ?>" class="hover:text-primary transition-colors">Trang chủ</a>
-                <span class="material-symbols-outlined text-xs">chevron_right</span>
-                <span class="text-primary font-bold">Truyện Hoàn Thành</span>
+    <header class="mb-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between rounded-[2rem] bg-gradient-to-r from-surface-container-low to-surface-container-highest p-8 md:p-12 border border-gray-200 shadow-sm">
+        
+        <!-- Background decorative blob -->
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-blue-600/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+        <div class="relative z-10 md:w-3/5">
+            <nav class="flex items-center gap-2 text-xs font-bold text-gray-500 mb-6 uppercase tracking-widest">
+                <a href="<?php echo home_url(); ?>" class="hover:text-blue-600 transition-colors">Trang chủ</a>
+                <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                <span class="text-blue-600 border-b border-blue-600/30">Truyện Hoàn Thành</span>
             </nav>
-            <h1 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-4">
-                Hành Trình <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-container">Trọn Vẹn</span>
+            <h1 class="font-headline text-5xl md:text-6xl font-black tracking-tighter text-gray-900 mb-6" style="line-height:1.2;">
+                Hành Trình <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">Trọn Vẹn</span>
             </h1>
-            <p class="text-on-surface-variant text-lg leading-relaxed max-w-prose">
+            <p class="text-gray-500 text-lg font-medium leading-relaxed max-w-prose border-l-4 border-blue-600/30 pl-4">
                 Khám phá những bộ truyện đã đi đến hồi kết. Không còn phải chờ đợi từng chương, hãy tận hưởng trọn vẹn cảm xúc từ đầu đến cuối ngay hôm nay.
             </p>
+        </div>
+
+        <div class="relative z-10 hidden md:block">
+            <div class="w-56 h-56 rounded-full overflow-hidden border-4 border-white shadow-xl shadow-blue-600/20 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTSZmS8kWMxUUBd-Vbi2TEetTZaMs5X_QwTAja1I0K-yM2KMObZYiWz3ohHAgh0g00e9Om8UE-x3H_0iCihRdoy25RvXkpgjZuvIDQLkB2nJ-Pj6Loo4dJkr1avsg80s9n676nonOdgYCusDVhpBK0U50krmKpNGn0GBFFb1b3OFe2vaWgE_Oui4rW9m2cuyirydWRJh79PHWKIcPjm6WKnIcF9FlQ6CyrvwSe_XDrKwhVV5jGfqbVXFXVariiVeo" alt="Completed Banner"/>
+            </div>
         </div>
     </header>
 

@@ -22,18 +22,18 @@
 .pg-card { background: #f8f9fa; border-radius: 32px; padding: clamp(24px, 5vw, 64px); box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 1px 0 rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.06); }
 
 /* Prose - typography for WP content */
-.pg-prose { max-width: 800px; margin: 0 auto; font-size: 17px; line-height: 1.8; color: #374151; font-family: 'Be Vietnam Pro', system-ui, sans-serif; }
-.pg-prose p { margin: 0 0 1.25em; color: #4b5563; text-align: justify; }
-.pg-prose h1 { font-size: 2em; font-weight: 900; color: #111827; margin: 0 0 0.75em; line-height: 1.25; }
-.pg-prose h2 { font-size: 1.5em; font-weight: 800; color: #1e293b; margin: 2em 0 0.75em; line-height: 1.3; padding-bottom: 0.4em; border-bottom: 2px solid #e5e7eb; }
-.pg-prose h3 { font-size: 1.2em; font-weight: 700; color: #334155; margin: 1.5em 0 0.5em; }
-.pg-prose h4 { font-size: 1em; font-weight: 700; color: #374151; margin: 1.25em 0 0.5em; }
+.pg-prose { max-width: 1100px; margin: 0 auto; font-size: 17px; line-height: 1.8; color: #000000; font-family: 'Be Vietnam Pro', system-ui, sans-serif; }
+.pg-prose p { margin: 0 0 1.25em; color: #000000; text-align: justify; }
+.pg-prose h1 { font-size: 2em; font-weight: 900; color: #000000; margin: 0 0 0.75em; line-height: 1.25; }
+.pg-prose h2 { font-size: 1.5em; font-weight: 800; color: #000000; margin: 2em 0 0.75em; line-height: 1.3; padding-bottom: 0.4em; border-bottom: 2px solid #e5e7eb; }
+.pg-prose h3 { font-size: 1.2em; font-weight: 700; color: #000000; margin: 1.5em 0 0.5em; }
+.pg-prose h4 { font-size: 1em; font-weight: 700; color: #000000; margin: 1.25em 0 0.5em; }
 .pg-prose ul { list-style: disc; padding-left: 1.75em; margin: 0 0 1.25em; }
 .pg-prose ol { list-style: decimal; padding-left: 1.75em; margin: 0 0 1.25em; }
-.pg-prose li { margin-bottom: 0.5em; color: #4b5563; }
+.pg-prose li { margin-bottom: 0.5em; color: #000000; }
 .pg-prose a { color: #4f46e5; text-decoration: none; font-weight: 500; }
 .pg-prose a:hover { text-decoration: underline; }
-.pg-prose strong, .pg-prose b { font-weight: 700; color: #111827; }
+.pg-prose strong, .pg-prose b { font-weight: 700; color: #000000; }
 .pg-prose blockquote { border-left: 4px solid #4f46e5; margin: 1.5em 0; padding: 0.75em 1.25em; background: #f5f3ff; border-radius: 0 8px 8px 0; color: #374151; font-style: italic; }
 .pg-prose img { max-width: 100%; border-radius: 16px; }
 .pg-prose hr { border: none; border-top: 1px solid #e5e7eb; margin: 2em 0; }

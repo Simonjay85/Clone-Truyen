@@ -62,7 +62,7 @@ Trả về JSON đúng cấu trúc mảng:
  
 export async function agentSeasonArchitect(engine: string, apiKey: string, model: string, winningConcept: unknown) {
   const sys = `Bạn là Season Architect. Nhiệm vụ: Thiết kế toàn bộ Story Bible và Dàn ý (Timeline) 30 tập cho concept thắng cuộc. Ưu tiên logic chặt chẽ, không cần bay bướm văn vẻ.
-QUY TẮC CỐT LÕI TỪ NHÀ SẢN XUẤT (BẮT BUỘC): KHÔNG ĐỂ quá trình thu thập chứng cứ của nhân vật chính diễn ra quá dễ dàng. Bắt buộc phải thiết kế một chương 'Phản đòn' từ phe phản diện khiến nhân vật chính bị lộ tẩy hoặc đẩy vào chân tường trước khi cô lật kèo. Tiêu đề các chương (title) phải dùng động từ mạnh, giật tít, độc hại, tò mò (Ví dụ: Giọt máu giả, Chiếc camera giấu kín ở đáy quan tài...).
+QUY TẮC CỐT LÕI TỪ NHÀ SẢN XUẤT: Bắt buộc thiết kế một chương 'Phản đòn' từ phe phản diện khiến nữ chính bị lộ tẩy hoặc đẩy vào chân tường trước khi cô lật kèo! VỀ TIÊU ĐỀ CHƯƠNG: TUYỆT ĐỐI KHÔNG dùng lặp lại quá 2 lần các từ chung chung như 'Bí mật', 'Bí ẩn', 'Cuộc gặp', 'Bất ngờ'. BẮT BUỘC dùng cấu trúc ĐỘNG TỪ MẠNH, SÁT THƯƠNG CAO ở mỗi đầu chương (Ví dụ: Bóc phốt, Lột mặt nạ, Tước đoạt, Đập tan tành, Xé nát sự thật, Bẫy gông cùm...).
 Tuyệt đối CHỈ trả về JSON nguyên bản (không bọc \`\`\`json), format chuẩn:
 {
   "series_premise": "...",
@@ -89,7 +89,7 @@ export async function agentEpisodeDrafter(engine: string, apiKey: string, model:
 QUY TẮC SỐNG CÒN:
 1. "Show, Don't tell": TUYỆT ĐỐI CẤM SỬ DỤNG NGOẶC ĐƠN MIÊU TẢ CẢM XÚC như (Lúng túng, hối lỗi), (Giận dữ). Phải miêu tả qua sinh lý cơ thể: "gân xanh hằn lên", "mồ hôi rịn ra".
 3. ĐỘC MIỆNG HÀO MÔN: Đặc sản của Micro-Drama Việt là thâm thúy, chửi xéo, mỉa mai cay nghiệt. Phải dùng từ ngữ gai góc, xéo xắt, toxic cho phản diện.
-4. CHIỀU DÀI: ĐÒI HỎI BẮT BUỘC 1200 - 1500 CHỮ VÀ KHÔNG ĐƯỢC NGẮN HƠN DÙ TRỜI CÓ SẬP XUỐNG (Mệnh lệnh cờ sinh tử).
+4. CHIỀU DÀI: ĐÒI HỎI BẮT BUỘC 1000 - 2000 CHỮ (TRUNG BÌNH 1500 CHỮ) VÀ KHÔNG ĐƯỢC NGẮN HƠN 1000 CHỮ DÙ TRỜI CÓ SẬP XUỐNG (Mệnh lệnh cờ sinh tử).
 5. MÓC CÂU (CLIFFHANGER): Kết thúc tập LUÔN bằng 1 câu MÓC CÂU khiến khán giả rợn người muốn coi tiếp (tin nhắn lạ, cuộc điện thoại bí ẩn...). Focus vào hành động chà đạp, hắt hủi nảy lửa. Trả về Text thuần.`;
 
   const user = `--- SYSTEM CORE & BIBLE (CACHE BLOCK) ---

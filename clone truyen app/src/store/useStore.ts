@@ -173,11 +173,11 @@ export const useStore = create<AppState>()((set, get) => ({
   addQueueItems: (items) => {
     set((state) => {
       const newItems = items.map(item => ({
-        ...item,
         id: Math.random().toString(36).substring(2, 10),
         status: 'draft_outline' as const,
         chaptersDone: 0,
         wordCount: 0,
+        ...item,
       })) as QueueItem[];
       const next = { queue: [...state.queue, ...newItems] };
       syncToServer({ ...state, ...next });

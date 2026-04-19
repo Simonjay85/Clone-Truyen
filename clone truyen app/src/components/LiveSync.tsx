@@ -7,7 +7,7 @@ export function LiveSync() {
   useEffect(() => {
     const pullData = async () => {
       try {
-        const res = await fetch('/api/db');
+        const res = await fetch('/api/db', { cache: 'no-store' });
         if (!res.ok) {
            useStore.setState({ hasHydrated: true });
            return;
