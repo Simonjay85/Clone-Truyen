@@ -12,8 +12,8 @@ import { agentConceptScorer, agentPitchRefiner } from '../lib/advanced_engine';
 // callGemini } from '../lib/engine';
 
 const GENRES_GROUPS = {
-  "🔥 Kịch Tính Cao": ["Vả Mặt", "Gia Đấu", "Cung Đấu", "Trọng Sinh"],
-  "🌍 Bối Cảnh": ["Đô Thị", "Xuyên Không", "Mạt Thế", "Hệ Thống", "Hợp Đồng Hôn Nhân", "Tổng Tài"],
+  "🔥 Kịch Tính Cao": ["Vả Mặt", "Sảng Văn", "Gia Đấu", "Cung Đấu", "Trọng Sinh"],
+  "🌍 Bối Cảnh": ["Đô Thị", "Hào Môn", "Xuyên Không", "Mạt Thế", "Hệ Thống", "Hợp Đồng Hôn Nhân", "Tổng Tài"],
   "❤️ Cảm Xúc": ["Ngược Tâm", "Sủng Ngọt", "Hài Hước", "Nữ Cường", "Trà Xanh / Tiểu Tam", "Truy Thê"]
 };
 
@@ -124,7 +124,7 @@ BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY CÓ ĐÚNG ${pit
       }
       
       setPitchOptions(pitches.slice(0, pitchCount)); 
-      if (!title && (pitches[0]?.super_title || pitches[0]?.protagonist)) setTitle(pitches[0]?.super_title || pitches[0]?.protagonist);
+      if (!title && ((pitches[0] as any)?.super_title || (pitches[0] as any)?.protagonist)) setTitle((pitches[0] as any)?.super_title || (pitches[0] as any)?.protagonist);
       
       // Auto-minimize config panel so user can read pitches
       if (pitches.length > 0) {
@@ -221,7 +221,7 @@ BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY CÓ ĐÚNG ${pit
 
   const [selectedPitches, setSelectedPitches] = useState<number[]>([]);
 
-  const updatePitch = (idx: number, field: string, value: string) => { const newPOptions = [...pitchOptions]; newPOptions[idx] = { ...newPOptions[idx], [field]: value }; setPitchOptions(newPOptions); }; const togglePitchSelect = (idx: number) => {
+  const updatePitch = (idx: number, field: string, value: string) => { const newPOptions = [...pitchOptions]; newPOptions[idx] = { ...(newPOptions[idx] as any), [field]: value }; setPitchOptions(newPOptions); }; const togglePitchSelect = (idx: number) => {
       if (selectedPitches.includes(idx)) setSelectedPitches(selectedPitches.filter(i => i !== idx));
       else setSelectedPitches([...selectedPitches, idx]);
   };
@@ -240,11 +240,11 @@ BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY CÓ ĐÚNG ${pit
   const handlePushAutopilot = () => {
     if (selectedPitches.length === 0) return alert("Vui lòng tick chọn ít nhất 1 kịch bản để xả vào hệ thống Auto-Pilot!");
     const items = selectedPitches.map(idx => ({
-        title: pitchOptions[idx].super_title || `Truyện Chấn Động ${idx+1}`,
-        genres: pitchOptions[idx].genres || selectedGenres.join(', ') || 'Tự do',
+        title: (pitchOptions[idx] as any).super_title || `Truyện Chấn Động ${idx+1}`,
+        genres: (pitchOptions[idx] as any).genres || selectedGenres.join(', ') || 'Tự do',
         prompt: prompt,
         bible: pitchOptions[idx],
-        targetChapters: parseInt(pitchOptions[idx].suggestedChapters) || targetChapters,
+        targetChapters: parseInt((pitchOptions[idx] as any).suggestedChapters) || targetChapters,
         maxChapters: maxChapters,
         model: selectedModel,
         outlineEngine: 'gemini' as const, writeEngine: 'gemini' as const

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react';
 import { useStore, QueueItem } from '../store/useStore';
-import { ShieldAlert, BookOpen, Star, UploadCloud, Rocket, RefreshCw, PenTool, Image as ImageIcon, FileText, CheckCircle2 } from 'lucide-react';
+import { ShieldAlert, BookOpen, Star, UploadCloud, Rocket, RefreshCw, PenTool, Image as ImageIcon, FileText, CheckCircle2, Copy } from 'lucide-react';
 import { agentStoryEvaluator, agentPublisherMetadata } from '../lib/advanced_engine';
 import { callWordPress } from '../lib/engine';
 
@@ -39,7 +39,7 @@ export function FinalReviewView() {
         setCustomPrompt('');
       }, 0);
     }
-  }, [selectedItem?.publishData?.coverUrl, selectedItem?.publishData?.coverImagePrompt]);
+  }, [selectedItem?.publishData, selectedItem?.publishData?.coverUrl, selectedItem?.publishData?.coverImagePrompt]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -95,8 +95,8 @@ export function FinalReviewView() {
   };
 
   const handlePublishToWeb = async (item: QueueItem) => {
-    if (!wpUrl || !wpUser || !wpAppPassword || !item.wpPostId) {
-      alert("Thiếu kết nối WordPress hoặc chưa có ID bài viết! Vui lòng kiểm tra lại cài đặt.");
+    if (!wpUrl || !wpUser || !wpAppPassword) {
+      alert("Thiếu kết nối WordPress! Vui lòng kiểm tra lại Settings.");
       return;
     }
 
@@ -104,7 +104,7 @@ export function FinalReviewView() {
     try {
       const pData = item.publishData || {
          finalTitle: item.title,
-         categories: item.genres ? item.genres.split(',').map(s => s.trim()) : [],
+         categories: item.genres ? (Array.isArray(item.genres) ? item.genres : item.genres.split(',').map((s: string) => s.trim())) : [],
          tags: [],
          coverUrl: '',
          seoTitle: item.title,
@@ -115,15 +115,8 @@ export function FinalReviewView() {
       
       const { finalTitle, categories, coverUrl, seoTitle, seoDescription, seoFocusKeyword, blurb } = pData;
       
-      const authHeaders = new Headers();
-      if (wpAppPassword.startsWith('M-CORE-')) {
-        authHeaders.set('X-Mac-Core-Token', wpAppPassword);
-      } else {
-        authHeaders.set('Authorization', 'Basic ' + Buffer.from(wpUser + ":" + wpAppPassword).toString('base64'));
-      }
-      authHeaders.set('Content-Type', 'application/json');
-
       const htmlIntro = coverUrl ? `<div style="text-align: center; margin-bottom: 20px;"><img src="${coverUrl}" alt="${finalTitle}" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" /></div>\n` : '';
+      const storyIntro = blurb || (item.bible as any)?.series_premise || (item.bible as any)?.summary || item.prompt;
 
       const metaObj = {
         rank_math_title: seoTitle,
@@ -134,10 +127,41 @@ export function FinalReviewView() {
         primary_focus_keyword: seoFocusKeyword
       };
 
-      // 1. Update Title & SEO Meta
+      let resolvedPostId = item.wpPostId;
+
+      // Validate existing post ID — if invalid or missing, create a new one
+      if (resolvedPostId) {
+        try {
+          await callWordPress({ wpUrl, wpUser, wpAppPassword, endpoint: `truyen/${resolvedPostId}`, method: 'GET', payload: {} });
+        } catch (checkErr: any) {
+          // 404 or other error → create fresh post
+          console.warn(`WP Post ID ${resolvedPostId} invalid, creating fresh post...`, checkErr.message);
+          resolvedPostId = undefined as any;
+        }
+      }
+
+      if (!resolvedPostId) {
+        const genreTerms = categories && categories.length > 0 ? categories : (item.genres ? (Array.isArray(item.genres) ? item.genres : item.genres.split(',').map((g: string) => g.trim()).filter(Boolean)) : []);
+        const newPost = await callWordPress({
+          wpUrl, wpUser, wpAppPassword,
+          endpoint: 'truyen',
+          method: 'POST',
+          payload: {
+            title: finalTitle || item.title,
+            content: htmlIntro + storyIntro,
+            status: 'draft',
+            ...(genreTerms.length > 0 ? { the_loai: genreTerms } : {}),
+          }
+        });
+        resolvedPostId = newPost.id;
+        if (!resolvedPostId) throw new Error('Không tạo được bài viết mới trên WordPress!');
+        updateQueueItem(item.id, { wpPostId: resolvedPostId });
+      }
+
+      // Update Title & SEO Meta
       await callWordPress({
         wpUrl, wpUser, wpAppPassword,
-        endpoint: `truyen/${item.wpPostId}`,
+        endpoint: `truyen/${resolvedPostId}`,
         method: 'POST',
         payload: {
           title: finalTitle,
@@ -147,16 +171,14 @@ export function FinalReviewView() {
         }
       });
       
-      // 2. Append Cover & Metadata to intro
-      const storyIntro = blurb || (item.bible as any)?.series_premise || (item.bible as any)?.summary || item.prompt;
+      // Append Cover & Blurb
       await callWordPress({
          wpUrl, wpUser, wpAppPassword,
-         endpoint: `truyen/${item.wpPostId}`,
+         endpoint: `truyen/${resolvedPostId}`,
          method: 'POST',
-         payload: {
-           content: htmlIntro + storyIntro
-         }
+         payload: { content: htmlIntro + storyIntro }
       });
+
       updateQueueItem(item.id, { status: 'published' });
       alert("✅ Lên sàn thành công! Đã tự động tối ưu SEO RankMath và chèn Cover AI vô bài viết.");
 
@@ -164,6 +186,17 @@ export function FinalReviewView() {
       alert("Lỗi WordPress: " + (error as Error).message);
     }
     setLoadingAction(null);
+  };
+
+  const handleCopyAllChapters = () => {
+    if (!selectedItem || !selectedItem.chaptersContent) return;
+    const allText = [...selectedItem.chaptersContent]
+      .sort((a, b) => a.episode - b.episode)
+      .map(ch => `Chương ${ch.episode}: ${ch.title}\n\n${ch.content.replace(/\\n/g, '\n').replace(/<[^>]+>/g, '')}`)
+      .join('\n\n' + '='.repeat(40) + '\n\n');
+    navigator.clipboard.writeText(allText).then(() => {
+      alert("✅ Đã copy toàn bộ truyện vào Clipboard!");
+    });
   };
 
   return (
@@ -187,7 +220,7 @@ export function FinalReviewView() {
                    <button key={item.id} onClick={() => { setSelectedId(item.id); setIsSidebarHidden(true); }} className={`w-full text-left p-4 rounded-xl border transition-all relative overflow-hidden group ${selectedId === item.id ? 'bg-indigo-500/10 border-indigo-500/50 shadow-[0_4px_20px_rgba(99,102,241,0.15)]' : 'bg-white/5 border-transparent hover:bg-white/10'}`}>
                       {selectedId === item.id && <div className="absolute left-0 top-0 bottom-0 w-1 bg-indigo-500 rounded-l-xl"></div>}
                       <div className="flex gap-2 mb-2 items-center">
-                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-black/40 px-2 py-0.5 rounded">{item.genres.split(',')[0]}</span>
+                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-black/40 px-2 py-0.5 rounded">{(Array.isArray(item.genres) ? item.genres[0] : (item.genres || '').split(',')[0])}</span>
                          {item.status === 'published' && <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1"><Rocket size={10}/> Đã Đăng</span>}
                       </div>
                       <h3 className={`font-bold line-clamp-2 leading-tight mb-2 ${selectedId === item.id ? 'text-indigo-300' : 'text-white group-hover:text-indigo-200'} transition-colors`}>{item.publishData?.finalTitle || item.title}</h3>
@@ -412,44 +445,33 @@ export function FinalReviewView() {
                                  </p>
                              </div>
                          ) : (
-                             <>
-                                {/* Mục lục Sidebar */}
-                                <div className="w-full md:w-1/3 md:max-w-[340px] flex flex-col bg-[#17172a] border border-white/5 rounded-2xl overflow-hidden shrink-0 shadow-xl">
-                                    <div className="p-5 bg-black/40 border-b border-white/5 font-black text-sm text-indigo-400 uppercase tracking-widest flex items-center justify-between">
-                                        <span>DANH SÁCH TẬP</span>
-                                        <span className="bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded text-[10px]">{selectedItem.chaptersContent.length} / {selectedItem.targetChapters}</span>
-                                    </div>
-                                    <div className="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-1.5">
-                                       {[...selectedItem.chaptersContent]
-                                          .sort((a,b) => a.episode - b.episode)
-                                          .map((ch, idx) => (
-                                           <button key={idx} onClick={() => setReadingChapterIdx(idx)} className={`w-full text-left p-3.5 text-sm rounded-xl transition-all font-bold line-clamp-2 ${readingChapterIdx === idx ? 'bg-indigo-500 border border-indigo-400 text-white shadow-lg' : 'text-slate-400 hover:bg-white/5 hover:text-white border border-transparent'}`}>
-                                               {ch.title}
-                                           </button>
-                                       ))}
-                                    </div>
+                             <div className="w-full bg-[#17172a] border border-white/5 rounded-2xl overflow-y-auto custom-scrollbar p-6 md:p-10 text-[#cbd5e1] relative shadow-xl">
+                                <div className="absolute top-6 right-6 z-20">
+                                    <button onClick={handleCopyAllChapters} className="bg-indigo-500 hover:bg-indigo-400 text-white shadow-lg px-4 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-wider flex items-center gap-2 transition-all transform hover:-translate-y-0.5">
+                                        <Copy size={14}/> Copy Toàn Bộ Văn Bản
+                                    </button>
                                 </div>
-                                
-                                {/* Viewer View */}
-                                <div className="flex-1 bg-[#17172a] border border-white/5 rounded-2xl overflow-y-auto custom-scrollbar p-6 md:p-10 text-[#cbd5e1] relative shadow-xl">
-                                     {typeof readingChapterIdx === 'number' && selectedItem.chaptersContent[readingChapterIdx] && (
-                                         <div className="max-w-3xl mx-auto pb-10">
-                                             <h2 className="text-3xl font-black text-white mb-8 leading-snug line-clamp-3 pb-6 border-b border-white/5">{selectedItem.chaptersContent[readingChapterIdx].title}</h2>
-                                             
-                                             {/* Target Outline of the Episode */}
-                                             {(selectedItem.bible as any)?.timeline?.[selectedItem.chaptersContent[readingChapterIdx].episode - 1]?.outline && (
-                                                 <div className="bg-amber-500/5 border-l-4 border-amber-500 p-5 mb-10 rounded-r-xl shadow-sm">
-                                                     <div className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-2 flex items-center gap-1.5"><ShieldAlert size={12}/> Nhiệm vụ thiết lập dàn ý gốc</div>
-                                                     <div className="text-[15px] font-semibold text-amber-200/90 italic leading-relaxed border-t border-amber-500/10 pt-2">{(selectedItem.bible as any)?.timeline[selectedItem.chaptersContent[readingChapterIdx].episode - 1]?.outline}</div>
-                                                 </div>
-                                             )}
-                  
-                                             {/* Actual Content Rendered */}
-                                             <div className="text-[16px] leading-[2] font-medium space-y-5 text-slate-300" dangerouslySetInnerHTML={{__html: selectedItem.chaptersContent[readingChapterIdx].content.replace(/\\n/g, '<br/>')}}></div>
-                                         </div>
-                                     )}
+                                <div className="max-w-4xl mx-auto pb-10">
+                                   {[...selectedItem.chaptersContent]
+                                      .sort((a,b) => a.episode - b.episode)
+                                      .map((ch, idx) => (
+                                       <div key={idx} className="mb-16 border-b border-white/10 pb-16 last:border-0 last:mb-0 last:pb-0">
+                                           <h2 className="text-3xl font-black text-white mb-8 leading-snug">{ch.title}</h2>
+                                           
+                                           {/* Target Outline of the Episode */}
+                                           {(selectedItem.bible as any)?.timeline?.[ch.episode - 1]?.outline && (
+                                               <div className="bg-amber-500/5 border-l-4 border-amber-500 p-5 mb-10 rounded-r-xl shadow-sm">
+                                                   <div className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-2 flex items-center gap-1.5"><ShieldAlert size={12}/> Nhiệm vụ thiết lập dàn ý gốc</div>
+                                                   <div className="text-[15px] font-semibold text-amber-200/90 italic leading-relaxed border-t border-amber-500/10 pt-2">{(selectedItem.bible as any)?.timeline[ch.episode - 1]?.outline}</div>
+                                               </div>
+                                           )}
+                                           
+                                           {/* Actual Content Rendered */}
+                                           <div className="text-[16px] leading-[2] font-medium space-y-5 text-slate-300" dangerouslySetInnerHTML={{__html: ch.content.replace(/\\n/g, '<br/>')}}></div>
+                                       </div>
+                                   ))}
                                 </div>
-                             </>
+                             </div>
                          )}
                      </div>
                   )}

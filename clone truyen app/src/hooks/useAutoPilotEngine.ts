@@ -3,11 +3,11 @@
 import { useEffect, useRef } from 'react';
 import { useStore } from '../store/useStore';
 import { agentSeasonArchitect, agentPremiumPolish, agentEpisodeDrafter, agentEpisodeRewriter, agentMarketingAssets } from '../lib/advanced_engine';
-import { callWordPress, agentMicroDramaExpand, agentMicroDramaRewrite, agentGrokDramaExpand, agentGrokDramaRewrite, agentClaudeDramaExpand, agentClaudeDramaRewrite, agentGeminiDramaExpand, agentGeminiDramaRewrite } from '../lib/engine';
+import { callWordPress, agentMicroDramaExpand, agentMicroDramaRewrite, agentGrokDramaExpand, agentGrokDramaRewrite, agentClaudeDramaExpand, agentClaudeDramaRewrite, agentGeminiDramaExpand, agentGeminiDramaRewrite, agentQwenDramaRewrite, agentQwenDramaExpand } from '../lib/engine';
 
 export function useAutoPilotEngine() {
   const { 
-    queue, isAutoPilotRunning, geminiKey, geminiPaidKey, openAIKey, grokKey, claudeKey,
+    queue, isAutoPilotRunning, geminiKey, geminiPaidKey, openAIKey, grokKey, claudeKey, qwenKey,
     usePaidAPI, isFreeApiExhausted, wpUrl, wpUser, wpAppPassword, 
     updateQueueItem, setSettings
   } = useStore();
@@ -42,30 +42,11 @@ export function useAutoPilotEngine() {
         await Promise.all(activeItems.map(async (activeItem) => {
           try {
             if (activeItem.status === 'draft_outline') {
-          // Tạo bài truyen trên WP nếu chưa có
           let wpPostId = activeItem.wpPostId;
+          // [Weaver Station]: Removed auto WP Post Creation. All content will be managed locally.
           if (!wpPostId) {
-            if (wpUrl && wpUser && wpAppPassword) {
-              // Chuẩn bị thể loại gán tự động
-              const genreTerms = activeItem.genres
-                ? activeItem.genres.split(',').map((g: string) => g.trim()).filter(Boolean)
-                : [];
-              const wpRes = await callWordPress({
-                wpUrl, wpUser, wpAppPassword,
-                endpoint: 'truyen',
-                method: 'POST',
-                payload: {
-                  title: activeItem.title,
-                  content: (activeItem.bible as any)?.summary || (activeItem.bible as any)?.series_premise || (activeItem.bible as any)?.overallSizzle || activeItem.prompt,
-                  status: 'draft',
-                  ...(genreTerms.length > 0 ? { the_loai: genreTerms } : {}),
-                }
-              });
-              wpPostId = wpRes.id;
-              if (!wpPostId) throw new Error('WP trả về không có ID bài viết truyen');
-            }
-            // Nếu không có WP config → chạy local không đăng bài (wpPostId vẫn = undefined)
-            if (wpPostId) updateQueueItem(activeItem.id, { wpPostId });
+            wpPostId = Date.now();
+            updateQueueItem(activeItem.id, { wpPostId });
           }
 
           
@@ -83,6 +64,8 @@ export function useAutoPilotEngine() {
  timeline = await agentGrokDramaExpand(grokKey, activeItem.bible, bounds);
              else if (outlineEngine === 'claude') // @ts-ignore
  timeline = await agentClaudeDramaExpand(claudeKey, activeItem.bible, bounds);
+             else if (outlineEngine === 'qwen') // @ts-ignore
+ timeline = await agentQwenDramaExpand(qwenKey, activeItem.bible, bounds);
           }
           
           updateQueueItem(activeItem.id, { status: 'pending_approval', bible: { ...activeItem.bible, timeline }, targetChapters: (timeline as any[]).length });
@@ -142,25 +125,7 @@ export function useAutoPilotEngine() {
                finalDraft = await agentPremiumPolish(polishEngine, polishKey, polishModel, finalDraft);
             }
             
-            if (activeItem.wpPostId) {
-              await callWordPress({
-                wpUrl, wpUser, wpAppPassword,
-                endpoint: 'chuong',
-                method: 'POST',
-                payload: {
-                  title: finalChapterTitle,
-                  content: finalDraft.replace(/\\n/g, '<br/>'),
-                  status: 'draft',
-                  meta: { 
-                     _truyen_id: activeItem.wpPostId,
-                     rank_math_title: finalChapterTitle,
-                     seo_title: finalChapterTitle,
-                     rank_math_description: finalDraft.substring(0, 150).replace(/[^a-zA-Z0-9 àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ,.]/g, '').trim() + '...',
-                     seo_description: finalDraft.substring(0, 150).replace(/[^a-zA-Z0-9 àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ,.]/g, '').trim() + '...'
-                  }
-                }
-              });
-            }
+            // [Weaver Station]: No WP Chapter Upload.
 
             const nextEpsDone = activeItem.chaptersDone + 1;
             const isDone = nextEpsDone >= totalEps;
@@ -203,7 +168,11 @@ export function useAutoPilotEngine() {
 
           updateQueueItem(activeItem.id, { status: 'writing' });
           const currTimelineObj = timeline[currentEp - 1];
-          currOutline = currTimelineObj?.outline || 'Tiếp diễn mâu thuẫn khốc liệt';
+          const rawOutline = currTimelineObj?.outline || 'Tiếp diễn mâu thuẫn khốc liệt';
+          
+          const prevContext = activeItem.chaptersContent ? activeItem.chaptersContent.map(c => `[${c.title}]\n${c.content}`).join("\n\n---\n\n") : '';
+          currOutline = prevContext ? `NỘI DUNG CÁC CHƯƠNG ĐÃ VIẾT TRƯỚC ĐÓ (Đọc để hiểu bối cảnh và nắm bắt diễn biến hiện tại, lưu ý KHÔNG VIẾT LẶP LẠI TÌNH TIẾT ĐÃ CÓ):\n"""\n${prevContext}\n"""\n\n==========\n\nNHIỆM VỤ HIỆN TẠI (Chương ${currentEp}):\nHãy BẮT ĐẦU VIẾT NGAY phần nội dung tiếp theo dựa trên dàn ý sau:\n${rawOutline}` : rawOutline;
+          
           
           let shortOutlineTitle = currTimelineObj?.title || currOutline.split('.')[0].split(',')[0];
           shortOutlineTitle = shortOutlineTitle.replace(/^(Chương|Tập|Episode)\s*\d+[:\-]?\s*/i, '').trim();
@@ -214,29 +183,9 @@ export function useAutoPilotEngine() {
           else if (writeEngine === 'openai') draft = await agentMicroDramaRewrite(openAIKey, activeItem.bible, currOutline, currentEp);
           else if (writeEngine === 'grok') draft = await agentGrokDramaRewrite(grokKey, activeItem.bible, currOutline, currentEp);
           else if (writeEngine === 'claude') draft = await agentClaudeDramaRewrite(claudeKey, activeItem.bible, currOutline, currentEp);
+          else if (writeEngine === 'qwen') draft = await agentQwenDramaRewrite(qwenKey, activeItem.bible, currOutline, currentEp);
           
-          if (activeItem.wpPostId) {
-            let finalStr = draft.replace(/```markdown/gi, '').replace(/```/g, '');
-            finalStr = finalStr.replace(/\*\*([\s\S]*?)\*\*/g, '<strong>$1</strong>').replace(/\*([\s\S]*?)\*/g, '<em>$1</em>').replace(/\n/g, '<br/>');
-
-            await callWordPress({
-              wpUrl, wpUser, wpAppPassword,
-              endpoint: 'chuong',
-              method: 'POST',
-              payload: {
-                title: finalChapterOutlineTitle,
-                content: finalStr,
-                status: 'publish',
-                meta: { 
-                   _truyen_id: activeItem.wpPostId,
-                   rank_math_title: finalChapterOutlineTitle,
-                   seo_title: finalChapterOutlineTitle,
-                   rank_math_description: draft.substring(0, 150).replace(/[^a-zA-Z0-9 àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ,.]/g, '').trim() + '...',
-                   seo_description: draft.substring(0, 150).replace(/[^a-zA-Z0-9 àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ,.]/g, '').trim() + '...'
-                }
-              }
-            });
-          }
+          // [Weaver Station]: No WP Chapter Upload. All text generation is buffered locally.
 
           const nextEpsDone = activeItem.chaptersDone + 1;
           const isDone = nextEpsDone >= activeItem.targetChapters;
@@ -284,7 +233,7 @@ export function useAutoPilotEngine() {
     const interval = setInterval(tick, delay); 
     return () => clearInterval(interval);
   }, [
-    isAutoPilotRunning, queue, geminiKey, geminiPaidKey, openAIKey, grokKey, claudeKey,
+    isAutoPilotRunning, queue, geminiKey, geminiPaidKey, openAIKey, grokKey, claudeKey, qwenKey,
     usePaidAPI, isFreeApiExhausted, wpUrl, wpUser, wpAppPassword, 
     updateQueueItem, setSettings
   ]);

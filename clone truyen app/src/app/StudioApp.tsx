@@ -6,10 +6,13 @@ import { GeminiDramaView } from '../components/GeminiDramaView';
 import { MicroDramaView } from '../components/MicroDramaView';
 import { GrokDramaView } from '../components/GrokDramaView';
 import { ClaudeDramaView } from '../components/ClaudeDramaView';
+import { QwenDramaView } from '../components/QwenDramaView';
 import { ComboEconomicView } from '../components/ComboEconomicView';
 import { ComboRoyalView } from '../components/ComboRoyalView';
+import { ChapterSplitterView } from '../components/ChapterSplitterView';
 import { AutoPilotView } from '../components/AutoPilotView';
 import { SettingsView } from '../components/SettingsView';
+import { ApiKeysView } from '../components/ApiKeysView';
 import { FinalReviewView } from '../components/FinalReviewView';
 import { SocialStudioView } from '../components/SocialStudioView';
 
@@ -26,8 +29,10 @@ export default function StudioApp() {
           <div className={activeTab === 'micro_drama' ? 'block w-full h-full' : 'hidden'}><MicroDramaView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'grok_drama' ? 'block w-full h-full' : 'hidden'}><GrokDramaView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'claude_drama' ? 'block w-full h-full' : 'hidden'}><ClaudeDramaView onNavigate={setActiveTab} /></div>
+          <div className={activeTab === 'qwen_drama' ? 'block w-full h-full' : 'hidden'}><QwenDramaView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'combo_eco' ? 'block w-full h-full' : 'hidden'}><ComboEconomicView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'combo_royal' ? 'block w-full h-full' : 'hidden'}><ComboRoyalView onNavigate={setActiveTab} /></div>
+          <div className={activeTab === 'chapter_splitter' ? 'block w-full h-full px-8' : 'hidden'}><ChapterSplitterView /></div>
           <div className={activeTab === 'autopilot' ? 'block w-full h-full px-8' : 'hidden'}><AutoPilotView /></div>
           <div className={activeTab === 'final_review' ? 'block w-full h-full px-8' : 'hidden'}><FinalReviewView /></div>
           <div className={activeTab === 'social_studio' ? 'block w-full h-full px-8' : 'hidden'}><SocialStudioView /></div>
@@ -38,6 +43,7 @@ export default function StudioApp() {
             </div>
           </div>
           <div className={activeTab === 'settings' ? 'block w-full h-full px-8' : 'hidden'}><SettingsView /></div>
+          <div className={activeTab === 'apikeys' ? 'block w-full h-full px-8' : 'hidden'}><ApiKeysView /></div>
         </div>
       </main>
     </div>

@@ -23,6 +23,7 @@ function writeLocalKeys(state: Record<string, unknown>) {
     openAIKey: state.openAIKey || '',
     grokKey: state.grokKey || '',
     claudeKey: state.claudeKey || '',
+    qwenKey: state.qwenKey || '',
     usePaidAPI: state.usePaidAPI || false,
     wpUrl: state.wpUrl || 'https://doctieuthuyet.com',
     wpUser: state.wpUser || '',
@@ -90,8 +91,8 @@ export interface QueueItem {
   comboType?: 5 | 6; // Sáng tác 5 hay 6
   isAdvancedPipeline?: boolean; // Nếu = true => Gọi 7-Module Engine Pipeline.
   model?: string;
-  outlineEngine: 'gemini' | 'openai' | 'grok' | 'claude'; // Gọi engine nào dựng dàn ý
-  writeEngine: 'gemini' | 'openai' | 'grok' | 'claude';   // Gọi engine nào viết nội dung
+  outlineEngine: 'gemini' | 'openai' | 'grok' | 'claude' | 'qwen'; // Gọi engine nào dựng dàn ý
+  writeEngine: 'gemini' | 'openai' | 'grok' | 'claude' | 'qwen';   // Gọi engine nào viết nội dung
   progressLogs?: string[];
   chaptersContent?: { episode: number; title: string; content: string }[];
   isSocialShared?: boolean; // Tự động chui vào hàng đợi Social Studio nếu = false và status = 'published'
@@ -107,6 +108,7 @@ interface AppState {
   openAIKey: string;   // API Key trả phí cho OpenAI (Micro Drama)
   grokKey: string;     // API Key cho xAI (Grok)
   claudeKey: string;   // API Key cho Anthropic (Claude)
+  qwenKey: string;     // API Key cho Alibaba (Qwen)
   usePaidAPI: boolean;
   isFreeApiExhausted: boolean;
   wpUrl: string;
@@ -142,6 +144,7 @@ export const useStore = create<AppState>()((set, get) => ({
   openAIKey:     savedKeys.openAIKey     || '',
   grokKey:       savedKeys.grokKey       || '',
   claudeKey:     savedKeys.claudeKey     || '',
+  qwenKey:       savedKeys.qwenKey       || '',
   usePaidAPI:    savedKeys.usePaidAPI    || false,
   isFreeApiExhausted: false,
   wpUrl:         savedKeys.wpUrl         || 'https://doctieuthuyet.com',

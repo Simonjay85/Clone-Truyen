@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { useStore } from '../store/useStore';
 import { Play, Pause, Trash2, ShieldAlert, Zap } from 'lucide-react';
 import { useAutoPilotEngine } from '../hooks/useAutoPilotEngine';
-import { agentGeminiDramaExpand, agentMicroDramaExpand, agentGrokDramaExpand, agentClaudeDramaExpand, callWordPress } from '../lib/engine';
+import { agentGeminiDramaExpand, agentMicroDramaExpand, agentGrokDramaExpand, agentClaudeDramaExpand, agentQwenDramaExpand, callWordPress } from '../lib/engine';
 
 export function AutoPilotView() {
   const {
     queue, isAutoPilotRunning, toggleAutoPilot, removeQueueItem, clearQueue, updateQueueItem,
-    geminiKey, geminiPaidKey, openAIKey, grokKey, claudeKey, usePaidAPI,
+    geminiKey, geminiPaidKey, openAIKey, grokKey, claudeKey, qwenKey, usePaidAPI,
     wpUrl, wpUser, wpAppPassword,
   } = useStore();
 
@@ -51,7 +51,7 @@ export function AutoPilotView() {
           if (wpUrl && wpUser && wpAppPassword) {
             try {
               const genreTerms = item.genres
-                ? item.genres.split(',').map((g: string) => g.trim()).filter(Boolean)
+                ? (Array.isArray(item.genres) ? item.genres : item.genres.split(',').map((g: string) => g.trim()).filter(Boolean))
                 : [];
               const wpRes = await callWordPress({
                 wpUrl, wpUser, wpAppPassword,
@@ -81,6 +81,7 @@ export function AutoPilotView() {
         else if (outlineEngine === 'openai') timeline = await agentMicroDramaExpand(openAIKey, item.bible, bounds);
         else if (outlineEngine === 'grok') timeline = await agentGrokDramaExpand(grokKey, item.bible, bounds);
         else if (outlineEngine === 'claude') timeline = await agentClaudeDramaExpand(claudeKey, item.bible, bounds);
+        else if (outlineEngine === 'qwen') timeline = await agentQwenDramaExpand(qwenKey, item.bible, bounds);
 
         updateQueueItem(item.id, {
           status: 'pending_approval',
@@ -129,6 +130,7 @@ export function AutoPilotView() {
                 <option value="openai" className="bg-slate-900 text-slate-200">🧠 Đổi tất cả sang OpenAI</option>
                 <option value="claude" className="bg-slate-900 text-slate-200">🎭 Đổi tất cả sang Claude</option>
                 <option value="grok" className="bg-slate-900 text-slate-200">⚡ Đổi tất cả sang Grok</option>
+                <option value="qwen" className="bg-slate-900 text-slate-200">⚔️ Đổi tất cả sang Qwen</option>
               </select>
               <div className="w-[1px] h-5 bg-rose-500/30"></div>
               <button
@@ -254,7 +256,7 @@ export function AutoPilotView() {
                             className="bg-black/50 border border-yellow-500/50 rounded text-yellow-400 font-bold px-3 py-1.5 w-20 outline-none text-center shadow-inner"
                           />
                           <button
-                            onClick={() => updateQueueItem(item.id, { status: 'draft_outline', errorLog: undefined })}
+                            onClick={() => { const b = { ...(item.bible as object) }; delete (b as any).timeline; updateQueueItem(item.id, { status: 'draft_outline', bible: b, errorLog: undefined }); }}
                             className="bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30 border border-yellow-500/30 px-4 py-1.5 rounded-lg font-bold text-xs transition-colors whitespace-nowrap"
                           >
                             🔄 Đập Đi Vẽ Lại Dàn Ý
@@ -294,6 +296,7 @@ export function AutoPilotView() {
                               <option value="openai">🧠 OpenAI</option>
                               <option value="claude">🎭 Claude</option>
                               <option value="grok">⚡ Grok</option>
+                              <option value="qwen">⚔️ Qwen</option>
                             </select>
                             <button
                               onClick={() => {

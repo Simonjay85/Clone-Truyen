@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { callGemini, callOpenAI, callGrok, callClaude } from './engine';
+import { callGemini, callOpenAI, callGrok, callClaude, callQwen, STORY_IRON_RULES } from './engine';
 
 // Helper to route dynamic calls
  
@@ -8,6 +8,7 @@ async function callDynamicEngine(engineSlug: string, params: any): Promise<any> 
   if (engineSlug === 'openai') return callOpenAI(params);
   if (engineSlug === 'grok') return callGrok(params);
   if (engineSlug === 'claude') return callClaude(params);
+  if (engineSlug === 'qwen') return callQwen(params);
   throw new Error("Unknown engine: " + engineSlug);
 }
 
@@ -36,7 +37,7 @@ Lưu ý: Chỉ trả về JSON, không thêm chữ nào.`;
 
   const user = `Yêu cầu cụ thể của khách hàng / Thể loại: ${JSON.stringify(criteria)}\nHãy sinh đủ 20 concept đỉnh cao nhất.`;
 
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.9, model });
+  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, jsonMode: true, temperature: 0.9, model });
   return extractJson(res.text);
 }
 
@@ -55,7 +56,7 @@ Trả về JSON đúng cấu trúc mảng:
 
   const user = JSON.stringify(concepts.map((c, i) => ({ index: i, ...(c as any) })));
   
-  const res = await callDynamicEngine(engine, { apiKey, apiKey2, apiKey3, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.2, model });
+  const res = await callDynamicEngine(engine, { apiKey, apiKey2, apiKey3, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, jsonMode: true, temperature: 0.2, model });
   return extractJson(res.text);
 }
 
@@ -79,7 +80,7 @@ Lưu ý: timeline PHẢI có đủ 30 object (30 episodes).`;
   
   const user = `Concept thắng cuộc: ${JSON.stringify(winningConcept)}\nHãy xây dựng Kinh thánh, luật lệ thế giới và mẩu dàn ý mâu thuẫn khốc liệt cho 30 episode beats.`;
 
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.4, model });
+  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, jsonMode: true, temperature: 0.4, model });
   return extractJson(res.text);
 }
 
@@ -105,7 +106,7 @@ Episode Beat: ${currentBeat}
 
 Yêu cầu: Kết thúc tập luôn bằng 1 câu chốt cảm xúc (emotional cliffhanger) khiến khán giả muốn bấm Next ngay lập tức. Cấm nói đạo lý.`;
 
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, temperature: 0.6, model });
+  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, temperature: 0.6, model });
   return res.text;
 }
 
@@ -127,7 +128,7 @@ ${draft}
 
 Hãy gọt giũa và đẩy kịch tính lên đỉnh ngay bây giờ!`;
 
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, temperature: 0.5, model });
+  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, temperature: 0.5, model });
   return res.text;
 }
 
@@ -149,13 +150,13 @@ ${episodesContext}
 
 Dò cặn kẽ và lập danh sách các lỗ hổng cần vá.`;
   
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.1, model });
+  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, jsonMode: true, temperature: 0.1, model });
   return extractJson(res.text);
 }
 
 export async function agentMarketingAssets(engine: string, apiKey: string, model: string, summary: string) {
   const sys = `Marketing Assets Generator. Hãy thiết kế Tên Series, Blurb (Mô tả giật gân TikTok/FB để hút leads) và Tags cho nội dung. JSON thuần túy, format: {"title": "", "blurb": "", "tags": ["", ""]}`;
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: summary, jsonMode: true, temperature: 0.8, model });
+  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: summary, jsonMode: true, temperature: 0.8, model });
   return extractJson(res.text);
 }
 
@@ -171,7 +172,7 @@ ${draft}
 
 Hãy phủ bóng màn đêm và mài sắc lưỡi dao cảm xúc!`;
 
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, model, temperature: 0.4 });
+  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, model, temperature: 0.4 });
   return res.text;
 }
 
@@ -198,7 +199,7 @@ ${feedback}
 
 Hãy đập đi xây lại kịch bản này ngay bây giờ! Chỉ trả về JSON không format code block.`;
 
-  const res = await callDynamicEngine(engine, { apiKey, apiKey2, apiKey3, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.8, model });
+  const res = await callDynamicEngine(engine, { apiKey, apiKey2, apiKey3, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, jsonMode: true, temperature: 0.8, model });
   return extractJson(res.text);
 }
 
@@ -221,7 +222,7 @@ Hãy kiểm tra xem truyện có bám sát thiết lập ban đầu không, có 
       });
   }
   
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.3, model });
+  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, jsonMode: true, temperature: 0.3, model });
   return extractJson(res.text);
 }
 
@@ -244,6 +245,6 @@ YÊU CẦU JSON:
 
   const user = `Tên gốc: ${title}\nHồ sơ Truyện:\n${JSON.stringify(bible)}`;
   
-  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys, userPrompt: user, jsonMode: true, temperature: 0.7, model });
+  const res = await callDynamicEngine(engine, { apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, jsonMode: true, temperature: 0.7, model });
   return extractJson(res.text);
 }

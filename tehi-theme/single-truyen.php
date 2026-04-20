@@ -195,7 +195,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-rel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .mkm-rel-card { border-radius: 10px; overflow: hidden; transition: box-shadow .2s; text-decoration: none; display: block; background: #fff; border: 1px solid #e5e7eb; }
 .mkm-rel-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
-.mkm-rel-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; }
+.mkm-rel-img { width: 100%; aspect-ratio: 3/2; background-size: cover; background-position: center; background-color: #f3f4f6; display: block; }
 .mkm-rel-body { padding: 10px 12px; }
 .mkm-rel-title { font-weight: 700; color: #111827; margin: 0 0 4px 0; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mkm-rel-desc { font-size: 12px; color: #6b7280; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -461,7 +461,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
             $rel_cover = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/img_data/images/no-image-cover.png';
             ?>
             <a href="<?php the_permalink(); ?>" class="mkm-rel-card">
-                <img src="<?php echo esc_url($rel_cover); ?>" alt="<?php the_title_attribute(); ?>" class="mkm-rel-img" loading="lazy">
+                <div class="mkm-rel-img" style="background-image: url('<?php echo esc_url($rel_cover); ?>');"></div>
                 <div class="mkm-rel-body">
                     <h4 class="mkm-rel-title"><?php echo wp_trim_words(get_the_title(), 10, '...'); ?></h4>
                     <p class="mkm-rel-desc"><?php echo wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 14, '...'); ?></p>

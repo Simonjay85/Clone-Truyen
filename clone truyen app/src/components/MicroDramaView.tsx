@@ -9,8 +9,8 @@ import { Bot, Rocket, PenTool, Settings, CheckCircle2, User as UserIcon, BookOpe
 import { agentConceptScorer, agentPitchRefiner } from '../lib/advanced_engine';
 
 const GENRES_GROUPS = {
-  "🔥 Kịch Tính Cao": ["Vả Mặt", "Gia Đấu", "Cung Đấu", "Trọng Sinh"],
-  "🌍 Bối Cảnh": ["Đô Thị", "Xuyên Không", "Mạt Thế", "Hệ Thống", "Hợp Đồng Hôn Nhân", "Tổng Tài"],
+  "🔥 Kịch Tính Cao": ["Vả Mặt", "Sảng Văn", "Gia Đấu", "Cung Đấu", "Trọng Sinh"],
+  "🌍 Bối Cảnh": ["Đô Thị", "Hào Môn", "Xuyên Không", "Mạt Thế", "Hệ Thống", "Hợp Đồng Hôn Nhân", "Tổng Tài"],
   "❤️ Cảm Xúc": ["Ngược Tâm", "Sủng Ngọt", "Hài Hước", "Nữ Cường", "Trà Xanh / Tiểu Tam", "Truy Thê"]
 };
 
