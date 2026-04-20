@@ -126,12 +126,8 @@
 .mkm-aside {
     width: 280px !important;
     flex-shrink: 0 !important;
-    position: sticky !important;
-    top: 80px !important;
+    /* align-self is kept to allow natural height */
     align-self: flex-start !important;
-    max-height: calc(100vh - 80px) !important;
-    overflow-y: auto !important;
-    scrollbar-width: thin !important;
 }
 
 /* ── SECTION HEADER ── */
