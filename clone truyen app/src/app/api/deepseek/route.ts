@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
 
+export const maxDuration = 300; // 5 minutes
+export const dynamic = 'force-dynamic';
 export async function POST(req: Request) {
   try {
     const { apiKey, systemPrompt, userPrompt, model, jsonMode, temperature } = await req.json();
@@ -63,6 +65,15 @@ export async function POST(req: Request) {
     }
 
     const data = await response.json();
+    
+    if (!data) {
+      throw new Error('DeepSeek returned an empty response (null)');
+    }
+    
+    if (!data.choices || !Array.isArray(data.choices)) {
+      throw new Error(`DeepSeek API Error: ${data.error ? JSON.stringify(data.error) : JSON.stringify(data)}`);
+    }
+
     const content = data.choices[0]?.message?.content || '';
 
     const usage = data.usage ? {

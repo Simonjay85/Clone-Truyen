@@ -26,6 +26,8 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
   const [title, setTitle] = useState('');
   const [prompt, setPrompt] = useState('');
   const [targetChapters, setTargetChapters] = useState(15);
+  const [minChapters, setMinChapters] = useState(15);
+  const [maxChaptersLimit, setMaxChaptersLimit] = useState(30);
   const [maxChapters] = useState(40);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [selectedModel] = useState('qwen3-max-2026-01-23');
@@ -46,16 +48,18 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
     setTimeout(() => { if (draft.title !== undefined && draft.title !== title) setTitle(draft.title); }, 0);
     setTimeout(() => { if (draft.prompt !== undefined && draft.prompt !== prompt) setPrompt(draft.prompt); }, 0);
     setTimeout(() => { if (draft.targetChapters !== undefined && draft.targetChapters !== targetChapters) setTargetChapters(draft.targetChapters); }, 0);
+    setTimeout(() => { if (draft.minChapters !== undefined && draft.minChapters !== minChapters) setMinChapters(draft.minChapters); }, 0);
+    setTimeout(() => { if (draft.maxChaptersLimit !== undefined && draft.maxChaptersLimit !== maxChaptersLimit) setMaxChaptersLimit(draft.maxChaptersLimit); }, 0);
     setTimeout(() => { if (draft.pitchOptions !== undefined && JSON.stringify(draft.pitchOptions) !== JSON.stringify(pitchOptions)) setPitchOptions(draft.pitchOptions); }, 0);
     setTimeout(() => { if (draft.gradingStatus !== undefined && JSON.stringify(draft.gradingStatus) !== JSON.stringify(gradingStatus)) setGradingStatus(draft.gradingStatus); }, 0);
   }, [draft]);
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      updateDraftSpace('qwen_drama', { title, prompt, targetChapters, pitchOptions, gradingStatus });
+      updateDraftSpace('qwen_drama', { title, prompt, targetChapters, minChapters, maxChaptersLimit, pitchOptions, gradingStatus });
     }, 500);
     return () => clearTimeout(timer);
-  }, [title, prompt, targetChapters, pitchOptions, gradingStatus]);
+  }, [title, prompt, targetChapters, minChapters, maxChaptersLimit, pitchOptions, gradingStatus]);
 
   const toggleGenre = (g: string) => {
     if (selectedGenres.includes(g)) {
@@ -81,28 +85,28 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
          headers: { 'Content-Type': 'application/json' },
          body: JSON.stringify({
             apiKey: qwenKey,
-            systemPrompt: `Bạn là Đạo Diễn Thiết Lập Siêu Phẩm Micro-Drama Châu Á. TẠO ĐÚNG ${targetChapters} KỊCH BẢN HOÀN TOÀN KHÁC NHAU ĐỂ LỰA CHỌN.
-TUYỆT ĐỐI KHÔNG DÙNG TỪ TIẾNG ANH. Viết bằng tiếng Việt hoặc Hán Việt thuần túy. Xây dựng cốt truyện mang màu sắc Châu Á (Việt Nam hoặc Trung Quốc hiện đại).
+            systemPrompt: `Bạn là Đạo Diễn Thiết Lập Siêu Phẩm Truyện Chữ Châu Á. TẠO ĐÚNG \${targetChapters} KỊCH BẢN HOÀN TOÀN KHÁC NHAU ĐỂ LỰA CHỌN.
+TUYỆT ĐỐI KHÔNG DÙNG TỪ TIẾNG ANH. Viết bằng tiếng Việt hoặc Hán Việt thuần túy. Xây dựng cốt truyện bám sát ĐÚNG THỂ LOẠI VÀ BỐI CẢNH mà người dùng yêu cầu (Cổ đại/Cung đấu hay Hiện đại/Đô thị). KHÔNG ép buộc mọi truyện phải là đô thị hiện đại.
 
 QUY LUẬT BẮT BUỘC CHO MỖI KỊCH BẢN:
-1. VẢ MẶT NHIỀU TẦNG (BẮT BUỘC ÍT NHẤT 3 CÚ VẢ MẶT LỚN RIÊNG BIỆT): Mỗi kịch bản PHẢI có từ 3 đến 5 kịch bản vả mặt nảy lửa vào những thời điểm khác nhau (không phải dồn hết một lần cuối). Ví dụ: Cú vả lần 1 ở chương 3 → phe địch phản công → Cú vả lần 2 ở chương 8 → twist bất ngờ → Cú vả lớn nhất ở chương cuối. Phải làm người đọc lên máu từng hồi.
-2. CHỐNG SAO CHÉP KIỂU BÀI (ANTI-TEMPLATE): NGHIÊM CẤM dùng các cốt truyện mòn sáo như 'hiền lành bị bắt nạt → lập tức phản công'. Phải có ĐẢO LỘN LẬT NGƯỢC đến từ những nơi không ai ngờ tới (người đứng sau, người thân phản bội, chính nạn nhân tự tay giăng bẫy từ đầu...).
-3. ĐỘ DÀI LINH HOẠT THEO CỐT TRUYỆN: Hãy tự phân tích độ phức tạp của cốt truyện để chốt suggestedChapters hợp lý: Trọng tâm hỏa tốc (như đi họp lớp, siêu thị, ra oai đơn giản) dài 8-12 chương; Trọng tâm thương trường vừa (tranh giành tài sản) dài 13-18 chương; Mưu kế đại gia tộc đa tầng thù hận dài 19-25 chương.
-4. PHẢN DIỆN CÓ TRÍ TUỆ: Phản diện không được ngu ngốc, phải biết phản công, có ally bí mật, và khiến tình thế của nhân vật chính tưởng chừng tuyệt vọng trước khi lật ngược.
-5. TWIST KHÔNG ĐỌC VỊ ĐƯỢC: Cú lật bàn lớn nhất PHẢI là thứ người đọc không thể đoán từ trang đầu. Ưu tiên dạng: danh tính thật, âm mưu bên trong nội bộ, hoặc nhân vật tưởng chừng phụ hóa ra là kẻ cầm trịch.
+1. VẢ MẶT NHIỀU TẦNG (BẮT BUỘC ÍT NHẤT 3 CÚ VẢ MẶT LỚN RIÊNG BIỆT): Mỗi kịch bản PHẢI có từ 3 đến 5 kịch bản vả mặt nảy lửa vào những thời điểm khác nhau (không phải dồn hết một lần cuối). Phải làm người đọc lên máu từng hồi.
+2. CHỐNG SAO CHÉP KIỂU BÀI (ANTI-TEMPLATE): NGHIÊM CẤM dùng các cốt truyện mòn sáo. Phải có ĐẢO LỘN LẬT NGƯỢC đến từ những nơi không ai ngờ tới.
+3. ĐỘ DÀI TRUYỆN: Bạn BẮT BUỘC phải set giá trị \`suggestedChapters\` nằm trong khoảng từ \${minChapters} đến \${maxChaptersLimit} chương! Hãy tự phân tích độ phức tạp của cốt truyện để chọn 1 con số ngẫu nhiên hợp lý trong khoảng này.
+4. PHẢN DIỆN CÓ TRÍ TUỆ: Phản diện không được ngu ngốc, phải biết phản công.
+5. TWIST KHÔNG ĐỌC VỊ ĐƯỢC: Cú lật bàn lớn nhất PHẢI là thứ người đọc không thể đoán từ trang đầu.
 
-BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY CÓ ĐÚNG ${targetChapters} KỊCH BẢN (TRẢ VỀ ÍT HƠN LÀ LỖI RẤT NẶNG!):
+BẮT BUỘC TRẢ VỀ JSON OBJECT CÓ KEY "pitches" LÀ ARRAY CÓ ĐÚNG \${targetChapters} KỊCH BẢN (TRẢ VỀ ÍT HƠN LÀ LỖI RẤT NẶNG!):
 {
   "pitches": [
     {
-      "super_title": "Tên truyện SIÊU CUỐN HÚT, gây tò mò, xéo xắt (Ví dụ: 'Mẹ Chồng Ơi, Tôi Đã Biết Từ Lâu', 'Cúi Đầu Lần Cuối Trước Khi Tôi Lật Bàn'). KHÔNG dùng từ Hán Việt cổ lỗ sĩ, KHÔNG gắn đuôi version.",
-      "summary": "Tóm tắt truyện PHONG CÁCH REVIEW PHIM TIKTOK: văn thô bạo, kịch tính ngay câu đầu, điểm rõ 3 CÚ VẢ MẶT chính sẽ có trong truyện (Cú 1 ở đâu, Cú 2 khi nào bị phản công lại, Cú 3 kết thúc ác độc thế nào). Phải khiến người đọc lên máu ngay lập tức.",
-      "worldSettings": "Bối cảnh cụ thể (tránh 'đô thị chung chung' — phải là: tập đoàn gia tộc nào, hoàn cảnh gia đình ra sao, tiền bạc địa vị rõ ràng)",
+      "super_title": "Tên truyện dài, CỰC KỲ SỐC, CỰC KỲ CUỐN HÚT (Ít nhất 7-15 chữ). NẾU LÀ CUNG ĐẤU/CỔ ĐẠI: Dùng câu trần thuật hoặc cảm thán mang hơi hướng quyền lực, báo thù (Ví dụ: 'Sống Lại Kiếp Này, Ta Khiến Cả Hậu Cung Phải Quỳ Dưới Chân', 'Đích Tôn Trở Lại: Phế Hậu Lật Bàn'). NẾU LÀ HIỆN ĐẠI: Dùng tên giật gân, xéo xắt (Ví dụ: 'Ép Tôi Ly Hôn? Trả Lại Tỷ Phú Đây!'). TUYỆT ĐỐI KHÔNG DÙNG TÊN NGẮN CỦN CỠN 4 CHỮ như 'Cẩm Bào Huyết Lệ', 'Gia Tộc Án Quỷ'. KHÔNG gắn đuôi version.",
+      "summary": "Tóm tắt giới thiệu truyện (Viết theo văn phong giới thiệu tiểu thuyết/truyện chữ: kịch tính, lôi cuốn, khơi gợi sự đồng cảm. Nêu bật nỗi đau/bất công ban đầu và ý chí lật ngược thế cờ của nhân vật. TUYỆT ĐỐI KHÔNG DÙNG cấu trúc liệt kê 'Cú 1, Cú 2, Cú 3'. Viết thành 1-2 đoạn văn xuôi mượt mà, cuốn hút độc giả đọc ngay lập tức!)",
+      "worldSettings": "Bối cảnh cụ thể (tránh chung chung — phải bám sát thể loại: nếu Cung Đấu là triều đại/hậu cung nào, nếu Đô Thị là tập đoàn/gia tộc nào, địa vị xã hội ra sao)",
       "characterArc": "Vết thương lòng BÍ MẬT của nhân vật chính (điều khán giả không biết ngay từ đầu nhưng sẽ là chìa khóa lật bàn)",
       "plotTwists": "Liệt kê ÍT NHẤT 3 cú twist/vả mặt theo thứ tự: [Cú 1 - Chương bao nhiêu - Cú vả đầu tiên gì], [Cú 2 - Bị phản đòn thế nào], [Cú 3 - Vả mặt chung kết tàn nhẫn nhất]",
       "overallSizzle": "Lý do truyện này khiến độc giả KHÔNG THỂ DỪNG ĐỌC và sẽ chia sẻ ngay: yếu tố gây nghiện đặc trưng là gì?",
       "genres": "1-3 Thể loại chính (VD: Gia Đấu, Vả Mặt, Trọng Sinh). Đây sẽ là danh mục đăng web.",
-      "suggestedChapters": "Số nguyên (8-25) tùy độ phức tạp cốt truyện như đã quy định."
+      "suggestedChapters": "Một số nguyên nằm TRONG KHOẢNG TỪ \${minChapters} đến \${maxChaptersLimit} (TÙY vào độ phức tạp cốt truyện)."
     }
   ]
 }`,
@@ -499,13 +503,22 @@ Bạn có muốn XÓA TRẮNG Bảng kịch bản hiện tại để viết bộ
              </div>
              <textarea rows={5} className="w-full bg-black/30 border border-white/10 rounded-lg p-3.5 text-sm text-slate-200 outline-none focus:border-indigo-500 resize-none leading-relaxed mb-3 font-medium" placeholder="Mô tả ngắn gọn: Nhân vật, bối cảnh, xung đột chính..." value={prompt} onChange={e => setPrompt(e.target.value)}></textarea>
              
-             <div className="flex gap-2">
+             <div className="flex gap-2 mb-3">
                 <div className="flex flex-1">
-                   <input type="number" className="w-[54px] bg-emerald-500/5 border border-emerald-500/40 border-r-0 rounded-l-lg text-emerald-500 font-bold text-sm text-center outline-none" title="Số chương mục tiêu" value={targetChapters} onChange={e => setTargetChapters(parseInt(e.target.value) || 1)} />
+                   <input type="number" className="w-[54px] bg-emerald-500/5 border border-emerald-500/40 border-r-0 rounded-l-lg text-emerald-500 font-bold text-sm text-center outline-none" title="Số kịch bản sẽ tạo" value={targetChapters} onChange={e => setTargetChapters(parseInt(e.target.value) || 1)} />
                    <button onClick={handleGenerateOutline} disabled={isGenerating} className="flex-1 bg-emerald-500/10 border border-emerald-500/40 rounded-r-lg text-emerald-500 font-bold text-xs py-2 hover:bg-emerald-500/20 transition-all flex items-center justify-center gap-1.5">{isGenerating ? '⏳ Đang xoay...' : '💡 Gợi ý Kịch Bản'}</button>
                 </div>
                 <button onClick={() => notImplemented("Gợi ý Tiêu đề AI")} className="flex-1 bg-amber-500/10 border border-amber-500/40 rounded-lg text-amber-500 font-bold text-xs py-2 hover:bg-amber-500/20 transition-all flex items-center justify-center gap-1.5">🤖 Gợi ý Tiêu đề</button>
                 <button onClick={() => setShowBulkImport(true)} className="flex-1 bg-pink-500/10 border border-pink-500/40 rounded-lg text-pink-500 font-bold text-xs py-2 hover:bg-pink-500/20 transition-all flex items-center justify-center gap-1.5">📝 Nhập sỉ Kịch Bản</button>
+             </div>
+
+             <div className="flex justify-between items-center bg-white/5 border border-white/10 p-3 rounded-lg">
+                 <span className="text-sm font-semibold text-[#94a3b8] flex items-center gap-2">📚 Giới hạn độ dài <span className="text-xs font-normal text-slate-500">(Số chương)</span>:</span>
+                 <div className="flex items-center gap-2">
+                     <input type="number" className="w-[60px] bg-black/30 border border-white/10 rounded-md p-1.5 text-sm text-slate-200 text-center outline-none focus:border-indigo-500 font-bold" value={minChapters} onChange={e => setMinChapters(parseInt(e.target.value) || 1)} title="Tối thiểu" />
+                     <span className="text-slate-500 font-bold">-</span>
+                     <input type="number" className="w-[60px] bg-black/30 border border-white/10 rounded-md p-1.5 text-sm text-slate-200 text-center outline-none focus:border-indigo-500 font-bold" value={maxChaptersLimit} onChange={e => setMaxChaptersLimit(parseInt(e.target.value) || 1)} title="Tối đa" />
+                 </div>
              </div>
           </div>
 

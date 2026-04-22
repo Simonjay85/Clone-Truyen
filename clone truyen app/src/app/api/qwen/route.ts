@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
 
+export const maxDuration = 300; // 5 minutes
+export const dynamic = 'force-dynamic';
 export async function POST(req: Request) {
   try {
     const { apiKey, systemPrompt, userPrompt, model, jsonMode, temperature } = await req.json();
