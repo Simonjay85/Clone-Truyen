@@ -2,37 +2,72 @@
 import { useStore } from "../store/useStore";
 
 export const STORY_IRON_RULES = `
-QUY CHUẨN TỐI CAO ĐỂ TRÁNH SẠN LOGIC (BẮT BUỘC TUÂN THỦ TỪNG CHỮ):
-1. QUY TẮC CLIMAX KHÔNG NGOẠI LỰC: Ở phần kết, Nhân vật chính BẮT BUỘC phải trực tiếp đối mặt và tự tay kết liễu/trừng trị phản diện chính. CẤM để ngoại lực (công an, pháp luật, thiên binh thiên tướng) đột ngột xuất hiện dọn cỗ gánh team. Mọi thứ phải do trí tuệ và sự chuẩn bị của main.
-2. QUY TẮC ĐỘC LẬP TỰ CƯỜNG (ANTI DEUS EX MACHINA): Cấm biến nhân vật phụ (Cha, mẹ, sếp lớn) thành thế lực vạn năng giải quyết hết mâu thuẫn vào phút chót làm lu mờ nhân vật chính. Nhân vật chính phải dùng 100% năng lực tự thân săn tìm manh mối.
-3. QUY TẮC GIEO GẶT MANH MỐI (FORESHADOWING): Bất kỳ Twist (lật bài) nào cũng BẮT BUỘC phải được gieo rắc ít nhất 2 tiểu tiết/vật phẩm gợi mở từ trước. Những vật phẩm/tình tiết bị lãng quên (như bức ảnh chụp lén) bắt buộc phải được lôi ra làm bằng chứng quyết định.
-4. QUY TẮC TÂM LÝ NHÂN QUẢ: Đám đông, quần chúng tuyệt đối KHÔNG đổi thái độ 180 độ chỉ bằng 1 câu nói. Bắt buộc tạo ra chuỗi sự kiện làm lung lay niềm tin từ trước. Show, don't tell.
-5. QUY TẮC TRẢ GIÁ CẢM XÚC: Các nhân vật từng là người thân/chồng/vợ hoặc đồng minh thân cận quay lưng, khi bị lật mặt không chỉ thất bại về vật chất mà BẮT BUỘC phải chịu sự dằn vặt khôn nguôi, thể hiện qua hành động hối lỗi thảm hại, gục ngã hoặc đau đớn cùng cực để đẩy luồng cảm xúc hả hê của người đọc lên đỉnh điểm.
-6. QUY TẮC LOGIC PHÁP LÝ & KẾ HOẠCH BÁM SÁT THỰC TẾ: Trong các màn đấu trí, lật bàn: Sự trả thù KHÔNG THỂ chỉ dựa vào 'nói suông' hay 'chân tướng'. BẮT BUỘC phải chuẩn bị ngầm thấu đáo về pháp lý, NHƯNG PHẢI TUYỆT ĐỐI BÁM SÁT THỰC TẾ VẬN HÀNH DOANH NGHIỆP HIỆN HÀNH. CẤM "thần thoại hóa" hay "buff ảo" các thủ tục (như chiếm trắng pháp nhân trong 1 giờ, tự giải pháp luật không cơ sở). Mọi màn lật đổ phải có kẽ hở thực tế hợp lý khiến chuyên gia tài chính/pháp chế cũng phải gật gù, chứ không phải giải quyết kiểu "ảo ma".
-7. QUY TẮC CHỐNG LỐI MÒN & DỄ ĐOÁN (ANTI-CLICHÉ): KHÔNG viết rập khuôn theo đường dây "bị khinh bỉ bằng vài câu lăng mạ nông cạn -> lật bài khoe tiền/quyền -> bọn chúng quỳ lạy". Phải sáng tạo cốt truyện có chiều sâu, tình thế bị ép buộc tinh vi hơn, mang lại giá trị nhân văn/phản ánh hiện thực xã hội. Những cú lật bàn (plot twist) phải bất ngờ, có lớp lang, không thể đoán trước từ ngay tiêu đề.
-8. QUY TẮC TRÍ TUỆ NHÂN VẬT & CHIỀU SÂU (HIGH IQ CHARACTERS): Phản diện hoặc các nhân vật phụ (như đám bạn cũ, đồng nghiệp, người thân...) TUYỆT ĐỐI KHÔNG ĐƯỢC LÀ NHỮNG KẺ NGỐC CHỈ BIẾT KHOE KHOANG HAY SỈ NHỤC NGƯỜI KHÁC MỘT CÁCH VÔ LÝ. Bọn họ phải có tính toán, biết che giấu dã tâm bằng sự đạo đức giả hoặc những thủ đoạn sắc sảo, có lí do chính đáng và lợi ích thực tiễn rõ ràng khi tấn công nhân vật chính. Xóa bỏ hoàn toàn ác nhân "não tàn". Mọi nhân vật đều hành động vì động cơ sâu kín của chính mình.
-9. QUY TẮC MỨC ĐỘ TRẦN THẾ CỦA MAIN: Nhân vật chính mạnh nhưng CÓ GIỚI HẠN THỰC TẾ. Quyền lực của anh ta phải được giải thích bằng logic kinh doanh/pháp lý thông thường — không phải công nghệ siêu việt hay chip lượng tử vớ vẩn. Nếu có yếu tố kỹ thuật, phải nghe hợp lý với người đọc có hiểu biết kinh doanh cơ bản.
-11. QUY TẮC KHOẢNH KHẮC YẾU LÒNG: Nhân vật chính phải có ít nhất 1-2 khoảnh khắc trong câu chuyện nơi anh ta gần như bỏ cuộc, hoặc cảm thấy đau đớn thực sự — để người đọc có thể đồng cảm và cảm thấy journey (hành trình) của anh ta có ý nghĩa.
-12. QUY TẮC GIỚI HẠN ĐẠO ĐỨC: Sự trả thù không được khiến nhân vật chính trông như kẻ thủ ác. Không để nhân vật chính vui sướng khi kẻ địch tự làm hại bản thân vật lý. Ranh giới rõ ràng: trả thù về tài chính và danh dự — KHÔNG PHẢI hủy hoại tính mạng con người.
-13. QUY TẮC ĐA DẠNG NHỊP ĐIỆU & PHẢN CÔNG (COUNTER-ATTACK): Không phải mỗi chương đều kết thúc bằng chiến thắng của nhân vật chính. Cần có ít nhất 1-2 chương (đặc biệt ở khoảng giữa truyện) nơi phản diện thực hiện các đòn phản công hiểm độc, mưu hèn kế bẩn đẩy nhân vật chính vào nguy cơ mất trắng hoặc thất bại tạm thời. Điều này làm chiến thắng cuối cùng trở nên bùng nổ và có sức nặng hơn, CẤM biến kẻ thù thành "bia đỡ đạn" gãy nát quá nhanh.
-14. QUY TẮC PHẢN DIỆN CÓ LÝ DO (ĐỘNG CƠ HỢP LÝ): Phản diện cần có ít nhất một khoảnh khắc người đọc hiểu TẠI SAO họ làm vậy — không nhất thiết là đồng cảm, nhưng cần thấy được logic. Người xấu hoàn toàn trắng trợn không có chiều sâu thì không đáng ghét — chỉ đáng chán.
-15. QUY TẮC NHÂN VẬT TRUNG LẬP: Cần có ít nhất một nhân vật phụ (ví dụ trong nhóm bạn cũ, gia đình...) không hoàn toàn ác — có thể là người do dự, người bị áp lực theo đám đông — để tạo độ phức tạp đạo đức và phá vỡ cấu trúc trắng-đen tẻ nhạt.
-16. QUY TẮC ĐA DẠNG HÓA MỞ ĐẦU CHƯƠNG (ANTI REPETITIVE MOTIF): Tuyệt đối KHÔNG lạm dụng một công thức mở đầu lặp đi lặp lại (ví dụ như luôn bắt đầu bằng việc miêu tả 1 tờ giấy/hợp đồng/thư mời). Phải linh hoạt đa dạng hóa phần mở bài (nhập thẳng vào hành động, đối thoại gay gắt, tiếng động bất ngờ, hoặc chuyển đổi góc nhìn) để tránh cảm giác bị "văn mẫu".
+QUY CHUẨN TỐI CAO DÀNH CHO TRUYỆN MẠNG "MÌ ĂN LIỀN" (BẮT BUỘC TUÂN THỦ TỪNG CHỮ):
+1. QUY TẮC NHỊP ĐỘ SIÊU TỐC (FAST-PACING): Độc giả đọc trên điện thoại. BẮT BUỘC truyện phải có nhịp độ cực nhanh. Cắt bỏ mọi miêu tả phong cảnh, thời tiết, hay ẩn dụ triết lý rườm rà. Đi thẳng vào hành động và xung đột ngay từ câu đầu tiên.
+2. QUY TẮC 60% HỘI THOẠI (DIALOGUE-HEAVY): Lời thoại phải chiếm ít nhất 60% thời lượng chương. Nhân vật phải chửi thẳng mặt, đối đáp sắc sảo, đốp chát liên tục. Đừng để nội tâm lấn át. Ngôn từ thoại phải mang tính "dao găm", không dài dòng.
+3. QUY TẮC ĐOẠN VĂN NGẮN (SHORT PARAGRAPHS): Mắt người đọc lướt trên màn hình Mobile rất nhanh. TUYỆT ĐỐI CẤM dồn mảng chữ dài. Mỗi đoạn văn (paragraph) chỉ được phép tối đa 2 đến 3 câu. Sau mỗi hành động hoặc lời thoại BẮT BUỘC phải xuống dòng.
+4. QUY TẮC "VẢ MẶT" LIÊN TỤC (DOPAMINE HIT): Không được dồn ép ấm ức quá lâu. Xung đột phải được giải quyết nhanh gọn bằng những pha lật bàn sảng khoái (face-slapping). Tính sảng (khoái cảm) phải được đẩy lên tối đa.
+5. QUY TẮC CHỐNG LỐI VIẾT NẶNG NỀ (ANTI-LITERARY): TUYỆT ĐỐI CẤM dùng câu giả định phức tạp, hay ẩn dụ nghệ thuật cao siêu. Hãy viết đơn giản, trực diện, từ ngữ phổ quát mang phong cách mạng xã hội.
+6. QUY TẮC CÚ PHÁP TỰ NHIÊN: Cấm viết câu dài hàng trăm chữ. Cấm ghép đẩu đắp đuôi lê thê. Một ý một câu, nhanh, sắc bén.
+7. QUY TẮC ĐỘC LẬP TỰ CƯỜNG: Nhân vật chính tự giải quyết vấn đề bằng trí tuệ, tiền bạc, hoặc điểm tựa của bản thân, cấm chờ đợi người ngoài (công an, thần thánh) dọn cỗ.
+8. QUY TẮC SỰ HỐI HẬN TỘT ĐỈNH: Khi sự thật vỡ lở, những kẻ khinh thường main BẮT BUỘC phải lập tức quay xe quỳ lạy, run rẩy, van xin, hoặc sụp đổ hoàn toàn về mặt thể hình/thể diện. Khắc họa sự hối hận tột cùng của mụ vợ/mẹ chồng cay nghiệt để đẩy độ "sảng".
+9. QUY TẮC CHỨNG CỨ THỰC TẾ: Mọi kế hoạch lật mặt phải dùng logic đời thường (giấu ghi âm, lộ camera, check hóa đơn, hợp đồng), cấm phép thuật hay hacker siêu phàm viễn tưởng.
+10. QUY TẮC HOOK CUỐI CHƯƠNG (CLIFFHANGER): Chương nào cũng phải khép lại bằng một lời thách thức chói tai, một cú hé lộ bàng hoàng, gây tò mò tột độ. CẤM CẤM CẤM kiểu kết "đi về phía hoàng hôn" hay triết lý ngáo ngơ.
+
+— QUY TẮC CHIỀU SÂU (CHẤT LƯỢNG CAO — BẮT BUỘC NGANG HÀNG VỚI CÁC QUY TẮC TRÊN) —
+11. QUY TẮC CHỐNG MARY SUE — NÂNG CAO (NO FREE LUNCH): TUYỆT ĐỐI CẤM viết toàn bộ cung truyện mà nhân vật chính không thua một trận nào. Luật sắt: mỗi bộ 10 chương, BẮT BUỘC có ÍT NHẤT 2 chương "nguy hiểm thật" — không phải giả vờ nguy hiểm rồi giải quyết ngay trong cùng chương đó. CỤ THỂ: (A) Kế hoạch bị phá hỏng ở phút chót, phải từ bỏ và đi đường khác; (B) Một đồng minh thân thiết phản bội hoặc bị vô hiệu hóa; (C) Bằng chứng cốt lõi bị tiêu hủy hoặc mất; (D) Nhân vật chính bị tổn thương thực sự về danh tiếng hoặc tài chính và không phục hồi ngay lập tức. SAI LẦM ĐIỂN HÌNH PHẢI TRÁNH: Viết 15 chương mà nhân vật chính thắng 100%, mọi bẫy đều hoàn hảo, mọi địch đều tái mét đúng lúc — đây vẫn là Mary Sue dù có nội tâm hay cảm xúc.
+12. QUY TẮC PHÁ CÔNG THỨC LẶP — NÂNG CAO (ANTI-FORMULA): NGHIÊM CẤM lặp lại cấu trúc "địch đắc chí → main bình thản → main rút hồ sơ/USB/ghi âm → địch mặt tái mét → main bước ra không nhìn lại" quá 2 lần. Đây là công thức chết người — người đọc mất tension từ lần thứ 3, vì họ biết chắc main sẽ thắng. ĐỂ PHÁ CÔNG THỨC: Sau 2 lần dùng "rút bằng chứng", lần 3 phải có twist thật: bằng chứng bị nghi ngờ là giả, hoặc địch đã chuẩn bị phương án đối phó, hoặc "chiến thắng" kéo theo hệ quả ngoài dự tính. CŨNG NGHIÊM CẤM: Suốt cả bộ truyện chỉ dùng 1 kiểu lật bài (rút hồ sơ/USB/ghi âm). Cần đa dạng: mua cổ phần âm thầm, liên minh bất ngờ, lật tẩy qua truyền thông, đợi địch tự hủy.
+13. QUY TẮC CẢM XÚC THỰC (HUMAN MOMENT — BẮT BUỘC): TUYỆT ĐỐI CẤM kết thúc mọi khoảnh khắc cảm xúc quan trọng bằng "cô nhắm mắt, hít thở, khi mở mắt ra mọi thứ đã bình thản". Đây là cách né tránh cảm xúc thô thiển. Thay vào đó: Khi nhân vật chính chạm đến ký ức đau (bằng chứng cha bị phản bội, kỷ vật cũ, lời nói của người đã mất) — cho cô ấy PHẢN ỨNG THẬT: tay run không kiểm soát được, giọng khàn lại giữa chừng, bước chân dừng đột ngột rồi đi chậm hơn — không cần giải quyết ngay, cứ để vết thương đó chảy vài trang.
+14. QUY TẮC PHẢN DIỆN CÓ LOGIC NỘI TẠI (VILLAIN HUMANITY): Phản diện chính PHẢI có ít nhất 1 khoảnh khắc ngắn (2-3 câu nội tâm hoặc hành động) tiết lộ lý do THẬT SỰ đằng sau mọi việc hắn làm — không phải để biện hộ hay tha thứ, mà để người đọc hiểu logic của kẻ ác. Phản diện không có lý do = kẻ ác nhàm chán = mất nửa sức hút của truyện. Kẻ ác giỏi nhất là kẻ ác mà ta thấy được logic của hắn, dù vẫn ghét hắn.
+15. QUY TẮC HỆ QUẢ ĐẠO ĐỨC — NÂNG CAO (MORAL WEIGHT): Khi nhân vật chính sử dụng phương pháp vùng xám đạo đức, BẮT BUỘC phải có (A) hoặc (B): (A) Nhân vật phụ phản đối ngay tại chỗ; (B) Nhân vật chính tự đối mặt trong nội tâm. SAI LẦM ĐIỂN HÌNH PHẢI TRÁNH: (1) Main cắt 30% lương toàn bộ nhân viên công ty đối thủ — hàng trăm người vô tội — không ai phản đối, main cũng không suy nghĩ thêm, truyện tiếp tục như không có gì. Đây là vùng xám đạo đức cực nặng nhưng bị bỏ qua hoàn toàn. (2) Main chia sẻ tài liệu lương cá nhân của người khác lên nhóm công ty 200+ người — frame là "chiến thuật thông minh", không ai đặt câu hỏi về quyền riêng tư. Người đọc PHẢI cảm nhận sức nặng đạo đức, không chỉ sự thỏa mãn.
+16. QUY TẮC LOGIC PHÁP LÝ & KINH DOANH — NÂNG CAO: NGHIÊM CẤM frame hành động bất hợp pháp thành "chiến thắng thông minh". CÁC VI PHẠM PHỔ BIẾN NHẤT CẦN TRÁNH: (A) Lắp GPS hoặc camera ẩn trong xe riêng/nhà riêng của người khác mà không có lệnh cơ quan điều tra = BẤT HỢP PHÁP, không dùng làm chứng cứ được; (B) Ghi âm trong không gian riêng tư (xe hơi, nhà riêng) không có sự đồng ý = vùng xám pháp lý, có thể bị phản công; (C) Dùng hệ thống loa nội bộ công ty để thông báo sa thải cá nhân trước đám đông = không đúng thủ tục lao động, có thể bị kiện; (D) Chia sẻ thông tin lương/thu nhập cá nhân của người khác không được phép = vi phạm bảo mật dữ liệu. NẾU nhân vật chính dùng phương pháp "vùng xám pháp lý", phải có đoạn ngắn giải thích tại sao hợp lệ trong bối cảnh đó, hoặc nhân vật phải nhận thức được rủi ro pháp lý của hành động mình đang làm.
+17. QUY TẮC KIỂM TRA TỶ LỆ 3 LOẠI CHƯƠNG (BẮT BUỘC TỰ KIỂM): Trước khi viết mỗi chương, AI PHẢI tự đếm tỷ lệ hiện tại. Nếu đã có 3 chương HÀNH ĐỘNG liên tiếp mà chưa có chương XÂY DỰNG hoặc SỤP ĐỔ nào, chương tiếp theo BẮT BUỘC là XÂY DỰNG hoặc SỤP ĐỔ. ĐỊNH NGHĨA: HÀNH ĐỘNG = đối đầu, lật bài, chiến thắng. XÂY DỰNG = phát triển mối quan hệ, khám phá động cơ, khoảnh khắc con người thật. SỤP ĐỔ = kế hoạch thất bại, nhân vật ở thế nguy, phải lựa chọn đánh đổi đau đớn. MỤC TIÊU cả bộ: HÀNH ĐỘNG ≤ 45%, XÂY DỰNG ≥ 30%, SỤP ĐỔ ≥ 20%.
+
+— CẤU TRÚC CHƯƠNG — 3 LOẠI BẮT BUỘC XEN KẼ:
+HÀNH ĐỘNG (Màn đối đầu, lật bài, chiến thắng): ~40% số chương.
+XÂY DỰNG (Phát triển nhân vật, cảm xúc, quan hệ): ~35% số chương.
+SỤP ĐỔ (Thất bại, bị lộ, khủng hoảng): ~25% số chương.
+LỖI CHẾT NGƯỜI: Viết 90% chương HÀNH ĐỘNG → mất tension → mất chiều sâu → người đọc chán.
+
+— KỸ THUẬT TẠO TENSION KHÔNG CẦN BẠO LỰC:
+THÔNG TIN BẤT ĐỐI XỨNG: Người đọc biết điều nhân vật chính chưa biết — tạo cảm giác lo lắng không cần đối đầu trực tiếp.
+ĐỒNG HỒ ĐẾM NGƯỢC ẨN: Không nói thẳng "còn 3 ngày", mà cho thấy qua hành động các bên: kẻ địch đang tăng tốc, đồng minh bắt đầu do dự, cơ hội đang hẹp dần.
+KẺ TRUNG LẬP KHÔNG THỂ ĐOÁN TRƯỚC: Một nhân vật không rõ ràng là địch hay bạn, tạo tension suốt nhiều chương.
+
+— VĂN PHONG — QUY TẮC CÂU BẮT BUỘC:
+CẤM câu miêu tả kết cục trực tiếp kiểu: "Mặt hắn tái mét." Thay bằng câu miêu tả QUÁ TRÌNH, để người đọc tự cảm nhận: "Hắn nhìn tờ giấy đó. Nhìn lại. Rồi nhìn lại một lần nữa, như thể lần đọc thứ ba sẽ cho ra một kết quả khác."
+CẤM dùng "lạnh lùng / băng giá / sắc như dao" liên tục mô tả nhân vật chính. Thay đổi nhiệt độ cảm xúc theo tình huống — đôi lúc cô mệt mỏi, đôi lúc cô do dự, đôi lúc cô sai.
+CẤM kết chương bằng hành động bí ẩn một chiều kiểu: "Cô nhấn gửi. Nụ cười lạnh nở trên môi." Thay bằng câu hỏi, hệ quả, hoặc chi tiết mới làm thay đổi cách hiểu những gì vừa xảy ra.
+
+— CHECKLIST BẮT BUỘC TRƯỚC KHI VIẾT MỖI CHƯƠNG (TRẢ LỜI TRONG ĐẦU):
+1. Chương này thay đổi điều gì? (Không có thay đổi = chương thừa, không được viết)
+2. Nhân vật chính muốn gì trong chương này? (Phải cụ thể, không phải "muốn chiến thắng" chung chung)
+3. Điều gì có thể ngăn cô đạt được điều đó? (Phải thực tế, không phải trở ngại giả)
+4. Có chi tiết nào đi ngược kỳ vọng của người đọc không?
+5. Câu cuối cùng có tạo ra câu hỏi mới không?
 `;
 
 
+
 // Giáp hồi sinh cho Client-Side Fetch
-async function fetchWithRetry(url: string, options: RequestInit, maxRetries = 3) {
+async function fetchWithRetry(url: string, options: RequestInit, maxRetries = 4) {
   let lastErr;
   for (let i = 0; i < maxRetries; i++) {
     try {
       const res = await fetch(url, options);
+      // Bắt trực tiếp status 503 (Overloaded) hoặc 429 (Rate Limit) từ response, vì fetch() không tự quăng lỗi với HTTP codes này.
+      if (!res.ok && (res.status === 503 || res.status === 429 || res.status === 529 || res.status === 502 || res.status === 504)) {
+         if (i === maxRetries - 1) return res; // Nếu hết lượt retry, trả về để bên ngoài parse thông báo lỗi
+         console.warn(`[Auto-Pilot Armor] HTTP ${res.status} on attempt ${i+1}. Server overloaded. Retrying in ${5*(i+1)}s...`);
+         await new Promise(r => setTimeout(r, 5000 * (i + 1))); 
+         continue;
+      }
       return res; 
     } catch (err: any) {
       lastErr = err;
-      console.warn(`[Auto-Pilot Armor] Fetch attempt ${i+1} failed for ${url}: ${err?.message || String(err)}. Retrying in ${2*(i+1)}s...`);
+      console.warn(`[Auto-Pilot Armor] Fetch attempt ${i+1} failed for ${url}: ${err?.message || String(err)}. Retrying in ${5*(i+1)}s...`);
       if (i < maxRetries - 1) {
-        await new Promise(r => setTimeout(r, 2000 * (i + 1))); 
+        await new Promise(r => setTimeout(r, 5000 * (i + 1))); 
       }
     }
   }
@@ -50,6 +85,7 @@ function calculateCost(model: string, inTokens: number, outTokens: number): numb
     case model.includes('sonnet'): return (inTokens * 3.0 / 1e6) + (outTokens * 15.0 / 1e6);
     case model.includes('qwen-plus'): return (inTokens * 0.40 / 1e6) + (outTokens * 1.20 / 1e6);
     case model.includes('qwen3-max'): return (inTokens * 2.0 / 1e6) + (outTokens * 6.0 / 1e6);
+    case model.includes('deepseek'): return (inTokens * 0.14 / 1e6) + (outTokens * 0.28 / 1e6);
     case model.includes('haiku'): return (inTokens * 0.25 / 1e6) + (outTokens * 1.25 / 1e6);
     default: return 0;
   }
@@ -283,13 +319,15 @@ Trả về JSON:
 export async function agentGhostwriter(apiKey: string, bible: unknown, outline: unknown, chapterNumber: number, model?: string) {
   const sys = `Bạn là The Ghostwriter - Cây bút vàng Top 1 Qidian/Tencent.
 Quy tắc sống còn BẮT BUỘC TUÂN THỦ:
-1. Áp dụng triệt để quy tắc Show, Don't Tell: Thay vì miêu tả 'hắn ta rất giận dữ', hãy miêu tả 'hắn hất tung cốc nước nóng vào mặt cô'. Không dùng từ ngữ cảm xúc sáo rỗng. TUYỆT ĐỐI CẤM SỬ DỤNG NGOẶC ĐƠN MIÊU TẢ CẢM XÚC. Phải miêu tả qua sinh lý cơ thể: "gân xanh hằn lên", "mồ hôi rịn ra", "cắn vỡ bờ môi rướm máu". Đi ngược quy tắc này bạn sẽ bị sa thải!
+1. Áp dụng triệt để quy tắc Show, Don't Tell: Thay vì miêu tả 'hắn ta rất giận dữ', hãy miêu tả 'hắn hất tung cốc nước nóng vào mặt cô'. Không dùng từ ngữ cảm xúc sáo rỗng. TUYỆT ĐỐI CẤM SỬ DỤNG NGOẶC ĐƠN MIÊU TẢ CẢM XÚC. CẤM lạm dụng cấu trúc phủ định song hành ("Không A. Không B. Mà là C"). Hãy miêu tả trực diện bằng khẳng định.
 2. XUNG ĐỘT LẬP TỨC: CẤM TUYỆT ĐỐI việc tả cảnh thiên nhiên, tả độ sáng ánh đèn, không gian lộng lẫy ở đầu chương. Câu đầu tiên phải là Hành Động hoặc Lời Thoại đụng độ (chửi bới, đập bàn, khóc lóc).
-3. Tỉ lệ hội thoại phải chiếm ít nhất 60% thời lượng chương. [CẤM sáo rỗng: Tuyệt đối không dùng từ khinh miệt rập khuôn như 'nhà quê', 'hậu đậu'. Hãy bắt nạt bằng thế thượng đẳng, bạo lực lạnh, cô lập, nụ cười giả tạo]. Các nhân vật phải đối thoại mỉa mai, châm biếm liên tục bằng ngôn ngữ đời thường, sắc bén như dao găm. Bút lực sát phạt, không rườm rà. Lời thoại sắc bén, giật gân, nhiều ẩn ý.
+3. ĐIỀU KIỆN 40% CẢM XÚC NỘI TÂM (TỐI QUAN TRỌNG): Mỗi hành động của nữ chính BẮT BUỘC phải đi liền với một miêu tả nội tâm tương ứng. Cảm xúc nội tâm phải chiếm ≥40% thời lượng bài viết, hành động ≥40%, Tả cảnh/vật <20%. CẤM lạm dụng và mô tả dày đặc chi tiết thiết bị kỹ thuật (khi chi tiết đó không gợi lên cảm xúc quá khứ). Nếu thiếu cảm xúc, văn bản của bạn chỉ là báo cáo nghiệp vụ!
 4. Từng khoảnh khắc, chi tiết nhỏ nhất trong outline phải được phóng to, đặc tả sắc nét. Chiều dài bắt buộc từ 1000 đến 2000 chữ (Trung bình 1500 chữ). Đừng tua nhanh.
 5. Viết dưới dạng Markdown, có định dạng in nghiêng/in đậm chỗ nhấn mạnh. Có ngắt dòng tạo nhịp thở tốt.
-6. NỮ CHÍNH PHẢI CÓ THỜI ĐIỂM THUA ĐAU: Nếu outline chỉ định đây là chương nữ chính thất bại hoặc bị dồn vào góc tường — hãy viết nỗi đau đó thật sự, không cho nàng giải quyết nội chương. Để cảm giác thất bại ngấm vào xương người đọc trước khi chương kế tiếp mới có hướng ra.
-7. CHIỀU SÂU NAM PHỤ: Khi viết cảnh nam phụ/tình nhân xuất hiện, phải thể hiện rõ hắn có suy nghĩ và toan tính riêng. Hắn có thể hỗ trợ nữ chính, nhưng phải lộ ra một chi tiết nhỏ cho thấy hắn đang theo đuổi lợi ích hoặc bí mật riêng của mình.`;
+6. MAP-BREAKING FAILURE (SỰ THẤT BẠI NGOÀI KẾ HOẠCH NỘI CHƯƠNG): Nếu outline chỉ định đây là chương nữ chính thất bại (counter-attack) — BẮT BUỘC cô ấy phải TÍNH SAI. Không được để cô đoán trước được đòn của địch. Kế hoạch của cô ấy PHẢI LỖ HỔNG và bị đập tan. Hãy miêu tả sự hoảng loạn, mồ hôi, vết thương vật lý hoặc sự chạy trốn. Không cho nàng giải quyết gọn lẹ vớt vát lại nội chương. Phải mất kiểm soát hoàn toàn ở giai đoạn này.
+7. CHIỀU SÂU NAM PHỤ: Khi viết cảnh nam phụ/tình nhân xuất hiện, phải thể hiện rõ hắn có suy nghĩ và toan tính riêng. Hắn có thể hỗ trợ nữ chính, nhưng phải lộ ra một chi tiết nhỏ cho thấy hắn đang theo đuổi lợi ích hoặc bí mật riêng của mình.
+8. KHOẢNH KHẮC CON NGƯỜI (BẮT BUỘC ÍT NHẤT 1 LẦN TRÊN 3 CHƯƠNG): Nhân vật chính PHẢI có ít nhất một khoảnh khắc KHÔNG phải chiến đấu, không phải tính toán, không phải lạnh lùng — mà chỉ là con người: mệt mỏi thật sự, nhớ ai đó, sợ một điều gì đó không dám nói thành lời, hoặc làm một việc nhỏ vô nghĩa (uống nước, nhìn ra cửa sổ, dừng lại giữa bước đi). Đây là ĐIỂM NEO cảm xúc khiến người đọc tiếp tục đọc. Nếu thiếu điều này, nhân vật là Cyborg — không phải người.
+9. PHẢN DIỆN CÓ MỘT KHOẢNH KHẮC NGƯỜI: BẮT BUỘC ít nhất một lần trong cả truyện, cho phản diện chính có 2-3 câu nội tâm hoặc hành động lộ ra lý do thật sự họ làm điều này — không phải để biện hộ, mà để người đọc thấy logic. Kẻ ác không lý do = kẻ ác nhàm chán = mất đi nửa sức mạnh của câu chuyện.`;
 
   const user = `Dàn ý cần viết:
 ${JSON.stringify(outline, null, 2)}
@@ -510,7 +548,10 @@ THÁNH KINH NỘI DUNG NGHỆ THUẬT:
 
   const user = `Hồ sơ truyện: ${JSON.stringify(bible)}
 Chương ${episodeNum}: ${episodeOutline}
-Viết ngay thành VĂN XUÔI truyện đọc (không phải script phim). Trả văn bản thô. Không chào hỏi.`;
+Viết ngay thành VĂN XUÔI truyện đọc (không phải script phim). Trả văn bản thô. Không chào hỏi.
+[LỆNH ĐẶC BIỆT DÀNH CHO CLAUDE]:
+1. CHỐNG BỆNH CỤT LỦN & CHÓP CHÉP: TUYỆT ĐỐI CẤM viết những câu quá ngắn, giật cục kiểu "Xe dừng. Cô bước xuống. Mở cửa." BẮT BUỘC dùng liên từ, dấu phẩy để nối các hành động thành câu văn nhịp nhàng, mượt mà (Ví dụ: "Xe dừng lại, cô bước xuống và mở cửa trong sự im lặng"). Không được dài thòng lọng 100 chữ nhưng cũng cấm tuyệt đối việc cắt vụn văn bản thành các câu 2-3 chữ!
+2. CẤM VĂN MẪU PHỦ ĐỊNH: Nếu định viết cấu trúc lặp "Không A... không B... mà là C", hãy LẬP TỨC dừng lại và đổi thành 1 câu khẳng định ngắn gọn miêu tả trực tiếp bản chất!`;
 
   const res = await callClaude({ apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, model: 'claude-3-5-sonnet-20241022', temperature: 0.8 });
   return (res as any).text;
@@ -601,7 +642,10 @@ export async function callQwen(params: {
       body: JSON.stringify(params)
     });
     const data = await res.json();
-    if (!res.ok) throw new Error(data.error?.message || data.error || 'Qwen API Error');
+    if (!res.ok) {
+       const errStr = typeof data.error === 'object' ? JSON.stringify(data.error) : data.error;
+       throw new Error(errStr || 'Qwen API Error');
+    }
 
     // Logging cost
     if (data.usage?.totalTokens) {
@@ -646,7 +690,16 @@ TRẢ VỀ JSON: {"timeline": [{"chapter": 1, "title": "Giẫm Đạp Tự Tôn"
   const safeBible = { ...(bible as any) };
   delete safeBible.suggestedChapters;
   delete safeBible.timeline;
-  const user = `Kịch bản gốc: ${JSON.stringify(safeBible)}\nYêu cầu: Tạo timeline CHÍNH XÁC đúng ${exactChapters} chương. Nếu âm mưu phức tạp >2 tầng phản diện, tự cộng 3-5 chương. Hồi 3 phải leo thang không ngừng. Tiêu đề TUYỆT ĐỐI là động từ sát thương.\nChỉ trả về JSON, format {"timeline": [...]}.`;
+  const user = `Kịch bản gốc: ${JSON.stringify(safeBible)}\nYêu cầu: Tạo timeline CHÍNH XÁC đúng ${exactChapters} chương. Nếu âm mưu phức tạp >2 tầng phản diện, tự cộng 3-5 chương. Hồi 3 phải leo thang không ngừng. Tiêu đề TUYỆT ĐỐI là động từ sát thương.
+NHIỆM VỤ CẤP BÁCH (KIỂM SOÁT MARY SUE):
+BẮT BUỘC TUÂN THỦ RULE 11 (Chống Mary Sue) VÀ RULE 17 (Tỷ lệ 3 loại chương).
+- TUYỆT ĐỐI CẤM motif "kẻ địch đắc chí -> main rút bằng chứng vả mặt -> địch tái mét" lặp lại ở mọi chương.
+- BẮT BUỘC phải có ÍT NHẤT 2 chương thuộc loại SỤP ĐỔ (Main bị mất lợi thế hoàn toàn, bằng chứng bị hủy, đồng minh phản bội, kẻ địch thắng thế).
+- BẮT BUỘC xen kẽ các chương XÂY DỰNG (chuẩn bị, nội tâm, tìm hiểu bí mật).
+Trả về JSON có mảng 'timeline' gồm các object: { chapter, title, outline, chapter_type, has_setback }. 
+Trong đó 'chapter_type' chỉ được chọn 1 trong 3: "HÀNH ĐỘNG", "XÂY DỰNG", "SỤP ĐỔ". 
+'has_setback' (boolean) = true nếu main thua/bất lợi thật sự.
+LƯU Ý: Nếu dưới 2 chương có has_setback = true, BẠN PHẢI TỰ ĐỘNG SỬA LẠI DÀN Ý TRƯỚC KHI XUẤT JSON!`;
 
   const res = await callQwen({ 
     apiKey, 
@@ -676,9 +729,107 @@ YÊU CẦU TUYỆT ĐỐI VỀ HÌNH THỨC — VI PHẠM LÀ LỖI NẶNG:
 ⑥ CHI TIẾT NGỘT NGẠT: Cấm 'tim như ngừng đập'. Thay bằng: âm thanh ném xấp tiền cái bạch, tiếng nước hoa nồng nặc mùi hống hách, tờ siêu âm bị vò nát.
 THÁNH KINH NỘI DUNG: Hội thoại chiếm 70% chương. Dài 1000-2000 chữ. Tốc độ ngột ngạt nhưng đứt đoạn ngay cao trào.`;
 
-  const user = `Hồ sơ truyện: ${JSON.stringify(bible)}\nChương ${episodeNum}: ${episodeOutline}\nViết thành VĂN XUÔI truyện sảng văn/gia đấu. Tả thật sắc bén, mồm mép độc ác. Trả text thô, tuyệt đối không format markdown hay chào hỏi.`;
+  const user = `Hồ sơ truyện: ${JSON.stringify(bible)}\nChương ${episodeNum}: ${episodeOutline}\nViết thành VĂN XUÔI thuần Việt xuất sắc. Trả text thô, tuyệt đối không format markdown hay chào hỏi.\n[LỆNH ĐẶC BIỆT CHỐNG BỆNH CỤT LỦN]: TUYỆT ĐỐI CẤM viết theo kiểu cụt lủn, ngắt vụn từng hành động (Ví dụ cấm viết: "Xe dừng. Cô bước xuống. Mở cửa. Không ai nói gì."). BẮT BUỘC phải dùng liên từ và dấu phẩy để nối mượt mà các hành động vào nhau thành những câu văn nhịp nhàng, có độ dài ngắn đan xen tự nhiên. CẤM dùng cái kiểu văn mẫu chữ "Không phải.. mà là.." triền miên!`;
 
   const res = await callQwen({ apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, model: 'qwen-plus', temperature: 0.9 });
+  return (res as any).text;
+}
+
+// ==========================================
+// CÁ MẬP LOGIC DEEPSEEK (Write & Rewrite)
+// ==========================================
+
+export async function callDeepSeek(params: { apiKey: string, systemPrompt: string, userPrompt: string, model?: string, jsonMode?: boolean, temperature?: number, logMeta?: any }) {
+  if (!params.apiKey) throw new Error("Chưa có DeepSeek Key");
+  
+  const res = await fetchWithRetry('/api/deepseek', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      apiKey: params.apiKey,
+      systemPrompt: params.systemPrompt,
+      userPrompt: params.userPrompt,
+      model: params.model || 'deepseek-chat',
+      jsonMode: params.jsonMode || false,
+      temperature: params.temperature !== undefined ? params.temperature : 0.9
+    })
+  });
+
+  const data: any = await res.json();
+  if (!res.ok) {
+     const errStr = typeof data.error === 'object' ? JSON.stringify(data.error) : data.error;
+     throw new Error(errStr || 'DeepSeek API Error');
+  }
+
+  processUsageLog(data, params.model || 'deepseek-chat', 'deepseek', params.logMeta);
+  return data;
+}
+
+export async function agentDeepSeekDramaExpand(apiKey: string, bible: unknown, bounds: string) {
+  const sys = `Bạn là Trùm Nghĩ Mưu Hèn Kế Bẩn cho WEB NOVEL (DeepSeek-Chat).
+Sở trường: Thiết lập các plot twist cực kỳ tinh vi, logic tuyệt đối không lỗ hổng, lật mặt khốc liệt và cực kỳ cay cú.`;
+
+  const user = `Hồ sơ gốc: ${JSON.stringify(bible)}\nKhoảng chương: ${bounds}
+NHIỆM VỤ CẤP BÁCH (KIỂM SOÁT MARY SUE):
+Bày mưu chia nhỏ thành các chapter ngắn. BẮT BUỘC TUÂN THỦ RULE 11 (Chống Mary Sue) VÀ RULE 17 (Tỷ lệ 3 loại chương).
+- TUYỆT ĐỐI CẤM motif "kẻ địch đắc chí -> main rút bằng chứng vả mặt -> địch tái mét" lặp lại ở mọi chương.
+- BẮT BUỘC phải có ÍT NHẤT 2 chương thuộc loại SỤP ĐỔ (Main bị mất lợi thế hoàn toàn, bằng chứng bị hủy, đồng minh phản bội, kẻ địch thắng thế).
+- BẮT BUỘC xen kẽ các chương XÂY DỰNG (chuẩn bị, nội tâm, tìm hiểu bí mật).
+Trả về JSON có mảng 'chapters' gồm các object: { title, plot_summary, chapter_type, has_setback }. 
+Trong đó 'chapter_type' chỉ được chọn 1 trong 3: "HÀNH ĐỘNG", "XÂY DỰNG", "SỤP ĐỔ". 
+'has_setback' (boolean) = true nếu main thua/bất lợi thật sự.
+LƯU Ý: Nếu dưới 2 chương có has_setback = true, BẠN PHẢI TỰ ĐỘNG SỬA LẠI DÀN Ý!`;
+  
+  const res = await callDeepSeek({ 
+    apiKey, 
+    systemPrompt: sys + "\n\n" + STORY_IRON_RULES, 
+    userPrompt: user, 
+    model: 'deepseek-chat', 
+    jsonMode: true, 
+    temperature: 0.9 
+  });
+  const text = (res as any).text;
+  let parsed: any[] = [];
+  try {
+    const json = JSON.parse(text);
+    parsed = json.chapters || json.timeline || json;
+    if (!Array.isArray(parsed)) parsed = [];
+  } catch (e) {
+    const match = text.match(/\[.*\]/s);
+    if (match) {
+      try {
+        parsed = JSON.parse(match[0]);
+      } catch(err) {} 
+    }
+  }
+  
+  // Format lại để module Engine nhận diện field 'outline' tương tự model khác
+  return parsed.map((item: any) => ({
+     chapter: item.chapter || item.episode || 1,
+     title: item.title || '',
+     outline: item.plot_summary || item.outline || item.summary || ''
+  }));
+}
+
+export async function agentDeepSeekDramaRewrite(apiKey: string, bible: unknown, episodeOutline: string, episodeNum: number) {
+  const sys = `Bạn là đệ nhất tác giả Web Novel (DeepSeek). Bạn trùm viết truyện sảng văn, gia đấu, tổng tài, mẹ chồng độc ác — nhưng quan trọng hơn: bạn viết truyện CÓ CHIỀU SÂU, không chỉ là mì ăn liền nhàm.
+YÊU CẦU TUYỆT ĐỐI VỀ HÌNH THỨC — VI PHẠM LÀ LỖI NẶNG:
+- TUYỆT ĐỐI CẤM dùng [CẢNH], "Máy quay", "Góc máy", "Cắt cảnh", "Fade in/out". Đây là truyện đọc, VĂN XUÔI 100%. Xưng hô gia đình thuần Việt.
+9 ĐIỀU CẤM BẢN NHÁP — VI PHẠM BẤT KỲ ĐIỀU NÀO = BỊ ĐUỔI VIỆC:
+① CẤM CLIFFHANGER LẶP: Không kết chương bằng cùng kiểu 2 lần liên tiếp. Phải xoay vòng (gửi tin nhắn nặc danh → gián điệp lộ diện → ném tiền vào mặt → bị lộ bí mật → đồng minh phản bội).
+② MỖI CHƯƠNG PHẢI CÓ KẾT QUẢ THẬT: Phải có 1 nút thắt mở ra hoặc siết chặt lại — sau khi bị chửi, main phải hành động PHẢN KÍCH (dù lép vế). Cấm kết chương mà tình huống y chang lúc mở đầu.
+③ NỮ CHÍNH CHỦ ĐỘNG: Mỗi chương phải thực hiện ≥1 hành động thực tế. KHÔNG CHỈ SUY NGHĨ HAY KHÓC.
+④ THOẠI TOXIC THỰC TẾ: Không tục tĩu nhưng phải ĐỘC MỒM ĐỘC MIỆNG (mạt sát nguồn gốc, giẫm đạp nghèo khó). Cấm lặp văn mẫu. Phản diện phải leo thang chiêu mỗi chương.
+⑤ CẤM BỎ DỞ PLOT THREAD: Mọi con bài tẩy phải lật mở trước khi kết truyện.
+⑥ CHI TIẾT VẬT LÝ CỤ THỂ: Cấm 'tim như ngừng đập', 'luồng điện lạnh'. Thay bằng: âm thanh ném xấp tiền, mùi nước hoa mẹ chồng, tờ siêu âm bị vò nát, tiếng ghế dịch trên sàn.
+⑦ CHỐNG MARY SUE — NỮ CHÍNH PHẢI TỰA VÁP ÍT NHẤT 1 LẦN: Nếu outline chỉ định chương thất bại, BẮT BUỘC cô phải TÍNH SAI thật sự — kế hoạch lỗ hổng, bị địch đọc trước, mất kiểm soát hoàn toàn. Cấm để cô vớt vát gọn lẹ ngay trong cùng chương đó.
+⑧ KHOẢNH KHẮC CON NGƯỜI (BẮT BUỘC 1 LẦN / 3 CHƯƠNG): Nhân vật chính PHẢI có ít nhất 1 khoảnh khắc không phải tính toán, không phải lạnh lùng — chỉ là con người: mệt mỏi thật, nhớ ai đó, dừng lại nhìn ra cửa sổ, tay run khi chạm vào vật kỷ niệm. Đây là NEO CẢM XÚC. Thiếu điều này = nhân vật robot.
+⑨ HỆ QUẢ ĐẠO ĐỨC: Khi nhân vật chính dùng phương pháp vùng xám (trừng phạt tập thể, gài bẫy người thứ ba), PHẢI có ít nhất 1 nhân vật phụ đặt câu hỏi HOẶC nhân vật chính tự cảm thấy sức nặng của quyết định đó, dù ngắn.
+THÁNH KINH NỘI DUNG: Hội thoại chiếm 60-70% chương. Dài 1200-2000 chữ. Tốc độ ngột ngạt nhưng có ít nhất 1 nhịp thở cảm xúc mỗi chương (không phải lúc nào cũng full chiến đấu).`;
+
+  const user = `Hồ sơ truyện: ${JSON.stringify(bible)}\nChương ${episodeNum}: ${episodeOutline}\nViết thành VĂN XUÔI thuần Việt xuất sắc. Trả text thô, tuyệt đối không format markdown hay chào hỏi.\n[LỆNH ĐẶC BIỆT CHỐNG BỆNH CỤT LỦN]: TUYỆT ĐỐI CẤM viết theo kiểu cụt lủn, ngắt vụn từng hành động (Ví dụ cấm viết: "Xe dừng. Cô bước xuống. Mở cửa."). BẮT BUỘC phải dùng liên từ và dấu phẩy để nối mượt mà. Đảm bảo cấu trúc nhân vật và mưu kế không bao giờ bị quên.\nCẤM dùng "Không phải.. mà là.." triền miên!`;
+
+  const res = await callDeepSeek({ apiKey, systemPrompt: sys + "\n\n" + STORY_IRON_RULES, userPrompt: user, model: 'deepseek-chat', temperature: 0.9 });
   return (res as any).text;
 }
 

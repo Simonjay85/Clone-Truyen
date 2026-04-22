@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { callGemini, callOpenAI, callGrok, callClaude, callQwen, STORY_IRON_RULES } from './engine';
+import { callGemini, callOpenAI, callGrok, callClaude, callQwen, callDeepSeek, STORY_IRON_RULES } from './engine';
 
 // Helper to route dynamic calls
  
@@ -9,6 +9,7 @@ async function callDynamicEngine(engineSlug: string, params: any): Promise<any> 
   if (engineSlug === 'grok') return callGrok(params);
   if (engineSlug === 'claude') return callClaude(params);
   if (engineSlug === 'qwen') return callQwen(params);
+  if (engineSlug === 'deepseek') return callDeepSeek(params);
   throw new Error("Unknown engine: " + engineSlug);
 }
 
@@ -85,11 +86,11 @@ Lưu ý: timeline PHẢI có đủ 30 object (30 episodes).`;
 }
 
  
-export async function agentEpisodeDrafter(engine: string, apiKey: string, model: string, bible: unknown, epNum: number, currentBeat: string) {
+export async function agentEpisodeDrafter(engine: string, apiKey: string, model: string, bible: unknown, epNum: number, currentBeat: string, prevContext: string = '') {
   const sys = `Bạn là Episode Drafter của Micro-Drama. Nhiệm vụ: Dựa vào Bible và Beat của tập hiện tại, hãy viết nháp thô (draft).
 QUY TẮC SỐNG CÒN:
 1. Áp dụng triệt để quy tắc Show, Don't Tell: TUYỆT ĐỐI CẤM SỬ DỤNG NGOẶC ĐƠN hay các từ miêu tả cảm xúc sáo rỗng như (Lúng túng), (Giận dữ). Thay vì nói 'hắn ta rất giận dữ', hãy miêu tả 'hắn hất tung cốc nước nóng vào mặt cô'.
-2. Tỉ lệ hội thoại phải chiếm ít nhất 60% thời lượng chương. Các nhân vật phải cãi vã, châm biếm, và đối thoại mỉa mai liên tục bằng ngôn ngữ đời thường, ngắn gọn như dao găm.
+2. Tỉ lệ hội thoại phải chiếm ít nhất 60% thời lượng chương. Các nhân vật phải cãi vã, châm biếm, sắc bén. NHƯNG PHẦN VĂN MIÊU TẢ CẢM XÚC VÀ HÀNH ĐỘNG BẮT BUỘC PHẢI VIẾT THÀNH NHỮNG CÂU GHÉP DÀI MƯỢT MÀ, MỘT ĐOẠN VĂN GỘP CHUNG 4-6 CÂU. TUYỆT ĐỐI KHÔNG VIẾT CÂU MINH HỌA NGẮN NGỦN RỚT DÒNG CỘC LỐC.
 3. ĐỘC MIỆNG HÀO MÔN: Đặc sản của Micro-Drama Việt là thâm thúy, chửi xéo, mỉa mai cay nghiệt. Phải dùng từ ngữ gai góc, xéo xắt, toxic cho phản diện.
 4. CHIỀU DÀI: ĐÒI HỎI BẮT BUỘC 1000 - 2000 CHỮ (TRUNG BÌNH 1500 CHỮ) VÀ KHÔNG ĐƯỢC NGẮN HƠN 1000 CHỮ DÙ TRỜI CÓ SẬP XUỐNG (Mệnh lệnh cờ sinh tử).
 5. MÓC CÂU (CLIFFHANGER): Kết thúc tập LUÔN bằng 1 câu MÓC CÂU khiến khán giả rợn người muốn coi tiếp (tin nhắn lạ, cuộc điện thoại bí ẩn...). Focus vào hành động chà đạp, hắt hủi nảy lửa. Trả về Text thuần.`;
@@ -99,7 +100,7 @@ Series Premise: ${(bible as any).series_premise}
 Character Bible: ${(bible as any).character_bible}
 Secrets Map: ${(bible as any).hidden_secrets_map}
 Forbidden Inconsistencies: ${(bible as any).forbidden_inconsistencies}
-
+${prevContext ? `\n--- TRÍCH ĐOẠN CUỐI TẬP TRƯỚC (ROLLING CONTEXT) ---\nNối tiếp liền mạch bối cảnh, cảm xúc và hành động của đoạn văn này:\n"${prevContext}"\n` : ''}
 --- EPISODE TASK ---
 Xây dựng Episode số ${epNum}.
 Episode Beat: ${currentBeat}
@@ -116,7 +117,7 @@ export async function agentEpisodeRewriter(engine: string, apiKey: string, model
 - CẤM TIỆT: Xóa sạch 100% các câu văn tả không gian, thời tiết vô thưởng vô phạt (Nắng dịu, đèn lấp lánh).
 - Stronger humiliation (Xỉ nhục tàn nhẫn hơn).
 - Sharper emotional contrast (Tương phản cảm xúc gắt hơn).
-- Shorter dialogue (Thoại ngắn, dao găm).
+- Thoại của nhân vật ngắn gọn sắc bén (NHƯNG phần văn miêu tả không gian, hành động, tâm lý thì PHẢI VIẾT BẰNG CÂU GHÉP DÀI MƯỢT MÀ, KHÔNG ĐƯỢC CỘC LỐC).
 - Stronger cliffhanger (Lưỡi lam ở cuối tập phải gài kỹ hơn).
 Tuyệt đối KHÔNG chào hỏi, KHÔNG giải thích. CHỈ TRẢ VỀ NỘI DUNG SAU KHI SỬA DƯỚI DẠNG MARKDOWN.`;
 

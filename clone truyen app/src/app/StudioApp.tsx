@@ -7,6 +7,7 @@ import { MicroDramaView } from '../components/MicroDramaView';
 import { GrokDramaView } from '../components/GrokDramaView';
 import { ClaudeDramaView } from '../components/ClaudeDramaView';
 import { QwenDramaView } from '../components/QwenDramaView';
+import { DeepSeekDramaView } from '../components/DeepSeekDramaView';
 import { ComboEconomicView } from '../components/ComboEconomicView';
 import { ComboRoyalView } from '../components/ComboRoyalView';
 import { ChapterSplitterView } from '../components/ChapterSplitterView';
@@ -30,6 +31,7 @@ export default function StudioApp() {
           <div className={activeTab === 'grok_drama' ? 'block w-full h-full' : 'hidden'}><GrokDramaView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'claude_drama' ? 'block w-full h-full' : 'hidden'}><ClaudeDramaView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'qwen_drama' ? 'block w-full h-full' : 'hidden'}><QwenDramaView onNavigate={setActiveTab} /></div>
+          <div className={activeTab === 'deepseek_drama' ? 'block w-full h-full' : 'hidden'}><DeepSeekDramaView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'combo_eco' ? 'block w-full h-full' : 'hidden'}><ComboEconomicView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'combo_royal' ? 'block w-full h-full' : 'hidden'}><ComboRoyalView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'chapter_splitter' ? 'block w-full h-full px-8' : 'hidden'}><ChapterSplitterView /></div>

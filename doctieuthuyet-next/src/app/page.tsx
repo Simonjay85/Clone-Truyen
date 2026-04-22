@@ -149,7 +149,7 @@ export default async function Home() {
           </div>
 
           {/* CỘT PHẢI (SIDEBAR) */}
-          <div className="w-full lg:w-[280px] shrink-0 sticky top-4 lg:max-h-[calc(100vh-2rem)] flex flex-col gap-6">
+          <div className="w-full lg:w-[280px] shrink-0 flex flex-col gap-6">
             
             {/* BXH */}
             <div className="bg-white rounded-[20px] p-5 border border-[#f3f4f6] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
@@ -213,19 +213,67 @@ export default async function Home() {
               </div>
             </div>
 
-            {/* TEAM RANKING (MOCK UI) */}
-            <div className="bg-white rounded-[20px] p-5 border border-[#f3f4f6] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-              <h3 className="flex justify-between items-center mb-4 pb-3 border-b border-[#f9fafb]">
-                <span className="text-[16px] font-extrabold text-[#111827] flex items-center gap-2"><span className="text-[#a855f7]">🛡️</span> Bảng xếp hạng team</span>
+            {/* TEAM RANKING */}
+            <div className="bg-white rounded-[20px] p-5 border border-[#f3f4f6] shadow-[0_4px_20px_rgba(0,0,0,0.02)] mb-8">
+              <h3 className="flex justify-between items-center mb-4">
+                <span className="text-[16px] font-extrabold text-[#111827] flex items-center gap-2"><span className="text-[#8b5cf6]">👥</span> Bảng xếp hạng team</span>
+                <span className="text-[11px] text-[#9ca3af] font-medium">Hôm nay</span>
               </h3>
-              <div className="flex flex-col gap-2">
-                {["Mèo Kam Mập", "Lạc Giới Tinh Thư", "Ổ Mật Mật"].map((team, idx) => (
-                  <div key={idx} className="flex items-center gap-3 p-2 bg-[#f9fafb] rounded-xl border border-[#f3f4f6]">
-                     <div className="w-[22px] h-[22px] bg-[#a855f7] rounded-full flex items-center justify-center text-white text-[11px] font-black">{idx + 1}</div>
-                     <span className="text-[13px] font-bold text-[#374151] flex-1 truncate">{team}</span>
-                     <span className="text-[11px] text-[#9ca3af] font-medium bg-white px-2 py-0.5 rounded shadow-sm">{Math.floor(Math.random() * 3000) + 1000} view</span>
-                  </div>
-                ))}
+              <div className="flex flex-col gap-3">
+                {[
+                  { name: "Mèo Kam Mập", abbr: "MM", views: 36697, color: "bg-[#f97316]" },
+                  { name: "Lạc Giới Tinh Thư", abbr: "LT", views: 29293, color: "bg-[#f59e0b]" },
+                  { name: "Mỗi Ngày Chỉ Muốn...", abbr: "MM", views: 10969, color: "bg-[#f97316]" },
+                  { name: "Cá Chép Ngắm Mưa", abbr: "CM", views: 6578, color: "bg-[#1e3a8a]" },
+                  { name: "Trong Tim Có Cậu", abbr: "TC", views: 4320, color: "bg-[#3b82f6]" },
+                ].map((team, idx) => {
+                  const rank = idx + 1;
+                  if (rank <= 3) {
+                    const isTop1 = rank === 1;
+                    const isTop2 = rank === 2;
+                    
+                    const boxStyle = isTop1 ? 'border-[#fbbf24] shadow-[0_2px_10px_rgba(251,191,36,0.15)]' :
+                                     isTop2 ? 'border-[#e5e7eb] shadow-[0_2px_10px_rgba(0,0,0,0.04)]' :
+                                              'border-[#fdba74] shadow-[0_2px_10px_rgba(253,186,116,0.15)]';
+                    
+                    const rankMedal = isTop1 ? 'bg-gradient-to-br from-[#fde047] to-[#f59e0b] shadow-sm text-white' :
+                                      isTop2 ? 'bg-gradient-to-br from-[#f3f4f6] to-[#9ca3af] shadow-sm text-white' :
+                                               'bg-gradient-to-br from-[#fed7aa] to-[#ea580c] shadow-sm text-white';
+
+                    return (
+                      <div key={idx} className={`flex items-center gap-3 p-3 bg-white rounded-[14px] border ${boxStyle}`}>
+                        <div className={`w-6 h-6 min-w-[24px] rounded-full flex items-center justify-center text-[12px] font-black ${rankMedal}`}>
+                          {rank}
+                        </div>
+                        <div className={`w-9 h-9 min-w-[36px] rounded-full flex items-center justify-center text-white font-bold text-[14px] ${team.color}`}>
+                          {team.abbr}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className={`text-[13px] font-bold ${isTop1 ? 'text-[#c2410c]' : isTop2 ? 'text-[#374151]' : 'text-[#c2410c]'} truncate mb-0.5`}>{team.name}</p>
+                          <p className="text-[11px] text-[#9ca3af] font-medium flex items-center gap-1">👁 {(team.views / 1000).toFixed(3)}</p>
+                        </div>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div key={idx} className="flex items-center gap-3 py-1">
+                        <div className="w-6 min-w-[24px] text-center text-[15px] font-extrabold text-[#d1d5db] font-mono">{rank}</div>
+                        <div className={`w-8 h-8 min-w-[32px] rounded-full flex items-center justify-center text-white font-bold text-[12px] ${team.color}`}>
+                          {team.abbr}
+                        </div>
+                        <div className="flex-1 min-w-0 flex flex-col justify-center">
+                          <p className="text-[13px] font-semibold text-[#4b5563] truncate mb-1.5">{team.name}</p>
+                          <div className="flex items-center gap-3">
+                            <div className="flex-1 h-1.5 bg-[#f3f4f6] rounded-full overflow-hidden">
+                              <div className="h-full bg-[#c4b5fd]" style={{ width: `${Math.max(10, 100 - (idx * 20))}%` }}></div>
+                            </div>
+                            <span className="text-[11px] text-[#9ca3af] w-8 text-right shrink-0">{(team.views / 1000).toFixed(3)}</span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+                })}
               </div>
             </div>
 

@@ -20,6 +20,7 @@ export function Sidebar({ currentTab, setTab }: SidebarProps) {
         { id: 'combo_eco', label: 'Sáng Tác 5 (Kinh Tế)', icon: <Rocket size={16} /> },
         { id: 'combo_royal', label: 'Sáng Tác 6 (Hoàng Gia)', icon: <Rocket size={16} /> },
         { id: 'qwen_drama', label: 'Sáng Tác 7 (Qwen)', icon: <Swords size={16} /> },
+        { id: 'deepseek_drama', label: 'Sáng Tác 8 (DeepSeek)', icon: <Feather size={16} /> },
       ]
     },
     {

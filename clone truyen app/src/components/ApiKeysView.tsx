@@ -8,7 +8,7 @@ import { Key } from 'lucide-react';
 export function ApiKeysView() {
   const {
     geminiKey, geminiKey2, geminiPaidKey, usePaidAPI, isFreeApiExhausted, 
-    openAIKey, grokKey, claudeKey, qwenKey,
+    openAIKey, grokKey, claudeKey, qwenKey, deepseekKey,
     setSettings 
   } = useStore();
 
@@ -165,6 +165,46 @@ export function ApiKeysView() {
       }
     } catch {
       setTestResults(r => ({ ...r, claude: `❌ Mất kết nối API` }));
+    }
+  };
+
+  const testDeepSeek = async () => {
+    if (!deepseekKey) return alert(`Chưa nhập DeepSeek Key!`);
+    setTestResults(r => ({ ...r, deepseek: '⏳ Đang kiểm tra DeepSeek...' }));
+    try {
+      const res = await fetch('/api/deepseek', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          apiKey: deepseekKey,
+          systemPrompt: 'Be concisce.',
+          userPrompt: 'Say OK',
+          model: 'deepseek-chat'
+        })
+      });
+      const data = await res.json();
+      if (res.ok && data.text) {
+        setTestResults(r => ({ ...r, deepseek: '✅ HOẠT ĐỘNG (Valid Key)' }));
+      } else {
+        let errorMsg = '';
+        if (data.error && data.error.error && typeof data.error.error.message === 'string') {
+           errorMsg = data.error.error.message;
+        } else if (data.error && typeof data.error.message === 'string') {
+           errorMsg = data.error.message;
+        } else if (typeof data.error === 'string') {
+           errorMsg = data.error;
+        } else {
+           errorMsg = JSON.stringify(data);
+        }
+        
+        if (errorMsg.includes('balance') || errorMsg.includes('insufficient') || errorMsg.includes('payment')) {
+           setTestResults(r => ({ ...r, deepseek: '❌ Lỗi: Cạn tiền (Hết quota)' }));
+        } else {
+           setTestResults(r => ({ ...r, deepseek: `❌ Lỗi: ${errorMsg.substring(0, 70)}` }));
+        }
+      }
+    } catch {
+      setTestResults(r => ({ ...r, deepseek: `❌ Mất kết nối API` }));
     }
   };
 
@@ -434,6 +474,33 @@ export function ApiKeysView() {
                     className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-orange-500 font-mono text-sm shadow-inner"
                   />
                   {testResults['claude'] && <p className={`text-xs mt-2 font-bold ${testResults['claude'].includes('✅') ? 'text-orange-400' : 'text-red-400'}`}>{testResults['claude']}</p>}
+                </div>
+              </div>
+
+              {/* DEEPSEEK ENGINE CARD */}
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/10 blur-[60px] rounded-full pointer-events-none"></div>
+
+                <div className="flex justify-between items-center mb-6 border-b border-slate-800 pb-4 relative z-10">
+                  <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                    <span className="text-indigo-400">🐋</span>
+                    Kẻ Hủy Diệt Cấu Trúc (DeepSeek)
+                  </h3>
+                  <div className="bg-slate-950 px-3 py-1 rounded-lg border border-slate-800 text-xs font-bold text-indigo-500">PAY-AS-YOU-GO</div>
+                </div>
+
+                <div className="p-4 rounded-xl border bg-indigo-900/10 border-indigo-500/30 relative z-10 transition-all focus-within:border-indigo-500/50">
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="text-sm font-bold text-indigo-400">DeepSeek API Key</label>
+                    <button onClick={testDeepSeek} className="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded-lg text-slate-300 transition-all">🧪 Kiểm tra</button>
+                  </div>
+                  <input 
+                    type="password"
+                    value={deepseekKey}
+                    onChange={(e) => setSettings({ deepseekKey: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-indigo-500 font-mono text-sm shadow-inner"
+                  />
+                  {testResults['deepseek'] && <p className={`text-xs mt-2 font-bold ${testResults['deepseek'].includes('✅') ? 'text-indigo-400' : 'text-red-400'}`}>{testResults['deepseek']}</p>}
                 </div>
               </div>
 

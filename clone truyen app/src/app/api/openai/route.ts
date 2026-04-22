@@ -22,6 +22,10 @@ export async function POST(req: Request) {
 
     if (jsonMode) {
       payload.response_format = { type: 'json_object' };
+      const hasJsonKeyword = (systemPrompt || '').toLowerCase().includes('json') || (userPrompt || '').toLowerCase().includes('json');
+      if (!hasJsonKeyword) {
+        payload.messages[0].content = (payload.messages[0].content || '') + '\n\nPlease return JSON.';
+      }
     }
 
     let response;

@@ -6,18 +6,17 @@ export async function POST(req: Request) {
     const { apiKey, systemPrompt, userPrompt, model, jsonMode, temperature } = await req.json();
 
     if (!apiKey) {
-      return NextResponse.json({ error: 'Missing Qwen API Key' }, { status: 400 });
+      return NextResponse.json({ error: 'Missing DeepSeek API Key' }, { status: 400 });
     }
 
-     
     const payload: any = {
-      model: model || 'qwen-plus-character',
+      model: model || 'deepseek-chat',
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: userPrompt }
       ],
       temperature: temperature !== undefined ? temperature : 0.8,
-      max_tokens: 8192,
+      max_tokens: 8000,
     };
 
     if (jsonMode) {
@@ -34,7 +33,7 @@ export async function POST(req: Request) {
 
     while (retries > 0) {
       try {
-        response = await fetch('https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions', {
+        response = await fetch('https://api.deepseek.com/chat/completions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -44,13 +43,13 @@ export async function POST(req: Request) {
         });
         
         if (response.ok || response.status === 400 || response.status === 401 || response.status === 403 || response.status === 429) {
-           break; // Stop retrying if successful or if it's a definitive Auth/Quota/Bad-Request error
+           break;
         }
       } catch (err) {
         lastError = err;
       }
       retries--;
-      if (retries > 0) await new Promise(resolve => setTimeout(resolve, 2000)); // wait 2s before retry
+      if (retries > 0) await new Promise(resolve => setTimeout(resolve, 2000));
     }
 
     if (!response) {
@@ -75,7 +74,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ text: content, usage, chosenModel: payload.model });
 
   } catch (err: unknown) {
-    console.error("[Qwen POST Error]:", err);
+    console.error("[DeepSeek POST Error]:", err);
     return NextResponse.json({ error: err instanceof Error ? err.message : 'Internal Server Error' }, { status: 500 });
   }
 }

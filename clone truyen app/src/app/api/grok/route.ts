@@ -7,6 +7,14 @@ export async function POST(req: Request) {
 
     if (!apiKey) return NextResponse.json({ error: 'Missing Grok API Key' }, { status: 400 });
 
+    let finalSystemPrompt = systemPrompt || '';
+    if (jsonMode) {
+      const hasJsonKeyword = finalSystemPrompt.toLowerCase().includes('json') || (userPrompt || '').toLowerCase().includes('json');
+      if (!hasJsonKeyword) {
+          finalSystemPrompt += '\n\nPlease return JSON.';
+      }
+    }
+
     const response = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -17,7 +25,7 @@ export async function POST(req: Request) {
         model: model,
         temperature: temperature,
         messages: [
-          { role: 'system', content: systemPrompt },
+          { role: 'system', content: finalSystemPrompt },
           { role: 'user', content: userPrompt }
         ],
         response_format: jsonMode ? { type: "json_object" } : undefined

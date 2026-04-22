@@ -24,7 +24,8 @@ function writeLocalKeys(state: Record<string, unknown>) {
     grokKey: state.grokKey || '',
     claudeKey: state.claudeKey || '',
     qwenKey: state.qwenKey || '',
-    usePaidAPI: state.usePaidAPI || false,
+    deepseekKey: state.deepseekKey || '',
+    usePaidAPI: state.usePaidAPI !== undefined ? state.usePaidAPI : false,
     wpUrl: state.wpUrl || 'https://doctieuthuyet.com',
     wpUser: state.wpUser || '',
     wpAppPassword: state.wpAppPassword || '',
@@ -91,11 +92,16 @@ export interface QueueItem {
   comboType?: 5 | 6; // Sáng tác 5 hay 6
   isAdvancedPipeline?: boolean; // Nếu = true => Gọi 7-Module Engine Pipeline.
   model?: string;
-  outlineEngine: 'gemini' | 'openai' | 'grok' | 'claude' | 'qwen'; // Gọi engine nào dựng dàn ý
-  writeEngine: 'gemini' | 'openai' | 'grok' | 'claude' | 'qwen';   // Gọi engine nào viết nội dung
+  outlineEngine: 'gemini' | 'openai' | 'grok' | 'claude' | 'qwen' | 'deepseek'; // Gọi engine nào dựng dàn ý
+  writeEngine: 'gemini' | 'openai' | 'grok' | 'claude' | 'qwen' | 'deepseek';   // Gọi engine nào viết nội dung
   progressLogs?: string[];
   chaptersContent?: { episode: number; title: string; content: string }[];
   isSocialShared?: boolean; // Tự động chui vào hàng đợi Social Studio nếu = false và status = 'published'
+  createdAt?: number;
+  completedAt?: number;
+  publishedAt?: number;
+  regeneratedCount?: number;
+  regeneratedModels?: string[]; // Traces what models were used on each regeneration
   [key: string]: any;
 }
 
@@ -109,6 +115,7 @@ interface AppState {
   grokKey: string;     // API Key cho xAI (Grok)
   claudeKey: string;   // API Key cho Anthropic (Claude)
   qwenKey: string;     // API Key cho Alibaba (Qwen)
+  deepseekKey: string; // API Key cho DeepSeek
   usePaidAPI: boolean;
   isFreeApiExhausted: boolean;
   wpUrl: string;
@@ -145,6 +152,7 @@ export const useStore = create<AppState>()((set, get) => ({
   grokKey:       savedKeys.grokKey       || '',
   claudeKey:     savedKeys.claudeKey     || '',
   qwenKey:       savedKeys.qwenKey       || '',
+  deepseekKey:   savedKeys.deepseekKey   || '',
   usePaidAPI:    savedKeys.usePaidAPI    || false,
   isFreeApiExhausted: false,
   wpUrl:         savedKeys.wpUrl         || 'https://doctieuthuyet.com',
@@ -182,6 +190,7 @@ export const useStore = create<AppState>()((set, get) => ({
         status: 'draft_outline' as const,
         chaptersDone: 0,
         wordCount: 0,
+        createdAt: Date.now(),
         ...item,
       })) as QueueItem[];
       const next = { queue: [...state.queue, ...newItems] };

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { useStore } from '../store/useStore';
 import { agentSeasonArchitect, agentPremiumPolish, agentEpisodeDrafter, agentEpisodeRewriter, agentMarketingAssets } from '../lib/advanced_engine';
-import { callWordPress, agentMicroDramaExpand, agentMicroDramaRewrite, agentGrokDramaExpand, agentGrokDramaRewrite, agentClaudeDramaExpand, agentClaudeDramaRewrite, agentGeminiDramaExpand, agentGeminiDramaRewrite, agentQwenDramaRewrite, agentQwenDramaExpand } from '../lib/engine';
+import { callWordPress, agentMicroDramaExpand, agentMicroDramaRewrite, agentGrokDramaExpand, agentGrokDramaRewrite, agentClaudeDramaExpand, agentClaudeDramaRewrite, agentGeminiDramaExpand, agentGeminiDramaRewrite, agentQwenDramaRewrite, agentQwenDramaExpand, agentDeepSeekDramaExpand, agentDeepSeekDramaRewrite } from '../lib/engine';
 
 export function useAutoPilotEngine() {
   const { 
@@ -66,6 +66,8 @@ export function useAutoPilotEngine() {
  timeline = await agentClaudeDramaExpand(claudeKey, activeItem.bible, bounds);
              else if (outlineEngine === 'qwen') // @ts-ignore
  timeline = await agentQwenDramaExpand(qwenKey, activeItem.bible, bounds);
+             else if (outlineEngine === 'deepseek') // @ts-ignore
+ timeline = await agentDeepSeekDramaExpand(useStore.getState().deepseekKey, activeItem.bible, bounds);
           }
           
           updateQueueItem(activeItem.id, { status: 'pending_approval', bible: { ...activeItem.bible, timeline }, targetChapters: (timeline as any[]).length });
@@ -113,7 +115,8 @@ export function useAutoPilotEngine() {
             const finalChapterTitle = `Chương ${currentEp}: ${shortBeatTitle}`;
             
             // 1. Phác thảo khung thô (Drafter)
-            let finalDraft = await agentEpisodeDrafter(drafterEngine, drafterKey, drafterModel, fullBible, currentEp, currBeat);
+            const prevChapterContext = activeItem.chaptersContent?.length ? activeItem.chaptersContent[activeItem.chaptersContent.length - 1].content.slice(-3000) : '';
+            let finalDraft = await agentEpisodeDrafter(drafterEngine, drafterKey, drafterModel, fullBible, currentEp, currBeat, prevChapterContext);
             
             // 2. Head Writer sửa lại (Chỉ tập quan trọng)
             if (isImportantEp) {
@@ -147,7 +150,8 @@ export function useAutoPilotEngine() {
               status: isDone ? 'completed' : 'pending',
               wordCount: activeItem.wordCount + finalDraft.split(' ').length,
               chaptersContent: newChaptersContent,
-              errorLog: undefined
+              errorLog: undefined,
+              ...(isDone ? { completedAt: Date.now() } : {})
             });
             return;
           }
@@ -170,8 +174,9 @@ export function useAutoPilotEngine() {
           const currTimelineObj = timeline[currentEp - 1];
           const rawOutline = currTimelineObj?.outline || 'Tiếp diễn mâu thuẫn khốc liệt';
           
-          const prevContext = activeItem.chaptersContent ? activeItem.chaptersContent.map(c => `[${c.title}]\n${c.content}`).join("\n\n---\n\n") : '';
-          currOutline = prevContext ? `NỘI DUNG CÁC CHƯƠNG ĐÃ VIẾT TRƯỚC ĐÓ (Đọc để hiểu bối cảnh và nắm bắt diễn biến hiện tại, lưu ý KHÔNG VIẾT LẶP LẠI TÌNH TIẾT ĐÃ CÓ):\n"""\n${prevContext}\n"""\n\n==========\n\nNHIỆM VỤ HIỆN TẠI (Chương ${currentEp}):\nHãy BẮT ĐẦU VIẾT NGAY phần nội dung tiếp theo dựa trên dàn ý sau:\n${rawOutline}` : rawOutline;
+          const prevChapterContent = activeItem.chaptersContent?.length ? activeItem.chaptersContent[activeItem.chaptersContent.length - 1].content : '';
+          const prevContextWindow = prevChapterContent ? prevChapterContent.slice(-3000) : '';
+          currOutline = prevContextWindow ? `NỘI DUNG CUỐI CỦA CHƯƠNG TRƯỚC (Đọc để tiếp nối NGAY LẬP TỨC mạch văn, không gian và diễn biến, KHÔNG LẶP LẠI TÌNH TIẾT ĐÃ CÓ):\n"""\n${prevContextWindow}\n"""\n\n==========\n\nNHIỆM VỤ HIỆN TẠI (Chương ${currentEp}):\nHãy BẮT ĐẦU VIẾT NGAY phần nội dung tiếp theo dựa trên dàn ý sau:\n${rawOutline}` : rawOutline;
           
           
           let shortOutlineTitle = currTimelineObj?.title || currOutline.split('.')[0].split(',')[0];
@@ -184,6 +189,7 @@ export function useAutoPilotEngine() {
           else if (writeEngine === 'grok') draft = await agentGrokDramaRewrite(grokKey, activeItem.bible, currOutline, currentEp);
           else if (writeEngine === 'claude') draft = await agentClaudeDramaRewrite(claudeKey, activeItem.bible, currOutline, currentEp);
           else if (writeEngine === 'qwen') draft = await agentQwenDramaRewrite(qwenKey, activeItem.bible, currOutline, currentEp);
+          else if (writeEngine === 'deepseek') draft = await agentDeepSeekDramaRewrite(useStore.getState().deepseekKey, activeItem.bible, currOutline, currentEp);
           
           // [Weaver Station]: No WP Chapter Upload. All text generation is buffered locally.
 
@@ -198,7 +204,8 @@ export function useAutoPilotEngine() {
             status: isDone ? 'final_review' : 'pending',
             wordCount: activeItem.wordCount + draft.split(' ').length,
             chaptersContent: newChaptersContent,
-            errorLog: undefined
+            errorLog: undefined,
+            ...(isDone ? { completedAt: Date.now() } : {})
           });
         }
       } catch (err: unknown) {
@@ -209,16 +216,24 @@ export function useAutoPilotEngine() {
            errMsg = err;
         }
         console.error("AutoPilot Error for item", activeItem.title, err);
-        
-        // Catch 429 Quota Exceeded for Free Tier
-        if (!usePaidAPI && (errMsg.includes('429') || errMsg.includes('Quota') || errMsg.includes('exhausted') || errMsg.includes('rate limit'))) {
-          if (errMsg.includes('retry') || errMsg.includes('Rate Limit') || errMsg.includes('too many requests')) {
-            updateQueueItem(activeItem.id, { status: 'error', errorLog: "Nghẽn API tạm thời do gọi quá nhanh! Vui lòng đợi 15 giây rồi bấm THỬ LẠI.\\nChi tiết: " + errMsg });
-          } else {
-            setSettings({ isFreeApiExhausted: true, isAutoPilotRunning: false });
-            updateQueueItem(activeItem.id, { status: 'error', errorLog: "Đã cạn tài nguyên Free API. Vui lòng bật API Trả phí hoặc đổi API Key khác ở mục Settings!" });
-          }
-        } else {
+        const errMsgLower = errMsg.toLowerCase();
+        // 1. Transient API Rate Limits (OpenAI TPM, Anthropic RPM, etc)
+        if (errMsgLower.includes('rate limit') || errMsgLower.includes('429') || errMsgLower.includes('too many requests') || errMsgLower.includes('retry')) {
+          console.warn("Got Temporary API Rate Limit. Auto-retrying without crashing...");
+          updateQueueItem(activeItem.id, { status: 'pending', errorLog: undefined });
+        } 
+        // 2. Hard Quota Exhausted (Ran out of credits or monthly free tier)
+        else if (errMsgLower.includes('quota') || errMsgLower.includes('insufficient') || errMsgLower.includes('exhausted') || errMsgLower.includes('resource_exhausted')) {
+          if (!usePaidAPI) setSettings({ isFreeApiExhausted: true });
+          updateQueueItem(activeItem.id, { status: 'error', errorLog: "Đã cạn tài nguyên API (Hết Credit/Quota). Vui lòng kiểm tra lại Key!\nChi tiết: " + errMsg });
+        } 
+        // 3. Network Outages & 5xx Overloads
+        else if (errMsgLower.includes('503') || errMsgLower.includes('502') || errMsgLower.includes('504') || errMsgLower.includes('quá tải') || errMsgLower.includes('overload') || errMsgLower.includes('fetch failed') || errMsgLower.includes('network error') || errMsgLower.includes('socket hang up') || errMsgLower.includes('etimedout')) {
+          console.warn("Got Server Overload/Network Error (5xx / fetch failed). Auto-retrying without crashing...");
+          updateQueueItem(activeItem.id, { status: 'pending', errorLog: undefined });
+        } 
+        // 4. Other Fatal Errors
+        else {
           updateQueueItem(activeItem.id, { status: 'error', errorLog: errMsg });
         }
       }

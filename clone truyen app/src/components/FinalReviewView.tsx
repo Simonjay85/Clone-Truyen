@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react';
 import { useStore, QueueItem } from '../store/useStore';
-import { ShieldAlert, BookOpen, Star, UploadCloud, Rocket, RefreshCw, PenTool, Image as ImageIcon, FileText, CheckCircle2, Copy } from 'lucide-react';
+import { ShieldAlert, BookOpen, Star, UploadCloud, Rocket, RefreshCw, PenTool, Image as ImageIcon, FileText, CheckCircle2, Copy, Trash2 } from 'lucide-react';
 import { agentStoryEvaluator, agentPublisherMetadata } from '../lib/advanced_engine';
 import { callWordPress } from '../lib/engine';
 
@@ -16,6 +16,8 @@ export function FinalReviewView() {
   const [customPrompt, setCustomPrompt] = useState('');
   const [readingChapterIdx, setReadingChapterIdx] = useState<number>(0);
   const [isSidebarHidden, setIsSidebarHidden] = useState<boolean>(false);
+  const [evalModel, setEvalModel] = useState<'gemini'|'qwen'|'openai'>('gemini');
+  const [regenEngine, setRegenEngine] = useState<'gemini'|'qwen'|'openai'|'claude'|'grok'|'deepseek' | ''>('');
 
   useEffect(() => {
     if (!selectedId && reviewItems.length > 0) {
@@ -53,13 +55,51 @@ export function FinalReviewView() {
   const handleEvaluate = async (item: QueueItem) => {
     setLoadingAction(`eval_${item.id}`);
     try {
-      const evalData = await agentStoryEvaluator('gemini', getActiveKey(), 'gemini-2.5-flash', item.bible, item.chaptersContent);
-      updateQueueItem(item.id, { finalEvaluation: { ...evalData, evaluator: 'Gemini 2.5 Flash' } });
+      const state = useStore.getState();
+      let engine = 'gemini';
+      let model = 'gemini-2.5-flash';
+      let key = getActiveKey();
+
+      if (evalModel === 'qwen') {
+        engine = 'qwen'; model = 'qwen-plus'; key = state.qwenKey;
+      } else if (evalModel === 'openai') {
+        engine = 'openai'; model = 'gpt-4o-mini'; key = state.openAIKey;
+      }
+
+      if (!key) throw new Error(`Thiếu API Key cho mô hình ${evalModel.toUpperCase()}`);
+
+      const evalData = await agentStoryEvaluator(engine, key, model, item.bible, item.chaptersContent);
+      updateQueueItem(item.id, { finalEvaluation: { ...evalData, evaluator: `${evalModel.toUpperCase()} (${model})` } });
       alert("✅ Đánh giá toàn bộ tác phẩm thành công!");
-    } catch (e: unknown) {
-      alert("Lỗi Đánh giá: " + (e as Error).message);
+    } catch (e: any) {
+      alert("Lỗi Đánh giá: " + (e.message || JSON.stringify(e)));
     }
     setLoadingAction(null);
+  };
+
+  const handleDeleteStory = (id: string, title: string) => {
+    if (window.confirm(`Xóa vĩnh viễn truyện "${title}" khỏi hệ thống?`)) {
+      useStore.getState().removeQueueItem(id);
+      setSelectedId(null);
+    }
+  };
+
+  const handleRegenerateStory = (id: string, title: string, targetEngine: string) => {
+    if (window.confirm(`Bạn có chắc muốn vứt bỏ toàn bộ nội dung các chương đã viết của "${title}" và để AI chắp bút viết lại từ đầu bằng model [${targetEngine.toUpperCase()}] không?\n\n(Dàn ý và thiết lập nhân vật vẫn sẽ được giữ nguyên)`)) {
+      const qItem = useStore.getState().queue.find(q => q.id === id);
+      useStore.getState().updateQueueItem(id, {
+        status: 'pending',
+        chaptersDone: 0,
+        wordCount: 0,
+        chaptersContent: [],
+        finalEvaluation: undefined,
+        errorLog: undefined,
+        writeEngine: targetEngine as any,
+        regeneratedCount: (qItem?.regeneratedCount || 0) + 1,
+        regeneratedModels: [...(qItem?.regeneratedModels || [qItem?.writeEngine || '']), targetEngine]
+      });
+      setSelectedId(null);
+    }
   };
 
   const generateCoverPolli = (promptStr: string) => {
@@ -172,6 +212,7 @@ export function FinalReviewView() {
       });
       
       // Append Cover & Blurb
+      // Append Cover & Blurb
       await callWordPress({
          wpUrl, wpUser, wpAppPassword,
          endpoint: `truyen/${resolvedPostId}`,
@@ -179,8 +220,28 @@ export function FinalReviewView() {
          payload: { content: htmlIntro + storyIntro }
       });
 
-      updateQueueItem(item.id, { status: 'published' });
-      alert("✅ Lên sàn thành công! Đã tự động tối ưu SEO RankMath và chèn Cover AI vô bài viết.");
+      // Upload Chapters
+      if (item.chaptersContent && item.chaptersContent.length > 0) {
+        for (const chap of item.chaptersContent) {
+           const chapTitle = `Chương ${chap.episode}: ${chap.title.replace(/^(Chương|Tập|Episode)\s*\d+[:\-]?\s*/i, '')}`;
+           await callWordPress({
+             wpUrl, wpUser, wpAppPassword,
+             endpoint: 'chuong',
+             method: 'POST',
+             payload: {
+               title: chapTitle,
+               content: chap.content,
+               status: 'publish',
+               meta: {
+                 _truyen_id: String(resolvedPostId)
+               }
+             }
+           });
+        }
+      }
+
+      updateQueueItem(item.id, { status: 'published', publishedAt: Date.now() });
+      alert(`✅ Lên sàn thành công! Đã lên Mẹ (Truyện) và đẻ trứng (${item.chaptersContent?.length || 0} Chương) lên Web!`);
 
     } catch (error: unknown) {
       alert("Lỗi WordPress: " + (error as Error).message);
@@ -219,9 +280,13 @@ export function FinalReviewView() {
                 reviewItems.map(item => (
                    <button key={item.id} onClick={() => { setSelectedId(item.id); setIsSidebarHidden(true); }} className={`w-full text-left p-4 rounded-xl border transition-all relative overflow-hidden group ${selectedId === item.id ? 'bg-indigo-500/10 border-indigo-500/50 shadow-[0_4px_20px_rgba(99,102,241,0.15)]' : 'bg-white/5 border-transparent hover:bg-white/10'}`}>
                       {selectedId === item.id && <div className="absolute left-0 top-0 bottom-0 w-1 bg-indigo-500 rounded-l-xl"></div>}
-                      <div className="flex gap-2 mb-2 items-center">
+                      <div className="flex flex-wrap gap-2 mb-2 items-center">
                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-black/40 px-2 py-0.5 rounded">{(Array.isArray(item.genres) ? item.genres[0] : (item.genres || '').split(',')[0])}</span>
+                         <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-900/30 px-2 py-0.5 rounded">
+                           {item.isAdvancedPipeline ? "Sáng tác 7" : item.comboType === 6 ? "Sáng tác 6" : item.comboType === 5 ? "Sáng tác 5" : "Thủ công"}
+                         </span>
                          {item.status === 'published' && <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1"><Rocket size={10}/> Đã Đăng</span>}
+                         {item.regeneratedCount ? <span title={item.regeneratedModels ? `Model History: ${item.regeneratedModels.join(' ➔ ')}` : ''} className="text-[10px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded cursor-help">🔄 Gen lại x{item.regeneratedCount} ({item.regeneratedModels ? item.regeneratedModels[item.regeneratedModels.length - 1] : item.writeEngine})</span> : null}
                       </div>
                       <h3 className={`font-bold line-clamp-2 leading-tight mb-2 ${selectedId === item.id ? 'text-indigo-300' : 'text-white group-hover:text-indigo-200'} transition-colors`}>{item.publishData?.finalTitle || item.title}</h3>
                       <div className="text-[11px] text-slate-500 font-medium">
@@ -248,16 +313,54 @@ export function FinalReviewView() {
     )}
     <h2 className="text-xl font-black text-white line-clamp-1 leading-snug" title={selectedItem.publishData?.finalTitle || selectedItem.title}>{selectedItem.publishData?.finalTitle || selectedItem.title}</h2>
   </div>
-                    <div className="text-xs text-slate-400 mt-1 flex flex-wrap gap-x-4 gap-y-1 font-medium">
+                    <div className="text-xs text-slate-400 mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 font-medium">
                         <span className="text-emerald-400 flex items-center gap-1"><PenTool size={12}/>{selectedItem.wordCount} chữ</span>
                         <span className="flex items-center gap-1"><BookOpen size={12}/>{selectedItem.chaptersDone}/{selectedItem.targetChapters} chương</span>
-                        <span className="uppercase text-slate-500">• {selectedItem.status === 'published' ? '✅ Đã Lên Sàn' : '⏳ Chờ Xét Duyệt'}</span>
+                        <span className="text-purple-400 font-bold uppercase tracking-wider bg-purple-900/40 px-2 py-0.5 rounded text-[10px]">
+                           {selectedItem.isAdvancedPipeline ? "Nguồn: Sáng tác 7" : selectedItem.comboType === 6 ? "Nguồn: Sáng tác 6" : selectedItem.comboType === 5 ? "Nguồn: Sáng tác 5" : "Nguồn: Thủ công"}
+                        </span>
+                        {selectedItem.createdAt && (
+                          <span suppressHydrationWarning className="text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700 text-[10px] uppercase font-bold tracking-wider">
+                            Tạo: {new Date(selectedItem.createdAt).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' })}
+                          </span>
+                        )}
+                        {selectedItem.publishedAt ? (
+                          <span suppressHydrationWarning className="text-emerald-400 bg-emerald-900/40 border border-emerald-500/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider flex items-center gap-1">
+                            <Rocket size={10}/> Đăng lúc: {new Date(selectedItem.publishedAt).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' })}
+                          </span>
+                        ) : selectedItem.completedAt ? (
+                          <span suppressHydrationWarning className="text-indigo-400 bg-indigo-900/40 border border-indigo-500/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider flex items-center gap-1">
+                            Xong lúc: {new Date(selectedItem.completedAt).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' })}
+                          </span>
+                        ) : null}
+                        {selectedItem.regeneratedCount ? (
+                          <span title={selectedItem.regeneratedModels ? `History: ${selectedItem.regeneratedModels.join(' ➔ ')}` : ''} className="text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 text-[10px] uppercase font-bold tracking-wider cursor-help">
+                            🔄 Đã Gen Lại {selectedItem.regeneratedCount} lần ({selectedItem.regeneratedModels ? selectedItem.regeneratedModels[selectedItem.regeneratedModels.length - 1] : selectedItem.writeEngine})
+                          </span>
+                        ) : null}
+                        <span className="uppercase text-slate-500 flex items-center pl-1 border-l border-white/5 ml-1">• {selectedItem.status === 'published' ? '✅ Đã Lên Sàn' : '⏳ Chờ Xét Duyệt'}</span>
                     </div>
                  </div>
-                 <div className="flex items-center shrink-0">
-                     <button onClick={() => handlePublishToWeb(selectedItem)} disabled={selectedItem.status === 'published' || loadingAction === `publish_${selectedItem.id}`} className="bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-900 font-extrabold text-xs uppercase tracking-widest px-6 py-3 rounded-xl flex items-center gap-2 hover:opacity-90 disabled:opacity-50 disabled:grayscale transition-all shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:shadow-[0_4px_30px_rgba(16,185,129,0.5)] transform hover:-translate-y-0.5">
+                 <div className="flex items-center shrink-0 gap-3">
+                     <button onClick={() => handleDeleteStory(selectedItem.id, selectedItem.title)} className="bg-rose-500/10 text-rose-500 hover:bg-rose-500/20 px-4 py-3 rounded-xl flex items-center gap-2 text-xs font-bold transition-all border border-rose-500/20">
+                         <Trash2 size={16}/> Xóa Bỏ
+                     </button>
+                     <div className="flex items-center gap-0 border border-amber-500/30 bg-amber-500/10 rounded-xl overflow-hidden transition-all hover:bg-amber-500/20">
+                         <select value={regenEngine || selectedItem.writeEngine || 'gemini'} onChange={e => setRegenEngine(e.target.value as any)} className="bg-transparent border-r border-amber-500/30 outline-none text-[11px] text-amber-500 font-bold focus:ring-0 px-2 h-full cursor-pointer appearance-none text-center">
+                             <option value="gemini">Gemini</option>
+                             <option value="qwen">Qwen</option>
+                             <option value="openai">OpenAI</option>
+                             <option value="claude">Claude</option>
+                             <option value="grok">Grok</option>
+                             <option value="deepseek">DeepSeek</option>
+                         </select>
+                         <button onClick={() => handleRegenerateStory(selectedItem.id, selectedItem.title, regenEngine || selectedItem.writeEngine || 'gemini')} className="text-amber-500 px-4 py-3 flex items-center gap-2 text-xs font-bold transition-all">
+                             <RefreshCw size={14} className={loadingAction ? 'animate-spin' : ''}/> Gen Lại
+                         </button>
+                     </div>
+                     <button onClick={() => handlePublishToWeb(selectedItem)} disabled={loadingAction === `publish_${selectedItem.id}`} className="bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-900 font-extrabold text-xs uppercase tracking-widest px-6 py-3 rounded-xl flex items-center gap-2 hover:opacity-90 disabled:opacity-50 disabled:grayscale transition-all shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:shadow-[0_4px_30px_rgba(16,185,129,0.5)] transform hover:-translate-y-0.5">
                         {loadingAction === `publish_${selectedItem.id}` ? <RefreshCw className="animate-spin" size={16}/> : <UploadCloud size={16}/>}
-                        {selectedItem.status === 'published' ? 'Đã Tự Động Đăng Mạng' : 'Bắn Lên WP Ngay'}
+                        {selectedItem.status === 'published' ? 'Cập Nhật Lại Lên WP' : 'Bắn Lên WP Ngay'}
                      </button>
                  </div>
               </div>
@@ -315,11 +418,18 @@ export function FinalReviewView() {
                         {/* Cột phải: Đánh giá & SEO RankMath */}
                         <div className="flex-1 flex flex-col gap-6">
                            <div className="bg-[#17172a] border border-white/5 rounded-2xl p-8 relative overflow-hidden">
-                              <div className="flex justify-between items-center mb-6 relative z-10">
+                              <div className="flex justify-between items-center mb-6 relative z-10 flex-wrap gap-4">
                                   <h3 className="text-xl font-black text-amber-400 flex items-center gap-2"><Star className="text-amber-400"/> Phán Xét Của Lãnh Chúa (AI Review)</h3>
-                                  <button onClick={() => handleEvaluate(selectedItem)} disabled={loadingAction === `eval_${selectedItem.id}`} className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 font-bold text-xs px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all">
-                                     {loadingAction === `eval_${selectedItem.id}` ? <RefreshCw className="animate-spin" size={14}/> : <CheckCircle2 size={14}/>} {selectedItem.finalEvaluation ? 'Yêu Cầu Chấm Lại' : 'Phân Tích Toàn Bộ Truyện'}
-                                  </button>
+                                  <div className="flex items-center gap-3">
+                                      <select value={evalModel} onChange={(e: any) => setEvalModel(e.target.value)} className="bg-black/40 border border-white/10 text-xs text-slate-300 rounded-lg px-3 py-2 outline-none">
+                                          <option value="gemini">Gemini (Free)</option>
+                                          <option value="qwen">Qwen Max</option>
+                                          <option value="openai">GPT-4o Mini</option>
+                                      </select>
+                                      <button onClick={() => handleEvaluate(selectedItem)} disabled={loadingAction === `eval_${selectedItem.id}`} className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 font-bold text-xs px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all">
+                                         {loadingAction === `eval_${selectedItem.id}` ? <RefreshCw className="animate-spin" size={14}/> : <CheckCircle2 size={14}/>} {selectedItem.finalEvaluation ? 'Yêu Cầu Chấm Lại' : 'Phân Tích Toàn Bộ Truyện'}
+                                      </button>
+                                  </div>
                               </div>
                               
                               {selectedItem.finalEvaluation ? (

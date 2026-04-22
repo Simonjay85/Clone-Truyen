@@ -9,7 +9,7 @@ export function LiveSync() {
       try {
         const res = await fetch('/api/db', { cache: 'no-store' });
         if (!res.ok) {
-           useStore.setState({ hasHydrated: true });
+           console.error("Lỗi fetch DB: DB timeout hoặc lỗi 500");
            return;
         }
         const json = await res.json();
@@ -22,23 +22,20 @@ export function LiveSync() {
           const activeEl = document.activeElement;
           const isTyping = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA');
 
-          // Đảm bảo không bị Race Condition làm mất local changes nếu tab này vừa lưu
-          const isLocalNewer = (localState.apiLogs?.length > (serverState.apiLogs?.length || 0)) || (localState.queue?.length > (serverState.queue?.length || 0));
+          const isQueueNewer = (localState.queue?.length || 0) > (serverState.queue?.length || 0);
+          const isLogsNewer = (localState.apiLogs?.length || 0) > (serverState.apiLogs?.length || 0);
 
           // Merge server vào local (luôn update hasHydrated = true sau khi pull thành công mẻ đầu)
           useStore.setState({
-              queue: isLocalNewer ? localState.queue : (serverState.queue || []),
+              queue: isQueueNewer ? localState.queue : (serverState.queue || []),
               isAutoPilotRunning: serverState.isAutoPilotRunning || false,
-              apiLogs: isLocalNewer ? localState.apiLogs : (serverState.apiLogs || localState.apiLogs || []),
-              draftSpaces: isTyping || isLocalNewer ? localState.draftSpaces : (serverState.draftSpaces || localState.draftSpaces || {}),
+              apiLogs: isLogsNewer ? localState.apiLogs : (serverState.apiLogs || localState.apiLogs || []),
+              draftSpaces: isTyping ? localState.draftSpaces : (serverState.draftSpaces || localState.draftSpaces || {}),
               hasHydrated: true,
           });
-        } else {
-           useStore.setState({ hasHydrated: true });
         }
       } catch (error) {
-        // Đứt mạng thì bỏ qua, đợi nhịp sau, nhưng cũng mở chốt hydrate để Local thay thế nếu cần thiết
-        if (!useStore.getState().hasHydrated) useStore.setState({ hasHydrated: true });
+        console.error("Lỗi đứt mạng hoặc NextJS compile error:", error);
       }
     };
 

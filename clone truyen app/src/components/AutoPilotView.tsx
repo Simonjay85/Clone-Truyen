@@ -117,32 +117,35 @@ export function AutoPilotView() {
             <Trash2 size={16} /> Dọn Sạch Trạm
           </button>
 
-          {/* SỬA LỖI HÀNG LOẠT */}
-          {errorItems.length > 0 && (
-            <div className="flex items-center gap-2 bg-rose-500/10 border border-rose-500/30 rounded-lg pr-3 pl-1">
+          {/* CẬP NHẬT ENGINE HÀNG LOẠT */}
+          {queue.some(q => q.status !== 'completed') && (
+            <div className="flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/30 rounded-lg pr-3 pl-1">
               <select
                 value={bulkEngine}
                 onChange={(e) => setBulkEngine(e.target.value)}
-                className="bg-transparent border-none text-rose-200 text-sm py-2 px-2 outline-none font-medium cursor-pointer"
-                title="Chọn AI dự phòng cho toàn bộ truyện bị lỗi"
+                className="bg-transparent border-none text-indigo-200 text-sm py-2 px-2 outline-none font-medium cursor-pointer"
+                title="Chọn trí tuệ nhân tạo (AI Engine) cho các truyện đang chạy"
               >
                 <option value="gemini" className="bg-slate-900 text-slate-200">🤖 Đổi tất cả sang Gemini</option>
                 <option value="openai" className="bg-slate-900 text-slate-200">🧠 Đổi tất cả sang OpenAI</option>
                 <option value="claude" className="bg-slate-900 text-slate-200">🎭 Đổi tất cả sang Claude</option>
                 <option value="grok" className="bg-slate-900 text-slate-200">⚡ Đổi tất cả sang Grok</option>
                 <option value="qwen" className="bg-slate-900 text-slate-200">⚔️ Đổi tất cả sang Qwen</option>
+                <option value="deepseek" className="bg-slate-900 text-slate-200">🐋 Đổi tất cả sang DeepSeek</option>
               </select>
-              <div className="w-[1px] h-5 bg-rose-500/30"></div>
+              <div className="w-[1px] h-5 bg-indigo-500/30"></div>
               <button
                 onClick={() => {
-                  errorItems.forEach(item => {
-                    const newStatus = (item.chaptersDone === 0 && !item.bible) ? 'draft_outline' : 'pending';
-                    updateQueueItem(item.id, { writeEngine: bulkEngine as any, status: newStatus, errorLog: undefined });
+                  queue.forEach(item => {
+                    if (item.status !== 'completed') {
+                       const newStatus = item.status === 'error' ? ((item.chaptersDone === 0 && !item.bible) ? 'draft_outline' : 'pending') : item.status;
+                       updateQueueItem(item.id, { writeEngine: bulkEngine as any, outlineEngine: bulkEngine as any, status: newStatus as any, errorLog: undefined });
+                    }
                   });
                 }}
-                className="text-rose-400 font-bold hover:text-rose-300 text-sm flex items-center gap-1 ml-1"
+                className="text-indigo-400 font-bold hover:text-indigo-300 text-sm flex items-center gap-1 ml-1 whitespace-nowrap"
               >
-                ↻ Cứu ({errorItems.length}) Truyện
+                ↻ Đồng Bộ ({queue.filter(q => q.status !== 'completed').length}) Truyện
               </button>
             </div>
           )}
@@ -228,9 +231,24 @@ export function AutoPilotView() {
                   </button>
                 </div>
 
-                <span className="inline-block px-2 py-1 bg-blue-900/40 text-blue-400 border border-blue-500/20 rounded text-[10px] uppercase font-black tracking-wider mb-4">
-                  {item.genres}
-                </span>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="inline-block px-2 py-1 bg-blue-900/40 text-blue-400 border border-blue-500/20 rounded text-[10px] uppercase font-black tracking-wider">
+                    {item.genres}
+                  </span>
+                  <span className="inline-block px-2 py-1 bg-purple-900/40 text-purple-400 border border-purple-500/20 rounded text-[10px] uppercase font-black tracking-wider">
+                    Nguồn: {item.isAdvancedPipeline ? "Sáng tác 7" : item.comboType === 6 ? "Sáng tác 6" : item.comboType === 5 ? "Sáng tác 5" : "Thủ công"}
+                  </span>
+                  {item.createdAt && (
+                    <span suppressHydrationWarning className="inline-block px-2 py-1 bg-slate-800/80 text-slate-400 border border-slate-700/50 rounded text-[10px] uppercase font-bold tracking-wider">
+                      Tạo: {new Date(item.createdAt).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' })}
+                    </span>
+                  )}
+                  {item.completedAt && (
+                    <span suppressHydrationWarning className="inline-block px-2 py-1 bg-emerald-900/40 text-emerald-400 border border-emerald-500/20 rounded text-[10px] uppercase font-bold tracking-wider flex items-center gap-1">
+                      Xong: {new Date(item.completedAt).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' })}
+                    </span>
+                  )}
+                </div>
 
                 {item.status === 'pending_approval' ? (
                   <div className="mt-4 bg-yellow-500/10 border border-yellow-500/50 rounded-xl p-4 flex flex-col gap-3">
@@ -284,20 +302,21 @@ export function AutoPilotView() {
                     <div className="flex justify-between items-center mt-2 text-xs text-slate-400 font-mono">
                       <div className="flex items-center gap-2">
                         <span>TRẠNG THÁI: {item.status.toUpperCase()}</span>
-                        {item.status === 'error' && (
                           <div className="flex items-center gap-2">
                             <select
                               value={item.writeEngine || 'gemini'}
-                              onChange={(e) => updateQueueItem(item.id, { writeEngine: e.target.value as any })}
+                              onChange={(e) => updateQueueItem(item.id, { writeEngine: e.target.value as any, outlineEngine: e.target.value as any })}
                               className="bg-slate-900/80 border border-slate-700 text-slate-300 text-xs rounded px-2 py-0.5 outline-none hover:border-slate-500 transition-colors"
-                              title="Chọn AI dự phòng để chạy tiếp"
+                              title="Thay đổi nhanh API Engine cho truyện này"
                             >
                               <option value="gemini">🤖 Gemini</option>
                               <option value="openai">🧠 OpenAI</option>
                               <option value="claude">🎭 Claude</option>
                               <option value="grok">⚡ Grok</option>
                               <option value="qwen">⚔️ Qwen</option>
+                              <option value="deepseek">🐋 DeepSeek</option>
                             </select>
+                            {item.status === 'error' && (
                             <button
                               onClick={() => {
                                 const newStatus = (item.chaptersDone === 0 && !item.bible) ? 'draft_outline' : 'pending';
@@ -307,8 +326,8 @@ export function AutoPilotView() {
                             >
                               ↻ Thử Lại
                             </button>
+                            )}
                           </div>
-                        )}
                       </div>
                       <span>{item.chaptersDone}/{item.targetChapters} CHƯƠNG</span>
                     </div>
