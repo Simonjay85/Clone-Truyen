@@ -183,8 +183,8 @@
 /* ── GRID ── */
 .mkm-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 14px !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px !important;
     margin-bottom: 0 !important;
 }
 @media (max-width: 900px) {
@@ -214,7 +214,7 @@
 }
 .mkm-card-img {
     position: relative !important;
-    aspect-ratio: 3/2 !important;
+    aspect-ratio: 4/3 !important;
     overflow: hidden !important;
 }
 .mkm-card-img img {
@@ -699,9 +699,17 @@
             <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/hoan-thanh.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
 
         </div>
-
+        
+    <style>
+    @media (max-width: 900px) {
+        .mkm-leaderboards-row { grid-template-columns: 1fr !important; gap: 24px !important; }
+    }
+    .mkm-aside::-webkit-scrollbar { display: none; }
+    .mkm-aside { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+        
         <!-- ══ SIDEBAR ══ -->
-        <div class="mkm-aside">
+        <div class="mkm-aside" style="padding-right: 4px;">
             <div class="mkm-widget" style="padding: 20px; background: #fff; border: 1px solid #f3f4f6; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); margin-bottom: 24px;">
                 <h3 class="mkm-widget-title" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid #f9fafb;">
                     <span style="display:flex; align-items:center; gap:8px; font-size: 16px; font-weight: 800; color:#111827;">

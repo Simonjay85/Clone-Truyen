@@ -117,7 +117,7 @@ $all_terms = get_terms([
         ?>
         
         <a href="<?php the_permalink(); ?>" class="mkm-card group" style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:block; transition:transform 0.2s, box-shadow 0.2s; border: 1px solid #f3f4f6;">
-            <div class="mkm-card-img" style="position:relative; aspect-ratio:3/2; overflow:hidden; background:#f9fafb;">
+            <div class="mkm-card-img" style="position:relative; aspect-ratio:4/3; overflow:hidden; background:#f9fafb;">
                 <span style="position:absolute; top:8px; left:8px; background:#10b981; color:#fff; font-size:10px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2; box-shadow:0 2px 4px rgba(0,0,0,0.1);">Ch.<?php echo $chaps; ?></span>
                 <img src="<?php echo esc_url($cover); ?>" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/>
                 <div style="position:absolute; bottom:0; left:0; right:0; padding:20px 10px 8px 10px; background:linear-gradient(transparent, rgba(0,0,0,.7)); display:flex; justify-content:space-between; align-items:center; color:#fff; font-size:11px; font-weight:600; z-index:1;">
@@ -159,12 +159,12 @@ $all_terms = get_terms([
 </main>
 
 <style>
-.mkm-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 24px !important; margin-bottom: 0 !important; }
+.mkm-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 24px !important; margin-bottom: 0 !important; }
 @media (max-width: 1024px) { .mkm-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 16px !important; } }
 @media (max-width: 640px) { .mkm-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; } }
 .mkm-card { background: #fff !important; border-radius: 16px !important; overflow: hidden !important; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05) !important; transition: box-shadow 0.3s, transform 0.3s !important; text-decoration: none !important; display: block !important; border: 1px solid rgba(0,0,0,0.05) !important; }
 .mkm-card:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1) !important; transform: translateY(-4px) !important; border-color: rgba(37,99,235,0.2) !important; }
-.mkm-card-img { position: relative !important; aspect-ratio: 3/4 !important; overflow: hidden !important; }
+.mkm-card-img { position: relative !important; aspect-ratio: 4/3 !important; overflow: hidden !important; }
 .mkm-card-img img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; transition: transform 0.5s !important; }
 .mkm-card:hover .mkm-card-img img { transform: scale(1.08) !important; }
 .mkm-badge-tl { position: absolute !important; top: 10px !important; left: 10px !important; background: linear-gradient(135deg, #3b82f6, #2563eb) !important; color: #fff !important; font-size: 10px !important; font-weight: 800 !important; padding: 4px 8px !important; border-radius: 8px !important; z-index: 2 !important; letter-spacing: 0.05em; box-shadow: 0 2px 4px rgba(37,99,235,0.3); }

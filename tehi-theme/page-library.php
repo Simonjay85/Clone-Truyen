@@ -57,7 +57,7 @@ $rank_name = "Độc Giả Uyên Bác";
             $cf_chaps = wp_count_posts('chuong')->publish;
         ?>
         <div class="md:col-span-3 bg-gray-50 rounded-3xl p-6 md:p-8 relative overflow-hidden flex flex-col sm:flex-row gap-8 items-center border border-gray-200 shadow-sm">
-            <div class="relative z-10 w-48 shrink-0 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl rotate-[-2deg] hover:rotate-0 transition-transform duration-500 border-4 border-white/50">
+            <div class="relative z-10 w-48 shrink-0 aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl rotate-[-2deg] hover:rotate-0 transition-transform duration-500 border-4 border-white/50">
                 <img class="w-full h-full object-cover" src="<?php echo esc_url($cf_cover); ?>"/>
             </div>
             <div class="relative z-10 flex-1 w-full">
@@ -130,7 +130,7 @@ $rank_name = "Độc Giả Uyên Bác";
     </div>
 
     <!-- Story Grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10 <?php if(!$is_logged_in) echo 'opacity-50 pointer-events-none grayscale-[0.5] blur-[2px]'; ?>">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 <?php if(!$is_logged_in) echo 'opacity-50 pointer-events-none grayscale-[0.5] blur-[2px]'; ?>">
         <?php 
         if ($library_query->have_posts()) :
             while ($library_query->have_posts()) : $library_query->the_post();
@@ -140,7 +140,7 @@ $rank_name = "Độc Giả Uyên Bác";
         ?>
         <!-- Story Card -->
         <div class="group flex flex-col h-full bg-transparent">
-            <div class="relative aspect-[3/4] rounded-2xl overflow-hidden mb-3 shadow-[0px_8px_24px_rgba(0,0,0,0.06)] group-hover:shadow-[0px_16px_40px_rgba(0,96,169,0.15)] transition-all duration-300 border border-gray-200 group-hover:-translate-y-1">
+            <div class="relative aspect-[4/3] rounded-2xl overflow-hidden mb-3 shadow-[0px_8px_24px_rgba(0,0,0,0.06)] group-hover:shadow-[0px_16px_40px_rgba(0,96,169,0.15)] transition-all duration-300 border border-gray-200 group-hover:-translate-y-1">
                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="<?php echo esc_url($cover); ?>"/>
                 
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">

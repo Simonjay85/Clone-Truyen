@@ -94,6 +94,7 @@ export interface QueueItem {
   model?: string;
   outlineEngine: 'gemini' | 'openai' | 'grok' | 'claude' | 'qwen' | 'deepseek'; // Gọi engine nào dựng dàn ý
   writeEngine: 'gemini' | 'openai' | 'grok' | 'claude' | 'qwen' | 'deepseek';   // Gọi engine nào viết nội dung
+  storyStyle?: 'micro_drama' | 'zhihu'; // Thể loại văn phong
   progressLogs?: string[];
   chaptersContent?: { episode: number; title: string; content: string }[];
   isSocialShared?: boolean; // Tự động chui vào hàng đợi Social Studio nếu = false và status = 'published'

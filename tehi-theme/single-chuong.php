@@ -128,6 +128,20 @@ header.mkm-header { display: none !important; }
 .r-bg-theme2 .r-title { color: #f3f4f6 !important; }
 .r-bg-theme3 { background: #edf2f7 !important; color: #111827 !important; }
 
+/* Chapter Lock */
+.r-hidden-content { display: none; }
+.r-lock-box { background: #f8faff; border: 1px solid #e0e7ff; border-radius: 12px; padding: 24px; text-align: center; margin: 30px 0; font-family: ui-sans-serif, system-ui, sans-serif; }
+.r-bg-theme2 .r-lock-box { background: #1f2937; border-color: #374151; }
+.r-lock-req { font-size: 12px; color: #6366f1; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; display: block; }
+.r-lock-title { font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+.r-bg-theme2 .r-lock-title { color: #f3f4f6; }
+.r-lock-desc { font-size: 14px; color: #4b5563; margin-bottom: 20px; line-height: 1.5; }
+.r-bg-theme2 .r-lock-desc { color: #9ca3af; }
+.r-lock-btn { background: #3b82f6; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.2s; display: inline-block; text-decoration: none; box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+.r-lock-btn:hover { background: #2563eb; transform: translateY(-2px); }
+.r-lock-link { display: block; margin-top: 16px; font-size: 13px; color: #3b82f6; text-decoration: none; font-weight: 500; }
+.r-lock-link:hover { text-decoration: underline; }
+
 /* Mobile Adjustments */
 @media (max-width: 640px) {
     .r-story-name { max-width: 180px; font-size: 14px;}
@@ -209,17 +223,39 @@ header.mkm-header { display: none !important; }
             $raw_content = get_the_content();
             $paragraphs = preg_split('/(<\/p>\s*<p[^>]*>|<br\s*\/?><br\s*\/?>)/i', $raw_content);
             $p_idx = 0;
+            
+            // Logic Khoá Chương
+            $is_locked = get_post_meta(get_the_ID(), '_is_locked', true); 
+            if ($is_locked === '') $is_locked = true; // Bật khoá mặc định (có thể đổi thành false tuỳ logic)
+            $lock_index = 2; // Số đoạn hiển thị trước khi khoá
+            
             foreach ($paragraphs as $ptext) {
                 $ptext = trim($ptext);
                 if (empty($ptext)) continue;
                 // Ensure wrapped in <p>
                 if (!preg_match('/^<p/i', $ptext)) $ptext = '<p>' . $ptext;
                 if (!preg_match('/<\/p>\s*$/i', $ptext)) $ptext .= '</p>';
+                
+                if ($is_locked && $p_idx == $lock_index) {
+                    echo '<div class="r-lock-box" id="rLockBox">
+                        <span class="r-lock-req">Yêu cầu</span>
+                        <h3 class="r-lock-title">Tham gia nhóm Facebook để đọc tiếp</h3>
+                        <p class="r-lock-desc">Nhấn nút dưới đây để tham gia, sau đó quay lại trang — chương sẽ được mở khóa.</p>
+                        <a href="https://facebook.com/groups/your-group" target="_blank" class="r-lock-btn" onclick="unlockChapter(event)">Tham gia nhóm Facebook</a>
+                        <a href="#" class="r-lock-link">Xem hướng dẫn mở khóa</a>
+                    </div>';
+                    echo '<div class="r-hidden-content" id="rHiddenContent">';
+                }
+
                 echo '<div class="r-para-wrap" data-pidx="' . $p_idx . '">';
                 echo $ptext;
                 echo '<button class="r-para-btn" onclick="pCmt.open(' . $p_idx . ')" title="Bình luận đoạn này">💬</button>';
                 echo '</div>';
                 $p_idx++;
+            }
+            
+            if ($is_locked && $p_idx > $lock_index) {
+                echo '</div>'; // End .r-hidden-content
             }
             ?>
         </div>
@@ -266,7 +302,7 @@ header.mkm-header { display: none !important; }
                 Trước
             </a>
             <button class="r-mob-nav-item r-mob-nav-center" onclick="appModal.open('tocModal')">
-                <div style="display:flex;align-items:center;gap:4px;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253A10.024 10.024 0 0113.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Chương</div>
+                <div style="display:flex;align-items:center;gap:4px;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Chương</div>
                 <?php 
                     $curr_index = array_search($curr_id, array_column($chapters, 'ID'));
                     $chap_txt = ($curr_index !== false) ? 'Ch. ' . ($curr_index + 1) . ' / ' . count($chapters) : 'TOC';
@@ -381,47 +417,59 @@ document.getElementById('qCh').addEventListener('keyup', function() {
 let currSize = 20;
 const rSet = {
     fontFamily: (fm) => {
-        document.getElementById('rWrap').style.fontFamily = fm;
+        let style = document.getElementById('rSetStyleFont');
+        if(!style) { style = document.createElement('style'); style.id = 'rSetStyleFont'; document.head.appendChild(style); }
+        style.innerHTML = `.r-wrap, .r-content, .r-title, .r-content p, .r-content span, .r-content div { font-family: ${fm} !important; }`;
         localStorage.setItem('rfm', fm);
     },
     font: (diff) => {
         currSize += diff;
         if(currSize < 14) currSize = 14;
         if(currSize > 40) currSize = 40;
-        document.getElementById('rContent').style.fontSize = currSize + 'px';
+        let style = document.getElementById('rSetStyleSize');
+        if(!style) { style = document.createElement('style'); style.id = 'rSetStyleSize'; document.head.appendChild(style); }
+        style.innerHTML = `.r-content, .r-content p, .r-content span, .r-content div { font-size: ${currSize}px !important; line-height: 1.8 !important; }`;
         localStorage.setItem('rsz', currSize);
     },
     bg: (theme) => {
         let wr = document.getElementById('rWrap');
         let hd = document.getElementById('rHdr');
         let ct = document.getElementById('rContent');
+        let container = document.querySelector('.r-container');
+        
+        let styleBg = document.getElementById('rSetStyleBg');
+        if(!styleBg) { styleBg = document.createElement('style'); styleBg.id = 'rSetStyleBg'; document.head.appendChild(styleBg); }
+
         if(theme === 'theme2') { // Dark mode
-            wr.style.background = '#111827';
-            hd.style.background = '#1f2937'; hd.style.borderColor = '#374151';
-            ct.style.color = '#d1d5db';
-            document.querySelector('.r-title').style.color = '#f3f4f6';
-            document.querySelector('.r-story-name').style.color = '#f3f4f6';
-            document.querySelector('.r-back-btn').style.background = '#374151';
-            document.querySelector('.r-back-btn').style.color = '#d1d5db';
-            document.querySelectorAll('.r-icon-btn').forEach(e => { e.style.background='#374151'; e.style.color='#d1d5db'; });
+            styleBg.innerHTML = `
+                html, body, #rWrap { background: #000000 !important; }
+                .r-container { background: #111827 !important; border: 1px solid #1f2937 !important; box-shadow: none !important; }
+                #rHdr { background: #111827 !important; border-color: #1f2937 !important; }
+                #rContent, #rContent p, #rContent span, #rContent div { color: #d1d5db !important; }
+                .r-title, .r-story-name { color: #f3f4f6 !important; }
+                .r-back-btn, .r-icon-btn { background: #1f2937 !important; color: #d1d5db !important; }
+                .r-sd-btn { background: #1f2937 !important; color: #e5e7eb !important; border-color: #374151 !important; }
+            `;
         } else if(theme === 'theme3') { // Eye care
-            wr.style.background = '#f3f6f4';
-            hd.style.background = '#fff'; hd.style.borderColor = '#e5e7eb';
-            ct.style.color = '#2d3748';
-            document.querySelector('.r-title').style.color = '#111827';
-            document.querySelector('.r-story-name').style.color = '#111827';
-            document.querySelector('.r-back-btn').style.background = '#f3f4f6';
-            document.querySelector('.r-back-btn').style.color = '#111827';
-            document.querySelectorAll('.r-icon-btn').forEach(e => { e.style.background='#fff'; e.style.color='#111827'; });
+            styleBg.innerHTML = `
+                html, body, #rWrap { background: #edf2f7 !important; }
+                .r-container { background: #FFFDF0 !important; border: none !important; }
+                #rHdr { background: #fff !important; border-color: #e5e7eb !important; }
+                #rContent, #rContent p, #rContent span, #rContent div { color: #2d3748 !important; }
+                .r-title, .r-story-name { color: #111827 !important; }
+                .r-back-btn, .r-icon-btn { background: #f3f4f6 !important; color: #111827 !important; }
+                .r-sd-btn { background: #fff !important; color: #374151 !important; border-color: #e5e7eb !important; }
+            `;
         } else { // Light mode (theme1)
-            wr.style.background = '#fdfbf7';
-            hd.style.background = '#fff'; hd.style.borderColor = '#e5e7eb';
-            ct.style.color = '#333';
-            document.querySelector('.r-title').style.color = '#111827';
-            document.querySelector('.r-story-name').style.color = '#111827';
-            document.querySelector('.r-back-btn').style.background = '#f3f4f6';
-            document.querySelector('.r-back-btn').style.color = '#111827';
-            document.querySelectorAll('.r-icon-btn').forEach(e => { e.style.background='#fff'; e.style.color='#111827'; });
+            styleBg.innerHTML = `
+                html, body, #rWrap { background: #f5f3f7 !important; }
+                .r-container { background: #FFFDF0 !important; border: none !important; }
+                #rHdr { background: #fff !important; border-color: #e5e7eb !important; }
+                #rContent, #rContent p, #rContent span, #rContent div { color: #333 !important; }
+                .r-title, .r-story-name { color: #111827 !important; }
+                .r-back-btn, .r-icon-btn { background: #f3f4f6 !important; color: #111827 !important; }
+                .r-sd-btn { background: #fff !important; color: #374151 !important; border-color: #e5e7eb !important; }
+            `;
         }
         localStorage.setItem('rbg', theme);
     },
@@ -435,6 +483,29 @@ const rSet = {
     }
 }
 rSet.init();
+
+// Chapter Lock Logic
+function unlockChapter(e) {
+    localStorage.setItem('unlocked_fb', '1');
+    window.addEventListener('focus', function onFocus() {
+        if(localStorage.getItem('unlocked_fb')) {
+            let lockBox = document.getElementById('rLockBox');
+            let hiddenContent = document.getElementById('rHiddenContent');
+            if(lockBox) lockBox.style.display = 'none';
+            if(hiddenContent) hiddenContent.style.display = 'block';
+            window.removeEventListener('focus', onFocus);
+        }
+    }, { once: true });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('unlocked_fb')) {
+        let lockBox = document.getElementById('rLockBox');
+        let hiddenContent = document.getElementById('rHiddenContent');
+        if(lockBox) lockBox.style.display = 'none';
+        if(hiddenContent) hiddenContent.style.display = 'block';
+    }
+});
 </script>
 
 <?php endwhile; endif; ?>

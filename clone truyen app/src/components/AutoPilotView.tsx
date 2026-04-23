@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useStore } from '../store/useStore';
 import { Play, Pause, Trash2, ShieldAlert, Zap } from 'lucide-react';
 import { useAutoPilotEngine } from '../hooks/useAutoPilotEngine';
-import { agentGeminiDramaExpand, agentMicroDramaExpand, agentGrokDramaExpand, agentClaudeDramaExpand, agentQwenDramaExpand, callWordPress } from '../lib/engine';
+import { agentGeminiDramaExpand, agentMicroDramaExpand, agentGrokDramaExpand, agentClaudeDramaExpand, agentQwenDramaExpand, callWordPress, agentDeepSeekDramaExpand } from '../lib/engine';
 
 export function AutoPilotView() {
   const {
@@ -82,6 +82,7 @@ export function AutoPilotView() {
         else if (outlineEngine === 'grok') timeline = await agentGrokDramaExpand(grokKey, item.bible, bounds);
         else if (outlineEngine === 'claude') timeline = await agentClaudeDramaExpand(claudeKey, item.bible, bounds);
         else if (outlineEngine === 'qwen') timeline = await agentQwenDramaExpand(qwenKey, item.bible, bounds);
+        else if (outlineEngine === 'deepseek') timeline = await agentDeepSeekDramaExpand(useStore.getState().deepseekKey, item.bible, bounds);
 
         updateQueueItem(item.id, {
           status: 'pending_approval',

@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { useStore } from '../store/useStore';
 import { agentSeasonArchitect, agentPremiumPolish, agentEpisodeDrafter, agentEpisodeRewriter, agentMarketingAssets } from '../lib/advanced_engine';
 import { callWordPress, agentMicroDramaExpand, agentMicroDramaRewrite, agentGrokDramaExpand, agentGrokDramaRewrite, agentClaudeDramaExpand, agentClaudeDramaRewrite, agentGeminiDramaExpand, agentGeminiDramaRewrite, agentQwenDramaRewrite, agentQwenDramaExpand, agentDeepSeekDramaExpand, agentDeepSeekDramaRewrite } from '../lib/engine';
+import { STORY_GENRES, StoryGenreId } from '../config/storyStyles';
 
 export function useAutoPilotEngine() {
   const { 
@@ -21,10 +22,10 @@ export function useAutoPilotEngine() {
     const tick = async () => {
       const now = Date.now();
       if (isProcessing.current) {
-        // Failsafe: if stuck for > 5 minutes (due to hot-reload or API hang), unlock it!
-        // LLM generation can take up to 2-3 minutes, so 60s is too short and causes duplicate chapters.
-        if (now - lastProcessTime.current > 300000) {
-           console.warn("AutoPilot Auto-Unlock: isProcessing stuck for > 5 mins, resetting...");
+        // Failsafe: if stuck for > 15 minutes (due to hot-reload or API hang), unlock it!
+        // LLM generation can take up to 2-3 minutes per request, plus retries.
+        if (now - lastProcessTime.current > 900000) {
+           console.warn("AutoPilot Auto-Unlock: isProcessing stuck for > 15 mins, resetting...");
            isProcessing.current = false;
         } else {
            return;
@@ -108,8 +109,12 @@ export function useAutoPilotEngine() {
 
             updateQueueItem(activeItem.id, { status: 'writing' });
             const currBeatObj = (fullBible as any).timeline?.[currentEp - 1];
-            const currBeat = currBeatObj?.outline || 'Mâu thuẫn bùng nổ';
-            let shortBeatTitle = currBeatObj?.title || currBeat.split('.')[0].split(',')[0];
+            let currBeat = currBeatObj?.outline || 'Mâu thuẫn bùng nổ';
+            if (activeItem.storyStyle && STORY_GENRES[activeItem.storyStyle as StoryGenreId]) {
+               const overridePrompt = STORY_GENRES[activeItem.storyStyle as StoryGenreId]?.overridePrompt || '';
+               if (overridePrompt) currBeat = overridePrompt + currBeat;
+            }
+            let shortBeatTitle = currBeatObj?.title || currBeatObj?.outline?.split('.')[0].split(',')[0] || 'Chương mới';
             shortBeatTitle = shortBeatTitle.replace(/^(Chương|Tập|Episode)\s*\d+[:\-]?\s*/i, '').trim();
             if (shortBeatTitle.length > 40) shortBeatTitle = shortBeatTitle.substring(0, 37) + '...';
             const finalChapterTitle = `Chương ${currentEp}: ${shortBeatTitle}`;
@@ -178,7 +183,10 @@ export function useAutoPilotEngine() {
           const prevContextWindow = prevChapterContent ? prevChapterContent.slice(-3000) : '';
           currOutline = prevContextWindow ? `NỘI DUNG CUỐI CỦA CHƯƠNG TRƯỚC (Đọc để tiếp nối NGAY LẬP TỨC mạch văn, không gian và diễn biến, KHÔNG LẶP LẠI TÌNH TIẾT ĐÃ CÓ):\n"""\n${prevContextWindow}\n"""\n\n==========\n\nNHIỆM VỤ HIỆN TẠI (Chương ${currentEp}):\nHãy BẮT ĐẦU VIẾT NGAY phần nội dung tiếp theo dựa trên dàn ý sau:\n${rawOutline}` : rawOutline;
           
-          
+          if (activeItem.storyStyle && STORY_GENRES[activeItem.storyStyle as StoryGenreId]) {
+             const overridePrompt = STORY_GENRES[activeItem.storyStyle as StoryGenreId]?.overridePrompt || '';
+             if (overridePrompt) currOutline = overridePrompt + currOutline;
+          }
           let shortOutlineTitle = currTimelineObj?.title || currOutline.split('.')[0].split(',')[0];
           shortOutlineTitle = shortOutlineTitle.replace(/^(Chương|Tập|Episode)\s*\d+[:\-]?\s*/i, '').trim();
           if (shortOutlineTitle.length > 40) shortOutlineTitle = shortOutlineTitle.substring(0, 37) + '...';

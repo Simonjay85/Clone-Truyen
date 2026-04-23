@@ -35,14 +35,20 @@ export async function POST(req: Request) {
 
     while (retries > 0) {
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minutes timeout per request
+
         response = await fetch('https://api.deepseek.com/chat/completions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${apiKey}`
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
+          signal: controller.signal
         });
+        
+        clearTimeout(timeoutId);
         
         if (response.ok || response.status === 400 || response.status === 401 || response.status === 403 || response.status === 429) {
            break;
@@ -55,7 +61,7 @@ export async function POST(req: Request) {
     }
 
     if (!response) {
-       throw lastError || new Error('Network failure after 3 retries');
+       throw lastError || new Error('Network failure after 3 retries (Timeout or disconnect)');
     }
 
     if (!response.ok) {

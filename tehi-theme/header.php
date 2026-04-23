@@ -301,21 +301,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
             });
         }
 
-        // Kiểm tra vị trí cuộn và hiển thị hoặc ẩn nút "Back to Top"
-        function initToTopButton() {
-            var toTopHtml = '<div id="toTop"><i class="fa-solid fa-chevron-up"></i></div>';
-            if (!document.getElementById('toTop')) document.body.insertAdjacentHTML('beforeend', toTopHtml);
-            var toTopEl = document.getElementById('toTop');
-            if (!toTopEl) return;
-            toTopEl.style.display = 'none';
-            window.addEventListener('scroll', function() {
-                toTopEl.style.display = window.scrollY > 500 ? 'flex' : 'none';
-            });
-            toTopEl.addEventListener('click', function() {
-                scrollToElement('body', 1.2);
-            });
-        }
-        initToTopButton();
+
 
 
 

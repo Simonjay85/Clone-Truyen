@@ -292,6 +292,7 @@ function mkmSubmitAuth(e, type) {
     });
 }
 // Scroll to top logic
+<?php if (!is_singular('chuong')): ?>
 document.addEventListener("DOMContentLoaded", function() {
     let mkmScrollBtn = document.createElement("button");
     mkmScrollBtn.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>';
@@ -314,8 +315,10 @@ document.addEventListener("DOMContentLoaded", function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
+<?php endif; ?>
 </script>
 
+<div id="shareModal" style="display:none;"></div>
 <?php wp_footer(); ?>
 </body>
 </html>

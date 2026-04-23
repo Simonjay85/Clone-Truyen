@@ -7,7 +7,15 @@ const DB_PATH = path.join(process.cwd(), 'data', 'mcore_db.json');
 
 export const dynamic = 'force-dynamic';
 
+// Write lock đơn giản: ngăn GET đọc file lúc POST đang ghi atomic (tmp → rename)
+let isWriting = false;
+
 export async function GET() {
+  // Nếu engine đang ghi → đợi 300ms rồi mới đọc, tránh đọc file rỗng/corrupt
+  if (isWriting) {
+    await new Promise(r => setTimeout(r, 300));
+  }
+
   try {
     // Đảm bảo thư mục "data" tồn tại
     try {
@@ -32,9 +40,10 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  isWriting = true;
   try {
     const body = await req.json();
-    
+
     try {
       await fs.access(path.join(process.cwd(), 'data'));
     } catch {
@@ -48,5 +57,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error: unknown) {
     return NextResponse.json({ success: false, error: error instanceof Error ? error.message : String(error) }, { status: 500 });
+  } finally {
+    // Luôn release lock dù thành công hay lỗi
+    isWriting = false;
   }
 }
