@@ -22,32 +22,201 @@ add_action( 'after_setup_theme', 'tehi_clone_setup' );
  * Gọi CSS/JS của theme
  */
 function tehi_clone_scripts() {
-    // Gọi tệp style.css chính
+    // Most theme CSS is emitted in header.php with async hints. Keep WP hooks alive
+    // for plugin compatibility and scripts that depend on wp_head/wp_footer.
     wp_enqueue_style( 'tehi-clone-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version') );
-
-    wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/assets/css/bootstrap.min.css' );
-    wp_enqueue_style( 'tehi-media', get_template_directory_uri() . '/assets/css/media.css' );
-    wp_enqueue_style( 'tehi-mongdaovien', get_template_directory_uri() . '/assets/css/style-mongdaovien.css' );
-    wp_enqueue_style( 'tehi-truyen-moi', get_template_directory_uri() . '/assets/css/style-truyen-moi-v1.css' );
-    wp_enqueue_style( 'tehi-style-base', get_template_directory_uri() . '/assets/css/style.css' );
-    
-    wp_enqueue_style( 'fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' );
-    
     wp_enqueue_script( 'bootstrap-js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js', array(), null, true );
 }
 add_action( 'wp_enqueue_scripts', 'tehi_clone_scripts' );
+
+function tehi_get_meta_description() {
+    if (is_singular()) {
+        $excerpt = get_the_excerpt();
+        if (!$excerpt) {
+            $excerpt = get_post_field('post_content', get_the_ID());
+        }
+        $excerpt = trim(wp_strip_all_tags(strip_shortcodes((string) $excerpt)));
+        if ($excerpt !== '') {
+            return wp_trim_words($excerpt, 28, '...');
+        }
+    }
+
+    if (is_search()) {
+        return sprintf('Kết quả tìm kiếm truyện cho "%s" tại %s.', get_search_query(), get_bloginfo('name'));
+    }
+
+    if (is_tax()) {
+        $term = get_queried_object();
+        if ($term && !is_wp_error($term)) {
+            return sprintf('Đọc truyện thể loại %s mới nhất, cập nhật nhanh tại %s.', $term->name, get_bloginfo('name'));
+        }
+    }
+
+    $description = get_bloginfo('description');
+    if (!$description) {
+        $description = get_bloginfo('name') . ' - Đọc Truyện Online, truyện ngôn tình, truyện full và chương mới cập nhật mỗi ngày.';
+    }
+
+    return $description;
+}
+
+function tehi_get_canonical_url() {
+    $request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '/';
+    $path = parse_url($request_uri, PHP_URL_PATH);
+
+    $legacy_map = array(
+        '/the-loai.html'            => '/the-loai/',
+        '/danh-muc.html'            => '/the-loai/',
+        '/theo-doi.html'            => '/theo-doi/',
+        '/bang-xep-hang.html'       => '/bang-xep-hang/',
+        '/hoan-thanh.html'          => '/truyen-hoan-thanh/',
+        '/truyen-moi-cap-nhat.html' => '/truyen-moi-cap-nhat/',
+        '/nhom-dich.html'           => '/nhom-dich/',
+    );
+
+    if ($path && isset($legacy_map[$path])) {
+        return home_url($legacy_map[$path]);
+    }
+
+    if (is_singular() || is_page() || is_home() || is_front_page()) {
+        return get_permalink();
+    }
+
+    if (is_search()) {
+        return home_url('/?s=' . rawurlencode(get_search_query()));
+    }
+
+    if (is_tax() || is_category() || is_tag()) {
+        $link = get_term_link(get_queried_object());
+        if (!is_wp_error($link)) {
+            return $link;
+        }
+    }
+
+    return home_url($path ?: '/');
+}
+
+function tehi_current_legacy_page_title() {
+    $request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '';
+    $path = parse_url($request_uri, PHP_URL_PATH);
+    $titles = array(
+        '/the-loai.html'            => 'Thể loại',
+        '/danh-muc.html'            => 'Thể loại',
+        '/theo-doi.html'            => 'Theo dõi',
+        '/bang-xep-hang.html'       => 'Bảng xếp hạng',
+        '/hoan-thanh.html'          => 'Truyện full',
+        '/truyen-moi-cap-nhat.html' => 'Truyện mới cập nhật',
+        '/nhom-dich.html'           => 'Nhóm dịch',
+    );
+
+    return ($path && isset($titles[$path])) ? $titles[$path] : '';
+}
+
+add_filter('pre_get_document_title', function($title) {
+    $site_name = get_bloginfo('name') ?: 'DTT';
+
+    if (is_front_page() || is_home()) {
+        return $site_name . ' - Đọc Truyện Online';
+    }
+
+    $legacy_title = tehi_current_legacy_page_title();
+    if ($legacy_title) {
+        return $legacy_title . ' - ' . $site_name;
+    }
+
+    if (is_search()) {
+        return get_search_query() . ' - ' . $site_name;
+    }
+
+    if (is_singular() || is_page()) {
+        return single_post_title('', false) . ' - ' . $site_name;
+    }
+
+    if (is_tax() || is_category() || is_tag()) {
+        return single_term_title('', false) . ' - ' . $site_name;
+    }
+
+    return trim((string) $title) ?: $site_name;
+}, 20);
+
+add_filter('document_title_separator', function() {
+    return '-';
+});
 
 /**
  * Inject Tailwind CDN + Material Symbols để các template cũ render đúng
  */
 add_action('wp_head', function() {
-    // Chỉ tải trên các trang KHÔNG phải front-page (vì front-page dùng CSS riêng)
     if (!is_front_page()) {
+        echo '<script>window.tailwind=window.tailwind||{};window.tailwind.config={corePlugins:{preflight:false},theme:{extend:{colors:{"surface-container-lowest":"#ffffff","surface-container-low":"#f6f3f2","surface-container":"#f0eded","surface-container-high":"#eae8e7","surface-container-highest":"#e4e2e1","surface-bright":"#fbf9f8","surface":"#fbf9f8","on-surface":"#1b1c1c","on-surface-variant":"#404752","outline":"#707783","outline-variant":"#c0c7d4","primary":"#0060a9","primary-container":"#3f9cfb","on-primary":"#ffffff","on-primary-container":"#00325c","secondary":"#536068","secondary-container":"#d4e2eb","on-secondary-container":"#57656c","background":"#fbf9f8","on-background":"#1b1c1c"}}}};</script>' . "\n";
         echo '<script src="https://cdn.tailwindcss.com"></script>' . "\n";
-        echo '<script>tailwind.config={corePlugins:{preflight:false},theme:{extend:{colors:{"surface-container-lowest":"#ffffff","surface-container-low":"#f6f3f2","surface-container":"#f0eded","surface-container-high":"#eae8e7","surface-container-highest":"#e4e2e1","surface-bright":"#fbf9f8","surface":"#fbf9f8","on-surface":"#1b1c1c","on-surface-variant":"#404752","outline":"#707783","outline-variant":"#c0c7d4","primary":"#0060a9","primary-container":"#3f9cfb","on-primary":"#ffffff","on-primary-container":"#00325c","secondary":"#536068","secondary-container":"#d4e2eb","on-secondary-container":"#57656c","background":"#fbf9f8","on-background":"#1b1c1c"}}}}</script>' . "\n";
     }
     echo '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">' . "\n";
 }, 1);
+
+add_action('template_redirect', function() {
+    $request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '';
+    $path = parse_url($request_uri, PHP_URL_PATH);
+
+    if ($path === '/sitemap_index.xml') {
+        status_header(200);
+        header('Content-Type: application/xml; charset=UTF-8');
+        echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+        echo '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+        echo '  <sitemap><loc>' . esc_url(home_url('/wp-sitemap.xml')) . '</loc></sitemap>' . "\n";
+        echo '</sitemapindex>';
+        exit;
+    }
+}, 0);
+
+add_filter('robots_txt', function($output, $public) {
+    if (strpos($output, 'sitemap_index.xml') === false) {
+        $output = rtrim($output) . "\nSitemap: " . home_url('/sitemap_index.xml') . "\n";
+    }
+    return $output;
+}, 10, 2);
+
+add_action('admin_init', function() {
+    register_setting('general', 'tehi_facebook_group_url', array(
+        'type' => 'string',
+        'sanitize_callback' => 'esc_url_raw',
+        'default' => '',
+    ));
+    register_setting('general', 'tehi_unlock_guide_url', array(
+        'type' => 'string',
+        'sanitize_callback' => 'esc_url_raw',
+        'default' => '',
+    ));
+    register_setting('general', 'tehi_backfill_token', array(
+        'type' => 'string',
+        'sanitize_callback' => 'sanitize_text_field',
+        'default' => '',
+    ));
+
+    add_settings_section('tehi_social_settings', 'DTT Reading Settings', '__return_false', 'general');
+
+    add_settings_field('tehi_facebook_group_url', 'Facebook group URL', function() {
+        printf(
+            '<input type="url" class="regular-text" name="tehi_facebook_group_url" value="%s" placeholder="https://facebook.com/groups/..." />',
+            esc_attr(get_option('tehi_facebook_group_url', ''))
+        );
+    }, 'general', 'tehi_social_settings');
+
+    add_settings_field('tehi_unlock_guide_url', 'Unlock guide URL', function() {
+        printf(
+            '<input type="url" class="regular-text" name="tehi_unlock_guide_url" value="%s" placeholder="%s" />',
+            esc_attr(get_option('tehi_unlock_guide_url', '')),
+            esc_attr(home_url('/huong-dan-mo-khoa/'))
+        );
+    }, 'general', 'tehi_social_settings');
+
+    add_settings_field('tehi_backfill_token', 'Cover backfill token', function() {
+        printf(
+            '<input type="text" class="regular-text" name="tehi_backfill_token" value="%s" autocomplete="off" /> <p class="description">Optional token for auto_cover.py when not using an admin session.</p>',
+            esc_attr(get_option('tehi_backfill_token', ''))
+        );
+    }, 'general', 'tehi_social_settings');
+});
 
 /**
  * Bật Hỗ Trợ Elementor Header & Footer Builder
@@ -1632,5 +1801,3 @@ add_action('after_setup_theme', 'tehi_clone_force_full_image_size');
  */
 add_filter('jpeg_quality', function($arg){ return 100; });
 add_filter('wp_editor_set_quality', function($arg){ return 100; });
-
-

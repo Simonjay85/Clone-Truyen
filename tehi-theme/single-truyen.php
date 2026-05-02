@@ -345,7 +345,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     </div>
 
     <!-- Block 2: Chapters -->
-    <div class="mkm-chaps-box">
+    <div class="mkm-chaps-box" id="chapters">
         <div class="mkm-chaps-hdr">
             <div style="display:flex; gap:10px;">
                 <select id="sortChap"><option value="desc">↑↓ Giảm dần</option><option value="asc">↑↓ Tăng dần</option></select>

@@ -134,12 +134,12 @@ add_action('rest_api_init', function () {
     register_rest_route('temply/v1', '/backfill-covers', array(
         'methods' => 'POST',
         'callback' => 'temply_api_backfill_covers',
-        'permission_callback' => '__return_true'
+        'permission_callback' => 'temply_api_can_backfill_covers'
     ));
     register_rest_route('temply/v1', '/backfill-cover', array(
         'methods' => 'GET',
         'callback' => 'temply_api_backfill_cover',
-        'permission_callback' => '__return_true'
+        'permission_callback' => 'temply_api_can_backfill_covers'
     ));
 });
 

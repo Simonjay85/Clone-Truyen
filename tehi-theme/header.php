@@ -14,10 +14,14 @@ if (!is_user_logged_in() && !is_admin()) {
 
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
-<meta name="keywords" content="<?php bloginfo('name'); ?>, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí" />
-<meta name="description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: '<?php bloginfo(\'name\'); ?> – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
-<link href="<?php echo esc_url(get_permalink()); ?>" rel="canonical" />
+<?php
+$tehi_meta_description = function_exists('tehi_get_meta_description') ? tehi_get_meta_description() : get_bloginfo('description');
+$tehi_fallback_path    = isset($_SERVER['REQUEST_URI']) ? parse_url(wp_unslash($_SERVER['REQUEST_URI']), PHP_URL_PATH) : '/';
+$tehi_canonical_url    = function_exists('tehi_get_canonical_url') ? tehi_get_canonical_url() : home_url($tehi_fallback_path ?: '/');
+?>
+<meta name="keywords" content="<?php echo esc_attr(get_bloginfo('name')); ?>, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí" />
+<meta name="description" content="<?php echo esc_attr($tehi_meta_description); ?>" />
+<link href="<?php echo esc_url($tehi_canonical_url); ?>" rel="canonical" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMCE7V4VHX"></script>
 <script>
@@ -30,13 +34,13 @@ if (!is_user_logged_in() && !is_admin()) {
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>">
 <meta name="twitter:site" content="@<?php bloginfo('name'); ?>">
-<meta name="twitter:description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 25, '...')); ?>">
+<meta name="twitter:description" content="<?php echo esc_attr($tehi_meta_description); ?>">
 <meta name="twitter:image:alt" content="<?php echo esc_attr(get_the_title()); ?>">
 <!-- Open Graph -->
 <meta property="og:type" content="<?php echo is_single() ? 'article' : 'website'; ?>">
-<meta property="og:url" content="<?php echo esc_url(get_permalink()); ?>" />
+<meta property="og:url" content="<?php echo esc_url($tehi_canonical_url); ?>" />
 <meta property="og:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>" />
-<meta property="og:description" content="<?php echo esc_attr(wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: '<?php bloginfo(\'name\'); ?> – Đọc Truyện Ngôn Tình Hay Nhất 2026.'), 25, '...')); ?>" />
+<meta property="og:description" content="<?php echo esc_attr($tehi_meta_description); ?>" />
 <!-- Khai báo ngôn ngữ -->
 <script type="application/ld+json">
     {
@@ -75,7 +79,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 }
 .fas, .fa-solid { font-weight: 900 !important; }
 .fa-brands { font-family: "Font Awesome 6 Brands" !important; }
-}
 </style>
 
 <!-- ══ CRITICAL CSS - Only what's needed for above-fold render ══ -->
@@ -292,8 +295,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 
         // Khởi tạo skeletons – only when jQuery is available
         if (typeof $ !== 'undefined') {
-            initializeVHSkeleton();
-            initializeSkeletonOnScroll();
+            if (typeof initializeVHSkeleton === 'function') initializeVHSkeleton();
+            if (typeof initializeSkeletonOnScroll === 'function') initializeSkeletonOnScroll();
         } else {
             window.addEventListener('load', function() {
                 if (typeof initializeVHSkeleton === 'function') initializeVHSkeleton();
@@ -307,7 +310,9 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 
         // chữ title start
         // Refresh ScrollTrigger sau khi khởi tạo animation
-        ScrollTrigger.refresh();
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
 
         // trang liên hệ start
         if (currentPage == 'lien-he') {
@@ -511,46 +516,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 </style>
 <?php endif; ?>
 
-<?php 
-global $tehi_tailwind_page;
-if (!empty($tehi_tailwind_page)): 
-?>
-<!-- Inject Tailwind for generated pages only -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    "primary": "#0060a9",
-                    "on-primary": "#ffffff",
-                    "primary-container": "#d3e3fd",
-                    "on-primary-container": "#001c39",
-                    "secondary": "#535f70",
-                    "on-secondary": "#ffffff",
-                    "secondary-container": "#d7e3f8",
-                    "on-secondary-container": "#101c2b",
-                    "error": "#ba1a1a",
-                    "background": "#fdfcff",
-                    "on-background": "#1a1c1e",
-                    "surface": "#fdfcff",
-                    "on-surface": "#1a1c1e",
-                    "surface-variant": "#dfe2eb",
-                    "on-surface-variant": "#43474e",
-                    "outline": "#73777f",
-                    "outline-variant": "#c3c6cf",
-                    "surface-container-lowest": "#ffffff",
-                    "surface-container-low": "#f7f2fa",
-                    "surface-container": "#f3edf7",
-                    "surface-container-high": "#ece6f0",
-                    "surface-container-highest": "#e6e0e9"
-                },
-                fontFamily: {
-                    sans: ['"Be Vietnam Pro"', 'sans-serif'],
-                    headline: ['"Be Vietnam Pro"', 'sans-serif']
-                }
-</script>
+<?php wp_head(); ?>
 <style>
 /* Prevent Tailwind from overriding Material Icon font */
 .material-symbols-outlined {
@@ -566,11 +532,11 @@ if (!empty($tehi_tailwind_page)):
   direction: ltr;
 }
 </style>
-<?php endif; ?>
 </head>
 
 
-<body class="index  position-relative" style="--background-body: url(<?php echo get_template_directory_uri(); ?>/img_data/images/background-repeat-2.png)">
+<body <?php body_class('index position-relative'); ?> style="--background-body: url(<?php echo esc_url(get_template_directory_uri()); ?>/img_data/images/background-repeat-2.png)">
+<?php wp_body_open(); ?>
   <!-- <div class="anh-nen lt-truyen-body"></div> -->
   <!-- lenis scroll bar start -->
   <div class="lenis-scrollbar">
@@ -721,4 +687,3 @@ if (!empty($tehi_tailwind_page)):
         </div>
     </div>
 </header>
-

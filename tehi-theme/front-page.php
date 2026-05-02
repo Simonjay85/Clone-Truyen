@@ -493,6 +493,7 @@
 </style>
 
 <div class="mkm-wrap">
+    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"><?php echo esc_html(get_bloginfo('name')); ?> - Đọc Truyện Online</h1>
 
     <!-- ══ HERO SLIDER ══ -->
     <?php
@@ -538,7 +539,7 @@
                         </div>
                         <div class="mkm-slider-btns">
                             <a href="<?php the_permalink(); ?>" class="mkm-btn mkm-btn-prim">📖 Đọc ngay</a>
-                            <a href="<?php the_permalink(); ?>" class="mkm-btn mkm-btn-sec">Danh sách chương</a>
+                            <a href="<?php the_permalink(); ?>#chapters" class="mkm-btn mkm-btn-sec">Danh sách chương</a>
                         </div>
                     </div>
                 </div>
@@ -720,10 +721,10 @@
                 </h3>
                 
                 <div class="mkm-tabs-new" style="display:flex; justify-content:space-between; margin-bottom: 20px; align-items:center;">
-                    <div class="mkm-tab-new active" style="background:#5546ff; color:#fff; border-radius:24px; padding: 6px 20px; font-size:13px; font-weight:700; cursor:pointer;">Ngày</div>
-                    <div class="mkm-tab-new" style="color:#6b7280; font-size:13px; font-weight:600; cursor:pointer; padding: 6px 12px; transition:color .2s;">Tuần</div>
-                    <div class="mkm-tab-new" style="color:#6b7280; font-size:13px; font-weight:600; cursor:pointer; padding: 6px 12px; transition:color .2s;">Tháng</div>
-                    <div class="mkm-tab-new" style="color:#6b7280; font-size:13px; font-weight:600; cursor:pointer; padding: 6px 12px; transition:color .2s;">Năm</div>
+                    <a href="<?php echo esc_url(home_url('/bang-xep-hang/?range=day')); ?>" class="mkm-tab-new active" style="background:#5546ff; color:#fff; border-radius:24px; padding: 6px 20px; font-size:13px; font-weight:700; cursor:pointer; text-decoration:none;">Ngày</a>
+                    <a href="<?php echo esc_url(home_url('/bang-xep-hang/?range=week')); ?>" class="mkm-tab-new" style="color:#6b7280; font-size:13px; font-weight:600; cursor:pointer; padding: 6px 12px; transition:color .2s; text-decoration:none;">Tuần</a>
+                    <a href="<?php echo esc_url(home_url('/bang-xep-hang/?range=month')); ?>" class="mkm-tab-new" style="color:#6b7280; font-size:13px; font-weight:600; cursor:pointer; padding: 6px 12px; transition:color .2s; text-decoration:none;">Tháng</a>
+                    <a href="<?php echo esc_url(home_url('/bang-xep-hang/?range=year')); ?>" class="mkm-tab-new" style="color:#6b7280; font-size:13px; font-weight:600; cursor:pointer; padding: 6px 12px; transition:color .2s; text-decoration:none;">Năm</a>
                 </div>
 
                 <style>
@@ -859,7 +860,7 @@
                     
                     <?php if($tri === 1): ?>
                     <!-- Team Top 1 -->
-                    <a href="#" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #fde047; background: #fff; box-shadow: 0 4px 12px rgba(253,224,71,0.15);">
+                    <a href="<?php echo esc_url(home_url('/nhom-dich/')); ?>" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #fde047; background: #fff; box-shadow: 0 4px 12px rgba(253,224,71,0.15);">
                         <div style="position:relative; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
                             <div style="position:absolute; top:-2px; left:6px; width:6px; height:10px; background:#ef4444; border-radius:1px; transform:rotate(-25deg);"></div>
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
@@ -877,7 +878,7 @@
 
                     <?php elseif($tri === 2): ?>
                     <!-- Team Top 2 -->
-                    <a href="#" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #e5e7eb; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                    <a href="<?php echo esc_url(home_url('/nhom-dich/')); ?>" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #e5e7eb; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
                         <div style="position:relative; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
                             <div style="position:absolute; top:-2px; left:6px; width:6px; height:10px; background:#ef4444; border-radius:1px; transform:rotate(-25deg);"></div>
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
@@ -895,7 +896,7 @@
 
                     <?php elseif($tri === 3): ?>
                     <!-- Team Top 3 -->
-                    <a href="#" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #fed7aa; background: #fff; box-shadow: 0 4px 12px rgba(254,215,170,0.15);">
+                    <a href="<?php echo esc_url(home_url('/nhom-dich/')); ?>" class="mkm-bxh-item" style="padding:10px 12px; border-radius:12px; border: 1px solid #fed7aa; background: #fff; box-shadow: 0 4px 12px rgba(254,215,170,0.15);">
                         <div style="position:relative; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
                             <div style="position:absolute; top:-2px; left:6px; width:6px; height:10px; background:#ef4444; border-radius:1px; transform:rotate(-25deg);"></div>
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
@@ -913,7 +914,7 @@
 
                     <?php else: ?>
                     <!-- Team Top 4 - 8 -->
-                    <a href="#" class="mkm-bxh-item" style="padding:6px 0;">
+                    <a href="<?php echo esc_url(home_url('/nhom-dich/')); ?>" class="mkm-bxh-item" style="padding:6px 0;">
                         <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $tri; ?></div>
                         <img src="<?php echo esc_url($t_avatar); ?>" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">

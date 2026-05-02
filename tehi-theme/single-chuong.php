@@ -5,6 +5,8 @@
 $truyen_id = get_post_meta(get_the_ID(), '_truyen_id', true);
 $truyen_title = $truyen_id ? get_the_title($truyen_id) : 'Truyện Không Rõ';
 $truyen_link = $truyen_id ? get_permalink($truyen_id) : '#';
+$facebook_group_url = esc_url(get_option('tehi_facebook_group_url', ''));
+$unlock_guide_url   = esc_url(get_option('tehi_unlock_guide_url', ''));
 
 // Lấy danh sách toàn bộ chương của truyện để làm nút Prev/Next
 $chapters = [];
@@ -142,6 +144,7 @@ header.mkm-header { display: none !important; }
 .r-bg-theme2 .r-lock-desc { color: #9ca3af; }
 .r-lock-btn { background: #3b82f6; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.2s; display: inline-block; text-decoration: none; box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
 .r-lock-btn:hover { background: #2563eb; transform: translateY(-2px); }
+.r-lock-btn.disabled { background: #e5e7eb; color: #6b7280; cursor: not-allowed; box-shadow: none; pointer-events: none; }
 .r-lock-link { display: block; margin-top: 16px; font-size: 13px; color: #3b82f6; text-decoration: none; font-weight: 500; }
 .r-lock-link:hover { text-decoration: underline; }
 
@@ -240,12 +243,19 @@ header.mkm-header { display: none !important; }
                 if (!preg_match('/<\/p>\s*$/i', $ptext)) $ptext .= '</p>';
                 
                 if ($is_locked && $p_idx == $lock_index) {
+                    $lock_btn_html = $facebook_group_url
+                        ? '<a href="' . esc_url($facebook_group_url) . '" target="_blank" rel="noopener" class="r-lock-btn" onclick="unlockChapter(event)">Tham gia nhóm Facebook</a>'
+                        : '<span class="r-lock-btn disabled" aria-disabled="true">Nhóm Facebook chưa được cấu hình</span>';
+                    $guide_link_html = $unlock_guide_url
+                        ? '<a href="' . esc_url($unlock_guide_url) . '" class="r-lock-link">Xem hướng dẫn mở khóa</a>'
+                        : '';
+
                     echo '<div class="r-lock-box" id="rLockBox">
                         <span class="r-lock-req">Yêu cầu</span>
                         <h3 class="r-lock-title">Tham gia nhóm Facebook để đọc tiếp</h3>
                         <p class="r-lock-desc">Nhấn nút dưới đây để tham gia, sau đó quay lại trang — chương sẽ được mở khóa.</p>
-                        <a href="https://facebook.com/groups/your-group" target="_blank" class="r-lock-btn" onclick="unlockChapter(event)">Tham gia nhóm Facebook</a>
-                        <a href="#" class="r-lock-link">Xem hướng dẫn mở khóa</a>
+                        ' . $lock_btn_html . '
+                        ' . $guide_link_html . '
                     </div>';
                     echo '<div class="r-hidden-content" id="rHiddenContent">';
                 }
@@ -390,12 +400,14 @@ header.mkm-header { display: none !important; }
 const appModal = {
     open: (id) => {
         let el = document.getElementById(id);
+        if (!el) return;
         el.classList.add('r-show');
         setTimeout(() => el.classList.add('r-active'), 10);
         document.body.style.overflow = 'hidden';
     },
     close: (id) => {
         let el = document.getElementById(id);
+        if (!el) return;
         el.classList.remove('r-active');
         setTimeout(() => { el.classList.remove('r-show'); document.body.style.overflow = ''; }, 300);
     }
@@ -404,17 +416,21 @@ const appModal = {
 // Float Top Visibility
 window.addEventListener('scroll', () => {
     let fab = document.getElementById('fabTop');
+    if (!fab) return;
     if(window.scrollY > 500) fab.classList.add('show');
     else fab.classList.remove('show');
 });
 
 // Search chapters
-document.getElementById('qCh').addEventListener('keyup', function() {
-    let val = this.value.toLowerCase();
-    document.querySelectorAll('.r-toc-item').forEach(el => {
-        el.style.display = el.innerText.toLowerCase().includes(val) ? 'block' : 'none';
+const qChInput = document.getElementById('qCh');
+if (qChInput) {
+    qChInput.addEventListener('keyup', function() {
+        let val = this.value.toLowerCase();
+        document.querySelectorAll('.r-toc-item').forEach(el => {
+            el.style.display = el.innerText.toLowerCase().includes(val) ? 'block' : 'none';
+        });
     });
-});
+}
 
 // Reading Settings Controller
 let currSize = 20;
