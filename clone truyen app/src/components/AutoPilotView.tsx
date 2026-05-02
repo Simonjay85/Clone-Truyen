@@ -2,11 +2,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useStore } from '../store/useStore';
-import { Play, Pause, Trash2, ShieldAlert, Zap } from 'lucide-react';
+import { Play, Pause, Trash2, ShieldAlert, Zap, Send } from 'lucide-react';
 import { useAutoPilotEngine } from '../hooks/useAutoPilotEngine';
 import { agentGeminiDramaExpand, agentMicroDramaExpand, agentGrokDramaExpand, agentClaudeDramaExpand, agentQwenDramaExpand, callWordPress, agentDeepSeekDramaExpand } from '../lib/engine';
 
-export function AutoPilotView() {
+export function AutoPilotView({ onNavigate }: { onNavigate?: (tab: string) => void }) {
   const {
     queue, isAutoPilotRunning, toggleAutoPilot, removeQueueItem, clearQueue, updateQueueItem,
     geminiKey, geminiPaidKey, openAIKey, grokKey, claudeKey, qwenKey, usePaidAPI,
@@ -30,7 +30,6 @@ export function AutoPilotView() {
 
   const draftItems = queue.filter(q => q.status === 'draft_outline');
   const approvalItems = queue.filter(q => q.status === 'pending_approval');
-  const errorItems = queue.filter(q => q.status === 'error');
 
   // ============================================================
   // LÊN DÀN Ý HÀNG LOẠT: Xử lý song song TẤT CẢ draft_outline
@@ -339,6 +338,20 @@ export function AutoPilotView() {
                   <div className="mt-3 p-2 bg-red-500/10 border border-red-500/20 rounded-md text-red-400 text-xs font-mono whitespace-pre-wrap break-words max-h-24 overflow-y-auto">
                     Biên bản lỗi: {item.errorLog}
                   </div>
+                )}
+
+                {/* NÚT GỬI TỔNG DUYỆT — hiện khi truyện đã xong */}
+                {(item.status === 'completed' || item.status === 'final_review') && (
+                  <button
+                    onClick={() => {
+                      updateQueueItem(item.id, { status: 'final_review' });
+                      if (onNavigate) onNavigate('final_review');
+                    }}
+                    className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm rounded-lg transition-all shadow-[0_0_12px_rgba(16,185,129,0.3)] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] border border-emerald-500/40"
+                  >
+                    <Send size={15} />
+                    📋 Gửi Tổng Duyệt (Gatekeeper)
+                  </button>
                 )}
               </div>
             </div>

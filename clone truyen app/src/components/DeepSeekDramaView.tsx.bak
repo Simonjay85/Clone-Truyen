@@ -11,8 +11,8 @@ import { STORY_GENRES, StoryGenreId, STORY_GENRE_LIST } from '../config/storySty
 
 
 
-export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => void }) {
-  const { qwenKey, geminiKey, geminiKey2, geminiKey3, geminiPaidKey, usePaidAPI, addQueueItems, draftSpaces, updateDraftSpace, addApiLog } = useStore();
+export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) => void }) {
+  const { deepseekKey, geminiKey, geminiKey2, geminiKey3, geminiPaidKey, usePaidAPI, addQueueItems, draftSpaces, updateDraftSpace, addApiLog } = useStore();
 
   const resolvedGKey1 = (usePaidAPI && geminiPaidKey) ? geminiPaidKey : geminiKey;
   const resolvedGKey2 = (usePaidAPI && geminiPaidKey) ? undefined : geminiKey2;
@@ -22,12 +22,12 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
   const [isRefining, setIsRefining] = useState(false);
   const [title, setTitle] = useState('');
   const [prompt, setPrompt] = useState('');
-  const [targetChapters, setTargetChapters] = useState(15);
+  const [targetChapters, setTargetChapters] = useState(10); // Actually number of pitches to generate
   const [minChapters, setMinChapters] = useState(15);
   const [maxChaptersLimit, setMaxChaptersLimit] = useState(30);
   const [maxChapters] = useState(40);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-  const [selectedModel] = useState('qwen3-max-2026-01-23');
+  const [selectedModel] = useState('deepseek-reasoner');
   const [storyStyle, setStoryStyle] = useState<StoryGenreId>('ngon_tinh');
   const [isGenerating, setIsGenerating] = useState(false);
   const [showBulkImport, setShowBulkImport] = useState(false);
@@ -38,9 +38,8 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
   
   const [isConfigExpanded, setIsConfigExpanded] = useState(true);
   const [isSuggestingFix, setIsSuggestingFix] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const draft = draftSpaces['qwen_drama'] || {};
+  const draft = draftSpaces['deepseek_drama'] || {};
 
   React.useEffect(() => {
     setTimeout(() => { if (draft.title !== undefined && draft.title !== title) setTitle(draft.title); }, 0);
@@ -63,7 +62,7 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      updateDraftSpace('qwen_drama', { title, prompt, targetChapters, minChapters, maxChaptersLimit, pitchOptions, gradingStatus, storyStyle });
+      updateDraftSpace('deepseek_drama', { title, prompt, targetChapters, minChapters, maxChaptersLimit, pitchOptions, gradingStatus, storyStyle });
     }, 500);
     return () => clearTimeout(timer);
   }, [title, prompt, targetChapters, minChapters, maxChaptersLimit, pitchOptions, gradingStatus, storyStyle]);
@@ -77,42 +76,39 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
   };
 
   const handleGenerateOutline = async () => {
-    if (!qwenKey) return alert("⚠️ Bạn chưa nhập OpenAI API Key trong Settings!");
+    if (!deepseekKey) return alert("⚠️ Bạn chưa nhập OpenAI API Key trong Settings!");
     if (!prompt && selectedGenres.length === 0) return alert("Vui lòng nhập Ý tưởng cốt truyện hoặc chọn ít nhất 1 Thể loại!");
 
     setIsGenerating(true);
     setPitchOptions([]);
     setGradingStatus({});
-    setErrorMsg(null);
     
     try {
       const genresStr = selectedGenres.length > 0 ? selectedGenres.join(', ') : 'Hỗn hợp';
       
-      const res = await fetch('/api/qwen', {
+      const res = await fetch('/api/deepseek', {
          method: 'POST',
          headers: { 'Content-Type': 'application/json' },
          body: JSON.stringify({
-            apiKey: qwenKey,
+            apiKey: deepseekKey,
             systemPrompt: (STORY_GENRES[storyStyle] || STORY_GENRES['ngon_tinh']).getPitchPrompt(targetChapters, minChapters, maxChaptersLimit),
             userPrompt: prompt 
-              ? `Thể loại: ${genresStr}\nYêu cầu gốc: ${prompt}\n\nLỆNH ÉP BUỘC ĐA DẠNG (EXTREME DIVERSITY): Mặc dù chung 1 yêu cầu gốc, nhưng \${targetChapters} kịch bản PHẢI VÔ CÙNG KHÁC BIỆT. Cấm lặp lại nghề nghiệp, cấm lặp lại bối cảnh, cách đặt tên cũng phải khác concept nhau hoàn toàn. Không được có 2 kịch bản na ná nhau!` 
-              : `Thể loại: ${genresStr}\nYêu cầu: Dựa vào thể loại trên, hãy tạo \${targetChapters} kịch bản VÔ CÙNG KHÁC BIỆT NHAU về bối cảnh, nhân vật, twist và cách đặt tên. NGHIÊM CẤM tạo các kịch bản có motip na ná nhau. Mỗi kịch bản là một luồng gió hoàn toàn mới.`,
+              ? `Thể loại: ${genresStr}\nYêu cầu gốc: ${prompt}\n\nLỆNH ÉP BUỘC ĐA DẠNG (EXTREME DIVERSITY): Mặc dù chung 1 yêu cầu gốc, nhưng ${targetChapters} kịch bản PHẢI VÔ CÙNG KHÁC BIỆT. Cấm lặp lại nghề nghiệp, cấm lặp lại bối cảnh, cách đặt tên cũng phải khác concept nhau hoàn toàn. KHÔNG ĐƯỢC ĐẶT TÊN TRUYỆN 4 CHỮ NGẮN CỦN CỠN!` 
+              : `Thể loại: ${genresStr}\nYêu cầu: Dựa vào thể loại trên, hãy tạo ${targetChapters} kịch bản VÔ CÙNG KHÁC BIỆT NHAU về bối cảnh, nghề nghiệp nhân vật, twist và cách đặt tên. NGHIÊM CẤM tạo các kịch bản có motip na ná nhau. TÊN TRUYỆN PHẢI DÀI VÀ CÂU KHÁCH, KHÔNG DÙNG 4 CHỮ!`,
             jsonMode: true,
             temperature: 1.0,
-            model: selectedModel || 'qwen3-max-2026-01-23'
+            model: selectedModel || 'deepseek-chat'
          })
       });
       const data = await res.json();
       if (!res.ok) {
-        // Qwen API wraps errors: data.error.error.message
-        const errMsg = data.error?.error?.message || data.error?.message || JSON.stringify(data.error);
-        throw new Error(errMsg);
+         const serverErr = data.error?.error?.message || data.error?.message || (typeof data.error === 'string' ? data.error : JSON.stringify(data.error));
+         throw new Error(serverErr);
       }
-      if (!data.text) throw new Error('API trả về nội dung rỗng. Kiểm tra API Key và quota Qwen.');
       let text = data.text.trim();
       // Remove Markdown wrapper if present
-      if (text.startsWith('```json')) text = text.replace(/^```json\s*/,'').replace(/```\s*$/,'').trim();
-      else if (text.startsWith('```')) text = text.replace(/^```\s*/,'').replace(/```\s*$/,'').trim();
+      if (text.startsWith('```json')) text = text.replace('```json', '').replace(/```$/, '').trim();
+      else if (text.startsWith('```')) text = text.replace('```', '').replace(/```$/, '').trim();
       
       // AI sometimes forgets commas between array objects... { } { } -> { }, { }
       text = text.replace(/\}\s*\{/g, '},{');
@@ -122,35 +118,33 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
           rawData = JSON.parse(text);
       } catch(parseErr) {
           console.log("JSON Parse Error: ", parseErr);
-          // Truncated JSON Repair Logic
-          const lastBrace = text.lastIndexOf('}');
-          if (lastBrace !== -1) {
-              let fixedText = text.substring(0, lastBrace + 1);
-              fixedText = fixedText.replace(/,\s*$/, ''); // Remove trailing comma if any
+          // Truncated JSON Repair Logic: find the last complete object in the array
+          const lastCommaBrace = text.lastIndexOf('},');
+          if (lastCommaBrace !== -1) {
+              let fixedText = text.substring(0, lastCommaBrace + 1);
+              
               if (fixedText.trim().startsWith('{')) {
-                  if (fixedText.includes('pitches"')) fixedText += ']}';
+                  const openArr = (fixedText.match(/\[/g) || []).length;
+                  const closeArr = (fixedText.match(/\]/g) || []).length;
+                  if (openArr > closeArr) fixedText += ']}';
                   else fixedText += '}';
               } else if (fixedText.trim().startsWith('[')) {
                   fixedText += ']';
               }
+              
               try {
                   rawData = JSON.parse(fixedText);
               } catch(e3) {
-                  const match = text.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
-                  if (match) {
-                      try { rawData = JSON.parse(match[0]); } catch(e4) { throw parseErr; }
-                  } else {
-                      throw new Error("Lỗi JSON bị cắt nửa chừng của Qwen: " + (parseErr as any).message);
-                  }
+                  throw new Error("Lỗi AI: Đã cố gắng tự động sửa chuỗi JSON bị cắt cụt nhưng thất bại. Chi tiết lỗi sửa: " + (e3 as any).message + " | Lỗi gốc: " + (parseErr as any).message);
               }
           } else {
-              throw new Error("Không thể đoc định dạng của Qwen: " + text.substring(0, 100));
+              throw new Error("Không thể đọc định dạng của DeepSeek (bị cắt cụt): " + (parseErr as any).message);
           }
       }
       if (data.usage) {
         addApiLog({
           engineType: 'OpenAI',
-          model: selectedModel || 'qwen3-max-2026-01-23',
+          model: selectedModel || 'deepseek-chat',
           station: 'MicroDrama',
           project: prompt ? prompt.substring(0, 20) : 'Brainstorm',
           promptTokens: data.usage.promptTokens || 0,
@@ -210,7 +204,7 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
         doGradePitches(slicedPitches);
       }
     } catch (e: any) {
-      setErrorMsg("❌ Lỗi Qwen API: " + (e.message || 'Không xác định. Kiểm tra API Key và model trong Settings.'));
+      alert("Lỗi AI: " + e.message);
     } finally {
       setIsGenerating(false);
     }
@@ -218,7 +212,7 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
 
   
   const handleSuggestFix = async () => {
-    if (!qwenKey) return alert("Chưa có API Key");
+    if (!deepseekKey) return alert("Chưa có API Key");
     if (selectedPitches.length === 0) return alert("Vui lòng tick chọn ít nhất 1 kịch bản để xin gợi ý sửa!");
     
     setIsSuggestingFix(true);
@@ -230,19 +224,22 @@ export function QwenDramaView({ onNavigate }: { onNavigate?: (tab: string) => vo
             "Nội Dung Bị Chê": pitchOptions[idx].summary
         }));
         
-        const res = await fetch('/api/qwen', {
+        const res = await fetch('/api/deepseek', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                apiKey: qwenKey,
+                apiKey: deepseekKey,
                 systemPrompt: `Bạn là Siêu Trợ Lý Kỹ Sư Kịch Bản. Hãy đọc kỹ những lời chê bai tàn nhẫn của Giám Khảo Tối Cao dành cho (những) kịch bản bị điểm thấp dưới đây.
 NHIỆM VỤ CỦA BẠN: Viết trực tiếp (KHÔNG DÙNG JSON) 1 ĐOẠN ĐỀ XUẤT CÁCH SỬA CỤ THỂ CHO BÁC SĨ (Ví dụ: "Đối với Kịch bản 1: Sửa lại cú lật bàn cho ác độc hơn, cho nam phụ phản bội từ tập 1. Còn Kịch Bản 2: ..."). Lời khuyên phải sắc bén, đi thẳng vào trọng tâm để Bác sĩ có thể copy quăng vào lò phẫu thuật (Auto-Fix) ngay. Đừng viết quá dài, gạch đầu dòng rõ ràng.`,
                 userPrompt: JSON.stringify(payload),
-                model: selectedModel || 'qwen3-max-2026-01-23'
+                model: selectedModel || 'deepseek-chat'
             })
         });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error?.message || "Lỗi AI");
+        if (!res.ok) {
+           const serverErr = data.error?.error?.message || data.error?.message || (typeof data.error === 'string' ? data.error : JSON.stringify(data.error));
+           throw new Error(serverErr);
+        }
         setRefineFeedback(data.text);
     } catch (e: any) {
         alert("Lỗi Gợi Ý: " + e.message);
@@ -252,7 +249,7 @@ NHIỆM VỤ CỦA BẠN: Viết trực tiếp (KHÔNG DÙNG JSON) 1 ĐOẠN Đ�
   };
 
   const refineSelectedPitches = async () => {
-     if (!qwenKey) return alert("Chưa có API Key");
+     if (!deepseekKey) return alert("Chưa có API Key");
      if (selectedPitches.length === 0) return alert("Vui lòng tick chọn ít nhất 1 kịch bản để sửa chữa!");
      if (!refineFeedback.trim()) return alert("Vui lòng nhập lời khuyên/hướng sửa đổi làm kim chỉ nam cho AI!");
      
@@ -261,7 +258,7 @@ NHIỆM VỤ CỦA BẠN: Viết trực tiếp (KHÔNG DÙNG JSON) 1 ĐOẠN Đ�
          const newPOptions = [...pitchOptions];
          for (let i = 0; i < selectedPitches.length; i++) {
              const idx = selectedPitches[i];
-             const result = await agentPitchRefiner('qwen', qwenKey, selectedModel || 'qwen3-max-2026-01-23', newPOptions[idx], refineFeedback, resolvedGKey2, resolvedGKey3);
+             const result = await agentPitchRefiner('deepseek', deepseekKey, selectedModel || 'deepseek-chat', newPOptions[idx], refineFeedback, resolvedGKey2, resolvedGKey3);
              if (result && (result.super_title || result.protagonist)) {
                  newPOptions[idx] = result;
              }
@@ -270,7 +267,7 @@ NHIỆM VỤ CỦA BẠN: Viết trực tiếp (KHÔNG DÙNG JSON) 1 ĐOẠN Đ�
          setPitchOptions(newPOptions);
          
          setIsGradingParam(-1);
-         const res: any = await agentConceptScorer('qwen', qwenKey, selectedModel || 'qwen3-max-2026-01-23', newPOptions, resolvedGKey2, resolvedGKey3);
+         const res: any = await agentConceptScorer('deepseek', deepseekKey, selectedModel || 'deepseek-chat', newPOptions, resolvedGKey2, resolvedGKey3);
           
          const newGradingStatus: any = {};
          let scoresArray: any[] = [];
@@ -306,11 +303,11 @@ NHIỆM VỤ CỦA BẠN: Viết trực tiếp (KHÔNG DÙNG JSON) 1 ĐOẠN Đ�
   };
 
   const doGradePitches = async (pitchesArray: any[]) => {
-     if (!qwenKey) return;
+     if (!deepseekKey) return;
      if (pitchesArray.length === 0) return;
      setIsGradingParam(-1);
      try {
-         const res = await agentConceptScorer('qwen', qwenKey, selectedModel || 'qwen3-max-2026-01-23', pitchesArray, resolvedGKey2, resolvedGKey3);
+         const res = await agentConceptScorer('deepseek', deepseekKey, selectedModel || 'deepseek-chat', pitchesArray, resolvedGKey2, resolvedGKey3);
           
          const newGradingStatus: any = {};
          let scoresArray: any[] = [];
@@ -346,7 +343,7 @@ NHIỆM VỤ CỦA BẠN: Viết trực tiếp (KHÔNG DÙNG JSON) 1 ĐOẠN Đ�
   };
 
   const gradeAllPitches = async () => {
-     if (!qwenKey) return alert("Chưa có API Key");
+     if (!deepseekKey) return alert("Chưa có API Key");
      if (pitchOptions.length === 0) return alert("Chưa có kịch bản nào để chấm!");
      
      try {
@@ -361,12 +358,12 @@ NHIỆM VỤ CỦA BẠN: Viết trực tiếp (KHÔNG DÙNG JSON) 1 ĐOẠN Đ�
      setIsGradingParam(index);
      const pitch = pitchOptions[index];
      try {
-        if (!qwenKey) return alert("Chưa có OpenAI Key");
-        const res = await fetch('/api/qwen', {
+        if (!deepseekKey) return alert("Chưa có OpenAI Key");
+        const res = await fetch('/api/deepseek', {
            method: 'POST',
            headers: { 'Content-Type': 'application/json' },
            body: JSON.stringify({
-              apiKey: qwenKey,
+              apiKey: deepseekKey,
               apiKey2: resolvedGKey2,
               apiKey3: resolvedGKey3,
               systemPrompt: `Bạn là Giám Khảo Tối Cao (Supreme Judge) khắc nghiệt nhất nền tảng. NHIỆM VỤ: Chấm điểm (1-10) và viết 1 dòng NHẬN XÉT CỰC KỲ GAY GẮT, CHỈ ĐÍCH DANH ĐIỂM YẾU/MẠNH CỦA KỊCH BẢN NÀY.
@@ -375,7 +372,7 @@ Chỉ trả về JSON: {"score": number, "grading": "Nhận xét chi tiết..."}
               userPrompt: JSON.stringify(pitch),
               jsonMode: true,
               temperature: 0.9,
-              model: selectedModel || 'qwen3-max-2026-01-23'
+              model: selectedModel || 'deepseek-chat'
            })
         });
         const data = await res.json();
@@ -418,7 +415,7 @@ Chỉ trả về JSON: {"score": number, "grading": "Nhận xét chi tiết..."}
         maxChapters: maxChapters,
         model: selectedModel,
         storyStyle: storyStyle,
-        outlineEngine: 'qwen' as const, writeEngine: 'qwen' as const
+        outlineEngine: 'deepseek' as const, writeEngine: 'deepseek' as const
     }));
     addQueueItems(items);
     setSelectedPitches([]);
@@ -486,7 +483,7 @@ Bạn có muốn XÓA TRẮNG Bảng kịch bản hiện tại để viết bộ
              </div>
              
              <div className="bg-teal-500/10 border border-teal-500/30 rounded-lg p-3 text-sm text-teal-300 leading-relaxed font-medium">
-                <strong>❖ Qwen System (Alibaba):</strong> Model <code>qwen3-max</code> được thiết lập trọn gói cho Sáng Tác 7. Rất mạnh về văn hóa mạng và cẩu huyết Á Đông.<br/>
+                <strong>❖ DeepSeek System (R1):</strong> Model <code>deepseek-reasoner</code> được thiết lập trọn gói cho Sáng Tác 8. Rất mạnh về văn hóa mạng và cẩu huyết Á Đông.<br/>
                 <br/>
                 <span className="text-cyan-300 font-bold">🔥 SỞ TRƯỜNG TUYỆT ĐỐI HẠ MỤC TIÊU:</span><br/>
                 • <strong>Sảng Văn / Vả Mặt:</strong> Xây dựng não tàn, mỏ hỗn, phản kích không nương tay.<br/>
@@ -597,19 +594,7 @@ Bạn có muốn XÓA TRẮNG Bảng kịch bản hiện tại để viết bộ
 
            <div className="flex-1 md:overflow-y-auto custom-scrollbar p-10 relative text-[#e2e8f0]">
               
-              {/* ERROR BANNER — shown instead of alert() so Chrome popup-block doesn't hide it */}
-              {errorMsg && !isGenerating && (
-                 <div className="mx-4 mb-4 bg-red-500/15 border border-red-500/40 rounded-xl p-4 flex items-start gap-3 animation-fade-in">
-                    <span className="text-red-400 text-xl shrink-0">⚠️</span>
-                    <div className="flex-1">
-                       <div className="text-red-300 font-bold text-sm mb-1">Lỗi Generate Kịch Bản</div>
-                       <div className="text-red-200 text-sm leading-relaxed">{errorMsg}</div>
-                    </div>
-                    <button onClick={() => setErrorMsg(null)} className="text-red-400 hover:text-red-200 shrink-0 text-lg leading-none">✕</button>
-                 </div>
-              )}
-
-              {!isGenerating && pitchOptions.length === 0 && !errorMsg && (
+              {!isGenerating && pitchOptions.length === 0 && (
                  <div className="h-full flex flex-col items-center justify-center text-center opacity-70">
                     <BookOpen size={72} className="text-[#374151] mb-6" />
                     <h2 className="text-[22px] font-bold text-[#4b5563] mb-4">Xưởng Sáng Tác AI</h2>

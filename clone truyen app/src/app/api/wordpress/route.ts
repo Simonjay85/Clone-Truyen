@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const BYPASS_TOKEN = "ZEN_TRUYEN_2026_BYPASS";
 
-async function callBypass(cleanUrl: string, method: string, endpoint: string, payload: any, signal?: AbortSignal) {
+async function callBypass(cleanUrl: string, method: string, endpoint: string, payload: unknown, signal?: AbortSignal) {
   const fetchUrl = `${cleanUrl}/api_truyen_bypass.php`;
   
   const options: RequestInit = {
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
           );
           clearTimeout(catTimeout);
           
-          const found = Array.isArray(terms) && terms.find((t: any) =>
+          const found = Array.isArray(terms) && terms.find((t: { name?: string, slug?: string, id?: number }) =>
             t.name?.toLowerCase() === termName.toLowerCase() || t.slug === termName.toLowerCase()
           );
           
@@ -94,8 +94,8 @@ export async function POST(req: NextRequest) {
     clearTimeout(timeoutId);
 
     return NextResponse.json(data);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('WP Bypass API Error:', error);
-    return NextResponse.json({ error: error.message || 'Unknown WP Error' }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Unknown WP Error' }, { status: 500 });
   }
 }

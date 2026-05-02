@@ -1560,3 +1560,77 @@ add_action( 'rest_insert_truyen', function( $post, $request, $creating ) {
         }
     }
 }, 10, 3 );
+
+/**
+ * Thêm Meta Box Chọn Truyện Mẹ cho Chương
+ */
+add_action('add_meta_boxes', 'tehi_clone_add_truyen_meta_box');
+function tehi_clone_add_truyen_meta_box() {
+    add_meta_box(
+        'tehi_truyen_parent_box',
+        '📘 Chọn Truyện Gốc (Truyện Mẹ)',
+        'tehi_clone_truyen_meta_box_html',
+        'chuong',
+        'side',
+        'high'
+    );
+}
+
+function tehi_clone_truyen_meta_box_html($post) {
+    $truyen_id = get_post_meta($post->ID, '_truyen_id', true);
+    
+    // Lấy danh sách Truyện để hiển thị dropdown
+    $args = array(
+        'post_type' => 'truyen',
+        'posts_per_page' => -1,
+        'post_status' => array('publish', 'draft'),
+        'orderby' => 'date',
+        'order' => 'DESC'
+    );
+    $truyens = get_posts($args);
+    
+    echo '<label for="tehi_truyen_parent_id" style="display:block; margin-bottom:8px;">Chọn bộ truyện chứa chương này:</label>';
+    echo '<select name="tehi_truyen_parent_id" id="tehi_truyen_parent_id" style="width:100%;">';
+    echo '<option value="">-- Trống --</option>';
+    
+    foreach ($truyens as $t) {
+        $selected = ($t->ID == $truyen_id) ? 'selected' : '';
+        echo '<option value="' . esc_attr($t->ID) . '" ' . $selected . '>' . esc_html($t->post_title) . ' (ID: ' . $t->ID . ')</option>';
+    }
+    echo '</select>';
+    wp_nonce_field('tehi_truyen_parent_nonce_action', 'tehi_truyen_parent_nonce');
+}
+
+add_action('save_post_chuong', 'tehi_clone_save_truyen_meta_box');
+function tehi_clone_save_truyen_meta_box($post_id) {
+    if (!isset($_POST['tehi_truyen_parent_nonce']) || !wp_verify_nonce($_POST['tehi_truyen_parent_nonce'], 'tehi_truyen_parent_nonce_action')) {
+        return;
+    }
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+    
+    if (isset($_POST['tehi_truyen_parent_id'])) {
+        update_post_meta($post_id, '_truyen_id', sanitize_text_field($_POST['tehi_truyen_parent_id']));
+    }
+}
+
+/**
+ * Tự động set mặc định Kích thước đầy đủ (Full Size) khi chèn ảnh vào bài viết
+ */
+function tehi_clone_force_full_image_size() {
+    update_option('image_default_size', 'full'); // Mặc định chèn ảnh Full
+    update_option('image_default_link_type', 'none'); // Mặc định không chèn link vào ảnh
+}
+add_action('after_setup_theme', 'tehi_clone_force_full_image_size');
+
+/**
+ * Tắt nén ảnh tự động của WordPress để giữ nguyên chất lượng text của Truyện tranh
+ */
+add_filter('jpeg_quality', function($arg){ return 100; });
+add_filter('wp_editor_set_quality', function($arg){ return 100; });
+
+

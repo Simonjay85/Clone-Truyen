@@ -504,6 +504,70 @@ export function ApiKeysView() {
                 </div>
               </div>
 
+              {/* ── EXPORT / IMPORT KEYS ── */}
+              <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 shadow-xl">
+                <h3 className="text-lg font-semibold text-white mb-1 flex items-center gap-2">
+                  <span className="text-yellow-400">💾</span> Backup &amp; Restore API Keys
+                </h3>
+                <p className="text-slate-400 text-xs mb-5">Export tất cả keys ra file để backup. Import lại khi bị mất do xóa cache trình duyệt.</p>
+                <div className="flex gap-3 flex-wrap">
+                  {/* Export */}
+                  <button
+                    onClick={() => {
+                      const payload = { geminiKey, geminiKey2, geminiPaidKey, openAIKey, grokKey, claudeKey, qwenKey, deepseekKey, exportedAt: new Date().toISOString() };
+                      const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+                      const blob = new Blob([encoded], { type: 'text/plain' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = `mcore-keys-backup-${new Date().toLocaleDateString('vi-VN').replace(/\//g,'-')}.mkey`;
+                      a.click();
+                      URL.revokeObjectURL(url);
+                    }}
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 hover:bg-yellow-500/20 transition-all"
+                  >
+                    ⬇ Export Keys (.mkey)
+                  </button>
+
+                  {/* Import */}
+                  <label className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 transition-all cursor-pointer">
+                    ⬆ Import Keys (.mkey)
+                    <input
+                      type="file"
+                      accept=".mkey,.txt"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (!file) return;
+                        const reader = new FileReader();
+                        reader.onload = (ev) => {
+                          try {
+                            const decoded = decodeURIComponent(escape(atob(ev.target?.result as string)));
+                            const keys = JSON.parse(decoded);
+                            const toSet: Record<string, string> = {};
+                            if (keys.geminiKey)     toSet.geminiKey     = keys.geminiKey;
+                            if (keys.geminiKey2)    toSet.geminiKey2    = keys.geminiKey2;
+                            if (keys.geminiPaidKey) toSet.geminiPaidKey = keys.geminiPaidKey;
+                            if (keys.openAIKey)     toSet.openAIKey     = keys.openAIKey;
+                            if (keys.grokKey)       toSet.grokKey       = keys.grokKey;
+                            if (keys.claudeKey)     toSet.claudeKey     = keys.claudeKey;
+                            if (keys.qwenKey)       toSet.qwenKey       = keys.qwenKey;
+                            if (keys.deepseekKey)   toSet.deepseekKey   = keys.deepseekKey;
+                            setSettings(toSet);
+                            alert(`✅ Import thành công! Đã khôi phục ${Object.keys(toSet).length} keys.\nBackup từ: ${keys.exportedAt || 'không rõ'}`);
+                          } catch {
+                            alert('❌ File không hợp lệ hoặc bị hỏng. Vui lòng dùng file .mkey đúng định dạng.');
+                          }
+                        };
+                        reader.readAsText(file);
+                        e.target.value = '';
+                      }}
+                    />
+                  </label>
+                </div>
+                <p className="text-slate-600 text-[10px] mt-3 font-mono">File .mkey là base64-encoded JSON, không phải plaintext. Lưu ở nơi an toàn.</p>
+              </div>
+
             </div>
           </div>
         </div>

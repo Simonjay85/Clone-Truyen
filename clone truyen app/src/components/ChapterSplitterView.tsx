@@ -109,7 +109,7 @@ export function ChapterSplitterView() {
 
          const json = JSON.parse(text);
          const genCoverPrompt = json.coverPrompt || 'cinematic poster style, amazing scenery';
-         const genCoverUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(genCoverPrompt.substring(0, 400) + " --no-logo")}?width=1200&height=800&nologo=true&seed=${Math.floor(Math.random() * 1000)}`;
+         const genCoverUrl = `https://pollinations.ai/p/${encodeURIComponent(genCoverPrompt.substring(0, 400))}?width=1200&height=800&nologo=true&model=flux&seed=${Math.floor(Math.random() * 100000)}`;
 
          setMetaInfo({
             finalTitle: json.finalTitle || 'Chưa rõ tên truyện',
@@ -279,7 +279,7 @@ export function ChapterSplitterView() {
                         <div>
                            <label className="text-xs text-slate-500 mb-1 block flex items-center justify-between">
                               <span className="text-emerald-400 font-bold">Thumbnail (Tự động tạo)</span>
-                              <button onClick={() => setMetaInfo({ ...metaInfo, coverUrl: `https://image.pollinations.ai/prompt/${encodeURIComponent((metaInfo.coverPrompt || 'cinematic poster').substring(0, 400) + " --no-logo")}?width=1200&height=800&nologo=true&seed=${Math.floor(Math.random() * 1000)}` })} className="text-[10px] bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-white transition-colors">🔄 Đảo hình</button>
+                              <button onClick={() => setMetaInfo({ ...metaInfo, coverUrl: `https://pollinations.ai/p/${encodeURIComponent((metaInfo.coverPrompt || 'cinematic poster').substring(0, 400))}?width=1200&height=800&nologo=true&model=flux&seed=${Math.floor(Math.random() * 100000)}` })} className="text-[10px] bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-white transition-colors">🔄 Đảo hình</button>
                            </label>
                            {metaInfo.coverUrl && (
                               <div className="relative group rounded-xl overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.3)] mb-3 aspect-[3/2] w-full border border-slate-700 bg-black/40">

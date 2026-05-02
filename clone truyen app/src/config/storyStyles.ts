@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 export type StoryGenreId = 
   | 'ngon_tinh' 
   | 'tien_hiep' 
@@ -249,12 +247,21 @@ YÊU CẦU TRẢ VỀ CHỈ MỘT MẢNG JSON ARRAY:
       "❤️ Motif Trend": ["Vả mặt tát tai", "Ngược tra tồi tệ", "Thay mận đổi đào", "Con giáp thứ 13"]
     },
     getPitchPrompt: (target, min, max) => `Bạn là chuyên gia sáng tác Đoản văn phong cách Zhihu / Reddit mượt mà.
-Nhiệm vụ: Tạo ra ${target} kịch bản truyện siêu ngắn, đọc nhanh giải trí, drama ngập mặt, chốt hạ bằng một cú plot twist khét lẹt.
-Yêu cầu kịch bản:
-1. "super_title": Tên truyện giật gân y như tiêu đề bài bóc phốt trên MXH. (VD: "Ngày kết hôn, tôi tặng chồng cũ một món quà tang tóc"). Dài từ 8-15 chữ.
-2. "protagonist": Nhân vật "Tôi" (xưng ngôi thứ nhất) - thông minh, thâm tàng bất lộ hoặc bị dồn vào đường cùng phản kháng.
-3. "summary": Mở đầu bằng một sự kiện bùng nổ, diễn biến dồn dập, và kết thúc bằng cú Twist không ai lường trước.
-4. "target_chapters": Gợi ý số chương (từ ${min} đến ${max}).
+Nhiệm vụ: Tạo ra ${target} kịch bản truyện siêu ngắn SẢNG VĂN (đọc là sướng, vả mặt ác liệt), đọc nhanh giải trí, chốt hạ bằng một cú plot twist bất ngờ 100%.
+Yêu cầu kịch bản (Tuân thủ CẤU TRÚC 7 NHỊP — MỖI NHỊP = 1 SỰ KIỆN, KHÔNG KÉO DÀI):
+1. "super_title": Tên truyện giật gân y như tiêu đề bài bóc phốt trên MXH. Dài từ 8-15 chữ.
+2. "protagonist": Nhân vật "Tôi" (xưng ngôi thứ nhất) - CẤM NGỐC NGHẾCH. Thông minh, thâm tàng bất lộ. Có điểm yếu bề ngoài để che giấu sức mạnh bên trong. KHÔNG được thụ động quá 2 cảnh liên tiếp mà không phản đòn.
+3. "summary": Cốt truyện bám sát:
+   NHỊP 1: Bị sỉ nhục TRƯỚC MẶT NHIỀU NGƯỜI.
+   NHỊP 2: Bị dồn ép tưởng chừng đã thua — nhưng "Tôi" đã cài sẵn bẫy.
+   NHỊP 3: Leo thang căng thẳng — tình thế có vẻ tệ hơn.
+   NHỊP 4: Vả mặt lần đầu TRỰC TIẾP TRƯỚC ĐÁM ĐÔNG.
+   NHỊP 5: Hé lộ sự thật tàn khốc về kẻ thù HOẶC về chính "Tôi".
+   NHỊP 6: Màn vả mặt cuối — kẻ thù nhục nhã không thể gỡ gạc.
+   NHỊP 7: Twist 100% bất ngờ — lật ngược nhận thức toàn bộ câu chuyện. TUYỆT ĐỐI không gợi ý trước chương áp cuối.
+   GIỚI HẠN nhân vật phụ: TỐI ĐA 3 người, mỗi người phải xuất hiện ít nhất 3 lần. CẤM tạo nhân vật chỉ để cảnh báo rồi biến mất.
+   Logic thực tế: CẤM súng đạn, bắt cóc phi lý ở VN hiện đại.
+4. "target_chapters": Gợi ý số chương (từ ${min} đến ${max}). Ưu tiên ÍT chương, mỗi chương súc tích.
 5. "genres": Liệt kê tags (VD: Ngược tra, Vả mặt, Ngôi thứ nhất).
 
 YÊU CẦU TRẢ VỀ CHỈ MỘT MẢNG JSON ARRAY:
@@ -267,7 +274,36 @@ YÊU CẦU TRẢ VỀ CHỈ MỘT MẢNG JSON ARRAY:
     "genres": "..."
   }
 ]`,
-    overridePrompt: "LỆNH BẢN GỐC ZHIHU: Bắt buộc viết bằng NGÔI THỨ NHẤT ('Tôi'). Văn phong trần thuật, đi thẳng vào vấn đề, không miêu tả cảnh vật dông dài. Đẩy mâu thuẫn lên đỉnh điểm ngay từ câu đầu tiên. Cú Twist cuối cùng phải thật sự bất ngờ, đọc xong phải nổi da gà. Thỏa mãn cảm giác 'Vả mặt / Trả thù' của độc giả."
+    overridePrompt: `LỆNH BẢN GỐC ZHIHU - CHUẨN ĐOẢN VĂN MẠNG (SẢNG VĂN - PHIÊN BẢN TỐI ƯU):
+Bắt buộc viết bằng NGÔI THỨ NHẤT ('Tôi'). CẤM TUYỆT ĐỐI 'nhật ký nội tâm' ỉ ôi, sướt mướt.
+
+LUẬT 1 - NHỊP ĐỘ:
+- Mỗi chương = DUY NHẤT 1 sự kiện lớn. Không nhồi nhét, không kể lể.
+- CẤM tả cảnh thiên nhiên, cảnh vật, thời tiết trừ khi nó trực tiếp gây ra xung đột.
+- CẤM mở đầu chương bằng 'Tôi ngồi nghĩ...' / 'Tôi nhớ lại...' nếu không có hành động ngay câu tiếp theo.
+- Hội thoại chiếm 70%, phải sắc bén, đốp chát, châm biếm, mang sức nặng cảm xúc.
+- Mỗi chương BẮT BUỘC kết bằng 1 hành động gây sốc hoặc 1 câu thoại đánh thẳng vào mặt đối thủ.
+
+LUẬT 2 - VẢ MẶT TRỰC TIẾP:
+- Phải có ÍT NHẤT 2 cảnh vả mặt TRỰC TIẾP TRƯỚC ĐÁM ĐÔNG (không phải riêng tư, không phải sau cánh gà).
+- Khi vả mặt: viết chậm, chi tiết cảm xúc của KẺ BỊ VẢ (hoảng loạn, nhục nhã, không nói được). Đây là khoảnh khắc độc giả chờ đợi nhất.
+- Lời thoại vả mặt phải SẮC, NGẮN, CHÍNH XÁC. VD: không phải 'Anh sai rồi' mà là 'Anh quên mất: tôi đã ghi âm toàn bộ từ 3 tháng trước.'
+- Trả thù TÂM LÝ (nhục nhã trước đám đông, mất địa vị, bị vạch mặt) phải đau hơn trả thù thể xác.
+
+LUẬT 3 - NHÂN VẬT PHỤ:
+- TỐI ĐA 3 nhân vật phụ có vai trò. Mỗi người phải xuất hiện ÍT NHẤT 3 lần và có vai trò rõ ràng đến cuối.
+- CẤM tạo nhân vật chỉ để cảnh báo nhân vật chính rồi biến mất. Đây là 'filler' làm loãng truyện.
+
+LUẬT 4 - ẨN TWIST:
+- Nếu có twist danh tính hoặc twist tình huống, TUYỆT ĐỐI không để lộ gợi ý trước chương áp cuối.
+- Mọi chi tiết cài cắm phải đủ mơ hồ để độc giả hiểu theo hướng khác. Chỉ khi reveal mới 'chốt' lại.
+- Câu cuối truyện phải khiến người đọc muốn đọc lại từ đầu.
+
+LUẬT 5 - LOGIC THỰC TẾ (VN & TRUNG QUỐC):
+- Nếu bối cảnh VIỆT NAM hiện đại: CẤM dùng súng nổ, bắt cóc ngoài đường ban ngày, xã hội đen lộ liễu không bị công an xử lý. Trả thù hợp lý phải qua: tố cáo cơ quan, bằng chứng ghi âm/video, dư luận MXH, hoặc đòn kinh tế/pháp lý.
+- Nếu bối cảnh TRUNG QUỐC hiện đại: CẤM tình tiết phi lý với văn hóa TQ (VD: phụ nữ bình dân tát công khai đại gia mà không bị hệ lụy). Trả thù hợp lý theo văn hóa TQ: "thân bại danh liệt" (mất danh dự gia tộc), bị gạt ra khỏi giới thượng lưu, vạch mặt tại bàn tiệc gia đình, lật tẩy trước đối tác kinh doanh. Tận dụng văn hóa "mặt mũi" (面子) — mất mặt trước đám đông là hình phạt nặng nề nhất.
+- Nếu bối cảnh CỔ ĐẠI/CUNG ĐÌNH: Quyền lực thay đổi qua mưu kế, bằng chứng thư tín/di chúc, hoặc lộ bí mật trước triều đình. CẤM các tình tiết quá hiện đại (điện thoại, internet).
+- NGUYÊN TẮC CHUNG: Trả thù bằng TRÍ TUỆ, BẰNG CHỨNG, hoặc ĐÒN TÂM LÝ XÃ HỘI — không phải bạo lực thô.`
   },
 
   micro_drama: {

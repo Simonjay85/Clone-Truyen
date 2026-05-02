@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { useStore } from '../store/useStore';
 import { agentSeasonArchitect, agentPremiumPolish, agentEpisodeDrafter, agentEpisodeRewriter, agentMarketingAssets } from '../lib/advanced_engine';
-import { callWordPress, agentMicroDramaExpand, agentMicroDramaRewrite, agentGrokDramaExpand, agentGrokDramaRewrite, agentClaudeDramaExpand, agentClaudeDramaRewrite, agentGeminiDramaExpand, agentGeminiDramaRewrite, agentQwenDramaRewrite, agentQwenDramaExpand, agentDeepSeekDramaExpand, agentDeepSeekDramaRewrite } from '../lib/engine';
+import { agentMicroDramaExpand, agentMicroDramaRewrite, agentGrokDramaExpand, agentGrokDramaRewrite, agentClaudeDramaExpand, agentClaudeDramaRewrite, agentGeminiDramaExpand, agentGeminiDramaRewrite, agentQwenDramaRewrite, agentQwenDramaExpand, agentDeepSeekDramaExpand, agentDeepSeekDramaRewrite, sanitizeChapterTitle } from '../lib/engine';
 import { STORY_GENRES, StoryGenreId } from '../config/storyStyles';
 
 export function useAutoPilotEngine() {
@@ -115,6 +115,7 @@ export function useAutoPilotEngine() {
                if (overridePrompt) currBeat = overridePrompt + currBeat;
             }
             let shortBeatTitle = currBeatObj?.title || currBeatObj?.outline?.split('.')[0].split(',')[0] || 'Chương mới';
+            shortBeatTitle = sanitizeChapterTitle(shortBeatTitle); // 🛡️ Strip leaked prompt labels
             shortBeatTitle = shortBeatTitle.replace(/^(Chương|Tập|Episode)\s*\d+[:\-]?\s*/i, '').trim();
             if (shortBeatTitle.length > 40) shortBeatTitle = shortBeatTitle.substring(0, 37) + '...';
             const finalChapterTitle = `Chương ${currentEp}: ${shortBeatTitle}`;
@@ -188,6 +189,7 @@ export function useAutoPilotEngine() {
              if (overridePrompt) currOutline = overridePrompt + currOutline;
           }
           let shortOutlineTitle = currTimelineObj?.title || currOutline.split('.')[0].split(',')[0];
+          shortOutlineTitle = sanitizeChapterTitle(shortOutlineTitle); // 🛡️ Strip leaked prompt labels
           shortOutlineTitle = shortOutlineTitle.replace(/^(Chương|Tập|Episode)\s*\d+[:\-]?\s*/i, '').trim();
           if (shortOutlineTitle.length > 40) shortOutlineTitle = shortOutlineTitle.substring(0, 37) + '...';
           const finalChapterOutlineTitle = `Chương ${currentEp}: ${shortOutlineTitle}`;

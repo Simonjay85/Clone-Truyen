@@ -5,27 +5,46 @@ export const maxDuration = 300; // 5 minutes
 export const dynamic = 'force-dynamic';
 export async function POST(req: Request) {
   try {
-    const { apiKey, systemPrompt, userPrompt, model, jsonMode, temperature } = await req.json();
+    const { apiKey, systemPrompt, userPrompt, model, jsonMode, temperature, taskType, riskLevel } = await req.json();
 
     if (!apiKey) {
       return NextResponse.json({ error: 'Missing DeepSeek API Key' }, { status: 400 });
     }
 
+    // Model Router: taskType + riskLevel → model
+    const REASONER_TASKS = ['story_bible', 'chapter_map', 'iron_rules_checker', 'final_audit'];
+    function resolveModel(): string {
+      if (model) return model; // explicit model overrides all
+      if (!taskType) return 'deepseek-chat'; // backward compat default
+      if (REASONER_TASKS.includes(taskType)) return 'deepseek-reasoner';
+      if (taskType === 'chapter_writer' && riskLevel === 'high') return 'deepseek-reasoner';
+      // chapter_writer (default/low), chapter_rewriter, format_export → V3
+      return 'deepseek-chat';
+    }
+    const resolvedModel = resolveModel();
+
     const payload: any = {
-      model: model || 'deepseek-chat',
+      model: resolvedModel,
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: userPrompt }
       ],
       temperature: temperature !== undefined ? temperature : 0.8,
-      max_tokens: 8000,
+      max_tokens: 12000,
     };
 
-    if (jsonMode) {
+    const isReasoner = (resolvedModel === 'deepseek-reasoner');
+
+    if (jsonMode && !isReasoner) {
       payload.response_format = { type: 'json_object' };
       const hasJsonKeyword = (systemPrompt || '').toLowerCase().includes('json') || (userPrompt || '').toLowerCase().includes('json');
       if (!hasJsonKeyword) {
         payload.messages[0].content = (payload.messages[0].content || '') + '\n\nPlease return JSON.';
+      }
+    } else if (jsonMode && isReasoner) {
+      const hasJsonKeyword = (systemPrompt || '').toLowerCase().includes('json') || (userPrompt || '').toLowerCase().includes('json');
+      if (!hasJsonKeyword) {
+        payload.messages[0].content = (payload.messages[0].content || '') + '\n\nPlease return output in valid JSON format. Do not include markdown code blocks or extra text outside the JSON.';
       }
     }
 

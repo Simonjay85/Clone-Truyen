@@ -35,7 +35,7 @@ export default function StudioApp() {
           <div className={activeTab === 'combo_eco' ? 'block w-full h-full' : 'hidden'}><ComboEconomicView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'combo_royal' ? 'block w-full h-full' : 'hidden'}><ComboRoyalView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'chapter_splitter' ? 'block w-full h-full px-8' : 'hidden'}><ChapterSplitterView /></div>
-          <div className={activeTab === 'autopilot' ? 'block w-full h-full px-8' : 'hidden'}><AutoPilotView /></div>
+          <div className={activeTab === 'autopilot' ? 'block w-full h-full px-8' : 'hidden'}><AutoPilotView onNavigate={setActiveTab} /></div>
           <div className={activeTab === 'final_review' ? 'block w-full h-full px-8' : 'hidden'}><FinalReviewView /></div>
           <div className={activeTab === 'social_studio' ? 'block w-full h-full px-8' : 'hidden'}><SocialStudioView /></div>
           <div className={activeTab === 'logs' ? 'block w-full h-full px-8' : 'hidden'}>
