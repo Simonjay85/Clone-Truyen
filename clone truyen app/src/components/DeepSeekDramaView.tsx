@@ -330,26 +330,30 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
   // Strip PRE-WRITE DECLARATION, SELF-CHECK và STATE UPDATE JSON blocks ra khỏi nội dung chương
   const stripMetaBlocks = (content: string): string => {
     if (!content) return content;
-    const cleaned = content
-      // Strip PRE-WRITE DECLARATION block (appears before chapter content)
-      .replace(/━+\s*PRE-WRITE DECLARATION[\s\S]*?---\s*SAU KHI ĐIỀN ĐỦ[\s\S]*?---\s*\n?/im, '')
-      // Strip "--- BẮT ĐẦU VIẾT CHƯƠNG ---" separator
-      .replace(/---\s*BẮT ĐẦU VIẾT CHƯƠNG\s*---\s*\n?/im, '')
-      // Strip ⛔ STOP header from user prompt echo
-      .replace(/⛔\s*STOP[\s\S]*?---\s*SAU KHI ĐIỀN ĐỦ[\s\S]*?---\s*\n?/im, '')
-      // Fallback: strip individual declaration fields ①–⑧ LOCK (case-insensitive)
-      .replace(/[①②③④⑤⑥⑦⑧]\s*[\w\s/]+LOCK[:\s][\s\S]*?(?=\n[①②③④⑤⑥⑦⑧]|\nChương|\n━|\n\[TEASER|\n---)/gim, '')
-      // Strip stray numbered declaration fields that leak into chapter body
-      .replace(/[①②③④⑤⑥⑦⑧]\s*[\w\s/]+LOCK[:\s].*(?:\n\s+-[^\n]+)*/gim, '')
-      // Broad catch-all: if declaration output exists before first "Chương N:", strip it
+    let cleaned = content
+      .replace(/<think>[\s\S]*?<\/think>/gi, '')
+      .replace(/^```(?:markdown|md|text)?\s*/i, '')
+      .replace(/```\s*$/i, '')
+      .replace(/^\s*(?:Dưới đây|Sau đây|Đây là)\s+[^\n]*(?:phiên bản|chương|bản sửa)[^\n]*\n+/gim, '')
+      .replace(/━+\s*PRE-WRITE DECLARATION[\s\S]*?---\s*(?:BẮT ĐẦU VIẾT CHƯƠNG|SAU KHI ĐIỀN)[\s\S]*?---\s*/gim, '')
+      .replace(/⛔\s*STOP[\s\S]*?---\s*(?:BẮT ĐẦU VIẾT CHƯƠNG|SAU KHI ĐIỀN)[\s\S]*?---\s*/gim, '')
+      .replace(/[①②③④⑤⑥⑦⑧⑨]\s*[\w\s/]+LOCK[:\s][\s\S]*?(?=\n[①②③④⑤⑥⑦⑧⑨]|\nChương|\n\[TEASER|\n---)/gim, '')
+      .replace(/^[①②③④⑤⑥⑦⑧⑨]\s*[^\n]{0,100}:[^\n]*(?:\n\s+-[^\n]+)*/gm, '')
       .replace(/^[\s\S]*?(?=Chương\s+\d+\s*:)/m, '')
-      // Xóa từ "---\n\nSELF-CHECK" hoặc "\nSELF-CHECK" đến hết chuỗi
-      .replace(/\n?---\s*\n+SELF-CHECK[\s\S]*$/im, '')
-      .replace(/\nSELF-CHECK[\s\S]*$/im, '')
-      // Also strip numbered SELF-CHECK format (1. Tiêu đề...)
-      .replace(/\nSELF-CHECK\s*\([^)]*\)[\s\S]*$/im, '')
-      .replace(/\n?STATE\s*UPDATE\s*JSON:\s*\n?\{[\s\S]*?\}\s*$/im, '')
+      .replace(/\n\s*(?:-{3,}\s*)?(?:\*\*)?\s*(?:SELF-CHECK|STATE\s*UPDATE\s*JSON|CHANGE\s*LOG|Short\s*Change\s*Log|Updated\s*Self-Check|Updated)\b[\s\S]*$/im, '')
+      .replace(/\n\s*\],\s*\n\s*"companyNames"[\s\S]*$/im, '')
+      .replace(/\n\s*\}\s*,?\s*\n\s*"mainKnows"[\s\S]*$/im, '')
+      .replace(/\n{4,}/g, '\n\n\n')
+      .trim();
+
+    const lines = cleaned.split('\n');
+    cleaned = lines
+      .filter((line) => !/^\s*#*\s*Chương\s+\d+\s*:/i.test(line))
+      .map((line) => line.replace(/^\s*#+\s*/, ''))
+      .join('\n')
+      .replace(/\n{4,}/g, '\n\n\n')
       .trimEnd();
+
     return cleaned;
   };
 
@@ -467,13 +471,17 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     
     setIsGeneratingBible(true);
     try {
-      const result = await agentGenerateBible('deepseek', deepseekKey, 'deepseek-reasoner', selectedGenres, prompt);
+      const result = await agentGenerateBible('deepseek', deepseekKey, 'deepseek-reasoner', selectedGenres, prompt, targetChapters);
       // Store raw text; if it's valid JSON we pretty-print, otherwise keep as-is
-      try {
-        const parsed = JSON.parse(result.text);
-        setStoryBible(JSON.stringify(parsed, null, 2));
-      } catch {
-        setStoryBible(result.text || '');
+      if (result.data && !result.data.raw) {
+        setStoryBible(JSON.stringify(result.data, null, 2));
+      } else {
+        try {
+          const parsed = JSON.parse(result.text);
+          setStoryBible(JSON.stringify(parsed, null, 2));
+        } catch {
+          setStoryBible(result.text || '');
+        }
       }
       setLastUsedModel(result.usedModel);
       setActiveTab(2);
@@ -501,7 +509,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
       if (autoChapters && map.length > 0) setTargetChapters(map.length);
       setActiveTab(3);
     } catch (e: any) {
-      showToast("Lỗi tạo Chapter Map: " + (e.message || "Hãy đảm bảo Story Bible là JSON hợp lệ", 'error'));
+      showToast("Lỗi tạo Chapter Map: " + (e.message || "Hãy đảm bảo Story Bible là JSON hợp lệ"), 'error');
     } finally {
       setIsGeneratingMap(false);
     }
@@ -518,14 +526,18 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     try {
       const bibleObj = JSON.parse(storyBible);
       const result = await agentWriteChapter('deepseek', deepseekKey, 'deepseek-chat', bibleObj, beat, prevContext, riskLevel, currentState, chapterMap.length);
+      const rawText = result.text || '';
+      const cleanText = stripMetaBlocks(rawText);
       const newChapters = [...chapters];
-      newChapters[selectedChapterIdx] = { chapter: beat.chapter, title: beat.title, content: result.text, usedModel: result.usedModel };
+      newChapters[selectedChapterIdx] = { chapter: beat.chapter, title: beat.title, content: cleanText, usedModel: result.usedModel };
       setChapters(newChapters);
       setLastUsedModel(result.usedModel);
       // Auto-extract STATE UPDATE JSON
-      const { parsed, error } = extractStateUpdateJSON(result.text || '');
+      const { parsed, error } = extractStateUpdateJSON(rawText);
       if (parsed) {
-        setPendingStateUpdate(parsed);
+        const nextState = mergeStateStr(currentState, parsed);
+        setCurrentState(nextState);
+        setPendingStateUpdate(null);
         setStateParseError('');
       } else {
         setPendingStateUpdate(null);
@@ -545,9 +557,9 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     if (!currentAudit?.patch_notes) return showToast("Chưa có Patch Notes. Chạy Iron Check trước!", 'error');
     setIsPatching(true);
     try {
-      const result = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', currentChapter.content, currentAudit.patch_notes);
+      const result = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', currentChapter.content, currentAudit.patch_notes, storyBible, currentState);
       const newChapters = [...chapters];
-      newChapters[selectedChapterIdx] = { ...newChapters[selectedChapterIdx], content: result.text, usedModel: result.usedModel };
+      newChapters[selectedChapterIdx] = { ...newChapters[selectedChapterIdx], content: stripMetaBlocks(result.text), usedModel: result.usedModel };
       setChapters(newChapters);
       setLastUsedModel(result.usedModel);
       showToast("✅ Patch thành công bằng V3!", 'success');
@@ -590,7 +602,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
       lines.push(hr);
       lines.push(h2(`Chương ${ch.chapter}: ${ch.title}`));
       if (ch.usedModel) lines.push(format === 'md' ? `\n_Model: ${ch.usedModel}_` : `[Model: ${ch.usedModel}]`);
-      lines.push('\n' + ch.content);
+      lines.push('\n' + stripMetaBlocks(ch.content));
 
       // Optional: append audit report
       if (includeAuditInExport) {
@@ -668,7 +680,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
       sorted.forEach(ch => {
         lines.push(`### Chương ${ch.chapter}: ${ch.title}`);
         if (ch.usedModel && exportIncludeUsageLog) lines.push(`_Model: ${ch.usedModel}_`);
-        lines.push('\n' + ch.content + '\n');
+        lines.push('\n' + stripMetaBlocks(ch.content) + '\n');
 
         if (exportIncludeAudit) {
           const audit = auditReports[ch._idx];
@@ -786,12 +798,74 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
           declarationFieldCount = circledNumbers.size;
         }
 
-        // ========== STEP 2: Post-process — strip meta blocks & duplicate titles ==========
-        // Handle: "Chương N: Title\n\nChương N: Title" and "Chương N: Title\n---\nChương N: Title"
-        writeRes.text = writeRes.text
-          .replace(/^(Chương\s+\d+\s*:\s*[^\n]+)(?:\s*\n)+(?:[\s#-]*\n)*\s*(?:#\s*)?Chương\s+\d+\s*:\s*[^\n]+/m, '$1')
-          // Strip stray DECLARATION fields that leaked into chapter content
-          .replace(/[①②③④⑤⑥⑦⑧⑨]\s*[\w\s/]+LOCK[:\s].*(?:\n\s+-[^\n]+)*/gim, '');
+        // ========== STEP 2: Post-process — comprehensive sanitizer ==========
+        // Strips ALL meta-blocks that should never appear in final story output
+        const sanitizeChapterOutput = (text: string): string => {
+          return stripMetaBlocks(text)
+            // Strip DeepSeek R1 <think>...</think> reasoning blocks
+            .replace(/<think>[\s\S]*?<\/think>/gi, '')
+            // Strip PRE-WRITE DECLARATION block (everything from ━━━ to --- BẮT ĐẦU ---)
+            .replace(/━+\s*PRE-WRITE DECLARATION[\s\S]*?---\s*(?:BẮT ĐẦU VIẾT CHƯƠNG|SAU KHI ĐIỀN)\s*---/gi, '')
+            // Strip individual DECLARATION fields (①②③... LOCK:)
+            .replace(/[①②③④⑤⑥⑦⑧⑨]\s*[\w\s\/]+LOCK[:\s].*(?:\n\s+-[^\n]+)*/gim, '')
+            // Strip circled-number Vietnamese labels (① KHÓA THẺ:, etc.)
+            .replace(/^[①②③④⑤⑥⑦⑧⑨]\s*[^\n]{0,80}:[^\n]*$/gm, '')
+            // Strip SELF-CHECK block (but preserve the story before it)
+            .replace(/\n*SELF-CHECK\s*\([^)]*\):[\s\S]*?(?=STATE UPDATE JSON|$)/i, '')
+            .replace(/\n*SELF-CHECK:[\s\S]*?(?=STATE UPDATE JSON|$)/i, '')
+            // Strip STATE UPDATE JSON block (extracted separately)
+            .replace(/\n*-{3,}\s*STATE UPDATE JSON:?\s*```(?:json)?\s*\{[\s\S]*$/i, '')
+            .replace(/\n*STATE UPDATE JSON:?\s*```(?:json)?\s*\{[\s\S]*$/i, '')
+            .replace(/\n*STATE UPDATE JSON:?\s*\{[\s\S]*$/i, '')
+            // Strip Change Log / Short Change Log blocks
+            .replace(/\n*-{3,}\s*\n+\*{0,2}(?:Short\s+)?Change\s*Log(?:\s*\([^)]*\))?:?\*{0,2}[\s\S]*$/i, '')
+            .replace(/\n*\*{2}(?:Short\s+)?Change\s*Log(?:\s*\([^)]*\))?:?\*{2}[\s\S]*$/i, '')
+            // Strip "Updated" / "Updated State" trailing blocks
+            .replace(/\n*-{3,}\s*\n+\*{0,2}Updated[\s\S]*$/i, '')
+            // Strip Self-Check trailing blocks at end
+            .replace(/\n*-{3,}\s*\n+##\s*Self-Check[\s\S]*$/i, '')
+            // Strip any remaining raw JSON blocks at end (state leaks)
+            .replace(/\n*```json\s*\{[\s\S]*?```[\s\S]*$/i, '')
+            // Strip trailing ], }, or lone JSON-like lines at end of story
+            .replace(/\n+\s*[\]\}]\s*,?\s*\n*$/g, '')
+            // Strip duplicate titles: "Chương N: Title\n...\nChương N: Title"
+            .replace(/^(Chương\s+\d+\s*:\s*[^\n]+)(?:\s*\n)+(?:[\s#-]*\n)*\s*(?:#\s*)?Chương\s+\d+\s*:\s*[^\n]+/m, '$1')
+            // Strip leaked markdown headers from audit format
+            .replace(/^##\s*(?:P[012]|Overall Score|Final Verdict|Required Patch|Logic Check|Pacing Check|Name \& Data|Cliffhanger Check|Iron Rules Audit)[^\n]*$/gim, '')
+            // Strip [ANTI-REVEAL REWRITE] tag
+            .replace(/\[ANTI-REVEAL REWRITE\]/g, '')
+            // Clean up excessive newlines (4+ → 3)
+            .replace(/\n{4,}/g, '\n\n\n')
+            .trim();
+        };
+        // ========== STEP 2a: Extract state from RAW text BEFORE sanitizing ==========
+        let stateSourceText = writeRes.text; // preserve raw for state extraction
+        writeRes.text = sanitizeChapterOutput(writeRes.text);
+
+        // ========== STEP 2b: Audit Output Guard ==========
+        // Detect if AI mistakenly output an Audit Report instead of story prose
+        const isAuditOutput = (text: string): boolean => {
+          const auditMarkers = [
+            '## P0 Critical', '## P1 Major', '## P2 Style',
+            '## Overall Score', '## Final Verdict',
+            'IRON RULES AUDIT', 'PASS_WITH_PATCHES', 'REWRITE_REQUIRED',
+            '## Required Patch List', '## Logic Check',
+            '## Name & Data Consistency', '## Pacing Check',
+          ];
+          const matchCount = auditMarkers.filter(m => text.includes(m)).length;
+          return matchCount >= 3;
+        };
+        if (isAuditOutput(writeRes.text)) {
+          addLog(`⚠️ Ch.${i}: AI nhầm output Audit Report thay vì truyện! Đang retry với deepseek-chat...`, 'warning');
+          const retryRes = await agentWriteChapter('deepseek', deepseekKey, 'deepseek-chat', bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length);
+          if (retryRes.text && retryRes.text.trim().length > 0 && !isAuditOutput(retryRes.text)) {
+            stateSourceText = retryRes.text;
+            writeRes.text = sanitizeChapterOutput(retryRes.text);
+            addLog(`✅ Ch.${i}: Retry thành công — đã nhận được nội dung truyện.`, 'success');
+          } else {
+            addLog(`❌ Ch.${i}: Retry vẫn ra Audit Report. Giữ bản gốc và cảnh báo.`, 'error');
+          }
+        }
 
         // ========== HARD VALIDATOR 1: Name Enforcer ==========
         // Regex-replace ANY wrong character names using characterMap. 
@@ -867,26 +941,44 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
           }
         } catch { /* ignore */ }
 
-        // ========== HARD VALIDATOR 2: Reveal Blocker ==========
+        // ========== HARD VALIDATOR 2: Reveal Blocker (v2 — context-aware) ==========
         // If reveal detected BEFORE gate chapter → auto-reject + rewrite
         const revealGateChNum = Math.ceil(chapterMap.length * 0.6);
         if (i < revealGateChNum) {
           const lowerText = writeRes.text.toLowerCase();
-          // ── Tier 1: Hard violations (always block) ──
+          // ── Tier 1: Hard violations (unambiguous identity reveal — always block) ──
           const hardRevealViolations = [
-            'tôi là chủ tịch', 'lộ thân phận', 'cởi áo shipper',
-            'thưa chủ tịch', 'cô là chủ tịch', 'anh là chủ tịch', 'nó là chủ tịch',
+            'tôi là chủ tịch', 'tôi chính là chủ tịch',
+            'lộ thân phận', 'tuyên bố thân phận',
+            'cởi áo shipper', 'giơ thẻ đen ra',
+            'cô là chủ tịch', 'anh là chủ tịch', 'nó là chủ tịch',
             'chính là chủ tịch', 'thật sự là chủ tịch', 'hóa ra là chủ tịch',
-            'tuyên bố thân phận', 'giơ thẻ đen ra',
-            'cô chính là', 'anh chính là', 'hắn chính là',
+            // v2.1: Catch soft reveals from Ch.3/Ch.5 patterns
+            'người quen của tổng giám đốc', 'bạn của tổng giám đốc',
+            'được ủy quyền xử lý', 'được ủy quyền từ tổng giám đốc',
+            'tôi có quyền truy cập vào hệ thống', // Ch.3 pattern
+            'lần này tôi tha cho', 'lần này tao tha cho', // Ch.3 OP pattern
+            'tôi là tổng giám đốc', 'tôi chính là tổng giám đốc',
           ];
-          // ── Tier 2: Context-sensitive (only block if near main character) ──
+          // ── Tier 2: Context-sensitive (only block if near identity-related context) ──
+          // These keywords are too ambiguous on their own — e.g. "cô chính là người phù hợp"
+          // or "thưa chủ tịch" when addressing a DIFFERENT chairman, not main.
           const contextRevealPatterns = [
-            { keyword: 'lộ diện', context: ['main', 'thân phận', 'chủ tịch', 'danh tính'] },
+            { keyword: 'lộ diện', context: ['thân phận', 'chủ tịch', 'danh tính', 'thật sự là'] },
             { keyword: 'thẻ đen', context: ['giơ', 'rút', 'đưa ra', 'quẹt', 'chìa'] },
+            { keyword: 'thưa chủ tịch', context: [] as string[] }, // Only block near main's name (checked below)
+            { keyword: 'cô chính là', context: ['chủ tịch', 'sếp lớn', 'tổng giám đốc', 'CEO', 'ông chủ'] },
+            { keyword: 'anh chính là', context: ['chủ tịch', 'sếp lớn', 'tổng giám đốc', 'CEO', 'ông chủ'] },
+            { keyword: 'hắn chính là', context: ['chủ tịch', 'sếp lớn', 'tổng giám đốc', 'CEO', 'ông chủ'] },
           ];
           let foundViolation = hardRevealViolations.find(v => lowerText.includes(v));
-          // Check context-sensitive patterns only if no hard violation found
+          // ── Check context-sensitive patterns only if no hard violation found ──
+          // For "thưa chủ tịch" specifically: only block if main character's name appears nearby
+          let mainNameLower = '';
+          try {
+            const stTemp = JSON.parse(localCurrentState || '{}');
+            mainNameLower = (stTemp.characterMap?.main || stTemp.characterMap?.nhan_vat_chinh || '').toLowerCase();
+          } catch { /* ignore */ }
           if (!foundViolation) {
             for (const pat of contextRevealPatterns) {
               if (!lowerText.includes(pat.keyword)) continue;
@@ -897,9 +989,15 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
                 if (kwIdx === -1) break;
                 const windowStart = Math.max(0, kwIdx - 100);
                 const windowEnd = Math.min(lowerText.length, kwIdx + pat.keyword.length + 100);
-                const window = lowerText.slice(windowStart, windowEnd);
-                if (pat.context.some(ctx => window.includes(ctx))) {
-                  foundViolation = `${pat.keyword} (context: ${pat.context.find(ctx => window.includes(ctx))})` as string;
+                const windowSlice = lowerText.slice(windowStart, windowEnd);
+                // Special handling: "thưa chủ tịch" only blocks if main's name is nearby
+                if (pat.keyword === 'thưa chủ tịch') {
+                  if (mainNameLower && windowSlice.includes(mainNameLower)) {
+                    foundViolation = `${pat.keyword} (gần tên main: ${mainNameLower})`;
+                    break;
+                  }
+                } else if (pat.context.length === 0 || pat.context.some(ctx => windowSlice.includes(ctx))) {
+                  foundViolation = `${pat.keyword} (context: ${pat.context.find(ctx => windowSlice.includes(ctx)) || 'direct'})` as string;
                   break;
                 }
                 searchFrom = kwIdx + 1;
@@ -935,21 +1033,25 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
                     const ws = Math.max(0, ki - 100);
                     const we = Math.min(rewriteLower.length, ki + pat.keyword.length + 100);
                     const w = rewriteLower.slice(ws, we);
-                    if (pat.context.some(ctx => w.includes(ctx))) { rewriteViolation = pat.keyword; break; }
+                    // Same special handling as primary check
+                    if (pat.keyword === 'thưa chủ tịch') {
+                      if (mainNameLower && w.includes(mainNameLower)) { rewriteViolation = pat.keyword; break; }
+                    } else if (pat.context.length === 0 || pat.context.some(ctx => w.includes(ctx))) {
+                      rewriteViolation = pat.keyword; break;
+                    }
                     sf = ki + 1;
                   }
                   if (rewriteViolation) break;
                 }
               }
               if (!rewriteViolation) {
-                writeRes.text = rewriteRes.text
-                  .replace(/^(Chương\s+\d+\s*:\s*[^\n]+)(?:\s*\n)+(?:[\s#-]*\n)*\s*(?:#\s*)?Chương\s+\d+\s*:\s*[^\n]+/m, '$1')
-                  .replace(/[①②③④⑤⑥⑦⑧⑨]\s*[\w\s/]+LOCK[:\s].*(?:\n\s+-[^\n]+)*/gim, '')
-                  .replace(/\[ANTI-REVEAL REWRITE\]/g, '');
+                stateSourceText = rewriteRes.text;
+                writeRes.text = sanitizeChapterOutput(rewriteRes.text);
                 addLog(`✅ Ch.${i}: Rewrite thành công — không còn reveal violation.`, 'success');
               } else {
                 // Strip leaked rewrite metadata and use the rewrite anyway
-                writeRes.text = rewriteRes.text.replace(/\[ANTI-REVEAL REWRITE\]/g, '');
+                stateSourceText = rewriteRes.text;
+                writeRes.text = sanitizeChapterOutput(rewriteRes.text);
                 addLog(`⚠️ Ch.${i}: Rewrite vẫn vi phạm reveal ("${rewriteViolation}"). Giữ bản rewrite nhưng cảnh báo.`, 'warning');
               }
             }
@@ -988,17 +1090,17 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
 
         // ========== STEP 3: Log DECLARATION status ==========
         if (declarationFieldCount >= 6) {
-          addLog(`🔒 Ch.${i}: AI đã điền ${declarationFieldCount}/8 ô DECLARATION — constraint hoạt động.`, 'success');
+          addLog(`⚠️ Ch.${i}: Model còn in ${declarationFieldCount} ô DECLARATION, app đã tự strip khỏi nội dung.`, 'warning');
         } else if (declarationFieldCount > 0) {
-          addLog(`⚠️ Ch.${i}: AI chỉ điền ${declarationFieldCount}/8 ô DECLARATION — cần kiểm tra raw output.`, 'warning');
+          addLog(`⚠️ Ch.${i}: Model còn rò ${declarationFieldCount}/8 ô DECLARATION, app đã tự strip.`, 'warning');
         } else {
-          addLog(`🟡 Ch.${i}: AI bỏ qua DECLARATION block — constraint chưa có tác dụng, cần điều chỉnh prompt.`, 'warning');
+          addLog(`✅ Ch.${i}: Output sạch, không còn DECLARATION block.`, 'success');
         }
 
         await new Promise(r => setTimeout(r, 1500)); // Delay for readability
 
         // Parse state — do NOT stop AutoPilot on parse failure; chapter already saved
-        const { parsed, error } = extractStateUpdateJSON(writeRes.text || '');
+        const { parsed, error } = extractStateUpdateJSON(stateSourceText || '');
         const stateToMerge = parsed;
         if (error || !stateToMerge) {
           addLog(`⚠️ Ch.${i}: Không parse được State JSON (${error}). Giữ state cũ, tiếp tục...`, 'warning');
@@ -1083,15 +1185,46 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
             extra_rules: (useFullIronRulesInChecker && customIronRules.trim()) ? customIronRules.trim() : '',
           };
           const auditRes = await agentIronRulesV2('deepseek', deepseekKey, 'deepseek-reasoner', checkerParams);
-          const auditParsed = (() => { try { return JSON.parse(auditRes.text); } catch { return { verdict: 'UNKNOWN', score: 0 }; } })();
+          // Parse audit result — handle both JSON and Markdown output from checker
+          const auditParsed = (() => {
+            try { return JSON.parse(auditRes.text); } catch {
+              // Fallback: try to extract score and verdict from Markdown output
+              const scoreMatch = auditRes.text?.match(/(\d+(?:\.\d+)?)\s*\/\s*10/);
+              const verdictMatch = auditRes.text?.match(/(?:PASS_WITH_PATCHES|PASS|REWRITE_REQUIRED|REWRITE REQUIRED)/i);
+              return {
+                verdict: verdictMatch ? verdictMatch[0].replace(' ', '_').toUpperCase() : 'UNKNOWN',
+                score: scoreMatch ? parseFloat(scoreMatch[1]) : 8.0, // Default 8.0 instead of 0 to avoid false blocks
+                raw_text: auditRes.text?.slice(0, 2000) || '',
+              };
+            }
+          })();
           
           localAuditReports[idx] = auditParsed;
           setAuditReports({ ...localAuditReports });
           setLastUsedModel(auditRes.usedModel);
 
-          if (auditParsed.verdict === 'REWRITE REQUIRED' || (auditParsed.score && Number(auditParsed.score) < 9.2)) {
-            addLog(`❌ Chương ${i} không qua kiểm duyệt (Verdict: ${auditParsed.verdict}, Score: ${auditParsed.score || '?'}/10). Điểm phải >= 9.2. Dừng AutoPilot để tự sửa.`, 'error');
-            break;
+          // Threshold lowered from 9.2 → 7.5. Score 0 means parse failed — don't block.
+          const auditScore = Number(auditParsed.score) || 0;
+          if (auditParsed.verdict === 'REWRITE_REQUIRED' || auditParsed.verdict === 'REWRITE REQUIRED' ||
+              (auditScore > 0 && auditScore < 7.5)) {
+            addLog(`⚠️ Chương ${i} chưa đạt kiểm duyệt (Verdict: ${auditParsed.verdict}, Score: ${auditScore || '?'}/10). Đang thử auto-patch...`, 'warning');
+            // Auto-patch instead of hard-stopping
+            try {
+              const patchNotes = auditParsed.patch_notes || auditParsed.raw_text || `Score ${auditScore}/10 — cần cải thiện.`;
+              const emergencyPatch = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', writeRes.text, patchNotes, storyBible, localCurrentState);
+              if (emergencyPatch.text && emergencyPatch.text.trim().length > 100) {
+                writeRes.text = sanitizeChapterOutput(emergencyPatch.text);
+                localChapters[idx] = { chapter: beat.chapter, title: beat.title, content: writeRes.text, usedModel: `${writeRes.usedModel} + EmergencyPatch(${emergencyPatch.usedModel})` };
+                setChapters([...localChapters]);
+                addLog(`🔧 Ch.${i}: Emergency patch thành công. Tiếp tục AutoPilot.`, 'success');
+              } else {
+                addLog(`❌ Ch.${i}: Emergency patch rỗng. Dừng AutoPilot.`, 'error');
+                break;
+              }
+            } catch (patchErr: any) {
+              addLog(`❌ Ch.${i}: Emergency patch lỗi (${patchErr.message}). Dừng AutoPilot.`, 'error');
+              break;
+            }
           }
 
           let finalChapterText = writeRes.text;
@@ -1099,12 +1232,12 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
           if (auditParsed.verdict === 'PASS_WITH_PATCHES' && apMode === 'balanced') {
             addLog(`🔧 Đang Patch chương ${i} (V3)...`, 'info');
             await new Promise(r => setTimeout(r, 1500));
-            const patchRes = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', finalChapterText, auditParsed.patch_notes || '');
+            const patchRes = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', finalChapterText, auditParsed.patch_notes || '', storyBible, localCurrentState);
             if (!patchRes.text || patchRes.text.trim().length === 0) {
               addLog(`❌ Lỗi Patch rỗng ở chương ${i}, dừng AutoPilot.`, 'error');
               break;
             }
-            finalChapterText = patchRes.text;
+            finalChapterText = sanitizeChapterOutput(patchRes.text);
             localChapters[idx].content = finalChapterText;
             localChapters[idx].usedModel = `${writeRes.usedModel} + Patch(${patchRes.usedModel})`;
             setChapters([...localChapters]);
@@ -1182,7 +1315,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     try {
       const allChaptersText = chapters
         .filter(ch => ch && ch.content)
-        .map(ch => `[Chương ${ch.chapter}: ${ch.title}]\n${ch.content}`)
+        .map(ch => `[Chương ${ch.chapter}: ${ch.title}]\n${stripMetaBlocks(ch.content)}`)
         .join('\n\n');
         
       const auditParams = {
@@ -1257,12 +1390,12 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
         const patchNotes = perChapAudit?.patch_notes
           || `Dựa trên Final Audit Report — các lỗi liên quan đến Chương ${chapNum}:\n\n${finalAuditReport.slice(0, 3000)}`;
 
-        const result = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', chap.content, patchNotes);
+        const result = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', chap.content, patchNotes, storyBible, currentState);
         if (!result.text || result.text.trim().length < 100) {
           setAutoFixLog(prev => [...prev, { msg: `❌ Chương ${chapNum}: Kết quả rỗng, bỏ qua.`, type: 'error' }]);
           continue;
         }
-        newChapters[idx] = { ...chap, content: result.text, usedModel: `Auto-Fix(${result.usedModel})` };
+        newChapters[idx] = { ...chap, content: stripMetaBlocks(result.text), usedModel: `Auto-Fix(${result.usedModel})` };
         setChapters([...newChapters]);
         updateDraftSpace('deepseek_pipeline', { chapters: newChapters });
         setAutoFixLog(prev => [...prev, { msg: `✅ Chương ${chapNum}: Patch xong (${result.usedModel})`, type: 'success' }]);

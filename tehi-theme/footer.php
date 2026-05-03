@@ -26,6 +26,7 @@
 </style>
 
 <?php if (!is_singular('chuong')): ?>
+</main><!-- /main-content -->
 <footer class="mkm-footer">
     <div class="mkm-footer-top">
         <!-- ... inside stays the same ... -->
@@ -114,6 +115,8 @@
         © <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. All rights reserved.
     </div>
 </footer>
+<?php else: ?>
+</main><!-- /main-content -->
 <?php endif; ?>
 
 <!-- AUTH MODAL -->
@@ -165,7 +168,7 @@
                 </a>
                 
                 <div class="mkm-auth-footer-text">
-                    Chưa có tài khoản? <a href="javascript:void(0)" onclick="mkmSwitchAuthTab('register')">Đăng ký</a>
+                    Chưa có tài khoản? <button type="button" onclick="mkmSwitchAuthTab('register')" style="background:none;border:none;color:#4f46e5;cursor:pointer;font:inherit;font-weight:600;padding:0;">Đăng ký</button>
                 </div>
                 
                 <div class="mkm-auth-close-text" onclick="mkmCloseAuthModal()">Đóng</div>
@@ -208,7 +211,7 @@
                 </a>
                 
                 <div class="mkm-auth-footer-text">
-                    Đã có tài khoản? <a href="javascript:void(0)" onclick="mkmSwitchAuthTab('login')">Đăng nhập</a>
+                    Đã có tài khoản? <button type="button" onclick="mkmSwitchAuthTab('login')" style="background:none;border:none;color:#4f46e5;cursor:pointer;font:inherit;font-weight:600;padding:0;">Đăng nhập</button>
                 </div>
                 
                 <div class="mkm-auth-close-text" onclick="mkmCloseAuthModal()">Đóng</div>

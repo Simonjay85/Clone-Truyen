@@ -1,0 +1,60 @@
+# ══════════════════════════════════════════════════════════════
+# DTT Performance & Security Headers
+# Append this to your root .htaccess file
+# ══════════════════════════════════════════════════════════════
+
+# ── 1. CACHE CONTROL — Fix #1 (saves ~590 KiB) ──
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # Images: 1 year
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    # Fonts: 1 year
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    # CSS/JS: 1 month
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    # HTML: 1 hour
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Cache-Control for static assets
+    <FilesMatch "\.(ico|jpe?g|png|gif|webp|svg|woff2?|ttf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=2592000, stale-while-revalidate=86400"
+    </FilesMatch>
+
+    # ── 2. SECURITY HEADERS — Fix #20, #21, #22 ──
+    # HSTS with includeSubDomains + preload
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    # Cross-Origin Opener Policy
+    Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+    # XSS Protection (legacy browsers)
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# ── 3. GZIP COMPRESSION ──
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css
+    AddOutputFilterByType DEFLATE application/javascript text/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/xml text/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/woff font/woff2
+</IfModule>

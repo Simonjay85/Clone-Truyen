@@ -22,14 +22,22 @@ $tehi_canonical_url    = function_exists('tehi_get_canonical_url') ? tehi_get_ca
 <meta name="keywords" content="<?php echo esc_attr(get_bloginfo('name')); ?>, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí" />
 <meta name="description" content="<?php echo esc_attr($tehi_meta_description); ?>" />
 <link href="<?php echo esc_url($tehi_canonical_url); ?>" rel="canonical" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BMCE7V4VHX"></script>
+<!-- Google tag (gtag.js) - Deferred 3s to unblock render (#4 fix) -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BMCE7V4VHX');
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-BMCE7V4VHX';
+      s.async = true;
+      document.head.appendChild(s);
+      s.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BMCE7V4VHX');
+      };
+    }, 3000);
+  });
 </script><!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>">
@@ -79,6 +87,11 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 }
 .fas, .fa-solid { font-weight: 900 !important; }
 .fa-brands { font-family: "Font Awesome 6 Brands" !important; }
+/* Fix #11: font-display swap for Font Awesome */
+@font-face { font-family: "Font Awesome 6 Free"; font-display: swap; }
+@font-face { font-family: "Font Awesome 6 Brands"; font-display: swap; }
+/* Fix #15: Swiper pagination touch targets */
+.swiper-pagination-bullet { min-width: 44px !important; min-height: 44px !important; padding: 10px !important; margin: 0 4px !important; }
 </style>
 
 <!-- ══ CRITICAL CSS - Only what's needed for above-fold render ══ -->
@@ -654,7 +667,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
             <?php if(is_user_logged_in()): ?>
                 <a href="<?php echo admin_url('profile.php'); ?>" class="mkm-nav-login"><img src="<?php echo esc_url(get_avatar_url(get_current_user_id())); ?>" style="width:24px;height:24px;border-radius:50%;object-fit:cover;"> Tài khoản</a>
             <?php else: ?>
-                <a href="javascript:void(0)" onclick="mkmOpenAuthModal('login')" class="mkm-nav-login"><i class="fa-solid fa-user-circle"></i> Đăng nhập</a>
+                <button type="button" onclick="mkmOpenAuthModal('login')" class="mkm-nav-login" style="background:none;border:none;cursor:pointer;font:inherit;"><i class="fa-solid fa-user-circle"></i> Đăng nhập</button>
             <?php endif; ?>
         </div>
         <button id="mkm-mobile-menu-btn" class="btn btn-link d-md-none" onclick="document.getElementById('mkm-mobile-menu').classList.toggle('open')" aria-label="Mở menu" style="background:transparent; border:none; padding:10px; display:flex; align-items:center; justify-content:center;">
@@ -682,8 +695,11 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
                     <img src="<?php echo esc_url(get_avatar_url(get_current_user_id())); ?>" style="width:28px;height:28px;border-radius:50%;object-fit:cover;"> Tài khoản
                 </a>
             <?php else: ?>
-                <a href="javascript:void(0)" onclick="mkmOpenAuthModal('login')" style="color:#4f46e5;">Đăng nhập</a>
+                <button type="button" onclick="mkmOpenAuthModal('login')" style="color:#4f46e5; background:none; border:none; cursor:pointer; font:inherit; font-weight:600; padding:12px 6px; width:100%; text-align:left;">Đăng nhập</button>
             <?php endif; ?>
         </div>
     </div>
 </header>
+
+<!-- Fix #16: Main landmark for accessibility -->
+<main id="main-content" role="main">

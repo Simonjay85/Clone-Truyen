@@ -15,8 +15,23 @@ export default async function ChapterDetail({ params }: { params: Promise<{ slug
 
   const chapter = data[0];
 
+  // Strip Facebook group gate from WP content
+  let cleanContent = (chapter.content.rendered || '')
+    .replace(/<div[^>]*class="[^"]*facebook[^"]*"[^>]*>[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/gi, '')
+    .replace(/<div[^>]*>[\s\S]*?Tham gia nhóm Facebook[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/gi, '')
+    .replace(/<div[^>]*>[\s\S]*?Nhóm Facebook chưa được cấu hình[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/gi, '');
+
   return (
     <main className="min-h-screen bg-[#fdfaf6] p-4 md:p-8 font-serif leading-relaxed">
+      {/* CSS fallback to hide any remaining Facebook gate elements */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        .prose div:has(> p:only-child) { }
+        .prose [class*="facebook"], 
+        .prose [id*="facebook"],
+        .prose [class*="fb-gate"],
+        .prose [class*="content-gate"],
+        .prose [class*="read-more-gate"] { display: none !important; }
+      `}} />
       <div className="max-w-3xl mx-auto">
         <Link href="/" className="inline-flex items-center text-[#8b5a2b] hover:text-[#3e3124] mb-8 font-sans font-medium">
           ← Về Trang chủ
@@ -32,7 +47,7 @@ export default async function ChapterDetail({ params }: { params: Promise<{ slug
 
           <div 
              className="prose prose-lg md:prose-xl text-[#3e3124] mx-auto max-w-none text-justify [&>p]:mb-6"
-             dangerouslySetInnerHTML={{ __html: chapter.content.rendered }} 
+             dangerouslySetInnerHTML={{ __html: cleanContent }} 
           />
 
           <div className="flex justify-center gap-4 mt-12 font-sans border-t border-[#eee4d9] pt-6">

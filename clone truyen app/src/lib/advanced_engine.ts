@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { callGemini, callOpenAI, callGrok, callClaude, callQwen, callDeepSeek, STORY_IRON_RULES } from './engine';
+import { callGemini, callOpenAI, callGrok, callClaude, callQwen, callDeepSeek, callOpenRouter, STORY_IRON_RULES } from './engine';
 
 // Helper to route dynamic calls
  
@@ -10,17 +10,59 @@ async function callDynamicEngine(engineSlug: string, params: any): Promise<any> 
   if (engineSlug === 'claude') return callClaude(params);
   if (engineSlug === 'qwen') return callQwen(params);
   if (engineSlug === 'deepseek') return callDeepSeek(params);
+  if (engineSlug === 'openrouter') return callOpenRouter(params);
   throw new Error("Unknown engine: " + engineSlug);
 }
 
 const extractJson = (text: string) => {
   let t = (text || '').trim();
-  // Strip Qwen3 <think>...</think> reasoning blocks
   t = t.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
-  // Strip markdown code fences properly with regex
-  if (t.startsWith('```json')) t = t.replace(/^```json\s*/m, '').replace(/```\s*$/m, '').trim();
-  else if (t.startsWith('```')) t = t.replace(/^```\s*/m, '').replace(/```\s*$/m, '').trim();
-  return JSON.parse(t);
+  t = t.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
+
+  const tryParse = (raw: string) => JSON.parse(raw);
+  try {
+    return tryParse(t);
+  } catch {
+    // DeepSeek Reasoner can still add a short preface. Extract the first
+    // balanced JSON object/array instead of falling back to unusable raw text.
+    const start = t.search(/[\{\[]/);
+    if (start === -1) throw new Error('No JSON object or array found in model output');
+    let inString = false;
+    let escaped = false;
+    const stack: string[] = [];
+
+    for (let i = start; i < t.length; i++) {
+      const ch = t[i];
+      if (inString) {
+        if (escaped) {
+          escaped = false;
+        } else if (ch === '\\') {
+          escaped = true;
+        } else if (ch === '"') {
+          inString = false;
+        }
+        continue;
+      }
+
+      if (ch === '"') {
+        inString = true;
+        continue;
+      }
+      if (ch === '{' || ch === '[') {
+        stack.push(ch);
+        continue;
+      }
+      if (ch === '}' || ch === ']') {
+        const open = stack.pop();
+        if ((open === '{' && ch !== '}') || (open === '[' && ch !== ']')) break;
+        if (stack.length === 0) {
+          const slice = t.slice(start, i + 1);
+          return tryParse(slice);
+        }
+      }
+    }
+    throw new Error('Could not extract balanced JSON from model output');
+  }
 };
 
  
@@ -311,39 +353,45 @@ export async function agentGenerateBible(
   apiKey: string,
   model: string,
   genres: string[],
-  userPrompt: string
+  userPrompt: string,
+  targetChapters = 15
 ) {
   const genreStr = genres.join(', ') || 'Zhihu / Kịch tính';
   const isFaceSlap = isFaceSlapStr(genreStr) || isFaceSlapStr(userPrompt);
+  const chapterCount = Number.isFinite(targetChapters) && targetChapters > 0 ? targetChapters : 15;
 
   const params = {
     genre: genreStr,
-    chapter_count: 10,
+    chapter_count: chapterCount,
     main_hook: userPrompt,
     protagonist_seed: isFaceSlap 
-      ? 'Nữ/Nam chính là người có tiền bạc vô hạn, thân phận siêu phàm hoặc có hệ thống/bàn tay vàng, bề ngoài giả nghèo/yếu thế để vả mặt kẻ khinh thường mình.'
+      ? 'Nhân vật chính có thân phận/quyền lực thật nhưng phải cải trang hoặc chịu nhục để điều tra. Main mạnh nhưng bị giới hạn bởi pháp lý, bằng chứng và an toàn đồng minh.'
       : 'Nữ chính mạnh mẽ, bị tổn thương nhưng không gục ngã',
     villain_seed: isFaceSlap
       ? 'Kẻ phản diện kiêu ngạo, hám tiền, hay khinh người, luôn tự đắc và sẽ bị vả mặt cực đau.'
       : 'Kẻ phản diện thông minh, có địa vị',
     setting: 'Việt Nam hiện đại',
     tone: isFaceSlap 
-      ? 'Sảng văn, vả mặt cực gắt, quyền lực áp đảo, không vòng vo pháp luật, giải quyết ngay lập tức.'
+      ? 'Sảng văn, vả mặt cực gắt nhưng logic thực tế: bằng chứng có giá, phản diện biết phản công, pháp lý không giải quyết trong một cuộc gọi.'
       : 'Nhanh, sắc, cảm xúc thật',
+    special_requirements: isFaceSlap
+      ? 'Cấm hacker ma thuật, cấm đổi tên nhân vật, cấm đổi địa lý giữa các chương, cấm Change Log/State JSON lẫn vào nội dung truyện.'
+      : 'Cấm đổi tên nhân vật, cấm đổi địa lý giữa các chương.',
   };
   const sys = getStoryBiblePrompt(params);
   const res = await callDynamicEngine(engine, {
     apiKey,
     systemPrompt: sys,   // No STORY_IRON_RULES here — saves tokens
     userPrompt: `User story idea: ${userPrompt}\n\nGenres: ${genres.join(', ')}\n\nCreate the Story Bible now. Output as valid JSON only.`,
-    temperature: 0.85,
+    jsonMode: true,
+    temperature: 0.45,
     model,
     taskType: 'story_bible',
   });
   // Parse JSON safely
   let data: any = null;
   try { data = extractJson(res.text); } catch { data = { raw: res.text }; }
-  return { text: res.text, data, usedModel: res.chosenModel || model };
+  return { text: data?.raw ? res.text : JSON.stringify(data, null, 2), data, usedModel: res.chosenModel || model };
 }
 
 export async function agentGenerateChapterMap(
@@ -361,16 +409,33 @@ export async function agentGenerateChapterMap(
     apiKey,
     systemPrompt: sys,   // No STORY_IRON_RULES — saves tokens
     userPrompt: `Create the Chapter Map for ${chapter_count} chapters now. Output as JSON array of chapter objects.`,
-    temperature: 0.85,
+    jsonMode: true,
+    temperature: 0.45,
     model,
     taskType: 'chapter_map',
   });
   let data: any = null;
   try {
     const parsed = extractJson(res.text);
-    data = Array.isArray(parsed) ? parsed : (parsed?.chapters || parsed?.chapter_map || [parsed]);
+    const rawMap = Array.isArray(parsed) ? parsed : (parsed?.chapters || parsed?.chapter_map || [parsed]);
+    data = rawMap.map((ch: any, idx: number) => ({
+      chapter: Number(ch.chapter || ch.chapter_number || ch.episode || idx + 1),
+      title: ch.title || ch.chapter_title || `Chương ${idx + 1}`,
+      type: ch.type || ch.chapter_type || ch.functionTag || ch.function_tag || 'BUILD',
+      chapter_type: ch.chapter_type || ch.type || ch.functionTag || ch.function_tag || 'BUILD',
+      functionTag: ch.functionTag || ch.function_tag || ch.FunctionTag || ch.type || 'BUILD',
+      protagonist_goal: ch.protagonist_goal || ch.goal || ch.protagonistGoal || '',
+      main_obstacle: ch.main_obstacle || ch.obstacle || ch.mainObstacle || '',
+      evidence_or_loss: ch.evidence_or_loss || ch.evidenceOrLoss || ch.evidence_loss || '',
+      beats: ch.beats || ch.key_beats || ch.beat_sheet || [],
+      win: ch.win || '',
+      loss: ch.loss || ch.loss_misread || '',
+      foreshadowing: ch.foreshadowing || '',
+      cliffhanger: ch.cliffhanger || ch.final_question || '',
+      identityRevealLayer: ch.identityRevealLayer || ch.identity_reveal_layer || '',
+    }));
   } catch { data = []; }
-  return { text: res.text, data, usedModel: res.chosenModel || model };
+  return { text: data.length ? JSON.stringify(data, null, 2) : res.text, data, usedModel: res.chosenModel || model };
 }
 
 export async function agentWriteChapter(
@@ -404,9 +469,12 @@ export async function agentWriteChapter(
     const openThreads = Array.isArray(st.openThreads) ? st.openThreads.join(' | ') : '';
     const villainKnows = Array.isArray(st.villainKnows) ? st.villainKnows.join(', ') : '';
     const mainLost     = Array.isArray(st.mainLost)     ? st.mainLost.join(', ') : '';
-    // Character name map — prevents AI from renaming characters mid-story
+      // Character name map — prevents AI from renaming characters mid-story
     const charMap = st.characterMap || {};
-    const charMapStr = Object.entries(charMap).map(([role, name]) => `  ${role}: ${name}`).join('\n');
+    const roleRows = Array.isArray(st.fixedFacts?.characterRoles)
+      ? st.fixedFacts.characterRoles.map((r: any) => `  ${r.name}: ${r.role || ''}${r.status ? ` — ${r.status}` : ''}`).join('\n')
+      : '';
+    const charMapStr = Object.entries(charMap).map(([role, name]) => `  ${role}: ${name}`).join('\n') || roleRows;
     // Villain arrest status — prevents double-arrest bug
     const villainArrested = st.villainArrested || '';
 
@@ -442,22 +510,19 @@ export async function agentWriteChapter(
   const currentChapter = beat?.chapter || 1;
   const revealGateChapter = Math.ceil(totalChapters * 0.6); // 60% mark
 
-  // Detect if identity has already been revealed (from state OR from prev chapter text)
+  // Detect if identity has already been revealed from structured state only.
+  // Keyword-scanning previous prose produced false positives for ordinary words
+  // like "chủ tịch" before the actual public reveal.
   let revealAlreadyHappened = false;
   try {
     const st = JSON.parse(currentStateStr || '{}');
     const rl = (st.identityRevealLayer || '').toLowerCase();
-    if (rl.includes('4') || rl.includes('công khai') || rl.includes('lộ diện')) {
+    const publicIdentityKnown = st.publicIdentityKnown === true || st.identityPublic === true;
+    const revealedAtChapter = Number(st.revealedAtChapter || st.identityRevealedAt || 0);
+    if (publicIdentityKnown || revealedAtChapter > 0 || rl.includes('4') || rl.includes('công khai') || rl.includes('lộ diện')) {
       revealAlreadyHappened = true;
     }
   } catch { /* ignore */ }
-  if (!revealAlreadyHappened) {
-    const prevLower = prevContext.toLowerCase();
-    const revealKws = ['chủ tịch', 'lộ diện', 'thẻ đen', 'tôi là chủ tịch', 'lộ thân phận'];
-    if (revealKws.some(kw => prevLower.includes(kw))) {
-      revealAlreadyHappened = true;
-    }
-  }
 
   // Detect villain arrested status
   let villainArrestedBanner = '';
@@ -493,7 +558,7 @@ CẤM TUYỆT ĐỐI (cả HÀNH ĐỘNG lẫn KẾT QUẢ):
 CHỈ ĐƯỢC PHÉP:
 ✅ Main bị đối xử như shipper bình thường (bị mắng, bị khinh)
 ✅ Main điều tra bí mật, thu thập bằng chứng
-✅ Trợ lý riêng (Chị Lan) biết thân phận — nhưng CHỈ khi nói chuyện riêng
+✅ Trợ lý riêng/đồng minh đã ghi trong CHARACTER NAME MAP biết thân phận — nhưng CHỈ khi nói chuyện riêng
 ✅ Main ghi âm, chụp ảnh, quan sát
 
 Reveal chỉ được phép TỪ CHƯƠNG ${revealGateChapter} TRỞ ĐI (60% truyện).
@@ -503,68 +568,20 @@ Nếu vi phạm bất kỳ điều nào ở trên → toàn bộ chương bị l
   const res = await callDynamicEngine(engine, {
     apiKey,
     systemPrompt: sys,
-    userPrompt: `${revealBanner}${villainArrestedBanner}⛔ STOP — KHÔNG ĐƯỢC VIẾT TRUYỆN NGAY. BẮT BUỘC ĐIỀN ĐỦ 9 Ô DƯỚI ĐÂY TRƯỚC.
-Nếu bỏ qua DECLARATION → toàn bộ output bị loại bỏ và phải viết lại.
+    userPrompt: `${revealBanner}${villainArrestedBanner}Viết Chương ${currentChapter} ngay bây giờ theo đúng Story Bible, Chapter Map và Current State.
 
-━━━ PRE-WRITE DECLARATION (COPY VÀ ĐIỀN VÀO TỪNG Ô) ━━━
+QUY TẮC OUTPUT SẠCH:
+- KHÔNG in PRE-WRITE DECLARATION.
+- KHÔNG in SELF-CHECK.
+- KHÔNG in CHANGE LOG, Updated, Audit Report, hoặc lời giải thích kiểu "Dưới đây là phiên bản...".
+- Chỉ được in đúng OUTPUT CONTRACT V1 trong system prompt: tiêu đề chương, teaser SEO, nội dung truyện, rồi STATE UPDATE JSON ở cuối.
+- STATE UPDATE JSON phải là JSON hợp lệ, không bọc markdown fence, không comment, không trailing comma, và không có chữ nào sau dấu } cuối cùng.
+- Địa lý, tên người, chức vụ, số tiền phải copy từ Story Bible/Current State. Nếu bối cảnh là TP.HCM/Quận 3 thì KHÔNG tự chuyển sang Hà Nội.
 
-① TAG LOCK:
-   - Chương trước dùng tag: ___________
-   - Chương này sẽ dùng tag: ___________ (PHẢI KHÁC)
-
-② EVIDENCE LOCK:
-   - Evidence đã có: ___________
-   - Chương này dùng evidence: ___________
-   - Cái giá: ___________
-
-③ HACKER LOCK (PHẢI điền dù không dùng hacker):
-   - Dùng hacker không? ___________
-   - Nếu CÓ, hacker CHỈ được output MỘT trong các thứ sau:
-     ✅ 1 tên tài khoản đăng nhập
-     ✅ 1 dải IP + timestamp
-     ✅ 1 metadata file (tên file, ngày tạo, dung lượng)
-   - CẤM TUYỆT ĐỐI hacker output bất kỳ thứ nào dưới đây:
-     ❌ Mật khẩu / password
-     ❌ Nội dung email / tin nhắn
-     ❌ Sao kê ngân hàng đầy đủ
-     ❌ File đã xóa được phục hồi nguyên vẹn
-     ❌ GPS / vị trí thời gian thực
-     ❌ Báo cáo tài chính đầy đủ
-   - Bằng chứng ngoài đời hỗ trợ (BẮT BUỘC nếu dùng hacker): ___________
-
-④ VILLAIN MOVE LOCK:
-   - Main thắng gì chương trước? ___________
-   - Villain phản ứng: ___________
-
-⑤ POLICE/AUTHORITY LOCK:
-   - Có bắt người không? ___________
-   - Foreshadow ở chương nào? ___________
-
-⑥ CHARACTER STATE LOCK:
-   - Nhân vật phụ xuất hiện: ___________
-   - Trạng thái: ___________
-
-⑦ DUPLICATE CHECK:
-   - Chương trước kết ở đâu? ___________
-   - Chương này bắt đầu từ đâu? ___________
-
-⑧ VILLAIN EXIT LOCK:
-   - Villain phụ rời plot? ___________
-   - Đòn phản công cuối? ___________
-
-⑨ CHARACTER NAME LOCK (BẮT BUỘC):
-   - Tên main: ___________ (copy từ CHARACTER NAME MAP, KHÔNG đổi)
-   - Tên villain chính: ___________ (copy từ MAP, KHÔNG đổi)
-   - Tên VIP/khách hàng: ___________ (copy từ MAP, KHÔNG đổi)
-   - Tên đồng minh/nhân chứng: ___________ (copy từ MAP, KHÔNG đổi)
-   → Nếu CHARACTER NAME MAP có tên → PHẢI dùng ĐÚNG tên đó. KHÔNG được đổi.
-
---- SAU KHI ĐIỀN ĐỦ 9 Ô, GHI "--- BẮT ĐẦU VIẾT CHƯƠNG ---" RỒI VIẾT ---
-
-⚠️ CÁC QUY TẮC BẮT BUỘC BỔ SUNG:
+QUY TẮC BẮT BUỘC BỔ SUNG:
 
 🔒 IDENTITY REVEAL ONCE-ONLY:
-Nếu IdentityRevealLayer trong [PREVIOUS CHAPTER LOCK] đã = "Tầng 4" hoặc "công khai" hoặc "lộ diện":
+Nếu IdentityRevealLayer trong [CURRENT STATE LOCK] đã = "Tầng 4" hoặc "công khai" hoặc "lộ diện", hoặc publicIdentityKnown/revealedAtChapter đã có giá trị:
 → TUYỆT ĐỐI KHÔNG viết lại cảnh lộ thân phận. Main đã lộ rồi. Mọi nhân vật đã biết.
 → Không cởi áo shipper. Không giơ thẻ đen. Không tuyên bố "Tôi là chủ tịch" lần nữa.
 → Chương này phải tiến triển plot SAU reveal, không lặp lại reveal.
@@ -575,7 +592,7 @@ Không viết lại cảnh đã xảy ra ở chương trước. Kiểm tra [PREV
 → Nếu đã có [IDENTITY_REVEAL] → chương này là HẬU QUẢ, không phải reveal lại
 → Nếu đã có [EVIDENCE_FOUND] → bằng chứng đó ĐÃ CÓ, không tìm lại
 
-Viết chương bằng tiếng Việt. Show, don't tell. Kết thúc bằng SELF-CHECK (21 câu) và STATE UPDATE JSON.`,
+Viết chương bằng tiếng Việt. Show, don't tell. Kết thúc bằng STATE UPDATE JSON hợp lệ để app parse được.`,
     temperature: 0.7,
     model,
     taskType: 'chapter_writer',
@@ -590,19 +607,21 @@ export async function agentRewriteChapter(
   apiKey: string,
   model: string,
   chapterContent: string,
-  patchNotes: string
+  patchNotes: string,
+  storyBible = '',
+  currentState = '{}'
 ) {
   const params = {
     chapter_draft: chapterContent,
     audit_report: patchNotes,
-    story_bible: '',
-    current_state: '{}',
+    story_bible: storyBible,
+    current_state: currentState,
   };
   const sys = getChapterRewriterPrompt(params);
   const res = await callDynamicEngine(engine, {
     apiKey,
     systemPrompt: sys,
-    userPrompt: 'Revise the chapter now.',
+    userPrompt: 'Revise the chapter now. Return only the revised story content. Do not include Change Log, Self-Check, Audit Report, or explanatory preface.',
     temperature: 0.65,
     model,
     taskType: 'chapter_rewriter',

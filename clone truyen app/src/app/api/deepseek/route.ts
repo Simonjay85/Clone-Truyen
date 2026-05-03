@@ -3,6 +3,11 @@ import { NextResponse } from 'next/server';
 
 export const maxDuration = 300; // 5 minutes
 export const dynamic = 'force-dynamic';
+
+export async function GET() {
+  return NextResponse.json({ status: 'DeepSeek API is running. Use POST to generate.' });
+}
+
 export async function POST(req: Request) {
   try {
     const { apiKey, systemPrompt, userPrompt, model, jsonMode, temperature, taskType, riskLevel } = await req.json();
@@ -104,7 +109,9 @@ export async function POST(req: Request) {
     const usage = data.usage ? {
         promptTokens: data.usage.prompt_tokens || 0,
         completionTokens: data.usage.completion_tokens || 0,
-        totalTokens: data.usage.total_tokens || 0
+        totalTokens: data.usage.total_tokens || 0,
+        promptCacheHitTokens: data.usage.prompt_cache_hit_tokens || 0,
+        promptCacheMissTokens: data.usage.prompt_cache_miss_tokens || 0
     } : undefined;
 
     return NextResponse.json({ text: content, usage, chosenModel: payload.model });

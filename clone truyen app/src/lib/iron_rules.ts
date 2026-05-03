@@ -4,11 +4,11 @@
 // Do NOT duplicate these rules in engine.ts or reasonerPrompts.ts.
 // ─────────────────────────────────────────────────────────────────────────────
 
-// ── LAYER 1: WRITER_RULES_LITE ────────────────────────────────────────────────
-// Dùng cho Chapter Writer. Ngắn, tiết kiệm token.
+// ── LAYER 1: STATEFUL_WRITER_RULES ────────────────────────────────────────────
+// Dùng cho Chapter Writer V2 có StoryState. Ngắn, tiết kiệm token.
 // KHÔNG gửi CHECKER_RULES_FULL hay FINAL_AUDIT_RULES vào Chapter Writer.
-export const WRITER_RULES_LITE = `
-WRITER_RULES_LITE — DÙNG CHO CHAPTER WRITER
+export const STATEFUL_WRITER_RULES = `
+STATEFUL_WRITER_RULES — DÙNG CHO CHAPTER WRITER V2 CÓ STORY STATE
 
 BẮT BUỘC viết truyện bằng tiếng Việt tự nhiên, đúng xưng hô và văn phong truyện mạng Việt Nam.
 
@@ -33,7 +33,7 @@ QUY TẮC VIẾT CHƯƠNG:
 
 8. Không thêm twist mới ngoài Chapter Map. Không giải quyết twist tương lai quá sớm.
 
-9. Không dùng backup thần kỳ. Nếu bằng chứng mới xuất hiện, nó phải đã được gieo trước hoặc có nguồn hợp lý.
+9. Không dùng backup thần kỳ. Nếu bằng chứng mới xuất hiện, nó phải đã được gieo trước (foreshadow ≥1 chương trước) hoặc có nguồn hợp lý giải thích trong ≤3 câu. Ghi âm bất ngờ phải có cảnh đặt thiết bị/mở app trước đó.
 
 10. Không dùng hacker/phép màu công nghệ. Mọi bằng chứng phải đời thường và có công sức lấy: hóa đơn, hợp đồng, camera hợp lý, nhân chứng, lịch sử giao dịch, ghi âm có rủi ro, giấy tờ vật lý.
 
@@ -45,7 +45,7 @@ QUY TẮC VIẾT CHƯƠNG:
 
 14. Phản diện phải thông minh, có phản công, có phương án dự phòng. Không để phản diện tự thú ngu ngốc hoặc mắc lỗi quá dễ.
 
-15. Đồng minh không được là "công cụ thần kỳ". Khi đồng minh cung cấp thông tin, phải có lý do họ biết thông tin đó.
+15. Đồng minh không được là "công cụ thần kỳ". Khi đồng minh cung cấp thông tin, phải có lý do họ biết thông tin đó. Đồng minh IT/tech chỉ được truy cập hệ thống THUỘC SỞ HỮU của tập đoàn — KHÔNG được tự ý xâm nhập server, tài khoản, email của công ty khác mà không có ủy quyền rõ ràng trong văn bản câu chuyện.
 
 16. Nếu nhân vật chính dùng hành động vùng xám đạo đức/pháp lý, phải có rủi ro, hậu quả hoặc người phản đối.
 
@@ -53,13 +53,38 @@ QUY TẮC VIẾT CHƯƠNG:
 
 18. Chương phải thay đổi trạng thái truyện: main biết thêm điều mới, mất thứ gì, lấy được manh mối, đổi quan hệ, bị phản công, hoặc mở ra nguy hiểm mới. Nếu không thay đổi gì, chương đó thừa.
 
-19. Mỗi chương phải có [TEASER SEO] 30–40 chữ ở đầu. Teaser phải có xung đột, bí mật hoặc nguy cơ rõ. Không spoil toàn bộ chương.
+19. Mỗi chương phải có [TEASER SEO] 30–40 chữ NGAY SAU DÒNG TIÊU ĐỀ. Teaser phải có xung đột, bí mật hoặc nguy cơ rõ. Không spoil toàn bộ chương.
 
 20. Kết chương bằng câu hỏi mới, đe dọa mới, cú lật mới, hoặc chi tiết làm thay đổi cách hiểu của người đọc. Trừ chương cuối, không kết bằng yên bình.
 
 21. Không dùng phản ứng cảm xúc kiểu cliché. Ưu tiên tả hành động cụ thể: tay siết mép áo, ly nước đặt lệch, câu nói bị nuốt dở, bước chân khựng lại.
 
 22. Sau mỗi chương, bắt buộc xuất STATE UPDATE JSON để app cập nhật continuity.
+JSON phải là JSON hợp lệ tuyệt đối: dùng dấu ngoặc kép cho key/string, không comment, không markdown fence, không trailing comma, không text sau dấu } cuối cùng.
+
+23. Output chỉ có 4 phần theo đúng thứ tự:
+   (1) Chương N: Tên chương
+   (2) [TEASER SEO]: ...
+   (3) Nội dung chương truyện
+   (4) STATE UPDATE JSON:
+       { ... }
+Không tự thêm format thứ hai, không tự đổi thứ tự, không đặt teaser trước tiêu đề.
+
+=== ENFORCEMENT BLOCKS — CHẶN P0 TỰ ĐỘNG ===
+
+24. ANTI-OMNISCIENT MAIN: Main KHÔNG ĐƯỢC biết trước mọi âm mưu. Main phải có ít nhất 2 giả thuyết sai trong toàn truyện, phải bị bất ngờ ít nhất 1 lần bởi hành động của phản diện mà main không lường trước. Nếu main "đã chuẩn bị hết từ đầu", chương đó vi phạm P0.
+
+25. ANTI-MAGIC-BACKUP: Khi bằng chứng bị mất/xóa/cháy, KHÔNG ĐƯỢC có bản sao hoặc server dự phòng xuất hiện ở chương sau TRỪU KHI server/bản sao đó đã được nhắc tên cụ thể ít nhất 2 chương trước. "Hoàng Anh tìm ra server dự phòng" mà không có foreshadow = vi phạm P0 backup thần kỳ.
+
+26. ANTI-HACKER-MAGIC: Đồng minh IT/hacker CHỈ ĐƯỢC truy cập hệ thống NỘI BỘ thuộc sở hữu tập đoàn của main (vì main là chủ). CẤM TUYỆT ĐỐI: truy cập tài khoản ngân hàng CÁ NHÂN của bất kỳ ai, email riêng, tài khoản offshore, server của công ty khác. Mọi thông tin tài chính ngoài hệ thống nội bộ PHẢI có lệnh từ cơ quan chức năng hoặc nhân chứng trực tiếp.
+
+27. ANTI-NAME-DRIFT: Trước khi viết, ĐỌC characterMap trong STATE. Mỗi nhân vật chỉ có ĐÚNG MỘT tên xuyên suốt. Quản lý chi nhánh không được lúc tên Hùng lúc tên Đức. Main không được lúc tên này lúc tên khác. Luật sư và vợ phản diện PHẢI khác tên. Nếu bạn không chắc tên → dùng tên trong characterMap, KHÔNG tự bịa.
+
+28. NUMBER LOCK: Khi nhắc đến số tiền, phải kiểm tra PATCH4_fixedNumbers trong STATE. Số tiền tham nhũng ở chương 2 là bao nhiêu thì giữ NGUYÊN đến cuối truyện. Không được nhảy từ 300 triệu lên 50 triệu USD mà không giải thích. Mỗi khi xuất hiện số mới → phải có phép tính cộng dồn rõ ràng.
+
+29. ALLY LIMITATION: Mỗi lần đồng minh cung cấp thông tin, phải trả lời 3 câu: (a) Họ biết từ đâu? (b) Tại sao họ dám giúp? (c) Có rủi ro gì cho họ? Nếu đồng minh "gọi là có, hỏi là biết" = vi phạm P1.
+
+30. POLICE FORESHADOW: Cảnh sát/cơ quan chức năng KHÔNG ĐƯỢC xuất hiện bắt người nếu trước đó không có ít nhất 1 cảnh main nộp đơn tố cáo, gọi điện báo, hoặc nhờ luật sư liên hệ. Cảnh sát "bước vào đúng lúc" = vi phạm P0.
 
 CỤM TỪ CẤM (BANNED PHRASES — TUYỆT ĐỐI KHÔNG DÙNG):
 "Cuộc chơi vừa mới bắt đầu"
@@ -80,46 +105,72 @@ CỤM TỪ CẤM (BANNED PHRASES — TUYỆT ĐỐI KHÔNG DÙNG):
 "Cơn bão thực sự vẫn chưa đến"
 "Giờ mới là lúc bắt đầu"
 "Cô nhắm mắt, hít thở, khi mở mắt mọi thứ bình thản"
+"Mày không biết mày vừa động vào ai đâu"
+"Tao sẽ cho mày thấy thế nào là sập tiệm"
+"Ít nhất tao đang đi đúng hướng"
+"Tôi siết chặt điện thoại" (cấm lặp quá 1 lần toàn truyện)
+"Mặt hắn tái đi" / "trắng bệch" / "biến sắc" (cấm lặp quá 2 lần toàn truyện)
+"Giọng hắn khàn đặc" (cấm lặp quá 1 lần toàn truyện)
 
-OUTPUT BẮT BUỘC SAU MỖI CHƯƠNG:
+OUTPUT:
+Tuân thủ đúng format output do CHAPTER WRITER PROMPT quy định.
+Không tự thêm format thứ hai, không lặp tiêu đề, không in Self-Check, Change Log, Audit Report hoặc Patch Plan trong nội dung truyện.
+`;
 
-Chương {{chapter_number}}: {{chapter_title}}
+// Backward-compatible alias for older imports. New code should choose either
+// STATEFUL_WRITER_RULES or LEGACY_EPISODE_WRITER_RULES explicitly.
+export const WRITER_RULES_LITE = STATEFUL_WRITER_RULES;
 
-[TEASER SEO]: <30–40 chữ tiếng Việt, có xung đột/nguy cơ/bí mật, không spoil toàn chương>
+// ── LAYER 1B: LEGACY_EPISODE_WRITER_RULES ───────────────────────────────────
+// Dùng cho các writer cũ trong engine.ts, nơi app KHÔNG parse STATE UPDATE JSON.
+export const LEGACY_EPISODE_WRITER_RULES = `
+LEGACY_EPISODE_WRITER_RULES — DÙNG CHO EPISODE WRITER KHÔNG CÓ STORY STATE
 
-<Nội dung chương>
+BẮT BUỘC viết truyện bằng tiếng Việt tự nhiên, đúng xưng hô và văn phong truyện mạng Việt Nam.
 
-SELF-CHECK:
-- Story state changed:
-- Name/number drift:
-- Instant backup:
-- Deus ex rescue:
-- Villain intelligence:
-- Too easy victory:
-- Cliffhanger:
-- Banned phrase:
-- [NEW] Villain bí ẩn vừa nhắc có gây tổn thất trong vòng 2 chương sau không? (N/A nếu không có):
-- [NEW] Nếu chương này lộ thân phận (tầng 4), chương tiếp theo đã được lên kế hoạch counterattack chưa?:
-- [NEW] Cảnh sát/chức năng trong chương này có được foreshadow ở chương trước không?:
-- [NEW] Chương này có setup giống chương ngay trước (nhận thư/phong bì + nói sẽ đi) không?:
-- [P1-16] Villain phụ rời plot trong chương này có đòn phản công cuối hoặc lời thách thức có trọng lượng không?:
-- [P1-17] Bằng chứng vùng xám được công khai có bị challenge tính hợp pháp trong chương này hoặc chương tiếp không?:
-- [P1-18] Nhân vật phụ xuất hiện trong chương này có khớp trạng thái với currentState.fixedFacts.characterRoles không?:
+FORMAT:
+- Tuân thủ format cụ thể trong user prompt của mode hiện tại.
+- Nếu user prompt yêu cầu dòng đầu là [TEASER SEO], dòng đầu phải là: [TEASER SEO]: ...
+- Nếu user prompt yêu cầu tiêu đề Chương N, chỉ khi đó mới viết tiêu đề. Không tự thêm tiêu đề khi không được yêu cầu.
+- KHÔNG xuất STATE UPDATE JSON. KHÔNG in Self-Check, Change Log, Audit Report, Patch Plan, PRE-WRITE DECLARATION hoặc lời giải thích trước/sau truyện.
 
-STATE UPDATE JSON:
-{
-  "mainKnowsNew": [],
-  "mainHasNew": [],
-  "mainLostNew": [],
-  "villainKnowsNew": [],
-  "validEvidence": [],
-  "lostEvidence": [],
-  "activeAllies": [],
-  "disabledAllies": [],
-  "openThreads": [],
-  "resolvedThreads": [],
-  "foreshadowingPlanted": []
-}
+QUY TẮC VIẾT CHƯƠNG:
+1. Mở chương bằng xung đột, áp lực, hành động hoặc câu thoại căng trong 1-3 câu đầu. Không mở bằng phong cảnh dài.
+2. Đoạn văn ngắn, dễ đọc trên điện thoại. Mỗi đoạn tối đa 1-3 câu.
+3. Thoại phải sắc, ngắn, đúng vai vị và đúng xưng hô Việt Nam.
+4. Không đổi tên nhân vật, họ tên, biệt danh, số liệu, mốc thời gian hoặc quan hệ nhân vật đã có trong hồ sơ.
+5. Không dùng backup thần kỳ, hacker/phép màu công nghệ, bằng chứng tự rơi vào tay main, hoặc đồng minh giải quyết hộ main.
+6. Main không được toàn năng. Mỗi chương phải có rủi ro, mất mát, thông tin mới, quan hệ đổi trạng thái, hoặc nguy hiểm mới.
+7. Phản diện phải thông minh, có phản công, có chiêu mới. Không để phản diện tự thú ngu ngốc hoặc mắc lỗi quá dễ.
+8. Nếu có công an, luật sư, truyền thông hoặc cơ quan chức năng, phải có bước chuẩn bị/điều kiện hợp lý trước đó.
+9. Kết chương bằng câu hỏi cụ thể, đe dọa cụ thể, cú lật cụ thể hoặc chi tiết làm đổi cách hiểu của người đọc. Trừ chương cuối, không kết bằng yên bình.
+10. Không dùng văn mẫu cảm xúc sáo rỗng. Tả bằng hành động, vật thể, âm thanh, cử chỉ, lựa chọn.
+
+CỤM TỪ CẤM (BANNED PHRASES — TUYỆT ĐỐI KHÔNG DÙNG):
+"Cuộc chơi vừa mới bắt đầu"
+"Trận chiến vừa mới bắt đầu"
+"Câu chuyện mới chỉ bắt đầu"
+"Cơn bão mới chỉ bắt đầu"
+"Cơn bão sắp nổi lên"
+"Mày chưa thấy gì đâu"
+"Nụ cười lạnh nở trên môi"
+"Mặt cắt không còn giọt máu"
+"Trái tim đập thình thịch"
+"Cơn lạnh chạy dọc sống lưng"
+"Máu như ngừng chảy"
+"Mày tưởng mày thông minh lắm hả?"
+"Mày sẽ không làm gì được tao đâu"
+"Đây mới là khởi đầu"
+"Đây mới là kết thúc thật sự"
+"Cơn bão thực sự vẫn chưa đến"
+"Giờ mới là lúc bắt đầu"
+"Cô nhắm mắt, hít thở, khi mở mắt mọi thứ bình thản"
+"Mày không biết mày vừa động vào ai đâu"
+"Tao sẽ cho mày thấy thế nào là sập tiệm"
+"Ít nhất tao đang đi đúng hướng"
+"Tôi siết chặt điện thoại" (cấm lặp quá 1 lần toàn truyện)
+"Mặt hắn tái đi" / "trắng bệch" / "biến sắc" (cấm lặp quá 2 lần toàn truyện)
+"Giọng hắn khàn đặc" (cấm lặp quá 1 lần toàn truyện)
 `;
 
 // ── LAYER 2: CHECKER_RULES_FULL ───────────────────────────────────────────────
@@ -175,6 +226,16 @@ P0 — LỖI NGHIÊM TRỌNG, PHẢI SỬA NGAY:
 18. POLICE/CẢNH SÁT DEX — Cảnh sát, viện kiểm sát, lực lượng chức năng xuất hiện trong chương để bắt phản diện MÀ KHÔNG có ít nhất 1 câu foreshadow ở chương trước (main nộp đơn / gọi điện / nhờ người liên hệ / nhắn tin). Cấm để cảnh sát "bước vào đúng lúc" không có chuẩn bị.
 
 19. CHAPTER CONTENT DUPLICATION — Hai chương liên tiếp hoặc 2 chương bất kỳ có cùng: (a) setup nhận phong bì/thư mời + (b) nhân vật đứng lên nói sẽ điều tra. Nếu chương N đã có cảnh nhận hook arc mới, chương N+1 PHẢI bắt đầu từ bối cảnh đó đã tiến triển, không được reset về cùng điểm xuất phát.
+
+20. NUMBER INFLATION — Số tiền tham nhũng, tài sản, thiệt hại không được phép tăng gấp đôi trở lên giữa các chương mà không có giải thích rõ. Ví dụ: nếu villain A bị xác nhận tham nhũng 300 triệu (Ch.1-3), tổng phong tỏa cuối arc không được vượt quá 3× số đó (900M) TRỪ KHI story bible giải thích rõ nguồn gốc phần dôi ra (nhiều chi nhánh khác, công ty vỏ bọc, arc 2 mở rộng). Tài khoản offshore của ARC 2 villain PHẢI được phân biệt rõ với tài khoản của villain arc 1.
+
+21. UNFORESHADOWED EVIDENCE — Mọi bằng chứng quyết định plot (ghi âm, video, sổ tay, backup data) xuất hiện lần đầu trong một chương hội trường / đối chất / tòa án PHẢI có ít nhất 1 dòng foreshadow ở chương trước đó (main đặt thiết bị, main giao nhiệm vụ, đồng minh đề cập đã lưu). Thiếu foreshadow = P0. Checker phải tra lại currentState.foreshadowingPlanted[] để kiểm tra.
+
+22. REPETITIVE CHAPTER PATTERN — Nếu 3+ chương có cùng cấu trúc: (a) main đến chi nhánh/gặp phản diện + (b) phát hiện bằng chứng mới + (c) gọi đồng minh IT nhận thông tin + (d) nhận tin nhắn số lạ + (e) kết bằng câu đe dọa → P0 CHAPTER DUPLICATION. Mỗi chương PHẢI có cấu trúc riêng biệt.
+
+23. ALLY SOURCE VALIDATION — Mỗi khi đồng minh cung cấp thông tin/bằng chứng, Checker phải kiểm tra: (a) Đồng minh biết thông tin đó từ nguồn nào? (b) Nguồn đó có nằm trong phạm vi quyền hạn/kiến thức của đồng minh không? (c) Đồng minh có phải trả giá gì không? Nếu thiếu bất kỳ câu trả lời nào → P1. Nếu đồng minh truy cập hệ thống ngoài quyền hạn (email riêng, ngân hàng cá nhân, offshore) → P0.
+
+24. NUMBER INFLATION FORMULA — Checker PHẢI so sánh tổng số tiền đề cập ở chương hiện tại với chương 1-3. Nếu tổng tăng >3x mà không có giải thích cộng dồn (nhiều chi nhánh, thêm đối tác, arc mới) → P0 NUMBER INFLATION. Tài khoản offshore CHỈ được nhắc nếu Story Bible đã định nghĩa villain arc 2 có quy mô quốc tế.
 
 P1 — LỖI LỚN, NÊN SỬA:
 
@@ -247,62 +308,10 @@ QUY TẮC CHECK CHƯƠNG:
 - So với pacing: có đủ ACTION / BUILD / COLLAPSE không?
 - So với final trajectory: chương có đẩy truyện về trùm cuối không?
 
-OUTPUT BẮT BUỘC:
-
-# IRON RULES AUDIT — CHAPTER {{chapter_number}}
-
-## Overall Score
-/10
-
-## P0 Critical Errors
-- Lỗi:
-- Vị trí:
-- Vì sao sai:
-- Cách sửa:
-
-## P1 Major Issues
-- Vấn đề:
-- Vị trí:
-- Tác động:
-- Cách sửa:
-
-## P2 Style Issues
-- Vấn đề:
-- Gợi ý polish:
-
-## Name & Data Consistency Check
-| Item | Bible Value | Chapter Value | Pass/Fail |
-|---|---|---|---|
-
-## Logic Check
-- Main có biết quá nhiều không?
-- Phản diện có biết quá nhiều không?
-- Bằng chứng có quá tiện không?
-- Có hậu quả cho hành động nguy hiểm không?
-- Có vấn đề pháp lý/chuyên môn không?
-- [P0-16] Villain bí ẩn được nhắc ở chương này có kế hoạch gây tổn thất trong 2 chương tới không?
-- [P0-17] Nếu là IDENTITY_REVEAL và N/T < 0.6, chương N+1 có được plan là VILLAIN_WINS/ROCK_BOTTOM không?
-- [P0-18] Cảnh sát xuất hiện bắt người có được foreshadow ở chương trước không?
-- [P0-19] Chương này có lặp setup (nhận hook + tuyên bố điều tra) y chang chương trước không?
-
-## Pacing Check
-- Expected chapter type:
-- Actual chapter type:
-- Có quá nhiều ACTION liên tiếp không?
-- Có cần BUILD/COLLAPSE hơn không?
-
-## Cliffhanger Check
-- Current ending:
-- Strong/weak:
-- Better ending if needed:
-
-## Required Patch List
-- Patch 1:
-  - Thay/sửa:
-  - Lý do:
-
-## Final Verdict
-PASS / PASS_WITH_PATCHES / REWRITE_REQUIRED
+OUTPUT:
+- Nếu caller đưa OUTPUT JSON CONTRACT, PHẢI ưu tiên JSON contract đó tuyệt đối.
+- Nếu không có contract riêng, có thể trả báo cáo markdown với các phần: Overall Score, P0 Critical Errors, P1 Major Issues, P2 Style Issues, Name & Data Consistency Check, Logic Check, Pacing Check, Cliffhanger Check, Required Patch List, Final Verdict.
+- Final Verdict chỉ được là PASS, PASS_WITH_PATCHES hoặc REWRITE_REQUIRED.
 `;
 
 // ── LAYER 3: FINAL_AUDIT_RULES ────────────────────────────────────────────────

@@ -613,7 +613,7 @@
                                 <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
                                 <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
                             </div>
-                            <span style="background:rgba(79, 70, 229, 0.1); color:#d97706; border:1px solid rgba(79, 70, 229, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Chương mới</span>
+                            <span style="background:rgba(79, 70, 229, 0.1); color:#92400e; border:1px solid rgba(79, 70, 229, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Chương mới</span>
                         </div>
                     </div>
                 </a>
@@ -757,7 +757,7 @@
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
                             <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #fcd34d, #d97706); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(217,119,6,0.3); border:1.5px solid #fff; z-index:2;">1</div>
                         </div>
-                        <img src="<?php echo esc_url($rthumb); ?>" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
@@ -775,7 +775,7 @@
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
                             <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #e5e7eb, #6b7280); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(107,114,128,0.3); border:1.5px solid #fff; z-index:2;">2</div>
                         </div>
-                        <img src="<?php echo esc_url($rthumb); ?>" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
@@ -793,7 +793,7 @@
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
                             <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #fdba74, #c2410c); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(194,65,12,0.3); border:1.5px solid #fff; z-index:2;">3</div>
                         </div>
-                        <img src="<?php echo esc_url($rthumb); ?>" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
@@ -807,7 +807,7 @@
                     <!-- Tốp 4 - 10 -->
                     <a href="<?php the_permalink(); ?>" class="mkm-bxh-item" style="padding:6px 0;">
                         <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $ri; ?></div>
-                        <img src="<?php echo esc_url($rthumb); ?>" style="width:32px; height:42px; border-radius:4px; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="32" height="42" style="width:32px; height:42px; border-radius:4px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; margin-bottom:8px;"><?php the_title(); ?></div>
                             <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
@@ -854,8 +854,10 @@
                     foreach ($teams as $team):
                         $t_views = number_format($team['views'], 0, ',', '.');
                         $t_percent = round(($team['views'] / $team_max) * 100);
-                        // Mock avatar fallback if not exist
-                        $t_avatar = 'https://ui-avatars.com/api/?name='.urlencode($team['name']).'&background=random&color=fff';
+                        $avatar_path = str_replace(get_template_directory_uri(), get_template_directory(), $team['avatar']);
+                        $t_avatar = file_exists($avatar_path)
+                            ? $team['avatar']
+                            : 'https://ui-avatars.com/api/?name='.urlencode($team['name']).'&background=random&color=fff';
                     ?>
                     
                     <?php if($tri === 1): ?>
@@ -866,7 +868,7 @@
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
                             <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #fcd34d, #d97706); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(217,119,6,0.3); border:1.5px solid #fff; z-index:2;">1</div>
                         </div>
-                        <img src="<?php echo esc_url($t_avatar); ?>" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
@@ -884,7 +886,7 @@
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
                             <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #e5e7eb, #6b7280); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(107,114,128,0.3); border:1.5px solid #fff; z-index:2;">2</div>
                         </div>
-                        <img src="<?php echo esc_url($t_avatar); ?>" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
@@ -902,7 +904,7 @@
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
                             <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #fdba74, #c2410c); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(194,65,12,0.3); border:1.5px solid #fff; z-index:2;">3</div>
                         </div>
-                        <img src="<?php echo esc_url($t_avatar); ?>" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
                             <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
@@ -916,7 +918,7 @@
                     <!-- Team Top 4 - 8 -->
                     <a href="<?php echo esc_url(home_url('/nhom-dich/')); ?>" class="mkm-bxh-item" style="padding:6px 0;">
                         <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $tri; ?></div>
-                        <img src="<?php echo esc_url($t_avatar); ?>" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="32" height="32" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; margin-bottom:8px;"><?php echo esc_html($team['name']); ?></div>
                             <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">

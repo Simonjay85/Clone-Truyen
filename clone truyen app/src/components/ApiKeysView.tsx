@@ -8,7 +8,7 @@ import { Key } from 'lucide-react';
 export function ApiKeysView() {
   const {
     geminiKey, geminiKey2, geminiPaidKey, usePaidAPI, isFreeApiExhausted, 
-    openAIKey, grokKey, claudeKey, qwenKey, deepseekKey,
+    openAIKey, grokKey, claudeKey, qwenKey, deepseekKey, openRouterKey,
     setSettings 
   } = useStore();
 
@@ -208,9 +208,53 @@ export function ApiKeysView() {
     }
   };
 
+  const testOpenRouter = async () => {
+    if (!openRouterKey) return alert(`Chưa nhập OpenRouter Key!`);
+    setTestResults(r => ({ ...r, openrouter: '⏳ Đang kiểm tra OpenRouter...' }));
+    try {
+      const res = await fetch('/api/openrouter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          apiKey: openRouterKey,
+          systemPrompt: 'Be concise.',
+          userPrompt: 'Say OK',
+          model: 'liquid/lfm-40b:free'
+        })
+      });
+      const data = await res.json();
+      if (res.ok && data.text) {
+        setTestResults(r => ({ ...r, openrouter: '✅ HOẠT ĐỘNG (Valid Key)' }));
+      } else {
+        let errorMsg = '';
+        if (data.error && data.error.error && typeof data.error.error.message === 'string') {
+           errorMsg = data.error.error.message;
+        } else if (data.error && typeof data.error.message === 'string') {
+           errorMsg = data.error.message;
+        } else if (typeof data.error === 'string') {
+           errorMsg = data.error;
+        } else {
+           errorMsg = JSON.stringify(data);
+        }
+        
+        if (errorMsg.includes('balance') || errorMsg.includes('insufficient') || errorMsg.includes('payment') || errorMsg.includes('credits')) {
+           setTestResults(r => ({ ...r, openrouter: '❌ Lỗi: Cạn tiền (Hết quota)' }));
+        } else {
+           setTestResults(r => ({ ...r, openrouter: `❌ Lỗi: ${errorMsg.substring(0, 70)}` }));
+        }
+      }
+    } catch {
+      setTestResults(r => ({ ...r, openrouter: `❌ Mất kết nối API` }));
+    }
+  };
+
   const { apiLogs = [], clearApiLogs } = useStore();
   const totalCost = apiLogs.reduce((acc, log) => acc + (log.cost || 0), 0);
   const totalTokens = apiLogs.reduce((acc, log) => acc + (log.totalTokens || 0), 0);
+  const deepSeekCacheHitTokens = apiLogs.reduce((acc, log) => acc + ((log as any).promptCacheHitTokens || 0), 0);
+  const deepSeekCacheMissTokens = apiLogs.reduce((acc, log) => acc + ((log as any).promptCacheMissTokens || 0), 0);
+  const deepSeekCacheTotal = deepSeekCacheHitTokens + deepSeekCacheMissTokens;
+  const deepSeekCacheRate = deepSeekCacheTotal > 0 ? deepSeekCacheHitTokens / deepSeekCacheTotal : 0;
   
   const modelStats = apiLogs.reduce((acc: unknown, log) => {
       (acc as any)[log.model] = ((acc as any)[log.model] || 0) + log.cost;
@@ -255,6 +299,20 @@ export function ApiKeysView() {
                     <div className="text-4xl font-black text-amber-400 truncate">{topModel}</div>
                  </div>
               </div>
+              {deepSeekCacheTotal > 0 && (
+                <div className="bg-slate-900 border border-cyan-500/20 rounded-2xl p-5 shadow-xl">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                    <div>
+                      <h4 className="text-cyan-300 text-sm font-bold uppercase tracking-wider">DeepSeek Context Cache</h4>
+                      <p className="text-slate-400 text-xs mt-1">Cache Hit / Miss tokens từ usage API DeepSeek.</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-3xl font-black text-cyan-300">{(deepSeekCacheRate * 100).toFixed(1)}%</div>
+                      <div className="text-xs text-slate-500 font-mono">{deepSeekCacheHitTokens.toLocaleString()} hit / {deepSeekCacheMissTokens.toLocaleString()} miss</div>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden flex flex-col">
                  <div className="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-950">
@@ -268,17 +326,23 @@ export function ApiKeysView() {
                              <th className="px-4 py-3 font-medium">Thời Gian</th>
                              <th className="px-4 py-3 font-medium">Model</th>
                              <th className="px-4 py-3 font-medium text-right">Tokens (In/Out)</th>
+                             <th className="px-4 py-3 font-medium text-right">Cache</th>
                              <th className="px-4 py-3 font-medium text-right">Chi Phí</th>
                           </tr>
                        </thead>
                        <tbody className="divide-y divide-slate-800 flex-1">
                           {apiLogs.length === 0 ? (
-                            <tr><td colSpan={4} className="px-4 py-8 text-center text-slate-500">Chưa có giao dịch API nào.</td></tr>
+                            <tr><td colSpan={5} className="px-4 py-8 text-center text-slate-500">Chưa có giao dịch API nào.</td></tr>
                           ) : apiLogs.map((l: unknown) => (
                              <tr key={(l as any).id} className="hover:bg-slate-800/50 transition-colors">
                                 <td className="px-4 py-3 font-mono text-xs">{new Date((l as any).timestamp).toLocaleTimeString()}</td>
                                 <td className="px-4 py-3 font-bold text-rose-300">{(l as any).model}</td>
                                 <td className="px-4 py-3 text-right font-mono text-xs text-slate-400">{(l as any).promptTokens} / {(l as any).completionTokens} <span className="text-white bg-slate-800 px-1 rounded">{(l as any).totalTokens}</span></td>
+                                <td className="px-4 py-3 text-right font-mono text-xs text-cyan-300">
+                                  {((l as any).promptCacheHitTokens || (l as any).promptCacheMissTokens)
+                                    ? `${Math.round(((l as any).cacheHitRate || 0) * 100)}%`
+                                    : '-'}
+                                </td>
                                 <td className="px-4 py-3 text-right font-bold text-emerald-400">${((l as any).cost || 0).toFixed(6)}</td>
                              </tr>
                           ))}
@@ -504,6 +568,33 @@ export function ApiKeysView() {
                 </div>
               </div>
 
+              {/* OPENROUTER ENGINE CARD */}
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-lime-500/10 blur-[60px] rounded-full pointer-events-none"></div>
+
+                <div className="flex justify-between items-center mb-6 border-b border-slate-800 pb-4 relative z-10">
+                  <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                    <span className="text-lime-400">🪐</span>
+                    Đa Vũ Trụ LLM (OpenRouter)
+                  </h3>
+                  <div className="bg-slate-950 px-3 py-1 rounded-lg border border-slate-800 text-xs font-bold text-lime-500">PAY-AS-YOU-GO</div>
+                </div>
+
+                <div className="p-4 rounded-xl border bg-lime-900/10 border-lime-500/30 relative z-10 transition-all focus-within:border-lime-500/50">
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="text-sm font-bold text-lime-400">OpenRouter API Key</label>
+                    <button onClick={testOpenRouter} className="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded-lg text-slate-300 transition-all">🧪 Kiểm tra</button>
+                  </div>
+                  <input 
+                    type="password"
+                    value={openRouterKey}
+                    onChange={(e) => setSettings({ openRouterKey: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-lime-500 font-mono text-sm shadow-inner"
+                  />
+                  {testResults['openrouter'] && <p className={`text-xs mt-2 font-bold ${testResults['openrouter'].includes('✅') ? 'text-lime-400' : 'text-red-400'}`}>{testResults['openrouter']}</p>}
+                </div>
+              </div>
+
               {/* ── EXPORT / IMPORT KEYS ── */}
               <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 shadow-xl">
                 <h3 className="text-lg font-semibold text-white mb-1 flex items-center gap-2">
@@ -514,7 +605,7 @@ export function ApiKeysView() {
                   {/* Export */}
                   <button
                     onClick={() => {
-                      const payload = { geminiKey, geminiKey2, geminiPaidKey, openAIKey, grokKey, claudeKey, qwenKey, deepseekKey, exportedAt: new Date().toISOString() };
+                      const payload = { geminiKey, geminiKey2, geminiPaidKey, openAIKey, grokKey, claudeKey, qwenKey, deepseekKey, openRouterKey, exportedAt: new Date().toISOString() };
                       const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
                       const blob = new Blob([encoded], { type: 'text/plain' });
                       const url = URL.createObjectURL(blob);
@@ -553,6 +644,7 @@ export function ApiKeysView() {
                             if (keys.claudeKey)     toSet.claudeKey     = keys.claudeKey;
                             if (keys.qwenKey)       toSet.qwenKey       = keys.qwenKey;
                             if (keys.deepseekKey)   toSet.deepseekKey   = keys.deepseekKey;
+                            if (keys.openRouterKey) toSet.openRouterKey = keys.openRouterKey;
                             setSettings(toSet);
                             alert(`✅ Import thành công! Đã khôi phục ${Object.keys(toSet).length} keys.\nBackup từ: ${keys.exportedAt || 'không rõ'}`);
                           } catch {

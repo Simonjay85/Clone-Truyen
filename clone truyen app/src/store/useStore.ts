@@ -25,6 +25,7 @@ function writeLocalKeys(state: Record<string, unknown>) {
     claudeKey: state.claudeKey || '',
     qwenKey: state.qwenKey || '',
     deepseekKey: state.deepseekKey || '',
+    openRouterKey: state.openRouterKey || '',
     usePaidAPI: state.usePaidAPI !== undefined ? state.usePaidAPI : false,
     wpUrl: state.wpUrl || 'https://doctieuthuyet.com',
     wpUser: state.wpUser || '',
@@ -69,6 +70,9 @@ export interface ApiLog {
   promptTokens: number;
   completionTokens: number;
   totalTokens: number;
+  promptCacheHitTokens?: number;
+  promptCacheMissTokens?: number;
+  cacheHitRate?: number;
   cost: number;
   timestamp: number;
 }
@@ -117,6 +121,7 @@ interface AppState {
   claudeKey: string;   // API Key cho Anthropic (Claude)
   qwenKey: string;     // API Key cho Alibaba (Qwen)
   deepseekKey: string; // API Key cho DeepSeek
+  openRouterKey: string; // API Key cho OpenRouter
   usePaidAPI: boolean;
   isFreeApiExhausted: boolean;
   wpUrl: string;
@@ -154,6 +159,7 @@ export const useStore = create<AppState>()((set, get) => ({
   claudeKey:     savedKeys.claudeKey     || '',
   qwenKey:       savedKeys.qwenKey       || '',
   deepseekKey:   savedKeys.deepseekKey   || '',
+  openRouterKey: savedKeys.openRouterKey || '',
   usePaidAPI:    savedKeys.usePaidAPI    || false,
   isFreeApiExhausted: false,
   wpUrl:         savedKeys.wpUrl         || 'https://doctieuthuyet.com',
@@ -246,5 +252,4 @@ export const useStore = create<AppState>()((set, get) => ({
 }));
 
 // trigger update
-
 

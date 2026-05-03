@@ -22,15 +22,38 @@ async function callBypass(cleanUrl: string, method: string, endpoint: string, pa
 
   const res = await fetch(fetchUrl, options);
   
+  // Read body as text first to detect HTML error pages (PHP fatal, WP redirect, security blocks)
+  const rawText = await res.text();
+
   if (!res.ok) {
-    let errorText = await res.text();
+    let errorText = rawText;
     // Bắt trường hợp file PHP chưa được upload (trả về 404 HTML)
     if (res.status === 404 && errorText.includes('<html')) {
         errorText = "CHƯA UPLOAD FILE api_truyen_bypass.php lên host! Vui lòng upload file này lên thư mục gốc website.";
+    } else if (errorText.includes('<!DOCTYPE') || errorText.includes('<html')) {
+        // PHP error or WP page returned instead of JSON
+        const phpError = errorText.match(/Fatal error:([^<]+)/i)?.[1]?.trim()
+            || errorText.match(/Warning:([^<]+)/i)?.[1]?.trim()
+            || `Server trả về HTML (${res.status}). Kiểm tra PHP errors trên host.`;
+        errorText = `WP Bypass lỗi: ${phpError}`;
     }
     throw new Error(`Bypass API Error ${res.status}: ${errorText}`);
   }
-  return res.json();
+
+  // Even on 200 OK, bypass PHP might return HTML on errors (e.g., WP redirect, security plugin)
+  if (rawText.trimStart().startsWith('<') || rawText.includes('<!DOCTYPE')) {
+    const phpError = rawText.match(/Fatal error:([^<]+)/i)?.[1]?.trim()
+        || rawText.match(/Warning:([^<]+)/i)?.[1]?.trim()
+        || rawText.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim()
+        || 'PHP/WordPress trả về HTML thay vì JSON';
+    throw new Error(`WP Bypass (200 nhưng HTML): ${phpError}. Kiểm tra: secret_token, PHP errors, WP redirect rules.`);
+  }
+
+  try {
+    return JSON.parse(rawText);
+  } catch {
+    throw new Error(`WP Bypass JSON parse lỗi. Raw: ${rawText.substring(0, 200)}`);
+  }
 }
 
 export async function POST(req: NextRequest) {
