@@ -471,7 +471,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     
     setIsGeneratingBible(true);
     try {
-      const result = await agentGenerateBible('openrouter', openRouterKey, 'liquid/lfm-40b:free', selectedGenres, prompt, targetChapters);
+      const result = await agentGenerateBible('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', selectedGenres, prompt, targetChapters);
       // Store raw text; if it's valid JSON we pretty-print, otherwise keep as-is
       if (result.data && !result.data.raw) {
         setStoryBible(JSON.stringify(result.data, null, 2));
@@ -498,9 +498,16 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     
     setIsGeneratingMap(true);
     try {
-      const bibleObj = JSON.parse(storyBible);
+      let bibleObj;
+      try {
+        bibleObj = JSON.parse(storyBible);
+      } catch (e) {
+        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
+        try { bibleObj = JSON.parse(cleaned); } 
+        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+      }
       const chapCount = autoChapters ? (bibleObj.recommended_chapters || targetChapters) : targetChapters;
-      const result = await agentGenerateChapterMap('openrouter', openRouterKey, 'liquid/lfm-40b:free', bibleObj, chapCount);
+      const result = await agentGenerateChapterMap('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', bibleObj, chapCount);
       const map = Array.isArray(result.data) ? result.data : (result.data?.chapters || []);
       setChapterMap(map);
       setChapters([]); // Xóa các chương đã viết cũ khi tạo Map mới để tránh lỗi trộn truyện
@@ -524,8 +531,15 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     const prevContext = prevChapter ? prevChapter.content.slice(-500) : '';
     setIsWritingChapter(true);
     try {
-      const bibleObj = JSON.parse(storyBible);
-      const result = await agentWriteChapter('openrouter', openRouterKey, 'meta-llama/llama-3.1-8b-instruct:free', bibleObj, beat, prevContext, riskLevel, currentState, chapterMap.length);
+      let bibleObj;
+      try {
+        bibleObj = JSON.parse(storyBible);
+      } catch (e) {
+        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
+        try { bibleObj = JSON.parse(cleaned); } 
+        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+      }
+      const result = await agentWriteChapter('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', bibleObj, beat, prevContext, riskLevel, currentState, chapterMap.length);
       const rawText = result.text || '';
       const cleanText = stripMetaBlocks(rawText);
       const newChapters = [...chapters];
@@ -557,7 +571,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     if (!currentAudit?.patch_notes) return showToast("Chưa có Patch Notes. Chạy Iron Check trước!", 'error');
     setIsPatching(true);
     try {
-      const result = await agentRewriteChapter('openrouter', openRouterKey, 'meta-llama/llama-3.1-8b-instruct:free', currentChapter.content, currentAudit.patch_notes, storyBible, currentState);
+      const result = await agentRewriteChapter('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', currentChapter.content, currentAudit.patch_notes, storyBible, currentState);
       const newChapters = [...chapters];
       newChapters[selectedChapterIdx] = { ...newChapters[selectedChapterIdx], content: stripMetaBlocks(result.text), usedModel: result.usedModel };
       setChapters(newChapters);
@@ -639,7 +653,14 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     let title = 'story-project';
     
     try {
-      const bibleObj = JSON.parse(storyBible);
+      let bibleObj;
+      try {
+        bibleObj = JSON.parse(storyBible);
+      } catch (e) {
+        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
+        try { bibleObj = JSON.parse(cleaned); } 
+        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+      }
       title = bibleObj.title || title;
     } catch { }
 
@@ -729,7 +750,13 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     let localCurrentState = currentState;
     const localChapters = [...chapters];
     const localAuditReports = { ...auditReports };
-    const bibleObj = JSON.parse(storyBible);
+    let bibleObj;
+    try {
+      bibleObj = JSON.parse(storyBible);
+    } catch (e) {
+      const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
+      try { bibleObj = JSON.parse(cleaned); } catch (e2) { bibleObj = { series_premise: storyBible }; }
+    }
 
     // FIX: Seed characterMap from Bible BEFORE Ch.1 to prevent name drift.
     // The CHARACTER NAME MAP must exist from the very first chapter.
@@ -780,7 +807,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
         const prevContext = localChapters[idx - 1] ? localChapters[idx - 1].content.slice(-500) : '';
         
         // 1. Write
-        const writeModel = riskLevel === 'high' ? 'liquid/lfm-40b:free' : 'meta-llama/llama-3.1-8b-instruct:free';
+        const writeModel = riskLevel === 'high' ? 'qwen/qwen3-next-80b-a3b-instruct:free' : 'qwen/qwen3-next-80b-a3b-instruct:free';
         const writeRes = await agentWriteChapter('openrouter', openRouterKey, writeModel, bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length);
         
         if (!writeRes.text || writeRes.text.trim().length === 0) {
@@ -856,8 +883,8 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
           return matchCount >= 3;
         };
         if (isAuditOutput(writeRes.text)) {
-          addLog(`⚠️ Ch.${i}: AI nhầm output Audit Report thay vì truyện! Đang retry với meta-llama/llama-3.1-8b-instruct:free...`, 'warning');
-          const retryRes = await agentWriteChapter('openrouter', openRouterKey, 'meta-llama/llama-3.1-8b-instruct:free', bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length);
+          addLog(`⚠️ Ch.${i}: AI nhầm output Audit Report thay vì truyện! Đang retry với tencent/hy3-preview:free...`, 'warning');
+          const retryRes = await agentWriteChapter('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length);
           if (retryRes.text && retryRes.text.trim().length > 0 && !isAuditOutput(retryRes.text)) {
             stateSourceText = retryRes.text;
             writeRes.text = sanitizeChapterOutput(retryRes.text);
@@ -1184,7 +1211,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
             chapter_number: i,
             extra_rules: (useFullIronRulesInChecker && customIronRules.trim()) ? customIronRules.trim() : '',
           };
-          const auditRes = await agentIronRulesV2('openrouter', openRouterKey, 'liquid/lfm-40b:free', checkerParams);
+          const auditRes = await agentIronRulesV2('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', checkerParams);
           // Parse audit result — handle both JSON and Markdown output from checker
           const auditParsed = (() => {
             try { return JSON.parse(auditRes.text); } catch {
@@ -1211,7 +1238,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
             // Auto-patch instead of hard-stopping
             try {
               const patchNotes = auditParsed.patch_notes || auditParsed.raw_text || `Score ${auditScore}/10 — cần cải thiện.`;
-              const emergencyPatch = await agentRewriteChapter('openrouter', openRouterKey, 'meta-llama/llama-3.1-8b-instruct:free', writeRes.text, patchNotes, storyBible, localCurrentState);
+              const emergencyPatch = await agentRewriteChapter('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', writeRes.text, patchNotes, storyBible, localCurrentState);
               if (emergencyPatch.text && emergencyPatch.text.trim().length > 100) {
                 writeRes.text = sanitizeChapterOutput(emergencyPatch.text);
                 localChapters[idx] = { chapter: beat.chapter, title: beat.title, content: writeRes.text, usedModel: `${writeRes.usedModel} + EmergencyPatch(${emergencyPatch.usedModel})` };
@@ -1232,7 +1259,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
           if (auditParsed.verdict === 'PASS_WITH_PATCHES' && apMode === 'balanced') {
             addLog(`🔧 Đang Patch chương ${i} (V3)...`, 'info');
             await new Promise(r => setTimeout(r, 1500));
-            const patchRes = await agentRewriteChapter('openrouter', openRouterKey, 'meta-llama/llama-3.1-8b-instruct:free', finalChapterText, auditParsed.patch_notes || '', storyBible, localCurrentState);
+            const patchRes = await agentRewriteChapter('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', finalChapterText, auditParsed.patch_notes || '', storyBible, localCurrentState);
             if (!patchRes.text || patchRes.text.trim().length === 0) {
               addLog(`❌ Lỗi Patch rỗng ở chương ${i}, dừng AutoPilot.`, 'error');
               break;
@@ -1284,7 +1311,14 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     if (!storyBible?.trim()) return showToast("Hệ thống cần Story Bible gốc để đối chiếu!", 'success');
     setIsCheckingRules(true);
     try {
-      const bibleObj = JSON.parse(storyBible);
+      let bibleObj;
+      try {
+        bibleObj = JSON.parse(storyBible);
+      } catch (e) {
+        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
+        try { bibleObj = JSON.parse(cleaned); } 
+        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+      }
       // Build params — include custom Iron Rules only for checker, never for writer
       const checkerParams = {
         story_bible: JSON.stringify(bibleObj),
@@ -1295,7 +1329,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
         // Append custom rules to system prompt if toggle is ON
         extra_rules: (useFullIronRulesInChecker && customIronRules.trim()) ? customIronRules.trim() : '',
       };
-      const result = await agentIronRulesV2('openrouter', openRouterKey, 'liquid/lfm-40b:free', checkerParams);
+      const result = await agentIronRulesV2('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', checkerParams);
       setIronCheckResult(result.text ? (() => { try { return JSON.parse(result.text); } catch { return { verdict: 'UNKNOWN', score: 0, errors: [result.text], patch_notes: '' }; } })() : result.data);
       setLastUsedModel(result.usedModel);
     } catch (e: any) {
@@ -1327,7 +1361,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
         extra_rules: (useFullIronRulesInChecker && customIronRules.trim()) ? customIronRules.trim() : '',
       };
       
-      const result = await agentFinalAudit('openrouter', openRouterKey, 'liquid/lfm-40b:free', auditParams);
+      const result = await agentFinalAudit('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', auditParams);
       setFinalAuditReport(result.text);
       setLastUsedModel(result.usedModel);
       
@@ -1390,7 +1424,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
         const patchNotes = perChapAudit?.patch_notes
           || `Dựa trên Final Audit Report — các lỗi liên quan đến Chương ${chapNum}:\n\n${finalAuditReport.slice(0, 3000)}`;
 
-        const result = await agentRewriteChapter('openrouter', openRouterKey, 'meta-llama/llama-3.1-8b-instruct:free', chap.content, patchNotes, storyBible, currentState);
+        const result = await agentRewriteChapter('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', chap.content, patchNotes, storyBible, currentState);
         if (!result.text || result.text.trim().length < 100) {
           setAutoFixLog(prev => [...prev, { msg: `❌ Chương ${chapNum}: Kết quả rỗng, bỏ qua.`, type: 'error' }]);
           continue;

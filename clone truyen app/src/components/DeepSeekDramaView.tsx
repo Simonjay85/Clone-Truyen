@@ -498,7 +498,14 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     
     setIsGeneratingMap(true);
     try {
-      const bibleObj = JSON.parse(storyBible);
+      let bibleObj;
+      try {
+        bibleObj = JSON.parse(storyBible);
+      } catch (e) {
+        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
+        try { bibleObj = JSON.parse(cleaned); } 
+        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+      }
       const chapCount = autoChapters ? (bibleObj.recommended_chapters || targetChapters) : targetChapters;
       const result = await agentGenerateChapterMap('deepseek', deepseekKey, 'deepseek-reasoner', bibleObj, chapCount);
       const map = Array.isArray(result.data) ? result.data : (result.data?.chapters || []);
@@ -524,7 +531,14 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     const prevContext = prevChapter ? prevChapter.content.slice(-500) : '';
     setIsWritingChapter(true);
     try {
-      const bibleObj = JSON.parse(storyBible);
+      let bibleObj;
+      try {
+        bibleObj = JSON.parse(storyBible);
+      } catch (e) {
+        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
+        try { bibleObj = JSON.parse(cleaned); } 
+        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+      }
       const result = await agentWriteChapter('deepseek', deepseekKey, 'deepseek-chat', bibleObj, beat, prevContext, riskLevel, currentState, chapterMap.length);
       const rawText = result.text || '';
       const cleanText = stripMetaBlocks(rawText);
@@ -639,7 +653,14 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     let title = 'story-project';
     
     try {
-      const bibleObj = JSON.parse(storyBible);
+      let bibleObj;
+      try {
+        bibleObj = JSON.parse(storyBible);
+      } catch (e) {
+        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
+        try { bibleObj = JSON.parse(cleaned); } 
+        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+      }
       title = bibleObj.title || title;
     } catch { }
 
@@ -729,7 +750,13 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     let localCurrentState = currentState;
     const localChapters = [...chapters];
     const localAuditReports = { ...auditReports };
-    const bibleObj = JSON.parse(storyBible);
+    let bibleObj;
+    try {
+      bibleObj = JSON.parse(storyBible);
+    } catch (e) {
+      const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
+      try { bibleObj = JSON.parse(cleaned); } catch (e2) { bibleObj = { series_premise: storyBible }; }
+    }
 
     // FIX: Seed characterMap from Bible BEFORE Ch.1 to prevent name drift.
     // The CHARACTER NAME MAP must exist from the very first chapter.
@@ -1284,7 +1311,14 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     if (!storyBible?.trim()) return showToast("Hệ thống cần Story Bible gốc để đối chiếu!", 'success');
     setIsCheckingRules(true);
     try {
-      const bibleObj = JSON.parse(storyBible);
+      let bibleObj;
+      try {
+        bibleObj = JSON.parse(storyBible);
+      } catch (e) {
+        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
+        try { bibleObj = JSON.parse(cleaned); } 
+        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+      }
       // Build params — include custom Iron Rules only for checker, never for writer
       const checkerParams = {
         story_bible: JSON.stringify(bibleObj),

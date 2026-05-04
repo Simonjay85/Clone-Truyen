@@ -219,7 +219,7 @@ export function ApiKeysView() {
           apiKey: openRouterKey,
           systemPrompt: 'Be concise.',
           userPrompt: 'Say OK',
-          model: 'liquid/lfm-40b:free'
+          model: 'tencent/hy3-preview:free'
         })
       });
       const data = await res.json();

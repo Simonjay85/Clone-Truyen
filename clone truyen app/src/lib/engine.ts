@@ -852,7 +852,7 @@ export async function callOpenRouter(params: {
       apiKey: params.apiKey,
       systemPrompt: params.systemPrompt,
       userPrompt: params.userPrompt,
-      model: params.model || 'liquid/lfm-40b:free', // Default free model
+      model: params.model || 'tencent/hy3-preview:free', // Default free model
       jsonMode: params.jsonMode || false,
       temperature: params.temperature !== undefined ? params.temperature : 0.9,
       taskType: params.taskType,
@@ -866,7 +866,7 @@ export async function callOpenRouter(params: {
      throw new Error(errStr || 'OpenRouter API Error');
   }
 
-  processUsageLog(data, params.model || 'liquid/lfm-40b:free', 'openrouter', params.logMeta);
+  processUsageLog(data, params.model || 'tencent/hy3-preview:free', 'openrouter', params.logMeta);
   return data;
 }
 

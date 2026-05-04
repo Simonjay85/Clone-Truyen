@@ -20,11 +20,11 @@ export async function POST(req: Request) {
     const REASONER_TASKS = ['story_bible', 'chapter_map', 'iron_rules_checker', 'final_audit'];
     function resolveModel(): string {
       if (model) return model; // explicit model overrides all
-      if (!taskType) return 'liquid/lfm-40b:free'; // backward compat default
-      if (REASONER_TASKS.includes(taskType)) return 'openrouter-reasoner';
-      if (taskType === 'chapter_writer' && riskLevel === 'high') return 'openrouter-reasoner';
+      if (!taskType) return 'qwen/qwen3-next-80b-a3b-instruct:free'; // backward compat default
+      if (REASONER_TASKS.includes(taskType)) return 'qwen/qwen3-next-80b-a3b-instruct:free';
+      if (taskType === 'chapter_writer' && riskLevel === 'high') return 'qwen/qwen3-next-80b-a3b-instruct:free';
       // chapter_writer (default/low), chapter_rewriter, format_export → V3
-      return 'liquid/lfm-40b:free';
+      return 'qwen/qwen3-next-80b-a3b-instruct:free';
     }
     const resolvedModel = resolveModel();
 
@@ -38,7 +38,7 @@ export async function POST(req: Request) {
       max_tokens: 12000,
     };
 
-    const isReasoner = (resolvedModel === 'openrouter-reasoner');
+    const isReasoner = (resolvedModel === 'qwen/qwen3-next-80b-a3b-instruct:free');
 
     if (jsonMode && !isReasoner) {
       payload.response_format = { type: 'json_object' };
