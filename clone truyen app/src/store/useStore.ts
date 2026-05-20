@@ -26,20 +26,14 @@ function writeLocalKeys(state: Record<string, unknown>) {
     qwenKey: state.qwenKey || '',
     deepseekKey: state.deepseekKey || '',
     openRouterKey: state.openRouterKey || '',
+    togetherKey: state.togetherKey || '',
     usePaidAPI: state.usePaidAPI !== undefined ? state.usePaidAPI : false,
     wpUrl: state.wpUrl || 'https://doctieuthuyet.com',
     wpUser: state.wpUser || '',
     wpAppPassword: state.wpAppPassword || '',
     webhookUrl: state.webhookUrl || '',
   };
-  // Merge: chỉ ghi đè nếu giá trị mới không rỗng
-  const existing = readLocalKeys();
-  const merged: Record<string, unknown> = {};
-  for (const k of Object.keys(keys)) {
-    const newVal = (keys as any)[k];
-    merged[k] = (newVal !== '' && newVal !== undefined) ? newVal : (existing[k] ?? newVal);
-  }
-  localStorage.setItem(LS_KEY, JSON.stringify(merged));
+  localStorage.setItem(LS_KEY, JSON.stringify(keys));
 }
 
 // Đọc keys ngay lúc module load (đồng bộ, trước khi store tạo)
@@ -122,6 +116,7 @@ interface AppState {
   qwenKey: string;     // API Key cho Alibaba (Qwen)
   deepseekKey: string; // API Key cho DeepSeek
   openRouterKey: string; // API Key cho OpenRouter
+  togetherKey: string; // API Key cho Together AI (Flux)
   usePaidAPI: boolean;
   isFreeApiExhausted: boolean;
   wpUrl: string;
@@ -160,6 +155,7 @@ export const useStore = create<AppState>()((set, get) => ({
   qwenKey:       savedKeys.qwenKey       || '',
   deepseekKey:   savedKeys.deepseekKey   || '',
   openRouterKey: savedKeys.openRouterKey || '',
+  togetherKey:   savedKeys.togetherKey   || '',
   usePaidAPI:    savedKeys.usePaidAPI    || false,
   isFreeApiExhausted: false,
   wpUrl:         savedKeys.wpUrl         || 'https://doctieuthuyet.com',

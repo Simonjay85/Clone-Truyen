@@ -14,12 +14,19 @@ async function callDynamicEngine(engineSlug: string, params: any): Promise<any> 
   throw new Error("Unknown engine: " + engineSlug);
 }
 
-const extractJson = (text: string) => {
+export const extractJson = (text: string) => {
   let t = (text || '').trim();
   t = t.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
   t = t.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
 
-  const tryParse = (raw: string) => JSON.parse(raw);
+  const tryParse = (raw: string) => {
+    try {
+      return JSON.parse(raw);
+    } catch {
+      const fixed = raw.replace(/,\s*([\}\]])/g, '$1');
+      return JSON.parse(fixed);
+    }
+  };
   try {
     return tryParse(t);
   } catch {
@@ -64,6 +71,87 @@ const extractJson = (text: string) => {
     throw new Error('Could not extract balanced JSON from model output');
   }
 };
+
+function unwrapChapterMap(parsed: any): any[] {
+  const candidates = [
+    parsed,
+    parsed?.chapters,
+    parsed?.chapter_map,
+    parsed?.chapterMap,
+    parsed?.data,
+    parsed?.data?.chapters,
+    parsed?.result,
+    parsed?.result?.chapters,
+  ];
+
+  for (const candidate of candidates) {
+    if (Array.isArray(candidate)) return candidate;
+    if (Array.isArray(candidate?.chapters)) return candidate.chapters;
+    if (Array.isArray(candidate?.chapter_map)) return candidate.chapter_map;
+    if (Array.isArray(candidate?.chapterMap)) return candidate.chapterMap;
+  }
+
+  return [];
+}
+
+function normalizeChapterMap(rawMap: any[], expectedCount: number) {
+  return rawMap
+    .filter((ch) => ch && typeof ch === 'object')
+    .map((ch: any, idx: number) => {
+      const beats = Array.isArray(ch.beats)
+        ? ch.beats
+        : (Array.isArray(ch.key_beats) ? ch.key_beats : (ch.beats ? [String(ch.beats)] : []));
+      return {
+        ...ch,
+        chapter: Number(ch.chapter || ch.chapter_number || ch.episode || idx + 1),
+        title: ch.title || ch.chapter_title || `Chương ${idx + 1}`,
+        type: ch.type || ch.chapter_type || ch.functionTag || ch.function_tag || 'BUILD',
+        chapter_type: ch.chapter_type || ch.type || ch.functionTag || ch.function_tag || 'BUILD',
+        functionTag: ch.functionTag || ch.function_tag || ch.FunctionTag || ch.type || 'BUILD',
+        protagonist_goal: ch.protagonist_goal || ch.goal || ch.protagonistGoal || '',
+        main_obstacle: ch.main_obstacle || ch.obstacle || ch.mainObstacle || '',
+        public_stage: ch.public_stage || ch.publicStage || 'private_pressure',
+        humiliation_beat: ch.humiliation_beat || ch.humiliationBeat || '',
+        villain_arrogance_line: ch.villain_arrogance_line || ch.villainArroganceLine || '',
+        faceslap_payoff: ch.faceslap_payoff || ch.faceslapPayoff || 'deferred',
+        witness_reaction: ch.witness_reaction || ch.witnessReaction || '',
+        pacing_role: ch.pacing_role || ch.pacingRole || '',
+        main_loss: ch.main_loss || ch.mainLoss || ch.loss || '',
+        evidence_state: ch.evidence_state || ch.evidenceState || '',
+        crowd_stance: ch.crowd_stance || ch.crowdStance || '',
+        payoff_debt_repaid: ch.payoff_debt_repaid || ch.payoffDebtRepaid || '',
+        clean_authority_document: ch.clean_authority_document || ch.cleanAuthorityDocument || 'none',
+        evidence_or_loss: ch.evidence_or_loss || ch.evidenceOrLoss || ch.evidence_loss || '',
+        beats,
+        win: ch.win || '',
+        loss: ch.loss || ch.loss_misread || '',
+        foreshadowing: ch.foreshadowing || '',
+        cliffhanger: ch.cliffhanger || ch.final_question || '',
+        identityRevealLayer: ch.identityRevealLayer || ch.identity_reveal_layer || '',
+        legal_stage: ch.legal_stage || ch.legalStage || 'none',
+        authority_condition: ch.authority_condition || ch.authorityCondition || 'not yet',
+        threat_method: ch.threat_method || ch.threatMethod || 'none',
+        evidence_ladder_level: ch.evidence_ladder_level || ch.evidenceLadderLevel || 'none',
+        evidence_challenge: ch.evidence_challenge || ch.evidenceChallenge || 'none',
+        evidence_foreshadow_required_at: ch.evidence_foreshadow_required_at || ch.evidenceForeshadowRequiredAt || 'none',
+        villain_counterattack: ch.villain_counterattack || ch.villainCounterattack || 'none',
+        human_moment: ch.human_moment || ch.humanMoment || '',
+        main_wrong_assumption: ch.main_wrong_assumption || ch.mainWrongAssumption || 'none',
+      };
+    })
+    .filter((ch) => Number.isFinite(ch.chapter))
+    .slice(0, expectedCount);
+}
+
+function parseChapterMapText(text: string, expectedCount: number) {
+  const parsed = extractJson(text);
+  const rawMap = unwrapChapterMap(parsed);
+  const data = normalizeChapterMap(rawMap, expectedCount);
+  if (data.length === 0) {
+    throw new Error('Không tìm thấy mảng chapters trong phản hồi AI.');
+  }
+  return data;
+}
 
  
 export async function agentConceptGenerator(engine: string, apiKey: string, model: string, criteria: unknown) {
@@ -405,36 +493,41 @@ export async function agentGenerateChapterMap(
     ? bibleObjOrString
     : JSON.stringify(bibleObjOrString, null, 2);
   const sys = getChapterMapPrompt(bibleStr, chapter_count);
-  const res = await callDynamicEngine(engine, {
+  let res = await callDynamicEngine(engine, {
     apiKey,
     systemPrompt: sys,   // No STORY_IRON_RULES — saves tokens
-    userPrompt: `Create the Chapter Map for ${chapter_count} chapters now. Output as JSON array of chapter objects.`,
+    userPrompt: `Create the Chapter Map for ${chapter_count} chapters now. Output a valid JSON object only: {"chapters":[...]}.`,
     jsonMode: true,
     temperature: 0.45,
     model,
     taskType: 'chapter_map',
   });
-  let data: any = null;
+
+  let data: any[] = [];
+  let parseError = '';
   try {
-    const parsed = extractJson(res.text);
-    const rawMap = Array.isArray(parsed) ? parsed : (parsed?.chapters || parsed?.chapter_map || [parsed]);
-    data = rawMap.map((ch: any, idx: number) => ({
-      chapter: Number(ch.chapter || ch.chapter_number || ch.episode || idx + 1),
-      title: ch.title || ch.chapter_title || `Chương ${idx + 1}`,
-      type: ch.type || ch.chapter_type || ch.functionTag || ch.function_tag || 'BUILD',
-      chapter_type: ch.chapter_type || ch.type || ch.functionTag || ch.function_tag || 'BUILD',
-      functionTag: ch.functionTag || ch.function_tag || ch.FunctionTag || ch.type || 'BUILD',
-      protagonist_goal: ch.protagonist_goal || ch.goal || ch.protagonistGoal || '',
-      main_obstacle: ch.main_obstacle || ch.obstacle || ch.mainObstacle || '',
-      evidence_or_loss: ch.evidence_or_loss || ch.evidenceOrLoss || ch.evidence_loss || '',
-      beats: ch.beats || ch.key_beats || ch.beat_sheet || [],
-      win: ch.win || '',
-      loss: ch.loss || ch.loss_misread || '',
-      foreshadowing: ch.foreshadowing || '',
-      cliffhanger: ch.cliffhanger || ch.final_question || '',
-      identityRevealLayer: ch.identityRevealLayer || ch.identity_reveal_layer || '',
-    }));
-  } catch { data = []; }
+    data = parseChapterMapText(res.text, chapter_count);
+  } catch (err: any) {
+    parseError = err?.message || 'Không parse được Chapter Map từ R1.';
+  }
+
+  if (data.length === 0 && engine === 'deepseek' && model === 'deepseek-reasoner') {
+    res = await callDynamicEngine(engine, {
+      apiKey,
+      systemPrompt: sys,
+      userPrompt: `R1 did not return a machine-readable map. Regenerate the Chapter Map for ${chapter_count} chapters. Return one valid JSON object only: {"chapters":[...]} with no markdown and no explanation.`,
+      jsonMode: true,
+      temperature: 0.25,
+      model: 'deepseek-chat',
+      taskType: 'chapter_map',
+    });
+    try {
+      data = parseChapterMapText(res.text, chapter_count);
+    } catch (err: any) {
+      throw new Error(`DeepSeek không trả Chapter Map hợp lệ. R1: ${parseError}. V3 fallback: ${err?.message || 'parse failed'}`);
+    }
+  }
+
   return { text: data.length ? JSON.stringify(data, null, 2) : res.text, data, usedModel: res.chosenModel || model };
 }
 
@@ -447,7 +540,8 @@ export async function agentWriteChapter(
   prevContext = '',
   riskLevel = 'low',
   currentStateStr = '{}',
-  totalChapters = 14
+  totalChapters = 14,
+  fullChapterMap: any[] = []
 ) {
   const bibleStr = typeof bibleObjOrString === 'string'
     ? bibleObjOrString
@@ -466,6 +560,12 @@ export async function agentWriteChapter(
     const evidenceList = Array.isArray(st.validEvidence)
       ? st.validEvidence.map((e: any) => typeof e === 'string' ? e : e?.name || JSON.stringify(e)).join(', ')
       : (Array.isArray(st.mainHas) ? st.mainHas.join(', ') : '');
+    const foreshadowingPlanted = Array.isArray(st.foreshadowingPlanted)
+      ? st.foreshadowingPlanted.map((f: any) => typeof f === 'string' ? f : f?.clue || f?.evidence || JSON.stringify(f)).join(' | ')
+      : '';
+    const legalStatuses = Array.isArray(st.fixedFacts?.legalStatuses)
+      ? st.fixedFacts.legalStatuses.join(' | ')
+      : '';
     const openThreads = Array.isArray(st.openThreads) ? st.openThreads.join(' | ') : '';
     const villainKnows = Array.isArray(st.villainKnows) ? st.villainKnows.join(', ') : '';
     const mainLost     = Array.isArray(st.mainLost)     ? st.mainLost.join(', ') : '';
@@ -485,6 +585,8 @@ export async function agentWriteChapter(
       charMapStr ? `[CHARACTER NAME MAP — PHẢI dùng ĐÚNG tên này, KHÔNG đổi]\n${charMapStr}` : '',
       villainArrested ? `⚠️ VILLAIN STATUS: ${villainArrested} — KHÔNG viết villain này xuất hiện tự do nếu đã bị bắt/giam` : '',
       `ValidEvidence (đã có — KHÔNG thu thập lại): ${evidenceList || 'chưa có'}`,
+      `ForeshadowingPlanted (manh mối đã gieo): ${foreshadowingPlanted || 'chưa có'}`,
+      `LegalStatuses (trạng thái pháp lý đã khóa): ${legalStatuses || 'chưa có'}`,
       `MainLost (đã mất — KHÔNG lấy lại tức thì): ${mainLost || 'chưa mất gì'}`,
       `VillainKnows (villain đã biết): ${villainKnows || 'chưa có'}`,
       `OpenThreads chưa giải quyết: ${openThreads || 'chưa có'}`,
@@ -496,13 +598,53 @@ export async function agentWriteChapter(
     structuredPrevContext = prevContext;
   }
 
+  const currentBeatContract = {
+    chapter: beat?.chapter || 1,
+    title: beat?.title || '',
+    type: beat?.type || beat?.chapter_type || 'ACTION',
+    chapter_type: beat?.chapter_type || beat?.type || 'ACTION',
+    functionTag: beat?.functionTag || beat?.function_tag || beat?.type || '',
+    identityRevealLayer: beat?.identityRevealLayer || beat?.identity_reveal_layer || '',
+    opening_state: beat?.opening_state || '',
+	    protagonist_goal: beat?.protagonist_goal || '',
+	    main_obstacle: beat?.main_obstacle || '',
+	    public_stage: beat?.public_stage || 'private_pressure',
+	    humiliation_beat: beat?.humiliation_beat || '',
+	    villain_arrogance_line: beat?.villain_arrogance_line || '',
+		    faceslap_payoff: beat?.faceslap_payoff || 'deferred',
+		    witness_reaction: beat?.witness_reaction || '',
+		    pacing_role: beat?.pacing_role || '',
+		    main_loss: beat?.main_loss || beat?.loss || '',
+		    evidence_state: beat?.evidence_state || '',
+		    crowd_stance: beat?.crowd_stance || '',
+		    payoff_debt_repaid: beat?.payoff_debt_repaid || '',
+		    clean_authority_document: beat?.clean_authority_document || 'none',
+	    beats: Array.isArray(beat?.beats) ? beat.beats : (Array.isArray(beat?.key_beats) ? beat.key_beats : []),
+    evidence_or_loss: beat?.evidence_or_loss || '',
+    win: beat?.win || '',
+    loss: beat?.loss || '',
+    foreshadowing: beat?.foreshadowing || '',
+    human_moment: beat?.human_moment || '',
+    cliffhanger: beat?.cliffhanger || '',
+    cliffhanger_type: beat?.cliffhanger_type || '',
+    villain_counterattack: beat?.villain_counterattack || 'none',
+    legal_stage: beat?.legal_stage || 'none',
+    authority_condition: beat?.authority_condition || 'not yet',
+    threat_method: beat?.threat_method || 'none',
+    evidence_introduced: beat?.evidence_introduced || 'none',
+    evidence_ladder_level: beat?.evidence_ladder_level || 'none',
+    evidence_challenge: beat?.evidence_challenge || 'none',
+    evidence_foreshadow_required_at: beat?.evidence_foreshadow_required_at || 'none',
+    main_wrong_assumption: beat?.main_wrong_assumption || 'none',
+  };
+
   const params = {
     story_bible: bibleStr,
-    chapter_map: JSON.stringify(beat),
+    chapter_map: JSON.stringify(fullChapterMap, null, 2),
     chapter_number: beat?.chapter || 1,
     chapter_title: beat?.title || '',
     chapter_type: beat?.type || 'ACTION',
-    chapter_beats: JSON.stringify(beat?.beats || beat?.key_beats || []),
+    chapter_beats: JSON.stringify(currentBeatContract, null, 2),
     previous_summary: structuredPrevContext,
     current_state: currentStateStr,
   };
@@ -526,6 +668,7 @@ export async function agentWriteChapter(
 
   // Detect villain arrested status
   let villainArrestedBanner = '';
+  let setPieceMemoryBanner = '';
   try {
     const st = JSON.parse(currentStateStr || '{}');
     if (st.villainArrested) {
@@ -533,18 +676,30 @@ export async function agentWriteChapter(
 KHÔNG ĐƯỢC viết villain này xuất hiện tự do, ngồi họp, hoặc hành động bên ngoài.
 Nếu villain cần xuất hiện → chỉ trong phòng giam, phòng đối chất, hoặc qua lời khai.\n\n`;
     }
+    const lastMajorSetPiece = String(st.lastMajorSetPiece || '').toLowerCase();
+    const lastRescueMechanism = String(st.lastRescueMechanism || '');
+    if (lastMajorSetPiece === 'rescue') {
+      setPieceMemoryBanner += `🚫 SETPIECE MEMORY — CHƯƠNG TRƯỚC ĐÃ GIẢI CỨU: ${lastRescueMechanism || 'rescue'}
+Chương này KHÔNG được viết thêm bố/luật sư/công an/đội an ninh xuất hiện cứu main lần nữa.
+Phải chuyển sang hậu quả, phản công của villain, xử lý thủ tục, hoặc main tự trả giá.\n\n`;
+    }
+    if (lastMajorSetPiece === 'arrest') {
+      setPieceMemoryBanner += `🚫 SETPIECE MEMORY — CHƯƠNG TRƯỚC ĐÃ CÓ BẮT/ÁP GIẢI.
+Chương này KHÔNG được lặp cảnh lực lượng chức năng ập vào bắt người cùng kiểu.
+Hãy viết thẩm vấn, đối chất, niêm phong, phản công pháp lý, hoặc dư chấn xã hội.\n\n`;
+    }
   } catch { /* ignore */ }
 
   let revealBanner = '';
   if (revealAlreadyHappened) {
     revealBanner = `🚫🚫🚫 CẢNH BÁO TUYỆT ĐỐI — IDENTITY ĐÃ LỘ 🚫🚫🚫
 Main ĐÃ lộ thân phận chủ tịch ở chương trước. MỌI NGƯỜI ĐÃ BIẾT.
-KHÔNG ĐƯỢC VIẾT: cởi áo shipper, giơ thẻ đen, tuyên bố "Tôi là chủ tịch", cảnh mọi người sốc khi biết main là ai.
+KHÔNG ĐƯỢC VIẾT: cởi bỏ vỏ bọc, giơ thẻ đen, tuyên bố "Tôi là chủ tịch", cảnh mọi người sốc khi biết main là ai.
 Chương này PHẢI tiến triển SAU reveal: xử lý hậu quả, đối chất, hoặc villain phản công.
 Nếu vi phạm → toàn bộ chương bị loại.\n\n`;
   } else if (currentChapter < revealGateChapter) {
     revealBanner = `🔒🔒🔒 REVEAL GATE — Chương ${currentChapter}/${totalChapters} — TUYỆT ĐỐI CHƯA LỘ THÂN PHẬN 🔒🔒🔒
-Main PHẢI giữ vai shipper/nhân viên bình thường TOÀN BỘ chương này.
+Main PHẢI giữ đúng vỏ bọc hiện tại/nhân viên bình thường TOÀN BỘ chương này.
 
 CẤM TUYỆT ĐỐI (cả HÀNH ĐỘNG lẫn KẾT QUẢ):
 ❌ Giơ thẻ đen, tuyên bố thân phận
@@ -556,7 +711,7 @@ CẤM TUYỆT ĐỐI (cả HÀNH ĐỘNG lẫn KẾT QUẢ):
 ❌ Mở đầu chương với "villain đã biết main là chủ tịch" — KHÔNG ĐƯỢC skip reveal
 
 CHỈ ĐƯỢC PHÉP:
-✅ Main bị đối xử như shipper bình thường (bị mắng, bị khinh)
+✅ Main bị đối xử đúng theo vỏ bọc bình thường (bị mắng, bị khinh)
 ✅ Main điều tra bí mật, thu thập bằng chứng
 ✅ Trợ lý riêng/đồng minh đã ghi trong CHARACTER NAME MAP biết thân phận — nhưng CHỈ khi nói chuyện riêng
 ✅ Main ghi âm, chụp ảnh, quan sát
@@ -568,7 +723,7 @@ Nếu vi phạm bất kỳ điều nào ở trên → toàn bộ chương bị l
   const res = await callDynamicEngine(engine, {
     apiKey,
     systemPrompt: sys,
-    userPrompt: `${revealBanner}${villainArrestedBanner}Viết Chương ${currentChapter} ngay bây giờ theo đúng Story Bible, Chapter Map và Current State.
+    userPrompt: `${revealBanner}${villainArrestedBanner}${setPieceMemoryBanner}Viết Chương ${currentChapter} ngay bây giờ theo đúng Story Bible, Chapter Map và Current State.
 
 QUY TẮC OUTPUT SẠCH:
 - KHÔNG in PRE-WRITE DECLARATION.
@@ -583,7 +738,7 @@ QUY TẮC BẮT BUỘC BỔ SUNG:
 🔒 IDENTITY REVEAL ONCE-ONLY:
 Nếu IdentityRevealLayer trong [CURRENT STATE LOCK] đã = "Tầng 4" hoặc "công khai" hoặc "lộ diện", hoặc publicIdentityKnown/revealedAtChapter đã có giá trị:
 → TUYỆT ĐỐI KHÔNG viết lại cảnh lộ thân phận. Main đã lộ rồi. Mọi nhân vật đã biết.
-→ Không cởi áo shipper. Không giơ thẻ đen. Không tuyên bố "Tôi là chủ tịch" lần nữa.
+→ Không cởi bỏ vỏ bọc. Không giơ thẻ đen. Không tuyên bố "Tôi là chủ tịch" lần nữa.
 → Chương này phải tiến triển plot SAU reveal, không lặp lại reveal.
 
 🔒 ANTI-REPEAT SCENE:
@@ -591,6 +746,11 @@ Không viết lại cảnh đã xảy ra ở chương trước. Kiểm tra [PREV
 → Nếu đã có [FACESLAP_BIG] → chương này KHÔNG faceslap cùng kiểu
 → Nếu đã có [IDENTITY_REVEAL] → chương này là HẬU QUẢ, không phải reveal lại
 → Nếu đã có [EVIDENCE_FOUND] → bằng chứng đó ĐÃ CÓ, không tìm lại
+→ Nếu currentState.lastMajorSetPiece là "rescue" hoặc "arrest" → chương này KHÔNG được lặp cơ chế giải cứu/bắt người; phải đổi sang hậu quả hoặc phản công.
+
+🔒 STATE MEMORY FLAGS:
+STATE UPDATE JSON phải set đúng publicIdentityKnown/revealedAtChapter/villainArrested/lastMajorSetPiece/lastRescueMechanism/arcPhase khi chương có lộ thân phận, giải cứu, bắt người, aftermath hoặc hook arc mới.
+Không được xóa các flag đã có trong Current State.
 
 Viết chương bằng tiếng Việt. Show, don't tell. Kết thúc bằng STATE UPDATE JSON hợp lệ để app parse được.`,
     temperature: 0.7,

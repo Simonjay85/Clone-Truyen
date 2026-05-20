@@ -163,8 +163,8 @@ $logout_url = wp_logout_url(home_url());
                             $views = (int)get_post_meta(get_the_ID(), '_views', true);
                             ?>
                             <div class="flex flex-col group cursor-pointer" onclick="window.location.href='<?php the_permalink(); ?>'">
-                                <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-surface-container-high shadow-[0px_12px_24px_rgba(0,0,0,0.06)] mb-4 border border-outline-variant/10 group-hover:border-primary/30 transition-all">
-                                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="<?php echo esc_url($cover); ?>" />
+                                <div class="relative aspect-[2/3] rounded-2xl overflow-hidden bg-surface-container-high shadow-[0px_12px_24px_rgba(0,0,0,0.06)] mb-4 border border-outline-variant/10 group-hover:border-primary/30 transition-all">
+                                    <img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="<?php echo esc_url($cover); ?>" />
                                     <!-- Edit Badge -->
                                     <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                                         <span class="bg-primary text-white text-[10px] font-black px-2 py-1 rounded-md uppercase tracking-wider shadow-lg"><span class="material-symbols-outlined text-[10px]">edit</span></span>

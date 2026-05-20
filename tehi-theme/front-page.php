@@ -39,12 +39,13 @@
     flex-shrink: 0 !important;
     border-radius: 16px !important;
     overflow: hidden !important;
-    aspect-ratio: 3/4 !important;
+    aspect-ratio: 2/3 !important;
 }
 .mkm-hero-cover img {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
+    object-position: top center !important;
     border-radius: 16px !important;
     display: block !important;
 }
@@ -214,17 +215,33 @@
 }
 .mkm-card-img {
     position: relative !important;
-    aspect-ratio: 4/3 !important;
+    aspect-ratio: 1/1 !important;
     overflow: hidden !important;
+    background-color: #0c0f1d !important;
+}
+.mkm-card-img::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -15px !important;
+    left: -15px !important;
+    right: -15px !important;
+    bottom: -15px !important;
+    background-image: var(--card-bg) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    filter: blur(20px) brightness(0.4) !important;
+    z-index: 0 !important;
 }
 .mkm-card-img img {
+    position: relative !important;
+    z-index: 1 !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
     display: block !important;
-    transition: transform .3s !important;
+    transition: transform .3s ease !important;
 }
-.mkm-card:hover .mkm-card-img img { transform: scale(1.05) !important; }
+.mkm-card:hover .mkm-card-img img { transform: scale(1.03) !important; }
 .mkm-badge-tl {
     position: absolute !important;
     top: 8px !important;
@@ -490,6 +507,61 @@
     .mkm-main-swiper .swiper-button-prev { display: none !important; }
 }
 
+.mkm-card-btns {
+    display: flex !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+    width: 100% !important;
+}
+.mkm-btn-card {
+    flex: 1 !important;
+    text-align: center !important;
+    padding: 8px 4px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    transition: all 0.2s !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.2px !important;
+}
+.mkm-btn-card-start {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 6px rgba(249, 115, 22, 0.2) !important;
+}
+.mkm-btn-card-start:hover {
+    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.35) !important;
+    color: #fff !important;
+}
+.mkm-btn-card-new {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.2) !important;
+}
+.mkm-btn-card-new:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35) !important;
+    color: #fff !important;
+}
+@media (max-width: 600px) {
+    .mkm-card-btns {
+        flex-direction: column !important;
+        gap: 6px !important;
+    }
+    .mkm-btn-card {
+        padding: 6px 4px !important;
+        font-size: 10px !important;
+    }
+}
+
 </style>
 
 <div class="mkm-wrap">
@@ -597,26 +669,34 @@
                     $img = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
                     $fake_chap = rand(10, 150); $fake_hours = rand(1, 24); $fake_views = rand(100, 9999); $fake_likes = rand(0, 50);
                 ?>
-                <a href="<?php the_permalink(); ?>" class="mkm-card">
-                    <div class="mkm-card-img">
-                        <span class="mkm-badge-tl">MỚI</span>
-                        <img src="<?php echo esc_url($img); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png';" alt="<?php the_title_attribute(); ?>" width="300" height="200" loading="lazy" decoding="async">
-                        <div class="mkm-card-overlay">
-                            <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
-                            <span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo $fake_hours; ?> giờ trước</span>
+                <div class="mkm-card">
+                    <a href="<?php the_permalink(); ?>" style="display:block;">
+                        <div class="mkm-card-img" style="--card-bg: url('<?php echo esc_url($img); ?>');">
+                            <span class="mkm-badge-tl">MỚI</span>
+                            <img src="<?php echo esc_url($img); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png';" alt="<?php the_title_attribute(); ?>" width="300" height="400" loading="lazy" decoding="async">
+                            <div class="mkm-card-overlay">
+                                <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
+                                <span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo $fake_hours; ?> giờ trước</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="mkm-card-info">
-                        <p class="mkm-card-name"><?php the_title(); ?></p>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px; flex-wrap:nowrap; gap:2px;">
+                        <a href="<?php the_permalink(); ?>" style="text-decoration:none;">
+                            <p class="mkm-card-name"><?php the_title(); ?></p>
+                        </a>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
                             <div style="display:flex; gap:5px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
                                 <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
                                 <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
                             </div>
                             <span style="background:rgba(79, 70, 229, 0.1); color:#92400e; border:1px solid rgba(79, 70, 229, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Chương mới</span>
                         </div>
+                        <div class="mkm-card-btns">
+                            <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
+                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new">Chương mới</a>
+                        </div>
                     </div>
-                </a>
+                </div>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
             <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/the-loai.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
@@ -636,26 +716,34 @@
                     $img2 = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
                     $fake_chap = rand(50, 300); $fake_hours = rand(1, 24); $fake_views = rand(10000, 50000); $fake_likes = rand(50, 900);
                 ?>
-                <a href="<?php the_permalink(); ?>" class="mkm-card">
-                    <div class="mkm-card-img">
-                        <span class="mkm-badge-tr">HOT 🔥</span>
-                        <img src="<?php echo esc_url($img2); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png';" alt="<?php the_title_attribute(); ?>" width="300" height="200" loading="lazy" decoding="async">
-                        <div class="mkm-card-overlay">
-                            <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
-                            <span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo $fake_hours; ?> giờ trước</span>
+                <div class="mkm-card">
+                    <a href="<?php the_permalink(); ?>" style="display:block;">
+                        <div class="mkm-card-img" style="--card-bg: url('<?php echo esc_url($img2); ?>');">
+                            <span class="mkm-badge-tr">HOT 🔥</span>
+                            <img src="<?php echo esc_url($img2); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png';" alt="<?php the_title_attribute(); ?>" width="300" height="400" loading="lazy" decoding="async">
+                            <div class="mkm-card-overlay">
+                                <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
+                                <span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo $fake_hours; ?> giờ trước</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="mkm-card-info">
-                        <p class="mkm-card-name"><?php the_title(); ?></p>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px; flex-wrap:nowrap; gap:2px;">
+                        <a href="<?php the_permalink(); ?>" style="text-decoration:none;">
+                            <p class="mkm-card-name"><?php the_title(); ?></p>
+                        </a>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
                             <div style="display:flex; gap:5px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
                                 <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
                                 <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
                             </div>
                             <span style="background:rgba(239, 68, 68, 0.1); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Đang Hot</span>
                         </div>
+                        <div class="mkm-card-btns">
+                            <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
+                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new">Chương mới</a>
+                        </div>
                     </div>
-                </a>
+                </div>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
             <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/bang-xep-hang.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
@@ -675,26 +763,34 @@
                     $img3 = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
                     $fake_chap = rand(80, 500); $fake_views = rand(20000, 99999); $fake_likes = rand(100, 2000);
                 ?>
-                <a href="<?php the_permalink(); ?>" class="mkm-card">
-                    <div class="mkm-card-img">
-                        <span class="mkm-badge-full-pos">FULL</span>
-                        <img src="<?php echo esc_url($img3); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png';" alt="<?php the_title_attribute(); ?>" width="300" height="200" loading="lazy" decoding="async">
-                        <div class="mkm-card-overlay">
-                            <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
-                            <span style="display:flex;align-items:center;gap:4px;color:#10b981;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Đã đủ bộ</span>
+                <div class="mkm-card">
+                    <a href="<?php the_permalink(); ?>" style="display:block;">
+                        <div class="mkm-card-img" style="--card-bg: url('<?php echo esc_url($img3); ?>');">
+                            <span class="mkm-badge-full-pos">FULL</span>
+                            <img src="<?php echo esc_url($img3); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png';" alt="<?php the_title_attribute(); ?>" width="300" height="400" loading="lazy" decoding="async">
+                            <div class="mkm-card-overlay">
+                                <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
+                                <span style="display:flex;align-items:center;gap:4px;color:#10b981;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Đã đủ bộ</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="mkm-card-info">
-                        <p class="mkm-card-name"><?php the_title(); ?></p>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px; flex-wrap:nowrap; gap:2px;">
+                        <a href="<?php the_permalink(); ?>" style="text-decoration:none;">
+                            <p class="mkm-card-name"><?php the_title(); ?></p>
+                        </a>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
                             <div style="display:flex; gap:5px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
                                 <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
                                 <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
                             </div>
                             <span style="background:rgba(16, 185, 129, 0.1); color:#10b981; border:1px solid rgba(16, 185, 129, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Hoàn thành</span>
                         </div>
+                        <div class="mkm-card-btns">
+                            <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
+                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new">Chương mới</a>
+                        </div>
                     </div>
-                </a>
+                </div>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
             <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/hoan-thanh.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>

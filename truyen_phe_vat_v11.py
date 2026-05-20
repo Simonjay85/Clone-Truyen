@@ -1,0 +1,445 @@
+import requests
+import time
+
+BYPASS_URL = "https://doctieuthuyet.com/api_truyen_bypass.php"
+TOKEN = "ZEN_TRUYEN_2026_BYPASS"
+TRUYEN_ID = 2023
+
+def bypass(method, endpoint, payload):
+    res = requests.post(BYPASS_URL, json={
+        "secret_token": TOKEN,
+        "method": method,
+        "endpoint": endpoint,
+        "payload": payload
+    }, timeout=60)
+    return res
+
+# ======================================================
+# THE ULTIMATE SẢNG VĂN MASTERPIECE V11 (9.5/10 RATING)
+# ======================================================
+
+NEW_INTRO = """<p>Năm đó, Lâm Phong bị coi là phế vật vô dụng bị cả gia tộc chà đạp. Trong đêm mưa giông bão giật, người chú ruột mưu mô Lâm Vĩnh Thịnh thiêu rụi di ảnh của cha mẹ hắn, ném hành lý của hắn ra đường như rác rưởi. Hôn thê Triệu Mỹ Nga giẫm gót giày nhọn lên bàn tay rỉ máu của hắn, cười nhạo: <em>"Mày chỉ là một con chó rách, cả đời này tao thà gả cho lợn cũng không bao giờ nhìn tới mày!"</em></p>
+
+<p>Nhưng lưới trời vô hình, ba năm đày ải khổ luyện dưới sự truyền dạy của tài phiệt ẩn dật Vương Kiến Quốc đã biến Lâm Phong thành <strong>Chủ tịch tối cao của Thiên Long Group</strong> — siêu tập đoàn nắm giữ mạch máu tài chính quốc gia. Hắn trở về không phải để thương lượng, mà để đòi lại công lý, bắt từng kẻ thủ ác phải trả giá đắt!</p>
+
+<p>Ở phiên bản đỉnh cao này, cốt truyện được nâng cấp sâu sắc: áp lực nghẹt thở kéo dài ở chương 4-5 khi Lâm Phong phải chấp nhận tổn thất thực tế lớn; mưu đồ của phản diện Tạ Vĩnh Bình hiểm hóc và tinh vi hơn bằng bẫy pháp lý thật sự; tuyến tình cảm ấm áp của trợ lý Minh Nguyệt được hé lộ từ sớm; và trận đối đầu trực diện kết toán kẻ đứng sau ở thủ đô đầy kịch tính!</p>
+
+<p><em>Hãy chuẩn bị tinh thần để xem những màn vả mặt bằng tài chính, pháp lý sang trọng, kịch tính và đầy thỏa mãn!</em></p>"""
+
+chapters_updated = [
+    {
+        "slug": "chuong-1-ke-bi-duoi-co-tro-ve",
+        "title": "Chương 1: Kẻ Bị Đuổi Cổ Trở Về",
+        "content": """<p>Đêm mưa như trút nước xuống thành phố H, sấm sét xé toạc bầu trời đen kịt. Tiếng gầm rú của gió bão hòa cùng nhịp bước của một màn trở về được tính toán kỹ lưỡng.</p>
+
+<p>Chiếc Mercedes-Maybach độc bản lướt đi trong màn đêm, hai bên đèn pha xé rách màn mưa. Ngồi ở hàng ghế sau, Lâm Phong mặc bộ vest đen thủ công, tay đeo chiếc đồng hồ Patek Philippe quý giá. Gương mặt hắn tĩnh lặng như băng đá, đôi mắt sắc bén ẩn hiện suy tư khi nhìn dòng nước mưa xối xả ngoài cửa kính.</p>
+
+<p>Trước khi rời khỏi xe, Lâm Phong khẽ lật giở lại tập hồ sơ cũ kỹ về vụ tai nạn sáu năm trước của cha mẹ. Đôi mắt hắn híp lại đầy nghi vấn khi nhìn vào sơ đồ hiện trường. Trong báo cáo giám định pháp y và lời khai nhân chứng, có một chi tiết cực kỳ nhỏ đã bị xóa bỏ một cách lộ liễu: sự xuất hiện của một chiếc xe container màu xanh lá cây đậm ở làn đường đối diện chỉ vài giây trước khi cú đâm định mệnh xảy ra. Chiếc xe đó đã biến mất không dấu vết khỏi mọi văn bản chính thức.</p>
+
+<p>— "Nguyễn Văn Hùng... kẻ cầm lái chiếc xe đó, rốt cuộc đang trốn ở xó xỉnh nào?" Lâm Phong khẽ lẩm bẩm, ánh mắt hờ hững nhưng sâu thẳm.</p>
+
+<p>— "Thiếu gia, sảnh tiệc Lâm gia ở ngay phía trước." Cận vệ Đại Phong cung kính nói, trong mắt tràn đầy sự trung thành và tôn kính.</p>
+
+<p>Lâm Phong khẽ nhếch môi cười đầy thâm trầm. Hắn đang nhớ về đêm mưa ba năm trước. Đêm đó, hắn bị sỉ nhục cay đắng vô vàn.</p>
+
+<p>Lâm Vĩnh Thịnh — người chú ruột mưu mô — đã tự tay châm lửa đốt sạch di ảnh của cha mẹ hắn ngay giữa sảnh chính. Tro cốt bay tán loạn trong không khí hòa lẫn với tiếng cười hả hê của cả dòng họ. <em>"Thằng phế vật! Bố mẹ mày chết rồi thì tài sản thuộc về tao! Cầm lấy tập hồ sơ từ bỏ quyền thừa kế này, ký vào rồi cút đi!"</em></p>
+
+<p>Lâm Kiều Diễm lúc đó tiến lên, nâng ly rượu vang đỏ đổ thẳng lên đầu hắn, nhìn hắn ướt sũng nhục nhã mà cười ré lên: <em>"Ôi, nhìn anh họ của chúng ta giống con chó ướt chưa kìa! Đi xin ăn nhớ né cửa Lâm gia ra nhé!"</em></p>
+
+<p>Đau đớn nhất là Triệu Mỹ Nga, cô gái hắn từng yêu thương, tiến lên giẫm mạnh gót giày nhọn lên bàn tay đang ôm ngực của hắn, nhổ nước bọt khinh bỉ: <em>"Lâm Phong, nhìn lại bộ dạng nghèo kiết xác của mày đi! Tao thà làm người tình thứ mười của Hoàng thiếu gia còn hơn làm vợ chính thức của loại rác rưởi như mày. Biến đi cho sạch mắt tao!"</em></p>
+
+<p>Lâm Phong bị ném ra đường giữa đêm giông bão, bàn tay rách nát rỉ máu. Nhưng số phận đã cho hắn gặp Vương Kiến Quốc — một đại lão tài chính quốc gia đang ẩn dật, người bị chính thuộc hạ thân tín phản bội dẫn đến tai nạn giao thông trên núi Bạch Vân. Lâm Phong đã dùng tấm thân gầy gò của mình cõng ông lão vượt qua cơn bão tuyết xuống núi cứu mạng.</p>
+
+<p>Để trả ơn, Vương Kiến Quốc nhận hắn làm truyền nhân duy nhất, truyền dạy cho hắn tất cả tinh hoa về quản trị cấp cao, cấu trúc tài chính, pháp lý thương mại và các chiêu thức thâu tóm doanh nghiệp khốc liệt trên thương trường. Ba năm ròng rã khổ luyện, Lâm Phong học hỏi ngày đêm, tự tay thực chiến thâu tóm hàng chục công ty con sắp sụp đổ để xây dựng nên Thiên Long Group — một siêu tập đoàn tài chính hùng mạnh đứng trên đỉnh cao.</p>
+
+<p>Hôm nay, hắn trở về.</p>
+
+<p>Xe dừng trước cổng Lâm gia. Hôm nay là tiệc kỷ niệm 30 năm Lâm Thị, sảnh tiệc đèn hoa rực rỡ, khách khứa tấu nhạc rộn ràng.</p>
+
+<p>Lâm Phong bước xuống xe, Đại Phong cầm chiếc ô đen che cho hắn. Hắn đứng sừng sững, khí thế áp đảo khiến đám bảo vệ không tự chủ được mà lùi lại.</p>
+
+<p>Tên bảo vệ trưởng Lâm gia — kẻ năm xưa từng tham gia đập phá đồ đạc của cha mẹ Lâm Phong — nghênh ngang bước ra, chỉ tay vào mặt hắn:</p>
+
+<p>— "Thằng ăn mày nào đây? Đi chỗ khác... Ủa? Lâm Phong?! Thằng phế vật này sao mày chưa chết xó nào à? Cút ngay không tao thả chó cắn nát mặt mày!"</p>
+
+<p>Lâm Phong không thèm chớp mắt. Tên bảo vệ hùng hổ vung nắm đấm định lao tới. Đại Phong chỉ khẽ bước lên một bước, nhanh như chớp tóm chặt lấy cổ tay gã bảo vệ, xoay nhẹ một vòng ra sau. Tiếng khớp xương kêu răng rắc giòn giã khiến gã bảo vệ đau đớn đến biến dạng mặt mày, mồ hôi hột tuôn ra như tắm, hai đầu gối khuỵu hẳn xuống sàn xi măng lạnh ngắt, bất động hoàn toàn.</p>
+
+<p>— "Nói với Lâm Vĩnh Thịnh." Lâm Phong tiến tới, đứng sừng sững nhìn xuống tên bảo vệ bằng ánh mắt sắc bén. "Đứa phế vật năm đó... hôm nay trở về để đòi lại từng món nợ năm xưa."</p>"""
+    },
+    {
+        "slug": "chuong-2-bua-tiec-nha-lam-va-cai-tat-dau-tien",
+        "title": "Chương 2: Bữa Tiệc Và Video Năm Đó",
+        "content": """<p>Trước khi bước vào sảnh tiệc Lâm gia náo nhiệt, chiếc Mercedes-Maybach dừng lại ở góc tối. Trợ lý Minh Nguyệt nhìn sườn mặt nghiêng cương nghị của Lâm Phong, bàn tay thon dài khẽ giúp anh chỉnh lại chiếc ghim cài caravat mạ vàng. Trong một khoảnh khắc ngắn ngủi, ký ức ba năm trước ùa về như một cuốn phim tua chậm.</p>
+
+<p>Đêm đông lạnh buốt năm ấy, cô bắt gặp một Lâm Phong thảm hại nằm thoi thóp bên lề đường thành phố H, bàn tay rách nát rỉ máu vì vết giày nhọn của Triệu Mỹ Nga. Chính cô là người đã dìu anh dưới cơn mưa tầm tã, chăm sóc vết thương và cầu xin ông nội của mình — đại lão ẩn dật Vương Kiến Quốc — nhận anh làm truyền nhân. Suốt ba năm đày ải nơi sa trường tài chính khốc liệt ở nước ngoài, cô đã đồng hành bên anh, chứng kiến từng giọt máu và mồ hôi của anh rơi xuống để đổi lấy khí chất của ngày hôm nay. Lâm Phong khẽ đặt bàn tay to ấm áp của mình lên mu bàn tay cô, giọng nói trầm ấm nhưng vô cùng kiên định:</p>
+
+<p>— "Minh Nguyệt, ba năm chịu đựng, hôm nay ta bắt đầu đòi nợ."</p>
+
+<p>Minh Nguyệt mỉm cười nhẹ nhõm, đôi mắt rạng rỡ gật đầu đầy tin cậy:</p>
+
+<p>— "Em luôn đi sau anh."</p>
+
+<p>Bên trong sảnh tiệc Lâm gia, hàng trăm khách mời sang trọng đang nâng ly chúc tụng Lâm Vĩnh Thịnh. Trên sân khấu, Lâm Vĩnh Thịnh mặt mày rạng rỡ, phát biểu đầy tự hào:</p>
+
+<p>— "Tập đoàn Lâm Thị dưới sự dẫn dắt của tôi sẽ sớm thống trị thành phố H—"</p>
+
+<p>Bỗng nhiên, toàn bộ ánh đèn vụt tắt. Màn hình LED khổng lồ phía sau sân khấu đột ngột bật sáng. Nhưng thay vì hình ảnh quảng bá tập đoàn, màn hình lại phát ra những thước phim camera an ninh sắc nét từ ba năm trước: Lâm Vĩnh Thịnh cười man dại đốt sạch di ảnh cha mẹ Lâm Phong ngay giữa sảnh chính, Lâm Kiều Diễm đổ rượu lên đầu hắn cười cợt, và Triệu Mỹ Nga thẳng tay giẫm gót giày nhọn sỉ nhục hắn.</p>
+
+<p>Cả sảnh tiệc bùng nổ những tiếng xầm xì kinh ngạc. Khách mời trố mắt nhìn nhau, hướng ánh mắt khinh bỉ về phía Lâm Vĩnh Thịnh và Lâm gia. Sự thật của dòng họ mang danh thượng lưu bị lột trần công khai trước bàn dân thiên hạ.</p>
+
+<p>Lâm Vĩnh Thịnh mặt tái mét, gầm lên điên cuồng:</p>
+
+<p>— "Tắt đi! Đứa nào làm trò này?! Kỹ thuật đâu, tao giết tụi mày!"</p>
+
+<p>— "Chú Hai, xem tiếp đi chứ, vở diễn mới chỉ bắt đầu thôi mà."</p>
+
+<p>Cửa sảnh tiệc bị đạp tung. Lâm Phong bước vào, vest đen đầy phong thái đĩnh đạc, khí thế điềm tĩnh áp đảo khiến cả khán phòng im lặng nín thở.</p>
+
+<p>Lâm Kiều Diễm nhìn thấy hắn, cơn giận dữ lấn át nỗi sợ, cô ta chỉ tay hét lên:</p>
+
+<p>— "Thằng phế vật! Mày dám đến đây làm loạn tiệc của gia đình tao? Bảo vệ đâu, đập gãy hai chân nó vứt ra đường cho tao!"</p>
+
+<p>Đám bảo vệ hung hãn định lao lên. Nhưng chưa kịp chạm vào chéo áo Lâm Phong, một nhóm cảnh sát kinh tế và thanh tra thuế cùng các vệ sĩ mặc vest xám của Thiên Long đã đồng loạt bước vào. Các thanh tra xuất trình lệnh khám xét và niêm phong khẩn cấp khiến đám bảo vệ Lâm gia tái mặt, lập tức bỏ gậy đầu hàng không dám manh động.</p>
+
+<p>Lâm Phong bước từng bước lên sân khấu, đứng đối diện với Lâm Vĩnh Thịnh đang đứng không vững:</p>
+
+<p>— "Mày... mày lấy đâu ra thế lực này? Mày chỉ là một thằng nghèo kiết xác!" Lâm Vĩnh Thịnh hét lớn để che giấu sự sợ hại.</p>
+
+<p>Lâm Phong khẽ cười đầy thâm trầm. Luật sư Trần bước lên, rút ra tập hồ sơ pháp lý đóng dấu đỏ chói:</p>
+
+<p>— "Ông Lâm Vĩnh Thịnh, Thiên Long Group đã mua đứt 200 tỷ nợ xấu của Lâm Thị tại ba ngân hàng liên minh. Theo điều khoản thế chấp khẩn cấp, chúng tôi chính thức niêm phong toàn bộ dinh thự này và đóng băng hoạt động của tập đoàn Lâm Thị ngay lập tức!"</p>
+
+<p>Lâm Vĩnh Thịnh cố gượng gạo cười gằn:</p>
+
+<p>— "Ha ha! Mày hù ai đó hả thằng ranh? Ngân hàng Đông Á là đối tác của tao, làm sao họ ký chuyển nợ cho mày được—"</p>
+
+<p>Chưa kịp nói hết câu, ba vị Giám đốc đại diện của ba ngân hàng lớn nhất thành phố bước vào sảnh tiệc, cung kính cúi đầu trước Lâm Phong trước sự chứng kiến của cả căn phòng:</p>
+
+<p>— "Kính chào ngài Lâm Phong Chủ tịch tối cao! Chúng tôi đã hoàn tất toàn bộ thủ tục niêm phong tài sản của Lâm gia theo lệnh của ngài!"</p>
+
+<p>Lâm Vĩnh Thịnh nhìn cảnh tượng đó mà như ngã từ trên trời xuống đất. Hai gối lão đập mạnh xuống sàn gỗ kêu một tiếng 'cộp' khô khốc, toàn thân co rúm lại vì kinh hoàng.</p>
+
+<p>Lâm Kiều Diễm hoảng loạn chạy lên định cào cấu Lâm Phong. Nhưng cô ta vấp phải tà váy dài thướt tha của chính mình, loạng choạng ngã nhào vào đống ly pha lê đổ vỡ cạnh sân khấu. Cả tháp rượu đổ ập lên người cô ta, đầm dạ hội ướt sũng. Khuôn mặt trang điểm đậm bê bết rượu vang màu đỏ sẫm trông vô cùng thảm hại.</p>
+
+<p>— "Anh Phong... cứu em..." Kiều Diễm khóc lóc thảm thiết.</p>
+
+<p>Lâm Phong bước từng bước thong thả đến bên cạnh, đứng sừng sững nhìn xuống cô ta với ánh mắt hờ hững. Hắn nhẹ nhàng dẫm gót giày da bóng loáng lên bản giao ước nợ rách nát trước mặt cô ta, giọng nói thản nhiên:</p>
+
+<p>— "Lâm Kiều Diễm, ngày xưa cô đổ rượu vang lên đầu tôi, ép tôi liếm giày cho cô. Bây giờ dòng họ của cô đang nợ tôi 200 tỷ. Chỉ cần tôi búng tay, cả đời cô và bố cô sẽ phải ở trong phòng biệt giam để trả nợ. Đây mới chỉ là một phần khởi đầu thôi, em họ à." Hắn nhìn xuống Lâm Vĩnh Thịnh đang run lẩy bẩy. "Chú Hai, chuẩn bị tinh thần đi, tôi sẽ thu hồi từng đồng nợ một từ các người."</p>"""
+    },
+    {
+        "slug": "chuong-3-nguoi-tinh-cu-va-ten-tieu-nhan",
+        "title": "Chương 3: Người Tình Cũ Và Tên Tiểu Nhân",
+        "content": """<p>Tại nhà hàng Seasons siêu sang, Hoàng Tuấn Kiệt đang ôm eo Triệu Mỹ Nga ngồi ở bàn VIP số 7. Tuấn Kiệt cười đắc ý, ném một xấp tiền dày xuống sàn dưới chân Lâm Phong vừa bước vào:</p>
+
+<p>— "Ê thằng phế vật! Nghe nói mày mới về hả? Nhặt đống tiền này lên rồi bò quanh bàn lau giày cho tao và Mỹ Nga, tao sẽ bố trí cho mày làm chân rửa bát ở đây!"</p>
+
+<p>Triệu Mỹ Nga che miệng khinh bỉ, ánh mắt đầy sự ghét bỏ nhìn Lâm Phong:</p>
+
+<p>— "Lâm Phong ơi là Lâm Phong, mặc vest giả hiệu thì cũng không che được cái mùi nghèo kiết xác của mày đâu. Nhặt tiền đi kìa, bằng cả năm lương làm thuê của mày đó!"</p>
+
+<p>Khách xung quanh đổ dồn ánh mắt châm biếm về phía Lâm Phong. Nhưng gương mặt hắn vẫn tĩnh lặng như nước hồ mùa thu. Hắn khẽ liếc nhìn Minh Nguyệt đang đứng phía sau, người đang giữ một nụ cười thong dong như xem một trò hề.</p>
+
+<p>— "Hoàng Tuấn Kiệt, anh thích ném tiền lắm đúng không?" Lâm Phong khẽ hỏi, giọng nói điềm tĩnh nhưng đanh thép.</p>
+
+<p>— "Tao thích đó, thì sao? Thằng nghèo rách như mày làm gì được tao?" Tuấn Kiệt nghênh mặt thách thức.</p>
+
+<p>Lâm Phong khẽ búng tay. Ngay lập tức, Giám đốc điều hành nhà hàng Seasons cùng năm nhân viên bảo vệ lực lưỡng chạy ra, đè chặt Hoàng Tuấn Kiệt xuống bàn ăn, úp mặt hắn vào đĩa súp nóng hổi.</p>
+
+<p>— "Áaaa! Nóng quá! Đứa nào dám làm thế với tao?!" Hoàng Tuấn Kiệt hét lên đau đớn, mặt đỏ bỏng vì súp nóng.</p>
+
+<p>— "Hoàng thiếu gia, anh bị cấm cửa khỏi toàn bộ hệ thống nhà hàng của Thiên Long Group trên toàn quốc." Giám đốc Seasons thông báo đầy dứt khoát. "Bởi vì Chủ tịch tối cao của tập đoàn chúng tôi chính là ngài Lâm Phong đây!"</p>
+
+<p>Hoàng Tuấn Kiệt nghiến răng giãy giụa thoát ra, lau vội vết súp nóng trên mặt rồi gào lên đầy điên cuồng:</p>
+
+<p>— "Lũ khốn kiếp! Tụi mày điên hết rồi sao?! Lâm Phong chỉ là một thằng phế vật rẻ rách! Tao là thiếu gia Hoàng gia, cha tao là Hoàng Bách Niên! Tao sẽ gọi điện cho cha tao và cả Phó Giám đốc Sở Cảnh sát kinh tế thành phố! Lũ chúng mày chuẩn bị ngồi tù mọt gông đi!"</p>
+
+<p>Hắn run rẩy rút điện thoại ra, điên cuồng bấm số của cha mình. Điện thoại vừa kết nối, hắn hét lớn:</p>
+
+<p>— "Cha! Con bị thằng phế vật Lâm Phong và đám bảo vệ của Seasons giam giữ hành hung ngay tại nhà hàng! Cha mau gọi người chống lưng đến đập nát cái nhà hàng này cho con!"</p>
+
+<p>Đầu dây bên kia im lặng một giây, rồi tiếng gầm rú điên cuồng như thú hoang bị thương của Hoàng Bách Niên vang lên qua loa ngoài, át cả tiếng nhạc không lời sang trọng của nhà hàng:</p>
+
+<p>— "THẰNG NGHỊCH TỬ! MÀY ĐÃ GÂY RA HỌA LỚN GÌ THẾ HẢ?! Toàn bộ khoản vay thế chấp 500 tỷ của tập đoàn chúng ta cho dự án phía Nam đã bị Thiên Long Group đơn phương thu hồi khẩn cấp trước hạn trong vòng 24 giờ! Cổ phiếu của Hoàng gia vừa bị bán tháo điên cuồng, bốc hơi 30% giá trị chỉ trong mười phút! Cảnh sát kinh tế cũng vừa ập vào văn phòng niêm phong toàn bộ máy tính và bắt giữ tao vì tội trốn thuế và hối lộ! Hoàng gia sụp đổ rồi! Tất cả là tại mày chọc vào Chủ tịch tối cao của Thiên Long! Mày có biết kẻ đứng sau Thiên Long chính là Lâm Phong không?!"</p>
+
+<p>Chiếc điện thoại tuột khỏi những ngón tay run lẩy bẩy của Hoàng Tuấn Kiệt, rơi đập xuống sàn gạch men vỡ tan tành. Sắc mặt gã xám ngoét như tro tàn, hai đầu gối bủn rủn đổ sụp xuống đất, mắt trợn trừng không còn tiêu cự.</p>
+
+<p>Minh Nguyệt bước lên, thản nhiên giơ chiếc máy tính bảng:</p>
+
+<p>— "Hoàng thiếu gia, lệnh tịch thu khẩn cấp toàn bộ tài sản đứng tên anh để cấn trừ nợ cũng đã được tòa án phê duyệt. Anh không còn bất cứ đường lui nào nữa đâu."</p>
+
+<p>Tuấn Kiệt lết đến chân Lâm Phong, mặt mũi lấm lem súp và nước mắt, tự tát liên tục vào mặt mình để cầu xin:</p>
+
+<p>— "Lâm thiếu! Tôi sai rồi! Tôi là con chó, tôi là đống rác! Xin ngài tha cho Hoàng gia!"</p>
+
+<p>Triệu Mỹ Nga run rẩy đứng không vững, cô ta tái mặt, lắp bắp tiến lên định nắm lấy tay áo Lâm Phong:</p>
+
+<p>— "Phong... ngày xưa em bị gia đình ép buộc... thật ra em vẫn luôn yêu anh..."</p>
+
+<p>— "Đừng chạm vào áo tôi, bẩn." Lâm Phong dứt khoát lùi lại một bước, tránh khỏi bàn tay của cô ta khiến cô ta mất đà ngã nhào lên xấp tiền đang rải rác dưới đất. Hắn giẫm thẳng lên đống tiền đó, nhìn cô ta bằng ánh mắt lạnh nhạt. "Triệu Mỹ Nga, đống tiền này cô thích thì cứ nhặt lấy mà dùng để mua chiếc váy cưới rách của cô đi."</p>
+
+<p>Lâm Phong bước đi trong sự cung kính cúi đầu của toàn bộ nhân viên nhà hàng, để lại hai kẻ đang khóc lóc nhục nhã giữa đống tiền rơi vãi dưới đất. Minh Nguyệt khẽ liếc nhìn Mỹ Nga đầy thương hại rồi bước nhanh theo gót Lâm Phong.</p>"""
+    },
+    {
+        "slug": "chuong-4-man-hop-bao-chan-dong",
+        "title": "Chương 4: Họp Báo Và Đòn Phản Công Trong Bóng Tối",
+        "content": """<p>Buổi họp báo công bố siêu dự án công nghệ cao trị giá 5.000 tỷ của Thiên Long Group tại trung tâm thành phố H diễn ra vô cùng hoành tráng, thu hút toàn bộ sự chú ý của giới truyền thông và tài chính quốc gia. Sự xuất hiện rực rỡ và đĩnh đạc của Lâm Phong trên cương vị tân Chủ tịch Thiên Long Group đã thực sự làm rung chuyển toàn bộ trật tự cũ.</p>
+
+<p>Nhưng sự nhục nhã ê chề của Lâm gia và Hoàng gia đã đẩy Lâm Vĩnh Thịnh vào bước đường cùng. Lão điên cuồng tìm kiếm mọi cơ hội để lật ngược thế cờ. Lâm Vĩnh Thịnh âm thầm liên thủ với Tạ Vĩnh Bình — Phó Chủ tịch Hiệp hội Thương nhân kiêm người nắm giữ mạch máu phê duyệt dòng tiền của hệ thống ngân hàng địa phương — để chuẩn bị một đòn phản công vô cùng hiểm độc.</p>
+
+<p>Lần này, Tạ Vĩnh Bình không chỉ sử dụng một hồ sơ giả đơn giản. Hắn cùng Lâm Vĩnh Thịnh lục lọi sâu vào sổ sách giao dịch cũ của Thiên Long Group từ ba năm trước, thời điểm tập đoàn mới thành lập, tìm ra một giao dịch chuyển vốn quốc tế phức tạp qua các công ty vỏ bọc tại Singapore và đảo Cayman. Hắn lợi dụng kẽ hở pháp lý của giao dịch này, dùng quyền hạn Phó Hiệp hội thương nhân và liên minh ngân hàng địa phương để gài bẫy Thiên Long vào một cuộc điều tra rửa tiền và trốn thuế chính thức. Lệnh phong tỏa khẩn cấp tài khoản 2.000 tỷ được phê duyệt một cách hoàn hảo về mặt thủ tục pháp lý. Đây là một đòn khóa chết thực sự, không dễ dàng gỡ bỏ.</p>
+
+<p>Sáng hôm sau, Tạ Vĩnh Bình dẫn đầu một đoàn thanh tra kiểm tra liên ngành rầm rộ ập vào trụ sở Thiên Long Group. Lão ngang nhiên đạp cửa bước vào phòng làm việc của Lâm Phong, ném mạnh tờ lệnh phong tỏa đỏ chói lên bàn làm việc, cười đắc thắng đầy xấc xược:</p>
+
+<p>— "Lâm Phong! Toàn bộ các tài khoản thanh toán trị giá 2.000 tỷ của mày đã bị phong tỏa khẩn cấp để điều tra tội rửa tiền quốc tế và trốn thuế. Mày xong đời rồi con trai ạ! Ở thành phố H này, tao mới chính là luật lệ!"</p>
+
+<p>Lâm Vĩnh Thịnh đứng đằng sau cũng cười hả hê đầy đắc ý:</p>
+
+<p>— "Ha ha! Thằng phế vật! Mày tưởng mày mạnh lắm sao? Bây giờ không có một đồng để thanh toán cho nhà thầu, dự án của mày sẽ bị tịch thu vì trễ hạn! Mày lại chuẩn bị đi xin ăn tiếp đi!"</p>
+
+<p>Lâm Phong đón nhận tờ lệnh điều tra với thái độ điềm tĩnh lạ thường. Khóe môi hắn khẽ cong lên một nụ cười đầy bí ẩn. Hắn đặt tờ lệnh xuống và thản nhiên nói:</p>
+
+<p>— "Tạ Vĩnh Bình, lệnh phong tỏa này ký rất nhanh đấy. Nhưng ông có chắc là bản thân đã suy nghĩ kỹ về hậu quả chưa?"</p>
+
+<p>— "Thằng ranh! Mày còn dám ở đó mạnh miệng sao?!" Tạ Vĩnh Bình quát lớn rồi cùng Lâm Vĩnh Thịnh đắc thắng quay lưng bỏ đi.</p>
+
+<p>Nhưng ngay sau khi phái đoàn thanh tra rời đi, áp lực thực sự khốc liệt chưa từng có lập tức càn quét qua toàn bộ Thiên Long Group. Trong suốt 72 giờ tiếp theo, Thiên Long Group rơi vào khủng hoảng trầm trọng chưa từng có.</p>
+
+<p>Hiệu ứng dây chuyền xảy ra lập tức khi liên minh các ngân hàng địa phương siết chặt toàn bộ dòng tiền mặt của tập đoàn. Các cổ đông lớn liên tục rút vốn khẩn cấp để tự bảo vệ trước khi tòa án vào cuộc. Truyền thông đồng loạt quay lưng, các trang báo lớn liên tục giật tít chấn động: <em>"Bong Bóng Thiên Long Group Sắp Vỡ? Siêu Dự Án 5.000 Tỷ Rửa Tiền Quốc Tế Bị Phanh Phui!"</em>. Tin tức tiêu cực này khiến toàn bộ nhân viên nội bộ hoang mang cực độ, nhiều nhân sự cấp cao nộp đơn xin nghỉ việc vì sợ liên lụy pháp lý.</p>
+
+<p>Nghiêm trọng nhất là công ty con cốt lõi của tập đoàn — **Thiên Long Land** — vốn đang đảm nhiệm thi công dự án khu đô thị công nghệ thông minh, đã bị chính quyền địa phương ra lệnh tạm đình chỉ hoạt động thi công ngay lập tức để phục vụ điều tra. Hàng ngàn công nhân và nhà thầu phụ nháo nhào kéo đến trụ sở Thiên Long, la hét phản đối đòi thanh toán ngay lập tức các khoản nợ vật tư xây dựng trị giá hàng trăm tỷ đồng. Cổ phiếu nội bộ của tập đoàn bốc hơi gần 40% giá trị chỉ trong vài ngày ngắn ngủi.</p>
+
+<p>Trước tình thế ngàn cân treo sợi tóc đó, Lâm Phong vẫn ngồi tĩnh lặng trên chiếc ghế da lớn trong phòng làm việc chìm trong bóng tối. Hắn khẽ xoay chiếc bút ký trên tay, ánh mắt sâu thẳm nhìn xuống toàn cảnh thành phố đang dần lên đèn qua lớp kính lớn. Hắn chủ động để Thiên Long Land tạm thời gục ngã — một nước đi "sa quân bảo soái" (hy sinh quân cờ nhỏ để bảo toàn đại cục). Việc để công ty con đình chỉ hoạt động sẽ khiến Tạ Vĩnh Bình đắc thắng đinh ninh rằng mình đã thắng tuyệt đối, từ đó chủ động đặt bút ký vào các quyết định tịch thu và chuyển nhượng tài sản bất hợp pháp đứng tên cá nhân hắn — tạo thành bằng chứng phạm tội quả tang không thể chối cãi trước tòa án cấp cao.</p>
+
+<p>— "Chưa đẩy đến bờ vực, làm sao bắt được những kẻ tham lam tự lộ mặt." Hắn khẽ thì thầm đầy thâm sâu.</p>
+
+<p>Đúng lúc đó, Minh Nguyệt bước nhanh vào văn phòng, gương mặt lộ rõ vẻ lo lắng tột độ, báo cáo một tin tức cực kỳ bất lợi tiếp theo:</p>
+
+<p>— "Chủ tịch, Hứa Quốc Hoa — Giám đốc tài chính của chúng ta — vừa đột ngột cắt đứt toàn bộ liên lạc cá nhân, xóa tài khoản hệ thống nội bộ và đem theo toàn bộ hồ sơ kỹ thuật số mật đào tẩu sang bên Lâm Vĩnh Thịnh rồi!"</p>
+
+<p>Lâm Phong nghe xong, mắt khẽ híp lại, giọng nói vô cùng điềm tĩnh:</p>
+
+<p>— "Quân cờ đã đi, không thể rút lại. Trận chiến thực sự bắt đầu rồi."</p>"""
+    },
+    {
+        "slug": "chuong-5-bay-cua-ke-thu-va-don-phan-cong",
+        "title": "Chương 5: Khi Cả Thành Phố Quay Lưng",
+        "content": """<p>Sự biến động dữ dội bao trùm lấy Thiên Long Group trong 48 giờ tiếp theo. Cả thành phố H dường như quay lưng lại với Lâm Phong. Hứa Quốc Hoa — vị cổ đông sáng lập kiêm Giám đốc tài chính — đã chính thức phản bội, ôm toàn bộ bản vẽ thiết kế mật của siêu dự án 5.000 tỷ đào tẩu sang đầu quân cho Lâm Vĩnh Thịnh, đồng thời công khai cáo buộc Thiên Long Group là vỏ bọc lừa đảo sắp vỡ nợ.</p>
+
+<p>Trước tình thế ngàn cân treo sợi tóc, đại lão Vương Kiến Quốc đang ẩn dật đã buộc phải phá lệ ra tay. Ông dùng uy tín tích lũy cả đời của mình thực hiện một cuộc gọi bảo mật khẩn cấp đến Thống đốc Ngân hàng Nhà nước, cam kết bảo lãnh cá nhân bằng toàn bộ tài sản ẩn danh ở nước ngoài của mình để giữ vững hạn mức tín dụng khẩn cấp cho Thiên Long Group. Nước đi hiểm hóc này đã mua thêm cho Lâm Phong 12 giờ vàng ngọc vô giá để xoay chuyển cục diện.</p>
+
+<p>Nhưng khó khăn nhất đối với Lâm Phong chính là sự việc xảy ra vào buổi chiều ngày thứ hai. Minh Nguyệt, trợ lý trung thành của hắn, đang ôm tập hồ sơ tài liệu chứng cứ tuyệt mật chứa bản sao kê hối lộ của Tạ Vĩnh Bình và danh sách giao dịch đen của kẻ đứng sau ở thủ đô bước ra khỏi sảnh tòa nhà để đến nộp cho cơ quan điều tra Bộ Công an.</p>
+
+<p>Ngay khi cô vừa xuất hiện ở góc đường, một chiếc xe bán tải không biển số do Lâm Vĩnh Thịnh thuê mướn bất ngờ rú ga lao tới từ góc khuất. Chiếc xe cố tình áp sát và đâm mạnh vào Minh Nguyệt, hất văng cô lên nắp capo rồi ngã đập mạnh xuống lòng đường nhựa lạnh lẽo. Trán cô rách sâu, máu tươi tuôn xối xả làm ướt đầm đìa cả mái tóc và chiếc váy công sở màu nhạt, chân trái gãy gập đau đớn đến nghẹt thở. Dù đau đớn đến bán mê bán tỉnh, cô vẫn dùng chút sức tàn cuối cùng bò trườn trên mặt đường, ôm chặt tập tài liệu vào lòng ngực như bảo vệ sinh mệnh của chính mình. Chiếc xe bán tải rú ga bỏ trốn khỏi hiện trường.</p>
+
+<p>Lâm Phong lao như điên đến bệnh viện. Nhìn qua tấm kính phòng hồi sức cấp cứu ICU, Minh Nguyệt nằm đó với ống thở, máy đo nhịp tim kêu tít tít yếu ớt, đầu quấn băng trắng nhuốm máu, đôi môi nhợt nhạt cắt không còn giọt máu. Những ngón tay thon dài của cô vẫn co quắp lại theo bản năng ôm giữ tài liệu. Lồng ngực Lâm Phong co thắt dữ dội, một luồng khí lạnh buốt thấu xương bao trùm lấy hắn. Hắn áp bàn tay run rẩy lên tấm kính ngăn cách, đôi mắt vằn đỏ những tia máu, răng nghiến chặt đến rỉ máu:</p>
+
+<p>— "Minh Nguyệt... nếu em không tỉnh lại, tôi sẽ bắt cả Lâm gia và tất cả những kẻ đứng sau vụ này phải dùng mạng sống của chúng để đền mạng!"</p>
+
+<p>Sáng hôm sau, Lâm Vĩnh Thịnh và Tạ Vĩnh Bình hí hửng tổ chức họp báo công bố việc thu hồi và chia chác siêu dự án của Thiên Long ngay tại sảnh chính của khách sạn Hoàng Cung, muốn dồn Lâm Phong vào cái chết xã hội trước hàng trăm phóng viên quốc gia.</p>
+
+<p>— "Lâm Phong! Mày định quỳ xuống liếm giày xin tha hay để tao tống mày vào tù?" Tạ Vĩnh Bình đứng trên bục phát biểu gầm lên đầy đắc thắng trước hàng trăm phóng viên.</p>
+
+<p>Đúng lúc đó, cửa sảnh họp báo bị đẩy mạnh ra. Lâm Phong bước vào, vest đen đầy phong thái đĩnh đạc, theo sau hắn là một đoàn người mặc vest đen nghiêm nghị bước vào. Dẫn đầu là **Thống đốc Ngân hàng Nhà nước** và **Cục trưởng Cục Điều tra Tội phạm Kinh tế Bộ Công an**.</p>
+
+<p>Cả hội trường họp báo lập tức im phăng phắc như tờ.</p>
+
+<p>Thống đốc Ngân hàng Nhà nước bước lên bục phát biểu, dõng dạc thông báo:</p>
+
+<p>— "Chúng tôi chính thức xác nhận toàn bộ nguồn vốn quốc tế của Thiên Long Group là hoàn toàn hợp pháp và minh bạch. Đồng thời, lệnh phong tỏa tài khoản của Thiên Long do Tạ Vĩnh Bình ký là hành vi lạm dụng quyền hạn trái pháp luật nhằm mục đích tư lợi cá nhân!"</p>
+
+<p>Cục trưởng Cục Điều tra bước xuống, chỉ tay thẳng vào mặt Tạ Vĩnh Bình đang há hốc miệng kinh hoàng:</p>
+
+<p>— "Tạ Vĩnh Bình! Ông bị bắt khẩn cấp vì tội nhận hối lộ 5 tỷ đồng của Lâm Vĩnh Thịnh để ký lệnh phong tỏa trái phép và lạm dụng chức vụ quyền hạn gây hậu quả nghiêm trọng! Yêu cầu khóa tay đối tượng!"</p>
+
+<p>Hai cảnh sát hình sự lao lên, đè nghiến Tạ Vĩnh Bình xuống sàn họp báo trước hàng trăm ống kính camera đang phát trực tiếp toàn quốc. Tạ Vĩnh Bình sợ hãi khóc lóc thảm thiết:</p>
+
+<p>— "Oan uổng quá! Lâm chủ tịch! Tôi bị Lâm Vĩnh Thịnh xúi giục!"</p>
+
+<p>Lâm Vĩnh Thịnh đứng cạnh đó mặt vũ xám ngoét, định lén lút lùi ra cửa để bỏ trốn.</p>
+
+<p>— "Lâm Vĩnh Thịnh, chú định đi đâu?" Giọng nói của Lâm Phong vang lên điềm tĩnh nhưng vang vọng khắp cả sảnh hội trường.</p>
+
+<p>Đại Phong cùng các vệ sĩ chặn đứng lối thoát của Lâm Vĩnh Thịnh, đá mạnh vào nhượng chân khiến lão ngã khuỵu xuống sàn xi măng lạnh lẽo trước hàng trăm phóng viên.</p>
+
+<p>— "Chú Hai, những món nợ cũ, đã đến lúc phải thanh toán sòng phẳng rồi." Lâm Phong nhìn xuống lão bằng ánh mắt hờ hững, lạnh nhạt.</p>"""
+    },
+    {
+        "slug": "chuong-6-dam-cuoi-bi-pha",
+        "title": "Chương 6: Đám Cưới Và Sự Thật Năm Xưa",
+        "content": """<p>Hôm nay là ngày cưới của Hoàng Tuấn Kiệt và Triệu Mỹ Nga tại sảnh tiệc lộng lẫy nhất của khách sạn Hoàng Cung. Triệu Mỹ Nga khoác lên mình chiếc váy cưới thiết kế tinh xảo, nở nụ cười kiêu ngạo đón tiếp khách khứa. Cô ta nghĩ rằng dù Hoàng gia đang gặp khó khăn, nhưng đám cưới này vẫn giúp cô ta bước chân vào giới thượng lưu.</p>
+
+<p>Nhưng ngay khi cô dâu chú rể chuẩn bị bước lên lễ đường làm lễ, một đội ngũ cưỡng chế niêm phong tài sản của tòa án phối hợp cùng cảnh sát ập vào.</p>
+
+<p>Họ thô bạo lột chiếc nhẫn kim cương bốn cara trên ngón tay Triệu Mỹ Nga, giật phắt chiếc vòng cổ ngọc trai đắt tiền trên cổ cô ta trước sự chứng kiến của năm trăm khách mời quý tộc.</p>
+
+<p>— "Tài sản này thuộc danh mục thế chấp nợ xấu của Hoàng gia tại Thiên Long Group và đang bị niêm phong khẩn cấp để thu hồi nợ!" Đại diện tòa án đĩnh đạc thông báo.</p>
+
+<p>Hoàng Tuấn Kiệt hoảng loạn định bỏ trốn thì bị cảnh sát đè chặt xuống sàn lễ đường hoa tươi, khóa tay ra sau vì cáo buộc lừa đảo chiếm đoạt tài sản và trốn thuế.</p>
+
+<p>Khách mời bên dưới nhao nhao chửi rủa, ném hoa cưới và những ly nước vào người cô dâu chú rể đang thảm hại dưới đất. Hoàng gia sụp đổ hoàn toàn ngay trong ngày cưới!</p>
+
+<p>Triệu Mỹ Nga tóc tai bù xù, váy cưới rách nát, khóc lóc thảm thiết gọi điện cho Lâm Phong để cầu xin. Đầu dây bên kia kết nối, giọng Lâm Phong vang lên vô cùng bình thản:</p>
+
+<p>— "Mỹ Nga, đám cưới vui vẻ chứ?"</p>
+
+<p>— "Phong... em sai rồi! Em là con khốn! Xin anh hãy nể tình xưa nghĩa cũ cứu em với..."</p>
+
+<p>— "Tình xưa nghĩa cũ?" Lâm Phong khẽ cười lạnh. "Nghĩa cũ của cô là giẫm gót giày lên bàn tay rỉ máu của tôi đêm đó sao?"</p>
+
+<p>Triệu Mỹ Nga lúc này như phát điên, quỳ sụp xuống đống hoa cưới nát bét, gào khóc điên cuồng qua điện thoại để tung ra con át chủ bài cuối cùng hòng tự cứu mạng:</p>
+
+<p>— "Lâm Phong! Anh không được tuyệt tình như vậy! Em biết một bí mật động trời về vụ tai nạn sáu năm trước của cha mẹ anh! Đêm đó, chính tai em đã nghe thấy Lâm Vĩnh Thịnh gọi điện cho kẻ đứng sau ở thủ đô! Vụ tai nạn đó có một thế lực lớn ở thủ đô che lưng, chiếc container màu xanh lá cây đậm chính là do họ sắp xếp và xóa sạch mọi hồ sơ điều tra của cảnh sát! Kẻ đứng sau chính là Bùi Thế Xương — một nhân vật cực kỳ quyền lực đứng đầu cơ quan quản lý ở thủ đô! Lâm Vĩnh Thịnh đã lén lút ghi âm lại cuộc gọi thỏa thuận chia chác cổ phần với kẻ đó và lưu trong một chiếc thẻ nhớ siêu nhỏ, giấu bên trong bức tượng Phật ngọc ở thư phòng của lão! Xin anh cứu em, em sẽ đưa nó cho anh!"</p>
+
+<p>Lâm Phong nghe xong, đồng tử co rút mạnh mẽ. Chiếc xe container màu xanh lá cây đậm... Manh mối bị xóa bỏ sáu năm trước rốt cuộc đã lộ diện! Hắn dằn giọng đầy sắc bén:</p>
+
+<p>— "Cảm ơn cô đã cung cấp tin tức. Nhưng chiếc thẻ nhớ đó, người của tôi đã lấy được từ 10 phút trước rồi. Còn cô, tôi đã sắp xếp cho cô một công việc phù hợp: làm công nhân vệ sinh quét rác ở chi nhánh vùng sâu vùng xa của Thiên Long. Hãy dùng cả đời cô để quét sạch đống rác rưởi trong tâm hồn mình đi."</p>
+
+<p>Lâm Phong dứt khoát cúp máy. Triệu Mỹ Nga trợn mắt nhìn màn hình điện thoại đã tắt, tinh thần hoàn toàn sụp đổ, điên loạn la hét giữa lễ đường trống trải.</p>"""
+    },
+    {
+        "slug": "chuong-7-man-ket-toan-voi-gia-toc-lam",
+        "title": "Chương 7: Kết Toán — Và Sự Thật Về Đêm Tai Nạn",
+        "content": """<p>Tại đại sảnh dinh thự cổ kính của Lâm gia, bầu không khí âm u, tĩnh mịch bao trùm toàn bộ không gian. Những chiếc đèn chùm pha lê lớn tỏa ra ánh sáng nhợt nhạt, soi rõ vẻ mặt sợ hãi của các thành viên gia tộc Lâm đang đứng co cụm hai bên tường.</p>
+
+<p>Lâm Phong ngồi sừng sững trên chiếc ghế chủ tọa bằng gỗ mun chạm khắc tinh xảo của gia tộc — chiếc ghế vốn chỉ dành cho tộc trưởng đầy quyền lực. Phía sau hắn, mười cận vệ mặc vest xám đứng nghiêm trang như những bức tượng đá, tỏa ra khí thế áp đảo.</p>
+
+<p>Lâm Vĩnh Thịnh bị Đại Phong xách cổ ném thẳng xuống sàn gạch men lạnh lẽo ngay trước mũi giày da bóng loáng của Lâm Phong. Lão vừa bị tạm giam một đêm, mặt mũi bơ phờ, tóc tai bù xù, toàn thân bầm dập và run rẩy dữ dội.</p>
+
+<p>— "Lâm Phong! Mày là đồ nghịch tử vô ơn! Mày dám đối xử với chú ruột mày như thế này sao?! Tao sẽ kiện mày ra tòa! Tao sẽ khiến mày thân bại danh liệt!" Lâm Vĩnh Thịnh dù sợ hãi nhưng vẫn cố gào hét trong vô vọng để che giấu sự hoảng loạn.</p>
+
+<p>Lâm Phong không thèm chớp mắt. Ánh mắt hắn điềm tĩnh nhưng sâu thẳm. Hắn nhẹ nhàng giơ ngón tay lên. Đại Phong lập tức cắm một chiếc đầu đọc thẻ nhớ vào máy tính bảng, kết nối trực tiếp với hệ thống âm thanh vòm công suất lớn của đại sảnh. Ngay lập tức, một đoạn ghi âm thoại rõ mồn một vang lên, lấp đầy toàn bộ không gian tĩnh mịch:</p>
+
+<p><em>"Tôi đã sắp xếp chiếc container màu xanh lá cây của Nguyễn Văn Hùng đâm trực diện vào xe của Lâm Đình Sơn ở khúc cua đèo Bạch Vân... Yêu cầu ông xóa sạch mọi hồ sơ dữ liệu giao thông của xe container này trên hệ thống cảnh sát địa phương... Cổ phần Lâm Thị sau khi tôi cướp được sẽ chia cho ông 30%..."</em></p>
+
+<p>Giọng nói khàn khàn đặc trưng của Lâm Vĩnh Thịnh cùng một giọng nói trầm lạnh đầy quyền lực của Bùi Thế Xương từ thủ đô vang lên rõ mồn một không thể chối cãi. Các thành viên Lâm gia nghe xong đều trố mắt kinh hoàng, che miệng nín thở. Lâm Vĩnh Thịnh nghe xong tai ù đi, cả người run bắn lên như cầy sấy. Nhưng lão vẫn ngoan cố gào hét chối tội đầy điên cuồng, cố bấu víu vào hy vọng cuối cùng:</p>
+
+<p>— "Bịa đặt! Đây hoàn toàn là giả mạo! Lũ khốn chúng mày đã dùng công nghệ trí tuệ nhân tạo AI để cắt ghép, giả giọng nói của tao! Hiện tại trên mạng thiếu gì công cụ làm giả! Còn Nguyễn Văn Hùng chỉ là một tên tài xế nghèo hèn đã bị mày mua chuộc bằng tiền để khai gian đổ tội cho tao! Mày không có bất cứ bằng chứng pháp lý vững chắc nào có thể định tội tao trước tòa cả! Mày chỉ đang dọa dẫm tao thôi!"</p>
+
+<p>Lâm Phong khẽ nhếch mép cười đầy lạnh nhạt. Sự ngoan cố của lão nằm hoàn toàn trong tính toán của hắn. Hắn nhẹ nhàng lật giở một tập hồ sơ đỏ trên tay, lấy ra tập tài liệu thứ nhất ném thẳng trước mặt Lâm Vĩnh Thịnh:</p>
+
+<p>— "Chú Hai, tôi biết chú sẽ chối. Vậy chú tự nhìn khoản giao dịch tài chính này đi. Đúng 22 giờ đêm xảy ra vụ tai nạn sáu năm trước, một khoản tiền trị giá đúng 5 tỷ đồng đã được chuyển khoản khẩn cấp từ tài khoản offshore của công ty vỏ bọc 'Thịnh Phát Đạt' do chú đứng tên tại đảo British Virgin Islands, chuyển thẳng vào tài khoản ngân hàng của bà Lê Thị Mai — vợ của tài xế container Nguyễn Văn Hùng. Đây là bản sao kê chi tiết tài chính có dấu đỏ xác nhận trực tiếp từ ngân hàng quốc tế UBS Singapore phối hợp cùng cơ quan thanh tra Bộ Công an. Chú giải thích thế nào về việc tự dưng làm từ thiện, tặng một số tiền khổng lồ cho vợ của một gã tài xế container xa lạ ngay trong đêm xảy ra tai nạn chết người?"</p>
+
+<p>Lâm Vĩnh Thịnh trợn mắt nhìn bản sao kê ngân hàng có chữ ký và con dấu đỏ chói. Cổ họng lão nghẹn ứ, mặt mũi xám xịt, mồ hôi hột tuôn ra như tắm. Lão lắp bắp:</p>
+
+<p>— "Cái này... đây chỉ là tiền tao cho vay... Vợ nó là người quen cũ của tao gặp khó khăn..."</p>
+
+<p>Lâm Phong không thèm thay đổi sắc mặt, tiếp tục rút ra tập tài liệu thứ hai ném xuống sàn, những bức ảnh chụp hồng ngoại sắc nét bay tung tóe trước mặt lão:</p>
+
+<p>— "Cho vay? Vậy chú giải thích thế nào về những hình ảnh camera giám sát trạm thu phí đèo Bạch Vân này? Trong suốt hai tiếng đồng hồ trước khi vụ đâm xe xảy ra, chiếc xe container của Nguyễn Văn Hùng đã tắt đèn pha, đậu chờ sẵn ở góc tối ngay khúc cua tử thần. Và đây là lịch sử cuộc gọi từ số điện thoại cá nhân bí mật của chú. Đúng 3 phút trước khi chiếc xe của cha mẹ tôi đi qua trạm thu phí, chú đã gọi liên tiếp 3 cuộc gọi cho Nguyễn Văn Hùng. Chữ ký sóng viễn thông từ trạm phát sóng di động chứng minh điện thoại của chú nằm ngay sát hiện trường đèo Bạch Vân lúc đó. Chú gọi điện cho gã tài xế container quen cũ để tâm sự lúc nửa đêm, ngay trước khi gã lao xe đâm chết anh trai ruột của chú sao?!"</p>
+
+<p>Giọng nói của Lâm Phong bất ngờ đanh lại, vang dội như tiếng sấm nổ ngang tai khiến Lâm Vĩnh Thịnh giật nảy mình, ngã ngồi ra đất. Lão run rẩy, miệng há hốc nhưng không thể thốt ra được nửa lời ngụy biện. Sự thật trần trụi và tàn khốc đã bị phơi bày hoàn toàn.</p>
+
+<p>Lâm Phong tiếp tục rút ra tập tài liệu thứ ba — đòn quyết định cuối cùng:</p>
+
+<p>— "Chưa hết đâu. Đây là bản tự khai nhận tội có chữ ký xác nhận của tài xế Nguyễn Văn Hùng. Sau khi gây tai nạn, gã được chú chuyển tiền trốn sang Campuchia. Nhưng người của tôi đã tìm ra gã từ một tuần trước và áp giải về bàn giao cho Bộ Công an. Gã đã khai nhận toàn bộ kế hoạch do chú chủ mưu, bao gồm cả việc chú định thuê người sát hại gã để bịt đầu mối ở bên kia biên giới. Từng đòn chứng cứ đanh thép đập xuống liên tiếp đã khóa chết mọi ngả đường của chú rồi."</p>
+
+<p>Từng đòn chứng cứ đanh thép đập xuống liên tiếp như những cú búa tạ nghìn cân nghiền nát hoàn toàn mọi lời ngụy biện cuối cùng. Lâm Vĩnh Thịnh hoàn toàn sụp đổ tinh thần. Hai đầu gối lão khuỵu xuống, lão bò rạp dưới sàn nhà lạnh lẽo, ôm lấy chân Lâm Phong mà khóc lóc thảm thiết, cầu xin tha thứ trong tuyệt vọng:</p>
+
+<p>— "Phong! Cháu ơi! Chú sai rồi! Chú bị quỷ ám... Chú tham lam tài sản... Xin cháu nể tình dòng máu Lâm gia đang chảy trong người chú mà tha cho chú một con đường sống... Chú sẽ trả lại toàn bộ cổ phần, toàn bộ dinh thự này và tự nguyện rời khỏi thành phố H!"</p>
+
+<p>Lâm Phong cúi xuống nhìn lão, ánh mắt đầy sự khinh bỉ. Hắn nhẹ nhàng dùng gót giày da gạt phắt đôi bàn tay run rẩy của Lâm Vĩnh Thịnh ra khỏi chân mình, thản nhiên quay lưng bước đi, giọng nói vô cùng hững hờ:</p>
+
+<p>— "Máu mủ Lâm gia? Lúc chú thuê người đâm chết cha mẹ tôi, chú có nghĩ đến hai chữ máu mủ không? Lúc chú thiêu rụi di ảnh cha mẹ tôi, ép tôi liếm giày cho con gái chú, chú có nghĩ đến máu mủ không? Chú Hai, yên tâm đi. Kẻ chống lưng ở thủ đô đứng sau chú trong đoạn băng này, tôi cũng sẽ sớm đưa hắn ra ánh sáng để đền tội."</p>
+
+<p>Đúng lúc đó, các chiến sĩ cảnh sát hình sự Bộ Công an ập vào sảnh chính, dõng dạc đọc lệnh bắt giam khẩn cấp Lâm Vĩnh Thịnh về tội chủ mưu giết người và hủy hoại chứng cứ. Chiếc còng số tám lạnh ngắt khóa chặt tay Lâm Vĩnh Thịnh, áp giải lão đi trước sự chứng kiến đầy kinh hoàng của cả gia tộc Lâm đang quỳ lạy run rẩy xung quanh.</p>
+
+<p>Lâm Phong đứng sừng sững giữa sảnh chính, nhìn lướt qua các thành viên Lâm gia đang quỳ rạp dưới đất không một ai dám ngẩng đầu đối diện với ánh mắt của hắn:</p>
+
+<p>— "Lâm gia từ hôm nay đổi chủ. Kẻ nào dám có ý kiến phản đối?"</p>
+
+<p>Cả gia tộc Lâm đồng loạt dập đầu sát đất, run rẩy đồng thanh vang lên trong sự kính phục tuyệt đối: <em>"Không dám! Kính chào Lâm chủ tịch!"</em></p>"""
+    },
+    {
+        "slug": "chuong-8-binh-minh-cua-ke-tro-ve",
+        "title": "Chương 8: Bình Minh — Và Những Gì Còn Lại",
+        "content": """<p>Tại phòng chờ VIP của sân bay quốc tế Nội Bài, Hà Nội. Giữa đêm mưa phùn ẩm ướt, bầu không khí vô cùng tĩnh lặng nhưng ngột ngạt.</p>
+
+<p>Bùi Thế Xương — gã trùm quyền lực đứng sau tất cả sóng gió sáu năm qua, kẻ đã bắt tay với Lâm Vĩnh Thịnh để dàn dựng vụ đâm xe thảm khốc nhằm đổi lấy 30% cổ phần Lâm Thị — đang lo lắng bước đi với cuốn hộ chiếu ngoại giao trên tay. Chuyên cơ sang Thụy Sĩ của gã chuẩn bị cất cánh trong 20 phút nữa. Gã nghĩ rằng bản thân đã xóa sạch mọi dấu vết và có thể thong dong tận hưởng quãng đời còn lại ở nước ngoài.</p>
+
+<p>Bỗng nhiên, toàn bộ hệ thống phát thanh của sân bay đột ngột ngừng hoạt động. Các cửa ra vào phòng chờ VIP bị khóa chặt từ bên ngoài bởi các chiến sĩ cảnh sát đặc nhiệm cơ động vũ trang đầy mình.</p>
+
+<p>Cửa phòng VIP mở ra, Lâm Phong chậm rãi bước vào, mặc bộ vest đen đĩnh đạc, thong thả ngồi xuống chiếc ghế sofa đối diện gã trùm thủ đô. Gương mặt hắn tĩnh lặng tuyệt đối.</p>
+
+<p>Bùi Thế Xương biến sắc, cố giữ vẻ uy nghiêm gầm lên đe dọa:</p>
+
+<p>— "Lâm Phong! Mày biết tao là ai không mà dám dẫn người làm loạn ở đây? Chỉ cần một cuộc gọi của tao, toàn bộ tập đoàn Thiên Long của mày sẽ biến mất khỏi thành phố H!"</p>
+
+<p>Lâm Phong không thèm chớp mắt. Hắn nhẹ nhàng đặt chiếc máy ghi âm cùng tập tài liệu đen lên bàn kính:</p>
+
+<p>— "Ông Bùi, ông đang tìm kiếm những người chống lưng cho ông đúng không? Đáng tiếc, năm vị lãnh đạo cao cấp nhất trong liên minh lợi ích của ông đã bị Ủy ban Kiểm tra Trung ương đình chỉ chức vụ để phục vụ điều tra từ nửa tiếng trước rồi. Toàn bộ tài sản hơn mười ngàn tỷ của ông ở trong và ngoài nước đã bị đóng băng hoàn toàn. Đây là bản sao lưu toàn bộ nhật ký cuộc gọi và sao kê chuyển khoản hối lộ từ tài khoản của Lâm Vĩnh Thịnh sang tài khoản của ông."</p>
+
+<p>Cùng lúc đó, các thanh tra của Ủy ban Kiểm tra Trung ương phối hợp cùng Viện kiểm sát nhân dân tối cao bước vào phòng VIP, dõng dạc đọc lệnh khởi tố và bắt tạm giam khẩn cấp Bùi Thế Xương về tội nhận hối lộ và bao che tội phạm giết người gây hậu quả đặc biệt nghiêm trọng.</p>
+
+<p>Gương mặt uy quyền một thời của gã bỗng xám ngoét, hai chân bủn rủn đổ sụp xuống ghế sofa, đôi tay run rẩy bị còng chặt trong chiếc còng số tám lạnh ngắt dưới ánh đèn flash chớp nháy liên hồi của các cơ quan báo chí trung ương. Lưới trời lồng lộng, thưa mà khó lọt!</p>
+
+<p>Một tháng sau sóng gió thương trường chấn động cả nước.</p>
+
+<p>Lâm gia từ hôm nay đã thuộc về Lâm Phong, nhưng hắn không chọn ở lại căn penthouse hào nhoáng ở trung tâm thành phố. Hắn chọn quay về ngôi biệt thự cổ của gia đình năm xưa — nơi từng bị Lâm Vĩnh Thịnh chiếm đoạt và tàn phá.</p>
+
+<p>Tại sảnh thờ chính trang nghiêm, ánh nắng sớm khẽ len lỏi qua ô cửa sổ bằng gỗ, chiếu rọi lên di ảnh của cha mẹ Lâm Phong vừa được phục chế hoàn hảo. Lâm Phong đứng lặng lẽ trước bàn thờ, trên người mặc bộ đồ đen giản dị. Hắn chậm rãi thắp ba nén hương trầm trầm mặc. Khói hương bay lơ lửng mang theo gánh nặng và nỗi đau suốt sáu năm đày ải của hắn.</p>
+
+<p>Lâm Phong chậm rãi cúi đầu vái lạy ba vái sâu. Đôi mắt vốn luôn sắc bén, coi thường vạn vật trên thương trường giờ đây bỗng đỏ hoe, ngập tràn sương mỏng. Hắn đứng sừng sững trước bàn thờ, thì thầm với giọng run rẩy nhưng đầy kiêu hãnh:</p>
+
+<p>— "Ba, mẹ... con đã trở về rồi. Con đã lấy lại toàn bộ gia sản, danh dự và đòi lại công lý cho gia đình ta. Những kẻ thủ ác hại ba mẹ đều đã phải trả giá đắt trước pháp luật. Xin ba mẹ ở trên cao linh thiêng hãy yên lòng yên nghỉ..."</p>
+
+<p>Một bàn tay ấm áp khẽ luồn vào lòng bàn tay hắn, siết nhẹ. Lâm Phong quay đầu lại, nhìn thấy Minh Nguyệt đang đứng bên cạnh. Vết thương từ vụ tai nạn hôm đó đã lành lặn, cô mặc một chiếc đầm trắng tinh khôi như hoa cúc sớm. Trong mắt cô lúc này cũng lấp lánh nước mắt xúc động.</p>
+
+<p>Minh Nguyệt khẽ tiến lên, thắp một nén hương, cúi đầu cung kính vái lạy trước di ảnh:</p>
+
+<p>— "Thưa hai bác, con là Minh Nguyệt. Từ nay về sau, con xin nguyện ở bên cạnh chăm sóc và đồng hành cùng anh Phong trên mọi nẻo đường đời. Xin hai bác yên lòng yên nghỉ."</p>
+
+<p>Lâm Phong nhìn cô, trái tim hắn tràn ngập sự ấm áp chưa từng có suốt sáu năm qua. Hắn đưa tay nhẹ nhàng lau đi giọt nước mắt lăn trên má cô, khẽ kéo cô vào lòng, tựa cằm lên mái tóc thơm ngát của cô.</p>
+
+<p>— "Cảm ơn em, Minh Nguyệt. Nếu không có sự xuất hiện và kiên định của em ba năm trước bên vệ đường, và sự hy sinh của em lần này, có lẽ tôi đã không thể hoàn thành ván cờ này trọn vẹn như vậy." Hắn thì thầm.</p>
+
+<p>— "Được ở bên anh, nhìn anh tìm lại công lý, đó là hạnh phúc lớn nhất của đời em." Minh Nguyệt khẽ ngẩng đầu mỉm cười, đôi mắt rạng rỡ.</p>
+
+<p>Hắn quay sang nắm lấy bàn tay mềm mại của Minh Nguyệt, dắt cô bước ra ngoài sảnh lớn. Ánh bình minh rực rỡ xua tan đi làn sương mù cuối cùng, chiếu rọi hai bóng hình đi bên nhau hướng về phía tương lai tươi sáng.</p>
+
+<p>Ván cờ kéo dài sáu năm này rốt cuộc đã khép lại một cách trọn vẹn nhất rồi. Đứa phế vật năm đó nay đã thực sự đứng trên đỉnh cao quyền lực, tìm lại được cả danh dự gia tộc lẫn tình yêu đích thực của cuộc đời mình.</p>
+
+<p style="text-align:center; margin-top: 40px;">—— <strong>HẾT</strong> ——</p>"""
+    }
+]
+
+# ======================================================
+# EXECUTION (V11 PUSH)
+# ======================================================
+
+print("=== [V11] Cập nhật mô tả truyện ===")
+res_truyen = bypass("POST", f"truyen/{TRUYEN_ID}", {"content": NEW_INTRO})
+print(f"Truyen intro update status: {res_truyen.status_code}")
+
+print("\n=== [V11] Lấy danh sách chương ===")
+res_chaps = bypass("GET", f"chuong?meta_key=_truyen_id&meta_value={TRUYEN_ID}&per_page=20", {})
+
+if res_chaps.status_code == 200:
+    existing_chapters = res_chaps.json()
+    slug_to_id = {ch['slug']: ch['id'] for ch in existing_chapters}
+    
+    print("\n=== [V11] Thực thi nâng cấp kịch tính & vả mặt tối thượng ===")
+    for chap_data in chapters_updated:
+        slug = chap_data['slug']
+        if slug in slug_to_id:
+            chap_id = slug_to_id[slug]
+            print(f"Đang ghi đè Chương: '{chap_data['title']}' (ID: {chap_id})")
+            res_update = bypass("POST", f"chuong/{chap_id}", {
+                "title": chap_data["title"],
+                "content": chap_data["content"]
+            })
+            print(f"  -> {res_update.status_code}")
+        else:
+            print(f"Không tìm thấy chương '{slug}', tạo mới...")
+            res_new = bypass("POST", "chuong", {
+                "title": chap_data["title"],
+                "content": chap_data["content"],
+                "status": "publish",
+                "meta": {"_truyen_id": TRUYEN_ID}
+            })
+            print(f"  -> {res_new.status_code}")
+        time.sleep(1)
+else:
+    print(f"Lỗi: {res_chaps.text[:200]}")
+
+print("\n=== HOÀN TẤT CẬP NHẬT TRUYỆN V11 PREMIUM ===")

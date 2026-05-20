@@ -6,7 +6,13 @@
 import React, { useState, useEffect } from 'react';
 import { useStore } from '../store/useStore';
 import { BookOpen, Map, PenTool, ShieldAlert, Rocket, Settings, CheckCircle2, Download, Zap, Play, Loader2 } from 'lucide-react';
-import { agentGenerateBible, agentGenerateChapterMap, agentWriteChapter, agentRewriteChapter, agentIronRulesV2, agentFinalAudit } from '../lib/advanced_engine';
+import { agentGenerateBible, agentGenerateChapterMap, agentWriteChapter, agentRewriteChapter, agentIronRulesV2, agentFinalAudit, extractJson } from '../lib/advanced_engine';
+
+const QUALITY_TARGET_BY_RISK: Record<string, number> = {
+  low: 8.4,
+  medium: 8.8,
+  high: 9.2,
+};
 
 export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) => void }) {
   const { deepseekKey, addQueueItems, draftSpaces, updateDraftSpace, addApiLog, hasHydrated } = useStore();
@@ -25,7 +31,8 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
   const [currentState, setCurrentState] = useState('{}'); // STATE UPDATE JSON from last chapter
 
   // Writer states
-  const [riskLevel, setRiskLevel] = useState<'low' | 'medium' | 'high'>('low');
+  const [riskLevel, setRiskLevel] = useState<'low' | 'medium' | 'high'>('high');
+  const [hasMounted, setHasMounted] = useState(false);
   const [selectedChapterIdx, setSelectedChapterIdx] = useState(0);
   const [chapters, setChapters] = useState<{chapter: number; title: string; content: string; usedModel: string}[]>([]);
   const [isWritingChapter, setIsWritingChapter] = useState(false);
@@ -78,6 +85,12 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     setTimeout(() => setToast(null), 5000);
   };
 
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  const renderedRiskLevel = hasMounted ? riskLevel : 'high';
+
   // Load from draft space
   useEffect(() => {
     if (!hasHydrated) return;
@@ -89,7 +102,10 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     if (draft.targetChapters !== undefined) setTargetChapters(draft.targetChapters || 15);
     if (draft.selectedGenres !== undefined) setSelectedGenres(draft.selectedGenres || []);
     if (draft.autoChapters   !== undefined) setAutoChapters(draft.autoChapters);
-    if (draft.riskLevel      !== undefined) setRiskLevel(draft.riskLevel || 'low');
+    if (draft.riskLevel      !== undefined) {
+      const savedRisk = ['low', 'medium', 'high'].includes(draft.riskLevel) ? draft.riskLevel : 'high';
+      setRiskLevel(savedRisk);
+    }
     if (draft.chapters       !== undefined) setChapters(draft.chapters || []);
     if (draft.auditReports   !== undefined) setAuditReports(draft.auditReports || {});
     if (draft.customIronRules !== undefined) setCustomIronRules(draft.customIronRules || '');
@@ -207,7 +223,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
           const posMatch = lastError.match(/position\s+(\d+)/);
 
           // Auto-repair: truncated JSON (AI hit max_tokens) — close all open braces/brackets
-          if (/Unexpected end of JSON/i.test(lastError) && attempt < 2) {
+          if (/(Unexpected end of JSON|Unterminated string|Expected property name)/i.test(lastError) && attempt < 2) {
             // Strip any trailing incomplete string value
             jsonStr = jsonStr.replace(/,\s*"[^"]*$/, ''); // remove trailing incomplete key
             jsonStr = jsonStr.replace(/"[^"]*$/, '""'); // close any unclosed string
@@ -372,7 +388,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     }
 
     let bibleObj: any = {};
-    try { bibleObj = JSON.parse(storyBible); } catch { bibleObj = { series_premise: storyBible }; }
+    try { bibleObj = extractJson(storyBible); } catch { bibleObj = { series_premise: storyBible }; }
 
     // Trích xuất Tên Truyện
     let extractedTitle = '';
@@ -492,23 +508,38 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     }
   };
 
+  const [mapError, setMapError] = useState('');
+
   const handleGenerateMap = async () => {
-    if (!deepseekKey) return showToast("Chưa có API Key!", 'error');
-    if (!storyBible?.trim()) return showToast("Chưa có Story Bible. Vui lòng quay lại Mode 1!", 'error');
+    if (!deepseekKey) {
+      const err = "Chưa có API Key! Vui lòng vào mục Settings (Cài đặt) ở góc dưới bên trái để nhập DeepSeek API Key.";
+      setMapError(err);
+      return showToast(err, 'error');
+    }
+    if (!storyBible?.trim()) {
+      const err = "Chưa có Story Bible. Vui lòng quay lại Mode 1 (Story Bible) để tạo trước!";
+      setMapError(err);
+      return showToast(err, 'error');
+    }
     
     setIsGeneratingMap(true);
+    setMapError('');
     try {
-      let bibleObj;
+      // Cố gắng parse JSON, nếu không được thì dùng string thô (AI vẫn hiểu được)
+      let bibleObj: any;
       try {
-        bibleObj = JSON.parse(storyBible);
-      } catch (e) {
-        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
-        try { bibleObj = JSON.parse(cleaned); } 
-        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+        bibleObj = extractJson(storyBible);
+      } catch {
+        bibleObj = storyBible; // Fallback: gửi nguyên văn bản cho AI xử lý
       }
-      const chapCount = autoChapters ? (bibleObj.recommended_chapters || targetChapters) : targetChapters;
+      const chapCount = autoChapters
+        ? ((typeof bibleObj === 'object' && bibleObj?.recommended_chapters) || targetChapters)
+        : targetChapters;
       const result = await agentGenerateChapterMap('deepseek', deepseekKey, 'deepseek-reasoner', bibleObj, chapCount);
       const map = Array.isArray(result.data) ? result.data : (result.data?.chapters || []);
+      if (map.length === 0) {
+        throw new Error('AI không trả về chapter map hợp lệ. Vui lòng bấm lại hoặc giảm số chương.');
+      }
       setChapterMap(map);
       setChapters([]); // Xóa các chương đã viết cũ khi tạo Map mới để tránh lỗi trộn truyện
       setAuditReports({});
@@ -516,7 +547,9 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
       if (autoChapters && map.length > 0) setTargetChapters(map.length);
       setActiveTab(3);
     } catch (e: any) {
-      showToast("Lỗi tạo Chapter Map: " + (e.message || "Hãy đảm bảo Story Bible là JSON hợp lệ"), 'error');
+      const errMsg = "Lỗi tạo Chapter Map: " + (e.message || "Hãy đảm bảo Story Bible là JSON hợp lệ");
+      showToast(errMsg, 'error');
+      setMapError(errMsg);
     } finally {
       setIsGeneratingMap(false);
     }
@@ -531,15 +564,37 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     const prevContext = prevChapter ? prevChapter.content.slice(-500) : '';
     setIsWritingChapter(true);
     try {
-      let bibleObj;
+      // Parse Bible — fallback to raw string if JSON is broken
+      let bibleObj: any;
       try {
-        bibleObj = JSON.parse(storyBible);
-      } catch (e) {
-        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
-        try { bibleObj = JSON.parse(cleaned); } 
-        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+        bibleObj = extractJson(storyBible);
+      } catch {
+        bibleObj = storyBible; // Fallback: gửi nguyên văn bản cho AI xử lý
       }
-      const result = await agentWriteChapter('deepseek', deepseekKey, 'deepseek-chat', bibleObj, beat, prevContext, riskLevel, currentState, chapterMap.length);
+
+      // Seed characterMap from Bible if not yet present (prevents name drift from Ch.1)
+      let localState = currentState;
+      try {
+        const st = JSON.parse(localState || '{}');
+        if (typeof bibleObj === 'object' && (!st.characterMap || Object.keys(st.characterMap).length === 0)) {
+          const charMap: Record<string, string> = {};
+          if (bibleObj.characterMap) {
+            Object.assign(charMap, bibleObj.characterMap);
+          } else if (bibleObj.protagonist?.full_name) {
+            charMap.main = bibleObj.protagonist.full_name;
+            if (bibleObj.main_villain?.full_name) charMap.villain_main = bibleObj.main_villain.full_name;
+            if (bibleObj.supporting_characters?.[0]?.full_name) charMap.ally_primary = bibleObj.supporting_characters[0].full_name;
+          }
+          if (Object.keys(charMap).length > 0) {
+            st.characterMap = charMap;
+            localState = JSON.stringify(st);
+            setCurrentState(localState);
+          }
+        }
+      } catch { /* ignore */ }
+
+      const writeModel = riskLevel === 'high' ? 'deepseek-reasoner' : 'deepseek-chat';
+      const result = await agentWriteChapter('deepseek', deepseekKey, writeModel, bibleObj, beat, prevContext, riskLevel, localState, chapterMap.length, chapterMap);
       const rawText = result.text || '';
       const cleanText = stripMetaBlocks(rawText);
       const newChapters = [...chapters];
@@ -571,12 +626,13 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     if (!currentAudit?.patch_notes) return showToast("Chưa có Patch Notes. Chạy Iron Check trước!", 'error');
     setIsPatching(true);
     try {
-      const result = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', currentChapter.content, currentAudit.patch_notes, storyBible, currentState);
+      const patchModel = riskLevel === 'high' ? 'deepseek-reasoner' : 'deepseek-chat';
+      const result = await agentRewriteChapter('deepseek', deepseekKey, patchModel, currentChapter.content, currentAudit.patch_notes, storyBible, currentState);
       const newChapters = [...chapters];
       newChapters[selectedChapterIdx] = { ...newChapters[selectedChapterIdx], content: stripMetaBlocks(result.text), usedModel: result.usedModel };
       setChapters(newChapters);
       setLastUsedModel(result.usedModel);
-      showToast("✅ Patch thành công bằng V3!", 'success');
+      showToast(`✅ Patch thành công bằng ${result.usedModel}!`, 'success');
     } catch (e: any) {
       showToast("Lỗi patch: " + e.message, 'error');
     } finally {
@@ -589,7 +645,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     let bibleTitle = 'Truyen';
     let logline = '';
     try {
-      const b = JSON.parse(storyBible);
+      const b = extractJson(storyBible);
       bibleTitle = b.title || 'Truyen';
       logline = b.logline || '';
     } catch { /* ignore */ }
@@ -655,11 +711,9 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     try {
       let bibleObj;
       try {
-        bibleObj = JSON.parse(storyBible);
+        bibleObj = extractJson(storyBible);
       } catch (e) {
-        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
-        try { bibleObj = JSON.parse(cleaned); } 
-        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+        throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp.");
       }
       title = bibleObj.title || title;
     } catch { }
@@ -752,10 +806,9 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     const localAuditReports = { ...auditReports };
     let bibleObj;
     try {
-      bibleObj = JSON.parse(storyBible);
+      bibleObj = extractJson(storyBible);
     } catch (e) {
-      const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
-      try { bibleObj = JSON.parse(cleaned); } catch (e2) { bibleObj = { series_premise: storyBible }; }
+      bibleObj = { series_premise: storyBible };
     }
 
     // FIX: Seed characterMap from Bible BEFORE Ch.1 to prevent name drift.
@@ -808,7 +861,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
         
         // 1. Write
         const writeModel = riskLevel === 'high' ? 'deepseek-reasoner' : 'deepseek-chat';
-        const writeRes = await agentWriteChapter('deepseek', deepseekKey, writeModel, bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length);
+        const writeRes = await agentWriteChapter('deepseek', deepseekKey, writeModel, bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length, chapterMap);
         
         if (!writeRes.text || writeRes.text.trim().length === 0) {
           addLog(`❌ Model ${writeModel} trả về rỗng ở chương ${i}, dừng AutoPilot.`, 'error');
@@ -884,7 +937,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
         };
         if (isAuditOutput(writeRes.text)) {
           addLog(`⚠️ Ch.${i}: AI nhầm output Audit Report thay vì truyện! Đang retry với deepseek-chat...`, 'warning');
-          const retryRes = await agentWriteChapter('deepseek', deepseekKey, 'deepseek-chat', bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length);
+          const retryRes = await agentWriteChapter('deepseek', deepseekKey, 'deepseek-chat', bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length, chapterMap);
           if (retryRes.text && retryRes.text.trim().length > 0 && !isAuditOutput(retryRes.text)) {
             stateSourceText = retryRes.text;
             writeRes.text = sanitizeChapterOutput(retryRes.text);
@@ -894,70 +947,39 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
           }
         }
 
-        // ========== HARD VALIDATOR 1: Name Enforcer ==========
-        // Regex-replace ANY wrong character names using characterMap. 
-        // This does NOT rely on AI — it's a code-level enforcer.
+        // ========== HARD VALIDATOR 1: Generic Name Enforcer ==========
+        // Checks if AI used any name NOT in characterMap. If the canonical name
+        // from the map doesn't appear at all but a Vietnamese-name-like string does,
+        // it logs a warning. No hardcoded patterns — works for ALL stories.
         try {
           const st = JSON.parse(localCurrentState || '{}');
           const charMap = st.characterMap || {};
-          // Build a reverse lookup of known names to detect drift
           const knownNames = Object.values(charMap).filter(Boolean) as string[];
           if (knownNames.length > 0) {
-            let text = writeRes.text;
-            let nameFixCount = 0;
+	            const text = writeRes.text;
+	            const nameFixCount = 0;
             
-            // Common drift patterns: main character name changes
-            const mainName = charMap.main || charMap.nhan_vat_chinh || '';
-            const villainName = charMap.villain_main || charMap.phan_dien || '';
-            const companyName = charMap.company_name || '';
-            
-            // Fix main character name drift (e.g., "Nguyễn Văn Minh" → "Minh Anh")
-            if (mainName) {
-              // Detect if AI used a completely different name for main
-              // Common AI drift: changing "Minh Anh" to "Nguyễn Văn Minh" or just "Minh"
-              const mainFirstName = mainName.split(' ').pop() || mainName;
-              const wrongMainPatterns = [
-                /Nguyễn Văn Minh/g,  // Common drift pattern
-                /Nguyễn Minh/g,
-              ];
-              for (const pattern of wrongMainPatterns) {
-                if (pattern.test(text) && !text.includes(mainName)) {
-                  text = text.replace(pattern, mainName);
-                  nameFixCount++;
+            // Check each canonical name — if it's not in the text, warn about possible drift
+            for (const [role, canonicalName] of Object.entries(charMap)) {
+              if (!canonicalName || typeof canonicalName !== 'string') continue;
+              const name = canonicalName as string;
+              if (name.length < 2) continue;
+              
+              // Skip roles like company_name for character-level checks
+              if (role === 'company_name') continue;
+              
+              // Extract the "last name" (given name in Vietnamese naming convention)
+              const parts = name.split(' ');
+              const givenName = parts[parts.length - 1]; // Last word = given name in VN
+              
+              if (!text.includes(name) && givenName && givenName.length >= 2) {
+                // The full canonical name doesn't appear — check if the given name alone does
+                // This means AI might have abbreviated or drifted
+                if (text.includes(givenName)) {
+                  // Given name appears but full name doesn't — could be acceptable shortening
+                  // Just log, don't auto-fix (too risky)
+                  addLog(`⚠️ Ch.${i}: Tên "${name}" (${role}) không xuất hiện đầy đủ, chỉ thấy "${givenName}".`, 'warning');
                 }
-              }
-            }
-            
-            // Fix company name drift (e.g., "Thực Phẩm Xanh" → "ABC")  
-            if (companyName) {
-              const wrongCompanyPatterns = [
-                /Tập đoàn Thực Phẩm Xanh/g,
-                /Công ty Thực Phẩm Xanh/g,
-                /Thực Phẩm Xanh/g,
-              ];
-              for (const pattern of wrongCompanyPatterns) {
-                if (pattern.test(text) && !knownNames.some(n => text.includes(n) && n === companyName)) {
-                  const replacement = companyName.includes('Tập đoàn') ? companyName : `Tập đoàn ${companyName}`;
-                  text = text.replace(pattern, replacement);
-                  nameFixCount++;
-                }
-              }
-            }
-
-            // Fix villain name drift (e.g., "Ông Quang" → "Trần Đức" or vice versa)
-            if (villainName) {
-              // Detect the villain's last-name pattern
-              const villainParts = villainName.split(' ');
-              const villainLastName = villainParts[villainParts.length - 1];
-              // If text uses "sếp Đức" but villain is "Ông Quang", replace
-              if (villainName.includes('Quang')) {
-                text = text.replace(/Trần Đức/g, villainName);
-                text = text.replace(/sếp Đức/g, `sếp ${villainLastName}`);
-                nameFixCount++;
-              } else if (villainName.includes('Đức')) {
-                text = text.replace(/Ông Quang/g, villainName);
-                text = text.replace(/sếp Quang/g, `sếp ${villainLastName}`);
-                nameFixCount++;
               }
             }
             
@@ -977,7 +999,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
           const hardRevealViolations = [
             'tôi là chủ tịch', 'tôi chính là chủ tịch',
             'lộ thân phận', 'tuyên bố thân phận',
-            'cởi áo shipper', 'giơ thẻ đen ra',
+            'cởi áo shipper', 'cởi bỏ vỏ bọc', 'giơ thẻ đen ra',
             'cô là chủ tịch', 'anh là chủ tịch', 'nó là chủ tịch',
             'chính là chủ tịch', 'thật sự là chủ tịch', 'hóa ra là chủ tịch',
             // v2.1: Catch soft reveals from Ch.3/Ch.5 patterns
@@ -1041,11 +1063,11 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
               beats: [...(beat.beats || beat.key_beats || []), 
                 'CẢNH BÁO TỪ HỆ THỐNG: Bản viết trước bị loại vì lộ thân phận main quá sớm. ' +
                 'TUYỆT ĐỐI KHÔNG viết bất kỳ cảnh nào main lộ thân phận, giơ thẻ đen, tuyên bố "tôi là chủ tịch", ' +
-                'hay bất kỳ ai phát hiện danh tính thật của main. Main phải giữ vỏ bọc shipper 100% chương này.'
+                'hay bất kỳ ai phát hiện danh tính thật của main. Main phải giữ vỏ bọc hiện tại 100% chương này.'
               ],
               title: beat.title + ' [ANTI-REVEAL REWRITE]',
             };
-            const rewriteRes = await agentWriteChapter('deepseek', deepseekKey, writeModel, bibleObj, antiRevealBeat, prevContext, riskLevel, localCurrentState, chapterMap.length);
+            const rewriteRes = await agentWriteChapter('deepseek', deepseekKey, writeModel, bibleObj, antiRevealBeat, prevContext, riskLevel, localCurrentState, chapterMap.length, chapterMap);
             if (rewriteRes.text && rewriteRes.text.trim().length > 0) {
               // Check rewrite with the same detection logic
               const rewriteLower = rewriteRes.text.toLowerCase();
@@ -1147,7 +1169,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
           const strongRevealPatterns = [
             'tôi là chủ tịch', 'tôi chính là chủ tịch',
             'lộ thân phận', 'tuyên bố thân phận',
-            'cởi áo shipper', 'giơ thẻ đen ra',
+            'cởi áo shipper', 'cởi bỏ vỏ bọc', 'giơ thẻ đen ra',
             'cô là chủ tịch', 'anh là chủ tịch', 'hóa ra là chủ tịch',
             'thưa chủ tịch', 'chính là chủ tịch', 'thật sự là chủ tịch',
           ];
@@ -1230,19 +1252,23 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
           setAuditReports({ ...localAuditReports });
           setLastUsedModel(auditRes.usedModel);
 
-          // Threshold lowered from 9.2 → 7.5. Score 0 means parse failed — don't block.
           const auditScore = Number(auditParsed.score) || 0;
+          const qualityTarget = QUALITY_TARGET_BY_RISK[riskLevel] || 8.8;
+          const mustPatchForQuality = auditScore > 0 && auditScore < qualityTarget;
+          let didEmergencyPatch = false;
           if (auditParsed.verdict === 'REWRITE_REQUIRED' || auditParsed.verdict === 'REWRITE REQUIRED' ||
-              (auditScore > 0 && auditScore < 7.5)) {
-            addLog(`⚠️ Chương ${i} chưa đạt kiểm duyệt (Verdict: ${auditParsed.verdict}, Score: ${auditScore || '?'}/10). Đang thử auto-patch...`, 'warning');
+              mustPatchForQuality) {
+            addLog(`⚠️ Chương ${i} chưa đạt ngưỡng ${qualityTarget}/10 (Verdict: ${auditParsed.verdict}, Score: ${auditScore || '?'}/10). Đang thử auto-patch...`, 'warning');
             // Auto-patch instead of hard-stopping
             try {
-              const patchNotes = auditParsed.patch_notes || auditParsed.raw_text || `Score ${auditScore}/10 — cần cải thiện.`;
-              const emergencyPatch = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', writeRes.text, patchNotes, storyBible, localCurrentState);
+              const patchNotes = auditParsed.patch_notes || auditParsed.raw_text || `Score ${auditScore}/10 — cần nâng lên ít nhất ${qualityTarget}/10 bằng cách sửa logic, cảm xúc, nhịp và bằng chứng.`;
+              const patchModel = riskLevel === 'high' ? 'deepseek-reasoner' : 'deepseek-chat';
+              const emergencyPatch = await agentRewriteChapter('deepseek', deepseekKey, patchModel, writeRes.text, patchNotes, storyBible, localCurrentState);
               if (emergencyPatch.text && emergencyPatch.text.trim().length > 100) {
                 writeRes.text = sanitizeChapterOutput(emergencyPatch.text);
                 localChapters[idx] = { chapter: beat.chapter, title: beat.title, content: writeRes.text, usedModel: `${writeRes.usedModel} + EmergencyPatch(${emergencyPatch.usedModel})` };
                 setChapters([...localChapters]);
+                didEmergencyPatch = true;
                 addLog(`🔧 Ch.${i}: Emergency patch thành công. Tiếp tục AutoPilot.`, 'success');
               } else {
                 addLog(`❌ Ch.${i}: Emergency patch rỗng. Dừng AutoPilot.`, 'error');
@@ -1256,10 +1282,12 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
 
           let finalChapterText = writeRes.text;
 
-          if (auditParsed.verdict === 'PASS_WITH_PATCHES' && apMode === 'balanced') {
-            addLog(`🔧 Đang Patch chương ${i} (V3)...`, 'info');
+          if ((auditParsed.verdict === 'PASS_WITH_PATCHES' || (mustPatchForQuality && !didEmergencyPatch)) && apMode === 'balanced') {
+            const patchModel = riskLevel === 'high' ? 'deepseek-reasoner' : 'deepseek-chat';
+            addLog(`🔧 Đang polish chương ${i} bằng ${patchModel} để kéo sát ngưỡng ${qualityTarget}/10...`, 'info');
             await new Promise(r => setTimeout(r, 1500));
-            const patchRes = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', finalChapterText, auditParsed.patch_notes || '', storyBible, localCurrentState);
+            const patchNotes = auditParsed.patch_notes || `Score ${auditScore}/10, cần polish để đạt tối thiểu ${qualityTarget}/10: tăng specificity của chi tiết, làm phản diện thông minh hơn, làm bằng chứng có giá phải trả, và làm kết chương có câu hỏi cụ thể.`;
+            const patchRes = await agentRewriteChapter('deepseek', deepseekKey, patchModel, finalChapterText, patchNotes, storyBible, localCurrentState);
             if (!patchRes.text || patchRes.text.trim().length === 0) {
               addLog(`❌ Lỗi Patch rỗng ở chương ${i}, dừng AutoPilot.`, 'error');
               break;
@@ -1313,11 +1341,9 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
     try {
       let bibleObj;
       try {
-        bibleObj = JSON.parse(storyBible);
+        bibleObj = extractJson(storyBible);
       } catch (e) {
-        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
-        try { bibleObj = JSON.parse(cleaned); } 
-        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+        throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp.");
       }
       // Build params — include custom Iron Rules only for checker, never for writer
       const checkerParams = {
@@ -1330,7 +1356,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
         extra_rules: (useFullIronRulesInChecker && customIronRules.trim()) ? customIronRules.trim() : '',
       };
       const result = await agentIronRulesV2('deepseek', deepseekKey, 'deepseek-reasoner', checkerParams);
-      setIronCheckResult(result.text ? (() => { try { return JSON.parse(result.text); } catch { return { verdict: 'UNKNOWN', score: 0, errors: [result.text], patch_notes: '' }; } })() : result.data);
+      setIronCheckResult(result.text ? (() => { try { return extractJson(result.text); } catch { return { verdict: 'UNKNOWN', score: 0, errors: [result.text], patch_notes: '' }; } })() : result.data);
       setLastUsedModel(result.usedModel);
     } catch (e: any) {
       showToast("Lỗi Soi Sạn: " + e.message, 'error');
@@ -1424,7 +1450,8 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
         const patchNotes = perChapAudit?.patch_notes
           || `Dựa trên Final Audit Report — các lỗi liên quan đến Chương ${chapNum}:\n\n${finalAuditReport.slice(0, 3000)}`;
 
-        const result = await agentRewriteChapter('deepseek', deepseekKey, 'deepseek-chat', chap.content, patchNotes, storyBible, currentState);
+        const patchModel = riskLevel === 'high' ? 'deepseek-reasoner' : 'deepseek-chat';
+        const result = await agentRewriteChapter('deepseek', deepseekKey, patchModel, chap.content, patchNotes, storyBible, currentState);
         if (!result.text || result.text.trim().length < 100) {
           setAutoFixLog(prev => [...prev, { msg: `❌ Chương ${chapNum}: Kết quả rỗng, bỏ qua.`, type: 'error' }]);
           continue;
@@ -1477,23 +1504,40 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
             <div className="w-px h-8 bg-white/10 mx-2"/>
 
             {/* Risk Selector — only relevant for Chapter Writer */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2" suppressHydrationWarning>
               <span className="text-white/40 text-xs font-semibold uppercase tracking-widest">Risk</span>
-              {(['low', 'medium', 'high'] as const).map(level => (
-                <button
-                  key={level}
-                  onClick={() => setRiskLevel(level)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all capitalize ${
-                    riskLevel === level
-                      ? level === 'high'   ? 'bg-rose-500/20 border-rose-500 text-rose-400'
-                      : level === 'medium' ? 'bg-amber-500/20 border-amber-500 text-amber-400'
-                      :                     'bg-emerald-500/20 border-emerald-500 text-emerald-400'
-                      : 'bg-black/40 border-white/10 text-white/40 hover:text-white/70'
-                  }`}
-                >
-                  {level}
-                </button>
-              ))}
+              {!hasMounted ? (
+                <div className="flex items-center gap-2" aria-hidden="true">
+                  {(['low', 'medium', 'high'] as const).map(level => (
+                    <span
+                      key={level}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all capitalize ${
+                        level === 'high'
+                          ? 'bg-rose-500/20 border-rose-500 text-rose-400'
+                          : 'bg-black/40 border-white/10 text-white/40'
+                      }`}
+                    >
+                      {level}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                (['low', 'medium', 'high'] as const).map(level => (
+                  <button
+                    key={level}
+                    onClick={() => setRiskLevel(level)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all capitalize ${
+                      renderedRiskLevel === level
+                        ? level === 'high'   ? 'bg-rose-500/20 border-rose-500 text-rose-400'
+                        : level === 'medium' ? 'bg-amber-500/20 border-amber-500 text-amber-400'
+                        :                     'bg-emerald-500/20 border-emerald-500 text-emerald-400'
+                        : 'bg-black/40 border-white/10 text-white/40 hover:text-white/70'
+                    }`}
+                  >
+                    {level}
+                  </button>
+                ))
+              )}
 
               {/* Live readout: shows taskType + model that will be used */}
               {(() => {
@@ -1502,7 +1546,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
                 const reasonerTasks = ['story_bible', 'chapter_map', 'iron_rules_checker'];
                 const model = reasonerTasks.includes(task)
                   ? 'R1'
-                  : (task === 'chapter_writer' && riskLevel === 'high' ? 'R1' : 'V3');
+                  : (task === 'chapter_writer' && renderedRiskLevel === 'high' ? 'R1' : 'V3');
                 return (
                   <span className="ml-2 text-[10px] font-mono text-white/30 bg-black/40 px-2 py-1 rounded border border-white/5">
                     {task} → {model}
@@ -1658,6 +1702,12 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
                  </div>
              </div>
 
+             {mapError && (
+               <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
+                 {mapError}
+               </div>
+             )}
+
              <div className="flex-1 overflow-y-auto bg-black/30 rounded-xl border border-white/5 p-4 custom-scrollbar">
                 {chapterMap.length === 0 ? (
                     <div className="h-full flex flex-col items-center justify-center text-white/30 italic">Chưa có Chapter Map. Vui lòng bấm Sinh Map.</div>
@@ -1670,7 +1720,25 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
                                  <span className="text-[10px] font-bold px-2 py-1 rounded bg-black/50 text-white/60 uppercase border border-white/5">{ch.chapter_type || 'Cốt Truyện'}</span>
                               </div>
                               <div className="text-white font-bold leading-tight">{ch.title}</div>
-                              <div className="text-white/60 text-xs leading-relaxed">{ch.outline}</div>
+	                              <div className="text-white/60 text-xs leading-relaxed">
+	                                {ch.outline || ch.protagonist_goal || (Array.isArray(ch.beats) ? ch.beats.slice(0, 2).join(' / ') : '')}
+	                              </div>
+			                              {(ch.public_stage || ch.humiliation_beat || ch.faceslap_payoff || ch.pacing_role || ch.main_loss || ch.evidence_state || ch.crowd_stance || ch.payoff_debt_repaid || ch.clean_authority_document || ch.legal_stage || ch.evidence_ladder_level || ch.threat_method) && (
+			                                <div className="grid grid-cols-1 gap-1 text-[10px] text-white/40 border-t border-white/5 pt-2">
+			                                  {ch.public_stage && <span>Stage: {ch.public_stage}</span>}
+			                                  {ch.humiliation_beat && <span>Humiliation: {ch.humiliation_beat}</span>}
+			                                  {ch.faceslap_payoff && <span>Faceslap: {ch.faceslap_payoff}</span>}
+			                                  {ch.pacing_role && <span>Pacing: {ch.pacing_role}</span>}
+			                                  {ch.main_loss && <span>Main loss: {ch.main_loss}</span>}
+			                                  {ch.evidence_state && <span>Evidence state: {ch.evidence_state}</span>}
+			                                  {ch.crowd_stance && <span>Crowd: {ch.crowd_stance}</span>}
+			                                  {ch.payoff_debt_repaid && ch.payoff_debt_repaid !== 'deferred_debt' && <span>Debt repaid: {ch.payoff_debt_repaid}</span>}
+			                                  {ch.clean_authority_document && ch.clean_authority_document !== 'none' && <span>Doc: {ch.clean_authority_document}</span>}
+		                                  {ch.legal_stage && <span>Legal: {ch.legal_stage}</span>}
+		                                  {ch.evidence_ladder_level && <span>Evidence: level {ch.evidence_ladder_level}</span>}
+		                                  {ch.threat_method && <span>Threat: {ch.threat_method}</span>}
+	                                </div>
+	                              )}
                               {ch.has_setback && <div className="text-rose-400 text-xs font-bold mt-auto pt-2 border-t border-white/5">⚠️ MAIN THUA THIỆT Ở CHƯƠNG NÀY</div>}
                            </div>
                        ))}
@@ -1687,7 +1755,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
              <div className="bg-[#1a1a1a] rounded-xl border border-white/10 p-5 shrink-0 flex flex-wrap items-end gap-4">
                <div className="flex-1">
                   <h3 className="text-white font-bold text-lg mb-1 flex items-center gap-2"><PenTool className="text-amber-400"/> Viết Chương</h3>
-                  <p className="text-white/50 text-xs">Chọn chương cần viết từ Map. V3 viết thường, R1 viết chương rủi ro cao.</p>
+	                  <p className="text-white/50 text-xs">Chọn chương cần viết từ Map. High dùng R1 cho các chương cần logic pháp lý/bằng chứng chặt hơn.</p>
                </div>
                {/* Chapter selector */}
                <div>
@@ -1702,8 +1770,8 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
                <div>
                  <label className="text-white/70 text-xs font-semibold block mb-1">Risk Level</label>
                  <div className="flex gap-2">
-                   <button onClick={() => setRiskLevel('normal')} className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${riskLevel==='normal' ? 'bg-amber-500/20 border-amber-500 text-amber-400' : 'bg-black/40 border-white/10 text-white/40'}`}>Normal (V3)</button>
-                   <button onClick={() => setRiskLevel('high')} className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${riskLevel==='high' ? 'bg-rose-500/20 border-rose-500 text-rose-400' : 'bg-black/40 border-white/10 text-white/40'}`}>High (R1)</button>
+		                   <button onClick={() => setRiskLevel('medium')} className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${renderedRiskLevel==='medium' ? 'bg-amber-500/20 border-amber-500 text-amber-400' : 'bg-black/40 border-white/10 text-white/40'}`}>Balanced (V3)</button>
+		                   <button onClick={() => setRiskLevel('high')} className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${renderedRiskLevel==='high' ? 'bg-rose-500/20 border-rose-500 text-rose-400' : 'bg-black/40 border-white/10 text-white/40'}`}>High (R1)</button>
                  </div>
                </div>
                {/* Action buttons */}
@@ -1712,7 +1780,7 @@ export function DeepSeekDramaView({ onNavigate }: { onNavigate?: (tab: string) =
                    {isWritingChapter ? 'Đang viết...' : <><PenTool size={16}/> Viết Chương</>}
                  </button>
                  <button onClick={handlePatchChapter} disabled={isPatching} className="py-2 px-5 rounded-lg font-bold text-white bg-blue-600 hover:bg-blue-500 disabled:opacity-50 flex items-center gap-2 transition-all">
-                   {isPatching ? 'Patching...' : <><Zap size={16}/> Patch (V3)</>}
+		                   {isPatching ? 'Patching...' : <><Zap size={16}/> Patch ({renderedRiskLevel === 'high' ? 'R1' : 'V3'})</>}
                  </button>
                   {/* Export group */}
                   <div className="flex items-center gap-2 bg-black/30 border border-white/10 rounded-lg px-3 py-1.5">

@@ -44,11 +44,12 @@ $total_posts = $directory_query->found_posts;
         ?>
         <!-- Book Card -->
         <div class="group cursor-pointer flex flex-col h-full" onclick="window.location.href='<?php the_permalink(); ?>'">
-            <div class="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4 shadow-[0px_4px_16px_rgba(0,0,0,0.06)] group-hover:shadow-[0px_16px_40px_rgba(0,96,169,0.15)] bg-surface-container-highest transition-all duration-300 group-hover:-translate-y-2 border border-outline-variant/10">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="<?php echo esc_url($cover); ?>"/>
+            <div class="relative aspect-[2/3] rounded-2xl overflow-hidden mb-4 shadow-[0px_4px_16px_rgba(0,0,0,0.06)] group-hover:shadow-[0px_16px_40px_rgba(0,96,169,0.15)] bg-[#0c0f1d] transition-all duration-300 group-hover:-translate-y-2 border border-outline-variant/10" style="--card-bg: url('<?php echo esc_url($cover); ?>');">
+                <div class="absolute -inset-[15px] bg-[image:var(--card-bg)] bg-cover bg-center blur-[20px] brightness-[0.4] z-0"></div>
+                <img class="relative z-10 w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-700 block" src="<?php echo esc_url($cover); ?>"/>
                 
                 <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <button class="w-full py-2 bg-white/95 backdrop-blur-md rounded-xl text-primary font-black text-[13px] shadow-lg active:scale-95 transition-transform">Đọc Ngay</button>
+                    <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" onclick="event.stopPropagation();" class="w-full text-center py-2 bg-white/95 backdrop-blur-md rounded-xl text-primary font-black text-[13px] shadow-lg active:scale-95 transition-transform block text-decoration-none">Đọc Ngay</a>
                 </div>
 
                 <?php if ($is_hot): ?>

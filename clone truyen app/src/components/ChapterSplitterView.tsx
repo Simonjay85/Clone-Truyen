@@ -3,7 +3,7 @@ import { useStore } from '../store/useStore';
 import { Bot, Globe, Eraser, Feather } from 'lucide-react';
 
 export function ChapterSplitterView() {
-   const { wpUrl, wpUser, wpAppPassword, qwenKey, addApiLog } = useStore();
+   const { wpUrl, wpUser, wpAppPassword, deepseekKey, addApiLog } = useStore();
 
    const [rawText, setRawText] = useState('');
    const [introText, setIntroText] = useState('');
@@ -24,48 +24,56 @@ export function ChapterSplitterView() {
    const [isAiProcessing, setIsAiProcessing] = useState(false);
    const [publishStatus, setPublishStatus] = useState<'idle' | 'publishing' | 'done'>('idle');
    const [publishLogs, setPublishLogs] = useState<string[]>([]);
+   const [coverFile, setCoverFile] = useState<File | null>(null);
+   const [coverPreview, setCoverPreview] = useState<string>('');
+   const [coverAlt, setCoverAlt] = useState<string>('');
 
    const handleSplit = () => {
       setIsSplitting(true);
       setTimeout(() => {
-         // Split by "Chương N:" or "Chương N -" or "Chương N ".
-         // We use a regex that matches "Chương" followed by space and numbers at the start of a line.
-         const regex = /^\s*(Chương\s+\d+[:.\-\s]*(.*))$/gim;
+         // Normalize Unicode NFC để tránh lỗi encoding khi paste từ clipboard
+         // (ký tự ư, ơ có thể bị decompose thành tổ hợp diacritics)
+         const normalizedText = rawText.normalize('NFC');
+
+         // Regex match mọi biến thể: Chương, CHƯƠNG, chương, chuong, Chuong (không phân biệt hoa thường)
+         // Dùng flag "i" (ignore case) và "u" (unicode) để bắt mọi biến thể viết hoa/viết thường
+         const regex = /^\s*(?:#{1,4}\s*)?(?:chương|chuong)\s+(\d+)\s*[:.;\-–—]?\s*(.*?)$/gmiu;
 
          const foundChapters = [];
          let prefixText = '';
 
-         let nextMatch = regex.exec(rawText);
+         let nextMatch = regex.exec(normalizedText);
          if (!nextMatch) {
-            alert("Không tìm thấy chữ 'Chương [số]' nào trong văn bản!");
+            alert("Không tìm thấy chữ 'Chương [số]' nào trong văn bản!\nĐịnh dạng được hỗ trợ: 'Chương 1:', '# CHƯƠNG 1:', '## Chương 1 -', v.v.");
             setIsSplitting(false);
             return;
          }
 
-         prefixText = rawText.substring(0, nextMatch.index).trim();
+         prefixText = normalizedText.substring(0, nextMatch.index).trim();
 
          let chapterNum = 1;
          while (nextMatch !== null) {
             const _matchStart = nextMatch.index;
             const toTitleCase = (str: string) => str.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-            const rawTitleLine = toTitleCase(nextMatch[1].trim());
+            const parsedNum = parseInt(nextMatch[1], 10) || chapterNum;
+            const rawTitleLine = `Chương ${parsedNum}`;
             const maybeName = nextMatch[2] ? toTitleCase(nextMatch[2].trim()) : '';
 
             // Find next match to determine end of current chapter
-            const nextNextMatch = regex.exec(rawText);
+            const nextNextMatch = regex.exec(normalizedText);
             let chapterContent = '';
             if (nextNextMatch) {
-               chapterContent = rawText.substring(_matchStart + nextMatch[0].length, nextNextMatch.index).trim();
+               chapterContent = normalizedText.substring(_matchStart + nextMatch[0].length, nextNextMatch.index).trim();
                nextMatch = nextNextMatch;
             } else {
-               chapterContent = rawText.substring(_matchStart + nextMatch[0].length).trim();
+               chapterContent = normalizedText.substring(_matchStart + nextMatch[0].length).trim();
                nextMatch = null;
             }
 
             foundChapters.push({
                id: Math.random().toString(36).substring(7),
-               num: chapterNum++,
-               rawTitle: rawTitleLine,
+               num: parsedNum,
+               rawTitle: maybeName ? `${rawTitleLine}: ${maybeName}` : rawTitleLine,
                name: maybeName,
                content: chapterContent
             });
@@ -78,29 +86,29 @@ export function ChapterSplitterView() {
    };
 
    const handleAiOptimize = async () => {
-      if (!qwenKey) return alert("Vui lòng nhập Qwen API Key trong Cài đặt!");
+      if (!deepseekKey) return alert("Vui lòng nhập DeepSeek API Key trong Cài đặt!");
       if (!introText && chapters.length === 0) return alert("Cần tách chương trước!");
 
       setIsAiProcessing(true);
       try {
          const previewText = introText + "\n" + (chapters[0] ? chapters[0].content.substring(0, 1500) : '');
-         const prompt = `Bạn là một copywriter sừng sỏ chuyên viết tóm tắt truyện mạng (Web Novel). Hãy đọc phần mở đầu của truyện sau đây:\n\n"""\n${previewText}\n"""\n\nHãy phân tích và trả về đúng định dạng JSON sau:\n{"finalTitle": "Tên truyện hay nhất (dựng lại nếu chưa rõ)", "blurb": "Viết tóm tắt DÀI (mức 150-250 chữ), chia thành 2-3 đoạn. Đoạn 1: Đánh mạnh vào HOOK (cú sốc/nỗi đau/sự bất ngờ). Đoạn 2: Xung đột vô lý hoặc sự lật mặt/vả mặt. Đoạn 3: Kết thúc bằng một câu hỏi vách núi gây tò mò tột độ. Văn phong phải cực kỳ giật gân, cuốn hút như review phim TikTok.", "categories": ["Tên thể loại 1", "Tên thể loại 2"], "seoTitle": "Tiêu đề SEO 60 ký tự", "seoDescription": "Mô tả SEO 155 ký tự", "seoFocusKeyword": "Từ khóa SEO chính", "coverPrompt": "Miêu tả hình ảnh Thumbnail (bằng tiếng Anh chân thực, cinematic, tỉ lệ 3:2) để dán vào công cụ vẽ AI. Không có chữ/text."}`;
+         const prompt = `Bạn là một copywriter sừng sỏ chuyên viết tóm tắt truyện mạng (Web Novel). Hãy đọc phần mở đầu của truyện sau đây:\n\n"""\n${previewText}\n"""\n\nHãy phân tích và trả về đúng định dạng JSON sau:\n{"finalTitle": "Tên truyện hay nhất (dựng lại nếu chưa rõ)", "blurb": "Viết tóm tắt DÀI (mức 150-250 chữ), chia thành 2-3 đoạn. Đoạn 1: Đánh mạnh vào HOOK (cú sốc/nỗi đau/sự bất ngờ). Đoạn 2: Xung đột vô lý hoặc sự lật mặt/vả mặt. Đoạn 3: Kết thúc bằng một câu hỏi vách núi gây tò mò tột độ. Văn phong phải cực kỳ giật gân, cuốn hút như review phim TikTok.", "categories": ["Tên thể loại 1", "Tên thể loại 2"], "seoTitle": "Tiêu đề SEO 60 ký tự", "seoDescription": "Mô tả SEO 155 ký tự", "seoFocusKeyword": "Từ khóa SEO chính", "coverPrompt": "Write in English. Cinematic, photorealistic thumbnail image for a Vietnamese drama novel. Describe the key scene and characters from this story in vivid detail. Style: dramatic movie poster lighting, ultra-realistic, 8K, cinematic color grading. NO text, NO watermark, NO words in the image."}`;
 
-         const res = await fetch('/api/qwen', {
+         const res = await fetch('/api/deepseek', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-               apiKey: qwenKey,
+               apiKey: deepseekKey,
                systemPrompt: "Bạn là hệ thống tự động bóc tách thông tin truyện. Trả về JSON.",
                userPrompt: prompt,
                jsonMode: true,
                temperature: 0.5,
-               model: 'qwen-max'
+               model: 'deepseek-chat'
             })
          });
          if (!res.ok) {
             const errData = await res.json();
-            throw new Error(errData.error?.message || JSON.stringify(errData.error) || "API qwen lỗi");
+            throw new Error(errData.error?.message || JSON.stringify(errData.error) || "API DeepSeek lỗi");
          }
          const data = await res.json();
          let text = data.text.trim();
@@ -108,8 +116,6 @@ export function ChapterSplitterView() {
          else if (text.startsWith('```')) text = text.replace('```', '').replace(/```$/, '').trim();
 
          const json = JSON.parse(text);
-         const genCoverPrompt = json.coverPrompt || 'cinematic poster style, amazing scenery';
-         const genCoverUrl = `https://pollinations.ai/p/${encodeURIComponent(genCoverPrompt.substring(0, 400))}?width=1200&height=800&nologo=true&model=flux&seed=${Math.floor(Math.random() * 100000)}`;
 
          setMetaInfo({
             finalTitle: json.finalTitle || 'Chưa rõ tên truyện',
@@ -118,13 +124,15 @@ export function ChapterSplitterView() {
             seoTitle: json.seoTitle || '',
             seoDescription: json.seoDescription || '',
             seoFocusKeyword: json.seoFocusKeyword || '',
-            coverPrompt: genCoverPrompt,
-            coverUrl: genCoverUrl
+            coverPrompt: '',
+            coverUrl: ''
          });
+         // Tự động set alt text = tên truyện
+         setCoverAlt(json.finalTitle || '');
 
          addApiLog({
-            engineType: 'OpenAI',
-            model: 'qwen3-max', // Default for Qwen abstraction
+            engineType: 'DeepSeek',
+            model: 'deepseek-chat',
             station: 'Splitter',
             project: json.finalTitle,
             promptTokens: data.usage?.promptTokens || 0,
@@ -151,6 +159,13 @@ export function ChapterSplitterView() {
       setPublishLogs(["🚀 Bắt đầu tạo Truyện (Parent Post)..."]);
 
       try {
+         // Chuyển đổi text thường sang HTML <p> để giữ bố cục
+         const formattedBlurb = metaInfo.blurb
+            .split('\n')
+            .filter(line => line.trim().length > 0)
+            .map(line => `<p>${line.trim()}</p>`)
+            .join('\n');
+
          // 1. Tạo Truyện
          const createStoryRes = await fetch('/api/wordpress', {
             method: 'POST',
@@ -160,7 +175,7 @@ export function ChapterSplitterView() {
                endpoint: 'truyen',
                payload: {
                   title: metaInfo.finalTitle,
-                  content: (metaInfo.coverUrl ? `<div style="text-align: center; margin-bottom: 20px;"><img src="${metaInfo.coverUrl}" alt="${metaInfo.finalTitle}" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" /></div>\n\n` : '') + metaInfo.blurb,
+                  content: (metaInfo.coverUrl ? `<div style="text-align: center; margin-bottom: 20px;"><img src="${metaInfo.coverUrl}" alt="${metaInfo.finalTitle}" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" /></div>\n\n` : '') + formattedBlurb,
                   status: 'publish',
                   the_loai: metaInfo.categories,
                   meta: {
@@ -181,6 +196,14 @@ export function ChapterSplitterView() {
          for (let i = 0; i < chapters.length; i++) {
             const chap = chapters[i];
             const chapTitle = chap.name ? `Chương ${chap.num}: ${chap.name}` : `Chương ${chap.num}`;
+            
+            // Chuyển đổi text thường sang HTML <p> để giữ bố cục
+            const formattedChapContent = chap.content
+               .split('\n')
+               .filter(line => line.trim().length > 0)
+               .map(line => `<p>${line.trim()}</p>`)
+               .join('\n');
+
             setPublishLogs(p => [...p, `👉 Đang đăng Chương ${chap.num}...`]);
 
             const createChapRes = await fetch('/api/wordpress', {
@@ -191,7 +214,7 @@ export function ChapterSplitterView() {
                   endpoint: 'chuong',
                   payload: {
                      title: chapTitle,
-                     content: chap.content,
+                     content: formattedChapContent,
                      status: 'publish',
                      meta: {
                         _truyen_id: String(parentId)
@@ -277,18 +300,39 @@ export function ChapterSplitterView() {
                         </div>
 
                         <div>
-                           <label className="text-xs text-slate-500 mb-1 block flex items-center justify-between">
-                              <span className="text-emerald-400 font-bold">Thumbnail (Tự động tạo)</span>
-                              <button onClick={() => setMetaInfo({ ...metaInfo, coverUrl: `https://pollinations.ai/p/${encodeURIComponent((metaInfo.coverPrompt || 'cinematic poster').substring(0, 400))}?width=1200&height=800&nologo=true&model=flux&seed=${Math.floor(Math.random() * 100000)}` })} className="text-[10px] bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-white transition-colors">🔄 Đảo hình</button>
+                           <label className="text-xs text-slate-500 mb-1 block">
+                              <span className="text-emerald-400 font-bold">🖼️ Ảnh Bìa (Upload)</span>
                            </label>
-                           {metaInfo.coverUrl && (
-                              <div className="relative group rounded-xl overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.3)] mb-3 aspect-[3/2] w-full border border-slate-700 bg-black/40">
+                           {coverPreview && (
+                              <div className="relative rounded-xl overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.3)] mb-3 aspect-[3/2] w-full border border-slate-700 bg-black/40">
                                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                                 <img src={metaInfo.coverUrl} className="w-full h-full object-cover" alt="Cover" />
+                                 <img src={coverPreview} className="w-full h-full object-cover" alt={coverAlt} />
                               </div>
                            )}
-                           <input type="text" placeholder="URL ảnh bìa/thumbnail..." value={metaInfo.coverUrl} onChange={e => setMetaInfo({ ...metaInfo, coverUrl: e.target.value })} className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-slate-400 font-mono mb-2" />
-                           <textarea placeholder="Cover Prompt tiếng anh để Gen AI..." value={metaInfo.coverPrompt} onChange={e => setMetaInfo({ ...metaInfo, coverPrompt: e.target.value })} className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-slate-500 italic h-16 resize-none" />
+                           <label className="flex flex-col items-center justify-center w-full h-20 bg-slate-900 border-2 border-dashed border-slate-600 hover:border-emerald-500 rounded-xl cursor-pointer transition-colors group">
+                              <span className="text-slate-400 group-hover:text-emerald-400 text-xs transition-colors">{coverFile ? coverFile.name : '📁 Click để chọn ảnh bìa (.jpg, .png, .webp)'}</span>
+                              <input
+                                 type="file"
+                                 accept="image/*"
+                                 className="hidden"
+                                 onChange={e => {
+                                    const file = e.target.files?.[0];
+                                    if (file) {
+                                       setCoverFile(file);
+                                       setCoverPreview(URL.createObjectURL(file));
+                                       // Auto set alt = tên truyện nếu đã có
+                                       if (!coverAlt && metaInfo.finalTitle) setCoverAlt(metaInfo.finalTitle);
+                                    }
+                                 }}
+                              />
+                           </label>
+                           <input
+                              type="text"
+                              placeholder="Alt text (tự động điền từ tên truyện)..."
+                              value={coverAlt}
+                              onChange={e => setCoverAlt(e.target.value)}
+                              className="w-full mt-2 bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-slate-300"
+                           />
                         </div>
                         <div>
                            <label className="text-xs text-slate-500 mb-1 block">Thể loại (Ngăn cách phẩy)</label>

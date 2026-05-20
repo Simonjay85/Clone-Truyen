@@ -54,13 +54,17 @@ export async function POST(req: Request) {
     }
 
     let response;
-    let retries = 3;
+    const isChapterMap = taskType === 'chapter_map';
+    const isLongReasonerTask = resolvedModel === 'deepseek-reasoner'
+      && ['chapter_writer', 'chapter_map', 'final_audit', 'iron_rules_checker', 'story_bible', 'chapter_rewriter'].includes(taskType || '');
+    const timeoutMs = isChapterMap ? 180000 : (isLongReasonerTask ? 240000 : 120000);
+    let retries = isChapterMap ? 1 : (isLongReasonerTask ? 2 : 3);
     let lastError = null;
 
     while (retries > 0) {
       try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minutes timeout per request
+        const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
         response = await fetch('https://api.deepseek.com/chat/completions', {
           method: 'POST',
@@ -85,7 +89,9 @@ export async function POST(req: Request) {
     }
 
     if (!response) {
-       throw lastError || new Error('Network failure after 3 retries (Timeout or disconnect)');
+       throw lastError || new Error(isChapterMap
+         ? 'DeepSeek R1 tạo Chapter Map quá lâu hoặc mất kết nối sau 3 phút. Thử lại với số chương ít hơn hoặc bấm lại sau vài phút.'
+         : 'Network failure after 3 retries (Timeout or disconnect)');
     }
 
     if (!response.ok) {

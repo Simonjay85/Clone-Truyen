@@ -78,8 +78,8 @@ if ($ranking_query->have_posts()) {
                 <!-- Rank 2 -->
                 <div class="order-2 md:order-1 bg-surface-container-lowest p-6 rounded-3xl shadow-[0px_12px_32px_rgba(0,96,169,0.04)] text-center relative overflow-hidden group hover:border hover:border-outline-variant/30 cursor-pointer" onclick="window.location.href='<?php echo esc_url($top3[1]['link']); ?>'">
                     <div class="absolute top-4 left-4 bg-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-inner">2</div>
-                    <div class="relative mb-4 mx-auto w-32 aspect-[3/4] rounded-xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-500">
-                        <img class="w-full h-full object-cover" src="<?php echo esc_url($top3[1]['img']); ?>" />
+                    <div class="relative mb-4 mx-auto w-32 aspect-[2/3] rounded-xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-500">
+                        <img class="w-full h-full object-cover object-top" src="<?php echo esc_url($top3[1]['img']); ?>" />
                     </div>
                     <h3 class="font-headline font-bold text-lg mb-1 line-clamp-1"><?php echo esc_html($top3[1]['title']); ?></h3>
                     <p class="text-xs text-on-surface-variant mb-3">Tác giả: <?php echo esc_html($top3[1]['author']); ?></p>
@@ -94,8 +94,8 @@ if ($ranking_query->have_posts()) {
                 <!-- Rank 1 (Featured) -->
                 <div class="order-1 md:order-2 bg-gradient-to-b from-primary-fixed/20 to-surface-container-lowest p-8 rounded-3xl shadow-[0px_20px_48px_rgba(0,96,169,0.12)] text-center relative overflow-hidden border border-primary/20 group cursor-pointer hover:border-primary/50 transition-colors" onclick="window.location.href='<?php echo esc_url($top3[0]['link']); ?>'">
                     <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-on-tertiary-container w-14 h-14 rounded-full flex items-center justify-center font-extrabold text-2xl z-10 shadow-lg border-4 border-white">1</div>
-                    <div class="relative mb-6 mx-auto w-44 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500">
-                        <img class="w-full h-full object-cover" src="<?php echo esc_url($top3[0]['img']); ?>" />
+                    <div class="relative mb-6 mx-auto w-44 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                        <img class="w-full h-full object-cover object-top" src="<?php echo esc_url($top3[0]['img']); ?>" />
                     </div>
                     <h3 class="font-headline font-extrabold text-xl mb-2 text-primary line-clamp-2"><?php echo esc_html($top3[0]['title']); ?></h3>
                     <p class="text-sm text-on-surface-variant mb-4">Tác giả: <?php echo esc_html($top3[0]['author']); ?></p>
@@ -110,8 +110,8 @@ if ($ranking_query->have_posts()) {
                 <!-- Rank 3 -->
                 <div class="order-3 bg-surface-container-lowest p-6 rounded-3xl shadow-[0px_12px_32px_rgba(0,96,169,0.04)] text-center relative overflow-hidden group hover:border hover:border-outline-variant/30 cursor-pointer" onclick="window.location.href='<?php echo esc_url($top3[2]['link']); ?>'">
                     <div class="absolute top-4 left-4 bg-orange-100 text-orange-700 w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-inner">3</div>
-                    <div class="relative mb-4 mx-auto w-32 aspect-[3/4] rounded-xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-500">
-                        <img class="w-full h-full object-cover" src="<?php echo esc_url($top3[2]['img']); ?>" />
+                    <div class="relative mb-4 mx-auto w-32 aspect-[2/3] rounded-xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-500">
+                        <img class="w-full h-full object-cover object-top" src="<?php echo esc_url($top3[2]['img']); ?>" />
                     </div>
                     <h3 class="font-headline font-bold text-lg mb-1 line-clamp-1"><?php echo esc_html($top3[2]['title']); ?></h3>
                     <p class="text-xs text-on-surface-variant mb-3">Tác giả: <?php echo esc_html($top3[2]['author']); ?></p>
@@ -134,7 +134,7 @@ if ($ranking_query->have_posts()) {
                             </span>
                         </div>
                         <div class="w-16 h-20 rounded-lg overflow-hidden flex-shrink-0">
-                            <img class="w-full h-full object-cover" src="<?php echo esc_url($item['img']); ?>" />
+                            <img class="w-full h-full object-cover object-top" src="<?php echo esc_url($item['img']); ?>" />
                         </div>
                         <div class="flex-grow">
                             <h4 class="font-bold text-lg group-hover:text-primary transition-colors line-clamp-1"><?php echo esc_html($item['title']); ?></h4>

@@ -6,90 +6,15 @@
       "station": "Auto-Pilot Core",
       "project": "Sáng tác dã chiến",
       "model": "deepseek-reasoner",
-      "promptTokens": 16628,
-      "completionTokens": 12000,
-      "totalTokens": 28628,
-      "promptCacheHitTokens": 16512,
-      "promptCacheMissTokens": 116,
-      "cacheHitRate": 0.9930238152513832,
-      "cost": 0.02865548,
-      "id": "s1mmq10",
-      "timestamp": 1777911958291
-    },
-    {
-      "engineType": "deepseek",
-      "station": "Auto-Pilot Core",
-      "project": "Sáng tác dã chiến",
-      "model": "deepseek-reasoner",
-      "promptTokens": 16628,
-      "completionTokens": 12000,
-      "totalTokens": 28628,
-      "promptCacheHitTokens": 16512,
-      "promptCacheMissTokens": 116,
-      "cacheHitRate": 0.9930238152513832,
-      "cost": 0.02865548,
-      "id": "nxi9d33",
-      "timestamp": 1777911272573
-    },
-    {
-      "engineType": "deepseek",
-      "station": "Auto-Pilot Core",
-      "project": "Sáng tác dã chiến",
-      "model": "deepseek-reasoner",
-      "promptTokens": 16628,
-      "completionTokens": 12000,
-      "totalTokens": 28628,
-      "promptCacheHitTokens": 16512,
-      "promptCacheMissTokens": 116,
-      "cacheHitRate": 0.9930238152513832,
-      "cost": 0.02865548,
-      "id": "cyztkza",
-      "timestamp": 1777905292535
-    },
-    {
-      "engineType": "deepseek",
-      "station": "Auto-Pilot Core",
-      "project": "Sáng tác dã chiến",
-      "model": "deepseek-reasoner",
-      "promptTokens": 16628,
-      "completionTokens": 12000,
-      "totalTokens": 28628,
-      "promptCacheHitTokens": 16512,
-      "promptCacheMissTokens": 116,
-      "cacheHitRate": 0.9930238152513832,
-      "cost": 0.02865548,
-      "id": "11x9o4e",
-      "timestamp": 1777902579487
-    },
-    {
-      "engineType": "deepseek",
-      "station": "Auto-Pilot Core",
-      "project": "Sáng tác dã chiến",
-      "model": "deepseek-reasoner",
-      "promptTokens": 16628,
-      "completionTokens": 12000,
-      "totalTokens": 28628,
+      "promptTokens": 3297,
+      "completionTokens": 6033,
+      "totalTokens": 9330,
       "promptCacheHitTokens": 0,
-      "promptCacheMissTokens": 16628,
+      "promptCacheMissTokens": 3297,
       "cacheHitRate": 0,
-      "cost": 0.0354254,
-      "id": "zeut00l",
-      "timestamp": 1777901514374
-    },
-    {
-      "engineType": "deepseek",
-      "station": "Auto-Pilot Core",
-      "project": "Sáng tác dã chiến",
-      "model": "deepseek-reasoner",
-      "promptTokens": 2484,
-      "completionTokens": 3787,
-      "totalTokens": 6271,
-      "promptCacheHitTokens": 2432,
-      "promptCacheMissTokens": 52,
-      "cacheHitRate": 0.9790660225442834,
-      "cost": 0.008662610000000001,
-      "id": "t64gwsr",
-      "timestamp": 1777901310837
+      "cost": 0.01502562,
+      "id": "ac60klg",
+      "timestamp": 1779244632242
     }
   ],
   "isAutoPilotRunning": false,
@@ -133,29 +58,13 @@
       "gradingStatus": {},
       "storyStyle": "ngon_tinh"
     },
-    "combo_eco": {
-      "title": "",
-      "prompt": "",
-      "targetChapters": 20,
-      "pitchOptions": [],
-      "gradingStatus": {}
-    },
-    "combo_royal": {
-      "title": "",
-      "prompt": "",
-      "targetChapters": 20,
-      "pitchOptions": [],
-      "gradingStatus": {}
-    },
     "deepseek_pipeline": {
-      "prompt": "",
-      "storyBible": "{\n  \"title\": \"Mặt Nạ Kinh Doanh\",\n  \"genre\": \"Đô Thị Vả Mặt\",\n  \"recommended_chapters\": 15,\n  \"chapter_count_requested\": 15,\n  \"logline\": \"Một tỷ phú ẩn danh thâm nhập vào công ty địa ốc để điều tra tham nhũng, phải chịu đựng sự khinh rẻ từ cấp trên kiêu ngạo, từng bước thu thập bằng chứng pháp lý để lật mặt kẻ thù.\",\n  \"core_promise\": \"Đọc giả sẽ được thỏa mãn khi nhân vật chính chịu nhục nhưng từng bước dùng bằng chứng và quyền lực thật để vả mặt phản diện, với cao trào lật bài cuối cùng.\",\n  \"pov_mode\": \"third_person\",\n  \"setting_lock\": {\n    \"country\": \"Việt Nam\",\n    \"city_or_region\": \"TP. Hồ Chí Minh\",\n    \"forbidden_location_drifts\": [\n      \"Không chuyển bối cảnh sang Hà Nội, Đà Nẵng hoặc địa điểm khác ngoài TP.HCM\"\n    ],\n    \"time_span\": \"Khoảng 3 tháng (tháng 6 đến tháng 9 năm 2024)\"\n  },\n  \"protagonist\": {\n    \"full_name\": \"Hoàng Minh Khang\",\n    \"role\": \"Chủ tịch tập đoàn Hưng Thịnh – tập đoàn bất động sản hàng đầu\",\n    \"public_mask\": \"Nhân viên tập sự tại công ty Địa Ốc An Phú (bộ phận kinh doanh)\",\n    \"limits\": [\n      \"Không thể tiết lộ danh tính thật nếu chưa có đủ bằng chứng pháp lý\",\n      \"Phải tuân thủ luật lao động và quy trình nội bộ của công ty An Phú\",\n      \"Đồng minh có giới hạn: họ sợ mất việc hoặc bị trù dập\",\n      \"Không có quyền truy cập tài liệu mật nếu bị giám sát\"\n    ],\n    \"knows_at_start\": [\n      \"Công ty An Phú có dấu hiệu tham nhũng, rửa tiền qua các dự án ảo\",\n      \"Giám đốc công ty (Nguyễn Văn Hùng) là nghi phạm chính nhưng chưa có chứng cứ cứng\",\n      \"Một số nhân viên cũ bị đe dọa, không dám tố cáo\"\n    ]\n  },\n  \"main_villain\": {\n    \"full_name\": \"Nguyễn Văn Hùng\",\n    \"role\": \"Giám đốc công ty Cổ phần Địa Ốc An Phú\",\n    \"strengths\": [\n      \"Có quan hệ rộng với chính quyền địa phương và một số lãnh đạo sở\",\n      \"Giỏi che giấu dấu vết tài chính qua các công ty con\",\n      \"Biết cách gây áp lực tâm lý lên nhân viên\"\n    ],\n    \"counterattack_style\": \"Khi phát hiện có người điều tra, Hùng sẽ đặt bẫy, dùng kế ly gián, hoặc đe dọa trực tiếp người thân của đồng minh. Hắn cũng dùng luật sư cá nhân để khởi kiện ngược nếu có thể.\"\n  },\n  \"supporting_characters\": [\n    {\n      \"full_name\": \"Trần Thị Thảo\",\n      \"role\": \"Trợ lý giám đốc tại An Phú\",\n      \"relationship_to_main\": \"Đồng minh bí mật (cung cấp thông tin nội bộ)\",\n      \"limits_or_fear\": \"Sợ mất việc và bị Hùng trả thù gia đình. Chỉ giúp đỡ khi có cam kết an toàn.\"\n    },\n    {\n      \"full_name\": \"Lê Văn Hưng\",\n      \"role\": \"Nhân viên kế toán cũ đã nghỉ việc\",\n      \"relationship_to_main\": \"Người cung cấp tài liệu ban đầu\",\n      \"limits_or_fear\": \"Đã bị Hùng đe dọa và hiện sống ở tỉnh khác, chỉ gặp mặt qua giới thiệu của Thảo.\"\n    },\n    {\n      \"full_name\": \"Phạm Quốc Tuấn\",\n      \"role\": \"Luật sư riêng của Khang\",\n      \"relationship_to_main\": \"Cố vấn pháp lý đáng tin cậy\",\n      \"limits_or_fear\": \"Phải giữ bí mật nghề nghiệp, không thể hành động nếu thiếu bằng chứng hợp lệ.\"\n    },\n    {\n      \"full_name\": \"Nguyễn Thị Lan\",\n      \"role\": \"Đối tác của Hùng (chủ công ty xây dựng)\",\n      \"relationship_to_main\": \"Phản diện phụ, đồng lõa trong các giao dịch\",\n      \"limits_or_fear\": \"Sợ bị phát hiện trốn thuế, nhưng có thế lực riêng.\"\n    }\n  ],\n  \"characterMap\": {\n    \"main\": \"Hoàng Minh Khang\",\n    \"villain_main\": \"Nguyễn Văn Hùng\",\n    \"ally_primary\": \"Trần Thị Thảo\",\n    \"vip_customer\": \"Nguyễn Thị Lan\",\n    \"company_name\": \"Công ty Cổ phần Địa Ốc An Phú\"\n  },\n  \"fixed_data_locks\": {\n    \"company_names\": [\n      \"Công ty Cổ phần Địa Ốc An Phú\",\n      \"Tập đoàn Hưng Thịnh\",\n      \"Công ty Xây dựng Hoàng Gia (của Lan)\"\n    ],\n    \"money_amounts\": [\n      \"Số tiền tham nhũng 50 tỉ đồng (dự án khu dân cư Thanh Bình)\",\n      \"Phần trăm hoa hồng 15%\"\n    ],\n    \"key_dates\": [\n      \"10/06/2024 – Khang bắt đầu làm việc tại An Phú\",\n      \"20/07/2024 – Vụ ký kết hợp đồng khống đầu tiên\",\n      \"15/08/2024 – Hùng phát hiện có nội gián\",\n      \"30/09/2024 – Công bố bằng chứng ra công an\"\n    ],\n    \"legal_statuses\": [\n      \"Hợp đồng khống (vi phạm luật hình sự tội lừa đảo chiếm đoạt tài sản)\",\n      \"Trốn thuế, rửa tiền thông qua tài khoản offshore\"\n    ]\n  },\n  \"evidence_chain\": [\n    {\n      \"name\": \"Hồ sơ dự án Thanh Bình\",\n      \"source\": \"Kế toán cũ Lê Văn Hưng cung cấp bản sao\",\n      \"cost\": \"Khang phải hứa bảo vệ Hưng và gia đình\",\n      \"legal_risk\": \"Trung bình – tài liệu sao chụp, cần đối chiếu bản gốc\",\n      \"required_corroboration\": \"Bản gốc từ công ty hoặc sao kê ngân hàng xác nhận dòng tiền\",\n      \"foreshadow_chapter\": 1\n    },\n    {\n      \"name\": \"Cuộc ghi âm giữa Hùng và Lan\",\n      \"source\": \"Thảo ghi âm bí mật khi được gọi vào phòng họp\",\n      \"cost\": \"Thảo liều mạng, nếu bị phát hiện sẽ mất việc và bị kiện\",\n      \"legal_risk\": \"Cao – ghi âm trái phép có thể bị loại khỏi tòa, cần chứng minh tính xác thực\",\n      \"required_corroboration\": \"Biên bản họp chính thức hoặc email trao đổi xác nhận nội dung\",\n      \"foreshadow_chapter\": 5\n    },\n    {\n      \"name\": \"Sao kê tài khoản cá nhân của Hùng\",\n      \"source\": \"Bạn thân trong ngân hàng (nhân vật phụ không xuất hiện trực tiếp) cung cấp\",\n      \"cost\": \"Khang phải dùng danh tính thật để yêu cầu, nhưng có nguy cơ lộ\",\n      \"legal_risk\": \"Cao – vi phạm bí mật ngân hàng, chỉ dùng để định hướng điều tra chứ không làm bằng chứng tòa\",\n      \"required_corroboration\": \"Lệnh khám xét của cơ quan điều tra sau khi có căn cứ\",\n      \"foreshadow_chapter\": 8\n    }\n  ],\n  \"villain_counterattack_chain\": [\n    {\n      \"chapter_range\": \"3-4\",\n      \"move\": \"Hùng nghi ngờ có gián điệp, đặt máy quay lén và phát hiện Thảo sao chép tài liệu. Hùng sa thải Thảo và dọa kiện.\",\n      \"real_damage_to_main\": \"Mất nguồn tin nội bộ quan trọng, Thảo phải tạm lánh.\"\n    },\n    {\n      \"chapter_range\": \"7-8\",\n      \"move\": \"Hùng cho người theo dõi Khang ngoài giờ làm, phát hiện Khang gặp luật sư Tuấn. Hùng tung tin đồn vô căn cứ để hạ uy tín Khang trong công ty.\",\n      \"real_damage_to_main\": \"Khang bị cô lập, mất sự hợp tác của một số đồng nghiệp, lỡ cơ hội tiếp cận tài liệu mới.\"\n    },\n    {\n      \"chapter_range\": \"10-11\",\n      \"move\": \"Hùng mua chuộc một nhân viên IT để xóa dữ liệu máy chủ về hợp đồng khống, đồng thời dàn dựng vụ tai nạn cho Hưng (kế toán cũ) nhưng Hưng chỉ bị thương nhẹ.\",\n      \"real_damage_to_main\": \"Mất một phần bằng chứng số (nhưng đã có bản sao lưu của Hưng), làm Hưng sợ hãi đòi rút lui.\"\n    }\n  ],\n  \"identity_reveal_plan\": {\n    \"layer_1_hint\": \"Chương 2 – Khang dùng kỹ năng tài chính vượt trội để phân tích bảng lương, gây ngờ cho Thảo.\",\n    \"layer_2_partial\": \"Chương 6 – Thảo vô tình thấy thẻ VIP của tập đoàn Hưng Thịnh trong ví Khang, bắt đầu nghi ngờ.\",\n    \"layer_3_mid_villain_knows\": \"Chương 9 – Hùng nhận được ảnh chụp Khang trong bộ vest đắt tiền ở một sự kiện xa hoa, bắt đầu điều tra ngược.\",\n    \"layer_4_public_reveal\": \"Chương 10 (sau 66% chương) – Khang chủ động công bố danh tính sau khi Hùng đã đủ bằng chứng, nhưng chưa ra tay.\",\n    \"layer_5_power_reversal\": \"Chương 12-15 (25% cuối) – Sau khi công bố, Khang dùng quyền lực thật để phá thế cờ, triệu tập đối tác, buộc Hùng và Lan phải ra tòa.\"\n  },\n  \"foreshadowing_plan\": [\n    {\n      \"twist\": \"Thảo thực ra là cháu gái của một nhân vật cấp cao trong sở tài nguyên môi trường, có thể giúp hợp thức hóa tố tụng.\",\n      \"clues\": [\n        {\n          \"chapter\": 2,\n          \"clue\": \"Thảo nhắc đến 'bác em ở sở' khi từ chối ăn trưa với Hùng.\"\n        },\n        {\n          \"chapter\": 5,\n          \"clue\": \"Một cuộc gọi đến cho Thảo có giọng nói quyền lực, cô ấy trả lời 'vâng, bác'.\"\n        },\n        {\n          \"chapter\": 8,\n          \"clue\": \"Khang thấy ảnh Thảo chụp cùng một người đàn ông lớn tuổi trên bàn làm việc (khung ảnh).\"\n        }\n      ]\n    },\n    {\n      \"twist\": \"Lan (đối tác) thực ra là vợ cũ của Luật sư Tuấn, và Tuấn có bí mật về Lan dùng để gây sức ép.\",\n      \"clues\": [\n        {\n          \"chapter\": 3,\n          \"clue\": \"Tuấn do dự khi nghe tên Lan, hỏi lại 'Nguyễn Thị Lan? Công ty xây dựng?'\"\n        },\n        {\n          \"chapter\": 7,\n          \"clue\": \"Khang thấy ảnh cưới cũ trong cặp của Tuấn (Tuấn giải thích là 'kỷ niệm cũ').\"\n        },\n        {\n          \"chapter\": 10,\n          \"clue\": \"Lan gọi điện cho Tuấn xin gặp riêng, giọng căng thẳng.\"\n        }\n      ]\n    }\n  ],\n  \"forbidden_inconsistencies\": [\n    \"Không đổi tên nhân vật (Hoàng Minh Khang, Nguyễn Văn Hùng, Trần Thị Thảo, Lê Văn Hưng, Phạm Quốc Tuấn, Nguyễn Thị Lan)\",\n    \"Không đổi địa lý đã khóa (TP. HCM)\",\n    \"Không để Change Log, Self-Check hoặc STATE UPDATE JSON lẫn vào nội dung truyện xuất bản\"\n  ],\n  \"name_safety_check_result\": \"Không có tên trùng hoặc dễ nhầm. Cặp Tuấn/Hùng khác biệt rõ. Lan, Thảo, Hưng phân biệt tốt. Tất cả đều có họ và tên đầy đủ khác nhau.\"\n}",
+      "prompt": "1. Bối cảnh Đô Thị: \"Giả heo ăn hổ\" + Ẩn giấu thân phận\nTrope: Chàng rể phế vật/Nhân viên quèn thực chất là Cự phú/Thần y giới tài phiệt.\n\nTóm tắt cốt truyện: Main chính chấp nhận làm một nhân viên văn phòng quèn (hoặc ở rể) bị cả gia đình vợ và đồng nghiệp khinh rẻ, sỉ vả suốt 3 năm để hoàn thành lời hứa với ân nhân. Đúng ngày hết hạn lời hứa, công ty của gia đình vợ tổ chức đại tiệc để ký hợp đồng với tập đoàn lớn nhất thành phố và nhân tiện... ép main ký đơn ly hôn để gả con gái cho một thiếu gia giàu có khác.\n\nĐiểm Vả Mặt (Climax): Ngay khi tên thiếu gia kia đang sỉ nhục main là \"đồ rác rưởi không có tương lai\", thì chủ tịch tập đoàn lớn kia (người mà ai cũng phải khúm núm) bước vào. Ông ta lướt qua tất cả mọi người, quỳ sụp xuống trước mặt main và hô lớn: \"Kính chào Chủ tịch/Thiếu chủ, chúng ta đã đợi ngài 3 năm rồi!\".\n\nĐiểm \"Sảng\": Toàn bộ hợp đồng bị hủy bỏ trong một nốt nhạc, gia đình vợ quỳ khóc van xin, tên thiếu gia phá sản ngay trong đêm.",
+      "storyBible": "{\n  \"title\": \"Kết Thúc Lời Hứa\",\n  \"genre\": \"Zhihu / Kịch tính\",\n  \"recommended_chapters\": 15,\n  \"chapter_count_requested\": 15,\n  \"logline\": \"Sau ba năm làm chàng rể phế vật, đúng ngày gia đình vợ ép ký đơn ly hôn, chủ tịch tập đoàn số một thành phố quỳ xuống gọi tôi là 'Thiếu chủ'.\",\n  \"core_promise\": \"Cảm giác sảng khoái khi kẻ bị khinh rẻ mới chính là người nắm quyền sinh sát, và từng bằng chứng, từng lời nói đều khiến kẻ thù sụp đổ không thể gượng dậy.\",\n  \"pov_mode\": \"third_person\",\n  \"setting_lock\": {\n    \"country\": \"Việt Nam\",\n    \"city_or_region\": \"TP.HCM, Quận 3\",\n    \"forbidden_location_drifts\": [\n      \"Không chuyển sang Hà Nội, Đà Nẵng hay bất kỳ tỉnh thành nào khác\"\n    ],\n    \"time_span\": \"Ba năm (2023–2026) tập trung vào 48 giờ từ tối 14/01/2026 đến tối 16/01/2026, với các hồi tưởng.\"\n  },\n  \"protagonist\": {\n    \"full_name\": \"Nguyễn Minh Tuấn\",\n    \"role\": \"Chủ tịch tập đoàn Đại Nam Holdings – tập đoàn tài chính đa ngành lớn nhất Việt Nam\",\n    \"public_mask\": \"Nhân viên quèn phòng hành chính Công ty TNHH Phương Nam (của gia đình vợ)\",\n    \"limits\": [\n      \"Phải giữ lời hứa với ân nhân (ông Bùi Văn Đức) không tiết lộ thân phận trong ba năm, kể cả khi bị sỉ nhục.\",\n      \"Không được sử dụng tài sản, quan hệ hay uy tín của tập đoàn trước ngày hết hạn.\",\n      \"Phải bảo vệ danh tính thật để không làm ảnh hưởng đến cuộc điều tra vụ án tham nhũng ngầm của gia đình vợ.\"\n    ],\n    \"knows_at_start\": [\n      \"Biết mình là chủ tịch tập đoàn lớn, đã ký hợp đồng mua lại một nửa cổ phần công ty Phương Nam từ ba năm trước.\",\n      \"Biết ân nhân đã qua đời, lời hứa của mình chỉ có giá trị đến ngày 15/01/2026.\",\n      \"Biết rõ gia đình vợ và thiếu gia Hoàng Minh Phong đang cấu kết để chiếm đoạt tài sản của công ty.\"\n    ]\n  },\n  \"main_villain\": {\n    \"full_name\": \"Hoàng Minh Phong\",\n    \"role\": \"Thiếu gia tập đoàn Hoàng Gia (đối thủ cạnh tranh chính của Đại Nam Holdings)\",\n    \"strengths\": [\n      \"Tài sản thừa kế hơn 500 tỷ.\",\n      \"Quan hệ rộng với giới chính trị địa phương.\",\n      \"Đã mua chuộc kế toán và luật sư riêng của gia đình vợ.\"\n    ],\n    \"counterattack_style\": \"Sau khi bị vả mặt, hắn lập tức tung tin đồn thất thiệt, dùng ghi âm chỉnh sửa để vu khống main, đồng thời thuê xã hội đen đe dọa nhân chứng.\"\n  },\n  \"supporting_characters\": [\n    {\n      \"full_name\": \"Trần Thị Hồng\",\n      \"role\": \"Vợ chính thức của Nguyễn Minh Tuấn\",\n      \"relationship_to_main\": \"Vợ, từng yêu nhưng bị gia đình ép buộc\",\n      \"limits_or_fear\": \"Sợ mất quyền thừa kế, sợ bố mẹ tước bỏ tài sản, chỉ dám phản kháng vào phút cuối.\"\n    },\n    {\n      \"full_name\": \"Trần Văn Hùng\",\n      \"role\": \"Bố vợ – Giám đốc Công ty TNHH Phương Nam\",\n      \"relationship_to_main\": \"Bố vợ, luôn khinh thường\",\n      \"limits_or_fear\": \"Nợ nần chồng chất, phải dựa vào hợp đồng với Hoàng Gia để cứu công ty, sợ phá sản.\"\n    },\n    {\n      \"full_name\": \"Nguyễn Thị Lan\",\n      \"role\": \"Mẹ vợ – Phó giám đốc\",\n      \"relationship_to_main\": \"Mẹ vợ, chuyên sỉ vả main\",\n      \"limits_or_fear\": \"Ham danh lợi, sợ mất mặt với bạn bè, hoàn toàn lệ thuộc chồng.\"\n    },\n    {\n      \"full_name\": \"Lê Đại Nghĩa\",\n      \"role\": \"Chủ tịch tập đoàn Bảo Tín (đơn vị đối tác ký hợp đồng) – thực chất là cấp dưới cũ của main\",\n      \"relationship_to_main\": \"Thuộc hạ trung thành, được main âm thầm giao nhiệm vụ\",\n      \"limits_or_fear\": \"Phải tuân thủ tuyệt đối kế hoạch của main, sợ làm hỏng việc.\"\n    },\n    {\n      \"full_name\": \"Nguyễn Hoàng Anh\",\n      \"role\": \"Nhân viên phòng IT – đồng nghiệp duy nhất không khinh main\",\n      \"relationship_to_main\": \"Bạn thân bí mật, hỗ trợ thu thập bằng chứng số\",\n      \"limits_or_fear\": \"Gia đình khó khăn, bị đe dọa sa thải, sợ liên lụy đến mẹ già.\"\n    }\n  ],\n  \"characterMap\": {\n    \"main\": \"Nguyễn Minh Tuấn\",\n    \"villain_main\": \"Hoàng Minh Phong\",\n    \"ally_primary\": \"Lê Đại Nghĩa\",\n    \"vip_customer\": \"Hoàng Minh Phong (cũng là khách hàng tiềm năng bị lật kèo)\",\n    \"company_name\": \"Công ty TNHH Phương Nam\"\n  },\n  \"fixed_data_locks\": {\n    \"company_names\": [\n      \"Công ty TNHH Phương Nam\",\n      \"Tập đoàn Đại Nam Holdings\",\n      \"Tập đoàn Hoàng Gia\",\n      \"Tập đoàn Bảo Tín\"\n    ],\n    \"money_amounts\": [\n      \"500.000.000.000 (tiền thừa kế của Phong)\",\n      \"50.000.000.000 (giá trị hợp đồng ký tại đại tiệc)\",\n      \"2.000.000.000 (khoản vay sắp đáo hạn của Hùng)\"\n    ],\n    \"key_dates\": [\n      \"15/01/2026 (ngày chấm dứt lời hứa, ngày tổ chức đại tiệc)\",\n      \"01/01/2023 (ngày main bắt đầu ở rể)\",\n      \"20/12/2025 (ngày ân nhân mất)\"\n    ],\n    \"legal_statuses\": [\n      \"Hợp đồng số 01/2026/HD-PN ký kết giữa Phương Nam và Bảo Tín\",\n      \"Đơn ly hôn đã được Hùng chuẩn bị sẵn\"\n    ]\n  },\n  \"evidence_chain\": [\n    {\n      \"name\": \"Hợp đồng mua bán cổ phần giữa Đại Nam Holdings và Phương Nam (bản chính)\",\n      \"source\": \"Main ký từ năm 2023, giữ tại tủ két của luật sư riêng, được Hoàng Anh scan bản sao\",\n      \"cost\": \"Main phải hé lộ danh tính với Hoàng Anh, khiến Hoàng Anh gặp nguy hiểm\",\n      \"legal_risk\": \"Thấp – hợp đồng công chứng\",\n      \"required_corroboration\": \"Bản chính có chữ ký tươi của chủ tịch Đại Nam Holdings và giám đốc Phương Nam\",\n      \"foreshadow_chapter\": 1\n    },\n    {\n      \"name\": \"Ghi âm cuộc họp giữa Thiếu gia Phong và bố vợ Hùng về kế hoạch chiếm đoạt tài sản\",\n      \"source\": \"Hoàng Anh dùng phần mềm ghi âm từ điện thoại main đặt trong phòng họp\",\n      \"cost\": \"Hoàng Anh suýt bị phát hiện, mất laptop\",\n      \"legal_risk\": \"Trung bình – ghi âm không có sự đồng ý của đối phương, nhưng có thể dùng làm chứng cứ tình tiết\",\n      \"required_corroboration\": \"Nhật ký cuộc gọi, lời khai nhân chứng (lễ tân)\",\n      \"foreshadow_chapter\": 2\n    },\n    {\n      \"name\": \"Sao kê ngân hàng chứng minh Phong chuyển tiền hối lộ cho kế toán trưởng Phương Nam\",\n      \"source\": \"Main lấy từ tài khoản ngân hàng do mình mở, nhờ luật sư yêu cầu ngân hàng cung cấp\",\n      \"cost\": \"Main bị phản diện vu cáo là hack tài khoản, phải trình diện công an\",\n      \"legal_risk\": \"Cao – nếu không có lệnh tòa, nhưng main có thể dùng thẩm quyền chủ tịch để yêu cầu kiểm toán\",\n      \"required_corroboration\": \"Chứng từ chuyển tiền, xác nhận của ngân hàng, lời khai kế toán\",\n      \"foreshadow_chapter\": 4\n    },\n    {\n      \"name\": \"Camera an ninh hành lang ghi cảnh Phong đưa phong bì cho Hùng\",\n      \"source\": \"Camera của tòa nhà, do Hoàng Anh copy bản ghi\",\n      \"cost\": \"Hoàng Anh bị đe dọa, phải tạm lánh\",\n      \"legal_risk\": \"Thấp – camera công cộng, không vi phạm\",\n      \"required_corroboration\": \"Thời gian trùng khớp với lịch biểu\",\n      \"foreshadow_chapter\": 3\n    }\n  ],\n  \"villain_counterattack_chain\": [\n    {\n      \"chapter_range\": \"3-4\",\n      \"move\": \"Phong tung tin đồn main là gián điệp ăn cắp tài liệu, kích động gia đình vợ đuổi main ra khỏi nhà.\",\n      \"real_damage_to_main\": \"Main mất nơi ở tạm thời, phải ra ngủ nhà nghỉ; Hồng bị ép đứng về phía gia đình.\"\n    },\n    {\n      \"chapter_range\": \"7-8\",\n      \"move\": \"Phong thuê hacker tấn công máy tính của Hoàng Anh, xóa một phần dữ liệu ghi âm; đồng thời mua chuộc kế toán trưởng để làm mất sổ sách.\",\n      \"real_damage_to_main\": \"Mất bản sao ghi âm quan trọng, Hoàng Anh bị cảnh cáo; main phải tìm cách phục hồi dữ liệu từ bản backup cloud.\"\n    },\n    {\n      \"chapter_range\": \"11-12\",\n      \"move\": \"Phong báo công an vu cáo main dùng tài liệu giả, main bị tạm giữ 24h.\",\n      \"real_damage_to_main\": \"Main mất mặt trước gia đình vợ, Hồng suy sụp; uy tín bị ảnh hưởng tạm thời, nhưng nhờ luật sư cứu.\"\n    },\n    {\n      \"chapter_range\": \"13-14\",\n      \"move\": \"Phong cho người hành hung Hoàng Anh vào viện, hòng triệt tiêu nhân chứng.\",\n      \"real_damage_to_main\": \"Mất nhân chứng chính, main phải dùng đến bằng chứng vật lý (sao kê ngân hàng) thay thế.\"\n    }\n  ],\n  \"identity_reveal_plan\": {\n    \"layer_1_hint\": \"Chương 1: Main ký tên trên giấy tờ nhỏ với nét chữ rất giống chữ ký của chủ tịch Đại Nam (Hồng thấy nhưng không tin).\",\n    \"layer_2_partial\": \"Chương 5: Lê Đại Nghĩa gọi điện riêng cho main, xưng 'Thiếu chủ' nhưng main bảo im lặng (chỉ mình Hoàng Anh nghe lén).\",\n    \"layer_3_mid_villain_knows\": \"Chương 9: Phong nhận ra main là đối thủ cũ khi thấy vết sẹo trên tay main (main là người từng cứu con trai ông Tổng giám đốc tập đoàn đối thủ).\",\n    \"layer_4_public_reveal\": \"Chương 14 (cuối chương, sau 93%): Tại đại tiệc, Lê Đại Nghĩa quỳ xuống trước mặt toàn thể khách mời.\",\n    \"layer_5_power_reversal\": \"Chương 14-15: Main hủy hợp đồng, phong tỏa tài sản của Phong, nhận lại công ty từ tay Hùng.\"\n  },\n  \"foreshadowing_plan\": [\n    {\n      \"twist\": \"Nguyễn Minh Tuấn là chủ tịch tập đoàn Đại Nam Holdings\",\n      \"clues\": [\n        {\n          \"chapter\": 1,\n          \"clue\": \"Khi nhân viên ký tên trên phiếu giao hàng, nét chữ của Tuấn có độ dày và đường nét giống hệt chữ ký mẫu của chủ tịch Đại Nam (chỉ xuất hiện trong một giây).\"\n        },\n        {\n          \"chapter\": 2,\n          \"clue\": \"Tuấn vô tình trả lời điện thoại với giọng điệu rất tự nhiên: 'Tôi đã xem báo cáo quý, tạm ổn' – nhưng ai gọi cho một nhân viên quèn?\"\n        },\n        {\n          \"chapter\": 3,\n          \"clue\": \"Khi xem bản tin thời sự về tập đoàn Đại Nam, Tuấn có phản ứng nhẹ (khóe miệng nhếch lên) rồi tắt tivi, nhưng Hồng không để ý.\"\n        }\n      ]\n    },\n    {\n      \"twist\": \"Lê Đại Nghĩa thực chất là cấp dưới của main\",\n      \"clues\": [\n        {\n          \"chapter\": 4,\n          \"clue\": \"Trong cuộc họp chuẩn bị ký hợp đồng, Lê Đại Nghĩa cố tình nhìn về phía Tuấn khi đọc điều khoản thanh toán.\"\n        },\n        {\n          \"chapter\": 6,\n          \"clue\": \"Tuấn nhận được một tin nhắn từ số lạ: 'Ngày mai 15h, sân bay? – LDN'. Sau đó Tuấn xóa tin.\"\n        },\n        {\n          \"chapter\": 8,\n          \"clue\": \"Lê Đại Nghĩa từ chối gặp riêng Hùng sau giờ làm, nói 'có việc bận với đối tác lớn hơn'.\"\n        }\n      ]\n    },\n    {\n      \"twist\": \"Bố vợ Hùng đã bán cổ phần cho Đại Nam Holdings từ ba năm trước, khiến main nắm quyền kiểm soát công ty\",\n      \"clues\": [\n        {\n          \"chapter\": 2,\n          \"clue\": \"Hùng than thở với vợ: 'Hồi đó tôi ký cái hợp đồng đó, giờ ân hận quá' – nhưng không nói rõ.\"\n        },\n        {\n          \"chapter\": 5,\n          \"clue\": \"Hồng tìm thấy một phong bì niêm phong từ ngân hàng gửi cho Tuấn, trên đó có logo Đại Nam Holdings.\"\n        },\n        {\n          \"chapter\": 7,\n          \"clue\": \"Một luật sư lạ gọi đến văn phòng Phương Nam hỏi về 'nghĩa vụ chuyển nhượng vốn'.\"\n        }\n      ]\n    }\n  ],\n  \"forbidden_inconsistencies\": [\n    \"Không đổi tên nhân vật\",\n    \"Không đổi địa lý đã khóa (chỉ TP.HCM Quận 3)\",\n    \"Không để Change Log, Self-Check hoặc STATE UPDATE JSON lẫn vào nội dung truyện xuất bản\"\n  ],\n  \"name_safety_check_result\": \"Đã kiểm tra: tất cả nhân vật quan trọng (Nguyễn Minh Tuấn, Trần Thị Hồng, Trần Văn Hùng, Nguyễn Thị Lan, Hoàng Minh Phong, Lê Đại Nghĩa, Nguyễn Hoàng Anh) không có trùng họ, tên hoặc âm tiết phát âm dễ nhầm. Không có hai nhân vật nào cùng họ (Nguyễn – Hoàng – Trần – Lê – Hoàng – Nguyễn). Chú ý: 'Hoàng Minh Phong' và 'Nguyễn Hoàng Anh' có 'Hoàng' nhưng là tên đệm và họ khác nhau, an toàn.\"\n}",
       "chapterMap": [],
       "currentState": "{}",
       "targetChapters": 15,
-      "selectedGenres": [
-        "Đô Thị Vả Mặt"
-      ],
+      "selectedGenres": [],
       "autoChapters": true,
       "riskLevel": "low",
       "chapters": [],
@@ -178,6 +87,20 @@
       "customIronRules": "",
       "useFullIronRulesInChecker": true,
       "finalAuditReport": null
+    },
+    "combo_eco": {
+      "title": "",
+      "prompt": "",
+      "targetChapters": 20,
+      "pitchOptions": [],
+      "gradingStatus": {}
+    },
+    "combo_royal": {
+      "title": "",
+      "prompt": "",
+      "targetChapters": 20,
+      "pitchOptions": [],
+      "gradingStatus": {}
     }
   }
 }

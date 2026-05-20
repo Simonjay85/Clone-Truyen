@@ -1801,3 +1801,68 @@ add_action('after_setup_theme', 'tehi_clone_force_full_image_size');
  */
 add_filter('jpeg_quality', function($arg){ return 100; });
 add_filter('wp_editor_set_quality', function($arg){ return 100; });
+
+/**
+ * Lấy link chương đầu tiên của Truyện
+ */
+function tehi_get_first_chapter_url($truyen_id) {
+    $cache_key = 'tehi_first_chap_url_' . $truyen_id;
+    $first_chap_url = get_transient($cache_key);
+    
+    if (false === $first_chap_url) {
+        $first_chap_query = get_posts([
+            'post_type'      => 'chuong',
+            'posts_per_page' => 1,
+            'meta_key'       => '_truyen_id',
+            'meta_value'     => $truyen_id,
+            'orderby'        => 'ID',
+            'order'          => 'ASC',
+            'no_found_rows'  => true,
+            'fields'         => 'ids'
+        ]);
+        
+        if (!empty($first_chap_query)) {
+            $first_chap_url = get_permalink($first_chap_query[0]);
+        } else {
+            $first_chap_url = get_permalink($truyen_id);
+        }
+        
+        // Cache trong 1 giờ
+        set_transient($cache_key, $first_chap_url, HOUR_IN_SECONDS);
+    }
+    
+    return $first_chap_url;
+}
+
+/**
+ * Lấy link chương mới nhất của Truyện
+ */
+function tehi_get_last_chapter_url($truyen_id) {
+    $cache_key = 'tehi_last_chap_url_' . $truyen_id;
+    $last_chap_url = get_transient($cache_key);
+    
+    if (false === $last_chap_url) {
+        $last_chap_query = get_posts([
+            'post_type'      => 'chuong',
+            'posts_per_page' => 1,
+            'meta_key'       => '_truyen_id',
+            'meta_value'     => $truyen_id,
+            'orderby'        => 'ID',
+            'order'          => 'DESC',
+            'no_found_rows'  => true,
+            'fields'         => 'ids'
+        ]);
+        
+        if (!empty($last_chap_query)) {
+            $last_chap_url = get_permalink($last_chap_query[0]);
+        } else {
+            $last_chap_url = get_permalink($truyen_id);
+        }
+        
+        // Cache trong 1 giờ
+        set_transient($cache_key, $last_chap_url, HOUR_IN_SECONDS);
+    }
+    
+    return $last_chap_url;
+}
+

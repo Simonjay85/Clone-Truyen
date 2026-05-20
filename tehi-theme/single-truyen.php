@@ -72,17 +72,16 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-hero-inner {
     position: relative; z-index: 1;
     display: grid;
-    grid-template-columns: 440px 1fr 115px;
+    grid-template-columns: 300px 1fr 115px;
     gap: 28px;
     padding: 24px;
     align-items: start;
 }
 
 /* Cover */
-.mkm-cover-col { flex-shrink: 0; }
 .mkm-cover-col img {
     width: 100%; border-radius: 12px; display: block;
-    aspect-ratio: 3/2; object-fit: cover; object-position: center;
+    aspect-ratio: 2/3; object-fit: cover; object-position: top center;
     box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 .mkm-cover-badge {
@@ -131,20 +130,21 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 }
 .mkm-synopsis-box a { color: #a78bfa; text-decoration: none; font-weight: 600; }
 
-.mkm-action-btns { display: flex; gap: 16px; margin-top: 20px; }
+.mkm-action-btns { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
 .mkm-btn-prim {
-    flex: 1; text-align: center; background: #ea580c; color: #fff;
-    padding: 18px 0; border-radius: 12px; font-weight: 800; text-decoration: none;
-    transition: all .2s; font-size: 17px; display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; text-align: center; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #fff;
+    padding: 14px 0; border-radius: 12px; font-weight: 800; text-decoration: none;
+    transition: all .2s; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 8px;
     box-shadow: 0 4px 12px rgba(234,88,12,0.3);
 }
-.mkm-btn-prim:hover { background: #ea580c; color: #fff; transform: translateY(-1px); }
+.mkm-btn-prim:hover { background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%); color: #fff; transform: translateY(-1px); }
 .mkm-btn-sec {
-    flex: 1; text-align: center; background: #10b981; color: #fff;
-    padding: 14px 0; border-radius: 10px; font-weight: 700; text-decoration: none;
+    width: 100%; text-align: center; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff;
+    padding: 14px 0; border-radius: 12px; font-weight: 700; text-decoration: none;
     transition: all .2s; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 6px;
+    box-shadow: 0 4px 12px rgba(16,185,129,0.2);
 }
-.mkm-btn-sec:hover { background: #059669; color: #fff; transform: translateY(-1px); }
+.mkm-btn-sec:hover { background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #fff; transform: translateY(-1px); }
 
 /* Stats col */
 .mkm-stats-col {
@@ -212,7 +212,8 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     .mkm-hero-inner { grid-template-columns: 1fr; gap: 20px; }
     .mkm-cover-col { max-width: 100%; margin: 0 auto; width: 100%; }
     .mkm-cover-col img { aspect-ratio: 2/3; width: 100%; }
-    .mkm-action-btns { flex-direction: row; }
+    .mkm-action-btns { flex-direction: row; gap: 16px; }
+    .mkm-btn-prim, .mkm-btn-sec { flex: 1; width: auto; }
     .mkm-info-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .mkm-chaps-grid { grid-template-columns: 1fr !important; }
     .mkm-rel-grid { grid-template-columns: repeat(2, 1fr); }
@@ -237,8 +238,8 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 
                 <!-- Read Buttons (Moved to fill gap) -->
                 <div class="mkm-action-btns" style="margin-top: 20px;">
-                    <a href="<?php echo esc_url($first_chapter_url); ?>" class="mkm-btn-prim">📖 Đọc từ đầu</a>
-                    <a href="<?php echo esc_url($latest_chapter_url); ?>" class="mkm-btn-sec">★ Đọc tập mới</a>
+                    <a href="<?php echo esc_url($first_chapter_url); ?>" class="mkm-btn-prim">📖 Đọc ngay (Từ đầu)</a>
+                    <a href="<?php echo esc_url($latest_chapter_url); ?>" class="mkm-btn-sec">★ Đọc chương mới nhất</a>
                 </div>
 
                 <!-- Extra Quick Stats moved under the buttons and minimized -->

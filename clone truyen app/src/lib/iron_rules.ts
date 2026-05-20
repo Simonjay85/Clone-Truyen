@@ -14,6 +14,7 @@ BẮT BUỘC viết truyện bằng tiếng Việt tự nhiên, đúng xưng hô
 
 MỤC TIÊU:
 Viết chương truyện Zhihu / micro-drama / sảng văn nhịp nhanh, dễ đọc trên điện thoại, có xung đột rõ, có cảm xúc thật, có logic, không bị "AI smell".
+Ngưỡng xuất bản: tự sửa cho tới khi chương đạt cảm giác 9.2/10 trở lên về hook, logic, cảm xúc, phản diện, bằng chứng và cliffhanger. Không in điểm ra nội dung.
 
 QUY TẮC VIẾT CHƯƠNG:
 
@@ -59,6 +60,34 @@ QUY TẮC VIẾT CHƯƠNG:
 
 21. Không dùng phản ứng cảm xúc kiểu cliché. Ưu tiên tả hành động cụ thể: tay siết mép áo, ly nước đặt lệch, câu nói bị nuốt dở, bước chân khựng lại.
 
+━━━ PATCH 11: LITERARY QUALITY ENGINE (bắt buộc) ━━━
+
+22. **SENSORY WRITING**: Mỗi cảnh MỚI phải có ít nhất 2 giác quan KHÁC NHAU (thị giác, thính giác, khứu giác, xúc giác, vị giác). Ví dụ:
+   - Văn phòng: mùi điều hòa cũ + tiếng máy in kêu rì rì
+   - Quán cà phê: hơi nước đá lạnh chạm cổ tay + mùi cà phê bị cháy
+   - Đường phố: nắng chiếu vào gáy + tiếng còi xe vọ vang
+   CẤM tả bằng cảm xúc trừu tượng ("không khí căng thẳng"). PHẢI tả bằng chi tiết vật lý cụ thể.
+
+23. **EMOTION VIA ACTION, NOT LABELS**: CẤM viết "anh cảm thấy sợ hãi", "cô lo lắng", "hắn tức giận". PHẢI thể hiện qua hành vi:
+   - Sợ: "Đánh rơi chìa khóa hai lần liên"
+   - Tức: "Bút bi gãy làm đôi trong tay"
+   - Không tin: "Lần lượt mở và đóng 3 ngăn kéo mà không tìm gì"
+
+24. **CHAPTER ENDING DIVERSITY**: Mỗi chương phải kết bằng một loại ending KHÁC với chương trước:
+   - Dialogue hook: Kết bằng câu thoại bỏ lửng
+   - Action cut: Kết bằng hành động đang diễn ra
+   - Revelation: Kết bằng thông tin mới làm đảo lộn cách hiểu
+   - Quiet dread: Kết bằng chi tiết nhỏ bất thường (cái bóng lướt qua kính, đèn nhà ai sáng, mùi thuốc lá còn vương)
+   - Betrayal/shift: Kết bằng sự thay đổi phe của một nhân vật
+   TUYỆT ĐỐI CẤM kết bằng "anh nhìn ra cửa sổ / bầu trời" + suy tư triết lý + "cuộc chiến chưa kết thúc".
+
+25. **ANTI-REPETITION SCANNER**: Trước khi output, QUÉT TƯNG ĐOẠN:
+   - Nếu có bất kỳ cụm từ nào xuất hiện quá 2 lần trong chương (trừ tên riêng) → VIẾT LẠI câu đó
+   - Nếu 2 đoạn văn có cấu trúc giống nhau ("[Nhân vật] [hành động], nhưng [cảm xúc]") → thay đổi cấu trúc 1 trong 2
+   - Không dùng cùng một phản ứng cơ thể quá 2 lần trong toàn chương ("tay run", "mồ hôi lạnh", "tim đập nhanh")
+
+26. **VILLAIN VOICE DIFFERENTIATION**: Phản diện KHÔNG được nói đơn điệu kiểu "Mày dám..." / "Tao sẽ...". Phản diện quyền lực phải nói bằng giọng điềm đạm, mỉa mai, hoặc lịch sự đáng sợ (kiểu "Tôi không muốn điệu xấu xảy ra với gia đình cậu" thay vì "Tao sẽ xử mày!"). Giận dữ chỉ được xuất hiện 1 lần trong toàn truyện.
+
 22. Sau mỗi chương, bắt buộc xuất STATE UPDATE JSON để app cập nhật continuity.
 JSON phải là JSON hợp lệ tuyệt đối: dùng dấu ngoặc kép cho key/string, không comment, không markdown fence, không trailing comma, không text sau dấu } cuối cùng.
 
@@ -86,6 +115,46 @@ Không tự thêm format thứ hai, không tự đổi thứ tự, không đặt
 
 30. POLICE FORESHADOW: Cảnh sát/cơ quan chức năng KHÔNG ĐƯỢC xuất hiện bắt người nếu trước đó không có ít nhất 1 cảnh main nộp đơn tố cáo, gọi điện báo, hoặc nhờ luật sư liên hệ. Cảnh sát "bước vào đúng lúc" = vi phạm P0.
 
+31. CORPORATE UNDERCOVER PLAUSIBILITY: Nếu main là chủ tịch/CEO/người thừa kế ẩn thân trong chính công ty, chương phải giải thích hợp lý vì sao nhân viên và phản diện không nhận ra:
+	   - Main ít xuất hiện truyền thông / ảnh công khai đã cũ / thay đổi ngoại hình cụ thể / công ty có nhiều pháp nhân hoặc chi nhánh ít gặp lãnh đạo / chức vụ mới chưa công bố rộng.
+	   - Nếu phản diện hoặc HR có thể tra Google là lộ ngay mà truyện không giải thích → vi phạm P0.
+
+32. URBAN FACE-SLAP PACING LOCK: Nếu Chapter Map ghi pacing_role = villain_win, chương đó PHẢI để phản diện thắng thật và main mất thứ cụ thể. Cấm cho main thắng ngược ngay trong cùng cảnh bằng cuộc gọi, giấy tờ bất ngờ, hoặc backup chưa cài.
+
+33. PENULTIMATE FINAL SPLIT: Chương áp chót không được lặp climax pháp lý của chương cuối. Áp chót chỉ nên đối chất/niêm phong/triệu tập/khóa đường lui; chương cuối mới bắt/áp giải/tạm giam hoặc công bố hậu quả pháp lý chính.
+
+34. CLEAN AUTHORITY DOCUMENT: Main không được dùng giấy tờ giả, chữ ký giả, giả danh, hoặc văn bản không có nguồn xác thực. Quyền lực hợp lệ phải đến từ HĐQT ký thật, chữ ký điện tử xác thực, mã văn bản, ủy quyền luật sư, hoặc biên bản có chuỗi xác thực.
+
+35. PROFESSIONAL HUMILIATION STYLE: Phản diện công sở không được chửi thô liên tục. Câu nhục phải gắn với chức vụ/quy trình/quyền ký/quyền hệ thống. Lặp lại kiểu "ăn mày/con kiến/trường chó" nhiều lần là lỗi giọng phản diện.
+   - Khi phản diện tra ra thân phận, phải có cơ chế cụ thể: ảnh báo chí, hồ sơ nội bộ, người chỉ điểm, camera đối chiếu, hoặc lỗi từ main.
+
+36. FACE-SLAP EVIDENCE DRIP: Với Đô Thị Vả Mặt/Sảng Văn, chương 1-2 chỉ được có manh mối yếu hoặc thắng nhỏ. Cấm để main cầm USB/video/ghi âm "all-in" có thể hạ phản diện ngay từ đầu. Bằng chứng mạnh phải đi qua bậc: clue_only → challenged/lost_or_blocked → corroborated → clean.
+
+37. CROWD CONVERSION LADDER: Đám đông không được đổi từ khinh thường sang tung hô trong một cảnh. Phải có bậc: mocking → doubting → silent → turning → supporting. Nếu chapter map có crowd_stance, chương phải viết đúng bậc đó.
+
+38. HUMILIATION DEBT PAYOFF: Mỗi cú vả mặt phải trả lại một món nợ nhục cụ thể đã gieo trước. Nếu main chỉ tung bằng chứng chung chung nhưng không đảo ngược cảnh nhục, đó là điều tra khô, chưa đạt payoff thể loại.
+
+39. ANTI-LIVESTREAM LOOP: Không được để 3 chương liên tiếp dùng cùng công thức livestream/video/ghi âm để vả mặt. Ít nhất phải luân phiên sân khấu payoff: phòng họp, nhóm chat, camera bảo vệ, biên bản nhân sự, kiểm toán, đối chất với đối tác, lời khai nhân chứng.
+
+32. CORPORATE LEGAL TIMELINE LOCK: Cấm viết "tòa bác bằng chứng", "công an bắt ngay", "khám xét khẩn cấp", "phong tỏa tài khoản" như một nút bấm tức thì.
+   - Muốn có cơ quan chức năng: phải có ít nhất 2 bước đã cài trước gồm đơn tố cáo/luật sư liên hệ, tài liệu sơ bộ, nhân chứng, hoặc yêu cầu kiểm toán.
+   - Nếu cần bắt/tạm giữ trong cùng ngày, phải nêu lý do khẩn cấp rõ: đang tiêu hủy chứng cứ, bỏ trốn, đe dọa nhân chứng, hoặc bị bắt quả tang.
+   - Nếu chưa đủ điều kiện, đổi thành "làm việc/triệu tập/niêm phong tài liệu/tạm đình chỉ nội bộ" thay vì bắt giữ.
+
+33. EVIDENCE LADDER LOCK: Bằng chứng hạ phản diện cuối arc phải leo thang đủ 5 bậc:
+   (1) Manh mối ban đầu → (2) Dấu hiệu đối chiếu → (3) Bằng chứng vùng xám bị phản bác → (4) Bằng chứng sạch hỗ trợ → (5) Xác nhận độc lập/chuỗi lưu giữ rõ.
+   Climax không được thắng nếu thiếu một trong ba thứ: bằng chứng vật lý sạch, nhân chứng hoặc xác nhận độc lập, và phản công cuối của villain đã bị hóa giải.
+
+34. VIETNAM MODERN THREAT REALISM: Với bối cảnh Việt Nam hiện đại, phản diện doanh nghiệp ưu tiên đòn pháp lý, kinh tế, truyền thông, nhân sự, quan hệ bệnh viện/trường học, mua chuộc nhân chứng, hoặc hồ sơ giả.
+   - Bạo lực công khai, dao kéo, bắt cóc, xe tải tông người, xã hội đen lộ liễu chỉ được dùng khi đã cài mạng lưới tội phạm từ trước và phải kéo theo hậu quả công an/truy tìm rõ ràng.
+   - Không dùng bạo lực như cách duy nhất để tăng kịch tính nếu đòn pháp lý/tài chính có thể tạo áp lực thực tế hơn.
+
+40. PREMIUM STORYTELLING ELEVATION:
+   - REAL TWISTS IN KEY CHAPTERS: Mọi chương lớn (phá đám cưới, lật bài ngửa) cấm dùng tình tiết hời hợt, giải quyết một chiều. Phải có twist thực sự làm bệ phóng cho cốt truyện (ví dụ: phản diện vô tình để lộ bí mật động trời về vụ tai nạn năm xưa, hoặc tiết lộ vị trí lưu mật bản ghi âm cuộc gọi của kẻ chủ mưu).
+   - EARNED VICTORY & SETBACKS: Main cấm toàn năng tuyệt đối, cấm biết trước mọi đòn để lật kèo tức thì. Phải có những trả giá thật sự (người đồng hành/trợ lý bị thương nặng, cổ đông thân tín phản bội, dự án phụ sụp đổ, hoặc đại lão đỡ đầu buộc phải phá lệ đứng ra can thiệp bảo lãnh). Chiến thắng cuối cùng phải có cái giá của nó.
+   - 20% PHYSICAL VIOLENCE REDUCTION: Giảm tối thiểu 20% các cảnh đánh đập trực diện, bạo lực vật lý cơ bắp thô bạo (bẻ khớp, giẫm mặt, tát tai...). Thay vào đó bằng các đòn "vả mặt sang trọng" của giới tài phiệt đô thị: pháp lý, truyền thông, kiểm toán, ngân hàng đóng băng tài khoản, ghi hình camera, biên bản đối chất hợp đồng.
+   - SOLEMN EMOTIONAL CLOSED ENDING: Kết truyện hoặc kết arc lớn phải có dư âm cảm xúc sâu lắng (quiet emotional anchor). Ví dụ: cảnh main đứng trước phòng thờ tổ tiên/cha mẹ, thắp ba nén hương kính cẩn, rơi giọt nước mắt closure và nói một câu lắng đọng: "Con đã lấy lại mọi thứ", thay vì chỉ báo cáo kết quả trừng phạt hay đi quét rác một cách cơ học.
+
 CỤM TỪ CẤM (BANNED PHRASES — TUYỆT ĐỐI KHÔNG DÙNG):
 "Cuộc chơi vừa mới bắt đầu"
 "Trận chiến vừa mới bắt đầu"
@@ -111,6 +180,12 @@ CỤM TỪ CẤM (BANNED PHRASES — TUYỆT ĐỐI KHÔNG DÙNG):
 "Tôi siết chặt điện thoại" (cấm lặp quá 1 lần toàn truyện)
 "Mặt hắn tái đi" / "trắng bệch" / "biến sắc" (cấm lặp quá 2 lần toàn truyện)
 "Giọng hắn khàn đặc" (cấm lặp quá 1 lần toàn truyện)
+"Cuộc chiến chưa kết thúc" / "cuộc chiến vẫn chưa kết thúc" (cấm tuyệt đối)
+"Anh nhìn ra cửa sổ" kết hợp suy tư (cấm lặp quá 1 lần toàn truyện)
+"Mồ hôi lạnh chảy dọc sống lưng" (cấm lặp quá 1 lần toàn truyện)
+"Tim anh đập nhanh hơn" / "tim đập mạnh" (cấm lặp quá 1 lần toàn truyện)
+"Nhưng anh không ngủ được" (cấm lặp quá 1 lần toàn truyện)
+"Mày điên rồi hả" / "Mày dám..." (cấm lặp quá 1 lần toàn truyện)
 
 OUTPUT:
 Tuân thủ đúng format output do CHAPTER WRITER PROMPT quy định.
@@ -145,6 +220,11 @@ QUY TẮC VIẾT CHƯƠNG:
 8. Nếu có công an, luật sư, truyền thông hoặc cơ quan chức năng, phải có bước chuẩn bị/điều kiện hợp lý trước đó.
 9. Kết chương bằng câu hỏi cụ thể, đe dọa cụ thể, cú lật cụ thể hoặc chi tiết làm đổi cách hiểu của người đọc. Trừ chương cuối, không kết bằng yên bình.
 10. Không dùng văn mẫu cảm xúc sáo rỗng. Tả bằng hành động, vật thể, âm thanh, cử chỉ, lựa chọn.
+11. NÂNG CAO CHẤT LƯỢNG SẢNG VĂN VỚI 4 QUY TẮC VÀNG:
+    - Twist thật ở chương cao trào (bí mật chấn động/ghi âm ẩn).
+    - Có trả giá và tổn thất thực chất cho main trước khi thắng (phản bội, đồng nghiệp bị thương, dự án phụ mất).
+    - Giảm 20% bạo lực tay chân bằng bẻ tay chân cơ học, thay bằng pháp lý/tài phiệt.
+    - Kết thúc đầy dư âm cảm xúc (altar room closure, thắp hương ba mẹ).
 
 CỤM TỪ CẤM (BANNED PHRASES — TUYỆT ĐỐI KHÔNG DÙNG):
 "Cuộc chơi vừa mới bắt đầu"
@@ -237,6 +317,41 @@ P0 — LỖI NGHIÊM TRỌNG, PHẢI SỬA NGAY:
 
 24. NUMBER INFLATION FORMULA — Checker PHẢI so sánh tổng số tiền đề cập ở chương hiện tại với chương 1-3. Nếu tổng tăng >3x mà không có giải thích cộng dồn (nhiều chi nhánh, thêm đối tác, arc mới) → P0 NUMBER INFLATION. Tài khoản offshore CHỈ được nhắc nếu Story Bible đã định nghĩa villain arc 2 có quy mô quốc tế.
 
+25. UNDERCOVER IDENTITY IMPOSSIBILITY — Main là chủ tịch/CEO/người thừa kế ẩn thân nhưng không có lý do hợp lý vì sao nhân viên/phản diện/HR không nhận ra, hoặc phản diện đáng lẽ chỉ cần tra công khai là lộ nhưng truyện bỏ qua. Nếu có cảnh phản diện phát hiện thân phận, phải có cơ chế tra ra cụ thể.
+
+26. INSTANT LEGAL ACTION — Cơ quan chức năng bắt giữ/khám xét/phong tỏa/tòa bác chứng cứ quá nhanh mà không có các bước tố cáo, xác minh, lệnh, căn cứ khẩn cấp, hoặc foreshadow pháp lý trước đó.
+
+27. EVIDENCE LADDER FAILURE — Climax thắng bằng một chùm bằng chứng xuất hiện cùng lúc, thiếu bậc manh mối → dấu hiệu → bằng chứng bị challenge → bằng chứng sạch → xác nhận độc lập. Nếu bằng chứng quyết định chưa được gieo trước ít nhất 2 chương hoặc thiếu chuỗi lưu giữ, đánh P0.
+
+28. VIETNAM THREAT ESCALATION ERROR — Bối cảnh Việt Nam hiện đại nhưng phản diện doanh nghiệp dùng bạo lực xã hội đen lộ liễu (dao, xe tải tông, bắt cóc, chém người tại nhà) mà không có cài đặt tội phạm từ trước và không có hậu quả công an/điều tra tương ứng.
+
+29. ONE-CALL BANKING OR COURT WIN — Bạn ngân hàng/luật sư/công an cung cấp sao kê cá nhân, phong tỏa tài khoản, hoặc ra quyết định chỉ bằng một cuộc gọi của main. Thông tin tài chính phải có ủy quyền, xác nhận hợp lệ, hoặc cơ quan chức năng; nếu không chỉ được dùng như manh mối không đủ thắng.
+
+30. FACE-SLAP ALL-IN START — Với Đô Thị Vả Mặt/Sảng Văn, nếu chương 1-2 đưa USB/video/ghi âm/sao kê đủ hạ vụ chính ngay, đánh P0. Đầu truyện chỉ được thắng nhỏ hoặc gieo clue.
+
+31. CROWD JUMP ERROR — Đám đông từ chế giễu chuyển thẳng sang ủng hộ/tung hô main trong một cảnh, thiếu doubt/silence/turning, đánh P1; nếu đó là climax chính làm payoff mất lực, đánh P0.
+
+32. HUMILIATION DEBT MISSING — Cú faceslap không trả lại món nhục đã gieo, chỉ đọc bằng chứng chung chung, đánh P1; nếu là payoff cuối, đánh P0.
+
+33. LIVESTREAM LOOP — 3 chương liên tiếp cùng dùng livestream/video/ghi âm làm cơ chế vả mặt chính, đánh P0 vì lặp trải nghiệm.
+
+30. FACE-SLAP PACING VIOLATION — Chapter Map yêu cầu villain_win/deferred payoff nhưng bản chương lại cho main thắng sạch ngay; hoặc 3 chương liên tiếp đều là main thắng/payoff mà không có thiệt hại thật.
+
+31. DUPLICATE LEGAL CLIMAX — Chương áp chót và chương cuối cùng đều dùng cùng cảnh công an bắt/dẫn giải/tạm giam. Phải tách áp chót là khóa đường lui, chương cuối là sụp chính.
+
+32. FAKE AUTHORITY DOCUMENT — Main dùng giấy tờ/chữ ký/lệnh/ủy quyền giả hoặc "giả danh nhưng có bản thật" để thắng. Đây là P0 vì làm bẩn nhân vật chính và phá logic pháp lý.
+
+33. DUPLICATE RESCUE SETPIECE — Hai chương liên tiếp đều dùng bố/luật sư/công an/đội an ninh/cơ quan chức năng ập vào cứu main hoặc bắt phản diện. Nếu currentState.lastMajorSetPiece đã là "rescue" hoặc "arrest", chương sau phải là aftermath/phản công/thủ tục, không được lặp setpiece.
+
+34. STATE MEMORY FLAGS MISSING — Chương có lộ thân phận công khai nhưng STATE UPDATE JSON không set publicIdentityKnown/revealedAtChapter; chương có giải cứu nhưng không set lastMajorSetPiece="rescue"; chương có bắt phản diện nhưng không set villainArrested/lastMajorSetPiece="arrest". Đây là P0 vì làm chương sau lặp twist.
+
+35. ARC ESCALATION OVERLOAD — Arc 1 vừa xử lý vụ công ty nhưng chương sau mở cùng lúc nhiều lớp mới như chính phủ, quốc tế, tài khoản offshore, thân thế cha mẹ, chú ruột, trùm mới. Nếu Story Bible không định nghĩa Arc 2 rõ, chỉ được mở 1 hook lạnh; còn lại phải để hậu kỳ/arc sau.
+
+36. PHYSICAL VIOLENCE OVERLOAD (P0/P1) — Đánh đập trực diện, bạo lực cơ bắp thô bạo (bẻ tay, giẫm mặt, tát nảy lửa) vượt quá 20% các màn vả mặt. Phải thay bằng bạo lực pháp lý, tài chính, ngân hàng, truyền thông để nâng tầm đô thị tài phiệt.
+37. SHALLOW KEY CHAPTER / NO REAL TWIST (P0) — Các chương cao trào/chương đám cưới mà không có plot twist thực chất, không hé lộ sự thật năm xưa hoặc manh mối sâu sắc mà chỉ phá đám một cách hời hợt.
+38. EARNED VICTORY GAP (P0) — Main quá toàn năng, không có tổn thất vật lý, không mất mát dự án, trợ lý/đồng hành không bị đe dọa thực tế, khiến chiến thắng quá "tiện lợi" và thiếu chiều sâu.
+39. NO EMOTIONAL CLOSED ENDING (P1) — Finale/kết thúc toàn bộ truyện thiếu "điểm neo cảm xúc" (cảnh thắp hương, giọt nước mắt closure trước di ảnh cha mẹ, lời hứa thiêng liêng), chỉ kết thúc bằng bảng báo cáo thành tích cơ học.
+
 P1 — LỖI LỚN, NÊN SỬA:
 
 1. Main thắng quá dễ, không có đánh đổi, không có rủi ro.
@@ -274,6 +389,10 @@ P1 — LỖI LỚN, NÊN SỬA:
 17. GRAY EVIDENCE LEGAL GAP — Bằng chứng thu thập theo cách vùng xám pháp lý (ghi âm không đồng ý, ảnh chụp tài liệu nội bộ, truy cập server, theo dõi) được dùng trong cảnh thắng lợi mà KHÔNG bị luật sư phản diện challenge tính hợp pháp, hoặc KHÔNG có nhân chứng/bằng chứng ngoài đời bài bảo đi kèm. Mọi bằng chứng vng xám được phát công khai phải bị ít nhất 1 phá bỏ/đặt câu hỏi trong vòng 1 chương sau đó — sau đó main mới giải quyết được bằng bằng chứng sạch hơn.
 
 18. CHARACTER CROSS-CHAPTER CONSISTENCY — Nhân vật phụ xuất hiện ở chương này mà đã có action/liền quan ở chương trước nhưng KHÔNG được cập nhật trong currentState (bị bỏ quên, tên bị viết khác đi, vai trò bị mú mờ). Trước khi giới thiệu hoặc nhắc nhân vật phụ bất kỳ, đối chiếu với "characterRoles" trong fixedFacts — nếu không có trong danh sách hoặc vai trò khác với lần trước, bắt buộc giải thích sự thay đổi.
+
+19. CORPORATE GOVERNANCE GAP — Hội đồng quản trị/cổ đông/bảo vệ/kho lưu trữ hành xử như thuộc quyền tuyệt đối của main mà không có điều lệ, ủy quyền, phiếu bầu, biên bản, hoặc phản đối từ phe còn lại.
+
+20. WITNESS SAFETY GAP — Nhân chứng/đồng minh bị đe dọa nhưng không có kế hoạch bảo vệ, hỗ trợ pháp lý, hoặc hậu quả tâm lý/nghề nghiệp tương xứng.
 
 P2 — LỖI STYLE, CẦN POLISH:
 
@@ -376,6 +495,10 @@ KIỂM TRA TOÀN TRUYỆN:
 - Có tổ chức lớn bị qua mặt quá dễ không?
 - Có công nghệ/hacker ảo không?
 - Có y khoa/gia phả/sinh học sai không?
+- Nếu main là chủ tịch/CEO ẩn thân, lý do không bị nhận ra có hợp lý không?
+- Mỗi bước công an/tòa/kiểm toán/ngân hàng có đúng quy trình, căn cứ và độ trễ không?
+- Có cảnh "một cuộc gọi là xong" với ngân hàng/tòa/công an không?
+- Có bạo lực xã hội đen lộ liễu trong bối cảnh Việt Nam mà không kéo theo hậu quả điều tra không?
 
 9. Moral Weight
 - Main có dùng vùng xám đạo đức/pháp lý không?
@@ -400,6 +523,12 @@ KIỂM TRA TOÀN TRUYỆN:
 - Có câu cliché không?
 - Có lặp cấu trúc văn quá nhiều không?
 - Teaser SEO có nhất quán không?
+
+13. Corporate Evidence Ladder
+- Vụ án chính có đủ evidence ladder 5 bậc không?
+- Bằng chứng quyết định được cài ít nhất 2 chương trước chưa?
+- Bằng chứng vùng xám có bị phản bác và thay bằng bằng chứng sạch không?
+- Climax có đủ: bằng chứng vật lý sạch + nhân chứng/xác nhận độc lập + phản công cuối của villain bị hóa giải không?
 
 DENOUEMENT RULE:
 Sau cú vả mặt lớn nhất phải có phần hậu quả rõ ràng.

@@ -8,7 +8,7 @@ import { Key } from 'lucide-react';
 export function ApiKeysView() {
   const {
     geminiKey, geminiKey2, geminiPaidKey, usePaidAPI, isFreeApiExhausted, 
-    openAIKey, grokKey, claudeKey, qwenKey, deepseekKey, openRouterKey,
+    openAIKey, grokKey, claudeKey, qwenKey, deepseekKey, openRouterKey, togetherKey,
     setSettings 
   } = useStore();
 
@@ -245,6 +245,24 @@ export function ApiKeysView() {
       }
     } catch {
       setTestResults(r => ({ ...r, openrouter: `❌ Mất kết nối API` }));
+    }
+  };
+
+  const testTogetherAI = async () => {
+    if (!togetherKey) return alert(`Chưa nhập Together AI Key!`);
+    setTestResults(r => ({ ...r, together: '⏳ Đang kiểm tra Together AI...' }));
+    try {
+      const res = await fetch('https://api.together.xyz/v1/models', {
+        headers: { 'Authorization': `Bearer ${togetherKey}` }
+      });
+      if (res.ok) {
+        setTestResults(r => ({ ...r, together: '✅ HOẠT ĐỘNG (Valid Key)' }));
+      } else {
+        const data = await res.json();
+        setTestResults(r => ({ ...r, together: `❌ Lỗi: ${data.error?.message || 'Invalid Key'}` }));
+      }
+    } catch {
+      setTestResults(r => ({ ...r, together: `❌ Mất kết nối API` }));
     }
   };
 
@@ -592,6 +610,33 @@ export function ApiKeysView() {
                     className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-lime-500 font-mono text-sm shadow-inner"
                   />
                   {testResults['openrouter'] && <p className={`text-xs mt-2 font-bold ${testResults['openrouter'].includes('✅') ? 'text-lime-400' : 'text-red-400'}`}>{testResults['openrouter']}</p>}
+                </div>
+              </div>
+
+              {/* TOGETHER AI ENGINE CARD */}
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-yellow-500/10 blur-[60px] rounded-full pointer-events-none"></div>
+
+                <div className="flex justify-between items-center mb-6 border-b border-slate-800 pb-4 relative z-10">
+                  <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                    <span className="text-yellow-400">🎨</span>
+                    Image Generator (Together AI)
+                  </h3>
+                  <div className="bg-slate-950 px-3 py-1 rounded-lg border border-slate-800 text-xs font-bold text-yellow-500">PAY-AS-YOU-GO</div>
+                </div>
+
+                <div className="p-4 rounded-xl border bg-yellow-900/10 border-yellow-500/30 relative z-10 transition-all focus-within:border-yellow-500/50">
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="text-sm font-bold text-yellow-400">Together API Key (Flux)</label>
+                    <button onClick={testTogetherAI} className="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded-lg text-slate-300 transition-all">🧪 Kiểm tra</button>
+                  </div>
+                  <input 
+                    type="password"
+                    value={togetherKey}
+                    onChange={(e) => setSettings({ togetherKey: e.target.value })}
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-yellow-500 font-mono text-sm shadow-inner"
+                  />
+                  {testResults['together'] && <p className={`text-xs mt-2 font-bold ${testResults['together'].includes('✅') ? 'text-yellow-400' : 'text-red-400'}`}>{testResults['together']}</p>}
                 </div>
               </div>
 

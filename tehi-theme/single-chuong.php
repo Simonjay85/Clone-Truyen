@@ -112,8 +112,9 @@ header.mkm-header { display: none !important; }
 .r-show.r-active .r-modal { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
 /* TOC Styles */
-.r-toc-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.r-toc-item { padding: 12px; border-radius: 8px; border: 1px solid #f3f4f6; text-decoration: none; color: #374151; font-size: 14px; font-weight: 500; transition: background .2s; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.r-toc-list { display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 640px) { .r-toc-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } #tocModal .r-modal { max-width: 600px; } }
+.r-toc-item { padding: 12px; border-radius: 8px; border: 1px solid #f3f4f6; text-decoration: none; color: #374151; font-size: 14px; font-weight: 500; transition: background .2s; min-width: 0; display: block; line-height: 1.4; }
 .r-toc-item:hover { background: #f9fafb; border-color: #e5e7eb; }
 .r-toc-item.active { background: #e0e7ff; border-color: #c7d2fe; color: #4f46e5; font-weight: 600; }
 .r-toc-search { width: 100%; padding: 10px 16px; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 16px; outline: none; font-size: 14px; }
@@ -227,12 +228,14 @@ header.mkm-header { display: none !important; }
             <?php 
             // Render nội dung với hỗ trợ Bình luận Theo Đoạn
             $raw_content = get_the_content();
-            $paragraphs = preg_split('/(<\/p>\s*<p[^>]*>|<br\s*\/?><br\s*\/?>)/i', $raw_content);
+            // Dùng wpautop() để đảm bảo cả plain text (\n) lẫn <p> tags đều được split đúng
+            $processed_content = wpautop($raw_content);
+            $paragraphs = preg_split('/<\/p>\s*<p[^>]*>/i', $processed_content);
             $p_idx = 0;
             
             // Logic Khoá Chương
             $is_locked = get_post_meta(get_the_ID(), '_is_locked', true); 
-            if ($is_locked === '') $is_locked = true; // Bật khoá mặc định (có thể đổi thành false tuỳ logic)
+            if ($is_locked === '') $is_locked = false; // Tắt khoá chương (mặc định mở toàn bộ)
             $lock_index = 2; // Số đoạn hiển thị trước khi khoá
             
             foreach ($paragraphs as $ptext) {

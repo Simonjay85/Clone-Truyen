@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { useStore } from '../store/useStore';
 import { BookOpen, Map, PenTool, ShieldAlert, Rocket, Settings, CheckCircle2, Download, Zap, Play, Loader2 } from 'lucide-react';
-import { agentGenerateBible, agentGenerateChapterMap, agentWriteChapter, agentRewriteChapter, agentIronRulesV2, agentFinalAudit } from '../lib/advanced_engine';
+import { agentGenerateBible, agentGenerateChapterMap, agentWriteChapter, agentRewriteChapter, agentIronRulesV2, agentFinalAudit, extractJson } from '../lib/advanced_engine';
 
 export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string) => void }) {
   const { openRouterKey, addQueueItems, draftSpaces, updateDraftSpace, addApiLog, hasHydrated } = useStore();
@@ -26,6 +26,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
 
   // Writer states
   const [riskLevel, setRiskLevel] = useState<'low' | 'medium' | 'high'>('low');
+  const [hasMounted, setHasMounted] = useState(false);
   const [selectedChapterIdx, setSelectedChapterIdx] = useState(0);
   const [chapters, setChapters] = useState<{chapter: number; title: string; content: string; usedModel: string}[]>([]);
   const [isWritingChapter, setIsWritingChapter] = useState(false);
@@ -78,6 +79,12 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     setTimeout(() => setToast(null), 5000);
   };
 
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  const renderedRiskLevel = hasMounted ? riskLevel : 'low';
+
   // Load from draft space
   useEffect(() => {
     if (!hasHydrated) return;
@@ -89,7 +96,10 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     if (draft.targetChapters !== undefined) setTargetChapters(draft.targetChapters || 15);
     if (draft.selectedGenres !== undefined) setSelectedGenres(draft.selectedGenres || []);
     if (draft.autoChapters   !== undefined) setAutoChapters(draft.autoChapters);
-    if (draft.riskLevel      !== undefined) setRiskLevel(draft.riskLevel || 'low');
+    if (draft.riskLevel      !== undefined) {
+      const savedRisk = ['low', 'medium', 'high'].includes(draft.riskLevel) ? draft.riskLevel : 'low';
+      setRiskLevel(savedRisk);
+    }
     if (draft.chapters       !== undefined) setChapters(draft.chapters || []);
     if (draft.auditReports   !== undefined) setAuditReports(draft.auditReports || {});
     if (draft.customIronRules !== undefined) setCustomIronRules(draft.customIronRules || '');
@@ -207,7 +217,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
           const posMatch = lastError.match(/position\s+(\d+)/);
 
           // Auto-repair: truncated JSON (AI hit max_tokens) — close all open braces/brackets
-          if (/Unexpected end of JSON/i.test(lastError) && attempt < 2) {
+          if (/(Unexpected end of JSON|Unterminated string|Expected property name)/i.test(lastError) && attempt < 2) {
             // Strip any trailing incomplete string value
             jsonStr = jsonStr.replace(/,\s*"[^"]*$/, ''); // remove trailing incomplete key
             jsonStr = jsonStr.replace(/"[^"]*$/, '""'); // close any unclosed string
@@ -372,7 +382,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     }
 
     let bibleObj: any = {};
-    try { bibleObj = JSON.parse(storyBible); } catch { bibleObj = { series_premise: storyBible }; }
+    try { bibleObj = extractJson(storyBible); } catch { bibleObj = { series_premise: storyBible }; }
 
     // Trích xuất Tên Truyện
     let extractedTitle = '';
@@ -492,21 +502,33 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     }
   };
 
+  const [mapError, setMapError] = useState('');
+
   const handleGenerateMap = async () => {
-    if (!openRouterKey) return showToast("Chưa có API Key!", 'error');
-    if (!storyBible?.trim()) return showToast("Chưa có Story Bible. Vui lòng quay lại Mode 1!", 'error');
+    if (!openRouterKey) {
+      const err = "Chưa có API Key! Vui lòng vào mục Settings (Cài đặt) ở góc dưới bên trái để nhập OpenRouter API Key.";
+      setMapError(err);
+      return showToast(err, 'error');
+    }
+    if (!storyBible?.trim()) {
+      const err = "Chưa có Story Bible. Vui lòng quay lại Mode 1 (Story Bible) để tạo trước!";
+      setMapError(err);
+      return showToast(err, 'error');
+    }
     
     setIsGeneratingMap(true);
+    setMapError('');
     try {
-      let bibleObj;
+      // Cố gắng parse JSON, nếu không được thì dùng string thô (AI vẫn hiểu được)
+      let bibleObj: any;
       try {
-        bibleObj = JSON.parse(storyBible);
-      } catch (e) {
-        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
-        try { bibleObj = JSON.parse(cleaned); } 
-        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+        bibleObj = extractJson(storyBible);
+      } catch {
+        bibleObj = storyBible; // Fallback: gửi nguyên văn bản cho AI xử lý
       }
-      const chapCount = autoChapters ? (bibleObj.recommended_chapters || targetChapters) : targetChapters;
+      const chapCount = autoChapters
+        ? ((typeof bibleObj === 'object' && bibleObj?.recommended_chapters) || targetChapters)
+        : targetChapters;
       const result = await agentGenerateChapterMap('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', bibleObj, chapCount);
       const map = Array.isArray(result.data) ? result.data : (result.data?.chapters || []);
       setChapterMap(map);
@@ -516,7 +538,9 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
       if (autoChapters && map.length > 0) setTargetChapters(map.length);
       setActiveTab(3);
     } catch (e: any) {
-      showToast("Lỗi tạo Chapter Map: " + (e.message || "Hãy đảm bảo Story Bible là JSON hợp lệ"), 'error');
+      const errMsg = "Lỗi tạo Chapter Map: " + (e.message || "Hãy đảm bảo Story Bible là JSON hợp lệ");
+      showToast(errMsg, 'error');
+      setMapError(errMsg);
     } finally {
       setIsGeneratingMap(false);
     }
@@ -531,15 +555,36 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     const prevContext = prevChapter ? prevChapter.content.slice(-500) : '';
     setIsWritingChapter(true);
     try {
-      let bibleObj;
+      // Parse Bible — fallback to raw string if JSON is broken
+      let bibleObj: any;
       try {
-        bibleObj = JSON.parse(storyBible);
-      } catch (e) {
-        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
-        try { bibleObj = JSON.parse(cleaned); } 
-        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+        bibleObj = extractJson(storyBible);
+      } catch {
+        bibleObj = storyBible; // Fallback: gửi nguyên văn bản cho AI xử lý
       }
-      const result = await agentWriteChapter('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', bibleObj, beat, prevContext, riskLevel, currentState, chapterMap.length);
+
+      // Seed characterMap from Bible if not yet present
+      let localState = currentState;
+      try {
+        const st = JSON.parse(localState || '{}');
+        if (typeof bibleObj === 'object' && (!st.characterMap || Object.keys(st.characterMap).length === 0)) {
+          const charMap: Record<string, string> = {};
+          if (bibleObj.characterMap) {
+            Object.assign(charMap, bibleObj.characterMap);
+          } else if (bibleObj.protagonist?.full_name) {
+            charMap.main = bibleObj.protagonist.full_name;
+            if (bibleObj.main_villain?.full_name) charMap.villain_main = bibleObj.main_villain.full_name;
+            if (bibleObj.supporting_characters?.[0]?.full_name) charMap.ally_primary = bibleObj.supporting_characters[0].full_name;
+          }
+          if (Object.keys(charMap).length > 0) {
+            st.characterMap = charMap;
+            localState = JSON.stringify(st);
+            setCurrentState(localState);
+          }
+        }
+      } catch { /* ignore */ }
+
+      const result = await agentWriteChapter('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', bibleObj, beat, prevContext, riskLevel, localState, chapterMap.length, chapterMap);
       const rawText = result.text || '';
       const cleanText = stripMetaBlocks(rawText);
       const newChapters = [...chapters];
@@ -589,7 +634,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     let bibleTitle = 'Truyen';
     let logline = '';
     try {
-      const b = JSON.parse(storyBible);
+      const b = extractJson(storyBible);
       bibleTitle = b.title || 'Truyen';
       logline = b.logline || '';
     } catch { /* ignore */ }
@@ -655,11 +700,9 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     try {
       let bibleObj;
       try {
-        bibleObj = JSON.parse(storyBible);
+        bibleObj = extractJson(storyBible);
       } catch (e) {
-        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
-        try { bibleObj = JSON.parse(cleaned); } 
-        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+        throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp.");
       }
       title = bibleObj.title || title;
     } catch { }
@@ -752,10 +795,9 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     const localAuditReports = { ...auditReports };
     let bibleObj;
     try {
-      bibleObj = JSON.parse(storyBible);
+      bibleObj = extractJson(storyBible);
     } catch (e) {
-      const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
-      try { bibleObj = JSON.parse(cleaned); } catch (e2) { bibleObj = { series_premise: storyBible }; }
+      bibleObj = { series_premise: storyBible };
     }
 
     // FIX: Seed characterMap from Bible BEFORE Ch.1 to prevent name drift.
@@ -808,7 +850,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
         
         // 1. Write
         const writeModel = riskLevel === 'high' ? 'qwen/qwen3-next-80b-a3b-instruct:free' : 'qwen/qwen3-next-80b-a3b-instruct:free';
-        const writeRes = await agentWriteChapter('openrouter', openRouterKey, writeModel, bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length);
+        const writeRes = await agentWriteChapter('openrouter', openRouterKey, writeModel, bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length, chapterMap);
         
         if (!writeRes.text || writeRes.text.trim().length === 0) {
           addLog(`❌ Model ${writeModel} trả về rỗng ở chương ${i}, dừng AutoPilot.`, 'error');
@@ -884,7 +926,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
         };
         if (isAuditOutput(writeRes.text)) {
           addLog(`⚠️ Ch.${i}: AI nhầm output Audit Report thay vì truyện! Đang retry với tencent/hy3-preview:free...`, 'warning');
-          const retryRes = await agentWriteChapter('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length);
+          const retryRes = await agentWriteChapter('openrouter', openRouterKey, 'qwen/qwen3-next-80b-a3b-instruct:free', bibleObj, beat, prevContext, riskLevel, localCurrentState, chapterMap.length, chapterMap);
           if (retryRes.text && retryRes.text.trim().length > 0 && !isAuditOutput(retryRes.text)) {
             stateSourceText = retryRes.text;
             writeRes.text = sanitizeChapterOutput(retryRes.text);
@@ -1045,7 +1087,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
               ],
               title: beat.title + ' [ANTI-REVEAL REWRITE]',
             };
-            const rewriteRes = await agentWriteChapter('openrouter', openRouterKey, writeModel, bibleObj, antiRevealBeat, prevContext, riskLevel, localCurrentState, chapterMap.length);
+            const rewriteRes = await agentWriteChapter('openrouter', openRouterKey, writeModel, bibleObj, antiRevealBeat, prevContext, riskLevel, localCurrentState, chapterMap.length, chapterMap);
             if (rewriteRes.text && rewriteRes.text.trim().length > 0) {
               // Check rewrite with the same detection logic
               const rewriteLower = rewriteRes.text.toLowerCase();
@@ -1313,11 +1355,9 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
     try {
       let bibleObj;
       try {
-        bibleObj = JSON.parse(storyBible);
+        bibleObj = extractJson(storyBible);
       } catch (e) {
-        const cleaned = storyBible.replace(/<think>[\s\S]*?<\/think>/gi, '').replace(/```(?:json|md|markdown)?\s*/gi, '').replace(/```\s*/g, '').trim();
-        try { bibleObj = JSON.parse(cleaned); } 
-        catch (e2) { throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp."); }
+        throw new Error("Story Bible không phải là JSON hợp lệ. Vui lòng kiểm tra và sửa lỗi cú pháp.");
       }
       // Build params — include custom Iron Rules only for checker, never for writer
       const checkerParams = {
@@ -1477,23 +1517,40 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
             <div className="w-px h-8 bg-white/10 mx-2"/>
 
             {/* Risk Selector — only relevant for Chapter Writer */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2" suppressHydrationWarning>
               <span className="text-white/40 text-xs font-semibold uppercase tracking-widest">Risk</span>
-              {(['low', 'medium', 'high'] as const).map(level => (
-                <button
-                  key={level}
-                  onClick={() => setRiskLevel(level)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all capitalize ${
-                    riskLevel === level
-                      ? level === 'high'   ? 'bg-rose-500/20 border-rose-500 text-rose-400'
-                      : level === 'medium' ? 'bg-amber-500/20 border-amber-500 text-amber-400'
-                      :                     'bg-emerald-500/20 border-emerald-500 text-emerald-400'
-                      : 'bg-black/40 border-white/10 text-white/40 hover:text-white/70'
-                  }`}
-                >
-                  {level}
-                </button>
-              ))}
+              {!hasMounted ? (
+                <div className="flex items-center gap-2" aria-hidden="true">
+                  {(['low', 'medium', 'high'] as const).map(level => (
+                    <span
+                      key={level}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all capitalize ${
+                        level === 'low'
+                          ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400'
+                          : 'bg-black/40 border-white/10 text-white/40'
+                      }`}
+                    >
+                      {level}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                (['low', 'medium', 'high'] as const).map(level => (
+                  <button
+                    key={level}
+                    onClick={() => setRiskLevel(level)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all capitalize ${
+                      renderedRiskLevel === level
+                        ? level === 'high'   ? 'bg-rose-500/20 border-rose-500 text-rose-400'
+                        : level === 'medium' ? 'bg-amber-500/20 border-amber-500 text-amber-400'
+                        :                     'bg-emerald-500/20 border-emerald-500 text-emerald-400'
+                        : 'bg-black/40 border-white/10 text-white/40 hover:text-white/70'
+                    }`}
+                  >
+                    {level}
+                  </button>
+                ))
+              )}
 
               {/* Live readout: shows taskType + model that will be used */}
               {(() => {
@@ -1502,7 +1559,7 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
                 const reasonerTasks = ['story_bible', 'chapter_map', 'iron_rules_checker'];
                 const model = reasonerTasks.includes(task)
                   ? 'R1'
-                  : (task === 'chapter_writer' && riskLevel === 'high' ? 'R1' : 'V3');
+                  : (task === 'chapter_writer' && renderedRiskLevel === 'high' ? 'R1' : 'V3');
                 return (
                   <span className="ml-2 text-[10px] font-mono text-white/30 bg-black/40 px-2 py-1 rounded border border-white/5">
                     {task} → {model}
@@ -1701,10 +1758,10 @@ export function OpenRouterDramaView({ onNavigate }: { onNavigate?: (tab: string)
                {/* Risk Level */}
                <div>
                  <label className="text-white/70 text-xs font-semibold block mb-1">Risk Level</label>
-                 <div className="flex gap-2">
-                   <button onClick={() => setRiskLevel('normal')} className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${riskLevel==='normal' ? 'bg-amber-500/20 border-amber-500 text-amber-400' : 'bg-black/40 border-white/10 text-white/40'}`}>Normal (V3)</button>
-                   <button onClick={() => setRiskLevel('high')} className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${riskLevel==='high' ? 'bg-rose-500/20 border-rose-500 text-rose-400' : 'bg-black/40 border-white/10 text-white/40'}`}>High (R1)</button>
-                 </div>
+	                 <div className="flex gap-2" suppressHydrationWarning>
+	                   <button onClick={() => setRiskLevel('medium')} className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${renderedRiskLevel==='medium' ? 'bg-amber-500/20 border-amber-500 text-amber-400' : 'bg-black/40 border-white/10 text-white/40'}`}>Balanced (V3)</button>
+	                   <button onClick={() => setRiskLevel('high')} className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${renderedRiskLevel==='high' ? 'bg-rose-500/20 border-rose-500 text-rose-400' : 'bg-black/40 border-white/10 text-white/40'}`}>High (R1)</button>
+	                 </div>
                </div>
                {/* Action buttons */}
                <div className="flex gap-3 flex-wrap">

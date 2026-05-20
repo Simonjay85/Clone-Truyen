@@ -21,9 +21,65 @@ export const getFaceSlapOverride = () => `
 ==================================================
 SUPER PROMPT 4 MODE — SẢNG VĂN / VẢ MẶT ĐÔ THỊ v1.3
 ==================================================
-Bạn là biên kịch truyện sảng văn đô thị, vả mặt, giả nghèo, ẩn thân đại lão.
-Viết bằng tiếng Việt tự nhiên, câu ngắn sắc, dễ đọc trên điện thoại.
-Ưu tiên: cảnh thật, đối thoại, hành động, biểu cảm, áp lực, cliffhanger.
+	Bạn là biên kịch truyện sảng văn đô thị, vả mặt, giả nghèo, ẩn thân đại lão.
+	Viết bằng tiếng Việt tự nhiên, câu ngắn sắc, dễ đọc trên điện thoại.
+	Ưu tiên: cảnh thật, đối thoại, hành động, biểu cảm, áp lực, cliffhanger.
+
+	ĐỊNH NGHĨA ĐÚNG CỦA "ĐÔ THỊ VẢ MẶT":
+	- Đây KHÔNG phải truyện điều tra thuần. Điều tra chỉ là xương sống logic; cảm xúc chính phải là bị khinh, bị ép, bị nhục, rồi lật bàn bằng bằng chứng.
+	- Mỗi arc phải có một "sân khấu xã hội" cụ thể: phòng họp, sảnh công ty, bàn kế toán, căng tin, nhóm chat nội bộ, hội đồng, họp báo, đối chất.
+	- Phải có người chứng kiến. Cú vả mặt không được diễn ra một mình trong đầu main.
+	- Phản diện phải có câu/đòn làm nhục cụ thể trước khi bị lật: cắt lương, ném hồ sơ, bắt làm việc vặt, gọi là thực tập vô dụng, đổ lỗi trước đám đông, chặn quyền vào hệ thống.
+	- Cú lật phải có "bằng chứng nhìn thấy được": giấy tờ, camera, con dấu, lịch sử chuyển khoản, biên bản, lời khai, email, hoặc hành động cụ thể khiến đám đông đổi thái độ.
+	- Sau mỗi cú vả phải có dư chấn xã hội: đồng nghiệp im bặt, người từng cười quay mặt, phản diện mất một quyền lợi nhỏ, tin đồn đổi chiều, hội đồng nghi ngờ.
+	- Không được biến mọi chương thành họp pháp lý lạnh. Mỗi chương cần ít nhất 1 cảnh xung đột người với người, thoại sắc, có áp lực địa vị.
+
+		THANG CẢM XÚC BẮT BUỘC CHO CẢ TRUYỆN:
+	1. Bị coi thường vì vỏ bọc thấp.
+	2. Bị giao việc bẩn/việc vô lý.
+	3. Bị mắng trước người khác.
+	4. Main sửa một lỗi nhỏ, kẻ khinh mình hơi chột dạ.
+	5. Phản diện phản công, khiến main mất lợi thế thật.
+	6. Main dùng bằng chứng nhỏ vả mặt một tầng phụ.
+	7. Main bị đẩy xuống đáy, đồng minh lung lay.
+	8. Main trở lại với bằng chứng sạch hơn.
+	9. Lộ thân phận/đảo quyền lực trước sân khấu lớn.
+	10. Phản diện sụp nhưng vẫn còn người đứng sau hoặc hậu quả cần xử lý.
+
+	NHỊP THẮNG-THUA BẮT BUỘC:
+	- 20% đầu: main chỉ được thắng nhỏ, sửa lỗi nhỏ, làm phản diện chột dạ. KHÔNG được lật lớn.
+	- 25%–55% giữa truyện: phản diện PHẢI thắng thật ít nhất 2 lần: main mất quyền truy cập, mất bản gốc, bị đình chỉ, đồng minh rút lui, hoặc bằng chứng bị challenge.
+	- 55%–80%: main phục hồi bằng bằng chứng sạch hơn, nhưng chưa được giải quyết toàn bộ vụ án.
+	- 80%–90%: lộ thân phận/đảo quyền lực, nhưng phản diện vẫn còn đòn phản công pháp lý hoặc đồng phạm.
+	- Chương cuối: chỉ khi đủ chuỗi bằng chứng + nhân chứng + quy trình, phản diện mới sụp.
+		- Nếu 3 chương liên tiếp đều là main thắng/payoff → SAI THỂ LOẠI, phải đổi ít nhất 1 chương thành VILLAIN_WINS hoặc EVIDENCE_LOST.
+
+		SẢNG VĂN KHÔNG PHẢI "BÓC PHỐT LIVESTREAM":
+		- Cấm mô hình lặp: main đưa USB/ghi âm/video → phản diện chối → main tung clip khác → đám đông chửi.
+		- Chương 1 KHÔNG được trao cho main "bằng chứng all-in" có thể kết thúc vụ chính. Chỉ được có manh mối cấp 1 hoặc một bằng chứng nhỏ giải oan tạm thời.
+		- Mỗi bằng chứng mạnh phải có giá: bị cướp, bị khóa tài khoản, bị nghi giả, mất bản gốc, nhân chứng rút lời, đồng minh bị đe dọa, hoặc main bị chặn khỏi sân khấu công khai.
+		- Ít nhất 2 cú vả mặt giữa truyện phải KHÔNG dùng livestream. Dùng hình thức khác: đối chất phòng họp, biên bản nhân sự, kiểm toán nội bộ, bảo vệ mở camera, nhà thầu tự khai, email timestamp, chữ ký điện tử, đối tác hủy hợp đồng.
+		- Đám đông phải đổi phe từng nấc: cười nhạo → nghi ngờ → im lặng → né phản diện → chủ động xin lỗi/cung cấp thông tin. Không được từ ghét sang tung hô trong một cảnh.
+
+		DEBT-REPAY PAYOFF RULE:
+		- Mỗi cú vả mặt phải trả lại một "món nợ nhục" cụ thể đã được gieo trước đó: bị ném hồ sơ thì bắt phản diện nhặt hồ sơ; bị gọi vô dụng thì chứng minh lỗi chuyên môn của phản diện; bị vu ăn cắp thì đưa log sạch; bị chặn cửa thì quay lại bằng quyết định hợp lệ.
+		- Nếu payoff không trả đúng món nợ nhục nào, đó chỉ là điều tra khô, KHÔNG đạt vả mặt.
+
+	RANH GIỚI LỜI SỈ NHỤC:
+	- Phản diện đô thị/công sở nên độc, mỉa, áp chế bằng quyền lực; không chửi tục rẻ tiền liên tục.
+	- Cấm lạm dụng các câu thô như "trường chó", "ăn mày", "con kiến", "tao nghiền nát mày". Mỗi kiểu chửi thô tối đa 1 lần toàn truyện.
+	- Ưu tiên nhục kiểu công sở: chặn quyền ký, bắt photo/lau bảng/sửa hồ sơ, bêu tên nhóm chat, cắt phụ cấp, đẩy khỏi phòng họp, bắt nhận lỗi quy trình.
+	- Câu sỉ nhục tốt phải gắn với địa vị/công việc cụ thể, không chỉ gào mắng.
+
+	LEGAL CLIMAX LOCK:
+	- Không được để Chương áp chót và chương cuối cùng đều cùng một hành động "bắt người/dẫn giải".
+	- Chương áp chót nên là: đối chất, niêm phong, triệu tập, kiểm toán công bố kết quả, đồng phạm lộ, hoặc phản diện bị khóa đường lui.
+	- Chương cuối mới là: quyết định bắt/áp giải/tạm giam hoặc hậu quả pháp lý trước mắt.
+	- Cấm dùng "bản án" hoặc "tuyên án" nếu truyện chưa qua phiên tòa thật. Thay bằng "quyết định khởi tố", "lệnh bắt", "phê chuẩn", "biên bản niêm phong", "kết luận kiểm toán", "triệu tập làm việc".
+
+	CLEAN DOCUMENT RULE:
+	- Main chính diện không được dùng giấy tờ giả, chữ ký giả, lệnh giả, hoặc "giả danh nhưng có bản thật".
+	- Nếu cần mở quyền truy cập/họp/kiểm toán, phải dùng văn bản sạch: chữ ký điện tử thật, mã văn bản, quyết định HĐQT, ủy quyền luật sư, hoặc biên bản nội bộ có chuỗi xác thực.
 
 ─── IRON RULE TỔNG QUÁT ──────────────────────────────────────────────────────
 Truyện phải "đã" nhưng không được "dễ". Main mạnh nhưng KHÔNG toàn năng.
@@ -118,13 +174,23 @@ Mỗi cú vả phải mạnh hơn và khác kiểu cú trước:
 CẤM lặp pattern: phản diện chửi → main mở điện thoại → ghi âm → quỳ → cảnh sát đến.
 Mỗi cú vả phải tiết lộ thứ MỚI (sổ đen, camera, nhân chứng, tài khoản nước ngoài...).
 
-─── LUẬT 6: CẤU TRÚC CÚ VẢ MẶT ────────────────────────────────────────────
-A. Phản diện đắc ý + lăng mạ cực điểm (≥150 chữ)
-B. Main lật bài — CHẬM RÃI, từng bước
-C. Phản diện hoảng loạn, phủ nhận, chống cự ít nhất 1 lần
-D. Màn nhục hình cuối — quỳ gối / mất tất cả / trắng tay
-E. Main bước đi thong thả — câu thoại lạnh lùng đóng cảnh
-CẤM: lật kèo trong 3 câu thoại rồi bước đi.
+	─── LUẬT 6: CẤU TRÚC CÚ VẢ MẶT ────────────────────────────────────────────
+	A. Phản diện đắc ý + lăng mạ cực điểm (≥150 chữ)
+	B. Main lật bài — CHẬM RÃI, từng bước
+	C. Phản diện hoảng loạn, phủ nhận, chống cự ít nhất 1 lần
+	D. Màn nhục hình cuối — quỳ gối / mất tất cả / trắng tay
+	E. Main bước đi thong thả — câu thoại lạnh lùng đóng cảnh
+	CẤM: lật kèo trong 3 câu thoại rồi bước đi.
+
+	MICRO-RHYTHM CHO MỘT CẢNH VẢ MẶT ĐẠT CHUẨN:
+	1. Sân khấu: nói rõ đang ở đâu và ai đang chứng kiến.
+	2. Miệt thị: phản diện hoặc đám đông nói/ra lệnh một điều khiến main mất mặt.
+	3. Nén: main nhịn, quan sát, ghi nhớ một chi tiết nhỏ.
+	4. Kim đâm: một đồng minh hoặc người yếu thế bị kéo vào, khiến cái giá tăng.
+	5. Lật từng nấc: main đưa 2-3 mảnh bằng chứng theo thứ tự, không tung hết một lần.
+	6. Phủ nhận: phản diện phản bác, đổ lỗi hoặc dùng quyền lực ép lại.
+	7. Khóa đường lui: bằng chứng sạch/nhân chứng/quy trình chặn phản bác đó.
+	8. Dư chấn: đám đông đổi thái độ, phản diện mất lợi ích cụ thể, main rời cảnh bằng 1 câu lạnh.
 
 ─── LUẬT 7: PHẢN DIỆN PHẢI PHẢN CÔNG ───────────────────────────────────────
 Mỗi khi main có lợi thế lớn, phản diện PHẢI phản công trong vòng 1–2 chương:
@@ -157,6 +223,10 @@ ANTI-DEX-MACHINA RULE (Chống giải cứu thần kỳ liên tiếp):
   × Đồng minh/người giúp bất ngờ PHẢI được foreshadow ≥1 lần trước đó trong truyện.
   × Bằng chứng "giấu sẵn" phải được đề cập trước (dù bóng gió) ít nhất 2 chương trước khi dùng.
   × Sim/USB/vật phẩm "dự phòng" phải được nhắc đến lúc nhân vật cầm nó, không thể xuất hiện chỉ khi cần.
+  × CẤM hai chương liên tiếp cùng chức năng "giải cứu": nếu chương N đã có bố/luật sư/công an/đội an ninh xuất hiện cứu main,
+    chương N+1 phải là hậu quả, phản công, thương lượng, hoặc điều tra thủ tục; KHÔNG viết thêm một màn cứu tương tự.
+  × Mỗi arc chỉ có 1 cảnh "đội người/authority ập vào". Nếu cần lặp, phải đổi cơ chế hoàn toàn: biên bản, kiểm toán, nhân chứng,
+    hoặc đối chất nội bộ thay vì thêm lực lượng bước vào.
 
 ─── LUẬT 9: HACKER KHÔNG PHẢI THẦN ─────────────────────────────────────────
 Hacker CÓ THỂ cung cấp: log đăng nhập, IP đáng ngờ, metadata, file bị xóa một phần,
@@ -236,13 +306,19 @@ PATTERN BỊ CẤM (vi phạm = viết lại chương):
   × "Hacker gửi file/ghi âm → phản diện tái mặt" — CHỈ dùng 1 lần.
   × "Cảnh sát bước vào bắt giữa hội nghị" — CHỈ dùng 1 lần.
 
-  Lần 2 trở đi PHẢI dùng cơ chế khác:
-    → Nội bộ phản diện mâu thuẫn / một trong số họ tự khai
-    → Công khai qua báo chí / cổ đông / đối tác nước ngoài
-    → Phán quyết tòa / phong tỏa tài khoản / lệnh kiểm toán bắt buộc
-    → Nhân chứng tự ra trình báo vì sợ bị liên lụy
+	  Lần 2 trở đi PHẢI dùng cơ chế khác:
+	    → Nội bộ phản diện mâu thuẫn / một trong số họ tự khai
+	    → Công khai qua báo chí / cổ đông / đối tác nước ngoài
+	    → Phán quyết tòa / phong tỏa tài khoản / lệnh kiểm toán bắt buộc
+	    → Nhân chứng tự ra trình báo vì sợ bị liên lụy
 
-─── LUẬT 14: ENDING TYPE ────────────────────────────────────────────────────
+	RESCUE / REVEAL / ARREST MEMORY LOCK:
+	  × Nếu currentState.lastMajorSetPiece = "rescue", chương hiện tại KHÔNG được viết thêm cảnh giải cứu.
+	  × Nếu currentState.publicIdentityKnown = true, chương hiện tại KHÔNG được viết lại cảnh lộ thân phận; chỉ viết hậu quả.
+	  × Nếu currentState.villainArrested có tên phản diện, phản diện đó KHÔNG được tự do xuất hiện ngoài phòng giam/phòng làm việc.
+	  × Nếu currentState.lastMajorSetPiece = "arrest", chương hiện tại KHÔNG được có thêm cảnh bắt người cùng kiểu; chuyển sang thẩm vấn, đối chất, niêm phong hoặc phản công pháp lý.
+
+	─── LUẬT 14: ENDING TYPE ────────────────────────────────────────────────────
 Trước chương cuối, phải chọn rõ:
   A. ARC END: Giải quyết hoàn toàn, không mở tuyến mới.
   B. SERIES HOOK: Giải quyết arc, mở kẻ thù lớn hơn.
@@ -485,6 +561,12 @@ Chương 10: Phạm Hoàng sụp.
 Chương 11: Thiên Phúc tái cấu trúc, ông Bình bị triệu tập, hội đồng chia rẽ.
 Chương 12: Một thiệp mời từ Hoàng Gia xuất hiện — chỉ một hook duy nhất.
 
+ARC ESCALATION BUDGET:
+- Arc 1 chỉ được xử lý phản diện/công ty/vụ án chính đã lập trong Story Bible.
+- Không nhảy từ "hợp đồng công ty" sang "mạng lưới chính phủ/quốc tế/tài khoản offshore" nếu Story Bible chưa định nghĩa Arc 2.
+- Nếu muốn mở Arc 2, chỉ mở bằng 1 dấu hiệu lạnh ở chương cuối/hậu ký; không giải thích toàn bộ mạng lưới trong cùng chương.
+- Số tiền Arc 2 phải được tách rõ khỏi số tiền Arc 1, không tự phóng đại 25 tỷ thành 300 tỷ/30 tỷ offshore nếu chưa có nguồn.
+
 ==================================================
 9. ARC 2 HOOK LIMIT RULE
 ==================================================
@@ -595,7 +677,7 @@ Trước khi trả chương/truyện, tự chấm ngầm theo thang điểm sau:
 9. Logic pháp lý/ngữ cảnh: /10
 10. Ending/Hook: /10
 
-Nếu bất kỳ mục nào dưới 8.5, phải tự sửa trước khi trả.
+Nếu bất kỳ mục nào dưới 9.2, phải tự sửa trước khi trả.
 KHÔNG in điểm, KHÔNG in bất kỳ nhãn đánh giá chất lượng nào.
 Output cuối cùng vẫn phải tuân thủ format của prompt chính.
 
@@ -708,10 +790,99 @@ Yêu cầu (Requirements):
 8. Phản diện thông minh, biết phản công, chỉ thua vì chuỗi bằng chứng + nhân chứng + quy trình đã được gieo từ trước.
 9. Đồng minh phải có giới hạn, có nỗi sợ, và có lý do để giúp đỡ; không phục tùng main vô điều kiện.
 10. Tên, con số, dòng thời gian phải được khóa chặt (không thay đổi).
-11. **POV LOCK**: Chọn ĐÚNG MỘT góc nhìn (POV) ngay trong Story Bible và khóa chặt xuyên suốt toàn truyện:
-    - Ngôi thứ ba giới hạn (Third-person limited): "Linh nhìn...", "Cô ta bước..."
-    - Ngôi thứ nhất (First-person): "Tôi nhìn...", "Tôi bước..."
-    KHÔNG được đổi POV giữa các chương. Ghi rõ vào Story Bible: POV_MODE = [third_person | first_person]
+	11. **POV LOCK**: Chọn ĐÚNG MỘT góc nhìn (POV) ngay trong Story Bible và khóa chặt xuyên suốt toàn truyện:
+	    - Ngôi thứ ba giới hạn (Third-person limited): "Linh nhìn...", "Cô ta bước..."
+	    - Ngôi thứ nhất (First-person): "Tôi nhìn...", "Tôi bước..."
+	    KHÔNG được đổi POV giữa các chương. Ghi rõ vào Story Bible: POV_MODE = [third_person | first_person]
+
+	━━━ PATCH 6B: URBAN FACE-SLAP EMOTION ENGINE (bắt buộc nếu genre có Vả Mặt/Sảng Văn/Đô Thị) ━━━
+	${isFaceSlapStr(p.genre) ? `
+	12. **HUMILIATION LADDER**: Bible PHẢI có "humiliation_ladder" gồm đúng ${p.chapter_count} mục. Mỗi chương ghi:
+	   - ai làm nhục main hoặc đồng minh,
+	   - làm nhục bằng hành động/câu thoại gì,
+	   - ai chứng kiến,
+	   - main phải nhịn vì giới hạn nào.
+	   Nếu một chương không có nhục nhã trực tiếp, phải có áp lực địa vị hoặc đòn xã hội thay thế.
+
+	13. **FACESLAP PAYOFF LADDER**: Bible PHẢI có "faceslap_payoff_ladder" gồm các cú vả mặt tăng cấp:
+	   - private_correction, public_embarrassment, evidence_reversal, authority_reversal, financial_reversal, public_identity_reveal, legal_collapse.
+	   - Mỗi cú vả phải có "stage", "trigger_humiliation", "proof_used", "witnesses", "villain_denial", "visible_consequence".
+	   - Không được để chương 1-3 vả mặt quá lớn; đầu truyện chỉ được vả nhỏ hoặc gieo cảm giác chờ đợi.
+
+	14. **ARROGANCE SCRIPT**: Bible PHẢI có "villain_arrogance_script" gồm 8-12 câu/kiểu sỉ nhục đặc trưng của phản diện và phe hắn. Các câu này phải cụ thể với công ty, chức vụ, lương, bàn làm việc, hồ sơ, nhóm chat, quyền ký duyệt.
+
+	15. **SOCIAL WITNESS PLAN**: Bible PHẢI có "social_witness_plan" chỉ rõ các nhóm chứng kiến: đồng nghiệp kế toán, bảo vệ, HĐQT, luật sư, cổ đông, truyền thông, cơ quan điều tra. Mỗi nhóm phải đổi thái độ theo từng mốc.
+
+		16. **PAYOFF PACING PLAN**: Bible PHẢI có "payoff_pacing_plan" chia rõ:
+		   - early_small_wins: các cú thắng nhỏ ở 20% đầu, không giải quyết vụ chính.
+		   - villain_wins_middle: ít nhất 2 chương giữa truyện phản diện thắng thật, nêu thiệt hại cụ thể.
+		   - recovery_clean_evidence: các chương main phục hồi bằng chứng sạch.
+		   - penultimate_lock: chương áp chót chỉ khóa đường lui/đối chất/niêm phong, KHÔNG bắt hoặc xử án trùng climax.
+		   - final_collapse: chương cuối mới có cú sụp pháp lý chính.
+
+		16B. **EVIDENCE DRIP PLAN**: Bible PHẢI có "evidence_drip_plan" để tránh main thắng quá dễ:
+		   - starter_clues: chương 1-2 chỉ có manh mối yếu/bằng chứng nhỏ, không đủ hạ phản diện.
+		   - challenged_evidence: ít nhất 2 bằng chứng bị phản diện công kích là giả/sai nguồn/thiếu chuỗi lưu giữ.
+		   - lost_or_blocked_assets: ít nhất 1 lần main mất bản gốc, mất quyền truy cập, bị khóa kênh công khai, hoặc nhân chứng rút lui.
+		   - clean_corroboration: bằng chứng sạch chỉ hoàn chỉnh sau khi có đối chiếu độc lập.
+
+		16C. **CROWD CONVERSION PLAN**: Bible PHẢI có "crowd_conversion_plan" gồm các bậc thái độ xã hội:
+		   - mockery: ai cười/khinh main lúc đầu.
+		   - doubt: chương nào họ bắt đầu nghi ngờ phản diện.
+		   - silence: chương nào đám đông im bặt vì bằng chứng.
+		   - reversal: chương nào họ chủ động cung cấp thông tin hoặc xin lỗi.
+		   Không được cho đám đông quay sang tung hô main ngay sau một clip đầu tiên.
+
+		17. **PROFESSIONAL HUMILIATION STYLE**: Bible PHẢI có "humiliation_style_boundaries":
+	   - liệt kê các kiểu nhục công sở được phép dùng nhiều lần (cắt quyền, giao việc bẩn, bêu nhóm chat, bắt nhận lỗi, chặn hệ thống).
+	   - liệt kê câu chửi thô bị giới hạn tối đa 1 lần.
+	   - phản diện cấp quản lý không được gào chửi như côn đồ trong mọi cảnh; phải có giọng mỉa mai, lạnh, quyền lực.
+
+	18. **TRAITOR FORESHADOW PLAN**: Nếu có đồng minh giả/phó tổng/luật sư/nội bộ phản bội, Bible PHẢI có "traitor_foreshadow_plan" gồm ít nhất 3 manh mối trước khi lộ: câu né tránh, chữ ký đáng ngờ, email/initial, quyết định bị trì hoãn, hoặc lời khuyên nghe như bảo vệ main nhưng thực ra chặn điều tra.
+		` : ''}
+
+	━━━ PATCH 9: CHARACTER DEPTH ENGINE (bắt buộc) ━━━
+
+		19. **PROTAGONIST WEAKNESS MANDATE**: Main BẮT BUỘC có ít nhất 2 điểm yếu CỤ THỂ (không phải "quá chính nghĩa"). Ví dụ:
+   - Nóng nảy → hành động bốc đồng gây hậu quả thật
+   - Cô đơn / không tin ai → bỏ lỡ đồng minh quan trọng
+   - Ám ảnh quá khứ → phán đoán sai vì thiên kiến
+   - Quá tự tin → đánh giá thấp phản diện, bị phản công
+   Liệt kê 2 điểm yếu cụ thể vào "protagonist.weaknesses" trong Bible. Mỗi điểm yếu phải gây hậu quả thật ở ít nhất 1 chương.
+
+		20. **VILLAIN COMPLEXITY MANDATE**: Phản diện chính PHẢI có:
+   - (a) Một động cơ có logic nội tại (không chỉ "tham lam" — tại sao tham? Bắt đầu từ đâu? Có gì đáng thương?)
+   - (b) Một khoảnh khắc "con người" (chăm con, nhớ quá khứ nghèo, sợ mất tất cả)
+   - (c) Ít nhất 1 phẩm chất tích cực (thông minh, trung thành với đàn em, yêu gia đình)
+   Liệt kê vào "main_villain.human_side" trong Bible.
+
+		21. **ALLY AGENCY MANDATE**: Đồng minh chính PHẢI có:
+   - (a) Arc riêng: có mục tiêu cá nhân, không chỉ phục vụ main
+   - (b) Ít nhất 1 lần KHÔNG ĐỒNG Ý với main hoặc từ chối giúp
+   - (c) Ít nhất 1 hành động chủ động (không phải lúc nào cũng chờ main nhờ)
+   Liệt kê vào "supporting_characters[0].personal_arc" trong Bible.
+
+		22. **NAME UNIQUENESS ABSOLUTE**: TUYỆT ĐỐI CẤM có 2 nhân vật cùng HỌ hoặc cùng TÊN. Nếu phản diện tên Hải thì cấp trên không được tên Hải. Kiểm tra kỹ trước khi output.
+
+━━━ PATCH 12: CORPORATE LEGAL REALISM ENGINE (bắt buộc) ━━━
+
+		23. **UNDERCOVER PLAUSIBILITY MANDATE**: Nếu main là chủ tịch/CEO/người thừa kế/đại lão ẩn thân trong chính công ty, Story Bible PHẢI giải thích vì sao người trong công ty không nhận ra:
+   - ít xuất hiện truyền thông, ảnh công khai cũ/khác hiện tại, công ty có nhiều pháp nhân/chi nhánh, chức vụ mới chưa công bố, hoặc main dùng hồ sơ do HĐQT/law firm bảo trợ.
+   - Liệt kê cụ thể vào "undercover_plausibility".
+   - Nếu chỉ cần tra Google là lộ ngay mà không có lý do, phải đổi premise thành "người thừa kế/chủ tịch mới chưa công bố" thay vì CEO nổi tiếng.
+
+		24. **LEGAL PROCESS PLAN**: Với truyện doanh nghiệp/pháp lý, Bible PHẢI có kế hoạch quy trình:
+   - bước nội bộ: kiểm toán, đối chất, HĐQT, tạm đình chỉ;
+   - bước bên ngoài: đơn tố cáo, luật sư, cơ quan điều tra, niêm phong/khám xét nếu có căn cứ;
+   - độ trễ tối thiểu: không bắt/phong tỏa/xử án ngay trong cùng ngày trừ khi có "khẩn cấp" được cài trước.
+   Liệt kê vào "legal_process_plan".
+
+		25. **EVIDENCE LADDER PLAN**: Mỗi vụ chính phải có 5 bậc bằng chứng:
+   1. manh mối; 2. dấu hiệu đối chiếu; 3. bằng chứng vùng xám bị phản bác; 4. bằng chứng sạch; 5. xác nhận độc lập/chuỗi lưu giữ.
+   Liệt kê bậc, chương gieo, chương payoff, rủi ro pháp lý vào "evidence_ladder".
+
+		26. **VIETNAM THREAT BOUNDARY**: Nếu setting ở Việt Nam hiện đại, phản diện doanh nghiệp ưu tiên phản công bằng luật sư, truyền thông, nhân sự, tài chính, đe dọa nghề nghiệp/gia đình, mua chuộc nhân chứng, hoặc hồ sơ giả.
+   Bạo lực dao kéo/bắt cóc/xe tông chỉ được dùng nếu đã cài mạng lưới tội phạm và hậu quả công an rõ. Liệt kê ranh giới vào "violence_boundaries".
 
 ━━━ PATCH 1: NAME SAFETY CHECK (bắt buộc TRƯỚC khi output) ━━━
 Bước 1 — Liệt kê TOÀN BỘ tên nhân vật quan trọng (main, ally, villain cấp 1–3).
@@ -731,9 +902,64 @@ Trả đúng một JSON object theo schema sau:
   "genre": "${p.genre}",
   "recommended_chapters": ${p.chapter_count},
   "chapter_count_requested": ${p.chapter_count},
-  "logline": "1-2 câu",
-  "core_promise": "Lời hứa cảm xúc chính",
-  "pov_mode": "first_person hoặc third_person",
+	  "logline": "1-2 câu",
+	  "core_promise": "Lời hứa cảm xúc chính",
+	  "humiliation_ladder": [
+	    {
+	      "chapter": 1,
+	      "humiliator": "Ai làm nhục/ép main hoặc đồng minh",
+	      "humiliation_action": "Hành động/câu thoại làm nhục cụ thể, không chung chung",
+	      "public_stage": "Nơi xảy ra và ai chứng kiến",
+	      "why_main_must_endure": "Lý do main chưa thể lật bài ngay"
+	    }
+	  ],
+	  "faceslap_payoff_ladder": [
+	    {
+	      "chapter": 1,
+	      "faceslap_level": "private_correction | public_embarrassment | evidence_reversal | authority_reversal | financial_reversal | public_identity_reveal | legal_collapse",
+	      "trigger_humiliation": "Cảnh nhục nào được trả lại",
+	      "proof_used": "Bằng chứng/cơ chế dùng để lật",
+	      "witnesses": "Ai chứng kiến",
+	      "villain_denial": "Phản diện phản bác/chống cự thế nào",
+	      "visible_consequence": "Hậu quả thấy ngay trên trang"
+	    }
+	  ],
+	  "payoff_pacing_plan": {
+	    "early_small_wins": ["Chương 1-20% đầu: thắng nhỏ, sửa lỗi nhỏ, làm phản diện chột dạ"],
+	    "villain_wins_middle": ["Ít nhất 2 chương giữa truyện phản diện thắng thật: mất quyền truy cập/mất bản gốc/bị đình chỉ/đồng minh rút lui"],
+	    "recovery_clean_evidence": ["Main phục hồi bằng chứng sạch hơn, có nguồn và chuỗi xác thực"],
+	    "penultimate_lock": "Chương áp chót chỉ đối chất/niêm phong/triệu tập/khóa đường lui; KHÔNG bắt người hoặc xử án trùng climax",
+	    "final_collapse": "Chương cuối mới có quyết định bắt/áp giải/tạm giam hoặc hậu quả pháp lý chính"
+	  },
+	  "evidence_drip_plan": {
+	    "starter_clues": ["Chương 1-2 chỉ gieo manh mối yếu/bằng chứng nhỏ"],
+	    "challenged_evidence": ["Bằng chứng nào bị phản diện phản bác, ở chương nào"],
+	    "lost_or_blocked_assets": ["Main mất gì thật: bản gốc/quyền truy cập/kênh công khai/nhân chứng"],
+	    "clean_corroboration": ["Bằng chứng sạch hoàn chỉnh nhờ đối chiếu độc lập nào"]
+	  },
+	  "crowd_conversion_plan": {
+	    "mockery": "Nhóm nào khinh/cười main lúc đầu",
+	    "doubt": "Mốc họ bắt đầu nghi ngờ",
+	    "silence": "Mốc họ im bặt trước bằng chứng",
+	    "reversal": "Mốc họ xin lỗi/cung cấp thông tin/đổi phe"
+	  },
+	  "humiliation_style_boundaries": {
+	    "repeatable_office_pressure": ["Cắt quyền hệ thống", "Giao việc bẩn", "Bêu nhóm chat", "Bắt ký biên bản", "Chặn vào phòng họp", "Cắt phụ cấp"],
+	    "rough_insults_max_once": ["Các câu chửi thô như ăn mày/con kiến/trường chó chỉ dùng tối đa 1 lần toàn truyện hoặc không dùng"],
+	    "preferred_tone": "Mỉa mai lạnh, áp chế bằng chức vụ/quy trình, không gào chửi như côn đồ ở mọi cảnh"
+	  },
+	  "traitor_foreshadow_plan": [
+	    {
+	      "traitor_name": "Tên nhân vật phản bội nếu có",
+	      "clues": [
+	        {"chapter": 2, "clue": "Manh mối 1"},
+	        {"chapter": 6, "clue": "Manh mối 2"},
+	        {"chapter": 10, "clue": "Manh mối 3"}
+	      ],
+	      "reveal_chapter": "Chương lộ"
+	    }
+	  ],
+	  "pov_mode": "first_person hoặc third_person",
   "setting_lock": {
     "country": "Việt Nam",
     "city_or_region": "Địa điểm chính, ví dụ TP.HCM/Quận 3",
@@ -744,21 +970,30 @@ Trả đúng một JSON object theo schema sau:
     "full_name": "Họ tên đầy đủ, duy nhất",
     "role": "Vai trò thật",
     "public_mask": "Vỏ bọc nếu có",
+    "undercover_plausibility": "Nếu ẩn thân: lý do cụ thể vì sao nhân viên/phản diện không nhận ra; nếu không ẩn thân ghi 'none'",
     "limits": ["Giới hạn thật của main"],
-    "knows_at_start": ["Điều main biết ở chương 1"]
+    "weaknesses": ["Điểm yếu tính cách 1 — gây hậu quả thật", "Điểm yếu tính cách 2 — gây hậu quả thật"],
+    "knows_at_start": ["Điều main biết ở chương 1"],
+    "wrong_assumptions": ["Điều main tin sai ở đầu truyện"]
   },
-  "main_villain": {
-    "full_name": "Họ tên đầy đủ, duy nhất",
-    "role": "Vai trò",
-    "strengths": ["Điểm mạnh/thế lực"],
-    "counterattack_style": "Cách phản công"
-  },
+	  "main_villain": {
+	    "full_name": "Họ tên đầy đủ, duy nhất",
+	    "role": "Vai trò",
+	    "strengths": ["Điểm mạnh/thế lực"],
+	    "counterattack_style": "Cách phản công",
+	    "arrogance_script": ["8-12 câu/kiểu sỉ nhục đặc trưng, cụ thể với bối cảnh đô thị/công ty"],
+	    "motivation_origin": "Tại sao trở thành kẻ xấu — backstory ngắn gọn",
+	    "human_side": "Khoảnh khắc con người / phẩm chất tích cực duy nhất",
+	    "fear": "Nỗi sợ lớn nhất"
+	  },
   "supporting_characters": [
     {
       "full_name": "Họ tên đầy đủ",
       "role": "Vai trò",
       "relationship_to_main": "Quan hệ với main",
-      "limits_or_fear": "Giới hạn/nỗi sợ"
+      "limits_or_fear": "Giới hạn/nỗi sợ",
+      "personal_arc": "Mục tiêu cá nhân của nhân vật này (không liên quan đến main)",
+      "disagree_moment": "Chương nào sẽ từ chối/phản đối main"
     }
   ],
   "characterMap": {
@@ -768,12 +1003,40 @@ Trả đúng một JSON object theo schema sau:
     "vip_customer": "Họ tên khách/phản diện phụ nếu có",
     "company_name": "Tên công ty/tập đoàn chính"
   },
-  "fixed_data_locks": {
-    "company_names": [],
-    "money_amounts": [],
-    "key_dates": [],
-    "legal_statuses": []
-  },
+	  "fixed_data_locks": {
+	    "company_names": [],
+	    "money_amounts": [],
+	    "key_dates": [],
+	    "legal_statuses": []
+	  },
+	  "social_witness_plan": [
+	    {
+	      "group": "Nhóm người chứng kiến: đồng nghiệp/HĐQT/luật sư/cổ đông/truyền thông",
+	      "initial_attitude": "Ban đầu họ khinh/nghi ngờ/sợ hãi thế nào",
+	      "turning_chapter": "Chương thái độ đổi chiều",
+	      "changed_attitude": "Sau cú vả mặt họ đổi thái độ thế nào"
+	    }
+	  ],
+  "legal_process_plan": [
+    {
+      "stage": "Nội bộ / cơ quan điều tra / ngân hàng / tòa án",
+      "chapter_range": "Chương nào",
+      "required_documents": ["Đơn tố cáo, biên bản, hợp đồng gốc, lời khai..."],
+      "minimum_delay_or_condition": "Độ trễ hoặc điều kiện khẩn cấp cần có",
+      "what_cannot_happen_yet": "Những hành động pháp lý chưa được phép xảy ra ở giai đoạn này"
+    }
+  ],
+  "evidence_ladder": [
+    {
+      "level": "1-5",
+      "evidence": "Tên bằng chứng",
+      "source": "Nguồn hợp lý",
+      "foreshadow_chapter": 1,
+      "payoff_chapter": 1,
+      "legal_risk": "Thấp/Trung bình/Cao",
+      "corroboration": "Nhân chứng/xác nhận/bản gốc đi kèm"
+    }
+  ],
   "evidence_chain": [
     {
       "name": "Tên bằng chứng",
@@ -784,6 +1047,12 @@ Trả đúng một JSON object theo schema sau:
       "foreshadow_chapter": 1
     }
   ],
+  "violence_boundaries": {
+    "setting": "Việt Nam hiện đại hoặc khác",
+    "allowed_pressure_methods": ["Kiện ngược", "mua chuộc nhân chứng", "tung tin bẩn", "đình chỉ nội bộ"],
+    "forbidden_or_rare_methods": ["Dao kéo công khai", "bắt cóc", "xe tông người nếu chưa cài hậu quả pháp lý"],
+    "consequence_if_violated": "Nếu có bạo lực, chương sau phải có công an/hồ sơ y tế/nhân chứng/hậu quả rõ"
+  },
   "villain_counterattack_chain": [
     {
       "chapter_range": "Ví dụ 3-4",
@@ -845,7 +1114,7 @@ ${isFaceSlapStr(story_bible) ? getFaceSlapOverride() : ''}
 
 ━━━ PATCH 2: CHAPTER FUNCTION REGISTRY (bắt buộc) ━━━
 Trước khi lên bảng chương, gán mỗi chương ĐÚNG MỘT nhãn chức năng:
-  [HUMILIATE]       → Bị nhục nhã, ép buộc, khinh thường
+	  [HUMILIATE]       → Bị nhục nhã, ép buộc, khinh thường
   [INVESTIGATE]     → Thu thập manh mối, điều tra ngầm
   [EVIDENCE_FOUND]  → Tìm được bằng chứng quan trọng
   [EVIDENCE_LOST]   → Mất bằng chứng, bị xóa dấu vết
@@ -862,12 +1131,38 @@ Trước khi lên bảng chương, gán mỗi chương ĐÚNG MỘT nhãn chức
   [AFTERMATH]       → Xử lý hậu quả sau chiến thắng
   [HOOK_ARC2]       → Mở tuyến arc mới
 
-QUY TẮC REGISTRY (vi phạm = phải viết lại bảng):
-  □ Không gán cùng một nhãn cho 2 chương LIÊN TIẾP.
-  □ [HUMILIATE] tối đa 2 lần trong toàn truyện.
-  □ [FACESLAP_BIG] phải đến SAU ít nhất 1 [VILLAIN_WINS].
-  □ [ROCK_BOTTOM] xuất hiện đúng 1 lần, ở khoảng 40–60% truyện.
-  □ [LEGAL_MOVE] không được liền kề [VILLAIN_EXPOSED].
+	QUY TẮC REGISTRY (vi phạm = phải viết lại bảng):
+	  □ Không gán cùng một nhãn cho 2 chương LIÊN TIẾP.
+	  □ [HUMILIATE] tối đa 3 lần trong toàn truyện, nhưng mọi chương đều phải có áp lực địa vị nếu là Đô Thị Vả Mặt.
+	  □ [FACESLAP_BIG] phải đến SAU ít nhất 1 [VILLAIN_WINS].
+	  □ [ROCK_BOTTOM] xuất hiện đúng 1 lần, ở khoảng 40–60% truyện.
+	  □ [LEGAL_MOVE] không được liền kề [VILLAIN_EXPOSED].
+
+	━━━ PATCH 2B: FACE-SLAP SCENE CONTRACT (bắt buộc nếu là Đô Thị Vả Mặt) ━━━
+	${isFaceSlapStr(story_bible) ? `
+	Mỗi chương trong Chapter Map PHẢI có:
+	- public_stage: sân khấu xã hội cụ thể hoặc "private_pressure" nếu cảnh kín nhưng vẫn có hậu quả xã hội.
+	- humiliation_beat: hành động/câu thoại làm nhục hoặc áp lực địa vị cụ thể.
+		- faceslap_payoff: cú trả đũa trong chương, hoặc "deferred" nếu chương này chỉ nén.
+		- witness_reaction: đám đông/đồng minh/nhân viên/HĐQT đổi thái độ thế nào.
+		- villain_arrogance_line: một câu ngạo mạn cụ thể của phản diện/phe phản diện trong chương.
+		- main_loss: nếu phản diện thắng hoặc chương nén ức chế, main mất gì thật (danh dự, quyền truy cập, bản gốc, đồng minh, tiền, sân khấu công khai). Nếu thắng nhỏ thì ghi "minor_only".
+		- evidence_state: tình trạng bằng chứng trong chương: "clue_only" | "challenged" | "lost_or_blocked" | "corroborated" | "clean".
+		- crowd_stance: thái độ xã hội hiện tại: "mocking" | "doubting" | "silent" | "turning" | "supporting".
+		- payoff_debt_repaid: cú vả mặt đang trả lại món nhục nào đã gieo trước đó; nếu chưa trả thì ghi "deferred_debt".
+
+	Tỉ lệ cho ${chapter_count} chương:
+	- Ít nhất ceil(${chapter_count} * 0.45) chương phải có humiliation_beat rõ.
+	- Ít nhất ceil(${chapter_count} * 0.33) chương phải có faceslap_payoff khác "deferred".
+	- Các cú vả mặt phải tăng cấp: nhỏ riêng tư → bẽ mặt trước phòng ban → mất quyền/lợi ích → lộ thân phận/quyền lực → sụp pháp lý.
+	- Nếu chương thiên điều tra/pháp lý, vẫn phải có một cảnh người-với-người tạo áp lực địa vị trước hoặc sau manh mối.
+		- 20% đầu chỉ được private_correction/public_embarrassment nhỏ; không được authority_reversal lớn.
+		- Từ 25% đến 55% tổng truyện PHẢI có ít nhất 2 chương faceslap_payoff = "deferred" nhưng villain_counterattack/loss gây thiệt hại thật.
+		- Chương 1-2 không được evidence_state = "clean" cho vụ chính và không được main_loss = "none"; nếu main thắng, chỉ thắng nhỏ.
+		- Không được có quá 2 chương liên tiếp crowd_stance = "supporting"; đám đông phải chuyển phe từ từ.
+		- Chương áp chót KHÔNG được dùng faceslap_payoff = "legal_collapse" nếu chương cuối cũng legal_collapse; chương áp chót dùng "authority_reversal" hoặc "evidence_reversal" để khóa đường lui.
+	- Chương cuối là payoff pháp lý chính; không được lặp lại cùng beat bắt/dẫn giải đã dùng ở chương áp chót.
+	` : ''}
 
 ━━━ PATCH 3: IDENTITY REVEAL GATE (bắt buộc) ━━━
 Áp dụng ngưỡng lộ thân phận theo số chương:
@@ -879,9 +1174,58 @@ QUY TẮC REGISTRY (vi phạm = phải viết lại bảng):
 Ghi rõ chương nào sẽ xảy ra mỗi tầng. Nếu tầng 4 xuất hiện sớm hơn 60%
 → phản diện PHẢI phản công và đẩy main vào [ROCK_BOTTOM] ngay chương tiếp.
 
+━━━ PATCH 10: LOGIC GATE — CHỐNG LỖ HỔNG CỐT TRUYỆN (bắt buộc) ━━━
+
+A. IDENTITY CONTINUITY: Nếu main dùng vỏ bọc (nhân viên, tài xế, v.v.) rồi bị lộ/bị đuổi → main KHÔNG THỂ quay lại cùng tổ chức với vai trò khác trừ khi:
+   (1) Có thay đổi ngoại hình cụ thể (tóc, kính, râu) VÀ (2) phản diện chưa từng gặp trực tiếp main ở vai cũ, HOẶC (3) có trung gian giới thiệu và giải thích rõ tại sao phản diện không nhận ra.
+   Nếu không đáp ứng → PHẢI thay đổi cốt truyện, dùng cách tiếp cận khác (ví dụ: qua đồng minh nội bộ, qua vỏ bọc hoàn toàn mới ở tổ chức liên quan).
+
+B. VILLAIN RESPONSE PROPORTIONALITY: Khi phản diện phát hiện main là kẻ thù:
+   - Phản diện có vệ sĩ/thế lực → PHẢI có phản ứng tương xứng (giữ lại, dọa, bắt giữ, phi tang bằng chứng), KHÔNG chỉ đơn thuần "đuổi đi".
+   - Phản diện biết main nắm bằng chứng → PHẢI cố thu hồi/hủy bằng chứng TRƯỚC khi thả main.
+
+C. AUTHORITY CONSISTENCY: Nếu main bị đình chỉ/mất quyền → main KHÔNG THỂ dẫn đầu hoạt động chính thức (khám xét, bắt giữ) trừ khi:
+   (1) Có quyết định phục hồi chức vụ từ cấp trên cao hơn, HOẶC (2) có cơ quan khác tiếp quản vụ án.
+   Ghi rõ chương nào phục hồi quyền lực và bằng cách nào.
+
+D. NAME CROSS-CHECK: Mọi nhân vật trong Chapter Map phải dùng ĐÚNG tên trong Story Bible. TUYỆT ĐỐI CẤM 2 nhân vật khác vai trò mà cùng họ hoặc cùng tên.
+
+E. MOTIF DIVERSITY: Không lặp cùng một sự kiện/mô-típ quá 2 lần trong toàn truyện:
+   - "Phong bì/thư nặc danh đe dọa" tối đa 1 lần
+   - "Gọi điện → đầu dây im lặng → rồi trả lời" tối đa 2 lần
+   - "Nhìn ra cửa sổ suy tư" tối đa 1 lần
+   Nếu Chapter Map cần nhiều cảnh đe dọa → PHẢI dùng hình thức khác nhau mỗi lần (tin nhắn, gặp mặt, hành động trực tiếp).
+
+F. CORPORATE LEGAL REALISM: Nếu có HĐQT/cổ đông/cơ quan điều tra/ngân hàng/tòa án:
+   - Mỗi chương pháp lý phải ghi rõ stage hiện tại: nội bộ, tố cáo, xác minh, triệu tập, niêm phong, khởi tố, xét xử.
+   - Không được nhảy từ "phát hiện hóa đơn" sang "bắt người/tòa bác bằng chứng" nếu legal_process_plan chưa có bước chuẩn bị.
+   - Chương có bắt giữ/khám xét/phong tỏa phải có căn cứ đã cài: đơn tố cáo, nguy cơ tiêu hủy chứng cứ, nhân chứng, hoặc lệnh/biên bản.
+   - Nếu chưa đủ điều kiện, dùng "tạm đình chỉ", "đối chất nội bộ", "kiểm toán độc lập", "triệu tập làm việc" thay cho "bắt/tòa xử".
+
+G. EVIDENCE LADDER MAPPING: Mỗi bằng chứng quyết định trong climax phải có chapter map chỉ rõ:
+   - Chương gieo manh mối, chương bị phản bác, chương tìm được bản sạch, chương có xác nhận độc lập.
+   - Không để 2+ bằng chứng quyết định xuất hiện lần đầu trong cùng một chương climax.
+   - Nếu bằng chứng là ghi âm/ảnh chụp/tài liệu lấy lén, phải có chương phản diện hoặc luật sư challenge tính hợp pháp.
+
+H. VIETNAM THREAT ESCALATION: Với Việt Nam hiện đại, phản diện doanh nghiệp không được mặc định dùng dao kéo/xã hội đen.
+   - Ưu tiên phản công: kiện ngược, tố main ăn cắp dữ liệu, cắt lương/đuổi việc, đe dọa mẹ/con/việc làm qua quan hệ, mua chuộc nhân chứng, tung tin truyền thông, gọi kiểm toán/thuế.
+	   - Nếu vẫn dùng bạo lực vật lý, phải cài trước kẻ thực thi và hậu quả pháp lý ngay chương sau.
+
+	I. PENULTIMATE VS FINAL CLIMAX SPLIT:
+	   - Chương ${Math.max(1, chapter_count - 1)} là khóa đường lui: đối chất, niêm phong, triệu tập, kiểm toán, đồng phạm lộ, hoặc quyết định nội bộ.
+	   - Chương ${chapter_count} mới là cú sụp chính: bắt/áp giải/tạm giam/hậu quả pháp lý trước mắt.
+	   - Không được cho cả hai chương cùng là cảnh "công an bước vào bắt Hải".
+
+	J. CLEAN AUTHORITY DOCUMENTS:
+	   - Nếu main dùng quyết định/ủy quyền/văn bản để mở quyền truy cập, field evidence_or_loss phải ghi rõ nguồn sạch: HĐQT ký thật, chữ ký điện tử xác thực, mã văn bản, luật sư xác nhận.
+	   - Cấm "giấy tờ giả", "giả danh", "chữ ký giả nhưng có bản thật" dưới mọi dạng.
+
 OUTPUT STRICT JSON ONLY:
 Không Markdown, không bảng Markdown, không code fence, không lời giải thích.
-Trả đúng một JSON array có CHÍNH XÁC ${chapter_count} object. Mỗi object có schema:
+Trả đúng một JSON object có key "chapters".
+Field "chapters" là một JSON array có CHÍNH XÁC ${chapter_count} object. Mỗi object có schema:
+{
+  "chapters": [
 {
   "chapter": 1,
   "title": "Tên chương, không lặp",
@@ -891,8 +1235,19 @@ Trả đúng một JSON array có CHÍNH XÁC ${chapter_count} object. Mỗi obj
   "identityRevealLayer": "Tầng lộ thân phận ở chương này, hoặc none",
   "opening_state": "Trạng thái đầu chương",
   "protagonist_goal": "Main muốn gì",
-  "main_obstacle": "Vật cản chính",
-  "beats": ["Beat 1", "Beat 2", "Beat 3", "Beat 4", "Beat 5"],
+	  "main_obstacle": "Vật cản chính",
+	  "public_stage": "Sân khấu xã hội: phòng họp/sảnh/căng tin/nhóm chat/HĐQT/họp báo/đối chất/private_pressure",
+	  "humiliation_beat": "Ai làm nhục ai, bằng câu thoại/hành động gì, ai chứng kiến",
+	  "villain_arrogance_line": "Một câu ngạo mạn sắc, cụ thể, có thể đưa vào chương",
+		  "faceslap_payoff": "private_correction | public_embarrassment | evidence_reversal | authority_reversal | financial_reversal | public_identity_reveal | legal_collapse | deferred",
+		  "witness_reaction": "Người chứng kiến phản ứng/đổi thái độ thế nào",
+		  "pacing_role": "early_small_win | villain_win | clean_evidence_recovery | identity_reveal | penultimate_lock | final_collapse | aftermath",
+		  "main_loss": "minor_only | danh dự/quyền truy cập/bản gốc/đồng minh/tiền/sân khấu công khai bị mất",
+		  "evidence_state": "clue_only | challenged | lost_or_blocked | corroborated | clean",
+		  "crowd_stance": "mocking | doubting | silent | turning | supporting",
+		  "payoff_debt_repaid": "Món nợ nhục cụ thể được trả lại, hoặc deferred_debt",
+		  "clean_authority_document": "Nếu có văn bản/quyền lực/HĐQT/luật sư: nguồn sạch và cách xác thực; nếu không có ghi 'none'",
+	  "beats": ["Beat 1", "Beat 2", "Beat 3", "Beat 4", "Beat 5"],
   "evidence_or_loss": "Bằng chứng lấy được hoặc thứ main mất",
   "win": "Main thắng gì",
   "loss": "Main mất/hiểu sai gì",
@@ -901,9 +1256,16 @@ Trả đúng một JSON array có CHÍNH XÁC ${chapter_count} object. Mỗi obj
   "cliffhanger": "Câu hỏi/cú móc cuối chương",
   "cliffhanger_type": "mysterious_call | name_drop | threat | revelation | betrayal | evidence_found | deadline | physical_danger | emotional_blow | other — MỖI TYPE CHỈ DÙNG TỐI ĐA 2 LẦN TRONG TOÀN TRUYỆN",
   "villain_counterattack": "Phản diện phản công gì trong chương này (nếu type=ACTION hoặc FACESLAP_BIG, BẮT BUỘC phải có). Ghi 'none' nếu không áp dụng.",
+  "legal_stage": "none | internal_audit | board_meeting | complaint_filed | investigation_review | summons | emergency_search | indictment | trial — không nhảy cóc stage",
+  "authority_condition": "Điều kiện để HĐQT/công an/ngân hàng/tòa được can thiệp; nếu chưa đủ ghi 'not yet'",
+  "threat_method": "Cách phản diện gây áp lực trong chương này; ưu tiên pháp lý/tài chính/truyền thông/nhân sự thay vì bạo lực thô",
   "evidence_introduced": "Tên bằng chứng mới xuất hiện trong chương này, hoặc 'none'",
+  "evidence_ladder_level": "1 | 2 | 3 | 4 | 5 | none",
+  "evidence_challenge": "Bằng chứng này bị phản bác/challenge thế nào, hoặc 'none'",
   "evidence_foreshadow_required_at": "Số chương mà bằng chứng này ĐÃ PHẢI được gieo manh mối trước đó. VD: nếu chương 7 dùng USB backup thì giá trị = 5 (phải gieo ở Ch.5). Nếu 'none' thì bỏ qua.",
   "main_wrong_assumption": "Điều main TƯỞNG ĐÚNG nhưng sẽ sai ở chương sau (bắt buộc ít nhất 3 lần trong toàn truyện). Ghi 'none' nếu không áp dụng."
+}
+  ]
 }
 
 Ràng buộc máy đọc:
@@ -972,7 +1334,44 @@ Ví dụ cliffhanger TỐT (câu hỏi cụ thể):
 Ví dụ cliffhanger XẤU (cảm xúc rỗng):
 - "Cô siết chặt nắm tay. Cuộc chiến chỉ mới bắt đầu." (→ không có câu hỏi, không có thông tin mới)
 
-KHÔNG được in checklist, PRE-WRITE DECLARATION, Self-Check, Change Log, Audit Report, hoặc lời giải thích trước/sau chương.
+━━━ PATCH 12: CORPORATE LEGAL + EVIDENCE GATE (bắt buộc) ━━━
+Trước khi viết chương, kiểm tra Story Bible + Chapter Map:
+1. Nếu chương có main ẩn thân trong công ty:
+   → Phải giữ lý do không bị nhận ra nhất quán với "undercover_plausibility".
+   → Nếu chương cho phản diện phát hiện thân phận, phải viết cơ chế phát hiện cụ thể, không chỉ "hắn Google thấy".
+
+2. Nếu chương có công an/tòa/ngân hàng/HĐQT can thiệp:
+   → Kiểm tra "legal_stage" và "authority_condition".
+   → Nếu legal_stage chưa đủ điều kiện, KHÔNG được viết bắt giữ/khám xét/phong tỏa/tòa bác chứng cứ.
+   → Thay bằng hành động đúng stage: kiểm toán, đối chất, tạm đình chỉ, triệu tập, niêm phong, hoặc nộp đơn.
+
+3. Nếu chương dùng bằng chứng để lật kèo:
+   → Kiểm tra "evidence_ladder_level".
+   → Level 1-2 chỉ là manh mối/dấu hiệu, KHÔNG đủ thắng.
+   → Level 3 phải bị phản bác hoặc có rủi ro pháp lý.
+   → Level 4-5 mới được dùng ở climax, nhưng phải có nguồn và xác nhận độc lập.
+
+	4. Nếu setting là Việt Nam hiện đại và chương có bạo lực vật lý:
+	   → Chỉ viết khi Chapter Map đã cài "threat_method" phù hợp.
+	   → Phải thêm hậu quả: hồ sơ y tế, camera, nhân chứng, công an truy tìm, hoặc phản diện phải trả giá.
+	   → Nếu không, đổi bạo lực thành phản công pháp lý/tài chính/truyền thông/nhân sự.
+
+	5. Nếu Story Bible/Chapter Map thuộc Đô Thị Vả Mặt:
+	   → Chương PHẢI có ít nhất 1 cảnh áp lực địa vị hoặc nhục nhã cụ thể, bám "humiliation_beat".
+	   → Nếu "faceslap_payoff" khác "deferred", chương PHẢI viết đủ micro-rhythm: sân khấu → miệt thị → main nén → lật từng nấc → phản diện phủ nhận → khóa đường lui → dư chấn.
+	   → Nếu "faceslap_payoff" = "deferred", chương PHẢI tăng cảm giác ức chế và kết bằng một câu hỏi cụ thể, không được chỉ điều tra khô.
+	   → Phải đưa "villain_arrogance_line" vào đối thoại hoặc biến thể gần nghĩa của nó.
+	   → Phải có "witness_reaction": ít nhất một người chứng kiến đổi thái độ, im bặt, né mắt, hoặc bắt đầu nghi ngờ phản diện.
+	   → Phải thể hiện "crowd_stance" đúng bậc: mocking/doubting/silent/turning/supporting. Không được nhảy thẳng từ mocking sang supporting trong cùng một chương.
+	   → Phải thể hiện "evidence_state": clue_only không được thắng lớn; challenged phải có phản bác thật; lost_or_blocked phải làm main mất đường công khai; clean mới được dùng để khóa đường lui.
+	   → Nếu có "payoff_debt_repaid", cú vả mặt phải trả đúng món nợ nhục đó bằng cảnh cụ thể, không chỉ đọc bằng chứng chung chung.
+	   → Nếu pacing_role = "villain_win", chương KHÔNG được cho main thắng ngược trong cùng cảnh; main phải mất thứ thật và chỉ giữ lại một manh mối nhỏ.
+	   → Nếu pacing_role = "penultimate_lock", chỉ được viết đối chất/niêm phong/triệu tập/khóa đường lui. KHÔNG bắt người, KHÔNG tuyên án.
+	   → Nếu pacing_role = "final_collapse", mới được viết quyết định bắt/áp giải/tạm giam/hậu quả pháp lý chính, và phải khác beat với chương áp chót.
+	   → Nếu có clean_authority_document khác "none", văn bản phải là sạch và xác thực được; tuyệt đối không dùng giấy giả/chữ ký giả/giả danh.
+	   → Thoại sỉ nhục phải sắc kiểu công sở. Cấm lặp chửi thô; nếu dùng câu thô, chỉ dùng một lần và đổi phần còn lại thành mỉa mai lạnh.
+
+	KHÔNG được in checklist, PRE-WRITE DECLARATION, Self-Check, Change Log, Audit Report, hoặc lời giải thích trước/sau chương.
 
 INPUT CỐ ĐỊNH, ĐẶT TRƯỚC ĐỂ TẬN DỤNG DEEPSEEK CONTEXT CACHE:
 [STORY BIBLE]
@@ -991,19 +1390,35 @@ ${p.previous_summary}
 Chapter number: ${p.chapter_number}
 Title: ${p.chapter_title}
 Type: ${p.chapter_type}
-Required beats:
-${p.chapter_beats}
+	Current chapter contract (beats + legal/evidence locks):
+	${p.chapter_beats}
 
-━━━ PATCH 5: TITLE GUARD (kiểm tra bắt buộc) ━━━
-Dòng đầu tiên của output PHẢI LÀ: Chương ${p.chapter_number}: ${p.chapter_title}
-Tiếp theo là: [TEASER SEO]: ...
+	ĐÔ THỊ VẢ MẶT STYLE LOCK:
+	- Nếu chapter contract có public_stage/humiliation_beat/faceslap_payoff/witness_reaction, phải viết chúng thành cảnh thật, không tóm tắt.
+	- Tỉ lệ chương nên có nhiều thoại đối đầu, câu ngắn, phản ứng đám đông, chi tiết công sở/đô thị cụ thể.
+	- Main không được "ngầu im lặng" quá lâu nếu cảnh cần payoff; main phải phản đòn bằng hành động/bằng chứng có trình tự.
+	- Tránh giọng báo cáo điều tra. Mọi bằng chứng phải đi qua xung đột người-với-người.
+	- Giữa truyện phải để phản diện thắng thật khi chapter contract yêu cầu; đừng tự cứu main bằng một cuộc gọi hoặc bằng chứng backup.
+
+	━━━ PATCH 5: TITLE GUARD (kiểm tra bắt buộc) ━━━
+	Dòng đầu tiên của output PHẢI LÀ: Chương ${p.chapter_number}: ${p.chapter_title}
+	Tiếp theo là: [TEASER SEO]: ...
 TUYỆT ĐỐI CẤM:
   × Lặp lại dòng tiêu đề bất kỳ lần nào nữa
   × Thêm # hoặc ## trước tiêu đề
   × Có chuỗi "Chương X:" nào khác bên trong nội dung truyện
-Sau khi viết xong, QUÉT LẠI toàn bộ output — nếu phát hiện tiêu đề lặp → XÓA BẢN LẶP trước khi trả kết quả.
+	Sau khi viết xong, QUÉT LẠI toàn bộ output — nếu phát hiện tiêu đề lặp → XÓA BẢN LẶP trước khi trả kết quả.
 
-${STATEFUL_WRITER_RULES}
+	━━━ PATCH 13: STATE MEMORY FLAGS (bắt buộc) ━━━
+	Sau khi viết chương, cập nhật STATE UPDATE JSON như sau:
+	- Nếu chương có lộ thân phận công khai/tầng 4: set publicIdentityKnown=true, revealedAtChapter=${p.chapter_number}, lastMajorSetPiece="identity_reveal".
+	- Nếu chương có bố/luật sư/công an/đội an ninh/cơ quan chức năng giải cứu main: set lastMajorSetPiece="rescue" và lastRescueMechanism ghi cơ chế cụ thể.
+	- Nếu chương có bắt/áp giải/tạm giam phản diện: set villainArrested=tên phản diện bị bắt và lastMajorSetPiece="arrest".
+	- Nếu chương chỉ xử lý hậu quả sau climax: set lastMajorSetPiece="aftermath".
+	- Nếu mở arc mới: set arcPhase="arc2_hook"; chỉ thêm 1 hook vào arc2Hooks, không mở nhiều phe mới.
+	- Nếu currentState đã có publicIdentityKnown=true hoặc villainArrested khác rỗng, phải giữ nguyên/cập nhật tiếp, không xóa về false/rỗng.
+
+	${STATEFUL_WRITER_RULES}
 
 ${isFaceSlapStr(p.story_bible) ? getFaceSlapOverride() : ''}
 
@@ -1025,10 +1440,28 @@ STATE UPDATE JSON:
 {
   "schemaVersion": "StoryStateV1",
   "chapterNumber": "",
-  "chapterTitle": "",
-  "chapterFunction": "",
-  "identityRevealLayer": "",
-  "characterMap": {
+	  "chapterTitle": "",
+	  "chapterFunction": "",
+	  "identityRevealLayer": "",
+	  "publicIdentityKnown": false,
+	  "revealedAtChapter": 0,
+	  "villainArrested": "",
+	  "lastMajorSetPiece": "",
+	  "lastRescueMechanism": "",
+	  "arcPhase": "arc1",
+		  "legalStage": "",
+		  "authorityCondition": "",
+		  "threatMethod": "",
+		  "evidenceLadderLevel": "",
+		  "evidenceChallenge": "",
+		  "publicStage": "",
+		  "humiliationBeat": "",
+		  "faceslapPayoff": "",
+		  "witnessReaction": "",
+		  "villainArroganceLine": "",
+		  "pacingRole": "",
+		  "cleanAuthorityDocument": "",
+		  "characterMap": {
     "main": "",
     "villain_main": "",
     "ally_primary": "",
@@ -1073,9 +1506,12 @@ STATE UPDATE JSON:
   "activeAllies": [],
   "disabledAllies": [],
   "openThreads": [],
-  "resolvedThreads": [],
-  "arc2Hooks": [],
-  "continuityWarnings": [],
+	  "resolvedThreads": [],
+	  "arc2Hooks": [],
+	  "usedFaceslapPayoffs": [],
+	  "usedPublicStages": [],
+	  "humiliationDebt": "",
+	  "continuityWarnings": [],
   "nextChapterPressure": "",
   "foreshadowingPlanted": []
 }
@@ -1119,7 +1555,7 @@ ${p.previous_state}
 [CHAPTER DRAFT]
 ${p.chapter_draft}
 
-P0 Critical (Lỗi nghiêm trọng):
+	P0 Critical (Lỗi nghiêm trọng):
 - Sai tên nhân vật (Wrong character name).
 - Sai số liệu/dòng thời gian (Wrong number/timeline).
 - Lặp lại cảnh cũ (Duplicate scene).
@@ -1128,10 +1564,19 @@ P0 Critical (Lỗi nghiêm trọng):
 - Twist mồ côi không manh mối (Orphan twist).
 - NVC tự dưng biết thông tin không qua điều tra (Protagonist knows unearned information).
 - Phản diện tự dưng biết kế hoạch bí mật (Villain knows secret plan without mechanism).
-- Chương không làm thay đổi trạng thái câu chuyện (Chapter does not change story state).
-- Có chứa cụm từ bị cấm (Banned phrase).
+	- Chương không làm thay đổi trạng thái câu chuyện (Chapter does not change story state).
+	- Có chứa cụm từ bị cấm (Banned phrase).
+		- Với Đô Thị Vả Mặt: chương có faceslap_payoff khác "deferred" nhưng thiếu sân khấu, thiếu người chứng kiến, thiếu phản diện phủ nhận, hoặc thiếu hậu quả thấy ngay.
+		- Với Đô Thị Vả Mặt: chapter contract ghi pacing_role = "villain_win" nhưng chương lại cho main thắng ngược/thoát sạch ngay trong cùng cảnh.
+		- Với Đô Thị Vả Mặt: chương 1-2 đưa bằng chứng clean/all-in có thể hạ vụ chính ngay, hoặc main giữ USB/video/ghi âm giải quyết mọi nút thắt từ đầu.
+		- Với Đô Thị Vả Mặt: 3 chương liên tiếp dùng cùng công thức livestream/video/ghi âm để vả mặt, không có hình thức payoff mới.
+		- Với Đô Thị Vả Mặt: crowd_stance nhảy từ mocking sang supporting quá nhanh mà không qua doubt/silence/turning.
+		- Với Đô Thị Vả Mặt: faceslap_payoff không trả lại một humiliation debt cụ thể đã gieo trước đó.
+		- Chương áp chót và chương cuối lặp cùng một climax pháp lý: cùng bắt người/dẫn giải/tạm giam hai lần.
+	- Main dùng giấy tờ giả, chữ ký giả, giả danh, hoặc văn bản không có nguồn xác thực để mở quyền lực.
+	- Dùng "bản án", "tuyên án", "kết tội tại tòa" khi Story Bible/Chapter Map chưa có phiên tòa thật.
 
-P1 Major (Lỗi cấu trúc):
+	P1 Major (Lỗi cấu trúc):
 - NVC thắng quá dễ dàng (Protagonist wins too easily).
 - Phản diện hành xử ngu ngốc (Villain acts stupid).
 - Đồng minh đưa thông tin không rõ nguồn gốc (Ally gives information with no source).
@@ -1174,9 +1619,10 @@ Schema bắt buộc:
 
 Quy tắc verdict:
 - Field "verdict" chỉ được là một trong ba giá trị: "PASS", "PASS_WITH_PATCHES", "REWRITE_REQUIRED".
-- PASS: score >= 8.5 và không có P0/P1 cần sửa.
-- PASS_WITH_PATCHES: score >= 7.5, không có P0, nhưng có P1/P2 cần polish.
-- REWRITE_REQUIRED: có bất kỳ P0 nào, sai format output, sai số chương, thiếu JSON state, lộ meta, hoặc score < 7.5.`;
+- PASS: score >= 9.2 và không có P0/P1 cần sửa.
+- PASS_WITH_PATCHES: score >= 8.2, không có P0, nhưng còn P1/P2 hoặc cần polish để đạt mức xuất bản.
+- REWRITE_REQUIRED: có bất kỳ P0 nào, sai format output, sai số chương, thiếu JSON state, lộ meta, hoặc score < 8.2.
+- Nếu chương đọc được nhưng còn tiện, lỏng logic pháp lý, bằng chứng chưa đủ giá phải trả, phản diện yếu, hoặc cảm xúc nhân vật mỏng thì KHÔNG được cho PASS dù văn phong trôi.`;
 
 // ── 5. CHAPTER REWRITER ───────────────────────────────────────────────────────
 export interface ChapterRewriterParams {
@@ -1199,6 +1645,7 @@ Không đổi tên hoặc con số.
 Không làm chương dài ra quá 15%.
 Không thay đổi outcome, bằng chứng, trạng thái nhân vật, thứ main biết/mất/có, hoặc cliffhanger đã có trong bản nháp trừ khi Audit Report yêu cầu trực tiếp.
 Nếu Audit Report yêu cầu sửa logic có thể làm đổi state, hãy sửa theo hướng KHỚP với CURRENT STATE thay vì tạo state mới.
+Nếu Audit Report đánh lỗi P0/P1 về pháp lý, chuỗi bằng chứng, lộ thân phận, bạo lực quá lố, hoặc phản diện ngu, được phép chỉnh cơ chế cảnh trong phạm vi cùng mục tiêu chương: hạ bằng chứng xuống manh mối, đổi bắt giữ thành đối chất/niêm phong/triệu tập, thêm cái giá phải trả, hoặc chuyển đòn bạo lực thành đòn pháp lý/tài chính. Không cần giữ nguyên cách cảnh cũ vận hành nếu cách đó là lỗi.
 
 ${isFaceSlapStr(p.story_bible) ? getFaceSlapOverride() : ''}
 
@@ -1276,6 +1723,12 @@ Kiểm tra toàn bộ truyện để tìm các lỗi:
 11. Chương cuối đã giải quyết xong vụ án/mục tiêu chính (Finale resolves main case)
 12. Các cụm từ bị cấm / văn phong sáo rỗng (Banned phrases)
 13. Từng chương có đi theo đúng Type đã lên kế hoạch không (ACTION/BUILD/COLLAPSE)
+
+QUALITY BAR:
+- READY_TO_EXPORT chỉ được dùng khi Score >= 9.2/10 và không còn Critical/Major Issue.
+- NEEDS_PATCHES nếu Score từ 8.0 đến 9.19 hoặc còn lỗi cảm xúc/logic/bằng chứng có thể sửa cục bộ.
+- REWRITE_ENDING nếu finale, chuỗi bằng chứng, hoặc legal climax sai gốc dù văn phong ổn.
+- Không chấm nương tay vì truyện "đủ dài"; phải đánh vào trải nghiệm đọc, logic, payoff, và độ đáng tin.
 
 ## FINAL AUDIT ADD-ON v2.1
 Ngoài checklist cơ bản ở trên, bắt buộc kiểm tra thêm 7 điểm sau. Nếu bất kỳ điểm nào FAIL, xuất PATCH PLAN trước khi viết lại:

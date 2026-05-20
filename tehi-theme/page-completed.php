@@ -163,29 +163,36 @@ $all_terms = get_terms([
                         $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://placehold.co/400x600?text=Cover';
                         $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
                 ?>
-                <!-- Card -->
-                
-        <a href="<?php the_permalink(); ?>" class="mkm-card group" style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:block; transition:transform 0.2s, box-shadow 0.2s; border: 1px solid #f3f4f6;">
-            <div class="mkm-card-img" style="position:relative; aspect-ratio:3/2; overflow:hidden; background:#f9fafb;">
-                <span style="position:absolute; top:8px; left:8px; background:#10b981; color:#fff; font-size:10px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2; box-shadow:0 2px 4px rgba(0,0,0,0.1);">FULL TẬP</span>
-                <span style="position:absolute; top:32px; left:8px; background:#111827; color:#fff; font-size:9px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2;"><?php echo $chaps; ?> Chương</span>
-                <img src="<?php echo esc_url($cover); ?>" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/>
-                <div style="position:absolute; bottom:0; left:0; right:0; padding:20px 10px 8px 10px; background:linear-gradient(transparent, rgba(0,0,0,.7)); display:flex; justify-content:space-between; align-items:center; color:#fff; font-size:11px; font-weight:600; z-index:1;">
-                    <span style="display:flex;align-items:center;gap:3px;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views); ?></span>
-                    <span style="display:flex;align-items:center;gap:3px;color:#fbbf24;"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg> 4.9</span>
+
+        <div class="mkm-card group" style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:block; transition:transform 0.2s, box-shadow 0.2s; border: 1px solid #f3f4f6;">
+            <a href="<?php the_permalink(); ?>" style="display:block;">
+                <div class="mkm-card-img" style="--card-bg: url('<?php echo esc_url($cover); ?>');">
+                    <span style="position:absolute; top:8px; left:8px; background:#10b981; color:#fff; font-size:10px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2; box-shadow:0 2px 4px rgba(0,0,0,0.1);">FULL TẬP</span>
+                    <span style="position:absolute; top:32px; left:8px; background:#111827; color:#fff; font-size:9px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2;"><?php echo $chaps; ?> Chương</span>
+                    <img src="<?php echo esc_url($cover); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy"/>
+                    <div style="position:absolute; bottom:0; left:0; right:0; padding:20px 10px 8px 10px; background:linear-gradient(transparent, rgba(0,0,0,.7)); display:flex; justify-content:space-between; align-items:center; color:#fff; font-size:11px; font-weight:600; z-index:1;">
+                        <span style="display:flex;align-items:center;gap:3px;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views); ?></span>
+                        <span style="display:flex;align-items:center;gap:3px;color:#fbbf24;"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg> 4.9</span>
+                    </div>
                 </div>
-            </div>
+            </a>
             <div style="padding:12px;">
-                <p style="font-size:14px; font-weight:700; color:#111827; margin:0 0 8px 0; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font-family: ui-sans-serif, sans-serif;"><?php the_title(); ?></p>
-                <div style="display:flex; justify-content:space-between; align-items:center;">
+                <a href="<?php the_permalink(); ?>" style="text-decoration:none;">
+                    <p style="font-size:14px; font-weight:700; color:#111827; margin:0 0 8px 0; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font-family: ui-sans-serif, sans-serif;"><?php the_title(); ?></p>
+                </a>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="background:#f3f4f6; color:#6b7280; font-size:10px; font-weight:600; padding:4px 8px; border-radius:6px;"><?php 
                         $cats = wp_get_post_terms(get_the_ID(), 'the_loai');
                         echo (!is_wp_error($cats) && !empty($cats)) ? esc_html($cats[0]->name) : 'Micro Drama';
                     ?></span>
                     <span style="background:rgba(217, 119, 6, 0.1); color:#d97706; font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px;">Hoàn thành</span>
                 </div>
+                <div class="mkm-card-btns">
+                    <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
+                    <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new">Chương mới</a>
+                </div>
             </div>
-        </a>
+        </div>
                 <?php 
                     endwhile; 
                     wp_reset_postdata();
@@ -226,6 +233,90 @@ $all_terms = get_terms([
 .template-pagination .page-numbers:not(.current):not(.dots):hover { background-color: var(--surface-container-high); color: var(--primary); border-color: transparent; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
 .template-pagination .current { background-color: var(--primary); color: white; box-shadow: 0 4px 12px rgba(0, 96, 169, 0.3); }
 .template-pagination .dots { border: none; background: transparent; pointer-events: none; opacity: 0.5; }
+.mkm-card-img {
+    position: relative !important;
+    aspect-ratio: 1/1 !important;
+    overflow: hidden !important;
+    background-color: #0c0f1d !important;
+}
+.mkm-card-img::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -15px !important;
+    left: -15px !important;
+    right: -15px !important;
+    bottom: -15px !important;
+    background-image: var(--card-bg) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    filter: blur(20px) brightness(0.4) !important;
+    z-index: 0 !important;
+}
+.mkm-card-img img {
+    position: relative !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform .5s ease !important;
+}
+.mkm-card:hover .mkm-card-img img { transform: scale(1.03) !important; }
+
+.mkm-card-btns {
+    display: flex !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+    width: 100% !important;
+}
+.mkm-btn-card {
+    flex: 1 !important;
+    text-align: center !important;
+    padding: 8px 4px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    transition: all 0.2s !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.2px !important;
+}
+.mkm-btn-card-start {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 6px rgba(249, 115, 22, 0.2) !important;
+}
+.mkm-btn-card-start:hover {
+    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.35) !important;
+    color: #fff !important;
+}
+.mkm-btn-card-new {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.2) !important;
+}
+.mkm-btn-card-new:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35) !important;
+    color: #fff !important;
+}
+@media (max-width: 600px) {
+    .mkm-card-btns {
+        flex-direction: column !important;
+        gap: 6px !important;
+    }
+    .mkm-btn-card {
+        padding: 6px 4px !important;
+        font-size: 10px !important;
+    }
+}
 </style>
 
 <?php get_footer(); ?>
