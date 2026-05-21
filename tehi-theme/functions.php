@@ -235,7 +235,14 @@ add_filter('template_include', function($template) {
         $uri = $_SERVER['REQUEST_URI'];
         if (strpos($uri, '.html') !== false) {
             $path = parse_url($uri, PHP_URL_PATH);
-            $basename = basename($path);
+            
+            // Extract the .html filename from the path
+            $basename = '';
+            if (preg_match('/\/([^\/]+\.html)/i', $path, $matches)) {
+                $basename = $matches[1];
+            } else {
+                $basename = basename($path);
+            }
             
             $template_map = [
                 'dang-nhap.html'           => '/page-profile.php',
@@ -261,6 +268,14 @@ add_filter('template_include', function($template) {
                     $tehi_tailwind_page = true;
                     $wp_query->is_404 = false;
                     status_header(200);
+                    
+                    // Parse and set pagination page number if present in the URI
+                    if (preg_match('/\/page\/(\d+)/i', $uri, $page_matches)) {
+                        $paged = intval($page_matches[1]);
+                        set_query_var('paged', $paged);
+                        $wp_query->set('paged', $paged);
+                    }
+                    
                     return $mapped_file;
                 }
             }

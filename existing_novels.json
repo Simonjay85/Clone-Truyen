@@ -1,75 +1,153 @@
 [
   {
-    "id": 2036,
-    "title": "Ngày Trở Lại: Hành Trình Từ Hố Sâu Đến Vinh Quang",
-    "slug": "ngay-tro-lai-hanh-trinh-tu-ho-sau-den-vinh-quang",
-    "intro": "Ngày trở lại, cô đứng dưới tòa cao ốc tầng là nơi cô từng lau sàn mỗi đêm. Năm năm trước, cô bị sếp đuổi việc giữa hành lang với cái tát phủ và lời nhục mạ: \"Cô chẳng bao giờ"
+    "id": 2227,
+    "title": "Thiên Tài Lập Trình Đà Lạt Sương Mù: Tôi Viết Mã Hoá Lật Đổ Tập Đoàn Tài Chính Phản Bội",
+    "slug": "thien-tai-ma-hoa-da-lat-suong-mu",
+    "intro": "Tôi là Trần Hưng, một cựu kỹ sư bảo mật ẩn cư giữa rừng thông Đà Lạt tĩnh lặng.Nhưng cuộc sống yên bình kết thúc khi tôi phát hiện ra backdoor rửa tiền nghìn tỷ của tập đoàn Thịnh Phát."
+  },
+  {
+    "id": 2197,
+    "title": "THỢ HỒ NGHÌN TỶ",
+    "slug": "ta-o-binh-duong-lam-chu-thau-va-mat-sep-lon-cuoi-luon-nu-giam-doc-giam-sat",
+    "intro": "<p><strong>&quot;Ngày tôi đến ra mắt, bà ấy nhìn đôi ủng xi măng trên chân tôi rồi phẩy tay: \\'Thợ hồ mà dám đòi cưới con gái tôi? Trọng Khải, con rể tương lai của ta, là thiếu gia nhà giàu, đi xe hơi bóng loáng. Còn ngươi chỉ là một thằng thợ hồ rẻ rách!\\'&quot;</strong></p><p><strong>&quot;Trần Hùng cười nhạt, gạt bỏ sự khinh khi. Ba năm chịu đựng thử thách ẩn thân đã kết thúc, vị thế Chủ tịch Tập đoàn Đế Vương chính thức thức tỉnh, thâu tóm toàn bộ siêu dự án KCN VSIP 3 và buộc toàn bộ giới tài phiệt Bình Dương phải quỳ gối xin lỗi...&quot;</strong></p><hr /><p>Trần Hùng từng là một kỹ sư xây dựng đầy tài năng, nhưng vì một chữ tình, anh chấp nhận lùi về phía sau làm thợ hồ ẩn dật để gia đình nhà vợ leo lên vị trí cao. Đổi lại, anh nhận được sự khinh miệt thấu xương từ mẹ vợ và màn ly hôn tuyệt tình từ người vợ Thu Thủy để chạy theo gã nhân tình giàu có Lê Trọng Khải.</p><p>Họ không ngờ rằng, anh chính là người thừa kế duy nhất của Tập đoàn Đế Vương – siêu thế lực kinh tế bí ẩn nắm trong tay khối tài sản khổng lồ. Đồng thời, bên cạnh anh giờ đây là Thu Hà – nữ giám đốc giám sát sắc sảo, xinh đẹp nhất ngành xây dựng Bình Dương. Trận chiến vả mặt kinh điển, thâu tóm các đại dự án nghìn tỷ và hành trình vươn lên đỉnh cao bá chủ bắt đầu!</p>"
+  },
+  {
+    "id": 2165,
+    "title": "Bạn Thân Cướp Startup Đuổi Tôi Ra Đường, Tôi Bank Run Sập Đế Chế Hắn",
+    "slug": "thien-tai-khoi-nghiep-fintech",
+    "intro": "\"Tôi viết từng dòng code đầu tiên cho PayViet ngay tại căn phòng trọ 15 mét vuông trên phố Duy Tân.Ba năm sau, khi app có 2 triệu người dùng và vừa gọi được Series A, thằng bạn đồng sáng lập"
+  },
+  {
+    "id": 2156,
+    "title": "Tiểu Thư Khinh Tôi Là Bảo Vệ 8 Triệu, Tôi Là Đặc Nhiệm Hạng Nhất",
+    "slug": "vo-than-bao-ve-dai-tieu-thu",
+    "intro": "\"Họ thuê tôi làm bảo vệ với mức lương 8 triệu một tháng.Đại tiểu thư nhìn tôi như nhìn một con chó giữ cửa và bảo: 'Anh chỉ cần đứng im và đừng làm phiền tôi là được.'\" Nhưng cô ấy không biế"
+  },
+  {
+    "id": 2145,
+    "title": "Sếp Cướp Công Thức Thuốc Đuổi Tôi Khỏi Lab, Tôi Phá Sập IPO Nghìn Tỷ",
+    "slug": "chien-than-duoc-pham-doc-ban",
+    "intro": "\"Năm năm nghiên cứu trong phòng lab lạnh giá Đà Lạt, tôi tìm ra công thức thuốc gan đột phá dùng kỹ thuật khóa phân tử độc nhất vô nhị.Thế nhưng sếp cũ cướp trắng thành quả, đạp tôi ra khỏi"
+  },
+  {
+    "id": 2137,
+    "title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ Khinh Tôi Nghèo, Landmark 81 Là Của Tôi",
+    "slug": "nguoi-thua-ke-tram-ty-gia-ngheo",
+    "intro": "\"Tôi đi xe ôm đến ra mắt gia đình người yêu.Mẹ cô ấy nhìn tôi từ đầu đến chân rồi nhổ nước bọt: 'Thằng ăn mày này cũng dám đòi cưới con gái tôi?Sính lễ 5 tỷ, có thì nói, không có thì"
+  },
+  {
+    "id": 2129,
+    "title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
+    "slug": "doc-ban-duoc-than-ke-lat-keo-the-ky",
+    "intro": "\"Năm năm trước, hắn giật lấy công trình nghiên cứu của tôi, bảo vệ ném hành lý của tôi ra đường đèo Đà Lạt dưới cơn mưa tuyết lạnh giá.Hắn đứng trên hiên cao, gõ tì tay lên lan can và mỉa ma"
+  },
+  {
+    "id": 2120,
+    "title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
+    "slug": "chang-re-bep-truong-an-the",
+    "intro": "\"Ngày đó, sư phụ cướp trắng công thức gia truyền ba đời, đạp tôi ra khỏi nhà hàng năm sao giữa Sài Gòn.Mẹ vợ khinh tôi là thằng rửa bát vô dụng, anh rể nhổ nước bọt vào mặt tôi trước mặt cả"
+  },
+  {
+    "id": 2112,
+    "title": "Người Thợ Sửa Xe Ở Hầm B2",
+    "slug": "nguoi-tho-sua-xe-o-ham-b2",
+    "intro": "Trong hầm B2 của một trung tâm thương mại, Đỗ Nhật Nam bị vị khách đi siêu xe tát trước mặt mọi người vì dám nói chiếc Lamborghini của hắn đã bị can thiệp hệ thống phanh.Không ai tin một thợ"
+  },
+  {
+    "id": 2106,
+    "title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ",
+    "slug": "co-gai-ban-tra-sua-va-hop-dong-tram-ty",
+    "intro": "Lâm Vy bị gia đình bạn trai khinh thường vì chỉ bán trà sữa trong một con hẻm nhỏ.Trong tiệc đính hôn, mẹ chồng tương lai ném hợp đồng thuê mặt bằng vào mặt cô và mỉa mai: \"Một ly trà ba mươ"
+  },
+  {
+    "id": 2099,
+    "title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
+    "slug": "bi-duoi-khoi-khach-san-toi-mua-luon-chuoi-nam-sao",
+    "intro": "Trần Gia Huy từng là quản lý vận hành giỏi nhất khách sạn Hoàng Gia, nhưng trong đêm tiệc trao giải du lịch, anh bị vu oan biển thủ tiền đặt phòng VIP và bị kéo ra khỏi sảnh trước mặt toàn bộ đối t"
+  },
+  {
+    "id": 2089,
+    "title": "Trọng Sinh 2008: Cơn Sốt Đất Đông Anh",
+    "slug": "trong-sinh-2008-con-sot-dat-dong-anh",
+    "intro": "\"Ba năm trước, tôi chết trong nghèo khổ bên vệ đường Hà Nội, bị kẻ thù cướp sạch dự án bất động sản tâm huyết và đẩy gia đình vào nợ nần chồng chất.\"Nhưng ông trời có mắt!Tôi mở mắt r"
+  },
+  {
+    "id": 2067,
+    "title": "Sau Khi Bị Sa Thải, Tôi Thắng Gói Thầu Nghìn Tỷ",
+    "slug": "sau-khi-bi-sa-thai-toi-thang-goi-thau-nghin-ty",
+    "intro": "Ba giờ trước buổi đấu thầu dự án AI đô thị thông minh, Nguyễn Minh Khang bị chính công ty mình cứu sống vu oan làm lộ dữ liệu.Hắn bị bảo vệ kéo lê qua sảnh kính, thẻ nhân viên bị bẻ đôi trướ"
+  },
+  {
+    "id": 2044,
+    "title": "Chàng Rể Hào Môn Miền Tây",
+    "slug": "chang-re-hao-mon-mien-tay",
+    "intro": "Lâm Phong là một thiếu gia của tập đoàn vận tải biển hàng đầu Việt Nam, vì muốn tìm kiếm một tình yêu đích thực không vụ lợi nên đã ẩn thân làm công nhân cày cuốc tại một vườn sầu riêng ở Bến Tre."
   },
   {
     "id": 2035,
     "title": "Kẻ Phế Vật Ngày Ấy, Hôm Nay Trở Về",
     "slug": "ke-phe-vat-ngay-ay-hom-nay-tro-ve",
-    "intro": "Lúc nửa đêm, gã thanh niên bước xuống từ chiếc Maybach đen bóng trước cổng biệt thự nhà họ Lâm. Mười hai năm trước, cũng trước cổng nhà này, hắn bị đánh bật ra ngoài, quần áo"
+    "intro": "Lúc nửa đêm, gã thanh niên bước xuống từ chiếc Maybach đen bóng trước cổng biệt thự nhà họ Lâm.Mười hai năm trước, cũng trước cổng nhà này, hắn bị đánh bật ra ngoài, quần áo"
   },
   {
     "id": 2023,
     "title": "Đồ Phế Vật Năm Đó, Hôm Nay Ta Trở Về",
     "slug": "do-phe-vat-nam-do-hom-nay-ta-tro-ve",
-    "intro": "Năm đó, Lâm Phong bị coi là phế vật vô dụng bị cả gia tộc chà đạp. Trong đêm mưa giông bão giật, người chú ruột mưu mô Lâm Vĩnh Thịnh thiêu rụi di ảnh của cha mẹ hắn, ném hành lý của hắn ra đường n"
+    "intro": "Năm đó, Lâm Phong bị coi là phế vật vô dụng bị cả gia tộc chà đạp.Trong đêm mưa giông bão giật, người chú ruột mưu mô Lâm Vĩnh Thịnh thiêu rụi di ảnh của cha mẹ hắn, ném hành lý của hắn ra đ"
   },
   {
     "id": 2020,
     "title": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
     "slug": "he-thong-tri-tue-nhan-tao-xuyen-khong-den-tuong-lai",
-    "intro": "Năm 2026, thế giới chìm trong đống đổ nát sau một thảm họa toàn cầu. Giữa một phòng thí nghiệm hoang tàn, một cơ thể sinh học nhân tạo bất ngờ mở mắt. Bên trong cơ thể đó không phải là một linh hồn"
+    "intro": "Năm 2026, thế giới chìm trong đống đổ nát sau một thảm họa toàn cầu.Giữa một phòng thí nghiệm hoang tàn, một cơ thể sinh học nhân tạo bất ngờ mở mắt.Bên trong cơ thể đó không phải là"
   },
   {
     "id": 2013,
     "title": "Bức Thư Cuối Cùng Của Biển",
     "slug": "buc-thu-cuoi-cung-cua-bien",
-    "intro": "Ở thị trấn ven biển Cát Trắng, Quân sống lại tuổi 18 với ký ức thảm họa sạt lở 5 năm sau. Lá thư tình chưa gửi cho cô gái thượng lưu từng khiến hắn bị ruồng bỏ, nay là manh mối duy nhất để cảnh báo mọ"
+    "intro": "Ở thị trấn ven biển Cát Trắng, Quân sống lại tuổi 18 với ký ức thảm họa sạt lở 5 năm sau.Lá thư tình chưa gửi cho cô gái thượng lưu từng khiến hắn bị ruồng bỏ, nay là manh mối duy nhất để cả"
   },
   {
     "id": 2007,
     "title": "Lột Mặt Người Sếp Cướp Công",
     "slug": "lot-mat-nguoi-sep-cuop-cong",
-    "intro": "Trong làng nghề kinh doanh online, Lâm Trạch bị lão sếp họ Hoàng vu oan là lang băm để cướp bài thuốc gia truyền. Nhưng anh đã bí mật đặt camera an ninh, ghi lại toàn bộ âm mưu. Từng tập, anh vạch mặt"
+    "intro": "Trong làng nghề kinh doanh online, Lâm Trạch bị lão sếp họ Hoàng vu oan là lang băm để cướp bài thuốc gia truyền.Nhưng anh đã bí mật đặt camera an ninh, ghi lại toàn bộ âm mưu.Từng tậ"
   },
   {
     "id": 2001,
     "title": "Anh Sang Trong Dem",
     "slug": "anh-sang-trong-dem",
-    "intro": "Minh, một họa sĩ trẻ, mất thị lực sau tai nạn. Tuyệt vọng, anh gặp Lan, cô gái khiếm thính dạy anh cảm nhận thế giới bằng giác quan khác. Cùng nhau, họ khám phá nghệ thuật và tình yêu, vượt qua nghịch"
+    "intro": "Minh, một họa sĩ trẻ, mất thị lực sau tai nạn.Tuyệt vọng, anh gặp Lan, cô gái khiếm thính dạy anh cảm nhận thế giới bằng giác quan khác.Cùng nhau, họ khám phá nghệ thuật và tình yêu,"
   },
   {
     "id": 1984,
     "title": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu",
     "slug": "toi-gia-ngheo-di-ra-mat-me-nguoi-yeu-doi-sinh-le-900-trieu",
-    "intro": "Cô gái giả nghèo để thử lòng người yêu và gia đình anh. Khi mẹ anh đòi sính lễ 900 triệu, cô bắt đầu kế hoạch vả mặt từng người, hé lộ sự thật về thân phận và khiến họ phải hối hận."
+    "intro": "Cô gái giả nghèo để thử lòng người yêu và gia đình anh.Khi mẹ anh đòi sính lễ 900 triệu, cô bắt đầu kế hoạch vả mặt từng người, hé lộ sự thật về thân phận và khiến họ phải hối hận."
   },
   {
     "id": 1968,
     "title": "Bóng Đêm Và Ánh Sáng",
     "slug": "bong-dem-va-anh-sang",
-    "intro": "Sau đại thảm họa, Trái Đất chìm trong bóng tối vĩnh cửu, nơi những sinh vật bóng đêm săn mồi. Một nhóm người sống sót dũng cảm lên đường tìm kiếm nguồn sáng huyền thoại, đối mặt với hiểm nguy và bí mậ"
+    "intro": "Sau đại thảm họa, Trái Đất chìm trong bóng tối vĩnh cửu, nơi những sinh vật bóng đêm săn mồi.Một nhóm người sống sót dũng cảm lên đường tìm kiếm nguồn sáng huyền thoại, đối mặt với hiểm nguy"
   },
   {
     "id": 1948,
-    "title": "Giám đốc ngầm: Thực tập sinh không dễ chọc",
+    "title": "Giám Đốc Ngầm: Thực Tập Sinh Trăm Tỷ Vả Mặt Trưởng Phòng Nhân Sự Cướp Dự Án",
     "slug": "giam-doc-ngam-thuc-tap-sinh-khong-de-choc",
-    "intro": "Lâm Uyển Nhu, ái nữ duy nhất của tập đoàn Lâm Thị, chuẩn bị kế thừa sự nghiệp trăm tỷ. Nhưng cô không muốn trở thành một tổng tài kếch xù, cô muốn tận mắt nhìn thấy bộ mặt thật của những con người tro"
+    "intro": "Lâm Uyển Nhu, ái nữ duy nhất của Chủ tịch tập đoàn Lâm Thị, quyết định ẩn thân làm thực tập sinh quèn để trải nghiệm thực tế và vạch trần những góc tối công sở.Nhưng Trưởng phòng nhân sự đố"
   },
   {
     "id": 1933,
-    "title": "Đừng Gọi Tôi Là Con Bé Gần Máy In",
+    "title": "Đừng Gọi Tôi Là Con Bé Gần Máy In: Tôi Nuôi Quỷ Vương Trong Gấu Bông Pikachu",
     "slug": "dung-goi-toi-la-con-be-gan-may-in",
-    "intro": ""
+    "intro": "Tôi là Tô Khanh Khanh, một nữ nhân viên văn phòng bình thường có vận may bùng nổ.Nhưng cuộc sống của tôi thay đổi hoàn toàn kể từ khi một Quỷ Vương tu vi trăm năm sợ nóng chui vào trú ngụ tr"
   },
   {
     "id": 1927,
-    "title": "Nhà Của Mẹ Chồng? Không, Của Tôi!",
+    "title": "Nhà Của Mẹ Chồng? Không, Biệt Thự Gò Vấp 5 Tỷ Đứng Tên Riêng Của Tôi!",
     "slug": "nha-cua-me-chong-khong-cua-toi",
-    "intro": "Mâm cơm giỗ ba chồng, mẹ chồng sỉ nhục tôi là 'người ngoài' trước mặt họ hàng. Chị chồng cười khẩy, chồng thì cúi đầu làm thinh. Nhưng họ không biết, căn nhà ba tầng họ đang ngồi đã đứng tên tôi từ"
+    "intro": "Mâm cơm giỗ ba chồng, mẹ chồng sỉ nhục tôi là \"person ngoài\" trước mặt họ hàng.Chị chồng cười khẩy, chồng thì cúi đầu làm thinh.Nhưng họ không biết, căn biệt thự ba tầng mặt tiền Gò V"
   },
   {
     "id": 1921,
@@ -78,87 +156,147 @@
     "intro": ""
   },
   {
-    "id": 2037,
-    "title": "Bẫy Thâu Tóm Tập Đoàn Công Nghệ",
-    "slug": "bẫy-thâu-tóm-tập-đoàn-công-nghệ",
-    "intro": "<p>Trong thế giới công nghệ đang bùng nổ tại Hà Nội, Lâm Phong - một cựu đồng sáng lập tài năng của tập đoàn công nghệ hàng đầu, bất ngờ bị đối tác tham lam đẩy ra khỏi chính đứa con tinh thần của mình. Khi mọi nỗ lực lấy lại danh dự đều vô nghĩa, anh quyết định khởi nghiệp lần nữa với một dự án mới đầy hứa hẹn.</p><p>Giữa những khó khăn chồng chất, Lâm Phong tìm thấy Minh Nguyệt, một tiến sĩ AI xuất sắc, người sẽ trở thành đồng đội đáng tin cậy của anh. Họ không chỉ đứng lên từ những vết thương mà còn tiến hành một cuộc chiến tranh không khoan nhượng chống lại kẻ thù cũ thông qua những kế hoạch tài chính tinh vi. Liệu họ có thể vượt qua những bẫy pháp lý mà kẻ thù giăng ra và giành lại vinh quang? Câu chuyện sẽ đưa bạn qua những cung bậc cảm xúc mãnh liệt của lòng ham muốn, sự trả thù, và tình bạn trong bối cảnh khốc liệt của thị trường công nghệ Việt Nam.</p>"
+    "id": 2207,
+    "title": "Thuyền Trưởng Tỷ Phú Cảng Tiên Sa",
+    "slug": "thuyền-trưởng-tỷ-phú-cảng-tiên-sa",
+    "intro": "<p><strong>\"Thuyền trưởng Lê Quang Vũ, người đã điều hành tàu container 50.000 tấn qua eo Malacca ba mươi lần, bị tên cai bến người nước ngoài đá vào lưng và hét: 'Mày chỉ là cu li bốc vác, biết thân thì im!'\"</strong></p><p><strong>Thế nhưng họ không ngờ, chỉ vài tuần sau, anh đứng trên đỉnh cao ngành cảng biển Đà Nẵng, được sự hậu thuẫn tối cao của Cảng vụ hàng hải và các lực lượng chức năng C03, phanh phui toàn bộ hợp đồng ma hòng thôn tính cảng Tiên Sa...</strong></p><hr /><p>Lê Quang Vũ là một thuyền trưởng container kiệt xuất, vì tranh chấp với sếp ngoại bang hống hách tại cảng Tiên Sa Đà Nẵng nên bị sa thải vô cớ, bôi nhọ danh dự. Vô tình, bản phân tích dòng chảy logistics tuyệt hảo của anh lọt vào mắt Ngô Thị Hương – Giám đốc Cảng vụ tài năng và sắc sảo. Được sự tin cậy của cô, Vũ bước vào cuộc chiến cam go bảo vệ chủ quyền logistics cảng Tiên Sa trước âm mưu thâu tóm lén lút của tập đoàn ngoại bang. Với trí tuệ vượt trội và sự hỗ trợ quyết liệt của pháp luật Việt Nam, Vũ đã lật ngược thế cờ ngoạn mục, đưa kẻ hống hách ra ánh sáng.</p>"
   },
   {
-    "id": 2044,
-    "title": "Chàng Rể Hào Môn Miền Tây",
-    "slug": "chàng-rể-hào-môn-miền-tây",
-    "intro": "<p>Lâm Phong là một thiếu gia của tập đoàn vận tải biển hàng đầu Việt Nam, vì muốn tìm kiếm một tình yêu đích thực không vụ lợi nên đã ẩn thân làm công nhân cày cuốc tại một vườn sầu riêng ở Bến Tre. Tại đây, anh gặp gỡ và yêu thương Minh Thư, cô con gái chủ vườn kiên cường và nhân hậu.</p><p>Nhưng cuộc sống yên bình miền sông nước nhanh chóng bị phá vỡ khi những thế lực tham lam âm mưu cướp đoạt mảnh đất vàng của gia đình cô. Đối mặt với âm mưu thâm hiểm của đối thủ phân phối độc quyền và món nợ ngân hàng Agribank lên tới 30 tỷ đồng, Lâm Phong sẽ phải làm gì để bảo vệ người con gái mình yêu? Một câu chuyện vả mặt sảng khoái với những cú lật kèo ngoạn mục nghẹt thở đang chờ đón bạn.</p>"
+    "id": 2313,
+    "title": "Bẫy Thâu Tóm Công Nghệ: Sự Phục Thù Của Thiên Tài Lập Trình",
+    "slug": "bẫy-thâu-tóm-công-nghệ:-sự-phục-thù-của-thiên-tài-lập-trình",
+    "intro": "<p><strong>\"Phạm Minh Đức, kỹ sư hệ thống thiên tài kiêm Sáng lập CyberShield, bị chính người anh em chí cốt vu oan phản quốc, đuổi ra khỏi tòa nhà Duy Tân dưới cơn mưa tầm tã, tài khoản Vietcombank cá nhân bị phong tỏa triệt để...\"</strong></p><p>Thế nhưng họ không ngờ, chiếc mã nguồn v5.0 tối tân kia sử dụng cấu trúc phân rã sharding đa tầng kết hợp khóa bảo mật sinh trắc học độc bản. Không có sự đồng thuận tự nguyện của Đức, đống mã nguồn nghìn tỷ kia chỉ là rác thải công nghệ! Cùng với sự hậu thuẫn sắc sảo, lý tính của đại tiểu thư tài phiệt Nguyễn Mai Phương, Đức từng bước giăng bẫy thâu tóm ngược, kéo theo sự vào cuộc quyết liệt của C03 Bộ Công An để quét sạch thế lực phản diện, thực hiện cú lật kèo chấn động sàn chứng khoán HNX.</p>"
+  },
+  {
+    "id": 2259,
+    "title": "Đầu Bếp Hội An Và Sao Michelin Đà Nẵng",
+    "slug": "đầu-bếp-hội-an-và-sao-michelin-đà-nẵng",
+    "intro": "<p><strong>Phạm Hoàng Minh bị đối thủ hèn hạ trộm mất công thức bánh mì truyền thống 70 năm của gia đình, đồng thời thuê truyền thông vu khống tiệm dùng phụ gia độc hại hòng tiêu diệt danh tiếng dòng họ.</strong></p><p>Thế nhưng họ không ngờ, tài năng của Minh đã lọt vào mắt Trần Diệu Linh – chuyên gia ẩm thực cấp cao của Bộ Y tế. Với sự hỗ trợ của cô, Minh đã mang món ăn truyền thống lên bàn tiệc quốc tế trước hội đồng Michelin Asia Pacific đầy kiêu ngạo...</p>"
+  },
+  {
+    "id": 2269,
+    "title": "CEO Giấu Mặt Đảo Lộn Tập Đoàn Dệt May Bình Dương",
+    "slug": "ceo-giấu-mặt-đảo-lộn-tập-đoàn-dệt-may-bình-dương",
+    "intro": "<p><strong>Trần Minh Khải bị người cha nuôi và gã anh họ tước đoạt quyền thừa kế tập đoàn dệt may 2000 tỷ đồng tại Bình Dương một cách nhẫn tâm, đuổi anh ra khỏi công ty với hai bàn tay trắng.</strong></p><p>Thế nhưng họ không ngờ, sự xuất hiện của Đinh Lan Anh – nữ luật sư M&A sừng sỏ nhất Hà Nội – đã cùng Khải lập nên một kế hoạch tái cấu trúc pháp lý siêu đẳng, lật ngược thế cờ ngay trước mũi SCIC và toàn bộ hội đồng quản trị hống hách...</p>"
+  },
+  {
+    "id": 2279,
+    "title": "Ông Hoàng Địa Ốc Ẩn Thế Phú Mỹ Hưng",
+    "slug": "ông-hoàng-địa-ốc-ẩn-thế-phú-mỹ-hưng",
+    "intro": "<p><strong>Đinh Thanh Tùng bị đồng nghiệp phản bội vu khống nhận hoa hồng bẩn 10 tỷ đồng, bị đuổi khỏi công ty định giá bất động sản hàng đầu Sài Gòn và bị bôi nhọ danh dự trên mọi phương tiện truyền thông.</strong></p><p>Thế nhưng họ không ngờ, tài năng định giá thiên tài của Tùng đã lọt vào mắt Nguyễn Minh Châu – nữ CEO xinh đẹp của quỹ đầu tư địa ốc REIT 5000 tỷ. Cuộc chiến giành lại công lý và vương quyền bất động sản Phú Mỹ Hưng bắt đầu từ đây...</p>"
+  },
+  {
+    "id": 2289,
+    "title": "Vũ Công Hoàng Gia Và Đế Chế Nhà Hát Lớn",
+    "slug": "vũ-công-hoàng-gia-và-đế-chế-nhà-hát-lớn",
+    "intro": "<p><strong>Nguyễn Hoàng Long bị Giám đốc nghệ thuật tham lam cướp trắng vở kịch ballet tâm huyết cả đời, đồng thời vu oan anh đạo nhái và đuổi cổ anh khỏi Nhà hát Lớn Hà Nội trong nhục nhã.</strong></p><p>Thế nhưng họ không ngờ, sự xuất hiện của Lê Bích Ngọc – Chủ tịch tập đoàn giải trí hàng đầu Việt Nam – đã chắp cánh cho thiên tài của Long bùng nổ, tạo nên một vở diễn chấn động giới mộ điệu quốc tế...</p>"
+  },
+  {
+    "id": 2217,
+    "title": "Kỹ Sư Smart Grid Và Bóng Tối EVN",
+    "slug": "kỹ-sư-smart-grid-và-bóng-tối-evn",
+    "intro": "<p><strong>Phan Đức Thành phát hiện ra đường dây tham nhũng thiết bị trạm biến áp kém chất lượng gây nguy hiểm cho lưới điện quốc gia, lập tức bị sếp cũ sa thải vu oan phá hoại tài sản nhà nước.</strong></p><p>Thế nhưng họ không ngờ, Nguyễn Thu Trang – Phó Tổng giám đốc EVN trẻ tuổi sắc bén – đã âm thầm điều tra sự việc, cùng Thành bước vào cuộc chiến làm sạch lưới điện quốc gia...</p>"
+  },
+  {
+    "id": 2238,
+    "title": "Triều Đại Cà Phê Bazan Đắk Lắk",
+    "slug": "triều-đại-cà-phê-bazan-đắk-lắk",
+    "intro": "<p><strong>Y Dhăm Nie bị đối tác ngoại bang xảo quyệt cướp mất bằng sáng chế máy rang cà phê bằng tia hồng ngoại gia truyền ba đời, đồng thời vu khống anh ăn cắp công nghệ.</strong></p><p>Thế nhưng họ không ngờ, tài năng của anh đã lọt vào mắt Trần Thị Cẩm Tú – nữ hoàng xuất khẩu nông sản Đắk Lắk. Hành trình giành lại thương hiệu và vương miện cà phê Việt bắt đầu...</p>"
+  },
+  {
+    "id": 2249,
+    "title": "Nhà Thiết Kế Tàng Hình Vietnam Fashion Week",
+    "slug": "nhà-thiết-kế-tàng-hình-vietnam-fashion-week",
+    "intro": "<p><strong>Châu Minh Hải bị người yêu cũ phản bội và gã nhà thiết kế danh tiếng cướp trắng toàn bộ bộ sưu tập dạ hội độc bản dự thi Vietnam Fashion Week, đẩy anh vào cảnh trắng tay nhục nhã.</strong></p><p>Thế nhưng họ không ngờ, sự xuất hiện của Vũ Thanh Huyền – Chủ tịch Hiệp hội Thời trang – đã khai phá thiên tài cắt may và xếp nếp draping đỉnh cao của Hải, vạch trần kẻ đạo nhái trước công chúng...</p>"
+  },
+  {
+    "id": 2190,
+    "title": "Thần Tài Chứng Khoán Phố Wall Hà Nội",
+    "slug": "thần-tài-chứng-khoán-phố-wall-hà-nội",
+    "intro": "<p><strong>Hoàng Đức Minh bị giám đốc quỹ đầu tư sa thải nhục nhã dưới chân sàn HNX, vu khống anh thao túng cổ phiếu để cướp trắng tài sản và tài khoản giao dịch của khách hàng.</strong></p><p>Thế nhưng họ không ngờ, sự xuất hiện của Phan Thị Bảo Châu – Phó Chủ tịch UBCKNN – đã cùng Minh bóc trần đường dây pump-and-dump rửa tiền tinh vi của phe phản diện...</p>"
   },
   {
     "id": 2052,
     "title": "Thần Y Phòng Khám Quận 5: Vợ Tôi Là Siêu Tỷ Phú",
-    "slug": "thần-y-phòng-khám-quận-5",
-    "intro": "<p><strong>&quot;Năm đó, sếp giật công trình nghiên cứu, bảo vệ ném hành lý của tôi ra đường Nguyễn Trãi dưới cơn mưa tầm tã. Hắn khóa tài khoản Techcombank, ép tôi vào đường cùng và cười khẩy: \\'Mày chỉ là một con thực tập sinh quèn rách rưới!\\'&quot;</strong></p><p><strong>&quot;Thế nhưng hắn không ngờ, chỉ một tháng sau, tôi đứng trên đỉnh cao y học Sài Gòn, nắm giữ Nhân Y Đường, châm một cây kim cứu sống siêu tỷ phú đứng đầu Trịnh Gia. Và bên cạnh tôi, là cô con gái độc nhất của Trịnh Gia – siêu mỹ nhân tài phiệt nắm trong tay hàng ngàn tỷ đồng...&quot;</strong></p><hr /><p>Lâm Trần là một bác sĩ thực tập thiên tài tại phòng khám đa khoa An Tâm ở Quận 5, người đã cống hiến cả thanh xuân để nghiên cứu ra liệu pháp đột phá tái tạo tế bào gan bằng thảo dược tự nhiên. Thế nhưng, sự thật tàn nhẫn ập đến khi Trưởng khoa Hoàng Vĩnh – một kẻ tham lam và xảo quyệt – đã cướp đoạt toàn bộ công trình của anh, biến nó thành của riêng rồi đuổi anh ra khỏi phòng khám trong nhục nhã.</p><p>Giữa cơn mưa tầm tã của Sài Gòn, Lâm Trần gặp gỡ Minh Thư, ái nữ sắc sảo của siêu tập đoàn y tế Trịnh Gia. Được sự hậu thuẫn mạnh mẽ của cô, anh quyết định mở phòng khám y học cổ truyền &quot;Nhân Y Đường&quot; ngay đối diện kẻ thù, bắt đầu hành trình lấy lại danh dự và vươn lên đỉnh cao y học. Những trận chiến y lý nghẹt thở, những cú lật kèo pháp lý ngoạn mục và sự trừng phạt đích đáng cho kẻ phản bội đang chờ đón bạn trong tác phẩm này.</p>"
+    "slug": "thần-y-phòng-khám-quận-5:-vợ-tôi-là-siêu-tỷ-phú",
+    "intro": "<p><strong>Lâm Trần bị Trưởng khoa Hoàng Vĩnh cướp công trình nghiên cứu tái tạo tế bào gan, khóa tài khoản Techcombank và ném hành lý ra đường Nguyễn Trãi Quận 5 dưới mưa tầm tã.</strong></p><p>Thế nhưng hắn không ngờ, xe Porsche Panamera của Trịnh Minh Thư – ái nữ tập đoàn y tế Trịnh Gia – đã đỗ trước mặt anh. Với y thuật châm cứu thần sầu và sự đồng hành của cô, Lâm Trần từng bước bước lên đỉnh cao y học...</p>"
   },
   {
-    "id": 2067,
-    "title": "Sau Khi Bị Sa Thải, Tôi Thắng Gói Thầu Nghìn Tỷ",
-    "slug": "sau-khi-bi-sa-thai-toi-thang-goi-thau-nghin-ty",
-    "intro": "<p><strong>Ba giờ trước buổi đấu thầu dự án AI đô thị thông minh, Nguyễn Minh Khang bị chính công ty mình cứu sống vu oan làm lộ dữ liệu. Hắn bị bảo vệ kéo lê qua sảnh kính, thẻ nhân viên bị bẻ đôi trước mặt toàn bộ đồng nghiệp, còn người yêu cũ lạnh lùng nói: <em>\"Anh chỉ là một kỹ sư quèn, không có Bach Duong Tech thì anh chẳng là gì.\"</em></strong></p><p>Nhưng thứ họ cướp được chỉ là bản trình chiếu. Thứ thật sự quyết định thắng thua nằm trong nhật ký commit, bản thiết kế lõi, log hệ thống độc lập và một hợp đồng ủy quyền công nghệ mà Minh Khang đã âm thầm giữ lại từ ngày đầu tiên.</p><p>Được Trần Tuệ Lâm rót vốn 50 tỷ mở công ty mới, Minh Khang quay lại cuộc chơi. Nhưng tiền không tự biến thành chiến thắng: đội kỹ sư thiếu người, server sập giữa đêm, nội bộ bị mua chuộc, hồ sơ dự thầu bị chặn. Muốn thắng, anh phải chứng minh từng dòng mã bằng kỹ thuật, từng lời vu khống bằng bằng chứng, và từng kẻ phản bội bằng cái giá xứng đáng.</p>"
+    "id": 2448,
+    "title": "Vua Bán Lẻ Đường Phố Sài Gòn: Trận Chiến Sinh Tử Của Chuỗi Trà Ô Long Organic Việt",
+    "slug": "vua-bán-lẻ-đường-phố-sài-gòn:-trận-chiến-sinh-tử-của-chuỗi-trà-ô-long-organic-việt",
+    "intro": "<p><strong>\"Trần Quốc Bảo, người sáng lập chuỗi Bảo Long Tea thuần hữu cơ bị đối thủ đa quốc gia Royal Sip hãm hại bằng truyền thông bẩn bôi nhọ chè chứa Glyphosate gây ung thư, toàn bộ chi nhánh bị Quản lý thị trường tạm đình chỉ 24 giờ...\"</strong></p>\n<p>Thế nhưng họ không ngờ, từng ly trà của Bảo Long Tea đều được dán nhãn QR truy xuất nguồn gốc bằng công nghệ Blockchain thời gian thực liên kết thiết bị IoT tại nông trường Bảo Lộc. Sự minh bạch tối thượng ấy kết hợp với trí tuệ lý tính, sắc sảo của đại tiểu thư logistics Nguyễn Phương Thảo đã chắp cánh cho Bảo Long Tea lật ngược thế cờ ngoạn mục. Với sự vào cuộc điều tra quyết liệt của C03 Bộ Công An và A05 Cục An ninh mạng, đường dây bôi nhọ giả mạo con dấu Viện Pasteur bị phanh phui, kẻ phản diện hống hách Henry Wong bị khởi tố bắt giam ngay tại chỗ. Một bản hùng ca ngọt ngào về nông sản sạch Việt Nam và tình yêu tự nguyện chớm nở dưới hoàng hôn Sài Gòn.</p>"
   },
   {
-    "id": 2089,
-    "title": "Trọng Sinh 2008: Cơn Sốt Đất Đông Anh",
-    "slug": "trọng-sinh-2008:-cơn-sốt-đất-đông-anh",
-    "intro": "<p><strong>\"Ba năm trước, tôi chết trong nghèo khổ bên vệ đường Hà Nội, bị kẻ thù cướp sạch dự án bất động sản tâm huyết và đẩy gia đình vào nợ nần chồng chất.\"</strong></p>\n<p>Nhưng ông trời có mắt! Tôi mở mắt ra và thấy mình quay về mùa hè năm 2008 — thời điểm lịch sử khi Hà Tây chuẩn bị sáp nhập vào Hà Nội, và vùng đất Đông Anh đang trước thềm cơn sốt đất làm rung chuyển giới đầu cơ thủ đô. Với ký ức vô giá về mọi mốc quy hoạch: cầu Nhật Tân, đường vành đai 3, đại lộ Võ Nguyên Giáp, tôi thề sẽ lấy lại tất cả những gì thuộc về mình!</p>\n<p>Nhưng thương trường là chiến trường khốc liệt. Đối đầu với ông trùm tín dụng đen Hoàng Mạnh Cường câu kết với các nhóm lợi ích tham lam, Trần Huy phải cùng Nguyễn Thanh Vy — ái nữ sắc sảo của Tập đoàn xây dựng Thanh Bình — lập nên liên minh thế kỷ. Một bộ truyện sảng văn/vả mặt tuyệt đỉnh với những cú lật kèo pháp lý, tài chính tinh vi chuẩn xác sẽ đưa bạn vào trung tâm cơn sốt đất vàng Hà Thành!</p>"
+    "id": 2457,
+    "title": "Chàng Rể Bùn Lầy Ẩn Thân: Lật Kèo Vườn Sầu Riêng Trăm Tỷ Dậy Sóng Miền Tây",
+    "slug": "bão-nổi-miền-tây:-vương-quốc-sầu-riêng-trăm-tỷ-của-chàng-rể-hào-môn",
+    "intro": "<p><strong>&ldquo;Nguyễn Tấn Đạt chỉ là người làm vườn lấm bùn trong mắt cả Chợ Lách, lặng lẽ đứng cạnh Trần Mỹ Duyên khi vườn sầu riêng 50 hecta của gia đình cô bị chủ nợ và truyền thông bẩn dồn vào đường cùng.&rdquo;</strong></p><p>Không ai biết sau đôi ủng cao su sờn rách ấy là người thừa kế Tập đoàn Vận tải biển Á Châu, người đã chọn ẩn mình giữa miền Tây để trả một món ân tình. Khi vườn Monthong Trần Gia bị đầu độc ngay trước mùa thu hoạch, Đạt không ném tiền để lấn át tất cả, mà dùng công nghệ nông nghiệp, chứng cứ pháp lý và mạng lưới logistics quốc tế để cứu từng gốc cây, vạch trần âm mưu thâu tóm đất của Huỳnh Hữu Lộc. Từ bùn lầy Chợ Lách đến sảnh ngân hàng nghẹt thở, câu chuyện là hành trình một tình yêu được thử bằng đất, nước mắt và lòng tự trọng của người miền Tây.</p>"
   },
   {
-    "id": 2099,
-    "title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
-    "slug": "bị-đuổi-khỏi-khách-sạn,-tôi-mua-luôn-chuỗi-năm-sao",
-    "intro": "<p><strong>Trần Gia Huy từng là quản lý vận hành giỏi nhất khách sạn Hoàng Gia, nhưng trong đêm tiệc trao giải du lịch, anh bị vu oan biển thủ tiền đặt phòng VIP và bị kéo ra khỏi sảnh trước mặt toàn bộ đối tác.</strong></p><p>Người yêu cũ của anh, cũng là trưởng phòng thương hiệu, lạnh lùng cắt thẻ nhân viên và nói: <em>\"Không có Hoàng Gia, anh chỉ là thằng phục vụ mặc vest.\"</em></p><p>Nhưng họ không biết Gia Huy đã âm thầm giữ toàn bộ báo cáo vận hành, dữ liệu khiếu nại bị che giấu và hợp đồng mua nợ của tập đoàn mẹ. Khi một nữ luật sư tài chính đưa cho anh cơ hội phản công, anh quyết định trở lại không phải để xin việc, mà để mua lại chính nơi từng ném mình ra đường.</p>"
+    "id": 2465,
+    "title": "Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+    "slug": "võ-thần-đất-cảng:-vệ-sĩ-ẩn-thân-phá-bẫy-buôn-lậu-500-tỷ-cảng-đình-vũ",
+    "intro": "<p><strong>\"Lê Gia Bách, cựu Đại úy Đặc nhiệm Hải quân tinh nhuệ nhất Việt Nam, người từng một mình bẻ gãy đường dây cướp biển vịnh Thái Lan, nay ẩn thân làm nhân viên bảo vệ quèn tại Cảng Đình Vũ với mức lương 7 triệu đồng. Anh bị gã Đội trưởng bảo vệ hách dịch ném tập hồ sơ trực ca vào mặt, nhổ bọt xuống đất mỉa mai: 'Loại lính xuất ngũ cùi bắp như mày chỉ xứng đứng gác cổng cho muỗi cắn, cấm bén mảng đến khu VIP!'...\"</strong></p><p>Thế nhưng, gã hách dịch và thế lực ngầm hắc đạo Hải Phòng không bao giờ ngờ rằng, đằng sau bộ đồng phục bảo vệ bạc màu kia là một Võ thần đất Cảng thực thụ, người sở hữu bản lĩnh chiến đấu vô song và mạng lưới tình báo quân sự tối cao. Khi đại tiểu thư kiêu kỳ Nguyễn Hoài An của Tập đoàn Logistics Hải Phòng (HPL) rơi vào cạm bẫy ám sát tàn bạo bên vách đá Đồ Sơn, Bách đã xuất thủ cứu mạng cô bằng kỹ năng cận chiến đỉnh phong. Nhưng sự hoài nghi lý tính của nàng tiểu thư sắc sảo không dễ bị khuất phục. Cuộc chiến thực sự bùng nổ khi thế lực phản diện gài bẫy buôn lậu chất cấm trị giá 500 tỷ nhằm bóp nghẹt HPL, khiến Cảng Đình Vũ bị niêm phong khẩn cấp. Đối mặt với khủng hoảng truyền thông dồn dập và án phạt triệu đô từ các hãng tàu quốc tế, Bách đã phối hợp cùng C03 Bộ Công An và Vùng Cảnh sát biển 1, thực hiện một chiến dịch phản công nghẹt thở, vạch trần kẻ phản bội, lật ngược thế cờ ngay trong đêm giông bão đất Cảng.</p>"
   },
   {
-    "id": 2106,
-    "title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ",
-    "slug": "cô-gái-bán-trà-sữa-và-hợp-đồng-trăm-tỷ",
-    "intro": "<p><strong>Lâm Vy bị gia đình bạn trai khinh thường vì chỉ bán trà sữa trong một con hẻm nhỏ. Trong tiệc đính hôn, mẹ chồng tương lai ném hợp đồng thuê mặt bằng vào mặt cô và mỉa mai: <em>\"Một ly trà ba mươi nghìn cũng đòi bước vào hào môn?\"</em></strong></p><p>Nhưng không ai biết quán trà sữa nhỏ ấy là phòng lab sản phẩm của một chuỗi đồ uống đang âm thầm thử nghiệm. Khi công thức bị cướp, mặt bằng bị khóa và thương hiệu bị bôi nhọ, Lâm Vy chọn mở cửa livestream, đưa từng hóa đơn, từng mẫu kiểm nghiệm và từng hợp đồng nhượng quyền ra ánh sáng.</p>"
+    "id": 2475,
+    "title": "Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
+    "slug": "trọng-sinh-2008:-vua-đất-đông-anh-thiết-lập-đế-chế",
+    "intro": "<p><strong>\"Nguyễn Hoàng Minh, một chuyên gia phân tích tài chính địa ốc hàng đầu năm 2026, bị kẻ thù gài bẫy phá sản, uất hận nhảy xuống từ cầu Nhật Tân... Thế nhưng ông trời có mắt, khi mở mắt ra lần nữa, anh đã quay về buổi sáng định mệnh năm 2008.\"</strong></p>\n<p>Đó là ngày mà gia đình anh chuẩn bị ký giấy bán đứt 2.000 mét vuông đất tổ tiên ở Đông Anh cho băng nhóm tín dụng đen của Bùi Lực với giá rẻ mạt 200 triệu đồng để siết nợ. Minh thừa biết, chỉ ba tuần nữa, quy hoạch cầu Nhật Tân và đường vành đai 3 sẽ chính thức được công bố, biến khu đất này thành mảnh đất kim cương trị giá trăm tỷ.</p>\n<p>Bằng trí tuệ đi trước thời đại 18 năm, Minh giật lại khế ước đất, thiết lập liên minh thép với ái nữ tài phiệt Lê Vy Anh – nữ Giám đốc đầu tư lý tính của tập đoàn Phú Quý. Đối mặt với những âm mưu phong tỏa bẩn thỉu của tài phiệt hắc ám Tạ Hữu Hùng, Minh đã dùng pháp luật và quy trình tài chính Vietcombank để lật ngược thế cờ nghẹt thở, mở ra một đế chế bất động sản hùng mạnh bậc nhất Hà Thành.</p>"
   },
   {
-    "id": 2112,
-    "title": "Người Thợ Sửa Xe Ở Hầm B2",
-    "slug": "người-thợ-sửa-xe-ở-hầm-b2",
-    "intro": "<p><strong>Trong hầm B2 của một trung tâm thương mại, Đỗ Nhật Nam bị vị khách đi siêu xe tát trước mặt mọi người vì dám nói chiếc Lamborghini của hắn đã bị can thiệp hệ thống phanh.</strong></p><p>Không ai tin một thợ sửa xe quần áo dính dầu lại hiểu dữ liệu ECU hơn đội kỹ thuật chính hãng. Nhưng khi tai nạn suýt xảy ra, log hộp đen, camera hầm xe và bản thiết kế phanh điện tử mà Nam từng viết ở Đức bắt đầu kéo từng kẻ kiêu ngạo xuống khỏi ghế da.</p>"
+    "id": 2482,
+    "title": "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn",
+    "slug": "vương-quốc-nước-mắm-truyền-thống-phú-quốc:-chàng-rể-ẩn-thế-vực-dậy-quốc-hồn",
+    "intro": "<p><strong>\"Trịnh Gia Huy, nghệ nhân ủ chượp kiêm chuyên gia sinh hóa thực phẩm xuất sắc nhất đảo ngọc Phú Quốc, bị gã anh rể hách dịch vu oan trộm cắp công thức, đạp ngã bên sườn đồi Dương Đông, đổ sạch sành sanh ba trăm thùng chượp nước mắm hoàng kim mà anh ủ ròng rã suốt ba năm trời...\"</strong></p><p>Thế nhưng chúng không bao giờ có thể ngờ rằng, đống nước mắm hóa chất công nghiệp mà chúng đang hăm hở sản xuất chỉ là thứ độc dược trá hình. Bằng phương pháp tách chiết ly tâm sinh học tự nhiên và công nghệ độc bản lọc Histamine, Gia Huy kết hợp cùng đại tiểu thư Nguyễn Thanh Mai - ái nữ của tập đoàn resort 5 sao lớn nhất Việt Nam - đã vực dậy vương quốc nước mắm truyền thống, giăng ra cái bẫy pháp lý và kinh tế hoàn hảo để tống giam lũ gian thương hèn hạ, phục hưng quốc hồn quốc túy ẩm thực Việt Nam.</p>"
   },
   {
-    "id": 2120,
-    "title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
-    "slug": "chàng-rể-bếp-trưởng-ẩn-thế",
-    "intro": "<p><strong>\"Ngày đó, sư phụ cướp trắng công thức gia truyền ba đời, đạp tôi ra khỏi nhà hàng năm sao giữa Sài Gòn. Mẹ vợ khinh tôi là thằng rửa bát vô dụng, anh rể nhổ nước bọt vào mặt tôi trước mặt cả nhà.\"</strong></p><p>Nhưng họ không biết, đôi bàn tay từng chế biến cho nguyên thủ quốc gia này sẽ khiến cả Phú Quốc phải quỳ gối. Khi đại tiệc Michelin dành cho đoàn ngoại giao quốc tế sắp diễn ra, khi kẻ thù dùng đủ thủ đoạn bẩn thỉu từ gài nợ, đầu độc đến cướp hợp đồng — Đặng Quốc Bảo sẽ dùng chính tài năng ẩm thực thiên bẩm để vả mặt từng kẻ đã khinh thường mình!</p><p>Một bộ truyện sảng văn đô thị cực cuốn với những màn lật kèo ngoạn mục trong thế giới ẩm thực cao cấp Việt Nam!</p>"
-  },
-  {
-    "id": 2129,
-    "title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
-    "slug": "độc-bản-dược-thần:-kẻ-lật-kèo-thế-kỷ",
-    "intro": "<p><strong>\"Năm năm trước, hắn giật lấy công trình nghiên cứu của tôi, bảo vệ ném hành lý của tôi ra đường đèo Đà Lạt dưới cơn mưa tuyết lạnh giá. Hắn đứng trên hiên cao, gõ tì tay lên lan can và mỉa mai: 'Mày chỉ là một thằng nghiên cứu quèn rách rưới, không có Khang Thị nâng đỡ thì mày chẳng là cái gì cả!'\"</strong></p><p><strong>\"Nhưng hắn không ngờ, công thức thuốc gan 'Khóa Phân Tử' mà hắn cướp đi chỉ là bản lỗi. Không có enzyme xúc tác từ sâm Ngọc Linh được chiết xuất bằng quy trình chưng cất áp suất thấp độc quyền của tôi, thuốc gan ấy sẽ biến thành độc dược cực mạnh khi sản xuất quy mô lớn ở nhiệt độ cao!\"</strong></p><hr /><p>Trần Huy Hoàng là một thiên tài dược lý ẩn dật, người đã dành cả thanh xuân để nghiên cứu ra liệu pháp điều trị xơ gan đột phá bằng cách khóa phân tử tế bào tổn thương. Sau khi bị kẻ thù Đường Vĩnh Khang cướp công thức và đuổi đi trong nhục nhã, anh được sự hậu thuẫn của Trần Tuệ Lâm – ái nữ sắc sảo của siêu quỹ đầu tư Thái Bình Capital. Hai người hợp tác thành lập Đại Đông Dược, bắt đầu một cuộc chiến tài chính, pháp lý và công nghệ nghẹt thở chống lại tập đoàn Khang Thị ngay trước thềm thương vụ IPO lịch sử trên sàn HoSE. Những màn lật kèo pháp lý sắc bén, những cuộc đấu trí y học thực tế và cú vả mặt kinh điển đang chờ đón bạn!</p>"
-  },
-  {
-    "id": 2137,
-    "title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ Khinh Tôi Nghèo, Landmark 81 Là Của Tôi",
+    "id": 2489,
+    "title": "Người Thừa Kế Trăm Tỷ Giả Nghèo",
     "slug": "người-thừa-kế-trăm-tỷ-giả-nghèo",
     "intro": "<p><strong>\"Tôi đi xe ôm đến ra mắt gia đình người yêu. Mẹ cô ấy nhìn tôi từ đầu đến chân rồi nhổ nước bọt: 'Thằng ăn mày này cũng dám đòi cưới con gái tôi? Sính lễ 5 tỷ, có thì nói, không có thì cút!'\"></strong></p>\n<p>Nhưng bà ta không biết, chiếc xe ôm tôi đi là vì tôi thích thế. Căn penthouse trên tầng cao nhất Landmark 81 đứng tên tôi. Quỹ ủy thác nghìn tỷ đồng tôi làm chủ tịch. Và khi đám cưới tổ chức tại đại sảnh Phú Mỹ Hưng với sự chứng kiến của toàn bộ giới tài phiệt Sài Gòn — tôi muốn xem mặt bà ta lúc đó sẽ ra sao!</p>\n<p>Truyện sảng văn vả mặt đỉnh cao: Người thừa kế trăm tỷ giả nghèo đi thử lòng, kẻ khinh thường sẽ phải quỳ gối!</p>"
   },
   {
-    "id": 2145,
-    "title": "Sếp Cướp Công Thức Thuốc Đuổi Tôi Khỏi Lab, Tôi Phá Sập IPO Nghìn Tỷ",
+    "id": 2497,
+    "title": "Chiến Thần Dược Phẩm Độc Bản",
     "slug": "chiến-thần-dược-phẩm-độc-bản",
     "intro": "<p><strong>\"Năm năm nghiên cứu trong phòng lab lạnh giá Đà Lạt, tôi tìm ra công thức thuốc gan đột phá dùng kỹ thuật khóa phân tử độc nhất vô nhị. Thế nhưng sếp cũ cướp trắng thành quả, đạp tôi ra khỏi cửa lab dưới cơn mưa rừng thông và cười khẩy: 'Mày chỉ là thằng nghiên cứu sinh quèn!'\"</strong></p><p>Nhưng hắn không biết, công thức mà hắn cướp được có một lỗi khóa phân tử chết người mà chỉ tôi mới nắm giữ chìa khóa. Khi hắn mang công thức lỗi lên sàn HoSE để IPO, chính là lúc tôi sẽ khiến đế chế dược phẩm nghìn tỷ của hắn sụp đổ tan tành!</p><p>Một cuộc chiến trí tuệ đỉnh cao trong thế giới dược phẩm Việt Nam, nơi khoa học, pháp luật và thương trường đan xen tạo nên những cú lật kèo ngoạn mục nhất!</p>"
   },
   {
-    "id": 2156,
-    "title": "Tiểu Thư Khinh Tôi Là Bảo Vệ 8 Triệu, Tôi Là Đặc Nhiệm Hạng Nhất",
+    "id": 2508,
+    "title": "Võ Thần Bảo Vệ Đại Tiểu Thư",
     "slug": "võ-thần-bảo-vệ-đại-tiểu-thư",
     "intro": "<p><strong>\"Họ thuê tôi làm bảo vệ với mức lương 8 triệu một tháng. Đại tiểu thư nhìn tôi như nhìn một con chó giữ cửa và bảo: 'Anh chỉ cần đứng im và đừng làm phiền tôi là được.'\"</strong></p>\n<p>Nhưng cô ấy không biết, đôi tay này từng hạ gục cả một trung đội lính đánh thuê ở biên giới. Và khi bóng tối của đường dây buôn lậu 500 tỷ tại cảng Đình Vũ bao phủ lên gia đình cô, chính đôi tay ấy sẽ là thứ duy nhất bảo vệ được cô!</p>\n<p>Một bộ truyện hành động sảng văn đỉnh cao, nơi cựu đặc nhiệm ẩn thân làm bảo vệ lật tung cả đế chế buôn lậu Hải Phòng!</p>"
   },
   {
-    "id": 2165,
-    "title": "Bạn Thân Cướp Startup Đuổi Tôi Ra Đường, Tôi Bank Run Sập Đế Chế Hắn",
+    "id": 2517,
+    "title": "Thiên Tài Khởi Nghiệp Fintech",
     "slug": "thiên-tài-khởi-nghiệp-fintech",
     "intro": "<p><strong>\"Tôi viết từng dòng code đầu tiên cho PayViet ngay tại căn phòng trọ 15 mét vuông trên phố Duy Tân. Ba năm sau, khi app có 2 triệu người dùng và vừa gọi được Series A, thằng bạn đồng sáng lập dùng luật sư dilute cổ phần của tôi xuống 0.5% rồi đuổi thẳng cổ.\"</strong></p>\n<p>Nhưng hắn không biết, blockchain không bao giờ nói dối. Mọi dòng code gốc đều có timestamp bất biến chứng minh tôi là tác giả duy nhất. Và khi hắn mang sản phẩm ăn cắp đi gọi vốn Series B, chính là lúc tôi sẽ khiến đế chế fintech của hắn sụp đổ như domino!</p>\n<p>Một bộ truyện sảng văn công nghệ đỉnh cao, nơi thiên tài blockchain dùng chính vũ khí mà kẻ thù không hiểu nổi để lật kèo ngoạn mục nhất giới startup Việt Nam!</p>"
+  },
+  {
+    "id": 2549,
+    "title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ Của Chàng Rể Hào Môn",
+    "slug": "bão-nổi-miền-tây:-vương-quốc-sầu-riêng-trăm-tỷ-của-chàng-rể-hào-môn",
+    "intro": "<p><strong>&ldquo;Nguyễn Tấn Đạt chỉ là người làm vườn lấm bùn trong mắt cả Chợ Lách, lặng lẽ đứng cạnh Trần Mỹ Duyên khi vườn sầu riêng 50 hecta của gia đình cô bị chủ nợ và truyền thông bẩn dồn vào đường cùng.&rdquo;</strong></p><p>Không ai biết sau đôi ủng cao su sờn rách ấy là người thừa kế Tập đoàn Vận tải biển Á Châu, người đã chọn ẩn mình giữa miền Tây để trả một món ân tình. Khi vườn Monthong Trần Gia bị đầu độc ngay trước mùa thu hoạch, Đạt không ném tiền để lấn át tất cả, mà dùng công nghệ nông nghiệp, chứng cứ pháp lý và mạng lưới logistics quốc tế để cứu từng gốc cây, vạch trần âm mưu thâu tóm đất của Huỳnh Hữu Lộc. Từ bùn lầy Chợ Lách đến sảnh ngân hàng nghẹt thở, câu chuyện là hành trình một tình yêu được thử bằng đất, nước mắt và lòng tự trọng của người miền Tây.</p>"
+  },
+  {
+    "id": 2561,
+    "title": "Vua Tôm Hùm Phú Yên: Chàng Ngư Dân Bị Khinh Rẻ Thâu Tóm Vùng Biển Nghìn Tỷ",
+    "slug": "vua-tôm-hùm-phú-yên:-chàng-ngư-dân-bị-khinh-rẻ-thâu-tóm-vùng-biển-nghìn-tỷ",
+    "intro": "<p><strong>\"Ngày hôm đó, cha con chủ nhiệm Hợp tác xã tước đoạt toàn bộ lồng tôm hùm gia truyền của tôi, đẩy người cha già bám biển ngã chấn thương cột sống nằm liệt giường. Họ bảo kẻ nghèo rách mồng tơi như tôi không có quyền cắm một cây cọc xuống bãi biển Phú Yên.\"</strong></p>\n<p>Nhưng họ không biết rằng, đôi bàn tay từng bị đạp xuống bùn này lại nắm giữ chìa khóa công nghệ tảo đỏ sinh học đột phá và thế hệ tôm hùm giáp vàng F3 kháng bệnh duy nhất trên thế giới.</p>\n<p>Khi dịch bệnh sữa bùng phát quét sạch hàng nghìn ô lồng thủy sản, khi cha con kẻ địch điên cuồng ép giá thu mua xuống mức rác rưởi một trăm năm mươi ngàn đồng một kg, Trần Hải Phong sẽ bắt đầu cuộc phản kích tàn khốc.</p>\n<p>Kết nối trực tiếp hợp đồng xuất khẩu chính ngạch nghìn tỷ sang Singapore, đối đầu trực diện với những thế lực thương lái độc quyền bỉ ổi, Trần Hải Phong sẽ vả mặt từng kẻ đã khinh rẻ anh và bước lên ngôi vị Vua Tôm Hùm Phú Yên tối cao!</p>"
+  },
+  {
+    "id": 2573,
+    "title": "Đế Chế Gốm Sứ Bát Tràng: Nghệ Nhân Bị Phản Bội Thiêu Đốt Cả Làng Nghề",
+    "slug": "đế-chế-gốm-sứ-bát-tràng:-nghệ-nhân-bị-phản-bội-thiêu-đốt-cả-làng-nghề",
+    "intro": "<p><strong>\"Trần Thế Hải, đứa học trò ruột tôi cưu mang năm năm, ăn cắp công thức men ngọc rạn ngũ đại gia truyền, liên doanh với tập đoàn gốm sứ hóa chất ngoại bang mở nhà xưởng hiện đại ngay đối diện xưởng tôi. Hắn dùng truyền thông bẩn bôi nhọ tôi đầu độc khách hàng bằng men chì, niêm phong lò củi gia truyền dòng họ...\"</strong></p>\n<p>Nhưng hắn và lũ gian thương ngoại bang không bao giờ biết được rằng, men ngọc đích thực đòi hỏi nhiệt độ biến thiên tinh tế của lửa củi nhãn, chứ không phải thứ men frit chì bóng lộn công nghiệp rẻ tiền. Được sự bảo trợ của Phạm Thu Hương - nữ giám đốc trẻ trung đầy quyền lực của Sở Công Thương, Nguyễn Quang Minh đã bảo vệ lò củi cổ kính vượt qua đêm giông bão phá hoại, mang kiệt tác độc bản chấn động Triển lãm Quốc tế, giăng cái bẫy pháp lý hoàn hảo đưa kẻ phản bội và lũ buôn lậu vào tù, vực dậy đế chế gốm sứ Bát Tràng di sản nghìn tỷ!</p>\n<p>Truyện sảng văn vả mặt cực đỉnh, thương chiến đấu trí làng nghề Bát Tràng kịch tính tột cùng!</p>"
+  },
+  {
+    "id": 2587,
+    "title": "Thiên Tài Cầu Đường Cao Tốc: Kỹ Sư Bị Sa Thải Xây Cầu Vượt Biển Nghìn Tỷ",
+    "slug": "thiên-tài-cầu-đường-cao-tốc:-kỹ-sư-bị-sa-thải-xây-cầu-vượt-biển-nghìn-tỷ",
+    "intro": "<p><strong>\"Nhân viên kỹ thuật quèn của Viện Thiết Kế Cầu Đường thì không được phép phản biện dự án sai kỹ thuật sao? Lê Khắc Nam cướp trắng bản quyền thiết kế của tôi, đẩy tôi ra khỏi Viện trong ngày giông bão Hải Phòng và lớn tiếng: 'Mày chỉ là thằng kỹ sư quèn, đòi cãi lý với chuyên gia!'\"</strong></p><p>Trớ trêu thay, chính hắn không biết bản thiết kế hoàn hảo mà hắn cướp được chứa một lỗi cấu trúc trụ cầu chết người mà tôi đã cố ý cài vào để vạch mặt hắn. Khi hắn tự mãn mang thiết kế lỗi ấy đi đấu thầu dự án thế kỷ Tân Vũ - Lạch Huyện, đó cũng là lúc tôi thành lập tổng công ty cầu đường riêng, giật lại dự án siêu khủng này.</p><p>Hành trình khẳng định vị thế của một thiên tài cầu đường đích thực, đối đầu trực diện với những kẻ ăn bớt chất lượng xây dựng bằng sự trung thực, tri thức chuyên môn và những nhịp cầu thép nối liền hai miền biển cả Việt Nam!</p>"
   }
 ]

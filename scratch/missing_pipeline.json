@@ -1,0 +1,452 @@
+[
+  {
+    "id": 2,
+    "title": "Cô Vợ Hào Môn Khinh Tôi Vô Dụng, Cả Hà Ngoại Biết Tôi Là Chủ Tịch Tập Đoàn Thép",
+    "genre": "Hào môn/Sảng văn",
+    "theme": "nam chính bị vợ hào môn khinh thường, hóa ra là chủ tịch tập đoàn thép ẩn danh, lật kèo bằng thâu tóm cổ phần gia tộc nhà vợ",
+    "setting": "Hà Ngoại, khu công nghiệp thép phía Bắc",
+    "protagonist": "Lê Minh Khôi, 32t, giả nghèo ẩn thân",
+    "antagonist": "Gia đình vợ hào môn - bố vợ CEO tập đoàn vật liệu xây dựng"
+  },
+  {
+    "id": 3,
+    "title": "Sư Phụ Đuổi Tôi Khỏi Võ Quán Vì Hèn Yếu, Giải Vô Địch Quốc Gia Lộ Ra Thân Phận Thật",
+    "genre": "Võ thuật/Sảng văn",
+    "theme": "võ sinh bị sư phụ đuổi vì tưởng hèn yếu, thực ra là cựu vô địch quốc tế ẩn thân, lật kèo tại giải đấu lớn",
+    "setting": "Thành Tâm, trung tâm võ thuật quốc gia",
+    "protagonist": "Trần Hải Phong, 28t, cựu vô địch kickboxing SEA Games",
+    "antagonist": "Sư phụ tham lam + môn phái đối thủ"
+  },
+  {
+    "id": 4,
+    "title": "Bố Vợ Ép Ly Hôn Vì Tôi Nghèo Hèn, Công Ty Tỷ Đô Của Tôi Niêm Yết Sàn Chứng Khoán Hôm Đó",
+    "genre": "Hào môn/Tài chính",
+    "theme": "bị bố vợ ép ly hôn ngày IPO công ty startup của nam chính, màn lật kèo live trên TV",
+    "setting": "Thành Tâm, Sở GDCK Phương Nam",
+    "protagonist": "Nguyễn Văn Dũng, 33t, founder startup logistics",
+    "antagonist": "Bố vợ - tổng giám đốc ngân hàng tư nhân"
+  },
+  {
+    "id": 5,
+    "title": "Giám Đốc Bệnh Viện Sa Thải Bác Sĩ Thực Tập, Hội Đồng Y Tế Quốc Gia Cử Người Điều Tra",
+    "genre": "Y tế/Sảng văn",
+    "theme": "bác sĩ thiên tài bị sa thải oan, được Bộ Sức khỏe Quốc dân cử đi điều tra bệnh viện đó bí mật",
+    "setting": "Thành Tâm, bệnh viện tư nhân hạng sang",
+    "protagonist": "Phạm Quốc Bảo, 30t, bác sĩ thiên tài cải trang thực tập sinh",
+    "antagonist": "Giám đốc bệnh viện + đường dây mổ chui"
+  },
+  {
+    "id": 6,
+    "title": "Đội Trưởng Bảo Vệ Khinh Tôi Làm Bảo Vệ Chân Vịt, Mật Vụ Tổng Cục 2 Xuất Hiện Bắt Hắn",
+    "genre": "Mật vụ/Hành động",
+    "theme": "mật vụ quân đội ẩn thân làm bảo vệ, bóc trần đường dây gián điệp kinh tế tại tập đoàn",
+    "setting": "Hà Ngoại, khu tổ hợp văn phòng cao cấp",
+    "protagonist": "Vũ Đình Long, 31t, thiếu tá tình báo quân đội ẩn thân",
+    "antagonist": "Đội trưởng bảo vệ + mạng lưới gián điệp kinh tế"
+  },
+  {
+    "id": 7,
+    "title": "Bị Đuổi Khỏi Công Ty Khởi Nghiệp, Sản Phẩm Của Tôi Thống Trị Top 1 App Store Đông Nam Á",
+    "genre": "Công nghệ/Startup",
+    "theme": "lập trình viên bị đuổi, sản phẩm bị đánh cắp, phản công bằng sản phẩm mới vượt trội hơn",
+    "setting": "Thành Tâm, hệ sinh thái startup công nghệ",
+    "protagonist": "Cao Thanh Tùng, 27t, lập trình viên thiên tài full-stack",
+    "antagonist": "Đồng sáng lập phản bội + quỹ đầu tư nước ngoài"
+  },
+  {
+    "id": 8,
+    "title": "Nhà Chồng Khinh Tôi Không Biết Nấu Ăn, Tôi Giật Giải Đầu Bếp Số 1 Đông Nam Á Trước Mặt Họ",
+    "genre": "Ẩm thực/Hào môn",
+    "theme": "nàng dâu bị nhà chồng khinh thường về nấu nướng, hóa ra là đầu bếp thiên tài được Michelin công nhận",
+    "setting": "Đà Thành, nhà hàng hải sản cao cấp",
+    "protagonist": "Lê Thị Nhung, 26t, đầu bếp thiên tài ẩn danh",
+    "antagonist": "Nhà chồng hào môn + đầu bếp đối thủ gian trá"
+  },
+  {
+    "id": 9,
+    "title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+    "genre": "Học thuật/Sảng văn",
+    "theme": "tiến sĩ ẩn danh bị giáo sư đuổi khỏi lớp, lật kèo khi hội đồng khoa học phát hiện ra thân phận thật",
+    "setting": "Hà Ngoại, đại học kỹ thuật hàng đầu",
+    "protagonist": "Đinh Tuấn Anh, 34t, tiến sĩ khoa học ẩn danh",
+    "antagonist": "Giáo sư tham nhũng học thuật + đường dây bán bằng"
+  },
+  {
+    "id": 10,
+    "title": "Thuyền Trưởng Tàu Cá Bị Chủ Cảng Ép Nợ, Hóa Ra Là Đại Gia Hàng Hải Đang Điều Tra Thâu Tóm",
+    "genre": "Hàng hải/Kinh doanh",
+    "theme": "đại gia hàng hải ẩn thân làm thuyền trưởng nhỏ để điều tra âm mưu thâu tóm chuỗi cảng biển",
+    "setting": "Hải Bình, cảng biển miền Bắc",
+    "protagonist": "Nguyễn Hải Long, 38t, chủ tịch tập đoàn hàng hải ẩn danh",
+    "antagonist": "Chủ cảng + liên minh thâu tóm nước ngoài"
+  },
+  {
+    "id": 11,
+    "title": "Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ",
+    "genre": "Nông nghiệp/Startup/Hào môn",
+    "theme": "cô gái xuất thân nông thôn bị khinh thường, xây dựng đế chế nông nghiệp hữu cơ công nghệ cao",
+    "setting": "Đắk Minh, vùng nông nghiệp Tây Nguyên",
+    "protagonist": "Nguyễn Thị Lan, 28t, kỹ sư nông nghiệp công nghệ cao",
+    "antagonist": "Nhà trai hào môn + công ty nông nghiệp đối thủ gian lận"
+  },
+  {
+    "id": 12,
+    "title": "Trưởng Phòng Bán Hàng Khinh Nhân Viên Mới, Nhân Viên Đó Là Chuyên Gia Tư Vấn Của Tập Đoàn Mẹ",
+    "genre": "Doanh nghiệp/Sảng văn",
+    "theme": "chuyên gia cải tổ doanh nghiệp ẩn thân làm nhân viên mới để điều tra nội bộ, lật kèo màn họp tổng kết",
+    "setting": "Thành Tâm, tập đoàn bán lẻ lớn",
+    "protagonist": "Trần Minh Hoàng, 35t, chuyên gia tái cơ cấu doanh nghiệp",
+    "antagonist": "Trưởng phòng tham nhũng + mạng lưới rút ruột nội bộ"
+  },
+  {
+    "id": 13,
+    "title": "Vợ Đòi Ly Hôn Vì Chồng Thất Nghiệp, Ngày Ký Đơn Chồng Nhận Danh Hiệu Kiến Trúc Sư Quốc Gia",
+    "genre": "Kiến trúc/Hào môn",
+    "theme": "kiến trúc sư thiên tài ẩn thân, vợ đòi ly hôn đúng ngày anh nhận giải thưởng kiến trúc quốc gia",
+    "setting": "Hà Ngoại, làng nghề kiến trúc truyền thống",
+    "protagonist": "Lê Quang Minh, 34t, kiến trúc sư thiên tài thiết kế bền vững",
+    "antagonist": "Vợ + gia đình vợ hào môn + đồng nghiệp đánh cắp công trình"
+  },
+  {
+    "id": 14,
+    "title": "Tài Xế Taxi Bị Khách VIP Khinh Thường, Tài Xế Đó Sở Hữu Công Ty Taxi Lớn Nhất Thành Tâm",
+    "genre": "Vận tải/Sảng văn",
+    "theme": "chủ tập đoàn vận tải ẩn thân lái taxi để trải nghiệm thực tế và điều tra đối thủ cạnh tranh",
+    "setting": "Thành Tâm, thị trường gọi xe công nghệ",
+    "protagonist": "Hoàng Văn Nam, 40t, founder & CEO tập đoàn vận tải",
+    "antagonist": "Khách VIP + công ty gọi xe nước ngoài chơi bẩn"
+  },
+  {
+    "id": 15,
+    "title": "Con Trai Nuôi Bị Đuổi Ra Khỏi Tập Đoàn, Di Chúc Ông Nội Trao Lại 70% Cổ Phần",
+    "genre": "Gia tộc/Thừa kế",
+    "theme": "con trai nuôi bị gia tộc tẩy chay, di chúc bí mật của ông nội trao lại quyền kiểm soát tập đoàn",
+    "setting": "Thành Tâm, tập đoàn gia đình thế hệ thứ 3",
+    "protagonist": "Lâm Thế Khải, 30t, con nuôi bị phân biệt đối xử",
+    "antagonist": "Anh chị em họ hàng + bên thứ ba thao túng di chúc"
+  },
+  {
+    "id": 16,
+    "title": "Thợ Sửa Xe Bị Cả Xóm Khinh, Khi Đội Đua F1 Quốc Gia Tìm Đến Thuê Anh Làm Kỹ Sư Trưởng",
+    "genre": "Cơ khí/Đua xe",
+    "theme": "thiên tài cơ khí ẩn thân làm thợ sửa xe, được đội đua F1 quốc gia mời làm kỹ sư trưởng",
+    "setting": "Thành Tâm, trường đua tốc độ",
+    "protagonist": "Nguyễn Bảo Sơn, 29t, kỹ sư cơ khí thiên tài",
+    "antagonist": "Cơ sở đua xe cũ + đối thủ sabotage"
+  },
+  {
+    "id": 17,
+    "title": "Trợ Lý Bị Sếp Nữ CEO Ngược Đãi, Sếp Mới Của Cô Chính Là Anh Sau Thâu Tóm Công Ty",
+    "genre": "Văn phòng/Sảng văn",
+    "theme": "trợ lý tỷ phú ẩn thân bị nữ CEO ngược đãi, thâu tóm công ty cô ta và trở thành sếp mới của cô",
+    "setting": "Thành Tâm, tòa nhà văn phòng hạng A",
+    "protagonist": "Phùng Khánh Huy, 31t, chủ tịch quỹ đầu tư M&A ẩn danh",
+    "antagonist": "Nữ CEO hung hăng + hội đồng cổ đông tham lam"
+  },
+  {
+    "id": 18,
+    "title": "Chồng Nghèo Bị Họ Hàng Khinh Dự Tiệc Hào Môn, Hóa Ra Anh Là Khách Mời VIP Của Sự Kiện Đó",
+    "genre": "Hào môn/Sảng văn",
+    "theme": "đại gia ẩn thân bị họ hàng vợ khinh thường tại tiệc hào môn, lật kèo khi ban tổ chức xác nhận anh là khách VIP chính",
+    "setting": "Hà Ngoại, dinh thự gia tộc họ Trần",
+    "protagonist": "Bùi Anh Tuấn, 35t, tỷ phú bất động sản ẩn thân",
+    "antagonist": "Họ hàng vợ kẻ cả + đối tác kinh doanh gian trá"
+  },
+  {
+    "id": 19,
+    "title": "Nữ Thừa Kế Bị Ép Gả Vào Gia Tộc Lụn Bại, Startup AI Của Cô Được Google Định Giá 1 Tỷ USD",
+    "genre": "AI/Startup/Hào môn",
+    "theme": "nữ thiên tài AI bị gia đình ép gả, startup của cô bùng nổ đúng ngày đám cưới cưỡng bức",
+    "setting": "Thành Tâm, hệ sinh thái công nghệ AI",
+    "protagonist": "Trần Thị Minh Châu, 26t, nhà nghiên cứu AI thiên tài",
+    "antagonist": "Gia đình ép buộc + đối thủ đánh cắp nghiên cứu"
+  },
+  {
+    "id": 20,
+    "title": "Giáo Viên Làng Bị Hiệu Trưởng Khinh Thường, Bộ Giáo Dục Bổ Nhiệm Anh Làm Thanh Tra Đặc Biệt",
+    "genre": "Giáo dục/Sảng văn",
+    "theme": "tiến sĩ giáo dục ẩn thân dạy làng để nghiên cứu thực địa, được Bộ cử điều tra tham nhũng giáo dục",
+    "setting": "Huyện vùng sâu, trường học nghèo",
+    "protagonist": "Lê Thanh Bình, 36t, tiến sĩ chính sách giáo dục",
+    "antagonist": "Hiệu trưởng tham nhũng + đường dây mua bán điểm"
+  },
+  {
+    "id": 21,
+    "title": "Người Làm Vườn Bị Gia Đình Chủ Biệt Thự Khinh, Lộ Ra Là Kiến Trúc Sư Thiết Kế Cả Khu Đô Thị Đó",
+    "genre": "Bất động sản/Kiến trúc",
+    "theme": "kiến trúc sư tỷ phú ẩn thân làm vườn để nghỉ ngơi, bị gia đình chủ nhà khinh, lật kèo khi họ nhờ anh tư vấn dự án",
+    "setting": "Khu đô thị Vạn Hoa, Thành Tâm",
+    "protagonist": "Vũ Quốc Hùng, 42t, kiến trúc sư & nhà đầu tư BĐS",
+    "antagonist": "Gia chủ hào môn + đối tác BĐS gian lận"
+  },
+  {
+    "id": 22,
+    "title": "Cô Gái Bán Hoa Bị Đám Cưới Nhà Giàu Đuổi Ra, Tập Đoàn Hoa Tươi Của Cô Niêm Yết Ngay Hôm Đó",
+    "genre": "Kinh doanh/Hào môn",
+    "theme": "CEO tập đoàn hoa tươi ẩn thân bán lẻ để tìm cảm hứng, bị đám cưới nhà giàu đuổi, lật kèo bằng thông báo IPO",
+    "setting": "Hội Nguyên, thị trường hoa tươi cao cấp",
+    "protagonist": "Phạm Thị Hương, 29t, CEO tập đoàn hoa tươi xuất khẩu",
+    "antagonist": "Nhà trai hào môn + đối thủ nhái thương hiệu"
+  },
+  {
+    "id": 23,
+    "title": "Trọng Tài Bóng Đá Bị Cầu Thủ Ngôi Sao Xúc Phạm, Hóa Ra Là Cựu Danh Thủ Số 1 Quốc Gia",
+    "genre": "Bóng đá/Thể thao",
+    "theme": "cựu cầu thủ huyền thoại ẩn thân làm trọng tài, bị cầu thủ ngôi sao hỗn láo, lật kèo bằng thân phận thật",
+    "setting": "Thành Tâm, sân vận động quốc gia",
+    "protagonist": "Trương Hùng Cường, 38t, cựu đội trưởng đội tuyển quốc gia",
+    "antagonist": "Cầu thủ ngôi sao hỗn láo + ban quản lý câu lạc bộ tham nhũng"
+  },
+  {
+    "id": 24,
+    "title": "Người Đưa Thư Bị Cả Tòa Nhà Cao Cấp Coi Thường, Anh Là Chủ Sở Hữu Tòa Nhà Đó",
+    "genre": "Bất động sản/Sảng văn",
+    "theme": "chủ tòa nhà thương mại ẩn thân làm người đưa thư để kiểm tra nội bộ quản lý, lật kèo khi ký hợp đồng thuê",
+    "setting": "Thành Tâm, tòa nhà văn phòng hạng A+",
+    "protagonist": "Đinh Xuân Phú, 41t, đại gia bất động sản thương mại",
+    "antagonist": "Ban quản lý tòa nhà tham nhũng + kẻ thuê mặt bằng gian trá"
+  },
+  {
+    "id": 25,
+    "title": "Thầy Lang Bị Bệnh Viện Hiện Đại Chê, Bài Thuốc Của Thầy Được WHO Công Nhận Toàn Cầu",
+    "genre": "Y học cổ truyền/Sảng văn",
+    "theme": "tiến sĩ y học cổ truyền bị bác sĩ tây y khinh thường, bài thuốc đột phá được WHO công nhận",
+    "setting": "Hà Ngoại, viện y học cổ truyền quốc gia",
+    "protagonist": "Nguyễn Văn Thịnh, 45t, tiến sĩ y học cổ truyền & hiện đại",
+    "antagonist": "Bệnh viện tư nhân tham lam + dược phẩm đa quốc gia"
+  },
+  {
+    "id": 26,
+    "title": "Lính Cứu Hỏa Bị Đồng Đội Coi Thường Vì Chậm Chạp, Anh Cứu Cả Tòa Nhà 40 Tầng Đang Cháy",
+    "genre": "Lính cứu hỏa/Hành động",
+    "theme": "lính cứu hỏa bị đồng đội khinh vì vẻ ngoài yếu đuối, thực ra là cựu đặc nhiệm với kỹ năng phi thường",
+    "setting": "Thành Tâm, trung tâm phòng cháy chữa cháy",
+    "protagonist": "Hoàng Đức Mạnh, 30t, cựu đặc nhiệm PCCC quốc tế",
+    "antagonist": "Đồng đội kẻ cả + chủ tòa nhà che giấu nguy hiểm"
+  },
+  {
+    "id": 27,
+    "title": "Phiên Dịch Viên Bị Đoàn Ngoại Giao Coi Thường, Hóa Ra Đại Sứ Quán Mới Nhờ Anh Giải Vây Khủng Hoảng",
+    "genre": "Ngoại giao/Hành động",
+    "theme": "mật vụ ngoại giao ẩn thân làm phiên dịch, giải quyết khủng hoảng con tin ngoại giao bí mật",
+    "setting": "Hà Ngoại, khu ngoại giao đoàn",
+    "protagonist": "Cao Minh Tuấn, 33t, chuyên gia đàm phán khủng hoảng Bộ Ngoại giao",
+    "antagonist": "Nhóm khủng bố kinh tế + quan chức nội gián"
+  },
+  {
+    "id": 28,
+    "title": "Kế Toán Bị Sa Thải Vì Báo Cáo Gian Lận, Ủy Ban Chứng Khoán Bổ Nhiệm Làm Thanh Tra Đặc Biệt",
+    "genre": "Tài chính/Chứng khoán",
+    "theme": "kế toán trưởng phát hiện gian lận kế toán bị sa thải, sau đó được UBCKNN bổ nhiệm thanh tra chính công ty cũ",
+    "setting": "Thành Tâm, thị trường chứng khoán",
+    "protagonist": "Lý Thị Thanh Hoa, 32t, CPA & chuyên gia pháp y tài chính",
+    "antagonist": "CEO gian lận + quỹ đầu tư thao túng thị trường"
+  },
+  {
+    "id": 29,
+    "title": "Nhân Viên Vệ Sinh Bị Giám Đốc Khách Sạn 5 Sao Đuổi, Tập Đoàn Khách Sạn Của Anh Mua Lại Khách Sạn Đó",
+    "genre": "Khách sạn/Du lịch",
+    "theme": "chủ tập đoàn khách sạn ẩn thân làm nhân viên vệ sinh để kiểm tra chất lượng, bị giám đốc đuổi, sau đó thâu tóm",
+    "setting": "Hội Nguyên, khu du lịch cao cấp",
+    "protagonist": "Bùi Thế Hào, 39t, CEO tập đoàn khách sạn",
+    "antagonist": "Giám đốc khách sạn ngạo mạn + tập đoàn nước ngoài thâu tóm"
+  },
+  {
+    "id": 30,
+    "title": "Nông Dân Bị Doanh Nghiệp Lớn Ép Giá Thu Mua, Anh Thành Lập HTX Xuất Khẩu Thẳng Sang Nhật Bản",
+    "genre": "Nông nghiệp/Xuất khẩu",
+    "theme": "kỹ sư nông nghiệp về quê lập HTX, chống lại doanh nghiệp lớn ép giá, xuất khẩu trực tiếp sang Nhật",
+    "setting": "Đắk Minh, vùng cà phê Tây Nguyên",
+    "protagonist": "Trần Văn Hùng, 35t, kỹ sư nông nghiệp về quê khởi nghiệp",
+    "antagonist": "Doanh nghiệp thu mua độc quyền + thương lái gian lận"
+  },
+  {
+    "id": 31,
+    "title": "Thợ May Bị Boutique Cao Cấp Từ Chối, Bộ Sưu Tập Của Anh Được Paris Fashion Week Mời Tham Dự",
+    "genre": "Thời trang/Nghệ thuật",
+    "theme": "thiên tài thiết kế thời trang xuất thân nghèo bị từ chối, bộ sưu tập đột phá được Paris Fashion Week mời",
+    "setting": "Thành Tâm, làng may mặc truyền thống",
+    "protagonist": "Đinh Gia Bảo, 27t, nhà thiết kế thời trang thiên tài tự học",
+    "antagonist": "Giám đốc boutique cao cấp kiêu ngạo + đối thủ đánh cắp ý tưởng"
+  },
+  {
+    "id": 32,
+    "title": "Phó Giám Đốc Cũ Bị Hội Đồng Quản Trị Lật Đổ, Quay Trở Lại Thâu Tóm 60% Cổ Phần Từ Bên Ngoài",
+    "genre": "M&A/Doanh nghiệp",
+    "theme": "CEO bị đảo chính nội bộ, âm thầm mua gom cổ phần từ bên ngoài, quay trở lại kiểm soát công ty",
+    "setting": "Thành Tâm, thị trường M&A",
+    "protagonist": "Ngô Tấn Phát, 44t, CEO bị lật đổ",
+    "antagonist": "HĐQT phản bội + quỹ đầu tư nước ngoài thâu tóm"
+  },
+  {
+    "id": 33,
+    "title": "Con Trai Thứ Bị Gia Tộc Đuổi Vì Theo Đuổi Nghệ Thuật, Tranh Của Anh Bán 10 Triệu USD Tại Christie's",
+    "genre": "Nghệ thuật/Gia tộc",
+    "theme": "họa sĩ thiên tài bị gia tộc kinh doanh đuổi vì không chịu kế nghiệp, thành công vang dội trên sàn đấu giá quốc tế",
+    "setting": "Hà Ngoại, làng nghề gốm sứ & hội họa",
+    "protagonist": "Trần Phú Quý, 30t, họa sĩ thiên tài kết hợp truyền thống và hiện đại",
+    "antagonist": "Gia tộc kinh doanh + đường dây làm tranh giả"
+  },
+  {
+    "id": 34,
+    "title": "Nhân Viên Ngân Hàng Bị Đuổi Vì Từ Chối Giải Ngân Khoản Vay Gian Lận, NHNN Mời Làm Chuyên Gia Điều Tra",
+    "genre": "Ngân hàng/Pháp lý",
+    "theme": "nhân viên ngân hàng phát hiện cho vay gian lận bị sa thải, sau đó được Ngân hàng Trung ương cử điều tra chính ngân hàng cũ",
+    "setting": "Hà Ngoại, hệ thống ngân hàng thương mại",
+    "protagonist": "Lê Hoàng Sơn, 33t, chuyên gia thẩm định tín dụng",
+    "antagonist": "Giám đốc ngân hàng tham nhũng + đường dây cho vay sân sau"
+  },
+  {
+    "id": 35,
+    "title": "Huấn Luyện Viên Bóng Rổ Bị Câu Lạc Bộ Sa Thải, Đội Mới Của Anh Vô Địch Giải Đấu Quốc Gia",
+    "genre": "Bóng rổ/Thể thao",
+    "theme": "HLV thiên tài bị sa thải oan vì tranh chấp nội bộ, dẫn dắt đội yếu nhất lên vô địch quốc gia",
+    "setting": "Thành Tâm, giải bóng rổ quốc gia VBA",
+    "protagonist": "Hoàng Phúc An, 37t, cựu tuyển thủ & HLV thiên tài",
+    "antagonist": "CLB cũ gian trá + trọng tài bán độ"
+  },
+  {
+    "id": 36,
+    "title": "Chàng Rể Nghèo Bị Mẹ Vợ Ép Ra Ngoài Ngủ, Công Ty Mẹ Ký Hợp Đồng 200 Tỷ Với Gia Đình Vợ Ngay Hôm Sau",
+    "genre": "Hào môn/Kinh doanh",
+    "theme": "CEO ẩn thân bị mẹ vợ đối xử tệ, lật kèo khi công ty của mình ký hợp đồng béo bở với tập đoàn gia đình vợ",
+    "setting": "Thành Tâm, khu đô thị cao cấp",
+    "protagonist": "Phạm Hoàng Khải, 32t, CEO startup fintech ẩn thân",
+    "antagonist": "Gia đình vợ hào môn + đối thủ cạnh tranh phá hoại"
+  },
+  {
+    "id": 37,
+    "title": "Kỹ Thuật Viên Sửa Điện Thoại Bị Cửa Hàng Apple Khinh, Anh Là Nhà Sáng Chế 50 Bằng Sáng Chế Quốc Tế",
+    "genre": "Công nghệ/Sáng chế",
+    "theme": "nhà phát minh thiên tài ẩn thân sửa điện thoại, bị Apple store khinh thường, lật kèo bằng bằng sáng chế độc quyền",
+    "setting": "Thành Tâm, thị trường thiết bị công nghệ",
+    "protagonist": "Nguyễn Khoa Nam, 31t, kỹ sư điện tử & nhà phát minh",
+    "antagonist": "Chuỗi cửa hàng công nghệ + công ty đánh cắp sáng chế"
+  },
+  {
+    "id": 38,
+    "title": "Hướng Dẫn Viên Du Lịch Bị Đoàn Khách Sang Khinh Thường, Anh Là Chủ Công Ty Du Lịch Họ Đang Đi Tour",
+    "genre": "Du lịch/Sảng văn",
+    "theme": "chủ công ty du lịch ẩn thân làm HDV để cải thiện dịch vụ, bị khách khinh thường, lật kèo khi khách biết thân phận thật",
+    "setting": "Hội Nguyên, tuyến du lịch văn hóa di sản",
+    "protagonist": "Trương Thanh Tùng, 36t, CEO công ty du lịch hàng đầu",
+    "antagonist": "Khách du lịch hào môn + đối thủ phá hoại tour"
+  },
+  {
+    "id": 39,
+    "title": "Thực Tập Sinh Bị Cả Phòng Ban Bắt Nạt, Hóa Ra Là Con Trai Chủ Tịch Tập Đoàn Đến Kiểm Tra Nội Bộ",
+    "genre": "Doanh nghiệp/Kế thừa",
+    "theme": "thiếu gia tập đoàn ẩn thân thực tập để học hỏi, phát hiện tham nhũng nội bộ, lật kèo bằng thân phận thật",
+    "setting": "Thành Tâm, tập đoàn đa ngành hàng đầu",
+    "protagonist": "Bùi Minh Quân, 25t, thiếu gia tập đoàn thực tập ẩn danh",
+    "antagonist": "Phòng ban tham nhũng + phó tổng âm mưu chiếm quyền"
+  },
+  {
+    "id": 40,
+    "title": "Người Môi Giới Nhà Đất Tép Riu Bị Sếp Đuổi, Anh Ký Hợp Đồng 1000 Tỷ Với Chủ Đầu Tư Nước Ngoài",
+    "genre": "Bất động sản/Sảng văn",
+    "theme": "chuyên gia bất động sản quốc tế ẩn thân làm môi giới nhỏ để nghiên cứu thị trường, ký deal lớn nhất năm",
+    "setting": "Thành Tâm, thị trường BĐS cao cấp",
+    "protagonist": "Đặng Quốc Việt, 38t, chuyên gia định giá BĐS quốc tế",
+    "antagonist": "Công ty môi giới tham lam + chủ đầu tư lừa đảo"
+  },
+  {
+    "id": 41,
+    "title": "Bảo Vệ Viện Dưỡng Lão Bị Khinh Thường, Hóa Ra Là Thạc Sĩ Công Tác Xã Hội Đang Điều Tra Ngược Đãi",
+    "genre": "Xã hội/Điều tra",
+    "theme": "thạc sĩ công tác xã hội ẩn thân làm bảo vệ điều tra nạn ngược đãi người cao tuổi, lật kèo bằng bằng chứng",
+    "setting": "Hà Ngoại, chuỗi viện dưỡng lão tư nhân",
+    "protagonist": "Vũ Thị Lan Anh, 30t, thạc sĩ công tác xã hội & điều tra viên",
+    "antagonist": "Chủ chuỗi viện dưỡng lão + đường dây trục lợi người già"
+  },
+  {
+    "id": 42,
+    "title": "Kế Toán Làng Bị Hội Đồng Xã Khinh, Kiểm Toán Nhà Nước Cử Anh Điều Tra Tham Nhũng Ngân Sách Xã",
+    "genre": "Tham nhũng/Nông thôn",
+    "theme": "kiểm toán viên nhà nước ẩn thân làm kế toán xã, phát hiện tham nhũng ngân sách, lật kèo bằng điều tra chính thức",
+    "setting": "Huyện nông thôn miền Bắc",
+    "protagonist": "Lê Văn Thắng, 34t, kiểm toán viên nhà nước cấp cao",
+    "antagonist": "Chủ tịch xã tham nhũng + đường dây rút ruột ngân sách"
+  },
+  {
+    "id": 43,
+    "title": "Phụ Bếp Bị Bếp Trưởng Đối Xử Như Nô Lệ, Hóa Ra Là Chủ Chuỗi Nhà Hàng Đang Kiểm Tra Bếp Trưởng",
+    "genre": "Ẩm thực/Nhà hàng",
+    "theme": "chủ chuỗi nhà hàng ẩn thân làm phụ bếp để kiểm tra chất lượng và nhân sự, phát hiện và sa thải bếp trưởng bạo quyền",
+    "setting": "Thành Tâm, chuỗi nhà hàng cao cấp",
+    "protagonist": "Hoàng Minh Đức, 40t, CEO chuỗi nhà hàng ẩm thực Việt",
+    "antagonist": "Bếp trưởng bạo quyền + nhà cung cấp thực phẩm giả"
+  },
+  {
+    "id": 44,
+    "title": "Họa Sĩ Vẽ Chân Dung Lề Đường Bị Cảnh Sát Đuổi, Tranh Của Anh Được Bảo Tàng Quốc Gia Đặt Mua",
+    "genre": "Nghệ thuật/Xã hội",
+    "theme": "họa sĩ tài năng chọn sống tự do vẽ đường phố, bị coi thường, lật kèo khi tác phẩm của anh được bảo tàng quốc gia công nhận",
+    "setting": "Hội Nguyên, phố cổ nghệ thuật",
+    "protagonist": "Phan Hoàng Linh, 29t, họa sĩ thiên tài theo đuổi nghệ thuật thuần túy",
+    "antagonist": "Nhà gallery gian lận + giới nghệ thuật thương mại hóa"
+  },
+  {
+    "id": 45,
+    "title": "Bác Sĩ Thú Y Vùng Sâu Bị Bộ Thú Y Đô Thị Coi Thường, Anh Khống Chế Dịch Bệnh Lây Sang Người",
+    "genre": "Y tế/Nông thôn",
+    "theme": "bác sĩ thú y thiên tài tình nguyện về vùng sâu, khống chế dịch bệnh lây từ động vật sang người khi cả hệ thống bất lực",
+    "setting": "Vùng núi phía Bắc, biên giới",
+    "protagonist": "Trần Minh Sơn, 33t, tiến sĩ thú y & dịch tễ học",
+    "antagonist": "Cơ quan thú y tham nhũng + đường dây buôn động vật hoang dã"
+  },
+  {
+    "id": 46,
+    "title": "Luật Sư Mới Ra Trường Bị Hãng Luật Lớn Từ Chối, Cô Thắng Vụ Kiện 500 Tỷ Mà Họ Thua",
+    "genre": "Luật pháp/Sảng văn",
+    "theme": "luật sư thiên tài bị hãng luật lớn từ chối, lập hãng nhỏ, sau đó thắng vụ kiện mà hãng lớn thất bại thảm hại",
+    "setting": "Thành Tâm, tòa án kinh tế",
+    "protagonist": "Nguyễn Thị Quỳnh Nga, 28t, luật sư thương mại thiên tài",
+    "antagonist": "Hãng luật lớn kiêu ngạo + bị đơn là tập đoàn gian trá"
+  },
+  {
+    "id": 47,
+    "title": "Phóng Viên Tập Sự Bị Tổng Biên Tập Khinh Thường, Phóng Sự Của Cô Giật Giải Báo Chí Quốc Gia",
+    "genre": "Báo chí/Điều tra",
+    "theme": "phóng viên điều tra thiên tài bị tổng biên tập khinh thường, phóng sự điều tra tham nhũng của cô đoạt giải lớn",
+    "setting": "Hà Ngoại, làng báo chí",
+    "protagonist": "Lê Thị Minh Trang, 26t, phóng viên điều tra tài năng",
+    "antagonist": "Tổng biên tập tham nhũng + tập đoàn truyền thông gian dối"
+  },
+  {
+    "id": 48,
+    "title": "Lập Trình Viên Freelance Bị Công Ty Game Từ Chối, Game Của Anh Thu Về 100 Tỷ Chỉ Trong 30 Ngày",
+    "genre": "Game/Công nghệ",
+    "theme": "lập trình viên game thiên tài bị từ chối, tự phát triển game indie, thành công vang dội vượt mặt công ty lớn",
+    "setting": "Thành Tâm, thị trường game mobile",
+    "protagonist": "Phùng Minh Hải, 26t, lập trình viên game thiên tài",
+    "antagonist": "Công ty game lớn đánh cắp ý tưởng + publisher gian lận"
+  },
+  {
+    "id": 49,
+    "title": "Nhân Viên Giao Hàng Bị Khách Hàng VIP Mắng Nhiếc, Anh Là Chủ Tịch Công Ty Logistics Đang Kiểm Tra Thực Địa",
+    "genre": "Logistics/Sảng văn",
+    "theme": "CEO công ty logistics ẩn thân giao hàng để trải nghiệm thực tế, bị khách VIP mắng, lật kèo bằng thân phận thật",
+    "setting": "Thành Tâm, thị trường giao hàng nhanh",
+    "protagonist": "Cao Quốc Toàn, 38t, CEO tập đoàn logistics hàng đầu",
+    "antagonist": "Khách VIP ngạo mạn + đối thủ cạnh tranh phá hoại"
+  },
+  {
+    "id": 50,
+    "title": "Vệ Sĩ Nữ Bị Ông Chủ Nhà Giàu Coi Thường Vì Là Phụ Nữ, Cô Là Đội Trưởng Đặc Nhiệm Nữ Quân Đội",
+    "genre": "Hành động/Nữ cường",
+    "theme": "đặc nhiệm nữ thiên tài ẩn thân làm vệ sĩ, bị khinh thường, lật kèo bằng kỹ năng chiến đấu siêu việt khi xảy ra sự cố",
+    "setting": "Thành Tâm, khu an ninh cao cấp",
+    "protagonist": "Trần Thị Hồng Nhung, 29t, đội trưởng đặc nhiệm nữ",
+    "antagonist": "Ông chủ kiêu ngạo + tổ chức ám sát thuê"
+  },
+  {
+    "id": 51,
+    "title": "Giám Đốc Sản Phẩm Bị Công Ty Unicorn Đuổi, Startup Của Anh Được Y Combinator Chọn Vào Batch",
+    "genre": "Startup/Công nghệ",
+    "theme": "PM thiên tài bị sa thải, startup mới của anh được Y Combinator chấp nhận và định giá cao hơn công ty cũ",
+    "setting": "Thành Tâm, hệ sinh thái startup toàn cầu",
+    "protagonist": "Vũ Hoàng Minh, 30t, Product Manager thiên tài",
+    "antagonist": "CEO công ty cũ + nhà đầu tư VC phản bội"
+  }
+]

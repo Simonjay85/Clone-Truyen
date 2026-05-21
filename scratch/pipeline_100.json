@@ -1,0 +1,611 @@
+{
+  "pipeline_version": "1.0",
+  "target_total": 100,
+  "completed": 0,
+  "last_batch_reviewed": 0,
+  "published_ids": [],
+  "current_batch": [],
+  "status": "ready",
+  "novel_ideas": [
+    {
+      "id": 1, "title_hint": "Vua Xây Dựng Thầm Lặng Bình Dương",
+      "theme": "Tổng thầu ẩn danh làm phụ hồ, mẹ vợ khinh thường, đấu thầu 2000 tỷ KCN Bình Dương, C03 bắt giám đốc hối lộ",
+      "protagonist": "Nguyễn Thanh Hùng", "love_interest": "Trần Thu Hà (Kỹ sư giám sát Ban QLDA)",
+      "setting": "Bình Dương, Khu công nghệ cao VSIP, đấu thầu xây dựng", "author": "Thạch Kiếm Bình Dương"
+    },
+    {
+      "id": 2, "title_hint": "Thuyền Trưởng Tỷ Phú Cảng Tiên Sa",
+      "theme": "Cựu thuyền trưởng container quốc tế, bốc vác cảng Tiên Sa, tập đoàn ngoại âm mưu thâu tóm cảng Đà Nẵng bằng hợp đồng ma, C03 phá án",
+      "protagonist": "Lê Quang Vũ", "love_interest": "Ngô Thị Hương (GĐ Cảng vụ Đà Nẵng)",
+      "setting": "Cảng Tiên Sa, cầu Rồng Đà Nẵng, logistics container", "author": "Sóng Bạc Tiên Sa"
+    },
+    {
+      "id": 3, "title_hint": "Thiên Tài Mã Hoá Đà Lạt Sương Mù",
+      "theme": "Kỹ sư bảo mật bị startup đánh cắp bằng sáng chế, blacklist A05, quỹ VC Singapore 200 triệu USD kiểm chứng công nghệ",
+      "protagonist": "Bùi Việt Anh", "love_interest": "Lim Su Yin (GĐ quỹ VC Temasek Singapore)",
+      "setting": "Đà Lạt, Bộ Công An A05, sàn HNX", "author": "Code Sương Mù"
+    },
+    {
+      "id": 4, "title_hint": "Đầu Bếp Hội An Và Sao Michelin Đà Nẵng",
+      "theme": "Đầu bếp vỉa hè Hội An bị cướp công thức bánh mì 70 năm, vu khống thực phẩm bẩn, hội đồng Michelin Asia Pacific phán xử",
+      "protagonist": "Phạm Hoàng Minh", "love_interest": "Trần Diệu Linh (Chuyên gia ẩm thực Bộ Y tế)",
+      "setting": "Phố cổ Hội An, nhà hàng Đà Nẵng, Michelin Guide Vietnam", "author": "Hương Vị Phố Hội"
+    },
+    {
+      "id": 5, "title_hint": "CEO Giấu Mặt Đảo Lộn Tập Đoàn Dệt May Bình Dương",
+      "theme": "Thiếu gia bị cha nuôi tẩy chay khỏi HĐQT tập đoàn dệt may 2000 tỷ, nữ luật sư M&A Hà Nội phản công pháp lý, SCIC vào cuộc",
+      "protagonist": "Trần Minh Khải", "love_interest": "Đinh Lan Anh (Luật sư M&A)",
+      "setting": "KCN Bình Dương, Toà án kinh tế TP.HCM, SCIC", "author": "Thép Bình Dương"
+    },
+    {
+      "id": 6, "title_hint": "Ông Hoàng Địa Ốc Ẩn Thế Phú Mỹ Hưng",
+      "theme": "Chuyên gia định giá đất bị phản bội, vu khống ăn hoa hồng, CEO quỹ REIT 5000 tỷ kiểm tra qua vụ mua lại toà nhà Quận 7",
+      "protagonist": "Đinh Thanh Tùng", "love_interest": "Nguyễn Minh Châu (CEO quỹ REIT)",
+      "setting": "Phú Mỹ Hưng Quận 7, Sở Xây Dựng TP.HCM, C03 địa ốc", "author": "Địa Linh Sài Gòn"
+    },
+    {
+      "id": 7, "title_hint": "Vũ Công Hoàng Gia Và Đế Chế Nhà Hát Lớn",
+      "theme": "Đạo diễn ballet Nga về nước bị GĐ nghệ thuật cướp tiết mục, tập đoàn giải trí nữ chủ tịch kiểm tra bằng buổi diễn trước hội đồng quốc tế",
+      "protagonist": "Nguyễn Hoàng Long", "love_interest": "Lê Bích Ngọc (Chủ tịch V-League Entertainment)",
+      "setting": "Nhà hát Lớn Hà Nội, Học viện Âm nhạc Quốc gia", "author": "Dáng Thăng Long"
+    },
+    {
+      "id": 8, "title_hint": "Kỹ Sư Smart Grid Và Bóng Tối EVN",
+      "theme": "Kỹ sư thiết kế lưới điện thông minh phát hiện đấu thầu gian lận, bị sa thải vu khống gây mất điện, Phó TGĐ EVN tin tưởng sau khi anh ngăn sự cố nguy hiểm",
+      "protagonist": "Phan Đức Thành", "love_interest": "Nguyễn Thu Trang (Phó TGĐ EVN)",
+      "setting": "Trung tâm điều độ điện quốc gia, KCN Hà Nam", "author": "Vôn Kế Hà Thành"
+    },
+    {
+      "id": 9, "title_hint": "Triều Đại Cà Phê Bazan Đắk Lắk",
+      "theme": "Thợ rang cà phê bậc thầy Buôn Ma Thuột bị đối tác ngoại cướp bằng sáng chế, ép bán thương hiệu 50 năm, SCA World Competition lật ngược thế cờ",
+      "protagonist": "Y Dhăm Nie", "love_interest": "Trần Thị Cẩm Tú (GĐ chuỗi cà phê xuất khẩu)",
+      "setting": "Buôn Ma Thuột, Hội chợ Cà Phê quốc tế Đắk Lắk, SHTT Việt Nam", "author": "Hạt Đất Bazan"
+    },
+    {
+      "id": 10, "title_hint": "Nhà Thiết Kế Tàng Hình Vietnam Fashion Week",
+      "theme": "NTK Đà Nẵng bị người tình cướp BST dự thi Vietnam Fashion Week, vu khống đạo nhái, nữ chủ tịch Hội đồng Thời trang VN chứng minh bản quyền",
+      "protagonist": "Châu Minh Hải", "love_interest": "Vũ Thanh Huyền (Chủ tịch VFA)",
+      "setting": "Hà Nội, Vietnam International Fashion Week, Cục Bản quyền tác giả", "author": "Kim Chỉ Nam"
+    },
+    {
+      "id": 11, "title_hint": "Thần Tài Chứng Khoán Phố Wall Hà Nội",
+      "theme": "Chuyên gia phân tích cổ phiếu thiên tài bị giám đốc quỹ đuổi, vu khống thao túng thị trường, nữ chủ tịch UBCKNN tin dùng sau khi anh bóc trần đường dây pump-and-dump nghìn tỷ",
+      "protagonist": "Hoàng Đức Minh", "love_interest": "Phan Thị Bảo Châu (Phó Chủ tịch UBCKNN)",
+      "setting": "Phố Wall Hà Nội - phố Đinh Lễ, HNX, HOSE", "author": "Bull Phố Cổ"
+    },
+    {
+      "id": 12, "title_hint": "Bác Sĩ Pháp Y Và Vụ Án 500 Tỷ",
+      "theme": "Bác sĩ pháp y thiên tài tại Viện Pháp Y Quốc gia bị trưởng viện chạy án che giấu bằng chứng, bị đình chỉ công tác, nữ điều tra viên C03 hợp tác điều tra",
+      "protagonist": "Lê Văn Khánh", "love_interest": "Trung tá Nguyễn Phương Linh (C03 Bộ Công An)",
+      "setting": "Viện Pháp Y Quốc gia, Bệnh viện Việt Đức, C03", "author": "Giám Định Thủ Đô"
+    },
+    {
+      "id": 13, "title_hint": "Vua Nông Sản Đồng Bằng Sông Cửu Long",
+      "theme": "Kỹ sư nông nghiệp bị tập đoàn ngoại phá hoại mô hình lúa hữu cơ xuất khẩu Nhật, bị ngân hàng siết nợ 50 tỷ, nữ TGĐ tổ chức FAO Vietnam kiểm tra và hỗ trợ",
+      "protagonist": "Nguyễn Văn Phú", "love_interest": "Trần Hà My (Cố vấn FAO Vietnam)",
+      "setting": "Đồng Tháp, Cần Thơ, xuất khẩu gạo hữu cơ Nhật Bản", "author": "Lúa Vàng Miền Tây"
+    },
+    {
+      "id": 14, "title_hint": "Chàng Rể Khu Công Nghiệp Hải Phòng",
+      "theme": "Kỹ sư cơ khí chính xác ẩn thân làm công nhân nhà máy, bị cai thầu Hàn Quốc khinh thường, cứu nhà máy khỏi sự cố chết người, nữ GĐ nhà máy Samsung VN tin tưởng",
+      "protagonist": "Vũ Đức Thắng", "love_interest": "Kim Ji Yeon (GĐ nhà máy Samsung Việt Nam)",
+      "setting": "KCN Tràng Duệ Hải Phòng, Samsung Vietnam, VSIP", "author": "Thép Hải Cảng"
+    },
+    {
+      "id": 15, "title_hint": "Thiên Tài Thuế Và Đế Chế Ngầm",
+      "theme": "Chuyên gia thuế tại BigFour bị đối tác đuổi vu khống trốn thuế cho khách hàng, nữ Phó Tổng cục trưởng Tổng cục Thuế nhờ anh lật tẩy đường dây rửa tiền 1000 tỷ",
+      "protagonist": "Trịnh Minh Tuấn", "love_interest": "Nguyễn Khánh Linh (Phó TCC Tổng cục Thuế)",
+      "setting": "Hà Nội, Tổng cục Thuế, Big4 Audit Vietnam, C03", "author": "Số Đỏ Hà Thành"
+    },
+    {
+      "id": 16, "title_hint": "Kiến Trúc Sư Ẩn Mình Và Căn Hộ 1 Tỷ",
+      "theme": "KTS thiên tài bị chủ đầu tư cướp bản vẽ biệt thự nghỉ dưỡng Phú Quốc, vu khống vi phạm bản quyền, nữ CEO tập đoàn địa ốc Novaland-style kiểm tra và hợp tác",
+      "protagonist": "Đặng Minh Quân", "love_interest": "Ngô Thị Bích Phượng (CEO tập đoàn địa ốc)",
+      "setting": "Phú Quốc, hồ sơ xin phép xây dựng Bộ Xây Dựng", "author": "Bàn Vẽ Phú Quốc"
+    },
+    {
+      "id": 17, "title_hint": "Thủy Sư Đô Đốc Cá Ngừ Đại Dương Bình Định",
+      "theme": "Ngư dân tài giỏi Quy Nhơn bị chuỗi thu mua cá độc quyền Đài Loan ép giá, bị bắt nạt cướp lô hàng 5 tỷ, nữ CEO chuỗi nhà hàng Nhật tại Singapore kiểm tra chất lượng và ký hợp đồng độc quyền",
+      "protagonist": "Nguyễn Bình Hưng", "love_interest": "Tanaka Yuki (CEO Nhật)",
+      "setting": "Cảng Quy Nhơn, Bình Định, xuất khẩu cá ngừ Nhật Bản", "author": "Sóng Cả Bình Định"
+    },
+    {
+      "id": 18, "title_hint": "Đại Sư Thư Pháp Và Nghệ Thuật Triệu Đô",
+      "theme": "Nghệ nhân thư pháp Huế bị phòng trưng bày nghệ thuật Sài Gòn lừa đảo bán tác phẩm giả mạo, vu khống làm hàng nhái, nữ giám khảo Sotheby's Asia lật tẩy vụ gian lận",
+      "protagonist": "Nguyễn Phước Gia Bảo", "love_interest": "Sophie Tran (Chuyên gia Sotheby's Asia)",
+      "setting": "Huế, Phố đi bộ Nguyễn Huệ, Sotheby's Vietnam", "author": "Mực Thơm Cố Đô"
+    },
+    {
+      "id": 19, "title_hint": "Bậc Thầy Trà Việt Và Hội Chợ Tokyo",
+      "theme": "Nghệ nhân trà Shan Tuyết Hà Giang bị tập đoàn trà Trung Quốc đăng ký nhãn hiệu ăn cắp, ép bán vùng trồng trăm năm tuổi, nữ chuyên gia World Tea Expo Tokyo kiểm chứng và ký hợp đồng",
+      "protagonist": "Lý Văn Sơn", "love_interest": "Nguyễn Hà Thu (Chuyên gia World Tea Expo)",
+      "setting": "Hà Giang, Đồng Văn, Tokyo Tea Expo, SHTT Việt Nam", "author": "Bạch Trà Hà Giang"
+    },
+    {
+      "id": 20, "title_hint": "Trùm Logistics Ẩn Danh Và Cú Lật Sân Bay",
+      "theme": "Chuyên gia logistics quốc tế bị sa thải bị vu khống rửa tiền hàng hóa, phát hiện đường dây buôn lậu 1000 tỷ qua sân bay Nội Bài, nữ GĐ Tổng công ty Hàng không Việt Nam tin tưởng",
+      "protagonist": "Phạm Tuấn Kiệt", "love_interest": "Lê Thị Ánh Nguyệt (GĐ Vietnam Airlines Cargo)",
+      "setting": "Sân bay Nội Bài, Cục Hải quan, C03 buôn lậu", "author": "Đại Bàng Nội Bài"
+    },
+    {
+      "id": 21, "title_hint": "Vua Pin Mặt Trời Ninh Thuận",
+      "theme": "Kỹ sư năng lượng tái tạo bị công ty Hàn Quốc cướp thiết kế cánh đồng pin mặt trời 500MW, bị kiện phá hợp đồng, Bộ Công Thương vào cuộc kiểm tra, nữ Thứ trưởng Bộ Công Thương hỗ trợ",
+      "protagonist": "Trần Công Danh", "love_interest": "Nguyễn Thị Thanh Mai (Thứ trưởng Bộ Công Thương)",
+      "setting": "Ninh Thuận, Bình Thuận, dự án điện mặt trời 500MW", "author": "Ánh Dương Ninh Thuận"
+    },
+    {
+      "id": 22, "title_hint": "Thần Y Đông Y Và Viện Dưỡng Lão Nghìn Tỷ",
+      "theme": "Bác sĩ đông y thiên tài tại TP.HCM bị chủ phòng khám cũ vu khống gây tử vong do điều trị sai, bị tước chứng chỉ hành nghề, cứu cha của nữ CEO tập đoàn viện dưỡng lão hàng đầu VN",
+      "protagonist": "Võ Thiên Trường", "love_interest": "Nguyễn Bích Hạnh (CEO tập đoàn viện dưỡng lão)",
+      "setting": "Quận 5 TP.HCM, BV Tuệ Tĩnh, Cục Quản lý Y Dược cổ truyền", "author": "Thảo Mộc Sài Gòn"
+    },
+    {
+      "id": 23, "title_hint": "Tay Đua Xe Máy Và Đường Đua Trăm Tỷ",
+      "theme": "Cựu tay đua motocross Việt Nam bị đội đua cướp xe và vu khống dàn xếp tỷ số, bị cấm thi đấu, nữ CEO tập đoàn thể thao VPRace kiểm tra thực lực và phục hồi danh dự",
+      "protagonist": "Ngô Quang Hải", "love_interest": "Trần Bảo Trâm (CEO VPRace)",
+      "setting": "Trường đua Đại Nam Bình Dương, VMSC, đội đua quốc tế", "author": "Khói Bụi Đại Nam"
+    },
+    {
+      "id": 24, "title_hint": "Thám Tử Doanh Nghiệp Và Kho Bạc Bị Mất",
+      "theme": "Cựu sĩ quan C03 mở công ty thám tử doanh nghiệp, bị đối thủ gian lận cướp hợp đồng điều tra 20 tỷ, nữ TGĐ tập đoàn bảo hiểm Bảo Việt thuê anh điều tra vụ gian lận bảo hiểm 200 tỷ",
+      "protagonist": "Nguyễn Dũng Sĩ", "love_interest": "Phan Hoàng Oanh (TGĐ Bảo Việt)",
+      "setting": "Hà Nội, Bảo Việt Insurance, C03, Viện Kiểm sát", "author": "Mắt Đại Bàng"
+    },
+    {
+      "id": 25, "title_hint": "Giáo Sư AI Và Siêu Máy Tính Quốc Gia",
+      "theme": "Giáo sư AI Đại học Bách Khoa bị viện trưởng cướp đề tài nghiên cứu AI cho y tế 100 tỷ, bị tố cáo ngược sử dụng dữ liệu bất hợp pháp, nữ Thứ trưởng Bộ KH&CN kiểm tra và minh oan",
+      "protagonist": "Lê Hữu Phúc", "love_interest": "Trần Thị Kim Chi (Thứ trưởng Bộ KH&CN)",
+      "setting": "Đại học Bách Khoa HN, Bộ KH&CN, Viện Hàn lâm KH&CN VN", "author": "Dữ Liệu Bách Khoa"
+    },
+    {
+      "id": 26, "title_hint": "Ông Hoàng Mỳ Cay Đà Nẵng Và Chuỗi Nhà Hàng Châu Á",
+      "theme": "Chủ quán mỳ cay đặc sản Đà Nẵng bị đối tác Hàn Quốc lấy công thức bí mật, nhân rộng ra 100 cửa hàng và kiện ngược. Cuộc chiến pháp lý về sở hữu trí tuệ ẩm thực, nữ chuyên gia WIPO hỗ trợ",
+      "protagonist": "Hồ Quốc Bảo", "love_interest": "Park Soo Young (Chuyên gia WIPO)",
+      "setting": "Đà Nẵng, WIPO Geneva, Cục SHTT Việt Nam", "author": "Mỳ Lửa Đà Thành"
+    },
+    {
+      "id": 27, "title_hint": "Đội Trưởng Xây Cầu Và Công Trình Sập",
+      "theme": "Kỹ sư cầu đường phát hiện sai phạm vật liệu kém chất lượng trong dự án cầu 1000 tỷ tại Nghệ An, bị sa thải và vu khống phá hoại. Cứu công trình khỏi thảm họa sập cầu, thanh tra Bộ GTVT vào cuộc",
+      "protagonist": "Bùi Văn Cường", "love_interest": "Nguyễn Ngọc Liên (Chánh Thanh tra Bộ GTVT)",
+      "setting": "Nghệ An, Bộ GTVT, C03 tham nhũng đầu tư công", "author": "Thép Gầm Cầu"
+    },
+    {
+      "id": 28, "title_hint": "Trùm Dược Liệu Tây Nguyên Và Bằng Sáng Chế",
+      "theme": "Nhà dược lý học người Ê Đê phát hiện cây thuốc quý Tây Nguyên điều trị ung thư, bị đối tác Mỹ đăng ký bằng sáng chế quốc tế chiếm đoạt. Kiện ra Tòa án Geneva, nữ luật sư sở hữu trí tuệ quốc tế giúp đỡ",
+      "protagonist": "Y Linh Niê", "love_interest": "Nguyễn Minh Hà (Luật sư IP quốc tế)",
+      "setting": "Đắk Nông, WHO Geneva, USPTO, Cục SHTT Việt Nam", "author": "Rừng Xanh Tây Nguyên"
+    },
+    {
+      "id": 29, "title_hint": "Đại Sư Sơn Mài Và Phiên Đấu Giá Christie's",
+      "theme": "Nghệ nhân sơn mài Hà Nội 50 năm tuổi nghề bị đại lý nghệ thuật bán tranh giả mạo danh, vu khống tranh gốc là hàng nhái. Phiên đấu giá Christie's Hong Kong xác thực tính chân thực",
+      "protagonist": "Đinh Hồng Sơn", "love_interest": "Catherine Nguyen (Chuyên gia Christie's)",
+      "setting": "Làng nghề Cát Đằng Nam Định, Christie's Hong Kong, Bộ VHTT&DL", "author": "Mây Sơn Thất Thập"
+    },
+    {
+      "id": 30, "title_hint": "Thần Hàn Gắn Xương Và Viện Chấn Thương",
+      "theme": "BS chấn thương chỉnh hình thiên tài tại BV Việt Đức phát minh kỹ thuật ghép xương không xâm lấn, bị trưởng khoa vu khống gây tai biến. Chủ tịch Hội chấn thương chỉnh hình Đông Nam Á kiểm chứng",
+      "protagonist": "Phạm Quang Tuấn", "love_interest": "Nguyễn Bảo Trân (Chủ tịch APOA)",
+      "setting": "BV Việt Đức, BV Chợ Rẫy, Hội nghị chấn thương Đông Nam Á", "author": "Giải Phẫu Việt Đức"
+    },
+    {
+      "id": 31, "title_hint": "Vua Tôm Xuất Khẩu Cà Mau",
+      "theme": "Chủ trại tôm hữu cơ Cà Mau bị thương lái độc quyền phá hoại ao nuôi, bị ngân hàng ép vay thêm. Xuất khẩu trực tiếp sang EU, nữ chuyên gia chứng nhận ASC kiểm tra và cấp phép",
+      "protagonist": "Lê Hữu Nghĩa", "love_interest": "Anna Müller (Chuyên gia ASC-Marine Stewardship)",
+      "setting": "Cà Mau, xuất khẩu tôm EU, chứng nhận ASC, hải quan", "author": "Bạc Liêu Sóng Cả"
+    },
+    {
+      "id": 32, "title_hint": "Kỳ Thủ Cờ Vua Và Bàn Cờ Chứng Khoán",
+      "theme": "Cựu kiện tướng cờ vua quốc gia chuyển sang phân tích thuật toán chứng khoán, bị quỹ hedge fund sa thải vu khống, phá vỡ đường dây thao túng giá HoSE, nữ CEO Bloomberg Vietnam tin dùng",
+      "protagonist": "Đặng Việt Anh", "love_interest": "Lê Phương Thảo (CEO Bloomberg Vietnam)",
+      "setting": "Hà Nội, HoSE, Bloomberg terminal, UBCKNN", "author": "Nước Cờ Sài Gòn"
+    },
+    {
+      "id": 33, "title_hint": "Cứu Hộ Rừng Quốc Gia Và Cartel Gỗ",
+      "theme": "Cán bộ kiểm lâm xuất sắc bị cartel khai thác gỗ trái phép mua chuộc sếp loại khỏi biên chế, bị vu khống tham nhũng. Nữ điều phối viên TRAFFIC International giúp anh lật tẩy đường dây",
+      "protagonist": "Đinh Văn Tuấn", "love_interest": "Sarah Nguyen (Điều phối viên TRAFFIC)",
+      "setting": "Vườn quốc gia Cúc Phương, TRAFFIC International, C03 môi trường", "author": "Gỗ Lim Cúc Phương"
+    },
+    {
+      "id": 34, "title_hint": "Thuyền Trưởng Hải Quân Và Dầu Khí Biển Đông",
+      "theme": "Cựu sĩ quan hải quân chuyển sang làm kỹ sư giàn khoan dầu PVN bị đồng nghiệp cướp công, bị sa thải vu khống lộ bí mật kỹ thuật. Phát hiện đường dây tham nhũng hợp đồng dầu khí 2000 tỷ",
+      "protagonist": "Nguyễn Hải Nam", "love_interest": "Trần Tuyết Lan (Phó TGĐ PVN)",
+      "setting": "Vũng Tàu, giàn khoan PVN, Biển Đông, C03 dầu khí", "author": "Sóng Dầu Vũng Tàu"
+    },
+    {
+      "id": 35, "title_hint": "Bậc Thầy Gốm Sứ Bát Tràng Và Hội Chợ Paris",
+      "theme": "Nghệ nhân gốm sứ Bát Tràng 5 đời truyền nghề bị chuỗi xuất khẩu đồ gốm lừa đảo bán hàng Trung Quốc thay thế, vu khống gian lận xuất xứ. Maison Bernardaud Paris kiểm tra và ký hợp đồng OEM độc quyền",
+      "protagonist": "Nguyễn Như Hùng", "love_interest": "Marie Dupont (Giám đốc mua hàng Bernardaud)",
+      "setting": "Làng nghề Bát Tràng, Maison Bernardaud Paris, Cục SHTT", "author": "Đất Nung Bát Tràng"
+    },
+    {
+      "id": 36, "title_hint": "Bác Sĩ Nha Khoa Và Chuỗi Phòng Khám Triệu Đô",
+      "theme": "BS nha khoa thiên tài mở phòng khám ở Quận 3 bị đối thủ phao tin chữa răng sai, bị Sở Y tế tạm đình chỉ. Cứu chữa thành công cho Chủ tịch HHDN TP.HCM, hệ thống phòng khám nha khoa quốc tế hỗ trợ",
+      "protagonist": "Trần Thanh Danh", "love_interest": "Nguyễn Thị Hồng Vân (Chủ tịch HHDN TP.HCM)",
+      "setting": "Quận 3 TP.HCM, Sở Y tế TP.HCM, BV Răng Hàm Mặt TW", "author": "Nụ Cười Sài Thành"
+    },
+    {
+      "id": 37, "title_hint": "Tổng Thiết Kế Game Ẩn Danh Hà Nội",
+      "theme": "Game designer thiên tài bị startup game cũ cướp game engine do anh tự phát triển, bị kiện vi phạm hợp đồng. Nữ CEO VNG-like ký hợp đồng hàng triệu USD sau khi anh demo game indie đột phá",
+      "protagonist": "Phạm Hoàng Tuấn", "love_interest": "Nguyễn Lan Nhi (CEO SuperGame Vietnam)",
+      "setting": "Hà Nội Cầu Giấy, VNG Campus, Gaming Convention SEA", "author": "Pixel Hà Thành"
+    },
+    {
+      "id": 38, "title_hint": "Võ Sĩ MMA Và Đường Dây Dàn Xếp",
+      "theme": "Võ sĩ MMA hạng nhất Đông Nam Á bị ban tổ chức ép dàn xếp trận đấu, từ chối thì bị cấm thi đấu và vu khống doping. Thanh tra thể thao quốc tế điều tra và phục hồi danh dự",
+      "protagonist": "Lê Đăng Khoa", "love_interest": "Nakamura Hana (Thanh tra ONE Championship)",
+      "setting": "TP.HCM, One Championship, Ủy ban Olympic Việt Nam", "author": "Thép Võ Đài"
+    },
+    {
+      "id": 39, "title_hint": "Kỹ Sư Hóa Dầu Và Nhà Máy Lọc Dầu Ngàn Tỷ",
+      "theme": "Kỹ sư hóa dầu thiên tài tại Lọc dầu Nghi Sơn phát hiện gian lận hóa chất phụ gia, bị đuổi vu khống gây ô nhiễm. Nữ TGĐ tập đoàn hóa chất Hàn Quốc kiểm tra và tin dùng",
+      "protagonist": "Hoàng Văn Toàn", "love_interest": "Lee Soo Jin (TGĐ Lotte Chemical Vietnam)",
+      "setting": "Lọc dầu Nghi Sơn Thanh Hóa, Cục Hóa chất Bộ CT, C03", "author": "Lửa Nghi Sơn"
+    },
+    {
+      "id": 40, "title_hint": "Nghệ Sĩ Điêu Khắc Đá Và Bảo Tàng Quốc Gia",
+      "theme": "Nghệ nhân điêu khắc đá Non Nước Đà Nẵng bị đối thủ copy tác phẩm bán hàng nhái, kiện ngược, bị Bảo tàng Điêu khắc Chăm từ chối triển lãm. Nữ GĐ Bảo tàng Louvre Singapore xác thực giá trị tác phẩm",
+      "protagonist": "Lê Thanh Bình", "love_interest": "Isabelle Moreau (Phó GĐ Louvre Singapore)",
+      "setting": "Làng đá Non Nước Đà Nẵng, Bảo tàng Điêu khắc Chăm, Louvre Singapore", "author": "Đục Đá Núi Ngũ Hành"
+    },
+    {
+      "id": 41, "title_hint": "Thủ Lĩnh Startup AgriTech Đà Lạt",
+      "theme": "Kỹ sư nông nghiệp ứng dụng IoT trồng rau thủy canh Đà Lạt, bị đối tác Israel lấy công nghệ bỏ rơi, bị ngân hàng siết nợ. Nữ chuyên gia FAO và quỹ đầu tư AgriTech Temasek Singapore hỗ trợ lật kèo",
+      "protagonist": "Nguyễn Bảo Long", "love_interest": "Rachel Chen (Quỹ Temasek AgriTech)",
+      "setting": "Đà Lạt, IoT nông nghiệp, FAO Vietnam, Temasek Singapore", "author": "Xanh Cao Nguyên"
+    },
+    {
+      "id": 42, "title_hint": "Phi Công Ẩn Thế Và Đường Bay Nghìn Tỷ",
+      "theme": "Cựu phi công hàng không bị đình chỉ oan do vu khống lỗi kỹ thuật gây sự cố, bị Cục Hàng không VN thu giấy phép bay. Điều tra tìm ra đường dây nhà thầu bảo trì máy bay gian lận, nữ TGĐ Vietnam Airlines tin tưởng",
+      "protagonist": "Trần Minh Hòa", "love_interest": "Lê Thu Hương (TGĐ Vietnam Airlines)",
+      "setting": "Sân bay Nội Bài, Cục HKVN, Boeing maintenance", "author": "Cánh Thép Nội Bài"
+    },
+    {
+      "id": 43, "title_hint": "Đại Gia Chứng Khoán Phái Sinh Hà Nội",
+      "theme": "Trader chứng khoán phái sinh thiên tài bị quỹ hedge fund lớn nhất VN vu khống thao túng thị trường futures, bị UBCKNN điều tra. Nữ lãnh đạo UBCKNN tin tưởng khi anh bóc trần đường dây gian lận options",
+      "protagonist": "Vũ Minh Đức", "love_interest": "Trần Xuân Nhung (Phó Chủ tịch UBCKNN)",
+      "setting": "HNX, HoSE derivatives market, UBCKNN, C03 tài chính", "author": "Phái Sinh Hà Nội"
+    },
+    {
+      "id": 44, "title_hint": "Chuyên Gia Đàm Phán Và Thương Vụ Tỷ Đô",
+      "theme": "Chuyên gia đàm phán M&A bị đối tác Singapore lừa đảo trong thương vụ mua bán doanh nghiệp 500 triệu USD, bị kiện ra tòa trọng tài quốc tế. Nữ luật sư trọng tài SIAC giúp lật ngược thế cờ",
+      "protagonist": "Nguyễn Thành Trung", "love_interest": "Ngô Bích Liên (Luật sư SIAC Singapore)",
+      "setting": "Singapore SIAC, TP.HCM, thương vụ M&A quốc tế", "author": "Thương Trường Châu Á"
+    },
+    {
+      "id": 45, "title_hint": "Bác Sĩ Da Liễu Và Viện Thẩm Mỹ Nghìn Tỷ",
+      "theme": "BS da liễu thiên tài phát triển công nghệ trị mụn trứng cá đột phá, bị chuỗi spa lớn nhất VN cướp sáng chế và bôi nhọ. Cứu con gái chủ tịch tập đoàn mỹ phẩm Korea, ký hợp đồng phân phối Đông Nam Á",
+      "protagonist": "Lê Hồng Phúc", "love_interest": "Pham Mi Rae (Chủ tịch Amorepacific Vietnam)",
+      "setting": "TP.HCM Quận 1, Sở Y tế, Amorepacific Vietnam", "author": "Làn Da Sài Thành"
+    },
+    {
+      "id": 46, "title_hint": "Thầy Giáo Toán Và Startup EdTech Nghìn Tỷ",
+      "theme": "Thầy giáo toán Hà Nội viết thuật toán học thích ứng AI, bị đồng nghiệp cướp code đăng ký startup, bị tố cáo vi phạm hợp đồng với trường. Nữ CEO quỹ EdTech 100 triệu USD kiểm tra và đầu tư",
+      "protagonist": "Lê Văn Khoa", "love_interest": "Nguyễn Bích Thủy (CEO iGlobe EdTech Fund)",
+      "setting": "Hà Nội, ĐHQG Hà Nội, MoET Vietnam, edtech startup", "author": "Bảng Đen Số"
+    },
+    {
+      "id": 47, "title_hint": "Thiết Kế Tàu Và Đơn Đặt Hàng Hàn Quốc",
+      "theme": "Kỹ sư đóng tàu Vinashin-era bị xí nghiệp cũ vu khống tham nhũng và sa thải, ẩn thân dạy nghề. Thiết kế tàu ngầm du lịch đột phá, DSME Hàn Quốc kiểm tra và ký hợp đồng OEM 500 triệu USD",
+      "protagonist": "Ngô Tuấn Phú", "love_interest": "Kim Yoon Ah (Trưởng nhóm R&D DSME)",
+      "setting": "Hải Phòng, Vũng Tàu, DSME Korea, Vinashin", "author": "Thép Biển Hải Phòng"
+    },
+    {
+      "id": 48, "title_hint": "Quản Lý Khách Sạn Và Đế Chế 5 Sao",
+      "theme": "GM khách sạn 5 sao Nha Trang bị chủ đầu tư Singapore lật đổ sau khi phát hiện gian lận kế toán 200 tỷ, vu khống tham nhũng. Nữ CEO Marriott Vietnam tin tưởng sau khi anh cứu mùa cao điểm bằng kế hoạch kinh doanh đột phá",
+      "protagonist": "Trần Văn Huy", "love_interest": "Jennifer Phạm (CEO Marriott Vietnam)",
+      "setting": "Nha Trang, Marriott International, kiểm toán Ernst & Young", "author": "Sóng Ngọc Nha Trang"
+    },
+    {
+      "id": 49, "title_hint": "Thám Hiểm Hang Động Và Di Sản Tỷ Đô",
+      "theme": "Nhà địa chất học phát hiện hang động mới kết nối với Sơn Đoòng, bị tập đoàn du lịch cướp bản đồ thám hiểm và đăng ký khai thác. Nữ chuyên gia UNESCO kiểm tra và đưa vào Di sản Thế giới",
+      "protagonist": "Phạm Bá Thắng", "love_interest": "Elena Ivanova (Chuyên gia UNESCO)",
+      "setting": "Quảng Bình, Sơn Đoòng, UNESCO World Heritage", "author": "Sâu Thẳm Phong Nha"
+    },
+    {
+      "id": 50, "title_hint": "Nhà Phân Phối Thuốc Và Mạng Lưới Toàn Quốc",
+      "theme": "GĐ công ty phân phối dược phẩm bị tập đoàn dược ngoại ép mua lại công ty giá rẻ, bị vu khống phân phối thuốc giả, bị Cục Quản lý Dược đình chỉ. Nữ Cục trưởng tin tưởng sau khi anh lật tẩy đường dây thuốc giả 1000 tỷ",
+      "protagonist": "Dương Minh Phú", "love_interest": "Đặng Thị Kim Oanh (Cục trưởng Cục Quản lý Dược)",
+      "setting": "TP.HCM, Cục Quản lý Dược, C03 dược phẩm", "author": "Dược Liệu Phương Nam"
+    },
+    {
+      "id": 51, "title_hint": "Ông Chủ Tiệm Vàng Và Đường Dây Rửa Tiền",
+      "theme": "Chủ tiệm vàng uy tín TP.HCM bị tập đoàn rửa tiền qua vàng vu khống và chiếm đoạt tiệm vàng 100 tỷ. Điều tra và lật tẩy đường dây rửa tiền qua vàng 5000 tỷ, C03 Bộ Công An và nữ Trưởng phòng chống rửa tiền NHNN vào cuộc",
+      "protagonist": "Hà Trung Hiếu", "love_interest": "Nguyễn Thị Minh Thư (Trưởng phòng NHNN chống rửa tiền)",
+      "setting": "Quận 5 TP.HCM, tiệm vàng, NHNN, C03", "author": "Vàng Thật Sài Gòn"
+    },
+    {
+      "id": 52, "title_hint": "Kỹ Sư Robot Và Nhà Máy Thông Minh",
+      "theme": "Kỹ sư tự động hóa thiên tài bị tập đoàn Nhật sa thải vu khống phá hoại dây chuyền, thiết kế robot hàn tự động đột phá. Nữ TGĐ Panasonic Vietnam kiểm tra và ký hợp đồng triển khai toàn hệ thống",
+      "protagonist": "Nguyễn Khắc Duy", "love_interest": "Yamamoto Yuki (TGĐ Panasonic Vietnam)",
+      "setting": "KCN Thăng Long Hà Nội, Panasonic Vietnam, robot automation", "author": "Thép Thăng Long"
+    },
+    {
+      "id": 53, "title_hint": "Nhà Văn Trinh Thám Và Vụ Bí Ẩn Thật",
+      "theme": "Nhà văn trinh thám nổi tiếng bị nhà xuất bản lớn nhất VN đạo văn, xuất bản cuốn sách của anh với tên người khác. Dùng chính kỹ năng trinh thám của mình để lật tẩy và thắng kiện tại tòa án bản quyền",
+      "protagonist": "Đỗ Anh Tuấn", "love_interest": "Phạm Thị Hoài Thu (Cục trưởng Cục Bản quyền)",
+      "setting": "Hà Nội, NXB Trẻ, Cục Bản quyền tác giả, Tòa án nhân dân", "author": "Bút Thám Tử"
+    },
+    {
+      "id": 54, "title_hint": "Giám Đốc Siêu Thị Và Cuộc Chiến Hàng Hiệu",
+      "theme": "GĐ chuỗi siêu thị bị tập đoàn bán lẻ nước ngoài thâu tóm thù địch, vu khống gian lận kế toán. Nữ CEO Masan Consumer hỗ trợ liên minh chiến lược và lật ngược thế trận trong ĐHCĐ nghìn tỷ",
+      "protagonist": "Bùi Đức Thịnh", "love_interest": "Lê Thị Phương Uyên (CEO Masan Consumer)",
+      "setting": "TP.HCM, ĐHCĐ, Sở KH&ĐT, Ủy ban Cạnh tranh Quốc gia", "author": "Siêu Thị Chiến Lược"
+    },
+    {
+      "id": 55, "title_hint": "Nhà Sản Xuất Phim Độc Lập Và Oscar Việt Nam",
+      "theme": "Đạo diễn phim độc lập bị hãng phim lớn cướp kịch bản, vu khống vi phạm hợp đồng. Phim anh tự làm lại được đề cử Oscar Best International Film, lật mặt toàn bộ kẻ phản bội",
+      "protagonist": "Nguyễn Hoàng Sơn", "love_interest": "Trần Thị Bạch Tuyết (CEO BHD Film)",
+      "setting": "TP.HCM, Hollywood, Academy Awards, Cục Điện ảnh", "author": "Máy Quay Sài Gòn"
+    },
+    {
+      "id": 56, "title_hint": "Huyền Thoại Cầu Lông Và Đế Chế Thể Thao",
+      "theme": "Cựu vô địch cầu lông SEA Games bị liên đoàn cấm thi đấu oan uổng, bị nhà tài trợ cắt hợp đồng. Trở thành HLV và đào tạo thế hệ VĐV mới vô địch BWF, nữ chủ tịch Liên đoàn Cầu lông thế giới phục hồi danh dự",
+      "protagonist": "Trịnh Văn Minh", "love_interest": "Poul-Erik Høyer (President BWF)",
+      "setting": "Hà Nội, BWF World Championships, Liên đoàn Cầu lông VN", "author": "Lông Vũ Hà Thành"
+    },
+    {
+      "id": 57, "title_hint": "Ông Trùm Vật Liệu Xây Dựng Đà Nẵng",
+      "theme": "Kỹ sư vật liệu phát triển xi măng không nung carbon thấp, bị đối thủ đăng ký sáng chế ăn cắp và cạnh tranh không lành mạnh. Viện Vật liệu Xây dựng quốc gia kiểm tra và hợp tác thương mại hóa",
+      "protagonist": "Huỳnh Văn Phước", "love_interest": "Trần Thị Ngọc Mai (Viện trưởng Viện VLXD)",
+      "setting": "Đà Nẵng, Viện Vật liệu Xây dựng quốc gia, CPTPP thị trường", "author": "Vôi Bạch Đà Thành"
+    },
+    {
+      "id": 58, "title_hint": "Thám Tử Số Và Siêu Lừa Đảo Tài Chính",
+      "theme": "Chuyên gia pháp chứng kỹ thuật số (digital forensics) bị hãng tư vấn sa thải, bị kiện vu khống lộ bí mật thân chủ. Phá vỡ đường dây lừa đảo đầu tư online 1000 tỷ, nữ Giám đốc INTERPOL Vietnam hỗ trợ",
+      "protagonist": "Nguyễn Đức Hải", "love_interest": "Hồ Thị Lệ Thu (GĐ INTERPOL NCB Vietnam)",
+      "setting": "Hà Nội, INTERPOL, Cục An ninh mạng A05, C03", "author": "Điều Tra Số Hà Thành"
+    },
+    {
+      "id": 59, "title_hint": "Bác Sĩ Tâm Lý Và Vụ Án Bí Ẩn",
+      "theme": "Bác sĩ tâm lý lâm sàng bị đồng nghiệp tố cáo vi phạm đạo đức nghề nghiệp, bị treo giấy phép. Dùng kỹ năng phân tích hành vi tội phạm giúp C03 phá án giết người 500 tỷ, nữ Thượng tá điều tra tin dùng",
+      "protagonist": "Lê Thanh Tùng", "love_interest": "Trần Thanh Vân (Thượng tá C03)",
+      "setting": "TP.HCM, BV Tâm thần TW, C03, Viện Kiểm sát NDTC", "author": "Tâm Lý Tội Phạm"
+    },
+    {
+      "id": 60, "title_hint": "Chủ Tiệm Cơm Tấm Và Đế Chế F&B",
+      "theme": "Chủ quán cơm tấm 30 năm nức tiếng Bình Dương bị tập đoàn F&B lớn mua lại rồi xóa sổ thương hiệu, bị truyền thông bẩn tấn công. Hội Ẩm thực ASEAN và nữ CEO tập đoàn F&B Đài Loan hỗ trợ xây dựng chuỗi 100 quán",
+      "protagonist": "Nguyễn Thị Lan Anh", "love_interest": "Chen Xiao Ling (CEO Golden Foods Taiwan)",
+      "setting": "Bình Dương, hội ẩm thực ASEAN, F&B franchise", "author": "Cơm Tấm Bình Dương"
+    },
+    {
+      "id": 61, "title_hint": "Chuyên Gia Lập Trình Blockchain Và Sàn Crypto",
+      "theme": "Lập trình viên blockchain bị sàn crypto vu khống hack sàn và cướp 50 tỷ USDT, bị Interpol truy nã. Chứng minh đường dây hack nội bộ từ chính nhân viên sàn, nữ Giám đốc Binance Vietnam hỗ trợ pháp lý",
+      "protagonist": "Đinh Viết Thắng", "love_interest": "Nguyễn Kim Phụng (GĐ Binance Vietnam)",
+      "setting": "TP.HCM, Binance, INTERPOL cyber, Cục thuế crypto", "author": "Hash Code Sài Gòn"
+    },
+    {
+      "id": 62, "title_hint": "Bậc Thầy Pha Chế Bartender Hội An",
+      "theme": "Bartender Việt Nam giành giải Diageo World Class, bị chủ bar cướp công thức cocktail đặc sản, vu khống biển thủ tiền quỹ. Cuộc thi bartender Diageo World Class Grand Final lật mặt tất cả",
+      "protagonist": "Phan Đức Hiếu", "love_interest": "Nguyễn Phương Nga (Chuyên gia Diageo APAC)",
+      "setting": "Hội An, Diageo World Class Finals, Bộ Văn hóa cấp phép", "author": "Lửa Cocktail Hội An"
+    },
+    {
+      "id": 63, "title_hint": "Ông Hoàng Tái Chế Rác Và Kinh Tế Tuần Hoàn",
+      "theme": "Kỹ sư môi trường xây dựng nhà máy tái chế rác nhựa thành nhiên liệu tại Hà Nội, bị lobby tập đoàn xử lý rác truyền thống phá hoại và vu khống gây ô nhiễm. Bộ TNMT và GEF Vietnam hỗ trợ nhân rộng",
+      "protagonist": "Hoàng Quang Trung", "love_interest": "Linda Nguyễn (Điều phối viên GEF Vietnam)",
+      "setting": "Hà Nội, nhà máy tái chế, Bộ TNMT, GEF quỹ môi trường toàn cầu", "author": "Xanh Hà Thành"
+    },
+    {
+      "id": 64, "title_hint": "Giáo Sư Vật Lý Hạt Nhân Và Lò Phản Ứng",
+      "theme": "Giáo sư vật lý hạt nhân Viện Năng lượng Nguyên tử VN bị viện trưởng cướp đề tài lò phản ứng nghiên cứu thế hệ 4, bị tố cáo vi phạm bảo mật nhà nước. IAEA Vienna điều tra và minh oan",
+      "protagonist": "Trần Văn Bình", "love_interest": "Wataru Naito (Thanh tra trưởng IAEA Vienna)",
+      "setting": "Đà Lạt, Viện Năng lượng Nguyên tử VN, IAEA Vienna", "author": "Nguyên Tử Đà Lạt"
+    },
+    {
+      "id": 65, "title_hint": "Bà Trùm Lụa Hội An Và Đơn Đặt Hàng Hermès",
+      "theme": "Nữ nghệ nhân lụa Mã Châu Hội An bị tập đoàn thời trang Ý mua bản quyền hoa văn truyền thống, đăng ký sở hữu trí tuệ ở châu Âu. Hermès Paris kiểm tra và ký hợp đồng OEM đặc biệt bảo vệ bản quyền làng nghề",
+      "protagonist": "Nguyễn Thị Mỹ Hảo", "love_interest": "Jean-Pierre Leroux (Giám đốc mua hàng Hermès)",
+      "setting": "Làng lụa Mã Châu Hội An, Hermès Paris, WIPO, SHTT", "author": "Tơ Vàng Mã Châu"
+    },
+    {
+      "id": 66, "title_hint": "Thiếu Tá Cảnh Sát Ẩn Thân Và Đường Dây Ma Túy",
+      "theme": "Thiếu tá cảnh sát ma túy C04 bị đồng nghiệp phản bội lộ danh tính, bị đình chỉ điều tra vu khống nhận hối lộ. Thâm nhập lại đường dây ma túy với danh tính mới, nữ Trung tướng C04 hỗ trợ",
+      "protagonist": "Nguyễn Đức Thành", "love_interest": "Thiếu tướng Trần Thị Hà (Phó Cục trưởng C04)",
+      "setting": "TP.HCM, biên giới Tây Nam, Cục C04 Bộ Công An", "author": "Bóng Đêm C04"
+    },
+    {
+      "id": 67, "title_hint": "Đại Lý Du Lịch Và Đường Mòn Hồ Chí Minh",
+      "theme": "Hướng dẫn viên du lịch mạo hiểm khai phá tuyến trekking độc đáo dọc đường mòn Hồ Chí Minh, bị tập đoàn lữ hành lớn cướp tour và vu khống dẫn khách trái phép. Nữ GĐ Tổng cục Du lịch VN kiểm tra và cấp phép đặc biệt",
+      "protagonist": "Lê Văn Dũng", "love_interest": "Nguyễn Thu Hiền (GĐ Tổng cục Du lịch VN)",
+      "setting": "Quảng Trị, Hồ Chí Minh Trail, Tổng cục Du lịch", "author": "Rừng Trường Sơn"
+    },
+    {
+      "id": 68, "title_hint": "Thần Đồng Cờ Tướng Và Đế Chế Tri Thức",
+      "theme": "Thần đồng cờ tướng Hà Nội 20 tuổi bị liên đoàn phân biệt đối xử vì không có nền tảng, phát minh thuật toán AI chơi cờ tướng đánh bại siêu máy tính. Nữ chủ tịch Liên đoàn Cờ tướng thế giới trao giải đặc biệt",
+      "protagonist": "Đỗ Minh Tiến", "love_interest": "Trịnh Ngọc Huyền (Chủ tịch LWCA)",
+      "setting": "Hà Nội, Liên đoàn Cờ tướng thế giới LWCA, AI chess engine", "author": "Bàn Cờ Đỏ Hà Thành"
+    },
+    {
+      "id": 69, "title_hint": "Nhà Phân Tích Tình Báo Kinh Tế Và Bí Mật Nhà Nước",
+      "theme": "Cựu chuyên gia tình báo kinh tế Bộ Công Thương bị vu khống phản quốc, bị tước bỏ tất cả. Phân tích và ngăn chặn thương vụ M&A thù địch nước ngoài vào ngành viễn thông chiến lược 10 tỷ USD, nữ Bộ trưởng tin tưởng",
+      "protagonist": "Đinh Quốc Hùng", "love_interest": "Trần Tuấn Anh (Bộ trưởng Bộ Công Thương - fictional)",
+      "setting": "Hà Nội, Bộ Công Thương, Ủy ban Đầu tư Nước ngoài", "author": "Mật Mã Kinh Tế"
+    },
+    {
+      "id": 70, "title_hint": "Nhà Điêu Khắc Robot Nano Và Y Học Tương Lai",
+      "theme": "Kỹ sư nano Đại học VinUni phát triển robot nano điều trị ung thư, bị giám đốc viện cướp bằng sáng chế. Hội đồng Nobel Y học đề cử anh, nữ GĐ VinGroup Healthcare hợp tác đưa vào thực tiễn",
+      "protagonist": "Nguyễn Hữu Khoa", "love_interest": "Lê Thị Phương Mai (GĐ Vinmec International Hospital)",
+      "setting": "Hà Nội VinUni, Vinmec, Ủy ban Nobel y học, FDA Vietnam", "author": "Nano Hà Thành"
+    },
+    {
+      "id": 71, "title_hint": "Chủ Vườn Bơ Gia Lai Và Hợp Đồng Xuất Khẩu EU",
+      "theme": "Chủ trang trại bơ hữu cơ Gia Lai bị thương lái độc quyền phá hoại chứng nhận GlobalG.A.P, bị ngân hàng siết tài sản thế chấp. Thắng hợp đồng xuất khẩu bơ Hass trực tiếp vào Carrefour Pháp, nữ chuyên gia VIETRADE giúp đỡ",
+      "protagonist": "Rơ Châm Lực", "love_interest": "Nguyễn Thị Mai Hương (GĐ VIETRADE Region)",
+      "setting": "Gia Lai, GlobalG.A.P, Carrefour Pháp, VIETRADE", "author": "Bơ Vàng Cao Nguyên"
+    },
+    {
+      "id": 72, "title_hint": "Thiên Tài Thiết Kế Vi Mạch Và Đế Chế Bán Dẫn",
+      "theme": "Kỹ sư thiết kế vi mạch (chip design) tại FPT Semiconductor bị trưởng nhóm cướp thiết kế, bị tố cáo vi phạm bí mật thương mại. TSMC Taiwan kiểm tra đánh giá và ký hợp đồng tape-out 10 triệu USD",
+      "protagonist": "Trần Minh Khoa", "love_interest": "Lin Mei Ling (Giám đốc R&D TSMC)",
+      "setting": "Hà Nội FPT Semiconductor, TSMC Taiwan, Bộ KH&CN", "author": "Silicon Phố Đông"
+    },
+    {
+      "id": 73, "title_hint": "Huyền Thoại Vovinam Và Võ Đường Quốc Tế",
+      "theme": "Đại sư Vovinam Việt Võ Đạo TP.HCM bị đồng môn tham lam chiếm đoạt võ đường và vu khống lừa đảo học viên. Hội đồng Vovinam Thế giới kiểm tra, nữ chủ tịch Liên đoàn Vovinam thế giới phục hồi danh dự và bổ nhiệm Tổng thư ký",
+      "protagonist": "Bùi Thiện Nghĩa", "love_interest": "Trần Thị Lan Anh (Chủ tịch WVF)",
+      "setting": "TP.HCM, Hội đồng Vovinam Thế giới, UNESCO intangible heritage", "author": "Thép Vovinam"
+    },
+    {
+      "id": 74, "title_hint": "Phi Công Trực Thăng Cứu Hộ Và Băng Rừng",
+      "theme": "Phi công trực thăng cứu hộ dân sự xuất sắc nhất miền Trung bị công ty hàng không tư nhân sa thải oan vì từ chối tham gia phi vụ bất hợp pháp. Cứu đoàn leo núi mất tích trên Fansipan, Cục HKVN phục hồi và khen thưởng",
+      "protagonist": "Đinh Trọng Hải", "love_interest": "Lê Thị Nguyệt Hằng (PGĐ Cục HKVN)",
+      "setting": "Sapa Fansipan, Cục HKVN, cứu hộ núi cao", "author": "Lưỡi Cánh Fansipan"
+    },
+    {
+      "id": 75, "title_hint": "Nhà Văn Hóa Trẻ Và Di Sản Phố Cổ",
+      "theme": "Nhà nghiên cứu văn hóa trẻ Hội An phát hiện di sản bị xây dựng trái phép che lấp, bị nhà đầu tư bất động sản tấn công, vu khống phá hoại phát triển kinh tế. UNESCO Hội An và nữ chuyên gia di sản thế giới kiểm tra và ngăn chặn",
+      "protagonist": "Lê Phan Hải", "love_interest": "Phạm Thu Trang (Chuyên gia UNESCO Vietnam)",
+      "setting": "Phố cổ Hội An, UNESCO World Heritage, Bộ VHTT&DL", "author": "Ký Ức Đô Thị Cổ"
+    },
+    {
+      "id": 76, "title_hint": "Bác Sĩ Tim Mạch Và Ca Phẫu Thuật 15 Tiếng",
+      "theme": "BS tim mạch can thiệp thiên tài tại Viện Tim TP.HCM bị trưởng khoa vu khống tử vong sau phẫu thuật, bị treo bằng. Phẫu thuật thành công ca dị tật tim phức tạp nhất VN trên sóng truyền hình trực tiếp, nữ Giám đốc Viện Tim phục hồi",
+      "protagonist": "Nguyễn Xuân Hùng", "love_interest": "Phạm Thị Lan (GĐ Viện Tim TP.HCM)",
+      "setting": "Viện Tim TP.HCM, BV Chợ Rẫy, Hội tim mạch thế giới", "author": "Nhịp Tim Sài Gòn"
+    },
+    {
+      "id": 77, "title_hint": "Tay Làm Điêu Tàn Và Đế Chế Gốm Bát Tràng 2.0",
+      "theme": "Nghệ nhân gốm trẻ thế hệ thứ 7 Bát Tràng kết hợp AI thiết kế hoa văn gốm cá nhân hóa, bị làng nghề bảo thủ tẩy chay và kiện vi phạm truyền thống. Hợp đồng độc quyền với IKEA Global thay đổi tất cả",
+      "protagonist": "Nguyễn Đình Toàn", "love_interest": "Ingrid Johansson (Chuyên gia mua hàng IKEA)",
+      "setting": "Làng nghề Bát Tràng, IKEA Global, Hội đồng nghề truyền thống VN", "author": "Lửa Nung Thế Hệ Mới"
+    },
+    {
+      "id": 78, "title_hint": "Chiến Thần Bảo Vệ Toà Nhà Hà Nội",
+      "theme": "Cựu đặc nhiệm thiện xạ ẩn thân làm bảo vệ tòa nhà văn phòng tại Hà Nội, bị giám đốc công ty bảo vệ vu khống trộm cắp. Ngăn chặn vụ đột nhập, chiếm đoạt tài liệu mật tập đoàn công nghệ nghìn tỷ, nữ CEO tin tưởng",
+      "protagonist": "Lê Công Hữu", "love_interest": "Trần Lan Phương (CEO tập đoàn công nghệ)",
+      "setting": "Hà Nội, Keangnam Landmark Tower, C06 Bộ Công An", "author": "Mắt Đại Bàng Keangnam"
+    },
+    {
+      "id": 79, "title_hint": "Đầu Bếp Mắm Ruốc Huế Và Nhà Hàng Michelin Tokyo",
+      "theme": "Đầu bếp chuyên ẩm thực Huế tại Tokyo bị đồng nghiệp người Nhật cướp công thức mắm ruốc cải tiến, vu khống gian lận vệ sinh. Hội đồng Michelin Japan kiểm tra và trao sao cho nhà hàng của anh",
+      "protagonist": "Nguyễn Hữu Lộc", "love_interest": "Yamada Keiko (Giám đốc Michelin Guide Japan)",
+      "setting": "Tokyo, Michelin Guide Japan, Shinjuku Vietnamese restaurant", "author": "Mắm Ruốc Tokyo"
+    },
+    {
+      "id": 80, "title_hint": "Nghệ Nhân Tranh Dân Gian Và Bản Quyền Toàn Cầu",
+      "theme": "Nghệ nhân tranh Đông Hồ cuối cùng bị chuỗi gallery quốc tế in lậu tranh dân gian bán khắp thế giới không trả tiền bản quyền. Cuộc chiến pháp lý tại WIPO, nữ chuyên gia UNESCO Intangible Heritage giúp đỡ",
+      "protagonist": "Nguyễn Đăng Chế", "love_interest": "Marie Claire Fontaine (Chuyên gia WIPO Intangible)",
+      "setting": "Làng tranh Đông Hồ Bắc Ninh, WIPO Geneva, UNESCO", "author": "Nét Vẽ Đông Hồ"
+    },
+    {
+      "id": 81, "title_hint": "CEO Phần Mềm Kế Toán Và Cú Sập Hệ Thống",
+      "theme": "TGĐ startup phần mềm kế toán SME bị đại gia IT cướp khách hàng bằng cạnh tranh không lành mạnh, vu khống dữ liệu bị rò rỉ. Phát hiện lỗ hổng bảo mật trong phần mềm đối thủ lộ dữ liệu 1 triệu doanh nghiệp, Bộ TT&TT vào cuộc",
+      "protagonist": "Vũ Tuấn Khải", "love_interest": "Nguyễn Thị Bạch Cúc (Thứ trưởng Bộ TT&TT)",
+      "setting": "Hà Nội, Bộ TT&TT, Cục An toàn Thông tin, SaaS ecosystem", "author": "Code Kinh Tế Số"
+    },
+    {
+      "id": 82, "title_hint": "Chủ Đội Bóng Đá Phong Trào Và Giải V.League",
+      "theme": "Cựu cầu thủ V.League bị CLB sa thải oan, lập đội bóng phong trào từ cầu thủ thất nghiệp, bị VFF cản trở cấp phép. Giành cúp quốc gia, lật đổ đường dây bán độ trong giải V.League, nữ chủ tịch VFF hỗ trợ",
+      "protagonist": "Ngô Thanh Bình", "love_interest": "Trần Thị Kim Anh (Chủ tịch VFF mới)",
+      "setting": "Hà Nội, V.League, VFF, AFC Asian Cup", "author": "Sân Cỏ Thủ Đô"
+    },
+    {
+      "id": 83, "title_hint": "Giám Đốc Nhà Xuất Bản Và Cuộc Chiến Bản Quyền",
+      "theme": "GĐ NXB độc lập nhỏ Hà Nội mua bản quyền bestseller quốc tế về, bị NXB lớn in lậu hàng triệu bản. Chiến thắng phiên tòa lịch sử về bản quyền xuất bản, nữ TGĐ Penguin Random House Asia đến đặt hợp tác",
+      "protagonist": "Trần Quang Hải", "love_interest": "Sarah Kim (TGĐ Penguin Random House Asia)",
+      "setting": "Hà Nội, Cục Bản quyền tác giả, Penguin Random House", "author": "Trang Sách Hà Thành"
+    },
+    {
+      "id": 84, "title_hint": "Thợ Mộc Làng Nghề Và Showroom Quốc Tế",
+      "theme": "Nghệ nhân đồ gỗ mỹ nghệ Đồng Kỵ Bắc Ninh bị đại lý xuất khẩu vu khống hàng kém chất lượng và bán đổ bán tháo bộ sưu tập triệu đô. Sotheby's và hội chợ M&O Paris kiểm tra và mua trực tiếp từ xưởng",
+      "protagonist": "Nguyễn Hữu Toàn", "love_interest": "Emma Laurent (Chuyên gia đồ nội thất M&O Paris)",
+      "setting": "Làng nghề Đồng Kỵ Bắc Ninh, Sotheby's, Maison & Objet Paris", "author": "Gỗ Quý Đồng Kỵ"
+    },
+    {
+      "id": 85, "title_hint": "Thủy Điện Tây Bắc Và Cuộc Chiến Môi Trường",
+      "theme": "Kỹ sư môi trường phát hiện nhà máy thủy điện gây ô nhiễm nước nghiêm trọng tại Lai Châu, bị công ty bịt miệng và sa thải. Nữ GĐ WWF Vietnam hỗ trợ điều tra, lật tẩy đường dây lobby chính sách 500 tỷ",
+      "protagonist": "Trần Văn Đức", "love_interest": "Nguyễn Thị Thanh Hương (GĐ WWF Vietnam)",
+      "setting": "Lai Châu, thủy điện Sơn La, WWF Vietnam, Bộ TNMT", "author": "Nước Chảy Tây Bắc"
+    },
+    {
+      "id": 86, "title_hint": "Nghệ Sĩ Nhiếp Ảnh Và Album Ảnh Trăm Tỷ",
+      "theme": "Nhiếp ảnh gia tài năng Hà Nội bị hãng thông tấn quốc tế lấy ảnh không trả tiền bản quyền và lấy giải thưởng World Press Photo. Cuộc chiến pháp lý tại Tòa án Hà Lan, nữ GĐ World Press Photo Foundation minh oan và trao giải",
+      "protagonist": "Đỗ Hữu Tuấn", "love_interest": "Joumana El Zein Khoury (GĐ World Press Photo)",
+      "setting": "Hà Nội, World Press Photo Amsterdam, Cục Bản quyền", "author": "Ống Kính Phố Cổ"
+    },
+    {
+      "id": 87, "title_hint": "Trùm Bất Động Sản Nghỉ Dưỡng Phú Quốc",
+      "theme": "Kỹ sư quy hoạch Phú Quốc phát triển mô hình du lịch cộng đồng bền vững, bị tập đoàn nghỉ dưỡng lớn chiếm đất và vu khống xây dựng trái phép. Nữ Bộ trưởng TN&MT và UNWTO Vietnam hỗ trợ mô hình du lịch mới",
+      "protagonist": "Lê Đình Nghĩa", "love_interest": "Vũ Thị Thu Hằng (Thứ trưởng Bộ TN&MT)",
+      "setting": "Phú Quốc, UNWTO, Bộ TN&MT, quy hoạch đặc khu kinh tế", "author": "Đảo Ngọc Xanh"
+    },
+    {
+      "id": 88, "title_hint": "Hacker Mũ Trắng Và Ngân Hàng 10 Tỷ USD",
+      "theme": "Chuyên gia an ninh mạng hacker mũ trắng phát hiện lỗ hổng nghiêm trọng trong hệ thống SWIFT ngân hàng VCB, bị sa thải vu khống cài trojan. Ngăn chặn vụ trộm 200 triệu USD, NHNN và FBI Cyber Division hỗ trợ",
+      "protagonist": "Nguyễn Thành Long", "love_interest": "Agent Lê Thu Hà (FBI Cyber Division liaison)",
+      "setting": "Hà Nội, VCB, SWIFT, NHNN, FBI Cyber", "author": "Zero Day Hà Nội"
+    },
+    {
+      "id": 89, "title_hint": "Chuyên Gia Đàm Phán Con Tin Và Nhóm Cướp",
+      "theme": "Cựu chuyên gia đàm phán C02 Bộ Công An bị cho nghỉ hưu sớm sau khi phản đối phương án giải cứu sai, bị vu khống ăn tiền tội phạm. Vụ cướp ngân hàng con tin ở Hà Nội, nhà nước mời anh quay lại",
+      "protagonist": "Phạm Đức Lộc", "love_interest": "Đại tá Nguyễn Thị Thanh (Cục C02 Bộ Công An)",
+      "setting": "Hà Nội, Cục C02 Bộ Công An, tình huống con tin ngân hàng", "author": "Đàm Phán Hà Nội"
+    },
+    {
+      "id": 90, "title_hint": "Kiến Trúc Sư Xanh Và Công Trình Net-Zero",
+      "theme": "KTS chuyên công trình xanh net-zero TP.HCM bị chủ đầu tư cướp thiết kế LEED Platinum, bị vu khống tính toán sai kết cấu. Công trình anh thiết kế đoạt giải Kiến trúc Xanh thế giới BREEAM Outstanding, lật mặt tất cả",
+      "protagonist": "Hoàng Minh Anh", "love_interest": "Suzanne Ow (Giám khảo BREEAM Southeast Asia)",
+      "setting": "TP.HCM, BREEAM Outstanding award, Bộ Xây Dựng, LEED certification", "author": "Kính Xanh Sài Thành"
+    },
+    {
+      "id": 91, "title_hint": "Nhà Sản Xuất Nước Mắm Phú Quốc Và WTO",
+      "theme": "Chủ hãng nước mắm Phú Quốc truyền thống 4 đời bị tập đoàn nước mắm công nghiệp vu khống dùng hóa chất, bị rút chứng nhận GI Châu Âu. Kiện ra WTO, thắng vụ kiện thương hiệu địa lý lịch sử",
+      "protagonist": "Nguyễn Thị Kim Tiền", "love_interest": "Pierre Dubois (Cố vấn WTO TRIPS)",
+      "setting": "Phú Quốc, WTO Geneva, EU Protected Geographical Indication", "author": "Muối Mặn Phú Quốc"
+    },
+    {
+      "id": 92, "title_hint": "Bậc Thầy Bia Thủ Công Và IPO Tỷ Đô",
+      "theme": "Chủ hãng bia craft Đà Lạt bị đại lý phân phối thay bia giả, vu khống vệ sinh an toàn thực phẩm, bị cơ quan phong tỏa nhà máy. Thắng vụ kiện và đưa cổ phần lên HoSE, lật đổ đế chế phân phối độc quyền",
+      "protagonist": "Lê Quang Phú", "love_interest": "Nguyễn Thị Cẩm Vân (CEO quỹ đầu tư F&B Vietnam)",
+      "setting": "Đà Lạt, HoSE IPO, Bộ Công Thương, World Beer Awards", "author": "Bia Craft Cao Nguyên"
+    },
+    {
+      "id": 93, "title_hint": "Giám Sát Xây Dựng Và Tòa Nhà Nghiêng",
+      "theme": "Kỹ sư giám sát công trình tại Hà Nội phát hiện cọc nền nhà cao tầng bị rút ruột vật liệu, bị sa thải vu khống phá hoại tiến độ. Cứu hàng trăm hộ dân khỏi thảm họa sụp tòa nhà, thanh tra Bộ Xây Dựng minh oan",
+      "protagonist": "Trần Quốc Việt", "love_interest": "Nguyễn Khánh Huyền (Chánh Thanh tra Bộ Xây Dựng)",
+      "setting": "Hà Nội, Bộ Xây Dựng, C03, giám định công trình", "author": "Móng Sắt Hà Thành"
+    },
+    {
+      "id": 94, "title_hint": "Giáo Viên Anh Văn Và Startup Ngôn Ngữ AI",
+      "theme": "Giáo viên Anh văn IELTS 9.0 Hà Nội tạo app học tiếng Anh AI adaptive bị đối tác cướp code, bị kiện vi phạm NDA. App của anh được Google Bard tích hợp, đánh bại đối thủ trên Appstore Vietnam",
+      "protagonist": "Phạm Đức Anh", "love_interest": "Lê Minh Ngọc (CEO Google Vietnam)",
+      "setting": "Hà Nội, Google Vietnam, App Store Vietnam, EdTech", "author": "Ngữ Pháp Hà Thành"
+    },
+    {
+      "id": 95, "title_hint": "Vua Hải Sản Khánh Hòa Và Siêu Thị Nhật",
+      "theme": "Chủ vựa hải sản Nha Trang phát triển chuỗi lạnh (cold chain) cho xuất khẩu mực khô đặc sản, bị đối thủ phá hoại tủ đông và kiện giả hàng. Thắng hợp đồng xuất khẩu trực tiếp sang AEON Japan, nữ chuyên gia JETRO hỗ trợ",
+      "protagonist": "Trần Văn Minh", "love_interest": "Nakamura Yoko (Chuyên gia JETRO Vietnam)",
+      "setting": "Nha Trang, AEON Japan, JETRO Vietnam, xuất khẩu thủy sản", "author": "Biển Ngọc Khánh Hòa"
+    },
+    {
+      "id": 96, "title_hint": "Bác Sĩ Ung Thư Và Liều Thuốc Bí Ẩn",
+      "theme": "Bác sĩ ung thư BV Ung bướu TP.HCM phát triển liệu pháp miễn dịch ung thư phổi đột phá từ nguồn sinh học biển Việt Nam, bị trưởng khoa cướp đề tài. Hội ung thư thế giới UICC kiểm chứng và trao giải đặc biệt",
+      "protagonist": "Đặng Hữu Phước", "love_interest": "Isabella Casas (Chủ tịch UICC Geneva)",
+      "setting": "BV Ung bướu TP.HCM, UICC Geneva, FDA Vietnam, biotech", "author": "Chiến Sĩ Ung Thư"
+    },
+    {
+      "id": 97, "title_hint": "Thợ Làm Tóc Và Đế Chế Beauty Tech",
+      "theme": "Thợ làm tóc TP.HCM phát minh công nghệ nhuộm tóc tự phục hồi không hóa chất độc hại, bị salon lớn nhất VN cướp sáng chế. L'Oréal R&D Paris kiểm tra và ký hợp đồng phân phối độc quyền toàn cầu",
+      "protagonist": "Nguyễn Thị Thu Hà", "love_interest": "Michel Dupont (GĐ R&D L'Oréal Paris)",
+      "setting": "TP.HCM, L'Oréal Paris, Cục SHTT, Beauty innovation", "author": "Sắc Đẹp Sài Thành"
+    },
+    {
+      "id": 98, "title_hint": "Nhà Thiên Văn Học Và Vệ Tinh Việt Nam",
+      "theme": "Nhà nghiên cứu thiên văn học tại Đài Thiên văn Nha Trang phát hiện tiểu hành tinh mới, bị viện trưởng cướp công trình và đặt tên theo tên mình. Hợp tác NASA và ESA minh oan, tiểu hành tinh mang tên anh",
+      "protagonist": "Phạm Ngọc Điệp", "love_interest": "Nguyễn Thị Thu Giang (Đại diện NASA Vietnam)",
+      "setting": "Đài Thiên văn Nha Trang, NASA JPL, ESA, Minor Planet Center", "author": "Sao Trời Khánh Hòa"
+    },
+    {
+      "id": 99, "title_hint": "Tổng Chỉ Huy Bếp Catering Sân Bay Và Bữa Tiệc APEC",
+      "theme": "Bếp trưởng phụ trách catering sân bay Nội Bài bị đối thủ vu khống gây ngộ độc thực phẩm VIP, bị đình chỉ hợp đồng. Được giao phụ trách bữa tiệc APEC cấp nguyên thủ quốc gia, trả thù thành công bằng bữa tiệc được thế giới ca ngợi",
+      "protagonist": "Vũ Hồng Quân", "love_interest": "Lý Thị Minh Nguyệt (Vụ trưởng Vụ Lễ tân Ngoại giao)",
+      "setting": "Sân bay Nội Bài, Bộ Ngoại giao, Hội nghị APEC Hà Nội", "author": "Bếp Ngoại Giao"
+    },
+    {
+      "id": 100, "title_hint": "Vị Tướng Doanh Nghiệp Và Cú Phục Sinh Nghìn Tỷ",
+      "theme": "CEO tập đoàn sản xuất lớn nhất miền Nam bị HĐQT phản bội, bị vu khống tham nhũng quỹ đầu tư nghìn tỷ, bị bắt tạm giam oan. Vợ là nữ luật sư hàng đầu VN phản công pháp lý, lật tẩy âm mưu thâu tóm thù địch của tập đoàn ngoại, lấy lại ngai vàng",
+      "protagonist": "Lê Quang Thắng", "love_interest": "Nguyễn Diệu Linh (Luật sư M&A, vợ anh)",
+      "setting": "TP.HCM, Tòa án kinh tế NDTC, HĐQT, thâu tóm thù địch", "author": "Phượng Hoàng Tái Sinh"
+    }
+  ]
+}

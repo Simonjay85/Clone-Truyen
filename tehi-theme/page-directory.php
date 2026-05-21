@@ -196,7 +196,7 @@ $all_terms = get_terms([
     z-index: 1 !important;
     width: 100% !important;
     height: 100% !important;
-    object-fit: contain !important;
+    object-fit: cover !important;
     display: block !important;
     transition: transform .3s ease !important;
 }
@@ -261,7 +261,7 @@ $all_terms = get_terms([
 .mkm-card-title { color: #fff !important; font-size: 15px !important; font-weight: 800 !important; line-height: 1.4 !important; margin-bottom: 8px !important; display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 .mkm-card-meta { display: flex !important; justify-content: space-between !important; align-items: center !important; color: #d1d5db !important; font-size: 12px !important; font-weight: 600 !important; }
 
-.mkm-pagination a, .mkm-pagination span { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin: 0 4px; border-radius: 12px; background: #fff; color: #4b5563; font-weight: 700; text-decoration: none; font-size: 15px; border: 1px solid #e5e7eb; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+.mkm-pagination a, .mkm-pagination span { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; width: auto; padding: 0 12px; height: 44px; margin: 0 4px; border-radius: 12px; background: #fff; color: #4b5563; font-weight: 700; text-decoration: none; font-size: 15px; border: 1px solid #e5e7eb; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
 .mkm-pagination a:hover { background: #f8fafc; border-color: #2563eb; color: #2563eb; transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(37,99,235,0.1); }
 .mkm-pagination .current { background: #2563eb; color: #fff; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
 </style>

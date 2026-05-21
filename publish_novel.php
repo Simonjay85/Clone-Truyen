@@ -86,7 +86,33 @@ if (!$term && !is_wp_error($term)) {
 
 // 2. Tải và cài đặt Ảnh bìa (Cover Image)
 $cover_status = 'Không có ảnh bìa';
-if (!empty($cover_url)) {
+$cover_local_filename = isset($input['cover_local_filename']) ? sanitize_file_name($input['cover_local_filename']) : '';
+
+if (!empty($cover_local_filename)) {
+    $local_path = ABSPATH . 'wp-content/uploads/' . $cover_local_filename;
+    if (file_exists($local_path)) {
+        $tmp = tempnam(get_temp_dir(), 'cover');
+        if (copy($local_path, $tmp)) {
+            $file_array = array(
+                'name' => 'cover-' . $story_id . '-hq-' . rand(100, 999) . '.png',
+                'tmp_name' => $tmp
+            );
+            $attach_id = media_handle_sideload($file_array, $story_id);
+            if (!is_wp_error($attach_id)) {
+                set_post_thumbnail($story_id, $attach_id);
+                $cover_status = 'Sideload ảnh bìa local thành công!';
+            } else {
+                $cover_status = 'Lỗi media_handle_sideload: ' . $attach_id->get_error_message();
+                @unlink($tmp);
+            }
+        } else {
+            $cover_status = 'Lỗi copy ảnh bìa sang thư mục tạm';
+        }
+        @unlink($local_path); // Dọn dẹp tệp tin gốc sau khi xử lý
+    } else {
+        $cover_status = 'Không tìm thấy tệp tin ảnh bìa local trên server: ' . $local_path;
+    }
+} elseif (!empty($cover_url)) {
     $tmp = download_url($cover_url, 45);
     if (!is_wp_error($tmp)) {
         $file_array = array(

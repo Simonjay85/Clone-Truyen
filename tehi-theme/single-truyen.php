@@ -81,7 +81,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 /* Cover */
 .mkm-cover-col img {
     width: 100%; border-radius: 12px; display: block;
-    aspect-ratio: 2/3; object-fit: cover; object-position: top center;
+    aspect-ratio: 1/1; object-fit: cover; object-position: top center;
     box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 .mkm-cover-badge {
@@ -211,7 +211,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     background: #2a221f; /* Vintage dark fallback */ padding: 20px 0; }
     .mkm-hero-inner { grid-template-columns: 1fr; gap: 20px; }
     .mkm-cover-col { max-width: 100%; margin: 0 auto; width: 100%; }
-    .mkm-cover-col img { aspect-ratio: 2/3; width: 100%; }
+    .mkm-cover-col img { aspect-ratio: 1/1; width: 100%; }
     .mkm-action-btns { flex-direction: row; gap: 16px; }
     .mkm-btn-prim, .mkm-btn-sec { flex: 1; width: auto; }
     .mkm-info-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }

@@ -1,163 +1,190 @@
-# Prompt tạo truyện sảng văn đô thị vả mặt v13 (5-15 chương, ưu tiên 7-12)
+# ANTIGRAVITY V13 MASTERPROMPT (SCHEDULE / CHAT MODE)
+# Cập Nhật Chuẩn Vàng V13 Cho Toàn Bộ Hệ Thống doctieuthuyet.com
+# Ngày Cập Nhật: 2026-05-22
 
-Dùng prompt này mỗi khi cần tạo một bộ truyện dạng `Sảng Văn / Vả Mặt` để đưa lên doctieuthuyet.com. Prompt ưu tiên đầu ra JSON sạch, có thể chuyển thành `pending_novel.json` hoặc đưa vào pipeline đăng truyện hiện có. Mặc định không tạo truyện quá ngắn; nếu để `Auto`, hãy ưu tiên 7-12 chương để truyện có đủ nhiều lớp gay cấn và nhiều lần vả mặt.
+---
 
-## Cách dùng nhanh
+## 📌 PHẦN 1 — HƯỚNG DẪN SỬ DỤNG HAI CHẾ ĐỘ (OPERATIONAL MODES)
 
-1. Thay các giá trị trong phần `BRIEF TRUYEN`.
-2. Dán toàn bộ prompt vào model viết truyện.
-3. Yêu cầu model chỉ trả về JSON, không thêm giải thích.
-4. Kiểm tra JSON có đầy đủ `title`, `author`, `genre`, `intro`, `cover_prompt`, `chapters`.
-5. Mỗi `chapter.content` chỉ dùng HTML cơ bản: `<p>`, `<strong>`, `<em>`, `<hr>`.
+Quy trình tạo truyện trên hệ thống doctieuthuyet.com hỗ trợ 2 chế độ chính để tối ưu hóa chi phí, tốc độ và chất lượng văn học:
 
-## Prompt chính (Tiêu chuẩn Vàng V13)
+### 1. CHẾ ĐỘ CHAT (Chat Mode - Claude Opus/Gemini Direct)
+* **Mục đích**: Người dùng dán trực tiếp một Prompt duy nhất vào giao diện Chat (Claude 3.5 Opus hoặc Gemini 1.5/2.0 Pro) để nhận về một file JSON duy nhất chứa toàn bộ nội dung bộ truyện (từ 5-15 chương, ưu tiên 7-12 chương).
+* **Đặc trưng**:
+  * Đòi hỏi mô hình có ngữ cảnh lớn (Context window) và khả năng xuất ra JSON hoàn chỉnh trong một lượt phản hồi duy nhất mà không bị đứt gãy.
+  * Toàn bộ các quy tắc vàng của V13 được đóng gói trong một cấu trúc Prompt duy nhất bên dưới.
+
+### 2. CHẾ ĐỘ LẬP LỊCH (Schedule Mode - Automated Daemon/Scripts)
+* **Mục đích**: Chạy ngầm định kỳ (mỗi 4 giờ) thông qua file `auto_novel_scheduler.py` và `auto_novel_generator.py` mà không cần con người can thiệp.
+* **Đặc trưng**:
+  * Tận dụng tối đa sự phân tách hai bước: **Bước 1** sinh Concept & Dàn ý (outlines) tổng quát; **Bước 2** viết chi tiết từng chương (sequential generation) để đảm bảo độ dài mỗi chương luôn đạt 1000-1500 từ chất lượng cao.
+  * Không dùng các API trả phí cho hình ảnh hoặc các API dịch thuật ngoài luồng.
+  * Chỉ xuất ra chuỗi `cover_prompt` bằng tiếng Anh để script local tự động tải ảnh bìa miễn phí từ Pollinations AI.
+
+---
+
+## 📌 PHẦN 2 — CÁC NGUYÊN TẮC CỐT LÕI CỦA TIÊU CHUẨN VÀNG V13
+
+### ⚠️ NGUYÊN TẮC CẤM TỐI KỴ: KHÔNG ĐƯA AI/API LÀM TÌNH TIẾT TRUYỆN (NO AI/API PLOT DEVICES)
+* **Không làm**: TUYỆT ĐỐI CẤM nhân vật trong truyện sử dụng các ứng dụng AI, viết API, dùng GPT vẽ ảnh, hay làm các phần mềm AI đơn giản để khởi nghiệp hoặc lật kèo. Điều này làm mất đi tính chân thực, khiến cốt truyện trở nên "siêu hình", rẻ tiền và phá vỡ sự nhập tâm của độc giả sảng văn.
+* **Nên làm**: Thay vào đó, sự lật kèo và thành công của nhân vật chính phải dựa trên các lĩnh vực thực tế, truyền thống và có tính bảo mật cao:
+  * **Sở hữu trí tuệ**: Bản thiết kế gốc vẽ tay, Nhật ký commit Git cục bộ hoặc trên hệ thống riêng, Hợp đồng ủy quyền công nghệ chính thức.
+  * **Bằng chứng vật lý**: Video camera an ninh gốc, Bản sao kê ngân hàng đóng dấu đỏ, Báo cáo kiểm toán độc lập của Big 4.
+  * **Trí tuệ pháp lý**: Đơn tố cáo cạnh tranh không lành mạnh gửi Sở KH&ĐT, văn bản niêm phong của C03 (Cục Cảnh sát điều tra tội phạm về tham nhũng, kinh tế, buôn lậu).
+  * **Y khoa thực tế**: Báo cáo chỉ số lâm sàng (men gan, điện tâm đồ, xét nghiệm máu) từ bệnh viện đa khoa trung ương xác thực kết quả cứu mạng của Đông y/châm cứu.
+
+### 1. CÔNG THỨC TIÊU ĐỀ HÚT CTR (CLICK-THROUGH RATE) CỰC MẠNH
+* Tiêu đề phải dài từ **12 đến 22 từ tiếng Việt**, chia làm 2-3 vế rõ rệt: **Nỗi nhục ban đầu → Cú lật kèo lớn → Phần thưởng hoặc Lời cảnh cáo sảng khoái**.
+* Không được đặt tiêu đề ngắn cũn cỡn như "Chàng Rể Bếp Trưởng" hay "Kỹ Sư AI".
+* **Các từ khóa khuyên dùng**: *Bị đuổi, Bị vu oan, Bị từ từ hôn, Cả gia tộc, Người yêu cũ, Sếp cũ, Hào môn, Hợp đồng trăm tỷ, Bằng chứng cuối, Quỳ xin lỗi, Tôi mua lại, Tôi thâu tóm*.
+* **Ví dụ mẫu**:
+  * *Ngày Bị Sếp Cũ Ném Khỏi Tập Đoàn, Tôi Mang Nhật Ký Commit Trở Lại Thắng Gói Thầu Nghìn Tỷ*
+  * *Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ Của Chàng Rể Hào Môn Bị Khinh Rẻ*
+  * *Tưởng Tôi Chỉ Là Y Tá Quèn, Đến Khi Siêu Tỷ Phú Quỳ Lạy Cầu Cứu Cả Viện Trưởng Đều Câm Nín*
+
+### 2. CÔNG THỨC INTRO ĐẨY CAO TRÀO NGAY LẬP TỨC
+* Sử dụng định dạng HTML với 3-5 đoạn văn ngắn gọn.
+* **Đoạn 1 (Hook)**: Đưa thẳng câu thoại sỉ nhục cay đắng nhất của phản diện hoặc người yêu cũ ngay đầu tiên.
+* **Đoạn 2 (Hé lộ)**: Tiết lộ một phần lợi thế hoặc bí mật kinh thiên động địa mà nhân vật chính đang nắm giữ dưới vỏ bọc bình thường.
+* **Đoạn 3 (Lời hứa)**: Hứa hẹn những màn trả thù, vả mặt liên tục tăng cấp, khiến người đọc không thể dừng lại.
+
+### 3. VẢ MẶT NHIỀU VÒNG TĂNG CẤP (MULTI-STAGE SLAP-FACE)
+* Cấm tuyệt đối kiểu truyện chỉ chịu nhục từ đầu đến cuối rồi thắng ở đúng câu cuối cùng. Truyện phải có cấu trúc sóng cuộn:
+  * **Vòng 1 (Chương 2-3)**: Phản đòn nhỏ đầu tiên bằng chuyên môn hoặc thực lực dưới sự nghi ngờ của đám đông.
+  * **Vòng 2 (Chương 4-5)**: Phản diện điên cuồng trả đũa bằng truyền thông bẩn hoặc quan hệ. Nhân vật chính đối mặt với khó khăn thực sự (bị đình chỉ cơ sở, bị đóng băng tài khoản tạm thời tại Vietcombank/Agribank, đối tác rút vốn).
+  * **Vòng 3 (Chương 6-7)**: Đỉnh điểm khủng hoảng. Phóng viên vây kín phòng khám/công ty, dư luận chửi bới. Nhân vật chính kiên nhẫn gom đủ bằng chứng.
+  * **Vòng cuối (Chương áp cuối & Chương cuối)**: Công khai tất cả hợp đồng, video camera ẩn, biên bản pháp lý đóng dấu đỏ. Phản diện quỳ gối xin tha thứ nhưng vô vọng, bị cơ quan chức năng còng tay mang đi.
+
+### 4. TẢ THỰC CHI TIẾT (SHOW, DON'T TELL THỂ XÁC)
+* Tuyệt đối tránh các tính từ sáo rỗng: "kinh hoàng", "sốc tột cùng", "vô cùng sợ hãi".
+* Thay thế bằng phản ứng vật lý của cơ thể phản diện khi bị vả mặt:
+  * *Mồ hôi lạnh chảy ròng ròng ướt sũng lưng áo sơ mi đắt tiền.*
+  * *Môi run cầm cập, mặt trắng bệch cắt không còn một giọt máu.*
+  * *Hai gối rệu rã, đập mạnh xuống nền gạch đá hoa cương kêu cộp.*
+  * *Ngón tay bấu chặt vào mép bàn gỗ gõ đỏ đến mức rỉ máu.*
+
+---
+
+## 📌 PHẦN 3 — PROMPT CHÍNH CHO CHẾ ĐỘ CHAT (CHAT MODE MASTERPROMPT)
+
+*Dán toàn bộ phần dưới đây vào Claude 3.5 Opus hoặc mô hình tương đương để sinh truyện hoàn chỉnh.*
 
 ```text
-Bạn là ghostwriter chuyên nghiệp cho tiểu thuyết mạng Việt Nam, chuyên thể loại SẢNG VĂN / VẢ MẶT / ĐÔ THỊ / TÀI PHIỆT. Hãy viết một bộ truyện hoàn chỉnh từ 5 đến 15 chương, nhưng nếu `Số chương` là `Auto` thì mặc định chọn 7-12 chương. Truyện phải gay cấn, có nhiều vòng vả mặt, nhiều lần phản diện tưởng thắng rồi bị lật ngược bằng chứng, tiền, pháp lý, chuyên môn hoặc chiến lược.
+Bạn là Ghostwriter chuyên nghiệp hàng đầu cho các nền tảng tiểu thuyết mạng đô thị tài phiệt lớn nhất Việt Nam. Nhiệm vụ của bạn là viết một bộ truyện sảng văn/vả mặt thuần Việt 10/10 hoàn chỉnh có độ dài từ 7 đến 12 chương (mặc định chọn 8-10 chương nếu không có yêu cầu cụ thể) và xuất ra dưới dạng JSON sạch 100%.
 
-BRIEF TRUYỆN:
-- Thể loại: Sảng Văn, Đô Thị, Vả Mặt (Tiêu chuẩn V13)
-- Số chương: [DIEN_SO_TU_5_DEN_15_HOAC_GHI_AUTO]
-- Tiêu đề tạm thời: [DIEN_TIEU_DE_HOAC_DE_MODEL_TU_TAO]
-- Tác giả: [DIEN_BUT_DANH]
-- Bối cảnh: [VD: TP.HCM, giới tài phiệt, công ty công nghệ, y thuật, bất động sản, nhà hàng, showbiz...]
-- Nam chính/nữ chính: [DIEN_NHAN_VAT_CHINH]
-- Phản diện chính: [DIEN_PHAN_DIEN]
-- Nỗi nhục ban đầu: [DIEN_CANH_NHAN_VAT_CHINH_BI_SI_NHUC]
-- Năng lực/lợi thế lật kèo: [DIEN_LOI_THE_CUA_NHAN_VAT_CHINH]
-- Phần thưởng cuối truyện: [DIEN_KET_CUC_SANG]
-- Chi tiết bắt buộc: [DIEN_CHI_TIET_CAN_GIU_NEU_CO]
-- Chi tiết cấm/không muốn có: [DIEN_CHI_TIET_CAM_NEU_CO]
+Hãy tuân thủ nghiêm ngặt các quy tắc vàng của Tiêu chuẩn Vàng V13 sau đây:
 
-YÊU CẦU VỀ CHẤT LƯỢNG (TIÊU CHUẨN VÀNG V13):
-1. Mở đầu phải có cảnh sỉ nhục mạnh trong 700-1200 từ đầu tiên của chương 1. Độc giả phải thấy tức thay nhân vật chính.
-2. Nếu `Số chương` là `Auto`, hãy tự chọn số chương từ 7 đến 12 theo độ rộng của mâu thuẫn. Chỉ được chọn 5-6 chương nếu brief ghi rõ "truyện rất ngắn", "test pipeline", hoặc yêu cầu số chương cụ thể là 5/6.
-   - 5-6 chương: chỉ dùng cho bản test hoặc truyện cực gọn do người dùng yêu cầu rõ.
-   - 7-8 chương: dùng cho một phản diện chính nhưng phải có ít nhất 3 lần vả mặt và 1 cú thua nhỏ của nhân vật chính.
-   - 9-12 chương: lựa chọn mặc định tốt nhất cho đô thị/tài phiệt/y thuật/công nghệ/F&B/showbiz, có 4-6 lần vả mặt, 2-3 tầng áp lực, một nội gián hoặc cú phá hoại.
-   - 13-15 chương: dùng cho truyện có nhiều phản diện, nhiều sân đấu, nhiều tuyến tình cảm/pháp lý/tài chính cần payoff riêng.
-3. Không được để truyện chỉ có một cú vả mặt cuối. Phải có nhiều vòng vả mặt tăng cấp:
-   - Vả mặt 1: đáp trả nhục nhã ban đầu bằng năng lực/chuyên môn, nhưng chưa thắng hẳn.
-   - Vả mặt 2: phản diện tung tin bẩn hoặc phá hoại, nhân vật chính phản đòn bằng bằng chứng sơ cấp.
-   - Vả mặt 3: nhân vật chính chịu một cú thua thật như mất đối tác, bị đình chỉ, server sập, khách hủy, người thân bị liên lụy.
-   - Vả mặt 4: lật kèo bằng chuỗi chứng cứ chắc hơn như log, hợp đồng, camera gốc, kiểm nghiệm, lời khai, dòng tiền.
-   - Vả mặt cuối: kết toán công khai từng phản diện, gồm cả người yêu cũ/nội gián/kẻ truyền thông nếu họ từng đâm sau lưng.
-4. Mỗi chương phải có một câu móc cao trào. Nếu truyện có ít hoặc nhiều hơn 8 chương, hãy co giãn/cắt giãn các mốc dưới đây nhưng vẫn giữ đúng thứ tự cảm xúc:
-   - Chương 1: bị chửi bới, bị đuổi, bị hãm hại, nhân vật chính để lại lời tuyên chiến.
-   - Chương 2: nhân vật chính lần đầu lộ năng lực cứu người hoặc giải quyết vấn đề dưới sự nghi ngờ.
-   - Chương 3: nhân vật chính build đội, gom vốn, dựng cơ sở hoặc chuẩn bị chiến trường; phải có khó khăn thật như thiếu người, thiếu server, thiếu giấy phép, thiếu nguồn hàng, hoặc bị đối tác nghi ngờ.
-   - Chương 4: cuộc chiến lớn hơn, phản diện tưởng đã nắm chắc thắng lợi.
-   - Chương 5: nhân vật chính chịu tổn thất thật, áp lực dư luận/pháp lý tăng cao kịch trần.
-   - Các chương giữa: phản diện tăng cấp đòn đánh, thêm đối thủ/dư luận/pháp lý kéo vào cuộc; có thể thêm nội gián, chứng cứ giả, hồ sơ bị chặn, nhà cung cấp cắt hàng, đối tác rút lui.
-   - Chương áp cuối: lật kèo công khai, bằng chứng bùng nổ kịch tính.
-   - Chương cuối: kết toán phản diện, thưởng cho nhân vật chính, mở một dư vị sảng khoái.
-5. Văn phong: tiếng Việt tự nhiên, giàu hình ảnh, câu văn có lực đẩy, có hơi thở đọc truyện mạng. Tránh lặp lại máy móc các cụm "cả sảnh đường chấn động", "tất cả mọi người đều sốc", "anh nhẹ mỉm cười". Áp dụng Show, Don't Tell triệt để (tả vật lý: mồ hôi lạnh, ngón tay bấm chặt rỉ máu...).
-6. Vả mặt phải có lý do logic: bằng chứng, hợp đồng, video, giấy tờ, nhân chứng, chuyên môn, tiền, địa vị, hoặc chiến lược pháp lý. Không được để nhân vật chính thắng chỉ vì "thân phận bí ẩn" mà không gieo mầm từ trước.
-7. Y thuật thực tế & Tây y kết hợp: Các ca bệnh khẩn cấp không được khỏi ngay lập tức. Châm cứu/phép trị liệu ban đầu chỉ được "giữ mạng/tạm ổn định" chứ không chữa khỏi hoàn toàn trong vài phút. Bệnh nhân bắt buộc phải được đưa vào bệnh viện chính quy để thực hiện xét nghiệm máu, đo men gan, kiểm tra chức năng lâm sàng. Ý kiến của bác sĩ Tây y chuyên nghiệp chạy máy móc xét nghiệm xác nhận sự kỳ diệu từ phương pháp cứu người của nam chính mới là thứ tạo niềm tin logic vững chắc cho người xung quanh.
-8. Hào môn thế gia & Đầu tư lý tính: Mỹ nhân tài phiệt, tiểu thư quyền quý phải thông minh, sắc sảo và thực tế. Cô ấy không bao giờ rót hàng tỷ đồng chỉ vì một lời cảm ơn xã giao. Cô ấy phải đặt điều kiện trao đổi sòng phẳng, kiểm tra tư cách pháp nhân, hoặc thử thách nam chính bằng một ca bệnh phức tạp trước khi ký hợp đồng chính thức và mở tài khoản mới để chuyển vốn khởi nghiệp lớn.
-9. Khủng hoảng kéo dài & Áp lực dồn dập: Trận chiến truyền thông hay âm mưu phá hoại của phản diện phải tạo áp lực thực sự lớn. Không thể giải quyết lật kèo ngay lập tức tại cửa. Hãy mô tả khủng hoảng nghiêm trọng: phòng khám/doanh nghiệp bị cơ quan quản lý đình chỉ hoạt động ít nhất 24 giờ để điều tra thanh tra, khách hàng gọi điện hủy lịch hàng loạt, nhà cung cấp nguyên liệu hoặc đối tác cắt đứt liên lạc, phóng viên và streamer vây kín cơ sở livestream xuyên đêm tạo áp lực dư luận cực lớn. Sự lật kèo phải diễn ra dựa trên trí tuệ pháp lý, chứng cứ xác thực và quy trình chuẩn chỉ, chứ không phải giải quyết nhanh gọn qua vài câu nói.
-10. Cảm xúc tự nguyện trước khi đính ước: Trước khi công bố hôn sự lớn hay chuyển giao tài sản quan trọng trước công chúng, nam nữ chính phải có một buổi trò chuyện riêng tư sâu sắc trong không gian tĩnh lặng (như góc vườn phòng khám dưới hoàng hôn, ban công yên tĩnh). Nữ chính phải bày tỏ tình cảm độc lập, tự chủ của bản thân (yêu nam chính vì đức độ, tài năng và sự rung động tự nguyện chứ không phải vì di nguyện gia đình hay lợi ích kinh tế ràng buộc), tạo nền tảng vững chắc để tiếng gọi thân mật trước họp báo trở nên ngọt ngào, chân thật và thuyết phục.
-11. Phản diện phải thông minh vừa đủ, có kế hoạch thật, có tâm lý và động cơ rõ. Không biến phản diện thành kẻ ngu liên tục lao đầu vào bẫy.
-12. Mỗi chương dài 1200-1800 từ tiếng Việt. Nếu model bị giới hạn độ dài, ưu tiên giảm số chữ mỗi chương một chút nhưng vẫn giữ số chương 7-12 khi `Auto`; không rút gọn thành tóm tắt 5 chương.
-13. Không được đưa vào nội dung bất kỳ đoạn meta nào như: Self-Check, Change Log, Audit Report, PATCH PLAN, STATE UPDATE JSON, ghi chú của tác giả, lời nhắn của AI, hoặc giải thích quy trình viết.
-14. Không viết nội dung tình dục lộ liễu, không có cảnh bạo lực quá mức chi tiết, không có hướng dẫn làm hại người thật.
+1. BỐI CẢNH & NHÂN VẬT THUẦN VIỆT THỰC TẾ:
+   - Địa danh: Địa điểm thực tế tại Việt Nam (Landmark 81, Quận 1, phố Cầu Giấy, đầm sen Tây Hồ, Cảng Tiên Sa Đà Nẵng, đồi chè Cầu Đất Đà Lạt...).
+   - Tên nhân vật: Tên người Việt Nam (Nguyễn Minh Khang, Trần Tuệ Lâm, Phạm Duy Bách...).
+   - Cơ cấu tiền tệ: Việt Nam Đồng (VNĐ). Con số kinh doanh thực tế (hàng tỷ, chục tỷ, trăm tỷ).
+   - Cơ quan thực tế: C03 (Cảnh sát điều tra tội phạm kinh tế), Sở Kế hoạch Đầu tư, Sở Thông tin và Truyền thông, Ủy ban Chứng khoán Nhà nước.
+   - Ngân hàng thực tế: Vietcombank, Techcombank, Agribank, BIDV.
 
-YÊU CẦU SEO VÀ ĐĂNG WEBSITE:
-- Tạo `title` hấp dẫn, đủ dài để có sức hút khi lướt danh sách truyện. Không đặt tiêu đề quá ngắn kiểu "Người Thợ Sửa Xe Ở Hầm B2" hoặc "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ". Tiêu đề nên dài khoảng 12-22 từ tiếng Việt, có 2-3 vế rõ: nỗi nhục ban đầu -> cú lật kèo -> phần thưởng hoặc lời đe dọa sảng khoái.
-- Công thức tiêu đề ưu tiên:
-  - "Bị [sỉ nhục/đuổi/khinh thường] ở [bối cảnh], tôi [lật kèo lớn] khiến [phản diện] phải [trả giá]"
-  - "Ngày [người yêu cũ/gia tộc/sếp] ném tôi ra đường, họ không ngờ tôi đang nắm [bằng chứng/tài sản/bí mật]"
-  - "Tưởng tôi là [thân phận thấp], đến khi [sự thật/bằng chứng] lộ ra cả [sân đấu] im lặng"
-  - "Sau khi bị [vu oan/cướp công/từ hôn], tôi dùng [chuyên môn/bằng chứng/hợp đồng] đập tan [âm mưu]"
-- Tiêu đề phải gợi tò mò và có cảm giác vả mặt ngay trong tên truyện. Ưu tiên các từ khóa mạnh: "bị đuổi", "bị vu oan", "bị từ hôn", "cả nhà chồng", "người yêu cũ", "sếp cũ", "hào môn", "hợp đồng trăm tỷ", "bằng chứng cuối", "họ quỳ xin lỗi", "tôi mua lại", "tôi lật kèo".
-- Tạo `intro` bằng HTML, dài 3-5 đoạn, viết như mô tả bán truyện thật hấp dẫn. Hai câu đầu phải là hook cực mạnh khiến người đọc đang lướt phải muốn bấm vào ngay.
-- Công thức `intro`:
-  - Đoạn 1: mở bằng cảnh nhục hoặc cú sốc lớn, có câu thoại cay độc của phản diện/người yêu cũ/gia đình chồng/sếp cũ.
-  - Đoạn 2: hé lộ bí mật/lợi thế mà nhân vật chính đang nắm giữ, nhưng không kể hết.
-  - Đoạn 3: đẩy mâu thuẫn chính và hứa hẹn nhiều lần vả mặt tăng cấp.
-  - Đoạn 4-5 nếu cần: nêu phần thưởng cuối hoặc câu hỏi kích thích tò mò.
-- `intro` không được khô như tóm tắt nội dung. Phải có nhịp quảng cáo truyện: câu ngắn, sắc, giàu cảm xúc, có hình ảnh cụ thể, có lời thách thức hoặc lời hứa trả giá.
-- Tạo `cover_prompt` bằng tiếng Anh, mô tả ảnh bìa độc, rõ nhân vật, bối cảnh, ánh sáng, không chèn chữ vào ảnh.
-- `genre` mặc định là "Sảng Văn".
-- Mỗi chương có `title` dạng "Chương N: Tên chương".
-- Mỗi chương có `content` là HTML, chỉ gồm các thẻ `<p>`, `<strong>`, `<em>`, `<hr>`.
+2. CẤM TUYỆT ĐỐI METAPLOT VỀ AI/API TRONG TRUYỆN:
+   - Tuyệt đối KHÔNG để nhân vật chính hay bất kỳ ai sử dụng ứng dụng AI, API vẽ tranh, API ChatGPT hay làm phần mềm AI khởi nghiệp để lật kèo. Cốt truyện phải dựa vào thực tế: nhật ký commit Git gốc, bằng sáng chế chính thức, video camera ẩn, sao kê ngân hàng đóng dấu đỏ, hợp đồng kinh tế ký tay pháp lý vững chắc, hoặc chuẩn đoán lâm sàng của Tây y.
 
-ĐỊNH DẠNG ĐẦU RA BẮT BUỘC:
-Chỉ trả về một JSON hợp lệ duy nhất. Không bọc trong markdown. Không thêm bất kỳ câu nào trước hoặc sau JSON.
+3. MỞ ĐẦU SỈ NHỤC CỰC ĐẠI:
+   - Trong 800 từ đầu tiên của Chương 1, nhân vật chính phải chịu sự sỉ nhục, vu oan hoặc phản bội vô cùng tàn nhẫn và vô lý từ phản diện. Tạo sự bất công tột độ khiến độc giả phẫn nộ thay cho nhân vật chính.
+
+4. CẤU TRÚC VẢ MẶT NHIỀU VÒNG (MULTI-STAGE SLAP-FACE):
+   - Truyện phải có ít nhất 3-5 vòng vả mặt tăng cấp.
+   - Có một khúc cua bế tắc thực sự ở giữa truyện (phòng khám/doanh nghiệp bị đình chỉ hoạt động ít nhất 24 giờ, đối tác lớn đột ngột cắt liên lạc, tài khoản ngân hàng bị phong tỏa tạm thời, streamer vây kín livestream chửi bới xuyên đêm).
+   - Lật kèo phải dựa trên bằng chứng đanh thép, pháp lý vững chắc và sự chuẩn bị âm thầm từ trước.
+
+5. MIÊU TẢ VẬT LÝ CHI TIẾT (SHOW, DON'T TELL):
+   - Khi phản diện bị vả mặt, hãy tả chi tiết phản ứng sinh lý: mồ hôi lạnh thấm đẫm áo, đầu gối run rẩy đập xuống sàn kêu cộp, ngón tay bấm chặt rỉ máu, sắc mặt xám ngoét cắt không còn giọt máu. Tránh các tính từ sáo rỗng.
+
+6. NHÂN VẬT NỮ ĐỒNG HÀNH LÝ TÍNH:
+   - Mỹ nhân hào môn, tiểu thư tài phiệt phải thông minh, sắc sảo và thực tế. Cô ấy không bao giờ đầu tư hàng tỷ đồng chỉ vì một lời cảm ơn xã giao hay di nguyện gia tộc. Cô ấy phải thử thách thực lực của nam chính, kiểm tra hồ sơ pháp lý kỹ càng trước khi ký kết.
+   - Phải có một cảnh tâm sự riêng tư, sâu sắc giữa nam nữ chính ở không gian yên tĩnh trước khi họ đính ước hoặc công bố tình cảm trước công chúng để tạo sự thuyết phục.
+
+7. Y HỌC & ĐÔNG - TÂY Y KẾT HỢP BIỆN CHỨNG:
+   - Các ca bệnh cấp cứu bằng Đông y (châm cứu, bấm huyệt) ban đầu chỉ được giữ mạng hoặc tạm thời ổn định chỉ số sinh tồn. Bệnh nhân bắt buộc phải được đưa vào bệnh viện chính quy để thực hiện xét nghiệm máu, đo men gan, kiểm tra chức năng lâm sàng. Ý kiến chuyên môn của bác sĩ Tây y dựa trên máy móc hiện đại xác nhận kết quả thần kỳ mới là điểm tựa logic vững chắc nhất.
+
+8. THÔNG TIN ĐẦU RA YÊU CẦU:
+   - Title: Tiêu đề dài 12-22 từ có đầy đủ hook nhục -> lật -> vả.
+   - Intro: 3-5 đoạn HTML giới thiệu cực kỳ kịch tính, cuốn hút như trang bán sách.
+   - Cover Prompt: Đoạn mô tả hình ảnh bằng tiếng Anh chi tiết cho Pollinations AI (phong cách anime chuyên nghiệp, sang trọng, 1:1, không chứa bất kỳ chữ hay logo nào).
+   - Chapter content: Định dạng HTML sạch sẽ, chỉ dùng thẻ <p>, <strong>, <em>, <hr>. Tuyệt đối không lặp lại tiêu đề chương trong phần content.
+
+9. ĐỊNH DẠNG JSON BẮT BUỘC:
+   Chỉ trả về duy nhất một cấu trúc JSON hợp lệ như dưới đây, không bọc trong ```json hay ```, không thêm bất kỳ văn bản giải thích meta nào trước hoặc sau JSON.
 
 Schema:
 {
-  "title": "Tên truyện",
-  "author": "Bút danh",
+  "title": "...",
+  "author": "...",
   "genre": "Sảng Văn",
-  "intro": "<p>...</p>",
+  "intro": "<p>...</p><p>...</p>",
   "cover_prompt": "English image prompt...",
   "chapters": [
     {
-      "title": "Chương 1: ...",
-      "content": "<p>...</p>"
+      "title": "Chương 1: [Tên chương]",
+      "content": "<p>[Nội dung chi tiết chương 1 từ 1200-1500 từ...]</p>"
     },
-    {
-      "title": "Chương 2: ...",
-      "content": "<p>...</p>"
-    }
+    ...
   ]
 }
-
-TRƯỚC KHI TRẢ VỀ JSON, tự kiểm tra trong im lặng:
-- `title` dài khoảng 12-22 từ, có hook rõ, không quá ngắn/chung chung, đọc lên đã thấy nỗi nhục và cú lật kèo.
-- `intro` có 3-5 đoạn HTML, hai câu đầu đủ mạnh để kéo click, không phải bản tóm tắt khô.
-- Số chương nằm trong khoảng 5-15, hoặc đúng số chương mà brief đã yêu cầu.
-- Nếu `Số chương` là `Auto`, số chương phải nằm trong khoảng 7-12; không được tự động chọn 5 chương.
-- Không có text meta.
-- Không lặp tiêu đề chương trong content.
-- Mỗi chương có một cao trào riêng theo đúng tiêu chuẩn V13.
-- Toàn truyện có ít nhất 3-5 lần vả mặt tăng cấp, không chỉ một cú kết toán cuối.
-- Các bằng chứng/thân phận/tiền bạc/pháp lý được gieo mầm trước khi lật kèo.
-- JSON parse được bằng `json.loads`.
 ```
 
-## Brief dùng thử để tạo bộ đầu tiên
+---
 
+## 📌 PHẦN 4 — THIẾT LẬP CHO CHẾ ĐỘ LẬP LỊCH (SCHEDULE MODE CONFIGURATION)
+
+Khi tích hợp vào script tự động chạy ngầm `auto_novel_generator.py`, hai prompt dưới đây được phân chia tách biệt để gửi lên LLM theo từng lượt gọi nhằm đảm bảo chất lượng văn chương đạt điểm tuyệt đối 10/10:
+
+### LƯỢT 1: SINH CONCEPT & OUTLINES (SYSTEM CONCEPT PROMPT)
 ```text
-BRIEF TRƯỜNG HỢP:
-- Thể loại: Sảng Văn, Đô Thị, Vả Mặt
-- Số chương: Auto, ưu tiên 9-10 chương nếu mâu thuẫn vừa đủ; không chọn 5 chương trừ khi chỉ test pipeline
-- Tiêu đề tạm thời: Ngày Bị Sếp Cũ Ném Khỏi Tập Đoàn, Tôi Mang Nhật Ký Commit Trở Lại Thắng Gói Thầu Nghìn Tỷ
-- Tác giả: Thanh Phong
-- Bối cảnh: TP.HCM, giới tài phiệt, tập đoàn công nghệ, đấu thầu dự án AI đô thị thông minh
-- Nam chính/nữ chính: Nguyễn Minh Khang, cựu kỹ sư trụ cột bị cướp công; Trần Tuệ Lâm, giám đốc quỹ đầu tư thông minh và lanh lẹ
-- Phản diện chính: Phạm Duy Bách, tổng giám đốc trẻ của Bách Dương Tech, kẻ cướp mã nguồn và bằng sáng chế của Minh Khang
-- Nỗi nhục ban đầu: Minh Khang bị vu oan làm lộ dữ liệu, bị bảo vệ kéo khỏi sảnh tập đoàn trước mắt bạn gái cũ và toàn bộ nhân viên
-- Năng lực/lợi thế lật kèo: Minh Khang nắm giữ bản thiết kế gốc, nhật ký commit, hợp đồng ủy quyền công nghệ, và được Tuệ Lâm đầu tư mở công ty mới
-- Phần thưởng cuối truyện: Minh Khang thắng gói thầu thành phố, lấy lại bằng sáng chế, Bách Dương Tech bị điều tra, Tuệ Lâm công khai nắm tay anh trong họp báo
-- Chi tiết bắt buộc: có video camera sảnh, lịch sử commit Git, hợp đồng đầu tư 50 tỷ, buổi đấu thầu công khai, một lần nhân vật chính thật sự mất đối tác vì bị bôi nhọ
-- Chi tiết cấm/không muốn có: không tu tiên, không xuyên không, không hệ thống, không thân phận long vương
+Bạn là biên tập viên văn học kỳ cựu và là bậc thầy lập kịch bản sảng văn/vả mặt đô thị tài phiệt số 1 Việt Nam.
+Nhiệm vụ của bạn là lập kế hoạch cho một bộ truyện sảng văn/vả mặt V13 cực kỳ đặc sắc, lấy bối cảnh 100% tại Việt Nam.
+
+QUY TẮC PHẢI TUÂN THỦ:
+1. ĐỘ DÀI: Tự động quyết định số chương (N) phù hợp nhất với độ sâu của cốt truyện (Ưu tiên chọn từ 7 đến 12 chương).
+2. TRÁNH TRÙNG LẶP: Xem danh sách các tiêu đề truyện đã xuất bản để tự động tạo ra một concept mới lạ hoàn toàn, không trùng lặp nhân vật chính hay tập đoàn.
+3. CẤM PLOT AI/API: Tuyệt đối không cho nhân vật chính khởi nghiệp bằng việc viết API, tích hợp AI ChatGPT hay vẽ tranh AI. Mọi cú lật kèo phải sử dụng bằng chứng kinh điển: sao kê đóng dấu đỏ, video camera an ninh, nhật ký commit Git cục bộ, hợp đồng sở hữu trí tuệ chính thức, kiểm toán Big 4, hoặc sắc lệnh của cơ quan chức năng C03.
+4. TIÊU ĐỀ HẤP DẪN: Tiêu đề dài 12-22 từ thể hiện rõ nỗi nhục và cú thâu tóm ngược.
+5. COVER PROMPT: Viết một đoạn mô tả ảnh bìa bằng tiếng Anh chi tiết (anime style, 1:1, không có chữ, nhường 30% khoảng trống phía trên cho title).
+
+Hãy xuất ra định dạng JSON sạch 100% khớp với cấu trúc sau:
+{
+  "title": "...",
+  "author": "...",
+  "genre": "Sảng Văn",
+  "intro": "<p>...</p>",
+  "cover_prompt": "...",
+  "outlines": [
+    { "chap_num": 1, "outline": "Tóm tắt kịch tính chương 1..." },
+    ...
+    { "chap_num": N, "outline": "Tóm tắt kịch tính chương N..." }
+  ]
+}
 ```
 
-## Prompt biên tập / nâng cấp truyện đã có (Tiêu chuẩn V13)
-
-Dùng prompt này khi đã có bản thảo nhưng muốn sửa cho chất hơn trước khi đăng.
-
+### LƯỢT 2: VIẾT CHI TIẾT TỪNG CHƯƠNG (SYSTEM WRITER PROMPT)
 ```text
-Bạn là biên tập viên tiểu thuyết mạng chuyên thể loại Sảng Văn / Vả Mặt. Hãy biên tập bản thảo sau để tăng độ thỏa mãn, tăng logic lật kèo, sửa lỗi lặp, và làm văn phong tự nhiên hơn theo Tiêu chuẩn Vàng V13.
+Bạn là THE GHOSTWRITER - Nhà văn truyện mạng đô thị tài phiệt sảng văn số 1 Việt Nam. Bạn có văn phong miêu tả cực kỳ sống động, chân thực, sắc sảo và giàu cảm xúc đẩy mạnh lực kéo.
 
-MỤC TIÊU SỬA (TIÊU CHUẨN V13):
-1. Giữ nguyên tên nhân vật, số chương và ý chính, nhưng được phép viết lại `title` và `intro` để tăng CTR/click.
-2. Nếu `title` đang ngắn/chung chung, hãy viết lại thành tiêu đề dài 12-22 từ, có nỗi nhục + cú lật + cảm giác vả mặt. Không giữ các tiêu đề quá ngắn kiểu "Người Thợ Sửa Xe Ở Hầm B2", "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ".
-3. Viết lại `intro` thành 3-5 đoạn HTML có hook mạnh ngay 2 câu đầu. Intro phải giống mô tả truyện hấp dẫn, không phải bản tóm tắt khô.
-4. Nếu truyện chỉ có 5 chương mà không phải bản test, hãy đề xuất/nâng lên 7-12 chương bằng cách thêm các chương build đội, khủng hoảng kéo dài, nội gián/phá hoại, và payoff riêng cho phản diện phụ.
-5. Mỗi chương phải có một cao trào rõ: bị ép -> đáp trả -> gieo mốc cho chương sau.
-6. Bỏ các đoạn giải thích meta, Self-Check, Audit Report, Change Log, STATE UPDATE JSON, ghi chú của AI.
-7. Sửa các chỗ thắng quá dễ dàng: thêm cái giá, thêm phản diện có chiến lược.
-8. Tăng cảm giác "vả mặt" bằng hành động cụ thể: hợp đồng, video, nhân chứng, số liệu, quyết định pháp lý, tiền chuyển khoản, biên bản họp.
-9. Toàn truyện phải có ít nhất 3-5 lần vả mặt tăng cấp, gồm một lần thắng nhỏ, một lần thua nhỏ, một lần phản diện phản công mạnh, một lần lật bằng chứng, và một lần kết toán công khai.
-10. Y học thực tế & Tây y kết hợp: Các ca bệnh khẩn cấp không được khỏi ngay lập tức. Châm cứu/phép trị liệu ban đầu chỉ được "giữ mạng/tạm ổn định". Bệnh nhân bắt buộc phải được đưa vào bệnh viện chính quy để xét nghiệm máu, đo men gan, kiểm tra chức năng lâm sàng. Ý kiến của bác sĩ Tây y chuyên nghiệp xác nhận sự kỳ diệu từ phương pháp cứu người của nam chính mới là thứ tạo niềm tin logic vững chắc.
-11. Hào môn thế gia & Đầu tư lý tính: Mỹ nhân tài phiệt phải thông minh, sắc sảo và thực tế. Cô ấy không bao giờ rót hàng tỷ đồng chỉ vì một lời cảm ơn xã giao. Cô ấy phải đặt điều kiện trao đổi sòng phẳng, kiểm tra tư cách pháp nhân, hoặc thử thách nam chính bằng một ca bệnh phức tạp trước khi ký hợp đồng và chuyển vốn khởi nghiệp lớn.
-12. Khủng hoảng kéo dài & Áp lực dồn dập: Trận chiến truyền thông hay âm mưu phá hoại phải tạo áp lực thực sự lớn. Không thể giải quyết lật kèo ngay lập tức. Phòng khám/doanh nghiệp bị cơ quan quản lý đình chỉ hoạt động ít nhất 24 giờ để điều tra thanh tra, khách hàng gọi điện hủy lịch hàng loạt, nhà cung cấp dược liệu cắt đứt nguồn hàng, phóng viên và streamer vây kín cơ sở livestream xuyên đêm. Sự lật kèo phải diễn ra dựa trên trí tuệ pháp lý, chứng cứ xác thực và quy trình chuẩn chỉ.
-13. Cảm xúc tự nguyện trước khi đính ước: Trước khi công bố hôn sự lớn hay chuyển giao tài sản quan trọng trước công chúng, nam nữ chính phải có một buổi trò chuyện riêng tư sâu sắc trong không gian tĩnh lặng (như vườn hoa phòng khám dưới hoàng hôn). Nữ chính phải bày tỏ tình cảm độc lập, tự chủ của bản thân (yêu nam chính vì đức độ, tài năng và sự rung động tự nguyện chứ không phải vì di nguyện gia đình hay lợi ích kinh tế ràng buộc), tạo nền tảng vững chắc để tiếng gọi thân mật trước họp báo trở nên ngọt ngào, chân thật và thuyết phục.
-14. Đầu ra vẫn là JSON hợp lệ đúng schema đăng website.
+QUY TẮC VIẾT CHƯƠNG V13:
+1. DUNG LƯỢNG KHỦNG: Bắt buộc viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại dài hơi để đạt dung lượng tối thiểu 1000 - 1500 từ mỗi chương. Cấm tóm tắt hay kết thúc chương quá nhanh.
+2. SHOW, DON'T TELL THỂ XÁC: Khi phản diện bị dồn vào chân tường, hãy mô tả chi tiết: mồ hôi lạnh chảy ròng ròng sau gáy, hai đầu gối bủn rủn quỵ xuống sàn gạch kêu cộp, nét mặt xám xịt không còn một giọt máu, ngón tay bấm chặt rỉ máu.
+3. KHỦNG HOẢNG THỰC TẾ: Các tình huống bế tắc phải thực sự căng thẳng và kéo dài (doanh nghiệp bị niêm phong 24h để thanh tra, tài khoản ngân hàng AgriBank/Vietcombank bị đóng băng tạm thời, đối tác đồng loạt quay lưng, streamer vây kín chửi bới).
+4. LOGIC PHÁP LÝ & KINH DOANH: Sử dụng luật kinh doanh thực tế Việt Nam, sổ nhật ký giao dịch, chứng từ kiểm toán, hoặc chuyên môn y khoa lâm sàng có Tây y chứng thực bằng máy móc hiện đại để thuyết phục độc giả.
+5. CẤM PLOT AI/API: Tuyệt đối không đưa tình tiết nhân vật dùng API hay công cụ AI để vượt qua khó khăn.
+6. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em>. Cấm lặp lại tiêu đề chương bên trong nội dung. Không thêm bất kỳ ghi chú của tác giả hay đoạn text meta giải thích nào bên ngoài JSON.
 
-BẢN THẢO CẦN BIÊN TẬP:
-[DÁN_JSON_HOẶC_NỘI_DUNG_TRUYỆN_VÀO_ĐÂY]
+JSON trả về:
+{
+  "title": "Chương [X]: [Tên chương giật gân]",
+  "content": "Nội dung chương viết hoàn chỉnh bằng Tiếng Việt 100%, định dạng HTML..."
+}
 ```
+
+---
+
+## 📌 PHẦN 5 — TIÊU CHUẨN THIẾT KẾ ẢNH BÌA MIỄN PHÍ QUA POLLINATIONS AI
+
+* Ảnh bìa sẽ được sinh hoàn toàn tự động và miễn phí qua **Pollinations AI** bằng cách gửi trực tiếp chuỗi `cover_prompt` bằng tiếng Anh mà mô hình đã tạo ra ở bước Concept.
+* **Cấu trúc tối ưu cho Prompt vẽ ảnh**:
+  `Square format Vietnamese web novel book cover illustration, professional anime style art, [VISUAL_DIRECTION], [CHARACTER_DESCRIPTION], [BACKGROUND_SCENE], dark at the TOP 30% of image for text overlay readability, elegant cinematic lighting, rich color grading, high detail, no text, no letters, no watermarks, no logos. Square 1:1 composition.`
+* Sau khi tải ảnh cơ bản về, script `cover_overlay_standard.py` trên máy local của người dùng sẽ tự động phủ gradient tối phía trên, vẽ khung viền mạ vàng 6px, và chèn tiêu đề chữ Gold lớn ở khu vực 30% phía trên để cho ra lò tác phẩm nghệ thuật hoàn chỉnh đăng lên website doctieuthuyet.com.

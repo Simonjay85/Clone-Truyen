@@ -1,0 +1,69 @@
+Line 3838 Index 3153
+Created At: 2026-05-21T00:10:54Z
+Completed At: 2026-05-21T00:10:54Z
+
+				The command completed successfully.
+				Output:
+				--- START ---
+<USER_REQUEST>
+Tôi là Tô Khanh Khanh.
+
+Một con sen công sở bình thường đến không thể bình thường hơn. Ưu điểm duy nhất chắc là có vận may bùng nổ.
+
+Ví dụ nhé, công ty cắt giảm nhân sự, danh sách vốn dĩ có tên tôi. Kết quả máy in kẹt giấy, thế quái nào tên tôi lại không được in ra. Giám đốc nhân sự mắt mũi kèm nhèm nên cứ thế bỏ sót tôi luôn.
+
+Hay một ví dụ khác, bà chủ chỗ tôi thuê nhà là người sùng đạo Phật. Bà ấy bảo tôi có gương mặt hiền lành, mang sẵn Phật quang, thế là vung bút giảm ngay một nửa tiền thuê nhà cho tôi.
+
+Tôi cứ ngây thơ cho rằng đây là phúc báo nhờ sự lương thiện của mình, cho đến khi gặp Thẩm Triệt.
+
+Dạo gần đây, tôi cứ thấy căn hộ mới thuê có gì đó sai sai. Rõ ràng không bật điều hòa, nhưng lúc nào cũng có luồng gió lạnh buốt thổi xẹt qua gáy. Tủ lạnh trống trơn, ấy thế mà lâu lâu lại phát ra tiếng nuốt nước bọt ực ực.
+
+Nhỏ bạn thân nghe tôi kể xong liền vỗ đùi đánh đét: "Mày bị ma ám rồi!"
+
+Nói đoạn, nó thần thần bí bí dúi vào tay tôi một tấm danh thiếp.
+
+Danh thiếp ố vàng, chất giấy nhám xịt, bên trên viết mấy chữ to đùng bằng bút lông: "Truyền nhân chính tông Huyền Môn — Thẩm Triệt."
+
+"Chuyên bắt ma, kiêm dán màn hình dạo. Không linh hoàn tiền, tặng kèm một miếng dán cường lực điện thoại."
+
+Bên dưới còn có một dòng chữ lí nhí: "Đánh giá 5 sao hoàn lại hai mươi nghìn."
+
+Tôi cạn lời.
+
+Vị đạo sĩ này... hạng mục kinh doanh cũng đa dạng ghê. Đã thế trông có vẻ không được uy tín cho lắm. Nhưng nhỏ bạn tôi vỗ ngực đ
+<truncated 177 bytes>
+ờng của tôi. Nói chính xác hơn là đậu vào con gấu bông Pikachu siêu to khổng lồ nằm ngay đầu giường.
+
+Anh tiến lại gần, vươn mũi kiếm gỗ, cẩn thận chọc chọc vào mặt con Pikachu.
+
+Đột nhiên, từ bụng Pikachu phát ra một giọng nói thều thào yếu ớt: "Cứu... cứu mạng..."
+
+Cả tôi và Thẩm Triệt đều giật nảy mình. Thẩm Triệt lập tức bày ra tư thế chiến đấu: "Yêu nghiệt phương nào!"
+
+Giọng nói kia lại càng yếu ớt hơn: "Đại sư... tôi... tôi là hồn ma ở trọ nhà này..."
+
+Thẩm Triệt quát: "Cớ sao ngươi lại ở đây tác oai tác quái?"
+
+Giọng nói mếu máo sắp khóc đến nơi: "Tôi có làm loạn đâu! Tôi chỉ định chuyển chỗ ở thôi, ai dè lại bị hút tọt vào bụng con mập màu vàng này!"
+
+"Trong này... ấm... ấm quá... ánh sáng chói lòa quá... Tôi cảm giác mình sắp bị tịnh hóa tới nơi rồi..."
+
+"Đại sư cứu tôi với! Tôi chưa muốn hồn xiêu phách tán đâu!"
+
+Thẩm Triệt trầm mặc. Anh quay đầu sang nhìn tôi, ánh mắt phức tạp hệt như đang nhìn một con quái vật.
+
+Tôi trưng ra vẻ mặt ngây thơ vô tội: "Sao thế?"
+
+Thẩm Triệt: "... Không có gì."
+
+Anh bước qua đó, túm lấy con Pikachu, niệm một đoạn Vãng Sinh Chú. Một luồng sáng trắng le lói bay ra khỏi bụng con gấu, rồi tan biến vào hư không.
+
+Cảm giác âm u lạnh lẽo trong nhà chớp mắt bay sạch sành sanh. Thẩm Triệt thở phào nhẹ nhõm một hơi dài.
+
+hình như không phải mỗi câu 1 dòng, nhưng e thay đổi thành format giống giống vậy giúp anh nha, em sửa các truyên cũ hiện có trên website giúp anh trước nha, sau đó áp dụng format với những truyện mới sắp đăng luôn
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-05-21T06:04:00+07:00.
+</ADDITIONAL_METADATA>
+--- END ---
+
