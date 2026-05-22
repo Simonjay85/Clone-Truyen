@@ -16,11 +16,11 @@ $directory_query = new WP_Query($query_args);
 $total_posts = $directory_query->found_posts;
 ?>
 
-<main class="pt-20 pb-20 w-full max-w-[95%] 2xl:max-w-[1600px] mx-auto px-6 w-full flex-grow">
+<main class="pt-6 pb-12 md:pt-20 md:pb-20 w-full max-w-[95%] 2xl:max-w-[1600px] mx-auto px-4 md:px-6 w-full flex-grow">
     <!-- Hero Header -->
-    <section class="mb-12 text-center md:text-left">
-        <h1 class="font-headline text-4xl mt-4 font-extrabold text-on-background mb-4 tracking-tight">Kết Quả Tìm Kiếm: <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-container">"<?php echo esc_html($search_query); ?>"</span></h1>
-        <p class="text-on-surface-variant max-w-2xl text-lg mx-auto md:mx-0">Tìm thấy <?php echo number_format($total_posts); ?> tác phẩm phù hợp với từ khóa của bạn.</p>
+    <section class="mb-6 md:mb-12 text-center md:text-left">
+        <h1 class="font-headline text-2xl md:text-4xl mt-1 md:mt-4 font-extrabold text-on-background mb-1 md:mb-3 tracking-tight">Kết Quả Tìm Kiếm: <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-container">"<?php echo esc_html($search_query); ?>"</span></h1>
+        <p class="text-on-surface-variant max-w-2xl text-sm md:text-lg mx-auto md:mx-0">Tìm thấy <?php echo number_format($total_posts); ?> tác phẩm phù hợp với từ khóa của bạn.</p>
     </section>
 
     <!-- Bento Style Book Grid -->
@@ -44,18 +44,18 @@ $total_posts = $directory_query->found_posts;
         ?>
         <!-- Book Card -->
         <div class="group cursor-pointer flex flex-col h-full" onclick="window.location.href='<?php the_permalink(); ?>'">
-            <div class="relative aspect-[2/3] rounded-2xl overflow-hidden mb-4 shadow-[0px_4px_16px_rgba(0,0,0,0.06)] group-hover:shadow-[0px_16px_40px_rgba(0,96,169,0.15)] bg-[#0c0f1d] transition-all duration-300 group-hover:-translate-y-2 border border-outline-variant/10" style="--card-bg: url('<?php echo esc_url($cover); ?>');">
+            <div class="relative aspect-square rounded-2xl overflow-hidden mb-4 shadow-[0px_4px_16px_rgba(0,0,0,0.06)] group-hover:shadow-[0px_16px_40px_rgba(0,96,169,0.15)] bg-[#0c0f1d] transition-all duration-300 group-hover:-translate-y-2 border border-outline-variant/10" style="--card-bg: url('<?php echo esc_url($cover); ?>');">
                 <div class="absolute -inset-[15px] bg-[image:var(--card-bg)] bg-cover bg-center blur-[20px] brightness-[0.4] z-0"></div>
-                <img class="relative z-10 w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-700 block" src="<?php echo esc_url($cover); ?>"/>
+                <img class="relative z-10 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 block" src="<?php echo esc_url($cover); ?>"/>
                 
                 <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" onclick="event.stopPropagation();" class="w-full text-center py-2 bg-white/95 backdrop-blur-md rounded-xl text-primary font-black text-[13px] shadow-lg active:scale-95 transition-transform block text-decoration-none">Đọc Ngay</a>
                 </div>
 
                 <?php if ($is_hot): ?>
-                <div class="absolute top-3 left-3 bg-secondary-container/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black text-on-secondary-container tracking-wider shadow-sm uppercase border border-secondary-container/50">HOT</div>
+                <div class="absolute top-3 left-3 bg-gradient-to-br from-red-500 to-red-700 px-3 py-1 rounded-lg text-[10px] font-extrabold text-white tracking-wider shadow-md uppercase border border-red-400/30 z-20">HOT</div>
                 <?php else: ?>
-                <div class="absolute top-3 left-3 bg-primary-container/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black text-on-primary-container tracking-wider shadow-sm uppercase border border-primary-container/50">MỚI</div>
+                <div class="absolute top-3 left-3 bg-gradient-to-br from-emerald-500 to-emerald-700 px-3 py-1 rounded-lg text-[10px] font-extrabold text-white tracking-wider shadow-md uppercase border border-emerald-400/30 z-20">MỚI</div>
                 <?php endif; ?>
                 
                 <!-- Bookmark quick action -->
@@ -113,6 +113,7 @@ $total_posts = $directory_query->found_posts;
 /* Reset pagination Tailwind alignment */
 .template-pagination { --primary: #2563eb; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; align-items: center; }
 .template-pagination a, .template-pagination span { display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 9999px; font-weight: 600; transition: all 0.2s; font-size: 0.875rem; color: var(--on-surface-variant); }
+.template-pagination a.prev, .template-pagination a.next { width: auto !important; min-width: 2.75rem !important; padding: 0 14px !important; border-radius: 12px !important; }
 .template-pagination .page-numbers:not(.current):not(.dots) { background-color: var(--surface-container-low); border: 1px solid rgba(0,0,0,0.05); cursor: pointer; }
 .template-pagination .page-numbers:not(.current):not(.dots):hover { background-color: var(--surface-container-high); color: var(--primary); border-color: transparent; }
 .template-pagination .current { background-color: var(--primary); color: white; box-shadow: 0 4px 14px rgba(0, 96, 169, 0.35); }

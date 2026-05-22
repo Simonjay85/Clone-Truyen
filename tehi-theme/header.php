@@ -22,6 +22,20 @@ $tehi_canonical_url    = function_exists('tehi_get_canonical_url') ? tehi_get_ca
 <meta name="keywords" content="<?php echo esc_attr(function_exists('tehi_get_meta_keywords') ? tehi_get_meta_keywords() : ''); ?>" />
 <meta name="description" content="<?php echo esc_attr($tehi_meta_description); ?>" />
 <link href="<?php echo esc_url($tehi_canonical_url); ?>" rel="canonical" />
+<?php
+// Preload the correct LCP image matching the first slide of the hero swiper on the front page
+if (is_front_page() && isset($GLOBALS['slider_query'])) {
+    $slider_q = $GLOBALS['slider_query'];
+    if ($slider_q->have_posts()) {
+        $first_post = $slider_q->posts[0] ?? null;
+        if ($first_post) {
+            $first_img = get_the_post_thumbnail_url($first_post->ID, 'large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+            echo '<link rel="preload" as="image" href="' . esc_url($first_img) . '" fetchpriority="high">';
+        }
+    }
+}
+?>
+
 <!-- Google tag (gtag.js) - Deferred 3s to unblock render (#4 fix) -->
 <script>
   window.addEventListener('load', function() {
@@ -90,8 +104,23 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 /* Fix #11: font-display swap for Font Awesome */
 @font-face { font-family: "Font Awesome 6 Free"; font-display: swap; }
 @font-face { font-family: "Font Awesome 6 Brands"; font-display: swap; }
-/* Fix #15: Swiper pagination touch targets */
-.swiper-pagination-bullet { min-width: 44px !important; min-height: 44px !important; padding: 10px !important; margin: 0 4px !important; }
+/* Fix #15: Swiper pagination touch targets using transparent pseudo-element */
+.swiper-pagination-bullet {
+    position: relative !important;
+    width: 8px !important;
+    height: 8px !important;
+    margin: 0 8px !important;
+}
+.swiper-pagination-bullet::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 44px !important;
+    height: 44px !important;
+    transform: translate(-50%, -50%) !important;
+    cursor: pointer !important;
+}
 </style>
 
 <!-- ══ CRITICAL CSS - Only what's needed for above-fold render ══ -->
@@ -575,12 +604,12 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 .mkm-logo img { height: 40px; }
 .mkm-search-form { flex-grow: 1; max-width: 400px; margin: 0 20px; position: relative; }
 .mkm-search-form input { width: 100%; border: 1px solid #e1e4e8; border-radius: 20px; padding: 8px 15px 8px 35px; outline: none; transition: border-color 0.2s; }
-.mkm-search-form input:focus { border-color: #1890ff; }
+.mkm-search-form input:focus { border-color: #1d4ed8; }
 .mkm-search-form i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #888; }
 .mkm-nav { display: flex; align-items: center; gap: 20px; }
 .mkm-nav a { color: #333; font-weight: 600; font-size: 14px; text-decoration: none; transition: color 0.2s; }
-.mkm-nav a:hover { color: #1890ff; }
-.mkm-nav-login { color: #1890ff !important; display: flex; align-items: center; gap: 5px; }
+.mkm-nav a:hover { color: #1d4ed8; }
+.mkm-nav-login { color: #1d4ed8 !important; display: flex; align-items: center; gap: 5px; }
 
 @media (max-width: 768px) {
     .mkm-nav { display: none; }

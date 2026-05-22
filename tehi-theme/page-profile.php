@@ -31,7 +31,7 @@ $rank_badge = $points >= 500 ? 'Dịch Giả' : 'Độc Giả Uy Tín';
 $logout_url = wp_logout_url(home_url());
 ?>
 
-<main class="pt-20 pb-16 w-full max-w-[95%] 2xl:max-w-[1600px] mx-auto px-6 w-full">
+<main class="pt-6 sm:pt-12 pb-16 w-full max-w-[95%] 2xl:max-w-[1600px] mx-auto px-6 w-full">
     <!-- User Profile Header -->
     <header class="mb-12 relative overflow-hidden rounded-[2rem] bg-surface-container-low p-8 md:p-12 border border-surface-container-highest">
         <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>

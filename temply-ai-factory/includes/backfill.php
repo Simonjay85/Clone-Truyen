@@ -96,12 +96,28 @@ function temply_api_upload_cover($request) {
     if (!$img_data) {
         return rest_ensure_response(['status'=>'error', 'msg'=>'Invalid base64 image']);
     }
+
+    if (!function_exists('imagewebp')) {
+        return rest_ensure_response(['status'=>'error', 'msg'=>'GD or WebP support not available on server']);
+    }
+
+    $image = @imagecreatefromstring($img_data);
+    if (!$image) {
+        return rest_ensure_response(['status'=>'error', 'msg'=>'Could not process image data']);
+    }
+
     $upload_dir = wp_upload_dir();
-    $filename = 'cover-' . $post_id . '-' . wp_rand(100,999) . '.jpg';
+    $filename = 'cover-' . $post_id . '-' . wp_rand(100,999) . '.webp';
     $filepath = $upload_dir['path'] . '/' . $filename;
-    
-    if (false === file_put_contents($filepath, $img_data)) {
-        return rest_ensure_response(['status'=>'error', 'msg'=>'Cannot write upload file']);
+
+    imagealphablending($image, false);
+    imagesavealpha($image, true);
+
+    $success = imagewebp($image, $filepath, 80);
+    imagedestroy($image);
+
+    if (!$success) {
+        return rest_ensure_response(['status'=>'error', 'msg'=>'Cannot write upload WebP file']);
     }
     
     $filetype = wp_check_filetype($filename, null);

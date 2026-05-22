@@ -46,7 +46,7 @@ $bg_image = "https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTS
 
 ?>
 
-<main class="pt-24 pb-20 px-4 w-full max-w-[95%] 2xl:max-w-[1400px] mx-auto flex-grow">
+<main class="pt-6 sm:pt-12 pb-20 px-4 w-full max-w-[95%] 2xl:max-w-[1400px] mx-auto flex-grow">
     
     <!-- Hero / Header Section -->
     <header class="mb-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between rounded-[2rem] bg-gradient-to-r from-surface-container-low to-surface-container-highest p-8 md:p-12 border border-gray-200 shadow-sm">
@@ -141,13 +141,13 @@ $bg_image = "https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTS
             <div class="bg-white rounded-xl md:rounded-3xl p-2 md:p-4 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-200 group-hover:shadow-[0_20px_40px_rgba(0,96,169,0.1)] group-hover:border-blue-600/20 transition-all duration-500 flex flex-col items-center <?php echo $heights[$disp_idx]; ?>">
                 
                 <!-- Rank Medal -->
-                <div class="absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 w-8 h-8 md:w-14 md:h-14 rounded-full flex items-center justify-center font-black text-xs md:text-2xl shadow-md border-2 z-20 <?php echo $badge[1]; ?> transform group-hover:scale-110 transition-transform">
+                <div class="absolute top-2 left-2 md:top-4 md:left-4 w-8 h-8 md:w-14 md:h-14 rounded-full flex items-center justify-center font-black text-xs md:text-2xl shadow-md border-2 z-20 <?php echo $badge[1]; ?> transform group-hover:scale-110 transition-transform">
                     <?php echo $rank; ?>
                 </div>
 
                 <!-- Cover Image -->
-                <div class="w-full rounded-lg md:rounded-2xl overflow-hidden mt-3 md:mt-6 mb-2 md:mb-5 relative shadow-inner" style="aspect-ratio: 3/2;">
-                    <img src="<?php echo esc_url($cover); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" style="width: 100%; height: 100%; object-fit: cover;" />
+                <div class="w-full rounded-lg md:rounded-2xl overflow-hidden mt-3 md:mt-6 mb-2 md:mb-5 relative shadow-inner" style="aspect-ratio: 1/1;">
+                    <img src="<?php echo esc_url($cover); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" style="width: 100% !important; height: 100% !important; object-fit: cover !important;" />
                     <!-- Decoration tag -->
                     <?php if($rank == 1): ?>
                     <div class="absolute font-headline bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent py-1 md:py-4 md:pt-10 text-center text-white font-black tracking-widest text-[8px] md:text-sm uppercase">Cực Phẩm</div>
@@ -156,7 +156,7 @@ $bg_image = "https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTS
 
                 <!-- Info -->
                 <div class="flex flex-col flex-grow w-full text-center mt-auto justify-end">
-                    <h3 class="font-headline font-bold text-gray-900 text-[10px] md:text-[17px] leading-tight md:leading-snug line-clamp-2 md:mb-2 group-hover:text-blue-600 transition-colors"><?php echo get_the_title($post->ID); ?></h3>
+                    <h3 class="font-headline font-bold text-gray-900 text-[10px] md:text-[17px] leading-tight md:leading-snug md:mb-2 group-hover:text-blue-600 transition-colors"><?php echo get_the_title($post->ID); ?></h3>
                     <p class="hidden md:flex text-xs font-semibold text-outline mb-4 justify-center items-center gap-1"><span class="material-symbols-outlined text-[14px]">edit</span> <?php echo esc_html($author); ?></p>
                     
                     <!-- Views metric -->
@@ -207,12 +207,12 @@ $bg_image = "https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTS
 
                 <!-- Cover -->
                 <div class="w-12 h-16 md:w-16 md:h-20 flex-shrink-0 rounded-lg overflow-hidden shadow-inner hidden sm:block">
-                    <img src="<?php echo esc_url($cover); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src="<?php echo esc_url($cover); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="width: 100% !important; height: 100% !important; object-fit: cover !important;" />
                 </div>
 
                 <!-- Main Info -->
                 <div class="flex-grow min-w-0">
-                    <h3 class="font-headline font-bold text-gray-900 text-[15px] md:text-[17px] mb-1 line-clamp-1 group-hover:text-blue-600 transition-colors"><?php echo get_the_title($post->ID); ?></h3>
+                    <h3 class="font-headline font-bold text-gray-900 text-[15px] md:text-[17px] mb-1 group-hover:text-blue-600 transition-colors"><?php echo get_the_title($post->ID); ?></h3>
                     <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] md:text-xs text-gray-500 font-medium">
                         <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">edit</span> <?php echo esc_html($author); ?></span>
                         <span class="w-1 h-1 bg-outline-variant rounded-full hidden sm:block"></span>

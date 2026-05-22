@@ -1,12 +1,18 @@
-<?php get_header(); ?>
+<?php
+// Query the slider posts before loading the header to enable preloading the LCP candidate
+$slider_q = new WP_Query([
+    'post_type'      => 'truyen',
+    'posts_per_page' => 6,
+    'orderby'        => 'rand',
+    'no_found_rows'  => true
+]);
+$GLOBALS['slider_query'] = $slider_q;
+
+get_header();
+?>
 
 <!-- ─── MEOKAMMAP CLONE - front-page.php ─── -->
 <!-- Font + Swiper already loaded in header.php - no duplicate needed -->
-<!-- Preload LCP hero image hint -->
-<link rel="preload" as="image" href="<?php 
-  $lcp_q = new WP_Query(['post_type'=>'truyen','posts_per_page'=>1,'no_found_rows'=>true]); 
-  if($lcp_q->have_posts()) { $lcp_q->the_post(); echo esc_url(get_the_post_thumbnail_url(null,'medium')); wp_reset_postdata(); } 
-?>" fetchpriority="high">
 
 <style>
 /* ── RESET cứng để không bị CSS cũ đè ── */
@@ -77,7 +83,7 @@
 }
 .mkm-tag-hot { background: #fef3f2 !important; color: #e03d2b !important; border: 1px solid #fecaca !important; }
 .mkm-tag-full { background: #f0fdf4 !important; color: #16a34a !important; border: 1px solid #bbf7d0 !important; }
-.mkm-tag-new { background: #fef3c7 !important; color: #d97706 !important; border: 1px solid #fcd34d !important; }
+.mkm-tag-new { background: #fef3c7 !important; color: #78350f !important; border: 1px solid #fcd34d !important; }
 .mkm-hero-desc {
     font-size: 13px !important;
     color: #6b7280 !important;
@@ -106,8 +112,8 @@
     align-items: center !important;
     gap: 6px !important;
 }
-.mkm-btn-prim { background: #f97316 !important; color: #fff !important; box-shadow: none !important; }
-.mkm-btn-prim:hover { background: #b45309 !important; color: #fff !important; }
+.mkm-btn-prim { background: #c2410c !important; color: #fff !important; box-shadow: none !important; }
+.mkm-btn-prim:hover { background: #9a3412 !important; color: #fff !important; }
 .mkm-btn-sec {
     background: #f4f4f5 !important;
     color: #374151 !important;
@@ -304,7 +310,7 @@
 }
 .mkm-card-chap {
     font-size: 12px !important;
-    color: #9ca3af !important;
+    color: #4b5563 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -382,7 +388,7 @@
     flex-shrink: 0 !important;
 }
 .rn1 { background: #f59e0b !important; color: #fff !important; }
-.rn2 { background: #9ca3af !important; color: #fff !important; }
+.rn2 { background: #6b7280 !important; color: #fff !important; }
 .rn3 { background: #b45309 !important; color: #fff !important; }
 .rn-other { background: #f4f4f5 !important; color: #6b7280 !important; }
 .mkm-rank-thumb {
@@ -406,7 +412,7 @@
 }
 .mkm-rank-views {
     font-size: 11px !important;
-    color: #9ca3af !important;
+    color: #4b5563 !important;
     margin-top: 2px !important;
 }
 /* ── HERO SLIDER ── */
@@ -436,7 +442,7 @@
 .mkm-slider-title { font-size:22px !important; font-weight:800 !important; color:#111827 !important; margin:0 0 10px 0 !important; line-height:1.3 !important; }
 .mkm-slider-desc { font-size:18px !important; color:#4b5563 !important; line-height:1.7 !important; margin:0 0 16px !important;
     display:-webkit-box !important; -webkit-line-clamp:16 !important; -webkit-box-orient:vertical !important; overflow:hidden !important; }
-.mkm-slider-meta { font-size:12px !important; color:#9ca3af !important; margin-bottom:12px !important; }
+.mkm-slider-meta { font-size:12px !important; color:#4b5563 !important; margin-bottom:12px !important; }
 .mkm-slider-btns { display:flex !important; gap:10px !important; flex-wrap:wrap !important; margin-bottom:16px !important; }
 /* Thumbnails swiper below */
 .mkm-thumb-swiper { margin-top:14px !important; padding-bottom:2px !important; }
@@ -461,7 +467,7 @@
 .mkm-main-swiper .swiper-button-prev:after { font-size: 17px !important; font-weight: 900 !important; }
 .mkm-main-swiper .swiper-button-next:hover,
 .mkm-main-swiper .swiper-button-prev:hover {
-    background: #f97316 !important; border-color: #f97316 !important; color: #fff !important;
+    background: #c2410c !important; border-color: #c2410c !important; color: #fff !important;
 }
 .mkm-main-swiper .swiper-button-prev { left: auto !important; right: 58px !important; }
 .mkm-main-swiper .swiper-button-next { right: 4px !important; }
@@ -528,14 +534,14 @@
     letter-spacing: 0.2px !important;
 }
 .mkm-btn-card-start {
-    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+    background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%) !important;
     color: #fff !important;
-    box-shadow: 0 2px 6px rgba(249, 115, 22, 0.2) !important;
+    box-shadow: 0 2px 6px rgba(194, 65, 12, 0.2) !important;
 }
 .mkm-btn-card-start:hover {
-    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+    background: linear-gradient(135deg, #9a3412 0%, #7c2d12 100%) !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.35) !important;
+    box-shadow: 0 4px 10px rgba(194, 65, 12, 0.35) !important;
     color: #fff !important;
 }
 .mkm-btn-card-new {
@@ -560,6 +566,11 @@
     }
 }
 
+/* Prevent Swiper Layout Shift (CLS) before JS initialization */
+.mkm-main-swiper:not(.swiper-initialized) .swiper-slide:not(:first-child) {
+    display: none !important;
+}
+
 </style>
 
 <div class="mkm-wrap">
@@ -567,8 +578,8 @@
 
     <!-- ══ HERO SLIDER ══ -->
     <?php
-    $slider_q = new WP_Query(['post_type'=>'truyen','posts_per_page'=>6,'orderby'=>'rand','no_found_rows'=>true]);
-    if ($slider_q->have_posts()):
+    if (isset($slider_q) && $slider_q->have_posts()):
+        $slider_q->rewind_posts();
     ?>
     <div class="mkm-slider-wrap">
         <!-- MAIN SWIPER -->
@@ -592,7 +603,7 @@
                     <div class="mkm-slider-body">
                         <h2 class="mkm-slider-title"><?php the_title(); ?></h2>
                         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; font-size:11px; color:#4b5563;">
-                            <?php if($s_cat): ?><span style="color:#d97706; font-weight:700; border:1px solid #fcd34d; padding:2px 8px; border-radius:12px; background:#fef3c7;"><?php echo esc_html($s_cat); ?></span><?php endif; ?>
+                            <?php if($s_cat): ?><span style="color:#78350f; font-weight:700; border:1px solid #fcd34d; padding:2px 8px; border-radius:12px; background:#fef3c7;"><?php echo esc_html($s_cat); ?></span><?php endif; ?>
                             <span style="display:flex; align-items:center;">📅 <?php echo $s_date; ?></span>
                         </div>
                         <p class="mkm-slider-desc"><?php echo esc_html($s_exc); ?></p>
@@ -626,19 +637,69 @@
     <style>
         .mkm-main-swiper {
             padding-bottom: 45px !important;
+            position: relative !important;
         }
         .mkm-main-swiper .swiper-pagination {
-            bottom: 10px !important;
+            bottom: 15px !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 12px !important;
+            width: 100% !important;
+        }
+        .mkm-main-swiper .swiper-pagination-bullet {
+            width: 48px !important;
+            height: 48px !important;
+            background: transparent !important;
+            opacity: 1 !important;
+            margin: 0 !important;
+            cursor: pointer !important;
+            border: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+        }
+        .mkm-main-swiper .swiper-pagination-bullet::after {
+            content: "" !important;
+            width: 8px !important;
+            height: 8px !important;
+            background: #cbd5e1 !important;
+            border-radius: 9999px !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            display: block !important;
+        }
+        .mkm-main-swiper .swiper-pagination-bullet:hover::after {
+            background: #94a3b8 !important;
+            transform: scale(1.2) !important;
+        }
+        .mkm-main-swiper .swiper-pagination-bullet-active::after {
+            width: 24px !important;
+            height: 8px !important;
+            background: linear-gradient(90deg, #c2410c 0%, #9a3412 100%) !important;
+            border-radius: 9999px !important;
+            box-shadow: 0 2px 8px rgba(234, 88, 12, 0.4) !important;
         }
         .mkm-main-swiper .swiper-button-next, .mkm-main-swiper .swiper-button-prev {
-            color: #d97706 !important;
-            transform: scale(0.6);
-            background: #fff;
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            color: #ea580c !important;
+            background: #ffffff !important;
+            width: 42px !important;
+            height: 42px !important;
+            border-radius: 50% !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            margin-top: -21px !important;
         }
-        .mkm-main-swiper .swiper-pagination-bullet-active { background: #d97706 !important; }
+        .mkm-main-swiper .swiper-button-next:after, .mkm-main-swiper .swiper-button-prev:after {
+            font-size: 16px !important;
+            font-weight: 800 !important;
+        }
+        .mkm-main-swiper .swiper-button-next:hover, .mkm-main-swiper .swiper-button-prev:hover {
+            background: #ea580c !important;
+            color: #ffffff !important;
+            box-shadow: 0 6px 16px rgba(234, 88, 12, 0.4) !important;
+            transform: scale(1.08) !important;
+        }
     </style>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -717,12 +778,12 @@
                             <p class="mkm-card-name"><?php the_title(); ?></p>
                         </a>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
-                            <div style="display:flex; gap:6px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
-                                <span style="display:flex; align-items:center; gap:2px; color:#3b82f6;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views); ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#10b981;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count; ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#f59e0b;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time); ?></span>
+                            <div style="display:flex; gap:6px; color:#4b5563; font-size:10px; align-items:center; font-weight:500;">
+                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#047857;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count; ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#b45309;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time); ?></span>
                             </div>
-                            <span style="background:rgba(249, 115, 22, 0.1); color:#ea580c; border:1px solid rgba(249, 115, 22, 0.2); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display); ?></span>
+                            <span style="background:rgba(249, 115, 22, 0.15); color:#7c2d12; border:1px solid rgba(249, 115, 22, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display); ?></span>
                         </div>
                         <div class="mkm-card-btns">
                             <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
@@ -793,12 +854,12 @@
                             <p class="mkm-card-name"><?php the_title(); ?></p>
                         </a>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
-                            <div style="display:flex; gap:6px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
-                                <span style="display:flex; align-items:center; gap:2px; color:#3b82f6;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views2); ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#10b981;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count2; ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#f59e0b;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time2); ?></span>
+                            <div style="display:flex; gap:6px; color:#4b5563; font-size:10px; align-items:center; font-weight:500;">
+                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views2); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#047857;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count2; ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#b45309;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time2); ?></span>
                             </div>
-                            <span style="background:rgba(249, 115, 22, 0.1); color:#ea580c; border:1px solid rgba(249, 115, 22, 0.2); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display2); ?></span>
+                            <span style="background:rgba(249, 115, 22, 0.15); color:#7c2d12; border:1px solid rgba(249, 115, 22, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display2); ?></span>
                         </div>
                         <div class="mkm-card-btns">
                             <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
@@ -855,12 +916,12 @@
                             <p class="mkm-card-name"><?php the_title(); ?></p>
                         </a>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
-                            <div style="display:flex; gap:6px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
-                                <span style="display:flex; align-items:center; gap:2px; color:#3b82f6;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views3); ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#10b981;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count3; ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#f59e0b;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time3); ?></span>
+                            <div style="display:flex; gap:6px; color:#4b5563; font-size:10px; align-items:center; font-weight:500;">
+                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views3); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#047857;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count3; ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#b45309;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time3); ?></span>
                             </div>
-                            <span style="background:rgba(16, 185, 129, 0.1); color:#10b981; border:1px solid rgba(16, 185, 129, 0.2); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display3); ?></span>
+                            <span style="background:rgba(16, 185, 129, 0.15); color:#047857; border:1px solid rgba(16, 185, 129, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display3); ?></span>
                         </div>
                         <div class="mkm-card-btns">
                             <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
@@ -890,7 +951,7 @@
                         <svg width="20" height="20" fill="none" stroke="#ea580c" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>
                         Bảng xếp hạng
                     </span>
-                    <span style="font-size: 11px; color:#9ca3af; font-weight: 500;">Top 10</span>
+                    <span style="font-size: 11px; color:#4b5563; font-weight: 500;">Top 10</span>
                 </h3>
                 
                 <div class="mkm-tabs-new" style="display:flex; justify-content:space-between; margin-bottom: 20px; align-items:center;">
@@ -932,9 +993,9 @@
                         </div>
                         <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:800; color:#c2410c; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php the_title(); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $formatted_views; ?>
                             </div>
                         </div>
@@ -950,9 +1011,9 @@
                         </div>
                         <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:700; color:#374151; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php the_title(); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $formatted_views; ?>
                             </div>
                         </div>
@@ -968,9 +1029,9 @@
                         </div>
                         <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:700; color:#c2410c; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php the_title(); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $formatted_views; ?>
                             </div>
                         </div>
@@ -979,17 +1040,17 @@
                     <?php else: ?>
                     <!-- Tốp 4 - 10 -->
                     <a href="<?php the_permalink(); ?>" class="mkm-bxh-item" style="padding:6px 0;">
-                        <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $ri; ?></div>
+                        <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#6b7280; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $ri; ?></div>
                         <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="32" height="42" style="width:32px; height:42px; border-radius:4px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; margin-bottom:8px;"><?php the_title(); ?></div>
+                            <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:8px; white-space:normal !important;"><?php the_title(); ?></div>
                             <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
                                 <!-- Bar -->
                                 <div style="flex:1; height:6px; background:#f3f4f6; border-radius:3px; overflow:hidden; display:flex;">
                                     <div style="width:<?php echo $percent; ?>%; height:100%; background:#818cf8; border-radius:3px;"></div>
                                 </div>
                                 <!-- Number -->
-                                <div style="font-size:11px; color:#9ca3af; font-family: ui-sans-serif, sans-serif; font-weight:500; min-width:35px; text-align:right;"><?php echo $formatted_views; ?></div>
+                                <div style="font-size:11px; color:#4b5563; font-family: ui-sans-serif, sans-serif; font-weight:500; min-width:35px; text-align:right;"><?php echo $formatted_views; ?></div>
                             </div>
                         </div>
                     </a>
@@ -1007,7 +1068,7 @@
                         <svg width="20" height="20" fill="none" stroke="#a855f7" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         Bảng xếp hạng team
                     </span>
-                    <span style="font-size: 11px; color:#9ca3af; font-weight: 500;">Hôm nay</span>
+                    <span style="font-size: 11px; color:#4b5563; font-weight: 500;">Hôm nay</span>
                 </h3>
 
                 <div class="mkm-rank-list-new" style="display:flex; flex-direction:column; gap:8px;">
@@ -1043,9 +1104,9 @@
                         </div>
                         <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:800; color:#c2410c; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $t_views; ?>
                             </div>
                         </div>
@@ -1061,9 +1122,9 @@
                         </div>
                         <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:700; color:#374151; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $t_views; ?>
                             </div>
                         </div>
@@ -1079,9 +1140,9 @@
                         </div>
                         <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:700; color:#c2410c; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $t_views; ?>
                             </div>
                         </div>
@@ -1090,17 +1151,17 @@
                     <?php else: ?>
                     <!-- Team Top 4 - 8 -->
                     <a href="<?php echo esc_url(home_url('/nhom-dich/')); ?>" class="mkm-bxh-item" style="padding:6px 0;">
-                        <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $tri; ?></div>
+                        <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#6b7280; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $tri; ?></div>
                         <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="32" height="32" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; margin-bottom:8px;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:8px; white-space:normal !important;"><?php echo esc_html($team['name']); ?></div>
                             <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
                                 <!-- Bar -->
                                 <div style="flex:1; height:6px; background:#f3f4f6; border-radius:3px; overflow:hidden; display:flex;">
                                     <div style="width:<?php echo $t_percent; ?>%; height:100%; background:#d8b4fe; border-radius:3px;"></div>
                                 </div>
                                 <!-- Number -->
-                                <div style="font-size:11px; color:#9ca3af; font-family: ui-sans-serif, sans-serif; font-weight:500; min-width:35px; text-align:right;"><?php echo $t_views; ?></div>
+                                <div style="font-size:11px; color:#4b5563; font-family: ui-sans-serif, sans-serif; font-weight:500; min-width:35px; text-align:right;"><?php echo $t_views; ?></div>
                             </div>
                         </div>
                     </a>

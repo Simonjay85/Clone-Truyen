@@ -69,7 +69,7 @@
     
     .mkm-bxh-img { width: 40px; height: 50px; border-radius: 4px; object-fit: cover; margin-right: 10px; flex-shrink: 0;}
     .mkm-bxh-info { flex-grow: 1; overflow: hidden; }
-    .mkm-bxh-title { font-size: 13px; font-weight: 600; color: #333; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+    .mkm-bxh-title { font-size: 13px; font-weight: 600; color: #333; margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; white-space: normal !important; text-overflow: ellipsis; line-height: 1.3;}
     .mkm-bxh-meta { font-size: 11px; color: #888; margin-top: 3px; }
 
     /* Tabs */

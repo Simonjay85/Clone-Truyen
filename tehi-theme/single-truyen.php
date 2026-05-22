@@ -146,7 +146,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-info-col { color: #fff; min-width: 0; }
 .mkm-book-title {
     font-size: 28px; font-weight: 800; color: #fff;
-    margin: 0 0 8px 0; line-height: 1.3;
+    margin: 0 0 6px 0; line-height: 1.15;
     text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 .mkm-genre-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
@@ -273,8 +273,26 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     .mkm-hero-inner { grid-template-columns: 1fr; gap: 20px; }
     .mkm-cover-col { max-width: 100%; margin: 0 auto; width: 100%; }
     .mkm-cover-col img { aspect-ratio: 1/1; width: 100%; }
-    .mkm-action-btns { flex-direction: row; gap: 16px; }
-    .mkm-btn-prim, .mkm-btn-sec { flex: 1; width: auto; }
+    .mkm-action-btns {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        width: 100% !important;
+        flex-direction: unset !important;
+    }
+    .mkm-btn-prim, .mkm-btn-sec, .mkm-btn-follow {
+        font-size: 13px !important;
+        padding: 10px 4px !important;
+        border-radius: 8px !important;
+        white-space: nowrap !important;
+        text-overflow: ellipsis !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15) !important;
+    }
+    .mkm-btn-prim { grid-column: span 1 !important; }
+    .mkm-btn-sec { grid-column: span 1 !important; }
+    .mkm-btn-follow { grid-column: span 2 !important; margin-top: 0 !important; }
     .mkm-info-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .mkm-chaps-grid { grid-template-columns: 1fr !important; }
     .mkm-rel-grid { grid-template-columns: repeat(2, 1fr); }

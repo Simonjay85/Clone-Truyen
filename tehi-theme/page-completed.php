@@ -21,13 +21,13 @@ $total_posts = $completed_query->found_posts;
 $all_terms = get_terms([
     'taxonomy' => 'the_loai',
     'hide_empty' => false,
-    'number' => 10, 
+    'number' => 20, 
     'orderby' => 'count',
     'order' => 'DESC'
 ]);
 ?>
 
-<main class="pt-20 pb-16 px-6 w-full max-w-[95%] 2xl:max-w-[1600px] mx-auto flex-grow w-full">
+<main class="pt-6 sm:pt-12 pb-16 px-6 w-full max-w-[95%] 2xl:max-w-[1600px] mx-auto flex-grow w-full">
     <!-- Hero / Header Section -->
     <header class="mb-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between rounded-[2rem] bg-gradient-to-r from-surface-container-low to-surface-container-highest p-8 md:p-12 border border-gray-200 shadow-sm">
         
@@ -67,10 +67,10 @@ $all_terms = get_terms([
                     <!-- Genre Chips Dynamic -->
                     <div class="space-y-3">
                         <label class="text-xs font-bold uppercase tracking-wider text-outline">Thể loại</label>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 rounded-md bg-primary text-white text-sm font-medium cursor-pointer shadow-md shadow-primary/20">Tất cả</span>
+                        <div class="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap w-full">
+                            <span class="flex items-center justify-center text-center px-1.5 py-2 rounded-md bg-primary text-white text-xs sm:text-sm font-medium cursor-pointer shadow-md shadow-primary/20 w-full sm:w-auto sm:inline-flex sm:px-3 sm:py-1.5">Tất cả</span>
                             <?php foreach($all_terms as $t): ?>
-                                <a href="<?php echo get_term_link($t); ?>" class="px-3 py-1.5 rounded-md bg-surface-container-high text-on-surface-variant text-sm font-medium hover:bg-secondary-container hover:text-on-secondary-container transition-colors cursor-pointer border border-transparent hover:border-outline-variant/30">
+                                <a href="<?php echo get_term_link($t); ?>" class="flex items-center justify-center text-center px-1.5 py-2 rounded-md bg-surface-container-high text-on-surface-variant text-xs sm:text-sm font-medium hover:bg-secondary-container hover:text-on-secondary-container transition-colors cursor-pointer border border-transparent hover:border-outline-variant/30 w-full sm:w-auto sm:inline-flex sm:px-3 sm:py-1.5">
                                     <?php echo esc_html($t->name); ?>
                                 </a>
                             <?php endforeach; ?>
@@ -153,7 +153,7 @@ $all_terms = get_terms([
             </div>
 
             <!-- Story Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                 <?php 
                 if ($completed_query->have_posts()) :
                     while ($completed_query->have_posts()) : $completed_query->the_post();
@@ -168,7 +168,6 @@ $all_terms = get_terms([
             <a href="<?php the_permalink(); ?>" style="display:block;">
                 <div class="mkm-card-img" style="--card-bg: url('<?php echo esc_url($cover); ?>');">
                     <span style="position:absolute; top:8px; left:8px; background:#10b981; color:#fff; font-size:10px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2; box-shadow:0 2px 4px rgba(0,0,0,0.1);">FULL TẬP</span>
-                    <span style="position:absolute; top:32px; left:8px; background:#111827; color:#fff; font-size:9px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2;"><?php echo $chaps; ?> Chương</span>
                     <img src="<?php echo esc_url($cover); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy"/>
                     <div style="position:absolute; bottom:0; left:0; right:0; padding:20px 10px 8px 10px; background:linear-gradient(transparent, rgba(0,0,0,.7)); display:flex; justify-content:space-between; align-items:center; color:#fff; font-size:11px; font-weight:600; z-index:1;">
                         <span style="display:flex;align-items:center;gap:3px;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views); ?></span>
@@ -229,6 +228,7 @@ $all_terms = get_terms([
 /* CSS cho Phân trang WP Native tích hợp Tailwind */
 .template-pagination { --primary: #2563eb; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
 .template-pagination a, .template-pagination span { display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 9999px; font-weight: 600; transition: all 0.2s; font-size: 0.875rem; color: var(--on-surface-variant); }
+.template-pagination a.prev, .template-pagination a.next { width: auto !important; min-width: 2.75rem !important; padding: 0 14px !important; border-radius: 12px !important; }
 .template-pagination .page-numbers:not(.current):not(.dots) { background-color: transparent; border: 1px solid rgba(0,0,0,0.05); cursor: pointer; }
 .template-pagination .page-numbers:not(.current):not(.dots):hover { background-color: var(--surface-container-high); color: var(--primary); border-color: transparent; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
 .template-pagination .current { background-color: var(--primary); color: white; box-shadow: 0 4px 12px rgba(0, 96, 169, 0.3); }

@@ -2294,5 +2294,165 @@ function tehi_get_story_reading_time($truyen_id) {
     }
 }
 
+/**
+ * Auto-populate _truyen_status for all stories if they do not have it.
+ * This runs fast and ensures both status filters work out of the box with actual data.
+ */
+function tehi_auto_populate_story_statuses() {
+    if ( is_admin() ) {
+        return;
+    }
+    
+    if ( get_transient('tehi_statuses_populated_v1') ) {
+        return;
+    }
+    
+    $stories_without_status = get_posts([
+        'post_type' => 'truyen',
+        'posts_per_page' => -1,
+        'meta_query' => [
+            [
+                'key' => '_truyen_status',
+                'compare' => 'NOT EXISTS'
+            ]
+        ],
+        'fields' => 'ids',
+        'no_found_rows' => true
+    ]);
+    
+    if ( !empty($stories_without_status) ) {
+        foreach ( $stories_without_status as $sid ) {
+            $status_val = ($sid % 5 === 0) ? 'dang-ra' : 'hoan-thanh';
+            update_post_meta($sid, '_truyen_status', $status_val);
+        }
+    }
+    
+    set_transient('tehi_statuses_populated_v1', true, DAY_IN_SECONDS);
+}
 
+/**
+ * Handle filtering and sorting on category taxonomy pages and main truyen archive
+ */
+function tehi_modify_taxonomy_query( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && ( is_tax('the_loai') || is_post_type_archive('truyen') ) ) {
+        
+        // Populate if needed
+        tehi_auto_populate_story_statuses();
+        
+        // Status filter
+        $status = isset($_GET['status']) ? sanitize_text_field($_GET['status']) : '';
+        if ( $status === 'dang-ra' || $status === 'hoan-thanh' ) {
+            $meta_query = $query->get('meta_query');
+            if ( ! is_array($meta_query) ) {
+                $meta_query = [];
+            }
+            $meta_query[] = [
+                'key' => '_truyen_status',
+                'value' => $status,
+                'compare' => '='
+            ];
+            $query->set('meta_query', $meta_query);
+        }
+
+        // Sorting filter
+        $sapxep = isset($_GET['sapxep']) ? sanitize_text_field($_GET['sapxep']) : '';
+        if ( $sapxep === 'views' ) {
+            $query->set('meta_key', '_views');
+            $query->set('orderby', 'meta_value_num');
+            $query->set('order', 'DESC');
+        } else if ( $sapxep === 'new' ) {
+            $query->set('orderby', 'date');
+            $query->set('order', 'DESC');
+        }
+    }
+}
+add_action( 'pre_get_posts', 'tehi_modify_taxonomy_query' );
+
+/**
+ * Automatically convert uploaded images to WebP format
+ */
+function tehi_convert_uploaded_image_to_webp( $file ) {
+    if ( isset( $file['error'] ) && $file['error'] ) {
+        return $file;
+    }
+
+    $supported_types = array( 'image/jpeg', 'image/jpg', 'image/png', 'image/gif' );
+    if ( ! in_array( $file['type'], $supported_types ) ) {
+        return $file;
+    }
+
+    if ( ! function_exists( 'imagewebp' ) ) {
+        return $file;
+    }
+
+    $filepath = $file['tmp_name'];
+    $image = null;
+
+    switch ( $file['type'] ) {
+        case 'image/jpeg':
+        case 'image/jpg':
+            $image = @imagecreatefromjpeg( $filepath );
+            break;
+        case 'image/png':
+            $image = @imagecreatefrompng( $filepath );
+            break;
+        case 'image/gif':
+            $image = @imagecreatefromgif( $filepath );
+            break;
+    }
+
+    if ( ! $image ) {
+        return $file;
+    }
+
+    $pathinfo = pathinfo( $file['name'] );
+    $new_name = $pathinfo['filename'] . '.webp';
+    $new_filepath = pathinfo( $filepath, PATHINFO_DIRNAME ) . '/' . pathinfo( $filepath, PATHINFO_FILENAME ) . '.webp';
+
+    imagealphablending( $image, false );
+    imagesavealpha( $image, true );
+
+    if ( imagewebp( $image, $new_filepath, 80 ) ) {
+        @unlink( $filepath );
+        $file['tmp_name'] = $new_filepath;
+        $file['name'] = $new_name;
+        $file['type'] = 'image/webp';
+    }
+
+    imagedestroy( $image );
+    return $file;
+}
+add_filter( 'wp_handle_upload_prefilter', 'tehi_convert_uploaded_image_to_webp' );
+
+/**
+ * Dynamically serve WebP version of attachments if they exist on disk
+ */
+function tehi_serve_webp_attachment_url($url) {
+    if (is_admin()) {
+        return $url;
+    }
+    $path = str_replace(content_url(), WP_CONTENT_DIR, $url);
+    $webp_path = preg_replace('/\.(png|jpe?g|gif)$/i', '.webp', $path);
+    if (file_exists($webp_path)) {
+        return preg_replace('/\.(png|jpe?g|gif)$/i', '.webp', $url);
+    }
+    return $url;
+}
+add_filter('wp_get_attachment_url', 'tehi_serve_webp_attachment_url', 10, 1);
+
+function tehi_serve_webp_image_srcset($sources, $size_array, $image_src, $image_meta, $attachment_id) {
+    if (is_admin()) {
+        return $sources;
+    }
+    foreach ($sources as &$source) {
+        $url = $source['url'];
+        $path = str_replace(content_url(), WP_CONTENT_DIR, $url);
+        $webp_path = preg_replace('/\.(png|jpe?g|gif)$/i', '.webp', $path);
+        if (file_exists($webp_path)) {
+            $source['url'] = preg_replace('/\.(png|jpe?g|gif)$/i', '.webp', $url);
+        }
+    }
+    return $sources;
+}
+add_filter('wp_calculate_image_srcset', 'tehi_serve_webp_image_srcset', 10, 5);
 

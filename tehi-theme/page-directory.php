@@ -11,15 +11,44 @@ $directory_page_url = get_permalink();
 
 // Hỗ trợ cả query string (?paged=N) lẫn path-based pagination
 $paged = (get_query_var('paged')) ? get_query_var('paged') : ((isset($_GET['paged']) && intval($_GET['paged']) > 0) ? intval($_GET['paged']) : 1);
+
+if (function_exists('tehi_auto_populate_story_statuses')) {
+    tehi_auto_populate_story_statuses();
+}
+
+$status_filter = isset($_GET['status']) ? sanitize_text_field($_GET['status']) : '';
+$sapxep_filter = isset($_GET['sapxep']) ? sanitize_text_field($_GET['sapxep']) : 'new';
+
 $query_args = [
     'post_type' => 'truyen',
     'posts_per_page' => 24,
     'paged' => $paged,
-    'orderby' => 'date',
-    'order' => 'DESC'
 ];
+
+// Apply Sorting
+if ($sapxep_filter === 'views') {
+    $query_args['meta_key'] = '_views';
+    $query_args['orderby'] = 'meta_value_num';
+    $query_args['order'] = 'DESC';
+} else {
+    $query_args['orderby'] = 'date';
+    $query_args['order'] = 'DESC';
+}
+
+// Apply Status Filter
+if ($status_filter === 'dang-ra' || $status_filter === 'hoan-thanh') {
+    $query_args['meta_query'] = [
+        [
+            'key' => '_truyen_status',
+            'value' => $status_filter,
+            'compare' => '='
+        ]
+    ];
+}
+
 $directory_query = new WP_Query($query_args);
 $total_posts = $directory_query->found_posts;
+
 
 $all_terms = get_terms([
     'taxonomy' => 'the_loai',
@@ -30,7 +59,7 @@ $all_terms = get_terms([
 ]);
 ?>
 
-<main class="pt-24 pb-20 px-4 w-full max-w-[95%] 2xl:max-w-[1400px] mx-auto flex-grow">
+<main class="pt-6 sm:pt-12 pb-20 px-4 w-full max-w-[95%] 2xl:max-w-[1400px] mx-auto flex-grow">
     <!-- Hero / Header Section -->
     <header class="mb-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between rounded-[2rem] bg-gradient-to-r from-surface-container-low to-surface-container-highest p-8 md:p-12 border border-gray-200 shadow-sm text-left">
         
@@ -59,14 +88,14 @@ $all_terms = get_terms([
     </header>
     
     <!-- Filters Section -->
-    <div class="mb-12 flex flex-col gap-6 bg-white p-6 rounded-3xl border border-gray-200 shadow-sm">
+    <div class="mb-8 flex flex-col gap-4 bg-white p-3 sm:p-6 rounded-2xl sm:rounded-3xl border border-gray-200 shadow-sm">
         <!-- Genre Chips -->
-        <div class="flex flex-wrap gap-2 md:gap-3">
-            <a href="<?php echo get_site_url(); ?>/?post_type=truyen" class="px-5 py-2 rounded-xl font-bold text-sm transition-all duration-300 bg-blue-600 shadow-md shadow-blue-600/20 text-white">Tất cả</a>
+        <div class="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap md:gap-3 w-full">
+            <a href="<?php echo get_site_url(); ?>/?post_type=truyen" class="flex items-center justify-center text-center px-1.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 w-full sm:w-auto sm:inline-flex sm:px-5 sm:py-2 bg-blue-600 shadow-md shadow-blue-600/20 text-white">Tất cả</a>
             <?php foreach($all_terms as $t): 
                 $link = get_term_link($t);
             ?>
-                <a href="<?php echo esc_url($link); ?>" class="px-5 py-2 rounded-xl font-bold text-sm transition-all duration-300 bg-gray-100 text-red-500 hover:text-red-600 hover:bg-red-50"><?php echo esc_html($t->name); ?></a>
+                <a href="<?php echo esc_url($link); ?>" class="flex items-center justify-center text-center px-1.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 w-full sm:w-auto sm:inline-flex sm:px-5 sm:py-2 bg-gray-100 text-red-500 hover:text-red-600 hover:bg-red-50"><?php echo esc_html($t->name); ?></a>
             <?php endforeach; ?>
         </div>
         
@@ -77,19 +106,19 @@ $all_terms = get_terms([
                     <span class="text-xs font-bold text-red-500 uppercase tracking-widest">Trạng thái</span>
                     <div class="flex gap-3">
                         <label class="flex items-center gap-2 cursor-pointer text-red-500 font-semibold text-sm">
-                            <input type="checkbox" disabled class="rounded text-red-500 border-gray-300 focus:ring-red-500"> Đang ra
+                            <input type="checkbox" id="filter-dang-ra" <?php echo ($status_filter === 'dang-ra') ? 'checked' : ''; ?> class="rounded text-red-500 border-gray-300 focus:ring-red-500"> Đang ra
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer text-red-500 font-semibold text-sm">
-                            <input type="checkbox" disabled class="rounded text-red-500 border-gray-300 focus:ring-red-500"> Hoàn Thành
+                            <input type="checkbox" id="filter-hoan-thanh" <?php echo ($status_filter === 'hoan-thanh') ? 'checked' : ''; ?> class="rounded text-red-500 border-gray-300 focus:ring-red-500"> Hoàn Thành
                         </label>
                     </div>
                 </div>
                 <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
                 <div class="flex items-center gap-4">
                     <span class="text-xs font-bold text-red-500 uppercase tracking-widest">Sắp xếp</span>
-                    <select class="mkm-native-select bg-gray-50 border-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full py-2 px-3 font-semibold ring-1 ring-gray-200" style="appearance: auto; -webkit-appearance: auto;">
-                        <option>Mới cập nhật</option>
-                        <option>Xem nhiều</option>
+                    <select id="filter-sort" class="mkm-native-select bg-gray-50 border-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full py-2 px-3 font-semibold ring-1 ring-gray-200" style="appearance: auto; -webkit-appearance: auto;">
+                        <option value="new" <?php echo ($sapxep_filter === 'new') ? 'selected' : ''; ?>>Mới cập nhật</option>
+                        <option value="views" <?php echo ($sapxep_filter === 'views') ? 'selected' : ''; ?>>Xem nhiều</option>
                     </select>
                     <style>.mkm-native-select { display: block !important; } .mkm-native-select + .nice-select, .mkm-native-select + .select2-container { display: none !important; }</style>
                 </div>
@@ -120,10 +149,9 @@ $all_terms = get_terms([
             $term_name_display = $terms && !is_wp_error($terms) ? $terms[0]->name : 'Thể loại';
         ?>
         
-        <div class="mkm-card group" style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:block; transition:transform 0.2s, box-shadow 0.2s; border: 1px solid #f3f4f6;">
+        <div class="mkm-card group" style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex !important; flex-direction:column !important; height:100% !important; transition:transform 0.2s, box-shadow 0.2s; border: 1px solid #f3f4f6;">
             <a href="<?php the_permalink(); ?>" style="display:block;">
                 <div class="mkm-card-img" style="--card-bg: url('<?php echo esc_url($cover); ?>');">
-                    <span style="position:absolute; top:8px; left:8px; background:#10b981; color:#fff; font-size:10px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2; box-shadow:0 2px 4px rgba(0,0,0,0.1);">Ch.<?php echo $chaps; ?></span>
                     <img src="<?php echo esc_url($cover); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy"/>
                     <div style="position:absolute; bottom:0; left:0; right:0; padding:20px 10px 8px 10px; background:linear-gradient(transparent, rgba(0,0,0,.7)); display:flex; justify-content:space-between; align-items:center; color:#fff; font-size:11px; font-weight:600; z-index:1;">
                         <span style="display:flex;align-items:center;gap:3px;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo $formatted_views; ?></span>
@@ -131,15 +159,31 @@ $all_terms = get_terms([
                     </div>
                 </div>
             </a>
-            <div style="padding:12px;">
+            <div style="padding:12px; display:flex !important; flex-direction:column !important; flex-grow:1 !important;">
                 <a href="<?php the_permalink(); ?>" style="text-decoration:none;">
                     <p style="font-size:14px; font-weight:700; color:#111827; margin:0 0 8px 0; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font-family: ui-sans-serif, sans-serif;"><?php the_title(); ?></p>
                 </a>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                    <span style="background:#f3f4f6; color:#6b7280; font-size:10px; font-weight:600; padding:4px 8px; border-radius:6px;"><?php echo esc_html($term_name_display); ?></span>
-                    <span style="background:rgba(217, 119, 6, 0.1); color:#d97706; font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px;">Chi tiết</span>
+                <div style="display:flex; flex-wrap:wrap; gap:4px; margin-bottom:8px; align-items:center; width:100%;">
+                    <?php
+                    $cats = get_the_terms(get_the_ID(), 'the_loai');
+                    if ($cats && !is_wp_error($cats)) {
+                        $count = 0;
+                        foreach ($cats as $cat) {
+                            if ($count >= 2) break;
+                            ?>
+                            <span style="background:#f3f4f6; color:#6b7280; font-size:10px; font-weight:600; padding:4px 8px; border-radius:6px; white-space:nowrap;"><?php echo esc_html($cat->name); ?></span>
+                            <?php
+                            $count++;
+                        }
+                    }
+                    $status_meta = get_post_meta(get_the_ID(), '_truyen_status', true);
+                    $status_display = ($status_meta === 'dang-ra') ? 'Đang ra' : 'Hoàn thành';
+                    $status_bg = ($status_meta === 'dang-ra') ? 'rgba(59, 130, 246, 0.1)' : 'rgba(16, 185, 129, 0.1)';
+                    $status_color = ($status_meta === 'dang-ra') ? '#3b82f6' : '#10b981';
+                    ?>
+                    <span style="background:<?php echo $status_bg; ?>; color:<?php echo $status_color; ?>; font-size:10px; font-weight:700; padding:4px 8px; border-radius:6px; margin-left: auto; white-space:nowrap;"><?php echo $status_display; ?></span>
                 </div>
-                <div class="mkm-card-btns">
+                <div class="mkm-card-btns" style="margin-top:auto !important;">
                     <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
                     <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new">Chương mới</a>
                 </div>
@@ -261,15 +305,66 @@ $all_terms = get_terms([
         padding: 6px 4px !important;
         font-size: 10px !important;
     }
+    .mkm-pagination a, .mkm-pagination span {
+        min-width: 36px !important;
+        height: 36px !important;
+        padding: 0 10px !important;
+        margin: 4px 3px !important;
+        font-size: 13px !important;
+        border-radius: 10px !important;
+    }
 }
 .mkm-badge-tl { position: absolute !important; top: 10px !important; left: 10px !important; background: linear-gradient(135deg, #3b82f6, #2563eb) !important; color: #fff !important; font-size: 10px !important; font-weight: 800 !important; padding: 4px 8px !important; border-radius: 8px !important; z-index: 2 !important; letter-spacing: 0.05em; box-shadow: 0 2px 4px rgba(37,99,235,0.3); }
 .mkm-card-overlay { position: absolute !important; bottom: 0 !important; left: 0 !important; right: 0 !important; background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%) !important; padding: 24px 12px 12px 12px !important; display: flex !important; flex-direction: column !important; justify-content: flex-end !important; z-index: 2 !important; }
 .mkm-card-title { color: #fff !important; font-size: 15px !important; font-weight: 800 !important; line-height: 1.4 !important; margin-bottom: 8px !important; display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 .mkm-card-meta { display: flex !important; justify-content: space-between !important; align-items: center !important; color: #d1d5db !important; font-size: 12px !important; font-weight: 600 !important; }
 
-.mkm-pagination a, .mkm-pagination span { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; width: auto; padding: 0 12px; height: 44px; margin: 0 4px; border-radius: 12px; background: #fff; color: #4b5563; font-weight: 700; text-decoration: none; font-size: 15px; border: 1px solid #e5e7eb; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+.mkm-pagination { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; }
+.mkm-pagination a, .mkm-pagination span { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; width: auto; padding: 0 12px; height: 44px; margin: 6px 4px; border-radius: 12px; background: #fff; color: #4b5563; font-weight: 700; text-decoration: none; font-size: 15px; border: 1px solid #e5e7eb; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
 .mkm-pagination a:hover { background: #f8fafc; border-color: #2563eb; color: #2563eb; transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(37,99,235,0.1); }
 .mkm-pagination .current { background: #2563eb; color: #fff; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterDangRa = document.getElementById('filter-dang-ra');
+    const filterHoanThanh = document.getElementById('filter-hoan-thanh');
+    const sortSelect = document.getElementById('filter-sort');
+
+    function updateFilters() {
+        const url = new URL(window.location.href);
+        
+        if (filterDangRa && filterDangRa.checked && (!filterHoanThanh || !filterHoanThanh.checked)) {
+            url.searchParams.set('status', 'dang-ra');
+        } else if (filterHoanThanh && filterHoanThanh.checked && (!filterDangRa || !filterDangRa.checked)) {
+            url.searchParams.set('status', 'hoan-thanh');
+        } else {
+            url.searchParams.delete('status');
+        }
+
+        if (sortSelect) {
+            const sortVal = sortSelect.value;
+            if (sortVal === 'views') {
+                url.searchParams.set('sapxep', 'views');
+            } else {
+                url.searchParams.delete('sapxep');
+            }
+        }
+        
+        url.searchParams.delete('paged');
+        window.location.href = url.toString();
+    }
+
+    if (filterDangRa) filterDangRa.addEventListener('change', function() {
+        if (this.checked && filterHoanThanh) filterHoanThanh.checked = false;
+        updateFilters();
+    });
+    if (filterHoanThanh) filterHoanThanh.addEventListener('change', function() {
+        if (this.checked && filterDangRa) filterDangRa.checked = false;
+        updateFilters();
+    });
+    if (sortSelect) sortSelect.addEventListener('change', updateFilters);
+});
+</script>
 
 <?php get_footer(); ?>

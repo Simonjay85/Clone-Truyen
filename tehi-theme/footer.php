@@ -1,8 +1,8 @@
 <style>
 .mkm-footer { background: #fff; border-top: 1px solid #e5e7eb; margin-top: 48px; font-family: 'Be Vietnam Pro', sans-serif; }
 .mkm-footer-top { max-width: 1200px; margin: 0 auto; padding: 40px 16px 32px; display: grid; grid-template-columns: 1.6fr 1fr 1.4fr 1.2fr 1.2fr; gap: 32px; }
-.mkm-footer-brand img { height: 36px; margin-bottom: 12px; }
-.mkm-footer-brand p { font-size: 13px; color: #6b7280; line-height: 1.7; margin: 0; }
+.mkm-footer-brand { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.mkm-footer-brand p { font-size: 13px; color: #6b7280; line-height: 1.7; margin: 0; text-align: center; }
 .mkm-footer-col h4 { font-size: 14px; font-weight: 800; color: #111827; margin: 0 0 14px 0; }
 .mkm-footer-col ul { list-style: none; padding: 0; margin: 0; }
 .mkm-footer-col ul li { margin-bottom: 8px; }
@@ -20,8 +20,12 @@
 .mkm-footer-disclaimer-inner { max-width: 1200px; margin: 0 auto; padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; }
 .mkm-footer-disclaimer-inner svg { flex-shrink: 0; color: #f59e0b; margin-top: 2px; }
 .mkm-footer-disclaimer p { font-size: 12px; color: #78350f; line-height: 1.6; margin: 0; }
-.mkm-footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px; text-align: center; font-size: 13px; color: #9ca3af; border-top: 1px solid #f3f4f6; }
-@media (max-width: 900px) { .mkm-footer-top { grid-template-columns: 1fr 1fr; } }
+.mkm-footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px; text-align: center; font-size: 13px; color: #6b7280; border-top: 1px solid #f3f4f6; }
+@media (max-width: 900px) {
+    .mkm-footer-top { grid-template-columns: 1fr 1fr; }
+    .mkm-footer-grid-list { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px 16px !important; }
+    .mkm-footer-grid-list li { margin-bottom: 0 !important; }
+}
 @media (max-width: 600px) { .mkm-footer-top { grid-template-columns: 1fr; } }
 </style>
 
@@ -32,8 +36,10 @@
         <!-- ... inside stays the same ... -->
         <!-- BRAND -->
         <div class="mkm-footer-brand">
-            <a href="<?php echo esc_url(home_url('/')); ?>">
-                <img src="<?php echo get_template_directory_uri(); ?>/img_data/images/logo-truyen-moi-v1.png" alt="<?php bloginfo('name'); ?>">
+            <a href="<?php echo esc_url(home_url('/')); ?>" style="text-decoration: none; margin-bottom: 12px; display: inline-block;">
+                <span style="font-weight: 900; font-size: 28px; color: #1e1e2d; letter-spacing: -1px; font-family: 'Be Vietnam Pro', sans-serif;">
+                    DTT<span style="color: #6366f1;">.</span>
+                </span>
             </a>
             <p>Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.</p>
         </div>
@@ -51,7 +57,7 @@
         <!-- DANH SÁCH TRUYỆN -->
         <div class="mkm-footer-col">
             <h4>Danh sách truyện</h4>
-            <ul>
+            <ul class="mkm-footer-grid-list">
                 <?php
                 $cats = get_terms(['taxonomy' => 'the_loai', 'number' => 6, 'orderby' => 'count', 'order' => 'DESC', 'hide_empty' => true]);
                 if (!is_wp_error($cats)) foreach($cats as $cat):
@@ -64,7 +70,7 @@
         <!-- TOP TRUYỆN -->
         <div class="mkm-footer-col">
             <h4>Top truyện</h4>
-            <ul>
+            <ul class="mkm-footer-grid-list">
                 <li><a href="<?php echo esc_url(home_url('/bang-xep-hang/')); ?>">• Top ngôn tình hay nhất</a></li>
                 <li><a href="<?php echo esc_url(home_url('/?s=ngon+tinh+hien+dai')); ?>">• Top ngôn tình hiện đại</a></li>
                 <li><a href="<?php echo esc_url(home_url('/?s=tong+tai')); ?>">• Top tổng tài hay nhất</a></li>
@@ -90,11 +96,11 @@
             </div>
             <p style="font-size:12px; color:#6b7280; margin:0 0 8px;">Tải ứng dụng</p>
             <div class="mkm-footer-apps">
-                <a href="<?php echo esc_url(home_url('/')); ?>" aria-label="App Store">
+                <a href="<?php echo esc_url(home_url('/')); ?>">
                     <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     <div><span>Tải về</span><strong>App Store</strong></div>
                 </a>
-                <a href="<?php echo esc_url(home_url('/')); ?>" aria-label="Google Play">
+                <a href="<?php echo esc_url(home_url('/')); ?>">
                     <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M3.18 23.76c.27.15.54.24.81.24.27 0 .54-.09.81-.24L17.1 12 3.18.24C2.91.09 2.64 0 2.37 0c-.54 0-.99.45-.99.99v22.02c0 .54.45.75.8.75zM17.82 11.28L5.58 4.92 15.6 12 5.58 19.08l12.24-6.36c.54-.27.54-1.17 0-1.44z"/></svg>
                     <div><span>Tải về</span><strong>Google Play</strong></div>
                 </a>
