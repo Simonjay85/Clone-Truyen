@@ -1,0 +1,256 @@
+# -*- coding: utf-8 -*-
+import json
+import os
+
+def clean_and_format_content(raw_text):
+    # Split text by lines, strip whitespace, filter out empty lines
+    lines = [line.strip() for line in raw_text.strip().split('\n') if line.strip()]
+    
+    # Wrap each sentence in a <p> tag with a newline
+    formatted_lines = [f"<p>{line}</p>\n" for line in lines]
+    
+    # Return the combined string and the word count
+    content = "".join(formatted_lines)
+    word_count = len(raw_text.split())
+    return content, word_count
+
+# Define the narrative metadata
+novel_data = {
+    "title": "Thuyền Trưởng Tàu Cá Bị Chủ Cảng Ép Nợ, Hóa Ra Là Đại Gia Hàng Hải Đang Điều Tra Thâu Tóm",
+    "subtitle": "Bản Lĩnh Biển Khơi",
+    "author": "Đông Hải Cư Sĩ",
+    "genre": "Sảng Văn",
+    "intro": "<p><strong>&ldquo;Nguyễn Hải Long ẩn thân làm thuyền trưởng một con tàu cá nhỏ suốt ba tháng tại cảng Hải Bình, hứng chịu đủ sự chà đạp và ép nợ của tập dịch vụ bến cảng.&rdquo;</strong></p><p>Trần Đại Nghĩa, ông chủ cảng Hải Bình kiêu ngạo, cấu kết với thế lực hàng hải ngoại bang để ép giá thu mua thủy sản, siết nợ tàu bè và âm mưu nhượng quyền khai thác luồng lạch chiến lược của quốc gia. Hắn khinh Long nghèo hèn, dùng những điều khoản tín dụng đen và côn đồ để ép anh ký văn bản gán nợ con tàu cá Đông Hải 09.</p><p>Nhưng hắn không biết rằng, người thuyền trưởng sạm nắng ấy lại là Chủ tịch Tập đoàn Hàng hải Đông Á - người đang âm thầm thu thập toàn bộ chứng cứ vi phạm pháp luật để quét sạch thế lực sâu mọt. Cùng với Trịnh Minh Anh - nữ CFO kiêm Trưởng ban Pháp chế sắc sảo và sòng phẳng, Nguyễn Hải Long bắt đầu kích hoạt bàn cờ thâu tóm ngược, dồn kẻ phản quốc vào chân tường ngay trong đêm giông bão quét qua vịnh Bắc Bộ.</p>",
+    "cover_prompt": "A high-end book cover, highly detailed web novel illustration style, a powerful and handsome sun-tanned Vietnamese captain in a dark navy blue maritime uniform standing on the deck of a massive cargo container ship, with sea spray and golden sunset on the horizon. In the background are huge gantry cranes of a modern industrial seaport. Cinematic lighting, rich dramatic shadows, premium colors.",
+    "chapters": []
+}
+
+# Chapter 1 Raw Text (aiming for ~1200 words)
+chap1_raw = """
+Dưới cái nắng gắt như thiêu như đốt của vùng biển Hải Bình, gió mang theo vị mặn mòi của muối và mùi dầu máy nồng nặc táp thẳng vào cabin.
+Nguyễn Hải Long khẽ nheo đôi mắt sắc sảo nhìn qua lớp kính đục ngầu, đôi tay sạm nắng vững vàng điều khiển bánh lái của chiếc tàu cá Đông Hải 09.
+Con tàu gỗ dài hơn hai mươi mét gầm rú vượt qua những con sóng lớn, lách qua phao luồng số năm để tiến vào khu vực neo đậu của cảng cá Hải Bình.
+Sau ba tháng lênh đênh ngoài khơi xa, những khoang tàu đầy ắp cá ngừ và cá thu chính là mồ hôi nước mắt của mười lăm anh em ngư dân đi cùng anh.
+Thế nhưng, khuôn mặt của Long không có niềm vui của một chuyến đi biển trúng mánh, mà chỉ có sự lạnh lùng và cảnh giác tột độ.
+Anh khẽ chỉnh lại chiếc áo phao sờn rách, giấu đi chiếc đồng hồ hàng hải Garmin chuyên dụng bên trong cổ tay áo sờn bạc màu.
+Ba tháng trước, ban hội đồng quản trị của Tập đoàn Hàng hải Đông Á chấn động khi phát hiện có một thế lực ngầm đang âm thầm thâu tóm chuỗi cảng biển phía Bắc.
+Để tìm ra sự thật về đường dây ép nợ ngư dân và nhượng quyền cảng bất hợp pháp này, vị chủ tịch trẻ tuổi Nguyễn Hải Long đã chọn cách ẩn thân.
+Anh mua lại con tàu Đông Hải 09, tự mình đóng vai một thuyền trưởng tàu cá bình thường chịu thương chịu khó để thâm nhập thực địa.
+Ngay khi mỏ neo của tàu Đông Hải 09 vừa cắm xuống làn nước đục của bến cảng, một nhóm người mặc đồng phục bảo vệ màu xanh đen đã rầm rập kéo đến.
+Dẫn đầu là Trần Văn Hùng, gã quản lý bến cảng mặt rỗ, cũng chính là cháu ruột của ông chủ cảng Hải Bình - Trần Đại Nghĩa.
+Hắn ngậm điếu thuốc lá, tay cầm một tập hồ sơ dày, giậm chân côm cốp lên mặt boong tàu gỗ của Long mà không cần sự cho phép.
+Đám tay chân của hắn thô bạo đẩy dạt hai người thủy thủ đang dọn dây xích neo, thái độ vô cùng hống hách và coi thường.
+Hùng rỗ đưa mắt nhìn quanh đống cá tươi vừa được kéo lên, rồi nhổ một bãi nước bọt xuống sàn boong gỗ một cách thô bỉ.
+Hắn cất giọng khàn khàn đầy hách dịch: "Thuyền trưởng Long đâu? Mau vác mặt ra đây gặp tao nói chuyện nợ nần!"
+Nguyễn Hải Long bình thản bước ra khỏi cabin, khuôn mặt sạm nắng và bộ râu lởm chởm khiến anh trông không khác gì một ngư dân khắc khổ.
+Anh khẽ cúi đầu nhẹ, giả giọng một người lao động bình thường: "Chào anh Hùng, tôi là Long đây. Chuyến này anh em đi biển thuận lợi, cá tươi đầy khoang, lát nữa bán xong tôi sẽ qua ban quản lý nộp phí cảng đầy đủ."
+Trần Văn Hùng cười khẩy, ném mạnh tập hồ sơ lên nắp hầm cá, tạo ra một tiếng "bạch" khô khốc đầy xúc phạm.
+Hắn trừng mắt nói: "Nộp phí cảng? Mày tưởng nộp mấy đồng phí cỏn con đó là xong à? Hôm nay tao đến đây để siết nợ!"
+Long vẫn giữ vẻ bình tĩnh, ánh mắt sâu thẳm nhìn thẳng vào gã quản lý: "Siết nợ? Tôi nhớ khoản vay mua dầu và nhu yếu phẩm của tàu Đông Hải 09 tại Hợp tác xã cảng Hải Bình vẫn còn hạn đến cuối tháng sau mà?"
+Hùng rỗ rút điếu thuốc ra, phả khói thẳng vào mặt Long, điệu bộ khinh khỉnh: "Quy định mới rồi con trai! Từ ngày hôm qua, tất cả các khoản vay của ngư dân tại cảng Hải Bình đều phải thu hồi trước hạn."
+Hắn chỉ tay vào các điều khoản trong tập hồ sơ: "Tổng nợ gốc và lãi mua dầu của mày là bốn trăm triệu đồng. Phí neo đậu phát sinh tăng gấp ba lần trong ba tháng qua là một trăm hai mươi triệu. Tổng cộng năm trăm hai mươi triệu, trả ngay lập tức!"
+Mấy người thủy thủ trên tàu nghe thấy con số khổng lồ liền biến sắc, mồ hôi lạnh chảy sau gáy, họ xôn xao lo lắng cực độ.
+Chú Tư, một ngư dân già cả đời bám biển, run rẩy bước lên phân trần: "Cán bộ ơi, làm gì có chuyện phí neo đậu tăng gấp ba mà không thông báo trước? Chuyến này chúng tôi đi biển cực khổ mới kiếm được chừng này cá, bán đi cũng chỉ vừa đủ trả nợ cũ và chia tiền công cho anh em nuôi gia đình thôi!"
+Một gã bảo vệ to con đứng sau Hùng rỗ lập tức đẩy mạnh vào vai chú Tư làm ông lão lảo đảo su suýt ngã xuống boong tàu: "Lão già câm miệng! Ban quản lý cảng ra quy định thì bọn bay chỉ có việc nộp tiền, cấm cãi!"
+Ngón tay của Nguyễn Hải Long khẽ bấm chặt vào lòng bàn tay đến mức gần như rỉ máu, nhưng anh đã kiềm chế cơn giận dữ lại ngay lập tức.
+Anh bước lên đỡ lấy chú Tư, ánh mắt lướt qua gã bảo vệ to con kia làm hắn tự dưng thấy lạnh sống lưng mà không hiểu vì sao.
+Long quay sang nhìn Hùng rỗ, giọng nói trầm xuống đầy sức nặng: "Năm trăm hai mươi triệu không phải là con số nhỏ đối với một tàu cá vừa cập bến. Anh Hùng, ban quản lý cảng ép người quá đáng như vậy, không sợ Cục Hàng hải và cơ quan chức năng sờ gáy sao?"
+Nghe đến đây, Trần Văn Hùng như nghe thấy chuyện hài hước nhất thế gian, hắn cười lớn đầy ngạo mạn.
+Hắn vỗ mạnh vào vai Long: "Cục Hàng hải? Cơ quan chức năng? Ở cái cảng Hải Bình này, lời của bác ruột tao - Trần Đại Nghĩa - chính là luật pháp!"
+Hắn ghé sát tai Long thì thầm với giọng đầy đe dọa: "Tao nói cho mày biết, bác tao đã ký thỏa thuận hợp tác chiến lược với tập đoàn Apex Maritime của Singapore rồi. Toàn bộ khu cảng cá này sẽ được quy hoạch lại thành cảng container chuyên dụng."
+Hùng rỗ đập mạnh tay vào cabin tàu Đông Hải 09: "Lũ ngư dân rác rưởi bọn bay tốt nhất là cút đi chỗ khác. Hôm nay mày không có năm trăm hai mươi triệu mặt để trả nợ đúng không?"
+Hắn rút ra một bản hợp đồng khác đã soạn sẵn từ trong túi xách bên hông: "Ký vào đây! Nhượng lại tàu Đông Hải 09 và toàn bộ quyền đánh bắt trong luồng Hải Bình cho tập đoàn chúng tao để cấn trừ nợ. Nếu không ký, tao sẽ niêm phong tàu ngay lập tức, toàn bộ cá tươi trên khoang sẽ bị thối rữa dưới nắng, xem mày lấy gì mà đền mạng cho anh em thủy thủ!"
+Mười lăm ngư dân nghe vậy thì mặt cắt không còn giọt máu, họ biết nếu mất tàu và mất số cá này, gia đình họ sẽ lâm vào cảnh nợ nần chồng chất, không lối thoát.
+Một số người đã có ý định khuyên Long nhượng bộ, gối quỳ xuống đất cộp trước sự hung hãn của đám bảo vệ bến cảng.
+Thế nhưng, Nguyễn Hải Long chỉ khẽ cười lạnh trong lòng.
+Chiếc camera siêu nhỏ gắn trên nút áo phao của anh đã ghi lại toàn bộ cuộc hội thoại, từ việc ép nợ trước hạn trái pháp luật, nâng phí vô tội vạ đến âm mưu cấu kết với tập đoàn nước ngoài để thâu tóm cảng biển.
+Đây chính là những chứng cứ đắt giá mà anh cần thu thập để đưa ra ánh sáng pháp lý.
+Anh nheo mắt nhìn bản hợp đồng nhượng tàu do Hùng rỗ đưa ra, trên đó có con dấu đỏ chói của Công ty Dịch vụ Cảng Hải Bình và chữ ký bay bướm của Trần Đại Nghĩa.
+Long giả vờ do dự, kéo dài thời gian: "Nhượng tàu là chuyện lớn, con tàu này là sinh kế duy nhất của mười lăm gia đình ở đây. Anh Hùng, cho tôi thời gian suy nghĩ đến chiều nay được không?"
+Trần Văn Hùng thấy Long có vẻ chùn bước liền đắc ý, hắn cười khẩy rồi giật lấy tập hồ sơ: "Được! Tao cho mày đến năm giờ chiều nay. Nếu lúc đó không ký hợp đồng hoặc không có đủ năm trăm hai mươi triệu tiền mặt, tao sẽ cho tàu hút cát đến vây chặt tàu mày, đồng thời báo công an biên phòng xích cổ mày vì tội trốn nợ!"
+Nói xong, Hùng rỗ cùng đám tay chân nghênh ngang bước xuống tàu, không quên đạp đổ một rổ cá thu tươi rói xuống bến cảng đầy bùn đất.
+Chú Tư nhìn đống cá bị giẫm nát mà xót xa, nước mắt chực trào ra: "Thuyền trưởng Long ơi, giờ chúng ta phải làm sao đây? Bọn họ là hung thần ác bá ở đây, chúng ta đấu không lại đâu!"
+Nguyễn Hải Long cúi xuống, lặng lẽ nhặt con cá thu lên, phủi sạch bùn đất trên vảy cá.
+Ánh mắt anh lúc này không còn sự khắc khổ của một ngư dân nghèo, mà là sự sắc bén lạnh lùng của một vị tỷ phú hàng hải đứng đầu tập đoàn nghìn tỷ.
+Anh vỗ vai chú Tư, giọng nói vô cùng kiên định và ấm áp: "Chú Tư và anh em cứ yên tâm đưa cá lên bờ bán cho các đầu mối quen. Món nợ này, tôi sẽ tự mình giải quyết sòng phẳng với Trần Đại Nghĩa."
+Long bước vào cabin, đóng chặt cửa lại để tránh những ánh mắt tò mò từ bên ngoài bến cảng.
+Anh cởi bỏ chiếc áo phao sờn rách, lấy chiếc điện thoại bảo mật chuyên dụng được giấu dưới bảng điều khiển tàu cá ra.
+Anh bấm một dãy số được mã hóa đặc biệt, kết nối trực tiếp đến văn phòng tổng đài tối cao của Tập đoàn Hàng hải Đông Á.
+Đầu dây bên kia nhanh chóng bắt máy, giọng nói của một người phụ nữ vô cùng sắc sảo, bình thản và đầy lý tính vang lên: "A lô, Chủ tịch Nguyễn Hải Long đúng không? Tôi đã chờ cuộc gọi của anh suốt ba tháng qua."
+Long khẽ mỉm cười, giọng nói trở lại phong thái uy nghiêm vốn có: "Minh Anh, chuẩn bị cho tôi toàn bộ hồ sơ tài chính và các khoản vay thế chấp của Công ty Dịch vụ Cảng Hải Bình. Trận chiến tại vịnh Bắc Bộ chính thức bắt đầu rồi."
+"""
+
+# Chapter 2 Raw Text (aiming for ~1200 words)
+chap2_raw = """
+Nửa tiếng sau khi rời khỏi boong tàu Đông Hải 09, Nguyễn Hải Long đã có mặt tại một địa điểm bí mật nằm sâu trong khu công nghiệp cảng Hải Bình.
+Đó là một chiếc xe chuyên dụng Mercedes Sprinter màu đen bóng, kính dán phim cách nhiệt tối màu chống đạn, đỗ lặng lẽ ở một góc khuất của bãi container.
+Bên trong xe không gian rộng rãi như một văn phòng điều hành di động hạng sang với ánh sáng dịu nhẹ và hệ thống điều hòa mát rượi.
+Ngồi trước dãy ba màn hình máy tính ThinkPad cỡ lớn hiển thị chi chít các biểu đồ tài chính và luồng hàng hải là Trịnh Minh Anh.
+Nữ CFO kiêm Trưởng ban Pháp chế của Tập đoàn Hàng hải Đông Á hôm nay diện một bộ vest công sở màu xanh đen cắt may thủ công cực kỳ tôn dáng.
+Mái tóc đen tuyền búi cao gọn gàng, chiếc kính gọng vàng thanh mảnh tôn lên khuôn mặt xinh đẹp nhưng lạnh lùng và đầy trí tuệ của cô.
+Thấy Long bước vào trong bộ quần áo ngư dân bám đầy muối biển và mùi dầu máy sặc sụa, Minh Anh không hề nhăn mặt mà chỉ khẽ nâng kính, nhìn anh bằng ánh mắt lý tính.
+Cô đẩy một ly nước khoáng sang phía anh, cất giọng trong trẻo nhưng vô cùng sòng phẳng: "Chào mừng Chủ tịch quay lại thế giới văn minh. Ba tháng làm ngư dân của anh đã mang lại kết quả gì chưa?"
+Long đón lấy ly nước uống một ngụm lớn, rồi ngồi xuống chiếc ghế da đối diện cô, khẽ cười: "Rất nhiều là đằng khác. Toàn bộ quá trình ép nợ trái pháp luật của Trần Văn Hùng đã được ghi hình đầy đủ. Bọn chúng đã cắn câu."
+Minh Anh gõ ngón tay thon dài lên bàn phím, một tập tài liệu tài chính dày đặc các con số lập tức hiện lên trên màn hình chính của xe điều hành.
+Cô xoay màn hình về phía Long, điệu bộ vô cùng chuyên nghiệp và rõ ràng: "Tôi đã hoàn thành việc phân tích sâu về Công ty Dịch vụ Cảng Hải Bình của Trần Đại Nghĩa theo yêu cầu của anh. Nhưng trước khi chúng ta tiến hành bước tiếp theo, tôi muốn làm rõ một điều."
+Long nhướng mày: "Điều gì? Cô cứ nói."
+Minh Anh khoanh tay trước ngực, ánh mắt sắc sảo nhìn thẳng vào mắt anh, đưa ra điều kiện vô cùng sòng phẳng: "Tôi là người làm việc bằng hiệu quả và hợp đồng kinh tế, không làm việc vì tình nghĩa cá nhân. Trận chiến thâu tóm cảng Hải Bình này cực kỳ phức tạp vì nó liên quan đến liên doanh nước ngoài Apex Maritime. Nếu tôi giúp anh dọn dẹp sạch sẽ đống hỗn độn pháp lý này và thâu tóm thành công cảng Hải Bình về tay Đông Á, tôi muốn một điều khoản thưởng đặc biệt."
+Cô nhấn mạnh từng từ: "Năm phần trăm cổ phần của Tập đoàn Đông Á tại cảng nước sâu Lạch Huyện phải thuộc về công ty quản lý quỹ của tôi. Kèm theo đó là quyền tự quyết tuyệt đối về mặt nhân sự của phòng logistics quốc tế tại chi nhánh phía Bắc. Không thương lượng."
+Long nhìn người phụ nữ sắc sảo trước mặt, trong lòng thầm khâm phục sự chuyên nghiệp và bản lĩnh của cô.
+Trịnh Minh Anh chưa bao giờ là một thuộc hạ phục tùng vô điều kiện, cô là một đối tác sắc bén luôn biết rõ giá trị của bản thân và đặt điều kiện một cách sòng phẳng nhất trước khi ký hợp đồng.
+Anh gật đầu, nở một nụ cười tán thưởng: "Được! Sự sòng phẳng của cô luôn làm tôi yên tâm. Năm phần trăm cổ phần Lạch Huyện và quyền nhân sự logistics phía Bắc sẽ là của cô ngay khi Trần Đại Nghĩa phải ký vào văn bản bàn giao cảng Hải Bình cho Đông Á. Tôi sẽ ký phê duyệt bản thỏa thuận bổ sung này ngay bây giờ."
+Minh Anh mỉm cười nhẹ nhàng, phong thái tự tin lộ rõ trên khuôn mặt xinh đẹp: "Hợp tác vui vẻ, thưa Chủ tịch. Bây giờ, hãy nhìn vào bàn cờ tài chính của Trần Đại Nghĩa."
+Cô chỉ vào biểu đồ dòng tiền trên màn hình máy tính: "Cảng Hải Bình trông thì hoành tráng nhưng thực chất chỉ là một cái vỏ rỗng nợ nần chồng chất. Trần Đại Nghĩa đã dùng đòn bẩy tài chính quá đà để xây dựng khu bãi container số hai từ hai năm trước. Hắn đang có hai khoản nợ lớn sắp đáo hạn tại hai ngân hàng thương mại nhà nước."
+Minh Anh gõ phím để hiện chi tiết: "Khoản nợ thứ nhất trị giá tám trăm tỷ đồng tại Agribank chi nhánh Hải Bình, được thế chấp bằng toàn bộ quyền sử dụng đất và hạ tầng bến cảng số một. Khoản nợ thứ hai trị giá bảy trăm tỷ đồng tại BIDV chi nhánh Hải Bình, thế chấp bằng cổ phần của hắn tại Công ty Dịch vụ Cảng."
+Cô tiếp tục phân tích với giọng điệu sắc bén: "Để có tiền trả lãi và tẩu tán tài sản trước khi các khoản nợ này bị tuyên nợ xấu, Trần Đại Nghĩa đã cấu kết với tập đoàn Apex Maritime của Singapore. Bọn chúng đã ký một bản ghi nhớ ngầm về việc nhượng lại sáu mươi lăm phần trăm cổ phần cảng dưới dạng một liên doanh trá hình. Nhưng theo luật pháp Việt Nam, cảng Hải Bình nằm ở vị trí luồng lạch chiến lược an ninh quốc phòng vùng cửa biển phía Bắc, việc chuyển nhượng cho nước ngoài vượt quá bốn mươi chín phần trăm cổ phần mà không có sự phê duyệt của Thủ tướng Chính phủ là hoàn toàn phạm luật."
+Long nheo mắt nhìn những con số tài chính đỏ chói trên màn hình: "Nói cách khác, Trần Đại Nghĩa đang muốn làm một cú chót, bán rẻ tài sản chiến lược của quốc gia để lấy tiền tẩu tán ra nước ngoài, bỏ mặc toàn bộ khoản nợ khổng lồ cho các ngân hàng trong nước gánh chịu?"
+Minh Anh gật đầu, ánh mắt ánh lên sự lạnh lùng: "Đúng vậy. Để dồn ngư dân vào đường cùng, hắn đã sử dụng chiêu trò tín dụng đen thông qua Hợp tác xã cảng. Hắn cho ngư dân vay tiền mua dầu, mua nhu yếu phẩm với lãi suất cắt cổ dưới dạng hợp đồng hợp tác đầu tư để lách luật. Khi ngư dân không thể trả nợ ngay lập tức, hắn sẽ dùng giang hồ và ban quản lý cảng để ép họ phải bán lại tàu cá và quyền đánh bắt với giá rẻ mạt, hòng dọn sạch mặt bằng khu cảng cá để bàn giao cho Apex Maritime."
+Long khẽ đập mạnh tay xuống bàn, giọng nói vang lên đầy phẫn nộ: "Một lũ sâu mọt ăn xương hút máu ngư dân, bán rẻ tài sản quốc gia. Minh Anh, kế hoạch của cô thế nào?"
+Minh Anh quay sang nhìn anh, ánh mắt đầy sự tự tin và quyết đoán: "Kế hoạch rất đơn giản nhưng đòi hỏi sự phối hợp chính xác về mặt thời gian. Bước một, tôi đã dùng các công ty con của Tập đoàn Đông Á âm thầm liên hệ với Agribank và BIDV chi nhánh Hải Bình để đàm phán mua lại toàn bộ hai khoản nợ xấu trị giá một nghìn năm trăm tỷ này của Trần Đại Nghĩa. Các ngân hàng đang rất đau đầu với đống nợ xấu này nên khi Đông Á đề xuất mua lại bằng tiền mặt với giá gốc, họ đã đồng ý ngay lập tức về mặt chủ trương."
+Cô đẩy một tập hồ sơ giấy màu xanh sang phía anh: "Đây là dự thảo hợp đồng mua bán nợ. Chỉ cần anh ký tên, Tập đoàn Đông Á sẽ chính thức trở thành chủ nợ lớn nhất nắm giữ toàn bộ sinh mệnh tài chính của Cảng Hải Bình."
+Long cầm cây bút mực cao cấp ký tên một cách dứt khoát vào bản hợp đồng, nét chữ vô cùng mạnh mẽ: "Đã ký. Bước tiếp theo thì sao?"
+Minh Anh nhận lại tập hồ sơ, cất vào ngăn tủ bảo mật rồi tiếp tục giải thích: "Bước hai, Trần Đại Nghĩa sẽ cố gắng dùng bạo lực và quyền lực tại bến cảng để ép anh ký hợp đồng nhượng tàu Đông Hải 09 vào chiều nay để lấy đó làm bàn đạp ép toàn bộ hợp tác xã ngư dân. Anh cứ tiếp tục đóng vai thuyền trưởng Long, giả vờ chịu áp lực để kéo dài thời gian đến tối nay. Tôi cần thời gian để hoàn tất việc chuyển tiền mua nợ và kích hoạt đòn siết nợ trực tiếp từ ngân hàng."
+Cô nhìn ra cửa kính xe, nơi những đám mây đen xám xịt đang từ phía chân trời vịnh Bắc Bộ cuồn cuộn kéo về: "Cơn bão số hai đang áp sát đất liền, dự kiến sẽ đổ bộ vào Hải Bình vào đêm nay. Trần Đại Nghĩa chắc chắn sẽ lợi dụng cơn bão này để tung đòn độc cuối cùng ép ngư dân. Đó cũng chính là thời điểm chúng ta sẽ kích hoạt cái bẫy để chôn vùi toàn bộ đế chế tội lỗi của hắn."
+Long đứng dậy, ánh mắt nhìn ra hướng biển khơi đang bắt đầu nổi sóng dữ dội: "Được! Đêm nay, bão biển sẽ nổi lên, và bão tài chính của Đông Á cũng sẽ quét sạch cảng Hải Bình này."
+"""
+
+# Chapter 3 Raw Text (aiming for ~1200 words)
+chap3_raw = """
+Đúng năm giờ chiều, bầu trời cảng Hải Bình đã xám xịt như đổ chì, những cơn gió mạnh mang theo hơi nước biển lạnh buốt bắt đầu rít lên từng hồi qua các cột buồm.
+Trần Văn Hùng cùng mười tên bảo vệ bắp tay xăm trổ, tay lăm lăm gậy sắt và xích neo rầm rập bước xuống cầu cảng số ba, nơi tàu Đông Hải 09 đang neo đậu.
+Lần này, đi cùng chúng còn có một chiếc tàu hút cát công nghiệp cỡ lớn gầm rú xả khói đen ngòm, từ từ tiến đến chắn ngang luồng lách duy nhất dẫn ra biển của tàu Long.
+Hùng rỗ đứng trên bến cảng nhảy phốc xuống boong tàu cá, khuôn mặt lộ rõ sự tàn nhẫn và đắc ý.
+Hắn ném mạnh một chiếc bút bi xuống mặt bàn gỗ của hầm cá, quát lớn: "Thuyền trưởng Long! Đã năm giờ rồi! Tiền mặt năm trăm hai mươi triệu đâu, hay là mày ký vào bản hợp đồng nhượng tàu này?"
+Nguyễn Hải Long từ trong cabin bước ra, khuôn mặt lộ vẻ lo lắng giả vờ, giọng nói khẽ run: "Anh Hùng, bão sắp đổ bộ rồi, đài báo cấp mười một. Xin anh cho tàu hút cát tránh ra để anh em chúng tôi đưa tàu vào khu neo đậu an toàn của xã bên cạnh. Chuyện nợ nần để qua bão rồi tính được không?"
+Hùng rỗ cười sằng sặc, đám bảo vệ đứng sau cũng cười rộ lên đầy khinh bỉ.
+Hùng rỗ bước lên giật lấy cổ áo của Long, dí sát khuôn mặt rỗ đầy mùi rượu vào mặt anh: "Tránh ra? Mày nằm mơ à! Tao nói cho mày biết, khu neo đậu an toàn duy nhất ở cái vịnh này là cảng Hải Bình của bác tao. Nhưng muốn vào đó tránh bão thì phải nộp phí dịch vụ trú bão đặc biệt là năm mươi triệu đồng mỗi tàu!"
+Hắn buông cổ áo Long ra, phủi phủi tay đầy vẻ ghê tởm: "Còn nếu không có tiền nộp phí, cũng không ký hợp đồng nhượng tàu, thì con tàu Đông Hải 09 này của mày cứ việc nằm đây chịu chết khi bão về. Để xem con tàu gỗ rách này có chịu nổi sóng lớn cấp mười một đập vào bờ đá không!"
+Ngay lúc đó, chú Tư chạy từ phía cầu cảng về, mặt cắt không còn giọt máu, gào lên: "Thuyền trưởng Long ơi! Thằng Út và thằng Nam bị người của ban quản lý bắt giữ ở văn phòng cảng rồi! Họ bảo hai đứa nó vi phạm quy định trật tự bến cảng, đang bị giam lỏng để chờ công an đến xử lý!"
+Long nghe vậy, đôi mắt chợt co rụt lại, một luồng sát khí vô hình bỗng chốc lan tỏa khắp boong tàu khiến Hùng rỗ và đám bảo vệ tự dưng rùng mình, lùi lại nửa bước đầy cảnh giác.
+Long hỏi chú Tư với giọng trầm lạnh đến đáng sợ: "Bọn họ bắt người vì lý do gì?"
+Chú Tư khóc không thành tiếng: "Bọn họ vu khống thằng Út trộm cắp thiết bị trên cảng. Nhưng thực chất là bọn họ muốn bắt giữ anh em thủy thủ để ép anh phải ký hợp đồng nhượng tàu!"
+Nguyễn Hải Long quay phắt lại nhìn Trần Văn Hùng, bàn tay anh siết chặt đến mức các khớp xương kêu răng rắc côm cốp.
+Hùng rỗ thấy Long có vẻ giận dữ liền cố lấy lại sự tự tin, hắn rút một cây gậy sắt ngắn từ sau lưng ra gõ gõ vào lòng bàn tay: "Đúng thế đấy thì sao? Ở cái cảng Hải Bình này, bác tao là trời! Mày có giỏi thì động vào tao xem? Chỉ cần mày dám động một ngón tay, tao bảo đảm mười lăm anh em thủy thủ của mày không có đường về quê ăn Tết đâu!"
+Long nhắm mắt lại, thở sâu một hơi để kiềm chế bản năng chiến đấu của mình.
+Anh biết nếu lúc này dùng bạo lực để giải quyết, anh sẽ rơi vào bẫy của Trần Đại Nghĩa, khiến cơ quan chức năng khó can thiệp sâu vào bản chất kinh tế của vụ án thâu tóm cảng.
+Anh mở mắt ra, ánh mắt lại trở về vẻ cam chịu của một người thuyền trưởng nghèo: "Được! Các người muốn bắt người, muốn siết tàu. Tôi sẽ lên gặp trực tiếp Trần Đại Nghĩa để nói chuyện sòng phẳng. Đừng đụng đến anh em của tôi."
+Hùng rỗ thấy Long chịu khuất phục liền đắc ý đập tay vào vai Long: "Biết điều đấy con trai! Đi theo tao lên văn phòng cảng gặp bác ruột tao. Để xem mày có bản lĩnh gì mà đòi đàm phán!"
+Long lặng lẽ đi theo Hùng rỗ lên bờ, chú Tư định chạy theo nhưng Long khẽ đưa tay ra hiệu cho ông ở lại giữ an toàn cho tàu.
+Khi bước lên cầu cảng, Long khẽ bấm nút trên chiếc đồng hồ Garmin chuyên dụng của mình ba lần liên tiếp.
+Đây là tín hiệu khẩn cấp gửi đến đội ngũ an ninh doanh nghiệp của Tập đoàn Hàng hải Đông Á đang mật phục xung quanh cảng Hải Bình.
+Chỉ trong vòng năm phút, một nhóm năm người đàn ông cao lớn mặc thường phục, phong thái quân đội tinh nhuệ đã âm thầm tiếp cận khu vực văn phòng cảng cá, nơi thằng Út và thằng Nam đang bị giam giữ trái phép.
+Long bước vào sảnh văn phòng cảng Hải Bình, một tòa nhà ba tầng khang trang nằm biệt lập ở trung tâm bến cảng.
+Bên trong văn phòng, Trần Đại Nghĩa - ông chủ cảng Hải Bình - đang ngồi trên chiếc ghế da lớn màu nâu, xung quanh là ba tên trợ lý mặc vest đen lịch lãm và hai người nước ngoài đại diện cho tập đoàn Apex Maritime của Singapore.
+Trần Đại Nghĩa khoảng năm mươi tuổi, khuôn mặt béo phệ đầy vẻ kiêu ngạo, ngón tay đeo chiếc nhẫn kim cương to bản đang gõ tì tay lên lan can gỗ của bàn làm việc.
+Thấy Long bước vào, Nghĩa khẽ ngước mắt nhìn một cái đầy khinh bỉ, rồi quay sang nói chuyện với người nước ngoài bằng tiếng Anh: "Đây chính là gã thuyền trưởng cứng đầu nhất bến cảng này. Tôi sẽ giải quyết hắn trong vòng năm phút để chúng ta ký hợp đồng chính thức."
+Hắn quay lại nhìn Long, cất giọng trầm đầy uy quyền giả tạo: "Nguyễn Hải Long! Mày là một thuyền trưởng giỏi, tao không muốn dồn mày vào đường cùng. Nhưng quy luật thị trường là vậy, kẻ yếu phải nhường chỗ cho kẻ mạnh. Con tàu Đông Hải 09 của mày và hợp tác xã vận tải cá này tốt nhất nên bán lại cho công ty tao với giá hai trăm triệu đồng để xóa nợ."
+Hắn ném một văn bản nhượng quyền sở hữu tàu và đất neo đậu lên bàn: "Ký đi! Rồi tao sẽ thả hai đứa em của mày ra, cho phép tụi nó lên bờ trú bão. Nếu không ký, đêm nay bão về, tàu của mày chìm, người của mày ngồi tù, gia đình mày gánh nợ cả đời!"
+Nguyễn Hải Long nhìn thẳng vào mắt Trần Đại Nghĩa, không hề có một chút sợ hãi nào, anh khẽ mỉm cười lạnh lùng: "Trần Đại Nghĩa, ông tự xưng là chủ cảng Hải Bình, nhưng thực chất chỉ là một kẻ lừa đảo tài chính đang cố gắng bán rẻ đất đai luồng lạch chiến lược của quốc gia cho nước ngoài để trốn nợ. Ông có biết hành vi của ông đã vi phạm nghiêm trọng Bộ luật Hình sự Việt Nam về tội cưỡng đoạt tài sản và xâm phạm an ninh quốc gia không?"
+Cả căn phòng lập tức im phăng phắc, mồ hôi lạnh của ba tên trợ lý bỗng chốc chảy dài sau gáy khi nghe những lời đanh thép từ miệng một gã ngư dân rách rưới.
+Trần Đại Nghĩa đập mạnh tay xuống bàn, mặt đỏ gay sừng sộ: "Mày câm miệng! Một thằng thuyền trưởng rác rưởi như mày mà dám dạy đời tao về luật pháp à? Tụi bay đâu, xích cổ nó lại cho tao!"
+Đúng lúc đó, cánh cửa văn phòng đột ngột mở toang.
+Trịnh Minh Anh bước vào cùng hai luật sư của Tập đoàn Đông Á, tay cầm một văn bản đóng dấu đỏ chói của Cục Hàng hải Việt Nam và Tòa án Nhân dân thành phố Hải Bình.
+Minh Anh cất giọng lạnh lùng đầy uy lực pháp lý: "Ai dám động vào Chủ tịch của chúng tôi? Trần Đại Nghĩa, ông nhìn kỹ văn bản khẩn cấp này đi!"
+"""
+
+# Chapter 4 Raw Text (aiming for ~1200 words)
+chap4_raw = """
+Cơn bão số hai chính thức đổ bộ vào vùng biển Hải Bình lúc mười giờ đêm, mang theo những đợt sóng khổng lồ cao hơn bốn mét gầm rú táp mạnh vào bờ kè bê tông của bến cảng.
+Gió rít liên hồi như tiếng gầm của quái thú dưới biển sâu, mưa xối xả trắng xóa cả bầu trời, làm cho toàn bộ hoạt động tại cảng biển hoàn toàn bị tê liệt.
+Trần Đại Nghĩa đứng trước cửa sổ sát đất của văn phòng cảng trên tầng ba, khuôn mặt phờ phạc, đôi mắt vằn tia máu đầy vẻ lo lắng và hoang mang tột độ.
+Văn bản pháp lý mà người phụ nữ xinh đẹp Trịnh Minh Anh đưa ra chiều nay như một gáo nước đá dội thẳng vào đầu hắn, làm cho toàn bộ liên minh thâu tóm của hắn bị rạn nứt nghiêm trọng.
+Đó là quyết định thanh tra đặc biệt của Cục Hàng hải Việt Nam về việc dừng mọi hoạt động chuyển nhượng và quy hoạch lại luồng lạch tại cảng Hải Bình do có dấu hiệu vi phạm an ninh quốc phòng.
+Đồng thời, tòa án đã ra lệnh phong tỏa tạm thời mọi giao dịch liên quan đến cổ phần của Công ty Dịch vụ Cảng Hải Bình để phục vụ điều tra vụ án cưỡng đoạt tài sản ngư dân.
+Hai đại diện của tập đoàn Apex Maritime của Singapore sau khi xem qua văn bản đã lập tức hủy bỏ cuộc họp báo ký kết hợp đồng liên doanh, vội vã rút lui để bảo toàn danh tiếng quốc tế.
+Nghĩa quay phắt lại nhìn ba tên trợ lý đang đứng rúm ró ở góc phòng, gầm lên như một con thú bị thương: "Tại sao Cục Hàng hải lại can thiệp nhanh như vậy? Ai là người đứng sau giật dây? Lũ ăn hại bọn bay đi điều tra thế nào rồi?"
+Một tên trợ lý run rẩy bước lên, mồ hôi lạnh chảy ròng ròng sau gáy: "Sếp ơi... Chúng tôi vừa nhận được thông tin khẩn cấp từ phía ngân hàng Agribank và BIDV chi nhánh Hải Bình. Hai khoản nợ gốc và lãi trị giá một nghìn năm trăm tỷ của công ty chúng ta..."
+Nghĩa lao tới giật lấy bả vai tên trợ lý, lắc mạnh: "Nợ làm sao? Có phải hai ngân hàng đồng ý gia hạn nợ không?"
+Tên trợ lý nuốt nước bọt, giọng nói nghẹn ngào đầy tuyệt vọng: "Không phải gia hạn... Mà là hai ngân hàng đã ký hợp đồng bán đứt toàn bộ hai khoản nợ đó cho một bên thứ ba rồi! Bên thứ ba đó đã thanh toán toàn bộ một nghìn năm trăm tỷ bằng tiền mặt ngay trong chiều nay!"
+Nghĩa nghe xong như sét đánh ngang tai, gối hắn nhũn ra, lảo đảo suýt ngã quỵ xuống đất cộp nếu không kịp vịnh vào cạnh bàn làm việc.
+Hắn lắp bắp hỏi: "Bên... bên thứ ba nào? Ai lại có thể gom được một nghìn năm trăm tỷ tiền mặt nhanh như vậy?"
+Đúng lúc đó, chiếc điện thoại cá nhân của Trần Đại Nghĩa đổ chuông dồn dập, hiển thị số của Giám đốc Agribank chi nhánh Hải Bình.
+Nghĩa vội vàng bắt máy, giọng nói run rẩy van nài: "Anh Bình ơi! Có chuyện gì vậy anh? Tại sao ngân hàng lại bán nợ của tôi cho người khác mà không thông báo trước?"
+Giọng nói lạnh lùng, dứt khoát của vị Giám đốc ngân hàng vang lên từ đầu dây bên kia: "Anh Nghĩa, chúng tôi làm việc theo đúng quy trình xử lý nợ xấu của Ngân hàng Nhà nước. Công ty của anh đã vi phạm nghiêm trọng các điều khoản bảo lãnh tài sản thế chấp khi tự ý ký biên bản ghi nhớ nhượng cổ phần cho nước ngoài mà không thông báo cho ngân hàng. Phía chủ nợ mới của anh đã hoàn tất mọi thủ tục pháp lý mua nợ hợp pháp. Họ đã yêu cầu chúng tôi kích hoạt lệnh siết nợ khẩn cấp và phong tỏa toàn bộ tài khoản thanh toán của Công ty Dịch vụ Cảng Hải Bình ngay lập tức để thu hồi tài sản thế chấp."
+Nghĩa gào lên trong điện thoại: "Chủ nợ mới là ai? Cho tôi biết tên bọn họ đi!"
+Giám đốc ngân hàng thở dài một tiếng: "Đó là Tập đoàn Hàng hải Đông Á. Người đại diện ký hợp đồng mua bán nợ chiều nay là Trịnh Minh Anh - CFO của tập đoàn. Anh Nghĩa, tôi khuyên anh nên tìm cách thương lượng sòng phẳng với bọn họ, nếu không toàn bộ tài sản của anh tại Hải Bình sẽ bị tịch thu sạch sẽ trong vòng hai mươi tư giờ tới."
+Điện thoại cúp máy tạo ra những tiếng "tút tút" dài lạnh lùng làm Trần Đại Nghĩa hoàn toàn sụp đổ.
+Hắn buông thõng cánh tay, chiếc điện thoại trượt khỏi tay rơi xuống sàn nhà gỗ tạo ra một tiếng động khô khốc.
+Tập đoàn Hàng hải Đông Á - gã khổng lồ vận tải biển đứng đầu Việt Nam với đội tàu container quốc tế hùng mạnh và khối tài sản hàng chục nghìn tỷ đồng.
+Tại sao một tập đoàn tầm cỡ quốc gia như vậy lại quan tâm đến một cảng cá nhỏ như Hải Bình và ra tay tàn khốc dồn hắn vào đường cùng như thế này?
+Đúng lúc đó, Trịnh Minh Anh bước vào phòng cùng với đoàn luật sư sắc bén của cô, phong thái vô cùng kiên định và lý tính.
+Cô đứng trước mặt Trần Đại Nghĩa, đặt lên bàn một bản hợp đồng mua bán cổ phần và nhượng lại quyền khai thác cảng Hải Bình cho Tập đoàn Đông Á.
+Minh Anh cất giọng trong trẻo nhưng đầy sức nặng pháp lý: "Trần Đại Nghĩa, thời gian của ông đã hết. Hiện tại Tập đoàn Đông Á là chủ nợ hợp pháp duy nhất nắm giữ toàn bộ một nghìn năm trăm tỷ nợ thế chấp của ông. Tài khoản của ông đã bị phong tỏa, liên doanh với Apex Maritime đã bị hủy bỏ hoàn toàn."
+Cô đưa ngón tay thon dài gõ nhẹ lên bản hợp đồng: "Đây là lối thoát duy nhất của ông. Ký vào bản hợp đồng nhượng lại toàn bộ sáu mươi lăm phần trăm cổ phần cảng Hải Bình cho Đông Á với giá một trăm tỷ đồng để cấn trừ nợ. Nếu ký, chúng tôi sẽ rút đơn kiện cưỡng đoạt tài sản và hỗ trợ ông cơ cấu lại khoản nợ còn lại để tránh án tù chung thân về tội lừa đảo và rửa tiền."
+Nghĩa nhìn bản hợp đồng nhượng quyền với giá rẻ mạt mà tim đau như cắt, ngón tay hắn bấm chặt vào lòng bàn tay đến mức rỉ máu trên mặt bàn.
+Hắn gầm lên đầy uất hận: "Một trăm tỷ? Cảng Hải Bình của tao trị giá hơn hai nghìn tỷ! Bọn mày cướp trắng trợn tài sản của tao! Tao không ký! Tao sẽ kiện lên Bộ Giao thông Vận tải!"
+Minh Anh mỉm cười lạnh lùng, ánh mắt sắc sảo nhìn thẳng vào mặt hắn: "Ông Nghĩa, ông không có quyền thương lượng ở đây. Cơn bão ngoài kia đang phá hủy hạ tầng cảng chưa được nghiệm thu của ông. Mỗi phút trôi qua, thiệt hại tài sản thế chấp tăng lên sẽ do ông gánh chịu hoàn toàn. Hoặc là ông ký sòng phẳng để giữ lại chút tài sản cuối cùng và danh dự, hoặc là ngày mai ông sẽ phải ra tòa đối mặt với mức án tù cao nhất và trắng tay hoàn toàn."
+Nghĩa nhìn người phụ nữ sắc sảo trước mặt, mồ hôi lạnh chảy dài sau gáy, hắn biết mình đã hoàn toàn thua cuộc trên bàn cờ tài chính và pháp lý do chính hắn bày ra.
+Hắn cầm cây bút lên bằng bàn tay run rẩy, chuẩn bị ký tên để dâng hiến cả cuộc đời của mình cho vị chủ tịch ẩn danh của Tập đoàn Đông Á.
+"""
+
+# Chapter 5 Raw Text (aiming for ~1200 words)
+chap5_raw = """
+Sáng hôm sau, cơn bão số hai đã đi qua, để lại bầu trời Hải Bình quang đãng với những vạt nắng vàng nhạt trải dài trên làn nước biển đã lặng sóng.
+Tại sảnh hội nghị lớn của tòa nhà văn phòng cảng Hải Bình, một cuộc họp báo khẩn cấp đang được diễn ra dưới sự chứng kiến của hàng chục phóng viên báo chí hàng hải và tài chính trong nước.
+Trần Đại Nghĩa ngồi ở bàn chủ tọa, khuôn mặt xám ngoét không còn một giọt máu, đôi mắt thâm quầng và đôi vai sụp xuống đầy vẻ thất bại thảm hại.
+Xung quanh hắn là đoàn thanh tra liên ngành của Bộ Giao thông Vận tải, Cục Hàng hải Việt Nam và các chiến sĩ cảnh sát thuộc Cục Cảnh sát Điều tra tội phạm về tham nhũng, kinh tế, buôn lậu (C03).
+Các phóng viên liên tục đặt câu hỏi dồn dập về việc Công ty Dịch vụ Cảng Hải Bình bị thâu tóm nợ và những sai phạm nghiêm trọng trong việc nhượng quyền cảng cho đối tác ngoại bang.
+Nghĩa lắp bắp cất giọng khàn đặc qua micro: "Hôm nay... tôi xin chính thức tuyên bố... Công ty Dịch vụ Cảng Hải Bình đã hoàn tất việc nhượng lại sáu mươi lăm phần trăm cổ phần và quyền khai thác cảng cho... cho chủ nợ mới để cấn trừ toàn bộ các khoản nợ quá hạn tại ngân hàng."
+Một phóng viên kinh tế lớn đứng lên hỏi lớn: "Thưa ông Nghĩa, xin ông cho biết danh tính của chủ nợ mới và người sẽ tiếp quản vị trí Chủ tịch Hội đồng quản trị mới của cảng Hải Bình là ai?"
+Ngay lúc đó, hai cánh cửa lớn của sảnh hội nghị bị đẩy mạnh ra tạo ra một tiếng động vang dội thu hút toàn bộ ống kính máy ảnh của các phóng viên quay lại.
+Nguyễn Hải Long bước vào, sải những bước chân vô cùng uy nghiêm và kiên định trên tấm thảm đỏ dẫn lên sân khấu chủ tọa.
+Lần này, anh không còn mặc bộ quần áo ngư dân bám đầy muối biển và sờn rách nữa.
+Anh mặc bộ đồng phục đại lễ Thuyền trưởng màu xanh hải quân viền vàng cực kỳ uy nghi, trên vai đeo quân hàm thuyền trưởng viễn dương cấp cao nhất của ngành hàng hải Việt Nam.
+Khuôn mặt sạm nắng của anh được cạo râu sạch sẽ, lộ ra những đường nét vô cùng nam tính, cương nghị và ánh mắt sắc bén như chim ưng nhìn xuống toàn bộ khán phòng.
+Đi bên cạnh anh là Trịnh Minh Anh trong bộ vest công sở màu trắng thanh lịch, phong thái tự tin và sắc sảo như một nữ hoàng tài chính nắm giữ toàn bộ cuộc chơi pháp lý.
+Đằng sau họ là đội ngũ luật sư tinh nhuệ và các nhân viên an ninh doanh nghiệp mặc vest đen chuyên nghiệp của Tập đoàn Hàng hải Đông Á đứng xếp thành hai hàng dọc.
+Trần Đại Nghĩa nhìn thấy Nguyễn Hải Long bước vào liền trợn tròn mắt, mồ hôi lạnh chảy ròng ròng sau gáy, hắn không tin vào mắt mình nữa.
+Hắn lắp bắp chỉ tay vào anh, giọng nói run rẩy cực độ: "Mày... mày là gã thuyền trưởng tàu cá Đông Hải 09... Tại sao mày lại ở đây? Tại sao mày lại mặc bộ đồ này?"
+Nguyễn Hải Long đứng trước bàn chủ tọa, nhìn xuống Trần Đại Nghĩa bằng ánh mắt lạnh lùng đầy uy quyền tối cao của một vị vua biển cả.
+Anh cất giọng trầm ấm nhưng vô cùng dõng dạc vang vọng khắp sảnh hội nghị: "Trần Đại Nghĩa, ông nhìn cho kỹ. Tôi chính là Nguyễn Hải Long - Chủ tịch Hội đồng quản trị kiêm Tổng giám đốc của Tập đoàn Hàng hải Đông Á."
+Cả sảnh hội nghị lập tức bùng nổ, tiếng xôn xao bàn tán vang lên không ngớt, các phóng viên liên tục bấm máy ảnh tạo ra những chớp sáng liên hồi trắng xóa cả khán phòng.
+Long đặt chiếc đồng hồ Garmin chuyên dụng và tập hồ sơ bằng chứng thu thập được trong ba tháng qua lên bàn chủ tọa, tạo ra một tiếng "cộp" khô khốc đầy sức nặng.
+Anh nói tiếp với giọng vô cùng đanh thép: "Ba tháng qua, tôi tự mình ẩn thân làm thuyền trưởng tàu cá tại Hải Bình để điều tra thực địa về đường dây cưỡng đoạt tài sản ngư dân, ép nợ tín dụng đen và âm mưu bán rẻ hạ tầng chiến lược quốc gia của ông. Toàn bộ hành vi đe dọa thủy sản, nâng phí cảng trái luật và giam giữ người trái phép của ông và đồng bọn đã được ghi hình và lưu trữ đầy đủ làm bằng chứng pháp lý gửi đến Bộ Công an."
+Đại diện C03 đứng lên, rút lệnh bắt tạm giam và đọc to trước sự chứng kiến của toàn thể truyền thông báo chí: "Trần Đại Nghĩa, ông bị bắt tạm giam để điều tra về tội cưỡng đoạt tài sản theo Điều 170 Bộ luật Hình sự và tội vi phạm các quy định về quản lý, sử dụng tài sản Nhà nước gây thất thoát, lãng phí."
+Hai chiến sĩ cảnh sát bước lên, chiếc còng số tám sáng loáng lạnh lùng khóa chặt hai cổ tay run rẩy của Trần Đại Nghĩa.
+Nghĩa nhìn thấy chiếc còng khóa lại, gối hắn hoàn toàn nhũn ra, gục ngã quỵ xuống đất cộp ngay trên bục sân khấu, toàn bộ sự kiêu ngạo của gã hung thần bến cảng hoàn toàn tan biến.
+Hắn ngước đầu nhìn Long, ngón tay bấm rỉ máu trên sàn gạch men bóng loáng, khóc lóc cầu xin thảm hại: "Chủ tịch Long ơi! Tôi có mắt như mù không nhận ra thái sơn! Xin anh tha cho tôi một đường sống! Tôi sẽ trả lại toàn bộ tàu bè, xóa sạch nợ cho ngư dân!"
+Nguyễn Hải Long không thèm nhìn kẻ thua cuộc, anh quay sang gật đầu nhẹ nhàng với Trịnh Minh Anh, người đang đứng mỉm cười đầy sòng phẳng và tự tin bên cạnh anh.
+Long cất giọng công bố quyết định đầu tiên trên cương vị chủ sở hữu mới của cảng Hải Bình: "Từ ngày hôm nay, cảng Hải Bình chính thức thuộc quyền sở hữu và vận hành của Tập đoàn Hàng hải Đông Á. Chúng tôi tuyên bố xóa bỏ hoàn toàn tất cả các khoản nợ xấu mua dầu và nhu yếu phẩm cho toàn bộ ngư dân đang hoạt động tại cảng. Phí neo đậu và dịch vụ cảng sẽ được giảm bảy mươi phần trăm để hỗ trợ bà con bám biển quê hương."
+Hàng trăm ngư dân Hải Bình đứng phía ngoài sảnh hội nghị nghe thấy thông tin này liền reo hò vang dội, nhiều người đã bật khóc nức nở vì hạnh phúc sau bao năm bị áp bức, đè đầu cưỡi cổ.
+Long quay sang nhìn Trịnh Minh Anh, cất giọng vô cùng rõ ràng và sòng phẳng: "CFO Trịnh Minh Anh, hợp đồng bổ sung đã có hiệu lực. Từ hôm nay, năm phần trăm cổ phần cảng Lạch Huyện thuộc về cô, và quyền quản lý phòng logistics quốc tế phía Bắc chính thức được bàn giao cho cô vận hành. Hãy giúp Đông Á biến nơi này thành cảng biển xanh hiện đại nhất vịnh Bắc Bộ."
+Minh Anh khẽ cúi đầu nhẹ, ánh mắt lộ rõ sự hài lòng và khâm phục bản lĩnh của vị chủ tịch trẻ tuổi: "Hợp tác sòng phẳng, thưa Chủ tịch Nguyễn Hải Long. Tôi bảo đảm phòng logistics của Đông Á sẽ đưa cảng Hải Bình vươn tầm quốc tế trong vòng sáu tháng tới."
+Nguyễn Hải Long bước ra ban công lớn của văn phòng cảng Hải Bình, đón lấy làn gió biển mát rượi thổi vào từ đại dương bao la.
+Ngoài kia, con tàu Đông Hải 09 cùng hàng trăm tàu cá của ngư dân Hải Bình đang nổ máy vang rền, chuẩn bị kéo neo ra khơi bám biển dưới ánh nắng bình minh rực rỡ của ngày mới.
+Bản lĩnh của vị vua biển cả Đông Á đã neo giữ an bình cho cửa biển Hải Bình, thiết lập lại trật tự sòng phẳng và công lý cho những người con kiên cường nơi đầu sóng ngọn gió.
+"""
+
+# Let's count words for each chapter to verify
+c1, w1 = clean_and_format_content(chap1_raw)
+c2, w2 = clean_and_format_content(chap2_raw)
+c3, w3 = clean_and_format_content(chap3_raw)
+c4, w4 = clean_and_format_content(chap4_raw)
+c5, w5 = clean_and_format_content(chap5_raw)
+
+print(f"Chapter 1 word count: {w1}")
+print(f"Chapter 2 word count: {w2}")
+print(f"Chapter 3 word count: {w3}")
+print(f"Chapter 4 word count: {w4}")
+print(f"Chapter 5 word count: {w5}")
+
+# Build the final chapters payload
+novel_data["chapters"] = [
+    {"title": "Chương 1: Chiếc Bẫy Ép Nợ Nơi Cửa Biển", "content": c1},
+    {"title": "Chương 2: Lá Bài Pháp Lý Của Nữ Tổng Tài", "content": c2},
+    {"title": "Chương 3: Khủng Hoảng Cận Kề Và Đòn Gió", "content": c3},
+    {"title": "Chương 4: Bàn Cờ M&A Dưới Cơn Giông", "content": c4},
+    {"title": "Chương 5: Vua Biển Quy Lai, Cửa Biển Dậy Sóng", "content": c5}
+]
+
+# Write to the destination path
+dest_path = "/Users/aaronnguyen/TN/App/doctieuthuyet/scratch/draft_novel_10.json"
+os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+with open(dest_path, "w", encoding="utf-8") as f:
+    json.dump(novel_data, f, ensure_ascii=False, indent=2)
+
+print(f"Successfully wrote draft to {dest_path}")

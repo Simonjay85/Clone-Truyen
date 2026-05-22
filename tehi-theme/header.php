@@ -19,7 +19,7 @@ $tehi_meta_description = function_exists('tehi_get_meta_description') ? tehi_get
 $tehi_fallback_path    = isset($_SERVER['REQUEST_URI']) ? parse_url(wp_unslash($_SERVER['REQUEST_URI']), PHP_URL_PATH) : '/';
 $tehi_canonical_url    = function_exists('tehi_get_canonical_url') ? tehi_get_canonical_url() : home_url($tehi_fallback_path ?: '/');
 ?>
-<meta name="keywords" content="<?php echo esc_attr(get_bloginfo('name')); ?>, Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí" />
+<meta name="keywords" content="<?php echo esc_attr(function_exists('tehi_get_meta_keywords') ? tehi_get_meta_keywords() : ''); ?>" />
 <meta name="description" content="<?php echo esc_attr($tehi_meta_description); ?>" />
 <link href="<?php echo esc_url($tehi_canonical_url); ?>" rel="canonical" />
 <!-- Google tag (gtag.js) - Deferred 3s to unblock render (#4 fix) -->

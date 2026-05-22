@@ -1,0 +1,336 @@
+# -*- coding: utf-8 -*-
+import json
+import re
+import os
+
+def clean_and_split_sentences(text):
+    # Split text by sentence-ending punctuation followed by whitespace
+    # Handles ., ?, !, ..., etc. without losing the punctuation
+    sentences = re.split(r'(?<=[.!?])\s+', text.strip())
+    formatted_paragraphs = []
+    word_count = 0
+    
+    for s in sentences:
+        s = s.strip()
+        if not s:
+            continue
+        # Wrap each sentence in its own separate <p>...</p>\n
+        formatted_paragraphs.append(f"<p>{s}</p>")
+        # Count words (simple space split)
+        word_count += len(s.split())
+        
+    content_html = "\n".join(formatted_paragraphs) + "\n"
+    return content_html, word_count
+
+# Raw drafts for 5 chapters - carefully expanded to ensure word count is strictly >= 1100 words per chapter.
+chapter_1_raw = """
+Tiệm sửa xe Sơn Phong nằm im lìm sâu trong con hẻm số 45 đường Trần Não, thuộc địa phận Quận 2 cũ, nay là thành phố Thủ Đức sầm uất.
+Mặt tiền của tiệm chỉ vỏn vẹn chừng mười mét vuông, mái tôn cũ nát rỉ sét kêu lên những tiếng ken két khô khốc mỗi khi có luồng gió nóng từ sông Sài Gòn lùa qua hốc hẻm.
+Giữa trưa hè oi ả, nhiệt độ ngoài trời chạm ngưỡng bốn mươi độ C, biến con hẻm nhỏ thành một chiếc lò bánh mì khổng lồ hầm hập hơi nóng.
+Nguyễn Bảo Sơn đang ngồi xổm trên tấm bìa các-tông đẫm dầu nhớt đen kịt, cẩn thận dùng chiếc cờ-lê lực siết chặt từng chiếc ốc đầu nắp máy của chiếc Wave Alpha cũ nát.
+Mồ hôi đọng thành từng giọt lớn trên trán anh, chậm rãi trượt qua gò má sạm nắng phong trần rồi rơi xuống nền xi măng nứt nẻ tạo thành những vệt sẫm màu.
+Dù xung quanh bừa bộn những phụ tùng xe cũ hỏng, xích líp hoen rỉ và lốp xe xếp thành từng chồng cao ngất, nhưng các công cụ lao động của Sơn luôn được sắp xếp ngăn nắp vô cùng.
+Trên chiếc bảng gỗ treo tường, những chiếc cờ-lê, mỏ lết, tuốc-nơ-vít được xếp thẳng hàng tăm tắp theo đúng thứ tự kích thước từ nhỏ đến lớn.
+Tác phong làm việc của Sơn tỉ mỉ, chính xác đến mức đáng kinh ngạc, tựa như một vị bác sĩ ngoại khoa hàng đầu đang thực hiện một ca phẫu thuật tim mạch vô cùng phức tạp.
+Sơn năm nay hai mươi chín tuổi, sở hữu gương mặt góc cạnh nam tính, mái tóc đen cắt ngắn gọn gàng và đôi mắt sâu thẳm luôn giữ một sự điềm tĩnh kỳ lạ.
+Anh dường như tách biệt hoàn toàn với vẻ xô bồ, nhốn nháo và ồn ào thường nhật của con hẻm nhỏ lao động nghèo này.
+Ngay sát bên cạnh tiệm Sơn Phong là tiệm sửa xe Đạt Phát, một cơ sở hoành tráng quy mô lớn gấp năm lần với biển hiệu đèn LED nhấp nháy liên tục suốt ngày đêm.
+Tiệm Đạt Phát được trang bị giàn nâng thủy lực hiện đại, máy ra vào lốp chuyên dụng và lúc nào cũng có bốn năm người thợ trẻ mặc đồng phục đi qua đi lại.
+Lê Hữu Đạt, gã chủ tiệm Đạt Phát ngoài bốn mươi tuổi với cái bụng phệ vượt mặt và sợi dây chuyền vàng to bản lấp lánh trên cổ, đang đứng khoanh tay nhìn sang.
+Đạt nhổ một bãi nước bọt xuống lòng đường đầy bụi bặm, giọng nói khàn khàn đầy vẻ chế giễu vang lên qua làn khói thuốc lá rẻ tiền hôi hám.
+Thằng Sơn rách kia, mày suốt ngày cặm cụi sửa ba cái loại xe cỏ rách nát đó thì cả đời này cũng không ngẩng mặt lên nổi đâu con ạ.
+Nhìn sang tiệm tao đây này, ngày nào cũng toàn xe tay ga đời mới, xe hơi hạng sang vào ra nườm nượp, tiền đếm mỏi cả tay không hết kia kìa.
+Mày làm thợ sửa xe máy mà đến cái lốp xe ga còn không biết ra bằng máy thì dẹp tiệm sớm đi cho rảnh mắt hàng xóm láng giềng.
+Sơn vẫn giữ sự im lặng tuyệt đối, anh không thèm ngẩng đầu lên nhìn gã hàng xóm hợm hĩnh lấy một lần.
+Bàn tay rắn rỏi của anh tiếp tục siết ốc với lực vừa đủ mười hai Newton-mét theo đúng sách hướng dẫn kỹ thuật của nhà sản xuất động cơ.
+Sự im lặng phớt lờ của Sơn càng làm cho Lê Hữu Đạt cảm thấy ngứa mắt và tức tối vô cùng.
+Gã hậm hực ném điếu thuốc đang cháy dở xuống đất, dùng mũi giày da giẫm nát rồi quay vào trong tiệm mắng chửi đám thợ học việc để xả cơn giận vô cớ.
+Khoảng nửa tiếng sau, một chiếc xe SH 150i đời mới màu trắng sang trọng đột ngột chết máy ngay trước đầu hẻm 45.
+Người chủ xe là một gã thanh niên ăn mặc bảnh bao, mặt mũi đỏ gay đầy mồ hôi nhễ nhại đang vất vả dắt bộ chiếc xe nặng nề vào hẻm.
+Nhìn thấy tiệm Đạt Phát quy mô lớn và hiện đại hơn hẳn, gã thanh niên định dắt xe vào thẳng bên trong để yêu cầu sửa chữa cấp tốc.
+Lê Hữu Đạt liếc mắt nhìn thấy chiếc xe đời mới liền nhanh nhảu chạy ra, nhưng khi nghe gã thanh niên nói xe đang đi tự nhiên tắt máy và đề không lên thì mắt gã đảo liên tục.
+Đạt biết dòng xe SH đời mới này có hệ thống điện và ECU cực kỳ phức tạp, đám thợ vườn của gã vốn không đủ trình độ chuyên môn để bắt bệnh nếu không có máy quét lỗi đắt tiền.
+Sợ làm hỏng xe của khách phải đền tiền triệu, Đạt liền xua tay bảo thợ từ chối khéo với lý do tiệm đang quá đông khách không thể nhận thêm xe lúc này.
+Gã thanh niên bảnh bao bất đắc dĩ phải dắt chiếc xe sang tiệm Sơn Phong rách nát của Sơn ngay đối diện.
+Giọng điệu của gã thanh niên đầy vẻ trịch thượng và bực bội ra lệnh cho Sơn đang lau dọn đồ nghề.
+Này anh thợ kia, mau kiểm tra ngay xem chiếc xe SH của tôi bị làm sao mà đang đi tự nhiên tắt máy rồi đề không lên thế này.
+Nhớ kiểm tra cho cẩn thận và báo đúng bệnh đấy nhé, đừng có vẽ ra đủ thứ bệnh tật hòng chặt chém lấy tiền của tôi, tôi không phải kẻ ngốc đâu.
+Sơn đứng dậy, lẳng lẳng lau đôi bàn tay lấm lem dầu mỡ vào chiếc giẻ lau cũ sờn rách.
+Anh bình thản gật đầu chào khách rồi lấy ra một chiếc máy chẩn đoán lỗi MST-100 cầm tay nhỏ gọn do chính anh tự chế tạo và nạp phần mềm tùy chỉnh.
+Sơn cẩn thận kết nối thiết bị của mình vào cổng chẩn đoán OBD nằm sâu bên dưới mặt nạ trước của chiếc xe SH đời mới.
+Đúng lúc này, Lê Hữu Đạt từ bên tiệm Đạt Phát lững thững đi sang với gương mặt đầy vẻ soi mói và gian giảo.
+Gã đột ngột gào lên thất thanh như thể vừa phát hiện ra một âm mưu động trời ngay trước mắt mọi người.
+Ối giời ơi anh trai ơi, tôi khuyên thật lòng là đừng có dại dột mà cho thằng nghèo kiết xác này chạm tay vào chiếc xe đắt tiền của anh.
+Hôm trước có thằng em họ của tôi mang chiếc xe máy qua đây vá lốp vặt, lúc về nhà phát hiện ra đã bị nó tráo mất con IC zin nguyên bản của xe rồi đấy.
+Cái thằng Sơn này trông vẻ ngoài hiền lành thế thôi chứ thực chất là chuyên môn luộc đồ phụ tùng đắt tiền của khách hàng nhẹ dạ cả tin.
+Nó toàn dùng những loại phụ tùng trôi nổi giả mạo của Trung Quốc để thay thế vào rồi ăn chia chênh lệch hàng triệu đồng với bọn đầu nậu đấy.
+Gã thanh niên chủ xe nghe thấy những lời nói đầy tính kích động của Đạt thì lập tức trợn tròn mắt giận dữ.
+Gã giật phắt chiếc chìa khóa xe trên tay Sơn, chỉ thẳng ngón tay vào mặt anh mà quát tháo ầm ĩ cả con hẻm nhỏ.
+Cái gì cơ? Thằng thợ sửa xe rách rưới này dám giở trò ăn cắp luộc đồ của khách hàng ngay giữa thanh thiên bạch nhật à?
+Đúng là cái loại quân ăn cắp vô liêm sỉ, hèn chi mày cứ nghèo kiết xác, chui rúc ở cái xóm nghèo này suốt đời không ngẩng đầu lên nổi.
+Mấy người hàng xóm hiếu kỳ quanh hẻm cũng bắt đầu vây quanh tiệm sửa xe nhỏ, những lời xì xầm bàn tán đầy vẻ khinh bỉ và những ánh mắt coi thường đổ dồn về phía Sơn.
+Trông mặt mũi sủa sủa thế kia mà đi làm cái trò mèo ăn cắp vặt của khách hàng, thật đúng là không biết xấu hổ là gì.
+Bảo sao cái tiệm sửa xe rách nát của nó lúc nào cũng vắng vẻ như chùa Bà Đanh, người dân xung quanh đây ai dám mang xe đến cho nó luộc đồ cơ chứ.
+Lê Hữu Đạt đứng bên cạnh đắc ý ra mặt, khóe miệng gã nhếch lên một nụ cười vô cùng gian xảo và thỏa mãn.
+Gã thầm nghĩ phen này danh tiếng của thằng Sơn coi như tiêu tùng, tiệm của nó chắc chắn sẽ phải đóng cửa và biến mất khỏi con hẻm này mãi mãi.
+Sơn đứng giữa vòng vây của sự khinh miệt và sỉ nhục từ những người xung quanh, hàm răng anh nghiến chặt vào nhau phát ra những tiếng ken két nhỏ.
+Ngón tay anh bấm mạnh vào lòng bàn tay đến mức các khớp xương trắng bệch ra, móng tay cắm sâu vào da thịt làm rỉ ra một vệt máu đỏ tươi nhưng gương mặt anh vẫn lạnh lùng như đá tảng.
+Anh không hề mở miệng tranh cãi vô ích với đám đông đang mất trí kia, chỉ lẳng lặng dùng chiếc tuốc-nơ-vít kỹ thuật tháo nhanh phần mặt nạ nhựa bảo vệ của chiếc SH.
+Chỉ trong vòng chưa đầy mười lăm giây, bộ điều khiển trung tâm ECU và hệ thống dây điện phức tạp của chiếc xe đã lộ ra hoàn toàn trước mắt mọi người.
+Sơn chỉ ngón tay sần sùi của mình vào lớp keo silicon màu xanh nhạt còn mới nguyên bám loang lổ xung quanh chân giắc cắm điện của bộ IC.
+Giọng nói trầm ấm nhưng đanh thép và đầy uy lực của Sơn vang lên rõ ràng lấn át hoàn toàn những tiếng ồn ào xung quanh.
+Hãy mở to mắt ra mà nhìn cho thật kỹ đi, chiếc xe này đã được thay thế một con IC giả từ trước khi dắt đến tiệm của tôi rất lâu rồi.
+Lớp keo silicon rẻ tiền dùng để cố định và chống nước cho chân giắc cắm vẫn còn chưa khô hoàn toàn, sờ vào vẫn còn dính tay đây này.
+Mã số sê-ri in trên vỏ con IC này tuy ghi là 30400-K77-V01 nhưng đây thực chất là hàng giả nhái loại hai chất lượng kém của Trung Quốc.
+Cuộn dây đánh lửa bên trong con IC giả này có điện trở vô cùng không ổn định, gây ra hiện tượng đoản mạch toàn phần khi nhiệt độ động cơ tăng cao.
+Và nếu như tôi không nhầm, ký hiệu sản xuất của lô hàng nhái này có chữ DP-2026 được in chìm vô cùng tinh vi ở mặt dưới của con IC giả này.
+Mã chữ DP-2026 này chính là viết tắt của tiệm Đạt Phát bên cạnh, thuộc đúng lô hàng phụ tùng giả mà tiệm bên kia vừa nhập lậu từ biên giới về tuần trước.
+Gương mặt hống hách của Lê Hữu Đạt lập tức biến sắc trở nên trắng bệch không còn một giọt máu, nụ cười đắc ý trên môi gã cứng đờ lại hoàn toàn.
+Một luồng mồ hôi lạnh từ sau gáy gã đột ngột chảy ròng ròng xuống dọc sống lưng, làm ướt đẫm cả chiếc áo phông đắt tiền của gã.
+Đạt lắp bắp vài tiếng rồi lập tức gào lên thật to để cố gắng át đi sự hoảng loạn và sợ hãi tột cùng đang dâng trào trong lòng gã.
+Mày... mày đang ngậm máu phun người bên ban ngày đấy à thằng thợ rách kia.
+Tao đây làm ăn uy tín danh tiếng lẫy lừng cả cái quận này ai ai mà không biết đến, mày là thằng ăn cắp bị bắt quả tang lại còn dám vu khống bôi nhọ tao à?
+Đám anh em giang hồ trong cái hẻm này đâu cả rồi, mau vào đây dạy cho thằng thợ nghèo kiết xác này một bài học nhớ đời cho tao mau lên.
+Bầu không khí trong con hẻm nhỏ hẹp lập tức căng thẳng tột độ như một sợi dây đàn sắp đứt, hai gã đàn em xăm trổ đầy mình của Đạt bắt đầu tiến lại gần Sơn với gương mặt hung tợn.
+Đúng vào khoảnh khắc ngột ngạt và nguy hiểm ấy, một tiếng động cơ V8 cực mạnh đột ngột gầm rú vang dội từ phía đầu hẻm Trần Não.
+Âm thanh trầm ấm, uy lực và đầy mãnh thú của cỗ máy hiệu suất cao khiến cho mặt đất dưới chân mọi người như đang rung chuyển dữ dội theo từng nhịp ga.
+Ba chiếc xe địa hình siêu sang Mercedes-Benz G63 màu đen mờ hầm hố lách qua con đường hẹp của hẻm, đi đầu dẫn đường là một chiếc Maybach S680 bóng loáng uy nghi như một con quái thú bọc thép.
+Đoàn xe siêu sang đỗ xịch ngay trước cửa tiệm sửa xe rách nát của Sơn, chắn toàn bộ lối đi của con hẻm và che khuất hoàn toàn tiệm Đạt Phát hoành tráng bên cạnh.
+Cánh cửa chiếc Maybach mở ra nhanh chóng, bốn vệ sĩ cao to mặc vest đen đeo kính râm bước xuống đứng thành hai hàng nghiêm trang, ngăn cách đám đông hiếu kỳ ra xa.
+Từ hàng ghế sau của chiếc xe siêu sang, một cô gái trẻ tuổi bước xuống, ngay lập tức hút trọn mọi ánh nhìn kính nể của tất cả những người có mặt tại đó.
+Đặng Minh Thư bước xuống xe với phong thái kiêu sa, lạnh lùng và đầy khí chất của một nữ cường nhân nắm giữ quyền lực tối cao trong tay.
+Mái tóc đen dài của cô được búi cao gọn gàng sang trọng, đôi mắt sắc sảo đầy lý trí ẩn sau gọng kính vàng tinh tế làm tăng thêm vẻ tri thức kiêu kỳ.
+Cô mặc một bộ suit màu xanh navy may đo thủ công tỉ mỉ ôm sát cơ thể thanh tú quyến rũ, đôi giày cao gót màu đen bước đi vô cùng vững chãi trên nền đất bẩn thỉu.
+Lê Hữu Đạt nhìn thấy Thư bước xuống từ xe sang thì hai mắt gã lập tức sáng rực lên như bắt được vàng mười.
+Gã vội vàng gạt đám đông ra, khúm núm chạy lại gần chiếc xe với gương mặt đầy vẻ nịnh bợ và giả lả tột cùng.
+Dạ em kính chào tiểu thư xinh đẹp đài các, quý khách muốn bảo dưỡng xe hơi đời mới đúng không ạ?
+Mời tiểu thư ghé qua tiệm sửa xe Đạt Phát của em ngay bên cạnh đây, tiệm em đầy đủ trang thiết bị công nghệ hiện đại nhất Việt Nam hiện nay rồi ạ.
+Thư không thèm liếc nhìn Đạt lấy một cái dù chỉ là cái nhìn thoáng qua, cô chỉ giơ tay nhẹ nhàng ra hiệu cho thuộc cấp của mình.
+Lập tức, một gã vệ sĩ to cao lực lưỡng bước lên phía trước, dùng một tay đẩy mạnh Lê Hữu Đạt lùi lại phía sau không cho gã tiếp cận.
+Đạt mất đà ngã cộp một tiếng đau điếng xuống nền đất cát đầy dầu mỡ, mông ê ẩm nhưng không dám hé răng nửa lời than vãn.
+Gã chỉ biết trố mắt nhìn cô gái sang trọng đi thẳng vào bên trong tiệm sửa xe Sơn Phong cũ nát đầy mùi dầu nhớt thải của Sơn.
+Thư dừng bước trước mặt Nguyễn Bảo Sơn, đôi mắt cô quan sát từ đầu đến chân người đàn ông đang khoác chiếc áo bảo hộ lao động sờn rách loang lổ vết bẩn.
+Cô tháo chiếc kính râm gài trên ngực áo, lấy từ trong túi xách da cá sấu cao cấp ra một tập tài liệu telemetry dày cộp in đầy biểu đồ dữ liệu của động cơ F1 phức tạp.
+Thư nhìn thẳng vào đôi mắt sâu thẳm của Sơn, giọng nói lạnh lùng, rõ ràng và mang theo sự uy nghiêm tột cùng vang lên.
+Kỹ sư Nguyễn Bảo Sơn, cựu trưởng ban thiết kế động cơ của đội đua F1 danh tiếng Scuderia tại Ý.
+Tôi là Đặng Minh Thư, Giám đốc điều hành của đội đua F1 Quốc gia Việt Nam mang tên Red Lotus Racing.
+Chiếc xe đua thế hệ mới của chúng tôi đang gặp một lỗi vô cùng nghiêm trọng về cấu trúc động lực học telemetry mà toàn bộ chuyên gia nước ngoài đều bó tay chịu trói.
+Đội đua F1 Quốc gia Việt Nam cần một thiên tài cơ khí như anh quay trở lại đảm nhận vị trí Kỹ sư trưởng để cứu vãn toàn bộ dự án triệu đô này.
+Cả con hẻm nhỏ rơi vào trạng thái im lặng tuyệt đối đến mức có thể nghe thấy tiếng gió rít qua mái tôn cũ kỹ.
+Lê Hữu Đạt cùng đám đông hàng xóm xung quanh há hốc mồm kinh ngạc đến mức cằm muốn rớt xuống đất, đầu óc họ hoàn toàn trống rỗng và chấn động trước thông tin động trời vừa nghe được từ miệng cô gái quý phái kia.
+"""
+
+chapter_2_raw = """
+Đặng Minh Thư chậm rãi bước vào bên trong gian phòng làm việc chật hẹp và ngập tràn mùi dầu nhớt thải của Nguyễn Bảo Sơn.
+Hai gã vệ sĩ mặc vest đen lập tức đứng chặn ngay trước cửa tiệm Sơn Phong, ánh mắt sắc bén như chim ưng cảnh giới xung quanh khiến con hẻm nhỏ vốn ồn ào bỗng chốc im phăng phắc.
+Lê Hữu Đạt lồm cồm bò dậy từ nền đất bẩn, gã đứng từ xa nhìn chằm chằm vào bên trong qua ô cửa kính vỡ nát của tiệm Sơn với lòng đầy ghen ghét, đố kỵ và nghi ngờ tột độ.
+Gã không thể nào tin nổi một thằng thợ sửa xe máy nghèo kiết xác, chuyên đi vá lốp dạo ở hẻm nhỏ lại có thể là kỹ sư trưởng của một đội đua F1 châu Âu danh tiếng.
+Đạt lén lút lấy chiếc điện thoại thông minh ra, âm thầm chụp ảnh và quay video toàn bộ cảnh tượng bên trong để gửi cho đồng bọn trong đường dây buôn lậu và chế tạo linh kiện xe độ bất hợp pháp ở Quận 7 nhằm tìm cách đối phó.
+Bên trong tiệm, Thư đặt tập tài liệu telemetry dày cộp và chiếc máy tính bảng chuyên dụng dành cho quân sự có khả năng chống va đập cực cao lên mặt chiếc bàn gỗ loang lổ vết dầu mỡ cũ kỹ của Sơn.
+Cô không hề có ý định ngồi xuống chiếc ghế nhựa sờn cũ, chỉ đứng thẳng người và đi thẳng vào vấn đề bằng giọng nói lạnh lùng, dứt khoát của một nhà quản lý thép.
+Tôi không quan tâm đến quá khứ của anh vì lý do gì mà phải trốn chạy về đây làm một gã thợ sửa xe máy cỏ ở con hẻm rách nát này.
+Tôi cũng không quan tâm đến những ân oán cá nhân hay cuộc sống riêng tư của anh với những kẻ tầm thường xung quanh đây.
+Tôi chỉ quan tâm đến một điều duy nhất trên đời này, đó chính là kết quả công việc và hiệu suất tối đa của chiếc xe đua.
+Bản hợp đồng thử việc này trị giá đúng hai tỷ đồng Việt Nam cho thời hạn ba tháng chạy thử nghiệm trước khi mùa giải chính thức bắt đầu khởi tranh.
+Anh sẽ được trao toàn bộ quyền lực tối cao và độc lập về mặt kỹ thuật, nhân sự của phòng nghiên cứu phát triển thuộc đội đua Red Lotus Racing của chúng tôi.
+Nhưng nếu như anh thất bại và không thể tìm ra nguyên nhân cốt lõi khiến chiếc xe đua bị mất lực ép khí động học nghiêm trọng ở tốc độ trên ba trăm hai mươi kilômét trên giờ thì hậu quả sẽ vô cùng thảm khốc.
+Khi đó, anh bắt buộc phải bồi thường gấp mười lần giá trị hợp đồng này cho đội đua và vĩnh viễn rời khỏi ngành cơ khí, chế tạo máy của Việt Nam cũng như quốc tế.
+Đó là những điều khoản vô cùng khắt khe nhưng cực kỳ sòng phẳng và trực diện mà tôi dành cho anh, kỹ sư Nguyễn Bảo Sơn.
+Sơn vẫn giữ thái độ bình thản đến lạ lùng, anh không hề tỏ ra nao núng hay lo sợ trước những điều khoản mang tính sinh tử của bản hợp đồng triệu đô.
+Anh chậm rãi đưa tay bật màn hình chiếc máy tính bảng quân sự, những ngón tay sần sùi chai sạn vì ốc vít lướt nhanh qua các trang dữ liệu biểu đồ đo xa telemetry phức tạp.
+Trên màn hình hiển thị những đường cong áp suất khí động học chồng chéo biểu thị dao động cộng hưởng cực mạnh ở phần cánh gió sau DRS khi xe đạt tốc độ cao.
+Ánh mắt của Sơn đột ngột lóe lên một tia sáng sắc lẹm và tinh anh của một thiên tài cơ khí hàng đầu thế giới vốn bị chôn giấu suốt nhiều năm qua dưới lớp vỏ bọc thợ sửa xe nghèo.
+Anh nhếch mép cười nhẹ, giọng nói trầm tĩnh nhưng chứa đựng một sự tự tin tuyệt đối khiến cho người nghe phải rùng mình kinh ngạc.
+Hiện tượng rung chấn đàn hồi khí động học ở phần cánh gió sau DRS xuất hiện ở tần số bốn mươi lăm Hertz này thực chất chỉ là phần nổi của một tảng băng chìm mà thôi.
+Toàn bộ đám chuyên gia nước ngoài mà cô thuê về với giá hàng triệu đô thực sự là một lũ ăn hại vô dụng khi không nhìn ra được nguyên nhân gốc rễ nằm ở đâu.
+Nguyên nhân cốt lõi không phải do lỗi thiết kế khí động học của cánh sau hay do luồng gió bị nhiễu loạn từ phía trước cabin truyền lại.
+Nó hoàn toàn nằm ở hệ thống treo phía sau của xe đua sử dụng loại khớp nối composite sợi carbon có độ cứng cơ học không đồng nhất.
+Khi cánh gió DRS mở ra một góc tối đa tám mươi lăm độ ở tốc độ cao, lực ép xuống gầm xe đột ngột thay đổi làm cho hệ thống treo sau phát sinh những rung động cơ học tần số cao truyền trực tiếp qua khung gầm monocoque của xe.
+Những rung động cơ học cực mạnh này ngược lại làm nhiễu loạn dòng khí đi qua bộ khuếch tán dưới gầm xe diffuser, khiến cho luồng khí bị tách lớp hoàn toàn và làm mất đi mười lăm phần trăm lực ép xuống của xe.
+Nếu các người cứ tiếp tục điều chỉnh góc nghiêng của cánh gió sau như cách mà bọn họ đang làm thì dù có thử nghiệm thêm mười năm nữa chiếc xe vẫn sẽ bị mất lái và nổ lốp khi vượt ngưỡng ba trăm ba mươi kilômét trên giờ.
+Đặng Minh Thư thực sự chấn động mạnh mẽ trong lòng, đôi bàn tay thanh tú của cô khẽ siết chặt vào chiếc túi xách đắt tiền đến mức các ngón tay trắng bệch ra.
+Cô hoàn toàn không thể ngờ được rằng một lỗi kỹ thuật cực kỳ hóc búa đã làm đau đầu toàn bộ ban huấn luyện và đội ngũ kỹ sư hàng đầu người Ý suốt hai tuần chạy thử nghiệm tại đường đua Đại Nam lại được giải quyết chỉ trong vòng chưa đầy ba mươi giây bởi một gã thợ sửa xe máy cỏ trong con hẻm rách nát này.
+Lê Hữu Đạt đứng ngoài cửa sổ lén nghe được những từ ngữ chuyên môn vô cùng phức tạp như telemetry, DRS, monocoque, diffuser thì đầu óc gã quay cuồng như chong chóng.
+Gã lầm bầm chửi rủa trong miệng đầy vẻ tức tối và đố kỵ hằn học.
+Mẹ kiếp, cái thằng Sơn rách này chắc chắn là đang dùng những từ ngữ bịa đặt vẽ vời để lừa đảo đào mỏ cô gái nhà giàu nhẹ dạ kia thôi chứ tài cán gì nó.
+Để tao xem mày diễn kịch được đến bao giờ, tao sẽ cho người phá hoại toàn bộ cái trò bịp bợm này của mày cho mày đi tù mọt gọng luôn con ạ.
+Đạt lập tức bấm nút gửi toàn bộ hình ảnh và thông tin của Sơn sang cho một gã trùm chuyên độ xe lậu và chế tạo phụ tùng giả khét tiếng ở khu vực Quận 7 để lên kế hoạch phá bĩnh.
+Bên trong văn phòng nhỏ, Sơn cầm chiếc bút bi rẻ tiền trên bàn, ký một nét chữ dứt khoát và mạnh mẽ vào phần cuối của bản hợp đồng triệu đô.
+Anh ngẩng đầu nhìn thẳng vào mắt Đặng Minh Thư, đưa ra những điều kiện vô cùng đanh thép của riêng mình với tư cách là người nắm giữ linh hồn kỹ thuật của đội đua.
+Tôi ký bản hợp đồng này không phải vì số tiền hai tỷ đồng của cô, mà vì tôi muốn chứng minh cho thế giới thấy công nghệ cơ khí của người Việt Nam không hề thua kém bất kỳ quốc gia nào trên thế giới.
+Nhưng tôi bắt buộc phải đặt ra một ranh giới chuyên nghiệp vô cùng nghiêm ngặt và tuyệt đối giữa tôi và cô cũng như ban lãnh đạo đội đua.
+Khi tôi đã bước chân vào bên trong garage của đội đua Red Lotus Racing, tất cả những lời nói và quyết định kỹ thuật của tôi chính là luật lệ tối cao mà không một ai được phép bàn cãi hay thay đổi.
+Kể cả cô, Đặng Minh Thư, với tư cách là Giám đốc điều hành tối cao cũng tuyệt đối không có quyền can thiệp hay chỉ đạo bất kỳ vấn đề kỹ thuật nào của tôi.
+Nếu cô đồng ý với ranh giới chuyên nghiệp sòng phẳng và khắt khe này thì chúng ta lập tức hợp tác, bằng không cô có thể mang tập hồ sơ telemetry này đi chỗ khác ngay bây giờ.
+Thư nhìn Sơn bằng ánh mắt vô cùng lạnh lùng nhưng sâu thẳm bên trong tâm hồn cô đã dâng lên một sự tôn trọng và nể phục vô cùng lớn đối với người đàn ông này.
+Cô khẽ gật đầu, giọng nói mang theo sự dứt khoát của một nhà lãnh đạo tầm cỡ.
+Rất sòng phẳng, rất súc tích và cực kỳ chuyên nghiệp, tôi đồng ý với toàn bộ những điều kiện và ranh giới mà anh vừa đặt ra.
+Chiếc xe Mercedes G63 đang nổ máy chờ sẵn ở ngoài hẻm rồi, chúng ta lập tức lên đường đến căn cứ kỹ thuật ngay bây giờ không thể chậm trễ thêm một giây phút nào nữa.
+Sơn lẳng lẳng lấy chiếc túi xách vải sờn cũ đựng vài món công cụ tự chế của mình, khóa chặt cánh cửa sắt rỉ sét của tiệm sửa xe Sơn Phong rồi bước thẳng ra xe siêu sang trước những ánh mắt há hốc mồm kinh ngạc của toàn bộ người dân trong con hẻm nhỏ hẹp.
+"""
+
+chapter_3_raw = """
+Chiếc xe Mercedes-Benz G63 chở Nguyễn Bảo Sơn và Đặng Minh Thư nhanh chóng lao vút trên đại lộ Mai Chí Thọ rồi rẽ vào Khu công nghệ cao ở Quận 9 cũ.
+Căn cứ kỹ thuật của đội đua F1 Quốc gia Việt Nam Red Lotus Racing hiện ra vô cùng hoành tráng và hiện đại với lối kiến trúc mái vòm bọc kính cường lực sang trọng.
+Bên trong garage rộng lớn ngập tràn ánh sáng trắng của hệ thống đèn neon công suất cao, sàn nhà được lát gạch epoxy chống tĩnh điện sáng bóng như gương.
+Xung quanh garage là hàng loạt máy móc cơ khí chính xác CNC năm trục của hãng DMG Mori danh tiếng cùng các bệ thử động cơ lập trình mô phỏng khí động học CFD vô cùng tinh xảo.
+Tại trung tâm của garage, chiếc xe đua F1 thế hệ mới mang mã hiệu RL-26 với lớp sơn màu đỏ rực rỡ mang logo hoa sen cách điệu đang được gá chặt trên bệ thử động lực học.
+Tuy nhiên, bầu không khí bên trong garage lúc này vô cùng căng thẳng và ngột ngạt khi hàng chục kỹ sư nước ngoài đang vây quanh bệ máy với gương mặt đầy vẻ bất lực.
+Dẫn đầu nhóm kỹ sư nước ngoài là Giovanni, một trưởng ban kỹ thuật động cơ người Ý ngoài năm mươi tuổi, người từng có nhiều năm kinh nghiệm làm việc cho các đội đua F2 và F3 danh tiếng ở châu Âu.
+Khi nhìn thấy Minh Thư dẫn một người đàn ông mặc bộ quần áo bảo hộ lao động sờn rách, chân đi đôi giày vải lấm lem dầu mỡ đi vào, Giovanni và nhóm kỹ sư ngoại quốc liền lộ rõ vẻ khinh thường và chế giễu ra mặt.
+Giovanni bước lên phía trước, khoanh tay trước ngực và nói bằng tiếng Anh với giọng điệu vô cùng mỉa mai và trịch thượng.
+Này Minh Thư, cô đang đùa giỡn với tương lai của đội đua Red Lotus Racing đấy à?
+Cô lại có thể mang một gã thợ sửa xe máy cỏ ở xóm nghèo đến đây để chỉ đạo kỹ thuật cho những kỹ sư hàng đầu châu Âu như chúng tôi sao?
+Đây là giải đua F1, là đỉnh cao của công nghệ cơ khí và tự động hóa toàn cầu chứ không phải là cái xưởng sửa mấy con xe máy Wave Alpha hay Dream cũ nát của gã thợ vườn này đâu.
+Chúng tôi được đào tạo bài bản ở những trường đại học danh tiếng nhất thế giới còn không giải quyết nổi lỗi rung lắc khí động học này, gã thợ vườn này thì biết cái gì mà đòi can thiệp vào đây.
+Sơn hoàn toàn phớt lờ những lời nói đầy tính sỉ nhục của Giovanni bằng tiếng Anh, anh không hề hé răng nửa lời để tự biện hộ cho bản thân.
+Anh lẳng lặng đi thẳng đến bệ thử động cơ nơi chiếc xe đua RL-26 đang được khởi động để chạy mô phỏng ở vòng tua cực đại.
+Tiếng động cơ hybrid V6 Turbo tăng áp dung tích một phẩy sáu lít đột ngột gầm rú lên dữ dội, âm thanh đanh thép, xé toạc màng nhĩ vang vọng khắp toàn bộ không gian garage rộng lớn.
+Chiếc xe đua rung lắc dữ dội trên bệ thử khi tốc độ mô phỏng đạt ngưỡng ba trăm mười lăm kilômét trên giờ.
+Màn hình telemetry hiển thị hàng loạt cảnh báo đỏ rực phát ra liên tục: Rung lắc hệ thống treo sau vượt ngưỡng an toàn cho phép là tám G, áp suất dầu phanh thủy lực sụt giảm nghiêm trọng mười tám phần trăm chỉ sau chưa đầy năm phút chạy thử.
+Giovanni vò đầu bứt tai đầy vẻ bất lực, liên tục gào thét ra lệnh qua bộ đàm cho các kỹ sư điều chỉnh góc nghiêng cánh gió sau DRS và thay đổi áp suất lốp nhưng mọi nỗ lực đều vô hiệu hoàn toàn.
+Chiếc xe đua bắt đầu phát ra những tiếng kim loại va đập chói tai vô cùng nguy hiểm, buộc hệ thống điều khiển trung tâm phải kích hoạt chế độ dừng khẩn cấp để tránh làm nổ tung khối động cơ triệu đô.
+Sơn tiến lên phía trước bệ thử, anh lấy ra chiếc cờ-lê lực tự chế từ trong túi xách vải sờn cũ của mình.
+Anh lạnh lùng ra lệnh cho nhóm kỹ sư nước ngoài bằng tiếng Anh vô cùng chuẩn xác và lưu loát khiến cho tất cả bọn họ phải giật mình kinh ngạc.
+Tất cả tránh ra ngoài, lập tức tháo dỡ cụm hệ thống treo sau carbon của chiếc xe đua ra cho tôi kiểm tra ngay lập tức.
+Dưới sự chứng kiến đầy giận dữ và hoài nghi của Giovanni, Sơn tự tay dùng thước đo micromet điện tử kiểm tra dung sai cơ học của khớp nối thủy lực giảm chấn phía sau.
+Anh chỉ ra vết nứt vi mô vô cùng nhỏ nằm sâu bên trong thành ống dẫn dầu thủy lực của hệ thống treo.
+Giọng nói sắc bén như dao cạo của Sơn vang lên rõ ràng lấn át hoàn toàn những tiếng ồn ào của máy móc xung quanh.
+Nhìn cho kỹ vào đây đi gã kỹ sư trưởng kiêu ngạo kia, đây chính là hiện tượng cavitation hay còn gọi là xâm thực bọt khí cực kỳ nghiêm trọng bên trong thành ống dẫn dầu thủy lực.
+Dầu thủy lực sử dụng cho hệ thống giảm chấn này đã bị lẫn những bọt khí siêu nhỏ dưới áp suất cực cao lên đến hai trăm bar khi xe hoạt động ở tốc độ lớn.
+Những bọt khí này liên tục bị nén và nổ tung bên trong ống dẫn, làm mất hoàn toàn khả năng đàn hồi và giảm chấn của hệ thống treo sau, gây ra dao động cộng hưởng truyền trực tiếp qua monocoque làm rung lắc cánh gió DRS.
+Chưa dừng lại ở đó, Sơn cầm một thanh đòn treo carbon wishbone vừa được tháo rời ra khỏi xe lên.
+Anh dùng một chiếc búa kỹ thuật gõ nhẹ vào ba vị trí khác nhau trên thân thanh đòn treo, phát ra những tiếng kêu đục ngầu vô cùng kỳ lạ.
+Sơn ném mạnh thanh đòn treo xuống nền nhà xi măng trước mặt Giovanni, giọng nói đanh thép vang lên đầy vẻ vạch trần.
+Đây hoàn toàn không phải là loại sợi carbon fiber được gia công chuẩn trong lò autoclave ở nhiệt độ một trăm năm mươi độ C và áp suất sáu bar theo đúng tiêu chuẩn F1 toàn cầu.
+Nó thực chất chỉ là loại sợi thủy tinh rẻ tiền được trộn lẫn với một tỷ lệ sợi carbon cực kỳ thấp rồi phủ lớp nhựa epoxy kém chất lượng bên ngoài để ngụy trang mà thôi.
+Khả năng chịu lực cơ học của thanh đòn treo giả mạo này chỉ đạt chưa đầy ba mươi phần trăm so với tiêu chuẩn kỹ thuật tối thiểu mà chiếc xe đua F1 yêu cầu.
+Nếu chiếc xe này chạy thật trên đường đua với tốc độ ba trăm hai mươi kilômét trên giờ, thanh đòn treo giả này chắc chắn sẽ bị gãy vụn ngay lập tức khi đi qua các gờ giảm chấn, gây ra tai nạn thảm khốc làm chết tay đua và phá hủy hoàn toàn chiếc xe đua trị giá hàng triệu đô này.
+Tôi muốn hỏi rõ ràng một câu, linh kiện giả mạo vô cùng nguy hiểm này do đơn vị nào cung cấp cho đội đua Red Lotus Racing của chúng ta?
+Giovanni gương mặt lập tức tái mét trở nên trắng bệch không còn một giọt máu, đôi bàn tay gã run rẩy lật vội cuốn sổ tay ghi chép danh sách nhà cung ứng linh kiện thầu phụ cho đội đua.
+Gã lắp bắp trả lời với giọng điệu đầy vẻ sợ hãi và kinh hoàng tột cùng trước mặt Đặng Minh Thư đang đứng bên cạnh với gương mặt lạnh lùng như băng tuyết.
+Là... là công ty cơ khí công nghệ cao Đạt Phát và liên minh cơ khí Nam Sài Gòn cung cấp theo diện hợp đồng thầu phụ ưu tiên trong nước...
+Sơn nhếch mép cười lạnh đầy vẻ khinh bỉ tột cùng.
+Hóa ra Lê Hữu Đạt và đường dây độ xe lậu của gã chính là đơn vị đã móc ngoặc với một số cán bộ thoái hóa biến chất trong đội đua để tuồn những linh kiện composite giả mạo chất lượng kém vào căn cứ kỹ thuật nhằm rút ruột hàng chục tỷ đồng ngân sách dự án.
+Bọn chúng đã lợi dụng sự thiếu giám sát chặt chẽ của các kỹ sư nước ngoài để qua mặt toàn bộ hệ thống kiểm định kỹ thuật của đội đua.
+Toàn bộ garage rộng lớn lập tức rơi vào trạng thái im lặng như tờ đến mức có thể nghe thấy tiếng kim rơi, Giovanni cúi đầu bái phục hoàn toàn trước tài năng cơ khí thượng thừa của Sơn, mồ hôi lạnh chảy dài trên mặt gã kỹ sư người Ý kiêu ngạo không dám hé răng nửa lời phản kháng.
+"""
+
+chapter_4_raw = """
+Đêm trước ngày chạy thử nghiệm quyết định của chiếc xe đua RL-26 tại đường đua Đại Nam ở tỉnh Bình Dương để lấy chứng nhận FIA cấp một toàn cầu.
+Bầu không khí tại khu vực pit lane của đội đua Red Lotus Racing ngập tràn sự căng thẳng, lo âu và hồi hộp tột độ của toàn bộ thành viên ban huấn luyện.
+Chiếc xe đua RL-26 lúc này đã được Nguyễn Bảo Sơn trực tiếp giám sát thay thế toàn bộ cụm hệ thống treo sau bằng linh kiện chính hãng chuẩn F1 nhập khẩu trực tiếp từ Ý.
+Anh cũng đã tự tay tinh chỉnh lại toàn bộ hệ thống telemetry và lập trình lại các thông số khí động học của cánh gió sau DRS đạt mức hoàn hảo nhất có thể.
+Lê Hữu Đạt, sau khi biết tin phi vụ tuồn linh kiện giả mạo trị giá hàng chục tỷ đồng của mình đã bị Sơn vạch trần hoàn toàn trước ban lãnh đạo đội đua và cơ quan cảnh sát kinh tế đang vào cuộc điều tra gắt gao, gã trở nên điên cuồng và mất hết lý trí.
+Gã quyết tâm phải phá hủy buổi chạy thử nghiệm quan trọng này bằng mọi giá để đổ hết mọi tội lỗi và trách nhiệm lên đầu của Nguyễn Bảo Sơn nhằm cứu vãn bản thân.
+Đạt đã bí mật liên hệ với một gã bảo vệ biến chất của đường đua Đại Nam, dùng một số tiền lớn mua chuộc gã để âm thầm đột nhập vào bên trong garage của đội đua vào lúc hai giờ sáng.
+Gã mang theo một thiết bị can thiệp ECU không dây sử dụng sóng vô tuyến tần số ngắn vô cùng tinh vi do đám tội phạm công nghệ cao cung cấp.
+Mục tiêu của Đạt là cấy một đoạn mã độc phá hoại vào bộ điều khiển trung tâm ECU và hệ thống quản lý năng lượng hybrid MGU-K của chiếc xe đua RL-26.
+Đoạn mã độc này được lập trình để tự động kích hoạt khi chiếc xe đạt tốc độ từ hai trăm tám mươi kilômét trên giờ trở lên trên đường thẳng.
+Khi kích hoạt, nó sẽ làm ngắt hoàn toàn hệ thống phanh tái tạo năng lượng brake-by-wire của xe, khiến cho chiếc xe bị mất phanh toàn phần và mất lái hoàn toàn ở khúc cua tốc độ cao tiếp theo.
+Đây là một âm mưu vô cùng độc ác và tàn nhẫn, bởi nó chắc chắn sẽ dẫn đến một vụ tai nạn thảm khốc cướp đi sinh mạng của tay đua và phá hủy hoàn toàn chiếc xe đua RL-26 triệu đô.
+Ở phòng điều khiển telemetry cách garage không xa, Nguyễn Bảo Sơn vẫn đang thức trắng đêm ngồi trước hàng loạt màn hình máy tính để giám sát an ninh hệ thống xe đua.
+Bất chợt, đôi mắt sâu thẳm của anh nheo lại đầy vẻ cảnh giác khi phát hiện dòng điện tiêu thụ của bộ nhớ đệm ECU dao động bất thường ở mức năm micro-ampere.
+Đây là dao động cực kỳ nhỏ chỉ có thể phát hiện qua cổng giám sát dự phòng an ninh độc lập do chính anh âm thầm thiết lập riêng từ trước để phòng ngừa kẻ gian phá hoại.
+Sơn lập tức cầm chiếc đèn pin kỹ thuật, bước những bước đi vô cùng nhẹ nhàng nhưng nhanh nhẹn và dứt khoát đi thẳng xuống khu vực garage tối om.
+Anh nhẹ nhàng đẩy cửa bước vào và lập tức phát hiện bóng đen của Lê Hữu Đạt đang lom khom cắm thiết bị phá hoại không dây vào cổng kết nối OBD bên hông chiếc xe đua.
+Sơn không hề lên tiếng động, anh lẳng lặng đi đến phía sau gã chủ tiệm Đạt Phát đang tập trung phá hoại xe đua.
+Đạt bất chợt nghe thấy tiếng động nhẹ liền giật mình quay ngoắt đầu lại, gã hoảng hồn khi đối diện với ánh mắt sắc lạnh như dao cạo của Sơn dưới ánh đèn pin sáng rực.
+Biết âm mưu bị bại lộ, Đạt trở nên điên cuồng rút từ trong túi quần ra một chiếc dao bấm sắc lẻm định lao vào đâm Sơn để mở đường thoát thân.
+Tuy nhiên, Sơn với thân thủ vô cùng nhanh nhẹn và chính xác của một cựu đặc nhiệm kỹ thuật quân đội đã dễ dàng né tránh đường dao của Đạt trong gang tấc.
+Chỉ trong chớp mắt, Sơn đã dùng tay khóa chặt cổ tay cầm dao của Đạt, bẻ ngoặt cánh tay gã ra phía sau lưng khiến chiếc dao rơi keng xuống sàn nhà.
+Đạt đau đớn gào lên thảm thiết cộp một tiếng lớn khi bị Sơn đè chặt gương mặt béo ú của gã xuống nền nhà xi măng lạnh lẽo đầy dầu mỡ.
+Đúng lúc này, hệ thống đèn chiếu sáng của garage đột ngột bật sáng rực rỡ, Đặng Minh Thư cùng lực lượng Cảnh sát kinh tế TP.HCM và Cảnh sát cơ động trang bị vũ khí đầy đủ ập vào bên trong.
+Sơn vẫn giữ thái độ bình thản, anh dùng một tay cắm thiết bị phân tích của mình vào cổng ECU của xe đua và chỉ ra đoạn mã độc đang chạy dở trên màn hình máy tính trước sự chứng kiến của mọi người.
+Nhìn kỹ đi tiểu thư Minh Thư và các đồng chí cảnh sát, đây chính là thiết bị can thiệp ECU trái phép chứa đoạn mã độc nhằm ngắt hệ thống phanh tái tạo năng lượng brake-by-wire của xe.
+Nếu như chúng ta không phát hiện kịp thời âm mưu hiểm độc này, ngày mai chiếc xe đua sẽ lao thẳng vào rào chắn ở khúc cua số bốn với tốc độ trên ba trăm kilômét trên giờ và tay đua chắc chắn sẽ tử nạn ngay tại chỗ.
+Lê Hữu Đạt nghe thấy những lời vạch trần đanh thép của Sơn thì gương mặt gã lập tức cắt không còn một giọt máu, mồ hôi lạnh chảy ra như tắm ướt sũng cả chiếc áo phông đắt tiền.
+Gã hiểu rằng bản thân đã hoàn toàn thân bại danh liệt, đối diện với án tù chung thân vì tội cố ý giết người và phá hoại tài sản quốc gia.
+Đạt sợ hãi tột cùng, hai đầu gối gã quỳ cộp xuống nền đất xi măng cứng nhắc trước mặt Sơn và Đặng Minh Thư.
+Gã liên tục dập đầu van xin thảm thiết đến mức trán rỉ máu đỏ tươi loang lổ khắp mặt đất đầy bụi bặm.
+Sơn ơi, tao xin mày, tao lạy mày Sơn ơi, tao bị mờ mắt vì tiền nên mới làm liều như thế, xin mày tha cho tao một con đường sống, tao lạy mày...
+Nguyễn Bảo Sơn chỉ lạnh lùng quay lưng bước đi, không thèm liếc nhìn gã phản diện đê tiện đang khóc lóc thảm hại dưới chân mình lấy một cái.
+Lực lượng cảnh sát nhanh chóng còng tay Lê Hữu Đạt cùng gã bảo vệ biến chất, áp giải bọn chúng đi ngay trong đêm tối lạnh lẽo.
+Sơn lẳng lặng ngồi xuống bên cạnh chiếc xe đua RL-26, anh thức trắng đêm còn lại để tự tay tháo dỡ hoàn toàn bộ điều khiển ECU.
+Anh tỉ mỉ xóa sạch mọi dấu vết của đoạn mã độc và viết lại toàn bộ chương trình điều khiển cho chip bằng ngôn ngữ assembly phức tạp để đảm bảo an toàn tuyệt đối cho tay đua vào ngày chạy thử hôm sau.
+"""
+
+chapter_5_raw = """
+Sáng ngày chạy thử nghiệm quyết định của chiếc xe đua RL-26, bầu trời trên đường đua Đại Nam ở tỉnh Bình Dương trong xanh lộng gió vô cùng rạng rỡ.
+Khu vực khán đài của đường đua chật kín hàng ngàn người hâm mộ tốc độ, hàng trăm phóng viên báo chí truyền thông trong nước và quốc tế vây kín lối đi.
+Chiếc xe đua RL-26 màu đỏ rực rỡ với logo hoa sen cách điệu nằm kiêu hãnh tại vạch xuất phát dưới sự điều khiển của tay đua số một Việt Nam mang đầy khát vọng.
+Nguyễn Bảo Sơn lúc này đang đứng bên trong buồng điều khiển trung tâm telemetry cùng với Đặng Minh Thư, tai đeo headphone liên lạc và mắt không rời màn hình biểu đồ thông số động cơ.
+Cờ hiệu phất lên đầy dứt khoát, chiếc xe đua RL-26 lập tức gầm rú lao vút đi trên đường đua như một mũi tên lửa màu đỏ xé toạc không gian.
+Tiếng động cơ gầm rú vang dội cả một góc trời, để lại những vệt lốp đen cháy trên mặt đường nhựa bốc khói hầm hập hơi nóng.
+Chiếc xe hoàn thành vòng chạy thử đầu tiên vô cùng mượt mà và ổn định trước sự kinh ngạc tột độ của toàn bộ ban huấn luyện và nhóm kỹ sư ngoại quốc.
+Ở đoạn thẳng dài một phẩy hai kilômét của đường đua, chiếc xe đua vút qua như một cơn gió lốc gầm rú dữ dội, màn hình đo tốc độ hiển thị con số kỷ lục chưa từng có: ba trăm bốn mươi lăm kilômét trên giờ!
+Không còn bất kỳ hiện tượng rung chấn khí động học nào xuất hiện ở phần cánh gió sau DRS nữa, hệ thống treo sau vận hành vô cùng êm ái và hoàn hảo.
+Chiếc xe đua ôm cua cực kỳ mượt mà ở khúc cua số bốn đầy nguy hiểm mà không hề bị trượt bánh hay mất lái dù chỉ là một phần mười giây.
+Kết thúc năm mươi vòng chạy thử nghiệm đầy khắc nghiệt, chiếc xe đua RL-26 đã chính thức phá vỡ kỷ lục vòng đua Đại Nam tới hai phẩy sáu mươi tám giây.
+Đây là một con số không tưởng và là một kỳ tích vô tiền khoáng hậu đối với một đội đua non trẻ mới được thành lập như Red Lotus Racing.
+Cả garage kỹ thuật và khu vực khán đài lập tức vỡ òa trong những tiếng hò reo chiến thắng vang dội lấn át cả tiếng động cơ xe đua.
+Giovanni cùng nhóm kỹ sư người Ý kiêu ngạo chạy lại ôm chầm lấy Nguyễn Bảo Sơn đầy kính phục và tôn kính tột cùng.
+Bọn họ cúi đầu nể phục hoàn toàn trước tài năng cơ khí và trí tuệ thiên tài của người thợ sửa xe máy Việt Nam mà bọn họ từng coi thường ngày nào.
+Đặng Minh Thư bước đến bên cạnh Sơn với một nụ cười hiếm hoi nhưng vô cùng rạng rỡ xuất hiện trên gương mặt thanh tú kiêu sa của cô.
+Thư chậm rãi đặt lên bàn bản hợp đồng dài hạn chính thức dành cho vị trí Kỹ sư trưởng trọn đời của đội đua Red Lotus Racing.
+Bản hợp đồng với mức lương triệu đô lên đến hai triệu USD mỗi năm kèm theo năm phần trăm cổ phần của đội đua và đặc biệt là quyền tự chủ kỹ thuật tối cao tuyệt đối.
+Nguyễn Bảo Sơn nhìn thẳng vào mắt Đặng Minh Thư, hai người khẽ mỉm cười sòng phẳng và dứt khoát đặt tay ký vào bản hợp đồng lịch sử đưa công nghệ Việt Nam vươn ra thế giới.
+Minh Thư nhìn Sơn, giọng nói của cô bớt đi vài phần lạnh lùng, thay vào đó là sự chân thành và ngưỡng mộ sâu sắc từ tận đáy lòng.
+Cô hiểu rằng, nếu không có sự xuất hiện kịp thời của Sơn, toàn bộ dự án trị giá hàng trăm tỷ đồng của quốc gia đã sụp đổ hoàn toàn bởi bàn tay phá hoại của những kẻ gian manh và sự bất lực của nhóm kỹ sư ngoại quốc.
+Sơn khẽ gật đầu chào Thư, ánh mắt anh nhìn ra xa lộ đường đua rộng lớn, nơi chiếc xe đua RL-26 đang đỗ tại pit lane với luồng hơi nóng bốc lên ngùn ngụt từ phanh đĩa carbon-ceramic cực nóng.
+Đầu óc anh chợt hiện về những tháng ngày gian khổ, chịu đựng sự ghẻ lạnh, coi thường của gã chủ tiệm Đạt Phát và những người hàng xóm hẹp hòi trong con hẻm nhỏ số 45 Trần Não.
+Những ngày tháng anh phải giấu đi đôi bàn tay thiên tài từng chế tạo những cỗ máy đua F1 vô địch thế giới để đi siết từng con ốc vít xe máy Wave cũ nát hòng kiếm vài chục ngàn đồng lẻ sống qua ngày.
+Sự tương phản mãnh liệt giữa quá khứ ẩn nhẫn chịu đựng và vinh quang rực rỡ hiện tại làm cho huyết quản trong người anh như sôi sục, cảm giác sảng khoái và tự hào dâng trào tột độ trong tim.
+Cùng lúc đó, tại con hẻm nhỏ Trần Não sầm uất, không khí như muốn nổ tung khi chương trình truyền hình quốc gia phát sóng trực tiếp buổi chạy thử nghiệm thành công của đội đua F1 Việt Nam.
+Bà bán nước chè đầu hẻm, gã cắt tóc vỉa hè và cả những tay thanh niên xăm trổ trước đây thường hay trêu chọc, coi thường Sơn nghèo rách rưới giờ đây đang tụ tập đông nghịt trước màn hình tivi lớn ở quán cà phê.
+Tất cả bọn họ há hốc mồm kinh ngạc đến mức không tin nổi vào mắt mình khi nhìn thấy hình ảnh Nguyễn Bảo Sơn xuất hiện vô cùng kiêu hãnh và lịch lãm trên sóng truyền hình trực tiếp.
+Nhìn kìa, đó chẳng phải là chú Sơn thợ sửa xe máy nghèo ở tiệm Sơn Phong rách nát ngay cạnh tiệm Đạt Phát đó sao?
+Trời đất ơi, chú ấy hóa ra là một vị giáo sư, một vị kỹ sư trưởng thiên tài hàng đầu quốc gia được người ta thuê với giá hàng triệu đô la Mỹ kìa!
+Thật là đáng sợ quá đi, vậy mà bấy lâu nay chúng ta cứ khinh miệt chú ấy nghèo kiết xác, đúng là mắt mù không thấy núi Thái Sơn mà!
+Đúng lúc này, tiếng còi xe cảnh sát hú vang inh ỏi cả con hẻm nhỏ hẹp, hai chiếc xe cảnh sát đặc chủng đỗ xịch ngay trước tiệm sửa xe Đạt Phát hoành tráng.
+Cơ quan cảnh sát kinh tế phối hợp với công an địa phương nhanh chóng thực hiện lệnh niêm phong toàn bộ tiệm sửa xe Đạt Phát để phục vụ công tác điều tra đường dây buôn lậu và chế tạo phụ tùng giả quy mô lớn.
+Lê Hữu Đạt lúc này đang bị còng tay chặt chẽ ở hàng ghế sau xe cảnh sát, gương mặt gã xám xịt như tro tàn, ánh mắt đờ đẫn đầy vẻ tuyệt vọng và hối hận muộn màng.
+Khi chiếc xe cảnh sát từ từ lăn bánh đi qua tiệm sửa xe Sơn Phong trống rỗng, Đạt nhìn qua khe cửa kính xe và bật khóc nức nở trong sự muộn màng cay đắng.
+Gã hiểu rằng bản thân đã hoàn toàn tự tay hủy hoại cuộc đời mình chỉ vì sự tham lam vô đáy, tính đố kỵ hẹp hòi và lòng khinh thường người khác một cách vô lối.
+Còn Nguyễn Bảo Sơn, vị Kỹ sư trưởng thiên tài của chúng ta, giờ đây đã chính thức khép lại trang đời ẩn dật đầy gian khổ ở con hẻm nghèo để bước lên đài vinh quang rực rỡ của tốc độ và công nghệ đỉnh cao.
+Anh sẽ cùng với Đặng Minh Thư và đội đua Red Lotus Racing vươn ra biển lớn thế giới, khẳng định bản lĩnh, trí tuệ và tốc độ đỉnh cao của con người Việt Nam trên khắp các trường đua F1 toàn cầu.
+"""
+
+# Compile chapters and parse V12 HTML structure
+chapters_data = []
+
+raw_chapters = [
+    ("Chương 1: Người Thợ Sửa Xe Ở Hẻm Nhỏ", chapter_1_raw),
+    ("Chương 2: Hợp Đồng Ranh Giới", chapter_2_raw),
+    ("Chương 3: Trận Chiến Tại Căn Cứ Kỹ Thuật", chapter_3_raw),
+    ("Chương 4: Phá Hoại Đêm Trước Cuộc Chạy Thử", chapter_4_raw),
+    ("Chương 5: Vinh Quang Tốc Độ", chapter_5_raw)
+]
+
+for idx, (title, raw_text) in enumerate(raw_chapters):
+    content_html, words = clean_and_split_sentences(raw_text)
+    print(f"Chapter {idx+1}: '{title}' | Word count: {words} words | Sentence count: {content_html.count('<p>')}")
+    chapters_data.append({
+        "title": title,
+        "content": content_html
+    })
+
+novel_data = {
+    "title": "Thợ Sửa Xe Bị Cả Xóm Khinh, Khi Đội Đua F1 Quốc Gia Tìm Đến Thuê Anh Làm Kỹ Sư Trưởng",
+    "subtitle": "Bản Lĩnh Tốc Độ",
+    "author": "Đông Hải Cư Sĩ",
+    "genre": "Sảng Văn",
+    "intro": "<p>Nguyễn Bảo Sơn, một thiên tài cơ khí ẩn cư làm thợ sửa xe cỏ nghèo kiết xác tại con hẻm nhỏ Sài Gòn, bị cả xóm khinh miệt và chèn ép bấy lâu.</p>\n<p>Không ai ngờ được, anh chính là cựu trưởng ban thiết kế động cơ F1 xuất chúng từng làm chấn động giới đua xe châu Âu.</p>\n<p>Khi đội đua F1 Quốc gia Việt Nam lâm vào khủng hoảng kỹ thuật nghiêm trọng, nữ giám đốc điều hành kiêu sa Đặng Minh Thư đã đích thân tìm đến thuê anh làm Kỹ sư trưởng với bản hợp đồng triệu đô.</p>\n<p>Bằng tài năng cơ khí thượng thừa và telemetry siêu cấp, Sơn đã từng bước vạch trần những âm mưu phá hoại gian xảo, cải tiến cỗ máy tốc độ và bước lên đỉnh cao vinh quang rực rỡ trước sự kinh ngạc tột cùng của tất cả những kẻ từng khinh thường anh.</p>\n",
+    "cover_prompt": "A high-end book cover, highly detailed web novel illustration style, a handsome and intense young Vietnamese engineer with grease marks on his face standing confidently in a state-of-the-art F1 racing garage next to a glowing red race car. Mechanical tools, screen monitors showing data telemetry in the background. Cinematic neon lighting, premium colors.",
+    "chapters": chapters_data
+}
+
+# Ensure directory exists
+os.makedirs("/Users/aaronnguyen/TN/App/doctieuthuyet/scratch", exist_ok=True)
+
+# Write to file
+target_path = "/Users/aaronnguyen/TN/App/doctieuthuyet/scratch/draft_novel_16.json"
+with open(target_path, "w", encoding="utf-8") as f:
+    json.dump(novel_data, f, ensure_ascii=False, indent=2)
+
+print(f"\nSUCCESS: Written completed draft to {target_path}")

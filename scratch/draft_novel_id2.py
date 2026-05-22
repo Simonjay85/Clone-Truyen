@@ -5,11 +5,12 @@ import os
 def build_novel_2():
     novel = {
         "title": "Cô Vợ Hào Môn Khinh Tôi Vô Dụng, Cả Hà Ngoại Biết Tôi Là Chủ Tịch Tập Đoàn Thép",
+        "subtitle": "Chủ Tịch Thép Ẩn Thân",
         "author": "Đông Hải Cư Sĩ",
         "genre": "Sảng Văn",
         "intro": (
-            "<p><strong>\"Lê Minh Khôi, chủ tịch bí ẩn của tập đoàn thép Vạn Lợi lớn nhất miền Bắc, lấm lem bụi sắt trong bộ đồng phục công nhân sờn rách, bị cô vợ hào môn Nguyễn Mỹ Hạnh ném thẳng tờ đơn ly hôn vào mặt: 'Anh chỉ là thằng bốc vác quèn vô tích sự, cút khỏi gia tộc họ Nguyễn trước khi làm bẩn gạch nền nhà tao!'...\"</strong></p>"
-            "<p>Thế nhưng, chúng không thể ngờ chiếc áo công nhân đẫm mồ hôi ấy thuộc về người nắm giữ mạch máu thép của toàn bộ đại công trình quốc gia, sở hữu khối tài sản nghìn tỷ mà cả gia tộc họ Nguyễn thèm khát. Khi tập đoàn Trường Sinh của nhà vợ đối mặt với khủng hoảng đứt gãy nguồn cung thép và nguy cơ phá sản cận kề, họ đã phải quỳ rạp cầu xin sự ban ơn của vị chủ tịch ẩn danh. Cú vả mặt chấn động nổ ra ngay tại đại sảnh Vạn Lợi, bóc trần những âm mưu bẩn thỉu của gã anh rể tham lam và thâu tóm toàn bộ gia sản nhà vợ trong sự ngỡ ngàng của báo chí và giới tài chính Hà Ngoại.</p>"
+            "<p><strong>\"Lê Minh Khôi, chủ tịch bí ẩn của tập đoàn thép Vạn Lợi lớn nhất miền Bắc, lấm lem bụi sắt trong bộ đồng phục công nhân sờn rách, bị cô vợ hào môn Nguyễn Mỹ Hạnh ném thẳng tờ đơn ly hôn vào mặt: 'Anh chỉ là thằng bốc vác quèn vô tích sự, cút khỏi gia tộc họ Nguyễn trước khi làm bẩn gạch nền nhà tao!'...\"</strong></p>\n"
+            "<p>Thế nhưng, chúng không thể ngờ chiếc áo công nhân đẫm mồ hôi ấy thuộc về người nắm giữ mạch máu thép của toàn bộ đại công trình quốc gia, sở hữu khối tài sản nghìn tỷ mà cả gia tộc họ Nguyễn thèm khát. Khi tập đoàn Trường Sinh của nhà vợ đối mặt với khủng hoảng đứt gãy nguồn cung thép và nguy cơ phá sản cận kề, họ đã phải quỳ rạp cầu xin sự ban ơn của vị chủ tịch ẩn danh. Cú vả mặt chấn động nổ ra ngay tại đại sảnh Vạn Lợi, bóc trần những âm mưu bẩn thỉu của gã anh rể tham lam và thâu tóm toàn bộ gia sản nhà vợ trong sự ngỡ ngàng của báo chí và giới tài chính Hà Ngoại.</p>\n"
         ),
         "cover_prompt": (
             "A high-end book cover, highly detailed web novel illustration style, a powerful and handsome young Vietnamese man in a sharp navy suit, "
@@ -68,11 +69,11 @@ def build_novel_2():
         "\"Toàn bộ các đơn hàng thép đã ký trước đó cũng bị đình chỉ cung cấp vô thời hạn để phục vụ thanh tra chất lượng.\"",
         "Nguyễn Mỹ Hạnh mặt cắt không còn giọt máu, cô đứng bật dậy: \"Không thể như thế được!\"",
         "\"Chúng ta đã đặt cọc năm mươi tỷ đồng từ khoản vay Agribank cho mẻ thép này.\"",
-        "\"Nếu không có thép Vạn Lợi để bàn giao cho dự án tuyến đường cao tốc phía Bắc vào tuần tới, Trường Sinh sẽ bị phạt hợp đồng ba trăm tỷ!\"",
+        "\"If không có thép Vạn Lợi để bàn giao cho dự án tuyến đường cao tốc phía Bắc vào tuần tới, Trường Sinh sẽ bị phạt hợp đồng ba trăm tỷ!\"",
         "\"Lúc đó, ngân hàng sẽ siết nợ toàn bộ tài sản, Trường Sinh chắc chắn sẽ phá sản!\"",
         "Tiến Đạt đứng bên cạnh, mồ hôi lạnh chảy ròng ròng trên trán: \"Bác hai, hay là chúng ta trực tiếp đến văn phòng Vạn Lợi để xin gặp vị Chủ tịch ẩn danh của họ?\"",
         "\"Nghe nói vị Chủ tịch này cực kỳ trẻ tuổi và bí ẩn, nắm quyền sinh sát toàn bộ nguồn cung thép xây dựng miền Bắc.\"",
-        "\"Nếu chúng ta quỳ xin ông ấy cứu giúp, có lẽ vẫn còn một con đường sống.\"",
+        "\"If chúng ta quỳ xin ông ấy cứu giúp, có lẽ vẫn còn một con đường sống.\"",
         "Ông Trường nghiến răng: \"Chuẩn bị xe ngay lập tức! Mỹ Hạnh, Tiến Đạt, hai đứa đi cùng ta đến Vạn Lợi!\"",
         "\"Chúng ta phải bằng mọi giá gặp được người đứng đầu tập đoàn thép để giải quyết cuộc khủng hoảng này!\"",
         "Cùng lúc đó, tại khu văn phòng cao cấp của tập đoàn thép Vạn Lợi, Lê Minh Khôi đang ngồi trên chiếc ghế da chủ tịch sang trọng.",
@@ -136,7 +137,7 @@ def build_novel_2():
         "\"Tại em bị áp lực công việc, bị Tiến Đạt xúi giục nên mới hành động dại dột như vậy...\"",
         "\"Chúng ta vẫn là vợ chồng ba năm qua mà anh, xin anh hãy vì chút tình nghĩa cũ mà cứu lấy tập đoàn Trường Sinh!\"",
         "Cô lao đến định nắm lấy vạt áo vest của Khôi, nhưng hai vệ sĩ lập tức bước lên một bước chặn đứng cô lại đầy lạnh lùng.",
-        "Khôi nhìn cô bằng ánh mắt lạnh lẽo như băng tuyết Đông Bắc, không hề có một chút dao động cảm xúc nào.",
+        "Khôi nhìn cô bằng ánh mắt lạnh lẽo như băng quyến Đông Bắc, không hề có một chút dao động cảm xúc nào.",
         "\"Tình nghĩa cũ sao?\"",
         "\"Ngày tôi dâng lên mảnh phôi thép chạm khắc thủ công chúc thọ ông nội, các người đã ném nó vào thùng rác.\"",
         "\"Ngày tôi bưng nước rửa chân cho mẹ cô, bà ta đã cố ý đổ cả thau nước nóng vào chân tôi.\"",
@@ -158,7 +159,7 @@ def build_novel_2():
         "Đúng lúc này, tiếng còi xe cảnh sát hú vang dồn dập dưới sân tòa nhà Vạn Lợi.",
         "Một đoàn chiến sĩ cảnh sát kinh tế mặc sắc phục uy nghiêm bước vào phòng họp, trưng ra lệnh bắt khẩn cấp đóng dấu đỏ chói.",
         "\"Nguyễn Tiến Đạt! Nguyễn Văn Trường! Các ông bị bắt khẩn cấp về hành vi lừa đảo chiếm đoạt tài sản và vi phạm quy định về xây dựng gây hậu quả nghiêm trọng!\"",
-        "Chiếc còng số tám lạnh ngắt lập tức bập vào tay Trường và Đạt trước sự chứng kiến của hàng chục ống kính phóng viên báo chí.",
+        "Chiếc còng số thái lạnh ngắt lập tức bập vào tay Trường và Đạt trước sự chứng kiến của hàng chục ống kính phóng viên báo chí.",
         "Mỹ Hạnh gào khóc thảm thiết, quỳ lạy dưới chân Khôi: \"Khôi ơi! Cứu bố em với! Em lạy anh! Em sẽ làm nô lệ cho anh cả đời, xin anh hãy cứu gia đình em!\"",
         "Khôi đứng dậy, chỉnh lại cổ áo vest thẳng thớm, quay lưng đi thẳng vào phòng làm việc bên trong.",
         "\"Đưa họ đi, từ hôm nay Hà Ngoại sẽ không còn tập đoàn Trường Sinh nữa.\""
@@ -171,7 +172,7 @@ def build_novel_2():
         "Người đứng ra mua lại toàn bộ số tài sản đó với mức giá tượng trưng một nghìn đồng kèm theo cam kết bảo lãnh toàn bộ khoản nợ chính là tập đoàn thép Vạn Lợi.",
         "Thương hiệu vật liệu xây dựng Trường Sinh được tái cấu trúc hoàn toàn dưới cái tên mới: Vạn Lợi Logistics & Materials.",
         "Lê Minh Khôi đứng bên cửa kính sát đất của văn phòng chủ tịch mới đặt tại đỉnh tòa nhà Vạn Lợi, ngắm nhìn công trường cầu vượt quốc lộ đang được thi công lại bằng những thanh thép cường độ cao sáng loáng.",
-        "Làn gió mát từ sông Hồng thổi vào làm bay nhẹ vạt áo vest đen lịch lãm của anh, toát lên phong thái kiêu hùng của một Steel King thực thụ.",
+        "Lân gió mát từ sông Hồng thổi vào làm bay nhẹ vạt áo vest đen lịch lãm của anh, toát lên phong thái kiêu hùng của một Steel King thực thụ.",
         "Cửa phòng làm việc gõ nhẹ, Trần Quốc Nam bước vào cùng với một tập hồ sơ nhân sự mới.",
         "\"Chủ tịch, đây là danh sách nhân sự đã được thanh lọc hoàn toàn của Vạn Lợi Logistics.\"",
         "\"Và... có một người muốn xin gặp anh để nộp đơn xin việc làm công nhân quét dọn nhà kho.\"",
@@ -196,7 +197,7 @@ def build_novel_2():
 
     # Convert sentences to V12 HTML structure
     def sentences_to_v12_html(lines_list):
-        return "".join([f"<p>{line}</p>" for line in lines_list])
+        return "".join([f"<p>{line}</p>\n" for line in lines_list])
 
     novel["chapters"].append({
         "title": "Chương 1: Tờ Đơn Ly Hôn Rẻ Tiền",
@@ -219,13 +220,13 @@ def build_novel_2():
         "content": sentences_to_v12_html(chap5_lines)
     })
 
-    # Save to pending_novel.json
-    output_path = "/Users/aaronnguyen/TN/App/doctieuthuyet/pending_novel.json"
+    # Save to draft_novel_2.json
+    output_path = "/Users/aaronnguyen/TN/App/doctieuthuyet/scratch/draft_novel_2.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(novel, f, ensure_ascii=False, indent=2)
     
     print("=" * 60)
-    print("🎉 SUCCESS: Built Novel 2 in pending_novel.json under V12 standard!")
+    print("🎉 SUCCESS: Built Novel 2 in scratch/draft_novel_2.json under V12 standard!")
     print("=" * 60)
 
 if __name__ == "__main__":

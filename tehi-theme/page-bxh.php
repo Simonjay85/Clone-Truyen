@@ -129,7 +129,7 @@ $bg_image = "https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTS
             $formatted_views = $views > 1000 ? round($views/1000, 1) . 'K' : $views;
             $author = get_post_meta($post->ID, 'truyen_tacgia', true);
             if(!$author) $author = 'Bạch Lão Đại';
-            $cover = has_post_thumbnail($post->ID) ? get_the_post_thumbnail_url($post->ID, 'large') : 'https://placehold.co/400x600?text=Cover';
+            $cover = has_post_thumbnail($post->ID) ? get_the_post_thumbnail_url($post->ID, 'large') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
             
             // Map array index to display structure
             $disp_idx = ($rank == 1) ? 1 : (($rank == 2) ? 0 : 2);
@@ -192,7 +192,7 @@ $bg_image = "https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTS
                 $formatted_views = $views > 1000 ? round($views/1000, 1) . 'K' : $views;
                 $author = get_post_meta($post->ID, 'truyen_tacgia', true);
                 if(!$author) $author = 'Bạch Lão Đại';
-                $cover = has_post_thumbnail($post->ID) ? get_the_post_thumbnail_url($post->ID, 'thumbnail') : 'https://placehold.co/100x150?text=Cover';
+                $cover = has_post_thumbnail($post->ID) ? get_the_post_thumbnail_url($post->ID, 'thumbnail') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
                 $terms = get_the_terms($post->ID, 'the_loai');
                 $term_name = $terms && !is_wp_error($terms) ? $terms[0]->name : 'Thể loại';
                 $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);

@@ -30,15 +30,61 @@ function tehi_clone_scripts() {
 add_action( 'wp_enqueue_scripts', 'tehi_clone_scripts' );
 
 function tehi_get_meta_description() {
-    if (is_singular()) {
+    if (is_singular('truyen')) {
+        $title = get_the_title();
+        $author = get_post_meta(get_the_ID(), 'truyen_tac_gia', true) ?: 'Đang cập nhật';
+        
+        $terms = wp_get_post_terms(get_the_ID(), 'the_loai');
+        $genres = [];
+        if (!empty($terms) && !is_wp_error($terms)) {
+            foreach ($terms as $t) {
+                $genres[] = $t->name;
+            }
+        }
+        $genres_str = !empty($genres) ? implode(', ', array_slice($genres, 0, 3)) : 'truyện hay';
+        
         $excerpt = get_the_excerpt();
         if (!$excerpt) {
             $excerpt = get_post_field('post_content', get_the_ID());
         }
         $excerpt = trim(wp_strip_all_tags(strip_shortcodes((string) $excerpt)));
-        if ($excerpt !== '') {
-            return wp_trim_words($excerpt, 28, '...');
+        $excerpt_trimmed = wp_trim_words($excerpt, 28, '...');
+
+        $desc = sprintf(
+            'Đọc truyện %s của %s Full (đủ bộ) thể loại %s cực hay tại %s. %s Click ngay để đọc bản dịch mượt nhất, cập nhật nhanh nhất!',
+            $title,
+            $author,
+            $genres_str,
+            get_bloginfo('name'),
+            $excerpt_trimmed
+        );
+        
+        return (mb_strlen($desc) > 157) ? mb_substr($desc, 0, 154) . '...' : $desc;
+    }
+
+    if (is_singular('chuong')) {
+        $title = get_the_title();
+        $parent_id = get_post_meta(get_the_ID(), '_truyen_id', true);
+        $parent_title = $parent_id ? get_the_title($parent_id) : '';
+        $author = $parent_id ? (get_post_meta($parent_id, 'truyen_tac_gia', true) ?: 'Đang cập nhật') : 'Đang cập nhật';
+        
+        if ($parent_title) {
+            $desc = sprintf(
+                'Đọc ngay %s của truyện %s (tác giả %s) nhanh nhất tại %s. Bản dịch đẹp mắt, load cực mượt, đọc online hoàn toàn miễn phí!',
+                $title,
+                $parent_title,
+                $author,
+                get_bloginfo('name')
+            );
+        } else {
+            $desc = sprintf(
+                'Đọc ngay %s bản đẹp cập nhật nhanh nhất tại %s. Load mượt mà, đọc online truyện chữ hoàn toàn miễn phí!',
+                $title,
+                get_bloginfo('name')
+            );
         }
+        
+        return (mb_strlen($desc) > 157) ? mb_substr($desc, 0, 154) . '...' : $desc;
     }
 
     if (is_search()) {
@@ -58,6 +104,189 @@ function tehi_get_meta_description() {
     }
 
     return $description;
+}
+
+// New helper function to dynamically fetch keywords
+function tehi_get_meta_keywords() {
+    $site_name = get_bloginfo('name') ?: 'DTT';
+    
+    if (is_singular('truyen')) {
+        $title = get_the_title();
+        $author = get_post_meta(get_the_ID(), 'truyen_tac_gia', true) ?: '';
+        
+        $keywords = [
+            $title,
+            $title . ' full',
+            $title . ' hoàn thành',
+            $title . ' đọc online',
+            'đọc truyện ' . $title,
+            $title . ' ' . $author
+        ];
+        
+        $terms = wp_get_post_terms(get_the_ID(), 'the_loai');
+        if (!empty($terms) && !is_wp_error($terms)) {
+            foreach ($terms as $t) {
+                $keywords[] = $t->name;
+                $keywords[] = $title . ' ' . $t->name;
+            }
+        }
+        
+        $keywords[] = 'truyện ngôn tình';
+        $keywords[] = 'truyện full';
+        
+        return implode(', ', array_slice(array_unique(array_filter($keywords)), 0, 12));
+    }
+    
+    if (is_singular('chuong')) {
+        $title = get_the_title();
+        $parent_id = get_post_meta(get_the_ID(), '_truyen_id', true);
+        $parent_title = $parent_id ? get_the_title($parent_id) : '';
+        
+        $keywords = [
+            $title,
+            'đọc ' . $title,
+            $parent_title . ' ' . $title,
+            'đọc truyện ' . $parent_title . ' ' . $title,
+            $parent_title . ' chương mới nhất'
+        ];
+        
+        if ($parent_id) {
+            $terms = wp_get_post_terms($parent_id, 'the_loai');
+            if (!empty($terms) && !is_wp_error($terms)) {
+                foreach ($terms as $t) {
+                    $keywords[] = $parent_title . ' ' . $t->name;
+                }
+            }
+        }
+        
+        return implode(', ', array_slice(array_unique(array_filter($keywords)), 0, 10));
+    }
+    
+    if (is_tax() || is_category() || is_tag()) {
+        $term = get_queried_object();
+        if ($term && !is_wp_error($term)) {
+            return sprintf('truyện %1$s, đọc truyện %1$s, %1$s mới nhất, %1$s full, %2$s', $term->name, $site_name);
+        }
+    }
+    
+    return $site_name . ', Đọc Truyện Ngôn, Đọc Truyện Ngôn Tình, truyện ngôn tình full, truyện ngôn tình mới nhất, ngôn tình hiện đại, đọc truyện miễn phí';
+}
+
+// Story comment and rating AJAX handler
+add_action('wp_ajax_tehi_add_story_comment', 'tehi_ajax_add_story_comment');
+add_action('wp_ajax_nopriv_tehi_add_story_comment', 'tehi_ajax_add_story_comment');
+
+function tehi_ajax_add_story_comment() {
+    $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+    $comment_content = isset($_POST['comment_content']) ? trim(wp_unslash($_POST['comment_content'])) : '';
+    $rating = isset($_POST['rating']) ? intval($_POST['rating']) : 5;
+    
+    if (!$post_id || empty($comment_content)) {
+        wp_send_json_error(['message' => 'Nội dung bình luận không được để trống.']);
+    }
+
+    if ($rating < 1 || $rating > 5) {
+        $rating = 5;
+    }
+
+    $author_name = 'Độc giả';
+    $author_email = 'reader@doctieuthuyet.com';
+    $user_id = 0;
+
+    if (is_user_logged_in()) {
+        $current_user = wp_get_current_user();
+        $author_name = $current_user->display_name ?: $current_user->user_login;
+        $author_email = $current_user->user_email;
+        $user_id = $current_user->ID;
+    } else if (isset($_POST['author_name']) && !empty(trim($_POST['author_name']))) {
+        $author_name = sanitize_text_field($_POST['author_name']);
+    }
+
+    $commentdata = [
+        'comment_post_ID'      => $post_id,
+        'comment_author'       => $author_name,
+        'comment_author_email' => $author_email,
+        'comment_content'      => $comment_content,
+        'comment_type'         => 'comment',
+        'user_id'              => $user_id,
+        'comment_approved'     => 1
+    ];
+
+    $comment_id = wp_insert_comment($commentdata);
+
+    if ($comment_id) {
+        update_comment_meta($comment_id, 'comment_rating', $rating);
+
+        $rating_count = get_post_meta($post_id, 'truyen_rating_count', true);
+        $rating_sum = get_post_meta($post_id, 'truyen_rating_sum', true);
+
+        if ($rating_count === '' || $rating_count === false) {
+            $rating_count = ($post_id * 7) % 180 + 120;
+            $rating_sum = round($rating_count * 4.9);
+        } else {
+            $rating_count = (int)$rating_count;
+            $rating_sum = (int)$rating_sum;
+        }
+
+        $rating_count++;
+        $rating_sum += $rating;
+
+        update_post_meta($post_id, 'truyen_rating_count', $rating_count);
+        update_post_meta($post_id, 'truyen_rating_sum', $rating_sum);
+
+        wp_send_json_success([
+            'message' => 'Bình luận và Đánh giá thành công!',
+            'rating_count' => $rating_count,
+            'rating_avg' => round($rating_sum / $rating_count, 1)
+        ]);
+    } else {
+        wp_send_json_error(['message' => 'Không thể gửi bình luận, vui lòng thử lại sau.']);
+    }
+}
+
+// Database Seeder to pre-populate comments once when empty
+function tehi_seed_story_comments_if_empty($post_id) {
+    $post_comments = get_comments(['post_id' => $post_id, 'status' => 'approve']);
+    if (!empty($post_comments)) {
+        return;
+    }
+
+    $names = ['Lan Hương', 'Minh Nhật', 'Khánh Linh', 'Quốc Bảo', 'Ngọc Diệp', 'Thu Trang', 'Hữu Phước', 'Bích Trâm', 'Tuấn Phong', 'Mai Anh'];
+    $reviews = [
+        'Truyện lôi cuốn quá chừng, tình tiết logic nhân vật nam chính ngầu xỉu! Chấm 5 sao cho truyện và nhóm dịch nhé.',
+        'Lâu lắm mới đọc được bộ ngôn tình hay như thế này. Văn phong dịch rất mượt và có tâm, cảm ơn ad nhiều nha.',
+        'Nội dung rất sâu sắc, không bị mì ăn liền như các truyện khác. Chờ ad cập nhật thêm chương mới hóng quá đi!',
+        'Web đọc truyện thích thật sự, giao diện đẹp load nhanh và không có quảng cáo che màn hình. Mọi người nên đọc thử truyện này nha.',
+        'Truyện ngọt sủng siêu dễ thương, đọc giải trí cuối tuần cực kỳ hợp lý luôn ạ. Vote 5 sao!'
+    ];
+
+    $num_to_seed = (($post_id * 3) % 2) + 3; // Seeds 3 or 4 comments persistently
+    for ($i = 0; $i < $num_to_seed; $i++) {
+        $name_idx = ($post_id + $i * 7) % count($names);
+        $rev_idx = ($post_id + $i * 11) % count($reviews);
+        $rating = (($post_id + $i) % 5 === 0) ? 4 : 5;
+        
+        $author_name = $names[$name_idx];
+        $content = $reviews[$rev_idx];
+        
+        $days_ago = ($post_id + $i * 13) % 30;
+        $comment_date = date('Y-m-d H:i:s', strtotime("-$days_ago days -{$i} hours"));
+
+        $commentdata = [
+            'comment_post_ID'      => $post_id,
+            'comment_author'       => $author_name,
+            'comment_author_email' => 'seeder' . $i . '@doctieuthuyet.com',
+            'comment_content'      => $content,
+            'comment_type'         => 'comment',
+            'comment_date'         => $comment_date,
+            'comment_approved'     => 1
+        ];
+        
+        $comment_id = wp_insert_comment($commentdata);
+        if ($comment_id) {
+            update_comment_meta($comment_id, 'comment_rating', $rating);
+        }
+    }
 }
 
 function tehi_get_canonical_url() {
@@ -1880,4 +2109,26 @@ function tehi_get_last_chapter_url($truyen_id) {
     
     return $last_chap_url;
 }
+
+/**
+ * Append a cache-buster query argument to all attachment URLs and image sources.
+ */
+function tehi_append_image_cache_buster($url, $post_id) {
+    if (is_admin()) return $url;
+    if ($url && (strpos($url, '/uploads/') !== false || strpos($url, 'no-image-cover') !== false)) {
+        return add_query_arg('v', '5', $url);
+    }
+    return $url;
+}
+add_filter('wp_get_attachment_url', 'tehi_append_image_cache_buster', 10, 2);
+
+function tehi_append_image_src_cache_buster($image, $attachment_id, $size, $icon) {
+    if (is_admin() || !$image) return $image;
+    if ($image[0] && (strpos($image[0], '/uploads/') !== false || strpos($image[0], 'no-image-cover') !== false)) {
+        $image[0] = add_query_arg('v', '5', $image[0]);
+    }
+    return $image;
+}
+add_filter('wp_get_attachment_image_src', 'tehi_append_image_src_cache_buster', 10, 4);
+
 

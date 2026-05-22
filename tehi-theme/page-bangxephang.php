@@ -39,7 +39,7 @@ if ($ranking_query->have_posts()) {
         $data = array(
             'title' => get_the_title(),
             'link' => get_permalink(),
-            'img' => has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://placehold.co/400x600',
+            'img' => has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5',
             'author' => $author,
             'views' => $views_formatted,
             'chapters' => wp_count_posts('chuong')->publish // Mock chapters count

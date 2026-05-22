@@ -53,7 +53,7 @@ $rank_name = "Độc Giả Uyên Bác";
         $rp = get_posts(['post_type' => 'truyen', 'posts_per_page' => 1, 'orderby' => 'rand']);
         if($rp): 
             $curr_feature = $rp[0];
-            $cf_cover = has_post_thumbnail($curr_feature->ID) ? get_the_post_thumbnail_url($curr_feature->ID, 'large') : 'https://placehold.co/400x600';
+            $cf_cover = has_post_thumbnail($curr_feature->ID) ? get_the_post_thumbnail_url($curr_feature->ID, 'large') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
             $cf_chaps = wp_count_posts('chuong')->publish;
         ?>
         <div class="md:col-span-3 bg-gray-50 rounded-3xl p-6 md:p-8 relative overflow-hidden flex flex-col sm:flex-row gap-8 items-center border border-gray-200 shadow-sm">
@@ -134,7 +134,7 @@ $rank_name = "Độc Giả Uyên Bác";
         <?php 
         if ($library_query->have_posts()) :
             while ($library_query->have_posts()) : $library_query->the_post();
-                $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://placehold.co/400x600?text=Cover';
+                $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
                 $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
                 $prog = rand(5, 95); // mock reading progress %
         ?>

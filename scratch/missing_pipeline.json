@@ -36,24 +36,6 @@
     "antagonist": "Giám đốc bệnh viện + đường dây mổ chui"
   },
   {
-    "id": 6,
-    "title": "Đội Trưởng Bảo Vệ Khinh Tôi Làm Bảo Vệ Chân Vịt, Mật Vụ Tổng Cục 2 Xuất Hiện Bắt Hắn",
-    "genre": "Mật vụ/Hành động",
-    "theme": "mật vụ quân đội ẩn thân làm bảo vệ, bóc trần đường dây gián điệp kinh tế tại tập đoàn",
-    "setting": "Hà Ngoại, khu tổ hợp văn phòng cao cấp",
-    "protagonist": "Vũ Đình Long, 31t, thiếu tá tình báo quân đội ẩn thân",
-    "antagonist": "Đội trưởng bảo vệ + mạng lưới gián điệp kinh tế"
-  },
-  {
-    "id": 7,
-    "title": "Bị Đuổi Khỏi Công Ty Khởi Nghiệp, Sản Phẩm Của Tôi Thống Trị Top 1 App Store Đông Nam Á",
-    "genre": "Công nghệ/Startup",
-    "theme": "lập trình viên bị đuổi, sản phẩm bị đánh cắp, phản công bằng sản phẩm mới vượt trội hơn",
-    "setting": "Thành Tâm, hệ sinh thái startup công nghệ",
-    "protagonist": "Cao Thanh Tùng, 27t, lập trình viên thiên tài full-stack",
-    "antagonist": "Đồng sáng lập phản bội + quỹ đầu tư nước ngoài"
-  },
-  {
     "id": 8,
     "title": "Nhà Chồng Khinh Tôi Không Biết Nấu Ăn, Tôi Giật Giải Đầu Bếp Số 1 Đông Nam Á Trước Mặt Họ",
     "genre": "Ẩm thực/Hào môn",
@@ -151,15 +133,6 @@
     "setting": "Hà Ngoại, dinh thự gia tộc họ Trần",
     "protagonist": "Bùi Anh Tuấn, 35t, tỷ phú bất động sản ẩn thân",
     "antagonist": "Họ hàng vợ kẻ cả + đối tác kinh doanh gian trá"
-  },
-  {
-    "id": 19,
-    "title": "Nữ Thừa Kế Bị Ép Gả Vào Gia Tộc Lụn Bại, Startup AI Của Cô Được Google Định Giá 1 Tỷ USD",
-    "genre": "AI/Startup/Hào môn",
-    "theme": "nữ thiên tài AI bị gia đình ép gả, startup của cô bùng nổ đúng ngày đám cưới cưỡng bức",
-    "setting": "Thành Tâm, hệ sinh thái công nghệ AI",
-    "protagonist": "Trần Thị Minh Châu, 26t, nhà nghiên cứu AI thiên tài",
-    "antagonist": "Gia đình ép buộc + đối thủ đánh cắp nghiên cứu"
   },
   {
     "id": 20,
@@ -297,15 +270,6 @@
     "antagonist": "Giám đốc ngân hàng tham nhũng + đường dây cho vay sân sau"
   },
   {
-    "id": 35,
-    "title": "Huấn Luyện Viên Bóng Rổ Bị Câu Lạc Bộ Sa Thải, Đội Mới Của Anh Vô Địch Giải Đấu Quốc Gia",
-    "genre": "Bóng rổ/Thể thao",
-    "theme": "HLV thiên tài bị sa thải oan vì tranh chấp nội bộ, dẫn dắt đội yếu nhất lên vô địch quốc gia",
-    "setting": "Thành Tâm, giải bóng rổ quốc gia VBA",
-    "protagonist": "Hoàng Phúc An, 37t, cựu tuyển thủ & HLV thiên tài",
-    "antagonist": "CLB cũ gian trá + trọng tài bán độ"
-  },
-  {
     "id": 36,
     "title": "Chàng Rể Nghèo Bị Mẹ Vợ Ép Ra Ngoài Ngủ, Công Ty Mẹ Ký Hợp Đồng 200 Tỷ Với Gia Đình Vợ Ngay Hôm Sau",
     "genre": "Hào môn/Kinh doanh",
@@ -439,14 +403,5 @@
     "setting": "Thành Tâm, khu an ninh cao cấp",
     "protagonist": "Trần Thị Hồng Nhung, 29t, đội trưởng đặc nhiệm nữ",
     "antagonist": "Ông chủ kiêu ngạo + tổ chức ám sát thuê"
-  },
-  {
-    "id": 51,
-    "title": "Giám Đốc Sản Phẩm Bị Công Ty Unicorn Đuổi, Startup Của Anh Được Y Combinator Chọn Vào Batch",
-    "genre": "Startup/Công nghệ",
-    "theme": "PM thiên tài bị sa thải, startup mới của anh được Y Combinator chấp nhận và định giá cao hơn công ty cũ",
-    "setting": "Thành Tâm, hệ sinh thái startup toàn cầu",
-    "protagonist": "Vũ Hoàng Minh, 30t, Product Manager thiên tài",
-    "antagonist": "CEO công ty cũ + nhà đầu tư VC phản bội"
   }
 ]

@@ -1,0 +1,1 @@
+// File này dùng làm scratchpad để kiểm tra cấu trúc và dung lượng từ của các chương trước khi lưu vào file JSON chính thức.

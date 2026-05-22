@@ -6,7 +6,11 @@ global $tehi_tailwind_page;
 $tehi_tailwind_page = true;
 get_header();
 
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+// ⚠️ Lưu permalink TRƯỚC KHI chạy query để tránh get_permalink() bị overwrite bởi loop
+$directory_page_url = get_permalink();
+
+// Hỗ trợ cả query string (?paged=N) lẫn path-based pagination
+$paged = (get_query_var('paged')) ? get_query_var('paged') : ((isset($_GET['paged']) && intval($_GET['paged']) > 0) ? intval($_GET['paged']) : 1);
 $query_args = [
     'post_type' => 'truyen',
     'posts_per_page' => 24,
@@ -105,7 +109,7 @@ $all_terms = get_terms([
             while ($directory_query->have_posts()) : $directory_query->the_post();
             $views = (int)get_post_meta(get_the_ID(), '_views', true);
             if ($views == 0) $views = rand(100, 5000);
-            $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://placehold.co/400x600?text=Cover';
+            $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
             $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
             
             // Format views
@@ -149,18 +153,20 @@ $all_terms = get_terms([
         <?php endif; ?>
     </section>
 
-    <!-- Pagination -->
+    <!-- Pagination (query string format - works with .html slugs) -->
     <nav class="mkm-pagination" style="margin-top: 40px; display: flex; justify-content: center;">
         <?php
-            $big = 999999999;
+            // Dùng $directory_page_url đã lưu TRƯỚC loop (tránh get_permalink() trả về URL của truyện cuối)
+            $safe_base_url = strtok($directory_page_url, '?');
             echo paginate_links([
-                'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                'format' => '?paged=%#%',
-                'current' => max(1, get_query_var('paged')),
-                'total' => $directory_query->max_num_pages,
+                'base'      => add_query_arg('paged', '%#%', $safe_base_url),
+                'format'    => '',
+                'current'   => max(1, $paged),
+                'total'     => $directory_query->max_num_pages,
                 'prev_text' => '&laquo; Trước',
                 'next_text' => 'Sau &raquo;',
-                'type' => 'plain',
+                'type'      => 'plain',
+                'add_args'  => false,
             ]);
         ?>
     </nav>

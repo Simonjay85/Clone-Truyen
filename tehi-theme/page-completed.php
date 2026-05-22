@@ -160,7 +160,7 @@ $all_terms = get_terms([
                         $views = (int)get_post_meta(get_the_ID(), '_views', true);
                         $author = get_post_meta(get_the_ID(), 'truyen_tacgia', true);
                         if(!$author) $author = 'Đang cập nhật';
-                        $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://placehold.co/400x600?text=Cover';
+                        $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
                         $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
                 ?>
 

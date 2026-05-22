@@ -35,6 +35,23 @@ for($i=0; $i<count($chapters); $i++) {
 }
 ?>
 
+<!-- CẤU TRÚC SEO SCHEMA BẮT ĐẦU -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebPage",
+  "name": "<?php echo esc_js(get_the_title()); ?> - Truyện <?php echo esc_js($truyen_title); ?>",
+  "url": "<?php echo esc_url(get_permalink()); ?>",
+  "description": "Đọc ngay chương <?php echo esc_js(get_the_title()); ?> của truyện <?php echo esc_js($truyen_title); ?> tại <?php echo esc_js(get_bloginfo('name')); ?>. Đọc truyện online hoàn toàn miễn phí!",
+  "isPartOf": {
+    "@type": "Book",
+    "name": "<?php echo esc_js($truyen_title); ?>",
+    "url": "<?php echo esc_url($truyen_link); ?>"
+  }
+}
+</script>
+<!-- CẤU TRÚC SEO SCHEMA KẾT THÚC -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
