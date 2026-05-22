@@ -1,0 +1,222 @@
+# -*- coding: utf-8 -*-
+import json
+import os
+
+story = {
+    "title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
+    "author": "Lê Hoàng Nam",
+    "genre": "Sảng Văn",
+    "intro": '<p><strong>"Không có tập đoàn Hoàng Gia nâng đỡ, anh chỉ là một thằng phục vụ mặc vest vô dụng!"</strong></p><p><strong>Lời sỉ nhục của người yêu cũ kiêm Trưởng phòng thương hiệu vang lên giữa sảnh tiệc năm sao chói lọi, trước sự chứng kiến của hàng trăm đối tác lớn. Trần Gia Huy bị bảo vệ lôi ra ngoài đường dưới cơn mưa tầm tã vì bị vu oan biển thủ tiền đặt phòng VIP.</strong></p><hr /><p>Thế nhưng, họ không ngờ Trần Gia Huy đã âm thầm nắm giữ toàn bộ báo cáo vận hành Opera PMS phản ánh sai phạm thuế hàng chục tỷ đồng và liên kết với nữ luật sư tài chính Nguyễn Vũ Phương Anh để thực hiện cú thâu tóm nợ xấu ngoạn mục từ VAMC. Chỉ trong hai mươi bốn giờ nghẹt thở, anh quay trở lại không phải để xin việc, mà để mua trọn chuỗi khách sạn năm sao và tống cổ những kẻ phản bội vào tù.</p>',
+    "seo": {
+        "focus_keyword": "bi duoi khoi khach san toi mua luon chuoi nam sao",
+        "seo_title": "Bị Đuổi Khỏi Khách Sạn Tôi Mua Luôn Chuỗi 5 Sao",
+        "seo_description": "Trần Gia Huy bị vu oan đuổi khỏi khách sạn 5 sao liền bắt tay với nữ tài phiệt thâu tóm nợ xấu mua trọn chuỗi khách sạn. Vả mặt cực mạnh."
+    },
+    "chapters": []
+}
+
+# Chương 1
+c1_content = """
+<p>Ánh đèn chùm pha lê khổng lồ trong sảnh tiệc Grand Ballroom của khách sạn năm sao Hoàng Gia tỏa ra những tia sáng lộng lẫy, phản chiếu lên hàng trăm ly rượu vang đắt tiền.</p>
+<p>Hôm nay là đêm tiệc trao giải du lịch danh giá nhất Sài Gòn, nơi hội tụ của giới thượng lưu và các đối tác tài chính lớn.</p>
+<p>Thế nhưng, ngay giữa trung tâm sảnh tiệc, Trần Gia Huy đang bị hai tên bảo vệ lực lưỡng bóp chặt bắp tay giữ chặt tại chỗ.</p>
+<p>Lồng ngực anh phập phồng dữ dội dưới lớp áo vest Armani sang trọng, mồ hôi lạnh rịn ra thấm đẫm hai bên thái dương.</p>
+<p>"Trần Gia Huy, anh nghĩ mình có thể qua mặt được ban hội đồng quản trị sao?"</p>
+<p>Giọng nói sắc lẹm, đầy khinh bỉ của Nguyễn Mỹ Hạnh, Trưởng phòng thương hiệu và cũng là người yêu cũ của anh, vang lên dồn dập.</p>
+<p>Mỹ Hạnh đứng khoanh tay, đôi giày cao gót hiệu Louboutin gõ xuống nền đá cẩm thạch bóng loáng tạo ra những tiếng động sắc nhọn đầy kiêu kỳ.</p>
+<p>Đứng bên cạnh ả là Lê Khắc Huy, Giám đốc điều hành mới của khách sạn, gã nở một nụ cười khinh bỉ đầy đắc ý.</p>
+<p>"Anh Huy, đây là biên lai chuyển khoản từ Techcombank của khách VIP phòng Tổng thống trị giá hai trăm triệu đồng."</p>
+<p>"Dữ liệu hệ thống Opera PMS cho thấy chính tài khoản quản lý của anh đã xóa giao dịch này để bỏ túi riêng."</p>
+<p>"Chúng tôi đã báo cho công an quận một đến làm việc."</p>
+<p>Gia Huy nhìn thẳng vào khuôn mặt tráo trở của Lê Khắc Huy, răng nghiến chặt đến mức các cơ hàm nổi lên cuồn cuộn.</p>
+<p>Anh biết mình đã bị gài bẫy một cách tinh vi để Lê Khắc Huy cướp đoạt chiếc ghế Tổng giám đốc vận hành sắp tới.</p>
+<p>"Lê Khắc Huy, mày nghĩ tao không biết tài khoản đăng nhập Opera kia là do mày dùng IP nội bộ giả mạo sao?"</p>
+<p>"Mỹ Hạnh, cô vì gã này mà sẵn sàng chà đạp lên danh dự của tôi?"</p>
+<p>Mỹ Hạnh lạnh lùng tiến lại gần, giơ tay cắt phăng chiếc thẻ nhân viên bằng nhựa cứng đeo trên cổ Gia Huy rồi ném thẳng xuống đất cộp.</p>
+<p>"Gia Huy, tỉnh mộng đi."</p>
+<p>"Không có tập đoàn Hoàng Gia này nâng đỡ, anh chỉ là một thằng phục vụ mặc vest vô dụng mà thôi."</p>
+<p>"Lôi nó ra ngoài!"</p>
+<p>Hai tên bảo vệ thô bạo đẩy Gia Huy ra khỏi sảnh tiệc sang trọng, ném anh xuống vỉa hè đường Đồng Khởi dưới cơn mưa mùa hạ tầm tã.</p>
+<p>Nước mưa lạnh buốt dội xuống mái tóc, chảy dài trên khuôn mặt đang tái xám của anh.</p>
+<p>Gia Huy siết chặt nắm tay đập mạnh xuống nền bê tông ướt đẫm, các đầu ngón tay rỉ máu đỏ tươi hòa vào dòng nước mưa chảy tràn.</p>
+<p>Nhưng trong ánh mắt anh không hề có sự đầu hàng, mà chỉ có ngọn lửa trả thù bùng cháy dữ dội.</p>
+<p>"Mỹ Hạnh, Lê Khắc Huy... các người sẽ phải quỳ gối xin lỗi tôi ngay tại cái sảnh tiệc này!"</p>
+"""
+story["chapters"].append({"title": "Chương 1: Đêm Tiệc Sỉ Nhục", "content": c1_content})
+
+# Chương 2
+c2_content = """
+<p>Dưới làn mưa xối xả, một chiếc xe sedan siêu sang Rolls-Royce Ghost màu đen bóng loáng âm thầm dừng lại sát mép vỉa hè nơi Gia Huy đang đứng.</p>
+<p>Cửa kính xe hạ xuống, lộ ra khuôn mặt thanh tú, sắc sảo của một người phụ nữ trẻ tuổi.</p>
+<p>Nguyễn Vũ Phương Anh, Luật sư tài chính đại diện cho Quỹ đầu tư mạo hiểm VinaCapital, đưa mắt nhìn Gia Huy.</p>
+<p>Mái tóc cô cắt ngắn ngang vai đầy cá tính, đôi khuyên tai bằng bạch kim lấp lánh dưới ánh đèn đường vàng vọt.</p>
+<p>"Anh Gia Huy, lên xe đi."</p>
+<p>"Tôi không thích nói chuyện dưới mưa."</p>
+<p>Gia Huy hơi ngập ngừng, nhưng nhìn vào ánh mắt lý tính, nghiêm nghị của Phương Anh, anh mở cửa bước vào không gian sang trọng, ấm áp bên trong chiếc xe.</p>
+<p>Phương Anh đưa cho anh một chiếc khăn bông khô ráo, đôi gót giày cao gót nhọn của cô khẽ gác chéo, toát ra phong thái của một nữ tài phiệt thực thụ.</p>
+<p>"Tôi đã theo dõi công tác vận hành chuỗi khách sạn Hoàng Gia của anh suốt ba năm qua."</p>
+<p>"Anh là người duy nhất nắm giữ được tệp dữ liệu khách hàng VIP chiếm sáu mươi phần trăm doanh thu của chuỗi."</p>
+<p>"Hôm nay anh bị Lê Khắc Huy đá văng ra ngoài, đó chính là cơ hội của chúng ta."</p>
+<p>Gia Huy dùng khăn lau khô mặt, nhịp thở dần ổn định lại, anh nhìn thẳng vào nữ luật sư.</p>
+<p>"Cô muốn thâu tóm khách sạn Hoàng Gia?"</p>
+<p>"Đúng vậy."</p>
+<p>Phương Anh rút từ trong cặp da ra một bản báo cáo tài chính dày cộp có đóng dấu mật.</p>
+<p>"Tập đoàn mẹ Hoàng Gia Group đang gánh khoản nợ xấu trị giá một ngàn tỷ đồng tại ngân hàng Techcombank và đã bị chuyển sang VAMC."</p>
+<p>"Tôi đại diện cho Quỹ đầu tư muốn mua lại khoản nợ xấu này để chuyển đổi thành cổ phần chi phối khách sạn."</p>
+<p>"Nhưng tôi cần một lý do pháp lý đủ mạnh để ép chủ tịch tập đoàn phải ký thỏa thuận chuyển nhượng với giá rẻ."</p>
+<p>Ánh mắt Phương Anh sắc sảo như muốn thấu suốt tâm can Gia Huy, cô đặt điều kiện cực kỳ khắt khe:</p>
+<p>"Trong vòng hai mươi bốn giờ tới, anh phải cung cấp cho tôi bản báo cáo kiểm toán nội bộ gốc chứng minh Lê Khắc Huy đã trốn thuế và rửa tiền thông qua hệ thống đặt phòng ảo Opera PMS."</p>
+<p>"Nếu anh làm được, tôi sẽ mua lại khoản nợ xấu và đưa anh trở lại làm Tổng giám đốc chuỗi Hoàng Gia."</p>
+<p>"Nếu anh thất bại, công an quận một sẽ khởi tố anh tội biển thủ hai trăm triệu đồng, và tôi sẽ không tốn một giây để cứu anh."</p>
+<p>Gia Huy siết chặt chiếc khăn tắm trong tay, ánh mắt anh lóe lên tia sáng đầy tự tin.</p>
+<p>"Tôi đồng ý."</p>
+<p>"Báo cáo gốc nằm trong chiếc USB được mã hóa tôi giấu ở két sắt hầm B2 khách sạn."</p>
+<p>"Tôi sẽ lấy nó ra trước chín giờ sáng mai!"</p>
+"""
+story["chapters"].append({"title": "Chương 2: Điều Kiện Của Nữ Luật Sư", "content": c2_content})
+
+# Chương 3
+c3_content = """
+<p>Đêm khuya, Sài Gòn vẫn nhộn nhịp ánh đèn, Gia Huy âm thầm quay trở lại hầm B2 của khách sạn Hoàng Gia dưới sự giúp đỡ của một người thợ sửa xe quen thuộc.</p>
+<p>Anh mặc bộ đồ bảo trì màu xanh sẫm, đội mũ sùm sụp để che khuất khuôn mặt đang căng thẳng tột độ.</p>
+<p>Trong khi đó, ở phòng làm việc Tổng giám đốc trên tầng cao nhất, Lê Khắc Huy và Nguyễn Mỹ Hạnh đang khui rượu sâm-panh ăn mừng chiến thắng.</p>
+<p>"Hạnh à, ngày mai khi tập đoàn đối thủ ký biên bản ghi nhớ sáp nhập, toàn bộ dữ liệu đặt phòng cũ sẽ bị xóa sạch."</p>
+<p>"Thằng Huy sẽ phải gánh toàn bộ tội trốn thuế hàng chục tỷ đồng của chúng ta."</p>
+<p>"Gã cảnh sát quận một đã nhận tiền của anh rồi, sáng mai lệnh bắt khẩn cấp sẽ được ký."</p>
+<p>Mỹ Hạnh nhấp một ngụm rượu, nụ cười kiêu kỳ hiện rõ trên môi.</p>
+<p>"Em chỉ tiếc là không được nhìn thấy bộ dạng quỳ gối xin tha của nó khi bị còng tay đi."</p>
+<p>Lúc này ở hầm B2, Gia Huy đang quỳ rạp dưới gầm tủ điện kỹ thuật, ngón tay anh mò mẫm tìm kiếm hộp sắt nhỏ giấu kín phía sau bảng mạch điện tử.</p>
+<p>Mồ hôi chảy ròng ròng xuống cằm, nhịp tim đập thình thịch như đánh trống liên hồi trong lồng ngực.</p>
+<p>Chỉ cần một nhân viên an ninh đi ngang qua phát hiện, anh sẽ bị khép tội đột nhập trái phép và đi tù ngay lập tức.</p>
+<p>"Cạch!"</p>
+<p>Ngón tay anh chạm vào mép hộp sắt sắc nhọn, kéo mạnh ra.</p>
+<p>Chiếc USB màu đen chứa dữ liệu gốc Opera PMS hiển thị dòng chữ "HoangGia_Confidential_2026" nằm nguyên vẹn bên trong.</p>
+<p>Đột nhiên, tiếng gót giày và ánh đèn pin quét mạnh về phía góc khuất hầm kỹ thuật.</p>
+<p>"Ai đang ở đó? Đứng im!"</p>
+<p>Tiếng hét của đội trưởng bảo vệ vang lên dồn dập.</p>
+<p>Gia Huy nhanh chóng nhét chiếc USB vào túi quần, lăn người lẩn tránh vào sau chiếc tủ phát điện công suất lớn.</p>
+<p>Hơi thở anh nghẹn lại, lưng áp sát vào bức tường bê tông lạnh ngắt, mắt nhìn trừng trừng vào bóng đèn pin đang quét qua quét lại chỉ cách chân anh đúng hai mươi xăng-ti-mét.</p>
+<p>Trải qua năm phút căng thẳng như nghẹt thở, đội bảo vệ mới bỏ đi sang hướng khác.</p>
+<p>Gia Huy vội vã luồn lách theo lối thoát hiểm lên mặt đất, bước lên chiếc xe Rolls-Royce của Phương Anh đang chờ sẵn.</p>
+<p>"Tôi đã lấy được dữ liệu!"</p>
+"""
+story["chapters"].append({"title": "Chương 3: Đột Nhập Hầm B2", "content": c3_content})
+
+# Chương 4
+c4_content = """
+<p>Chín giờ sáng ngày hôm sau, tại phòng hội nghị cấp cao của Tổng cục Thuế Thành phố Hồ Chí Minh, không khí căng thẳng bao trùm khi đoàn kiểm tra đặc biệt của Cục Thuế đang đối diện với ban lãnh đạo tập đoàn Hoàng Gia.</p>
+<p>Ông Nguyễn Văn Hoàng, Chủ tịch tập đoàn Hoàng Gia Group, khuôn mặt tái mét, tay siết chặt cốc nước đến mức run rẩy.</p>
+<p>Lê Khắc Huy đứng bên cạnh ra sức giải trình với các cán bộ thanh tra.</p>
+<p>"Thưa cán bộ, toàn bộ dữ liệu kế toán của chúng tôi đều minh bạch."</p>
+<p>"Vụ việc sai lệch thông tin phòng VIP là do cá nhân Trần Gia Huy biển thủ, chúng tôi đã gửi đơn khởi tố lên công an."</p>
+<p>Đột nhiên, cánh cửa phòng hội nghị bị đẩy mạnh ra.</p>
+<p>Gia Huy bước vào với phong thái vô cùng tự tin, đi bên cạnh anh là Nguyễn Vũ Phương Anh trong trang phục luật sư sắc sảo.</p>
+<p>"Lê Khắc Huy, mày vẫn muốn đổ tội cho tao sao?"</p>
+<p>Gia Huy cắm chiếc USB màu đen vào cổng kết nối của máy tính trung tâm phòng họp.</p>
+<p>Trên màn hình lớn lập tức hiện lên tệp kết xuất dữ liệu Opera PMS nguyên bản, hiển thị hàng trăm giao dịch đặt phòng ảo trị giá hơn sáu mươi tỷ đồng từ năm 2024 đến nay.</p>
+<p>Điều kinh khủng hơn, sơ đồ dòng tiền cho thấy toàn bộ số tiền này được chuyển qua tài khoản cá nhân của Lê Khắc Huy và Nguyễn Mỹ Hạnh mở tại Techcombank, hoàn toàn không được hạch toán vào doanh thu báo cáo thuế của khách sạn.</p>
+<p>Mỹ Hạnh đứng bên cạnh nhìn màn hình lớn, đôi mắt ả co rút lại, toàn thân run rẩy dữ dội, chiếc điện thoại trên tay rơi xuống nền nhà vỡ tan.</p>
+<p>"Không... làm sao nó có thể lấy được tệp dữ liệu mã hóa này..."</p>
+<p>Phương Anh bước lên, nện mạnh gót giày xuống sàn cẩm thạch vang lên âm thanh sắc gọn.</p>
+<p>"Thưa ban thanh tra, đây là bằng chứng gốc từ hệ thống Opera PMS chưa bị can thiệp."</p>
+<p>"Chúng tôi cũng đã nộp kèm sao kê tài khoản ngân hàng thụ hưởng của các đối tượng liên quan."</p>
+<p>"Đồng thời, Quỹ đầu tư của chúng tôi đã chính thức hoàn tất thủ tục mua lại một ngàn tỷ đồng nợ xấu của Hoàng Gia Group từ VAMC vào lúc tám giờ ba mươi phút sáng nay."</p>
+<p>Phương Anh quay sang nhìn ông Chủ tịch Nguyễn Văn Hoàng với ánh mắt lạnh lùng đầy quyền lực.</p>
+<p>"Thưa ông Hoàng, hiện tại chúng tôi là chủ nợ lớn nhất nắm giữ toàn bộ tài sản thế chấp là chuỗi khách sạn Hoàng Gia."</p>
+<p>"Nếu ông không lập tức ký văn bản chấp thuận chuyển đổi nợ thành cổ phần chi phối cho chúng tôi, chúng tôi sẽ tiến hành siết nợ phát mại tài sản ngay lập tức!"</p>
+"""
+story["chapters"].append({"title": "Chương 4: Bằng Chứng Thép Xuất Hiện", "content": c4_content})
+
+# Chương 5
+c5_content = """
+<p>Chủ tịch Nguyễn Văn Hoàng nhìn văn bản mua bán nợ đóng dấu đỏ chót của VAMC và Cục Thuế đặt trên bàn, khuôn mặt ông già nua lập tức xám ngoét như tro tàn.</p>
+<p>Ông hiểu rõ tập đoàn Hoàng Gia đã hoàn toàn rơi vào tay đối thủ.</p>
+<p>Bàn tay ông run rẩy cầm chiếc bút ký tên vào bản thỏa thuận chuyển nhượng cổ phần chi phối chuỗi khách sạn Hoàng Gia cho Quỹ đầu tư của Phương Anh.</p>
+<p>"Tôi... tôi đồng ý ký..."</p>
+<p>Lê Khắc Huy lao tới định giật lấy chiếc bút, khuôn mặt gã vặn vẹo vì giận dữ và hoảng loạn.</p>
+<p>"Chủ tịch! Không thể ký! Ký là chúng ta mất trắng!"</p>
+<p>"Bảo vệ đâu! Lôi thằng Huy và con mụ luật sư này ra ngoài cho tôi!"</p>
+<p>Gia Huy giơ tay ngăn lại, ánh mắt anh lạnh lùng nhìn thẳng vào mặt Lê Khắc Huy.</p>
+<p>"Lê Khắc Huy, bảo vệ bây giờ nghe lệnh của ai?"</p>
+<p>Đúng lúc đó, bốn cảnh sát hình sự của công an quận một bước vào phòng họp, cầm theo lệnh bắt giữ khẩn cấp.</p>
+<p>"Lê Khắc Huy, Nguyễn Mỹ Hạnh, hai người bị bắt vì hành vi cố ý trốn thuế quy mô lớn và vu khống công dân."</p>
+<p>Chiếc còng số tám sắc lạnh vang lên tiếng "cạch" khô khốc khóa chặt hai tay Lê Khắc Huy.</p>
+<p>Gã khuỵu gối xuống sàn nhà, mồ hôi lạnh chảy ròng ròng làm nhòe cả lớp phấn trang điểm đắt tiền.</p>
+<p>Mỹ Hạnh thì gào khóc thảm thiết, cố bấu víu lấy vạt áo vest của Gia Huy.</p>
+<p>"Huy ơi! Em sai rồi! Là thằng Huy nó ép em làm!"</p>
+<p>"Xin anh cứu em! Chúng ta từng yêu nhau ba năm mà!"</p>
+<p>Gia Huy lạnh lùng gạt tay ả ra, ánh mắt không hề có một chút thương hại.</p>
+<p>"Khi cô cắt thẻ nhân viên của tôi ném xuống đất, cô có nghĩ đến tình nghĩa ba năm không?"</p>
+<p>"Đi mà tự giải trình với pháp luật đi!"</p>
+<p>Cảnh sát áp giải hai kẻ phản bội đi khuất trước sự kinh sợ của toàn bộ ban lãnh đạo tập đoàn Hoàng Gia.</p>
+"""
+story["chapters"].append({"title": "Chương 5: Bắt Giữ Kẻ Phản Bội", "content": c5_content})
+
+# Chương 6
+c6_content = """
+<p>Mặc dù Lê Khắc Huy và Nguyễn Mỹ Hạnh đã bị bắt, thế nhưng cuộc chiến thâu tóm vẫn chưa hoàn toàn kết thúc.</p>
+<p>Phó Chủ tịch tập đoàn Hoàng Gia, ông Trần Thế Xương — một kẻ cáo già liên kết với tập đoàn đầu tư nước ngoài — quyết định tung đòn phản công cuối cùng.</p>
+<p>Ông ta tổ chức một cuộc họp báo khẩn cấp tại trung tâm báo chí thành phố, tuyên bố rằng giao dịch mua bán nợ của VAMC với Quỹ đầu tư của Phương Anh là trái pháp luật và có dấu hiệu thông đồng nội bộ.</p>
+<p>"Chúng tôi sẽ nộp đơn lên Tòa án nhân dân thành phố yêu cầu đình chỉ quyền sở hữu của Quỹ đầu tư đó."</p>
+<p>"Đồng thời, tập đoàn nước ngoài của chúng tôi đã chuẩn bị sẵn năm trăm tỷ đồng tiền mặt để mua lại toàn bộ cổ phần Hoàng Gia."</p>
+<p>Đòn tấn công này ngay lập tức làm chao đảo dư luận, khiến giá cổ phiếu của tập đoàn Hoàng Gia liên tục giảm sàn trên sàn chứng khoán.</p>
+<p>Tại văn phòng luật của mình, Phương Anh đứng bên cửa sổ kính lớn, đôi tay cô siết chặt đến trắng bệch các đầu ngón tay.</p>
+<p>Khủng hoảng pháp lý và truyền thông hai mươi bốn giờ đang đe dọa thổi bay toàn bộ công sức của cô và Gia Huy.</p>
+<p>"Gia Huy, tòa án đang xem xét thụ lý đơn yêu cầu áp dụng biện pháp khẩn cấp tạm thời của Trần Thế Xương."</p>
+<p>"Nếu tòa ký quyết định đình chỉ, chúng ta sẽ bị phong tỏa tài sản và mất trắng cơ hội tiếp quản khách sạn Hoàng Gia trong ngày mai."</p>
+<p>Gia Huy đứng thẳng người bên cạnh cô, khuôn mặt anh vẫn giữ được sự bình tĩnh đáng kinh ngạc của một quản lý vận hành dày dạn kinh nghiệm.</p>
+<p>"Trang Anh, cô đừng lo."</p>
+<p>"Tôi đã lường trước việc Trần Thế Xương sẽ cấu kết với tập đoàn ngoại bang để tẩu tán tài sản."</p>
+<p>"Tôi có một bằng chứng cực kỳ quan trọng về giao dịch chuyển tiền phi pháp của ông ta tại Singapore."</p>
+<p>"Hãy để tôi trực tiếp đến tòa án thành phố giải quyết việc này!"</p>
+"""
+story["chapters"].append({"title": "Chương 6: Khủng Hoảng Pháp Lý", "content": c6_content})
+
+# Chương 7
+c7_content = """
+<p>Chiều hôm đó, tại phòng tiếp nhận hồ sơ của Tòa án nhân dân Thành phố Hồ Chí Minh, Trần Thế Xương cùng luật sư riêng đang đắc ý chuẩn bị nhận quyết định áp dụng biện pháp khẩn cấp tạm thời phong tỏa dự án.</p>
+<p>Gia Huy cùng Phương Anh bất ngờ bước vào, mang theo một tập tài liệu dày đóng dấu đỏ của Cục Phòng chống rửa tiền thuộc Ngân hàng Nhà nước Việt Nam.</p>
+<p>"Trần Thế Xương, ông nghĩ mình có thể tẩu tán tài sản một cách hợp pháp sao?"</p>
+<p>Gia Huy ném tập tài liệu lên bàn làm việc của thẩm phán thụ lý vụ án.</p>
+<p>Tài liệu hiển thị chi tiết lịch sử chuyển tiền ngoại tệ trị giá mười triệu đô-la Mỹ từ tài khoản của tập đoàn đối thủ ngoại quốc vào tài khoản cá nhân của Trần Thế Xương mở tại ngân hàng HSBC chi nhánh Singapore.</p>
+<p>Mục đích giao dịch ghi rõ: "Phí dàn xếp sáp nhập và thôn tính chuỗi khách sạn Hoàng Gia".</p>
+<p>Thẩm phán nhìn thấy con dấu xác thực của Cục Phòng chống rửa tiền và Cục Cảnh sát kinh tế, khuôn mặt ông lập tức trở nên nghiêm nghị.</p>
+<p>"Thưa thẩm phán, đây là hành vi cố ý chuyển dịch tài sản trái phép ra nước ngoài và nhận hối lộ để làm tổn hại lợi ích doanh nghiệp trong nước."</p>
+<p>Phương Anh dõng dạc tuyên bố bằng giọng nói đanh thép đầy tính thuyết phục pháp lý.</p>
+<p>"Yêu cầu áp dụng biện pháp khẩn cấp của Trần Thế Xương hoàn toàn dựa trên các chứng cứ ngụy tạo nhằm kéo dài thời gian tẩu tán tài sản."</p>
+<p>Trần Thế Xương nhìn tập tài liệu, toàn thân gã run bần bật, mồ hôi rịn ra ướt đẫm cả chiếc áo sơ mi đắt tiền.</p>
+<p>Gã quỳ sụp xuống sàn phòng tiếp dân, mặt mũi xám ngoét không còn một giọt máu.</p>
+<p>"Làm sao... làm sao các người có thể liên kết được với Cục phòng chống rửa tiền nhanh như vậy..."</p>
+<p>Thẩm phán lập tức ký quyết định bác bỏ đơn yêu cầu của Trần Thế Xương và chuyển toàn bộ hồ sơ vụ án sang cơ quan điều tra hình sự.</p>
+<p>Gia Huy nhìn đối thủ cuối cùng bị áp giải đi, thở phào nhẹ nhõm, lồng ngực phập phồng sảng khoái.</p>
+"""
+story["chapters"].append({"title": "Chương 7: Đập Tan Âm Mưu Cuối Cùng", "content": c7_content})
+
+# Chương 8
+c8_content = """
+<p>Một tháng sau, đêm tiệc kỷ niệm mười năm thành lập chuỗi khách sạn năm sao Hoàng Gia được tổ chức vô cùng hoành tráng ngay tại sảnh Grand Ballroom lộng lẫy.</p>
+<p>Ánh đèn chùm pha lê chiếu sáng rực rỡ lên hàng trăm quan khách thượng lưu đang nâng ly chúc mừng.</p>
+<p>Trần Gia Huy đứng ở vị trí trung tâm sân khấu lớn với tư cách là Tổng giám đốc kiêm cổ đông lớn nhất của chuỗi khách sạn năm sao Hoàng Gia.</p>
+<p>Anh mặc bộ vest đuôi tôm vô cùng lịch lãm, phong thái tự tin và uy nghiêm toát ra từ từng cử chỉ.</p>
+<p>Bên cạnh anh, Nguyễn Vũ Phương Anh diện chiếc đầm dạ hội màu trắng tinh khôi lấp lánh như một nữ hoàng tài chính.</p>
+<p>Cô quay sang nhìn Gia Huy, đôi mắt phượng vốn dĩ nghiêm nghị, lý tính nay tràn ngập niềm hạnh phúc dịu dàng và tình yêu chân thành tự nguyện.</p>
+<p>Cô chủ động bước lại gần, đặt bàn tay mềm mại lên vai anh, ngón tay khẽ siết nhẹ đầy tin cậy.</p>
+<p>"Gia Huy, anh đã chứng minh cho toàn bộ giới tài chính Sài Gòn thấy năng lực xuất sắc của mình."</p>
+<p>"Hôm nay, trước sự chứng kiến của tất cả các đối tác lớn, tôi muốn đặt một điều kiện hợp tác mới với anh."</p>
+<p>Gia Huy mỉm cười, cầm lấy bàn tay cô khẽ hôn nhẹ lên mu bàn tay.</p>
+<p>"Phương Anh, em muốn đặt điều kiện gì nữa đây?"</p>
+<p>"Tôi muốn chúng ta không chỉ là đối tác trên thương trường."</p>
+<p>"Tôi muốn cùng anh quản lý cả chuỗi khách sạn cuộc đời này."</p>
+<p>"Anh đồng ý ký vào bản hợp đồng trọn đời này chứ?"</p>
+<p>Gia Huy nhìn sâu vào đôi mắt long lanh chứa chan tình cảm của người con gái kiêu hãnh.</p>
+<p>"Tôi hoàn toàn đồng ý, thưa nữ luật sư của đời tôi!"</p>
+<p>Tiếng vỗ tay chúc mừng vang dội khắp sảnh tiệc Grand Ballroom lộng lẫy, tiếng nhạc du dương cất lên đánh dấu màn vả mặt huy hoàng và sự khởi đầu của một tình yêu tài phiệt ngọt ngào, bền vững.</p>
+"""
+story["chapters"].append({"title": "Chương 8: Vị Vua Mới Của Hoàng Gia", "content": c8_content})
+
+# Save JSON
+os.makedirs("/Users/aaronnguyen/TN/App/doctieuthuyet/scratch", exist_ok=True)
+with open("/Users/aaronnguyen/TN/App/doctieuthuyet/scratch/rewrite_2099_v13.json", "w", encoding="utf-8") as f:
+    json.dump(story, f, ensure_ascii=False, indent=2)
+
+print("Generated rewrite_2099_v13.json successfully!")

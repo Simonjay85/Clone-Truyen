@@ -194,6 +194,18 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     box-shadow: 0 4px 12px rgba(16,185,129,0.2);
 }
 .mkm-btn-sec:hover { background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #fff; transform: translateY(-1px); }
+.mkm-btn-follow {
+    width: 100%; text-align: center; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff;
+    padding: 14px 0; border-radius: 12px; font-weight: 700; border: none; cursor: pointer;
+    transition: all .2s; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: 0 4px 12px rgba(139,92,246,0.2); outline: none;
+}
+.mkm-btn-follow:hover { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: #fff; transform: translateY(-1px); }
+.mkm-btn-follow.followed {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    box-shadow: 0 4px 12px rgba(107,114,128,0.2);
+}
+.mkm-btn-follow.followed:hover { background: linear-gradient(135deg, #4b5563 0%, #374151 100%); }
 
 /* Stats col */
 .mkm-stats-col {
@@ -289,6 +301,9 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
                 <div class="mkm-action-btns" style="margin-top: 20px;">
                     <a href="<?php echo esc_url($first_chapter_url); ?>" class="mkm-btn-prim">📖 Đọc ngay (Từ đầu)</a>
                     <a href="<?php echo esc_url($latest_chapter_url); ?>" class="mkm-btn-sec">★ Đọc chương mới nhất</a>
+                    <button id="btn-follow-story" class="mkm-btn-follow">
+                        <span class="follow-icon">🔖</span> <span class="follow-text">Theo dõi truyện</span>
+                    </button>
                 </div>
 
                 <!-- Extra Quick Stats moved under the buttons and minimized -->
@@ -359,7 +374,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
                 <div class="mkm-synopsis-box">
                     <div id="synopFull" style="display:none;"><?php echo nl2br(esc_html($synopsis_full)); ?></div>
                     <div id="synopShort"><?php echo nl2br(esc_html($synopsis_short)); ?></div>
-                    <a href="#" onclick="event.preventDefault(); var s=document.getElementById('synopShort'),f=document.getElementById('synopFull'); if(f.style.display==='none'){f.style.display='block';s.style.display='none';this.textContent='▲ Thu gọn';}else{f.style.display='none';s.style.display='block';this.textContent='▼ Xem toàn bộ';}">▼ Xem toàn bộ</a>
+                    <a href="#" onclick="event.preventDefault(); var s=document.getElementById('synopShort'),f=document.getElementById('synopFull'); if(f.style.display !== 'block'){f.style.display='block';s.style.display='none';this.textContent='▲ Thu gọn';}else{f.style.display='none';s.style.display='block';this.textContent='▼ Xem toàn bộ';}">▼ Xem toàn bộ</a>
                 </div>
 
                 <!-- Action buttons moved to left column -->
@@ -534,6 +549,40 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Follow / Unfollow logic
+        const followBtn = document.getElementById('btn-follow-story');
+        if (followBtn) {
+            const storyId = parseInt('<?php echo get_the_ID(); ?>');
+            let followed = JSON.parse(localStorage.getItem('tehi_followed_stories') || '[]');
+            
+            function updateFollowUI() {
+                const isFollowed = followed.includes(storyId);
+                if (isFollowed) {
+                    followBtn.classList.add('followed');
+                    followBtn.querySelector('.follow-icon').textContent = '✓';
+                    followBtn.querySelector('.follow-text').textContent = 'Đang theo dõi';
+                } else {
+                    followBtn.classList.remove('followed');
+                    followBtn.querySelector('.follow-icon').textContent = '🔖';
+                    followBtn.querySelector('.follow-text').textContent = 'Theo dõi truyện';
+                }
+            }
+            
+            updateFollowUI();
+            
+            followBtn.addEventListener('click', function() {
+                followed = JSON.parse(localStorage.getItem('tehi_followed_stories') || '[]');
+                const index = followed.indexOf(storyId);
+                if (index > -1) {
+                    followed.splice(index, 1);
+                } else {
+                    followed.push(storyId);
+                }
+                localStorage.setItem('tehi_followed_stories', JSON.stringify(followed));
+                updateFollowUI();
+            });
+        }
+
         // Star selection logic
         const stars = document.querySelectorAll('#tehiStarRating span');
         const ratingInput = document.getElementById('tehiSelectedRating');

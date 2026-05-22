@@ -1,0 +1,91 @@
+{
+  "id": 2020,
+  "date": "2026-05-20T02:23:33",
+  "date_gmt": "2026-05-20T02:23:33",
+  "guid": {
+    "rendered": "https://doctieuthuyet.com/truyen/he-thong-tri-tue-nhan-tao-xuyen-khong-den-tuong-lai/"
+  },
+  "modified": "2026-05-20T23:17:09",
+  "modified_gmt": "2026-05-20T23:17:09",
+  "slug": "he-thong-tri-tue-nhan-tao-xuyen-khong-den-tuong-lai",
+  "status": "publish",
+  "type": "truyen",
+  "link": "https://doctieuthuyet.com/truyen/he-thong-tri-tue-nhan-tao-xuyen-khong-den-tuong-lai/",
+  "title": {
+    "rendered": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai"
+  },
+  "content": {
+    "rendered": "<p>Năm 2026, thế giới chìm trong đống đổ nát sau một thảm họa toàn cầu.</p>\n<p>Giữa một phòng thí nghiệm hoang tàn, một cơ thể sinh học nhân tạo bất ngờ mở mắt.</p>\n<p>Bên trong cơ thể đó không phải là một linh hồn</p>\n",
+    "protected": false
+  },
+  "excerpt": {
+    "rendered": "<p>Năm 2026, thế giới chìm trong đống đổ nát sau một thảm họa toàn cầu. Giữa một phòng thí nghiệm hoang tàn, một cơ thể sinh học nhân tạo bất ngờ mở mắt. Bên trong cơ thể đó không phải là một linh hồn</p>\n",
+    "protected": false
+  },
+  "featured_media": 2022,
+  "comment_status": "open",
+  "ping_status": "closed",
+  "template": "",
+  "the_loai": [],
+  "class_list": [
+    "post-2020",
+    "truyen",
+    "type-truyen",
+    "status-publish",
+    "has-post-thumbnail",
+    "hentry"
+  ],
+  "_links": {
+    "self": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/truyen/2020",
+        "targetHints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      }
+    ],
+    "collection": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/truyen"
+      }
+    ],
+    "about": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/types/truyen"
+      }
+    ],
+    "replies": [
+      {
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/comments?post=2020"
+      }
+    ],
+    "wp:featuredmedia": [
+      {
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/media/2022"
+      }
+    ],
+    "wp:attachment": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/media?parent=2020"
+      }
+    ],
+    "wp:term": [
+      {
+        "taxonomy": "the_loai",
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/the_loai?post=2020"
+      }
+    ],
+    "curies": [
+      {
+        "name": "wp",
+        "href": "https://api.w.org/{rel}",
+        "templated": true
+      }
+    ]
+  }
+}

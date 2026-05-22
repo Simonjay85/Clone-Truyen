@@ -38,16 +38,20 @@ $rank_name = "Độc Giả Uyên Bác";
     </header>
 
     <?php if(!$is_logged_in): ?>
-        <div class="bg-blue-600/5 border border-blue-600/20 rounded-3xl p-12 text-center mb-12">
-            <span class="material-symbols-outlined text-6xl text-blue-600 mb-4 opacity-80">account_circle</span>
-            <h2 class="font-headline text-2xl font-bold mb-2">Bạn chưa đăng nhập</h2>
-            <p class="text-gray-500 mb-6 max-w-md mx-auto">Hãy đăng nhập hoặc tạo tài khoản để hệ thống có thể lưu lại những bộ truyện yêu thích và tiến độ đọc của bạn xuyên suốt các thiết bị.</p>
-            <button class="bg-blue-600 text-white font-bold px-8 py-3 rounded-full shadow-lg hover:-translate-y-1 transition-transform" onclick="alert('Module Đăng Nhập Đang Tối Ưu')">Đăng Nhập Ngay</button>
+        <div class="bg-gradient-to-r from-blue-600/10 to-indigo-600/10 border border-blue-600/20 rounded-2xl p-6 text-left mb-10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-4xl text-blue-600 opacity-90 hidden sm:block">cloud_sync</span>
+                <div>
+                    <h3 class="font-headline text-lg font-bold text-gray-900 mb-1">Đồng bộ tủ truyện của bạn</h3>
+                    <p class="text-gray-500 text-sm max-w-xl">Bạn đang xem tủ truyện dưới quyền Khách. Đăng nhập hoặc tạo tài khoản để đồng bộ danh sách theo dõi này trên mọi thiết bị di động, tablet hoặc laptop!</p>
+                </div>
+            </div>
+            <button class="bg-blue-600 text-white font-bold text-sm px-6 py-3 rounded-full shadow-md hover:bg-blue-700 transition-colors shrink-0" onclick="alert('Tính năng đồng bộ tài khoản đang được tối ưu hóa!')">Đăng nhập ngay</button>
         </div>
     <?php endif; ?>
 
     <!-- Bento Style Feature Section (Displayed to show UI capabilities even if guest) -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 <?php if(!$is_logged_in) echo 'opacity-50 pointer-events-none grayscale-[0.3] blur-[1px]'; ?>">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
         <!-- Featured Reading -->
         <?php 
         $rp = get_posts(['post_type' => 'truyen', 'posts_per_page' => 1, 'orderby' => 'rand']);
@@ -96,7 +100,7 @@ $rank_name = "Độc Giả Uyên Bác";
                         <div class="text-slate-400 text-xs font-medium uppercase tracking-wider mt-1 opacity-80">Chương đã đọc tuần này</div>
                     </div>
                     <div>
-                        <div class="text-4xl font-extrabold font-headline tracking-tighter text-blue-600-container"><?php echo $following; ?></div>
+                        <div id="lib-following-count" class="text-4xl font-extrabold font-headline tracking-tighter text-blue-600-container">0</div>
                         <div class="text-slate-400 text-xs font-medium uppercase tracking-wider mt-1 opacity-80">Bộ truyện đang theo dõi</div>
                     </div>
                 </div>
@@ -117,7 +121,7 @@ $rank_name = "Độc Giả Uyên Bác";
     </div>
 
     <!-- Section Title -->
-    <div class="flex items-center justify-between mb-8 <?php if(!$is_logged_in) echo 'opacity-50 pointer-events-none'; ?>">
+    <div class="flex items-center justify-between mb-8">
         <h3 class="text-2xl font-bold font-headline text-gray-900">Đang theo dõi</h3>
         <div class="flex items-center gap-2 bg-gray-50 p-1 rounded-lg border border-gray-200">
             <button class="p-2 rounded-md bg-gray-50est shadow-sm text-blue-600 transition-all focus:outline-none">
@@ -129,51 +133,137 @@ $rank_name = "Độc Giả Uyên Bác";
         </div>
     </div>
 
-    <!-- Story Grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 <?php if(!$is_logged_in) echo 'opacity-50 pointer-events-none grayscale-[0.5] blur-[2px]'; ?>">
-        <?php 
-        if ($library_query->have_posts()) :
-            while ($library_query->have_posts()) : $library_query->the_post();
-                $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
-                $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
-                $prog = rand(5, 95); // mock reading progress %
-        ?>
-        <!-- Story Card -->
-        <div class="group flex flex-col h-full bg-transparent">
-            <div class="relative aspect-[4/3] rounded-2xl overflow-hidden mb-3 shadow-[0px_8px_24px_rgba(0,0,0,0.06)] group-hover:shadow-[0px_16px_40px_rgba(0,96,169,0.15)] transition-all duration-300 border border-gray-200 group-hover:-translate-y-1">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="<?php echo esc_url($cover); ?>"/>
-                
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
-                    <button class="w-full py-2 bg-white text-blue-600 text-sm font-bold rounded-xl shadow-lg active:scale-95 transition-transform" onclick="window.location.href='<?php the_permalink(); ?>'">Đọc tiếp</button>
-                </div>
-                
-                <!-- Random Badge -->
-                <?php if($prog > 80): ?>
-                    <div class="absolute top-2 right-2"><span class="bg-blue-600 text-white text-[9px] font-black px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">FULL</span></div>
-                <?php elseif($prog < 20): ?>
-                    <div class="absolute top-2 right-2"><span class="bg-indigo-100 text-indigo-800 text-[9px] font-black px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">NEW</span></div>
-                <?php else: ?>
-                    <div class="absolute top-2 right-2"><span class="bg-red-500 text-white text-[9px] font-black px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">HOT</span></div>
-                <?php endif; ?>
-            </div>
-            
-            <div class="flex-grow flex flex-col px-1">
-                <h4 class="font-bold font-headline text-[15px] text-gray-900 line-clamp-1 group-hover:text-blue-600 transition-colors leading-snug mb-2"><?php the_title(); ?></h4>
-                <div class="flex items-center justify-between text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2 mt-auto">
-                    <span>Đã đọc <?php echo round($prog/100 * $chaps); ?>/<?php echo $chaps; ?></span>
-                    <span class="text-blue-600 bg-blue-600/5 px-1 rounded"><?php echo $prog; ?>%</span>
-                </div>
-                <div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden shadow-inner">
-                    <div class="h-full bg-gradient-to-r from-blue-600 to-blue-600-container rounded-full" style="width: <?php echo $prog; ?>%"></div>
-                </div>
-            </div>
+    <!-- Empty State -->
+    <div id="lib-empty-state" class="hidden text-center py-16 px-4 bg-gray-50 border border-gray-200 rounded-3xl mb-12 shadow-sm">
+        <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+            <span class="material-symbols-outlined text-4xl">auto_stories</span>
         </div>
-        <?php 
-            endwhile; 
-            wp_reset_postdata();
-        endif; 
-        ?>
+        <h3 class="font-headline text-2xl font-bold text-gray-900 mb-2">Tủ truyện của bạn đang trống</h3>
+        <p class="text-gray-500 max-w-md mx-auto mb-8 text-sm leading-relaxed">Hãy khám phá hàng ngàn tiểu thuyết xuất sắc và bấm "Theo dõi" để lưu lại những câu chuyện yêu thích tại đây nhé!</p>
+        <a href="/" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-full shadow-lg hover:-translate-y-0.5 transition-all text-sm">
+            Khám phá ngay <span class="material-symbols-outlined text-[18px]">explore</span>
+        </a>
     </div>
+
+    <!-- Skeleton Screen Grid -->
+    <div id="lib-skeleton-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
+        <?php for($i = 0; $i < 4; $i++): ?>
+        <div class="flex flex-col h-full bg-transparent animate-pulse">
+            <div class="relative aspect-[4/3] rounded-2xl bg-gray-200 mb-3 border border-gray-200"></div>
+            <div class="h-5 bg-gray-200 rounded-md w-3/4 mb-3"></div>
+            <div class="flex justify-between items-center mb-3">
+                <div class="h-3 bg-gray-200 rounded w-1/3"></div>
+                <div class="h-4 bg-gray-200 rounded w-12"></div>
+            </div>
+            <div class="h-1.5 w-full bg-gray-100 rounded-full"></div>
+        </div>
+        <?php endfor; ?>
+    </div>
+
+    <!-- Populated Story Grid -->
+    <div id="lib-story-grid" class="hidden grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const followingCountEl = document.getElementById('lib-following-count');
+        const skeletonGrid = document.getElementById('lib-skeleton-grid');
+        const emptyState = document.getElementById('lib-empty-state');
+        const storyGrid = document.getElementById('lib-story-grid');
+        
+        // Read from localStorage
+        let followed = JSON.parse(localStorage.getItem('tehi_followed_stories') || '[]');
+        
+        // Update statistics counter
+        if (followingCountEl) {
+            followingCountEl.textContent = followed.length;
+        }
+        
+        // Check if empty
+        if (followed.length === 0) {
+            if (skeletonGrid) skeletonGrid.classList.add('hidden');
+            if (emptyState) emptyState.classList.remove('hidden');
+            return;
+        }
+        
+        // Fetch dynamic story cards from server
+        const formData = new FormData();
+        formData.append('action', 'tehi_get_followed_stories');
+        followed.forEach(id => formData.append('ids[]', id));
+        
+        fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (skeletonGrid) {
+                skeletonGrid.classList.add('hidden');
+            }
+            
+            if (data.success && data.data.count > 0) {
+                if (storyGrid) {
+                    storyGrid.innerHTML = data.data.html;
+                    storyGrid.classList.remove('hidden');
+                    
+                    // Bind unfollow actions on returned cards
+                    bindUnfollowActions();
+                }
+            } else {
+                if (emptyState) emptyState.classList.remove('hidden');
+            }
+        })
+        .catch(err => {
+            console.error('Lỗi tải tủ truyện:', err);
+            if (skeletonGrid) skeletonGrid.classList.add('hidden');
+            if (emptyState) emptyState.classList.remove('hidden');
+        });
+        
+        function bindUnfollowActions() {
+            const unfollowButtons = document.querySelectorAll('.btn-unfollow-card');
+            unfollowButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    
+                    const storyId = parseInt(this.getAttribute('data-id'));
+                    if (!storyId) return;
+                    
+                    if (confirm('Bạn có muốn bỏ theo dõi truyện này không?')) {
+                        // Update localStorage
+                        followed = JSON.parse(localStorage.getItem('tehi_followed_stories') || '[]');
+                        const index = followed.indexOf(storyId);
+                        if (index > -1) {
+                            followed.splice(index, 1);
+                            localStorage.setItem('tehi_followed_stories', JSON.stringify(followed));
+                        }
+                        
+                        // Update UI stats
+                        if (followingCountEl) {
+                            followingCountEl.textContent = followed.length;
+                        }
+                        
+                        // Find card element and animate out
+                        const card = this.closest('.story-card-library');
+                        if (card) {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                card.remove();
+                                
+                                // If library becomes empty after deletion
+                                if (followed.length === 0) {
+                                    if (storyGrid) storyGrid.classList.add('hidden');
+                                    if (emptyState) emptyState.classList.remove('hidden');
+                                }
+                            }, 300);
+                        }
+                    }
+                });
+            });
+        }
+    });
+    </script>
 
 </main>
 

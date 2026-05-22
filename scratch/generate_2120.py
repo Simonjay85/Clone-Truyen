@@ -1,0 +1,194 @@
+# -*- coding: utf-8 -*-
+import json
+import os
+
+story = {
+    "title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
+    "author": "Nguyễn Khánh Toàn",
+    "genre": "Sảng Văn",
+    "intro": '<p><strong>"Mày chỉ là một thằng rửa bát vô dụng ăn bám nhà tao, cút ngay xuống bếp lau sạch đống chén đĩa đó đi!"</strong></p><p><strong>Tiếng thét chói tai của mẹ vợ vang lên giữa căn biệt thự sang trọng tại Phú Quốc. Anh rể khinh bỉ nhổ nước bọt thẳng vào mặt Đặng Quốc Bảo trước sự im lặng lạnh lùng của cả gia đình vợ. Sư phụ phản bội từng cướp trắng công thức gia truyền ba đời của anh nay cũng xuất hiện để sỉ nhục anh nghèo hèn.</strong></p><hr /><p>Thế nhưng, họ không hề biết rằng, đôi bàn tay chai sần vì dầu mỡ kia từng chế biến đại tiệc cho các nguyên thủ quốc gia và được giới ẩm thực quốc tế săn đón với mức lương triệu đô. Khi đại tiệc Michelin phục vụ đoàn ngoại giao quốc tế tại resort siêu sang JW Marriott Phú Quốc gặp khủng hoảng nghiêm trọng do đối thủ đầu độc nguyên liệu, Đặng Quốc Bảo đã bắt tay cùng nữ CEO sắc sảo Lê Quỳnh Chi để thực hiện màn lật kèo chấn động. Bằng kỹ thuật ẩm thực đỉnh cao kết hợp với y học cổ truyền Việt Nam để giải độc thực phẩm, cùng các bằng chứng thép vạch trần hành vi phá hoại gian lận, anh đã khiến cả Phú Quốc phải quỳ gối kính phục.</p>',
+    "seo": {
+        "focus_keyword": "me vo bat rua bat toi nau tiec michelin chan dong phu quoc",
+        "seo_title": "Nấu Tiệc Michelin Chấn Động Phú Quốc V13",
+        "seo_description": "Chàng rể Đặng Quốc Bảo bị mẹ vợ khinh thường bắt rửa bát nhưng thực chất là bếp trưởng quốc gia. Vả mặt cực mạnh tại tiệc Michelin Phú Quốc."
+    },
+    "chapters": []
+}
+
+# Chương 1
+c1_content = """
+<p>Ánh nắng vàng giòn của vùng biển Phú Quốc chiếu qua ô cửa kính lớn của căn biệt thự sang trọng nằm trong khu đô thị Sun Grand City An Thới.</p>
+<p>Thế nhưng, bầu không khí bên trong căn nhà lại ngột ngạt đến mức khiến lồng ngực người ta muốn thắt lại.</p>
+<p>Đặng Quốc Bảo đang đứng lẳng lặng dọn dẹp đống bát đĩa bẩn chất cao như núi trong bồn rửa chén, mồ hôi dầu mỡ chảy ròng ròng trên vầng trán sạm đen vì nắng gió.</p>
+<p>"Mày chỉ là một thằng rửa bát vô dụng ăn bám nhà tao, cút ngay xuống bếp lau sạch đống chén đĩa đó đi!"</p>
+<p>Bà Trần Thị Tuyết, mẹ vợ của anh, đập mạnh chiếc cốc sứ xuống mặt bàn đá hoa cương vang lên âm thanh chói tai.</p>
+<p>Ả anh rể Nguyễn Minh Hùng đứng bên cạnh nhổ nước bọt thẳng xuống nền nhà ngay sát chân Quốc Bảo, khuôn mặt vặn vẹo vì khinh bỉ.</p>
+<p>"Thứ đàn ông vô tích sự, bám váy vợ kiếm cơm qua ngày mà cũng đòi ngồi chung bàn ăn với chúng tôi sao?"</p>
+<p>"Lê Hữu Đạt, bếp trưởng năm sao lừng lẫy, hôm nay đã nhận cháu vào làm phụ bếp nhặt rau ở nhà hàng của ông ấy rồi."</p>
+<p>"Lo mà liệu hồn mà làm việc, đừng để bôi tro trát trấu vào mặt gia đình này!"</p>
+<p>Lê Hữu Đạt chính là gã sư phụ phản bội đã cướp trắng công thức nước sốt gia truyền ba đời của gia đình Quốc Bảo tại Sài Gòn cách đây ba năm, rồi dùng nó để leo lên vị trí bếp trưởng danh giá.</p>
+<p>Quốc Bảo siết chặt chiếc giẻ lau bát trong tay đến mức gân xanh trên mu bàn tay nổi lên cuồn cuộn, khớp xương kêu răng rắc.</p>
+<p>Đồng tử của anh co rút lại, ánh mắt sắc lẹm lướt qua khuôn mặt tráo trở của bà mẹ vợ và gã anh rể kiêu ngạo.</p>
+<p>Anh biết mình đã nhẫn nhịn đủ ba năm để bảo vệ người vợ hiền lành, nhưng hôm nay sự chịu đựng đã chạm tới giới hạn.</p>
+<p>"Bà Tuyết, Nguyễn Minh Hùng... các người nghĩ tôi thực sự là một thằng rửa bát vô năng sao?"</p>
+<p>"Lê Hữu Đạt, công thức nước sốt của ông có được bằng cách hèn hạ kia, ông nghĩ có thể dùng nó để nấu tiệc Michelin cho đoàn ngoại giao tối mai tại JW Marriott sao?"</p>
+<p>"Để tôi nói cho các người biết, không có sự hướng dẫn của tôi, món ăn đó sẽ biến thành độc dược hủy hoại toàn bộ sự nghiệp của ông!"</p>
+<p>Quốc Bảo lạnh lùng ném chiếc giẻ lau vào bồn rửa, gót chân anh nện mạnh xuống nền gạch đá hoa cương sắc lạnh bước thẳng ra khỏi căn nhà, bỏ lại những tiếng gào thét giận dữ của bà mẹ vợ ở phía sau.</p>
+"""
+story["chapters"].append({"title": "Chương 1: Chàng Rể Rửa Bát", "content": c1_content})
+
+# Chương 2
+c2_content = """
+<p>Nửa giờ sau, tại văn phòng Tổng giám đốc khu nghỉ dưỡng siêu sang JW Marriott Phú Quốc, không khí căng thẳng bao trùm khi lễ ký kết chuẩn bị đại tiệc Michelin đang đến gần.</p>
+<p>Lê Quỳnh Chi, CEO của khu nghỉ dưỡng, đang đứng đăm chiêu nhìn ra phía bãi Khem cát trắng lộng gió.</p>
+<p>Cô diện bộ đầm lụa màu đen quý phái ôm sát cơ thể thanh mảnh, gót giày cao gót nhọn hiệu Louboutin gõ sắc lẹm trên nền gạch bông cổ điển của văn phòng.</p>
+<p>"Anh Đặng Quốc Bảo, tôi đã đọc hồ sơ năng lực cũ của anh trước khi anh biến mất khỏi giới ẩm thực ba năm trước."</p>
+<p>Quỳnh Chi quay lại nhìn Quốc Bảo, ánh mắt phượng sắc sảo và đầy lý tính của cô không hề có sự coi thường.</p>
+<p>"Anh từng là bếp trưởng chế biến tiệc chiêu đãi các nguyên thủ quốc gia tại Dinh Độc Lập."</p>
+<p>"Nhưng hiện tại Lê Hữu Đạt đang là bếp trưởng chính thức cho đại tiệc Michelin tối mai."</p>
+<p>"Tôi là người làm kinh doanh, tôi chỉ quan tâm đến kết quả cụ thể để bảo vệ danh tiếng của resort."</p>
+<p>Quỳnh Chi đặt ra điều kiện vô cùng khắt khe và sòng phẳng:</p>
+<p>"Trong vòng hai mươi bốn giờ tới, anh phải chế biến thử nghiệm món ăn khai vị sử dụng hoàn toàn các loại gia vị địa phương tự nhiên của Phú Quốc như tiêu chín đỏ, nước mắm truyền thống và nấm tràm."</p>
+<p>"Món ăn của anh phải hoàn toàn vượt trội hơn công thức nước sốt của Lê Hữu Đạt về cả mặt hương vị lẫn chỉ số an toàn thực phẩm."</p>
+<p>"Nếu anh làm được, tôi sẽ lập tức bổ nhiệm anh làm Tổng bếp trưởng điều hành đại tiệc Michelin tối mai."</p>
+<p>"Nếu anh thất bại, tôi sẽ yêu cầu bảo vệ trục xuất anh khỏi đảo Phú Quốc ngay lập tức và không bao giờ cho phép anh bước chân vào bất kỳ cơ sở nào của Marriott nữa!"</p>
+<p>Quốc Bảo đứng thẳng người đối diện với nữ CEO kiêu sa, nhịp thở của anh ổn định đến mức kỳ lạ, toát lên phong thái của một bậc thầy ẩm thực thực thụ.</p>
+<p>"Tôi đồng ý với điều kiện của cô."</p>
+<p>"Tiêu chín đỏ Phú Quốc kết hợp với nấm tràm hoang dã chứa hàm lượng axit amin tự nhiên cực cao, nếu được chiết xuất ở nhiệt độ bảy mươi độ C sẽ tạo ra vị ngọt Umami tự nhiên gấp mười lần mì chính hóa học."</p>
+<p>"Tôi sẽ cho cô thấy thế nào là tinh hoa ẩm thực Việt Nam thực sự!"</p>
+"""
+story["chapters"].append({"title": "Chương 2: Thách Thức Từ Nữ CEO", "content": c2_content})
+
+# Chương 3
+c3_content = """
+<p>Đêm khuya, trong gian bếp thử nghiệm vô trùng của JW Marriott Phú Quốc, ánh đèn neon chiếu sáng rực rỡ lên những chiếc nồi inox sáng bóng nhập khẩu từ Pháp.</p>
+<p>Quốc Bảo đang chăm chú quan sát nhiệt độ của nồi nước dùng chiết xuất từ nấm tràm hoang dã.</p>
+<p>Mồ hôi chảy ròng ròng trên trán anh, nhỏ giọt xuống chiếc tạp dề trắng tinh khôi, nhưng đôi tay cầm vá khuấy vẫn vô cùng chuẩn xác và nhịp nhàng.</p>
+<p>Trong khi đó, tại một nhà hàng hải sản lớn ở phường Dương Đông, Lê Hữu Đạt và gã anh rể Nguyễn Minh Hùng đang ngồi bàn mưu tính kế.</p>
+<p>"Anh Đạt, thằng Bảo nó đã được con mụ CEO Quỳnh Chi cho vào bếp thử nghiệm rồi."</p>
+<p>"Nếu để nó nấu tiệc Michelin, công thức nước sốt ăn cắp của chúng ta sẽ bị vạch trần mất!"</p>
+<p>Lê Hữu Đạt cười thâm hiểm, nheo đôi mắt hí lại đầy ác ý.</p>
+<p>"Yên tâm đi, tôi đã cho người lẻn vào kho lạnh của Marriott đầu độc toàn bộ lô tôm hùm xanh chuẩn bị cho món khai vị của nó bằng chất phụ gia bảo quản phóc-môn liều lượng cao."</p>
+<p>"Sáng mai khi kiểm tra chất lượng, lô hải sản của nó sẽ bị phát hiện nhiễm độc hóa học."</p>
+<p>"Lúc đó nó không chỉ bị đuổi việc mà còn phải vào tù vì tội cố ý gây đầu độc thực phẩm!"</p>
+<p>Lúc này tại phòng bếp thử nghiệm, Quốc Bảo bỗng phát hiện ra mùi clo nhẹ bốc lên từ bể chứa tôm hùm xanh tươi sống.</p>
+<p>Anh vội vàng dùng tăm bông lấy mẫu nước và chất dịch trên vỏ tôm, đưa vào máy đo nồng độ hóa chất cầm tay.</p>
+<p>Màn hình lập tức hiển thị dòng chữ đỏ chót cảnh báo: "FORMALDEHYDE DETECTED - 150 mg/L".</p>
+<p>Đồng tử của Quốc Bảo co rút lại, anh nghiến chặt răng đến mức cơ hàm nổi lên cuồn cuộn.</p>
+<p>"Lê Hữu Đạt, ông thực sự đê tiện đến mức dùng cả mạng sống của đoàn ngoại giao để hãm hại tôi sao?"</p>
+<p>Nhưng thay vì hoảng loạn, Quốc Bảo lập tức lấy từ trong hộp thuốc Nam của mình ra một lượng lớn bột hạt ngò gai và rễ tranh tươi.</p>
+<p>Đây là những loại dược liệu Nam chứa hoạt chất flavonoid tự nhiên cực mạnh, có khả năng trung hòa và đào thải hoàn toàn phóc-môn ra khỏi mô thịt của hải sản sống trong vòng sáu tiếng mà không làm ảnh hưởng đến cấu trúc thịt.</p>
+<p>Anh nhanh chóng tiến hành quy trình giải độc khẩn cấp cho toàn bộ lô tôm hùm dưới sự giám sát chặt chẽ của camera an ninh.</p>
+"""
+story["chapters"].append({"title": "Chương 3: Đêm Giải Độc Nguyên Liệu", "content": c3_content})
+
+# Chương 4
+c4_content = """
+<p>Tám giờ sáng ngày hôm sau, tại khu bếp trung tâm của JW Marriott Phú Quốc, bầu không khí căng thẳng dâng cao tột độ.</p>
+<p>Đoàn thanh tra an toàn thực phẩm của Sở Y tế tỉnh Kiên Giang cùng Lê Hữu Đạt, bà Tuyết và gã anh rể Nguyễn Minh Hùng bước vào kiểm tra đột xuất.</p>
+<p>"Thưa CEO Quỳnh Chi, chúng tôi nhận được đơn tố cáo khẩn cấp rằng lô tôm hùm xanh phục vụ tiệc Michelin của Đặng Quốc Bảo bị nhiễm phóc-môn độc hại."</p>
+<p>Trưởng đoàn thanh tra nghiêm giọng nói.</p>
+<p>Lê Hữu Đạt đứng bên cạnh đắc ý ra mặt, gã vờ vịt thở dài đầy thất vọng.</p>
+<p>"Chị Chi xem, tôi đã bảo thằng rửa bát này không biết gì về an toàn vệ sinh thực phẩm mà."</p>
+<p>"Suýt chút nữa nó đã làm hại cả thể diện quốc gia rồi!"</p>
+<p>Quỳnh Chi mặc chiếc đầm công sở màu ghi xám ôm sát, gót giày cao gót nhọn của cô nện mạnh xuống sàn gạch men vang lên tiếng động sắc lẹm.</p>
+<p>Cô quay sang nhìn Quốc Bảo với ánh mắt dò hỏi đầy lý tính.</p>
+<p>"Anh Bảo, anh giải thích thế nào về việc này?"</p>
+<p>Quốc Bảo đứng thẳng người trước quầy bếp, khuôn mặt anh vô cùng bình thản và đầy tự tin.</p>
+<p>"Thưa cơ quan thanh tra và CEO Quỳnh Chi."</p>
+<p>"Tôi yêu cầu đoàn thanh tra lấy mẫu kiểm nghiệm trực tiếp ngay tại chỗ lô tôm hùm xanh này."</p>
+<p>Vị kỹ thuật viên của Sở Y tế lập tức tiến hành lấy mẫu thịt tôm hùm, đưa vào máy đo sắc ký khí cầm tay hiện đại.</p>
+<p>Sau năm phút căng thẳng nghẹt thở, kết quả hiển thị trên màn hình máy tính: "FORMALDEHYDE: 0.00 mg/L - ABSOLUTELY SAFE".</p>
+<p>"Mẫu thịt tôm hùm hoàn toàn sạch sẽ, đạt chuẩn an toàn thực phẩm quốc gia ở mức cao nhất!"</p>
+<p>Trưởng đoàn thanh tra dõng dạc công bố.</p>
+<p>Lê Hữu Đạt nghe đến đây thì đôi mắt hí co rút lại, toàn thân run rẩy dữ dội, gã không thể tin nổi chất độc phóc-môn cực mạnh của mình lại biến mất hoàn toàn.</p>
+<p>"Không thể nào! Rõ ràng là... làm sao có thể sạch sẽ như thế được!"</p>
+"""
+story["chapters"].append({"title": "Chương 4: Kết Quả Kiểm Nghiệm", "content": c4_content})
+
+# Chương 5
+c5_content = """
+<p>Nhìn thấy vẻ mặt hoảng hốt của Lê Hữu Đạt, Quốc Bảo khẽ nhếch mép cười lạnh.</p>
+<p>"Lê Hữu Đạt, ông đang tự hỏi tại sao chất độc phóc-môn do người của ông lén bỏ vào kho lạnh tối qua lại không hoạt động đúng không?"</p>
+<p>"Hãy xem đoạn video camera giám sát này."</p>
+<p>Quốc Bảo nhấn nút trình chiếu trên màn hình trung tâm của nhà bếp.</p>
+<p>Hình ảnh gã phụ bếp của Lê Hữu Đạt lẻn vào kho lạnh bỏ chất hóa học vào bể tôm, kèm theo đó là video ghi âm cuộc trò chuyện giữa gã và Nguyễn Minh Hùng về việc dàn cảnh đầu độc để cướp hợp đồng Michelin hiện lên sắc nét.</p>
+<p>Giọng nói đê tiện của Nguyễn Minh Hùng vang lên rõ mồn một qua loa phát thanh:</p>
+<p>"...Cứ bỏ thuốc độc vào cho thằng Bảo chết đứng luôn."</p>
+<p>"Lần này anh Đạt lên làm Tổng bếp trưởng, gia đình tôi sẽ chia nhau căn hộ shophouse ba mươi tỷ ở thị trấn Địa Trung Hải..."</p>
+<p>Nguyễn Minh Hùng nhìn thấy khuôn mặt mình hiện rõ trên màn hình lớn, toàn thân gã run lẩy bẩy, mồ hôi lạnh tuôn ra như tắm ướt đẫm cả chiếc áo sơ mi hiệu đắt tiền.</p>
+<p>Gã quỳ sụp xuống sàn bếp gạch men lạnh ngắt, mặt xám ngoét không còn một giọt máu.</p>
+<p>"Chị Tuyết ơi... cứu em... em bị oan..."</p>
+<p>Bà mẹ vợ Trần Thị Tuyết đứng bên cạnh há hốc mồm kinh ngạc, toàn thân run rẩy không nói nên lời trước sự thật bàng hoàng này.</p>
+<p>Quốc Bảo bước tới trước mặt Lê Hữu Đạt, giật phăng chiếc mũ đầu bếp trên đầu gã ném thẳng xuống sàn.</p>
+<p>"Lê Hữu Đạt, ông không xứng đáng làm đầu bếp!"</p>
+<p>"Hôm nay, trước sự chứng kiến của Cục Cảnh sát hình sự, ông bị bắt giữ vì hành vi cố ý đầu độc thực phẩm quy mô lớn và xâm phạm bí mật kinh doanh."</p>
+<p>Hai cảnh sát hình sự bước vào khóa chặt tay Lê Hữu Đạt bằng chiếc còng số tám sắc lạnh trước sự chứng kiến của toàn bộ nhân viên nhà bếp.</p>
+"""
+story["chapters"].append({"title": "Chương 5: Vả Mặt Sư Phụ Phản Bội", "content": c5_content})
+
+# Chương 6
+c6_content = """
+<p>Mặc dù Lê Hữu Đạt và Nguyễn Minh Hùng đã bị bắt, thế nhưng cuộc chiến thâu tóm ẩm thực Phú Quốc vẫn chưa kết thúc.</p>
+<p>Tập đoàn ẩm thực quốc tế "Royal Food" đứng sau Lê Hữu Đạt quyết định tung đòn quyết định nhằm phá hoại đại tiệc Michelin của JW Marriott.</p>
+<p>Họ dùng thế lực tài chính phong tỏa toàn bộ nguồn cung cấp nấm tràm hoang dã và tiêu chín đỏ chất lượng cao trên khắp đảo Phú Quốc trong vòng mười hai tiếng.</p>
+<p>Đồng thời, họ gửi đơn khiếu nại lên Sở Du lịch tỉnh Kiên Giang cáo buộc chương trình tiệc Michelin của Marriott sử dụng đầu bếp không có bằng cấp quốc tế hợp lệ để phục vụ ngoại giao đoàn.</p>
+<p>Khủng hoảng nguyên liệu và pháp lý hai mươi bốn giờ đe dọa trực tiếp đến sự thành bại của đại tiệc chỉ còn cách giờ khai tiệc đúng mười hai tiếng.</p>
+<p>Tại văn phòng CEO, Lê Quỳnh Chi đứng siết chặt chiếc ly pha lê đến mức run rẩy, ánh mắt cô đầy vẻ lo lắng tột độ.</p>
+<p>"Nhật Bảo, toàn bộ nguồn cung cấp nấm tràm và tiêu chín đỏ đặc sản Phú Quốc đã bị tập đoàn Royal Food gom sạch."</p>
+<p>"Nếu chúng ta không có đủ hai nguyên liệu cốt lõi này cho món khai vị, thực đơn Michelin sẽ bị hủy bỏ."</p>
+<p>"Đồng thời, Sở Du lịch đang xem xét đình chỉ đại tiệc do khiếu nại về chứng chỉ bếp trưởng của anh."</p>
+<p>Quốc Bảo đứng thẳng người, khuôn mặt anh vẫn giữ được sự tĩnh lặng đáng kinh ngạc của một bậc thầy.</p>
+<p>"Quỳnh Chi, cô hãy chuẩn bị sẵn sàng sảnh tiệc lộng lẫy nhất."</p>
+<p>"Tôi sẽ tự mình đi thu gom nguyên liệu trực tiếp từ các hộ dân vườn tiêu truyền thống mà tôi quen biết."</p>
+<p>"Còn về chứng chỉ, tôi sẽ cho họ thấy tấm bằng Vàng danh giá nhất của Hiệp hội ẩm thực thế giới WorldChes cấp tại Pháp!"</p>
+"""
+story["chapters"].append({"title": "Chương 6: Khủng Hoảng Nguyên Liệu", "content": c6_content})
+
+# Chương 7
+c7_content = """
+<p>Bốn giờ chiều, tại phòng họp khẩn cấp của Sở Du lịch tỉnh Kiên Giang, ông Giám đốc Sở cùng đại diện tập đoàn Royal Food đang đắc ý chuẩn bị ký quyết định đình chỉ đại tiệc Michelin của Marriott.</p>
+<p>Quốc Bảo bước vào cùng Quỳnh Chi, trên tay anh cầm một thùng nguyên liệu tươi ngon chứa đầy tiêu chín đỏ tươi roi rói và nấm tràm thơm nồng, kèm theo một tập tài liệu đóng dấu nổi bằng vàng của Hiệp hội Ẩm thực Thế giới.</p>
+<p>"Đại diện Royal Food, các người nghĩ mình có thể dùng tiền để thao túng toàn bộ đặc sản Phú Quốc sao?"</p>
+<p>Quốc Bảo đặt thùng nguyên liệu lên bàn họp, hương thơm tự nhiên đặc trưng của hạt tiêu và nấm tràm lập tức lan tỏa khắp phòng làm việc.</p>
+<p>"Đây là số tiêu chín đỏ và nấm tràm được đích thân các chủ vườn tiêu truyền thống ở khu vực Gành Dầu cung cấp cho tôi bằng biên lai ký nhận trực tiếp."</p>
+<p>"Họ biết tôi là người tôn vinh giá trị nông sản Việt Nam, chứ không phải kẻ đầu cơ thương mại như các người."</p>
+<p>Quốc Bảo mở tập tài liệu bằng da màu đỏ sang trọng, tấm bằng chứng nhận "Master Chef Of Global Gastronomy" danh giá nhất thế giới mang tên Đặng Quốc Bảo hiện lên lấp lánh dưới ánh đèn phòng họp.</p>
+<p>"Thưa Giám đốc Sở, đây là chứng chỉ bếp trưởng quốc tế cấp cao nhất do Hiệp hội Ẩm thực Thế giới trao tặng, có giá trị pháp lý toàn cầu."</p>
+<p>"Đề xuất đình chỉ của Royal Food hoàn toàn là hành vi cạnh tranh bẩn thỉu nhằm phá hoại thể diện du lịch quốc gia!"</p>
+<p>Giám đốc Sở Du lịch nhìn tấm bằng Vàng danh giá và ngửi mùi hương nguyên liệu tuyệt hảo của Quốc Bảo, mặt ông lập tức trở nên nghiêm nghị.</p>
+<p>Ông thẳng thừng ký văn bản bác bỏ đơn khiếu nại của Royal Food và ban hành quyết định bảo trợ đặc biệt cho đại tiệc Michelin của JW Marriott.</p>
+<p>Đại diện tập đoàn Royal Food mặt xám ngoét không còn một giọt máu, vội vã thu dọn tài liệu chạy trốn khỏi phòng họp trước sự chứng kiến đầy khinh bỉ của toàn bộ ban lãnh đạo Sở Du lịch.</p>
+"""
+story["chapters"].append({"title": "Chương 7: Đập Tan Âm Mưu Phá Hoại", "content": c7_content})
+
+# Chương 8
+c8_content = """
+<p>Đúng bảy giờ tối, đại tiệc Michelin phục vụ đoàn ngoại giao quốc tế được tổ chức vô cùng hoành tráng và lộng lẫy ngay tại sảnh tiệc bờ biển của JW Marriott Phú Quốc.</p>
+<p>Ánh đèn nến lung linh hòa cùng tiếng sóng biển rì rào tạo nên một không gian lãng mạn đẳng cấp quốc tế.</p>
+<p>Món khai vị "Tôm Hùm Xanh Sốt Tiêu Đỏ Nấm Tràm" của Quốc Bảo được mang lên phục vụ các vị đại sứ và nguyên thủ quốc gia.</p>
+<p>Tất cả các vị khách quý đều trầm trồ kinh ngạc trước hương vị Umami tự nhiên tuyệt hảo kết hợp hài hòa giữa vị ngọt đậm đà của tôm hùm, vị cay ấm nồng của tiêu chín đỏ và vị đắng nhẹ thanh tao của nấm tràm Phú Quốc.</p>
+<p>"Tuyệt hảo! Đây thực sự là món ăn ngon nhất mà tôi từng được thưởng thức trong đời!"</p>
+<p>Vị Đại sứ Cộng hòa Pháp lên tiếng khen ngợi nồng nhiệt.</p>
+<p>Sau khi đại tiệc kết thúc thắng lợi rực rỡ, Quốc Bảo đứng bên cạnh Lê Quỳnh Chi trên ban công lộng gió nhìn ra đại dương bao la lấp lánh ánh trăng.</p>
+<p>Quỳnh Chi diện chiếc đầm dạ hội màu đen quý phái, đôi mắt phượng vốn dĩ lý tính, sắc sảo nay tràn ngập sự dịu dàng và tình yêu chân thành tự nguyện dành cho anh.</p>
+<p>Cô chủ động bước lại gần, đặt bàn tay mềm mại đặt vào lòng bàn tay ấm áp của anh khẽ siết nhẹ.</p>
+<p>"Quốc Bảo, anh thực sự là một vị vua ẩm thực đích thực."</p>
+<p>"Hôm nay, trước sự chứng kiến của vùng biển Phú Quốc xinh đẹp này, em muốn đưa ra một điều kiện hợp tác mới với anh."</p>
+<p>Quốc Bảo mỉm cười nhẹ, kéo cô lại gần hơn vào lòng mình.</p>
+<p>"Quỳnh Chi, em muốn đặt điều kiện gì nữa đây?"</p>
+<p>"Em muốn chúng ta không chỉ hợp tác tại Marriott."</p>
+<p>"Em muốn anh làm Bếp trưởng trọn đời của gia đình em, cùng em chia sẻ mọi vinh quang và cay đắng phía trước."</p>
+<p>"Anh đồng ý chứ?"</p>
+<p>Quốc Bảo nhìn sâu vào đôi mắt long lanh chứa chan tình cảm của người con gái kiêu hãnh.</p>
+<p>"Anh hoàn toàn đồng ý, thưa nữ CEO của đời anh!"</p>
+<p>Tiếng pháo hoa chúc mừng rực rỡ bùng nổ trên bầu trời đêm Phú Quốc, đánh dấu sự vinh quang tột đỉnh của chàng rể rửa bát tài ba và sự khởi đầu của một tình yêu tài phiệt nghìn tỷ viên mãn.</p>
+"""
+story["chapters"].append({"title": "Chương 8: Vị Vua Ẩm Thực Phú Quốc", "content": c8_content})
+
+# Save JSON
+os.makedirs("/Users/aaronnguyen/TN/App/doctieuthuyet/scratch", exist_ok=True)
+with open("/Users/aaronnguyen/TN/App/doctieuthuyet/scratch/rewrite_2120_v13.json", "w", encoding="utf-8") as f:
+    json.dump(story, f, ensure_ascii=False, indent=2)
+
+print("Generated rewrite_2120_v13.json successfully!")

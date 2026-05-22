@@ -1,0 +1,84 @@
+{
+  "id": 2013,
+  "date": "2026-05-17T15:20:37",
+  "date_gmt": "2026-05-17T15:20:37",
+  "guid": {
+    "rendered": "https://doctieuthuyet.com/?post_type=truyen&#038;p=2013"
+  },
+  "modified": "2026-05-20T23:17:11",
+  "modified_gmt": "2026-05-20T23:17:11",
+  "slug": "buc-thu-cuoi-cung-cua-bien",
+  "status": "publish",
+  "type": "truyen",
+  "link": "https://doctieuthuyet.com/truyen/buc-thu-cuoi-cung-cua-bien/",
+  "title": {
+    "rendered": "Bức Thư Cuối Cùng Của Biển"
+  },
+  "content": {
+    "rendered": "<p>Ở thị trấn ven biển Cát Trắng, Quân sống lại tuổi 18 với ký ức thảm họa sạt lở 5 năm sau.</p>\n<p>Lá thư tình chưa gửi cho cô gái thượng lưu từng khiến hắn bị ruồng bỏ, nay là manh mối duy nhất để cảnh báo mọ</p>\n",
+    "protected": false
+  },
+  "excerpt": {
+    "rendered": "<p>Ở thị trấn ven biển Cát Trắng, Quân sống lại tuổi 18 với ký ức thảm họa sạt lở 5 năm sau. Lá thư tình chưa gửi cho cô gái thượng lưu từng khiến hắn bị ruồng bỏ, nay là manh mối duy nhất để cảnh báo mọ</p>\n",
+    "protected": false
+  },
+  "featured_media": 0,
+  "comment_status": "open",
+  "ping_status": "closed",
+  "template": "",
+  "the_loai": [],
+  "class_list": [
+    "post-2013",
+    "truyen",
+    "type-truyen",
+    "status-publish",
+    "hentry"
+  ],
+  "_links": {
+    "self": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/truyen/2013",
+        "targetHints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      }
+    ],
+    "collection": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/truyen"
+      }
+    ],
+    "about": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/types/truyen"
+      }
+    ],
+    "replies": [
+      {
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/comments?post=2013"
+      }
+    ],
+    "wp:attachment": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/media?parent=2013"
+      }
+    ],
+    "wp:term": [
+      {
+        "taxonomy": "the_loai",
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/the_loai?post=2013"
+      }
+    ],
+    "curies": [
+      {
+        "name": "wp",
+        "href": "https://api.w.org/{rel}",
+        "templated": true
+      }
+    ]
+  }
+}

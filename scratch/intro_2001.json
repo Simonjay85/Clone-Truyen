@@ -1,0 +1,84 @@
+{
+  "id": 2001,
+  "date": "2026-05-17T11:00:20",
+  "date_gmt": "2026-05-17T11:00:20",
+  "guid": {
+    "rendered": "https://doctieuthuyet.com/?post_type=truyen&#038;p=2001"
+  },
+  "modified": "2026-05-20T23:17:21",
+  "modified_gmt": "2026-05-20T23:17:21",
+  "slug": "anh-sang-trong-dem",
+  "status": "publish",
+  "type": "truyen",
+  "link": "https://doctieuthuyet.com/truyen/anh-sang-trong-dem/",
+  "title": {
+    "rendered": "Anh Sang Trong Dem"
+  },
+  "content": {
+    "rendered": "<p>Minh, một họa sĩ trẻ, mất thị lực sau tai nạn.</p>\n<p>Tuyệt vọng, anh gặp Lan, cô gái khiếm thính dạy anh cảm nhận thế giới bằng giác quan khác.</p>\n<p>Cùng nhau, họ khám phá nghệ thuật và tình yêu, vượt qua nghịch</p>\n",
+    "protected": false
+  },
+  "excerpt": {
+    "rendered": "<p>Minh, một họa sĩ trẻ, mất thị lực sau tai nạn. Tuyệt vọng, anh gặp Lan, cô gái khiếm thính dạy anh cảm nhận thế giới bằng giác quan khác. Cùng nhau, họ khám phá nghệ thuật và tình yêu, vượt qua nghịch</p>\n",
+    "protected": false
+  },
+  "featured_media": 0,
+  "comment_status": "open",
+  "ping_status": "closed",
+  "template": "",
+  "the_loai": [],
+  "class_list": [
+    "post-2001",
+    "truyen",
+    "type-truyen",
+    "status-publish",
+    "hentry"
+  ],
+  "_links": {
+    "self": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/truyen/2001",
+        "targetHints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      }
+    ],
+    "collection": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/truyen"
+      }
+    ],
+    "about": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/types/truyen"
+      }
+    ],
+    "replies": [
+      {
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/comments?post=2001"
+      }
+    ],
+    "wp:attachment": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/media?parent=2001"
+      }
+    ],
+    "wp:term": [
+      {
+        "taxonomy": "the_loai",
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/the_loai?post=2001"
+      }
+    ],
+    "curies": [
+      {
+        "name": "wp",
+        "href": "https://api.w.org/{rel}",
+        "templated": true
+      }
+    ]
+  }
+}

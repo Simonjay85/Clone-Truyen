@@ -1,0 +1,84 @@
+{
+  "id": 2007,
+  "date": "2026-05-17T15:19:45",
+  "date_gmt": "2026-05-17T15:19:45",
+  "guid": {
+    "rendered": "https://doctieuthuyet.com/?post_type=truyen&#038;p=2007"
+  },
+  "modified": "2026-05-20T23:17:16",
+  "modified_gmt": "2026-05-20T23:17:16",
+  "slug": "lot-mat-nguoi-sep-cuop-cong",
+  "status": "publish",
+  "type": "truyen",
+  "link": "https://doctieuthuyet.com/truyen/lot-mat-nguoi-sep-cuop-cong/",
+  "title": {
+    "rendered": "Lột Mặt Người Sếp Cướp Công"
+  },
+  "content": {
+    "rendered": "<p>Trong làng nghề kinh doanh online, Lâm Trạch bị lão sếp họ Hoàng vu oan là lang băm để cướp bài thuốc gia truyền.</p>\n<p>Nhưng anh đã bí mật đặt camera an ninh, ghi lại toàn bộ âm mưu.</p>\n<p>Từng tập, anh vạch mặt</p>\n",
+    "protected": false
+  },
+  "excerpt": {
+    "rendered": "<p>Trong làng nghề kinh doanh online, Lâm Trạch bị lão sếp họ Hoàng vu oan là lang băm để cướp bài thuốc gia truyền. Nhưng anh đã bí mật đặt camera an ninh, ghi lại toàn bộ âm mưu. Từng tập, anh vạch mặt</p>\n",
+    "protected": false
+  },
+  "featured_media": 0,
+  "comment_status": "open",
+  "ping_status": "closed",
+  "template": "",
+  "the_loai": [],
+  "class_list": [
+    "post-2007",
+    "truyen",
+    "type-truyen",
+    "status-publish",
+    "hentry"
+  ],
+  "_links": {
+    "self": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/truyen/2007",
+        "targetHints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      }
+    ],
+    "collection": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/truyen"
+      }
+    ],
+    "about": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/types/truyen"
+      }
+    ],
+    "replies": [
+      {
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/comments?post=2007"
+      }
+    ],
+    "wp:attachment": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/media?parent=2007"
+      }
+    ],
+    "wp:term": [
+      {
+        "taxonomy": "the_loai",
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/the_loai?post=2007"
+      }
+    ],
+    "curies": [
+      {
+        "name": "wp",
+        "href": "https://api.w.org/{rel}",
+        "templated": true
+      }
+    ]
+  }
+}

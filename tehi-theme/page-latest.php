@@ -201,7 +201,7 @@ $hot_query = new WP_Query([
 
 <style>
 /* Reset pagination Tailwind alignment */
-.template-pagination { display: flex; flex-wrap: wrap; gap: 0.25rem; justify-content: center; align-items: center; }
+.template-pagination { --primary: #2563eb; display: flex; flex-wrap: wrap; gap: 0.25rem; justify-content: center; align-items: center; }
 .template-pagination a, .template-pagination span { display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 9999px; font-weight: 700; transition: all 0.2s; font-size: 0.75rem; color: var(--on-surface-variant); }
 .template-pagination .page-numbers:not(.current):not(.dots) { background-color: var(--surface-container-low); border: 1px solid rgba(0,0,0,0.05); cursor: pointer; }
 .template-pagination .page-numbers:not(.current):not(.dots):hover { background-color: var(--primary); color: white; border-color: transparent; }

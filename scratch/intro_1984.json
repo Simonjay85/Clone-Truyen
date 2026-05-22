@@ -1,0 +1,84 @@
+{
+  "id": 1984,
+  "date": "2026-05-14T17:31:18",
+  "date_gmt": "2026-05-14T17:31:18",
+  "guid": {
+    "rendered": "https://doctieuthuyet.com/?post_type=truyen&#038;p=1984"
+  },
+  "modified": "2026-05-20T23:17:26",
+  "modified_gmt": "2026-05-20T23:17:26",
+  "slug": "toi-gia-ngheo-di-ra-mat-me-nguoi-yeu-doi-sinh-le-900-trieu",
+  "status": "publish",
+  "type": "truyen",
+  "link": "https://doctieuthuyet.com/truyen/toi-gia-ngheo-di-ra-mat-me-nguoi-yeu-doi-sinh-le-900-trieu/",
+  "title": {
+    "rendered": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu"
+  },
+  "content": {
+    "rendered": "<p>Cô gái giả nghèo để thử lòng người yêu và gia đình anh.</p>\n<p>Khi mẹ anh đòi sính lễ 900 triệu, cô bắt đầu kế hoạch vả mặt từng người, hé lộ sự thật về thân phận và khiến họ phải hối hận.</p>\n",
+    "protected": false
+  },
+  "excerpt": {
+    "rendered": "<p>Cô gái giả nghèo để thử lòng người yêu và gia đình anh. Khi mẹ anh đòi sính lễ 900 triệu, cô bắt đầu kế hoạch vả mặt từng người, hé lộ sự thật về thân phận và khiến họ phải hối hận.</p>\n",
+    "protected": false
+  },
+  "featured_media": 0,
+  "comment_status": "open",
+  "ping_status": "closed",
+  "template": "",
+  "the_loai": [],
+  "class_list": [
+    "post-1984",
+    "truyen",
+    "type-truyen",
+    "status-publish",
+    "hentry"
+  ],
+  "_links": {
+    "self": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/truyen/1984",
+        "targetHints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      }
+    ],
+    "collection": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/truyen"
+      }
+    ],
+    "about": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/types/truyen"
+      }
+    ],
+    "replies": [
+      {
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/comments?post=1984"
+      }
+    ],
+    "wp:attachment": [
+      {
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/media?parent=1984"
+      }
+    ],
+    "wp:term": [
+      {
+        "taxonomy": "the_loai",
+        "embeddable": true,
+        "href": "https://doctieuthuyet.com/wp-json/wp/v2/the_loai?post=1984"
+      }
+    ],
+    "curies": [
+      {
+        "name": "wp",
+        "href": "https://api.w.org/{rel}",
+        "templated": true
+      }
+    ]
+  }
+}

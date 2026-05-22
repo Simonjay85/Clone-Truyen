@@ -1,0 +1,3549 @@
+{
+  "success": true,
+  "total_stories": 74,
+  "available_genres": [
+    {
+      "term_id": 147,
+      "name": "11",
+      "slug": "11",
+      "count": 0
+    },
+    {
+      "term_id": 144,
+      "name": "143",
+      "slug": "143",
+      "count": 0
+    },
+    {
+      "term_id": 148,
+      "name": "146",
+      "slug": "146",
+      "count": 0
+    },
+    {
+      "term_id": 141,
+      "name": "17",
+      "slug": "17",
+      "count": 0
+    },
+    {
+      "term_id": 145,
+      "name": "19",
+      "slug": "19",
+      "count": 0
+    },
+    {
+      "term_id": 142,
+      "name": "42",
+      "slug": "42",
+      "count": 0
+    },
+    {
+      "term_id": 40,
+      "name": "Ẩm Thực",
+      "slug": "am-thuc",
+      "count": 0
+    },
+    {
+      "term_id": 85,
+      "name": "Bản sao",
+      "slug": "ban-sao",
+      "count": 0
+    },
+    {
+      "term_id": 39,
+      "name": "Bi Kịch",
+      "slug": "bi-kich",
+      "count": 0
+    },
+    {
+      "term_id": 23,
+      "name": "Bí mật huyết thống",
+      "slug": "bi-mat-huyet-thong",
+      "count": 0
+    },
+    {
+      "term_id": 29,
+      "name": "Chính kịch",
+      "slug": "chinh-kich",
+      "count": 0
+    },
+    {
+      "term_id": 38,
+      "name": "Chính Trị",
+      "slug": "chinh-tri",
+      "count": 0
+    },
+    {
+      "term_id": 68,
+      "name": "Chính trị giật gân",
+      "slug": "chinh-tri-giat-gan",
+      "count": 0
+    },
+    {
+      "term_id": 146,
+      "name": "Công sở",
+      "slug": "cong-so",
+      "count": 1
+    },
+    {
+      "term_id": 37,
+      "name": "Cung Đấu",
+      "slug": "cung-dau",
+      "count": 0
+    },
+    {
+      "term_id": 49,
+      "name": "Cung Đấu Nội Trị",
+      "slug": "cung-dau-noi-tri",
+      "count": 0
+    },
+    {
+      "term_id": 53,
+      "name": "Điệp Viên",
+      "slug": "diep-vien",
+      "count": 0
+    },
+    {
+      "term_id": 44,
+      "name": "Điều Tra",
+      "slug": "dieu-tra",
+      "count": 0
+    },
+    {
+      "term_id": 11,
+      "name": "Đô Thị",
+      "slug": "do-thi",
+      "count": 1
+    },
+    {
+      "term_id": 2,
+      "name": "Đô Thị Ẩn Thân",
+      "slug": "do-thi-an-than",
+      "count": 0
+    },
+    {
+      "term_id": 119,
+      "name": "Đô thị thương chiến",
+      "slug": "do-thi-thuong-chien",
+      "count": 0
+    },
+    {
+      "term_id": 125,
+      "name": "Đô thị vả mặt",
+      "slug": "do-thi-va-mat-2",
+      "count": 0
+    },
+    {
+      "term_id": 15,
+      "name": "Đô Thị, Huyền Huyễn, Nữ Cường",
+      "slug": "do-thi-huyen-huyen-nu-cuong",
+      "count": 0
+    },
+    {
+      "term_id": 12,
+      "name": "Đô Thị, Vả Mặt",
+      "slug": "do-thi-va-mat",
+      "count": 0
+    },
+    {
+      "term_id": 60,
+      "name": "Đọc nhanh",
+      "slug": "doc-nhanh",
+      "count": 0
+    },
+    {
+      "term_id": 26,
+      "name": "Đời Thường",
+      "slug": "doi-thuong",
+      "count": 0
+    },
+    {
+      "term_id": 7,
+      "name": "Drama",
+      "slug": "drama",
+      "count": 0
+    },
+    {
+      "term_id": 76,
+      "name": "Drama gia đình",
+      "slug": "drama-gia-dinh",
+      "count": 0
+    },
+    {
+      "term_id": 61,
+      "name": "Drama gia đình ngược tâm",
+      "slug": "drama-gia-dinh-nguoc-tam",
+      "count": 0
+    },
+    {
+      "term_id": 90,
+      "name": "Drama tình cảm",
+      "slug": "drama-tinh-cam",
+      "count": 0
+    },
+    {
+      "term_id": 100,
+      "name": "Existential crisis",
+      "slug": "existential-crisis",
+      "count": 0
+    },
+    {
+      "term_id": 18,
+      "name": "Gia Đấu",
+      "slug": "gia-dau",
+      "count": 0
+    },
+    {
+      "term_id": 133,
+      "name": "Gia đấu hiện đại",
+      "slug": "gia-dau-hien-dai",
+      "count": 0
+    },
+    {
+      "term_id": 42,
+      "name": "Gia Đình",
+      "slug": "gia-dinh",
+      "count": 2
+    },
+    {
+      "term_id": 21,
+      "name": "Giả Nghèo",
+      "slug": "gia-ngheo",
+      "count": 0
+    },
+    {
+      "term_id": 50,
+      "name": "Giả Trai",
+      "slug": "gia-trai",
+      "count": 0
+    },
+    {
+      "term_id": 45,
+      "name": "Hành Động",
+      "slug": "hanh-dong",
+      "count": 0
+    },
+    {
+      "term_id": 20,
+      "name": "Hào Môn",
+      "slug": "hao-mon",
+      "count": 0
+    },
+    {
+      "term_id": 10,
+      "name": "Hệ thống",
+      "slug": "he-thong",
+      "count": 0
+    },
+    {
+      "term_id": 22,
+      "name": "Hiện đại",
+      "slug": "hien-dai",
+      "count": 0
+    },
+    {
+      "term_id": 46,
+      "name": "Học Đường",
+      "slug": "hoc-duong",
+      "count": 0
+    },
+    {
+      "term_id": 52,
+      "name": "Hôn Nhân",
+      "slug": "hon-nhan",
+      "count": 0
+    },
+    {
+      "term_id": 116,
+      "name": "Hôn nhân giả",
+      "slug": "hon-nhan-gia",
+      "count": 0
+    },
+    {
+      "term_id": 13,
+      "name": "Huyền Huyễn",
+      "slug": "huyen-huyen",
+      "count": 0
+    },
+    {
+      "term_id": 54,
+      "name": "Khoa Học Viễn Tưởng",
+      "slug": "khoa-hoc-vien-tuong",
+      "count": 0
+    },
+    {
+      "term_id": 81,
+      "name": "Kịch tính",
+      "slug": "kich-tinh",
+      "count": 0
+    },
+    {
+      "term_id": 70,
+      "name": "Kinh dị tâm lý",
+      "slug": "kinh-di-tam-ly",
+      "count": 0
+    },
+    {
+      "term_id": 27,
+      "name": "Kinh Doanh",
+      "slug": "kinh-doanh",
+      "count": 0
+    },
+    {
+      "term_id": 94,
+      "name": "Ký ức giả",
+      "slug": "ky-uc-gia",
+      "count": 0
+    },
+    {
+      "term_id": 34,
+      "name": "Lịch Sử",
+      "slug": "lich-su",
+      "count": 0
+    },
+    {
+      "term_id": 111,
+      "name": "Mẹ bỉm",
+      "slug": "me-bim",
+      "count": 0
+    },
+    {
+      "term_id": 28,
+      "name": "Micro Drama",
+      "slug": "micro-drama",
+      "count": 0
+    },
+    {
+      "term_id": 96,
+      "name": "Nghịch lý thời gian",
+      "slug": "nghich-ly-thoi-gian",
+      "count": 0
+    },
+    {
+      "term_id": 58,
+      "name": "Ngôi thứ nhất",
+      "slug": "ngoi-thu-nhat",
+      "count": 0
+    },
+    {
+      "term_id": 17,
+      "name": "Ngôn Tình",
+      "slug": "ngon-tinh",
+      "count": 1
+    },
+    {
+      "term_id": 6,
+      "name": "Ngôn tình đô thị",
+      "slug": "ngon-tinh-do-thi",
+      "count": 0
+    },
+    {
+      "term_id": 109,
+      "name": "Ngược tra",
+      "slug": "nguoc-tra",
+      "count": 0
+    },
+    {
+      "term_id": 43,
+      "name": "Nông Thôn",
+      "slug": "nong-thon",
+      "count": 0
+    },
+    {
+      "term_id": 25,
+      "name": "Nông Thôn Hiện Đại",
+      "slug": "nong-thon-hien-dai",
+      "count": 0
+    },
+    {
+      "term_id": 48,
+      "name": "Nữ Chủ",
+      "slug": "nu-chu",
+      "count": 0
+    },
+    {
+      "term_id": 14,
+      "name": "Nữ Cường",
+      "slug": "nu-cuong",
+      "count": 0
+    },
+    {
+      "term_id": 89,
+      "name": "Oan gia",
+      "slug": "oan-gia",
+      "count": 0
+    },
+    {
+      "term_id": 75,
+      "name": "Phản bội",
+      "slug": "phan-boi",
+      "count": 0
+    },
+    {
+      "term_id": 105,
+      "name": "Phản đòn",
+      "slug": "phan-don",
+      "count": 0
+    },
+    {
+      "term_id": 33,
+      "name": "Pháp Lý",
+      "slug": "phap-ly",
+      "count": 0
+    },
+    {
+      "term_id": 24,
+      "name": "Phục Thù",
+      "slug": "phuc-thu",
+      "count": 0
+    },
+    {
+      "term_id": 59,
+      "name": "Plot Twist",
+      "slug": "plot-twist",
+      "count": 0
+    },
+    {
+      "term_id": 101,
+      "name": "Plot twist meta",
+      "slug": "plot-twist-meta",
+      "count": 0
+    },
+    {
+      "term_id": 51,
+      "name": "Quân Sự",
+      "slug": "quan-su",
+      "count": 0
+    },
+    {
+      "term_id": 4,
+      "name": "Sảng Văn",
+      "slug": "sang-van",
+      "count": 62
+    },
+    {
+      "term_id": 41,
+      "name": "Tài Phiệt",
+      "slug": "tai-phiet",
+      "count": 0
+    },
+    {
+      "term_id": 131,
+      "name": "Tài sản riêng",
+      "slug": "tai-san-rieng",
+      "count": 0
+    },
+    {
+      "term_id": 31,
+      "name": "Tâm Lý",
+      "slug": "tam-ly",
+      "count": 0
+    },
+    {
+      "term_id": 72,
+      "name": "Tâm lý hồi hộp",
+      "slug": "tam-ly-hoi-hop",
+      "count": 0
+    },
+    {
+      "term_id": 35,
+      "name": "Thương Trường",
+      "slug": "thuong-truong",
+      "count": 0
+    },
+    {
+      "term_id": 32,
+      "name": "Tình Cảm",
+      "slug": "tinh-cam",
+      "count": 0
+    },
+    {
+      "term_id": 114,
+      "name": "Tình cảm giả tạo",
+      "slug": "tinh-cam-gia-tao",
+      "count": 0
+    },
+    {
+      "term_id": 80,
+      "name": "Tình tay ba",
+      "slug": "tinh-tay-ba",
+      "count": 0
+    },
+    {
+      "term_id": 36,
+      "name": "Tội Phạm",
+      "slug": "toi-pham",
+      "count": 0
+    },
+    {
+      "term_id": 19,
+      "name": "Trả Thù",
+      "slug": "tra-thu",
+      "count": 1
+    },
+    {
+      "term_id": 86,
+      "name": "Tranh giành tài sản",
+      "slug": "tranh-gianh-tai-san",
+      "count": 0
+    },
+    {
+      "term_id": 47,
+      "name": "Trinh Thám",
+      "slug": "trinh-tham",
+      "count": 0
+    },
+    {
+      "term_id": 66,
+      "name": "Trinh thám đen tối",
+      "slug": "trinh-tham-den-toi",
+      "count": 0
+    },
+    {
+      "term_id": 3,
+      "name": "Trọng sinh",
+      "slug": "trong-sinh",
+      "count": 0
+    },
+    {
+      "term_id": 122,
+      "name": "Truyện Hiện Đại",
+      "slug": "truyen-hien-dai",
+      "count": 0
+    },
+    {
+      "term_id": 143,
+      "name": "Truyện ngôn tình",
+      "slug": "truyen-ngon-tinh",
+      "count": 1
+    },
+    {
+      "term_id": 16,
+      "name": "Tự do",
+      "slug": "tu-do",
+      "count": 0
+    },
+    {
+      "term_id": 5,
+      "name": "Vả Mặt",
+      "slug": "va-mat",
+      "count": 0
+    },
+    {
+      "term_id": 134,
+      "name": "Vả mặt công nghệ",
+      "slug": "va-mat-cong-nghe",
+      "count": 0
+    },
+    {
+      "term_id": 30,
+      "name": "Xã Hội",
+      "slug": "xa-hoi",
+      "count": 0
+    },
+    {
+      "term_id": 9,
+      "name": "Xuyên Không",
+      "slug": "xuyen-khong",
+      "count": 0
+    }
+  ],
+  "stories": [
+    {
+      "id": 2815,
+      "title": "Bị Đuổi Khỏi Lab Đêm Trước IPO, Hóa Ra Anh Nắm Công Thức Trăm Tỷ",
+      "slug": "ky-su-son-mai-bi-duoi-khoi-lab-hop-dong-sinh-hoc-tram-ty-lat-keo-phut-chot-ngay-ipo",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Bị Đuổi Khỏi Lab Đêm Trước IPO, Hóa Ra Anh Nắm Công Thức Trăm Tỷ",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Hữu Phước",
+          "content": "Web đọc truyện thích thật sự, giao diện đẹp load nhanh và không có quảng cáo che màn hình. Mọi người nên đọc thử truyện này nha.",
+          "date": "2026-05-18 03:38:55"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Lâu lắm mới đọc được bộ ngôn tình hay như thế này. Văn phong dịch rất mượt và có tâm, cảm ơn ad nhiều nha.",
+          "date": "2026-05-14 05:38:55"
+        },
+        {
+          "author": "Mai Anh",
+          "content": "Nội dung rất sâu sắc, không bị mì ăn liền như các truyện khác. Chờ ad cập nhật thêm chương mới hóng quá đi!",
+          "date": "2026-05-01 04:38:55"
+        },
+        {
+          "author": "Thu Trang",
+          "content": "Truyện lôi cuốn quá chừng, tình tiết logic nhân vật nam chính ngầu xỉu! Chấm 5 sao cho truyện và nhóm dịch nhé.",
+          "date": "2026-04-27 06:38:55"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2808,
+      "title": "Người Đưa Thư Bị Cả Tòa Nhà Khinh, Hóa Ra Anh Là Chủ Toàn Bộ Tháp",
+      "slug": "nguoi-dua-thu-bi-ca-toa-nha-cao-cap-coi-thuong-anh-la-chu-so-huu-toa-nha-do",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Người Đưa Thư Bị Cả Tòa Nhà Khinh, Hóa Ra Anh Là Chủ Toàn Bộ Tháp",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-20 13:22:25"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-19 10:22:25"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-17 19:22:25"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-15 21:22:25"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-13 21:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "Người Đưa Thư Bị Cả Tòa Nhà Khinh, Hóa Ra Anh - Sảng Văn V13 Full",
+        "description": "Người Đưa Thư Bị Cả Tòa Nhà Khinh, Hóa Ra Anh Là Chủ Toàn Bộ Tháp. Đọc truyện sảng văn vả mặt chuẩn V13 kịch tính đỉnh cao, bối cảnh thực tế tại Việt Nam với pháp lý và chứng cứ số sắc bén.",
+        "keyword": "người đưa thư"
+      }
+    },
+    {
+      "id": 2801,
+      "title": "Trọng Tài Bị Ngôi Sao Nhổ Nước Bọt, Hóa Ra Là Cựu Đội Trưởng Tuyển QG",
+      "slug": "trong-tai-bong-da-bi-cau-thu-ngoi-sao-xuc-pham-hoa-ra-la-cuu-danh-thu-so-1-quoc-gia",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Trọng Tài Bị Ngôi Sao Nhổ Nước Bọt, Hóa Ra Là Cựu Đội Trưởng Tuyển QG",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-21 06:22:25"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-19 10:22:25"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-19 08:22:25"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-17 15:22:25"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-13 04:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "Trọng Tài Bị Ngôi Sao Nhổ Nước Bọt, Hóa Ra Là - Sảng Văn V13 Full",
+        "description": "Trọng Tài Bị Ngôi Sao Nhổ Nước Bọt, Hóa Ra Là Cựu Đội Trưởng Tuyển QG. Đọc truyện sảng văn vả mặt chuẩn V13 kịch tính đỉnh cao, bối cảnh thực tế tại Việt Nam với pháp lý và chứng cứ số sắc bén.",
+        "keyword": "trọng tài bóng đá"
+      }
+    },
+    {
+      "id": 2794,
+      "title": "Người Làm Vườn Bị Chủ Biệt Thự Đuổi, Hóa Ra Anh Thiết Kế Cả Khu Đô Thị",
+      "slug": "nguoi-lam-vuon-bi-gia-dinh-chu-biet-thu-khinh-lo-ra-la-kien-truc-su-thiet-ke-ca-khu-do-thi-do",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Người Làm Vườn Bị Chủ Biệt Thự Đuổi, Hóa Ra Anh Thiết Kế Cả Khu Đô Thị",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-20 01:22:25"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-15 12:22:25"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-11 12:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "Người Làm Vườn Bị Chủ Biệt Thự Đuổi, Hóa Ra A - Sảng Văn V13 Full",
+        "description": "Người Làm Vườn Bị Chủ Biệt Thự Đuổi, Hóa Ra Anh Thiết Kế Cả Khu Đô Thị. Đọc truyện sảng văn vả mặt chuẩn V13 kịch tính đỉnh cao, bối cảnh thực tế tại Việt Nam với pháp lý và chứng cứ số sắc bén.",
+        "keyword": "người làm vườn"
+      }
+    },
+    {
+      "id": 2787,
+      "title": "Giáo Viên Làng Bị Hiệu Trưởng Sỉ Nhục, Bộ Giáo Dục Bổ Nhiệm Anh Làm Thanh Tra",
+      "slug": "giao-vien-lang-bi-hieu-truong-khinh-thuong-bo-giao-duc-bo-nhiem-anh-lam-thanh-tra-dac-biet",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Giáo Viên Làng Bị Hiệu Trưởng Sỉ Nhục, Bộ Giáo Dục Bổ Nhiệm Anh Làm Thanh Tra",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Phương Thảo",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-19 15:22:25"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-19 06:22:25"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-18 14:22:25"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-15 02:22:25"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-12 03:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "Giáo Viên Làng Bị Hiệu Trưởng Sỉ Nhục, Bộ Giá - Sảng Văn V13 Full",
+        "description": "Giáo Viên Làng Bị Hiệu Trưởng Sỉ Nhục, Bộ Giáo Dục Bổ Nhiệm Anh Làm Thanh Tra. Đọc truyện sảng văn vả mặt chuẩn V13 kịch tính đỉnh cao, bối cảnh thực tế tại Việt Nam với pháp lý và chứng cứ số sắc bén.",
+        "keyword": "giáo viên làng"
+      }
+    },
+    {
+      "id": 2780,
+      "title": "Cô Gái Bán Hoa Bị Đuổi Khỏi Tiệc Cưới Hào Môn, Cùng Ngày Cô Gõ Sàn HOSE",
+      "slug": "co-gai-ban-hoa-bi-dam-cuoi-nha-giau-duoi-ra-tap-doan-hoa-tuoi-cua-co-niem-yet-ngay-hom-do",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Cô Gái Bán Hoa Bị Đuổi Khỏi Tiệc Cưới Hào Môn, Cùng Ngày Cô Gõ Sàn HOSE",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Đọc mà tức lộn ruột với mấy bà mẹ chồng/họ hàng hám tiền, lúc nhân vật chính lật kèo biệt thự và sính lễ xem mà sướng mắt!",
+          "date": "2026-05-18 19:22:25"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Đúng vị gia đình Việt Nam luôn, mâu thuẫn tả thực tế dã man. Con dâu/con rể đỉnh quá.",
+          "date": "2026-05-17 19:22:25"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Truyện cuốn từ chương đầu tiên, rất thích cách xử lý lý tính của nhân vật chính.",
+          "date": "2026-05-14 12:22:25"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Đọc giải trí cực tốt, văn phong mượt mà chân thực, tả hành động vật lý đỉnh ghê.",
+          "date": "2026-05-12 06:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "Cô Gái Bán Hoa Bị Đuổi Khỏi Tiệc Cưới Hào Môn - Sảng Văn V13 Full",
+        "description": "Cô Gái Bán Hoa Bị Đuổi Khỏi Tiệc Cưới Hào Môn, Cùng Ngày Cô Gõ Sàn HOSE. Đọc truyện sảng văn vả mặt chuẩn V13 kịch tính đỉnh cao, bối cảnh thực tế tại Việt Nam với pháp lý và chứng cứ số sắc bén.",
+        "keyword": "cô gái bán hoa"
+      }
+    },
+    {
+      "id": 2773,
+      "title": "Chồng Nghèo Bị Họ Hàng Khinh Dự Tiệc Hào Môn, Hóa Ra Anh Là Khách Mời VIP Của Sự Kiện Đó",
+      "slug": "chong-ngheo-bi-ho-hang-khinh-du-tiec-hao-mon-hoa-ra-anh-la-khach-moi-vip-cua-su-kien-do",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Chồng Nghèo Bị Họ Hàng Khinh Dự Tiệc Hào Môn, Hóa Ra Anh Là Khách Mời VIP Của Sự Kiện Đó",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mấy bà cô bên chồng xem pha vả mặt này chắc sáng mắt ra, sướng!",
+          "date": "2026-05-18 12:22:25"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Đúng vị gia đình Việt Nam luôn, mâu thuẫn tả thực tế dã man. Con dâu/con rể đỉnh quá.",
+          "date": "2026-05-16 05:22:25"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Truyện cuốn từ chương đầu tiên, rất thích cách xử lý lý tính của nhân vật chính.",
+          "date": "2026-05-15 04:22:25"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Đọc giải trí cực tốt, văn phong mượt mà chân thực, tả hành động vật lý đỉnh ghê.",
+          "date": "2026-05-13 05:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2766,
+      "title": "Trợ Lý Bị Sếp Nữ CEO Ngược Đãi, Sếp Mới Của Cô Chính Là Anh Sau Thâu Tóm Công Ty",
+      "slug": "tro-ly-bi-sep-nu-ceo-nguoc-dai-sep-moi-cua-co-chinh-la-anh-sau-thau-tom-cong-ty",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Trợ Lý Bị Sếp Nữ CEO Ngược Đãi, Sếp Mới Của Cô Chính Là Anh Sau Thâu Tóm Công Ty",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Phương Thảo",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-20 00:22:25"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-19 06:22:25"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-15 12:22:25"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-12 00:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2759,
+      "title": "Thợ Sửa Xe Bị Cả Xóm Khinh, Khi Đội Đua F1 Quốc Gia Tìm Đến Thuê Anh Làm Kỹ Sư Trưởng",
+      "slug": "tho-sua-xe-bi-ca-xom-khinh-khi-doi-dua-f1-quoc-gia-tim-den-thue-anh-lam-ky-su-truong",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Thợ Sửa Xe Bị Cả Xóm Khinh, Khi Đội Đua F1 Quốc Gia Tìm Đến Thuê Anh Làm Kỹ Sư Trưởng",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-15 08:22:25"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-15 03:22:25"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-11 18:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2752,
+      "title": "Con Trai Nuôi Bị Đuổi Ra Khỏi Tập Đoàn, Di Chúc Ông Nội Trao Lại 70% Cổ Phần",
+      "slug": "con-trai-nuoi-bi-duoi-ra-khoi-tap-doan-di-chuc-ong-noi-trao-lai-70-co-phan",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Con Trai Nuôi Bị Đuổi Ra Khỏi Tập Đoàn, Di Chúc Ông Nội Trao Lại 70% Cổ Phần",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Thuỳ Trang",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-20 19:22:25"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-17 19:22:25"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-17 12:22:25"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-14 15:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2745,
+      "title": "Tài Xế Taxi Bị Khách VIP Khinh Thường, Tài Xế Đó Sở Hữu Công Ty Taxi Lớn Nhất Thành Tâm",
+      "slug": "tai-xe-taxi-bi-khach-vip-khinh-thuong-tai-xe-do-so-huu-cong-ty-taxi-lon-nhat-thanh-tam",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Tài Xế Taxi Bị Khách VIP Khinh Thường, Tài Xế Đó Sở Hữu Công Ty Taxi Lớn Nhất Thành Tâm",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-21 06:22:25"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-20 02:22:25"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-15 12:22:25"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-14 18:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2738,
+      "title": "Vợ Đòi Ly Hôn Vì Chồng Thất Nghiệp, Ngày Ký Đơn Chồng Nhận Danh Hiệu Kiến Trúc Sư Quốc Gia",
+      "slug": "vo-doi-ly-hon-vi-chong-that-nghiep-ngay-ky-don-chong-nhan-danh-hieu-kien-truc-su-quoc-gia",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Vợ Đòi Ly Hôn Vì Chồng Thất Nghiệp, Ngày Ký Đơn Chồng Nhận Danh Hiệu Kiến Trúc Sư Quốc Gia",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Mấy bà cô bên chồng xem pha vả mặt này chắc sáng mắt ra, sướng!",
+          "date": "2026-05-18 04:22:25"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện cuốn từ chương đầu tiên, rất thích cách xử lý lý tính của nhân vật chính.",
+          "date": "2026-05-17 20:22:25"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Đọc giải trí cực tốt, văn phong mượt mà chân thực, tả hành động vật lý đỉnh ghê.",
+          "date": "2026-05-15 23:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2731,
+      "title": "Trưởng Phòng Bán Hàng Khinh Nhân Viên Mới, Nhân Viên Đó Là Chuyên Gia Tư Vấn Của Tập Đoàn Mẹ",
+      "slug": "truong-phong-ban-hang-khinh-nhan-vien-moi-nhan-vien-do-la-chuyen-gia-tu-van-cua-tap-doan-me",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Trưởng Phòng Bán Hàng Khinh Nhân Viên Mới, Nhân Viên Đó Là Chuyên Gia Tư Vấn Của Tập Đoàn Mẹ",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Phương Thảo",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-21 03:22:25"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-18 10:22:25"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-17 20:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2724,
+      "title": "Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ",
+      "slug": "co-gai-lang-bi-nha-trai-hao-mon-tu-choi-startup-nong-nghiep-cua-co-niem-yet-500-ty",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-21 01:22:25"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-16 05:22:25"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-14 04:22:25"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-12 21:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2717,
+      "title": "Thuyền Trưởng Tàu Cá Bị Chủ Cảng Ép Nợ, Hóa Ra Là Đại Gia Hàng Hải Đang Điều Tra Thâu Tóm",
+      "slug": "thuyen-truong-tau-ca-bi-chu-cang-ep-no-hoa-ra-la-dai-gia-hang-hai-dang-dieu-tra-thau-tom",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Thuyền Trưởng Tàu Cá Bị Chủ Cảng Ép Nợ, Hóa Ra Là Đại Gia Hàng Hải Đang Điều Tra Thâu Tóm",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Mạnh Hùng",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-20 10:22:25"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-19 06:22:25"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-16 09:22:25"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-14 09:22:25"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2710,
+      "title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+      "slug": "giao-su-duoi-hoc-tro-ra-khoi-lop-vi-dot-hoc-tro-do-la-tac-gia-giao-trinh-giao-su-dang-day-2",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-18 11:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-14 05:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-11 16:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2703,
+      "title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+      "slug": "giao-su-duoi-hoc-tro-ra-khoi-lop-vi-dot-hoc-tro-do-la-tac-gia-giao-trinh-giao-su-dang-day",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-21 03:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-21 02:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-16 09:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-13 05:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2696,
+      "title": "Nhà Chồng Khinh Tôi Không Biết Nấu Ăn, Tôi Giật Giải Đầu Bếp Số 1 Đông Nam Á Trước Mặt Họ",
+      "slug": "nha-chong-khinh-toi-khong-biet-nau-an-toi-giat-giai-dau-bep-so-1-dong-nam-a-truoc-mat-ho",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Nhà Chồng Khinh Tôi Không Biết Nấu Ăn, Tôi Giật Giải Đầu Bếp Số 1 Đông Nam Á Trước Mặt Họ",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mấy bà cô bên chồng xem pha vả mặt này chắc sáng mắt ra, sướng!",
+          "date": "2026-05-17 18:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Đúng vị gia đình Việt Nam luôn, mâu thuẫn tả thực tế dã man. Con dâu/con rể đỉnh quá.",
+          "date": "2026-05-17 14:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Truyện cuốn từ chương đầu tiên, rất thích cách xử lý lý tính của nhân vật chính.",
+          "date": "2026-05-17 08:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2689,
+      "title": "Giám Đốc Bệnh Viện Sa Thải Bác Sĩ Thực Tập, Hội Đồng Y Tế Quốc Gia Cử Người Điều Tra",
+      "slug": "giam-doc-benh-vien-sa-thai-bac-si-thuc-tap-hoi-dong-y-te-quoc-gia-cu-nguoi-dieu-tra",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Giám Đốc Bệnh Viện Sa Thải Bác Sĩ Thực Tập, Hội Đồng Y Tế Quốc Gia Cử Người Điều Tra",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-16 19:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-13 15:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-12 23:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-12 01:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-11 13:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2682,
+      "title": "Bố Vợ Ép Ly Hôn Vì Tôi Nghèo Hèn, Công Ty Tỷ Đô Của Tôi Niêm Yết Sàn Chứng Khoán Hôm Đó",
+      "slug": "bo-vo-ep-ly-hon-vi-toi-ngheo-hen-cong-ty-ty-do-cua-toi-niem-yet-san-chung-khoan-hom-do",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Bố Vợ Ép Ly Hôn Vì Tôi Nghèo Hèn, Công Ty Tỷ Đô Của Tôi Niêm Yết Sàn Chứng Khoán Hôm Đó",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-13 00:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-11 18:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-11 08:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2675,
+      "title": "Sư Phụ Đuổi Tôi Khỏi Võ Quán Vì Hèn Yếu, Giải Vô Địch Quốc Gia Lộ Ra Thân Phận Thật",
+      "slug": "su-phu-duoi-toi-khoi-vo-quan-vi-hen-yeu-giai-vo-dich-quoc-gia-lo-ra-than-phan-that",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Sư Phụ Đuổi Tôi Khỏi Võ Quán Vì Hèn Yếu, Giải Vô Địch Quốc Gia Lộ Ra Thân Phận Thật",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-20 05:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-18 17:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-18 17:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-16 10:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-12 18:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2668,
+      "title": "Cô Vợ Hào Môn Khinh Tôi Vô Dụng, Cả Hà Ngoại Biết Tôi Là Chủ Tịch Tập Đoàn Thép",
+      "slug": "co-vo-hao-mon-khinh-toi-vo-dung-ca-ha-ngoai-biet-toi-la-chu-tich-tap-doan-thep",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Cô Vợ Hào Môn Khinh Tôi Vô Dụng, Cả Hà Ngoại Biết Tôi Là Chủ Tịch Tập Đoàn Thép",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-19 14:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-19 10:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-18 02:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-13 10:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2658,
+      "title": "Chàng Rể Ngọc Linh Bị Cướp Bằng Sâm Nghìn Tỷ Lật Kèo Đông Tây Y Đưa Tập Đoàn Phản Bội Vào Tù",
+      "slug": "chang-re-ngoc-linh-bi-cuop-bang-sam-nghin-ty-lat-keo-dong-tay-y-dua-tap-doan-phan-boi-vao-tu",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Chàng Rể Ngọc Linh Bị Cướp Bằng Sâm Nghìn Tỷ Lật Kèo Đông Tây Y Đưa Tập Đoàn Phản Bội Vào Tù",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Quốc Bảo",
+          "content": "Truyện rất chất lượng, tình tiết gãy gọn không dông dài.",
+          "date": "2026-05-20 17:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Võ thần hành động chất lừ, tả đấm đá chân thực mồ hôi chảy ròng ròng chứ không nói suông.",
+          "date": "2026-05-16 20:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Thích cách tác giả lồng ghép y học cổ truyền Đông Tây Y và công nghệ hiện đại.",
+          "date": "2026-05-15 21:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2606,
+      "title": "Chàng Rể Bị Trục Xuất Khỏi Gia Tộc Trầm Hương Tìm Ra Kỳ Nam Nghìn Tỷ Vả Sập Tập Đoàn Phản Bội",
+      "slug": "chang-re-bi-truc-xuat-khoi-gia-toc-tram-huong-tim-ra-ky-nam-nghin-ty-va-sap-tap-doan-phan-boi",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Chàng Rể Bị Trục Xuất Khỏi Gia Tộc Trầm Hương Tìm Ra Kỳ Nam Nghìn Tỷ Vả Sập Tập Đoàn Phản Bội",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Mạnh Hùng",
+          "content": "Võ thần hành động chất lừ, tả đấm đá chân thực mồ hôi chảy ròng ròng chứ không nói suông.",
+          "date": "2026-05-20 06:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Độc bản dược thần với võ thần đất cảng đọc cuốn ghê, yếu tố kỳ ảo kết hợp kỹ thuật thực tế siêu đỉnh.",
+          "date": "2026-05-20 04:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Truyện rất chất lượng, tình tiết gãy gọn không dông dài.",
+          "date": "2026-05-15 06:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "",
+        "description": "",
+        "keyword": ""
+      }
+    },
+    {
+      "id": 2587,
+      "title": "Thiên Tài Cầu Đường Cao Tốc: Kỹ Sư Bị Sa Thải Xây Cầu Vượt Biển Nghìn Tỷ",
+      "slug": "thien-tai-cau-duong-cao-toc-ky-su-bi-sa-thai-xay-cau-vuot-bien-nghin-ty",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Thiên Tài Cầu Đường Cao Tốc: Kỹ Sư Bị Sa Thải Xây Cầu Vượt Biển Nghìn Tỷ",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-20 09:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-17 05:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-16 15:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-14 04:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-11 20:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Thiên Tài Cầu Đường Cao Tốc: Kỹ Sư Bị Sa Thải Xây Cầu Vượt Biển",
+        "description": "Nhân viên kỹ thuật quèn của Viện Thiết Kế Cầu Đường thì không được phép phản biện dự án sai kỹ thuật sao? Lê Khắc Nam cướp trắng bản quyền thiết kế của...",
+        "keyword": "thiên tài cầu đường"
+      }
+    },
+    {
+      "id": 2573,
+      "title": "Đế Chế Gốm Sứ Bát Tràng: Nghệ Nhân Bị Phản Bội Thiêu Đốt Cả Làng Nghề",
+      "slug": "de-che-gom-su-bat-trang-nghe-nhan-bi-phan-boi-thieu-dot-ca-lang-nghe",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Đế Chế Gốm Sứ Bát Tràng: Nghệ Nhân Bị Phản Bội Thiêu Đốt Cả Làng Nghề",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Mạnh Hùng",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-21 03:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-15 06:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-13 21:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-13 08:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-13 06:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Đế Chế Gốm Sứ Bát Tràng: Nghệ Nhân Bị Phản Bội Thiêu Đốt Cả Làng",
+        "description": "Trần Thế Hải, đứa học trò ruột tôi cưu mang năm năm, ăn cắp công thức men ngọc rạn ngũ đại gia truyền, liên doanh với tập đoàn gốm sứ hóa chất ngoại...",
+        "keyword": "đế chế gốm sứ"
+      }
+    },
+    {
+      "id": 2561,
+      "title": "Vua Tôm Hùm Phú Yên: Chàng Ngư Dân Bị Khinh Rẻ Thâu Tóm Vùng Biển Nghìn Tỷ",
+      "slug": "vua-tom-hum-phu-yen-chang-ngu-dan-bi-khinh-re-thau-tom-vung-bien-nghin-ty",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Vua Tôm Hùm Phú Yên: Chàng Ngư Dân Bị Khinh Rẻ Thâu Tóm Vùng Biển Nghìn Tỷ",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-21 01:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-18 12:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-16 01:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-14 08:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Vua Tôm Hùm Phú Yên: Chàng Ngư Dân Bị Khinh Rẻ Thâu Tóm Vùng",
+        "description": "Ngày hôm đó, cha con chủ nhiệm Hợp tác xã tước đoạt toàn bộ lồng tôm hùm gia truyền của tôi, đẩy người cha già bám biển ngã chấn thương cột sống nằm...",
+        "keyword": "vua tôm hùm phú"
+      }
+    },
+    {
+      "id": 2549,
+      "title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ Của Chàng Rể Hào Môn",
+      "slug": "bao-noi-mien-tay-vuong-quoc-sau-rieng-tram-ty-cua-chang-re-hao-mon-2",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ Của Chàng Rể Hào Môn",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-20 23:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-18 11:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-17 01:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-13 05:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-12 13:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ Của Chàng Rể Hào",
+        "description": "Nguyễn Tấn Đạt chỉ là người làm vườn lấm bùn trong mắt cả Chợ Lách, lặng lẽ đứng cạnh Trần Mỹ Duyên khi vườn sầu riêng 50 hecta của gia đình cô bị chủ...",
+        "keyword": "bão nổi miền tây"
+      }
+    },
+    {
+      "id": 2517,
+      "title": "Thiên Tài Fintech Bị Cướp App: Blockchain Lật Kèo Series B",
+      "slug": "thien-tai-khoi-nghiep-fintech-2",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Thiên Tài Fintech Bị Cướp App: Blockchain Lật Kèo Series B",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-20 17:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-14 09:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-13 21:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-12 08:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Thiên Tài Khởi Nghiệp Fintech - Truyện Sảng Văn Full Cực Hay",
+        "description": "Tôi viết từng dòng code đầu tiên cho PayViet ngay tại căn phòng trọ 15 mét vuông trên phố Duy Tân. Ba năm sau, khi app có 2 triệu người dùng và vừa gọi...",
+        "keyword": "thiên tài khởi nghiệp"
+      }
+    },
+    {
+      "id": 2508,
+      "title": "Bảo Vệ Quèn Là Võ Thần: Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+      "slug": "vo-than-bao-ve-dai-tieu-thu-2",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Bảo Vệ Quèn Là Võ Thần: Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Thích cách tác giả lồng ghép y học cổ truyền Đông Tây Y và công nghệ hiện đại.",
+          "date": "2026-05-19 01:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Truyện rất chất lượng, tình tiết gãy gọn không dông dài.",
+          "date": "2026-05-15 15:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Độc bản dược thần với võ thần đất cảng đọc cuốn ghê, yếu tố kỳ ảo kết hợp kỹ thuật thực tế siêu đỉnh.",
+          "date": "2026-05-13 22:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Võ Thần Bảo Vệ Đại Tiểu Thư - Truyện Sảng Văn Full Cực Hay",
+        "description": "Họ thuê tôi làm bảo vệ với mức lương 8 triệu một tháng. Đại tiểu thư nhìn tôi như nhìn một con chó giữ cửa và bảo: Anh chỉ cần đứng im và đừng làm...",
+        "keyword": "võ thần bảo vệ"
+      }
+    },
+    {
+      "id": 2497,
+      "title": "Công Thức Thuốc Bị Cướp: Bẫy IPO Dược Phẩm Nghìn Tỷ",
+      "slug": "chien-than-duoc-pham-doc-ban-2",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Công Thức Thuốc Bị Cướp: Bẫy IPO Dược Phẩm Nghìn Tỷ",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-19 13:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-16 18:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-13 09:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Chiến Thần Dược Phẩm Độc Bản - Truyện Sảng Văn Full Cực Hay",
+        "description": "Năm năm nghiên cứu trong phòng lab lạnh giá Đà Lạt, tôi tìm ra công thức thuốc gan đột phá dùng kỹ thuật khóa phân tử độc nhất vô nhị. Thế nhưng sếp cũ...",
+        "keyword": "chiến thần dược phẩm"
+      }
+    },
+    {
+      "id": 2489,
+      "title": "Người Thừa Kế Trăm Tỷ Giả Nghèo",
+      "slug": "nguoi-thua-ke-tram-ty-gia-ngheo-2",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Người Thừa Kế Trăm Tỷ Giả Nghèo",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-16 21:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-16 18:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-14 09:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Người Thừa Kế Trăm Tỷ Giả Nghèo - Truyện Sảng Văn Full Cực Hay",
+        "description": "Tôi đi xe ôm đến ra mắt gia đình người yêu. Mẹ cô ấy nhìn tôi từ đầu đến chân rồi nhổ nước bọt: Thằng ăn mày này cũng dám đòi cưới con gái tôi? Sính lễ...",
+        "keyword": "người thừa kế trăm"
+      }
+    },
+    {
+      "id": 2482,
+      "title": "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn",
+      "slug": "vuong-quoc-nuoc-mam-truyen-thong-phu-quoc-chang-re-an-the-vuc-day-quoc-hon",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-17 09:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-15 12:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-15 10:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực",
+        "description": "Trịnh Gia Huy, nghệ nhân ủ chượp kiêm chuyên gia sinh hóa thực phẩm xuất sắc nhất đảo ngọc Phú Quốc, bị gã anh rể hách dịch vu oan trộm cắp công thức,...",
+        "keyword": "vương quốc nước mắm"
+      }
+    },
+    {
+      "id": 2475,
+      "title": "Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
+      "slug": "trong-sinh-2008-vua-dat-dong-anh-thiet-lap-de-che",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Quốc Bảo",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-20 11:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-17 15:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-13 23:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
+        "description": "Nguyễn Hoàng Minh, một chuyên gia phân tích tài chính địa ốc hàng đầu năm 2026, bị kẻ thù gài bẫy phá sản, uất hận nhảy xuống từ cầu Nhật Tân... Thế...",
+        "keyword": "trọng sinh 2008 vua"
+      }
+    },
+    {
+      "id": 2465,
+      "title": "Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+      "slug": "vo-than-dat-cang-ve-si-an-than-pha-bay-buon-lau-500-ty-cang-dinh-vu",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Phương Thảo",
+          "content": "Thích cách tác giả lồng ghép y học cổ truyền Đông Tây Y và công nghệ hiện đại.",
+          "date": "2026-05-17 22:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Võ thần hành động chất lừ, tả đấm đá chân thực mồ hôi chảy ròng ròng chứ không nói suông.",
+          "date": "2026-05-16 11:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Độc bản dược thần với võ thần đất cảng đọc cuốn ghê, yếu tố kỳ ảo kết hợp kỹ thuật thực tế siêu đỉnh.",
+          "date": "2026-05-11 23:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng",
+        "description": "Lê Gia Bách, cựu Đại úy Đặc nhiệm Hải quân tinh nhuệ nhất Việt Nam, người từng một mình bẻ gãy đường dây cướp biển vịnh Thái Lan, nay ẩn thân làm nhân...",
+        "keyword": "võ thần đất cảng"
+      }
+    },
+    {
+      "id": 2457,
+      "title": "Chàng Rể Bùn Lầy Ẩn Thân: Lật Kèo Vườn Sầu Riêng Trăm Tỷ Dậy Sóng Miền Tây",
+      "slug": "bao-noi-mien-tay-vuong-quoc-sau-rieng-tram-ty-cua-chang-re-hao-mon",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Chàng Rể Bùn Lầy Ẩn Thân: Lật Kèo Vườn Sầu Riêng Trăm Tỷ Dậy Sóng Miền Tây",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-20 21:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-16 23:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-15 21:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-13 03:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Chàng Rể Bùn Lầy Ẩn Thân: Lật Kèo Vườn Sầu Riêng Trăm Tỷ Dậy",
+        "description": "Nguyễn Tấn Đạt chỉ là người làm vườn lấm bùn trong mắt cả Chợ Lách, lặng lẽ đứng cạnh Trần Mỹ Duyên khi vườn sầu riêng 50 hecta của gia đình cô bị chủ...",
+        "keyword": "chàng rể bùn lầy"
+      }
+    },
+    {
+      "id": 2448,
+      "title": "Vua Bán Lẻ Đường Phố Sài Gòn: Trận Chiến Sinh Tử Của Chuỗi Trà Ô Long Organic Việt",
+      "slug": "vua-ban-le-duong-pho-sai-gon-tran-chien-sinh-tu-cua-chuoi-tra-o-long-organic-viet",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Vua Bán Lẻ Đường Phố Sài Gòn: Trận Chiến Sinh Tử Của Chuỗi Trà Ô Long Organic Việt",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Thuỳ Trang",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-20 02:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-17 18:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-15 12:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-12 17:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-12 01:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Vua Bán Lẻ Đường Phố Sài Gòn: Trận Chiến Sinh Tử Của Chuỗi Trà Ô",
+        "description": "Trần Quốc Bảo, người sáng lập chuỗi Bảo Long Tea thuần hữu cơ bị đối thủ đa quốc gia Royal Sip hãm hại bằng truyền thông bẩn bôi nhọ chè chứa...",
+        "keyword": "vua bán lẻ đường"
+      }
+    },
+    {
+      "id": 2313,
+      "title": "Bị Cướp Mã Nguồn Nghìn Tỷ, Tôi Kích Hoạt Cái Bẫy Chôn Vùi Cả Tập Đoàn",
+      "slug": "bay-thau-tom-cong-nghe-su-phuc-thu-cua-thien-tai-lap-trinh",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Bị Cướp Mã Nguồn Nghìn Tỷ, Tôi Kích Hoạt Cái Bẫy Chôn Vùi Cả Tập Đoàn",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Quốc Bảo",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-15 13:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-14 09:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-12 12:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-11 21:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-11 16:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Bị Cướp Mã Nguồn Nghìn Tỷ, Tôi Kích Hoạt Cái Bẫy Chôn Vùi Cả Tập",
+        "description": "Mày hết chỗ đứng ở đây rồi, Đức. Cút ra khỏi tòa nhà của tao.",
+        "keyword": "bị cướp mã nguồn"
+      }
+    },
+    {
+      "id": 2289,
+      "title": "Sân Khấu Nhà Hát Phương Nam",
+      "slug": "dao-dien-ballet-nga-tro-ve-doi-mat-voi-am-muu-cuop-dien-xuat-cua-gd-nghe-thuat-trong-cuoc-chien-khong-khoan-nhuong-tai-nha-hat-lon-ha-noi",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Sân Khấu Nhà Hát Phương Nam",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Mạnh Hùng",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-18 22:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-18 18:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-13 11:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Sân Khấu Nhà Hát Phương Nam - Truyện Sảng Văn Full Cực Hay",
+        "description": "Nguyễn Hoàng Long – đạo diễn ballet hàng đầu từ nước ngoài trở về Hà Ngoại – đương đầu với một hội đồng nghệ thuật già cỗi không chịu đổi mới và một...",
+        "keyword": "sân khấu nhà hát"
+      }
+    },
+    {
+      "id": 2279,
+      "title": "Vương Quốc Bất Động Sản Thành Tâm",
+      "slug": "bi-vu-khong-an-hoa-hong-chuyen-gia-dinh-gia-dat-noi-mau-phuc-thu-khi-ceo-quy-reit-5000-ty-dinh-bay-mua-lai-toa-nha-quan-7",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Vương Quốc Bất Động Sản Thành Tâm",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Quốc Bảo",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-18 19:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-15 05:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-15 02:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Vương Quốc Bất Động Sản Thành Tâm - Truyện Sảng Văn Full Cực Hay",
+        "description": "Đinh Thanh Tùng – tên tuổi bất động sản hàng đầu Thành Tâm – bị cô lập khi một liên minh đối thủ cùng lúc tấn công từ ba hướng: pháp lý, tài chính, và...",
+        "keyword": "vương quốc bất động"
+      }
+    },
+    {
+      "id": 2269,
+      "title": "Đế Chế Dệt May Bình Thịnh",
+      "slug": "cuoc-chien-phap-ly-dam-mau-giua-thieu-gia-bi-cha-nuoi-tay-chay-va-nu-luat-su-ma-ha-noi-khi-tap-doan-det-may-2000-ty-bi-de-doa-tu-scic-tai-kcn-binh-duong",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Đế Chế Dệt May Bình Thịnh",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-16 03:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-15 23:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-15 13:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Đế Chế Dệt May Bình Thịnh - Truyện Sảng Văn Full Cực Hay",
+        "description": "Trần Minh Khải – ông chủ tập đoàn dệt may lớn nhất Bình Thịnh – đang đứng trước cú đánh hai gọng kìm: làn sóng cổ phần từ quỹ đầu tư nước ngoài muốn...",
+        "keyword": "đế chế dệt may"
+      }
+    },
+    {
+      "id": 2259,
+      "title": "Tiệm Bánh Hội Nguyên",
+      "slug": "dau-bep-via-he-hoi-an-doi-dau-voi-nghich-canh-cuop-cong-thuc-banh-mi-70-nam-va-cuoc-chien-danh-du-truoc-hoi-dong-michelin-asia-pacific",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Tiệm Bánh Hội Nguyên",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-18 06:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-18 02:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-14 19:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-13 03:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-11 08:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Tiệm Bánh Hội Nguyên - Siêu Phẩm Sảng Văn Vả Mặt Full Cực Hay",
+        "description": "Phạm Hoàng Minh – chủ tiệm bánh mì gia truyền bảy mươi năm ở Hội Nguyên – đứng trước nguy cơ mất tất cả khi đối thủ đánh cắp công thức, tung tin đồn...",
+        "keyword": "tiệm bánh hội nguyên"
+      }
+    },
+    {
+      "id": 2249,
+      "title": "Nhà Thiết Kế Tàng Hình Hội Nghị Thời Trang Quốc Gia",
+      "slug": "kham-pha-am-muu-den-toi-cua-startup-da-lat-ky-su-bao-mat-bi-danh-cap-bang-sang-che-bi-blacklist-tu-bo-cong-an-a05-voi-200-trieu-usd-tu-quy-vc-singapore",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Nhà Thiết Kế Tàng Hình Hội Nghị Thời Trang Quốc Gia",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-20 22:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-19 17:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-19 04:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-13 11:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-13 02:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Nhà Thiết Kế Tàng Hình Hội Nghị Thời Trang Quốc Gia - Đọc Full",
+        "description": "Châu Minh Hải bị người yêu cũ phản bội và gã nhà thiết kế danh tiếng cướp trắng toàn bộ bộ sưu tập dạ hội độc bản dự thi Hội Nghị Thời Trang Quốc Gia,...",
+        "keyword": "nhà thiết kế tàng"
+      }
+    },
+    {
+      "id": 2238,
+      "title": "Triều Đại Cà Phê Bazan Đắk Minh",
+      "slug": "cuu-thuyen-truong-cang-tien-sa-dot-pha-hop-dong-ma-phoi-bay-am-muu-thau-tom-da-nang-cua-tap-doan-ngoai-c03-xuat-hien-bao-ve-thanh-pho",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Triều Đại Cà Phê Bazan Đắk Minh",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-20 10:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-20 04:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-13 08:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-11 18:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Triều Đại Cà Phê Bazan Đắk Minh - Truyện Sảng Văn Full Cực Hay",
+        "description": "Y Dhăm Nie bị đối tác ngoại bang xảo quyệt cướp mất bằng sáng chế máy rang cà phê bằng tia hồng ngoại gia truyền ba đời, đồng thời vu khống anh ăn cắp...",
+        "keyword": "triều đại cà phê"
+      }
+    },
+    {
+      "id": 2227,
+      "title": "Thiên Tài Lập Trình Đà Lạt Sương Mù: Tôi Viết Mã Hoá Lật Đổ Tập Đoàn Tài Chính Phản Bội",
+      "slug": "thien-tai-ma-hoa-da-lat-suong-mu",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Thiên Tài Lập Trình Đà Lạt Sương Mù: Tôi Viết Mã Hoá Lật Đổ Tập Đoàn Tài Chính Phản Bội",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-21 03:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-20 21:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-13 12:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Thiên Tài Lập Trình Đà Lạt Sương Mù: Tôi Viết Mã Hoá Lật Đổ Tập",
+        "description": "Tôi là Trần Hưng, một cựu kỹ sư bảo mật ẩn cư giữa rừng thông Đà Lạt tĩnh lặng.Nhưng cuộc sống yên bình kết thúc khi tôi phát hiện ra backdoor rửa tiền...",
+        "keyword": "thiên tài lập trình"
+      }
+    },
+    {
+      "id": 2217,
+      "title": "Kỹ Sư Smart Grid Và Bóng Tối Điện lực Vạn Thịnh",
+      "slug": "thuyen-truong-ty-phu-cang-tien-sa",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Kỹ Sư Smart Grid Và Bóng Tối Điện lực Vạn Thịnh",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-17 06:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-15 22:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-13 21:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-12 15:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Kỹ Sư Smart Grid Và Bóng Tối Điện lực Vạn Thịnh - Đọc Full",
+        "description": "Phan Đức Thành phát hiện ra đường dây tham nhũng thiết bị trạm biến áp kém chất lượng gây nguy hiểm cho lưới điện quốc gia, lập tức bị sếp cũ sa thải...",
+        "keyword": "kỹ sư smart grid"
+      }
+    },
+    {
+      "id": 2207,
+      "title": "Thuyền Trưởng Cảng Đà Thành",
+      "slug": "bi-duoi-khoi-cang-tien-sa-toi-nhan-chim-am-muu-thau-tom-cang-da-nang-nghin-ty",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Thuyền Trưởng Cảng Đà Thành",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-20 19:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-19 14:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-19 06:22:26"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-16 17:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-12 14:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Thuyền Trưởng Cảng Đà Thành - Truyện Sảng Văn Full Cực Hay",
+        "description": "Lê Quang Vũ – thuyền trưởng kỳ cựu ba mươi năm vùng biển – bị sa thải sau một lần dám đối mặt thẳng với quản lý nước ngoài hống hách. Trên bến cảng Đà...",
+        "keyword": "thuyền trưởng cảng đà"
+      }
+    },
+    {
+      "id": 2197,
+      "title": "THỢ HỒ NGHÌN TỶ",
+      "slug": "tho-ho-nghin-ty",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết THỢ HỒ NGHÌN TỶ",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Mạnh Hùng",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-14 08:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-13 14:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-12 09:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-12 05:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-11 10:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "THỢ HỒ NGHÌN TỶ - Siêu Phẩm Sảng Văn Vả Mặt Full Cực Hay",
+        "description": "Ngày tôi đến ra mắt, bà ấy nhìn đôi ủng xi măng trên chân tôi rồi phẩy tay: Thợ hồ mà dám đòi cưới con gái tôi? Trọng Khải, con rể tương lai của ta, là...",
+        "keyword": "thợ hồ nghìn tỷ"
+      }
+    },
+    {
+      "id": 2190,
+      "title": "Thần Tài Chứng Khoán Phố Wall Hà Ngoại",
+      "slug": "vua-ban-le-duong-pho-blockchain-lat-keo-the-ky",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Thần Tài Chứng Khoán Phố Wall Hà Ngoại",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-15 21:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-13 13:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-13 03:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-12 20:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-11 08:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Thần Tài Chứng Khoán Phố Wall Hà Ngoại - Đọc Full",
+        "description": "Hoàng Đức Minh bị giám đốc quỹ đầu tư sa thải nhục nhã dưới chân sàn Sở GDCK Phương Bắc, vu khống anh thao túng cổ phiếu để cướp trắng tài sản và tài...",
+        "keyword": "thần tài chứng khoán"
+      }
+    },
+    {
+      "id": 2165,
+      "title": "Bạn Thân Cướp Startup Đuổi Tôi Ra Đường, Tôi Bank Run Sập Đế Chế Hắn",
+      "slug": "thien-tai-khoi-nghiep-fintech",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Bạn Thân Cướp Startup Đuổi Tôi Ra Đường, Tôi Bank Run Sập Đế Chế Hắn",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Thuỳ Trang",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-16 17:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-16 16:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-15 16:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-14 21:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-12 08:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Bạn Thân Cướp Startup Đuổi Tôi Ra Đường, Tôi Bank Run Sập Đế Chế",
+        "description": "Tôi viết từng dòng code đầu tiên cho PayViet ngay tại căn phòng trọ 15 mét vuông trên phố Duy Tân.Ba năm sau, khi app có 2 triệu người dùng và vừa gọi...",
+        "keyword": "bạn thân cướp startup"
+      }
+    },
+    {
+      "id": 2156,
+      "title": "Tiểu Thư Khinh Tôi Là Bảo Vệ 8 Triệu, Tôi Là Đặc Nhiệm Hạng Nhất",
+      "slug": "vo-than-bao-ve-dai-tieu-thu",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Tiểu Thư Khinh Tôi Là Bảo Vệ 8 Triệu, Tôi Là Đặc Nhiệm Hạng Nhất",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-20 22:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-20 16:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-16 11:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-15 06:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-14 17:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Tiểu Thư Khinh Tôi Là Bảo Vệ 8 Triệu, Tôi Là Đặc Nhiệm Hạng Nhất",
+        "description": "Họ thuê tôi làm bảo vệ với mức lương 8 triệu một tháng.Đại tiểu thư nhìn tôi như nhìn một con chó giữ cửa và bảo: Anh chỉ cần đứng im và đừng làm phiền...",
+        "keyword": "tiểu thư khinh tôi"
+      }
+    },
+    {
+      "id": 2145,
+      "title": "Sếp Cướp Công Thức Thuốc Đuổi Tôi Khỏi Lab, Tôi Phá Sập IPO Nghìn Tỷ",
+      "slug": "chien-than-duoc-pham-doc-ban",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Sếp Cướp Công Thức Thuốc Đuổi Tôi Khỏi Lab, Tôi Phá Sập IPO Nghìn Tỷ",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Mạnh Hùng",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-21 03:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-16 17:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-16 03:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-16 03:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-15 11:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Sếp Cướp Công Thức Thuốc Đuổi Tôi Khỏi Lab, Tôi Phá Sập IPO",
+        "description": "Năm năm nghiên cứu trong phòng lab lạnh giá Đà Lạt, tôi tìm ra công thức thuốc gan đột phá dùng kỹ thuật khóa phân tử độc nhất vô nhị.Thế nhưng sếp cũ...",
+        "keyword": "sếp cướp công thức"
+      }
+    },
+    {
+      "id": 2137,
+      "title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ Khinh Tôi Nghèo, Landmark 81 Là Của Tôi",
+      "slug": "nguoi-thua-ke-tram-ty-gia-ngheo",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Mẹ Vợ Đòi Sính Lễ 5 Tỷ Khinh Tôi Nghèo, Landmark 81 Là Của Tôi",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Mấy bà cô bên chồng xem pha vả mặt này chắc sáng mắt ra, sướng!",
+          "date": "2026-05-20 11:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Truyện cuốn từ chương đầu tiên, rất thích cách xử lý lý tính của nhân vật chính.",
+          "date": "2026-05-19 22:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Đọc giải trí cực tốt, văn phong mượt mà chân thực, tả hành động vật lý đỉnh ghê.",
+          "date": "2026-05-16 06:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng vị gia đình Việt Nam luôn, mâu thuẫn tả thực tế dã man. Con dâu/con rể đỉnh quá.",
+          "date": "2026-05-13 18:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Đọc mà tức lộn ruột với mấy bà mẹ chồng/họ hàng hám tiền, lúc nhân vật chính lật kèo biệt thự và sính lễ xem mà sướng mắt!",
+          "date": "2026-05-12 14:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ Khinh Tôi Nghèo, Landmark 81 Là Của Tôi -",
+        "description": "Tôi đi xe ôm đến ra mắt gia đình người yêu.Mẹ cô ấy nhìn tôi từ đầu đến chân rồi nhổ nước bọt: Thằng ăn mày này cũng dám đòi cưới con gái tôi?Sính lễ 5...",
+        "keyword": "mẹ vợ đòi sính"
+      }
+    },
+    {
+      "id": 2129,
+      "title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
+      "slug": "doc-ban-duoc-than-ke-lat-keo-the-ky",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Hệ thống khoa học công nghệ đỉnh cao, giải thích logic nghe rất thuyết phục.",
+          "date": "2026-05-20 14:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Thích cách tác giả lồng ghép y học cổ truyền Đông Tây Y và công nghệ hiện đại.",
+          "date": "2026-05-17 04:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Võ thần hành động chất lừ, tả đấm đá chân thực mồ hôi chảy ròng ròng chứ không nói suông.",
+          "date": "2026-05-13 06:22:26"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện rất chất lượng, tình tiết gãy gọn không dông dài.",
+          "date": "2026-05-12 01:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
+        "description": "Năm năm trước, hắn giật lấy công trình nghiên cứu của tôi, bảo vệ ném hành lý của tôi ra đường đèo Đà Lạt dưới cơn mưa tuyết lạnh giá.Hắn đứng trên...",
+        "keyword": "độc bản dược thần"
+      }
+    },
+    {
+      "id": 2120,
+      "title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
+      "slug": "chang-re-bep-truong-an-the",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện cuốn từ chương đầu tiên, rất thích cách xử lý lý tính của nhân vật chính.",
+          "date": "2026-05-16 15:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Mấy bà cô bên chồng xem pha vả mặt này chắc sáng mắt ra, sướng!",
+          "date": "2026-05-16 13:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Đúng vị gia đình Việt Nam luôn, mâu thuẫn tả thực tế dã man. Con dâu/con rể đỉnh quá.",
+          "date": "2026-05-11 15:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc -",
+        "description": "Ngày đó, sư phụ cướp trắng công thức gia truyền ba đời, đạp tôi ra khỏi nhà hàng năm sao giữa Sài Gòn.Mẹ vợ khinh tôi là thằng rửa bát vô dụng, anh rể...",
+        "keyword": "mẹ vợ bắt rửa"
+      }
+    },
+    {
+      "id": 2112,
+      "title": "Người Thợ Sửa Xe Ở Hầm B2",
+      "slug": "nguoi-tho-sua-xe-o-ham-b2",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Người Thợ Sửa Xe Ở Hầm B2",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Mạnh Hùng",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-18 14:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-14 10:22:26"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-14 03:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-11 22:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Người Thợ Sửa Xe Ở Hầm B2 - Truyện Sảng Văn Full Cực Hay",
+        "description": "Trong hầm B2 của một trung tâm thương mại, Đỗ Nhật Nam bị vị khách đi siêu xe tát trước mặt mọi người vì dám nói chiếc Lamborghini của hắn đã bị can...",
+        "keyword": "người thợ sửa xe"
+      }
+    },
+    {
+      "id": 2106,
+      "title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ",
+      "slug": "co-gai-ban-tra-sua-va-hop-dong-tram-ty",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Mạnh Hùng",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-20 12:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-16 23:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-16 10:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-12 16:22:26"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-12 10:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ V13",
+        "description": "Lâm Vy bị gia đình chồng hụt khinh thường sỉ nhục liền dùng bằng chứng thép đập tan âm mưu cướp công thức, ký hợp đồng trăm tỷ nhượng quyền.",
+        "keyword": "co gai ban tra sua va hop dong tram ty"
+      }
+    },
+    {
+      "id": 2099,
+      "title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
+      "slug": "bi-duoi-khoi-khach-san-toi-mua-luon-chuoi-nam-sao",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Mạnh Hùng",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-20 13:22:26"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-18 08:22:26"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-17 10:22:26"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-14 02:22:26"
+        }
+      ],
+      "rank_math": {
+        "title": "Bị Đuổi Khỏi Khách Sạn Tôi Mua Luôn Chuỗi 5 Sao",
+        "description": "Trần Gia Huy bị vu oan đuổi khỏi khách sạn 5 sao liền bắt tay với nữ tài phiệt thâu tóm nợ xấu mua trọn chuỗi khách sạn. Vả mặt cực mạnh.",
+        "keyword": "bi duoi khoi khach san toi mua luon chuoi nam sao"
+      }
+    },
+    {
+      "id": 2089,
+      "title": "Trọng Sinh 2008: Ôm Đất Đông Anh Trước Cơn Sốt Nghìn Tỷ",
+      "slug": "trong-sinh-2008-con-sot-dat-dong-anh",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Trọng Sinh 2008: Ôm Đất Đông Anh Trước Cơn Sốt Nghìn Tỷ",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-20 15:22:27"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-19 18:22:27"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-16 23:22:27"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-14 18:22:27"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-13 03:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Trọng Sinh 2008: Ôm Đất Đông Anh Cơn Sốt Nghìn Tỷ",
+        "description": "Trọng sinh về 2008 ôm trọn đất vàng Đông Anh trước quy hoạch cầu Nhật Tân. Trận chiến thương trường nảy lửa lật kèo nhóm lợi ích sừng sỏ.",
+        "keyword": "trong sinh 2008 om dat dong anh"
+      }
+    },
+    {
+      "id": 2067,
+      "title": "Bị Sa Thải Trước Giờ Đấu Thầu: Một Mình Thắng Gói AI Nghìn Tỷ",
+      "slug": "sau-khi-bi-sa-thai-toi-thang-goi-thau-nghin-ty",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Bị Sa Thải Trước Giờ Đấu Thầu: Một Mình Thắng Gói AI Nghìn Tỷ",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Thuỳ Trang",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-19 20:22:27"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-11 19:22:27"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-11 10:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Sau Khi Bị Sa Thải, Tôi Thắng Gói Thầu Nghìn Tỷ - Đọc Full",
+        "description": "Ba giờ trước buổi đấu thầu dự án AI đô thị thông minh, Nguyễn Minh Khang bị chính công ty mình cứu sống vu oan làm lộ dữ liệu.Hắn bị bảo vệ kéo lê qua...",
+        "keyword": "sau khi bị sa"
+      }
+    },
+    {
+      "id": 2052,
+      "title": "Thần Y Quận 5 Bị Cướp Công Trình: Vợ Tôi Là Siêu Tỷ Phú",
+      "slug": "than-y-phong-kham-quan-5",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Thần Y Quận 5 Bị Cướp Công Trình: Vợ Tôi Là Siêu Tỷ Phú",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Hệ thống khoa học công nghệ đỉnh cao, giải thích logic nghe rất thuyết phục.",
+          "date": "2026-05-18 10:22:27"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Thích cách tác giả lồng ghép y học cổ truyền Đông Tây Y và công nghệ hiện đại.",
+          "date": "2026-05-16 22:22:27"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Truyện rất chất lượng, tình tiết gãy gọn không dông dài.",
+          "date": "2026-05-14 13:22:27"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Võ thần hành động chất lừ, tả đấm đá chân thực mồ hôi chảy ròng ròng chứ không nói suông.",
+          "date": "2026-05-11 19:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Thần Y Phòng Khám Quận Năm: Vợ Tôi Là Siêu Tỷ Phú",
+        "description": "Lâm Trần bị Trưởng khoa Hoàng Vĩnh cướp công trình nghiên cứu tái tạo tế bào gan, khóa tài khoản Kỹ Thương Bank và ném hành lý ra đường Nguyễn Trãi...",
+        "keyword": "thần y phòng khám"
+      }
+    },
+    {
+      "id": 2044,
+      "title": "Chàng Rể Ẩn Thân Miền Tây: Cứu Vườn Sầu Riêng Trăm Tỷ",
+      "slug": "chang-re-hao-mon-mien-tay",
+      "genres": [
+        {
+          "term_id": 4,
+          "name": "Sảng Văn",
+          "slug": "sang-van"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Chàng Rể Ẩn Thân Miền Tây: Cứu Vườn Sầu Riêng Trăm Tỷ",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Thuỳ Trang",
+          "content": "Đúng chất sảng văn đỉnh cao, vả mặt đầy thuyết phục bằng luật pháp và số liệu tài chính!",
+          "date": "2026-05-15 22:22:27"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-13 11:22:27"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-13 00:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Chàng Rể Hào Môn Miền Tây - Truyện Sảng Văn Full Cực Hay",
+        "description": "Lâm Phong là một thiếu gia của tập đoàn vận tải biển hàng đầu Việt Nam, vì muốn tìm kiếm một tình yêu đích thực không vụ lợi nên đã ẩn thân làm công...",
+        "keyword": "chàng rể hào môn"
+      }
+    },
+    {
+      "id": 2035,
+      "title": "Kẻ Phế Vật Trở Về: Đòi Lại Gia Tộc Sau 12 Năm",
+      "slug": "ke-phe-vat-ngay-ay-hom-nay-tro-ve",
+      "genres": [],
+      "alt_text": "Ảnh bìa tiểu thuyết Kẻ Phế Vật Trở Về: Đòi Lại Gia Tộc Sau 12 Năm",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Quốc Bảo",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-15 12:22:27"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-15 03:22:27"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-14 19:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Kẻ Phế Vật Ngày Ấy, Hôm Nay Trở Về - Truyện Sảng Văn Full Cực Hay",
+        "description": "Lúc nửa đêm, gã thanh niên bước xuống từ chiếc Maybach đen bóng trước cổng biệt thự nhà họ Lâm.Mười hai năm trước, cũng trước cổng nhà này, hắn bị đánh...",
+        "keyword": "kẻ phế vật ngày"
+      }
+    },
+    {
+      "id": 2023,
+      "title": "Phế Vật Trở Về: Cuộc Báo Thù Rực Lửa",
+      "slug": "do-phe-vat-nam-do-hom-nay-ta-tro-ve",
+      "genres": [],
+      "alt_text": "Ảnh bìa tiểu thuyết Đồ Phế Vật Năm Đó, Hôm Nay Ta Trở Về",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Bích Trâm",
+          "content": "Truyện lôi cuốn quá chừng, tình tiết logic nhân vật nam chính ngầu xỉu! Chấm 5 sao cho truyện và nhóm dịch nhé.",
+          "date": "2026-05-13 04:43:27"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Web đọc truyện thích thật sự, giao diện đẹp load nhanh và không có quảng cáo che màn hình. Mọi người nên đọc thử truyện này nha.",
+          "date": "2026-05-09 06:43:27"
+        },
+        {
+          "author": "Ngọc Diệp",
+          "content": "Lâu lắm mới đọc được bộ ngôn tình hay như thế này. Văn phong dịch rất mượt và có tâm, cảm ơn ad nhiều nha.",
+          "date": "2026-04-30 03:43:27"
+        },
+        {
+          "author": "Lan Hương",
+          "content": "Truyện ngọt sủng siêu dễ thương, đọc giải trí cuối tuần cực kỳ hợp lý luôn ạ. Vote 5 sao!",
+          "date": "2026-04-26 05:43:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Đồ Phế Vật Năm Đó, Hôm Nay Ta Trở Về - Đọc Full",
+        "description": "Năm đó, Lâm Phong bị coi là phế vật vô dụng bị cả gia tộc chà đạp.Trong đêm mưa giông bão giật, người chú ruột mưu mô Lâm Vĩnh Thịnh thiêu rụi di ảnh...",
+        "keyword": "đồ phế vật năm"
+      }
+    },
+    {
+      "id": 2020,
+      "title": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
+      "slug": "he-thong-tri-tue-nhan-tao-xuyen-khong-den-tuong-lai",
+      "genres": [],
+      "alt_text": "Ảnh bìa tiểu thuyết Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Hoàng Minh",
+          "content": "Thích cách tác giả lồng ghép y học cổ truyền Đông Tây Y và công nghệ hiện đại.",
+          "date": "2026-05-20 11:22:27"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Độc bản dược thần với võ thần đất cảng đọc cuốn ghê, yếu tố kỳ ảo kết hợp kỹ thuật thực tế siêu đỉnh.",
+          "date": "2026-05-16 08:22:27"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Hệ thống khoa học công nghệ đỉnh cao, giải thích logic nghe rất thuyết phục.",
+          "date": "2026-05-16 02:22:27"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Võ thần hành động chất lừ, tả đấm đá chân thực mồ hôi chảy ròng ròng chứ không nói suông.",
+          "date": "2026-05-14 03:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
+        "description": "Năm 2026, thế giới chìm trong đống đổ nát sau một thảm họa toàn cầu.Giữa một phòng thí nghiệm hoang tàn, một cơ thể sinh học nhân tạo bất ngờ mở...",
+        "keyword": "hệ thống trí tuệ"
+      }
+    },
+    {
+      "id": 2013,
+      "title": "Bức Thư Cuối Cùng Của Biển",
+      "slug": "buc-thu-cuoi-cung-cua-bien",
+      "genres": [],
+      "alt_text": "",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Mạnh Hùng",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-18 23:22:27"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-14 23:22:27"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-14 14:22:27"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-14 12:22:27"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-13 04:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Bức Thư Cuối Cùng Của Biển - Truyện Sảng Văn Full Cực Hay",
+        "description": "Ở thị trấn ven biển Cát Trắng, Quân sống lại tuổi 18 với ký ức thảm họa sạt lở 5 năm sau.Lá thư tình chưa gửi cho cô gái thượng lưu từng khiến hắn bị...",
+        "keyword": "bức thư cuối cùng"
+      }
+    },
+    {
+      "id": 2007,
+      "title": "Lột Mặt Người Sếp Cướp Công",
+      "slug": "lot-mat-nguoi-sep-cuop-cong",
+      "genres": [],
+      "alt_text": "",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-20 06:22:27"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-18 08:22:27"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Văn phong gãy gọn, logic kỹ thuật chặt chẽ, không bị ảo tưởng sức mạnh kiểu buff bẩn.",
+          "date": "2026-05-15 20:22:27"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-12 20:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Lột Mặt Người Sếp Cướp Công - Truyện Sảng Văn Full Cực Hay",
+        "description": "Trong làng nghề kinh doanh online, Lâm Trạch bị lão sếp họ Hoàng vu oan là lang băm để cướp bài thuốc gia truyền.Nhưng anh đã bí mật đặt camera an...",
+        "keyword": "lột mặt người sếp"
+      }
+    },
+    {
+      "id": 2001,
+      "title": "Anh Sang Trong Dem",
+      "slug": "anh-sang-trong-dem",
+      "genres": [],
+      "alt_text": "",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-18 17:22:27"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-14 00:22:27"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-13 15:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Anh Sang Trong Dem - Siêu Phẩm Sảng Văn Vả Mặt Full Cực Hay",
+        "description": "Minh, một họa sĩ trẻ, mất thị lực sau tai nạn.Tuyệt vọng, anh gặp Lan, cô gái khiếm thính dạy anh cảm nhận thế giới bằng giác quan khác.Cùng nhau, họ...",
+        "keyword": "anh sang trong dem"
+      }
+    },
+    {
+      "id": 1984,
+      "title": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu",
+      "slug": "toi-gia-ngheo-di-ra-mat-me-nguoi-yeu-doi-sinh-le-900-trieu",
+      "genres": [],
+      "alt_text": "",
+      "comments_count": 4,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-19 10:22:27"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-16 21:22:27"
+        },
+        {
+          "author": "Phương Thảo",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-14 01:22:27"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-13 03:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu -",
+        "description": "Cô gái giả nghèo để thử lòng người yêu và gia đình anh.Khi mẹ anh đòi sính lễ 900 triệu, cô bắt đầu kế hoạch vả mặt từng người, hé lộ sự thật về thân...",
+        "keyword": "tôi giả nghèo đi"
+      }
+    },
+    {
+      "id": 1968,
+      "title": "Bóng Đêm Và Ánh Sáng",
+      "slug": "bong-dem-va-anh-sang",
+      "genres": [],
+      "alt_text": "",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.",
+          "date": "2026-05-20 14:22:27"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.",
+          "date": "2026-05-19 17:22:27"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.",
+          "date": "2026-05-15 18:22:27"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Cốt truyện logic chặt chẽ, giải quyết mâu thuẫn dựa trên bằng chứng rõ ràng rất phục.",
+          "date": "2026-05-14 06:22:27"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Theo dõi từ những chương đầu, tác giả viết ngày càng lên tay, chúc truyện bão view!",
+          "date": "2026-05-13 22:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Bóng Đêm Và Ánh Sáng - Siêu Phẩm Sảng Văn Vả Mặt Full Cực Hay",
+        "description": "Sau đại thảm họa, Trái Đất chìm trong bóng tối vĩnh cửu, nơi những sinh vật bóng đêm săn mồi.Một nhóm người sống sót dũng cảm lên đường tìm kiếm nguồn...",
+        "keyword": "bóng đêm và ánh"
+      }
+    },
+    {
+      "id": 1948,
+      "title": "Giám Đốc Ngầm: Thực Tập Sinh Dám Vả Mặt Trưởng Phòng Cướp Dự Án",
+      "slug": "giam-doc-ngam-thuc-tap-sinh-khong-de-choc",
+      "genres": [],
+      "alt_text": "Ảnh bìa tiểu thuyết Giám Đốc Ngầm: Thực Tập Sinh Trăm Tỷ Vả Mặt Trưởng Phòng Nhân Sự Cướp Dự Án",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Mấy pha lật kèo IPO và giám định sở hữu trí tuệ xuất sắc thực sự. Đúng chất V13!",
+          "date": "2026-05-19 10:22:27"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Truyện viết về thương chiến chân thực quá, đọc mà hồi hộp từng chi tiết pháp lý và đấu trí đấu thầu.",
+          "date": "2026-05-15 01:22:27"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Lần đầu đọc được bộ truyện viết về kinh doanh, startup Việt Nam chi tiết và thực tế như thế này.",
+          "date": "2026-05-14 03:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Giám Đốc Ngầm: Thực Tập Sinh Trăm Tỷ Vả Mặt Trưởng Phòng Nhân Sự",
+        "description": "Lâm Uyển Nhu, ái nữ duy nhất của Chủ tịch tập đoàn Lâm Thị, quyết định ẩn thân làm thực tập sinh quèn để trải nghiệm thực tế và vạch trần những góc tối...",
+        "keyword": "giám đốc ngầm thực"
+      }
+    },
+    {
+      "id": 1933,
+      "title": "Quỷ Vương Trong Gấu Bông: Hành Trình Trừ Tà Bất Ngờ",
+      "slug": "dung-goi-toi-la-con-be-gan-may-in",
+      "genres": [
+        {
+          "term_id": 146,
+          "name": "Công sở",
+          "slug": "cong-so"
+        },
+        {
+          "term_id": 11,
+          "name": "Đô Thị",
+          "slug": "do-thi"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Đừng Gọi Tôi Là Con Bé Gần Máy In: Tôi Nuôi Quỷ Vương Trong Gấu Bông Pikachu",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Đức Anh",
+          "content": "Độc bản dược thần với võ thần đất cảng đọc cuốn ghê, yếu tố kỳ ảo kết hợp kỹ thuật thực tế siêu đỉnh.",
+          "date": "2026-05-21 05:22:27"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Thích cách tác giả lồng ghép y học cổ truyền Đông Tây Y và công nghệ hiện đại.",
+          "date": "2026-05-17 02:22:27"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Võ thần hành động chất lừ, tả đấm đá chân thực mồ hôi chảy ròng ròng chứ không nói suông.",
+          "date": "2026-05-16 11:22:27"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện rất chất lượng, tình tiết gãy gọn không dông dài.",
+          "date": "2026-05-16 03:22:27"
+        },
+        {
+          "author": "Thuỳ Trang",
+          "content": "Hệ thống khoa học công nghệ đỉnh cao, giải thích logic nghe rất thuyết phục.",
+          "date": "2026-05-15 05:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Đừng Gọi Tôi Là Con Bé Gần Máy In: Tôi Nuôi Quỷ Vương Trong Gấu",
+        "description": "Tôi là Tô Khanh Khanh, một nữ nhân viên văn phòng bình thường có vận may bùng nổ.Nhưng cuộc sống của tôi thay đổi hoàn toàn kể từ khi một Quỷ Vương tu...",
+        "keyword": "đừng gọi tôi là"
+      }
+    },
+    {
+      "id": 1927,
+      "title": "Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân",
+      "slug": "nha-cua-me-chong-khong-cua-toi",
+      "genres": [
+        {
+          "term_id": 42,
+          "name": "Gia Đình",
+          "slug": "gia-dinh"
+        },
+        {
+          "term_id": 19,
+          "name": "Trả Thù",
+          "slug": "tra-thu"
+        },
+        {
+          "term_id": 143,
+          "name": "Truyện ngôn tình",
+          "slug": "truyen-ngon-tinh"
+        }
+      ],
+      "alt_text": "Ảnh bìa tiểu thuyết Nhà Của Mẹ Chồng? Không, Biệt Thự Gò Vấp 5 Tỷ Đứng Tên Riêng Của Tôi!",
+      "comments_count": 3,
+      "comments": [
+        {
+          "author": "Khánh Linh",
+          "content": "Đúng vị gia đình Việt Nam luôn, mâu thuẫn tả thực tế dã man. Con dâu/con rể đỉnh quá.",
+          "date": "2026-05-21 03:22:27"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Mấy bà cô bên chồng xem pha vả mặt này chắc sáng mắt ra, sướng!",
+          "date": "2026-05-17 17:22:27"
+        },
+        {
+          "author": "Quốc Bảo",
+          "content": "Đọc mà tức lộn ruột với mấy bà mẹ chồng/họ hàng hám tiền, lúc nhân vật chính lật kèo biệt thự và sính lễ xem mà sướng mắt!",
+          "date": "2026-05-14 19:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Nhà Của Mẹ Chồng? Không, Biệt Thự Gò Vấp 5 Tỷ Đứng Tên Riêng Của",
+        "description": "Mâm cơm giỗ ba chồng, mẹ chồng sỉ nhục tôi là person ngoài trước mặt họ hàng.Chị chồng cười khẩy, chồng thì cúi đầu làm thinh.Nhưng họ không biết, căn...",
+        "keyword": "nhà của mẹ chồng"
+      }
+    },
+    {
+      "id": 1921,
+      "title": "Khám Phá Bí Mật Căn Nhà 4,8 Tỷ: Khi Con Dâu Đứng Lên",
+      "slug": "dan-tinh-len-pho-khi-con-dau-khong-con-im-ru",
+      "genres": [
+        {
+          "term_id": 42,
+          "name": "Gia Đình",
+          "slug": "gia-dinh"
+        },
+        {
+          "term_id": 17,
+          "name": "Ngôn Tình",
+          "slug": "ngon-tinh"
+        }
+      ],
+      "alt_text": "",
+      "comments_count": 5,
+      "comments": [
+        {
+          "author": "Phương Thảo",
+          "content": "Đọc giải trí cực tốt, văn phong mượt mà chân thực, tả hành động vật lý đỉnh ghê.",
+          "date": "2026-05-20 17:22:27"
+        },
+        {
+          "author": "Mạnh Hùng",
+          "content": "Đúng vị gia đình Việt Nam luôn, mâu thuẫn tả thực tế dã man. Con dâu/con rể đỉnh quá.",
+          "date": "2026-05-18 11:22:27"
+        },
+        {
+          "author": "Hoàng Minh",
+          "content": "Mấy bà cô bên chồng xem pha vả mặt này chắc sáng mắt ra, sướng!",
+          "date": "2026-05-16 20:22:27"
+        },
+        {
+          "author": "Đức Anh",
+          "content": "Đọc mà tức lộn ruột với mấy bà mẹ chồng/họ hàng hám tiền, lúc nhân vật chính lật kèo biệt thự và sính lễ xem mà sướng mắt!",
+          "date": "2026-05-16 18:22:27"
+        },
+        {
+          "author": "Khánh Linh",
+          "content": "Truyện cuốn từ chương đầu tiên, rất thích cách xử lý lý tính của nhân vật chính.",
+          "date": "2026-05-15 05:22:27"
+        }
+      ],
+      "rank_math": {
+        "title": "Dân Tỉnh Lên Phố: Khi Con Dâu Không Còn Im Ru",
+        "description": "Trong bữa cơm giỗ chồng, Lan Anh, con dâu dân tỉnh lên phố, bị mẹ chồng và họ hàng công kích, coi thường. Mẹ chồng đòi thêm tiền, còn chị chồng mỉa mai...",
+        "keyword": "dân tỉnh lên phố"
+      }
+    }
+  ]
+}
