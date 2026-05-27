@@ -1,0 +1,12 @@
+[     792ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[     849ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/?v=codex-reader-fix3:235
+[     852ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/?v=codex-reader-fix3:0
+[     852ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/?v=codex-reader-fix3:0
+[     862ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/?v=codex-reader-fix3:182
+[     965ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/?v=codex-reader-fix3:210
+[    2758ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[    2810ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/?v=codex-reader-fix3:235
+[    2811ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/?v=codex-reader-fix3:0
+[    2811ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/?v=codex-reader-fix3:0
+[    2819ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/?v=codex-reader-fix3:182
+[    2921ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/?v=codex-reader-fix3:210

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
 import os
-import random
-import urllib.parse
 import ftplib
 import requests
 
@@ -104,11 +102,6 @@ STORIES = [
 ]
 
 
-def cover_url(prompt):
-    escaped = urllib.parse.quote(prompt + ", cinematic, high detail, web novel cover, no logo")
-    return f"https://image.pollinations.ai/prompt/{escaped}?width=800&height=1200&seed={random.randint(1, 999999)}&nologo=true"
-
-
 def upload_helper():
     ftp = ftplib.FTP(FTP_HOST, timeout=30)
     ftp.login(FTP_USER, FTP_PASS)
@@ -144,7 +137,6 @@ def publish(story):
         "intro": story["intro"],
         "author": story["author"],
         "genre": story.get("genre", "Sảng Văn"),
-        "cover_url": cover_url(story["cover_prompt"]),
         "chapters": story["chapters"],
     }
     response = requests.post(f"{WP_URL}/publish_novel.php", json=payload, timeout=150)

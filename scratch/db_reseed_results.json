@@ -1,0 +1,643 @@
+{
+  "success": true,
+  "total_stories_updated": 91,
+  "stories": [
+    {
+      "id": 3954,
+      "title": "Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội",
+      "deleted_comments": 3,
+      "seeded_comments": 14,
+      "rating_avg": 4.86
+    },
+    {
+      "id": 3940,
+      "title": "Bác Sĩ Đông Y Bị Đuổi Khỏi Viện Phổi, Mũi Kim Thần Đông Tây Kết Hợp Vả Sập Tập Đoàn Phản Bội",
+      "deleted_comments": 3,
+      "seeded_comments": 16,
+      "rating_avg": 4.81
+    },
+    {
+      "id": 3930,
+      "title": "Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ",
+      "deleted_comments": 3,
+      "seeded_comments": 19,
+      "rating_avg": 4.84
+    },
+    {
+      "id": 3920,
+      "title": "Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả",
+      "deleted_comments": 3,
+      "seeded_comments": 11,
+      "rating_avg": 4.82
+    },
+    {
+      "id": 3873,
+      "title": "THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG",
+      "deleted_comments": 4,
+      "seeded_comments": 13,
+      "rating_avg": 4.85
+    },
+    {
+      "id": 3861,
+      "title": "Thiên Tài Blockchain Phố Nguyễn Huệ: Bị Cướp Token Nghìn Tỷ, Tôi Hack Ngược Cả Sàn",
+      "deleted_comments": 4,
+      "seeded_comments": 10,
+      "rating_avg": 4.9
+    },
+    {
+      "id": 3849,
+      "title": "Vua Sầu Riêng Đắk Nông: Bị Đốt Vườn Nghìn Tỷ, Tôi Trồng Lại Từ Tro Tàn",
+      "deleted_comments": 4,
+      "seeded_comments": 18,
+      "rating_avg": 4.83
+    },
+    {
+      "id": 3837,
+      "title": "Đạo Diễn Phim Trường Cần Giờ: Bị Cướp Kịch Bản Oscar, Tôi Quay Phim Chấn Động Cannes",
+      "deleted_comments": 4,
+      "seeded_comments": 15,
+      "rating_avg": 4.87
+    },
+    {
+      "id": 3825,
+      "title": "Chúa Đảo Resort Phú Quốc: Bị Đuổi Khỏi Resort Mình Xây, Tôi Mua Cả Hòn Đảo",
+      "deleted_comments": 4,
+      "seeded_comments": 12,
+      "rating_avg": 4.83
+    },
+    {
+      "id": 3813,
+      "title": "Thần Đồng Piano Nhạc Viện: Bị Cấm Biểu Diễn, Tôi Chấn Động Chopin Competition",
+      "deleted_comments": 4,
+      "seeded_comments": 20,
+      "rating_avg": 4.85
+    },
+    {
+      "id": 3801,
+      "title": "Vua Lúa Gạo Đồng Tháp: Nông Dân Bị Ép Giá, Tôi Xây Đế Chế Gạo Xuất Khẩu",
+      "deleted_comments": 4,
+      "seeded_comments": 17,
+      "rating_avg": 4.82
+    },
+    {
+      "id": 3789,
+      "title": "Kiến Trúc Sư Phố Cổ Hà Nội: Bị Cướp Bản Vẽ Di Sản, Tôi Cứu Cả Khu Phố",
+      "deleted_comments": 4,
+      "seeded_comments": 14,
+      "rating_avg": 4.86
+    },
+    {
+      "id": 3769,
+      "title": "Thợ Nuôi Trai Bị Cướp Ngọc Đen Đuổi Khỏi Vịnh, Trở Lại Lật Kèo Đoạt Lại Tập Đoàn Ngọc Trai Nghìn Tỷ",
+      "deleted_comments": 4,
+      "seeded_comments": 20,
+      "rating_avg": 4.85
+    },
+    {
+      "id": 3767,
+      "title": "Ông Trùm Logistics Tân Cảng: Bị Phản Bội Mất Container Nghìn Tỷ, Tôi Thâu Tóm Ngược",
+      "deleted_comments": 4,
+      "seeded_comments": 14,
+      "rating_avg": 4.86
+    },
+    {
+      "id": 3755,
+      "title": "Bác Sĩ Thẩm Mỹ Sài Gòn: Bị Vu Oan Phẫu Thuật Hỏng, Tôi Lật Mặt Cả Bệnh Viện",
+      "deleted_comments": 4,
+      "seeded_comments": 11,
+      "rating_avg": 4.91
+    },
+    {
+      "id": 3743,
+      "title": "Nữ Hoàng Trà Sen Tây Hồ: Bị Đuổi Khỏi Gia Tộc, Cô Xây Đế Chế Trà Nghìn Tỷ",
+      "deleted_comments": 4,
+      "seeded_comments": 19,
+      "rating_avg": 4.84
+    },
+    {
+      "id": 3724,
+      "title": "Kỹ Sư Vắc Xin Bị Sa Thải Vì Không Gian Lận, Bản Quyền Vắc Xin Vả Sập Tập Đoàn Phản Bội",
+      "deleted_comments": 4,
+      "seeded_comments": 17,
+      "rating_avg": 4.82
+    },
+    {
+      "id": 3633,
+      "title": "Nghệ Nhân Trà Sen Bị Khinh Rẻ Trục Xuất, Lật Kèo Đêm Hội Trà Quốc Tế Đưa Kẻ Phản Bội Vào Tù",
+      "deleted_comments": 8,
+      "seeded_comments": 19,
+      "rating_avg": 4.84
+    },
+    {
+      "id": 2815,
+      "title": "Bị Đuổi Khỏi Lab Đêm Trước IPO, Hóa Ra Anh Nắm Công Thức Trăm Tỷ",
+      "deleted_comments": 4,
+      "seeded_comments": 18,
+      "rating_avg": 4.89
+    },
+    {
+      "id": 2808,
+      "title": "Người Đưa Thư Bị Cả Tòa Nhà Khinh, Hóa Ra Anh Là Chủ Toàn Bộ Tháp",
+      "deleted_comments": 5,
+      "seeded_comments": 19,
+      "rating_avg": 4.89
+    },
+    {
+      "id": 2801,
+      "title": "Trọng Tài Bị Ngôi Sao Nhổ Nước Bọt, Hóa Ra Là Cựu Đội Trưởng Tuyển QG",
+      "deleted_comments": 5,
+      "seeded_comments": 20,
+      "rating_avg": 4.9
+    },
+    {
+      "id": 2794,
+      "title": "Người Làm Vườn Bị Chủ Biệt Thự Đuổi, Hóa Ra Anh Thiết Kế Cả Khu Đô Thị",
+      "deleted_comments": 4,
+      "seeded_comments": 10,
+      "rating_avg": 4.9
+    },
+    {
+      "id": 2787,
+      "title": "Giáo Viên Làng Bị Hiệu Trưởng Sỉ Nhục, Bộ Giáo Dục Bổ Nhiệm Anh Làm Thanh Tra",
+      "deleted_comments": 5,
+      "seeded_comments": 11,
+      "rating_avg": 4.91
+    },
+    {
+      "id": 2780,
+      "title": "Cô Gái Bán Hoa Bị Đuổi Khỏi Tiệc Cưới Hào Môn, Cùng Ngày Cô Gõ Sàn HOSE",
+      "deleted_comments": 4,
+      "seeded_comments": 12,
+      "rating_avg": 4.92
+    },
+    {
+      "id": 2773,
+      "title": "Chồng Nghèo Bị Họ Hàng Khinh Dự Tiệc Hào Môn, Hóa Ra Anh Là Khách Mời VIP Của Sự Kiện Đó",
+      "deleted_comments": 4,
+      "seeded_comments": 13,
+      "rating_avg": 4.92
+    },
+    {
+      "id": 2766,
+      "title": "Trợ Lý Bị Sếp Nữ CEO Ngược Đãi, Sếp Mới Của Cô Chính Là Anh Sau Thâu Tóm Công Ty",
+      "deleted_comments": 4,
+      "seeded_comments": 14,
+      "rating_avg": 4.86
+    },
+    {
+      "id": 2759,
+      "title": "Thợ Sửa Xe Bị Cả Xóm Khinh, Khi Đội Đua F1 Quốc Gia Tìm Đến Thuê Anh Làm Kỹ Sư Trưởng",
+      "deleted_comments": 4,
+      "seeded_comments": 15,
+      "rating_avg": 4.87
+    },
+    {
+      "id": 2752,
+      "title": "Con Trai Nuôi Bị Đuổi Ra Khỏi Tập Đoàn, Di Chúc Ông Nội Trao Lại 70% Cổ Phần",
+      "deleted_comments": 4,
+      "seeded_comments": 16,
+      "rating_avg": 4.88
+    },
+    {
+      "id": 2745,
+      "title": "Tài Xế Taxi Bị Khách VIP Khinh Thường, Tài Xế Đó Sở Hữu Công Ty Taxi Lớn Nhất Thành Tâm",
+      "deleted_comments": 4,
+      "seeded_comments": 17,
+      "rating_avg": 4.88
+    },
+    {
+      "id": 2738,
+      "title": "Vợ Đòi Ly Hôn Vì Chồng Thất Nghiệp, Ngày Ký Đơn Chồng Nhận Danh Hiệu Kiến Trúc Sư Quốc Gia",
+      "deleted_comments": 4,
+      "seeded_comments": 18,
+      "rating_avg": 4.89
+    },
+    {
+      "id": 2731,
+      "title": "Trưởng Phòng Bán Hàng Khinh Nhân Viên Mới, Nhân Viên Đó Là Chuyên Gia Tư Vấn Của Tập Đoàn Mẹ",
+      "deleted_comments": 4,
+      "seeded_comments": 19,
+      "rating_avg": 4.89
+    },
+    {
+      "id": 2724,
+      "title": "Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ",
+      "deleted_comments": 4,
+      "seeded_comments": 20,
+      "rating_avg": 4.9
+    },
+    {
+      "id": 2717,
+      "title": "Thuyền Trưởng Tàu Cá Bị Chủ Cảng Ép Nợ, Hóa Ra Là Đại Gia Hàng Hải Đang Điều Tra Thâu Tóm",
+      "deleted_comments": 4,
+      "seeded_comments": 10,
+      "rating_avg": 4.9
+    },
+    {
+      "id": 2703,
+      "title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+      "deleted_comments": 4,
+      "seeded_comments": 12,
+      "rating_avg": 4.92
+    },
+    {
+      "id": 2696,
+      "title": "Nhà Chồng Khinh Tôi Không Biết Nấu Ăn, Tôi Giật Giải Đầu Bếp Số 1 Đông Nam Á Trước Mặt Họ",
+      "deleted_comments": 4,
+      "seeded_comments": 13,
+      "rating_avg": 4.92
+    },
+    {
+      "id": 2689,
+      "title": "Giám Đốc Bệnh Viện Sa Thải Bác Sĩ Thực Tập, Hội Đồng Y Tế Quốc Gia Cử Người Điều Tra",
+      "deleted_comments": 5,
+      "seeded_comments": 14,
+      "rating_avg": 4.86
+    },
+    {
+      "id": 2682,
+      "title": "Bố Vợ Ép Ly Hôn Vì Tôi Nghèo Hèn, Công Ty Tỷ Đô Của Tôi Niêm Yết Sàn Chứng Khoán Hôm Đó",
+      "deleted_comments": 4,
+      "seeded_comments": 15,
+      "rating_avg": 4.87
+    },
+    {
+      "id": 2675,
+      "title": "Sư Phụ Đuổi Tôi Khỏi Võ Quán Vì Hèn Yếu, Giải Vô Địch Quốc Gia Lộ Ra Thân Phận Thật",
+      "deleted_comments": 5,
+      "seeded_comments": 16,
+      "rating_avg": 4.88
+    },
+    {
+      "id": 2668,
+      "title": "Cô Vợ Hào Môn Khinh Tôi Vô Dụng, Cả Hà Ngoại Biết Tôi Là Chủ Tịch Tập Đoàn Thép",
+      "deleted_comments": 4,
+      "seeded_comments": 17,
+      "rating_avg": 4.88
+    },
+    {
+      "id": 2658,
+      "title": "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp",
+      "deleted_comments": 4,
+      "seeded_comments": 20,
+      "rating_avg": 4.85
+    },
+    {
+      "id": 2606,
+      "title": "Chàng Rể Vạch Trần Âm Mưu Gia Tộc Trầm Hương",
+      "deleted_comments": 4,
+      "seeded_comments": 18,
+      "rating_avg": 4.89
+    },
+    {
+      "id": 2587,
+      "title": "Thiên Tài Cầu Đường: Kỹ Sư Bị Sa Thải Đối Đầu Với Kẻ Cướp Bản Quyền",
+      "deleted_comments": 5,
+      "seeded_comments": 16,
+      "rating_avg": 4.88
+    },
+    {
+      "id": 2573,
+      "title": "Đế Chế Gốm Sứ Bát Tràng: Phản Bội và Bùng Nổ",
+      "deleted_comments": 5,
+      "seeded_comments": 18,
+      "rating_avg": 4.83
+    },
+    {
+      "id": 2561,
+      "title": "Ngọc Hoàng Tôm Hùm: Trận Chiến Khốc Liệt Giữa Ngư Dân Và Thương Láii",
+      "deleted_comments": 4,
+      "seeded_comments": 15,
+      "rating_avg": 4.87
+    },
+    {
+      "id": 2549,
+      "title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ",
+      "deleted_comments": 5,
+      "seeded_comments": 12,
+      "rating_avg": 4.92
+    },
+    {
+      "id": 2517,
+      "title": "Thiên Tài Fintech: Lật Kèo Tại PayBlock",
+      "deleted_comments": 4,
+      "seeded_comments": 15,
+      "rating_avg": 4.87
+    },
+    {
+      "id": 2508,
+      "title": "Bảo Vệ Quèn Là Võ Thần: Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+      "deleted_comments": 4,
+      "seeded_comments": 10,
+      "rating_avg": 4.9
+    },
+    {
+      "id": 2497,
+      "title": "Công Thức Thuốc Bị Cướp: Bẫy IPO Dược Phẩm Nghìn Tỷ",
+      "deleted_comments": 4,
+      "seeded_comments": 10,
+      "rating_avg": 4.8
+    },
+    {
+      "id": 2489,
+      "title": "Người Thừa Kế Trăm Tỷ Giả Nghèo: Thử Lòng Đại Gia",
+      "deleted_comments": 4,
+      "seeded_comments": 19,
+      "rating_avg": 4.84
+    },
+    {
+      "id": 2482,
+      "title": "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn",
+      "deleted_comments": 4,
+      "seeded_comments": 20,
+      "rating_avg": 4.85
+    },
+    {
+      "id": 2475,
+      "title": "Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
+      "deleted_comments": 4,
+      "seeded_comments": 10,
+      "rating_avg": 4.9
+    },
+    {
+      "id": 2465,
+      "title": "Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+      "deleted_comments": 4,
+      "seeded_comments": 13,
+      "rating_avg": 4.92
+    },
+    {
+      "id": 2457,
+      "title": "Nguyễn Tấn Đạt: Chàng Rể Bùn Lầy Lật Kèo Vườn Sầu Riêng Trăm Tỷ",
+      "deleted_comments": 4,
+      "seeded_comments": 11,
+      "rating_avg": 4.82
+    },
+    {
+      "id": 2448,
+      "title": "Cuộc Chiến Sinh Tử Của Trà Ô Long Hữu Cơ Việt",
+      "deleted_comments": 5,
+      "seeded_comments": 17,
+      "rating_avg": 4.82
+    },
+    {
+      "id": 2313,
+      "title": "Cướp Mã Nguồn Nghìn Tỷ, Kích Hoạt Bẫy Chôn Vùi Tập Đoàn",
+      "deleted_comments": 5,
+      "seeded_comments": 19,
+      "rating_avg": 4.84
+    },
+    {
+      "id": 2289,
+      "title": "Cuộc Chiến Nghệ Thuật Tại Nhà Hát Phương Nam",
+      "deleted_comments": 4,
+      "seeded_comments": 13,
+      "rating_avg": 4.85
+    },
+    {
+      "id": 2279,
+      "title": "Vương Quốc Bất Động Sản: Cuộc Chiến Sinh Tử",
+      "deleted_comments": 4,
+      "seeded_comments": 16,
+      "rating_avg": 4.88
+    },
+    {
+      "id": 2269,
+      "title": "Đế Chế Dệt May Bình Thịnh: Chiến Tranh Tài Chính",
+      "deleted_comments": 4,
+      "seeded_comments": 19,
+      "rating_avg": 4.89
+    },
+    {
+      "id": 2259,
+      "title": "Cuộc Chiến Bánh Mì: Bảo Vệ Di Sản Ẩm Thực Hội Nguyên",
+      "deleted_comments": 5,
+      "seeded_comments": 11,
+      "rating_avg": 4.82
+    },
+    {
+      "id": 2249,
+      "title": "Nhà Thiết Kế Tàng Hình: Cuộc Chiến Tại Hội Nghị Thời Trang Quốc Gia",
+      "deleted_comments": 5,
+      "seeded_comments": 14,
+      "rating_avg": 4.86
+    },
+    {
+      "id": 2238,
+      "title": "Triều Đại Cà Phê Bazan: Cuộc Chiến Giành Bằng Sáng Chế",
+      "deleted_comments": 4,
+      "seeded_comments": 14,
+      "rating_avg": 4.86
+    },
+    {
+      "id": 2227,
+      "title": "Thiên Tài Lập Trình: Đà Lạt Sương Mù và Kế Hoạch Lật Đổ Tập Đoàn Tài Chính",
+      "deleted_comments": 4,
+      "seeded_comments": 14,
+      "rating_avg": 4.86
+    },
+    {
+      "id": 2217,
+      "title": "Bóng Tối Điện Lực Vạn Thịnh: Cuộc Chiến Chống Tham Nhũng",
+      "deleted_comments": 4,
+      "seeded_comments": 17,
+      "rating_avg": 4.82
+    },
+    {
+      "id": 2207,
+      "title": "Thuyền Trưởng Cảng Đà Thành: Cuộc Chiến Bên Bến Cả",
+      "deleted_comments": 5,
+      "seeded_comments": 20,
+      "rating_avg": 4.85
+    },
+    {
+      "id": 2197,
+      "title": "Thợ Hồ Nghìn Tỷ: Đập Tan Kiêu Ngạo",
+      "deleted_comments": 5,
+      "seeded_comments": 12,
+      "rating_avg": 4.83
+    },
+    {
+      "id": 2190,
+      "title": "Thần Tài Chứng Khoán: Đấu Trường Phố Wall Hà Nội",
+      "deleted_comments": 5,
+      "seeded_comments": 13,
+      "rating_avg": 4.85
+    },
+    {
+      "id": 2165,
+      "title": "Bị Bạn Thân Cướp Startup, Tôi Lật Kèo Đế Chế FinTech",
+      "deleted_comments": 5,
+      "seeded_comments": 15,
+      "rating_avg": 4.87
+    },
+    {
+      "id": 2156,
+      "title": "Tiểu Thư Khinh Tôi Là Bảo Vệ: Đặc Nhiệm Giữa Đế Chế Buôn Lậu",
+      "deleted_comments": 5,
+      "seeded_comments": 10,
+      "rating_avg": 4.8
+    },
+    {
+      "id": 2145,
+      "title": "Sếp Cướp Công Thức Thuốc, Tôi Phá Sập IPO Nghìn Tỷ",
+      "deleted_comments": 5,
+      "seeded_comments": 10,
+      "rating_avg": 4.9
+    },
+    {
+      "id": 2137,
+      "title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ, Tôi Là Người Thừa Kế Landmark 81",
+      "deleted_comments": 5,
+      "seeded_comments": 19,
+      "rating_avg": 4.89
+    },
+    {
+      "id": 2129,
+      "title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
+      "deleted_comments": 4,
+      "seeded_comments": 17,
+      "rating_avg": 4.88
+    },
+    {
+      "id": 2120,
+      "title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
+      "deleted_comments": 4,
+      "seeded_comments": 12,
+      "rating_avg": 4.83
+    },
+    {
+      "id": 2112,
+      "title": "Người Thợ Sửa Xe Ở Hầm B2",
+      "deleted_comments": 4,
+      "seeded_comments": 10,
+      "rating_avg": 4.8
+    },
+    {
+      "id": 2106,
+      "title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ",
+      "deleted_comments": 5,
+      "seeded_comments": 14,
+      "rating_avg": 4.86
+    },
+    {
+      "id": 2099,
+      "title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
+      "deleted_comments": 4,
+      "seeded_comments": 15,
+      "rating_avg": 4.87
+    },
+    {
+      "id": 2089,
+      "title": "Trọng Sinh 2008: Ôm Đất Đông Anh Trước Cơn Sốt Nghìn Tỷ",
+      "deleted_comments": 5,
+      "seeded_comments": 18,
+      "rating_avg": 4.89
+    },
+    {
+      "id": 2067,
+      "title": "Bị Sa Thải Trước Giờ Đấu Thầu: Một Mình Thắng Gói AI Nghìn Tỷ",
+      "deleted_comments": 4,
+      "seeded_comments": 18,
+      "rating_avg": 4.89
+    },
+    {
+      "id": 2052,
+      "title": "Thần Y Quận 5: Kẻ Cướp Công Trình và Siêu Tỷ Phú",
+      "deleted_comments": 4,
+      "seeded_comments": 17,
+      "rating_avg": 4.88
+    },
+    {
+      "id": 2044,
+      "title": "Chàng Rể Ẩn Thân Miền Tây: Cứu Vườn Sầu Riêng Trăm Tỷ",
+      "deleted_comments": 4,
+      "seeded_comments": 15,
+      "rating_avg": 4.8
+    },
+    {
+      "id": 2035,
+      "title": "Kẻ Phế Vật Trở Về: Đòi Lại Gia Tộc Sau 12 Năm",
+      "deleted_comments": 4,
+      "seeded_comments": 10,
+      "rating_avg": 4.8
+    },
+    {
+      "id": 2023,
+      "title": "Phế Vật Trở Về: Cuộc Báo Thù Rực Lửa",
+      "deleted_comments": 4,
+      "seeded_comments": 18,
+      "rating_avg": 4.83
+    },
+    {
+      "id": 2020,
+      "title": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
+      "deleted_comments": 4,
+      "seeded_comments": 20,
+      "rating_avg": 4.85
+    },
+    {
+      "id": 2013,
+      "title": "Kỹ Sư Bị Cả Xã Khinh Là Kẻ Nói Điên, Lá Thư Cuối Cùng Của Biển Cứu Sống Cát Hải Trong Đêm Bão",
+      "deleted_comments": 5,
+      "seeded_comments": 10,
+      "rating_avg": 4.9
+    },
+    {
+      "id": 2007,
+      "title": "Nhân Viên Bị Sếp Cướp Công Thức Dạ Dày, Log Lab Khiến Buổi IPO Nghìn Tỷ Đổ Sập Trước Truyền Thông",
+      "deleted_comments": 4,
+      "seeded_comments": 14,
+      "rating_avg": 4.86
+    },
+    {
+      "id": 2001,
+      "title": "Họa Sĩ Mù Bị Thiếu Gia Cướp Tranh, Ánh Sáng Trong Đêm Khiến Cả Phòng Đấu Giá Hà Nội Im Phăng Phắc",
+      "deleted_comments": 4,
+      "seeded_comments": 18,
+      "rating_avg": 4.83
+    },
+    {
+      "id": 1984,
+      "title": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu Và Bị Vả Mặt Ngay Tại Chung Cư Hoài Đức",
+      "deleted_comments": 4,
+      "seeded_comments": 11,
+      "rating_avg": 4.91
+    },
+    {
+      "id": 1968,
+      "title": "Thành Phố Chìm Trong Bóng Tối, Kỹ Sư Bị Xem Là Kẻ Điên Kích Hoạt Nguồn Sáng Cuối Cùng",
+      "deleted_comments": 5,
+      "seeded_comments": 18,
+      "rating_avg": 4.89
+    },
+    {
+      "id": 1948,
+      "title": "Giám Đốc Ngầm Đi Thực Tập Bị Trưởng Phòng Cướp Dự Án, Một Cuộc Họp Khiến Cả Công Ty Đứng Hình",
+      "deleted_comments": 4,
+      "seeded_comments": 13,
+      "rating_avg": 4.85
+    },
+    {
+      "id": 1933,
+      "title": "Cô Gái Bị Gọi Là Con Bé Gần Máy In, Gấu Bông Quỷ Vương Giúp Cô Lật Mặt Cả Phòng Kế Toán",
+      "deleted_comments": 5,
+      "seeded_comments": 12,
+      "rating_avg": 4.92
+    },
+    {
+      "id": 1927,
+      "title": "Mẹ Chồng Gọi Tôi Là Người Ngoài, Sổ Đỏ Biệt Thự Gò Vấp 5 Tỷ Khiến Cả Mâm Giỗ Câm Lặng",
+      "deleted_comments": 4,
+      "seeded_comments": 16,
+      "rating_avg": 4.88
+    },
+    {
+      "id": 1921,
+      "title": "Con Dâu Dân Tỉnh Bị Khinh Trong Căn Nhà 4,8 Tỷ, Một Bộ Hồ Sơ Khiến Cả Nhà Chồng Trắng Mặt",
+      "deleted_comments": 5,
+      "seeded_comments": 20,
+      "rating_avg": 4.85
+    }
+  ]
+}

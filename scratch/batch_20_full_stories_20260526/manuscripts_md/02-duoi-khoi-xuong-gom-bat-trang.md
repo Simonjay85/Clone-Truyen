@@ -1,0 +1,291 @@
+# Bị Đuổi Khỏi Xưởng Gốm Bát Tràng, Tôi Dùng Men Cổ Thắng Đơn Hàng Trăm Tỷ Của Người Yêu Cũ
+
+- Tác giả: Minh Hạ
+- Thể loại: Sảng Văn
+- Số chương: 8
+
+## Giới thiệu
+
+"Cái tay chỉ biết trộn đất như anh mà cũng đòi ngồi bàn xuất khẩu?" Vũ Gia Khiêm hất khay men thử xuống nền gạch, để những mảnh gốm xanh rạn vỡ dưới chân Phạm Duy An.
+
+Nguyễn Mỹ Hân đứng cạnh hắn, mặc áo dài lụa trắng, bình thản tuyên bố công thức men tro gia truyền của anh đã được xưởng đăng ký dưới tên cô. Cả nhà xưởng im lặng, chỉ còn tiếng lò nung thở phì phò như một con thú bị bịt miệng.
+
+Nhưng Duy An không chỉ giữ ký ức nghề. Anh còn giữ sổ lò ba đời, mẫu men thử niêm phong, biên bản giám định tro rơm và video camera ghi lại đêm công thức bị sao chụp.
+
+Khi lô hàng khách sạn Nhật trị giá 180 tỷ bị treo vì cáo buộc men độc, người từng bị đá khỏi lò nung phải trở lại bằng đôi bàn tay đầy sẹo và một màu men không ai giả được.
+
+## Prompt cover ChatGPT Image Generation
+
+Square 1:1 photorealistic Vietnamese web novel cover, cinematic Bát Tràng pottery kiln at night, a wounded Vietnamese ceramic master holding an ancestral glaze notebook and a glowing blue-green ceramic bowl, warm firelight, old brick kiln, no text, no watermark, top dark space for title.
+
+## Chương 1: Mẻ Men Bị Đạp Nát Trước Lò Rồng
+
+Lò nung ở Bát Tràng nóng đến mức hơi thở cũng có vị tro. Phạm Duy An đứng cạnh dãy chum men cổ, tay áo xắn quá khuỷu, lòng bàn tay còn dính bột đất trắng. Anh vừa hoàn thành mẻ thử cuối cùng cho đơn hàng khách sạn Nhật thì Vũ Gia Khiêm dẫn đoàn khách vào xưởng như thể nơi này chưa từng có anh.
+
+Trên bàn dài là hai mươi chiếc chén mẫu, men xanh ngả xám, mặt men rạn như sương đọng trên đá cổ. Duy An biết từng vết rạn ấy đến từ tỷ lệ tro rơm, nước giếng và nhiệt độ hạ lò lúc rạng sáng. Nhưng Gia Khiêm chỉ cười, đặt bảng tên của Nguyễn Mỹ Hân trước bộ mẫu rồi nói công thức là thành quả của phòng thiết kế mới.
+
+Mỹ Hân không nhìn anh. Cô từng cùng anh thức ba đêm canh lò, từng nói màu men này là tương lai của cả làng nghề. Bây giờ cô nâng ly trà trước mặt khách Nhật và bảo Duy An chỉ là thợ phụ được thuê theo mùa.
+
+Khi Duy An phản đối, Gia Khiêm hất khay men thử xuống đất. Những mảnh chén vỡ bắn vào mu bàn tay anh, rạch một đường mỏng. Hắn cúi xuống, nhặt một mảnh gốm rồi nghiền dưới gót giày: "Tay nghề không có giấy tờ thì cũng chỉ là chuyện kể trong quán nước."
+
+Đám thợ trẻ cúi mặt. Họ biết ai là người trộn men, nhưng khoản lương cuối tháng nằm trong tay Gia Khiêm. Duy An nhìn từng gương mặt ấy, không trách. Làng nghề nhiều đời đã dạy anh rằng đất muốn thành gốm phải qua lửa; người muốn giữ nghề đôi khi cũng phải qua một lần bị nung đến nứt lòng.
+
+Anh bị đuổi ra khỏi xưởng trước khi lò mở. Trời chiều trên bờ sông Hồng đầy bụi. Duy An ngồi ở bậc đá, lấy khăn quấn vết thương, rồi gọi cho Đỗ Hoài Phương, người phụ trách thu mua của khách Nhật. Anh không xin cô tin mình. Anh chỉ nói: "Nếu chị muốn biết men này của ai, hãy nhìn tro trong xương men, không nhìn bảng tên."
+
+Đêm ấy, anh quay về căn nhà cũ của ông nội. Trong hòm gỗ mốc là sổ lò ghi bằng mực tím, có cả vết cháy xém từ trận lụt năm xưa. Duy An đặt bàn tay bị rách lên trang giấy, thấy máu thấm cạnh dòng chữ: mẻ men tốt nhất luôn biết tố cáo kẻ nói dối.
+
+Ở xưởng, Gia Khiêm mở tiệc mừng. Nhưng khi lò nguội, ba chiếc bình chủ lực xuất hiện vệt rộp nhỏ ở đáy. Mỹ Hân nhìn thấy đầu tiên, mặt cô thoáng trắng. Màu men có thể bị chép, nhưng nhịp thở của lò thì không.
+
+Riêng ở mốc "Mẻ Men Bị Đạp Nát Trước Lò Rồng", nghề men tro Bát Tràng không còn là phông nền mà trở thành cách sự thật tự mở miệng. Duy An tách từng lớp trách nhiệm theo thứ tự của chương này: người ký trước, người nhận sau, người im lặng lâu nhất và người hưởng lợi nhiều nhất. Cách tách ấy khiến Gia Khiêm không thể gom mọi thứ thành một câu thanh minh mơ hồ.
+
+Hoài Phương dựng lại dòng thời gian tại căn lò cũ bên bờ sông Hồng, nhưng mỗi chương cô chọn một điểm neo khác. Lần này điểm neo là "Mẻ Men Bị Đạp Nát Trước Lò Rồng": giờ xuất hiện của vật chứng, người đầu tiên chạm vào nó, và khoảng trống mà đối thủ cố tình để mờ. Cô bắt mọi lời nói quay về giấy tờ, vì chỉ giấy tờ mới đủ lạnh để không bị nước mắt mua chuộc.
+
+Mảnh xương men và sổ lò ba đời được soi lại dưới góc của biến cố này. Duy An không nhìn nó như bằng chứng chung chung; anh chỉ ra chi tiết riêng của chương: một mép giấy, một vết xước, một mã thời gian, một mùi vật liệu hoặc một dấu lưu kho không thể tự nhiên xuất hiện. Những chi tiết nhỏ ấy làm lời nói dối mất chỗ đứng. Mẻ Men Bị Đạp Nát Trước Lò Rồng chuyển áp lực sang phía phản diện, vì chi tiết tưởng nhỏ này nối được người ra lệnh với người trực tiếp làm sai.
+
+Gia Khiêm chuyển sang gây áp lực quanh mẫu men bị tráo, nhưng cách đánh của hắn ở chương này lộ thêm một điểm yếu. Hắn càng muốn người khác tin rằng mọi thứ chỉ là hiểu lầm, càng để lộ rằng hắn biết chính xác chi tiết nào sẽ giết mình. Mẻ Men Bị Đạp Nát Trước Lò Rồng giữ nhịp truyện ở phần kiểm chứng, nơi sự thật không nổ tung ngay mà siết lại từng vòng quanh kẻ dựng chuyện.
+
+đơn hàng Nhật và danh dự của cả một dòng thợ buộc Duy An phải đi tiếp, nhưng động cơ của anh ở chương này không chỉ là trả thù. Anh nhìn những người liên quan tới "Mẻ Men Bị Đạp Nát Trước Lò Rồng" và hiểu nếu mình bỏ cuộc, họ sẽ học được rằng làm đúng vẫn có thể bị xóa tên. Điều đó còn đáng sợ hơn một lần thua tiền.
+
+Có một khoảnh khắc mùi tro rơm ẩm lẫn hơi nóng từ miệng lò khiến anh dừng tay vài giây. Cảm giác ấy nối thẳng về ngày bị sỉ nhục, nhưng không lặp lại nó. Bây giờ anh có thêm hồ sơ, người làm chứng, và một người đồng hành biết hỏi khó đúng lúc thay vì vỗ vai cho qua. Mẻ Men Bị Đạp Nát Trước Lò Rồng kéo cùng dữ kiện sang hậu quả khác: người từng im lặng phải chọn phe, còn kẻ nói dối mất thêm một đường lui.
+
+Khi khép lại chương này, Hoài Phương không khen Duy An. Cô đưa anh danh sách việc cần làm tiếp theo, trong đó có một dòng gạch chân riêng cho "Mẻ Men Bị Đạp Nát Trước Lò Rồng". Anh nhận lấy, mệt đến tê vai, nhưng yên tâm vì trận này đang được thắng bằng từng chi tiết sạch.
+
+Riêng với mốc "Mẻ Men Bị Đạp Nát Trước Lò Rồng", mỗi quyết định của Duy An còn kéo theo ánh mắt của cả làng nghề. Nếu anh làm ẩu ở đúng điểm này, người ta sẽ nói men cổ chỉ là chiêu bán hàng. Nếu anh làm đúng, những người thợ từng bị ép đứng sau tên chủ xưởng sẽ có thêm một lý do để giữ nghề. Nghĩ tới đó, anh lại cúi xuống kiểm thêm một dòng ghi chú, thêm một mẫu tro, thêm một vết rạn nhỏ trên mặt chén.
+
+## Chương 2: Người Nhật Đòi Kiểm Tro Trong Xương Men
+
+Sáng hôm sau, Đỗ Hoài Phương đến nhà Duy An bằng xe riêng, không mang hoa hay lời an ủi. Cô đặt một chiếc chén mẫu lên bàn gỗ cũ rồi yêu cầu anh chứng minh vì sao mặt men thật phải có ánh chìm chứ không bóng lộ như hàng công nghiệp.
+
+Duy An đổ nước chè nóng vào chén. Khi hơi nước bốc lên, màu men chuyển từ xanh xám sang xanh ngọc rất nhạt. Anh giải thích đó là phản ứng của lớp tro rơm đã lọc qua vải thô, thứ không thể tạo bằng phẩm màu. Hoài Phương ghi lại từng chữ, sau đó yêu cầu lấy mẫu đối chứng từ lô của Gia Khiêm.
+
+Họ không đến xưởng bằng cửa chính. Hoài Phương thuê một chuyên gia gốm Nhật đi cùng, người chỉ nói ít nhưng nhìn men rất lâu. Ông cầm kính lúp soi đáy chén rồi hỏi bằng tiếng Việt lơ lớ: "Lò này hạ nhiệt quá vội. Ai canh?" Câu hỏi ấy làm quản đốc xưởng cứng họng.
+
+Gia Khiêm bước ra với nụ cười rộng, nói mọi việc chỉ là hiểu lầm của thợ cũ cay cú. Nhưng khi chuyên gia yêu cầu xem nhật ký nhiệt, hắn không đưa được bản gốc. Mỹ Hân chen vào, bảo hệ thống lưu tự động bị lỗi đúng đêm nung. Hoài Phương chỉ đóng nắp bút, không tranh cãi.
+
+Duy An đem ra một thứ khác: mảnh sứ thử ông nội từng gọi là xương lò. Trên đó có ký hiệu nhỏ khắc bằng kim trước khi tráng men. Ký hiệu ấy trùng với sổ lò trong hòm gỗ, từng ngày từng mẻ. Người Nhật nhìn ký hiệu rồi cúi đầu rất nhẹ, như chào một người thợ đã khuất.
+
+Gia Khiêm đổi giọng, tố Duy An mang đồ cũ ra lừa khách. Nhưng Duy An yêu cầu giám định thành phần tro. Anh biết trong mẻ men của mình có tro vỏ trấu từ ruộng ven sông, lẫn một lượng khoáng rất nhỏ mà lò công nghiệp không có. Đó là dấu vân tay của đất.
+
+Buổi kiểm mẫu được niêm phong ngay tại xưởng. Những túi nhỏ chứa bột men, mảnh vỡ, mẫu nước giếng được ký tên bởi ba bên. Mỹ Hân cầm bút mà tay run, nét ký lệch khỏi dòng kẻ. Duy An nhìn thấy nhưng không nói gì. Anh muốn sự thật nói bằng phòng thí nghiệm, không bằng nước mắt cũ.
+
+Tối đó, đơn hàng Nhật tạm dừng. Gia Khiêm tức đến ném cả bộ ấm tử sa vào tường. Nhưng lần này người trong xưởng không còn cúi đầu hoàn toàn. Một thợ trẻ lén gửi cho Duy An ảnh chụp bảng nhiệt đêm nung, đúng khoảnh khắc lò bị hạ sai.
+
+Riêng ở mốc "Người Nhật Đòi Kiểm Tro Trong Xương Men", nghề men tro Bát Tràng không còn là phông nền mà trở thành cách sự thật tự mở miệng. Duy An tách từng lớp trách nhiệm theo thứ tự của chương này: người ký trước, người nhận sau, người im lặng lâu nhất và người hưởng lợi nhiều nhất. Cách tách ấy khiến Gia Khiêm không thể gom mọi thứ thành một câu thanh minh mơ hồ.
+
+Hoài Phương dựng lại dòng thời gian tại căn lò cũ bên bờ sông Hồng, nhưng mỗi chương cô chọn một điểm neo khác. Lần này điểm neo là "Người Nhật Đòi Kiểm Tro Trong Xương Men": giờ xuất hiện của vật chứng, người đầu tiên chạm vào nó, và khoảng trống mà đối thủ cố tình để mờ. Cô bắt mọi lời nói quay về giấy tờ, vì chỉ giấy tờ mới đủ lạnh để không bị nước mắt mua chuộc.
+
+Mảnh xương men và sổ lò ba đời được soi lại dưới góc của biến cố này. Duy An không nhìn nó như bằng chứng chung chung; anh chỉ ra chi tiết riêng của chương: một mép giấy, một vết xước, một mã thời gian, một mùi vật liệu hoặc một dấu lưu kho không thể tự nhiên xuất hiện. Những chi tiết nhỏ ấy làm lời nói dối mất chỗ đứng. Người Nhật Đòi Kiểm Tro Trong Xương Men giữ nhịp truyện ở phần kiểm chứng, nơi sự thật không nổ tung ngay mà siết lại từng vòng quanh kẻ dựng chuyện.
+
+Gia Khiêm chuyển sang gây áp lực quanh mẫu men bị tráo, nhưng cách đánh của hắn ở chương này lộ thêm một điểm yếu. Hắn càng muốn người khác tin rằng mọi thứ chỉ là hiểu lầm, càng để lộ rằng hắn biết chính xác chi tiết nào sẽ giết mình. Người Nhật Đòi Kiểm Tro Trong Xương Men biến chi tiết này thành điểm tựa mới, nơi nhân vật chính bẻ lại thế trận bằng chứng cứ thay vì lời thanh minh.
+
+đơn hàng Nhật và danh dự của cả một dòng thợ buộc Duy An phải đi tiếp, nhưng động cơ của anh ở chương này không chỉ là trả thù. Anh nhìn những người liên quan tới "Người Nhật Đòi Kiểm Tro Trong Xương Men" và hiểu nếu mình bỏ cuộc, họ sẽ học được rằng làm đúng vẫn có thể bị xóa tên. Điều đó còn đáng sợ hơn một lần thua tiền.
+
+Có một khoảnh khắc mùi tro rơm ẩm lẫn hơi nóng từ miệng lò khiến anh dừng tay vài giây. Cảm giác ấy nối thẳng về ngày bị sỉ nhục, nhưng không lặp lại nó. Bây giờ anh có thêm hồ sơ, người làm chứng, và một người đồng hành biết hỏi khó đúng lúc thay vì vỗ vai cho qua. Người Nhật Đòi Kiểm Tro Trong Xương Men đọc dấu vết ấy bằng bối cảnh mới, khiến nó không còn là chứng cứ chung chung mà thành mũi kim chọc đúng chỗ yếu.
+
+Khi khép lại chương này, Hoài Phương không khen Duy An. Cô đưa anh danh sách việc cần làm tiếp theo, trong đó có một dòng gạch chân riêng cho "Người Nhật Đòi Kiểm Tro Trong Xương Men". Anh nhận lấy, mệt đến tê vai, nhưng yên tâm vì trận này đang được thắng bằng từng chi tiết sạch.
+
+Riêng với mốc "Người Nhật Đòi Kiểm Tro Trong Xương Men", mỗi quyết định của Duy An còn kéo theo ánh mắt của cả làng nghề. Nếu anh làm ẩu ở đúng điểm này, người ta sẽ nói men cổ chỉ là chiêu bán hàng. Nếu anh làm đúng, những người thợ từng bị ép đứng sau tên chủ xưởng sẽ có thêm một lý do để giữ nghề. Nghĩ tới đó, anh lại cúi xuống kiểm thêm một dòng ghi chú, thêm một mẫu tro, thêm một vết rạn nhỏ trên mặt chén.
+
+## Chương 3: Lò Nung Bị Niêm Phong Vì Tin Đồn Men Độc
+
+Ba ngày sau, tin xưởng dùng men độc lan khắp các nhóm làng nghề. Người ta chụp ảnh bình gốm rộp đáy, thêm chữ đỏ chói rồi gắn tên Duy An vào như thể anh mới là kẻ phá hoại. Đơn vị kiểm định chưa trả kết quả, nhưng đám đông đã có bản án riêng.
+
+Gia Khiêm tận dụng thời cơ, yêu cầu chính quyền kiểm tra đột xuất căn nhà cũ của Duy An. Hắn tin ở đó chỉ có mấy chum men lộn xộn và một người thợ nghèo không biết tự bảo vệ. Nhưng khi đoàn kiểm tra tới, mọi hũ men đều dán ngày, ghi nguồn tro, có mẫu đối chiếu được bọc vải dầu.
+
+Hoài Phương đứng cạnh, không nói thay anh. Cô chỉ yêu cầu lập biên bản đúng quy trình. Chính sự lạnh lùng ấy làm Duy An yên tâm. Cô không cứu anh bằng cảm tình, mà bằng cách buộc tất cả phải đi đúng luật.
+
+Trong lúc kiểm tra, một hũ men lạ được phát hiện sau bếp. Duy An khựng lại. Hũ ấy không phải của anh. Mùi hóa chất xộc lên sắc hơn men tro thường, đủ để người thợ lâu năm nhăn mặt. Ai đó đã đưa nó vào nhà anh trong đêm.
+
+Thay vì hoảng, Duy An yêu cầu lấy dấu vân tay trên nắp hũ và kiểm camera nhà hàng xóm. Bà cụ bán nước đầu ngõ kể rằng tối qua có chiếc xe tải nhỏ ghé qua, người xuống xe mặc áo khoác của xưởng Gia Khiêm. Lời kể được ghi vào biên bản.
+
+Tin đồn khiến lò nhà Duy An bị tạm dừng một ngày. Không được nung, anh chuyển sang mài lại khuôn, rửa từng tấm vải lọc tro. Mỗi động tác chậm và chắc như một lời phản kháng. Người ta có thể niêm phong lò, nhưng không thể niêm phong trí nhớ của bàn tay.
+
+Đêm đó, Mỹ Hân tìm đến. Cô đứng ngoài cổng, hỏi anh có thể nhận tiền rời khỏi Bát Tràng không. Duy An nhìn cô qua lớp song sắt cũ, hỏi lại: "Em bán công thức rồi, giờ muốn mua luôn quê hương của anh à?" Mỹ Hân cúi mặt, không đáp.
+
+Khi cô bỏ đi, Duy An nhận kết quả sơ bộ từ phòng thí nghiệm: mẫu men trong hũ lạ có chất tạo bóng công nghiệp, không trùng với bất kỳ mẻ nào trong sổ lò của anh. Một mảnh bùn đầu tiên đã rơi khỏi mặt kẻ vu oan.
+
+Riêng ở mốc "Lò Nung Bị Niêm Phong Vì Tin Đồn Men Độc", nghề men tro Bát Tràng không còn là phông nền mà trở thành cách sự thật tự mở miệng. Duy An tách từng lớp trách nhiệm theo thứ tự của chương này: người ký trước, người nhận sau, người im lặng lâu nhất và người hưởng lợi nhiều nhất. Cách tách ấy khiến Gia Khiêm không thể gom mọi thứ thành một câu thanh minh mơ hồ.
+
+Hoài Phương dựng lại dòng thời gian tại căn lò cũ bên bờ sông Hồng, nhưng mỗi chương cô chọn một điểm neo khác. Lần này điểm neo là "Lò Nung Bị Niêm Phong Vì Tin Đồn Men Độc": giờ xuất hiện của vật chứng, người đầu tiên chạm vào nó, và khoảng trống mà đối thủ cố tình để mờ. Cô bắt mọi lời nói quay về giấy tờ, vì chỉ giấy tờ mới đủ lạnh để không bị nước mắt mua chuộc.
+
+Mảnh xương men và sổ lò ba đời được soi lại dưới góc của biến cố này. Duy An không nhìn nó như bằng chứng chung chung; anh chỉ ra chi tiết riêng của chương: một mép giấy, một vết xước, một mã thời gian, một mùi vật liệu hoặc một dấu lưu kho không thể tự nhiên xuất hiện. Những chi tiết nhỏ ấy làm lời nói dối mất chỗ đứng. Lò Nung Bị Niêm Phong Vì Tin Đồn Men Độc biến chi tiết này thành điểm tựa mới, nơi nhân vật chính bẻ lại thế trận bằng chứng cứ thay vì lời thanh minh.
+
+Gia Khiêm chuyển sang gây áp lực quanh mẫu men bị tráo, nhưng cách đánh của hắn ở chương này lộ thêm một điểm yếu. Hắn càng muốn người khác tin rằng mọi thứ chỉ là hiểu lầm, càng để lộ rằng hắn biết chính xác chi tiết nào sẽ giết mình. Lò Nung Bị Niêm Phong Vì Tin Đồn Men Độc kéo cùng dữ kiện sang hậu quả khác: người từng im lặng phải chọn phe, còn kẻ nói dối mất thêm một đường lui.
+
+đơn hàng Nhật và danh dự của cả một dòng thợ buộc Duy An phải đi tiếp, nhưng động cơ của anh ở chương này không chỉ là trả thù. Anh nhìn những người liên quan tới "Lò Nung Bị Niêm Phong Vì Tin Đồn Men Độc" và hiểu nếu mình bỏ cuộc, họ sẽ học được rằng làm đúng vẫn có thể bị xóa tên. Điều đó còn đáng sợ hơn một lần thua tiền.
+
+Có một khoảnh khắc mùi tro rơm ẩm lẫn hơi nóng từ miệng lò khiến anh dừng tay vài giây. Cảm giác ấy nối thẳng về ngày bị sỉ nhục, nhưng không lặp lại nó. Bây giờ anh có thêm hồ sơ, người làm chứng, và một người đồng hành biết hỏi khó đúng lúc thay vì vỗ vai cho qua. Lò Nung Bị Niêm Phong Vì Tin Đồn Men Độc buộc nhân vật chính xử lý bằng một bước khác: không tranh cãi, chỉ bổ sung người chứng kiến và khóa lại đường chối.
+
+Khi khép lại chương này, Hoài Phương không khen Duy An. Cô đưa anh danh sách việc cần làm tiếp theo, trong đó có một dòng gạch chân riêng cho "Lò Nung Bị Niêm Phong Vì Tin Đồn Men Độc". Anh nhận lấy, mệt đến tê vai, nhưng yên tâm vì trận này đang được thắng bằng từng chi tiết sạch.
+
+Riêng với mốc "Lò Nung Bị Niêm Phong Vì Tin Đồn Men Độc", mỗi quyết định của Duy An còn kéo theo ánh mắt của cả làng nghề. Nếu anh làm ẩu ở đúng điểm này, người ta sẽ nói men cổ chỉ là chiêu bán hàng. Nếu anh làm đúng, những người thợ từng bị ép đứng sau tên chủ xưởng sẽ có thêm một lý do để giữ nghề. Nghĩ tới đó, anh lại cúi xuống kiểm thêm một dòng ghi chú, thêm một mẫu tro, thêm một vết rạn nhỏ trên mặt chén.
+
+## Chương 4: Sổ Lò Ba Đời Và Màu Men Không Sao Chép Được
+
+Duy An đem sổ lò tới buổi đối chứng tại nhà văn hóa làng. Không khí căng như dây đàn. Một bên là Gia Khiêm với luật sư và máy chiếu, một bên là Duy An với chiếc hòm gỗ cũ buộc dây thừng. Nhiều người nhìn chiếc hòm ấy bằng ánh mắt thương hại.
+
+Nhưng khi hòm mở ra, mùi giấy cũ và tro khô lan ra cả bàn. Trong sổ có dấu tay của ông nội anh, có mẫu men dán cạnh từng ghi chú, có cả những dòng sửa sai sau mỗi mẻ hỏng. Đó không phải tài liệu làm trong một đêm, mà là đời sống của ba thế hệ.
+
+Gia Khiêm bảo sổ cũ không có giá trị thương mại. Hoài Phương lập tức đặt lên bàn bản chụp công chứng từ năm trước, thời điểm Duy An từng mang sổ đi xin hỗ trợ bảo tồn làng nghề. Ngày tháng trên đó sớm hơn mọi đăng ký của Mỹ Hân.
+
+Chuyên gia Nhật yêu cầu thử lại một mẻ nhỏ trước mặt mọi người. Duy An đồng ý. Anh không dùng máy đo hiện đại trước, mà dùng cách ông nội dạy: nhìn màu lửa ở miệng lò, nghe tiếng đất co lại, ngửi mùi tro khi nhiệt bắt đầu xuống.
+
+Đám đông ban đầu cười khẽ. Nhưng khi chiếc chén thử ra lò, mặt men hiện vân rạn mảnh như sương. Ánh xanh chìm dưới lớp tro, không bóng lộ, không rộp đáy. Một cụ già trong làng cầm chén lên, mắt đỏ hoe: "Đúng màu lò cụ Phạm ngày trước."
+
+Mỹ Hân đứng chết lặng. Cô từng học thuộc công thức, nhưng chưa bao giờ hiểu vì sao phải đợi thêm bảy phút trước khi mở cửa lò. Cô có thể chép tỷ lệ, không thể chép sự nhẫn nại mà Duy An đổi bằng mười năm bỏng tay.
+
+Gia Khiêm cố gọi đó là màn diễn. Nhưng bảng nhiệt do thợ trẻ gửi được chiếu lên. Nó chứng minh xưởng của hắn đã hạ lò sai quy trình để chạy tiến độ, rồi đổ lỗi cho công thức. Mồ hôi chảy từ thái dương hắn xuống cổ áo.
+
+Cuối buổi, Hoài Phương tuyên bố tạm loại xưởng Gia Khiêm khỏi vòng cung ứng. Đơn hàng chưa trao cho Duy An ngay; cô yêu cầu anh lập cơ sở kiểm soát chất lượng riêng. Duy An gật đầu. Anh không cần thắng bằng thương hại. Anh cần thắng bằng mẻ gốm đủ sạch.
+
+Riêng ở mốc "Sổ Lò Ba Đời Và Màu Men Không Sao Chép Được", nghề men tro Bát Tràng không còn là phông nền mà trở thành cách sự thật tự mở miệng. Duy An tách từng lớp trách nhiệm theo thứ tự của chương này: người ký trước, người nhận sau, người im lặng lâu nhất và người hưởng lợi nhiều nhất. Cách tách ấy khiến Gia Khiêm không thể gom mọi thứ thành một câu thanh minh mơ hồ.
+
+Hoài Phương dựng lại dòng thời gian tại căn lò cũ bên bờ sông Hồng, nhưng mỗi chương cô chọn một điểm neo khác. Lần này điểm neo là "Sổ Lò Ba Đời Và Màu Men Không Sao Chép Được": giờ xuất hiện của vật chứng, người đầu tiên chạm vào nó, và khoảng trống mà đối thủ cố tình để mờ. Cô bắt mọi lời nói quay về giấy tờ, vì chỉ giấy tờ mới đủ lạnh để không bị nước mắt mua chuộc.
+
+Mảnh xương men và sổ lò ba đời được soi lại dưới góc của biến cố này. Duy An không nhìn nó như bằng chứng chung chung; anh chỉ ra chi tiết riêng của chương: một mép giấy, một vết xước, một mã thời gian, một mùi vật liệu hoặc một dấu lưu kho không thể tự nhiên xuất hiện. Những chi tiết nhỏ ấy làm lời nói dối mất chỗ đứng. Sổ Lò Ba Đời Và Màu Men Không Sao Chép Được kéo cùng dữ kiện sang hậu quả khác: người từng im lặng phải chọn phe, còn kẻ nói dối mất thêm một đường lui.
+
+Gia Khiêm chuyển sang gây áp lực quanh mẫu men bị tráo, nhưng cách đánh của hắn ở chương này lộ thêm một điểm yếu. Hắn càng muốn người khác tin rằng mọi thứ chỉ là hiểu lầm, càng để lộ rằng hắn biết chính xác chi tiết nào sẽ giết mình. Sổ Lò Ba Đời Và Màu Men Không Sao Chép Được đọc dấu vết ấy bằng bối cảnh mới, khiến nó không còn là chứng cứ chung chung mà thành mũi kim chọc đúng chỗ yếu.
+
+đơn hàng Nhật và danh dự của cả một dòng thợ buộc Duy An phải đi tiếp, nhưng động cơ của anh ở chương này không chỉ là trả thù. Anh nhìn những người liên quan tới "Sổ Lò Ba Đời Và Màu Men Không Sao Chép Được" và hiểu nếu mình bỏ cuộc, họ sẽ học được rằng làm đúng vẫn có thể bị xóa tên. Điều đó còn đáng sợ hơn một lần thua tiền.
+
+Có một khoảnh khắc mùi tro rơm ẩm lẫn hơi nóng từ miệng lò khiến anh dừng tay vài giây. Cảm giác ấy nối thẳng về ngày bị sỉ nhục, nhưng không lặp lại nó. Bây giờ anh có thêm hồ sơ, người làm chứng, và một người đồng hành biết hỏi khó đúng lúc thay vì vỗ vai cho qua. Sổ Lò Ba Đời Và Màu Men Không Sao Chép Được làm phản ứng đám đông đổi màu; họ không nghe câu chuyện như tin đồn nữa mà nhìn nó như hồ sơ có thể kiểm tra.
+
+Khi khép lại chương này, Hoài Phương không khen Duy An. Cô đưa anh danh sách việc cần làm tiếp theo, trong đó có một dòng gạch chân riêng cho "Sổ Lò Ba Đời Và Màu Men Không Sao Chép Được". Anh nhận lấy, mệt đến tê vai, nhưng yên tâm vì trận này đang được thắng bằng từng chi tiết sạch.
+
+Riêng với mốc "Sổ Lò Ba Đời Và Màu Men Không Sao Chép Được", mỗi quyết định của Duy An còn kéo theo ánh mắt của cả làng nghề. Nếu anh làm ẩu ở đúng điểm này, người ta sẽ nói men cổ chỉ là chiêu bán hàng. Nếu anh làm đúng, những người thợ từng bị ép đứng sau tên chủ xưởng sẽ có thêm một lý do để giữ nghề. Nghĩ tới đó, anh lại cúi xuống kiểm thêm một dòng ghi chú, thêm một mẫu tro, thêm một vết rạn nhỏ trên mặt chén.
+
+## Chương 5: Mỹ Hân Ký Tên Vào Biên Bản Giả
+
+Khi mọi người tưởng Gia Khiêm đã hết đường, hắn tung ra một biên bản mới, ghi rằng Duy An từng tự nguyện chuyển giao công thức cho Mỹ Hân. Biên bản có chữ ký của cô, có dấu xưởng, có cả ảnh chụp ngày hai người còn yêu nhau đứng trước lò.
+
+Mỹ Hân xuất hiện trong buổi làm việc với gương mặt trang điểm kỹ. Cô nói rất nhỏ rằng ngày đó Duy An đồng ý để cô phát triển công thức vì anh không đủ năng lực kinh doanh. Câu nói ấy đâm vào lòng anh không kém ngày bị đuổi khỏi xưởng.
+
+Duy An không cãi ngay. Anh lấy ra tờ giấy than lót dưới bản nháp năm ấy. Trên giấy còn hằn dòng chữ khác: Mỹ Hân từng ghi công thức chỉ để xin tài trợ bảo tồn, không phải chuyển nhượng. Sự khác biệt nằm ở một cụm từ bị cắt khỏi bản chính.
+
+Luật sư của Gia Khiêm nói giấy than không đủ. Duy An gật đầu, rồi mở file ghi âm từ chiếc điện thoại cũ của ông nội. Trong đó, giọng Mỹ Hân năm trước còn trong trẻo, nói rằng công thức là của nhà họ Phạm, cô chỉ giúp đánh máy hồ sơ.
+
+Mỹ Hân tái mặt. Chiếc bút trong tay cô rơi xuống bàn, lăn một vòng rồi dừng cạnh mép. Cô cúi nhặt nhưng ngón tay run đến mức không kẹp nổi. Gia Khiêm nhìn cô bằng ánh mắt cảnh cáo, nhưng ánh mắt ấy chỉ làm cô run hơn.
+
+Hoài Phương yêu cầu đối chiếu chữ ký trên biên bản giả với nét ký thật trong hồ sơ ngân hàng của Mỹ Hân. Kết quả sơ bộ cho thấy phần ngày tháng được thêm sau bằng loại mực khác. Một chuyên viên giám định dùng đèn chiếu làm vết mực hiện rõ như vết bẩn trên áo trắng.
+
+Duy An nhìn Mỹ Hân. Anh không hỏi vì sao nữa. Câu hỏi ấy đã vô nghĩa. Người từng bước qua anh trong xưởng hôm nay tự bước vào biên bản giả của chính mình. Cô khóc, nhưng nước mắt đến sau con dấu thì không rửa được gì.
+
+Gia Khiêm nổi giận, đập bàn định rời đi. Nhưng bên ngoài, hai cán bộ kinh tế đã chờ để mời hắn làm việc về hành vi làm giả hồ sơ thương mại. Lần đầu tiên, hắn nhìn cánh cửa xưởng như nhìn miệng lò đang khép lại.
+
+Riêng ở mốc "Mỹ Hân Ký Tên Vào Biên Bản Giả", nghề men tro Bát Tràng không còn là phông nền mà trở thành cách sự thật tự mở miệng. Duy An tách từng lớp trách nhiệm theo thứ tự của chương này: người ký trước, người nhận sau, người im lặng lâu nhất và người hưởng lợi nhiều nhất. Cách tách ấy khiến Gia Khiêm không thể gom mọi thứ thành một câu thanh minh mơ hồ.
+
+Hoài Phương dựng lại dòng thời gian tại căn lò cũ bên bờ sông Hồng, nhưng mỗi chương cô chọn một điểm neo khác. Lần này điểm neo là "Mỹ Hân Ký Tên Vào Biên Bản Giả": giờ xuất hiện của vật chứng, người đầu tiên chạm vào nó, và khoảng trống mà đối thủ cố tình để mờ. Cô bắt mọi lời nói quay về giấy tờ, vì chỉ giấy tờ mới đủ lạnh để không bị nước mắt mua chuộc.
+
+Mảnh xương men và sổ lò ba đời được soi lại dưới góc của biến cố này. Duy An không nhìn nó như bằng chứng chung chung; anh chỉ ra chi tiết riêng của chương: một mép giấy, một vết xước, một mã thời gian, một mùi vật liệu hoặc một dấu lưu kho không thể tự nhiên xuất hiện. Những chi tiết nhỏ ấy làm lời nói dối mất chỗ đứng. Mỹ Hân Ký Tên Vào Biên Bản Giả đọc dấu vết ấy bằng bối cảnh mới, khiến nó không còn là chứng cứ chung chung mà thành mũi kim chọc đúng chỗ yếu.
+
+Gia Khiêm chuyển sang gây áp lực quanh mẫu men bị tráo, nhưng cách đánh của hắn ở chương này lộ thêm một điểm yếu. Hắn càng muốn người khác tin rằng mọi thứ chỉ là hiểu lầm, càng để lộ rằng hắn biết chính xác chi tiết nào sẽ giết mình. Mỹ Hân Ký Tên Vào Biên Bản Giả buộc nhân vật chính xử lý bằng một bước khác: không tranh cãi, chỉ bổ sung người chứng kiến và khóa lại đường chối.
+
+đơn hàng Nhật và danh dự của cả một dòng thợ buộc Duy An phải đi tiếp, nhưng động cơ của anh ở chương này không chỉ là trả thù. Anh nhìn những người liên quan tới "Mỹ Hân Ký Tên Vào Biên Bản Giả" và hiểu nếu mình bỏ cuộc, họ sẽ học được rằng làm đúng vẫn có thể bị xóa tên. Điều đó còn đáng sợ hơn một lần thua tiền.
+
+Có một khoảnh khắc mùi tro rơm ẩm lẫn hơi nóng từ miệng lò khiến anh dừng tay vài giây. Cảm giác ấy nối thẳng về ngày bị sỉ nhục, nhưng không lặp lại nó. Bây giờ anh có thêm hồ sơ, người làm chứng, và một người đồng hành biết hỏi khó đúng lúc thay vì vỗ vai cho qua. Mỹ Hân Ký Tên Vào Biên Bản Giả khiến người đồng hành hỏi sâu hơn một tầng, buộc mọi cảm xúc phải lùi sau biên bản và chữ ký.
+
+Khi khép lại chương này, Hoài Phương không khen Duy An. Cô đưa anh danh sách việc cần làm tiếp theo, trong đó có một dòng gạch chân riêng cho "Mỹ Hân Ký Tên Vào Biên Bản Giả". Anh nhận lấy, mệt đến tê vai, nhưng yên tâm vì trận này đang được thắng bằng từng chi tiết sạch.
+
+Riêng với mốc "Mỹ Hân Ký Tên Vào Biên Bản Giả", mỗi quyết định của Duy An còn kéo theo ánh mắt của cả làng nghề. Nếu anh làm ẩu ở đúng điểm này, người ta sẽ nói men cổ chỉ là chiêu bán hàng. Nếu anh làm đúng, những người thợ từng bị ép đứng sau tên chủ xưởng sẽ có thêm một lý do để giữ nghề. Nghĩ tới đó, anh lại cúi xuống kiểm thêm một dòng ghi chú, thêm một mẫu tro, thêm một vết rạn nhỏ trên mặt chén.
+
+## Chương 6: Đơn Hàng Nhật Chuyển Về Căn Lò Cũ
+
+Hoài Phương không ký hợp đồng ngay tại buổi thắng lợi. Cô đến căn lò cũ của Duy An lần nữa, lần này mang theo bảng yêu cầu chất lượng dày mười hai trang. Mỗi dòng là một tiêu chuẩn: độ hút nước, độ bền men, độ an toàn khi dùng với thực phẩm nóng.
+
+Duy An đọc hết, không phàn nàn. Anh biết nghề truyền thống muốn sống không thể chỉ dựa vào cảm xúc làng nghề. Men cổ phải đi cùng kiểm nghiệm hiện đại, sổ lò phải đi cùng quản trị kho, và lòng tự trọng phải đi cùng hóa đơn đúng hạn.
+
+Anh tập hợp những thợ trẻ từng cúi đầu ở xưởng Gia Khiêm. Không ai được nhận vào chỉ vì thương hại. Mỗi người phải làm lại một bài thử: lọc tro, canh nhiệt, ghi nhật ký mẻ. Người làm sai được sửa, người gian dối thì rời đi.
+
+Mẻ đầu tiên cho khách Nhật được nung trong đêm mưa. Duy An đứng cạnh lò, Hoài Phương ngồi ở ghế gỗ gần cửa, đọc báo cáo kiểm định. Không ai nói chuyện tình cảm, nhưng giữa họ có một sự tôn trọng lặng lẽ, bền hơn lời hứa vội.
+
+Khi cửa lò mở, hơi nóng tràn ra như sóng. Những chiếc chén xếp thành hàng, màu men xanh chìm, vân rạn đều, đáy không rộp. Chuyên gia Nhật cầm một chiếc lên, gõ nhẹ. Âm thanh trong và dài. Ông mỉm cười lần đầu tiên.
+
+Hợp đồng 180 tỷ được ký tại nhà văn hóa làng, không phải khách sạn sang. Duy An yêu cầu ghi rõ tên đội thợ và nguồn gốc công thức trong phụ lục. Anh đã từng bị xóa tên, nên không cho phép bất kỳ bàn tay nào phía sau lò bị biến thành bóng.
+
+Gia Khiêm và Mỹ Hân bị điều tra thêm. Tin cuối cùng Duy An nghe được là xưởng của hắn bị đình chỉ xuất khẩu. Anh không mở tiệc lớn. Anh chỉ đem một chiếc chén hoàn chỉnh đặt lên bàn thờ ông nội, rót trà nóng vào trong đó.
+
+Mặt men chuyển màu dưới hơi nước. Duy An cúi đầu rất lâu. Có những chiến thắng không cần tiếng vỗ tay; chỉ cần người đã khuất biết rằng màu men nhà mình cuối cùng cũng trở về đúng tên.
+
+Riêng ở mốc "Đơn Hàng Nhật Chuyển Về Căn Lò Cũ", nghề men tro Bát Tràng không còn là phông nền mà trở thành cách sự thật tự mở miệng. Duy An tách từng lớp trách nhiệm theo thứ tự của chương này: người ký trước, người nhận sau, người im lặng lâu nhất và người hưởng lợi nhiều nhất. Cách tách ấy khiến Gia Khiêm không thể gom mọi thứ thành một câu thanh minh mơ hồ.
+
+Hoài Phương dựng lại dòng thời gian tại căn lò cũ bên bờ sông Hồng, nhưng mỗi chương cô chọn một điểm neo khác. Lần này điểm neo là "Đơn Hàng Nhật Chuyển Về Căn Lò Cũ": giờ xuất hiện của vật chứng, người đầu tiên chạm vào nó, và khoảng trống mà đối thủ cố tình để mờ. Cô bắt mọi lời nói quay về giấy tờ, vì chỉ giấy tờ mới đủ lạnh để không bị nước mắt mua chuộc.
+
+Mảnh xương men và sổ lò ba đời được soi lại dưới góc của biến cố này. Duy An không nhìn nó như bằng chứng chung chung; anh chỉ ra chi tiết riêng của chương: một mép giấy, một vết xước, một mã thời gian, một mùi vật liệu hoặc một dấu lưu kho không thể tự nhiên xuất hiện. Những chi tiết nhỏ ấy làm lời nói dối mất chỗ đứng. Đơn Hàng Nhật Chuyển Về Căn Lò Cũ buộc nhân vật chính xử lý bằng một bước khác: không tranh cãi, chỉ bổ sung người chứng kiến và khóa lại đường chối.
+
+Gia Khiêm chuyển sang gây áp lực quanh mẫu men bị tráo, nhưng cách đánh của hắn ở chương này lộ thêm một điểm yếu. Hắn càng muốn người khác tin rằng mọi thứ chỉ là hiểu lầm, càng để lộ rằng hắn biết chính xác chi tiết nào sẽ giết mình. Đơn Hàng Nhật Chuyển Về Căn Lò Cũ làm phản ứng đám đông đổi màu; họ không nghe câu chuyện như tin đồn nữa mà nhìn nó như hồ sơ có thể kiểm tra.
+
+đơn hàng Nhật và danh dự của cả một dòng thợ buộc Duy An phải đi tiếp, nhưng động cơ của anh ở chương này không chỉ là trả thù. Anh nhìn những người liên quan tới "Đơn Hàng Nhật Chuyển Về Căn Lò Cũ" và hiểu nếu mình bỏ cuộc, họ sẽ học được rằng làm đúng vẫn có thể bị xóa tên. Điều đó còn đáng sợ hơn một lần thua tiền.
+
+Có một khoảnh khắc mùi tro rơm ẩm lẫn hơi nóng từ miệng lò khiến anh dừng tay vài giây. Cảm giác ấy nối thẳng về ngày bị sỉ nhục, nhưng không lặp lại nó. Bây giờ anh có thêm hồ sơ, người làm chứng, và một người đồng hành biết hỏi khó đúng lúc thay vì vỗ vai cho qua. Đơn Hàng Nhật Chuyển Về Căn Lò Cũ đặt ra thử thách mới: nếu bỏ sót chi tiết này, toàn bộ hồ sơ có thể bị phản diện kéo ngược về vùng mập mờ.
+
+Khi khép lại chương này, Hoài Phương không khen Duy An. Cô đưa anh danh sách việc cần làm tiếp theo, trong đó có một dòng gạch chân riêng cho "Đơn Hàng Nhật Chuyển Về Căn Lò Cũ". Anh nhận lấy, mệt đến tê vai, nhưng yên tâm vì trận này đang được thắng bằng từng chi tiết sạch.
+
+Riêng với mốc "Đơn Hàng Nhật Chuyển Về Căn Lò Cũ", mỗi quyết định của Duy An còn kéo theo ánh mắt của cả làng nghề. Nếu anh làm ẩu ở đúng điểm này, người ta sẽ nói men cổ chỉ là chiêu bán hàng. Nếu anh làm đúng, những người thợ từng bị ép đứng sau tên chủ xưởng sẽ có thêm một lý do để giữ nghề. Nghĩ tới đó, anh lại cúi xuống kiểm thêm một dòng ghi chú, thêm một mẫu tro, thêm một vết rạn nhỏ trên mặt chén.
+
+## Chương 7: Tro Rơm, Nước Giếng Và Lời Xin Lỗi Muộn
+
+Sau hợp đồng đầu tiên, Duy An không vội mở rộng. Anh đi từng nhà trong làng xin mua tro rơm sạch, ghi rõ ruộng nào, mùa nào, ngày đốt nào. Người trẻ trong xưởng ban đầu thấy phiền, nhưng anh bắt họ hiểu rằng bản sắc không phải khẩu hiệu; nó nằm trong từng bao tro có nguồn gốc rõ ràng.
+
+Mỹ Hân gửi thư xin lỗi. Lá thư dài ba trang, nhắc lại những ngày cũ và nói cô bị Gia Khiêm ép. Duy An đọc xong, gấp lại, đưa cho luật sư lưu cùng hồ sơ. Anh không xé, cũng không trả lời. Có những lời xin lỗi chỉ nên tồn tại như chứng cứ của một thời người ta đã chọn sai.
+
+Hoài Phương hỏi anh có thấy quá lạnh không. Duy An đang rửa tay bên chum nước giếng, đáp rằng anh từng mềm lòng đủ lâu để bị người khác mang công thức đi đăng ký. Từ nay anh vẫn tử tế, nhưng không tử tế đến mức tự tháo khóa cửa nhà mình.
+
+Một nhóm du khách Nhật ghé thăm lò mới. Họ không chỉ mua chén, mà muốn xem cách người thợ ghi nhật ký nhiệt. Duy An để thợ trẻ thuyết minh. Anh đứng phía sau, nghe các em nói sai vài chỗ rồi sửa nhẹ. Một nghề sống được là khi nó có người sau đủ tự tin nói thay người trước.
+
+Buổi tối, làng nghề tổ chức họp lại quy chế dùng tên men cổ. Lần đầu tiên sau nhiều năm, người ta bàn về quyền sở hữu tri thức của thợ thủ công chứ không chỉ giá bán. Duy An được mời lên phát biểu, nhưng anh chỉ nói ngắn: "Đừng để người làm nghề phải thắng kiện mới được gọi đúng tên."
+
+Ở cuối phòng, một số người từng im lặng hôm anh bị đuổi cúi đầu. Duy An không bắt họ xin lỗi. Anh yêu cầu họ ký vào quy chế mới. Sự hối hận nếu không biến thành hành động thì chỉ là một kiểu trang trí cảm xúc.
+
+Đêm ấy, Hoài Phương đem đến bản kế hoạch xây phòng trưng bày men cổ. Cô không nói đầu tư vì thích anh, mà vì câu chuyện này có khả năng trở thành thương hiệu dài hạn. Duy An nghe xong, bật cười. Anh thích sự thẳng thắn ấy hơn mọi lời ngọt.
+
+Chương mới của lò Phạm bắt đầu bằng một bảng treo trước cửa: mọi công thức có chủ, mọi người thợ có tên. Duy An nhìn tấm bảng, thấy vết sẹo trên mu bàn tay đã nhạt. Nhưng anh biết mình sẽ giữ nó như giữ một đường rạn đẹp trên mặt men.
+
+Riêng ở mốc "Tro Rơm, Nước Giếng Và Lời Xin Lỗi Muộn", nghề men tro Bát Tràng không còn là phông nền mà trở thành cách sự thật tự mở miệng. Duy An tách từng lớp trách nhiệm theo thứ tự của chương này: người ký trước, người nhận sau, người im lặng lâu nhất và người hưởng lợi nhiều nhất. Cách tách ấy khiến Gia Khiêm không thể gom mọi thứ thành một câu thanh minh mơ hồ.
+
+Hoài Phương dựng lại dòng thời gian tại căn lò cũ bên bờ sông Hồng, nhưng mỗi chương cô chọn một điểm neo khác. Lần này điểm neo là "Tro Rơm, Nước Giếng Và Lời Xin Lỗi Muộn": giờ xuất hiện của vật chứng, người đầu tiên chạm vào nó, và khoảng trống mà đối thủ cố tình để mờ. Cô bắt mọi lời nói quay về giấy tờ, vì chỉ giấy tờ mới đủ lạnh để không bị nước mắt mua chuộc.
+
+Mảnh xương men và sổ lò ba đời được soi lại dưới góc của biến cố này. Duy An không nhìn nó như bằng chứng chung chung; anh chỉ ra chi tiết riêng của chương: một mép giấy, một vết xước, một mã thời gian, một mùi vật liệu hoặc một dấu lưu kho không thể tự nhiên xuất hiện. Những chi tiết nhỏ ấy làm lời nói dối mất chỗ đứng. Tro Rơm, Nước Giếng Và Lời Xin Lỗi Muộn làm phản ứng đám đông đổi màu; họ không nghe câu chuyện như tin đồn nữa mà nhìn nó như hồ sơ có thể kiểm tra.
+
+Gia Khiêm chuyển sang gây áp lực quanh mẫu men bị tráo, nhưng cách đánh của hắn ở chương này lộ thêm một điểm yếu. Hắn càng muốn người khác tin rằng mọi thứ chỉ là hiểu lầm, càng để lộ rằng hắn biết chính xác chi tiết nào sẽ giết mình. Tro Rơm, Nước Giếng Và Lời Xin Lỗi Muộn khiến người đồng hành hỏi sâu hơn một tầng, buộc mọi cảm xúc phải lùi sau biên bản và chữ ký.
+
+đơn hàng Nhật và danh dự của cả một dòng thợ buộc Duy An phải đi tiếp, nhưng động cơ của anh ở chương này không chỉ là trả thù. Anh nhìn những người liên quan tới "Tro Rơm, Nước Giếng Và Lời Xin Lỗi Muộn" và hiểu nếu mình bỏ cuộc, họ sẽ học được rằng làm đúng vẫn có thể bị xóa tên. Điều đó còn đáng sợ hơn một lần thua tiền.
+
+Có một khoảnh khắc mùi tro rơm ẩm lẫn hơi nóng từ miệng lò khiến anh dừng tay vài giây. Cảm giác ấy nối thẳng về ngày bị sỉ nhục, nhưng không lặp lại nó. Bây giờ anh có thêm hồ sơ, người làm chứng, và một người đồng hành biết hỏi khó đúng lúc thay vì vỗ vai cho qua. Tro Rơm, Nước Giếng Và Lời Xin Lỗi Muộn mở thêm một khe sáng trong vụ việc, đủ nhỏ để kẻ gian coi thường nhưng đủ sắc để cắt qua lớp ngụy biện.
+
+Khi khép lại chương này, Hoài Phương không khen Duy An. Cô đưa anh danh sách việc cần làm tiếp theo, trong đó có một dòng gạch chân riêng cho "Tro Rơm, Nước Giếng Và Lời Xin Lỗi Muộn". Anh nhận lấy, mệt đến tê vai, nhưng yên tâm vì trận này đang được thắng bằng từng chi tiết sạch.
+
+Riêng với mốc "Tro Rơm, Nước Giếng Và Lời Xin Lỗi Muộn", mỗi quyết định của Duy An còn kéo theo ánh mắt của cả làng nghề. Nếu anh làm ẩu ở đúng điểm này, người ta sẽ nói men cổ chỉ là chiêu bán hàng. Nếu anh làm đúng, những người thợ từng bị ép đứng sau tên chủ xưởng sẽ có thêm một lý do để giữ nghề. Nghĩ tới đó, anh lại cúi xuống kiểm thêm một dòng ghi chú, thêm một mẫu tro, thêm một vết rạn nhỏ trên mặt chén.
+
+## Chương 8: Buổi Triển Lãm Không Có Tên Kẻ Trộm
+
+Triển lãm đầu tiên của lò Phạm diễn ra trong một căn nhà cổ ở Bát Tràng. Không có ảnh Gia Khiêm, không có câu chuyện giật gân về phản bội. Duy An chỉ trưng bày sổ lò, mảnh xương men, chén thử hỏng và những chiếc bình đã qua kiểm định.
+
+Hoài Phương đề nghị đặt phần hồ sơ pháp lý ở góc riêng để khách hiểu giá trị của bản quyền thủ công. Duy An đồng ý. Anh muốn người mua biết một món gốm đẹp không chỉ đến từ lửa, mà còn từ việc người làm ra nó được bảo vệ khỏi lòng tham.
+
+Một phóng viên hỏi vì sao anh không nhắc tên kẻ đã cướp công. Duy An nhìn dãy bình dưới ánh vàng, nói rằng người trộm nghề không xứng đứng chung phòng với nghề. Câu trả lời ấy được chia sẻ nhiều hơn mọi lời mắng chửi.
+
+Mỹ Hân đứng ngoài cổng triển lãm một lúc rồi rời đi. Không ai đuổi cô, cũng không ai mời vào. Cánh cửa mở, nhưng danh dự không phải thứ cứ bước qua là lấy lại được. Duy An nhìn thấy bóng cô qua kính, rồi quay sang hướng dẫn một em nhỏ cách nghe tiếng gốm.
+
+Đơn hàng thứ hai đến từ một chuỗi ryokan Nhật. Họ không đòi giảm giá, chỉ yêu cầu giữ được câu chuyện nguồn gốc. Duy An đưa hợp đồng cho đội pháp lý kiểm trước, không còn ký vì xúc động. Anh đã học rằng một chữ ký sạch có thể bảo vệ cả đời làm nghề.
+
+Tối muộn, anh và Hoài Phương ngồi bên bờ sông. Cô hỏi nếu không có vụ bị đuổi, anh có dám đưa men cổ ra thị trường lớn không. Duy An nghĩ rất lâu rồi lắc đầu. Có lẽ anh cần bị đẩy khỏi chiếc lò quen thuộc để biết mình có thể xây một lò rộng hơn.
+
+Hoài Phương đưa anh một mảnh gốm nhỏ được mài thành mặt dây. Đó không phải vật đính ước lãng mạn, chỉ là mảnh chén vỡ ngày đầu được giữ lại. Duy An nhận lấy, thấy cạnh sắc đã được mài tròn. Có những đau đớn nếu không vứt đi sẽ trở thành kỷ vật.
+
+Khi triển lãm khép lại, tấm biển lò Phạm sáng lên dưới đèn vàng. Không có tiếng reo hò, nhưng có dòng người xếp hàng đặt trước. Duy An đứng trong mùi đất ẩm và tro rơm, biết lần này tên mình không còn nằm ở mép giấy bị ai gạch bỏ.
+
+Riêng ở mốc "Buổi Triển Lãm Không Có Tên Kẻ Trộm", nghề men tro Bát Tràng không còn là phông nền mà trở thành cách sự thật tự mở miệng. Duy An tách từng lớp trách nhiệm theo thứ tự của chương này: người ký trước, người nhận sau, người im lặng lâu nhất và người hưởng lợi nhiều nhất. Cách tách ấy khiến Gia Khiêm không thể gom mọi thứ thành một câu thanh minh mơ hồ.
+
+Hoài Phương dựng lại dòng thời gian tại căn lò cũ bên bờ sông Hồng, nhưng mỗi chương cô chọn một điểm neo khác. Lần này điểm neo là "Buổi Triển Lãm Không Có Tên Kẻ Trộm": giờ xuất hiện của vật chứng, người đầu tiên chạm vào nó, và khoảng trống mà đối thủ cố tình để mờ. Cô bắt mọi lời nói quay về giấy tờ, vì chỉ giấy tờ mới đủ lạnh để không bị nước mắt mua chuộc.
+
+Mảnh xương men và sổ lò ba đời được soi lại dưới góc của biến cố này. Duy An không nhìn nó như bằng chứng chung chung; anh chỉ ra chi tiết riêng của chương: một mép giấy, một vết xước, một mã thời gian, một mùi vật liệu hoặc một dấu lưu kho không thể tự nhiên xuất hiện. Những chi tiết nhỏ ấy làm lời nói dối mất chỗ đứng. Buổi Triển Lãm Không Có Tên Kẻ Trộm khiến người đồng hành hỏi sâu hơn một tầng, buộc mọi cảm xúc phải lùi sau biên bản và chữ ký.
+
+Gia Khiêm chuyển sang gây áp lực quanh mẫu men bị tráo, nhưng cách đánh của hắn ở chương này lộ thêm một điểm yếu. Hắn càng muốn người khác tin rằng mọi thứ chỉ là hiểu lầm, càng để lộ rằng hắn biết chính xác chi tiết nào sẽ giết mình. Buổi Triển Lãm Không Có Tên Kẻ Trộm đặt ra thử thách mới: nếu bỏ sót chi tiết này, toàn bộ hồ sơ có thể bị phản diện kéo ngược về vùng mập mờ.
+
+đơn hàng Nhật và danh dự của cả một dòng thợ buộc Duy An phải đi tiếp, nhưng động cơ của anh ở chương này không chỉ là trả thù. Anh nhìn những người liên quan tới "Buổi Triển Lãm Không Có Tên Kẻ Trộm" và hiểu nếu mình bỏ cuộc, họ sẽ học được rằng làm đúng vẫn có thể bị xóa tên. Điều đó còn đáng sợ hơn một lần thua tiền.
+
+Có một khoảnh khắc mùi tro rơm ẩm lẫn hơi nóng từ miệng lò khiến anh dừng tay vài giây. Cảm giác ấy nối thẳng về ngày bị sỉ nhục, nhưng không lặp lại nó. Bây giờ anh có thêm hồ sơ, người làm chứng, và một người đồng hành biết hỏi khó đúng lúc thay vì vỗ vai cho qua. Buổi Triển Lãm Không Có Tên Kẻ Trộm làm nhân vật chính hiểu rằng một chứng cứ đúng chỗ có sức nặng hơn mười câu giải thích đúng nhưng nói sai thời điểm.
+
+Khi khép lại chương này, Hoài Phương không khen Duy An. Cô đưa anh danh sách việc cần làm tiếp theo, trong đó có một dòng gạch chân riêng cho "Buổi Triển Lãm Không Có Tên Kẻ Trộm". Anh nhận lấy, mệt đến tê vai, nhưng yên tâm vì trận này đang được thắng bằng từng chi tiết sạch.
+
+Riêng với mốc "Buổi Triển Lãm Không Có Tên Kẻ Trộm", mỗi quyết định của Duy An còn kéo theo ánh mắt của cả làng nghề. Nếu anh làm ẩu ở đúng điểm này, người ta sẽ nói men cổ chỉ là chiêu bán hàng. Nếu anh làm đúng, những người thợ từng bị ép đứng sau tên chủ xưởng sẽ có thêm một lý do để giữ nghề. Nghĩ tới đó, anh lại cúi xuống kiểm thêm một dòng ghi chú, thêm một mẫu tro, thêm một vết rạn nhỏ trên mặt chén.

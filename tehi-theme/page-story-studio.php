@@ -1923,7 +1923,8 @@ Trình bày dạng markdown có emoji cho dễ đọc.`;
                         }
                     }
                 } else {
-                    // Fallback: ask server to use Pollinations
+                    // Fallback: ask server to continue text generation only.
+                    // Cover images must be generated separately with ChatGPT Image Generation.
                     const storyFD = new FormData();
                     storyFD.append('action', 'temply_studio_generate_story');
                     storyFD.append('action_nonce', NONCE);

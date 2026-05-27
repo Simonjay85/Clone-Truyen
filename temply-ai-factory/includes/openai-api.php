@@ -646,7 +646,7 @@ function temply_ajax_create_story() {
     $art = sanitize_text_field($_POST['art'] ?? '');
     $keywords = sanitize_textarea_field($_POST['keywords'] ?? '');
 
-    // Map art style label → Pollinations quality style keywords
+    // Map art style label to neutral visual direction keywords.
     $art_style_map = [
         'Manga Đen trắng Nhật Bản' => 'manga black and white, monochrome, japanese manga style, ink drawing, no color',
         'Manhwa màu Hàn Quốc'      => 'manhwa full color, korean webtoon style, vibrant colors, detailed digital art',
@@ -758,12 +758,28 @@ function temply_ajax_create_story() {
         wp_set_object_terms($post_id, intval($term->term_id), 'the_loai');
     }
 
-    // 3. Cover Image — Dùng cùng art style với nội dung truyện
-    $cover_full_prompt = $data['cover_prompt'] . ', ' . $style_suffix . ', masterpiece, best quality, highly detailed cover art';
-    $escaped_prompt = rawurlencode($cover_full_prompt);
-    $image_url = "https://image.pollinations.ai/prompt/" . $escaped_prompt . "?width=600&height=900&nologo=true";
-    
-    $thumb_id = temply_upload_external_image($image_url, $post_id, $seo_keyword);
+    // 3. Cover Image — Dùng ảnh mặc định của hệ thống offline
+    $default_cover_path = get_template_directory() . '/img_data/images/no-image-cover-v5.png';
+    if (!file_exists($default_cover_path)) {
+        $default_cover_path = ABSPATH . 'wp-content/themes/tehi-theme/img_data/images/no-image-cover-v5.png';
+    }
+    $thumb_id = false;
+    if (file_exists($default_cover_path)) {
+        $tmp = tempnam(get_temp_dir(), 'cover');
+        if (copy($default_cover_path, $tmp)) {
+            $file_array = [
+                'name' => 'cover-' . $post_id . '-default.png',
+                'tmp_name' => $tmp
+            ];
+            $att_id = media_handle_sideload($file_array, $post_id);
+            if (!is_wp_error($att_id)) {
+                set_post_thumbnail($post_id, $att_id);
+                $thumb_id = $att_id;
+            } else {
+                @unlink($tmp);
+            }
+        }
+    }
     
     wp_send_json_success([
         'truyen_id' => $post_id,
@@ -1005,14 +1021,8 @@ $character_bible$anti_repeat_block";
     // Tách bóc Comment ảo ra và Update Nội dung lõi
     $clean_content = temply_parse_and_insert_ai_comments($post_id, $chap_content);
     
-    // Biến thẻ [IMAGE: ...] thành thẻ <img> gọi tới AI Họa Sĩ Pollinations
-    $clean_content = preg_replace_callback('/\[IMAGE:\s*(.+?)\]/i', function($m) {
-        $prompt = trim($m[1]) . ', masterpiece, best quality, highly detailed cover art';
-        $escaped_prompt = rawurlencode($prompt);
-        // Tạo ảnh khổ ngang (800x500) phù hợp chèn vào giữa bài viết chữ
-        $url = 'https://image.pollinations.ai/prompt/' . $escaped_prompt . '?width=800&height=500&nologo=true';
-        return '<figure style="margin: 30px 0; text-align: center;"><img src="' . esc_url($url) . '" alt="' . esc_attr($m[1]) . '" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" /></figure>';
-    }, $clean_content);
+    // Loại bỏ hoàn toàn thẻ [IMAGE: ...] vì ảnh phải tạo riêng bằng ChatGPT Image Generation.
+    $clean_content = preg_replace('/\[IMAGE:\s*(.+?)\]/i', '', $clean_content);
 
     wp_update_post([
         'ID' => $post_id,
@@ -1137,31 +1147,26 @@ function temply_ajax_write_comic_chapter() {
             'Anime Style'              => 'anime art style, cel shading, vibrant colors, detailed anime illustration',
             'Realistic'                => 'realistic digital painting, photorealistic, cinematic lighting, highly detailed',
         ];
-        $panel_style = $art_style_map_c[$art] ?? $art . ', highly detailed expressive manga illustration masterpiece';
-        $full_panel_prompt = $prmpt . ', ' . $panel_style . ', masterpiece';
-        $escaped_prompt = rawurlencode($full_panel_prompt);
-        $img_url = "https://image.pollinations.ai/prompt/" . $escaped_prompt . "?width=512&height=768&seed=" . $seed . "&nologo=true";
-        $warmup_urls[] = $img_url;
-
-        // Thử tải ảnh về Server với retry
-        $final_img_src = $img_url; // Fallback về hotlink nếu download thất bại
-        $max_tries = 3;
-        for($try = 0; $try < $max_tries; $try++) {
-            $tmp = download_url($img_url, 25);
-            if(!is_wp_error($tmp)) {
+        $default_panel_path = get_template_directory() . '/img_data/images/no-image-cover-v5.png';
+        if (!file_exists($default_panel_path)) {
+            $default_panel_path = ABSPATH . 'wp-content/themes/tehi-theme/img_data/images/no-image-cover-v5.png';
+        }
+        $final_img_src = get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png';
+        
+        if (file_exists($default_panel_path)) {
+            $tmp = tempnam(get_temp_dir(), 'comic');
+            if (copy($default_panel_path, $tmp)) {
                 $file_array = [
-                    'name'     => 'comic-' . $chap_num . '-panel-' . ($idx+1) . '-' . wp_rand(10,99) . '.jpg',
+                    'name'     => 'comic-' . $chap_num . '-panel-' . ($idx+1) . '-' . wp_rand(10,99) . '.png',
                     'tmp_name' => $tmp
                 ];
-                // Sideload vào Media Library, đính vào Chương (post_id = $truyen_id tạm)
                 $att_id = media_handle_sideload($file_array, $truyen_id);
                 if(!is_wp_error($att_id)) {
                     $final_img_src = wp_get_attachment_url($att_id);
-                    break;
+                } else {
+                    @unlink($tmp);
                 }
-                @unlink($tmp);
             }
-            sleep(2); // Chờ 2 giây trước khi retry
         }
 
         $html_content .= '<div class="comic-panel">';
@@ -2165,16 +2170,32 @@ function temply_ajax_regenerate_story_cover() {
     $cover_prompt = temply_call_ai_quality($system_prompt, $user_prompt, 0.9);
     if(is_wp_error($cover_prompt)) wp_send_json_error(['message' => 'Lỗi AI: ' . $cover_prompt->get_error_message()]);
 
-    $cover_full_prompt = trim($cover_prompt) . ', high quality manga illustration, masterpiece, best quality, highly detailed cover art';
-    $escaped_prompt = rawurlencode($cover_full_prompt);
-    $image_url = "https://image.pollinations.ai/prompt/" . $escaped_prompt . "?width=600&height=900&nologo=true";
-    
-    $thumb_id = temply_upload_external_image($image_url, $truyen_id, $title);
+    $default_cover_path = get_template_directory() . '/img_data/images/no-image-cover-v5.png';
+    if (!file_exists($default_cover_path)) {
+        $default_cover_path = ABSPATH . 'wp-content/themes/tehi-theme/img_data/images/no-image-cover-v5.png';
+    }
+    $thumb_id = false;
+    if (file_exists($default_cover_path)) {
+        $tmp = tempnam(get_temp_dir(), 'cover');
+        if (copy($default_cover_path, $tmp)) {
+            $file_array = [
+                'name' => 'cover-' . $truyen_id . '-default-' . wp_rand(100, 999) . '.png',
+                'tmp_name' => $tmp
+            ];
+            $att_id = media_handle_sideload($file_array, $truyen_id);
+            if (!is_wp_error($att_id)) {
+                set_post_thumbnail($truyen_id, $att_id);
+                $thumb_id = $att_id;
+            } else {
+                @unlink($tmp);
+            }
+        }
+    }
 
     if ($thumb_id) {
-        wp_send_json_success(['message' => 'Đã vẽ xong ảnh bìa (Thumbnail)! Vui lòng refresh trang để thấy.', 'url' => wp_get_attachment_url($thumb_id)]);
+        wp_send_json_success(['message' => 'Đã gán ảnh bìa mặc định (Offline)! Vui lòng refresh trang để thấy.', 'url' => wp_get_attachment_url($thumb_id)]);
     } else {
-        wp_send_json_error(['message' => 'AI Cứng đầu vẽ nháp đen xì hoặc API quá tải. Hãy thử lại!']);
+        wp_send_json_error(['message' => 'Không thể gán ảnh bìa mặc định từ thư mục cục bộ.']);
     }
 }
 

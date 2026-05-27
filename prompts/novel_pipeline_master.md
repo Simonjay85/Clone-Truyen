@@ -1,6 +1,12 @@
 # MASTER NOVEL PIPELINE — doctieuthuyet.com
 # Quy trình chuẩn: Viết + Xuất Bản + Tối Ưu Truyện Sảng Văn Tự Động
-# Cập nhật: 2026-05-22
+# Cập nhật: 2026-05-26
+
+> [!IMPORTANT]
+> **CHỈ DÙNG CHATGPT IMAGE GENERATION CHO HÌNH ẢNH MỚI**
+> - Cover mới phải được tạo bằng ChatGPT Image Generation hoặc lấy từ file local đã được duyệt.
+> - Tuyệt đối không gọi API sinh ảnh bên thứ ba trong script/pipeline.
+> - Ảnh sau khi tạo phải được lưu local, kiểm tra preview, rồi upload/gắn featured image bằng workflow cover của repo.
 
 ---
 
@@ -26,13 +32,15 @@ Bước 1: Nhận/Tạo concept (title, nhân vật, bối cảnh, xung đột)
    ↓
 Bước 2: Viết dàn ý chi tiết 8-15 chương (tùy cốt truyện)
    ↓
+Bước 2.5: Kiểm `story_dna` và chống trùng cấu trúc giữa các truyện trong batch
+   ↓
 Bước 3: Viết từng chương đầy đủ (1000-1500 từ/chương, HTML format V12)
    ↓
 Bước 4: Lưu pending_novel.json
    ↓
-Bước 5: Vẽ cover bằng generate_image (KHÔNG dùng API ngoài)
+Bước 5: Sử dụng ảnh bìa gốc Imagen 3 sẵn có (`base_cover_{idx}.png`) trong thư mục dự án (hoàn toàn không sinh ảnh mới)
    ↓
-Bước 6: Áp overlay gold frame bằng cover_overlay_standard.py
+Bước 6: Áp overlay tràn viền bằng cover_overlay_standard.py
    ↓
 Bước 7: Lưu cover thành pending_cover.png
    ↓
@@ -46,8 +54,8 @@ Bước 11: Clear LiteSpeed Cache
 ```
 
 ### Nguồn lực sử dụng:
-- **Viết truyện**: Model Claude Opus (Antigravity) — KHÔNG dùng OpenAI API hay API ngoài
-- **Vẽ cover**: Tool `generate_image` của Gemini — KHÔNG dùng Pollinations hay API ngoài
+- **Viết truyện**: ChatGPT/Codex trong phiên làm việc hoặc model chat đang được người dùng trực tiếp sử dụng — KHÔNG gọi API bên ngoài để bulk-write nội dung truyện.
+- **Ảnh bìa**: Dùng ChatGPT Image Generation cho ảnh mới, hoặc dùng trực tiếp ảnh local đã duyệt (`base_cover_14.png` đến `base_cover_63.png` nếu phù hợp) — KHÔNG gọi API sinh ảnh ngoài từ script.
 - **Overlay cover**: Script `cover_overlay_standard.py` (Python + Pillow)
 - **Publish**: FTP + PHP helper scripts trên WordPress
 - **SEO**: PHP script chạy trực tiếp trên server qua FTP upload
@@ -57,7 +65,7 @@ Bước 11: Clear LiteSpeed Cache
 | File | Đường dẫn | Chức năng |
 |------|-----------|-----------|
 | Novel concepts | `/Users/aaronnguyen/TN/App/doctieuthuyet/novel_concepts_50.json` | 50 concept truyện chưa viết |
-| Cover overlay | `/Users/aaronnguyen/TN/App/doctieuthuyet/cover_overlay_standard.py` | Áp gold frame lên cover |
+| Cover overlay | `/Users/aaronnguyen/TN/App/doctieuthuyet/cover_overlay_standard.py` | Áp layout card tràn viền lên cover |
 | Cover prompt | `/Users/aaronnguyen/TN/App/doctieuthuyet/prompts/cover_prompt_master.md` | Chuẩn thiết kế bìa |
 | Publisher | `/Users/aaronnguyen/TN/App/doctieuthuyet/publish_local_novel.py` | Publish truyện lên WP |
 | PHP Helper | `/Users/aaronnguyen/TN/App/doctieuthuyet/publish_novel.php` | Server-side WP publisher |
@@ -122,6 +130,23 @@ Bước 11: Clear LiteSpeed Cache
 
 #### 6. ĐỊNH DẠNG HTML V12
 - Mỗi câu nằm trong THẺ `<p>` RIÊNG (V12 paragraph splitting)
+
+#### 7. CHỐNG TEMPLATE HÓA / DUPLICATE CONTENT GIỮA TRUYỆN
+- Khi tạo nhiều truyện trong một batch, **không được dùng cùng một khung cảnh rồi thay tên nhân vật, địa danh hoặc ngành nghề**.
+- Mỗi truyện phải có `story_dna` riêng trước khi viết:
+  - `profession_world`: thế giới nghề nghiệp riêng.
+  - `central_evidence`: vật chứng trung tâm riêng, không thể bê sang truyện khác.
+  - `unique_set_pieces`: ít nhất 5 cảnh lớn riêng theo ngành.
+  - `midpoint_crisis`: khủng hoảng giữa truyện riêng.
+  - `relationship_signature`: cách nam nữ chính tương tác riêng.
+  - `ending_signature`: đạo cụ/cảnh kết riêng.
+- Cấm lặp các cụm/cảnh nhận diện trong cùng batch: "Tôi không cần cô tin tôi", "Nếu chỉ là uất ức", "bánh mì nửa đêm", "bút máy cuối truyện", "Sang chương X", "cuộc chiến bước vào lớp", "Không ăn mừng, không đăng đàn".
+- Các cảnh then chốt phải là set-piece cụ thể theo ngành, không được kéo dài bằng chương template. Ví dụ:
+  - Gốm: lò nung, sổ lò, mẫu tro, xương men, giám định men.
+  - Y tế: điện tâm đồ, log thuốc, men gan, camera phòng trực, hội đồng chuyên môn.
+  - Xây dựng: lõi bê tông, GPS xe bồn, nhật ký đổ bê tông, biên bản nghiệm thu.
+  - Trà/nông nghiệp: sổ cân lá, dư lượng thuốc cỏ, kho lên men, nông hộ, vùng nguyên liệu.
+- Trước khi lưu/publish, chạy cross-story audit: chọn 5-10 cụm đặc trưng dài trên 5 từ và kiểm xem có lặp ở truyện khác không. Nếu có, viết lại trước khi đăng.
 - Chỉ dùng: `<p>`, `<strong>`, `<em>` — không dùng thẻ khác
 - Đoạn mở đầu truyện (intro) BẮT BUỘC dùng: `<p><strong>"Trích dẫn kịch tính..."</strong></p>`
 
@@ -186,32 +211,23 @@ Bước 11: Clear LiteSpeed Cache
 
 ## PHẦN 4 — Quy Trình Cover Art
 
-### Bước 1: Vẽ base image
-- Dùng tool `generate_image` (Gemini) — KHÔNG dùng API ngoài
-- Prompt theo chuẩn `cover_prompt_master.md`:
-Square format Vietnamese web novel book cover illustration, realistic live-action cinematic movie poster style, high-budget Vietnamese drama film look, dramatic lighting, high detail, masterpiece, 8k resolution, photorealistic characters,
-[VISUAL_DIRECTION],
-[CHARACTER_DESCRIPTION],
-[BACKGROUND_SCENE],
-dark at the TOP 30% of image for text overlay readability,
-elegant cinematic lighting, rich color grading, high detail,
-no text, no letters, no watermarks, no logos, no chapter numbers, no badges.
-Square 1:1 composition.
-```
+### Bước 1: Sử dụng base image sẵn có
+- Hệ thống lấy trực tiếp ảnh bìa gốc có sẵn trong thư mục dự án theo định dạng `base_cover_{idx}.png` (ví dụ: `base_cover_14.png` đến `base_cover_63.png`).
+- Toàn bộ ảnh bìa gốc này đã được quét và chuẩn bị sẵn từ trước.
+- ❌ **TUYỆT ĐỐI KHÔNG** gọi API sinh ảnh ngoài trong script/pipeline. Ảnh mới phải tạo bằng ChatGPT Image Generation.
 
 ### Bước 2: Apply overlay (cover_overlay_standard.py)
-- Input: base image + title + subtitle
-- Output: 2000x2000 PNG với:
-  - Top dark gradient (RGBA 0,0,0,210 → transparent)
-  - Gold double border frame (#EBC350)
-  - Corner ornaments
-  - Title text gold (.upper(), Arial Bold, auto-fit 120px)
-  - Subtitle text white
-  - Bottom label "TIỂU THUYẾT VIỆT NAM"
-- KHÔNG vẽ chapter badge, view count, logo
+- Input: `base_cover_{idx}.png` + title + subtitle
+- Output: 2000x2000 PNG (`pending_cover.png`) với:
+  - Top dark gradient (RGBA 0,0,0,200 → transparent)
+  - Bottom dark gradient (RGBA 0,0,0,80 → transparent)
+  - Căn lề tràn viền hoàn toàn (Full-bleed), không có khung hay viền mạ vàng
+  - Tiêu đề in HOA tự động chia 3 dòng phối khối màu sắc nét (Trắng - Đỏ - Vàng) kèm drop shadow & stroke đen cực dày
+  - Phụ đề trắng mờ kèm stroke đen nổi bật trên mọi hậu cảnh
+  - TUYỆT ĐỐI KHÔNG vẽ chapter badge, view count (mắt 👁), hay clock (đồng hồ 🕒) trực tiếp lên ảnh bìa (bởi vì giao diện động của theme WordPress sẽ tự hiển thị các thông tin này).
 
 ### Bước 3: Save
-- Copy output → `pending_cover.png` (root thư mục project)
+- Lưu output thành `pending_cover.png` (root thư mục project)
 
 ---
 
@@ -248,9 +264,10 @@ python3 publish_local_novel.py
 ## PHẦN 6 — Quy Trình SEO RankMath
 
 ### Cho 1 truyện:
-Sau khi publish, cập nhật RankMath postmeta:
-- `_rank_math_title` / `rank_math_title` — SEO title (max 65 chars, thêm suffix clickbait)
-- `_rank_math_description` / `rank_math_description` — Description (trích từ <strong> block, max 155 chars)
+Sau khi publish, cập nhật RankMath postmeta và thuộc tính bài viết:
+- `_rank_math_title` / `rank_math_title` — SEO title (BẮT BUỘC dưới 60 ký tự để thanh RankMath hiển thị XANH, ví dụ: `<Tên ngắn gọn của truyện> Vả Sập Kẻ Phản Bội` hoặc `<Tên ngắn gọn của truyện> Lật Kèo Phản Bội`).
+- `post_name` (Slug / Liên kết cố định) — Đường dẫn tĩnh (BẮT BUỘC dưới 75 ký tự, ví dụ: `bac-si-dong-y-bi-duoi-khoi-vien-phoi-va-sap-tap-doan` thay vì dùng toàn bộ tiêu đề 125 ký tự để thanh RankMath hiển thị XANH).
+- `_rank_math_description` / `rank_math_description` — Description (trích từ <strong> block, dưới 160 ký tự, hiển thị XANH).
 - `_rank_math_focus_keyword` / `rank_math_focus_keyword` — 4 từ đầu tiên lowercase
 - `rank_math_rich_snippet` — "article"
 
@@ -311,21 +328,26 @@ Xem file: `novel_concepts_50.json`
 
 **Bước 5**: Cho mỗi truyện trong batch:
 1. Viết intro kịch tính theo format `<p><strong>"..."</strong></p>`
-2. Viết dàn ý chi tiết cho từng chương
-3. Viết NỘI DUNG TỪNG CHƯƠNG (1000-1500 từ, V12 format)
-4. Lưu `pending_novel.json`
-5. Vẽ cover bằng `generate_image` → save `base_cover.png`
-6. Chạy `cover_overlay_standard.py` → tạo `pending_cover.png`
-7. Chạy `python3 publish_local_novel.py`
-8. Xác nhận publish thành công
+2. Viết `story_dna` riêng cho truyện đó trước khi viết chương
+3. Viết dàn ý chi tiết cho từng chương, bảo đảm các cảnh then chốt là set-piece riêng theo ngành
+4. Viết NỘI DUNG TỪNG CHƯƠNG (tối thiểu 850 từ/chương, mục tiêu 1000-1500 từ/chương, V13 format)
+5. Chạy audit chống duplicate trong batch: kiểm cụm/cảnh/đạo cụ lặp, đặc biệt giữa các truyện cùng file duyệt
+6. Nếu audit báo lặp cấu trúc/câu thoại/cảnh đạo cụ, viết lại trước khi tạo payload đăng
+7. Lưu JSON truyện vào `scratch/` để người dùng duyệt trước
+8. Sau khi người dùng duyệt mới tạo/gắn cover và publish
+9. Lấy ảnh bìa gốc đã duyệt hoặc ảnh ChatGPT Image Generation local
+10. Chạy `cover_overlay_standard.py` → tạo `pending_cover.png`
+11. Chạy publisher tương ứng sau khi được duyệt
+12. Xác nhận publish thành công
 
-**Bước 6**: Sau khi xong batch, chạy `update_all_rankmath_seo.py`
+**Bước 6**: Sau khi xong batch và đã được duyệt/publish, chạy `update_all_rankmath_seo.py`
 
 **Bước 7**: Báo cáo kết quả cho user
 
 ### Lưu ý quan trọng:
-- Dùng model Opus (chính mình) để viết — KHÔNG gọi OpenAI/API ngoài
-- Dùng `generate_image` tool để vẽ cover — KHÔNG dùng Pollinations
-- Mỗi truyện xử lý tuần tự (pending_novel.json là single file)
-- Kiểm tra word count ≥ 1000 từ mỗi chương trước khi lưu
-- Luôn cập nhật `existing_novels.json` sau mỗi truyện thành công
+- Dùng ChatGPT/Codex trong phiên làm việc hoặc model chat đang được người dùng trực tiếp dùng để viết chương; không gọi API bên ngoài để bulk-write nội dung truyện.
+- Dùng ảnh bìa local đã duyệt hoặc ảnh mới tạo bằng ChatGPT Image Generation; không gọi API sinh ảnh ngoài trong script/pipeline.
+- Mỗi truyện xử lý tuần tự.
+- Kiểm tra word count tối thiểu 850 từ/chương, mục tiêu 1000-1500 từ/chương trước khi lưu.
+- Luôn chạy audit chống duplicate/copy-paste nội bộ trước khi trình duyệt hoặc đăng.
+- Chỉ cập nhật `existing_novels.json` sau mỗi truyện publish thành công.

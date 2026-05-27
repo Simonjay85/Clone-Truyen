@@ -136,9 +136,8 @@ export function FinalReviewView() {
     }
   };
 
-  const generateCoverPolli = (promptStr: string) => {
-      const safePrompt = (promptStr || 'cinematic poster').replace(/"/g, '').substring(0, 400);
-      return `https://pollinations.ai/p/${encodeURIComponent(safePrompt)}?width=800&height=1200&nologo=true&model=flux&seed=${Math.floor(Math.random()*100000)}`;
+  const requireChatGPTCover = () => {
+      return '';
   };
 
   const handleCraftMetadata = async (item: QueueItem) => {
@@ -146,9 +145,8 @@ export function FinalReviewView() {
     try {
       const promptTitle = item.finalEvaluation ? item.title + " - Overview: " + item.finalEvaluation.review : item.title;
       const meta = await agentPublisherMetadata('gemini', getActiveKey(), 'gemini-2.5-flash', item.bible, promptTitle);
-      const pollUrl = generateCoverPolli(meta.coverImagePrompt || '');
-      updateQueueItem(item.id, { publishData: { ...meta, coverUrl: pollUrl } });
-      alert("✅ Đóng gói SEO và tạo ảnh bìa AI thành công!");
+      updateQueueItem(item.id, { publishData: { ...meta, coverUrl: requireChatGPTCover() } });
+      alert("✅ Đóng gói SEO thành công. Hãy tạo ảnh bìa bằng ChatGPT Image Generation rồi gắn cover trước khi đăng.");
     } catch (e: unknown) {
       alert("Lỗi Đóng gói SEO: " + (e as Error).message);
     }

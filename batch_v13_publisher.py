@@ -64,31 +64,41 @@ def robust_json_parse(raw_str):
         raise parse_err
 
 def call_openai(system_prompt, user_prompt, max_tokens=2500, temperature=0.7):
-    url = "https://api.openai.com/v1/chat/completions"
+    # Route all requests to the local high-performance Qwen-3.5-9B API server
+    local_url = "http://127.0.0.1:8000/v1/chat/completions"
+    
     payload = {
-        "model": "gpt-4o-mini",
+        "model": "default",
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
         ],
         "temperature": temperature,
-        "max_tokens": max_tokens
+        "max_tokens": max_tokens,
+        "response_format": {"type": "json_object"}
     }
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {OPENAI_KEY}"
-    }
+    
+    # Cooldown sleep for concurrent safety
+    time.sleep(0.5)
     
     for attempt in range(5):
         try:
-            res = requests.post(url, json=payload, headers=headers, timeout=120)
-            res.raise_for_status()
-            data = res.json()
-            return data['choices'][0]['message']['content'].strip()
+            log(f"🤖 Calling Local Qwen API (attempt {attempt+1})...")
+            res = requests.post(local_url, json=payload, timeout=600)
+            if res.status_code == 200:
+                res_data = res.json()
+                content = res_data["choices"][0]["message"]["content"].strip()
+                if content:
+                    return content
+            log(f"⚠️ Local Qwen API returned status {res.status_code}. Retrying...")
         except Exception as e:
-            log(f"⚠️ OpenAI Call Error (Attempt {attempt+1}): {e}")
-            time.sleep(5)
-    raise SystemExit("Fatal: Failed to connect to OpenAI API after multiple attempts.")
+            log(f"⚠️ Local Qwen API failed: {e}. Retrying...")
+            
+        sleep_time = 2 + attempt * 2
+        time.sleep(sleep_time)
+            
+    raise SystemExit("Fatal: Failed to connect to Local Qwen API after multiple attempts.")
+
 
 # ─── V13 SENTENCE SPLITTER & POST-PROCESSOR ──────────────────────────────────
 def clean_and_split_sentences(html_content):
@@ -201,8 +211,8 @@ Hãy xuất ra cấu trúc JSON nguyên bản tuyệt đối, không chứa ```j
     {{ "chap_num": 10, "outline": "Tóm tắt chương 10..." }}
   ]
 }}"""
-
-    concept_raw = call_openai(system_concept_prompt, user_concept_prompt, max_tokens=1500, temperature=0.8)
+    user_concept_prompt += f"\n[Generation ID: {time.time()} - {random.randint(1000, 9999)}]"
+    concept_raw = call_openai(system_concept_prompt, user_concept_prompt, max_tokens=3000, temperature=0.2)
     try:
         novel_blueprint = robust_json_parse(concept_raw)
         log(f"✓ Blueprint generated. Title: {novel_blueprint['title']}")
@@ -223,7 +233,7 @@ QUY TẮC VIẾT 10/10 CHUYÊN NGHIỆP:
 1. SHOW, DON'T TELL: Miêu tả chi tiết hành động vật lý, nét mặt, sự run rẩy, giọt mồ hôi, hay tiếng giày gót nhọn giẫm xuống sàn bê tông. Tránh các tính từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'.
 2. HỘI THOẠI ĐINH TAI NHỨC ÓC: Các câu thoại sắc lẹm, thể hiện sự kiêu ngạo của kẻ thù trước khi bị vả mặt, và sự điềm tĩnh tối thượng của nhân vật chính.
 3. CHI TIẾT KINH DOANH & ĐỜI SỐNG THỰC TẾ TẠI VIỆT NAM: Sử dụng các chi tiết thật về cơ cấu cổ đông, sao kê tài chính ngân hàng Việt Nam, luật doanh nghiệp Việt Nam, cơ quan nhà nước (C03, Bộ Công an, Ủy ban Chứng khoán), kiểm toán Big 4, và thói quen sinh hoạt bản địa.
-4. ĐỘ DÀI CỰC KHỦNG (1000 - 1500 TỪ): Bắt buộc viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Dung lượng bắt buộc phải đạt từ 1000 đến 1500 từ. Tuyệt đối không viết tóm tắt hay kết thúc chương quá nhanh.
+4. ĐỘ DÀI (600 - 900 TỪ): Viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Dung lượng khoảng 600 đến 900 từ. Tuyệt đối không viết tóm tắt hay kết thúc chương quá nhanh.
 5. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em>. Tách mỗi câu thành một thẻ <p> riêng biệt."""
         prev_chaps_str = ""
         if chapters_content:
@@ -240,19 +250,18 @@ Hãy viết CHI TIẾT CHƯƠNG {i} của bộ truyện.
 {prev_chaps_str}
 
 YÊU CẦU ĐẶC BIỆT VỀ ĐỘ DÀI:
-Bắt buộc nội dung trong phần 'content' phải có độ dài tối thiểu từ 1000 từ trở lên. Viết cực kỳ chậm rãi, chi tiết hóa mọi hội thoại và nét mặt.
+Bắt buộc nội dung trong phần 'content' phải có độ dài khoảng 600 đến 900 từ. Viết cực kỳ chậm rãi, chi tiết hóa mọi hội thoại và nét mặt.
 
 YÊU CẦU TRẢ VỀ dạng JSON chính xác không chứa ```json:
 {{
   "title": "Chương {i}: Tên chương giật gân, cuốn hút",
   "content": "Nội dung chương viết hoàn chỉnh bằng Tiếng Việt 100%, định dạng HTML với các thẻ <p>..."
 }}"""
+        user_writer_prompt += f"\n[Generation ID: {time.time()} - {random.randint(1000, 9999)}]"
 
-        chap_raw = call_openai(system_writer_prompt, user_writer_prompt, max_tokens=4500, temperature=0.7)
+        chap_raw = call_openai(system_writer_prompt, user_writer_prompt, max_tokens=4500, temperature=0.3)
         try:
             chap_data = robust_json_parse(chap_raw)
-            
-            # Post-process content to enforce sentence-level V13 HTML wrapping
             v13_content = clean_and_split_sentences(chap_data["content"])
             chapters_content.append({
                 "title": chap_data["title"],
@@ -260,22 +269,43 @@ YÊU CẦU TRẢ VỀ dạng JSON chính xác không chứa ```json:
             })
             log(f"  -> ✓ Finished Chapter {i}: {chap_data['title']} (Length: {len(v13_content)} chars)")
         except Exception as e:
-            log(f"⚠️ Failed to parse Chapter {i} JSON, attempting recovery...")
+            log(f"⚠️ Failed to parse Chapter {i} JSON, attempting robust recovery...")
             try:
                 title_match = re.search(r'"title"\s*:\s*"(.*?)"', chap_raw)
-                content_match = re.search(r'"content"\s*:\s*"(.*)"', chap_raw, re.DOTALL)
-                if title_match and content_match:
-                    recovered_content = content_match.group(1).replace('\\"', '"').replace('\\n', '\n')
+                title = title_match.group(1) if title_match else f"Chương {i}"
+                
+                content_match = re.search(r'"content"\s*:\s*"(.*)', chap_raw, re.DOTALL)
+                if content_match:
+                    content_str = content_match.group(1).strip()
+                    if content_str.endswith('"}'):
+                        content_str = content_str[:-2]
+                    elif content_str.endswith('}'):
+                        content_str = content_str[:-1].strip()
+                        if content_str.endswith('"'):
+                            content_str = content_str[:-1]
+                    elif content_str.endswith('"'):
+                        content_str = content_str[:-1]
+                        
+                    recovered_content = content_str.replace('\\"', '"').replace('\\n', '\n')
+                    
+                    open_p = recovered_content.count("<p>")
+                    close_p = recovered_content.count("</p>")
+                    if open_p > close_p:
+                        recovered_content += "</p>" * (open_p - close_p)
+                        
                     v13_content = clean_and_split_sentences(recovered_content)
                     chapters_content.append({
-                        "title": title_match.group(1),
+                        "title": title,
                         "content": v13_content
                     })
-                    log(f"  -> ✓ Recovered Chapter {i} via regex (Length: {len(v13_content)} chars)")
+                    log(f"  -> ✓ Recovered Chapter {i} via robust regex (Length: {len(v13_content)} chars)")
                 else:
                     raise e
             except Exception as re_err:
                 log(f"❌ Fatal error generating Chapter {i}: {re_err}")
+                log(f"--- RAW RESPONSE START (First 500 chars) ---")
+                log(chap_raw[:500])
+                log(f"--- RAW RESPONSE END ---")
                 return False
         
         time.sleep(2)
@@ -296,18 +326,9 @@ YÊU CẦU TRẢ VỀ dạng JSON chính xác không chứa ```json:
         log(f"❌ FTP Sideload Cover Error: {fe}")
         return False
 
-    # ─── 5. UPLOAD PUBLISH ENDPOINT HELPER ────────────────────────────────────
-    log("📤 Uploading publish_novel.php helper script via FTP...")
-    try:
-        ftp = ftplib.FTP(FTP_HOST, timeout=30)
-        ftp.login(FTP_USER, FTP_PASS)
-        with open("publish_novel.php", "rb") as f:
-            ftp.storbinary("STOR publish_novel.php", f)
-        ftp.quit()
-        log("✓ Helper script uploaded successfully.")
-    except Exception as fe:
-        log(f"❌ FTP Helper Upload Error: {fe}")
-        return False
+    # ─── 5. UPLOAD PUBLISH ENDPOINT HELPER (DISABLED FOR CONCURRENT SAFETY) ────
+    # Helper is uploaded once by the main orchestrator at start and cleaned up at the end.
+    log("✓ Assuming publish_novel.php helper script is already uploaded by main orchestrator.")
 
     # ─── 6. TRIGGER ATOMIC WORDPRESS PUBLICATION ──────────────────────────────
     log("🌐 Triggering publication via HTTP POST request...")
@@ -332,15 +353,8 @@ YÊU CẦU TRẢ VỀ dạng JSON chính xác không chứa ```json:
             log(f"  -> Cover Status: {res_data['cover_status']}")
             log(f"  -> Chapters: {res_data['chapters_count']} chapters published.")
             
-            # Clean up remote helper
-            try:
-                ftp = ftplib.FTP(FTP_HOST, timeout=30)
-                ftp.login(FTP_USER, FTP_PASS)
-                ftp.delete("publish_novel.php")
-                log("✓ Cleaned up remote publish_novel.php endpoint securely.")
-                ftp.quit()
-            except Exception as ce:
-                log(f"⚠️ Non-critical remote cleanup error: {ce}")
+            # Clean up remote helper (DISABLED FOR CONCURRENT SAFETY)
+            log("✓ Skipping dynamic remote cleanup of publish_novel.php.")
                 
             # Clean up local pending files
             if os.path.exists(pending_cover_file):
@@ -379,46 +393,80 @@ YÊU CẦU TRẢ VỀ dạng JSON chính xác không chứa ```json:
 # ─── MAIN BATCH ORCHESTRATOR ──────────────────────────────────────────────────
 def main():
     log("🚀 BATCH V13 GOLD STANDARD NOVEL PUBLISHER ACTIVATED")
-    log(f"Target concepts indices: {TARGET_INDICES}")
     
-    with open("novel_concepts_50.json", "r", encoding="utf-8") as f:
-        concepts = json.load(f)
+    # Dynamic command line argument parsing for subagents
+    import argparse
+    parser = argparse.ArgumentParser(description="V13 Batch Publisher")
+    parser.add_argument("--indices", nargs="+", type=int, default=None, help="Target concept indices to process")
+    args, unknown = parser.parse_known_args()
+    
+    run_indices = args.indices if args.indices is not None else TARGET_INDICES
+    log(f"Target concepts indices: {run_indices}")
+    
+    # Step 1: Upload publish_novel.php helper script via FTP
+    log("📤 Uploading publish_novel.php endpoint to FTP root...")
+    try:
+        ftp = ftplib.FTP(FTP_HOST, timeout=30)
+        ftp.login(FTP_USER, FTP_PASS)
+        with open("publish_novel.php", "rb") as f:
+            ftp.storbinary("STOR publish_novel.php", f)
+        log("✓ Uploaded publish_novel.php to server.")
+        ftp.quit()
+    except Exception as e:
+        log(f"❌ FTP Upload Error for helper script: {e}")
+        sys.exit(1)
         
-    target_concepts = [c for c in concepts if c["idx"] in TARGET_INDICES]
-    log(f"Loaded {len(target_concepts)} target concepts successfully.")
-    
-    success_count = 0
-    failed_indices = []
-    
-    for c in target_concepts:
-        success = False
-        # Retry up to 2 times for transient network/LLM issues
-        for attempt in range(2):
-            try:
-                if process_concept(c):
-                    success = True
-                    success_count += 1
-                    break
-                else:
-                    log(f"⚠️ Attempt {attempt+1} failed for novel index {c['idx']}. Retrying in 10s...")
-                    time.sleep(10)
-            except Exception as exc:
-                log(f"⚠️ Exception on attempt {attempt+1} for novel index {c['idx']}: {exc}")
-                time.sleep(10)
-                
-        if not success:
-            log(f"❌ Failed to publish novel index {c['idx']} after all attempts.")
-            failed_indices.append(c["idx"])
+    try:
+        with open("novel_concepts_50.json", "r", encoding="utf-8") as f:
+            concepts = json.load(f)
             
-        # Cooldown between stories
-        time.sleep(10)
+        target_concepts = [c for c in concepts if c["idx"] in run_indices]
+        log(f"Loaded {len(target_concepts)} target concepts successfully.")
         
-    log(f"============================================================")
-    log(f"🏁 BATCH PROCESS FINISHED")
-    log(f"  -> Total successfully published: {success_count}/{len(target_concepts)}")
-    if failed_indices:
-        log(f"  -> Failed indices: {failed_indices}")
-    log(f"============================================================")
+        success_count = 0
+        failed_indices = []
+        
+        for c in target_concepts:
+            success = False
+            # Retry up to 2 times for transient network/LLM issues
+            for attempt in range(2):
+                try:
+                    if process_concept(c):
+                        success = True
+                        success_count += 1
+                        break
+                    else:
+                        log(f"⚠️ Attempt {attempt+1} failed for novel index {c['idx']}. Retrying in 10s...")
+                        time.sleep(10)
+                except Exception as exc:
+                    log(f"⚠️ Exception on attempt {attempt+1} for novel index {c['idx']}: {exc}")
+                    time.sleep(10)
+                    
+            if not success:
+                log(f"❌ Failed to publish novel index {c['idx']} after all attempts.")
+                failed_indices.append(c["idx"])
+                
+            # Cooldown between stories
+            time.sleep(10)
+            
+        log(f"============================================================")
+        log(f"🏁 BATCH PROCESS FINISHED")
+        log(f"  -> Total successfully published: {success_count}/{len(target_concepts)}")
+        if failed_indices:
+            log(f"  -> Failed indices: {failed_indices}")
+        log(f"============================================================")
+        
+    finally:
+        # Clean up the publish helper script from remote for security
+        log("🧹 Cleaning up publish_novel.php helper from remote server...")
+        try:
+            ftp = ftplib.FTP(FTP_HOST, timeout=30)
+            ftp.login(FTP_USER, FTP_PASS)
+            ftp.delete("publish_novel.php")
+            log("✓ Deleted publish_novel.php helper from remote server for security.")
+            ftp.quit()
+        except Exception as e:
+            log(f"⚠️ Could not delete publish_novel.php remote helper: {e}")
 
 if __name__ == "__main__":
     main()

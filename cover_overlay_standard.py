@@ -3,51 +3,38 @@
 """
 cover_overlay_standard.py — Standard Cover Overlay Engine for doctieuthuyet.com
 =================================================================================
-Áp dụng text overlay chuẩn lên ảnh bìa đã được AI generate.
-Phong cách: Gold title on dark gradient + gold double border + TIỂU THUYẾT VIỆT NAM label.
-
-FIXED v2: Smart title auto-wrap (2-3 dòng), font tối thiểu 100px, không bị shrink.
-
-Usage:
-    python3 cover_overlay_standard.py \
-        --input base_image.png \
-        --output final_cover.png \
-        --title "CHÊ ANH THỢ HỒ NGHÈO GIÂY SAU PHÁT HIỆN THÂN PHẬN" \
-        --subtitle "Tổng Giám Đốc Hùng Phát - Bá Chủ Bình Dương"
+Tạo ảnh bìa theo phong cách Card Hiện Đại giống Fanqie/TikTok:
+- Không viền, tràn viền hoàn toàn (Full-bleed).
+- Gradient tối mờ ở đỉnh và đáy để hiển thị text rõ nét.
+- Tiêu đề tự động xuống dòng (2-3 dòng), căn giữa, màu sắc tương phản cao (White, Red, Yellow).
+- Đổ bóng chữ (Drop Shadow) và stroke đen cực dày để tạo độ nổi bật.
+- Không có số chương hay biểu tượng con mắt/đồng hồ (WordPress theme tự render).
 """
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
-import argparse
 import os
 import sys
+import argparse
 import textwrap
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
-# ─── CONSTANTS ────────────────────────────────────────────────────────────────
-CANVAS_SIZE   = 2000
-GOLD          = (235, 195, 80, 255)
-GOLD_RGB      = (235, 195, 80)
-WHITE         = (255, 255, 255, 255)
-BLACK         = (0, 0, 0, 255)
-SHADOW        = (0, 0, 0, 180)
-LABEL_BG      = (10, 8, 5, 215)
+CANVAS_SIZE = 2000
+
+# ─── COLOR PALETTE ────────────────────────────────────────────────────────────
+LINE_COLORS = [
+    (255, 255, 255, 255),  # White
+    (255, 40, 60, 255),    # Red
+    (255, 210, 0, 255),    # Yellow
+]
 
 FONT_PATHS_BOLD = [
-    "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
     "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
     "/Library/Fonts/Arial Bold.ttf",
     "/System/Library/Fonts/HelveticaNeue.ttc",
     "/System/Library/Fonts/SFNS.ttf",
 ]
-FONT_PATHS_REGULAR = [
-    "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
-    "/System/Library/Fonts/Supplemental/Arial.ttf",
-    "/Library/Fonts/Arial.ttf",
-    "/System/Library/Fonts/HelveticaNeue.ttc",
-    "/System/Library/Fonts/SFNS.ttf",
-]
 
-def _load_font(paths, size):
-    for p in paths:
+def load_bold_font(size):
+    for p in FONT_PATHS_BOLD:
         if os.path.exists(p):
             try:
                 return ImageFont.truetype(p, size=size)
@@ -55,30 +42,25 @@ def _load_font(paths, size):
                 continue
     return ImageFont.load_default()
 
-def bold(size):
-    return _load_font(FONT_PATHS_BOLD, size)
+def _text_width(font, text):
+    bbox = font.getbbox(text)
+    return bbox[2] - bbox[0]
 
-def regular(size):
-    return _load_font(FONT_PATHS_REGULAR, size)
+def _text_height(font, text):
+    bbox = font.getbbox(text)
+    return bbox[3] - bbox[1]
 
 # ─── SMART TITLE WRAP ────────────────────────────────────────────────────────
 def smart_wrap_title(title: str) -> list:
-    """
-    Tự động xuống dòng thông minh dựa trên chiều dài tiêu đề.
-    Mục tiêu: 2-3 dòng, mỗi dòng cân bằng nhau để font to nhất có thể.
-    """
+    """Tự động xuống dòng thông minh dựa trên chiều dài tiêu đề."""
     words = title.split()
     total_chars = len(title)
 
-    # Ngưỡng phân loại
     if total_chars <= 20:
-        # Tiêu đề ngắn: 1 dòng
         return [title]
     elif total_chars <= 40:
-        # Tiêu đề vừa: 2 dòng cân bằng
         return _wrap_n_lines(words, 2)
     else:
-        # Tiêu đề dài: 3 dòng
         return _wrap_n_lines(words, 3)
 
 def _wrap_n_lines(words: list, n_lines: int) -> list:
@@ -108,117 +90,86 @@ def _wrap_n_lines(words: list, n_lines: int) -> list:
     if current:
         lines.append(" ".join(current))
 
-    # Đảm bảo không có quá n_lines dòng
     while len(lines) > n_lines:
-        # Gộp 2 dòng cuối
         lines[-2] = lines[-2] + " " + lines[-1]
         lines.pop()
 
     return lines
 
-# ─── STEP 1: TOP DARK GRADIENT ────────────────────────────────────────────────
-def apply_top_gradient(img: Image.Image, fade_end_y: int = 800) -> Image.Image:
-    """Apply a strong black-to-transparent gradient from top, for text readability."""
+# ─── GRADIENT OVERLAYS ────────────────────────────────────────────────────────
+def apply_vertical_gradient(img: Image.Image, start_y: int, end_y: int, start_alpha: int, end_alpha: int) -> Image.Image:
+    """Áp dụng lớp phủ gradient đen từ mờ sang trong suốt (hoặc ngược lại)"""
     gradient = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (0, 0, 0, 0))
     draw = ImageDraw.Draw(gradient)
-    for y in range(fade_end_y):
-        t = 1.0 - (y / fade_end_y)
-        alpha = int(230 * t * t)
+    
+    y_min = min(start_y, end_y)
+    y_max = max(start_y, end_y)
+    height = y_max - y_min
+    
+    for y in range(y_min, y_max):
+        if start_y < end_y:
+            t = (y - y_min) / height
+        else:
+            t = (y_max - y) / height
+            
+        alpha = int(start_alpha + (end_alpha - start_alpha) * t)
         draw.rectangle([(0, y), (CANVAS_SIZE, y + 1)], fill=(0, 0, 0, alpha))
+        
     return Image.alpha_composite(img, gradient)
 
-# ─── STEP 2: GOLD DOUBLE BORDER ───────────────────────────────────────────────
-def draw_gold_border(draw: ImageDraw.Draw):
-    """Draw the premium gold double-border frame with corner ornaments."""
-    draw.rectangle([(40, 40), (1960, 1960)], outline=GOLD, width=8)
-    draw.rectangle([(80, 80), (1920, 1920)], outline=GOLD, width=3)
-    corners = [(80, 80), (1920, 80), (80, 1920), (1920, 1920)]
-    for (cx, cy) in corners:
-        dx = 1 if cx == 80 else -1
-        dy = 1 if cy == 80 else -1
-        x0, y0 = min(cx, cx + dx*120), min(cy, cy + dy*120)
-        x1, y1 = max(cx, cx + dx*120), max(cy, cy + dy*120)
-        draw.rectangle([(x0, y0), (x1, y1)], outline=GOLD, width=3)
-        x0s, y0s = min(cx, cx + dx*60), min(cy, cy + dy*60)
-        x1s, y1s = max(cx, cx + dx*60), max(cy, cy + dy*60)
-        draw.rectangle([(x0s, y0s), (x1s, y1s)], outline=GOLD, width=2)
-        draw.ellipse([(cx - 8, cy - 8), (cx + 8, cy + 8)], fill=GOLD)
+# ─── TEXT RENDERING WITH SHADOW & COLOR BLOCKS ─────────────────────────────────
+def draw_card_titles_with_shadow(img: Image.Image, lines, font_obj, start_y, line_spacing, stroke_width=12) -> Image.Image:
+    # Bản đồ màu cho từng dòng:
+    if len(lines) == 2:
+        colors_map = [LINE_COLORS[0], LINE_COLORS[2]] # Dòng 1: Trắng, Dòng 2: Vàng
+    elif len(lines) == 1:
+        colors_map = [LINE_COLORS[0]] # Dòng 1: Trắng
+    else:
+        # 3 dòng hoặc hơn: Trắng, Đỏ, Vàng
+        colors_map = [LINE_COLORS[i % len(LINE_COLORS)] for i in range(len(lines))]
 
-# ─── STEP 3: TEXT RENDERING ───────────────────────────────────────────────────
-def _text_width(font, text):
-    bbox = font.getbbox(text)
-    return bbox[2] - bbox[0]
-
-def _text_height(font, text):
-    bbox = font.getbbox(text)
-    return bbox[3] - bbox[1]
-
-def _autofit_font_multiline(text_lines, start_size, max_width, min_size=100, is_bold=True):
-    """Return (font_obj, chosen_size) that fits all lines within max_width. Min size = 100px."""
-    size = start_size
-    while size >= min_size:
-        f = bold(size) if is_bold else regular(size)
-        fits = all(_text_width(f, ln.upper() if is_bold else ln) <= max_width
-                   for ln in text_lines)
-        if fits:
-            return f, size
-        size -= 4
-    # Return at minimum size
-    f = bold(min_size) if is_bold else regular(min_size)
-    return f, min_size
-
-def draw_text_with_shadow(img: Image.Image, lines, font_obj, start_y,
-                           line_spacing, text_color, stroke_width=10,
-                           to_upper=True) -> Image.Image:
-    """Render text with blurred drop-shadow + crisp stroke on top."""
+    # 1. Vẽ bóng đổ mờ cực đẹp
     shadow_layer = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (0, 0, 0, 0))
     sd = ImageDraw.Draw(shadow_layer)
 
     for i, line in enumerate(lines):
-        txt = line.upper() if to_upper else line
+        txt = line.upper()
         w = _text_width(font_obj, txt)
         x = (CANVAS_SIZE - w) // 2
         y = start_y + i * line_spacing
+        
+        # Stroke đen bóng mờ
         for off in range(stroke_width * 2, 0, -2):
-            a = int(180 * (1 - off / (stroke_width * 2)))
-            sd.text((x + 4, y + 7), txt, font=font_obj,
+            a = int(220 * (1 - off / (stroke_width * 2)))
+            sd.text((x + 6, y + 10), txt, font=font_obj,
                     fill=(0, 0, 0, a), stroke_width=off, stroke_fill=(0, 0, 0, a))
 
-    shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(radius=12))
+    shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(radius=8))
     img = Image.alpha_composite(img, shadow_layer)
 
+    # 2. Vẽ chữ thật có viền sắc nét
     d = ImageDraw.Draw(img)
     for i, line in enumerate(lines):
-        txt = line.upper() if to_upper else line
+        txt = line.upper()
         w = _text_width(font_obj, txt)
         x = (CANVAS_SIZE - w) // 2
         y = start_y + i * line_spacing
-        d.text((x, y), txt, font=font_obj, fill=text_color,
-               stroke_width=stroke_width, stroke_fill=BLACK)
+        color = colors_map[i]
+        
+        d.text((x, y), txt, font=font_obj, fill=color,
+               stroke_width=stroke_width, stroke_fill=(0, 0, 0, 255))
+               
     return img
 
-# ─── STEP 4: BOTTOM LABEL ─────────────────────────────────────────────────────
-def draw_bottom_label(img: Image.Image, text="TIỂU THUYẾT VIỆT NAM") -> Image.Image:
-    """Draw the brand label at the bottom center."""
-    label_font = bold(48)
-    w = _text_width(label_font, text)
-    pad_x, pad_y = 50, 16
-    label_w = w + pad_x * 2
-    label_h = 90
-    x1 = (CANVAS_SIZE - label_w) // 2
-    y1 = 1848
-    x2 = x1 + label_w
-    y2 = y1 + label_h
-
-    overlay = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (0, 0, 0, 0))
-    od = ImageDraw.Draw(overlay)
-    od.rectangle([(x1, y1), (x2, y2)], fill=LABEL_BG, outline=GOLD, width=3)
-
-    text_x = x1 + pad_x
-    text_y = y1 + (label_h - 48) // 2
-    od.text((text_x, text_y), text, font=label_font, fill=WHITE)
-
-    return Image.alpha_composite(img, overlay)
+def _autofit_font_multiline(text_lines, start_size, max_width, min_size=100):
+    size = start_size
+    while size >= min_size:
+        f = load_bold_font(size)
+        fits = all(_text_width(f, ln.upper()) <= max_width for ln in text_lines)
+        if fits:
+            return f, size
+        size -= 4
+    return load_bold_font(min_size), min_size
 
 # ─── MAIN FUNCTION ────────────────────────────────────────────────────────────
 def apply_standard_overlay(
@@ -226,7 +177,8 @@ def apply_standard_overlay(
     output_path: str,
     title: str,
     subtitle: str = "",
-    bottom_label: str = "TIỂU THUYẾT VIỆT NAM",
+    bottom_label: str = "TIỂU THUYẾT VIỆT NAM", # Ignored backward compatibility
+    position: str = "top",
 ) -> bool:
     if not os.path.exists(input_path):
         print(f"❌ Input not found: {input_path}")
@@ -234,81 +186,95 @@ def apply_standard_overlay(
 
     print(f"🎨 Loading base image: {input_path}")
     img = Image.open(input_path).convert("RGBA")
-    img = img.resize((CANVAS_SIZE, CANVAS_SIZE), Image.LANCZOS)
+    img = img.resize((CANVAS_SIZE, CANVAS_SIZE), Image.Resampling.LANCZOS)
 
-    # Step 1 — Top dark gradient (mạnh hơn để title rõ)
-    print("🌑 Applying top dark gradient...")
-    img = apply_top_gradient(img, fade_end_y=800)
+    # 1. Gradient mờ tối ở Đỉnh (Top) và Đáy (Bottom) tùy theo vị trí text
+    print(f"🌑 Applying premium gradient shadows for position: {position}...")
+    if position == "bottom":
+        img = apply_vertical_gradient(img, start_y=2000, end_y=1250, start_alpha=220, end_alpha=0)
+        img = apply_vertical_gradient(img, start_y=0, end_y=300, start_alpha=80, end_alpha=0)
+    else:
+        img = apply_vertical_gradient(img, start_y=0, end_y=750, start_alpha=200, end_alpha=0)
+        img = apply_vertical_gradient(img, start_y=2000, end_y=1700, start_alpha=80, end_alpha=0)
 
-    # Step 2 — Gold border
-    print("⚜️  Drawing gold double border...")
-    border_overlay = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (0, 0, 0, 0))
-    draw_gold_border(ImageDraw.Draw(border_overlay))
-    img = Image.alpha_composite(img, border_overlay)
-
-    # Step 3a — Title text (smart wrap trước khi fit)
-    # Parse manual newlines first
+    # 2. Xuống dòng tự động thông minh
     if "\\n" in title:
         title_lines = title.split("\\n")
     elif "\n" in title:
         title_lines = title.split("\n")
     else:
-        # Auto-wrap thông minh
         title_lines = smart_wrap_title(title)
 
     print(f"📐 Title wrapped to {len(title_lines)} lines: {title_lines}")
 
-    # Fit font — tối thiểu 100px, bắt đầu 200px
-    title_max_w = 1760
+    # 3. Fit cỡ chữ tiêu đề
+    title_max_w = 1850
     font_title, title_size = _autofit_font_multiline(
-        title_lines, start_size=200, max_width=title_max_w, min_size=100, is_bold=True
+        title_lines, start_size=145, max_width=title_max_w, min_size=100
     )
-    title_line_h = int(title_size * 1.25)
-    print(f"✍️  Title font size: {title_size}px, lines: {len(title_lines)}")
+    title_line_h = int(title_size * 1.15)
+    print(f"📐 Chosen Title Font Size: {title_size}px")
 
-    img = draw_text_with_shadow(
+    # Tính toán vị trí Y của tiêu đề
+    total_height = (len(title_lines) - 1) * title_line_h + title_size
+    if position == "bottom":
+        start_y = 1800 - total_height
+    else:
+        start_y = 120
+
+    # 4. Vẽ tiêu đề màu sắc rực rỡ dạng Card
+    img = draw_card_titles_with_shadow(
         img, title_lines, font_title,
-        start_y=120, line_spacing=title_line_h,
-        text_color=GOLD, stroke_width=10, to_upper=True
+        start_y=start_y, line_spacing=title_line_h, stroke_width=12
     )
 
-    # Step 3b — Subtitle text
+    # 5. Phụ đề phụ (nếu có) vẽ rất nhẹ nhàng ở dưới (hoặc trên nếu ở bottom)
     if subtitle:
         sub_lines = subtitle.split("\\n") if "\\n" in subtitle else subtitle.split("\n")
-        if len(sub_lines) == 1:
-            sub_lines = smart_wrap_title(subtitle) if len(subtitle) > 30 else [subtitle]
-        font_sub, sub_size = _autofit_font_multiline(
-            sub_lines, start_size=70, max_width=1750, min_size=50, is_bold=False
-        )
-        sub_start_y = 120 + len(title_lines) * title_line_h + 30
-        print(f"📝 Subtitle font size: {sub_size}px")
-        img = draw_text_with_shadow(
-            img, sub_lines, font_sub,
-            start_y=sub_start_y, line_spacing=sub_size + 20,
-            text_color=(255, 255, 200, 230), stroke_width=5, to_upper=False
-        )
+        font_sub = load_bold_font(42)
+        
+        if position == "bottom":
+            sub_y = start_y - len(sub_lines) * 50 - 20
+        else:
+            sub_y = start_y + total_height + 20
+        
+        # Thêm bóng đổ mờ cho phụ đề
+        shadow_layer = Image.new("RGBA", (CANVAS_SIZE, CANVAS_SIZE), (0, 0, 0, 0))
+        sd = ImageDraw.Draw(shadow_layer)
+        for i, sl in enumerate(sub_lines):
+            w = _text_width(font_sub, sl)
+            x = (CANVAS_SIZE - w) // 2
+            y = sub_y + i * 50
+            sd.text((x + 3, y + 4), sl, font=font_sub, fill=(0, 0, 0, 180), stroke_width=3, stroke_fill=(0, 0, 0, 180))
+        shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(radius=4))
+        img = Image.alpha_composite(img, shadow_layer)
+        
+        d = ImageDraw.Draw(img)
+        for i, sl in enumerate(sub_lines):
+            w = _text_width(font_sub, sl)
+            x = (CANVAS_SIZE - w) // 2
+            y = sub_y + i * 50
+            d.text((x, y), sl, font=font_sub, fill=(255, 255, 255, 220), stroke_width=3, stroke_fill=(0, 0, 0, 255))
 
-    # Step 4 — Bottom label
-    print(f"🏷️  Drawing bottom label: '{bottom_label}'")
-    img = draw_bottom_label(img, text=bottom_label)
-
+    # Lưu ảnh dạng chất lượng cao
     out = img.convert("RGB")
     out.save(output_path, "PNG", quality=95)
-    print(f"✅ Cover saved: {output_path}")
+    print(f"✅ Premium Standard Cover Saved successfully: {output_path}")
     return True
-
 
 # ─── CLI ──────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Apply standard cover overlay (gold title + border + label)"
+        description="Apply premium standard cover overlay (TikTok/Fanqie Card style)"
     )
     parser.add_argument("--input",    required=True, help="Path to base AI image")
     parser.add_argument("--output",   required=True, help="Path to output PNG")
     parser.add_argument("--title",    required=True, help="Title text (auto-wrapped)")
     parser.add_argument("--subtitle", default="",    help="Optional subtitle/tagline")
     parser.add_argument("--label",    default="TIỂU THUYẾT VIỆT NAM",
-                        help="Bottom brand label text")
+                        help="Bottom brand label text (ignored, kept for compatibility)")
+    parser.add_argument("--position", default="top", choices=["top", "bottom"],
+                        help="Vertical position of the title text (top or bottom)")
     args = parser.parse_args()
 
     ok = apply_standard_overlay(
@@ -316,6 +282,6 @@ if __name__ == "__main__":
         output_path=args.output,
         title=args.title,
         subtitle=args.subtitle,
-        bottom_label=args.label,
+        position=args.position,
     )
     sys.exit(0 if ok else 1)

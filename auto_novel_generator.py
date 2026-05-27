@@ -62,7 +62,7 @@ TROPE_DATABASE = [
         "title_keywords": ["Dược", "Chiến Thần", "Đà Lạt", "Công Thức", "Y Học"],
         "trope_title": "Chiến Thần Dược Phẩm Độc Bản",
         "intro_template": "A brilliant bio-tech researcher in Dalat who holds the patented formula for a breakthrough liver drug. When his corrupt director steals the formula to launch a highly hyped IPO, the main character and his brilliant intellectual property lawyer (female lead) trigger a massive clinical trial audit and molecular trap that destroys the corrupt director's entire empire.",
-        "concept_guidelines": "Bối cảnh: Viện nghiên cứu sinh học Đà Lạt và các tòa cao ốc tài chính Quận 1, TP.HCM. Nam chính là nhà khoa học thiên tài bị đánh cắp bản quyền. Nữ chính là luật sư sở hữu trí tuệ sắc sảo tốt nghiệp từ Anh về, hỗ trợ anh đòi lại công lý. Bẫy phản diện: Giám đốc viện nghiên cứu cấu kết với quỹ đầu tư ngoại bang để ăn cắp công thức, đăng ký sở hữu trí tuệ khống và đệ đơn kiện nam chính tội tiết lộ bí mật công nghệ. Tình huống khó khăn Chương 4: Nam chính bị tạm giữ hình sự 24 giờ để điều tra, tài khoản VietinBank bị đóng băng, phòng thí nghiệm riêng bị niêm phong, truyền thông bôi nhọ anh là kẻ tráo đổi mẫu thử nghiệm gây biến chứng nghiêm trọng. Lật kèo Chương 5: Nữ chính công bố bằng chứng video camera siêu nhỏ ghi lại cảnh phản diện lấy trộm dữ liệu, kết hợp kết quả kiểm nghiệm lâm sàng độc lập chứng minh công thức phản diện ăn cắp chứa lỗi 'khóa phân tử sinh học' khiến thuốc mất tác dụng sau 30 ngày. IPO của phản diện lập tức sụp đổ trắng bên mua trên sàn HoSE, phản diện bị bắt giam khẩn cấp vì tội lừa đảo chiếm đoạt tài sản nhà đầu tư và vi phạm bản quyền quốc gia."
+        "concept_guidelines": "Bối cảnh: Viện nghiên cứu sinh học Đà Lạt và các tòa cao ốc tài chính Quận 1, TP.HCM. Nam chính là nhà khoa học thiên tài bị đánh cắp bản quyền. Nữ chính là luật sư sở hữu trí tuệ sắc sảo tốt nghiệp từ Anh về, hỗ trợ anh đòi lại công lý. Bẫy phản diện: Giám đốc viện nghiên cứu cấu kết với quỹ đầu tư ngoại bang để ăn cắp công thức, đăng ký sở hữu trí tuệ khống và đệ đơn kiện nam chính tội tiết lộ bí mật công nghệ. Tình huống khó khăn Chương 4: Nam chính bị tạm giữ hình sự 24 giờ để điều tra, tài khoản VietinBank bị đóng băng, phòng thí nghiệm riêng bị niêm phong, truyền thông bôi nhọ anh là kẻ tráo đổi mẫu thử nghiệm gây biến chứng nghiêm trọng. Lật kèo Chương 5: Nữ chính công bố bằng chứng video camera siêu nhỏ ghi lại cảnh phản diện lấy trộm dữ liệu, kết hợp kết quả kiểm nghiệm lâm sàng độc lập chứng minh công thức phản diện ăn cắp chứa lỗi 'khóa phân tử sinh học' khiến thuốc mất tác dụng sau 30 ngày. IPO của phản diện lập tức sụp đổ trắng bên mua trên sàn HoSE, phản diện bị bắt giam khân cấp vì tội lừa đảo chiếm đoạt tài sản nhà đầu tư và vi phạm bản quyền quốc gia."
     },
     {
         "id": "vua_ban_le_duong_pho",
@@ -86,6 +86,108 @@ TROPE_DATABASE = [
         "concept_guidelines": "Bối cảnh: Thung lũng silicon thu nhỏ tại Duy Tân, Cầu Giấy và các văn phòng tài chính quanh Hồ Hoàn Kiếm, Hà Nội. Nam chính là nhà toán học trẻ xuất chúng. Nữ chính là chuyên gia an ninh mạng hàng đầu, người luôn đồng hành kỹ thuật cùng anh. Bẫy phản diện: Thiếu gia ngân hàng truyền thống cài gián điệp ăn cắp mã nguồn bản thử nghiệm, sau đó cấu kết với một số cán bộ thoái hóa để cáo buộc nam chính vận hành tín dụng đen bất hợp pháp. Tình huống khó khăn Chương 4: Máy chủ của dự án bị tấn công DDoS tê liệt hoàn toàn, app bị gỡ khỏi App Store/Google Play, nam chính bị triệu tập điều tra, người dân kéo đến bao vây trụ sở đòi rút tiền do tin đồn ác ý. Lật kèo Chương 5: Nam chính và nữ chính kích hoạt 'giao thức dự phòng phi tập trung' bảo mật đa tầng, chuyển dịch toàn bộ dữ liệu an toàn sang đám mây của Thụy Sĩ. Anh công bố bằng chứng cuộc tấn công DDoS bắt nguồn từ địa chỉ IP của ngân hàng đối thủ, đồng thời kích hoạt thuật toán thắt chặt thanh khoản khiến bộ phận ngân hàng số của phản diện bị rút tiền hàng loạt (bank run) dẫn đến mất khả năng thanh toán, phản diện bị bắt giữ vì tội danh phá hoại an ninh mạng và gian lận tài chính."
     }
 ]
+
+# Datasets definition for Name Anti-Collision Filter & geographical setting rotation
+PROTAGONISTS = [
+    "Lê Quốc Khánh", "Đặng Thái Sơn", "Vũ Hoài Lâm", "Cao Tiến Dũng",
+    "Bùi Lạc Phong", "Phùng Nhất Huy", "Trương Minh Triết", "Đỗ Trọng Nhân",
+    "Tô Hoài Nam", "Đặng Thế Dân", "Phan Chí Trung", "Nguyễn Lâm Bách",
+    "Võ Hoàng Minh", "Trịnh Gia Bảo", "Phạm Tuấn Kiệt", "Lâm Quốc Việt",
+    "Nguyễn Đăng Khoa", "Lê Thanh Tùng", "Trần Đình Khang", "Vũ Nhật Anh",
+    "Đặng Văn Lâm", "Hoàng Thế Anh", "Phùng Xuân Đông", "Tống Khánh Duy",
+    "Bùi Thế Vinh", "Cao Thiên Lạc", "Lê Khắc Nam", "Trần Thế Hải",
+    "Nguyễn Tấn Đạt", "Phạm Tuấn Anh", "Hoàng Việt", "Nguyễn Đức Trí",
+    "Trịnh Gia Huy", "Nguyễn Hoàng Minh", "Lê Gia Bách", "Nguyễn Hải Long",
+    "Trần Minh Hoàng", "Lê Quang Minh", "Hoàng Văn Nam", "Lâm Thế Khải"
+]
+
+FEMALE_LEADS = [
+    "Nguyễn Hoàng Mai Chi", "Đỗ Thục Đoan", "Trịnh Khánh Quỳnh", "Phạm Nhã Phương",
+    "Lê Cát Tiên", "Vũ Khánh An", "Trần Ngọc Diệp", "Đặng Mỹ Dung",
+    "Cao Hoài An", "Bùi Phương Thảo", "Trịnh Hoàng Yến", "Nguyễn Minh Thư",
+    "Lê Minh Thư", "Nguyễn Khánh Vy", "Trần Mỹ Duyên", "Lê Minh An",
+    "Nguyễn Minh Tuyền", "Lâm Gia Hân", "Lâm Vy", "Trần Diệu Nhi",
+    "Ngô Thị Hương", "Lê Mai Chi", "Trần Thanh Mai", "Lâm Vy Anh",
+    "Phạm Quỳnh Chi", "Đặng Thu Thảo", "Hoàng Bảo Trâm", "Vũ Phương Trinh"
+]
+
+VILLAINS = [
+    "Tạ Đình Phong", "Hứa Gia Ấn", "Phan Thanh Bình", "Lê Hữu Phước",
+    "Hoàng Thế Vinh", "Trần Vĩnh Thịnh", "Đỗ Quốc Oai", "Trương Vô Kỵ",
+    "Cao Hữu Hoài", "Lâm Vĩnh Nghiệp", "Lý Bách", "Nguyễn Hữu Hoài",
+    "Trần Khánh Vy", "Đỗ Văn Thắng", "Phạm Gia Bảo", "Lý Bách Hoài",
+    "Hoàng Kim Định", "Phạm Gia Hưng", "Vũ Hoài Nam", "Nguyễn Văn Hải",
+    "Trần Quốc Thắng", "Tạ Minh Tuấn", "Vũ Minh Quân"
+]
+
+GOOD_COMPANIES = [
+    "Quỹ Khởi Nguyên", "Siêu quỹ Thái Bình", "Tập đoàn Tràng An", "LogiVina",
+    "Dược phẩm Bách Thảo", "Nông sản Cát Tường", "Công nghệ VinaBlock",
+    "Quỹ Vạn Lộc", "Quỹ Vạn An", "Vạn An Corp", "Tập đoàn Thép Đông Hải",
+    "Đế chế Bách Nghệ", "Dược Thảo Ngọc Linh", "Bảo Long Tea", "LogiChain",
+    "Công nghệ PayBlock", "Đại Việt Logistics", "Năng lượng Xanh Việt"
+]
+
+EVIL_COMPANIES = [
+    "Tập đoàn Thịnh Phát", "Tập đoàn Đông Á", "SouthernRealty", "PrimeTech",
+    "AgroChem Việt Nam", "CyberShield", "Royal Sip", "Tập đoàn Bán lẻ Hoàng Gia",
+    "Dược phẩm Vạn Xuân", "Thương mại Tín Nghĩa", "Bất động sản Đất Vàng"
+]
+
+SETTINGS = [
+    "Hà Nội",
+    "Sài Gòn / TP.HCM",
+    "Phú Quốc",
+    "Miền Tây",
+    "Hải Phòng",
+    "Đà Lạt",
+    "Đà Nẵng",
+    "Nha Trang / Khánh Hòa",
+    "Tây Nguyên"
+]
+
+NARRATIVE_DISRUPTORS = [
+    "Sự cố sập hệ thống máy chủ và tấn công DDoS quy mô lớn từ Thụy Sĩ gây gián đoạn dịch vụ toàn quốc, làm suy giảm nghiêm trọng uy tín dự án mới.",
+    "Sự phản bội và bán đứng mã nguồn/bí mật kinh doanh từ người cộng sự thân tín nhất thuở lập nghiệp.",
+    "Thay đổi đột ngột về chính sách hải quan xuất khẩu và các rào cản thuế quan phi kỹ thuật của thị trường châu Âu gây tắc nghẽn toàn bộ lô hàng đầu tiên.",
+    "Khủng hoảng thanh khoản liên hoàn và đợt rút tiền hàng loạt (bank run) đột biến do tin đồn phá sản giả mạo lan truyền trên báo chí.",
+    "Phản diện mua chuộc KOL bẩn và sử dụng công nghệ deepfake tinh vi để dựng scandal thực phẩm nhiễm độc hoặc ô nhiễm môi trường trên mạng xã hội."
+]
+
+def get_used_text(existing_novels):
+    used_text = ""
+    for novel in existing_novels:
+        used_text += " " + novel.get("title", "")
+        used_text += " " + novel.get("intro", "")
+    return used_text
+
+def select_unique_name(name_list, used_text, category_name="Entity"):
+    valid_names = []
+    for name in name_list:
+        full_collision = name.lower() in used_text.lower()
+        parts = name.split()
+        mid_first_collision = False
+        if len(parts) >= 2:
+            mid_first = " ".join(parts[1:]).lower()
+            mid_first_collision = mid_first in used_text.lower()
+            
+        if not full_collision and not mid_first_collision:
+            valid_names.append(name)
+            
+    if valid_names:
+        return random.choice(valid_names)
+    return random.choice(name_list)
+
+def rotate_setting(existing_novels):
+    setting_freq = {s: 0 for s in SETTINGS}
+    used_text = get_used_text(existing_novels)
+    for s in SETTINGS:
+        keyword = s.split("/")[0].strip()
+        setting_freq[s] = used_text.count(keyword)
+    sorted_settings = sorted(setting_freq.items(), key=lambda x: x[1])
+    min_freq = sorted_settings[0][1]
+    least_used = [s for s, freq in sorted_settings if freq == min_freq]
+    return random.choice(least_used)
 
 def robust_json_parse(raw_str):
     cleaned = raw_str.strip()
@@ -182,6 +284,26 @@ def main():
     selected_trope = select_unique_trope(existing)
     print(f"✓ Selected unique trope theme: {selected_trope['trope_title']}")
     
+    # Step 2.5: Apply Blueprint V14 Programmatic Name Filter & Geographical Rotation
+    used_text = get_used_text(existing)
+    
+    selected_protagonist = select_unique_name(PROTAGONISTS, used_text, "Protagonist")
+    selected_helper = select_unique_name(FEMALE_LEADS, used_text, "Female Helper")
+    selected_villain = select_unique_name(VILLAINS, used_text, "Villain")
+    selected_good_company = select_unique_name(GOOD_COMPANIES, used_text, "Good Company")
+    selected_evil_company = select_unique_name(EVIL_COMPANIES, used_text, "Evil Company")
+    selected_setting = rotate_setting(existing)
+    selected_disruptor = random.choice(NARRATIVE_DISRUPTORS)
+    
+    print(f"✓ Programmatic V14 constraints selected:")
+    print(f"  - Nam chính: {selected_protagonist}")
+    print(f"  - Nữ trợ lý: {selected_helper}")
+    print(f"  - Phản diện: {selected_villain}")
+    print(f"  - Doanh nghiệp tốt: {selected_good_company}")
+    print(f"  - Doanh nghiệp xấu: {selected_evil_company}")
+    print(f"  - Bối cảnh rotated: {selected_setting}")
+    print(f"  - Biến cố Chương 4: {selected_disruptor[:50]}...")
+    
     # Step 3: Generate Novel Concept & Outlines via OpenAI
     system_concept_prompt = f"""Bạn là biên tập viên văn học kỳ cựu và là bậc thầy lập kịch bản sảng văn / vả mặt (slap-in-the-face web novel) hàng đầu Việt Nam.
 Nhiệm vụ của bạn là lập kế hoạch cho một bộ truyện sảng văn/vả mặt 10/10 cực kỳ đặc sắc, lấy bối cảnh 100% tại Việt Nam.
@@ -191,13 +313,19 @@ Tên chủ đề: {selected_trope['trope_title']}
 Tóm tắt định hướng: {selected_trope['intro_template']}
 Hướng dẫn cốt truyện & bối cảnh chi tiết: {selected_trope['concept_guidelines']}
 
-QUY TẮC CỐT LÕI ĐỂ ĐẠT ĐIỂM 10/10 HOÀN HẢO:
+RÀNG BUỘC CỨNG VỀ TÊN NHÂN VẬT & TỔ CHỨC (BẮT BUỘC SỬ DỤNG CHÍNH XÁC):
+1. Nhân vật Nam chính (Protagonist): Phải là "{selected_protagonist}".
+2. Nhân vật Nữ trợ lý / Nữ chính đồng hành (Helper): Phải là "{selected_helper}" (người đồng hành tài năng hỗ trợ cực mạnh cho nam chính từ Chương 2).
+3. Nhân vật Phản diện (Villain): Phải là "{selected_villain}" (sếp cũ, hôn thê cũ hoặc đối thủ hống hách).
+4. Công ty chính diện / Siêu quỹ bảo trợ của nam chính: Phải là "{selected_good_company}".
+5. Tập đoàn phản diện: Phải là "{selected_evil_company}".
+6. Bối cảnh chính của câu chuyện: Phải lấy tại "{selected_setting}" và các địa danh chân thực xung quanh nó.
+
+QUY TẮC CỐT LÕI ĐỂ ĐẠT ĐIỂM 10/10 HOÀN HẢO (BLUEPRINT V14):
 1. ĐỘ DÀI LINH HOẠT (Từ 5 Đến 15 Chương): Số chương có thể từ 5 đến 15 chương tùy thuộc vào độ phức tạp của cốt truyện. Hãy phân bổ cấu trúc câu chuyện hợp lý: mở đầu sỉ nhục (chương 1-2), trợ lý/nữ chính đồng hành (chương 2-3), đòn phản kích nhẹ và phản diện gài bẫy (chương giữa), giai đoạn bế tắc khủng hoảng cực đại (khoảng 2/3 truyện), và cú lật kèo vả mặt hoành tráng kết toán kẻ thù ở (các) chương cuối.
-2. BỐI CẢNH VIỆT NAM THỰC TẾ: Bối cảnh phải cực kỳ chân thực, lấy tại Hà Nội, TP.HCM, hoặc các địa phương nổi tiếng (Landmark 81, Hồ Tây, đèo Hải Vân, Sa Đéc, Đà Lạt, ngõ phố Hà Nội...). Tên nhân vật phải là tên Việt Nam quen thuộc (Lâm Phong, Minh Nguyệt, Gia Huy, Hoàng Bách...). Tiền tệ dùng VNĐ với các con số tài chính/kinh doanh thực tế (hàng chục tỷ, sính lễ 5 tỷ, dự án 1.000 tỷ...).
-3. TRÁNH TRÙNG LẶP: Đảm bảo truyện có tên tập đoàn, tên nhân vật chính/phụ và các tình tiết cụ thể HOÀN TOÀN MỚI, KHÔNG TRÙNG LẶP với các tác phẩm đã có trên hệ thống.
-4. PHẢN DIỆN THÔNG MINH, CHIÊU TRÒ CAO TAY: Nhân vật phản diện không được ngốc nghếch hay gào thét vô lý. Họ phải dùng các mưu đồ kinh doanh, pháp lý, tài chính tinh vi thực tế (ví dụ: bẫy thâu tóm thù địch qua thị trường chứng khoán, gài lỗi kiểm toán thuế, rút ruột cổ đông, kiện cáo bản quyền trí tuệ, margin call...).
-5. CHI TIẾT TẢ THỰC (SHOW, DON'T TELL): Thay vì dùng các từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'. Hãy dùng các mô tả vật lý sắc bén: 'mồ hôi lạnh chảy ròng ròng sau gáy', 'môi trắng bệch không còn một giọt máu', 'hai gối đập mạnh xuống sàn kêu cộp', 'ngón tay bấm chặt rỉ máu'.
-6. TUYẾN TÌNH CẢM ẤM ÁP, NỮ CHÍNH/TRỢ LÝ THÔNG MINH: Nhân vật nữ chính hoặc trợ lý đồng hành phải thông minh, có năng lực vượt trội, trợ giúp đắc lực cho nam chính và được giới thiệu sâu sắc ngay từ Chương 2.
+2. BIẾN CỐ NÚT THẮT CHƯƠNG KỊCH TÍNH (BẮT BUỘC): Ở chương giữa (thường là khoảng Chương 4 hoặc Chương 5), hãy lồng ghép biến cố sau: "{selected_disruptor}". Đây là đòn hiểm hóc của phản diện khiến nam chính lâm vào tình trạng bế tắc cực đại (chứ không chỉ đơn thuần là bị phong tỏa tài khoản ngân hàng).
+3. PHẢN DIỆN THÔNG MINH, TRÍ TUỆ: Nhân vật phản diện không được ngốc nghếch hay chửi rủa thô thiển. Họ là giới tinh hoa hoặc kẻ trục lợi có thủ đoạn tinh vi, dùng các mưu đồ kinh doanh, pháp lý, tài chính tinh vi thực tế (ví dụ: bẫy thâu tóm thù địch qua thị trường chứng khoán, gài lỗi kiểm toán thuế, rút ruột cổ đông, kiện cáo bản quyền trí tuệ, margin call...).
+4. CHI TIẾT TẢ THỰC (SHOW, DON'T TELL): Thay vì dùng các từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'. Hãy dùng các mô tả vật lý sắc bén: 'mồ hôi lạnh chảy ròng ròng sau gáy', 'môi trắng bệch không còn một giọt máu', 'hai gối đập mạnh xuống sàn kêu cộp', 'ngón tay bấm chặt rỉ máu'.
 
 Hãy xuất ra định dạng JSON nguyên bản, không chứa bất kỳ văn bản thừa nào bên ngoài (không dùng ```json hoặc ```)."""
 
@@ -212,7 +340,7 @@ Trả về chính xác cấu trúc JSON sau:
   "author": "Bút danh nhà văn ấn tượng",
   "genre": "Sảng Văn",
   "intro": "Giới thiệu truyện tóm tắt cực kỳ kịch tính, lôi cuốn độc giả (khoảng 200-300 từ dạng HTML)",
-  "cover_prompt": "Prompt tiếng Anh chi tiết để vẽ ảnh bìa bằng Pollinations AI (phong cách anime web novel chuyên nghiệp, có chữ hoặc không, đậm chất sang trọng)",
+   "cover_prompt": "Prompt tiếng Anh chi tiết để vẽ ảnh bìa (phong cách anime web novel chuyên nghiệp, có chữ hoặc không, đậm chất sang trọng)",
   "outlines": [
     {{ "chap_num": 1, "outline": "Tóm tắt kịch tính chương 1..." }},
     {{ "chap_num": 2, "outline": "Tóm tắt kịch tính chương 2..." }},
@@ -240,25 +368,41 @@ Trả về chính xác cấu trúc JSON sau:
         
         system_writer_prompt = f"""Bạn là THE GHOSTWRITER - Nhà văn truyện mạng sảng văn/vả mặt số 1 Việt Nam. Bạn có văn phong miêu tả cực kỳ sống động, chân thực, sắc sảo.
 QUY TẮC VIẾT 10/10 CHUYÊN NGHIỆP:
-1. SHOW, DON'T TELL: Miêu tả chi tiết hành động vật lý, nét mặt, sự run rẩy, giọt mồ hôi, hay tiếng giày gót nhọn giẫm xuống sàn bê tông. Tránh các tính từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'.
-2. HỘI THOẠI ĐINH TAI NHỨC ÓC: Các câu thoại sắc lẹm, thể hiện sự kiêu ngạo của kẻ thù trước khi bị vả mặt, và sự điềm tĩnh tối thượng của nhân vật chính.
-3. CHI TIẾT KINH DOANH & ĐỜI SỐNG THỰC TẾ TẠI VIỆT NAM: Sử dụng các chi tiết thật về cơ cấu cổ đông, sao kê tài chính ngân hàng Việt Nam, luật doanh nghiệp Việt Nam, cơ quan nhà nước (Ủy ban Chứng khoán, C03, Sở Kế hoạch Đầu tư), và thói quen sinh hoạt bản địa.
-4. ĐỘ DÀI CỰC KHỦNG (1000 - 1500 TỪ): Bắt buộc viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Dung lượng bắt buộc phải đạt từ 1000 đến 1500 từ (khoảng 6000 - 9000 ký tự tiếng Việt bao gồm khoảng trắng). Tuyệt đối không được viết tóm tắt hay kết thúc chương quá nhanh.
-5. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em> để trình bày nội dung sạch sẽ.
+1. TUÂN THỦ TUYỆT ĐỐI TÊN NHÂN VẬT & TỔ CHỨC:
+   * Nam chính: "{selected_protagonist}"
+   * Nữ trợ lý/Nữ chính đồng hành: "{selected_helper}"
+   * Phản diện: "{selected_villain}"
+   * Công ty chính diện/Bảo trợ: "{selected_good_company}"
+   * Tập đoàn phản diện: "{selected_evil_company}"
+   * Bối cảnh: "{selected_setting}"
+2. SHOW, DON'T TELL: Miêu tả chi tiết hành động vật lý, nét mặt, sự run rẩy, giọt mồ hôi, hay tiếng giày gót nhọn giẫm xuống sàn bê tông. Tránh các tính từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'.
+3. HỘI THOẠI ĐINH TAI NHỨC ÓC: Các câu thoại sắc lẹm, thể hiện sự kiêu ngạo của kẻ thù trước khi bị vả mặt, và sự điềm tĩnh tối thượng của nhân vật chính.
+4. CHI TIẾT KINH DOANH & ĐỜI SỐNG THỰC TẾ TẠI VIỆT NAM: Sử dụng các chi tiết thật về cơ cấu cổ đông, sao kê tài chính ngân hàng Việt Nam, luật doanh nghiệp Việt Nam, cơ quan nhà nước (Ủy ban Chứng khoán, C03, Sở Kế hoạch Đầu tư), và thói quen sinh hoạt bản địa.
+5. ĐỘ DÀI CỰC KHỦNG (1000 - 1500 TỪ): Bắt buộc viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Dung lượng bắt buộc phải đạt từ 1000 đến 1500 từ (khoảng 6000 - 9000 ký tự tiếng Việt bao gồm khoảng trắng). Tuyệt đối không được viết tóm tắt hay kết thúc chương quá nhanh.
+6. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em> để trình bày nội dung sạch sẽ.
 
 CHỦ ĐỀ ĐANG VIẾT:
 Tên chủ đề: {selected_trope['trope_title']}
 Hướng dẫn bối cảnh: {selected_trope['concept_guidelines']}"""
 
+        # Prepare context of previous chapters to maintain perfect continuity
+        prev_chapters_context = ""
+        if chapters_content:
+            prev_titles = [c['title'] for c in chapters_content]
+            prev_chapters_context += f"- Danh sách các chương trước: {json.dumps(prev_titles, ensure_ascii=False)}\n"
+            
+            # Lấy toàn bộ nội dung của chương liền kề trước đó (chương i-1) để làm cơ sở nối tiếp mạch lạc
+            last_chap = chapters_content[-1]
+            prev_chapters_context += f"- NỘI DUNG CHI TIẾT CHƯƠNG TRƯỚC ĐÓ ({last_chap['title']}) - HÃY ĐỌC LẠI ĐỂ VIẾT NỐI TIẾP TRÁNH TRÙNG LẶP HOẶC LỆCH BỐI CẢNH:\n"
+            prev_chapters_context += f"\"\"\"\n{last_chap['content']}\n\"\"\"\n"
+
         user_writer_prompt = f"""Dựa trên bản thiết kế truyện sau:
 - Tựa truyện: {novel_data['title']}
 - Giới thiệu thế giới quan & nhân vật: {novel_data['intro']}
 - Tác giả: {novel_data['author']}
-
-Hãy viết CHI TIẾT CHƯƠNG {i} của bộ truyện.
+ 
 - Dàn ý Chương {i}: {outline_item['outline']}
-{f"- Các chương trước đã viết tóm tắt: {json.dumps([c['title'] for c in chapters_content], ensure_ascii=False)}" if chapters_content else ""}
-
+{prev_chapters_context}
 YÊU CẦU ĐẶC BIỆT VỀ ĐỘ DÀI:
 Bắt buộc nội dung trong phần "content" phải có độ dài tối thiểu từ 1000 từ trở lên (khoảng 6000 ký tự tiếng Việt đến 9000 ký tự). Hãy viết cực kỳ chi tiết, diễn giải từng hành động, suy nghĩ và hội thoại chậm rãi để đạt đủ độ dài này. Không viết tóm tắt!
 
@@ -293,23 +437,69 @@ YÊU CẦU TRẢ VỀ dạng JSON chính xác:
                 
         time.sleep(2)
         
-    # Step 5: Construct Cover Image URL via Pollinations
-    escaped_prompt = urllib.parse.quote(novel_data['cover_prompt'] + ", masterpiece, highly detailed book cover, anime illustration style, vivid lighting")
-    cover_url = f"https://image.pollinations.ai/prompt/{escaped_prompt}?width=800&height=1200&seed={random.randint(1, 99999)}&nologo=true"
+    # Step 5: Construct premium cover offline using base covers and cover_overlay_standard.py
+    import subprocess
+    import shutil
     
-    # Step 6: Upload publish_novel.php helper script via FTP
-    print("\nUploading publish_novel.php endpoint to FTP root...")
+    base_idx = random.randint(14, 63)
+    base_cover_file = f"base_cover_{base_idx}.png"
+    pending_cover_file = "pending_cover.png"
+    
+    if not os.path.exists(base_cover_file):
+        # Fallback if selected index doesn't exist
+        for idx in range(14, 64):
+            if os.path.exists(f"base_cover_{idx}.png"):
+                base_cover_file = f"base_cover_{idx}.png"
+                break
+                
+    print(f"\n🎨 Offline Cover Engine: Compiling title onto {base_cover_file}...")
+    subtitle_text = f"Tác phẩm sảng văn đặc sắc của {novel_data['author']}"
+    try:
+        cmd = [
+            "python3", "cover_overlay_standard.py",
+            "--input", base_cover_file,
+            "--output", pending_cover_file,
+            "--title", novel_data['title'],
+            "--subtitle", subtitle_text
+        ]
+        res = subprocess.run(cmd, capture_output=True, text=True)
+        if res.returncode != 0:
+            print(f"⚠️ Cover overlay failed: {res.stderr}. Copying base cover directly.")
+            shutil.copy(base_cover_file, pending_cover_file)
+        else:
+            print("✓ Cover overlay generated successfully.")
+    except Exception as ce:
+        print(f"⚠️ Cover overlay exception: {ce}. Copying base cover directly.")
+        shutil.copy(base_cover_file, pending_cover_file)
+        
+    random_id = random.randint(100000, 999999)
+    cover_local_filename = f"cover_sideload_{random_id}.png"
+    
+    # Step 6: Upload files via FTP (Cover Sideload + Helper Script)
+    print("\nUploading cover and publish_novel.php endpoint via FTP...")
     try:
         ftp = ftplib.FTP(FTP_HOST, timeout=30)
         ftp.login(FTP_USER, FTP_PASS)
         
+        # Upload cover_sideload to uploads folder
+        ftp.cwd("wp-content/uploads")
+        with open(pending_cover_file, "rb") as f:
+            ftp.storbinary(f"STOR {cover_local_filename}", f)
+        print(f"✓ Uploaded sideload cover: {cover_local_filename}")
+        
+        # Reset directory to root and upload publish helper
+        ftp.cwd("/")
         with open("publish_novel.php", "rb") as f:
             ftp.storbinary("STOR publish_novel.php", f)
-        print("✓ Uploaded publish_novel.php to server.")
+        print("✓ Uploaded publish_novel.php helper script.")
         ftp.quit()
     except Exception as e:
-        print("FTP Upload Error for helper script:", e)
+        print("FTP Sideload Error:", e)
         raise SystemExit(e)
+        
+    # Clean up local pending cover file
+    if os.path.exists(pending_cover_file):
+        os.remove(pending_cover_file)
         
     # Step 7: Trigger story publication via HTTP call to publish_novel.php
     print("\nTriggering novel publication to doctieuthuyet.com database...")
@@ -319,7 +509,7 @@ YÊU CẦU TRẢ VỀ dạng JSON chính xác:
         "intro": novel_data['intro'],
         "author": novel_data['author'],
         "genre": novel_data['genre'],
-        "cover_url": cover_url,
+        "cover_local_filename": cover_local_filename,
         "chapters": chapters_content
     }
     

@@ -557,12 +557,12 @@ get_header();
 }
 @media (max-width: 600px) {
     .mkm-card-btns {
-        flex-direction: column !important;
+        flex-direction: row !important;
         gap: 6px !important;
     }
     .mkm-btn-card {
-        padding: 6px 4px !important;
-        font-size: 10px !important;
+        padding: 6px 2px !important;
+        font-size: 9px !important;
     }
 }
 
@@ -586,7 +586,7 @@ get_header();
         <div class="swiper mkm-main-swiper">
             <div class="swiper-wrapper">
             <?php while($slider_q->have_posts()): $slider_q->the_post();
-                $s_cover = get_the_post_thumbnail_url(null,'large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                $s_cover = get_the_post_thumbnail_url(null,'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                 $s_exc   = wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 350, '...');
                 $s_date  = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' trước';
                 $s_cats  = wp_get_post_terms(get_the_ID(),'the_loai');
@@ -731,7 +731,7 @@ get_header();
                 <?php
                 $q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'no_found_rows' => true]);
                 while ($q->have_posts()) : $q->the_post();
-                    $img = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    $img = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                     
                     // Fetch real view counts, fallback to _views or random view counts
                     $views = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
@@ -779,15 +779,15 @@ get_header();
                         </a>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
                             <div style="display:flex; gap:6px; color:#4b5563; font-size:10px; align-items:center; font-weight:500;">
-                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views); ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#047857;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count; ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#b45309;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#047857; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count; ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#b45309; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time); ?></span>
                             </div>
-                            <span style="background:rgba(249, 115, 22, 0.15); color:#7c2d12; border:1px solid rgba(249, 115, 22, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display); ?></span>
+                            <span class="mkm-card-meta-badge" style="background:rgba(249, 115, 22, 0.15); color:#7c2d12; border:1px solid rgba(249, 115, 22, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display); ?></span>
                         </div>
                         <div class="mkm-card-btns">
                             <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
-                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new" title="<?php echo esc_attr($latest_chap_display); ?>"><?php echo esc_html($latest_chap_display); ?></a>
+                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new" title="<?php echo esc_attr($latest_chap_display); ?>">Chương mới nhất</a>
                         </div>
                     </div>
                 </div>
@@ -807,7 +807,7 @@ get_header();
                 <?php
                 $q2 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'orderby' => 'comment_count', 'no_found_rows' => true]);
                 while ($q2->have_posts()) : $q2->the_post();
-                    $img2 = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    $img2 = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                     
                     // Fetch real view counts, fallback to _views or random view counts
                     $views2 = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
@@ -855,15 +855,15 @@ get_header();
                         </a>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
                             <div style="display:flex; gap:6px; color:#4b5563; font-size:10px; align-items:center; font-weight:500;">
-                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views2); ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#047857;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count2; ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#b45309;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time2); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views2); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#047857; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count2; ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#b45309; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time2); ?></span>
                             </div>
-                            <span style="background:rgba(249, 115, 22, 0.15); color:#7c2d12; border:1px solid rgba(249, 115, 22, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display2); ?></span>
+                            <span class="mkm-card-meta-badge" style="background:rgba(249, 115, 22, 0.15); color:#7c2d12; border:1px solid rgba(249, 115, 22, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display2); ?></span>
                         </div>
                         <div class="mkm-card-btns">
                             <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
-                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new" title="<?php echo esc_attr($latest_chap_display2); ?>"><?php echo esc_html($latest_chap_display2); ?></a>
+                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new" title="<?php echo esc_attr($latest_chap_display2); ?>">Chương mới nhất</a>
                         </div>
                     </div>
                 </div>
@@ -883,7 +883,7 @@ get_header();
                 <?php
                 $q3 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'offset' => 12, 'no_found_rows' => true]);
                 while ($q3->have_posts()) : $q3->the_post();
-                    $img3 = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    $img3 = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                     
                     // Fetch real view counts, fallback to _views or random view counts
                     $views3 = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
@@ -917,15 +917,15 @@ get_header();
                         </a>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
                             <div style="display:flex; gap:6px; color:#4b5563; font-size:10px; align-items:center; font-weight:500;">
-                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views3); ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#047857;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count3; ?></span>
-                                <span style="display:flex; align-items:center; gap:2px; color:#b45309;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time3); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views3); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#047857; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count3; ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#b45309; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time3); ?></span>
                             </div>
-                            <span style="background:rgba(16, 185, 129, 0.15); color:#047857; border:1px solid rgba(16, 185, 129, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display3); ?></span>
+                            <span class="mkm-card-meta-badge" style="background:rgba(16, 185, 129, 0.15); color:#047857; border:1px solid rgba(16, 185, 129, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display3); ?></span>
                         </div>
                         <div class="mkm-card-btns">
                             <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
-                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new" title="<?php echo esc_attr($latest_chap_display3); ?>"><?php echo esc_html($latest_chap_display3); ?></a>
+                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new" title="<?php echo esc_attr($latest_chap_display3); ?>">Chương mới nhất</a>
                         </div>
                     </div>
                 </div>
@@ -973,7 +973,7 @@ get_header();
                     $ri = 1;
                     $max_views = 20000;
                     while ($bxh->have_posts()) : $bxh->the_post();
-                        $rthumb = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                        $rthumb = get_the_post_thumbnail_url(null, 'thumbnail') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                         $views = (int)get_post_meta(get_the_ID(), '_views', true);
                         if($views < 1000) $views = rand(1000, 20000); // mock data if empty
                         
@@ -1089,9 +1089,7 @@ get_header();
                         $t_views = number_format($team['views'], 0, ',', '.');
                         $t_percent = round(($team['views'] / $team_max) * 100);
                         $avatar_path = str_replace(get_template_directory_uri(), get_template_directory(), $team['avatar']);
-                        $t_avatar = file_exists($avatar_path)
-                            ? $team['avatar']
-                            : 'https://ui-avatars.com/api/?name='.urlencode($team['name']).'&background=random&color=fff';
+                        $t_avatar = 'https://ui-avatars.com/api/?name='.urlencode($team['name']).'&background=random&color=fff';
                     ?>
                     
                     <?php if($tri === 1): ?>

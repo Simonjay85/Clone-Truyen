@@ -205,17 +205,15 @@ function temply_ajax_create_story() {
         wp_set_object_terms($post_id, intval($term->term_id), 'the_loai');
     }
 
-    // 3. Automated Image Generation via Pollinations.ai 
-    // Stable Diffusion - No API Key Needed!
-    $escaped_prompt = urlencode($data['cover_prompt'] . ", masterpiece, best quality, highly detailed cover art");
-    $image_url = "https://image.pollinations.ai/prompt/" . $escaped_prompt . "?width=600&height=900&nologo=true";
-    
-    $thumb_id = temply_upload_external_image($image_url, $post_id, $data['title']);
+    // 3. Cover Image
+    // Không tự gọi API sinh ảnh ngoài. Tạo cover bằng ChatGPT Image Generation,
+    // rồi upload/gắn featured image bằng workflow upload cover riêng.
+    $thumb_id = 0;
     
     wp_send_json_success([
         'truyen_id' => $post_id,
         'title' => $data['title'],
-        'thumb' => $thumb_id ? 'Đã cài Cover Ảnh AI' : 'Lỗi cài Cover'
+        'thumb' => 'Chưa gắn cover tự động. Hãy dùng ChatGPT Image Generation để tạo ảnh bìa.'
     ]);
 }
 

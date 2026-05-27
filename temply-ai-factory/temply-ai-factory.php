@@ -340,31 +340,33 @@ function temply_api_backfill_cover() {
     $post = $q->posts[0];
     
     $title = $post->post_title;
-    $prompt = "A simple, clean, minimalist flat vector illustration representing: " . $title . " web design, corporate aesthetics, 8k";
-    if($post->post_type === 'truyen') {
-        $prompt = "Vietnamese web novel book cover art, illustration, fantasy anime style, professional digital painting, title concept: " . $title . " masterpiece";
+    $default_cover_path = get_template_directory() . '/img_data/images/no-image-cover-v5.png';
+    if (!file_exists($default_cover_path)) {
+        $default_cover_path = ABSPATH . 'wp-content/themes/tehi-theme/img_data/images/no-image-cover-v5.png';
     }
     
-    $img_url = "https://image.pollinations.ai/prompt/" . rawurlencode($prompt) . "?width=800&height=600&seed=" . wp_rand(1, 99999) . "&nologo=true";
-    
-    require_once(ABSPATH . 'wp-admin/includes/media.php');
-    require_once(ABSPATH . 'wp-admin/includes/file.php');
-    require_once(ABSPATH . 'wp-admin/includes/image.php');
-    
-    $tmp = download_url($img_url, 30);
-    if(is_wp_error($tmp)) return rest_ensure_response(['status'=>'error_download', 'msg' => $tmp->get_error_message()]);
-    
-    $file_array = [
-        'name' => 'cover-' . $post->ID . '-' . wp_rand(100,999) . '.jpg',
-        'tmp_name' => $tmp
-    ];
-    
-    $att_id = media_handle_sideload($file_array, $post->ID);
-    if(is_wp_error($att_id)) {
-        @unlink($tmp);
-        return rest_ensure_response(['status'=>'error_sideload', 'msg' => $att_id->get_error_message()]);
+    if (file_exists($default_cover_path)) {
+        $tmp = tempnam(get_temp_dir(), 'cover');
+        if (copy($default_cover_path, $tmp)) {
+            $file_array = [
+                'name' => 'cover-' . $post->ID . '-fallback.png',
+                'tmp_name' => $tmp
+            ];
+            require_once(ABSPATH . 'wp-admin/includes/media.php');
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+            require_once(ABSPATH . 'wp-admin/includes/image.php');
+            
+            $att_id = media_handle_sideload($file_array, $post->ID);
+            if (is_wp_error($att_id)) {
+                @unlink($tmp);
+                return rest_ensure_response(['status'=>'error_sideload', 'msg' => $att_id->get_error_message()]);
+            }
+            set_post_thumbnail($post->ID, $att_id);
+            return rest_ensure_response(['status'=>'success', 'post_id'=>$post->ID, 'title'=>$title]);
+        } else {
+            return rest_ensure_response(['status'=>'error_copy', 'msg' => 'Failed to copy default cover.']);
+        }
+    } else {
+        return rest_ensure_response(['status'=>'error_file_missing', 'msg' => 'Default cover not found.']);
     }
-    
-    set_post_thumbnail($post->ID, $att_id);
-    return rest_ensure_response(['status'=>'success', 'post_id'=>$post->ID, 'title'=>$title]);
 }

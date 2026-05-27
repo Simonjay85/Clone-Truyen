@@ -1,0 +1,803 @@
+{
+  "setting_distribution": {
+    "Hà Nội": 14,
+    "Đô thị (Chung)": 24,
+    "Sài Gòn / TP.HCM": 4,
+    "Phú Quốc": 1,
+    "Miền Tây": 2,
+    "Đà Nẵng": 1,
+    "Hải Phòng": 3,
+    "Đà Lạt": 1
+  },
+  "theme_distribution": {
+    "Trà / Chè": 4,
+    "Y học / Dược phẩm": 8,
+    "Nông nghiệp / Ẩm thực": 5,
+    "Nghệ thuật / Thủ công mỹ nghệ": 1,
+    "Công nghệ / Tài chính số": 2,
+    "Ẩn danh / Giả nghèo": 26,
+    "Bất động sản / Resort": 3,
+    "Chiến thần / Bảo vệ ẩn thân": 1
+  },
+  "stories": [
+    {
+      "id": 3954,
+      "title": "Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội",
+      "date": "2026-05-23 17:09:35",
+      "chapters": 8,
+      "setting": "Hà Nội",
+      "theme": "Trà / Chè",
+      "extracted_names": [
+        "Sofitel Legend Metropole",
+        "Vua Trà Shan",
+        "Tuyết Bị Hào",
+        "Môn Đuổi Khỏi",
+        "Cửa Lật Kèo",
+        "Nhờ Bằng Sáng",
+        "Chế Trăm Tỷ",
+        "Tiễn Kẻ Phản"
+      ]
+    },
+    {
+      "id": 3940,
+      "title": "Bác Sĩ Đông Y Bị Đuổi Khỏi Viện Phổi, Mũi Kim Thần Đông Tây Kết Hợp Vả Sập Tập Đoàn Phản Bội",
+      "date": "2026-05-23 13:09:18",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Y học / Dược phẩm",
+      "extracted_names": [
+        "Viện Phổi Quốc",
+        "Bác Sĩ Đông",
+        "Bị Đuổi Khỏi",
+        "Mũi Kim Thần",
+        "Đông Tây Kết",
+        "Hợp Vả Sập",
+        "Tập Đoàn Phản"
+      ]
+    },
+    {
+      "id": 3930,
+      "title": "Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ",
+      "date": "2026-05-23 09:12:06",
+      "chapters": 8,
+      "setting": "Sài Gòn / TP.HCM",
+      "theme": "Nông nghiệp / Ẩm thực",
+      "extracted_names": [
+        "Nghệ Nhân Cacao",
+        "Bị Vị Hôn",
+        "Thê Đuổi Đi",
+        "Socola Trăm Tỷ",
+        "Vả Sập Tập",
+        "Đoàn Hóa Chất",
+        "Ngày Hội Chợ"
+      ]
+    },
+    {
+      "id": 3920,
+      "title": "Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả",
+      "date": "2026-05-23 06:30:39",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Nghệ thuật / Thủ công mỹ nghệ",
+      "extracted_names": [
+        "Nghệ Nhân Sơn",
+        "Mài Bị Khinh",
+        "Rẻ Đuổi Khỏi",
+        "Xưởng Tìm Ra",
+        "Màu Sơn Thất",
+        "Truyền Đè Bẹp",
+        "Tập Đoàn Tranh"
+      ]
+    },
+    {
+      "id": 3873,
+      "title": "THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG",
+      "date": "2026-05-22 17:26:44",
+      "chapters": 8,
+      "setting": "Hà Nội",
+      "theme": "Y học / Dược phẩm",
+      "extracted_names": [
+        "Lương Minh Khải"
+      ]
+    },
+    {
+      "id": 3861,
+      "title": "Thiên Tài Blockchain Phố Nguyễn Huệ: Bị Cướp Token Nghìn Tỷ, Tôi Hack Ngược Cả Sàn",
+      "date": "2026-05-22 17:12:33",
+      "chapters": 10,
+      "setting": "Đô thị (Chung)",
+      "theme": "Công nghệ / Tài chính số",
+      "extracted_names": [
+        "Thiên Tài Blockchain",
+        "Phố Nguyễn Huệ",
+        "Bị Cướp Token",
+        "Tôi Hack Ngược"
+      ]
+    },
+    {
+      "id": 3849,
+      "title": "Vua Sầu Riêng Đắk Nông: Bị Đốt Vườn Nghìn Tỷ, Tôi Trồng Lại Từ Tro Tàn",
+      "date": "2026-05-22 17:12:01",
+      "chapters": 10,
+      "setting": "Đô thị (Chung)",
+      "theme": "Nông nghiệp / Ẩm thực",
+      "extracted_names": [
+        "Vua Sầu Riêng",
+        "Bị Đốt Vườn",
+        "Tôi Trồng Lại",
+        "Từ Tro Tàn"
+      ]
+    },
+    {
+      "id": 3837,
+      "title": "Đạo Diễn Phim Trường Cần Giờ: Bị Cướp Kịch Bản Oscar, Tôi Quay Phim Chấn Động Cannes",
+      "date": "2026-05-22 17:11:31",
+      "chapters": 10,
+      "setting": "Sài Gòn / TP.HCM",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Đạo Diễn Phim",
+        "Trường Cần Giờ",
+        "Bị Cướp Kịch",
+        "Tôi Quay Phim",
+        "Chấn Động Cannes"
+      ]
+    },
+    {
+      "id": 3825,
+      "title": "Chúa Đảo Resort Phú Quốc: Bị Đuổi Khỏi Resort Mình Xây, Tôi Mua Cả Hòn Đảo",
+      "date": "2026-05-22 17:11:01",
+      "chapters": 10,
+      "setting": "Phú Quốc",
+      "theme": "Bất động sản / Resort",
+      "extracted_names": [
+        "Chúa Đảo Resort",
+        "Bị Đuổi Khỏi",
+        "Resort Mình Xây",
+        "Tôi Mua Cả"
+      ]
+    },
+    {
+      "id": 3813,
+      "title": "Thần Đồng Piano Nhạc Viện: Bị Cấm Biểu Diễn, Tôi Chấn Động Chopin Competition",
+      "date": "2026-05-22 17:10:31",
+      "chapters": 10,
+      "setting": "Đô thị (Chung)",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Hồ Chí Minh",
+        "Lâm Hoàng Phúc",
+        "Thần Đồng Piano",
+        "Bị Cấm Biểu",
+        "Tôi Chấn Động"
+      ]
+    },
+    {
+      "id": 3801,
+      "title": "Vua Lúa Gạo Đồng Tháp: Nông Dân Bị Ép Giá, Tôi Xây Đế Chế Gạo Xuất Khẩu",
+      "date": "2026-05-22 17:10:01",
+      "chapters": 10,
+      "setting": "Miền Tây",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Vua Lúa Gạo",
+        "Nông Dân Bị",
+        "Tôi Xây Đế",
+        "Chế Gạo Xuất"
+      ]
+    },
+    {
+      "id": 3789,
+      "title": "Kiến Trúc Sư Phố Cổ Hà Nội: Bị Cướp Bản Vẽ Di Sản, Tôi Cứu Cả Khu Phố",
+      "date": "2026-05-22 17:09:31",
+      "chapters": 10,
+      "setting": "Hà Nội",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Kiến Trúc Sư",
+        "Phố Cổ Hà",
+        "Bị Cướp Bản",
+        "Vẽ Di Sản",
+        "Tôi Cứu Cả"
+      ]
+    },
+    {
+      "id": 3769,
+      "title": "Thợ Nuôi Trai Bị Cướp Ngọc Đen Đuổi Khỏi Vịnh, Trở Lại Lật Kèo Đoạt Lại Tập Đoàn Ngọc Trai Nghìn Tỷ",
+      "date": "2026-05-22 17:09:01",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Trịnh Hoàng Lâm",
+        "Ti  Thợ Nuôi",
+        "Trai Bị Cướp",
+        "Ngọc Đen Đuổi",
+        "Trở Lại Lật",
+        "Kèo Đoạt Lại",
+        "Tập Đoàn Ngọc",
+        "Trai Nghìn Tỷ"
+      ]
+    },
+    {
+      "id": 3767,
+      "title": "Ông Trùm Logistics Tân Cảng: Bị Phản Bội Mất Container Nghìn Tỷ, Tôi Thâu Tóm Ngược",
+      "date": "2026-05-22 17:09:00",
+      "chapters": 10,
+      "setting": "Đà Nẵng",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Trần Thế Hải",
+        "Trùm Logistics Tân",
+        "Bị Phản Bội",
+        "Mất Container Nghìn",
+        "Tôi Thâu Tóm"
+      ]
+    },
+    {
+      "id": 3755,
+      "title": "Bác Sĩ Thẩm Mỹ Sài Gòn: Bị Vu Oan Phẫu Thuật Hỏng, Tôi Lật Mặt Cả Bệnh Viện",
+      "date": "2026-05-22 17:08:30",
+      "chapters": 10,
+      "setting": "Sài Gòn / TP.HCM",
+      "theme": "Y học / Dược phẩm",
+      "extracted_names": [
+        "Trịnh Xuân Huy",
+        "Bác Sĩ Thẩm",
+        "Mỹ Sài Gòn",
+        "Bị Vu Oan",
+        "Phẫu Thuật Hỏng",
+        "Tôi Lật Mặt",
+        "Cả Bệnh Viện"
+      ]
+    },
+    {
+      "id": 3743,
+      "title": "Nữ Hoàng Trà Sen Tây Hồ: Bị Đuổi Khỏi Gia Tộc, Cô Xây Đế Chế Trà Nghìn Tỷ",
+      "date": "2026-05-22 17:07:56",
+      "chapters": 10,
+      "setting": "Hà Nội",
+      "theme": "Trà / Chè",
+      "extracted_names": [
+        "Lê Minh Hùng",
+        "Lê Gia Trà",
+        "Nữ Hoàng Trà",
+        "Sen Tây Hồ",
+        "Bị Đuổi Khỏi",
+        "Cô Xây Đế",
+        "Chế Trà Nghìn"
+      ]
+    },
+    {
+      "id": 3724,
+      "title": "Kỹ Sư Vắc Xin Bị Sa Thải Vì Không Gian Lận, Bản Quyền Vắc Xin Vả Sập Tập Đoàn Phản Bội",
+      "date": "2026-05-22 13:08:56",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Y học / Dược phẩm",
+      "extracted_names": [
+        "Kỹ Sư Vắc",
+        "Xin Bị Sa",
+        "Thải Vì Không",
+        "Bản Quyền Vắc",
+        "Xin Vả Sập",
+        "Tập Đoàn Phản"
+      ]
+    },
+    {
+      "id": 3633,
+      "title": "Nghệ Nhân Trà Sen Bị Khinh Rẻ Trục Xuất, Lật Kèo Đêm Hội Trà Quốc Tế Đưa Kẻ Phản Bội Vào Tù",
+      "date": "2026-05-22 09:09:02",
+      "chapters": 8,
+      "setting": "Hà Nội",
+      "theme": "Trà / Chè",
+      "extracted_names": [
+        "Nghệ Nhân Trà",
+        "Sen Bị Khinh",
+        "Rẻ Trục Xuất",
+        "Lật Kèo Đêm",
+        "Hội Trà Quốc",
+        "Tế Đưa Kẻ",
+        "Phản Bội Vào"
+      ]
+    },
+    {
+      "id": 2815,
+      "title": "Bị Đuổi Khỏi Lab Đêm Trước IPO, Hóa Ra Anh Nắm Công Thức Trăm Tỷ",
+      "date": "2026-05-22 05:08:59",
+      "chapters": 11,
+      "setting": "Hà Nội",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Năm Hà Nội",
+        "Trần Hữu Nam",
+        "Bị Đuổi Khỏi",
+        "Lab Đêm Trước",
+        "Hóa Ra Anh",
+        "Nắm Công Thức"
+      ]
+    },
+    {
+      "id": 2808,
+      "title": "Người Đưa Thư Bị Cả Tòa Nhà Khinh, Hóa Ra Anh Là Chủ Toàn Bộ Tháp",
+      "date": "2026-05-22 01:41:04",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Bất động sản / Resort",
+      "extracted_names": [
+        "Đinh Xuân Phú",
+        "Người Đưa Thư",
+        "Bị Cả Tòa",
+        "Hóa Ra Anh",
+        "Là Chủ Toàn"
+      ]
+    },
+    {
+      "id": 2801,
+      "title": "Trọng Tài Bị Ngôi Sao Nhổ Nước Bọt, Hóa Ra Là Cựu Đội Trưởng Tuyển QG",
+      "date": "2026-05-22 01:40:33",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Trọng Tài Bị",
+        "Ngôi Sao Nhổ",
+        "Hóa Ra Là",
+        "Cựu Đội Trưởng"
+      ]
+    },
+    {
+      "id": 2794,
+      "title": "Người Làm Vườn Bị Chủ Biệt Thự Đuổi, Hóa Ra Anh Thiết Kế Cả Khu Đô Thị",
+      "date": "2026-05-22 01:40:04",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Bất động sản / Resort",
+      "extracted_names": [
+        "Vũ Quốc Hùng",
+        "Nguyễn Lan Hương",
+        "Người Làm Vườn",
+        "Bị Chủ Biệt",
+        "Hóa Ra Anh",
+        "Thiết Kế Cả",
+        "Khu Đô Thị"
+      ]
+    },
+    {
+      "id": 2787,
+      "title": "Giáo Viên Làng Bị Hiệu Trưởng Sỉ Nhục, Bộ Giáo Dục Bổ Nhiệm Anh Làm Thanh Tra",
+      "date": "2026-05-22 01:39:33",
+      "chapters": 8,
+      "setting": "Hà Nội",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Lê Thanh Bình",
+        "Giáo Viên Làng",
+        "Bị Hiệu Trưởng",
+        "Bộ Giáo Dục",
+        "Bổ Nhiệm Anh",
+        "Làm Thanh Tra"
+      ]
+    },
+    {
+      "id": 2780,
+      "title": "Cô Gái Bán Hoa Bị Đuổi Khỏi Tiệc Cưới Hào Môn, Cùng Ngày Cô Gõ Sàn HOSE",
+      "date": "2026-05-22 01:36:51",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Phạm Thị Hương",
+        "Cô Gái Bán",
+        "Hoa Bị Đuổi",
+        "Khỏi Tiệc Cưới",
+        "Cùng Ngày Cô"
+      ]
+    },
+    {
+      "id": 2773,
+      "title": "Chồng Nghèo Bị Họ Hàng Khinh Dự Tiệc Hào Môn, Hóa Ra Anh Là Khách Mời VIP Của Sự Kiện Đó",
+      "date": "2026-05-22 01:33:53",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Chồng Nghèo Bị",
+        "Họ Hàng Khinh",
+        "Dự Tiệc Hào",
+        "Hóa Ra Anh",
+        "Là Khách Mời",
+        "Của Sự Kiện"
+      ]
+    },
+    {
+      "id": 2766,
+      "title": "Trợ Lý Bị Sếp Nữ CEO Ngược Đãi, Sếp Mới Của Cô Chính Là Anh Sau Thâu Tóm Công Ty",
+      "date": "2026-05-22 01:33:22",
+      "chapters": 8,
+      "setting": "Sài Gòn / TP.HCM",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Phạm Tuấn Khoa",
+        "Bitexco Financial Tower",
+        "Trợ Lý Bị",
+        "Sếp Mới Của",
+        "Cô Chính Là",
+        "Anh Sau Thâu",
+        "Tóm Công Ty"
+      ]
+    },
+    {
+      "id": 2759,
+      "title": "Thợ Sửa Xe Bị Cả Xóm Khinh, Khi Đội Đua F1 Quốc Gia Tìm Đến Thuê Anh Làm Kỹ Sư Trưởng",
+      "date": "2026-05-22 01:32:53",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Hồ Chí Minh",
+        "Thợ Sửa Xe",
+        "Bị Cả Xóm",
+        "Khi Đội Đua",
+        "Quốc Gia Tìm",
+        "Đến Thuê Anh",
+        "Làm Kỹ Sư"
+      ]
+    },
+    {
+      "id": 2752,
+      "title": "Con Trai Nuôi Bị Đuổi Ra Khỏi Tập Đoàn, Di Chúc Ông Nội Trao Lại 70% Cổ Phần",
+      "date": "2026-05-22 01:32:23",
+      "chapters": 8,
+      "setting": "Hà Nội",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Lý Thường Kiệt",
+        "Kh  Con Trai",
+        "Nuôi Bị Đuổi",
+        "Ra Khỏi Tập",
+        "Nội Trao Lại"
+      ]
+    },
+    {
+      "id": 2745,
+      "title": "Tài Xế Taxi Bị Khách VIP Khinh Thường, Tài Xế Đó Sở Hữu Công Ty Taxi Lớn Nhất Thành Tâm",
+      "date": "2026-05-22 01:29:56",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Tài Xế Taxi",
+        "Tài Xế Đó",
+        "Sở Hữu Công",
+        "Ty Taxi Lớn",
+        "Nhất Thành Tâm"
+      ]
+    },
+    {
+      "id": 2738,
+      "title": "Vợ Đòi Ly Hôn Vì Chồng Thất Nghiệp, Ngày Ký Đơn Chồng Nhận Danh Hiệu Kiến Trúc Sư Quốc Gia",
+      "date": "2026-05-22 01:27:49",
+      "chapters": 8,
+      "setting": "Hà Nội",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Lý Quốc Sư",
+        "Lê   Vợ Đòi",
+        "Ly Hôn Vì",
+        "Chồng Thất Nghiệp",
+        "Ngày Ký Đơn",
+        "Chồng Nhận Danh",
+        "Hiệu Kiến Trúc",
+        "Sư Quốc Gia"
+      ]
+    },
+    {
+      "id": 2731,
+      "title": "Trưởng Phòng Bán Hàng Khinh Nhân Viên Mới, Nhân Viên Đó Là Chuyên Gia Tư Vấn Của Tập Đoàn Mẹ",
+      "date": "2026-05-22 01:27:15",
+      "chapters": 8,
+      "setting": "Hà Nội",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Vạn An Plaza",
+        "Nguyễn Văn Cừ",
+        "Trưởng Phòng Bán",
+        "Hàng Khinh Nhân",
+        "Nhân Viên Đó",
+        "Là Chuyên Gia",
+        "Tư Vấn Của",
+        "Tập Đoàn Mẹ"
+      ]
+    },
+    {
+      "id": 2724,
+      "title": "Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ",
+      "date": "2026-05-22 01:26:38",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Y học / Dược phẩm",
+      "extracted_names": [
+        "Buôn Ma Thuột",
+        "Cô Gái Làng",
+        "Bị Nhà Trai",
+        "Hào Môn Từ",
+        "Startup Nông Nghiệp",
+        "Của Cô Niêm"
+      ]
+    },
+    {
+      "id": 2717,
+      "title": "Thuyền Trưởng Tàu Cá Bị Chủ Cảng Ép Nợ, Hóa Ra Là Đại Gia Hàng Hải Đang Điều Tra Thâu Tóm",
+      "date": "2026-05-22 01:26:01",
+      "chapters": 8,
+      "setting": "Hải Phòng",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Cảng Hải Bình",
+        "Thuyền Trưởng Tàu",
+        "Cá Bị Chủ",
+        "Hóa Ra Là",
+        "Đại Gia Hàng",
+        "Hải Đang Điều",
+        "Tra Thâu Tóm"
+      ]
+    },
+    {
+      "id": 2710,
+      "title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+      "date": "2026-05-22 01:25:23",
+      "chapters": 5,
+      "setting": "Hà Nội",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Giáo Sư Đuổi",
+        "Học Trò Ra",
+        "Khỏi Lớp Vì",
+        "Học Trò Đó",
+        "Là Tác Giả",
+        "Giáo Trình Giáo",
+        "Sư Đang Dạy"
+      ]
+    },
+    {
+      "id": 2703,
+      "title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+      "date": "2026-05-22 01:24:48",
+      "chapters": 8,
+      "setting": "Hà Nội",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Đinh Tuấn Anh",
+        "Đại  Giáo Sư",
+        "Đuổi Học Trò",
+        "Ra Khỏi Lớp",
+        "Học Trò Đó",
+        "Là Tác Giả",
+        "Giáo Trình Giáo",
+        "Sư Đang Dạy"
+      ]
+    },
+    {
+      "id": 2696,
+      "title": "Nhà Chồng Khinh Tôi Không Biết Nấu Ăn, Tôi Giật Giải Đầu Bếp Số 1 Đông Nam Á Trước Mặt Họ",
+      "date": "2026-05-22 01:22:39",
+      "chapters": 8,
+      "setting": "Hà Nội",
+      "theme": "Nông nghiệp / Ẩm thực",
+      "extracted_names": [
+        "Trời Hà Nội",
+        "Nhà Chồng Khinh",
+        "Tôi Không Biết",
+        "Tôi Giật Giải",
+        "Đầu Bếp Số",
+        "Trước Mặt Họ"
+      ]
+    },
+    {
+      "id": 2689,
+      "title": "Giám Đốc Bệnh Viện Sa Thải Bác Sĩ Thực Tập, Hội Đồng Y Tế Quốc Gia Cử Người Điều Tra",
+      "date": "2026-05-22 01:22:07",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Y học / Dược phẩm",
+      "extracted_names": [
+        "Giám Đốc Bệnh",
+        "Viện Sa Thải",
+        "Bác Sĩ Thực",
+        "Hội Đồng Y",
+        "Tế Quốc Gia",
+        "Cử Người Điều"
+      ]
+    },
+    {
+      "id": 2682,
+      "title": "Bố Vợ Ép Ly Hôn Vì Tôi Nghèo Hèn, Công Ty Tỷ Đô Của Tôi Niêm Yết Sàn Chứng Khoán Hôm Đó",
+      "date": "2026-05-22 01:21:40",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Y học / Dược phẩm",
+      "extracted_names": [
+        "Nguyễn Văn Dũng",
+        "Log  Bố Vợ",
+        "Ly Hôn Vì",
+        "Tôi Nghèo Hèn",
+        "Công Ty Tỷ",
+        "Đô Của Tôi",
+        "Niêm Yết Sàn",
+        "Chứng Khoán Hôm"
+      ]
+    },
+    {
+      "id": 2675,
+      "title": "Sư Phụ Đuổi Tôi Khỏi Võ Quán Vì Hèn Yếu, Giải Vô Địch Quốc Gia Lộ Ra Thân Phận Thật",
+      "date": "2026-05-22 01:21:12",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Y học / Dược phẩm",
+      "extracted_names": [
+        "Trần Hải Phong",
+        "Sư Phụ Đuổi",
+        "Tôi Khỏi Võ",
+        "Quán Vì Hèn",
+        "Giải Vô Địch",
+        "Quốc Gia Lộ",
+        "Ra Thân Phận"
+      ]
+    },
+    {
+      "id": 2668,
+      "title": "Cô Vợ Hào Môn Khinh Tôi Vô Dụng, Cả Hà Ngoại Biết Tôi Là Chủ Tịch Tập Đoàn Thép",
+      "date": "2026-05-22 01:19:40",
+      "chapters": 8,
+      "setting": "Hà Nội",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Trần Đông Hải",
+        "Cô Vợ Hào",
+        "Môn Khinh Tôi",
+        "Cả Hà Ngoại",
+        "Biết Tôi Là",
+        "Chủ Tịch Tập"
+      ]
+    },
+    {
+      "id": 2658,
+      "title": "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp",
+      "date": "2026-05-22 01:08:51",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Trần Hoàng Vũ",
+        "Chàng Rể Ngọc",
+        "Linh Lật Kèo",
+        "Cứu Bị Cướp"
+      ]
+    },
+    {
+      "id": 2606,
+      "title": "Chàng Rể Vạch Trần Âm Mưu Gia Tộc Trầm Hương",
+      "date": "2026-05-21 21:08:48",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Diệp Thiên Lang",
+        "Chàng Rể Vạch",
+        "Mưu Gia Tộc"
+      ]
+    },
+    {
+      "id": 2587,
+      "title": "Thiên Tài Cầu Đường: Kỹ Sư Bị Sa Thải Đối Đầu Với Kẻ Cướp Bản Quyền",
+      "date": "2026-05-21 20:31:56",
+      "chapters": 8,
+      "setting": "Hải Phòng",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Thiên Tài Cầu",
+        "Kỹ Sư Bị",
+        "Sa Thải Đối",
+        "Đầu Với Kẻ",
+        "Cướp Bản Quyền"
+      ]
+    },
+    {
+      "id": 2573,
+      "title": "Đế Chế Gốm Sứ Bát Tràng: Phản Bội và Bùng Nổ",
+      "date": "2026-05-21 20:26:35",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Trà / Chè",
+      "extracted_names": [
+        "Nguyễn Quang Minh",
+        "Đế Chế Gốm",
+        "Sứ Bát Tràng"
+      ]
+    },
+    {
+      "id": 2561,
+      "title": "Ngọc Hoàng Tôm Hùm: Trận Chiến Khốc Liệt Giữa Ngư Dân Và Thương Láii",
+      "date": "2026-05-21 20:22:01",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Nông nghiệp / Ẩm thực",
+      "extracted_names": [
+        "Trần Hải Phong",
+        "Ngọc Hoàng Tôm",
+        "Trận Chiến Khốc",
+        "Liệt Giữa Ngư",
+        "Dân Và Thương"
+      ]
+    },
+    {
+      "id": 2549,
+      "title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ",
+      "date": "2026-05-21 19:53:14",
+      "chapters": 8,
+      "setting": "Miền Tây",
+      "theme": "Nông nghiệp / Ẩm thực",
+      "extracted_names": [
+        "Nguyễn Tấn Đạt",
+        "Bão Nổi Miền",
+        "Vương Quốc Sầu",
+        "Riêng Trăm Tỷ"
+      ]
+    },
+    {
+      "id": 2517,
+      "title": "Thiên Tài Fintech: Lật Kèo Tại PayBlock",
+      "date": "2026-05-21 18:59:38",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Công nghệ / Tài chính số",
+      "extracted_names": [
+        "Phạm Tuấn Kiệt",
+        "Thiên Tài Fintech",
+        "Lật Kèo Tại"
+      ]
+    },
+    {
+      "id": 2508,
+      "title": "Bảo Vệ Quèn Là Võ Thần: Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+      "date": "2026-05-21 18:59:22",
+      "chapters": 8,
+      "setting": "Hải Phòng",
+      "theme": "Chiến thần / Bảo vệ ẩn thân",
+      "extracted_names": [
+        "Bảo Vệ Quèn",
+        "Là Võ Thần",
+        "Phá Bẫy Buôn",
+        "Tỷ Cảng Đình"
+      ]
+    },
+    {
+      "id": 2497,
+      "title": "Công Thức Thuốc Bị Cướp: Bẫy IPO Dược Phẩm Nghìn Tỷ",
+      "date": "2026-05-21 18:58:22",
+      "chapters": 8,
+      "setting": "Đà Lạt",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Nguyễn Đức Trí",
+        "Công Thức Thuốc",
+        "Dược Phẩm Nghìn"
+      ]
+    },
+    {
+      "id": 2489,
+      "title": "Người Thừa Kế Trăm Tỷ Giả Nghèo: Thử Lòng Đại Gia",
+      "date": "2026-05-21 18:58:03",
+      "chapters": 8,
+      "setting": "Đô thị (Chung)",
+      "theme": "Ẩn danh / Giả nghèo",
+      "extracted_names": [
+        "Nguyễn Minh Triết",
+        "Người Thừa Kế",
+        "Trăm Tỷ Giả",
+        "Thử Lòng Đại"
+      ]
+    }
+  ]
+}

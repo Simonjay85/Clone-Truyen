@@ -1,0 +1,20 @@
+[    3223ms] Unexpected end of input
+[    3233ms] Uncaught ReferenceError: jQuery is not defined
+    at <anonymous> (https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js:1:240)
+    at <anonymous> (https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js:1:248)
+[    3236ms] TypeError: Cannot read properties of undefined (reading 'fn')
+    at https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/emojionearea.js:1711:7
+    at https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/emojionearea.js:23:9
+    at https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/emojionearea.js:25:2
+[    3237ms] Unexpected end of input
+[    3240ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/:247
+[    3240ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/:194
+[    3252ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/:0
+[    3252ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/:0
+[    3342ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/:222
+[    6629ms] ReferenceError: $ is not defined
+    at handleSkeletonLoad (https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/vh-skeleton.js:2:3)
+    at https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/vh-skeleton.js:46:5
+    at Array.forEach (<anonymous>)
+    at initializeVHSkeleton (https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/vh-skeleton.js:45:17)
+    at https://doctieuthuyet.com/:315:65

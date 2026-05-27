@@ -1,9 +1,6 @@
 import argparse
-import base64
 import os
-import random
 import time
-import urllib.parse
 
 import requests
 
@@ -59,33 +56,8 @@ def main():
                 print(f"[{post_id}] Dung anh nguon co san: {source_cover}")
                 payload = {"post_id": post_id, "image_url": source_cover}
             else:
-                if item.get("type") == "truyen":
-                    prompt = f"Vietnamese web novel book cover art, illustration, fantasy anime style, professional digital painting, title concept: {title} masterpiece"
-                else:
-                    prompt = f"A simple, clean, minimalist flat vector illustration representing: {title} web design, corporate aesthetics"
-
-                img_url = (
-                    "https://image.pollinations.ai/prompt/"
-                    f"{urllib.parse.quote(prompt)}?width=800&height=1200&seed={random.randint(1, 99999)}&nologo=true"
-                )
-                print(f"[{post_id}] Tao anh moi cho: {title}")
-                try:
-                    img_res = requests.get(img_url, timeout=45)
-                    if img_res.status_code == 429:
-                        print("Pollinations qua tai, cho 15s...")
-                        time.sleep(15)
-                        continue
-                    img_res.raise_for_status()
-                except Exception as exc:
-                    print("Loi tai anh:", exc)
-                    time.sleep(5)
-                    continue
-
-                payload = {
-                    "post_id": post_id,
-                    "image_b64": base64.b64encode(img_res.content).decode("utf-8"),
-                }
-                time.sleep(2)
+                print(f"[{post_id}] Bo qua: chua co anh nguon. Tao cover bang ChatGPT Image Generation roi upload lai.")
+                continue
 
             try:
                 up_res = requests.post(

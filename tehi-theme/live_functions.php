@@ -340,31 +340,66 @@ function tehi_seed_story_comments_if_empty($post_id) {
         return;
     }
 
-    $names = ['Lan Hương', 'Minh Nhật', 'Khánh Linh', 'Quốc Bảo', 'Ngọc Diệp', 'Thu Trang', 'Hữu Phước', 'Bích Trâm', 'Tuấn Phong', 'Mai Anh'];
+    $names = [
+        'Lan Hương', 'Minh Nhật', 'Khánh Linh', 'Quốc Bảo', 'Ngọc Diệp', 'Thu Trang', 
+        'Hữu Phước', 'Bích Trâm', 'Tuấn Phong', 'Mai Anh', 'Đức Thịnh', 'Thùy Chi', 
+        'Nguyễn Dũng', 'Quỳnh Hương', 'Bảo Lâm', 'Kim Ngân', 'Đăng Khoa', 'Ngọc Ánh', 
+        'Thế Anh', 'Phương Thảo', 'Hồng Nhung', 'Phan Khải', 'Vũ Phong', 'Thanh Hằng',
+        'Hoàng Nam', 'Tuyết Mai', 'Minh Tuấn', 'Thu Hà', 'Trọng Nghĩa', 'Cẩm Tú',
+        'Khắc Nam', 'Đinh Hưng', 'Thành Long', 'Mỹ Duyên', 'Tấn Đạt', 'Minh An', 
+        'Việt Anh', 'Khánh Vy', 'Minh Triết', 'Thanh Nhàn', 'Trần Quân', 'Ngọc Trinh'
+    ];
+
     $reviews = [
         'Truyện lôi cuốn quá chừng, tình tiết logic nhân vật nam chính ngầu xỉu! Chấm 5 sao cho truyện và nhóm dịch nhé.',
         'Lâu lắm mới đọc được bộ ngôn tình hay như thế này. Văn phong dịch rất mượt và có tâm, cảm ơn ad nhiều nha.',
         'Nội dung rất sâu sắc, không bị mì ăn liền như các truyện khác. Chờ ad cập nhật thêm chương mới hóng quá đi!',
         'Web đọc truyện thích thật sự, giao diện đẹp load nhanh và không có quảng cáo che màn hình. Mọi người nên đọc thử truyện này nha.',
-        'Truyện ngọt sủng siêu dễ thương, đọc giải trí cuối tuần cực kỳ hợp lý luôn ạ. Vote 5 sao!'
+        'Truyện ngọt sủng siêu dễ thương, đọc giải trí cuối tuần cực kỳ hợp lý luôn ạ. Vote 5 sao!',
+        'Đọc đấu trí gay cấn thực sự, các chiêu trò tài chính và pháp lý được tác giả viết cực kỳ chuẩn xác và logic, không hề buff quá đà.',
+        'Nữ chính thông minh sắc sảo chứ không phải kiểu bánh bèo chỉ biết khóc lóc. Thích hình tượng nữ cường lý trí thế này!',
+        'Cú lật kèo hay quá, đúng chuẩn sảng văn trí tuệ! Đọc mà sướng vô cùng.',
+        'Văn phong viết rất cuốn, tác giả chắc chắn có hiểu biết thực tế sâu sắc về giới đầu tư và kinh doanh.',
+        'Đọc mô tả các tình tiết mà thèm chảy nước miếng. Tác giả chắc chắn có kiến thức đời sống rất sâu sắc.',
+        'Truyện vả mặt cực gắt, gã chồng cũ và mẹ chồng coi thường nhân vật chính giờ thì tha hồ mà hối hận!',
+        'Quá hay, vừa sảng khoái vừa giàu tính nhân văn. Đọc một mạch hết luôn không dừng lại được.',
+        'Ý tưởng cốt truyện quá độc đáo và sát thực tế luôn á. Cách thắt nút mở nút cực kỳ thông minh.',
+        'Bối cảnh chân thực dã man, đọc mà nhập tâm ghê gớm. Đọc cuốn không dứt ra được, mong nhóm dịch ra chương mới nhanh nhanh nha.',
+        'Cơ hội trọng sinh lật ngược thế cờ quá sướng, đọc đã mắt thực sự!',
+        'Đọc chương nào sướng chương đó, vả mặt cực kỳ thuyết phục bằng chứng cứ hẳn hoi chứ không vô lý.',
+        'Nhân vật chính ẩn thân quá đỉnh, quả nhiên là người có thực lực thì không cần nói nhiều. Càng đọc càng mê.',
+        'Lật kèo khét lẹt dã man, xem bọn khinh người phải quỳ xuống xin lỗi mà đã cái nư! Rất đáng đọc.',
+        'Lối viết chắc tay, cốt truyện kịch tính nhiều plot twist bất ngờ. Một trong những bộ hay nhất năm nay.',
+        'Siêu phẩm sảng văn, đề cử nhiệt liệt nha cả nhà. Đọc giải trí cực kỳ.',
+        'Drama ngược tâm dã man, nhưng đoạn sau lật kèo vả mặt thì sướng vô cùng. Gieo gió gặp bão quả không sai.',
+        'Giao diện web mượt, đọc không quảng cáo, truyện lại hay nữa, tuyệt vời! Cảm ơn admin nhiều nha.',
+        'Chàng rể ẩn thế cứu vợ đỉnh quá, xứng đáng 5 sao! Càng về sau càng kịch tính.',
+        'Tình tiết nhanh, dồn dập, đọc không bị chán. Nhân vật phụ cũng có não chứ không bị dìm quá đà.',
+        'Tác giả bẻ lái khét lẹt, đọc mà tim đập thình thịch luôn. Hóng chương sau quá đi mất.',
+        'Mỗi chương đều có điểm nhấn riêng, không bị loãng. Hy vọng tác giả giữ vững phong độ.',
+        'Cực kỳ thích cách xây dựng nhân vật chính, bản lĩnh, lạnh lùng nhưng rất trọng tình nghĩa.',
+        'Đọc đi đọc lại vẫn thấy hay. Một bộ truyện xứng đáng được biết đến nhiều hơn.',
+        'Cốt truyện mạch lạc, không bị sạn. Team dịch siêu có tâm, câu từ chau chuốt mượt mà.',
+        'Mới lọt hố mà đọc một lèo mấy chục chương luôn. Nghiện mất rồi ad ơi, cứu em với!'
     ];
 
-    $num_to_seed = (($post_id * 3) % 2) + 3; // Seeds 3 or 4 comments persistently
+    $num_to_seed = (($post_id * 3) % 11) + 10; // Seeds between 10 and 20 comments persistently
     for ($i = 0; $i < $num_to_seed; $i++) {
         $name_idx = ($post_id + $i * 7) % count($names);
         $rev_idx = ($post_id + $i * 11) % count($reviews);
-        $rating = (($post_id + $i) % 5 === 0) ? 4 : 5;
+        $rating = (($post_id + $i) % 7 === 0) ? 4 : 5; // Mostly 5 stars, occasionally 4 stars
         
         $author_name = $names[$name_idx];
         $content = $reviews[$rev_idx];
         
-        $days_ago = ($post_id + $i * 13) % 30;
+        $days_ago = ($post_id + $i * 13) % 45;
         $comment_date = date('Y-m-d H:i:s', strtotime("-$days_ago days -{$i} hours"));
 
+        $email_prefix = sanitize_title($author_name) . $i;
         $commentdata = [
             'comment_post_ID'      => $post_id,
             'comment_author'       => $author_name,
-            'comment_author_email' => 'seeder' . $i . '@doctieuthuyet.com',
+            'comment_author_email' => $email_prefix . '@gmail.com',
             'comment_content'      => $content,
             'comment_type'         => 'comment',
             'comment_date'         => $comment_date,
@@ -811,60 +846,43 @@ function tehi_get_gemini_key() {
     return !empty($key) ? $key : TEMPLY_GEMINI_FALLBACK_KEY;
 }
 function tehi_call_ai_api($prompt, $jsonMode = false, $timeout = 60, $ai_model = 'gemini-2.5-flash') {
-    $gemini_key = get_option('temply_gemini_api_key', '');
+    $gemini_key = tehi_get_gemini_key();
     
-    if ($ai_model !== 'openai' && !empty($gemini_key)) {
-        // Connect to Google Gemini API
-        $url = 'https://generativelanguage.googleapis.com/v1beta/models/' . $ai_model . ':generateContent?key=' . $gemini_key;
-        
-        if ($jsonMode) {
-            $prompt .= "\n\nPlease respond in pure JSON format only, without Markdown formatting. Start with { and end with }";
-        }
-
-        $body = json_encode([
-            'contents' => [
-                ['parts' => [['text' => $prompt]]]
-            ]
-        ]);
-
-        $response = wp_remote_post($url, [
-            'body'    => $body,
-            'headers' => ['Content-Type' => 'application/json'],
-            'timeout' => $timeout,
-            'sslverify' => false
-        ]);
-
-        if (is_wp_error($response)) { return 'CURL_ERROR|' . $response->get_error_message(); }
-        
-        $res_body = wp_remote_retrieve_body($response);
-        $data = json_decode($res_body, true);
-        
-        if (isset($data['error'])) {
-            // Return API error string for debugging
-            return 'API_ERROR|' . $data['error']['message'];
-        }
-        
-        return isset($data['candidates'][0]['content']['parts'][0]['text']) ? $data['candidates'][0]['content']['parts'][0]['text'] : '';
-    } else {
-        // Fallback to Pollinations API
-        $args = array(
-            'body' => json_encode(array(
-                'messages' => array(array('role' => 'user', 'content' => $prompt)),
-                'model' => 'openai',
-                'jsonMode' => $jsonMode,
-                'seed' => wp_rand(1000, 9999)
-            )),
-            'headers' => array('Content-Type' => 'application/json'),
-            'timeout' => $timeout
-        );
-        $response = wp_remote_post('https://text.pollinations.ai/openai', $args);
-        
-        if (is_wp_error($response)) return 'CURL_ERROR|' . $response->get_error_message();
-        
-        $body = wp_remote_retrieve_body($response);
-        $json_res = json_decode($body, true);
-        return isset($json_res['choices'][0]['message']['content']) ? $json_res['choices'][0]['message']['content'] : $body;
+    if (empty($gemini_key)) {
+        return 'CURL_ERROR|No Gemini API Key provided.';
     }
+    
+    // Connect to Google Gemini API
+    $url = 'https://generativelanguage.googleapis.com/v1beta/models/' . $ai_model . ':generateContent?key=' . $gemini_key;
+    
+    if ($jsonMode) {
+        $prompt .= "\n\nPlease respond in pure JSON format only, without Markdown formatting. Start with { and end with }";
+    }
+
+    $body = json_encode([
+        'contents' => [
+            ['parts' => [['text' => $prompt]]]
+        ]
+    ]);
+
+    $response = wp_remote_post($url, [
+        'body'    => $body,
+        'headers' => ['Content-Type' => 'application/json'],
+        'timeout' => $timeout,
+        'sslverify' => false
+    ]);
+
+    if (is_wp_error($response)) { return 'CURL_ERROR|' . $response->get_error_message(); }
+    
+    $res_body = wp_remote_retrieve_body($response);
+    $data = json_decode($res_body, true);
+    
+    if (isset($data['error'])) {
+        // Return API error string for debugging
+        return 'API_ERROR|' . $data['error']['message'];
+    }
+    
+    return isset($data['candidates'][0]['content']['parts'][0]['text']) ? $data['candidates'][0]['content']['parts'][0]['text'] : '';
 }
 
 // AJAX Handler: Generate SEO
@@ -941,24 +959,38 @@ function temply_handle_ai_thumbnail() {
         $prompt .= ", incredibly cute adorable chibi character, kawaii anime style, soft lighting, pastel colors";
     }
     
-    // Use Pollinations AI (Free, no API key needed). Append random seed to ensure unique generation every time.
-    $seed = wp_rand(10000, 99999);
-    $image_url = 'https://image.pollinations.ai/prompt/' . urlencode($prompt) . '.jpg?width=1200&height=800&nologo=true&seed=' . $seed;
+    // 3. Cover Image — Dùng ảnh mặc định của hệ thống offline để bảo mật
+    $default_cover_path = get_template_directory() . '/img_data/images/no-image-cover-v5.png';
+    if (!file_exists($default_cover_path)) {
+        $default_cover_path = ABSPATH . 'wp-content/themes/tehi-theme/img_data/images/no-image-cover-v5.png';
+    }
     
-    // Download and attach the image to the post
-    $attachment_id = media_sideload_image($image_url, $post_id, 'Cover for ' . $title, 'id');
-    
-    if (is_wp_error($attachment_id)) {
-        wp_send_json_error(array('message' => 'Lỗi tải ảnh từ AI: ' . $attachment_id->get_error_message()));
+    $attachment_id = false;
+    if (file_exists($default_cover_path)) {
+        $tmp = tempnam(get_temp_dir(), 'cover');
+        if (copy($default_cover_path, $tmp)) {
+            $file_array = array(
+                'name' => 'cover-' . $post_id . '-default-' . wp_rand(100, 999) . '.png',
+                'tmp_name' => $tmp
+            );
+            $attachment_id = media_handle_sideload($file_array, $post_id);
+            if (is_wp_error($attachment_id)) {
+                @unlink($tmp);
+                wp_send_json_error(array('message' => 'Lỗi gán ảnh mặc định: ' . $attachment_id->get_error_message()));
+            }
+        } else {
+            wp_send_json_error(array('message' => 'Lỗi copy ảnh mặc định'));
+        }
+    } else {
+        wp_send_json_error(array('message' => 'Không tìm thấy ảnh mặc định cục bộ.'));
     }
 
     // Also forcefully set the featured image of the post in backend
     set_post_thumbnail($post_id, $attachment_id);
-    
     $attachment_url = wp_get_attachment_url($attachment_id);
 
     wp_send_json_success(array(
-        'message' => 'Đã tạo và gắn ảnh bìa AI thành công!',
+        'message' => 'Đã gán ảnh bìa mặc định thành công (Offline)!',
         'attachment_id' => $attachment_id,
         'image_url' => $attachment_url
     ));
@@ -2156,29 +2188,21 @@ function tehi_get_first_chapter_url($truyen_id) {
  * Lấy link chương mới nhất của Truyện
  */
 function tehi_get_last_chapter_url($truyen_id) {
-    $cache_key = 'tehi_last_chap_url_' . $truyen_id;
-    $last_chap_url = get_transient($cache_key);
+    $last_chap_query = get_posts([
+        'post_type'      => 'chuong',
+        'posts_per_page' => 1,
+        'meta_key'       => '_truyen_id',
+        'meta_value'     => $truyen_id,
+        'orderby'        => 'ID',
+        'order'          => 'DESC',
+        'no_found_rows'  => true,
+        'fields'         => 'ids'
+    ]);
     
-    if (false === $last_chap_url) {
-        $last_chap_query = get_posts([
-            'post_type'      => 'chuong',
-            'posts_per_page' => 1,
-            'meta_key'       => '_truyen_id',
-            'meta_value'     => $truyen_id,
-            'orderby'        => 'ID',
-            'order'          => 'DESC',
-            'no_found_rows'  => true,
-            'fields'         => 'ids'
-        ]);
-        
-        if (!empty($last_chap_query)) {
-            $last_chap_url = get_permalink($last_chap_query[0]);
-        } else {
-            $last_chap_url = get_permalink($truyen_id);
-        }
-        
-        // Cache trong 1 giờ
-        set_transient($cache_key, $last_chap_url, HOUR_IN_SECONDS);
+    if (!empty($last_chap_query)) {
+        $last_chap_url = get_permalink($last_chap_query[0]);
+    } else {
+        $last_chap_url = get_permalink($truyen_id);
     }
     
     return $last_chap_url;
@@ -2211,32 +2235,25 @@ function tehi_get_chapter_count($truyen_id) {
  * Lấy tên chương mới nhất của Truyện (rút gọn)
  */
 function tehi_get_last_chapter_display_name($truyen_id) {
-    $cache_key = 'tehi_last_chap_display_name_' . $truyen_id;
-    $last_chap_name = get_transient($cache_key);
+    $last_chap_query = get_posts([
+        'post_type'      => 'chuong',
+        'posts_per_page' => 1,
+        'meta_key'       => '_truyen_id',
+        'meta_value'     => $truyen_id,
+        'orderby'        => 'ID',
+        'order'          => 'DESC',
+        'no_found_rows'  => true,
+    ]);
     
-    if (false === $last_chap_name) {
-        $last_chap_query = get_posts([
-            'post_type'      => 'chuong',
-            'posts_per_page' => 1,
-            'meta_key'       => '_truyen_id',
-            'meta_value'     => $truyen_id,
-            'orderby'        => 'ID',
-            'order'          => 'DESC',
-            'no_found_rows'  => true,
-        ]);
-        
-        if (!empty($last_chap_query)) {
-            $title = get_the_title($last_chap_query[0]->ID);
-            if (preg_match('/Chương\s+\d+/i', $title, $matches)) {
-                $last_chap_name = $matches[0];
-            } else {
-                $last_chap_name = mb_strimwidth($title, 0, 12, '...');
-            }
+    if (!empty($last_chap_query)) {
+        $title = get_the_title($last_chap_query[0]->ID);
+        if (preg_match('/Chương\s+\d+/i', $title, $matches)) {
+            $last_chap_name = $matches[0];
         } else {
-            $last_chap_name = 'Chương mới';
+            $last_chap_name = mb_strimwidth($title, 0, 12, '...');
         }
-        
-        set_transient($cache_key, $last_chap_name, HOUR_IN_SECONDS);
+    } else {
+        $last_chap_name = 'Chương mới';
     }
     
     return $last_chap_name;

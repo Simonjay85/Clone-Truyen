@@ -1,356 +1,832 @@
 {
   "success": true,
-  "total_updated": 50,
+  "total_updated": 118,
   "stories": [
     {
+      "id": 5200,
+      "title": "Chàng Rể Nuôi Tôm Hùm Bị Gia Đình Vợ Khinh Rẻ, Lật Kèo Thâu Tóm Tập Đoàn Thủy Sản Nghìn Tỷ",
+      "seo_title": "Chàng Rể Nuôi Tôm Hùm Bị Gia Đình Vợ Khinh Rẻ, Lật Kèo Thâu Tóm",
+      "seo_desc": "Một thằng ngư dân quèn đi ủng cao su hôi hám như mày cả đời cũng không ngóc đầu lên nổi! Mau ký đơn ly hôn rồi cút khỏi đầm vịnh Vũng Rô ngay!",
+      "seo_keyword": "chàng rể nuôi tôm"
+    },
+    {
+      "id": 5190,
+      "title": "Ngày Bị Sa Thải Khỏi Thương Hiệu Trà Cổ Thụ, Tôi Mang Bằng Sáng Chế Lập Kỳ Tích OCOP 5 Sao Thâu Tóm Tập Đoàn",
+      "seo_title": "Ngày Bị Sa Thải Khỏi Thương Hiệu Trà Cổ Thụ, Tôi Mang Bằng Sáng",
+      "seo_desc": "Cậu đã bị sa thải khỏi Hợp tác xã Chè Hà Giang. Toàn bộ quy trình lên men hồng trà cổ thụ mà cậu cống hiến năm năm qua sẽ thuộc về chúng tôi, từ ngày...",
+      "seo_keyword": "ngày bị sa thải"
+    },
+    {
+      "id": 5180,
+      "title": "Bị Cấm Bến Ở Nha Trang, Tôi Công Khai Nhật Ký Tàu Khiến Ông Trùm Du Lịch Mất Bến",
+      "seo_title": "Bị Cấm Bến Ở Nha Trang, Tôi Công Khai Nhật Ký Tàu Khiến Ông Trùm",
+      "seo_desc": "Dương Nhật Long bị Phạm Chí Dũng cấm bến sau khi anh từ chối đưa tàu ra khơi trong ngày biển động. Trần Bích Ngọc, người từng cùng anh dựng thương hiệu...",
+      "seo_keyword": "bị cấm bến ở"
+    },
+    {
+      "id": 5169,
+      "title": "Bị Từ Hôn Ở Quận 1, Tôi Mở Hồ Sơ Thuế Khiến Hào Môn Tự Cắt Đường Lui",
+      "seo_title": "Bị Từ Hôn Ở Quận 1, Tôi Mở Hồ Sơ Thuế Khiến Hào Môn Tự Cắt Đường",
+      "seo_desc": "Hồ Quang Minh bị Lâm Ái Nhi từ hôn trong một nhà hàng Quận 1, ngay trước mặt gia tộc họ Lâm. Lâm Thiên Vũ gọi anh là kẻ bám váy, đẩy tập hợp đồng góp...",
+      "seo_keyword": "bị từ hôn ở"
+    },
+    {
+      "id": 5157,
+      "title": "Bị Phủ Nhận Ở VSIP, Tôi Mở Bằng Sáng Chế Khiến Nhà Máy Xin Chuyển Giao",
+      "seo_title": "Bị Phủ Nhận Ở VSIP, Tôi Mở Bằng Sáng Chế Khiến Nhà Máy Xin",
+      "seo_desc": "Lương Đức Tín bị Nguyễn Hữu Khoa phủ nhận công lao ngay trong ngày công bố dây chuyền bao bì sinh học. Võ Yến Trang — người từng cùng anh chạy mẫu suốt...",
+      "seo_keyword": "bị phủ nhận ở"
+    },
+    {
+      "id": 5147,
+      "title": "Bị Bỏ Lại Ở Nội Bài, Tôi Cứu Lô Vaccine Và Ký Mạng Lưới Kho Lạnh 480 Tỷ",
+      "seo_title": "Bị Bỏ Lại Ở Nội Bài, Tôi Cứu Lô Vaccine Và Ký Mạng Lưới Kho Lạnh",
+      "seo_desc": "Mai Quốc Việt bị Tạ Minh Sơn đổ tội làm sai hồ sơ khiến lô vaccine bị giữ tại Nội Bài. Trước mặt đoàn đối tác, Hoàng Mỹ Linh quay lưng, còn Sơn tuyên...",
+      "seo_keyword": "bị bỏ lại ở"
+    },
+    {
+      "id": 5136,
+      "title": "Bị Đổ Tội Làm Bay 80 Tỷ, Tôi Mở Sao Kê Khiến Giám Đốc Tài Chính Mất Ghế",
+      "seo_title": "Bị Đổ Tội Làm Bay 80 Tỷ, Tôi Mở Sao Kê Khiến Giám Đốc Tài Chính",
+      "seo_desc": "Trần Gia Bách bị đổ tội làm mất 80 tỷ trong một thương vụ trái phiếu doanh nghiệp. Trước mặt đối tác, người yêu cũ Lê Bảo Quyên quay lưng, còn Dương...",
+      "seo_keyword": "bị đổ tội làm"
+    },
+    {
+      "id": 5126,
+      "title": "BỊ GIA TỘC BÁN CHO KẺ THÙ, BA NĂM SAU TÔI TRỞ VỀ NẮM CẢ BÀN CỜ",
+      "seo_title": "BỊ GIA TỘC BÁN CHO KẺ THÙ, BA NĂM SAU TÔI TRỞ VỀ NẮM CẢ BÀN CỜ -",
+      "seo_desc": "Lý Sương Nguyệt từng là con gái duy nhất của gia tộc Thiên Long — một tập đoàn logistics xám có mạng lưới xuyên biên giới. Ba năm trước, cha cô gả cô...",
+      "seo_keyword": "bị gia tộc bán"
+    },
+    {
+      "id": 5116,
+      "title": "BỊ ĐUỔI KHỎI NHÀ HÀNG SAO, TÔI MỞ QUÁN VỈA HÈ KHIẾN CẢ SÀI GÒN XẾP HÀNG",
+      "seo_title": "BỊ ĐUỔI KHỎI NHÀ HÀNG SAO, TÔI MỞ QUÁN VỈA HÈ KHIẾN CẢ SÀI GÒN",
+      "seo_desc": "Nguyễn Trọng Khang bị sa thải khỏi nhà hàng Sao Đỏ vì từ chối dùng nguyên liệu giả xuất xứ. Không kiện tụng, không livestream khóc lóc, anh mang bộ dao...",
+      "seo_keyword": "bị đuổi khỏi nhà"
+    },
+    {
+      "id": 5106,
+      "title": "BỊ KẾT TỘI OAN 18 THÁNG, NGÀY TÔI RA TÙ CẢ ĐƠN VỊ XIN TÔI TRỞ LẠI",
+      "seo_title": "BỊ KẾT TỘI OAN 18 THÁNG, NGÀY TÔI RA TÙ CẢ ĐƠN VỊ XIN TÔI TRỞ",
+      "seo_desc": "Đại úy Trần Minh Châu bị kết tội vi phạm mệnh lệnh trong một nhiệm vụ giải cứu con tin hư cấu, khiến hai đồng đội hy sinh. Mười tám tháng tù, cô sống...",
+      "seo_keyword": "bị kết tội oan"
+    },
+    {
+      "id": 5096,
+      "title": "BỊ CƯỚP BỘ SƯU TẬP, TÔI MANG ẢNH GỐC KHIẾN SÀN DIỄN PARIS ĐỔI TÊN TÁC GIẢ",
+      "seo_title": "BỊ CƯỚP BỘ SƯU TẬP, TÔI MANG ẢNH GỐC KHIẾN SÀN DIỄN PARIS ĐỔI",
+      "seo_desc": "Nguyễn Phương Anh mất bộ sưu tập Mùa Nước Nổi vào tay mentor cũ Trần Minh Quân. Những pattern thổ cẩm An Giang, màu phù sa cô pha bốn mươi lần, dáng cổ...",
+      "seo_keyword": "bị cướp bộ sưu"
+    },
+    {
+      "id": 5086,
+      "title": "BỊ ĐUỔI VÌ CHẨN ĐOÁN ĐÚNG, TÔI VẠCH TRẦN ĐƯỜNG DÂY THUỐC GÂY HẠI",
+      "seo_title": "BỊ ĐUỔI VÌ CHẨN ĐOÁN ĐÚNG, TÔI VẠCH TRẦN ĐƯỜNG DÂY THUỐC GÂY HẠI",
+      "seo_desc": "Dương Hải Bình bị bệnh viện hư cấu Trung tâm Sơn Trà sa thải vì chẩn đoán bệnh nhân tổn thương gan do thuốc hạ mỡ máu mới. Giám đốc bệnh viện phủ nhận,...",
+      "seo_keyword": "bị đuổi vì chẩn"
+    },
+    {
+      "id": 5076,
+      "title": "XUYÊN THÀNH TIỂU THƯ BỊ HỦY HÔN, TÔI CỨU LUÔN VƯƠNG PHỦ CỦA CHỒNG CŨ",
+      "seo_title": "XUYÊN THÀNH TIỂU THƯ BỊ HỦY HÔN, TÔI CỨU LUÔN VƯƠNG PHỦ CỦA",
+      "seo_desc": "Mai Hà Linh, y tá 27 tuổi ở Hà Nội, tỉnh dậy trong thân xác Lý Ngọc Uyển — tiểu thư bị coi là phế vật của Thừa tướng phủ. Điều đầu tiên chờ cô không...",
+      "seo_keyword": "xuyên thành tiểu thư"
+    },
+    {
+      "id": 5066,
+      "title": "HOÀNG HẬU GIẢ CHẾT BA NĂM, NGÀY TRỞ VỀ CẢ TRIỀU ĐƯỜNG CÂM LẶNG",
+      "seo_title": "HOÀNG HẬU GIẢ CHẾT BA NĂM, NGÀY TRỞ VỀ CẢ TRIỀU ĐƯỜNG CÂM LẶNG -",
+      "seo_desc": "Ba năm trước, Hoàng hậu Tô Vân Khanh chết trong trận hỏa hoạn hậu cung. Hoàng đế Mộ Dương Thành dựng bài vị, còn Quý phi Trịnh Ngọc Hàm chỉ chờ ngày...",
+      "seo_keyword": "hoàng hậu giả chết"
+    },
+    {
+      "id": 5056,
+      "title": "TRỌNG SINH VỀ NGÀY BỊ CƯỚP CODE, TÔI DÙNG NHẬT KÝ GIT VẢ SẬP SẾP CŨ",
+      "seo_title": "TRỌNG SINH VỀ NGÀY BỊ CƯỚP CODE, TÔI DÙNG NHẬT KÝ GIT VẢ SẬP SẾP",
+      "seo_desc": "Kiếp trước, Ngô Thanh Vy mất công trình AI logistics, mất mẹ, mất cả mạng sống trong một vụ tai nạn được dàn dựng. Người cướp bằng sáng chế của cô là...",
+      "seo_keyword": "trọng sinh về ngày"
+    },
+    {
+      "id": 5046,
+      "title": "SÁNG KÝ ĐƠN LY HÔN, CHIỀU TÔI GẶP VỢ TRÊN GHẾ CEO HỢP ĐỒNG 500 TỶ",
+      "seo_title": "SÁNG KÝ ĐƠN LY HÔN, CHIỀU TÔI GẶP VỢ TRÊN GHẾ CEO HỢP ĐỒNG 500",
+      "seo_desc": "Sáng hôm ấy, Lê Minh Khoa đặt đơn ly hôn lên bàn bếp, tin rằng Trần Bảo Châu chỉ là người vợ hiền lành, không tham vọng, không đủ tầm đi cùng sự nghiệp...",
+      "seo_keyword": "sáng ký đơn ly"
+    },
+    {
+      "id": 5036,
+      "title": "Nhà Khoa Học Lúa Gạo Bị Cướp Giống Lúa Quý, Lật Kèo Thâu Tóm Tập Đoàn Nông Nghiệp IPO Trăm Tỷ",
+      "seo_title": "Nhà Khoa Học Lúa Gạo Bị Cướp Giống Lúa Quý, Lật Kèo Thâu Tóm Tập",
+      "seo_desc": "Cậu đã chính thức bị sa thải khỏi Viện Nghiên cứu Nông nghiệp miền Nam. Toàn bộ giống lúa hữu cơ Hoàng Kim Hương kháng mặn mà cậu phát triển suốt năm...",
+      "seo_keyword": "nhà khoa học lúa"
+    },
+    {
+      "id": 5019,
+      "title": "Bị Cười Nhạo Ở Phố Cổ, Tôi Khôi Phục Bí Phương Nước Mắm Khiến Cả Hiệp Hội Đứng Dậy Vỗ Tay",
+      "seo_title": "Bị Cười Nhạo Ở Phố Cổ, Tôi Khôi Phục Bí Phương Nước Mắm Khiến Cả",
+      "seo_desc": "Bùi Khánh Toàn, anh tưởng mình là ai mà dám ngồi cùng bàn với chúng tôi? Trịnh Quang Vinh ném tập hồ sơ xuống sàn, còn Nguyễn Thùy Dung lạnh lùng quay...",
+      "seo_keyword": "bị cười nhạo ở"
+    },
+    {
+      "id": 5002,
+      "title": "Bị Đình Chỉ Phòng Khám Ở Huế, Tôi Dùng Hồ Sơ Lâm Sàng Cứu Người Khiến Hội Đồng Đổi Giọng",
+      "seo_title": "Bị Đình Chỉ Phòng Khám Ở Huế, Tôi Dùng Hồ Sơ Lâm Sàng Cứu Người",
+      "seo_desc": "Nguyễn Khải Hoàn, anh tưởng mình là ai mà dám ngồi cùng bàn với chúng tôi? Phan Trọng Kiên ném tập hồ sơ xuống sàn, còn Lê Ngọc Hà lạnh lùng quay mặt...",
+      "seo_keyword": "bị đình chỉ phòng"
+    },
+    {
+      "id": 4990,
+      "title": "Bị Làm Nhục Ở Landmark 81, Tôi Công Bố Camera Két Sắt Khiến Chủ Tịch Giả Quỳ Xin Tha",
+      "seo_title": "Bị Làm Nhục Ở Landmark 81, Tôi Công Bố Camera Két Sắt Khiến Chủ",
+      "seo_desc": "Đặng Minh Triết, anh tưởng mình là ai mà dám ngồi cùng bàn với chúng tôi? Lý Thành Duy ném tập hồ sơ xuống sàn, còn Đỗ Hạ My lạnh lùng quay mặt đi...",
+      "seo_keyword": "bị làm nhục ở"
+    },
+    {
+      "id": 4980,
+      "title": "Bị Bỏ Rơi Giữa Chợ Nổi Cần Thơ, Tôi Dựng Chuỗi Sầu Riêng Khiến Sếp Cũ Cầu Cứu",
+      "seo_title": "Bị Bỏ Rơi Giữa Chợ Nổi Cần Thơ, Tôi Dựng Chuỗi Sầu Riêng Khiến",
+      "seo_desc": "Huỳnh Tấn Lộc, anh tưởng mình là ai mà dám ngồi cùng bàn với chúng tôi? Cao Đức Nghĩa ném tập hồ sơ xuống sàn, còn Trần Kim Sa lạnh lùng quay mặt đi...",
+      "seo_keyword": "bị bỏ rơi giữa"
+    },
+    {
+      "id": 4967,
+      "title": "Bị Cướp Bản Thiết Kế Ở Đà Nẵng, Tôi Mang Hồ Sơ Sở Hữu Trí Tuệ Đập Tan Buổi Ra Mắt",
+      "seo_title": "Bị Cướp Bản Thiết Kế Ở Đà Nẵng, Tôi Mang Hồ Sơ Sở Hữu Trí Tuệ",
+      "seo_desc": "Ngô Nhật Quân, anh tưởng mình là ai mà dám ngồi cùng bàn với chúng tôi? Hoàng Tấn Lộc ném tập hồ sơ xuống sàn, còn Bùi Khánh Ngân lạnh lùng quay mặt đi...",
+      "seo_keyword": "bị cướp bản thiết"
+    },
+    {
+      "id": 4954,
+      "title": "Nhà Vợ Đuổi Tôi Khỏi Đồi Chè, Không Ngờ Tôi Là Người Giữ Hợp Đồng Vùng Nguyên Liệu",
+      "seo_title": "Nhà Vợ Đuổi Tôi Khỏi Đồi Chè, Không Ngờ Tôi Là Người Giữ Hợp",
+      "seo_desc": "Võ Gia Huy từng là người đứng sau vùng nguyên liệu sạch của nhà họ Lâm ở Cầu Đất. Anh đi từng đồi chè, ký từng hợp đồng với nông hộ, kiểm từng mẫu dư...",
+      "seo_keyword": "nhà vợ đuổi tôi"
+    },
+    {
+      "id": 4942,
+      "title": "Bị Vứt Hợp Đồng Ở Cầu Giấy, Tôi Lật Nhật Ký Thi Công Khiến Gói Thầu 540 Tỷ Đổi Chủ",
+      "seo_title": "Bị Vứt Hợp Đồng Ở Cầu Giấy, Tôi Lật Nhật Ký Thi Công Khiến Gói",
+      "seo_desc": "Lê Minh Đức là kỹ sư hiện trường đã theo dự án cầu vượt 540 tỷ từ ngày đầu đổ móng. Anh biết từng xe bồn bê tông đến lúc nào, từng cơn mưa làm chậm mẻ...",
+      "seo_keyword": "bị vứt hợp đồng"
+    },
+    {
+      "id": 4930,
+      "title": "Bị Vu Oan Làm Chết Bệnh Nhân, Tôi Dùng Điện Tâm Đồ Lật Lại 7 Phút Sinh Tử",
+      "seo_title": "Bị Vu Oan Làm Chết Bệnh Nhân, Tôi Dùng Điện Tâm Đồ Lật Lại 7",
+      "seo_desc": "Trương Hải Nam từng là chuyên viên phục hồi bằng châm cứu y học cổ truyền phối hợp hồi sức. Trong một ca cấp cứu hỗn loạn, anh dùng kim để hỗ trợ giữ...",
+      "seo_keyword": "bị vu oan làm"
+    },
+    {
+      "id": 4920,
+      "title": "Bị Đuổi Khỏi Xưởng Gốm Bát Tràng, Tôi Dùng Men Cổ Thắng Đơn Hàng 180 Tỷ",
+      "seo_title": "Bị Đuổi Khỏi Xưởng Gốm Bát Tràng, Tôi Dùng Men Cổ Thắng Đơn Hàng",
+      "seo_desc": "Phạm Duy An là người giữ công thức men tro ba đời của dòng họ Phạm ở Bát Tràng. Anh dùng mười năm bỏng tay để tạo ra màu men xanh rạn chìm như sương...",
+      "seo_keyword": "bị đuổi khỏi xưởng"
+    },
+    {
+      "id": 4908,
+      "title": "Bị Đạp Khỏi Phòng Họp Vincom, Tôi Dùng Sổ Kiểm Toán Vạch Trần Hợp Đồng 320 Tỷ",
+      "seo_title": "Bị Đạp Khỏi Phòng Họp Vincom, Tôi Dùng Sổ Kiểm Toán Vạch Trần",
+      "seo_desc": "Nguyễn Minh Khang từng là người dựng toàn bộ hồ sơ kiểm toán cho chuỗi bán lẻ cao cấp trị giá 320 tỷ. Nhưng trong ngày công bố tại Vincom Đồng Khởi,...",
+      "seo_keyword": "bị đạp khỏi phòng"
+    },
+    {
+      "id": 4807,
+      "title": "Bị Hủy Hôn Vì Nghèo, Vua Trầm Hương Lật Kèo Trăm Tỷ Khiến Hào Môn Xảo Quyệt Vào Tù",
+      "seo_title": "Bị Hủy Hôn Vì Nghèo, Vua Trầm Hương Lật Kèo Trăm Tỷ Khiến Hào",
+      "seo_desc": "Tôi mang mảnh Kỳ Nam gia truyền làm sính lễ cầu hôn tiểu thư Đoàn Mỹ Linh. Cô ta khinh bỉ vứt sính lễ vào sọt rác, đòi sính lễ 10 tỷ đồng và sỉ nhục...",
+      "seo_keyword": "bị hủy hôn vì"
+    },
+    {
+      "id": 4795,
+      "title": "Bị Khinh Rẻ Lau Giày Cho Vợ, Tôi Dùng Bằng Sáng Chế Kỳ Nam Lật Kèo Hợp Đồng Xuất Khẩu Trăm Tỷ",
+      "seo_title": "Bị Khinh Rẻ Lau Giày Cho Vợ, Tôi Dùng Bằng Sáng Chế Kỳ Nam Lật",
+      "seo_desc": "Giữa sảnh tiệc lộng lẫy của Lâm gia ở Nha Trang, Trần Quốc Khánh bị bắt quỳ xuống, dùng chính tay mình lau sạch vết bùn trên chiếc giày Gucci của gã...",
+      "seo_keyword": "bị khinh rẻ lau"
+    },
+    {
+      "id": 4771,
+      "title": "Nghệ Nhân Hoa Muối Cà Ná Bị Hủy Hôn Khinh Nghèo, Lật Kèo Phơi Bày Tập Đoàn Muối Bẩn Nghìn Tỷ",
+      "seo_title": "Nghệ Nhân Hoa Muối Cà Ná Bị Hủy Hôn Khinh Nghèo, Lật Kèo Phơi",
+      "seo_desc": "Đôi bàn tay sần sùi dính đầy cát muối mặn chát của anh, có rửa sạch ba đời cũng không xứng chạm vào tấm thảm nhung tại biệt thự Phú Mỹ Hưng! Ký đơn từ...",
+      "seo_keyword": "nghệ nhân hoa muối"
+    },
+    {
+      "id": 4761,
+      "title": "Thần Dược Liệu Sapa: Nhà Nghiên Cứu Bị Sa Thải Lật Kèo Bẫy IPO Dược Phẩm Nghìn Tỷ Của Kẻ Phản Bội",
+      "seo_title": "Thần Dược Liệu Sapa: Nhà Nghiên Cứu Bị Sa Thải Lật Kèo Bẫy IPO",
+      "seo_desc": "Đôi bàn tay thối rữa đầy mùi thuốc của mày có rửa sạch mười đời cũng không xứng đứng chung sàn diễn với Bách Dược Group! Cầm đống rác rưởi này rồi cút...",
+      "seo_keyword": "thần dược liệu sapa"
+    },
+    {
+      "id": 4750,
+      "title": "Vua Quế Trà Bồng: Bị Khinh Rẻ Đuổi Khỏi Cửa, Tôi Xây Đế Chế Tinh Dầu Nghìn Tỷ",
+      "seo_title": "Vua Quế Trà Bồng: Bị Khinh Rẻ Đuổi Khỏi Cửa, Tôi Xây Đế Chế Tinh",
+      "seo_desc": "Đôi bàn tay thô ráp, nứt nẻ vì bóc vỏ quế của anh, có rửa sạch mười đời cũng không xứng đặt cạnh chiếc túi Hermes da cá sấu ba trăm triệu này của tôi!...",
+      "seo_keyword": "vua quế trà bồng"
+    },
+    {
+      "id": 4740,
+      "title": "Bị Cướp Trang Trại Mật Ong, Tôi Dùng Một Giọt Mật Vả Sập Tập Đoàn Nghìn Tỷ",
+      "seo_title": "Bị Cướp Trang Trại Mật Ong, Tôi Dùng Một Giọt Mật Vả Sập Tập",
+      "seo_desc": "Bàn tay bẩn thỉu đầy vết ong đốt của anh không đáng chạm vào chiếc váy cưới Vera Wang trăm triệu của tôi! Kẻ dầm mưa dãi nắng cày cuốc cả đời như anh...",
+      "seo_keyword": "bị cướp trang trại"
+    },
+    {
+      "id": 4729,
+      "title": "Thần Y Bị Sa Thải Vực Dậy Dòng Dược Chất Sâm Ngọc Linh Vả Mặt Sếp Cướp Bằng Sáng Chế Nghìn Tỷ",
+      "seo_title": "Thần Y Bị Sa Thải Vực Dậy Dòng Dược Chất Sâm Ngọc Linh Vả Mặt",
+      "seo_desc": "Cậu đã bị sa thải khỏi Viện Nghiên cứu Dược liệu Trung ương. Toàn bộ công trình nghiên cứu về hoạt chất MR2 của sâm Ngọc Linh hoang dã mà cậu cống hiến...",
+      "seo_keyword": "thần y bị sa"
+    },
+    {
+      "id": 4717,
+      "title": "Vua Sâm Ngọc Linh Đất Kon Tum: Kẻ Bị Sỉ Nhục Lật Kèo Thâu Tóm Tập Đoàn Dược Liệu Nghìn Tỷ",
+      "seo_title": "Vua Sâm Ngọc Linh Đất Kon Tum: Kẻ Bị Sỉ Nhục Lật Kèo Thâu Tóm",
+      "seo_desc": "Đôi bàn tay thô kệch dính bùn đất Tây Nguyên của mày, có lau sạch mười đời cũng không xứng chạm vào chậu sâm Ngọc Linh F2 đột biến trị giá mười tỷ này!...",
+      "seo_keyword": "vua sâm ngọc linh"
+    },
+    {
+      "id": 4097,
+      "title": "Vua Đá Quý Lục Yên: Kỹ Sư Bị Vu Oan Cướp Ngọc Lật Kèo Thâu Tóm Tập Đoàn Ruby Giả Nghìn Tỷ",
+      "seo_title": "Vua Đá Quý Lục Yên: Kỹ Sư Bị Vu Oan Cướp Ngọc Lật Kèo Thâu Tóm",
+      "seo_desc": "Đôi bàn tay chai sạn vì mài đá của anh, có rửa sạch mười đời cũng không xứng đặt cạnh chiếc nhẫn Ruby mắt hổ trị giá năm tỷ này của tôi! Ký tên vào tờ...",
+      "seo_keyword": "vua đá quý lục"
+    },
+    {
+      "id": 4084,
+      "title": "Cướp Công Thức Sâm Ngọc Linh, Kỹ Sư Lật Kèo Thâu Tóm Tập Đoàn Dược Khiến Kẻ Phản Bội Phải Trả Giá",
+      "seo_title": "Cướp Công Thức Sâm Ngọc Linh, Kỹ Sư Lật Kèo Thâu Tóm Tập Đoàn",
+      "seo_desc": "Anh chỉ là một thằng thầy lang vườn rách nát mang chút kiến thức thảo dược vụn vặt, lấy tư cách gì mà đòi đứng chung hàng ngũ với các giáo sư đầu ngành...",
+      "seo_keyword": "cướp công thức sâm"
+    },
+    {
+      "id": 4060,
+      "title": "Bị Hôn Thê Vu Oan Cướp Bằng Sáng Chế Cá Tra, Kỹ Sư Lật Kèo Thâu Tóm Tập Đoàn Nghìn Tỷ",
+      "seo_title": "Bị Hôn Thê Vu Oan Cướp Bằng Sáng Chế Cá Tra, Kỹ Sư Lật Kèo Thâu",
+      "seo_desc": "Một thằng kỹ sư thủy sản chân lấm tay bùn, suốt ngày ngửi mùi cá tanh như mày mà cũng mơ tưởng làm rể tập đoàn Vạn Phát sao? Ký đơn từ chức rồi cút...",
+      "seo_keyword": "bị hôn thê vu"
+    },
+    {
+      "id": 4036,
+      "title": "Vua Yến Sào Bị Hào Môn Cướp Bằng Sáng Chế Trăm Tỷ Lật Kèo Đè Bẹp Tập Đoàn Yến Hóa Chất",
+      "seo_title": "Vua Yến Sào Bị Hào Môn Cướp Bằng Sáng Chế Trăm Tỷ Lật Kèo Đè Bẹp",
+      "seo_desc": "Đôi bàn tay thô ráp đầy sẹo mổ yến này của anh, có chùi sạch ba đời cũng không xứng chạm vào tấm thảm nhung đỏ tại đại sảnh Ngọc Khánh Đường!",
+      "seo_keyword": "vua yến sào bị"
+    },
+    {
+      "id": 3998,
+      "title": "Nghệ Nhân Lụa Bảo Lộc Bị Trục Xuất Khỏi Phường Dệt Lật Kèo Phơi Bày Tập Đoàn Tơ Lụa Hóa Chất Giả",
+      "seo_title": "Nghệ Nhân Lụa Bảo Lộc Bị Trục Xuất Khỏi Phường Dệt Lật Kèo Phơi",
+      "seo_desc": "Mày chỉ là một thằng kỹ thuật quèn cố chấp với mấy mớ lá cây mục nát, cút khỏi Phường dệt Bảo Lộc ngay lập tức trước khi tao cho bảo vệ ném đống rác...",
+      "seo_keyword": "nghệ nhân lụa bảo"
+    },
+    {
+      "id": 3954,
+      "title": "Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội",
+      "seo_title": "Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng",
+      "seo_desc": "Loại nghèo hèn bốc mùi bùn đất như mày thì lấy gì làm sính lễ bước vào hào môn Lâm Gia? Mang mấy cân lá trà dại hái trên vách đá khô cằn Hoàng Su Phì...",
+      "seo_keyword": "vua trà shan tuyết"
+    },
+    {
+      "id": 3940,
+      "title": "Họ Gọi Tôi Là Lang Băm, Đến Khi Cả Hội Thảo Quỳ Xin Tôi Cứu Mạng",
+      "seo_title": "Họ Gọi Tôi Là Lang Băm, Đến Khi Cả Hội Thảo Quỳ Xin Tôi Cứu Mạng",
+      "seo_desc": "Đôi bàn tay bốc thuốc Nam rách rưới của anh không đáng chạm vào chiếc váy cưới trăm triệu của tôi! Loại lang băm nghèo hèn như anh chỉ làm cản trở tôi...",
+      "seo_keyword": "họ gọi tôi là"
+    },
+    {
+      "id": 3930,
+      "title": "Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ",
+      "seo_title": "Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập",
+      "seo_desc": "Trịnh Gia Bách, anh chỉ là một thằng gác bếp lên men cacao quê mùa chân lấm tay bùn! Thứ men rừng vô danh của anh không bằng một phần mười bột ca cao...",
+      "seo_keyword": "nghệ nhân cacao bị"
+    },
+    {
+      "id": 3920,
+      "title": "Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả",
+      "seo_title": "Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn",
+      "seo_desc": "Cút khỏi xưởng sơn mài họ Lâm ngay lập tức, loại tàn phế tay run như mày chỉ làm bẩn danh tiếng tranh truyền thống trăm năm!",
+      "seo_keyword": "nghệ nhân sơn mài"
+    },
+    {
+      "id": 3873,
+      "title": "Thần Y Bị Đuổi, Vợ Cũ Hối Hận Muộn Màng",
+      "seo_title": "Thần Y Bị Đuổi, Vợ Cũ Hối Hận Muộn Màng - Đọc Full",
+      "seo_desc": "Anh cống hiến sáu năm ròng rã cứu sống hàng ngàn người, nhưng đến ngày bài thuốc gan gia truyền của anh có kết quả kiểm nghiệm đột phá, họ vu oan anh...",
+      "seo_keyword": "thần y bị đuổi"
+    },
+    {
+      "id": 3861,
+      "title": "Thiên Tài Blockchain Phố Nguyễn Huệ: Bị Cướp Token Nghìn Tỷ, Tôi Hack Ngược Cả Sàn",
+      "seo_title": "Thiên Tài Blockchain Phố Nguyễn Huệ: Bị Cướp Token Nghìn Tỷ, Tôi",
+      "seo_desc": "Năm năm đổ máu và mồ hôi trên từng dòng code blockchain tại căn penthouse phố Nguyễn Huệ, tôi tạo ra NexaSphere - giao thức DeFi nghìn tỷ đầu tiên của...",
+      "seo_keyword": "thiên tài blockchain phố"
+    },
+    {
+      "id": 3849,
+      "title": "Vua Sầu Riêng Đắk Nông: Bị Đốt Vườn Nghìn Tỷ, Tôi Trồng Lại Từ Tro Tàn",
+      "seo_title": "Vua Sầu Riêng Đắk Nông: Bị Đốt Vườn Nghìn Tỷ, Tôi Trồng Lại Từ",
+      "seo_desc": "Y Ksor Thành, mày chỉ là một thằng người Ê-đê quê mùa bám vườn sầu riêng! Năm mươi hecta Musang King của mày giờ chỉ là đống tro tàn, hợp đồng nghìn tỷ...",
+      "seo_keyword": "vua sầu riêng đắk"
+    },
+    {
+      "id": 3837,
+      "title": "Đạo Diễn Phim Trường Cần Giờ: Bị Cướp Kịch Bản Oscar, Tôi Quay Phim Chấn Động Cannes",
+      "seo_title": "Đạo Diễn Phim Trường Cần Giờ: Bị Cướp Kịch Bản Oscar, Tôi Quay",
+      "seo_desc": "Cậu chỉ là thằng đạo diễn quèn từ Cần Giờ, không có Hãng phim Thiên Nam thì kịch bản của cậu chỉ là giấy lộn!",
+      "seo_keyword": "đạo diễn phim trường"
+    },
+    {
+      "id": 3825,
+      "title": "Chúa Đảo Resort Phú Quốc: Bị Đuổi Khỏi Resort Mình Xây, Tôi Mua Cả Hòn Đảo",
+      "seo_title": "Chúa Đảo Resort Phú Quốc: Bị Đuổi Khỏi Resort Mình Xây, Tôi Mua",
+      "seo_desc": "Cậu nghĩ một kiến trúc sư tay trắng không thế lực như cậu có thể giữ nổi một thiên đường nghìn tỷ này sao? Biến khỏi Phú Quốc trước khi tôi khiến cậu...",
+      "seo_keyword": "chúa đảo resort phú"
+    },
+    {
+      "id": 3813,
+      "title": "Thần Đồng Piano Nhạc Viện: Bị Cấm Biểu Diễn, Tôi Chấn Động Chopin Competition",
+      "seo_title": "Thần Đồng Piano Nhạc Viện: Bị Cấm Biểu Diễn, Tôi Chấn Động",
+      "seo_desc": "Một đứa không cha không mẹ, sống bằng học bổng như cậu, lấy tư cách gì đòi đứng chung hàng ngũ với con trai tôi ở đấu trường quốc tế?",
+      "seo_keyword": "thần đồng piano nhạc"
+    },
+    {
+      "id": 3801,
+      "title": "Vua Lúa Gạo Đồng Tháp: Nông Dân Bị Ép Giá, Tôi Xây Đế Chế Gạo Xuất Khẩu",
+      "seo_title": "Vua Lúa Gạo Đồng Tháp: Nông Dân Bị Ép Giá, Tôi Xây Đế Chế Gạo",
+      "seo_desc": "Đất này là của tao, lúa này tao muốn mua giá nào là quyền của tao! Mày không bán cho Đại Đạt này thì cứ để mặc ba trăm tấn lúa ST25 đó thối rữa ngoài...",
+      "seo_keyword": "vua lúa gạo đồng"
+    },
+    {
+      "id": 3789,
+      "title": "Kiến Trúc Sư Phố Cổ Hà Nội: Bị Cướp Bản Vẽ Di Sản, Tôi Cứu Cả Khu Phố",
+      "seo_title": "Kiến Trúc Sư Phố Cổ Hà Nội: Bị Cướp Bản Vẽ Di Sản, Tôi Cứu Cả",
+      "seo_desc": "Một kẻ xuất thân từ gia đình nghèo hèn, không tiền không thế như mày thì lấy tư cách gì đòi bảo vệ di sản của Thăng Long hả Tuấn? Bản vẽ này từ nay...",
+      "seo_keyword": "kiến trúc sư phố"
+    },
+    {
+      "id": 3769,
+      "title": "Thợ Nuôi Trai Bị Cướp Ngọc Đen, Trở Lại Đoạt Tập Đoàn Ngọc Trai Nghìn Tỷ",
+      "seo_title": "Thợ Nuôi Trai Bị Cướp Ngọc Đen, Trở Lại Đoạt Tập Đoàn Ngọc Trai",
+      "seo_desc": "Trịnh Hoàng Lâm bị chính người bạn học cũ cướp trắng giống ngọc đen độc bản, bị ép ký biên bản rời khỏi vịnh Vân Đồn ngay trước ngày Royal Pearl ra mắt...",
+      "seo_keyword": "thợ nuôi trai bị"
+    },
+    {
+      "id": 3767,
+      "title": "Ông Trùm Logistics Tân Cảng: Bị Phản Bội Mất Container Nghìn Tỷ, Tôi Thâu Tóm Ngược",
+      "seo_title": "Ông Trùm Logistics Tân Cảng: Bị Phản Bội Mất Container Nghìn Tỷ,",
+      "seo_desc": "Hưng, mày nghĩ mình là ai? Ở cái Cảng Cát Lái này, không có chữ ký của tao, đống container nghìn tỷ kia chỉ là sắt vụn!",
+      "seo_keyword": "ông trùm logistics tân"
+    },
+    {
+      "id": 3755,
+      "title": "Bác Sĩ Thẩm Mỹ Sài Gòn: Bị Vu Oan Phẫu Thuật Hỏng, Tôi Lật Mặt Cả Bệnh Viện",
+      "seo_title": "Bác Sĩ Thẩm Mỹ Sài Gòn: Bị Vu Oan Phẫu Thuật Hỏng, Tôi Lật Mặt",
+      "seo_desc": "Ngô Hoàng Khải, y đức và tay nghề của anh cũng chỉ đến thế thôi sao? Cả đời này anh đừng mong chạm vào dao mổ nữa!",
+      "seo_keyword": "bác sĩ thẩm mỹ"
+    },
+    {
+      "id": 3743,
+      "title": "Nữ Hoàng Trà Sen Tây Hồ: Bị Đuổi Khỏi Gia Tộc, Cô Xây Đế Chế Trà Nghìn Tỷ",
+      "seo_title": "Nữ Hoàng Trà Sen Tây Hồ: Bị Đuổi Khỏi Gia Tộc, Cô Xây Đế Chế Trà",
+      "seo_desc": "Hơn một trăm năm Lê Gia Trà danh chấn Hà Thành, nay lại để một đứa con gái đứng tên thừa kế sao? Minh Nguyệt, mày cút khỏi đầm sen Tây Hồ này ngay lập...",
+      "seo_keyword": "nữ hoàng trà sen"
+    },
+    {
+      "id": 3724,
+      "title": "Kỹ Sư Vắc Xin Bị Sa Thải Vì Không Gian Lận, Bản Quyền Vắc Xin Vả Sập Tập Đoàn Phản Bội",
+      "seo_title": "Kỹ Sư Vắc Xin Bị Sa Thải Vì Không Gian Lận, Bản Quyền Vắc Xin Vả",
+      "seo_desc": "Nếu các người dùng sinh mạng của hàng triệu đàn lợn cả nước để đánh cược cho một thương vụ IPO giả tạo, tôi sẽ đưa cả gia tộc các người vào chốn lao tù!",
+      "seo_keyword": "kỹ sư vắc xin"
+    },
+    {
+      "id": 3633,
+      "title": "Nghệ Nhân Trà Sen Bị Khinh Rẻ Trục Xuất, Lật Kèo Đêm Hội Trà Quốc Tế Đưa Kẻ Phản Bội Vào Tù",
+      "seo_title": "Nghệ Nhân Trà Sen Bị Khinh Rẻ Trục Xuất, Lật Kèo Đêm Hội Trà",
+      "seo_desc": "Đêm mưa bão tại đầm sen Tây Hồ Quảng An, nghệ nhân trà trẻ tuổi Duy Anh chịu đựng sự sỉ nhục tột cùng. Lê Hoài Nam, CEO của Trà Hoài Nam Corp, cấu kết...",
+      "seo_keyword": "nghệ nhân trà sen"
+    },
+    {
+      "id": 2815,
+      "title": "Kỹ Sư Sơn Mài Bị Đuổi Khỏi Lab, Hợp Đồng Sinh Học Trăm Tỷ Lật Kèo Phút Chót Ngày IPO",
+      "seo_title": "Kỹ Sư Sơn Mài Bị Đuổi Khỏi Lab, Hợp Đồng Sinh Học Trăm Tỷ Lật",
+      "seo_desc": "Có những thứ bị cướp đi không phải bằng vũ lực, mà bằng một tờ giấy, một chữ ký, và một cái bắt tay sau cánh cửa phòng lạnh.Trần Hữu Nam biết điều đó...",
+      "seo_keyword": "kỹ sư sơn mài"
+    },
+    {
+      "id": 2808,
+      "title": "Người Đưa Thư Bị Cả Tòa Nhà Khinh, Hóa Ra Anh Là Chủ Toàn Bộ Tháp",
+      "seo_title": "Người Đưa Thư Bị Cả Tòa Nhà Khinh, Hóa Ra Anh Là Chủ Toàn Bộ",
+      "seo_desc": "Trong một tòa nhà văn phòng hiện đại ở trung tâm Hà Nội, người đưa thư Đinh Xuân Phú trở thành mục tiêu chế giễu của mọi người.Nhưng không ai biết...",
+      "seo_keyword": "người đưa thư bị"
+    },
+    {
+      "id": 2801,
+      "title": "Trọng Tài Bị Ngôi Sao Nhổ Nước Bọt, Hóa Ra Là Cựu Đội Trưởng Tuyển QG",
+      "seo_title": "Trọng Tài Bị Ngôi Sao Nhổ Nước Bọt, Hóa Ra Là Cựu Đội Trưởng",
+      "seo_desc": "Trong một trận đấu bóng đá căng thẳng tại sân vận động Thống Nhất, trọng tài Trương Hùng Cường bất ngờ bị một ngôi sao bóng đá nổi tiếng nhổ nước bọt...",
+      "seo_keyword": "trọng tài bị ngôi"
+    },
+    {
+      "id": 2794,
+      "title": "Người Làm Vườn Bị Chủ Biệt Thự Đuổi, Hóa Ra Anh Thiết Kế Cả Khu Đô Thị",
+      "seo_title": "Người Làm Vườn Bị Chủ Biệt Thự Đuổi, Hóa Ra Anh Thiết Kế Cả Khu",
+      "seo_desc": "Vũ Quốc Hùng, một người làm vườn tại một biệt thự hạng sang ở Hồ Chí Minh, bị chủ nhà Nguyễn Lan Hương đuổi vì cho rằng công việc của anh không đủ...",
+      "seo_keyword": "người làm vườn bị"
+    },
+    {
+      "id": 2787,
+      "title": "Giáo Viên Làng Bị Hiệu Trưởng Sỉ Nhục, Bộ Giáo Dục Bổ Nhiệm Anh Làm Thanh Tra",
+      "seo_title": "Giáo Viên Làng Bị Hiệu Trưởng Sỉ Nhục, Bộ Giáo Dục Bổ Nhiệm Anh",
+      "seo_desc": "Trong một ngôi làng nhỏ ở Ba Vì, Lê Thanh Bình, một giáo viên tận tâm, bị hiệu trưởng Trần Hữu Đạo sỉ nhục trước mặt học sinh.Vũ Thu Hà, một nữ luật sư...",
+      "seo_keyword": "giáo viên làng bị"
+    },
+    {
+      "id": 2780,
+      "title": "Cô Gái Bán Hoa Bị Đuổi Khỏi Tiệc Cưới Hào Môn, Cùng Ngày Cô Gõ Sàn HOSE",
+      "seo_title": "Cô Gái Bán Hoa Bị Đuổi Khỏi Tiệc Cưới Hào Môn, Cùng Ngày Cô Gõ",
+      "seo_desc": "Câu chuyện xoay quanh Phạm Thị Hương, một cô gái bán hoa tại Hà Nội, người có ước mơ lớn lao và đam mê kinh doanh.Ngày hôm đó, cô được mời đến một tiệc...",
+      "seo_keyword": "cô gái bán hoa"
+    },
+    {
+      "id": 2773,
+      "title": "Chồng Nghèo Bị Họ Hàng Khinh Dự Tiệc Hào Môn, Hóa Ra Anh Là Khách Mời VIP Của Sự Kiện Đó",
+      "seo_title": "Chồng Nghèo Bị Họ Hàng Khinh Dự Tiệc Hào Môn, Hóa Ra Anh Là",
+      "seo_desc": "Anh ấy không có chỗ ở tiệc này. Nhà tôi mời người có địa vị, không mời người làm thuê tháng năm triệu!",
+      "seo_keyword": "chồng nghèo bị họ"
+    },
+    {
+      "id": 2766,
+      "title": "Trợ Lý Bị Sếp Nữ CEO Ngược Đãi, Sếp Mới Của Cô Chính Là Anh Sau Thâu Tóm Công Ty",
+      "seo_title": "Trợ Lý Bị Sếp Nữ CEO Ngược Đãi, Sếp Mới Của Cô Chính Là Anh Sau",
+      "seo_desc": "Phạm Tuấn Khoa! Anh có biết hồ sơ dự án anh làm không đúng tiêu chuẩn không? Anh làm việc kiểu này thì đừng trách tôi ký giấy buộc thôi việc!",
+      "seo_keyword": "trợ lý bị sếp"
+    },
+    {
+      "id": 2759,
+      "title": "Thợ Sửa Xe Bị Cả Xóm Khinh, Khi Đội Đua F1 Quốc Gia Tìm Đến Thuê Anh Làm Kỹ Sư Trưởng",
+      "seo_title": "Thợ Sửa Xe Bị Cả Xóm Khinh, Khi Đội Đua F1 Quốc Gia Tìm Đến Thuê",
+      "seo_desc": "Thợ sửa xe máy cùi bắp, học nghề cũng dở, mở tiệm cũng ế – cả xóm này không ai thèm vào tiệm ông nữa đâu!",
+      "seo_keyword": "thợ sửa xe bị"
+    },
+    {
+      "id": 2752,
+      "title": "Con Trai Nuôi Bị Đuổi Ra Khỏi Tập Đoàn, Di Chúc Ông Nội Trao Lại 70% Cổ Phần",
+      "seo_title": "Con Trai Nuôi Bị Đuổi Ra Khỏi Tập Đoàn, Di Chúc Ông Nội Trao Lại",
+      "seo_desc": "Con nuôi thì suốt đời là con nuôi – không có chỗ trong Tập đoàn Minh Long đâu. Ra đi đi, đừng làm xấu mặt dòng họ!",
+      "seo_keyword": "con trai nuôi bị"
+    },
+    {
+      "id": 2745,
+      "title": "Tài Xế Taxi Bị Khách VIP Khinh Thường, Tài Xế Đó Sở Hữu Công Ty Taxi Lớn Nhất Thành Tâm",
+      "seo_title": "Tài Xế Taxi Bị Khách VIP Khinh Thường, Tài Xế Đó Sở Hữu Công Ty",
+      "seo_desc": "Cậu chỉ là một gã tài xế taxi truyền thống rác rưởi, cả đời này cũng không ngẩng đầu lên được trước ứng dụng gọi xe công nghệ của chúng tôi!",
+      "seo_keyword": "tài xế taxi bị"
+    },
+    {
+      "id": 2738,
+      "title": "Vợ Đòi Ly Hôn Vì Chồng Thất Nghiệp, Ngày Ký Đơn Chồng Nhận Danh Hiệu Kiến Trúc Sư Quốc Gia",
+      "seo_title": "Vợ Đòi Ly Hôn Vì Chồng Thất Nghiệp, Ngày Ký Đơn Chồng Nhận Danh",
+      "seo_desc": "Kiến trúc sinh mệnh không phải là những khối bê tông vô hồn vươn lên giữa bầu trời ô nhiễm, mà là sự hòa quyện tuyệt đối giữa hơi thở của đất mẹ, tre...",
+      "seo_keyword": "vợ đòi ly hôn"
+    },
+    {
+      "id": 2731,
+      "title": "Trưởng Phòng Bán Hàng Khinh Nhân Viên Mới, Nhân Viên Đó Là Chuyên Gia Tư Vấn Của Tập Đoàn Mẹ",
+      "seo_title": "Trưởng Phòng Bán Hàng Khinh Nhân Viên Mới, Nhân Viên Đó Là",
+      "seo_desc": "Trần Minh Hoàng, ba mươi lăm tuổi, một chuyên gia xoay chuyển tình thế doanh nghiệp lừng danh từng vực dậy hàng chục tập đoàn lớn, quyết định ẩn thân...",
+      "seo_keyword": "trưởng phòng bán hàng"
+    },
+    {
+      "id": 2724,
+      "title": "Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ",
+      "seo_title": "Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của",
+      "seo_desc": "Hôm nay các người coi thường nông nghiệp hữu cơ, xua đuổi tôi như một kẻ nghèo hèn vô dụng. Ngày mai, các người sẽ phải quỳ gối cầu xin tôi chia sẻ...",
+      "seo_keyword": "cô gái làng bị"
+    },
+    {
+      "id": 2717,
+      "title": "Thuyền Trưởng Tàu Cá Bị Chủ Cảng Ép Nợ, Hóa Ra Là Đại Gia Hàng Hải Đang Điều Tra Thâu Tóm",
+      "seo_title": "Thuyền Trưởng Tàu Cá Bị Chủ Cảng Ép Nợ, Hóa Ra Là Đại Gia Hàng",
+      "seo_desc": "Nguyễn Hải Long ẩn thân làm thuyền trưởng một con tàu cá nhỏ suốt ba tháng tại cảng Hải Bình, hứng chịu đủ sự chà đạp và ép nợ của tập dịch vụ bến cảng.",
+      "seo_keyword": "thuyền trưởng tàu cá"
+    },
+    {
+      "id": 2703,
+      "title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+      "seo_title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả",
+      "seo_desc": "Đinh Tuấn Anh cống hiến mười năm ròng rã tại Đại học Kỹ thuật Munich để viết nên thuật toán tối ưu hóa động lực học đa vật thể song song (PMDO) chấn...",
+      "seo_keyword": "giáo sư đuổi học"
+    },
+    {
+      "id": 2696,
+      "title": "Kẻ Khinh Bỉ Tôi, Tôi Đáp Trả Bằng Chiến Thắng",
+      "seo_title": "Kẻ Khinh Bỉ Tôi, Tôi Đáp Trả Bằng Chiến Thắng - Đọc Full",
+      "seo_desc": "Lê Mai, một đầu bếp xuất sắc, sống dưới cái bóng của gia đình chồng cũ. Bà mẹ chồng Hà Thịnh coi thường cô, khinh bỉ món ăn cô làm. Cao Hùng, chồng cô,...",
+      "seo_keyword": "kẻ khinh bỉ tôi"
+    },
+    {
+      "id": 2689,
+      "title": "Bác Sĩ Thực Tập Chống Tham Nhũng Y Tế",
+      "seo_title": "Bác Sĩ Thực Tập Chống Tham Nhũng Y Tế - Đọc Full",
+      "seo_desc": "Trong một đêm đầy bão tố tại Bệnh viện Đa khoa Quốc tế Thành Tâm, sự thật bất ngờ được phơi bày. Phạm Quốc Bảo, một tiến sĩ y khoa tài năng, quyết định...",
+      "seo_keyword": "bác sĩ thực tập"
+    },
+    {
+      "id": 2682,
+      "title": "Kẻ Nghèo Hèn Lật Kèo Tỷ Đô: Giây Phút Định Mệnh",
+      "seo_title": "Kẻ Nghèo Hèn Lật Kèo Tỷ Đô: Giây Phút Định Mệnh",
+      "seo_desc": "Nguyễn Văn Dũng đã dành ba năm cống hiến để phát triển hệ thống logistics thông minh LogiChain. Nhưng gia đình vợ anh chỉ nhìn thấy một kẻ nghèo hèn,...",
+      "seo_keyword": "kẻ nghèo hèn lật"
+    },
+    {
+      "id": 2675,
+      "title": "Vô Địch Quốc Gia: Từ Chân Lau Dọn Đến Vinh Quang",
+      "seo_title": "Vô Địch Quốc Gia: Từ Chân Lau Dọn Đến Vinh Quang",
+      "seo_desc": "Trần Hải Phong, cựu vô địch kickboxing, giờ chỉ là kẻ lau dọn tại võ quán Thành Tâm xập xệ. Cuộc đời anh thay đổi khi bị sư phụ Lý Bách vu khống hèn...",
+      "seo_keyword": "vô địch quốc gia"
+    },
+    {
+      "id": 2668,
+      "title": "Cô Vợ Hào Môn Khinh Tôi, Tôi Là Chủ Tịch Tập Đoàn Thép",
+      "seo_title": "Cô Vợ Hào Môn Khinh Tôi, Tôi Là Chủ Tịch Tập Đoàn Thép - Đọc Full",
+      "seo_desc": "Đêm mưa lạnh ở Hà Nội, Trần Đông Hải cảm thấy một nỗi đau không thể tả. Chiếc hộp thiếc rỉ sét đựng bút mực cũ kỹ là tất cả những gì còn lại của anh...",
+      "seo_keyword": "cô vợ hào môn"
+    },
+    {
+      "id": 2658,
+      "title": "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp",
+      "seo_title": "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp - Đọc Full",
+      "seo_desc": "Ngày công bố thành quả, Trần Hoàng Vũ đứng giữa rừng sâu Ngọc Linh, ánh mắt lấp lánh niềm tự hào. Nhưng chỉ sau một giây, hắn cảm nhận được cú sốc khi...",
+      "seo_keyword": "chàng rể ngọc linh"
+    },
+    {
+      "id": 2606,
+      "title": "Chàng Rể Vạch Trần Âm Mưu Gia Tộc Trầm Hương",
+      "seo_title": "Chàng Rể Vạch Trần Âm Mưu Gia Tộc Trầm Hương - Đọc Full",
+      "seo_desc": "Giữa cơn mưa giông của phố biển Nha Trang, Diệp Thiên Lang bị ném khỏi gia tộc trầm hương. Hắn bị Lâm Vĩnh Nghiệp, vua trầm đất Khánh Hòa, chửi rủa...",
+      "seo_keyword": "chàng rể vạch trần"
+    },
+    {
       "id": 2587,
-      "title": "Thiên Tài Cầu Đường Cao Tốc: Kỹ Sư Bị Sa Thải Xây Cầu Vượt Biển Nghìn Tỷ",
-      "seo_title": "Thiên Tài Cầu Đường Cao Tốc: Kỹ Sư Bị Sa Thải Xây Cầu Vượt Biển",
-      "seo_desc": "Nhân viên kỹ thuật quèn của Viện Thiết Kế Cầu Đường thì không được phép phản biện dự án sai kỹ thuật sao? Lê Khắc Nam cướp trắng bản quyền thiết kế của...",
+      "title": "Thiên Tài Cầu Đường: Kỹ Sư Bị Sa Thải Đối Đầu Với Kẻ Cướp Bản Quyền",
+      "seo_title": "Thiên Tài Cầu Đường: Kỹ Sư Bị Sa Thải Đối Đầu Với Kẻ Cướp Bản",
+      "seo_desc": "Giữa cơn bão Hải Phòng, tôi bị đẩy ra khỏi Viện Thiết Kế Cầu Đường, chỉ vì dám phản biện sai sót trong dự án. Lê Khắc Nam, kẻ cướp bản quyền thiết kế...",
       "seo_keyword": "thiên tài cầu đường"
     },
     {
       "id": 2573,
-      "title": "Đế Chế Gốm Sứ Bát Tràng: Nghệ Nhân Bị Phản Bội Thiêu Đốt Cả Làng Nghề",
-      "seo_title": "Đế Chế Gốm Sứ Bát Tràng: Nghệ Nhân Bị Phản Bội Thiêu Đốt Cả Làng",
-      "seo_desc": "Trần Thế Hải, đứa học trò ruột tôi cưu mang năm năm, ăn cắp công thức men ngọc rạn ngũ đại gia truyền, liên doanh với tập đoàn gốm sứ hóa chất ngoại...",
+      "title": "Đế Chế Gốm Sứ Bát Tràng: Phản Bội và Bùng Nổ",
+      "seo_title": "Đế Chế Gốm Sứ Bát Tràng: Phản Bội và Bùng Nổ",
+      "seo_desc": "Ở làng Bát Tràng ngàn năm, nơi gốm sứ giao thoa với nghệ thuật, một bi kịch đang xảy ra. Nguyễn Quang Minh, nghệ nhân tài ba, bỗng dưng bị phản bội bởi...",
       "seo_keyword": "đế chế gốm sứ"
     },
     {
       "id": 2561,
-      "title": "Vua Tôm Hùm Phú Yên: Chàng Ngư Dân Bị Khinh Rẻ Thâu Tóm Vùng Biển Nghìn Tỷ",
-      "seo_title": "Vua Tôm Hùm Phú Yên: Chàng Ngư Dân Bị Khinh Rẻ Thâu Tóm Vùng",
-      "seo_desc": "Ngày hôm đó, cha con chủ nhiệm Hợp tác xã tước đoạt toàn bộ lồng tôm hùm gia truyền của tôi, đẩy người cha già bám biển ngã chấn thương cột sống nằm...",
-      "seo_keyword": "vua tôm hùm phú"
-    },
-    {
-      "id": 2549,
-      "title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ Của Chàng Rể Hào Môn",
-      "seo_title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ Của Chàng Rể Hào",
-      "seo_desc": "Nguyễn Tấn Đạt chỉ là người làm vườn lấm bùn trong mắt cả Chợ Lách, lặng lẽ đứng cạnh Trần Mỹ Duyên khi vườn sầu riêng 50 hecta của gia đình cô bị chủ...",
-      "seo_keyword": "bão nổi miền tây"
-    },
-    {
-      "id": 2517,
-      "title": "Thiên Tài Khởi Nghiệp Fintech",
-      "seo_title": "Thiên Tài Khởi Nghiệp Fintech - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Tôi viết từng dòng code đầu tiên cho PayViet ngay tại căn phòng trọ 15 mét vuông trên phố Duy Tân. Ba năm sau, khi app có 2 triệu người dùng và vừa gọi...",
-      "seo_keyword": "thiên tài khởi nghiệp"
-    },
-    {
-      "id": 2508,
-      "title": "Võ Thần Bảo Vệ Đại Tiểu Thư",
-      "seo_title": "Võ Thần Bảo Vệ Đại Tiểu Thư - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Họ thuê tôi làm bảo vệ với mức lương 8 triệu một tháng. Đại tiểu thư nhìn tôi như nhìn một con chó giữ cửa và bảo: Anh chỉ cần đứng im và đừng làm...",
-      "seo_keyword": "võ thần bảo vệ"
-    },
-    {
-      "id": 2497,
-      "title": "Chiến Thần Dược Phẩm Độc Bản",
-      "seo_title": "Chiến Thần Dược Phẩm Độc Bản - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Năm năm nghiên cứu trong phòng lab lạnh giá Đà Lạt, tôi tìm ra công thức thuốc gan đột phá dùng kỹ thuật khóa phân tử độc nhất vô nhị. Thế nhưng sếp cũ...",
-      "seo_keyword": "chiến thần dược phẩm"
-    },
-    {
-      "id": 2489,
-      "title": "Người Thừa Kế Trăm Tỷ Giả Nghèo",
-      "seo_title": "Người Thừa Kế Trăm Tỷ Giả Nghèo - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Tôi đi xe ôm đến ra mắt gia đình người yêu. Mẹ cô ấy nhìn tôi từ đầu đến chân rồi nhổ nước bọt: Thằng ăn mày này cũng dám đòi cưới con gái tôi? Sính lễ...",
-      "seo_keyword": "người thừa kế trăm"
+      "title": "Ngọc Hoàng Tôm Hùm: Trận Chiến Khốc Liệt Giữa Ngư Dân Và Thương Lái",
+      "seo_title": "Ngọc Hoàng Tôm Hùm: Trận Chiến Khốc Liệt Giữa Ngư Dân Và Thương",
+      "seo_desc": "Ngày định mệnh, cha con chủ nhiệm Hợp tác xã đã tước đoạt toàn bộ lồng tôm hùm gia truyền của Trần Hải Phong. Hình ảnh người cha già nằm liệt giường,...",
+      "seo_keyword": "ngọc hoàng tôm hùm"
     },
     {
       "id": 2482,
       "title": "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn",
       "seo_title": "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực",
-      "seo_desc": "Trịnh Gia Huy, nghệ nhân ủ chượp kiêm chuyên gia sinh hóa thực phẩm xuất sắc nhất đảo ngọc Phú Quốc, bị gã anh rể hách dịch vu oan trộm cắp công thức,...",
+      "seo_desc": "Trịnh Gia Huy, nghệ nhân ủ chượp nước mắm nổi tiếng, bị vu oan trộm cắp công thức. Gã anh rể Trần Thế Vinh hách dịch đã đạp ngã hắn bên sườn đồi Dương...",
       "seo_keyword": "vương quốc nước mắm"
     },
     {
       "id": 2475,
       "title": "Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
       "seo_title": "Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
-      "seo_desc": "Nguyễn Hoàng Minh, một chuyên gia phân tích tài chính địa ốc hàng đầu năm 2026, bị kẻ thù gài bẫy phá sản, uất hận nhảy xuống từ cầu Nhật Tân... Thế...",
+      "seo_desc": "Nguyễn Hoàng Minh, một chuyên gia phân tích tài chính hàng đầu năm 2026, đứng trên cầu Nhật Tân, ánh mắt tràn đầy uất hận. Hắn không thể ngờ rằng kẻ...",
       "seo_keyword": "trọng sinh 2008 vua"
     },
     {
       "id": 2465,
       "title": "Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
       "seo_title": "Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng",
-      "seo_desc": "Lê Gia Bách, cựu Đại úy Đặc nhiệm Hải quân tinh nhuệ nhất Việt Nam, người từng một mình bẻ gãy đường dây cướp biển vịnh Thái Lan, nay ẩn thân làm nhân...",
+      "seo_desc": "Có những người chọn biến mất không phải vì nhát gan, mà vì họ biết rõ hơn ai hết rằng ánh đèn sân khấu đôi khi là mồi nhử tốt nhất cho kẻ thù.Lê Gia...",
       "seo_keyword": "võ thần đất cảng"
     },
     {
-      "id": 2457,
-      "title": "Chàng Rể Bùn Lầy Ẩn Thân: Lật Kèo Vườn Sầu Riêng Trăm Tỷ Dậy Sóng Miền Tây",
-      "seo_title": "Chàng Rể Bùn Lầy Ẩn Thân: Lật Kèo Vườn Sầu Riêng Trăm Tỷ Dậy",
-      "seo_desc": "Nguyễn Tấn Đạt chỉ là người làm vườn lấm bùn trong mắt cả Chợ Lách, lặng lẽ đứng cạnh Trần Mỹ Duyên khi vườn sầu riêng 50 hecta của gia đình cô bị chủ...",
-      "seo_keyword": "chàng rể bùn lầy"
-    },
-    {
       "id": 2448,
-      "title": "Vua Bán Lẻ Đường Phố Sài Gòn: Trận Chiến Sinh Tử Của Chuỗi Trà Ô Long Organic Việt",
-      "seo_title": "Vua Bán Lẻ Đường Phố Sài Gòn: Trận Chiến Sinh Tử Của Chuỗi Trà Ô",
-      "seo_desc": "Trần Quốc Bảo, người sáng lập chuỗi Bảo Long Tea thuần hữu cơ bị đối thủ đa quốc gia Royal Sip hãm hại bằng truyền thông bẩn bôi nhọ chè chứa...",
-      "seo_keyword": "vua bán lẻ đường"
+      "title": "Cuộc Chiến Sinh Tử Của Trà Ô Long Hữu Cơ Việt",
+      "seo_title": "Cuộc Chiến Sinh Tử Của Trà Ô Long Hữu Cơ Việt - Đọc Full",
+      "seo_desc": "Giữa lòng Sài Gòn nhộn nhịp, Trần Quốc Bảo, người sáng lập chuỗi trà Bảo Long Tea, bất ngờ đối mặt với cơn bão truyền thông. Đối thủ Royal Sip đã ra...",
+      "seo_keyword": "cuộc chiến sinh tử"
     },
     {
       "id": 2313,
-      "title": "Bị Cướp Mã Nguồn Nghìn Tỷ, Tôi Kích Hoạt Cái Bẫy Chôn Vùi Cả Tập Đoàn",
-      "seo_title": "Bị Cướp Mã Nguồn Nghìn Tỷ, Tôi Kích Hoạt Cái Bẫy Chôn Vùi Cả Tập",
-      "seo_desc": "Mày hết chỗ đứng ở đây rồi, Đức. Cút ra khỏi tòa nhà của tao.",
-      "seo_keyword": "bị cướp mã nguồn"
+      "title": "Cướp Mã Nguồn Nghìn Tỷ, Kích Hoạt Bẫy Chôn Vùi Tập Đoàn",
+      "seo_title": "Cướp Mã Nguồn Nghìn Tỷ, Kích Hoạt Bẫy Chôn Vùi Tập Đoàn - Đọc",
+      "seo_desc": "Mày hết chỗ đứng ở đây rồi, Đức. Cút ra khỏi tòa nhà của tao. Giọng Hoàng Thế Vinh lạnh như băng, không một chút dao động. Phạm Minh Đức, vị đồng sáng...",
+      "seo_keyword": "cướp mã nguồn nghìn"
     },
     {
       "id": 2289,
-      "title": "Sân Khấu Nhà Hát Phương Nam",
-      "seo_title": "Sân Khấu Nhà Hát Phương Nam - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Nguyễn Hoàng Long – đạo diễn ballet hàng đầu từ nước ngoài trở về Hà Ngoại – đương đầu với một hội đồng nghệ thuật già cỗi không chịu đổi mới và một...",
-      "seo_keyword": "sân khấu nhà hát"
+      "title": "Cuộc Chiến Nghệ Thuật Tại Nhà Hát Phương Nam",
+      "seo_title": "Cuộc Chiến Nghệ Thuật Tại Nhà Hát Phương Nam - Đọc Full",
+      "seo_desc": "Nguyễn Hoàng Long, một đạo diễn ballet tài năng vừa trở về từ châu Âu, đứng trước thách thức lớn tại Nhà hát Phương Nam. Hội đồng nghệ thuật già cỗi...",
+      "seo_keyword": "cuộc chiến nghệ thuật"
     },
     {
       "id": 2279,
-      "title": "Vương Quốc Bất Động Sản Thành Tâm",
-      "seo_title": "Vương Quốc Bất Động Sản Thành Tâm - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Đinh Thanh Tùng – tên tuổi bất động sản hàng đầu Thành Tâm – bị cô lập khi một liên minh đối thủ cùng lúc tấn công từ ba hướng: pháp lý, tài chính, và...",
+      "title": "Vương Quốc Bất Động Sản: Cuộc Chiến Sinh Tử",
+      "seo_title": "Vương Quốc Bất Động Sản: Cuộc Chiến Sinh Tử",
+      "seo_desc": "Đinh Thanh Tùng, tên tuổi lừng lẫy trong lĩnh vực bất động sản, đang đứng trước bờ vực của sự sụp đổ. Ba thế lực đối thủ cùng lúc tấn công, tạo nên...",
       "seo_keyword": "vương quốc bất động"
     },
     {
       "id": 2269,
-      "title": "Đế Chế Dệt May Bình Thịnh",
-      "seo_title": "Đế Chế Dệt May Bình Thịnh - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Trần Minh Khải – ông chủ tập đoàn dệt may lớn nhất Bình Thịnh – đang đứng trước cú đánh hai gọng kìm: làn sóng cổ phần từ quỹ đầu tư nước ngoài muốn...",
+      "title": "Đế Chế Dệt May Bình Thịnh: Chiến Tranh Tài Chính",
+      "seo_title": "Đế Chế Dệt May Bình Thịnh: Chiến Tranh Tài Chính",
+      "seo_desc": "Trần Minh Khải, ông chủ của tập đoàn dệt may lớn nhất Bình Thịnh, đang ở trong tình thế ngàn cân treo sợi tóc. Quỹ đầu tư nước ngoài đang âm thầm thâu...",
       "seo_keyword": "đế chế dệt may"
     },
     {
       "id": 2259,
-      "title": "Tiệm Bánh Hội Nguyên",
-      "seo_title": "Tiệm Bánh Hội Nguyên - Siêu Phẩm Sảng Văn Vả Mặt Full Cực Hay",
-      "seo_desc": "Phạm Hoàng Minh – chủ tiệm bánh mì gia truyền bảy mươi năm ở Hội Nguyên – đứng trước nguy cơ mất tất cả khi đối thủ đánh cắp công thức, tung tin đồn...",
-      "seo_keyword": "tiệm bánh hội nguyên"
+      "title": "Cuộc Chiến Bánh Mì: Bảo Vệ Di Sản Ẩm Thực Hội Nguyên",
+      "seo_title": "Cuộc Chiến Bánh Mì: Bảo Vệ Di Sản Ẩm Thực Hội Nguyên",
+      "seo_desc": "Phạm Hoàng Minh có thể mất tất cả, chỉ trong vòng 24 giờ. Tiệm bánh mì gia truyền bảy mươi năm, nơi cha ông đã thổi hồn vào từng chiếc bánh, đang đứng...",
+      "seo_keyword": "cuộc chiến bánh mì"
     },
     {
       "id": 2249,
-      "title": "Nhà Thiết Kế Tàng Hình Hội Nghị Thời Trang Quốc Gia",
-      "seo_title": "Nhà Thiết Kế Tàng Hình Hội Nghị Thời Trang Quốc Gia - Đọc Full",
-      "seo_desc": "Châu Minh Hải bị người yêu cũ phản bội và gã nhà thiết kế danh tiếng cướp trắng toàn bộ bộ sưu tập dạ hội độc bản dự thi Hội Nghị Thời Trang Quốc Gia,...",
+      "title": "Nhà Thiết Kế Tàng Hình: Cuộc Chiến Tại Hội Nghị Thời Trang Quốc Gia",
+      "seo_title": "Nhà Thiết Kế Tàng Hình: Cuộc Chiến Tại Hội Nghị Thời Trang Quốc",
+      "seo_desc": "Châu Minh Hải, một nhà thiết kế trẻ tài năng, vừa bị phản bội bởi người yêu cũ. Trong cú sốc lớn, anh phát hiện ra bộ sưu tập dạ hội độc bản của mình...",
       "seo_keyword": "nhà thiết kế tàng"
     },
     {
       "id": 2238,
-      "title": "Triều Đại Cà Phê Bazan Đắk Minh",
-      "seo_title": "Triều Đại Cà Phê Bazan Đắk Minh - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Y Dhăm Nie bị đối tác ngoại bang xảo quyệt cướp mất bằng sáng chế máy rang cà phê bằng tia hồng ngoại gia truyền ba đời, đồng thời vu khống anh ăn cắp...",
+      "title": "Triều Đại Cà Phê Bazan: Cuộc Chiến Giành Bằng Sáng Chế",
+      "seo_title": "Triều Đại Cà Phê Bazan: Cuộc Chiến Giành Bằng Sáng Chế",
+      "seo_desc": "Y Dhăm Nie, một người nông dân trồng cà phê tài năng, đang đứng trước bờ vực thua cuộc. Đối tác ngoại bang xảo quyệt đã cướp đi bằng sáng chế máy rang...",
       "seo_keyword": "triều đại cà phê"
     },
     {
       "id": 2227,
-      "title": "Thiên Tài Lập Trình Đà Lạt Sương Mù: Tôi Viết Mã Hoá Lật Đổ Tập Đoàn Tài Chính Phản Bội",
-      "seo_title": "Thiên Tài Lập Trình Đà Lạt Sương Mù: Tôi Viết Mã Hoá Lật Đổ Tập",
-      "seo_desc": "Tôi là Trần Hưng, một cựu kỹ sư bảo mật ẩn cư giữa rừng thông Đà Lạt tĩnh lặng.Nhưng cuộc sống yên bình kết thúc khi tôi phát hiện ra backdoor rửa tiền...",
+      "title": "Thiên Tài Lập Trình: Đà Lạt Sương Mù và Kế Hoạch Lật Đổ Tập Đoàn Tài Chính",
+      "seo_title": "Thiên Tài Lập Trình: Đà Lạt Sương Mù và Kế Hoạch Lật Đổ Tập Đoàn",
+      "seo_desc": "Giữa rừng thông Đà Lạt tĩnh lặng, Trần Hưng sống một cuộc đời ẩn dật như một cựu kỹ sư bảo mật. Nhưng bất ngờ, cuộc sống yên bình của anh bị xáo trộn...",
       "seo_keyword": "thiên tài lập trình"
     },
     {
       "id": 2217,
-      "title": "Kỹ Sư Smart Grid Và Bóng Tối Điện lực Vạn Thịnh",
-      "seo_title": "Kỹ Sư Smart Grid Và Bóng Tối Điện lực Vạn Thịnh - Đọc Full",
-      "seo_desc": "Phan Đức Thành phát hiện ra đường dây tham nhũng thiết bị trạm biến áp kém chất lượng gây nguy hiểm cho lưới điện quốc gia, lập tức bị sếp cũ sa thải...",
-      "seo_keyword": "kỹ sư smart grid"
+      "title": "Bóng Tối Điện Lực Vạn Thịnh: Cuộc Chiến Chống Tham Nhũng",
+      "seo_title": "Bóng Tối Điện Lực Vạn Thịnh: Cuộc Chiến Chống Tham Nhũng",
+      "seo_desc": "Trong một đêm mưa bão, Phan Đức Thành đã phát hiện ra đường dây tham nhũng thiết bị trạm biến áp, đe dọa sự an toàn của lưới điện quốc gia. Với trái...",
+      "seo_keyword": "bóng tối điện lực"
     },
     {
       "id": 2207,
-      "title": "Thuyền Trưởng Cảng Đà Thành",
-      "seo_title": "Thuyền Trưởng Cảng Đà Thành - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Lê Quang Vũ – thuyền trưởng kỳ cựu ba mươi năm vùng biển – bị sa thải sau một lần dám đối mặt thẳng với quản lý nước ngoài hống hách. Trên bến cảng Đà...",
+      "title": "Thuyền Trưởng Cảng Đà Thành: Cuộc Chiến Bên Bến Cả",
+      "seo_title": "Thuyền Trưởng Cảng Đà Thành: Cuộc Chiến Bên Bến Cả",
+      "seo_desc": "Lê Quang Vũ, thuyền trưởng kỳ cựu, đứng giữa những sóng gió của biển cả và cuộc đời. Sa thải sau một lần dũng cảm đối mặt với quản lý nước ngoài, anh...",
       "seo_keyword": "thuyền trưởng cảng đà"
     },
     {
       "id": 2197,
-      "title": "THỢ HỒ NGHÌN TỶ",
-      "seo_title": "THỢ HỒ NGHÌN TỶ - Siêu Phẩm Sảng Văn Vả Mặt Full Cực Hay",
-      "seo_desc": "Ngày tôi đến ra mắt, bà ấy nhìn đôi ủng xi măng trên chân tôi rồi phẩy tay: Thợ hồ mà dám đòi cưới con gái tôi? Trọng Khải, con rể tương lai của ta, là...",
+      "title": "Thợ Hồ Nghìn Tỷ: Đập Tan Kiêu Ngạo",
+      "seo_title": "Thợ Hồ Nghìn Tỷ: Đập Tan Kiêu Ngạo",
+      "seo_desc": "Ngày tôi đến ra mắt, bà ấy phẩy tay, ánh mắt khinh bỉ, Thợ hồ mà dám đòi cưới con gái tôi? Trọng Khải, con rể tương lai, là thiếu gia nhà giàu, đi xe...",
       "seo_keyword": "thợ hồ nghìn tỷ"
     },
     {
       "id": 2190,
-      "title": "Thần Tài Chứng Khoán Phố Wall Hà Ngoại",
-      "seo_title": "Thần Tài Chứng Khoán Phố Wall Hà Ngoại - Đọc Full",
-      "seo_desc": "Hoàng Đức Minh bị giám đốc quỹ đầu tư sa thải nhục nhã dưới chân sàn Sở GDCK Phương Bắc, vu khống anh thao túng cổ phiếu để cướp trắng tài sản và tài...",
+      "title": "Thần Tài Chứng Khoán: Đấu Trường Phố Wall Hà Nội",
+      "seo_title": "Thần Tài Chứng Khoán: Đấu Trường Phố Wall Hà Nội",
+      "seo_desc": "Hoàng Đức Minh từng là người phân tích trẻ nhất trong quỹ Phương Bắc, cho đến sáng anh bị kéo ra giữa phòng giao dịch Hà Nội và bị gắn tội thao túng cổ...",
       "seo_keyword": "thần tài chứng khoán"
-    },
-    {
-      "id": 2165,
-      "title": "Bạn Thân Cướp Startup Đuổi Tôi Ra Đường, Tôi Bank Run Sập Đế Chế Hắn",
-      "seo_title": "Bạn Thân Cướp Startup Đuổi Tôi Ra Đường, Tôi Bank Run Sập Đế Chế",
-      "seo_desc": "Tôi viết từng dòng code đầu tiên cho PayViet ngay tại căn phòng trọ 15 mét vuông trên phố Duy Tân.Ba năm sau, khi app có 2 triệu người dùng và vừa gọi...",
-      "seo_keyword": "bạn thân cướp startup"
-    },
-    {
-      "id": 2156,
-      "title": "Tiểu Thư Khinh Tôi Là Bảo Vệ 8 Triệu, Tôi Là Đặc Nhiệm Hạng Nhất",
-      "seo_title": "Tiểu Thư Khinh Tôi Là Bảo Vệ 8 Triệu, Tôi Là Đặc Nhiệm Hạng Nhất",
-      "seo_desc": "Họ thuê tôi làm bảo vệ với mức lương 8 triệu một tháng.Đại tiểu thư nhìn tôi như nhìn một con chó giữ cửa và bảo: Anh chỉ cần đứng im và đừng làm phiền...",
-      "seo_keyword": "tiểu thư khinh tôi"
-    },
-    {
-      "id": 2145,
-      "title": "Sếp Cướp Công Thức Thuốc Đuổi Tôi Khỏi Lab, Tôi Phá Sập IPO Nghìn Tỷ",
-      "seo_title": "Sếp Cướp Công Thức Thuốc Đuổi Tôi Khỏi Lab, Tôi Phá Sập IPO",
-      "seo_desc": "Năm năm nghiên cứu trong phòng lab lạnh giá Đà Lạt, tôi tìm ra công thức thuốc gan đột phá dùng kỹ thuật khóa phân tử độc nhất vô nhị.Thế nhưng sếp cũ...",
-      "seo_keyword": "sếp cướp công thức"
-    },
-    {
-      "id": 2137,
-      "title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ Khinh Tôi Nghèo, Landmark 81 Là Của Tôi",
-      "seo_title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ Khinh Tôi Nghèo, Landmark 81 Là Của Tôi -",
-      "seo_desc": "Tôi đi xe ôm đến ra mắt gia đình người yêu.Mẹ cô ấy nhìn tôi từ đầu đến chân rồi nhổ nước bọt: Thằng ăn mày này cũng dám đòi cưới con gái tôi?Sính lễ 5...",
-      "seo_keyword": "mẹ vợ đòi sính"
     },
     {
       "id": 2129,
       "title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
       "seo_title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
-      "seo_desc": "Năm năm trước, hắn giật lấy công trình nghiên cứu của tôi, bảo vệ ném hành lý của tôi ra đường đèo Đà Lạt dưới cơn mưa tuyết lạnh giá.Hắn đứng trên...",
+      "seo_desc": "Trần Huy Hoàng mất năm năm để hoàn thiện hoạt chất cứu người, rồi mất tất cả trong một buổi họp khi Đường Vĩnh Khang cướp công trình và đẩy anh ra khỏi...",
       "seo_keyword": "độc bản dược thần"
     },
     {
       "id": 2120,
       "title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
       "seo_title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc -",
-      "seo_desc": "Ngày đó, sư phụ cướp trắng công thức gia truyền ba đời, đạp tôi ra khỏi nhà hàng năm sao giữa Sài Gòn.Mẹ vợ khinh tôi là thằng rửa bát vô dụng, anh rể...",
+      "seo_desc": "Đặng Quốc Bảo bị mẹ vợ bắt rửa bát giữa biệt thự Phú Quốc, bị anh rể gọi là đồ ăn bám ngay trước mặt họ hàng. Không ai biết người đàn ông cúi đầu bên...",
       "seo_keyword": "mẹ vợ bắt rửa"
     },
     {
       "id": 2112,
       "title": "Người Thợ Sửa Xe Ở Hầm B2",
       "seo_title": "Người Thợ Sửa Xe Ở Hầm B2 - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Trong hầm B2 của một trung tâm thương mại, Đỗ Nhật Nam bị vị khách đi siêu xe tát trước mặt mọi người vì dám nói chiếc Lamborghini của hắn đã bị can...",
+      "seo_desc": "Đỗ Nhật Nam chỉ là thợ sửa xe thuê ở hầm B2, áo lúc nào cũng dính dầu và bị khách nhà giàu gọi bằng thằng. Khi anh cảnh báo chiếc Lamborghini đã bị can...",
       "seo_keyword": "người thợ sửa xe"
     },
     {
       "id": 2106,
       "title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ",
       "seo_title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ - Đọc Full",
-      "seo_desc": "Lâm Vy bị gia đình bạn trai khinh thường vì chỉ bán trà sữa trong một con hẻm nhỏ.Trong tiệc đính hôn, mẹ chồng tương lai ném hợp đồng thuê mặt bằng...",
+      "seo_desc": "Một ly trà sữa ba mươi nghìn đồng rách nát cũng đòi bước chân vào hào môn nhà chúng tôi sao? Cô chỉ xứng đáng đi phục vụ bưng bê thôi!",
       "seo_keyword": "cô gái bán trà"
     },
     {
       "id": 2099,
       "title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
       "seo_title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao - Đọc Full",
-      "seo_desc": "Trần Gia Huy từng là quản lý vận hành giỏi nhất khách sạn Hoàng Gia, nhưng trong đêm tiệc trao giải du lịch, anh bị vu oan biển thủ tiền đặt phòng VIP...",
+      "seo_desc": "Không có tập đoàn Hoàng Gia nâng đỡ, anh chỉ là một thằng phục vụ mặc vest vô dụng!",
       "seo_keyword": "bị đuổi khỏi khách"
     },
     {
       "id": 2089,
-      "title": "Trọng Sinh 2008: Cơn Sốt Đất Đông Anh",
-      "seo_title": "Trọng Sinh 2008: Cơn Sốt Đất Đông Anh",
-      "seo_desc": "Ba năm trước, tôi chết trong nghèo khổ bên vệ đường Hà Nội, bị kẻ thù cướp sạch dự án bất động sản tâm huyết và đẩy gia đình vào nợ nần chồng...",
-      "seo_keyword": "trọng sinh 2008 cơn"
+      "title": "Trọng Sinh 2008: Ôm Đất Đông Anh Trước Cơn Sốt Nghìn Tỷ",
+      "seo_title": "Trọng Sinh 2008: Ôm Đất Đông Anh Trước Cơn Sốt Nghìn Tỷ",
+      "seo_desc": "Đông Anh chỉ là vùng đất hoang sơ nghèo đói ven sông Hồng, ai mua đất ở đây đều là kẻ điên!",
+      "seo_keyword": "trọng sinh 2008 ôm"
     },
     {
       "id": 2067,
-      "title": "Sau Khi Bị Sa Thải, Tôi Thắng Gói Thầu Nghìn Tỷ",
-      "seo_title": "Sau Khi Bị Sa Thải, Tôi Thắng Gói Thầu Nghìn Tỷ - Đọc Full",
-      "seo_desc": "Ba giờ trước buổi đấu thầu dự án AI đô thị thông minh, Nguyễn Minh Khang bị chính công ty mình cứu sống vu oan làm lộ dữ liệu.Hắn bị bảo vệ kéo lê qua...",
-      "seo_keyword": "sau khi bị sa"
+      "title": "Bị Sa Thải Trước Giờ Đấu Thầu: Một Mình Thắng Gói AI Nghìn Tỷ",
+      "seo_title": "Bị Sa Thải Trước Giờ Đấu Thầu: Một Mình Thắng Gói AI Nghìn Tỷ",
+      "seo_desc": "Ba giờ trước giờ G, mọi thứ như sụp đổ trước mắt Nguyễn Minh Khang. Thẻ nhân viên của anh bị bẻ đôi, laptop bị niêm phong như một tội đồ. Người yêu cũ...",
+      "seo_keyword": "bị sa thải trước"
     },
     {
       "id": 2052,
-      "title": "Thần Y Phòng Khám Quận Năm: Vợ Tôi Là Siêu Tỷ Phú",
-      "seo_title": "Thần Y Phòng Khám Quận Năm: Vợ Tôi Là Siêu Tỷ Phú",
-      "seo_desc": "Lâm Trần bị Trưởng khoa Hoàng Vĩnh cướp công trình nghiên cứu tái tạo tế bào gan, khóa tài khoản Kỹ Thương Bank và ném hành lý ra đường Nguyễn Trãi...",
-      "seo_keyword": "thần y phòng khám"
+      "title": "Thần Y Quận 5: Kẻ Cướp Công Trình và Siêu Tỷ Phú",
+      "seo_title": "Thần Y Quận 5: Kẻ Cướp Công Trình và Siêu Tỷ Phú",
+      "seo_desc": "Giữa cơn mưa tầm tã trên đường Nguyễn Trãi, Trần Duy bị đẩy ra khỏi bệnh viện, tay cầm hồ sơ nghiên cứu đã bị cướp. Ánh mắt anh vằn tia máu, lòng đầy...",
+      "seo_keyword": "thần y quận 5"
     },
     {
       "id": 2044,
-      "title": "Chàng Rể Hào Môn Miền Tây",
-      "seo_title": "Chàng Rể Hào Môn Miền Tây - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Lâm Phong là một thiếu gia của tập đoàn vận tải biển hàng đầu Việt Nam, vì muốn tìm kiếm một tình yêu đích thực không vụ lợi nên đã ẩn thân làm công...",
-      "seo_keyword": "chàng rể hào môn"
+      "title": "Chàng Rể Ẩn Thân Miền Tây: Cứu Vườn Sầu Riêng Trăm Tỷ",
+      "seo_title": "Chàng Rể Ẩn Thân Miền Tây: Cứu Vườn Sầu Riêng Trăm Tỷ",
+      "seo_desc": "Lâm Phong giấu kín thân phận thiếu gia, chọn làm công trong vườn sầu riêng Bến Tre. Chỉ vì một lý do duy nhất: tìm kiếm những người thật lòng với mình....",
+      "seo_keyword": "chàng rể ẩn thân"
     },
     {
       "id": 2035,
-      "title": "Kẻ Phế Vật Ngày Ấy, Hôm Nay Trở Về",
-      "seo_title": "Kẻ Phế Vật Ngày Ấy, Hôm Nay Trở Về - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Lúc nửa đêm, gã thanh niên bước xuống từ chiếc Maybach đen bóng trước cổng biệt thự nhà họ Lâm.Mười hai năm trước, cũng trước cổng nhà này, hắn bị đánh...",
-      "seo_keyword": "kẻ phế vật ngày"
+      "title": "Kẻ Phế Vật Trở Về: Đòi Lại Gia Tộc Sau 12 Năm",
+      "seo_title": "Kẻ Phế Vật Trở Về: Đòi Lại Gia Tộc Sau 12 Năm",
+      "seo_desc": "Mười hai năm trước, đêm mưa tầm tã, Lâm Phong bị ném khỏi Lâm gia như một phế vật. Chú ruột hắn, Lâm Minh, đứng cười nhạo với quyền thừa kế trong tay....",
+      "seo_keyword": "kẻ phế vật trở"
     },
     {
       "id": 2023,
-      "title": "Đồ Phế Vật Năm Đó, Hôm Nay Ta Trở Về",
-      "seo_title": "Đồ Phế Vật Năm Đó, Hôm Nay Ta Trở Về - Đọc Full",
-      "seo_desc": "Năm đó, Lâm Phong bị coi là phế vật vô dụng bị cả gia tộc chà đạp.Trong đêm mưa giông bão giật, người chú ruột mưu mô Lâm Vĩnh Thịnh thiêu rụi di ảnh...",
-      "seo_keyword": "đồ phế vật năm"
-    },
-    {
-      "id": 2020,
-      "title": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
-      "seo_title": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
-      "seo_desc": "Năm 2026, thế giới chìm trong đống đổ nát sau một thảm họa toàn cầu.Giữa một phòng thí nghiệm hoang tàn, một cơ thể sinh học nhân tạo bất ngờ mở...",
-      "seo_keyword": "hệ thống trí tuệ"
+      "title": "Phế Vật Trở Về: Cuộc Báo Thù Rực Lửa",
+      "seo_title": "Phế Vật Trở Về: Cuộc Báo Thù Rực Lửa",
+      "seo_desc": "Trong đêm mưa bão tơi tả, Lâm Phong bị đẩy ra khỏi gia tộc mà không chút thương tiếc. Hắn chỉ là một phế vật, nhưng trong lòng lại chứa đựng lửa giận...",
+      "seo_keyword": "phế vật trở về"
     },
     {
       "id": 2013,
       "title": "Bức Thư Cuối Cùng Của Biển",
       "seo_title": "Bức Thư Cuối Cùng Của Biển - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Ở thị trấn ven biển Cát Trắng, Quân sống lại tuổi 18 với ký ức thảm họa sạt lở 5 năm sau.Lá thư tình chưa gửi cho cô gái thượng lưu từng khiến hắn bị...",
+      "seo_desc": "Câu chuyện xoay quanh Hoàng Quân, một kỹ sư địa chất trẻ tuổi, đang phải đối mặt với khủng hoảng sạt lở tại Cát Hải, Hải Phòng.Giữa cơn bão số 3 Đình...",
       "seo_keyword": "bức thư cuối cùng"
     },
     {
       "id": 2007,
       "title": "Lột Mặt Người Sếp Cướp Công",
       "seo_title": "Lột Mặt Người Sếp Cướp Công - Truyện Sảng Văn Full Cực Hay",
-      "seo_desc": "Trong làng nghề kinh doanh online, Lâm Trạch bị lão sếp họ Hoàng vu oan là lang băm để cướp bài thuốc gia truyền.Nhưng anh đã bí mật đặt camera an...",
+      "seo_desc": "Lâm Trạch, một nhân viên xuất sắc tại công ty dược phẩm đang chuẩn bị cho IPO lớn, bỗng nhiên phát hiện sếp của mình, Hoàng Quốc Trung, đang âm thầm...",
       "seo_keyword": "lột mặt người sếp"
     },
     {
       "id": 2001,
-      "title": "Anh Sang Trong Dem",
-      "seo_title": "Anh Sang Trong Dem - Siêu Phẩm Sảng Văn Vả Mặt Full Cực Hay",
-      "seo_desc": "Minh, một họa sĩ trẻ, mất thị lực sau tai nạn.Tuyệt vọng, anh gặp Lan, cô gái khiếm thính dạy anh cảm nhận thế giới bằng giác quan khác.Cùng nhau, họ...",
-      "seo_keyword": "anh sang trong dem"
+      "title": "Ánh Sáng Trong Đêm",
+      "seo_title": "Ánh Sáng Trong Đêm - Siêu Phẩm Sảng Văn Vả Mặt Full Cực Hay",
+      "seo_desc": "Trong lòng Hà Nội cổ kính, nơi những bức tranh sơn mài cổ Hàng Bông lưu giữ ký ức, Lê Gia Minh, một họa sĩ mù, đang tìm kiếm ánh sáng cho tác phẩm cuối...",
+      "seo_keyword": "ánh sáng trong đêm"
     },
     {
       "id": 1984,
       "title": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu",
       "seo_title": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu -",
-      "seo_desc": "Cô gái giả nghèo để thử lòng người yêu và gia đình anh.Khi mẹ anh đòi sính lễ 900 triệu, cô bắt đầu kế hoạch vả mặt từng người, hé lộ sự thật về thân...",
+      "seo_desc": "Trần Tuấn Anh, một doanh nhân thành đạt ở Sài Gòn, quyết định giả nghèo để ra mắt gia đình Nguyễn Thùy Chi, người yêu của anh.Khi đến chung cư Hoài...",
       "seo_keyword": "tôi giả nghèo đi"
     },
     {
       "id": 1968,
-      "title": "Bóng Đêm Và Ánh Sáng",
-      "seo_title": "Bóng Đêm Và Ánh Sáng - Siêu Phẩm Sảng Văn Vả Mặt Full Cực Hay",
-      "seo_desc": "Sau đại thảm họa, Trái Đất chìm trong bóng tối vĩnh cửu, nơi những sinh vật bóng đêm săn mồi.Một nhóm người sống sót dũng cảm lên đường tìm kiếm nguồn...",
-      "seo_keyword": "bóng đêm và ánh"
+      "title": "Ánh Sáng Cuối Cùng: Cuộc Chiến Giữa Bóng Tối",
+      "seo_title": "Ánh Sáng Cuối Cùng: Cuộc Chiến Giữa Bóng Tối",
+      "seo_desc": "Trái Đất đã chìm trong bóng tối vĩnh cửu sau đại thảm họa, nơi mà những sinh vật bóng đêm trở thành nỗi ám ảnh của nhân loại. Nhưng giữa bóng tối, một...",
+      "seo_keyword": "ánh sáng cuối cùng"
     },
     {
       "id": 1948,
-      "title": "Giám Đốc Ngầm: Thực Tập Sinh Trăm Tỷ Vả Mặt Trưởng Phòng Nhân Sự Cướp Dự Án",
-      "seo_title": "Giám Đốc Ngầm: Thực Tập Sinh Trăm Tỷ Vả Mặt Trưởng Phòng Nhân Sự",
-      "seo_desc": "Lâm Uyển Nhu, ái nữ duy nhất của Chủ tịch tập đoàn Lâm Thị, quyết định ẩn thân làm thực tập sinh quèn để trải nghiệm thực tế và vạch trần những góc tối...",
+      "title": "Giám Đốc Ngầm: Thực Tập Sinh Dám Vả Mặt Trưởng Phòng Cướp Dự Án",
+      "seo_title": "Giám Đốc Ngầm: Thực Tập Sinh Dám Vả Mặt Trưởng Phòng Cướp Dự Án",
+      "seo_desc": "Lâm Uyển Nhu, ái nữ duy nhất của Chủ tịch tập đoàn Lâm Thị, khát khao trải nghiệm thực tế. Giữa những bộn bề công việc, cô quyết định ẩn thân làm thực...",
       "seo_keyword": "giám đốc ngầm thực"
     },
     {
-      "id": 1933,
-      "title": "Đừng Gọi Tôi Là Con Bé Gần Máy In: Tôi Nuôi Quỷ Vương Trong Gấu Bông Pikachu",
-      "seo_title": "Đừng Gọi Tôi Là Con Bé Gần Máy In: Tôi Nuôi Quỷ Vương Trong Gấu",
-      "seo_desc": "Tôi là Tô Khanh Khanh, một nữ nhân viên văn phòng bình thường có vận may bùng nổ.Nhưng cuộc sống của tôi thay đổi hoàn toàn kể từ khi một Quỷ Vương tu...",
-      "seo_keyword": "đừng gọi tôi là"
-    },
-    {
       "id": 1927,
-      "title": "Nhà Của Mẹ Chồng? Không, Biệt Thự Gò Vấp 5 Tỷ Đứng Tên Riêng Của Tôi!",
-      "seo_title": "Nhà Của Mẹ Chồng? Không, Biệt Thự Gò Vấp 5 Tỷ Đứng Tên Riêng Của",
-      "seo_desc": "Mâm cơm giỗ ba chồng, mẹ chồng sỉ nhục tôi là person ngoài trước mặt họ hàng.Chị chồng cười khẩy, chồng thì cúi đầu làm thinh.Nhưng họ không biết, căn...",
-      "seo_keyword": "nhà của mẹ chồng"
-    },
-    {
-      "id": 1921,
-      "title": "Dân Tỉnh Lên Phố: Khi Con Dâu Không Còn Im Ru",
-      "seo_title": "Dân Tỉnh Lên Phố: Khi Con Dâu Không Còn Im Ru",
-      "seo_desc": "Trong bữa cơm giỗ chồng, Lan Anh, con dâu dân tỉnh lên phố, bị mẹ chồng và họ hàng công kích, coi thường. Mẹ chồng đòi thêm tiền, còn chị chồng mỉa mai...",
-      "seo_keyword": "dân tỉnh lên phố"
+      "title": "Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân",
+      "seo_title": "Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân",
+      "seo_desc": "Mâm cơm giỗ ba chồng, không khí nặng nề từ những ánh mắt châm biếm của gia đình chồng hướng về phía tôi. Mẹ chồng lạnh lùng chỉ trích tôi, gọi tôi là...",
+      "seo_keyword": "biệt thự gò vấp"
     }
   ]
 }

@@ -58,7 +58,11 @@ for($i=0; $i<count($chapters); $i++) {
 <style>
 /* Reading Mode UI */
 header.mkm-header { display: none !important; }
+html, body { background: #FFFDF0; }
 .r-wrap { width: 100% !important; display: block !important; clear: both !important; background: #FFFDF0; min-height: 100vh; font-family: 'Lora', Georgia, serif; position: relative; }
+@supports (min-height: 100dvh) {
+    .r-wrap { min-height: 100dvh; }
+}
 .r-hdr { background: #fff; height: 60px; padding: 0 16px; border-bottom: 1px solid #e5e7eb; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
 .r-hdr-left { display: flex; align-items: center; gap: 12px; font-family: ui-sans-serif, system-ui, sans-serif; }
 .r-back-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; color: #374151; text-decoration: none; background: #f3f4f6; transition: background .2s; }
@@ -90,7 +94,7 @@ header.mkm-header { display: none !important; }
 .r-fab-top.show { opacity: 1; pointer-events: all; }
 
 /* Mobile Navigation Bar */
-.r-mob-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-top: 1px solid #e5e7eb; z-index: 190; padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -4px 10px rgba(0,0,0,0.05); }
+.r-mob-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); border-top: 1px solid #e5e7eb; z-index: 190; padding-bottom: 0; box-shadow: 0 -4px 10px rgba(0,0,0,0.05); transform: translateZ(0); }
 .r-mob-nav-inner { display: flex; justify-content: space-between; align-items: center; height: 60px; padding: 0 10px; }
 .r-mob-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6b7280; text-decoration: none; font-size: 10px; gap: 4px; border: none; background: none; }
 .r-mob-nav-item.active { color: #6366f1; }
@@ -142,6 +146,7 @@ header.mkm-header { display: none !important; }
 .r-set-group { display: flex; gap: 12px; }
 .r-set-btn { flex: 1; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; cursor: pointer; font-weight: 600; font-size: 14px; color: #374151; transition: all .2s; }
 .r-set-btn:hover { border-color: #9ca3af; }
+.r-set-btn.is-active { border-color: #6366f1 !important; box-shadow: 0 0 0 2px rgba(99,102,241,0.12); }
 .r-bg-theme1 { background: #f5f3f7 !important; color: #111827 !important; } /* Light Purple Pink background */
 .r-bg-theme2 { background: #000000 !important; color: #e5e7eb !important; border-color: #374151 !important;}
 .r-bg-theme2 .r-container { background: #111827 !important; box-shadow: none !important; border: 1px solid #1f2937; }
@@ -177,6 +182,10 @@ header.mkm-header { display: none !important; }
     .r-nav-prev::before { content: '← '; }
     .r-nav-next::after { content: ' →'; }
     .r-nav-prev span, .r-nav-next span { display: none; }
+}
+@media (max-width: 800px) {
+    .r-wrap { padding-bottom: 60px; }
+    .r-container { padding-bottom: 80px !important; }
 }
 /* Paragraph Comments */
 .r-para-wrap { position: relative; }
@@ -407,9 +416,9 @@ header.mkm-header { display: none !important; }
             <div class="r-set-row">
                 <span class="r-set-label">Phông Nền</span>
                 <div class="r-set-group" style="flex-wrap: wrap;">
-                    <button class="r-set-btn r-bg-theme1" onclick="rSet.bg('theme1')">Sáng</button>
-                    <button class="r-set-btn r-bg-theme3" onclick="rSet.bg('theme3')">Mắt</button>
-                    <button class="r-set-btn r-bg-theme2" onclick="rSet.bg('theme2')">Ban đêm</button>
+                    <button class="r-set-btn r-bg-theme1" data-rset-group="bg" data-rset-value="theme1" onclick="rSet.bg('theme1')">Sáng</button>
+                    <button class="r-set-btn r-bg-theme3" data-rset-group="bg" data-rset-value="theme3" onclick="rSet.bg('theme3')">Mát</button>
+                    <button class="r-set-btn r-bg-theme2" data-rset-group="bg" data-rset-value="theme2" onclick="rSet.bg('theme2')">Ban đêm</button>
                 </div>
             </div>
         </div>
@@ -455,6 +464,11 @@ if (qChInput) {
 // Reading Settings Controller
 let currSize = 20;
 const rSet = {
+    setActive: (group, value) => {
+        document.querySelectorAll(`[data-rset-group="${group}"]`).forEach(btn => {
+            btn.classList.toggle('is-active', btn.dataset.rsetValue === value);
+        });
+    },
     fontFamily: (fm) => {
         let style = document.getElementById('rSetStyleFont');
         if(!style) { style = document.createElement('style'); style.id = 'rSetStyleFont'; document.head.appendChild(style); }
@@ -471,43 +485,57 @@ const rSet = {
         localStorage.setItem('rsz', currSize);
     },
     bg: (theme) => {
-        let wr = document.getElementById('rWrap');
-        let hd = document.getElementById('rHdr');
-        let ct = document.getElementById('rContent');
-        let container = document.querySelector('.r-container');
-        
         let styleBg = document.getElementById('rSetStyleBg');
         if(!styleBg) { styleBg = document.createElement('style'); styleBg.id = 'rSetStyleBg'; document.head.appendChild(styleBg); }
+        document.documentElement.dataset.readerTheme = theme;
+        document.body.dataset.readerTheme = theme;
+        document.getElementById('rWrap')?.setAttribute('data-reader-theme', theme);
+        const pageBg = theme === 'theme2' ? '#000000' : (theme === 'theme3' ? '#edf2f7' : '#f5f3f7');
+        [document.documentElement, document.body, document.getElementById('rWrap')].forEach(el => {
+            if (!el) return;
+            el.style.setProperty('background-color', pageBg, 'important');
+            el.style.setProperty('background-image', 'none', 'important');
+        });
+        rSet.setActive('bg', theme);
 
         if(theme === 'theme2') { // Dark mode
             styleBg.innerHTML = `
-                html, body, #rWrap { background: #000000 !important; }
+                html, body, #rWrap { background: #000000 !important; color-scheme: dark; }
+                html body[data-reader-theme="theme2"] { background: #000000 !important; }
                 .r-container { background: #111827 !important; border: 1px solid #1f2937 !important; box-shadow: none !important; }
                 #rHdr { background: #111827 !important; border-color: #1f2937 !important; }
                 #rContent, #rContent p, #rContent span, #rContent div { color: #d1d5db !important; }
                 .r-title, .r-story-name { color: #f3f4f6 !important; }
                 .r-back-btn, .r-icon-btn { background: #1f2937 !important; color: #d1d5db !important; }
                 .r-sd-btn { background: #1f2937 !important; color: #e5e7eb !important; border-color: #374151 !important; }
+                .r-mob-nav { background: rgba(17,24,39,0.98) !important; border-top-color: #1f2937 !important; }
+                .r-mob-nav-item { color: #9ca3af !important; }
+                .r-mob-nav-item.active, .r-mob-nav-center { color: #a78bfa !important; }
+                .r-mob-nav-center { background: #1f2937 !important; border-color: #374151 !important; }
             `;
         } else if(theme === 'theme3') { // Eye care
             styleBg.innerHTML = `
-                html, body, #rWrap { background: #edf2f7 !important; }
-                .r-container { background: #FFFDF0 !important; border: none !important; }
+                html, body, #rWrap { background: #edf2f7 !important; color-scheme: light; }
+                html body[data-reader-theme="theme3"] { background: #edf2f7 !important; }
+                .r-container { background: #edf2f7 !important; border: none !important; }
                 #rHdr { background: #fff !important; border-color: #e5e7eb !important; }
                 #rContent, #rContent p, #rContent span, #rContent div { color: #2d3748 !important; }
                 .r-title, .r-story-name { color: #111827 !important; }
                 .r-back-btn, .r-icon-btn { background: #f3f4f6 !important; color: #111827 !important; }
                 .r-sd-btn { background: #fff !important; color: #374151 !important; border-color: #e5e7eb !important; }
+                .r-mob-nav { background: rgba(255,255,255,0.98) !important; border-top-color: #e5e7eb !important; }
             `;
         } else { // Light mode (theme1)
             styleBg.innerHTML = `
-                html, body, #rWrap { background: #f5f3f7 !important; }
+                html, body, #rWrap { background: #f5f3f7 !important; color-scheme: light; }
+                html body[data-reader-theme="theme1"] { background: #f5f3f7 !important; }
                 .r-container { background: #FFFDF0 !important; border: none !important; }
                 #rHdr { background: #fff !important; border-color: #e5e7eb !important; }
                 #rContent, #rContent p, #rContent span, #rContent div { color: #333 !important; }
                 .r-title, .r-story-name { color: #111827 !important; }
                 .r-back-btn, .r-icon-btn { background: #f3f4f6 !important; color: #111827 !important; }
                 .r-sd-btn { background: #fff !important; color: #374151 !important; border-color: #e5e7eb !important; }
+                .r-mob-nav { background: rgba(255,255,255,0.98) !important; border-top-color: #e5e7eb !important; }
             `;
         }
         localStorage.setItem('rbg', theme);
@@ -516,7 +544,7 @@ const rSet = {
         let sz = localStorage.getItem('rsz');
         if(sz) { currSize = parseInt(sz); document.getElementById('rContent').style.fontSize = currSize + 'px'; }
         let bg = localStorage.getItem('rbg');
-        if(bg) rSet.bg(bg);
+        rSet.bg(bg || 'theme1');
         let fm = localStorage.getItem('rfm');
         if(fm) rSet.fontFamily(fm);
     }

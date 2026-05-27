@@ -1,0 +1,32 @@
+[
+  {
+    "id": 4097,
+    "cover": "/Users/aaronnguyen/TN/App/doctieuthuyet/scratch/remade_covers_4060_4084_4097_20260526/4097_cover.png",
+    "server": {
+      "success": true,
+      "post_id": 4097,
+      "attachment_id": 5033,
+      "thumbnail": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-4097-remade-20260526-932.png?v=5"
+    }
+  },
+  {
+    "id": 4084,
+    "cover": "/Users/aaronnguyen/TN/App/doctieuthuyet/scratch/remade_covers_4060_4084_4097_20260526/4084_cover.png",
+    "server": {
+      "success": true,
+      "post_id": 4084,
+      "attachment_id": 5034,
+      "thumbnail": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-4084-remade-20260526-382.png?v=5"
+    }
+  },
+  {
+    "id": 4060,
+    "cover": "/Users/aaronnguyen/TN/App/doctieuthuyet/scratch/remade_covers_4060_4084_4097_20260526/4060_cover.png",
+    "server": {
+      "success": true,
+      "post_id": 4060,
+      "attachment_id": 5035,
+      "thumbnail": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-4060-remade-20260526-891.png?v=5"
+    }
+  }
+]

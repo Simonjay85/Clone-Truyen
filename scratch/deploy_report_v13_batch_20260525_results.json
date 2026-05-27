@@ -1,0 +1,44 @@
+{
+  "updated_at": "2026-05-26 23:00:59",
+  "skipped": {
+    "2710": "duplicate_of_2703"
+  },
+  "results": [
+    {
+      "story_id": 2190,
+      "status": "ok",
+      "http_status": 200,
+      "title": "Thần Tài Chứng Khoán: Đấu Trường Phố Wall Hà Nội",
+      "deleted_chapters_count": 8,
+      "inserted_chapters_count": 12,
+      "response": null
+    },
+    {
+      "story_id": 2129,
+      "status": "ok",
+      "http_status": 200,
+      "title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
+      "deleted_chapters_count": 8,
+      "inserted_chapters_count": 11,
+      "response": null
+    },
+    {
+      "story_id": 2120,
+      "status": "ok",
+      "http_status": 200,
+      "title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
+      "deleted_chapters_count": 8,
+      "inserted_chapters_count": 13,
+      "response": null
+    },
+    {
+      "story_id": 2112,
+      "status": "ok",
+      "http_status": 200,
+      "title": "Người Thợ Sửa Xe Ở Hầm B2",
+      "deleted_chapters_count": 8,
+      "inserted_chapters_count": 10,
+      "response": null
+    }
+  ]
+}

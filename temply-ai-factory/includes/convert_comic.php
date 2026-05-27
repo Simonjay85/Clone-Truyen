@@ -104,19 +104,13 @@ Không được bôi markdown hay giải thích thêm.";
     
     $html_content = '<div class="comic-container" style="max-width: 800px; margin: 0 auto;">';
     $warmup_urls = [];
+    $img_url = get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png';
     
     foreach($scenes as $idx => $sc) {
-        $full_prompt = $sc['prompt'] . ', ' . $style_suffix;
-        $escaped_prompt = urlencode($full_prompt);
-        $seed = wp_rand(1000, 99999);
-        $img_url = "https://image.pollinations.ai/prompt/" . $escaped_prompt . "?width=600&height=500&seed=" . $seed . "&nologo=true";
-        $warmup_urls[] = $img_url;
-        
         $html_content .= '
         <div class="comic-panel relative mb-6 rounded-lg overflow-hidden border-2 border-gray-800 shadow-xl bg-black">
-            <img class="w-full h-auto min-h-[300px] object-cover pollination-lazy" 
-                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
-                 data-src="'.esc_url($img_url).'" />
+            <img class="w-full h-auto min-h-[300px] object-cover" 
+                 src="'.esc_url($img_url).'" />
             <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4">
                 <div class="bg-white text-black p-3 rounded-2xl rounded-bl-none font-bold text-sm shadow-md italic">
                     "'.esc_html($sc['dialogue']).'"

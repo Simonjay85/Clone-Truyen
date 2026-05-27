@@ -1,0 +1,35 @@
+[
+  {
+    "id": 3767,
+    "local_file": "scratch/chatgpt_covers_3743_3755_3767_20260525/3767_cover.png",
+    "remote_name": "chatgpt-cover-3767-20260525.png",
+    "server": {
+      "success": true,
+      "post_id": 3767,
+      "attachment_id": 4057,
+      "thumbnail": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3767-chatgpt-image-20260525-293.png?v=5"
+    }
+  },
+  {
+    "id": 3755,
+    "local_file": "scratch/chatgpt_covers_3743_3755_3767_20260525/3755_cover.png",
+    "remote_name": "chatgpt-cover-3755-20260525.png",
+    "server": {
+      "success": true,
+      "post_id": 3755,
+      "attachment_id": 4058,
+      "thumbnail": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3755-chatgpt-image-20260525-656.png?v=5"
+    }
+  },
+  {
+    "id": 3743,
+    "local_file": "scratch/chatgpt_covers_3743_3755_3767_20260525/3743_cover.png",
+    "remote_name": "chatgpt-cover-3743-20260525.png",
+    "server": {
+      "success": true,
+      "post_id": 3743,
+      "attachment_id": 4059,
+      "thumbnail": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3743-chatgpt-image-20260525-552.png?v=5"
+    }
+  }
+]

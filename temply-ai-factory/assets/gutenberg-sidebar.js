@@ -105,7 +105,7 @@
             if(!confirm('Tính năng này sẽ nhờ AI phân tích lại tên truyện và bối cảnh để vẽ ra Ảnh Bìa (Featured Image) mới. Tốn khoảng 15 giây. Bắt đầu?')) return;
             
             setIsProcessing(true);
-            setStatusMsg('Đang tưởng tượng mảng màu và gọi Họa Sĩ AI (Pollinations)...');
+            setStatusMsg('Đang gán ảnh bìa mặc định cho tác phẩm...');
             
             const fd = new FormData();
             fd.append('action', 'temply_step_regenerate_story_cover');

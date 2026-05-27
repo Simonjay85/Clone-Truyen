@@ -6,19 +6,19 @@ FTP_USER = "alotoinghe"
 FTP_PASS = "Nghia234!"
 
 modified_files = [
-    "tehi-theme/front-page.php",
     "tehi-theme/functions.php",
-    "tehi-theme/page-bangxephang.php",
+    "tehi-theme/live_functions.php",
+    "tehi-theme/front-page.php",
+    "tehi-theme/live_front-page.php",
+    "tehi-theme/taxonomy-the_loai.php",
+    "tehi-theme/live_taxonomy-the_loai.php",
     "tehi-theme/page-completed.php",
     "tehi-theme/page-directory.php",
-    "tehi-theme/page-profile.php",
-    "tehi-theme/search.php",
-    "tehi-theme/single-chuong.php",
-    "tehi-theme/single-truyen.php",
-    "tehi-theme/taxonomy-the_loai.php"
+    "tehi-theme/assets/css/style.css",
+    "tehi-theme/header.php"
 ]
 
-print("=== BẮT ĐẦU UPLOAD CÁC FILE THEME THAY ĐỔI ===")
+print("=== BẮT ĐẦU UPLOAD CÁC FILE THAY ĐỔI ===")
 try:
     ftp = ftplib.FTP(FTP_HOST, timeout=30)
     ftp.login(FTP_USER, FTP_PASS)
@@ -30,7 +30,14 @@ try:
             continue
             
         filename = os.path.basename(local)
-        remote_path = f"/wp-content/themes/tehi-theme/{local.split('tehi-theme/')[1]}"
+        if local.startswith("tehi-theme/"):
+            remote_path = f"/wp-content/themes/tehi-theme/{local.split('tehi-theme/')[1]}"
+        elif local.startswith("temply-ai-factory/"):
+            remote_path = f"/wp-content/plugins/temply-ai-factory/{local.split('temply-ai-factory/')[1]}"
+        else:
+            print(f"⚠ Unknown mapping for file: {local}")
+            continue
+            
         parts = remote_path.rsplit("/", 1)
         
         try:
@@ -54,6 +61,6 @@ try:
         print(f"✓ Đã upload: {local} -> {remote_path}")
         
     ftp.quit()
-    print("=== UPLOAD THÀNH CÔNG TOÀN BỘ FILE THEME ===")
+    print("=== UPLOAD THÀNH CÔNG TOÀN BỘ FILE THAY ĐỔI ===")
 except Exception as e:
     print("Lỗi FTP:", e)

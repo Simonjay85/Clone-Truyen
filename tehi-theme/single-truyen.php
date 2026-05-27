@@ -256,7 +256,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 .mkm-rel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .mkm-rel-card { border-radius: 10px; overflow: hidden; transition: box-shadow .2s; text-decoration: none; display: block; background: #fff; border: 1px solid #e5e7eb; }
 .mkm-rel-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
-.mkm-rel-img { width: 100%; aspect-ratio: 3/2; background-size: cover; background-position: center; background-color: #f3f4f6; display: block; }
+.mkm-rel-img { width: 100%; aspect-ratio: 1/1; background-size: cover; background-position: top center; background-color: #f3f4f6; display: block; }
 .mkm-rel-body { padding: 10px 12px; }
 .mkm-rel-title { font-weight: 700; color: #111827; margin: 0 0 4px 0; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mkm-rel-desc { font-size: 12px; color: #6b7280; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -269,8 +269,8 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 }
 @media (max-width: 600px) {
     .mkm-hero {
-    background: #2a221f; /* Vintage dark fallback */ padding: 20px 0; }
-    .mkm-hero-inner { grid-template-columns: 1fr; gap: 20px; }
+    background: #2a221f; /* Vintage dark fallback */ padding: 12px 0; }
+    .mkm-hero-inner { grid-template-columns: 1fr; gap: 16px; padding: 12px !important; }
     .mkm-cover-col { max-width: 100%; margin: 0 auto; width: 100%; }
     .mkm-cover-col img { aspect-ratio: 1/1; width: 100%; }
     .mkm-action-btns {
@@ -705,7 +705,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
             // random 4 stories
             $rel_q = new WP_Query(['post_type'=>'truyen','posts_per_page'=>4,'orderby'=>'rand','no_found_rows'=>true,'post__not_in'=>[get_the_ID()]]);
             if($rel_q->have_posts()): while($rel_q->have_posts()): $rel_q->the_post();
-            $rel_cover = get_the_post_thumbnail_url(null, 'medium') ?: get_template_directory_uri().'/img_data/images/no-image-cover-v5.png?v=5';
+            $rel_cover = get_the_post_thumbnail_url(null, 'medium_large') ?: get_template_directory_uri().'/img_data/images/no-image-cover-v5.png?v=5';
             ?>
             <a href="<?php the_permalink(); ?>" class="mkm-rel-card">
                 <div class="mkm-rel-img" style="background-image: url('<?php echo esc_url($rel_cover); ?>');"></div>

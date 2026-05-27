@@ -1,0 +1,1113 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "DTT." [ref=e6] [cursor=pointer]:
+        - /url: https://doctieuthuyet.com
+        - generic [ref=e7]: DTT.
+      - generic [ref=e8]:
+        - generic [ref=e9]: 
+        - textbox "Tìm tên truyện, tên người đăng.." [ref=e10]
+      - generic [ref=e11]:
+        - link " Thể loại" [ref=e12] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/the-loai.html
+          - generic [ref=e13]: 
+          - text: Thể loại
+        - link " Truyện full" [ref=e14] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=e15]: 
+          - text: Truyện full
+        - link " BXH" [ref=e16] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e17]: 
+          - text: BXH
+        - link " Theo dõi" [ref=e18] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/theo-doi.html
+          - generic [ref=e19]: 
+          - text: Theo dõi
+        - button " Đăng nhập" [ref=e20] [cursor=pointer]:
+          - generic [ref=e21]: 
+          - text: Đăng nhập
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - heading "DTT - Đọc Truyện Online" [level=1] [ref=e24]
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - group "1 / 6" [ref=e28]:
+            - generic [ref=e29]:
+              - img "Con Dâu Dân Tỉnh Bị Khinh Trong Căn Nhà 4,8 Tỷ, Một Bộ Hồ Sơ Khiến Cả Nhà Chồng Trắng Mặt" [ref=e31]
+              - generic [ref=e32]:
+                - heading "Con Dâu Dân Tỉnh Bị Khinh Trong Căn Nhà 4,8 Tỷ, Một Bộ Hồ Sơ Khiến Cả Nhà Chồng Trắng Mặt" [level=2] [ref=e33]
+                - generic [ref=e34]:
+                  - generic [ref=e35]: Ngôn Tình
+                  - generic [ref=e36]:
+                    - img "📅" [ref=e37]
+                    - text: 2 tuần trước
+                - paragraph [ref=e38]: Lan Anh ngồi cuối bàn trong bữa cơm giỗ, nghe mẹ chồng mắng cô là dân tỉnh lên phố bám nhà chồng để đổi đời. Chị chồng đẩy tới một tờ giấy vay nợ, ép cô gánh thêm tiền sửa nhà, còn chồng chỉ im lặng nhìn chiếc điện thoại trên tay. Không ai biết […]
+                - generic [ref=e39]:
+                  - generic [ref=e40]:
+                    - img "✍️" [ref=e41]
+                    - text: Đang cập nhật
+                  - generic [ref=e42]:
+                    - img "👁️" [ref=e43]
+                    - text: 262 xem
+                  - generic [ref=e44]:
+                    - img "💬" [ref=e45]
+                    - text: 38 bình luận
+                - generic [ref=e46]:
+                  - link "📖 Đọc ngay" [ref=e47] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/dan-tinh-len-pho-khi-con-dau-khong-con-im-ru/
+                    - img "📖" [ref=e48]
+                    - text: Đọc ngay
+                  - link "Danh sách chương" [ref=e49] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/dan-tinh-len-pho-khi-con-dau-khong-con-im-ru/#chapters
+          - group "2 / 6" [ref=e50]:
+            - generic [ref=e51]:
+              - img "Mẹ Vợ Đòi Sính Lễ 5 Tỷ, Tôi Là Người Thừa Kế Landmark 81" [ref=e53]
+              - generic [ref=e54]:
+                - heading "Mẹ Vợ Đòi Sính Lễ 5 Tỷ, Tôi Là Người Thừa Kế Landmark 81" [level=2] [ref=e55]
+                - generic [ref=e56]:
+                  - generic [ref=e57]: Hào Môn
+                  - generic [ref=e58]:
+                    - img "📅" [ref=e59]
+                    - text: 4 ngày trước
+                - paragraph [ref=e60]: Hôm nay là ngày định mệnh trong cuộc đời tôi. Tôi bước xuống từ chiếc xe ôm cũ kỹ, cảm giác lạnh lẽo bao trùm. Mẹ cô ấy, một bà mẹ khó tính, ngồi đó với ánh mắt khinh bỉ, chờ đợi sự thất bại của tôi. ‘Thằng ăn mày này cũng dám đòi cưới […]
+                - generic [ref=e61]:
+                  - generic [ref=e62]:
+                    - img "✍️" [ref=e63]
+                    - text: Đang cập nhật
+                  - generic [ref=e64]:
+                    - img "👁️" [ref=e65]
+                    - text: 229 xem
+                  - generic [ref=e66]:
+                    - img "💬" [ref=e67]
+                    - text: 9 bình luận
+                - generic [ref=e68]:
+                  - link "📖 Đọc ngay" [ref=e69] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/nguoi-thua-ke-tram-ty-gia-ngheo/
+                    - img "📖" [ref=e70]
+                    - text: Đọc ngay
+                  - link "Danh sách chương" [ref=e71] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/nguoi-thua-ke-tram-ty-gia-ngheo/#chapters
+          - group "3 / 6" [ref=e72]:
+            - generic [ref=e73]:
+              - 'img "Công Thức Thuốc Bị Cướp: Bẫy IPO Dược Phẩm Nghìn Tỷ" [ref=e75]'
+              - generic [ref=e76]:
+                - 'heading "Công Thức Thuốc Bị Cướp: Bẫy IPO Dược Phẩm Nghìn Tỷ" [level=2] [ref=e77]'
+                - generic [ref=e78]:
+                  - generic [ref=e79]: Đô thị thương chiến
+                  - generic [ref=e80]:
+                    - img "📅" [ref=e81]
+                    - text: 3 ngày trước
+                - paragraph [ref=e82]: “Nguyễn Đức Trí bị đuổi khỏi phòng lab Đà Lạt ngay trước ngày công thức thuốc gan bước vào vòng gọi vốn, còn kẻ cướp công trình chuẩn bị đưa nó lên sàn như chiến tích của riêng mình.”Nhưng công thức bị đánh cắp có một lỗ hổng kiểm nghiệm mà chỉ Trí nắm rõ. Cùng nữ CEO...
+                - generic [ref=e83]:
+                  - generic [ref=e84]:
+                    - img "✍️" [ref=e85]
+                    - text: Đang cập nhật
+                  - generic [ref=e86]:
+                    - img "👁️" [ref=e87]
+                    - text: 511 xem
+                  - generic [ref=e88]:
+                    - img "💬" [ref=e89]
+                    - text: 40 bình luận
+                - generic [ref=e90]:
+                  - link "📖 Đọc ngay" [ref=e91] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/chien-than-duoc-pham-doc-ban-2/
+                    - img "📖" [ref=e92]
+                    - text: Đọc ngay
+                  - link "Danh sách chương" [ref=e93] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/chien-than-duoc-pham-doc-ban-2/#chapters
+          - group "4 / 6" [ref=e94]:
+            - generic [ref=e95]:
+              - img "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp" [ref=e97]
+              - generic [ref=e98]:
+                - heading "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp" [level=2] [ref=e99]
+                - generic [ref=e100]:
+                  - generic [ref=e101]: Đô thị vả mặt
+                  - generic [ref=e102]:
+                    - img "📅" [ref=e103]
+                    - text: 3 ngày trước
+                - paragraph [ref=e104]: Ngày công bố thành quả, Trần Hoàng Vũ đứng giữa rừng sâu Ngọc Linh, ánh mắt lấp lánh niềm tự hào. Nhưng chỉ sau một giây, hắn cảm nhận được cú sốc khi gia đình vị hôn thê Phạm Gia, những kẻ tự mãn và kiêu ngạo, cướp sạch công trình của mình. Chỉ với […]
+                - generic [ref=e105]:
+                  - generic [ref=e106]:
+                    - img "✍️" [ref=e107]
+                    - text: Đang cập nhật
+                  - generic [ref=e108]:
+                    - img "👁️" [ref=e109]
+                    - text: 786 xem
+                  - generic [ref=e110]:
+                    - img "💬" [ref=e111]
+                    - text: 20 bình luận
+                - generic [ref=e112]:
+                  - link "📖 Đọc ngay" [ref=e113] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/chang-re-ngoc-linh-bi-cuop-bang-sam-nghin-ty-lat-keo-dong-tay-y-dua-tap-doan-phan-boi-vao-tu/
+                    - img "📖" [ref=e114]
+                    - text: Đọc ngay
+                  - link "Danh sách chương" [ref=e115] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/chang-re-ngoc-linh-bi-cuop-bang-sam-nghin-ty-lat-keo-dong-tay-y-dua-tap-doan-phan-boi-vao-tu/#chapters
+          - group "5 / 6" [ref=e116]:
+            - generic [ref=e117]:
+              - 'img "Thợ Hồ Nghìn Tỷ: Đập Tan Kiêu Ngạo" [ref=e119]'
+              - generic [ref=e120]:
+                - 'heading "Thợ Hồ Nghìn Tỷ: Đập Tan Kiêu Ngạo" [level=2] [ref=e121]'
+                - generic [ref=e122]:
+                  - generic [ref=e123]: Đô thị vả mặt
+                  - generic [ref=e124]:
+                    - img "📅" [ref=e125]
+                    - text: 4 ngày trước
+                - paragraph [ref=e126]: "\"Ngày tôi đến ra mắt, bà ấy nhìn đôi ủng xi măng trên chân tôi rồi phẩy tay: 'Thợ hồ mà dám đòi cưới con gái tôi? Trọng Khải, con rể tương lai của ta, là thiếu gia nhà giàu, đi xe hơi bóng loáng. Còn ngươi chỉ là một thằng thợ hồ rẻ rách!'\" Trần Hùng cười nhạt, gạt bỏ sự khinh khi. Ba năm chịu đựng thử thách đã kết thúc, tổng thầu lớn nhất Bình Dương chính thức thức tỉnh, khiến cả giới tài phiệt phải quỳ gối!"
+                - generic [ref=e127]:
+                  - generic [ref=e128]:
+                    - img "✍️" [ref=e129]
+                    - text: Đang cập nhật
+                  - generic [ref=e130]:
+                    - img "👁️" [ref=e131]
+                    - text: 406 xem
+                  - generic [ref=e132]:
+                    - img "💬" [ref=e133]
+                    - text: 26 bình luận
+                - generic [ref=e134]:
+                  - link "📖 Đọc ngay" [ref=e135] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/tho-ho-nghin-ty/
+                    - img "📖" [ref=e136]
+                    - text: Đọc ngay
+                  - link "Danh sách chương" [ref=e137] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/tho-ho-nghin-ty/#chapters
+          - group "6 / 6" [ref=e138]:
+            - generic [ref=e139]:
+              - img "Mẹ Chồng Gọi Tôi Là Người Ngoài, Sổ Đỏ Biệt Thự Gò Vấp 5 Tỷ Khiến Cả Mâm Giỗ Câm Lặng" [ref=e141]
+              - generic [ref=e142]:
+                - heading "Mẹ Chồng Gọi Tôi Là Người Ngoài, Sổ Đỏ Biệt Thự Gò Vấp 5 Tỷ Khiến Cả Mâm Giỗ Câm Lặng" [level=2] [ref=e143]
+                - generic [ref=e144]:
+                  - generic [ref=e145]: Sảng Văn
+                  - generic [ref=e146]:
+                    - img "📅" [ref=e147]
+                    - text: 2 tuần trước
+                - paragraph [ref=e148]: Trong mâm giỗ ba chồng, tôi bị mẹ chồng chỉ thẳng mặt gọi là người ngoài và bắt dọn khỏi căn biệt thự Gò Vấp sau bốn năm nhẫn nhịn. Chị chồng cười nhạo tôi dân tỉnh, chồng cúi đầu không nói, còn họ hàng xúm vào ép tôi ký giấy từ bỏ mọi quyền […]
+                - generic [ref=e149]:
+                  - generic [ref=e150]:
+                    - img "✍️" [ref=e151]
+                    - text: Đang cập nhật
+                  - generic [ref=e152]:
+                    - img "👁️" [ref=e153]
+                    - text: 664 xem
+                  - generic [ref=e154]:
+                    - img "💬" [ref=e155]
+                    - text: 41 bình luận
+                - generic [ref=e156]:
+                  - link "📖 Đọc ngay" [ref=e157] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/nha-cua-me-chong-khong-cua-toi/
+                    - img "📖" [ref=e158]
+                    - text: Đọc ngay
+                  - link "Danh sách chương" [ref=e159] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/nha-cua-me-chong-khong-cua-toi/#chapters
+        - generic [ref=e160]:
+          - button "Go to slide 1" [ref=e161] [cursor=pointer]
+          - button "Go to slide 2" [ref=e162] [cursor=pointer]
+          - button "Go to slide 3" [ref=e163] [cursor=pointer]
+          - button "Go to slide 4" [ref=e164] [cursor=pointer]
+          - button "Go to slide 5" [ref=e165] [cursor=pointer]
+          - button "Go to slide 6" [ref=e166] [cursor=pointer]
+        - button "Next slide" [ref=e167] [cursor=pointer]: next
+        - button "Previous slide" [ref=e168] [cursor=pointer]: prev
+      - generic [ref=e169]:
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - heading "Mới cập nhật" [level=2] [ref=e172]:
+              - img [ref=e173]
+              - text: Mới cập nhật
+            - link "Xem tất cả >" [ref=e175] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/truyen-moi-cap-nhat.html
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - link "HOT Nghệ Nhân Lụa Bảo Lộc Bị Trục Xuất Khỏi Phường Dệt Lật Kèo Phơi Bày Tập Đoàn Tơ Lụa Hóa Chất Giả Chương 8 4 giờ trước" [ref=e178] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nghe-nhan-lua-bao-loc-bi-truc-xuat-khoi-phuong-det-lat-keo-phoi-bay-tap-doan-to-lua-hoa-chat-gia/
+                - generic [ref=e179]:
+                  - generic [ref=e180]: HOT
+                  - img "Nghệ Nhân Lụa Bảo Lộc Bị Trục Xuất Khỏi Phường Dệt Lật Kèo Phơi Bày Tập Đoàn Tơ Lụa Hóa Chất Giả" [ref=e181]
+                  - generic [ref=e182]:
+                    - generic [ref=e183]:
+                      - img [ref=e184]
+                      - text: Chương 8
+                    - generic [ref=e186]:
+                      - img [ref=e187]
+                      - text: 4 giờ trước
+              - generic [ref=e189]:
+                - link "Nghệ Nhân Lụa Bảo Lộc Bị Trục Xuất Khỏi Phường Dệt Lật Kèo Phơi Bày Tập Đoàn Tơ Lụa Hóa Chất Giả" [ref=e190] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/nghe-nhan-lua-bao-loc-bi-truc-xuat-khoi-phuong-det-lat-keo-phoi-bay-tap-doan-to-lua-hoa-chat-gia/
+                  - paragraph [ref=e191]: Nghệ Nhân Lụa Bảo Lộc Bị Trục Xuất Khỏi Phường Dệt Lật Kèo Phơi Bày Tập Đoàn Tơ Lụa Hóa Chất Giả
+                - generic [ref=e192]:
+                  - generic [ref=e193]:
+                    - generic [ref=e194]:
+                      - img [ref=e195]
+                      - text: 41,018
+                    - generic [ref=e198]:
+                      - img [ref=e199]
+                      - text: "14"
+                    - generic [ref=e201]:
+                      - img [ref=e202]
+                      - text: 48 phút
+                  - generic [ref=e204]: Chương 8
+                - generic [ref=e205]:
+                  - link "Đọc từ đầu" [ref=e206] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-noi-nhuc-duoi-con-mua-bao-loc/
+                  - link "Chương 8" [ref=e207] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-quoc-bao-tai-sinh-va-loi-uoc-hen-tren-cao-nguyen/
+            - generic [ref=e208]:
+              - link "HOT Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội Chương 8 24 giờ trước" [ref=e209] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/vua-tra-shan-tuyet-bi-hao-mon-duoi-khoi-cua-lat-keo-nho-bang-sang-che-tram-ty-tien-ke-phan-boi/
+                - generic [ref=e210]:
+                  - generic [ref=e211]: HOT
+                  - img "Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội" [ref=e212]
+                  - generic [ref=e213]:
+                    - generic [ref=e214]:
+                      - img [ref=e215]
+                      - text: Chương 8
+                    - generic [ref=e217]:
+                      - img [ref=e218]
+                      - text: 24 giờ trước
+              - generic [ref=e220]:
+                - link "Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội" [ref=e221] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/vua-tra-shan-tuyet-bi-hao-mon-duoi-khoi-cua-lat-keo-nho-bang-sang-che-tram-ty-tien-ke-phan-boi/
+                  - paragraph [ref=e222]: Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội
+                - generic [ref=e223]:
+                  - generic [ref=e224]:
+                    - generic [ref=e225]:
+                      - img [ref=e226]
+                      - text: 68,957
+                    - generic [ref=e229]:
+                      - img [ref=e230]
+                      - text: "14"
+                    - generic [ref=e232]:
+                      - img [ref=e233]
+                      - text: 48 phút
+                  - generic [ref=e235]: Chương 8
+                - generic [ref=e236]:
+                  - link "Đọc từ đầu" [ref=e237] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-sinh-le-la-tra-dai/
+                  - link "Chương 8" [ref=e238] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-phan-quyet-cong-ly-duoi-chan-nui-co-thu/
+            - generic [ref=e239]:
+              - link "HOT Họ Gọi Tôi Là Lang Băm, Đến Khi Cả Hội Thảo Quỳ Xin Tôi Cứu Mạng Chương 12 9 phút trước" [ref=e240] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/bac-si-dong-y-bi-duoi-khoi-vien-phoi-va-sap-tap-doan/
+                - generic [ref=e241]:
+                  - generic [ref=e242]: HOT
+                  - img "Họ Gọi Tôi Là Lang Băm, Đến Khi Cả Hội Thảo Quỳ Xin Tôi Cứu Mạng" [ref=e243]
+                  - generic [ref=e244]:
+                    - generic [ref=e245]:
+                      - img [ref=e246]
+                      - text: Chương 12
+                    - generic [ref=e248]:
+                      - img [ref=e249]
+                      - text: 9 phút trước
+              - generic [ref=e251]:
+                - link "Họ Gọi Tôi Là Lang Băm, Đến Khi Cả Hội Thảo Quỳ Xin Tôi Cứu Mạng" [ref=e252] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/bac-si-dong-y-bi-duoi-khoi-vien-phoi-va-sap-tap-doan/
+                  - paragraph [ref=e253]: Họ Gọi Tôi Là Lang Băm, Đến Khi Cả Hội Thảo Quỳ Xin Tôi Cứu Mạng
+                - generic [ref=e254]:
+                  - generic [ref=e255]:
+                    - generic [ref=e256]:
+                      - img [ref=e257]
+                      - text: 43,737
+                    - generic [ref=e260]:
+                      - img [ref=e261]
+                      - text: "16"
+                    - generic [ref=e263]:
+                      - img [ref=e264]
+                      - text: 1.2 giờ
+                  - generic [ref=e266]: Chương 12
+                - generic [ref=e267]:
+                  - link "Đọc từ đầu" [ref=e268] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-truc-xuat-khoi-vien-phoi-quoc-te/
+                  - link "Chương 12" [ref=e269] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-12-phan-quyet-cuoi-cung/
+            - generic [ref=e270]:
+              - link "HOT Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ Chương 8 1 ngày trước" [ref=e271] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nghe-nhan-cacao-bi-vi-hon-the-duoi-di-socola-tram-ty-va-sap-tap-doan-hoa-chat-ngay-hoi-cho/
+                - generic [ref=e272]:
+                  - generic [ref=e273]: HOT
+                  - img "Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ" [ref=e274]
+                  - generic [ref=e275]:
+                    - generic [ref=e276]:
+                      - img [ref=e277]
+                      - text: Chương 8
+                    - generic [ref=e279]:
+                      - img [ref=e280]
+                      - text: 1 ngày trước
+              - generic [ref=e282]:
+                - link "Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ" [ref=e283] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/nghe-nhan-cacao-bi-vi-hon-the-duoi-di-socola-tram-ty-va-sap-tap-doan-hoa-chat-ngay-hoi-cho/
+                  - paragraph [ref=e284]: Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ
+                - generic [ref=e285]:
+                  - generic [ref=e286]:
+                    - generic [ref=e287]:
+                      - img [ref=e288]
+                      - text: 65,880
+                    - generic [ref=e291]:
+                      - img [ref=e292]
+                      - text: "19"
+                    - generic [ref=e294]:
+                      - img [ref=e295]
+                      - text: 48 phút
+                  - generic [ref=e297]: Chương 8
+                - generic [ref=e298]:
+                  - link "Đọc từ đầu" [ref=e299] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-con-mua-trut-xuong-lab-quan-3-va-ban-hop-dong-do-vo/
+                  - link "Chương 8" [ref=e300] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-trien-lam-quoc-te-va-phien-toa-cong-ly-cho-ke-phan-boi/
+            - generic [ref=e301]:
+              - link "HOT Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả Chương 8 1 ngày trước" [ref=e302] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nghe-nhan-son-mai-bi-khinh-re-duoi-khoi-xuong-tim-ra-mau-son-that-truyen-de-bep-tap-doan-tranh-gia/
+                - generic [ref=e303]:
+                  - generic [ref=e304]: HOT
+                  - img "Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả" [ref=e305]
+                  - generic [ref=e306]:
+                    - generic [ref=e307]:
+                      - img [ref=e308]
+                      - text: Chương 8
+                    - generic [ref=e310]:
+                      - img [ref=e311]
+                      - text: 1 ngày trước
+              - generic [ref=e313]:
+                - link "Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả" [ref=e314] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/nghe-nhan-son-mai-bi-khinh-re-duoi-khoi-xuong-tim-ra-mau-son-that-truyen-de-bep-tap-doan-tranh-gia/
+                  - paragraph [ref=e315]: Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả
+                - generic [ref=e316]:
+                  - generic [ref=e317]:
+                    - generic [ref=e318]:
+                      - img [ref=e319]
+                      - text: 56,652
+                    - generic [ref=e322]:
+                      - img [ref=e323]
+                      - text: "11"
+                    - generic [ref=e325]:
+                      - img [ref=e326]
+                      - text: 48 phút
+                  - generic [ref=e328]: Chương 8
+                - generic [ref=e329]:
+                  - link "Đọc từ đầu" [ref=e330] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-ban-tay-phe-va-nhat-bua-duoi-khoi-xuong/
+                  - link "Chương 8" [ref=e331] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-dau-goi-quy-nga-cua-ke-phan-boi-va-sac-lenh-c03/
+            - generic [ref=e332]:
+              - link "HOT THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG Chương 8 2 ngày trước" [ref=e333] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/than-y-bi-duoi-vo-cu-hoi-han-muon-mang/
+                - generic [ref=e334]:
+                  - generic [ref=e335]: HOT
+                  - img "THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG" [ref=e336]
+                  - generic [ref=e337]:
+                    - generic [ref=e338]:
+                      - img [ref=e339]
+                      - text: Chương 8
+                    - generic [ref=e341]:
+                      - img [ref=e342]
+                      - text: 2 ngày trước
+              - generic [ref=e344]:
+                - link "THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG" [ref=e345] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/than-y-bi-duoi-vo-cu-hoi-han-muon-mang/
+                  - paragraph [ref=e346]: THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG
+                - generic [ref=e347]:
+                  - generic [ref=e348]:
+                    - generic [ref=e349]:
+                      - img [ref=e350]
+                      - text: 77,923
+                    - generic [ref=e353]:
+                      - img [ref=e354]
+                      - text: "13"
+                    - generic [ref=e356]:
+                      - img [ref=e357]
+                      - text: 48 phút
+                  - generic [ref=e359]: Chương 8
+                - generic [ref=e360]:
+                  - link "Đọc từ đầu" [ref=e361] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-ngay-bi-duoi-va-ngay-bi-phu-bac/
+                  - link "Chương 8" [ref=e362] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-gia-tri-that-va-mot-cai-bat-tay-nua/
+          - link "Xem thêm 3,913 kết quả ⌄" [ref=e364] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/the-loai.html
+          - generic [ref=e365]:
+            - heading "Truyện hot" [level=2] [ref=e366]:
+              - img [ref=e367]
+              - text: Truyện hot
+            - link "Xem tất cả ⟩" [ref=e369] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e370]:
+            - generic [ref=e371]:
+              - link "HOT Con Dâu Dân Tỉnh Bị Khinh Trong Căn Nhà 4,8 Tỷ, Một Bộ Hồ Sơ Khiến Cả Nhà Chồng Trắng Mặt Chương 8 2 ngày trước" [ref=e372] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/dan-tinh-len-pho-khi-con-dau-khong-con-im-ru/
+                - generic [ref=e373]:
+                  - generic [ref=e374]: HOT
+                  - img "Con Dâu Dân Tỉnh Bị Khinh Trong Căn Nhà 4,8 Tỷ, Một Bộ Hồ Sơ Khiến Cả Nhà Chồng Trắng Mặt" [ref=e375]
+                  - generic [ref=e376]:
+                    - generic [ref=e377]:
+                      - img [ref=e378]
+                      - text: Chương 8
+                    - generic [ref=e380]:
+                      - img [ref=e381]
+                      - text: 2 ngày trước
+              - generic [ref=e383]:
+                - link "Con Dâu Dân Tỉnh Bị Khinh Trong Căn Nhà 4,8 Tỷ, Một Bộ Hồ Sơ Khiến Cả Nhà Chồng Trắng Mặt" [ref=e384] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/dan-tinh-len-pho-khi-con-dau-khong-con-im-ru/
+                  - paragraph [ref=e385]: Con Dâu Dân Tỉnh Bị Khinh Trong Căn Nhà 4,8 Tỷ, Một Bộ Hồ Sơ Khiến Cả Nhà Chồng Trắng Mặt
+                - generic [ref=e386]:
+                  - generic [ref=e387]:
+                    - generic [ref=e388]:
+                      - img [ref=e389]
+                      - text: 10,085
+                    - generic [ref=e392]:
+                      - img [ref=e393]
+                      - text: "20"
+                    - generic [ref=e395]:
+                      - img [ref=e396]
+                      - text: 48 phút
+                  - generic [ref=e398]: Chương 8
+                - generic [ref=e399]:
+                  - link "Đọc từ đầu" [ref=e400] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-con-dau-dan-tinh-o-cuoi-mam-gio/
+                  - link "Chương 8" [ref=e401] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-khi-con-dau-khong-con-im-lang/
+            - generic [ref=e402]:
+              - 'link "NỔI BẬT Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai Chương 8 2 ngày trước" [ref=e403] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/he-thong-tri-tue-nhan-tao-xuyen-khong-den-tuong-lai/
+                - generic [ref=e404]:
+                  - generic [ref=e405]: NỔI BẬT
+                  - 'img "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai" [ref=e406]'
+                  - generic [ref=e407]:
+                    - generic [ref=e408]:
+                      - img [ref=e409]
+                      - text: Chương 8
+                    - generic [ref=e411]:
+                      - img [ref=e412]
+                      - text: 2 ngày trước
+              - generic [ref=e414]:
+                - 'link "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai" [ref=e415] [cursor=pointer]':
+                  - /url: https://doctieuthuyet.com/truyen/he-thong-tri-tue-nhan-tao-xuyen-khong-den-tuong-lai/
+                  - paragraph [ref=e416]: "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai"
+                - generic [ref=e417]:
+                  - generic [ref=e418]:
+                    - generic [ref=e419]:
+                      - img [ref=e420]
+                      - text: 6,631
+                    - generic [ref=e423]:
+                      - img [ref=e424]
+                      - text: "20"
+                    - generic [ref=e426]:
+                      - img [ref=e427]
+                      - text: 48 phút
+                  - generic [ref=e429]: Chương 8
+                - generic [ref=e430]:
+                  - link "Đọc từ đầu" [ref=e431] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-buoc-dau-den-tuong-lai/
+                  - link "Chương 8" [ref=e432] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-quyet-dinh-cuoi-cung/
+            - generic [ref=e433]:
+              - link "HOT Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ Chương 8 2 ngày trước" [ref=e434] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/co-gai-lang-bi-nha-trai-hao-mon-tu-choi-startup-nong-nghiep-cua-co-niem-yet-500-ty/
+                - generic [ref=e435]:
+                  - generic [ref=e436]: HOT
+                  - img "Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ" [ref=e437]
+                  - generic [ref=e438]:
+                    - generic [ref=e439]:
+                      - img [ref=e440]
+                      - text: Chương 8
+                    - generic [ref=e442]:
+                      - img [ref=e443]
+                      - text: 2 ngày trước
+              - generic [ref=e445]:
+                - link "Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ" [ref=e446] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/co-gai-lang-bi-nha-trai-hao-mon-tu-choi-startup-nong-nghiep-cua-co-niem-yet-500-ty/
+                  - paragraph [ref=e447]: Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ
+                - generic [ref=e448]:
+                  - generic [ref=e449]:
+                    - generic [ref=e450]:
+                      - img [ref=e451]
+                      - text: 63,460
+                    - generic [ref=e454]:
+                      - img [ref=e455]
+                      - text: "20"
+                    - generic [ref=e457]:
+                      - img [ref=e458]
+                      - text: 48 phút
+                  - generic [ref=e460]: Chương 8
+                - generic [ref=e461]:
+                  - link "Đọc từ đầu" [ref=e462] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-dem-bi-duoi-ra-khoi-biet-thu/
+                  - link "Chương 8" [ref=e463] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-buc-thu-khong-duoc-gui/
+            - generic [ref=e464]:
+              - 'link "HOT Thuyền Trưởng Cảng Đà Thành: Cuộc Chiến Bên Bến Cả Chương 8 2 ngày trước" [ref=e465] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/bi-duoi-khoi-cang-tien-sa-toi-nhan-chim-am-muu-thau-tom-cang-da-nang-nghin-ty/
+                - generic [ref=e466]:
+                  - generic [ref=e467]: HOT
+                  - 'img "Thuyền Trưởng Cảng Đà Thành: Cuộc Chiến Bên Bến Cả" [ref=e468]'
+                  - generic [ref=e469]:
+                    - generic [ref=e470]:
+                      - img [ref=e471]
+                      - text: Chương 8
+                    - generic [ref=e473]:
+                      - img [ref=e474]
+                      - text: 2 ngày trước
+              - generic [ref=e476]:
+                - 'link "Thuyền Trưởng Cảng Đà Thành: Cuộc Chiến Bên Bến Cả" [ref=e477] [cursor=pointer]':
+                  - /url: https://doctieuthuyet.com/truyen/bi-duoi-khoi-cang-tien-sa-toi-nhan-chim-am-muu-thau-tom-cang-da-nang-nghin-ty/
+                  - paragraph [ref=e478]: "Thuyền Trưởng Cảng Đà Thành: Cuộc Chiến Bên Bến Cả"
+                - generic [ref=e479]:
+                  - generic [ref=e480]:
+                    - generic [ref=e481]:
+                      - img [ref=e482]
+                      - text: 23,052
+                    - generic [ref=e485]:
+                      - img [ref=e486]
+                      - text: "20"
+                    - generic [ref=e488]:
+                      - img [ref=e489]
+                      - text: 48 phút
+                  - generic [ref=e491]: Chương 8
+                - generic [ref=e492]:
+                  - link "Đọc từ đầu" [ref=e493] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-nhung-con-song-du-doi/
+                  - link "Chương 8" [ref=e494] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-cuoc-doi-dau-sinh-tu-tai-cuoc-hop-co-dong/
+            - generic [ref=e495]:
+              - link "HOT Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp Chương 8 2 ngày trước" [ref=e496] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/chang-re-ngoc-linh-bi-cuop-bang-sam-nghin-ty-lat-keo-dong-tay-y-dua-tap-doan-phan-boi-vao-tu/
+                - generic [ref=e497]:
+                  - generic [ref=e498]: HOT
+                  - img "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp" [ref=e499]
+                  - generic [ref=e500]:
+                    - generic [ref=e501]:
+                      - img [ref=e502]
+                      - text: Chương 8
+                    - generic [ref=e504]:
+                      - img [ref=e505]
+                      - text: 2 ngày trước
+              - generic [ref=e507]:
+                - link "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp" [ref=e508] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/chang-re-ngoc-linh-bi-cuop-bang-sam-nghin-ty-lat-keo-dong-tay-y-dua-tap-doan-phan-boi-vao-tu/
+                  - paragraph [ref=e509]: Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp
+                - generic [ref=e510]:
+                  - generic [ref=e511]:
+                    - generic [ref=e512]:
+                      - img [ref=e513]
+                      - text: 66,035
+                    - generic [ref=e516]:
+                      - img [ref=e517]
+                      - text: "20"
+                    - generic [ref=e519]:
+                      - img [ref=e520]
+                      - text: 48 phút
+                  - generic [ref=e522]: Chương 8
+                - generic [ref=e523]:
+                  - link "Đọc từ đầu" [ref=e524] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-cuoc-chien-khoi-dau/
+                  - link "Chương 8" [ref=e525] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-cuoc-chien-de-gianh-lai-danh-du/
+            - generic [ref=e526]:
+              - 'link "HOT Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn Chương 8 2 ngày trước" [ref=e527] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/vuong-quoc-nuoc-mam-truyen-thong-phu-quoc-chang-re-an-the-vuc-day-quoc-hon/
+                - generic [ref=e528]:
+                  - generic [ref=e529]: HOT
+                  - 'img "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn" [ref=e530]'
+                  - generic [ref=e531]:
+                    - generic [ref=e532]:
+                      - img [ref=e533]
+                      - text: Chương 8
+                    - generic [ref=e535]:
+                      - img [ref=e536]
+                      - text: 2 ngày trước
+              - generic [ref=e538]:
+                - 'link "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn" [ref=e539] [cursor=pointer]':
+                  - /url: https://doctieuthuyet.com/truyen/vuong-quoc-nuoc-mam-truyen-thong-phu-quoc-chang-re-an-the-vuc-day-quoc-hon/
+                  - paragraph [ref=e540]: "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn"
+                - generic [ref=e541]:
+                  - generic [ref=e542]:
+                    - generic [ref=e543]:
+                      - img [ref=e544]
+                      - text: 52,590
+                    - generic [ref=e547]:
+                      - img [ref=e548]
+                      - text: "20"
+                    - generic [ref=e550]:
+                      - img [ref=e551]
+                      - text: 48 phút
+                  - generic [ref=e553]: Chương 8
+                - generic [ref=e554]:
+                  - link "Đọc từ đầu" [ref=e555] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-do-nat-giua-doi-duong-dong/
+                  - link "Chương 8" [ref=e556] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-phien-toa-quyet-dinh-so-phan/
+          - link "Xem thêm 3,700 kết quả ⌄" [ref=e558] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e559]:
+            - heading "Truyện full" [level=2] [ref=e560]:
+              - img [ref=e561]
+              - text: Truyện full
+            - link "Xem tất cả >" [ref=e563] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=e564]:
+            - generic [ref=e565]:
+              - 'link "FULL Kiến Trúc Sư Phố Cổ Hà Nội: Bị Cướp Bản Vẽ Di Sản, Tôi Cứu Cả Khu Phố Chương 10 Đã đủ bộ" [ref=e566] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/kien-truc-su-pho-co-ha-noi-bi-cuop-ban-ve-di-san-toi-cuu-ca-khu-pho/
+                - generic [ref=e567]:
+                  - generic [ref=e568]: FULL
+                  - 'img "Kiến Trúc Sư Phố Cổ Hà Nội: Bị Cướp Bản Vẽ Di Sản, Tôi Cứu Cả Khu Phố" [ref=e569]'
+                  - generic [ref=e570]:
+                    - generic [ref=e571]:
+                      - img [ref=e572]
+                      - text: Chương 10
+                    - generic [ref=e574]:
+                      - img [ref=e575]
+                      - text: Đã đủ bộ
+              - generic [ref=e577]:
+                - 'link "Kiến Trúc Sư Phố Cổ Hà Nội: Bị Cướp Bản Vẽ Di Sản, Tôi Cứu Cả Khu Phố" [ref=e578] [cursor=pointer]':
+                  - /url: https://doctieuthuyet.com/truyen/kien-truc-su-pho-co-ha-noi-bi-cuop-ban-ve-di-san-toi-cuu-ca-khu-pho/
+                  - paragraph [ref=e579]: "Kiến Trúc Sư Phố Cổ Hà Nội: Bị Cướp Bản Vẽ Di Sản, Tôi Cứu Cả Khu Phố"
+                - generic [ref=e580]:
+                  - generic [ref=e581]:
+                    - generic [ref=e582]:
+                      - img [ref=e583]
+                      - text: 30,691
+                    - generic [ref=e586]:
+                      - img [ref=e587]
+                      - text: "14"
+                    - generic [ref=e589]:
+                      - img [ref=e590]
+                      - text: 1 giờ
+                  - generic [ref=e592]: Chương 10
+                - generic [ref=e593]:
+                  - link "Đọc từ đầu" [ref=e594] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-dem-trang-pho-gam-cau/
+                  - link "Chương 10" [ref=e595] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-10-ruc-ro-di-san-thang-long/
+            - generic [ref=e596]:
+              - link "FULL Thợ Nuôi Trai Bị Cướp Ngọc Đen Đuổi Khỏi Vịnh, Trở Lại Lật Kèo Đoạt Lại Tập Đoàn Ngọc Trai Nghìn Tỷ Chương 8 Đã đủ bộ" [ref=e597] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/tho-nuoi-trai-bi-cuop-ngoc-den-duoi-khoi-vinh-tro-lai-lat-keo-doat-lai-tap-doan-ngoc-trai-nghin-ty/
+                - generic [ref=e598]:
+                  - generic [ref=e599]: FULL
+                  - img "Thợ Nuôi Trai Bị Cướp Ngọc Đen Đuổi Khỏi Vịnh, Trở Lại Lật Kèo Đoạt Lại Tập Đoàn Ngọc Trai Nghìn Tỷ" [ref=e600]
+                  - generic [ref=e601]:
+                    - generic [ref=e602]:
+                      - img [ref=e603]
+                      - text: Chương 8
+                    - generic [ref=e605]:
+                      - img [ref=e606]
+                      - text: Đã đủ bộ
+              - generic [ref=e608]:
+                - link "Thợ Nuôi Trai Bị Cướp Ngọc Đen Đuổi Khỏi Vịnh, Trở Lại Lật Kèo Đoạt Lại Tập Đoàn Ngọc Trai Nghìn Tỷ" [ref=e609] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/tho-nuoi-trai-bi-cuop-ngoc-den-duoi-khoi-vinh-tro-lai-lat-keo-doat-lai-tap-doan-ngoc-trai-nghin-ty/
+                  - paragraph [ref=e610]: Thợ Nuôi Trai Bị Cướp Ngọc Đen Đuổi Khỏi Vịnh, Trở Lại Lật Kèo Đoạt Lại Tập Đoàn Ngọc Trai Nghìn Tỷ
+                - generic [ref=e611]:
+                  - generic [ref=e612]:
+                    - generic [ref=e613]:
+                      - img [ref=e614]
+                      - text: 31,241
+                    - generic [ref=e617]:
+                      - img [ref=e618]
+                      - text: "20"
+                    - generic [ref=e620]:
+                      - img [ref=e621]
+                      - text: 48 phút
+                  - generic [ref=e623]: Chương 8
+                - generic [ref=e624]:
+                  - link "Đọc từ đầu" [ref=e625] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-nuoc-mat-duoi-bien-sau-van-don/
+                  - link "Chương 8" [ref=e626] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-phien-phan-quyet-cua-c03/
+            - generic [ref=e627]:
+              - 'link "FULL Ông Trùm Logistics Tân Cảng: Bị Phản Bội Mất Container Nghìn Tỷ, Tôi Thâu Tóm Ngược Chương 10 Đã đủ bộ" [ref=e628] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/ong-trum-logistics-tan-cang-bi-phan-boi-mat-container-nghin-ty-toi-thau-tom-nguoc/
+                - generic [ref=e629]:
+                  - generic [ref=e630]: FULL
+                  - 'img "Ông Trùm Logistics Tân Cảng: Bị Phản Bội Mất Container Nghìn Tỷ, Tôi Thâu Tóm Ngược" [ref=e631]'
+                  - generic [ref=e632]:
+                    - generic [ref=e633]:
+                      - img [ref=e634]
+                      - text: Chương 10
+                    - generic [ref=e636]:
+                      - img [ref=e637]
+                      - text: Đã đủ bộ
+              - generic [ref=e639]:
+                - 'link "Ông Trùm Logistics Tân Cảng: Bị Phản Bội Mất Container Nghìn Tỷ, Tôi Thâu Tóm Ngược" [ref=e640] [cursor=pointer]':
+                  - /url: https://doctieuthuyet.com/truyen/ong-trum-logistics-tan-cang-bi-phan-boi-mat-container-nghin-ty-toi-thau-tom-nguoc/
+                  - paragraph [ref=e641]: "Ông Trùm Logistics Tân Cảng: Bị Phản Bội Mất Container Nghìn Tỷ, Tôi Thâu Tóm Ngược"
+                - generic [ref=e642]:
+                  - generic [ref=e643]:
+                    - generic [ref=e644]:
+                      - img [ref=e645]
+                      - text: 54,409
+                    - generic [ref=e648]:
+                      - img [ref=e649]
+                      - text: "14"
+                    - generic [ref=e651]:
+                      - img [ref=e652]
+                      - text: 1 giờ
+                  - generic [ref=e654]: Chương 10
+                - generic [ref=e655]:
+                  - link "Đọc từ đầu" [ref=e656] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-cam-bay-trong-con-mua-cat-lai/
+                  - link "Chương 10" [ref=e657] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-10-vi-vua-moi-cua-tuyen-duong-bien/
+            - generic [ref=e658]:
+              - 'link "FULL Bác Sĩ Thẩm Mỹ Sài Gòn: Bị Vu Oan Phẫu Thuật Hỏng, Tôi Lật Mặt Cả Bệnh Viện Chương 10 Đã đủ bộ" [ref=e659] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/bac-si-tham-my-sai-gon-bi-vu-oan-phau-thuat-hong-toi-lat-mat-ca-benh-vien/
+                - generic [ref=e660]:
+                  - generic [ref=e661]: FULL
+                  - 'img "Bác Sĩ Thẩm Mỹ Sài Gòn: Bị Vu Oan Phẫu Thuật Hỏng, Tôi Lật Mặt Cả Bệnh Viện" [ref=e662]'
+                  - generic [ref=e663]:
+                    - generic [ref=e664]:
+                      - img [ref=e665]
+                      - text: Chương 10
+                    - generic [ref=e667]:
+                      - img [ref=e668]
+                      - text: Đã đủ bộ
+              - generic [ref=e670]:
+                - 'link "Bác Sĩ Thẩm Mỹ Sài Gòn: Bị Vu Oan Phẫu Thuật Hỏng, Tôi Lật Mặt Cả Bệnh Viện" [ref=e671] [cursor=pointer]':
+                  - /url: https://doctieuthuyet.com/truyen/bac-si-tham-my-sai-gon-bi-vu-oan-phau-thuat-hong-toi-lat-mat-ca-benh-vien/
+                  - paragraph [ref=e672]: "Bác Sĩ Thẩm Mỹ Sài Gòn: Bị Vu Oan Phẫu Thuật Hỏng, Tôi Lật Mặt Cả Bệnh Viện"
+                - generic [ref=e673]:
+                  - generic [ref=e674]:
+                    - generic [ref=e675]:
+                      - img [ref=e676]
+                      - text: 39,133
+                    - generic [ref=e679]:
+                      - img [ref=e680]
+                      - text: "11"
+                    - generic [ref=e682]:
+                      - img [ref=e683]
+                      - text: 1 giờ
+                  - generic [ref=e685]: Chương 10
+                - generic [ref=e686]:
+                  - link "Đọc từ đầu" [ref=e687] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-doi-ban-tay-vang-sai-gon-va-cam-bay-dang-sau-anh-hao-quang/
+                  - link "Chương 10" [ref=e688] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-10-cong-ly-thuc-thi-hao-quang-tro-lai/
+            - generic [ref=e689]:
+              - 'link "FULL Nữ Hoàng Trà Sen Tây Hồ: Bị Đuổi Khỏi Gia Tộc, Cô Xây Đế Chế Trà Nghìn Tỷ Chương 10 Đã đủ bộ" [ref=e690] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/nu-hoang-tra-sen-tay-ho-bi-duoi-khoi-gia-toc-co-xay-de-che-tra-nghin-ty/
+                - generic [ref=e691]:
+                  - generic [ref=e692]: FULL
+                  - 'img "Nữ Hoàng Trà Sen Tây Hồ: Bị Đuổi Khỏi Gia Tộc, Cô Xây Đế Chế Trà Nghìn Tỷ" [ref=e693]'
+                  - generic [ref=e694]:
+                    - generic [ref=e695]:
+                      - img [ref=e696]
+                      - text: Chương 10
+                    - generic [ref=e698]:
+                      - img [ref=e699]
+                      - text: Đã đủ bộ
+              - generic [ref=e701]:
+                - 'link "Nữ Hoàng Trà Sen Tây Hồ: Bị Đuổi Khỏi Gia Tộc, Cô Xây Đế Chế Trà Nghìn Tỷ" [ref=e702] [cursor=pointer]':
+                  - /url: https://doctieuthuyet.com/truyen/nu-hoang-tra-sen-tay-ho-bi-duoi-khoi-gia-toc-co-xay-de-che-tra-nghin-ty/
+                  - paragraph [ref=e703]: "Nữ Hoàng Trà Sen Tây Hồ: Bị Đuổi Khỏi Gia Tộc, Cô Xây Đế Chế Trà Nghìn Tỷ"
+                - generic [ref=e704]:
+                  - generic [ref=e705]:
+                    - generic [ref=e706]:
+                      - img [ref=e707]
+                      - text: 46,487
+                    - generic [ref=e710]:
+                      - img [ref=e711]
+                      - text: "19"
+                    - generic [ref=e713]:
+                      - img [ref=e714]
+                      - text: 1 giờ
+                  - generic [ref=e716]: Chương 10
+                - generic [ref=e717]:
+                  - link "Đọc từ đầu" [ref=e718] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-dem-dong-buot-gia-o-phu-tay-ho/
+                  - link "Chương 10" [ref=e719] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-10-de-che-nghin-ty-sung-sung-ben-ho-tay/
+            - generic [ref=e720]:
+              - link "FULL Kỹ Sư Vắc Xin Bị Sa Thải Vì Không Gian Lận, Bản Quyền Vắc Xin Vả Sập Tập Đoàn Phản Bội Chương 8 Đã đủ bộ" [ref=e721] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/ky-su-vac-xin-bi-sa-thai-vi-khong-gian-lan-ban-quyen-vac-xin-va-sap-tap-doan-phan-boi/
+                - generic [ref=e722]:
+                  - generic [ref=e723]: FULL
+                  - img "Kỹ Sư Vắc Xin Bị Sa Thải Vì Không Gian Lận, Bản Quyền Vắc Xin Vả Sập Tập Đoàn Phản Bội" [ref=e724]
+                  - generic [ref=e725]:
+                    - generic [ref=e726]:
+                      - img [ref=e727]
+                      - text: Chương 8
+                    - generic [ref=e729]:
+                      - img [ref=e730]
+                      - text: Đã đủ bộ
+              - generic [ref=e732]:
+                - link "Kỹ Sư Vắc Xin Bị Sa Thải Vì Không Gian Lận, Bản Quyền Vắc Xin Vả Sập Tập Đoàn Phản Bội" [ref=e733] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/ky-su-vac-xin-bi-sa-thai-vi-khong-gian-lan-ban-quyen-vac-xin-va-sap-tap-doan-phan-boi/
+                  - paragraph [ref=e734]: Kỹ Sư Vắc Xin Bị Sa Thải Vì Không Gian Lận, Bản Quyền Vắc Xin Vả Sập Tập Đoàn Phản Bội
+                - generic [ref=e735]:
+                  - generic [ref=e736]:
+                    - generic [ref=e737]:
+                      - img [ref=e738]
+                      - text: 52,134
+                    - generic [ref=e741]:
+                      - img [ref=e742]
+                      - text: "17"
+                    - generic [ref=e744]:
+                      - img [ref=e745]
+                      - text: 48 phút
+                  - generic [ref=e747]: Chương 8
+                - generic [ref=e748]:
+                  - link "Đọc từ đầu" [ref=e749] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-dem-truc-dinh-menh-tai-phong-thi-nghiem-khep-kin/
+                  - link "Chương 8" [ref=e750] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-anh-sang-cong-ly-va-binh-minh-nong-nghiep-viet/
+          - link "Xem thêm 4,380 kết quả ⌄" [ref=e752] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/hoan-thanh.html
+        - generic [ref=e753]:
+          - generic [ref=e754]:
+            - heading "Bảng xếp hạng Top 10" [level=3] [ref=e755]:
+              - generic [ref=e756]:
+                - img [ref=e757]
+                - text: Bảng xếp hạng
+              - generic [ref=e760]: Top 10
+            - generic [ref=e761]:
+              - link "Ngày" [ref=e762] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bang-xep-hang/?range=day
+              - link "Tuần" [ref=e763] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bang-xep-hang/?range=week
+              - link "Tháng" [ref=e764] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bang-xep-hang/?range=month
+              - link "Năm" [ref=e765] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bang-xep-hang/?range=year
+            - generic [ref=e766]:
+              - link "1 Nghệ Nhân Lụa Bảo Lộc Bị Trục Xuất Khỏi Phường Dệt Lật Kèo Phơi Bày Tập Đoàn Tơ Lụa Hóa Chất Giả Nghệ Nhân Lụa Bảo Lộc Bị Trục Xuất Khỏi Phường Dệt Lật Kèo Phơi Bày Tập Đoàn Tơ Lụa Hóa Chất Giả 18.303" [ref=e767] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nghe-nhan-lua-bao-loc-bi-truc-xuat-khoi-phuong-det-lat-keo-phoi-bay-tap-doan-to-lua-hoa-chat-gia/
+                - generic [ref=e771]: "1"
+                - img "Nghệ Nhân Lụa Bảo Lộc Bị Trục Xuất Khỏi Phường Dệt Lật Kèo Phơi Bày Tập Đoàn Tơ Lụa Hóa Chất Giả" [ref=e772]
+                - generic [ref=e773]:
+                  - generic [ref=e774]: Nghệ Nhân Lụa Bảo Lộc Bị Trục Xuất Khỏi Phường Dệt Lật Kèo Phơi Bày Tập Đoàn Tơ Lụa Hóa Chất Giả
+                  - generic [ref=e775]:
+                    - img [ref=e776]
+                    - text: "18.303"
+              - link "2 Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội 17.482" [ref=e779] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/vua-tra-shan-tuyet-bi-hao-mon-duoi-khoi-cua-lat-keo-nho-bang-sang-che-tram-ty-tien-ke-phan-boi/
+                - generic [ref=e783]: "2"
+                - img "Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội" [ref=e784]
+                - generic [ref=e785]:
+                  - generic [ref=e786]: Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội
+                  - generic [ref=e787]:
+                    - img [ref=e788]
+                    - text: "17.482"
+              - link "3 Họ Gọi Tôi Là Lang Băm, Đến Khi Cả Hội Thảo Quỳ Xin Tôi Cứu Mạng Họ Gọi Tôi Là Lang Băm, Đến Khi Cả Hội Thảo Quỳ Xin Tôi Cứu Mạng 15.533" [ref=e791] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/bac-si-dong-y-bi-duoi-khoi-vien-phoi-va-sap-tap-doan/
+                - generic [ref=e795]: "3"
+                - img "Họ Gọi Tôi Là Lang Băm, Đến Khi Cả Hội Thảo Quỳ Xin Tôi Cứu Mạng" [ref=e796]
+                - generic [ref=e797]:
+                  - generic [ref=e798]: Họ Gọi Tôi Là Lang Băm, Đến Khi Cả Hội Thảo Quỳ Xin Tôi Cứu Mạng
+                  - generic [ref=e799]:
+                    - img [ref=e800]
+                    - text: "15.533"
+              - link "4 Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ 13.641" [ref=e803] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nghe-nhan-cacao-bi-vi-hon-the-duoi-di-socola-tram-ty-va-sap-tap-doan-hoa-chat-ngay-hoi-cho/
+                - generic [ref=e804]: "4"
+                - img "Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ" [ref=e805]
+                - generic [ref=e806]:
+                  - generic [ref=e807]: Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ
+                  - generic [ref=e811]: "13.641"
+              - link "5 Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả 12.651" [ref=e812] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nghe-nhan-son-mai-bi-khinh-re-duoi-khoi-xuong-tim-ra-mau-son-that-truyen-de-bep-tap-doan-tranh-gia/
+                - generic [ref=e813]: "5"
+                - img "Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả" [ref=e814]
+                - generic [ref=e815]:
+                  - generic [ref=e816]: Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả
+                  - generic [ref=e820]: "12.651"
+              - link "6 THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG 10.868" [ref=e821] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/than-y-bi-duoi-vo-cu-hoi-han-muon-mang/
+                - generic [ref=e822]: "6"
+                - img "THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG" [ref=e823]
+                - generic [ref=e824]:
+                  - generic [ref=e825]: THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG
+                  - generic [ref=e829]: "10.868"
+              - 'link "7 Thiên Tài Blockchain Phố Nguyễn Huệ: Bị Cướp Token Nghìn Tỷ, Tôi Hack Ngược Cả Sàn Thiên Tài Blockchain Phố Nguyễn Huệ: Bị Cướp Token Nghìn Tỷ, Tôi Hack Ngược Cả Sàn 9.691" [ref=e830] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/thien-tai-blockchain-pho-nguyen-hue-bi-cuop-token-nghin-ty-toi-hack-nguoc-ca-san/
+                - generic [ref=e831]: "7"
+                - 'img "Thiên Tài Blockchain Phố Nguyễn Huệ: Bị Cướp Token Nghìn Tỷ, Tôi Hack Ngược Cả Sàn" [ref=e832]'
+                - generic [ref=e833]:
+                  - generic [ref=e834]: "Thiên Tài Blockchain Phố Nguyễn Huệ: Bị Cướp Token Nghìn Tỷ, Tôi Hack Ngược Cả Sàn"
+                  - generic [ref=e838]: "9.691"
+              - 'link "8 Vua Sầu Riêng Đắk Nông: Bị Đốt Vườn Nghìn Tỷ, Tôi Trồng Lại Từ Tro Tàn Vua Sầu Riêng Đắk Nông: Bị Đốt Vườn Nghìn Tỷ, Tôi Trồng Lại Từ Tro Tàn 7.959" [ref=e839] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/vua-sau-rieng-dak-nong-bi-dot-vuon-nghin-ty-toi-trong-lai-tu-tro-tan/
+                - generic [ref=e840]: "8"
+                - 'img "Vua Sầu Riêng Đắk Nông: Bị Đốt Vườn Nghìn Tỷ, Tôi Trồng Lại Từ Tro Tàn" [ref=e841]'
+                - generic [ref=e842]:
+                  - generic [ref=e843]: "Vua Sầu Riêng Đắk Nông: Bị Đốt Vườn Nghìn Tỷ, Tôi Trồng Lại Từ Tro Tàn"
+                  - generic [ref=e847]: "7.959"
+              - 'link "9 Đạo Diễn Phim Trường Cần Giờ: Bị Cướp Kịch Bản Oscar, Tôi Quay Phim Chấn Động Cannes Đạo Diễn Phim Trường Cần Giờ: Bị Cướp Kịch Bản Oscar, Tôi Quay Phim Chấn Động Cannes 6.204" [ref=e848] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/dao-dien-phim-truong-can-gio-bi-cuop-kich-ban-oscar-toi-quay-phim-chan-dong-cannes/
+                - generic [ref=e849]: "9"
+                - 'img "Đạo Diễn Phim Trường Cần Giờ: Bị Cướp Kịch Bản Oscar, Tôi Quay Phim Chấn Động Cannes" [ref=e850]'
+                - generic [ref=e851]:
+                  - generic [ref=e852]: "Đạo Diễn Phim Trường Cần Giờ: Bị Cướp Kịch Bản Oscar, Tôi Quay Phim Chấn Động Cannes"
+                  - generic [ref=e856]: "6.204"
+              - 'link "10 Chúa Đảo Resort Phú Quốc: Bị Đuổi Khỏi Resort Mình Xây, Tôi Mua Cả Hòn Đảo Chúa Đảo Resort Phú Quốc: Bị Đuổi Khỏi Resort Mình Xây, Tôi Mua Cả Hòn Đảo 4.703" [ref=e857] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/chua-dao-resort-phu-quoc-bi-duoi-khoi-resort-minh-xay-toi-mua-ca-hon-dao/
+                - generic [ref=e858]: "10"
+                - 'img "Chúa Đảo Resort Phú Quốc: Bị Đuổi Khỏi Resort Mình Xây, Tôi Mua Cả Hòn Đảo" [ref=e859]'
+                - generic [ref=e860]:
+                  - generic [ref=e861]: "Chúa Đảo Resort Phú Quốc: Bị Đuổi Khỏi Resort Mình Xây, Tôi Mua Cả Hòn Đảo"
+                  - generic [ref=e865]: "4.703"
+          - generic [ref=e866]:
+            - heading "Bảng xếp hạng team Hôm nay" [level=3] [ref=e867]:
+              - generic [ref=e868]:
+                - img [ref=e869]
+                - text: Bảng xếp hạng team
+              - generic [ref=e871]: Hôm nay
+            - generic [ref=e872]:
+              - link "1 Mèo Kam Mập Mèo Kam Mập 36.697" [ref=e873] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e877]: "1"
+                - img "Mèo Kam Mập" [ref=e878]
+                - generic [ref=e879]:
+                  - generic [ref=e880]: Mèo Kam Mập
+                  - generic [ref=e881]:
+                    - img [ref=e882]
+                    - text: "36.697"
+              - link "2 Lạc Giới Tinh Thư Lạc Giới Tinh Thư 29.293" [ref=e885] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e889]: "2"
+                - img "Lạc Giới Tinh Thư" [ref=e890]
+                - generic [ref=e891]:
+                  - generic [ref=e892]: Lạc Giới Tinh Thư
+                  - generic [ref=e893]:
+                    - img [ref=e894]
+                    - text: "29.293"
+              - link "3 Mỗi Ngày Chỉ Muốn... Mỗi Ngày Chỉ Muốn... 10.969" [ref=e897] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e901]: "3"
+                - img "Mỗi Ngày Chỉ Muốn..." [ref=e902]
+                - generic [ref=e903]:
+                  - generic [ref=e904]: Mỗi Ngày Chỉ Muốn...
+                  - generic [ref=e905]:
+                    - img [ref=e906]
+                    - text: "10.969"
+              - link "4 Cá Chép Ngắm Mưa Cá Chép Ngắm Mưa 6.578" [ref=e909] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e910]: "4"
+                - img "Cá Chép Ngắm Mưa" [ref=e911]
+                - generic [ref=e912]:
+                  - generic [ref=e913]: Cá Chép Ngắm Mưa
+                  - generic [ref=e917]: "6.578"
+              - link "5 Trong Tim Có Cậu Trong Tim Có Cậu 5.507" [ref=e918] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e919]: "5"
+                - img "Trong Tim Có Cậu" [ref=e920]
+                - generic [ref=e921]:
+                  - generic [ref=e922]: Trong Tim Có Cậu
+                  - generic [ref=e926]: "5.507"
+              - link "6 Ổ Mật Mật Ổ Mật Mật 4.725" [ref=e927] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e928]: "6"
+                - img "Ổ Mật Mật" [ref=e929]
+                - generic [ref=e930]:
+                  - generic [ref=e931]: Ổ Mật Mật
+                  - generic [ref=e935]: "4.725"
+              - link "7 Nguyệt Sát Tinh C... Nguyệt Sát Tinh C... 2.500" [ref=e936] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e937]: "7"
+                - img "Nguyệt Sát Tinh C..." [ref=e938]
+                - generic [ref=e939]:
+                  - generic [ref=e940]: Nguyệt Sát Tinh C...
+                  - generic [ref=e944]: "2.500"
+              - link "8 Mèo Bủng Beo Mèo Bủng Beo 1.300" [ref=e945] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e946]: "8"
+                - img "Mèo Bủng Beo" [ref=e947]
+                - generic [ref=e948]:
+                  - generic [ref=e949]: Mèo Bủng Beo
+                  - generic [ref=e953]: "1.300"
+  - contentinfo [ref=e954]:
+    - generic [ref=e955]:
+      - generic [ref=e956]:
+        - link "DTT." [ref=e957] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/
+          - generic [ref=e958]: DTT.
+        - paragraph [ref=e959]: Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.
+      - generic [ref=e960]:
+        - heading "Thông tin" [level=4] [ref=e961]
+        - list [ref=e962]:
+          - listitem [ref=e963]:
+            - link "Giới thiệu" [ref=e964] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/gioi-thieu/
+              - img [ref=e965]
+              - text: Giới thiệu
+          - listitem [ref=e968]:
+            - link "Chính sách bảo mật" [ref=e969] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chinh-sach-bao-mat/
+              - img [ref=e970]
+              - text: Chính sách bảo mật
+          - listitem [ref=e972]:
+            - link "Điều khoản sử dụng" [ref=e973] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-khoan-su-dung/
+              - img [ref=e974]
+              - text: Điều khoản sử dụng
+      - generic [ref=e976]:
+        - heading "Danh sách truyện" [level=4] [ref=e977]
+        - list [ref=e978]:
+          - listitem [ref=e979]:
+            - link "• Sảng Văn" [ref=e980] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+          - listitem [ref=e981]:
+            - link "• Đô thị vả mặt" [ref=e982] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+          - listitem [ref=e983]:
+            - link "• Vả Mặt" [ref=e984] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - listitem [ref=e985]:
+            - link "• Đô thị thương chiến" [ref=e986] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/
+          - listitem [ref=e987]:
+            - link "• Hào Môn" [ref=e988] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/hao-mon/
+          - listitem [ref=e989]:
+            - link "• Ẩm Thực" [ref=e990] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/am-thuc/
+      - generic [ref=e991]:
+        - heading "Top truyện" [level=4] [ref=e992]
+        - list [ref=e993]:
+          - listitem [ref=e994]:
+            - link "• Top ngôn tình hay nhất" [ref=e995] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang/
+          - listitem [ref=e996]:
+            - link "• Top ngôn tình hiện đại" [ref=e997] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+hien+dai
+          - listitem [ref=e998]:
+            - link "• Top tổng tài hay nhất" [ref=e999] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=tong+tai
+          - listitem [ref=e1000]:
+            - link "• Top ngôn tình cổ đại" [ref=e1001] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+co+dai
+          - listitem [ref=e1002]:
+            - link "• Top xuyên không hay" [ref=e1003] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=xuyen+khong
+          - listitem [ref=e1004]:
+            - link "• Top truyện quân nhân" [ref=e1005] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=quan+nhan
+      - generic [ref=e1006]:
+        - heading "Kết nối" [level=4] [ref=e1007]
+        - paragraph [ref=e1008]: "Theo dõi để nhận thông báo chương mới:"
+        - generic [ref=e1009]:
+          - link "Fanpage" [ref=e1010] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - img [ref=e1011]
+            - text: Fanpage
+          - link "YouTube" [ref=e1013] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/nhom-dich/
+            - img [ref=e1014]
+            - text: YouTube
+        - paragraph [ref=e1016]: Tải ứng dụng
+        - generic [ref=e1017]:
+          - link "Tải về App Store" [ref=e1018] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - img [ref=e1019]
+            - generic [ref=e1021]:
+              - generic [ref=e1022]: Tải về
+              - strong [ref=e1023]: App Store
+          - link "Tải về Google Play" [ref=e1024] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - img [ref=e1025]
+            - generic [ref=e1027]:
+              - generic [ref=e1028]: Tải về
+              - strong [ref=e1029]: Google Play
+    - generic [ref=e1031]:
+      - img [ref=e1032]
+      - paragraph [ref=e1035]:
+        - strong [ref=e1036]: "Tuyên bố miễn trừ trách nhiệm:"
+        - text: DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.
+    - generic [ref=e1037]: © 2026 DTT. All rights reserved.

@@ -29,7 +29,7 @@ if (is_front_page() && isset($GLOBALS['slider_query'])) {
     if ($slider_q->have_posts()) {
         $first_post = $slider_q->posts[0] ?? null;
         if ($first_post) {
-            $first_img = get_the_post_thumbnail_url($first_post->ID, 'large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+            $first_img = get_the_post_thumbnail_url($first_post->ID, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
             echo '<link rel="preload" as="image" href="' . esc_url($first_img) . '" fetchpriority="high">';
         }
     }
@@ -132,12 +132,16 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 <!-- ══ NON-CRITICAL CSS (async via print trick - most reliable) ══ -->
 <!-- FontAwesome - icons not above-fold critical -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+<?php if (!is_front_page()): ?>
 <!-- style-truyen-moi-v1.css - page-specific -->
 <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/style-truyen-moi-v1.css?ver=1120" media="print" onload="this.media='all'">
+<?php endif; ?>
 <!-- media.css - responsive breakpoints only -->
 <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/media.css?ver=1120" media="print" onload="this.media='all'">
+<?php if (!is_front_page()): ?>
 <!-- style-mongdaovien.css - large 280KB, non-critical -->
 <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/style-mongdaovien.css?ver=1120" media="print" onload="this.media='all'">
+<?php endif; ?>
 <!-- bootstrap-icons - icon pack -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" media="print" onload="this.media='all'">
 <!-- swiper CSS -->
@@ -148,9 +152,13 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
 <noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <?php if (!is_front_page()): ?>
   <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/style-truyen-moi-v1.css?ver=1120">
+  <?php endif; ?>
   <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/media.css?ver=1120">
+  <?php if (!is_front_page()): ?>
   <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/style-mongdaovien.css?ver=1120">
+  <?php endif; ?>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
   <link rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/tehi-theme/assets/css/vh-skeleton.css">
@@ -605,7 +613,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
 .mkm-search-form { flex-grow: 1; max-width: 400px; margin: 0 20px; position: relative; }
 .mkm-search-form input { width: 100%; border: 1px solid #e1e4e8; border-radius: 20px; padding: 8px 15px 8px 35px; outline: none; transition: border-color 0.2s; }
 .mkm-search-form input:focus { border-color: #1d4ed8; }
-.mkm-search-form i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #888; }
+.mkm-search-btn { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 0; color: #888; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: color 0.2s; }
+.mkm-search-btn:hover { color: #1d4ed8; }
 .mkm-nav { display: flex; align-items: center; gap: 20px; }
 .mkm-nav a { color: #333; font-weight: 600; font-size: 14px; text-decoration: none; transition: color 0.2s; }
 .mkm-nav a:hover { color: #1d4ed8; }
@@ -684,7 +693,9 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
         </a>
         
         <form class="mkm-search-form d-none d-md-block hidden md:block" action="<?php echo esc_url(home_url('/')); ?>" method="get">
-            <i class="fa-solid fa-search"></i>
+            <button type="submit" class="mkm-search-btn" aria-label="Tìm kiếm">
+                <i class="fa-solid fa-search"></i>
+            </button>
             <input type="text" name="s" placeholder="Tìm tên truyện, tên người đăng..">
         </form>
         

@@ -1,0 +1,119 @@
+- generic [active] [ref=e1]:
+  - text:      
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Quay lại Truyện" [ref=e7] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/truyen/vua-tra-shan-tuyet-bi-hao-mon-duoi-khoi-cua-lat-keo-nho-bang-sang-che-tram-ty-tien-ke-phan-boi/
+            - img [ref=e8]
+          - link "Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội" [ref=e10] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/truyen/vua-tra-shan-tuyet-bi-hao-mon-duoi-khoi-cua-lat-keo-nho-bang-sang-che-tram-ty-tien-ke-phan-boi/
+        - generic [ref=e11]:
+          - button "Mục lục" [ref=e12] [cursor=pointer]:
+            - img [ref=e13]
+          - button "Cài đặt" [ref=e15] [cursor=pointer]:
+            - img [ref=e16]
+      - generic [ref=e19]:
+        - 'heading "Chương 1: Sính Lễ Lá Trà Dại" [level=1] [ref=e20]'
+        - text: ← →
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - paragraph [ref=e23]: Đêm mưa Hà Nội lạnh buốt thấu xương, nhưng bầu không khí bên trong khán phòng VIP của khách sạn Sofitel Legend Metropole lại nóng rực bởi ánh đèn pha lê lấp lánh và tiếng cười nói của giới thượng lưu. Hôm nay là tiệc đính hôn của Lê Trọng Nhân – một thạc sĩ trẻ ngành công nghệ sinh học nông nghiệp vừa trở về từ Hoàng Su Phì, Hà Giang – và Lâm Mỹ Linh, đại tiểu thư của tập đoàn Trà Việt Group trị giá hàng trăm tỷ đồng. Toàn bộ sảnh tiệc được trang hoàng bằng hàng ngàn đóa hoa hồng nhập khẩu, những ly rượu vang đỏ đắt tiền đong đưa trên tay những vị khách quý sang trọng bậc nhất thủ đô.
+            - button "💬" [ref=e24] [cursor=pointer]:
+              - img "💬" [ref=e25]
+          - generic [ref=e26]:
+            - paragraph [ref=e27]: Nhân đứng ở góc phòng, bộ vest cũ màu ghi đã bạc sờn ở gấu áo có vẻ lạc lõng giữa những bộ tuxedo sang trọng và váy dạ hội lộng lẫy đính kim cương đắt giá. Gương mặt anh thanh tú nhưng mang theo nét phong sương của sương gió vùng cao, đôi mắt sáng như sao trời, tay có những vết chai của người quanh năm trèo đèo lội suối. Trong tay anh ôm khư khư một hộp gỗ lũa phong sương, được chạm khắc hoa văn cổ của người Mông vùng cao, phảng phất mùi thơm của gỗ thông đá cổ thụ. Bên trong hộp gỗ đó là mười hai búp Bạch Trà Shan Tuyết đặc biệt được ủ men rễ tự nhiên SB-09 – thành quả bảy năm ròng rã ăn ngủ giữa rừng sâu, leo lên những vách đá dựng đứng cao hơn hai nghìn mét để bảo tồn giống trà cổ thụ năm trăm năm tuổi. Đây là sính lễ anh tự tay chuẩn bị, chứa đựng tất cả tâm huyết và tình yêu của mình dành cho Mỹ Linh.
+            - button "💬" [ref=e28] [cursor=pointer]:
+              - img "💬" [ref=e29]
+          - generic [ref=e30]:
+            - paragraph [ref=e31]: “Trọng Nhân, anh mang cái gì đến thế kia? Đừng bảo tôi đó là đống sính lễ mà anh nói nhé?” Lâm Mỹ Linh bước lại gần, giọng điệu thanh tao nhưng lạnh lùng thấu xương. Cô ta mặc chiếc váy cưới đuôi cá đính đá quý lấp lánh, khoác tay Vương Quốc Bảo – vị Giám đốc điều hành mới của Trà Việt, một kẻ có mái tóc chải chuốt bóng lộn và nụ cười khinh khỉnh ngạo nghễ.
+            - button "💬" [ref=e32] [cursor=pointer]:
+              - img "💬" [ref=e33]
+          - generic [ref=e34]:
+            - paragraph [ref=e35]: "Nhân mỉm cười ôn hòa, nhẹ nhàng mở chiếc hộp gỗ lũa ra: “Mỹ Linh, đây là Bạch Trà Shan Tuyết cổ thụ ủ men sinh học SB-09. Loại trà này có khả năng ổn định huyết áp, phục hồi thành mạch và điều hòa nhịp tim cực kỳ tốt. Anh đã dành bảy năm để lai tạo và hoàn thiện công thức độc quyền này, nó thực sự là vô giá đối với sức khỏe của gia đình em...”"
+            - button "💬" [ref=e36] [cursor=pointer]:
+              - img "💬" [ref=e37]
+          - generic [ref=e38]:
+            - paragraph [ref=e39]: “Ha ha ha! Vô giá sao?” Tiếng cười lớn đầy châm biếm của Vương Quốc Bảo cắt ngang lời anh, thu hút sự chú ý của toàn bộ quan khách trong hội trường rộng lớn. Hắn giật phắt chiếc hộp gỗ từ tay Nhân, thô bạo đổ mười hai búp trà trắng muốt như tuyết xuống sàn gạch lấp lánh bóng loáng. “Mọi người nhìn xem! Đây là sính lễ của một thạc sĩ nông nghiệp vùng cao! Mấy cọng lá cây khô nhặt từ đống củi dại trên vách đá khô cằn Hoàng Su Phì! Trà Việt chúng tôi chiếm giữ bảy mươi phần trăm thị phần trà xuất khẩu cả nước, mỗi cân trà thượng hạng giá vài chục triệu đồng, mà anh dám mang đống rác rưởi bốc mùi bùn đất này đến để làm sính lễ đính hôn với đại tiểu thư sao?”
+            - button "💬" [ref=e40] [cursor=pointer]:
+              - img "💬" [ref=e41]
+          - generic [ref=e42]:
+            - paragraph [ref=e43]: Nói xong, Quốc Bảo dùng đôi giày da Berluti bóng lộn của mình giẫm mạnh lên những búp chè Shan Tuyết trắng muốt. Búp chè vỡ vụn dưới gót giày thô bạo của hắn, nát bấy lẫn vào những giọt rượu champagne vương vãi trên sàn. Tiếng xì xào khinh bỉ vang lên từ khắp phía, những ánh mắt chế giễu đổ dồn về phía Nhân như nhìn một gã hề.
+            - button "💬" [ref=e44] [cursor=pointer]:
+              - img "💬" [ref=e45]
+          - generic [ref=e46]:
+            - paragraph [ref=e47]: "Bà mẹ vợ tương lai – Lâm phu nhân – bước tới từ hàng ghế danh dự, sắc mặt bà lạnh tanh như tiền. Bà nhìn Nhân bằng nửa con mắt, khinh miệt nói: “Loại nghèo hèn bốc mùi bùn đất như mày thì lấy gì làm sính lễ bước vào hào môn Lâm Gia? Thằng Bảo nói đúng, Lâm Gia chúng ta không thể dung nạp một kẻ làm vườn vô tích sự. Mỹ Linh, đưa thỏa thuận hủy hôn ước cho nó ký, rồi bảo vệ đuổi nó đi ngay lập tức!”"
+            - button "💬" [ref=e48] [cursor=pointer]:
+              - img "💬" [ref=e49]
+          - generic [ref=e50]:
+            - paragraph [ref=e51]: Lâm Mỹ Linh không chút do dự, cô ta rút từ trong túi xách ra một bản thỏa thuận hủy hôn ước đã soạn sẵn, ném thẳng vào ngực Nhân. “Nhân, chúng ta không cùng một thế giới. Anh suốt đời chỉ có thể chui rúc trên những vách đá sương mù cùng đống cây dại. Còn tôi là đại tiểu thư Lâm Gia, tôi cần một người đàn ông có thể giúp tập đoàn vươn tầm quốc tế, chứ không phải một gã nông dân nghèo nàn kiết xác.”
+            - button "💬" [ref=e52] [cursor=pointer]:
+              - img "💬" [ref=e53]
+          - generic [ref=e54]:
+            - paragraph [ref=e55]: Nhân lặng yên nhìn những búp trà bị giẫm nát dưới gót giày của Vương Quốc Bảo. Khớp xương ngón tay anh siết chặt đến mức kêu răng rắc, nhưng gương mặt anh vẫn bình thản lạ lùng. Anh cúi xuống, nhặt một búp trà nát lấm bẩn lên, ánh mắt chợt lóe lên một tia sáng sắc lạnh như dao cạo.
+            - button "💬" [ref=e56] [cursor=pointer]:
+              - img "💬" [ref=e57]
+          - generic [ref=e58]:
+            - paragraph [ref=e59]: “Lâm Gia các người hôm nay từ chối hạt ngọc của núi rừng, sỉ nhục công sức nghiên cứu của tôi. Ngày sau, khi cả gia tộc sụp đổ, dù có quỳ gối van xin dưới chân đèo Hoàng Su Phì, các người cũng đừng hòng nếm được một giọt trà cứu mạng của tôi.” Giọng Nhân trầm ấm nhưng vang vọng khắp gian phòng rộng lớn.
+            - button "💬" [ref=e60] [cursor=pointer]:
+              - img "💬" [ref=e61]
+          - generic [ref=e62]:
+            - paragraph [ref=e63]: “Câm miệng! Đồ rác rưởi huyễn hoặc! Bảo vệ, kéo cổ nó ra ngoài cho tôi!” Lâm phu nhân giận dữ hét lên.
+            - button "💬" [ref=e64] [cursor=pointer]:
+              - img "💬" [ref=e65]
+          - generic [ref=e66]:
+            - paragraph [ref=e67]: Two gã bảo vệ to khỏe lập tức ập tới, nắm chặt lấy bả vai Nhân và thô bạo kéo lê anh ra khỏi sảnh khánh tiết lộng lẫy. Dưới cơn mưa phùn Hà Nội lạnh ngắt, Nhân bị ném ra lề đường Metropole như một kẻ thừa thãi. Chiếc vali cũ kỹ của anh bị ném theo, bung ra khiến vài cuốn sổ ghi chép sạm màu đất ướt đẫm nước mưa. Nhân đứng dưới mưa, nhìn bóng dáng lộng lẫy của Lâm Gia khuất sau cánh cửa kính xoay của khách sạn năm sao. Anh khẽ lau giọt nước mưa trên mặt, mỉm cười lạnh lùng. Thời gian của Lâm Gia không còn nhiều nữa rồi.
+            - button "💬" [ref=e68] [cursor=pointer]:
+              - img "💬" [ref=e69]
+        - text: ← →
+      - generic [ref=e70]:
+        - generic:
+          - button "Nghe truyện":
+            - generic:
+              - img
+            - generic: Nghe truyện
+          - button "Bình luận":
+            - generic:
+              - img
+            - text: Bình luận
+          - button "0 lượt thích":
+            - generic:
+              - img
+            - generic: "0"
+            - text: lượt thích
+        - button [ref=e71] [cursor=pointer]:
+          - img [ref=e72]
+      - generic [ref=e75]:
+        - link "Home" [ref=e76] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com
+          - img [ref=e77]
+          - text: Home
+        - link "Trước":
+          - /url: javascript:void(0)
+          - img
+          - text: Trước
+        - button "Chương Ch. 1 / 8" [ref=e79] [cursor=pointer]:
+          - generic [ref=e80]:
+            - img [ref=e81]
+            - text: Chương
+          - generic [ref=e83]: Ch. 1 / 8
+        - link "Sau" [ref=e84] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/chuong/chuong-2-dem-toi-trom-cap/
+          - img [ref=e85]
+          - text: Sau
+        - button "Cài đặt" [ref=e87] [cursor=pointer]:
+          - img [ref=e88]
+          - text: Cài đặt
+      - button:
+        - img
+    - generic [ref=e91]:
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - img "💬" [ref=e94]
+          - text: Bình luận đoạn
+        - button "×" [ref=e95] [cursor=pointer]
+      - generic [ref=e97]: Đang tải bình luận...
+      - generic [ref=e98]:
+        - textbox "Viết cảm nhận của bạn về đoạn này..." [ref=e99]
+        - button "Gửi bình luận" [ref=e101] [cursor=pointer]

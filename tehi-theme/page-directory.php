@@ -138,7 +138,7 @@ $all_terms = get_terms([
             while ($directory_query->have_posts()) : $directory_query->the_post();
             $views = (int)get_post_meta(get_the_ID(), '_views', true);
             if ($views == 0) $views = rand(100, 5000);
-            $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
+            $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
             $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
             
             // Format views
@@ -185,7 +185,7 @@ $all_terms = get_terms([
                 </div>
                 <div class="mkm-card-btns" style="margin-top:auto !important;">
                     <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
-                    <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new">Chương mới</a>
+                    <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new">Chương mới nhất</a>
                 </div>
             </div>
         </div>
@@ -298,12 +298,12 @@ $all_terms = get_terms([
 }
 @media (max-width: 600px) {
     .mkm-card-btns {
-        flex-direction: column !important;
+        flex-direction: row !important;
         gap: 6px !important;
     }
     .mkm-btn-card {
-        padding: 6px 4px !important;
-        font-size: 10px !important;
+        padding: 6px 2px !important;
+        font-size: 9px !important;
     }
     .mkm-pagination a, .mkm-pagination span {
         min-width: 36px !important;

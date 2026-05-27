@@ -1,0 +1,379 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "DTT." [ref=e6] [cursor=pointer]:
+        - /url: https://doctieuthuyet.com
+        - generic [ref=e7]: DTT.
+      - generic [ref=e8]:
+        - generic [ref=e9]: 
+        - textbox "Tìm tên truyện, tên người đăng.." [ref=e10]
+      - generic [ref=e11]:
+        - link " Thể loại" [ref=e12] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/the-loai.html
+          - generic [ref=e13]: 
+          - text: Thể loại
+        - link " Truyện full" [ref=e14] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=e15]: 
+          - text: Truyện full
+        - link " BXH" [ref=e16] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e17]: 
+          - text: BXH
+        - link " Theo dõi" [ref=e18] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/theo-doi.html
+          - generic [ref=e19]: 
+          - text: Theo dõi
+        - button " Đăng nhập" [ref=e20] [cursor=pointer]:
+          - generic [ref=e21]: 
+          - text: Đăng nhập
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - img "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy" [ref=e28]
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - img "📖" [ref=e31]
+              - text: Truyện Chữ
+            - generic [ref=e32]:
+              - img "✅" [ref=e33]
+              - text: Đã đủ bộ
+          - generic [ref=e34]:
+            - link "📖 Đọc ngay (Từ đầu)" [ref=e35] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chuong/chuong-1-duoi-khoi-giang-duong-2/
+              - img "📖" [ref=e36]
+              - text: Đọc ngay (Từ đầu)
+            - link "★ Đọc chương mới nhất" [ref=e37] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chuong/chuong-5-dinh-cao-tri-thuc-2/
+            - button "🔖 Theo dõi truyện" [ref=e38] [cursor=pointer]:
+              - img "🔖" [ref=e40]
+              - generic [ref=e41]: Theo dõi truyện
+          - generic [ref=e42]:
+            - generic [ref=e43]:
+              - generic [ref=e44]:
+                - img "⏱️" [ref=e45]
+                - text: Thời gian
+              - strong [ref=e46]: ~3 giờ
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - img "💬" [ref=e50]
+                - text: Thảo luận
+              - strong [ref=e51]: 4 lượt
+            - generic [ref=e53]:
+              - generic [ref=e54]:
+                - img "⭐" [ref=e55]
+                - text: Đánh giá
+              - strong [ref=e56]: 4.9/5 (190 đánh giá)
+        - generic [ref=e57]:
+          - heading "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy" [level=1] [ref=e58]
+          - generic [ref=e59]:
+            - link "Đô thị vả mặt" [ref=e60] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+            - link "Sảng Văn" [ref=e61] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+            - link "Vả Mặt" [ref=e62] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - generic [ref=e65]:
+                - img "✍️" [ref=e66]
+                - text: Tác giả
+              - generic [ref=e67]: Đang cập nhật
+            - generic [ref=e68]:
+              - generic [ref=e69]:
+                - img "🕒" [ref=e70]
+                - text: Cập nhật
+              - generic [ref=e71]: 22/05/2026
+            - generic [ref=e72]:
+              - generic [ref=e73]:
+                - img "📚" [ref=e74]
+                - text: Số chương
+              - generic [ref=e75]: 5 chương
+            - generic [ref=e76]:
+              - generic [ref=e77]:
+                - img "🏷️" [ref=e78]
+                - text: Nhóm dịch
+              - generic [ref=e79]: ST
+          - generic [ref=e80]:
+            - generic [ref=e81]: “Đinh Tuấn Anh cống hiến mười năm ròng rã tại Đại học Kỹ thuật Munich để viết nên thuật toán tối ưu hóa động lực học đa vật thể song song (PMDO) chấn động giới cơ điện tử toàn cầu.”Thế nhưng, khi anh trở về Hà Nội và lặng lẽ ngồi nghe giảng tại Đại học Kỹ thuật Hà Ngoại, gã Giáo sư Lê Hữu Phước tham nhũng đã cướp đoạt công trình của anh, tự nhận mình là tác giả để tham gia gói thầu y tế 120 tỷ...
+            - link "▼ Xem toàn bộ" [ref=e82] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e83]:
+          - generic [ref=e84]:
+            - img "👁" [ref=e86]
+            - generic [ref=e87]: 1,015
+            - generic [ref=e88]: Lượt xem
+          - generic [ref=e89]:
+            - img "👍" [ref=e91]
+            - generic [ref=e92]: "362"
+            - generic [ref=e93]: Yêu thích
+          - generic [ref=e94]:
+            - img "📚" [ref=e96]
+            - generic [ref=e97]: "5"
+            - generic [ref=e98]: Chương
+          - generic [ref=e99]:
+            - img "✅" [ref=e100]
+            - text: Đã đủ bộ
+          - generic [ref=e101]:
+            - button "♡ Yêu thích" [ref=e102] [cursor=pointer]
+            - button "➦ Chia sẻ" [ref=e103] [cursor=pointer]
+            - button "⚑ Báo lỗi" [ref=e104] [cursor=pointer]
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - combobox [ref=e108]:
+              - option "↑↓ Giảm dần" [selected]
+              - option "↑↓ Tăng dần"
+            - textbox "🔍 Tìm chương" [ref=e109]
+          - generic [ref=e110]:
+            - text: "Tổng:"
+            - strong [ref=e111]: "5"
+            - text: chương • Trang 1 / 1
+        - generic [ref=e112]:
+          - 'link "Ch. 5 • 🕒 2 ngày trước 👁 310 Chương 5: Đỉnh Cao Tri Thức" [ref=e113] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-5-dinh-cao-tri-thuc-2/
+            - img [ref=e115]
+            - generic [ref=e117]:
+              - paragraph [ref=e118]:
+                - generic [ref=e119]:
+                  - text: Ch. 5 •
+                  - img "🕒" [ref=e120]
+                  - text: 2 ngày trước
+                - generic [ref=e121]:
+                  - img "👁" [ref=e122]
+                  - text: "310"
+              - paragraph [ref=e123]: "Chương 5: Đỉnh Cao Tri Thức"
+          - 'link "Ch. 4 • 🕒 2 ngày trước 👁 739 Chương 4: Forensic Học Thuật" [ref=e124] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-4-forensic-hoc-thuat-2/
+            - img [ref=e126]
+            - generic [ref=e128]:
+              - paragraph [ref=e129]:
+                - generic [ref=e130]:
+                  - text: Ch. 4 •
+                  - img "🕒" [ref=e131]
+                  - text: 2 ngày trước
+                - generic [ref=e132]:
+                  - img "👁" [ref=e133]
+                  - text: "739"
+              - paragraph [ref=e134]: "Chương 4: Forensic Học Thuật"
+          - 'link "Ch. 3 • 🕒 2 ngày trước 👁 534 Chương 3: Khủng Hoảng Pháp Lý" [ref=e135] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-3-khung-hoang-phap-ly-2/
+            - img [ref=e137]
+            - generic [ref=e139]:
+              - paragraph [ref=e140]:
+                - generic [ref=e141]:
+                  - text: Ch. 3 •
+                  - img "🕒" [ref=e142]
+                  - text: 2 ngày trước
+                - generic [ref=e143]:
+                  - img "👁" [ref=e144]
+                  - text: "534"
+              - paragraph [ref=e145]: "Chương 3: Khủng Hoảng Pháp Lý"
+          - 'link "Ch. 2 • 🕒 2 ngày trước 👁 664 Chương 2: Âm Mưu Đạo Nhái" [ref=e146] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-2-am-muu-dao-nhai-2/
+            - img [ref=e148]
+            - generic [ref=e150]:
+              - paragraph [ref=e151]:
+                - generic [ref=e152]:
+                  - text: Ch. 2 •
+                  - img "🕒" [ref=e153]
+                  - text: 2 ngày trước
+                - generic [ref=e154]:
+                  - img "👁" [ref=e155]
+                  - text: "664"
+              - paragraph [ref=e156]: "Chương 2: Âm Mưu Đạo Nhái"
+          - 'link "Ch. 1 • 🕒 2 ngày trước 👁 239 Chương 1: Đuổi Khỏi Giảng Đường" [ref=e157] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-1-duoi-khoi-giang-duong-2/
+            - img [ref=e159]
+            - generic [ref=e161]:
+              - paragraph [ref=e162]:
+                - generic [ref=e163]:
+                  - text: Ch. 1 •
+                  - img "🕒" [ref=e164]
+                  - text: 2 ngày trước
+                - generic [ref=e165]:
+                  - img "👁" [ref=e166]
+                  - text: "239"
+              - paragraph [ref=e167]: "Chương 1: Đuổi Khỏi Giảng Đường"
+      - generic [ref=e168]:
+        - heading "💬 Bình luận 4 bình luận" [level=3] [ref=e169]:
+          - img "💬" [ref=e171]
+          - text: Bình luận
+          - generic [ref=e172]: 4 bình luận
+        - generic [ref=e173]:
+          - generic [ref=e174]:
+            - generic [ref=e175]: T
+            - generic [ref=e176]:
+              - generic [ref=e177]:
+                - generic [ref=e178]:
+                  - strong [ref=e179]: Thuỳ Trang
+                  - generic [ref=e180]: ★★★★★
+                - generic [ref=e181]: 2 tuần trước
+              - generic [ref=e182]: Truyện hay quá, hành văn mượt mà và cuốn hút từng câu.
+          - generic [ref=e183]:
+            - generic [ref=e184]: M
+            - generic [ref=e185]:
+              - generic [ref=e186]:
+                - generic [ref=e187]:
+                  - strong [ref=e188]: Mạnh Hùng
+                  - generic [ref=e189]: ★★★★★
+                - generic [ref=e190]: 1 tuần trước
+              - generic [ref=e191]: Mỗi câu một dòng đọc trên điện thoại siêu thoáng mắt, 10 điểm cho giao diện trình bày.
+          - generic [ref=e192]:
+            - generic [ref=e193]: H
+            - generic [ref=e194]:
+              - generic [ref=e195]:
+                - generic [ref=e196]:
+                  - strong [ref=e197]: Hoàng Nam
+                  - generic [ref=e198]: ★★★★★
+                - generic [ref=e199]: 6 ngày trước
+              - generic [ref=e200]: Đọc chương nào sướng chương đó, vả mặt cực kỳ thuyết phục bằng chứng cứ hẳn hoi chứ không vô lý.
+          - generic [ref=e201]:
+            - generic [ref=e202]: H
+            - generic [ref=e203]:
+              - generic [ref=e204]:
+                - generic [ref=e205]:
+                  - strong [ref=e206]: Hoàng Minh
+                  - generic [ref=e207]: ★★★★★
+                - generic [ref=e208]: 5 ngày trước
+              - generic [ref=e209]: Đúng chuẩn sảng văn hiện đại, nhân vật lý tính quyết đoán không bị nhu nhược.
+        - generic [ref=e210]:
+          - img "😋" [ref=e212]
+          - generic [ref=e214]:
+            - textbox "Biệt danh của bạn (tùy chọn)" [ref=e215]
+            - generic [ref=e216]:
+              - generic [ref=e217]: "Đánh giá của bạn:"
+              - generic [ref=e218] [cursor=pointer]:
+                - generic [ref=e219]: ★
+                - generic [ref=e220]: ★
+                - generic [ref=e221]: ★
+                - generic [ref=e222]: ★
+                - generic [ref=e223]: ★
+            - textbox "Viết bình luận của bạn..." [ref=e224]
+            - generic [ref=e225]:
+              - generic [ref=e226]: 0/300
+              - button "Đăng bình luận" [ref=e227] [cursor=pointer]:
+                - generic [ref=e228]: Đăng bình luận
+      - generic [ref=e229]:
+        - heading "Gợi ý danh sách truyện liên quan" [level=3] [ref=e230]
+        - generic [ref=e231]:
+          - 'link "Kẻ Phế Vật Trở Về: Đòi Lại Gia Tộc Sau... Mười hai năm trước, Lâm Phong bị chú ruột cướp quyền thừa kế, bị..." [ref=e232] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/truyen/ke-phe-vat-ngay-ay-hom-nay-tro-ve/
+            - generic [ref=e234]:
+              - 'heading "Kẻ Phế Vật Trở Về: Đòi Lại Gia Tộc Sau..." [level=4] [ref=e235]'
+              - paragraph [ref=e236]: Mười hai năm trước, Lâm Phong bị chú ruột cướp quyền thừa kế, bị...
+          - 'link "Thần Y Quận 5: Kẻ Cướp Công Trình và Siêu... Năm đó, bác sĩ trẻ Trần Duy bị sếp cướp công trình nghiên cứu,..." [ref=e237] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/truyen/than-y-phong-kham-quan-5/
+            - generic [ref=e239]:
+              - 'heading "Thần Y Quận 5: Kẻ Cướp Công Trình và Siêu..." [level=4] [ref=e240]'
+              - paragraph [ref=e241]: Năm đó, bác sĩ trẻ Trần Duy bị sếp cướp công trình nghiên cứu,...
+          - 'link "Vua Lúa Gạo Đồng Tháp: Nông Dân Bị Ép Giá,... “Đất này là của tao, lúa này tao muốn mua giá nào là quyền..." [ref=e242] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/truyen/vua-lua-gao-dong-thap-nong-dan-bi-ep-gia-toi-xay-de-che-gao-xuat-khau/
+            - generic [ref=e244]:
+              - 'heading "Vua Lúa Gạo Đồng Tháp: Nông Dân Bị Ép Giá,..." [level=4] [ref=e245]'
+              - paragraph [ref=e246]: “Đất này là của tao, lúa này tao muốn mua giá nào là quyền...
+          - link "Tài Xế Taxi Bị Khách VIP Khinh Thường, Tài Xế... “Cậu chỉ là một gã tài xế taxi truyền thống rác rưởi, cả đời..." [ref=e247] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/truyen/tai-xe-taxi-bi-khach-vip-khinh-thuong-tai-xe-do-so-huu-cong-ty-taxi-lon-nhat-thanh-tam/
+            - generic [ref=e249]:
+              - heading "Tài Xế Taxi Bị Khách VIP Khinh Thường, Tài Xế..." [level=4] [ref=e250]
+              - paragraph [ref=e251]: “Cậu chỉ là một gã tài xế taxi truyền thống rác rưởi, cả đời...
+  - contentinfo [ref=e252]:
+    - generic [ref=e253]:
+      - generic [ref=e254]:
+        - link "DTT." [ref=e255] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/
+          - generic [ref=e256]: DTT.
+        - paragraph [ref=e257]: Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.
+      - generic [ref=e258]:
+        - heading "Thông tin" [level=4] [ref=e259]
+        - list [ref=e260]:
+          - listitem [ref=e261]:
+            - link "Giới thiệu" [ref=e262] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/gioi-thieu/
+              - img [ref=e263]
+              - text: Giới thiệu
+          - listitem [ref=e266]:
+            - link "Chính sách bảo mật" [ref=e267] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chinh-sach-bao-mat/
+              - img [ref=e268]
+              - text: Chính sách bảo mật
+          - listitem [ref=e270]:
+            - link "Điều khoản sử dụng" [ref=e271] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-khoan-su-dung/
+              - img [ref=e272]
+              - text: Điều khoản sử dụng
+      - generic [ref=e274]:
+        - heading "Danh sách truyện" [level=4] [ref=e275]
+        - list [ref=e276]:
+          - listitem [ref=e277]:
+            - link "• Sảng Văn" [ref=e278] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+          - listitem [ref=e279]:
+            - link "• Đô thị vả mặt" [ref=e280] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+          - listitem [ref=e281]:
+            - link "• Vả Mặt" [ref=e282] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - listitem [ref=e283]:
+            - link "• Đô thị thương chiến" [ref=e284] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/
+          - listitem [ref=e285]:
+            - link "• Hào Môn" [ref=e286] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/hao-mon/
+          - listitem [ref=e287]:
+            - link "• Ẩm Thực" [ref=e288] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/am-thuc/
+      - generic [ref=e289]:
+        - heading "Top truyện" [level=4] [ref=e290]
+        - list [ref=e291]:
+          - listitem [ref=e292]:
+            - link "• Top ngôn tình hay nhất" [ref=e293] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang/
+          - listitem [ref=e294]:
+            - link "• Top ngôn tình hiện đại" [ref=e295] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+hien+dai
+          - listitem [ref=e296]:
+            - link "• Top tổng tài hay nhất" [ref=e297] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=tong+tai
+          - listitem [ref=e298]:
+            - link "• Top ngôn tình cổ đại" [ref=e299] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+co+dai
+          - listitem [ref=e300]:
+            - link "• Top xuyên không hay" [ref=e301] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=xuyen+khong
+          - listitem [ref=e302]:
+            - link "• Top truyện quân nhân" [ref=e303] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=quan+nhan
+      - generic [ref=e304]:
+        - heading "Kết nối" [level=4] [ref=e305]
+        - paragraph [ref=e306]: "Theo dõi để nhận thông báo chương mới:"
+        - generic [ref=e307]:
+          - link "Fanpage" [ref=e308] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - img [ref=e309]
+            - text: Fanpage
+          - link "YouTube" [ref=e311] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/nhom-dich/
+            - img [ref=e312]
+            - text: YouTube
+        - paragraph [ref=e314]: Tải ứng dụng
+        - generic [ref=e315]:
+          - link "Tải về App Store" [ref=e316] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - img [ref=e317]
+            - generic [ref=e319]:
+              - generic [ref=e320]: Tải về
+              - strong [ref=e321]: App Store
+          - link "Tải về Google Play" [ref=e322] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - img [ref=e323]
+            - generic [ref=e325]:
+              - generic [ref=e326]: Tải về
+              - strong [ref=e327]: Google Play
+    - generic [ref=e329]:
+      - img [ref=e330]
+      - paragraph [ref=e333]:
+        - strong [ref=e334]: "Tuyên bố miễn trừ trách nhiệm:"
+        - text: DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.
+    - generic [ref=e335]: © 2026 DTT. All rights reserved.

@@ -154,14 +154,8 @@ function temply_ajax_write_comic_chapter() {
         $prmpt = $p['prompt'] ?? '';
         if(empty($prmpt)) continue;
         
-        $escaped_prompt = urlencode($prmpt . ", style of " . $art . ", highly detailed, expressive manga illustration art, masterpiece");
-        $img_url = "https://image.pollinations.ai/prompt/" . $escaped_prompt . "?width=600&height=500&seed=" . $seed . "&nologo=true";
-
-        // Tải ảnh về host để lưu vĩnh viễn (nếu muốn) hoặc dùng link trực tiếp để tiết kiệm host
-        // Ở đây dùng thẻ img trực tiếp (Hotlink API) để tốc độ tạo truyện nhanh như điện xẹt
-        
         $html_content .= '<div class="comic-panel">';
-        $html_content .= '<img src="' . esc_attr($img_url) . '" alt="Cảnh truyện ' . $chap_num . ' panel ' . $idx . '" loading="lazy" />';
+        $html_content .= '<div style="min-height:360px;display:flex;align-items:center;justify-content:center;background:#111;color:#fff;text-align:center;padding:24px;font-weight:700;">Tạo panel bằng ChatGPT Image Generation rồi upload ảnh vào đây.</div>';
         
         if(!empty($p['dialogues']) && is_array($p['dialogues'])) {
             $html_content .= '<div class="bubbles-layer">';

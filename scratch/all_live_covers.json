@@ -1,302 +1,646 @@
 [
-  {
-    "id": 2587,
-    "title": "Thiên Tài Cầu Đường Cao Tốc: Kỹ Sư Bị Sa Thải Xây Cầu Vượt Biển Nghìn Tỷ",
-    "slug": "thien-tai-cau-duong-cao-toc-ky-su-bi-sa-thai-xay-cau-vuot-bien-nghin-ty",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2587-hq-859.png"
-  },
-  {
-    "id": 2573,
-    "title": "Đế Chế Gốm Sứ Bát Tràng: Nghệ Nhân Bị Phản Bội Thiêu Đốt Cả Làng Nghề",
-    "slug": "de-che-gom-su-bat-trang-nghe-nhan-bi-phan-boi-thieu-dot-ca-lang-nghe",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2573-hq-397.png"
-  },
-  {
-    "id": 2561,
-    "title": "Vua Tôm Hùm Phú Yên: Chàng Ngư Dân Bị Khinh Rẻ Thâu Tóm Vùng Biển Nghìn Tỷ",
-    "slug": "vua-tom-hum-phu-yen-chang-ngu-dan-bi-khinh-re-thau-tom-vung-bien-nghin-ty",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2561-hq-280.png"
-  },
-  {
-    "id": 2549,
-    "title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ Của Chàng Rể Hào Môn",
-    "slug": "bao-noi-mien-tay-vuong-quoc-sau-rieng-tram-ty-cua-chang-re-hao-mon-2",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/chang-re-bun-lay-an-than-cover-v5-1779394279.png"
-  },
-  {
-    "id": 2517,
-    "title": "Thiên Tài Khởi Nghiệp Fintech",
-    "slug": "thien-tai-khoi-nghiep-fintech-2",
-    "thumb_url": ""
-  },
-  {
-    "id": 2508,
-    "title": "Võ Thần Bảo Vệ Đại Tiểu Thư",
-    "slug": "vo-than-bao-ve-dai-tieu-thu-2",
-    "thumb_url": ""
-  },
-  {
-    "id": 2497,
-    "title": "Chiến Thần Dược Phẩm Độc Bản",
-    "slug": "chien-than-duoc-pham-doc-ban-2",
-    "thumb_url": ""
-  },
-  {
-    "id": 2489,
-    "title": "Người Thừa Kế Trăm Tỷ Giả Nghèo",
-    "slug": "nguoi-thua-ke-tram-ty-gia-ngheo-2",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2489-711.jpg"
-  },
-  {
-    "id": 2482,
-    "title": "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn",
-    "slug": "vuong-quoc-nuoc-mam-truyen-thong-phu-quoc-chang-re-an-the-vuc-day-quoc-hon",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2482-408.jpg"
-  },
-  {
-    "id": 2475,
-    "title": "Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
-    "slug": "trong-sinh-2008-vua-dat-dong-anh-thiet-lap-de-che",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2475-470.jpg"
-  },
-  {
-    "id": 2465,
-    "title": "Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
-    "slug": "vo-than-dat-cang-ve-si-an-than-pha-bay-buon-lau-500-ty-cang-dinh-vu",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2465-197.jpg"
-  },
-  {
-    "id": 2457,
-    "title": "Chàng Rể Bùn Lầy Ẩn Thân: Lật Kèo Vườn Sầu Riêng Trăm Tỷ Dậy Sóng Miền Tây",
-    "slug": "bao-noi-mien-tay-vuong-quoc-sau-rieng-tram-ty-cua-chang-re-hao-mon",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/chang-re-bun-lay-square-1024-v7-1779395199.png"
-  },
-  {
-    "id": 2448,
-    "title": "Vua Bán Lẻ Đường Phố Sài Gòn: Trận Chiến Sinh Tử Của Chuỗi Trà Ô Long Organic Việt",
-    "slug": "vua-ban-le-duong-pho-sai-gon-tran-chien-sinh-tu-cua-chuoi-tra-o-long-organic-viet",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2448-1779346857.jpg"
-  },
-  {
-    "id": 2313,
-    "title": "Bị Cướp Mã Nguồn Nghìn Tỷ, Tôi Kích Hoạt Cái Bẫy Chôn Vùi Cả Tập Đoàn",
-    "slug": "bay-thau-tom-cong-nghe-su-phuc-thu-cua-thien-tai-lap-trinh",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2313-1779346862.jpg"
-  },
-  {
-    "id": 2289,
-    "title": "Sân Khấu Nhà Hát Phương Nam",
-    "slug": "dao-dien-ballet-nga-tro-ve-doi-mat-voi-am-muu-cuop-dien-xuat-cua-gd-nghe-thuat-trong-cuoc-chien-khong-khoan-nhuong-tai-nha-hat-lon-ha-noi",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2289-1779336850.jpg"
-  },
-  {
-    "id": 2279,
-    "title": "Vương Quốc Bất Động Sản Thành Tâm",
-    "slug": "bi-vu-khong-an-hoa-hong-chuyen-gia-dinh-gia-dat-noi-mau-phuc-thu-khi-ceo-quy-reit-5000-ty-dinh-bay-mua-lai-toa-nha-quan-7",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2279-1779336844.jpg"
-  },
-  {
-    "id": 2269,
-    "title": "Đế Chế Dệt May Bình Thịnh",
-    "slug": "cuoc-chien-phap-ly-dam-mau-giua-thieu-gia-bi-cha-nuoi-tay-chay-va-nu-luat-su-ma-ha-noi-khi-tap-doan-det-may-2000-ty-bi-de-doa-tu-scic-tai-kcn-binh-duong",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2269-1779336839.jpg"
-  },
-  {
-    "id": 2259,
-    "title": "Tiệm Bánh Hội Nguyên",
-    "slug": "dau-bep-via-he-hoi-an-doi-dau-voi-nghich-canh-cuop-cong-thuc-banh-mi-70-nam-va-cuoc-chien-danh-du-truoc-hoi-dong-michelin-asia-pacific",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2259-1779336834.jpg"
-  },
-  {
-    "id": 2249,
-    "title": "Nhà Thiết Kế Tàng Hình Hội Nghị Thời Trang Quốc Gia",
-    "slug": "kham-pha-am-muu-den-toi-cua-startup-da-lat-ky-su-bao-mat-bi-danh-cap-bang-sang-che-bi-blacklist-tu-bo-cong-an-a05-voi-200-trieu-usd-tu-quy-vc-singapore",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2249-1779336865.jpg"
-  },
-  {
-    "id": 2238,
-    "title": "Triều Đại Cà Phê Bazan Đắk Minh",
-    "slug": "cuu-thuyen-truong-cang-tien-sa-dot-pha-hop-dong-ma-phoi-bay-am-muu-thau-tom-da-nang-cua-tap-doan-ngoai-c03-xuat-hien-bao-ve-thanh-pho",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2238-1779336860.jpg"
-  },
-  {
-    "id": 2227,
-    "title": "Thiên Tài Lập Trình Đà Lạt Sương Mù: Tôi Viết Mã Hoá Lật Đổ Tập Đoàn Tài Chính Phản Bội",
-    "slug": "thien-tai-ma-hoa-da-lat-suong-mu",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2227-hq-115.jpg"
-  },
-  {
-    "id": 2217,
-    "title": "Kỹ Sư Smart Grid Và Bóng Tối Điện lực Vạn Thịnh",
-    "slug": "thuyen-truong-ty-phu-cang-tien-sa",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2217-1779336855.jpg"
-  },
-  {
-    "id": 2207,
-    "title": "Thuyền Trưởng Cảng Đà Thành",
-    "slug": "bi-duoi-khoi-cang-tien-sa-toi-nhan-chim-am-muu-thau-tom-cang-da-nang-nghin-ty",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2207-1779336828.jpg"
-  },
-  {
-    "id": 2197,
-    "title": "THỢ HỒ NGHÌN TỶ",
-    "slug": "tho-ho-nghin-ty",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2197-standard-v6.png"
-  },
-  {
-    "id": 2190,
-    "title": "Thần Tài Chứng Khoán Phố Wall Hà Ngoại",
-    "slug": "vua-ban-le-duong-pho-blockchain-lat-keo-the-ky",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2190-1779336870.jpg"
-  },
-  {
-    "id": 2165,
-    "title": "Bạn Thân Cướp Startup Đuổi Tôi Ra Đường, Tôi Bank Run Sập Đế Chế Hắn",
-    "slug": "thien-tai-khoi-nghiep-fintech",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2165-hq-592.png"
-  },
-  {
-    "id": 2156,
-    "title": "Tiểu Thư Khinh Tôi Là Bảo Vệ 8 Triệu, Tôi Là Đặc Nhiệm Hạng Nhất",
-    "slug": "vo-than-bao-ve-dai-tieu-thu",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2156-hq-784.png"
-  },
-  {
-    "id": 2145,
-    "title": "Sếp Cướp Công Thức Thuốc Đuổi Tôi Khỏi Lab, Tôi Phá Sập IPO Nghìn Tỷ",
-    "slug": "chien-than-duoc-pham-doc-ban",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2145-hq-537.png"
-  },
-  {
-    "id": 2137,
-    "title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ Khinh Tôi Nghèo, Landmark 81 Là Của Tôi",
-    "slug": "nguoi-thua-ke-tram-ty-gia-ngheo",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2137-hq-997.png"
-  },
-  {
-    "id": 2129,
-    "title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
-    "slug": "doc-ban-duoc-than-ke-lat-keo-the-ky",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2129-266.jpg"
-  },
-  {
-    "id": 2120,
-    "title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
-    "slug": "chang-re-bep-truong-an-the",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2120-hq-274.png"
-  },
-  {
-    "id": 2112,
-    "title": "Người Thợ Sửa Xe Ở Hầm B2",
-    "slug": "nguoi-tho-sua-xe-o-ham-b2",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2112.jpg"
-  },
-  {
-    "id": 2106,
-    "title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ",
-    "slug": "co-gai-ban-tra-sua-va-hop-dong-tram-ty",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2106.jpg"
-  },
-  {
-    "id": 2099,
-    "title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
-    "slug": "bi-duoi-khoi-khach-san-toi-mua-luon-chuoi-nam-sao",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2099-323.jpg"
-  },
-  {
-    "id": 2089,
-    "title": "Trọng Sinh 2008: Cơn Sốt Đất Đông Anh",
-    "slug": "trong-sinh-2008-con-sot-dat-dong-anh",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2089-917.jpg"
-  },
-  {
-    "id": 2067,
-    "title": "Sau Khi Bị Sa Thải, Tôi Thắng Gói Thầu Nghìn Tỷ",
-    "slug": "sau-khi-bi-sa-thai-toi-thang-goi-thau-nghin-ty",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2067-648.jpg"
-  },
-  {
-    "id": 2052,
-    "title": "Thần Y Phòng Khám Quận Năm: Vợ Tôi Là Siêu Tỷ Phú",
-    "slug": "than-y-phong-kham-quan-5",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2052-1779336875.jpg"
-  },
-  {
-    "id": 2044,
-    "title": "Chàng Rể Hào Môn Miền Tây",
-    "slug": "chang-re-hao-mon-mien-tay",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2044-451.jpg"
-  },
-  {
-    "id": 2035,
-    "title": "Kẻ Phế Vật Ngày Ấy, Hôm Nay Trở Về",
-    "slug": "ke-phe-vat-ngay-ay-hom-nay-tro-ve",
-    "thumb_url": ""
-  },
-  {
-    "id": 2023,
-    "title": "Đồ Phế Vật Năm Đó, Hôm Nay Ta Trở Về",
-    "slug": "do-phe-vat-nam-do-hom-nay-ta-tro-ve",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-phe-vat-1200x800-892.png"
-  },
-  {
-    "id": 2020,
-    "title": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
-    "slug": "he-thong-tri-tue-nhan-tao-xuyen-khong-den-tuong-lai",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2020-509.jpg"
-  },
-  {
-    "id": 2013,
-    "title": "Bức Thư Cuối Cùng Của Biển",
-    "slug": "buc-thu-cuoi-cung-cua-bien",
-    "thumb_url": ""
-  },
-  {
-    "id": 2007,
-    "title": "Lột Mặt Người Sếp Cướp Công",
-    "slug": "lot-mat-nguoi-sep-cuop-cong",
-    "thumb_url": ""
-  },
-  {
-    "id": 2001,
-    "title": "Anh Sang Trong Dem",
-    "slug": "anh-sang-trong-dem",
-    "thumb_url": ""
-  },
-  {
-    "id": 1984,
-    "title": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu",
-    "slug": "toi-gia-ngheo-di-ra-mat-me-nguoi-yeu-doi-sinh-le-900-trieu",
-    "thumb_url": ""
-  },
-  {
-    "id": 1968,
-    "title": "Bóng Đêm Và Ánh Sáng",
-    "slug": "bong-dem-va-anh-sang",
-    "thumb_url": ""
-  },
-  {
-    "id": 1948,
-    "title": "Giám Đốc Ngầm: Thực Tập Sinh Trăm Tỷ Vả Mặt Trưởng Phòng Nhân Sự Cướp Dự Án",
-    "slug": "giam-doc-ngam-thuc-tap-sinh-khong-de-choc",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-1948-hq-733.jpg"
-  },
-  {
-    "id": 1933,
-    "title": "Đừng Gọi Tôi Là Con Bé Gần Máy In: Tôi Nuôi Quỷ Vương Trong Gấu Bông Pikachu",
-    "slug": "dung-goi-toi-la-con-be-gan-may-in",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-1933-hq-295.jpg"
-  },
-  {
-    "id": 1927,
-    "title": "Nhà Của Mẹ Chồng? Không, Biệt Thự Gò Vấp 5 Tỷ Đứng Tên Riêng Của Tôi!",
-    "slug": "nha-cua-me-chong-khong-cua-toi",
-    "thumb_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-1927-upd-414.jpg"
-  },
-  {
-    "id": 1921,
-    "title": "Dân Tỉnh Lên Phố: Khi Con Dâu Không Còn Im Ru",
-    "slug": "dan-tinh-len-pho-khi-con-dau-khong-con-im-ru",
-    "thumb_url": ""
-  }
+    {
+        "id": 3954,
+        "title": "Vua Trà Shan Tuyết Bị Hào Môn Đuổi Khỏi Cửa Lật Kèo Nhờ Bằng Sáng Chế Trăm Tỷ Tiễn Kẻ Phản Bội",
+        "thumb_id": 3955,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3954-466.jpg?v=5",
+        "date": "2026-05-23 17:09:35"
+    },
+    {
+        "id": 3940,
+        "title": "Bác Sĩ Đông Y Bị Đuổi Khỏi Viện Phổi, Mũi Kim Thần Đông Tây Kết Hợp Vả Sập Tập Đoàn Phản Bội",
+        "thumb_id": 3966,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3940-338.png?v=5",
+        "date": "2026-05-23 13:09:18"
+    },
+    {
+        "id": 3930,
+        "title": "Nghệ Nhân Cacao Bị Vị Hôn Thê Đuổi Đi, Socola Trăm Tỷ Vả Sập Tập Đoàn Hóa Chất Ngày Hội Chợ",
+        "thumb_id": 3965,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3930-248.png?v=5",
+        "date": "2026-05-23 09:12:06"
+    },
+    {
+        "id": 3920,
+        "title": "Nghệ Nhân Sơn Mài Bị Khinh Rẻ Đuổi Khỏi Xưởng Tìm Ra Màu Sơn Thất Truyền Đè Bẹp Tập Đoàn Tranh Giả",
+        "thumb_id": 3964,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3920-925.png?v=5",
+        "date": "2026-05-23 06:30:39"
+    },
+    {
+        "id": 3873,
+        "title": "THẦN Y BỊ ĐUỔI, VỢ CŨ HỐI HẬN MUỘN MÀNG",
+        "thumb_id": 3950,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3873-new-183.png?v=5",
+        "date": "2026-05-22 17:26:44"
+    },
+    {
+        "id": 3861,
+        "title": "Thiên Tài Blockchain Phố Nguyễn Huệ: Bị Cướp Token Nghìn Tỷ, Tôi Hack Ngược Cả Sàn",
+        "thumb_id": 3862,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3861-hq-579.png?v=5",
+        "date": "2026-05-22 17:12:33"
+    },
+    {
+        "id": 3849,
+        "title": "Vua Sầu Riêng Đắk Nông: Bị Đốt Vườn Nghìn Tỷ, Tôi Trồng Lại Từ Tro Tàn",
+        "thumb_id": 3850,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3849-hq-240.png?v=5",
+        "date": "2026-05-22 17:12:01"
+    },
+    {
+        "id": 3837,
+        "title": "Đạo Diễn Phim Trường Cần Giờ: Bị Cướp Kịch Bản Oscar, Tôi Quay Phim Chấn Động Cannes",
+        "thumb_id": 3838,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3837-hq-927.png?v=5",
+        "date": "2026-05-22 17:11:31"
+    },
+    {
+        "id": 3825,
+        "title": "Chúa Đảo Resort Phú Quốc: Bị Đuổi Khỏi Resort Mình Xây, Tôi Mua Cả Hòn Đảo",
+        "thumb_id": 3826,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3825-hq-658.png?v=5",
+        "date": "2026-05-22 17:11:01"
+    },
+    {
+        "id": 3813,
+        "title": "Thần Đồng Piano Nhạc Viện: Bị Cấm Biểu Diễn, Tôi Chấn Động Chopin Competition",
+        "thumb_id": 3814,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3813-hq-307.png?v=5",
+        "date": "2026-05-22 17:10:31"
+    },
+    {
+        "id": 3801,
+        "title": "Vua Lúa Gạo Đồng Tháp: Nông Dân Bị Ép Giá, Tôi Xây Đế Chế Gạo Xuất Khẩu",
+        "thumb_id": 3802,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3801-hq-662.png?v=5",
+        "date": "2026-05-22 17:10:01"
+    },
+    {
+        "id": 3789,
+        "title": "Kiến Trúc Sư Phố Cổ Hà Nội: Bị Cướp Bản Vẽ Di Sản, Tôi Cứu Cả Khu Phố",
+        "thumb_id": 3790,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3789-hq-236.png?v=5",
+        "date": "2026-05-22 17:09:31"
+    },
+    {
+        "id": 3769,
+        "title": "Thợ Nuôi Trai Bị Cướp Ngọc Đen Đuổi Khỏi Vịnh, Trở Lại Lật Kèo Đoạt Lại Tập Đoàn Ngọc Trai Nghìn Tỷ",
+        "thumb_id": 3770,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3769-hq-420.png?v=5",
+        "date": "2026-05-22 17:09:01"
+    },
+    {
+        "id": 3767,
+        "title": "Ông Trùm Logistics Tân Cảng: Bị Phản Bội Mất Container Nghìn Tỷ, Tôi Thâu Tóm Ngược",
+        "thumb_id": 3768,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3767-hq-831.png?v=5",
+        "date": "2026-05-22 17:09:00"
+    },
+    {
+        "id": 3755,
+        "title": "Bác Sĩ Thẩm Mỹ Sài Gòn: Bị Vu Oan Phẫu Thuật Hỏng, Tôi Lật Mặt Cả Bệnh Viện",
+        "thumb_id": 3756,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3755-hq-848.png?v=5",
+        "date": "2026-05-22 17:08:30"
+    },
+    {
+        "id": 3743,
+        "title": "Nữ Hoàng Trà Sen Tây Hồ: Bị Đuổi Khỏi Gia Tộc, Cô Xây Đế Chế Trà Nghìn Tỷ",
+        "thumb_id": 3744,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3743-hq-124.png?v=5",
+        "date": "2026-05-22 17:07:56"
+    },
+    {
+        "id": 3724,
+        "title": "Kỹ Sư Vắc Xin Bị Sa Thải Vì Không Gian Lận, Bản Quyền Vắc Xin Vả Sập Tập Đoàn Phản Bội",
+        "thumb_id": 3742,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3724-premium.png?v=5",
+        "date": "2026-05-22 13:08:56"
+    },
+    {
+        "id": 3633,
+        "title": "Nghệ Nhân Trà Sen Bị Khinh Rẻ Trục Xuất, Lật Kèo Đêm Hội Trà Quốc Tế Đưa Kẻ Phản Bội Vào Tù",
+        "thumb_id": 3634,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3633-596.jpg?v=5",
+        "date": "2026-05-22 09:09:02"
+    },
+    {
+        "id": 2815,
+        "title": "Bị Đuổi Khỏi Lab Đêm Trước IPO, Hóa Ra Anh Nắm Công Thức Trăm Tỷ",
+        "thumb_id": 2858,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2815-thumbstyle-698.png?v=5",
+        "date": "2026-05-22 05:08:59"
+    },
+    {
+        "id": 2808,
+        "title": "Người Đưa Thư Bị Cả Tòa Nhà Khinh, Hóa Ra Anh Là Chủ Toàn Bộ Tháp",
+        "thumb_id": 2859,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2808-thumbstyle-583.png?v=5",
+        "date": "2026-05-22 01:41:04"
+    },
+    {
+        "id": 2801,
+        "title": "Trọng Tài Bị Ngôi Sao Nhổ Nước Bọt, Hóa Ra Là Cựu Đội Trưởng Tuyển QG",
+        "thumb_id": 2860,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2801-thumbstyle-607.png?v=5",
+        "date": "2026-05-22 01:40:33"
+    },
+    {
+        "id": 2794,
+        "title": "Người Làm Vườn Bị Chủ Biệt Thự Đuổi, Hóa Ra Anh Thiết Kế Cả Khu Đô Thị",
+        "thumb_id": 2861,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2794-thumbstyle-643.png?v=5",
+        "date": "2026-05-22 01:40:04"
+    },
+    {
+        "id": 2787,
+        "title": "Giáo Viên Làng Bị Hiệu Trưởng Sỉ Nhục, Bộ Giáo Dục Bổ Nhiệm Anh Làm Thanh Tra",
+        "thumb_id": 2862,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2787-thumbstyle-173.png?v=5",
+        "date": "2026-05-22 01:39:33"
+    },
+    {
+        "id": 2780,
+        "title": "Cô Gái Bán Hoa Bị Đuổi Khỏi Tiệc Cưới Hào Môn, Cùng Ngày Cô Gõ Sàn HOSE",
+        "thumb_id": 2863,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2780-thumbstyle-595.png?v=5",
+        "date": "2026-05-22 01:36:51"
+    },
+    {
+        "id": 2773,
+        "title": "Chồng Nghèo Bị Họ Hàng Khinh Dự Tiệc Hào Môn, Hóa Ra Anh Là Khách Mời VIP Của Sự Kiện Đó",
+        "thumb_id": 3567,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2773-thumbstyle-521.png?v=5",
+        "date": "2026-05-22 01:33:53"
+    },
+    {
+        "id": 2766,
+        "title": "Trợ Lý Bị Sếp Nữ CEO Ngược Đãi, Sếp Mới Của Cô Chính Là Anh Sau Thâu Tóm Công Ty",
+        "thumb_id": 3568,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2766-thumbstyle-646.png?v=5",
+        "date": "2026-05-22 01:33:22"
+    },
+    {
+        "id": 2759,
+        "title": "Thợ Sửa Xe Bị Cả Xóm Khinh, Khi Đội Đua F1 Quốc Gia Tìm Đến Thuê Anh Làm Kỹ Sư Trưởng",
+        "thumb_id": 3563,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2759-thumbstyle-375.png?v=5",
+        "date": "2026-05-22 01:32:53"
+    },
+    {
+        "id": 2752,
+        "title": "Con Trai Nuôi Bị Đuổi Ra Khỏi Tập Đoàn, Di Chúc Ông Nội Trao Lại 70% Cổ Phần",
+        "thumb_id": 3564,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2752-thumbstyle-288.png?v=5",
+        "date": "2026-05-22 01:32:23"
+    },
+    {
+        "id": 2745,
+        "title": "Tài Xế Taxi Bị Khách VIP Khinh Thường, Tài Xế Đó Sở Hữu Công Ty Taxi Lớn Nhất Thành Tâm",
+        "thumb_id": 3565,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2745-thumbstyle-626.png?v=5",
+        "date": "2026-05-22 01:29:56"
+    },
+    {
+        "id": 2738,
+        "title": "Vợ Đòi Ly Hôn Vì Chồng Thất Nghiệp, Ngày Ký Đơn Chồng Nhận Danh Hiệu Kiến Trúc Sư Quốc Gia",
+        "thumb_id": 3566,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2738-thumbstyle-308.png?v=5",
+        "date": "2026-05-22 01:27:49"
+    },
+    {
+        "id": 2731,
+        "title": "Trưởng Phòng Bán Hàng Khinh Nhân Viên Mới, Nhân Viên Đó Là Chuyên Gia Tư Vấn Của Tập Đoàn Mẹ",
+        "thumb_id": 3569,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2731-thumbstyle-905.png?v=5",
+        "date": "2026-05-22 01:27:15"
+    },
+    {
+        "id": 2724,
+        "title": "Cô Gái Làng Bị Nhà Trai Hào Môn Từ Chối, Startup Nông Nghiệp Của Cô Niêm Yết 500 Tỷ",
+        "thumb_id": 3570,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2724-thumbstyle-202.png?v=5",
+        "date": "2026-05-22 01:26:38"
+    },
+    {
+        "id": 2717,
+        "title": "Thuyền Trưởng Tàu Cá Bị Chủ Cảng Ép Nợ, Hóa Ra Là Đại Gia Hàng Hải Đang Điều Tra Thâu Tóm",
+        "thumb_id": 3571,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2717-thumbstyle-366.png?v=5",
+        "date": "2026-05-22 01:26:01"
+    },
+    {
+        "id": 2710,
+        "title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+        "thumb_id": 3573,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2710-thumbstyle-893.png?v=5",
+        "date": "2026-05-22 01:25:23"
+    },
+    {
+        "id": 2703,
+        "title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+        "thumb_id": 3572,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2703-thumbstyle-740.png?v=5",
+        "date": "2026-05-22 01:24:48"
+    },
+    {
+        "id": 2696,
+        "title": "Nhà Chồng Khinh Tôi Không Biết Nấu Ăn, Tôi Giật Giải Đầu Bếp Số 1 Đông Nam Á Trước Mặt Họ",
+        "thumb_id": 3574,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2696-thumbstyle-777.png?v=5",
+        "date": "2026-05-22 01:22:39"
+    },
+    {
+        "id": 2689,
+        "title": "Giám Đốc Bệnh Viện Sa Thải Bác Sĩ Thực Tập, Hội Đồng Y Tế Quốc Gia Cử Người Điều Tra",
+        "thumb_id": 3583,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2689-thumbstyle-175.png?v=5",
+        "date": "2026-05-22 01:22:07"
+    },
+    {
+        "id": 2682,
+        "title": "Bố Vợ Ép Ly Hôn Vì Tôi Nghèo Hèn, Công Ty Tỷ Đô Của Tôi Niêm Yết Sàn Chứng Khoán Hôm Đó",
+        "thumb_id": 3584,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2682-thumbstyle-664.png?v=5",
+        "date": "2026-05-22 01:21:40"
+    },
+    {
+        "id": 2675,
+        "title": "Sư Phụ Đuổi Tôi Khỏi Võ Quán Vì Hèn Yếu, Giải Vô Địch Quốc Gia Lộ Ra Thân Phận Thật",
+        "thumb_id": 3593,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2675-thumbstyle-914.png?v=5",
+        "date": "2026-05-22 01:21:12"
+    },
+    {
+        "id": 2668,
+        "title": "Cô Vợ Hào Môn Khinh Tôi Vô Dụng, Cả Hà Ngoại Biết Tôi Là Chủ Tịch Tập Đoàn Thép",
+        "thumb_id": 3594,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2668-thumbstyle-388.png?v=5",
+        "date": "2026-05-22 01:19:40"
+    },
+    {
+        "id": 2658,
+        "title": "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp",
+        "thumb_id": 3595,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2658-thumbstyle-905.png?v=5",
+        "date": "2026-05-22 01:08:51"
+    },
+    {
+        "id": 2606,
+        "title": "Chàng Rể Vạch Trần Âm Mưu Gia Tộc Trầm Hương",
+        "thumb_id": 3604,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2606-thumbstyle-249.png?v=5",
+        "date": "2026-05-21 21:08:48"
+    },
+    {
+        "id": 2587,
+        "title": "Thiên Tài Cầu Đường: Kỹ Sư Bị Sa Thải Đối Đầu Với Kẻ Cướp Bản Quyền",
+        "thumb_id": 3605,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2587-thumbstyle-255.png?v=5",
+        "date": "2026-05-21 20:31:56"
+    },
+    {
+        "id": 2573,
+        "title": "Đế Chế Gốm Sứ Bát Tràng: Phản Bội và Bùng Nổ",
+        "thumb_id": 3614,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2573-thumbstyle-125.png?v=5",
+        "date": "2026-05-21 20:26:35"
+    },
+    {
+        "id": 2561,
+        "title": "Ngọc Hoàng Tôm Hùm: Trận Chiến Khốc Liệt Giữa Ngư Dân Và Thương Láii",
+        "thumb_id": 3615,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2561-thumbstyle-846.png?v=5",
+        "date": "2026-05-21 20:22:01"
+    },
+    {
+        "id": 2549,
+        "title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ",
+        "thumb_id": 3616,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2549-thumbstyle-847.png?v=5",
+        "date": "2026-05-21 19:53:14"
+    },
+    {
+        "id": 2517,
+        "title": "Thiên Tài Fintech: Lật Kèo Tại PayBlock",
+        "thumb_id": 2605,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/thien-tai-fintech-square-1024-v1-1779396499.png?v=5",
+        "date": "2026-05-21 18:59:38"
+    },
+    {
+        "id": 2508,
+        "title": "Bảo Vệ Quèn Là Võ Thần: Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+        "thumb_id": 2604,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/vo-than-bao-ve-square-1024-v1-1779396498.png?v=5",
+        "date": "2026-05-21 18:59:22"
+    },
+    {
+        "id": 2497,
+        "title": "Công Thức Thuốc Bị Cướp: Bẫy IPO Dược Phẩm Nghìn Tỷ",
+        "thumb_id": 2603,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/chien-than-duoc-pham-square-1024-v1-1779396498.png?v=5",
+        "date": "2026-05-21 18:58:22"
+    },
+    {
+        "id": 2489,
+        "title": "Người Thừa Kế Trăm Tỷ Giả Nghèo: Thử Lòng Đại Gia",
+        "thumb_id": 2490,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2489-711.jpg?v=5",
+        "date": "2026-05-21 18:58:03"
+    },
+    {
+        "id": 2482,
+        "title": "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn",
+        "thumb_id": 2483,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2482-408.jpg?v=5",
+        "date": "2026-05-21 18:52:28"
+    },
+    {
+        "id": 2475,
+        "title": "Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
+        "thumb_id": 2476,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2475-470.jpg?v=5",
+        "date": "2026-05-21 17:28:32"
+    },
+    {
+        "id": 2465,
+        "title": "Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+        "thumb_id": 3912,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2465-130.png?v=5",
+        "date": "2026-05-21 13:16:05"
+    },
+    {
+        "id": 2457,
+        "title": "Nguyễn Tấn Đạt: Chàng Rể Bùn Lầy Lật Kèo Vườn Sầu Riêng Trăm Tỷ",
+        "thumb_id": 3913,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2457-342.png?v=5",
+        "date": "2026-05-21 09:17:01"
+    },
+    {
+        "id": 2448,
+        "title": "Cuộc Chiến Sinh Tử Của Trà Ô Long Hữu Cơ Việt",
+        "thumb_id": 2455,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2448-1779346857.jpg?v=5",
+        "date": "2026-05-21 05:22:24"
+    },
+    {
+        "id": 2313,
+        "title": "Cướp Mã Nguồn Nghìn Tỷ, Kích Hoạt Bẫy Chôn Vùi Tập Đoàn",
+        "thumb_id": 2456,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2313-1779346862.jpg?v=5",
+        "date": "2026-05-21 01:16:04"
+    },
+    {
+        "id": 2289,
+        "title": "Cuộc Chiến Nghệ Thuật Tại Nhà Hát Phương Nam",
+        "thumb_id": 2442,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2289-1779336850.jpg?v=5",
+        "date": "2026-05-21 00:33:41"
+    },
+    {
+        "id": 2279,
+        "title": "Vương Quốc Bất Động Sản: Cuộc Chiến Sinh Tử",
+        "thumb_id": 2441,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2279-1779336844.jpg?v=5",
+        "date": "2026-05-21 00:28:15"
+    },
+    {
+        "id": 2269,
+        "title": "Đế Chế Dệt May Bình Thịnh: Chiến Tranh Tài Chính",
+        "thumb_id": 2440,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2269-1779336839.jpg?v=5",
+        "date": "2026-05-21 00:22:46"
+    },
+    {
+        "id": 2259,
+        "title": "Cuộc Chiến Bánh Mì: Bảo Vệ Di Sản Ẩm Thực Hội Nguyên",
+        "thumb_id": 2439,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2259-1779336834.jpg?v=5",
+        "date": "2026-05-21 00:17:36"
+    },
+    {
+        "id": 2249,
+        "title": "Nhà Thiết Kế Tàng Hình: Cuộc Chiến Tại Hội Nghị Thời Trang Quốc Gia",
+        "thumb_id": 2445,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2249-1779336865.jpg?v=5",
+        "date": "2026-05-21 00:11:21"
+    },
+    {
+        "id": 2238,
+        "title": "Triều Đại Cà Phê Bazan: Cuộc Chiến Giành Bằng Sáng Chế",
+        "thumb_id": 2444,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2238-1779336860.jpg?v=5",
+        "date": "2026-05-20 23:28:40"
+    },
+    {
+        "id": 2227,
+        "title": "Thiên Tài Lập Trình: Đà Lạt Sương Mù và Kế Hoạch Lật Đổ Tập Đoàn Tài Chính",
+        "thumb_id": 3914,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2227-934.png?v=5",
+        "date": "2026-05-20 23:09:44"
+    },
+    {
+        "id": 2217,
+        "title": "Bóng Tối Điện Lực Vạn Thịnh: Cuộc Chiến Chống Tham Nhũng",
+        "thumb_id": 3915,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2217-667.png?v=5",
+        "date": "2026-05-20 23:06:25"
+    },
+    {
+        "id": 2207,
+        "title": "Thuyền Trưởng Cảng Đà Thành: Cuộc Chiến Bên Bến Cả",
+        "thumb_id": 3916,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2207-459.png?v=5",
+        "date": "2026-05-20 18:04:17"
+    },
+    {
+        "id": 2197,
+        "title": "Thợ Hồ Nghìn Tỷ: Đập Tan Kiêu Ngạo",
+        "thumb_id": 3917,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2197-852.png?v=5",
+        "date": "2026-05-20 17:58:23"
+    },
+    {
+        "id": 2190,
+        "title": "Thần Tài Chứng Khoán: Đấu Trường Phố Wall Hà Nội",
+        "thumb_id": 3918,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2190-220.png?v=5",
+        "date": "2026-05-20 17:16:39"
+    },
+    {
+        "id": 2165,
+        "title": "Bị Bạn Thân Cướp Startup, Tôi Lật Kèo Đế Chế FinTech",
+        "thumb_id": 3919,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2165-108.png?v=5",
+        "date": "2026-05-20 14:35:21"
+    },
+    {
+        "id": 2156,
+        "title": "Tiểu Thư Khinh Tôi Là Bảo Vệ: Đặc Nhiệm Giữa Đế Chế Buôn Lậu",
+        "thumb_id": 3904,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2156-297.png?v=5",
+        "date": "2026-05-20 14:33:23"
+    },
+    {
+        "id": 2145,
+        "title": "Sếp Cướp Công Thức Thuốc, Tôi Phá Sập IPO Nghìn Tỷ",
+        "thumb_id": 3910,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2145-873.png?v=5",
+        "date": "2026-05-20 14:31:59"
+    },
+    {
+        "id": 2137,
+        "title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ, Tôi Là Người Thừa Kế Landmark 81",
+        "thumb_id": 3911,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2137-423.png?v=5",
+        "date": "2026-05-20 14:31:30"
+    },
+    {
+        "id": 2129,
+        "title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
+        "thumb_id": 3905,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2129-373.png?v=5",
+        "date": "2026-05-20 13:17:51"
+    },
+    {
+        "id": 2120,
+        "title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
+        "thumb_id": 3906,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2120-917.png?v=5",
+        "date": "2026-05-20 12:58:39"
+    },
+    {
+        "id": 2112,
+        "title": "Người Thợ Sửa Xe Ở Hầm B2",
+        "thumb_id": 3907,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2112-283.png?v=5",
+        "date": "2026-05-20 12:21:24"
+    },
+    {
+        "id": 2106,
+        "title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ",
+        "thumb_id": 3908,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2106-190.png?v=5",
+        "date": "2026-05-20 12:20:38"
+    },
+    {
+        "id": 2099,
+        "title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
+        "thumb_id": 3909,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2099-952.png?v=5",
+        "date": "2026-05-20 12:20:33"
+    },
+    {
+        "id": 2089,
+        "title": "Trọng Sinh 2008: Ôm Đất Đông Anh Trước Cơn Sốt Nghìn Tỷ",
+        "thumb_id": 2616,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/trong-sinh-dong-anh-square-1024-v1-1779398532.png?v=5",
+        "date": "2026-05-20 11:35:53"
+    },
+    {
+        "id": 2067,
+        "title": "Bị Sa Thải Trước Giờ Đấu Thầu: Một Mình Thắng Gói AI Nghìn Tỷ",
+        "thumb_id": 2617,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/goi-thau-nghin-ty-square-1024-v1-1779398533.png?v=5",
+        "date": "2026-05-20 11:15:35"
+    },
+    {
+        "id": 2052,
+        "title": "Thần Y Quận 5: Kẻ Cướp Công Trình và Siêu Tỷ Phú",
+        "thumb_id": 2618,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/than-y-quan-5-square-1024-v1-1779398534.png?v=5",
+        "date": "2026-05-20 10:21:48"
+    },
+    {
+        "id": 2044,
+        "title": "Chàng Rể Ẩn Thân Miền Tây: Cứu Vườn Sầu Riêng Trăm Tỷ",
+        "thumb_id": 2619,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/chang-re-hao-mon-mien-tay-square-1024-v1-1779398534.png?v=5",
+        "date": "2026-05-20 10:03:30"
+    },
+    {
+        "id": 2035,
+        "title": "Kẻ Phế Vật Trở Về: Đòi Lại Gia Tộc Sau 12 Năm",
+        "thumb_id": 2620,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/ke-phe-vat-tro-ve-square-1024-v1-1779398535.png?v=5",
+        "date": "2026-05-20 08:30:49"
+    },
+    {
+        "id": 2023,
+        "title": "Phế Vật Trở Về: Cuộc Báo Thù Rực Lửa",
+        "thumb_id": 2034,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-phe-vat-1200x800-892.png?v=5",
+        "date": "2026-05-20 02:37:12"
+    },
+    {
+        "id": 2020,
+        "title": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
+        "thumb_id": 2022,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2020-509.jpg?v=5",
+        "date": "2026-05-20 02:23:33"
+    },
+    {
+        "id": 2013,
+        "title": "Kỹ Sư Bị Cả Xã Khinh Là Kẻ Nói Điên, Lá Thư Cuối Cùng Của Biển Cứu Sống Cát Hải Trong Đêm Bão",
+        "thumb_id": 3667,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2013-thumbstyle-682.png?v=5",
+        "date": "2026-05-17 15:20:37"
+    },
+    {
+        "id": 2007,
+        "title": "Nhân Viên Bị Sếp Cướp Công Thức Dạ Dày, Log Lab Khiến Buổi IPO Nghìn Tỷ Đổ Sập Trước Truyền Thông",
+        "thumb_id": 3668,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2007-thumbstyle-587.png?v=5",
+        "date": "2026-05-17 15:19:45"
+    },
+    {
+        "id": 2001,
+        "title": "Họa Sĩ Mù Bị Thiếu Gia Cướp Tranh, Ánh Sáng Trong Đêm Khiến Cả Phòng Đấu Giá Hà Nội Im Phăng Phắc",
+        "thumb_id": 3669,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-2001-thumbstyle-338.png?v=5",
+        "date": "2026-05-17 11:00:20"
+    },
+    {
+        "id": 1984,
+        "title": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu Và Bị Vả Mặt Ngay Tại Chung Cư Hoài Đức",
+        "thumb_id": 3718,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-1984-thumbstyle-289.png?v=5",
+        "date": "2026-05-14 17:31:18"
+    },
+    {
+        "id": 1968,
+        "title": "Thành Phố Chìm Trong Bóng Tối, Kỹ Sư Bị Xem Là Kẻ Điên Kích Hoạt Nguồn Sáng Cuối Cùng",
+        "thumb_id": 3719,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-1968-thumbstyle-610.png?v=5",
+        "date": "2026-05-13 17:20:06"
+    },
+    {
+        "id": 1948,
+        "title": "Giám Đốc Ngầm Đi Thực Tập Bị Trưởng Phòng Cướp Dự Án, Một Cuộc Họp Khiến Cả Công Ty Đứng Hình",
+        "thumb_id": 3720,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-1948-thumbstyle-887.png?v=5",
+        "date": "2026-05-12 19:06:40"
+    },
+    {
+        "id": 1933,
+        "title": "Cô Gái Bị Gọi Là Con Bé Gần Máy In, Gấu Bông Quỷ Vương Giúp Cô Lật Mặt Cả Phòng Kế Toán",
+        "thumb_id": 3721,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-1933-thumbstyle-164.png?v=5",
+        "date": "2026-05-11 17:02:54"
+    },
+    {
+        "id": 1927,
+        "title": "Mẹ Chồng Gọi Tôi Là Người Ngoài, Sổ Đỏ Biệt Thự Gò Vấp 5 Tỷ Khiến Cả Mâm Giỗ Câm Lặng",
+        "thumb_id": 3722,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-1927-thumbstyle-909.png?v=5",
+        "date": "2026-05-11 16:14:58"
+    },
+    {
+        "id": 1921,
+        "title": "Con Dâu Dân Tỉnh Bị Khinh Trong Căn Nhà 4,8 Tỷ, Một Bộ Hồ Sơ Khiến Cả Nhà Chồng Trắng Mặt",
+        "thumb_id": 3723,
+        "cover_url": "https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-1921-thumbstyle-562.png?v=5",
+        "date": "2026-05-11 16:06:22"
+    }
 ]

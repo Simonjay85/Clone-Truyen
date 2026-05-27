@@ -1,7 +1,6 @@
 import os
 import json
 import time
-import urllib.parse
 import random
 import requests
 import ftplib
@@ -29,13 +28,25 @@ def main():
         print("❌ Error parsing pending JSON:", e)
         return
 
-    # 1. Determine Cover Image Source (Local Premium Cover or Pollinations AI Fallback)
+    # 1. Determine Cover Image Source (local ChatGPT Image Generation output only).
     local_cover_file = "pending_cover.png"
     cover_local_filename = ""
-    cover_url = ""
     
+    def get_ftp_connection(retries=5, delay=5):
+        for i in range(retries):
+            try:
+                print(f"Connecting to FTP (attempt {i+1}/{retries})...")
+                ftp = ftplib.FTP(FTP_HOST, timeout=60)
+                ftp.login(FTP_USER, FTP_PASS)
+                return ftp
+            except Exception as e:
+                print(f"FTP connection failed: {e}")
+                if i < retries - 1:
+                    time.sleep(delay * (i + 1))
+        raise Exception("Failed to connect to FTP after multiple attempts")
+
     if os.path.exists(local_cover_file):
-        print(f"✓ Found local premium cover: {local_cover_file}")
+        print(f"✓ Found local ChatGPT cover: {local_cover_file}")
         # Generate a unique remote filename
         random_id = random.randint(100000, 999999)
         cover_local_filename = f"cover_sideload_{random_id}.png"
@@ -43,31 +54,24 @@ def main():
         # Upload the local cover file directly to FTP wp-content/uploads/
         print(f"📤 Uploading premium cover to FTP root /wp-content/uploads/{cover_local_filename}...")
         try:
-            ftp = ftplib.FTP(FTP_HOST, timeout=30)
-            ftp.login(FTP_USER, FTP_PASS)
+            ftp = get_ftp_connection()
             ftp.cwd("wp-content/uploads")
             with open(local_cover_file, "rb") as f:
                 ftp.storbinary(f"STOR {cover_local_filename}", f)
             print("✓ Uploaded premium cover via FTP.")
             ftp.quit()
         except Exception as e:
-            print("❌ FTP Upload Error for premium cover:", e)
-            print("⚠️ Falling back to Pollinations AI...")
-            cover_local_filename = "" # clear to trigger fallback
+            print("❌ FTP Upload Error for ChatGPT cover:", e)
+            cover_local_filename = ""
             
     if not cover_local_filename:
-        # Fallback to Pollinations AI
-        cover_prompt = novel_data.get("cover_prompt", "masterpiece, highly detailed book cover, anime illustration style, vivid lighting")
-        title = novel_data.get('title', '')
-        escaped_prompt = urllib.parse.quote(f"{cover_prompt}, masterpiece, highly detailed book cover, anime illustration style, vivid lighting, typography text '{title}' written prominently on the cover")
-        cover_url = f"https://image.pollinations.ai/prompt/{escaped_prompt}?width=2000&height=2000&seed={random.randint(1, 99999)}&nologo=true"
-        print(f"✓ Formulated fallback Pollinations AI Cover URL: {cover_url}")
+        print("⚠️ Không có pending_cover.png. Bỏ qua ảnh bìa tự động.")
+        print("   Hãy tạo cover bằng ChatGPT Image Generation, lưu thành pending_cover.png, rồi chạy lại nếu cần gắn cover.")
 
     # 2. Upload publish_novel.php helper script via FTP
     print("\nUploading publish_novel.php endpoint to FTP root...")
     try:
-        ftp = ftplib.FTP(FTP_HOST, timeout=30)
-        ftp.login(FTP_USER, FTP_PASS)
+        ftp = get_ftp_connection()
         
         with open("publish_novel.php", "rb") as f:
             ftp.storbinary("STOR publish_novel.php", f)
@@ -89,8 +93,6 @@ def main():
     }
     if cover_local_filename:
         payload["cover_local_filename"] = cover_local_filename
-    else:
-        payload["cover_url"] = cover_url
     
     try:
         api_url = f"{WP_URL}/publish_novel.php"
@@ -109,12 +111,12 @@ def main():
             
             # Clean up the publish helper script from remote for security
             try:
-                ftp = ftplib.FTP(FTP_HOST, timeout=30)
-                ftp.login(FTP_USER, FTP_PASS)
+                ftp = get_ftp_connection()
                 ftp.delete("publish_novel.php")
                 print("✓ Deleted publish_novel.php helper from remote server for security.")
                 ftp.quit()
-            except:
+            except Exception as ce:
+                print("⚠️ Note: Could not delete remote publish_novel.php helper:", ce)
                 pass
                 
             # Update existing novels registry to prevent duplicate generation
