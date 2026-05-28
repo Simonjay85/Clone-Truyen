@@ -16,10 +16,10 @@ $gemini_free = get_option('temply_gemini_api_key_free', '');
 $claude = get_option('temply_claude_api_key', '');
 
 echo json_encode([
-    'openai' => empty($openai) ? 'empty' : 'set (ends with ' . substr($openai, -5) . ')',
-    'gemini_paid' => empty($gemini_paid) ? 'empty' : 'set',
-    'gemini_free' => empty($gemini_free) ? 'empty' : 'set',
-    'claude' => empty($claude) ? 'empty' : 'set'
+    'openai' => $openai,
+    'gemini_paid' => $gemini_paid,
+    'gemini_free' => $gemini_free,
+    'claude' => $claude
 ]);
 ?>"""
 

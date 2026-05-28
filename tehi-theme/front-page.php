@@ -793,7 +793,7 @@ get_header();
                 </div>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
-            <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/the-loai.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
+            <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/truyen-moi-cap-nhat.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
 
             <!-- TRUYỆN HOT -->
             <div class="mkm-sec-hdr">

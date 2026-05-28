@@ -1,6 +1,6 @@
 # MASTER NOVEL PIPELINE — doctieuthuyet.com
 # Quy trình chuẩn: Viết + Xuất Bản + Tối Ưu Truyện Sảng Văn Tự Động
-# Cập nhật: 2026-05-26
+# Cập nhật: 2026-05-27
 
 > [!IMPORTANT]
 > **CHỈ DÙNG CHATGPT IMAGE GENERATION CHO HÌNH ẢNH MỚI**
@@ -12,7 +12,7 @@
 
 ## MỤC LỤC
 1. [Tổng Quan Pipeline](#phần-1--tổng-quan-pipeline)
-2. [Chuẩn V12 — Quy Tắc Viết Truyện](#phần-2--chuẩn-v12--quy-tắc-viết-truyện)
+2. [Chuẩn V13 Gold — Quy Tắc Viết Truyện](#phần-2--chuẩn-v13-gold--quy-tắc-viết-truyện)
 3. [Cấu Trúc Dữ Liệu JSON](#phần-3--cấu-trúc-dữ-liệu-json)
 4. [Quy Trình Cover Art](#phần-4--quy-trình-cover-art)
 5. [Quy Trình Xuất Bản WordPress](#phần-5--quy-trình-xuất-bản-wordpress)
@@ -34,11 +34,11 @@ Bước 2: Viết dàn ý chi tiết 8-15 chương (tùy cốt truyện)
    ↓
 Bước 2.5: Kiểm `story_dna` và chống trùng cấu trúc giữa các truyện trong batch
    ↓
-Bước 3: Viết từng chương đầy đủ (1000-1500 từ/chương, HTML format V12)
+Bước 3: Viết từng chương đầy đủ (1000-1500 từ/chương, HTML format V13 Gold)
    ↓
 Bước 4: Lưu pending_novel.json
    ↓
-Bước 5: Sử dụng ảnh bìa gốc Imagen 3 sẵn có (`base_cover_{idx}.png`) trong thư mục dự án (hoàn toàn không sinh ảnh mới)
+Bước 5: Dùng ảnh bìa local đã duyệt hoặc ảnh mới tạo bằng ChatGPT Image Generation; tuyệt đối không gọi API sinh ảnh bên thứ ba
    ↓
 Bước 6: Áp overlay tràn viền bằng cover_overlay_standard.py
    ↓
@@ -67,6 +67,7 @@ Bước 11: Clear LiteSpeed Cache
 | Novel concepts | `/Users/aaronnguyen/TN/App/doctieuthuyet/novel_concepts_50.json` | 50 concept truyện chưa viết |
 | Cover overlay | `/Users/aaronnguyen/TN/App/doctieuthuyet/cover_overlay_standard.py` | Áp layout card tràn viền lên cover |
 | Cover prompt | `/Users/aaronnguyen/TN/App/doctieuthuyet/prompts/cover_prompt_master.md` | Chuẩn thiết kế bìa |
+| V13 Gold prompt | `/Users/aaronnguyen/TN/App/doctieuthuyet/prompts/codex/viet-truyen.md` | Prompt văn học mới nhất cho Chat Mode / Schedule Mode |
 | Publisher | `/Users/aaronnguyen/TN/App/doctieuthuyet/publish_local_novel.py` | Publish truyện lên WP |
 | PHP Helper | `/Users/aaronnguyen/TN/App/doctieuthuyet/publish_novel.php` | Server-side WP publisher |
 | PHP Overwriter | `/Users/aaronnguyen/TN/App/doctieuthuyet/scratch/overwrite_story_generic.php` | Ghi đè truyện có sẵn |
@@ -76,9 +77,11 @@ Bước 11: Clear LiteSpeed Cache
 
 ---
 
-## PHẦN 2 — Chuẩn V12 — Quy Tắc Viết Truyện
+## PHẦN 2 — Chuẩn V13 Gold — Quy Tắc Viết Truyện
 
-### Thể loại: Sảng Văn / Vả Mặt (Slap-face / Face-slap fiction)
+### Thể loại chính: Sảng Văn / Vả Mặt (Slap-face / Face-slap fiction)
+
+> Pipeline này tối ưu cho thể loại sảng văn/vả mặt đô thị. Các thể loại khác (trọng sinh, cung đấu, xuyên không) xem hướng dẫn chi tiết trong skill `truyen-mang-writer` → `references/genres.md`.
 
 ### Cấu trúc truyện chuẩn:
 - **Số chương**: 8-15 (tùy độ phức tạp cốt truyện)
@@ -87,7 +90,7 @@ Bước 11: Clear LiteSpeed Cache
   - VD: "Mẹ Vợ Đòi Sính Lễ 5 Tỷ Khinh Tôi Nghèo, Landmark 81 Là Của Tôi"
   - VD: "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao"
 
-### 6 Quy Tắc Vàng V12:
+### 7 Quy Tắc Vàng V13 Gold:
 
 #### 1. SHOW, DON'T TELL
 - ❌ TUYỆT ĐỐI KHÔNG: "hắn vô cùng kinh hoàng", "cô vô cùng tức giận"
@@ -112,11 +115,12 @@ Bước 11: Clear LiteSpeed Cache
 - Cơ quan thật: Bộ Công Thương, Sở Y tế, EVN, Tổng cục Thủy sản...
 - KHÔNG viết bối cảnh nước ngoài (trừ khi cần cho cốt truyện)
 
-#### 4. TRÁNH VIẾT TẮT
+#### 4. TRÁNH VIẾT TẮT (TRONG NỘI DUNG TRUYỆN)
 - ✅ "thành phố Hồ Chí Minh" — KHÔNG "TPHCM"
 - ✅ "khu công nghiệp" — KHÔNG "KCN"
-- ✅ "ngân hàng thương mại cổ phần ngoại thương Việt Nam" — KHÔNG "Vietcombank" (lần đầu tiên đề cập)
+- ✅ "ngân hàng thương mại cổ phần ngoại thương Việt Nam" — KHÔNG "Vietcombank" (lần đầu tiên đề cập trong nội dung chương)
 - Lý do: Hệ thống regex tách câu tự động cần chạy chuẩn xác
+- **Ngoại lệ**: SEO title (dưới 60 ký tự) và slug (dưới 75 ký tự) ĐƯỢC dùng tên viết tắt/thương hiệu ngắn gọn (VD: "Vietcombank", "TPHCM") để đảm bảo không vượt giới hạn ký tự RankMath
 
 #### 5. CẤU TRÚC CỐT TRUYỆN
 - **Chương 1-2**: Nhân vật chính bị ức hiếp, nhục mạ, đuổi khỏi vị trí → tạo sự đồng cảm
@@ -128,8 +132,8 @@ Bước 11: Clear LiteSpeed Cache
 - **Chương 8-12**: VẢ MẶT LẦN 2 — Đập tan hoàn toàn phe phản diện, C03 bắt giữ
 - **Chương cuối**: Nhân vật chính thắng lợi vinh quang, nữ chính chủ động bày tỏ tình cảm
 
-#### 6. ĐỊNH DẠNG HTML V12
-- Mỗi câu nằm trong THẺ `<p>` RIÊNG (V12 paragraph splitting)
+#### 6. ĐỊNH DẠNG HTML V13 GOLD
+- Mỗi câu hoặc nhịp thoại quan trọng nằm trong THẺ `<p>` RIÊNG (V13 paragraph splitting)
 
 #### 7. CHỐNG TEMPLATE HÓA / DUPLICATE CONTENT GIỮA TRUYỆN
 - Khi tạo nhiều truyện trong một batch, **không được dùng cùng một khung cảnh rồi thay tên nhân vật, địa danh hoặc ngành nghề**.
@@ -149,6 +153,30 @@ Bước 11: Clear LiteSpeed Cache
 - Trước khi lưu/publish, chạy cross-story audit: chọn 5-10 cụm đặc trưng dài trên 5 từ và kiểm xem có lặp ở truyện khác không. Nếu có, viết lại trước khi đăng.
 - Chỉ dùng: `<p>`, `<strong>`, `<em>` — không dùng thẻ khác
 - Đoạn mở đầu truyện (intro) BẮT BUỘC dùng: `<p><strong>"Trích dẫn kịch tính..."</strong></p>`
+
+#### 8. NHẤT QUÁN TÊN NHÂN VẬT XUYÊN SUỐT
+- ❌ TUYỆT ĐỐI KHÔNG: Cùng 1 nhân vật mà đổi tên giữa các chương (VD: mẹ chồng lúc "bà Hạnh" lúc "bà Hương", chị chồng lúc "Ngọc" lúc "Thúy")
+- ✅ BẮT BUỘC: Lập danh sách nhân vật (character sheet) với tên đầy đủ TRƯỚC khi viết chương 1. Giữ nguyên xuyên suốt toàn bộ truyện.
+- ✅ Sau khi viết xong, chạy audit kiểm tra: grep tên nhân vật chính/phụ xem có mâu thuẫn không.
+
+#### 9. KHÔNG LỘ DẤU HIỆU AI / META-NARRATIVE
+- ❌ TUYỆT ĐỐI KHÔNG:
+  - Viết "nhân vật chính", "câu chuyện [tên truyện]", "Sang chương X" trong nội dung truyện
+  - Đoạn template lộ ra giữa chương (VD: "Đến đoạn này, không ai trong phòng cần nghe thêm thuật ngữ...")
+  - Đoạn mô tả meta như "cốt truyện bước vào giai đoạn mới", "đây là bước ngoặt"
+  - Lặp nguyên đoạn giống nhau ở nhiều chương (copy-paste nội bộ)
+- ✅ Truyện phải đọc tự nhiên như do người viết, KHÔNG có dấu hiệu AI-generated
+- ✅ Mỗi chương phải tiến triển cốt truyện rõ ràng — KHÔNG lặp lại cùng 1 tình huống
+
+#### 10. TỔ CHỨC / CƠ QUAN / NGÂN HÀNG PHẢI THẬT
+- ❌ TUYỆT ĐỐI KHÔNG: Dùng tên tổ chức hư cấu (VD: "Việt Thương Bank", "Tập đoàn Thịnh Vương", "Đại học Minh Đức")
+- ✅ BẮT BUỘC dùng tên THẬT, có thể xác minh:
+  - Ngân hàng: Vietcombank, Techcombank, Agribank, MB Bank, VPBank, BIDV, Sacombank, TPBank, ACB
+  - Tập đoàn: Vingroup, Hòa Phát, FPT, Masan, Novaland, TH Group, Thaco
+  - Đại học: Đại học Bách Khoa, Đại học Y Hà Nội, Đại học Kinh tế thành phố Hồ Chí Minh
+  - Bệnh viện: Bệnh viện Chợ Rẫy, Bệnh viện Bạch Mai, Bệnh viện Đa khoa Trung ương Huế
+  - Khu đô thị: Vinhomes, Ecopark, Ciputra, Phú Mỹ Hưng, Sala
+- **Ngoại lệ**: Nếu cốt truyện cần nhân vật phản diện là chủ doanh nghiệp, ĐƯỢC dùng tên công ty hư cấu cho công ty phản diện — nhưng vẫn phải dùng tên ngân hàng/cơ quan nhà nước thật.
 
 ### Nữ chính — Quy tắc đặc biệt:
 - Thông minh, sắc sảo, quyền lực (CEO, giám đốc, viện trưởng...)
@@ -211,13 +239,14 @@ Bước 11: Clear LiteSpeed Cache
 
 ## PHẦN 4 — Quy Trình Cover Art
 
-### Bước 1: Sử dụng base image sẵn có
-- Hệ thống lấy trực tiếp ảnh bìa gốc có sẵn trong thư mục dự án theo định dạng `base_cover_{idx}.png` (ví dụ: `base_cover_14.png` đến `base_cover_63.png`).
-- Toàn bộ ảnh bìa gốc này đã được quét và chuẩn bị sẵn từ trước.
-- ❌ **TUYỆT ĐỐI KHÔNG** gọi API sinh ảnh ngoài trong script/pipeline. Ảnh mới phải tạo bằng ChatGPT Image Generation.
+### Bước 1: Chọn hoặc tạo ảnh bìa
+- Ưu tiên ảnh mới tạo bằng **ChatGPT Image Generation** từ `cover_prompt` tiếng Anh của truyện, sau đó lưu PNG local và preview trước khi upload.
+- Có thể dùng ảnh local đã duyệt sẵn trong workspace nếu phù hợp với truyện.
+- Các file `base_cover_{idx}.png` chỉ là nguồn local/fallback đã duyệt, không phải lý do để gọi lại API sinh ảnh ngoài.
+- ❌ **TUYỆT ĐỐI KHÔNG** gọi Pollinations, Imagen API, hoặc API sinh ảnh bên thứ ba trong script/pipeline.
 
 ### Bước 2: Apply overlay (cover_overlay_standard.py)
-- Input: `base_cover_{idx}.png` + title + subtitle
+- Input: ảnh PNG local đã duyệt + title + subtitle
 - Output: 2000x2000 PNG (`pending_cover.png`) với:
   - Top dark gradient (RGBA 0,0,0,200 → transparent)
   - Bottom dark gradient (RGBA 0,0,0,80 → transparent)
@@ -285,11 +314,13 @@ python3 scratch/update_all_rankmath_seo.py
 
 ## PHẦN 7 — Credentials & Endpoints
 
+> **Lưu ý bảo mật**: Credentials được hardcode trong các script Python (`publish_local_novel.py`, `auto_novel_generator.py`...). Không share file này ra ngoài repo private.
+
 ```
-FTP_HOST = "51.79.53.190"
-FTP_USER = "alotoinghe"
-FTP_PASS = "Nghia234!"
-WP_URL   = "https://doctieuthuyet.com"
+FTP_HOST     = "51.79.53.190"
+FTP_USER     = "alotoinghe"
+FTP_PASS     = "Nghia234!"
+WP_URL       = "https://doctieuthuyet.com"
 SECRET_TOKEN = "ZEN_TRUYEN_2026_BYPASS"
 ```
 
@@ -330,7 +361,7 @@ Xem file: `novel_concepts_50.json`
 1. Viết intro kịch tính theo format `<p><strong>"..."</strong></p>`
 2. Viết `story_dna` riêng cho truyện đó trước khi viết chương
 3. Viết dàn ý chi tiết cho từng chương, bảo đảm các cảnh then chốt là set-piece riêng theo ngành
-4. Viết NỘI DUNG TỪNG CHƯƠNG (tối thiểu 850 từ/chương, mục tiêu 1000-1500 từ/chương, V13 format)
+4. Viết NỘI DUNG TỪNG CHƯƠNG (tối thiểu 1000 từ/chương, mục tiêu 1000-1500 từ/chương, V13 Gold format)
 5. Chạy audit chống duplicate trong batch: kiểm cụm/cảnh/đạo cụ lặp, đặc biệt giữa các truyện cùng file duyệt
 6. Nếu audit báo lặp cấu trúc/câu thoại/cảnh đạo cụ, viết lại trước khi tạo payload đăng
 7. Lưu JSON truyện vào `scratch/` để người dùng duyệt trước
@@ -348,6 +379,6 @@ Xem file: `novel_concepts_50.json`
 - Dùng ChatGPT/Codex trong phiên làm việc hoặc model chat đang được người dùng trực tiếp dùng để viết chương; không gọi API bên ngoài để bulk-write nội dung truyện.
 - Dùng ảnh bìa local đã duyệt hoặc ảnh mới tạo bằng ChatGPT Image Generation; không gọi API sinh ảnh ngoài trong script/pipeline.
 - Mỗi truyện xử lý tuần tự.
-- Kiểm tra word count tối thiểu 850 từ/chương, mục tiêu 1000-1500 từ/chương trước khi lưu.
+- Kiểm tra word count tối thiểu 1000 từ/chương, mục tiêu 1000-1500 từ/chương trước khi lưu.
 - Luôn chạy audit chống duplicate/copy-paste nội bộ trước khi trình duyệt hoặc đăng.
 - Chỉ cập nhật `existing_novels.json` sau mỗi truyện publish thành công.

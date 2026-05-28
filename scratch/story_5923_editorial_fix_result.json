@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "updates": [
+    {
+      "story_id": 5923,
+      "intro": "updated"
+    },
+    {
+      "chapter_id": 5939,
+      "title": "Chương 7: Hội Đồng Đà Lạt Palace"
+    },
+    {
+      "chapter_id": 5940,
+      "title": "Chương 8: Mười Ngày Không Được Sai"
+    },
+    {
+      "chapter_id": 5941,
+      "title": "Chương 9: Cổ Đông Bất Thường"
+    },
+    {
+      "chapter_id": 5942,
+      "title": "Chương 10: Đêm Không Bỏ Cuộc"
+    }
+  ]
+}

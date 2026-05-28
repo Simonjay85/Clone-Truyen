@@ -60,8 +60,10 @@ def smart_wrap_title(title: str) -> list:
         return [title]
     elif total_chars <= 40:
         return _wrap_n_lines(words, 2)
-    else:
+    elif total_chars <= 70:
         return _wrap_n_lines(words, 3)
+    else:
+        return _wrap_n_lines(words, 4)
 
 def _wrap_n_lines(words: list, n_lines: int) -> list:
     """Chia words thành n_lines dòng cân bằng nhất."""
@@ -208,9 +210,9 @@ def apply_standard_overlay(
     print(f"📐 Title wrapped to {len(title_lines)} lines: {title_lines}")
 
     # 3. Fit cỡ chữ tiêu đề
-    title_max_w = 1850
+    title_max_w = 1400
     font_title, title_size = _autofit_font_multiline(
-        title_lines, start_size=145, max_width=title_max_w, min_size=100
+        title_lines, start_size=145, max_width=title_max_w, min_size=65
     )
     title_line_h = int(title_size * 1.15)
     print(f"📐 Chosen Title Font Size: {title_size}px")

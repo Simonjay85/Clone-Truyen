@@ -1,12 +1,18 @@
-<?php get_header(); ?>
+<?php
+// Query the slider posts before loading the header to enable preloading the LCP candidate
+$slider_q = new WP_Query([
+    'post_type'      => 'truyen',
+    'posts_per_page' => 6,
+    'orderby'        => 'rand',
+    'no_found_rows'  => true
+]);
+$GLOBALS['slider_query'] = $slider_q;
+
+get_header();
+?>
 
 <!-- ─── MEOKAMMAP CLONE - front-page.php ─── -->
 <!-- Font + Swiper already loaded in header.php - no duplicate needed -->
-<!-- Preload LCP hero image hint -->
-<link rel="preload" as="image" href="<?php 
-  $lcp_q = new WP_Query(['post_type'=>'truyen','posts_per_page'=>1,'no_found_rows'=>true]); 
-  if($lcp_q->have_posts()) { $lcp_q->the_post(); echo esc_url(get_the_post_thumbnail_url(null,'medium')); wp_reset_postdata(); } 
-?>" fetchpriority="high">
 
 <style>
 /* ── RESET cứng để không bị CSS cũ đè ── */
@@ -77,7 +83,7 @@
 }
 .mkm-tag-hot { background: #fef3f2 !important; color: #e03d2b !important; border: 1px solid #fecaca !important; }
 .mkm-tag-full { background: #f0fdf4 !important; color: #16a34a !important; border: 1px solid #bbf7d0 !important; }
-.mkm-tag-new { background: #fef3c7 !important; color: #d97706 !important; border: 1px solid #fcd34d !important; }
+.mkm-tag-new { background: #fef3c7 !important; color: #78350f !important; border: 1px solid #fcd34d !important; }
 .mkm-hero-desc {
     font-size: 13px !important;
     color: #6b7280 !important;
@@ -106,8 +112,8 @@
     align-items: center !important;
     gap: 6px !important;
 }
-.mkm-btn-prim { background: #f97316 !important; color: #fff !important; box-shadow: none !important; }
-.mkm-btn-prim:hover { background: #b45309 !important; color: #fff !important; }
+.mkm-btn-prim { background: #c2410c !important; color: #fff !important; box-shadow: none !important; }
+.mkm-btn-prim:hover { background: #9a3412 !important; color: #fff !important; }
 .mkm-btn-sec {
     background: #f4f4f5 !important;
     color: #374151 !important;
@@ -237,46 +243,44 @@
     z-index: 1 !important;
     width: 100% !important;
     height: 100% !important;
-    object-fit: contain !important;
+    object-fit: cover !important;
     display: block !important;
     transition: transform .3s ease !important;
 }
 .mkm-card:hover .mkm-card-img img { transform: scale(1.03) !important; }
-.mkm-badge-tl {
-    position: absolute !important;
-    top: 8px !important;
-    left: 8px !important;
-    background: #10b981 !important;
-    color: #fff !important;
-    font-size: 10px !important;
-    font-weight: 700 !important;
-    padding: 2px 7px !important;
-    border-radius: 10px !important;
-    z-index: 2 !important;
-}
-.mkm-badge-tr {
-    position: absolute !important;
-    top: 8px !important;
-    right: 8px !important;
-    background: #ef4444 !important;
-    color: #fff !important;
-    font-size: 10px !important;
-    font-weight: 700 !important;
-    padding: 2px 7px !important;
-    border-radius: 10px !important;
-    z-index: 2 !important;
-}
+.mkm-badge-tl,
+.mkm-badge-tr,
 .mkm-badge-full-pos {
     position: absolute !important;
-    top: 8px !important;
-    right: 8px !important;
-    background: #e11d48 !important;
+    top: 10px !important;
+    left: 10px !important;
+    right: auto !important;
     color: #fff !important;
     font-size: 10px !important;
-    font-weight: 700 !important;
-    padding: 2px 7px !important;
-    border-radius: 10px !important;
-    z-index: 2 !important;
+    font-weight: 800 !important;
+    padding: 4px 10px !important;
+    border-radius: 6px !important;
+    z-index: 5 !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+    height: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+}
+.mkm-badge-hot {
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%) !important;
+}
+.mkm-badge-outstanding {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+}
+.mkm-badge-new {
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%) !important;
+}
+.mkm-badge-full {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
 }
 .mkm-card-overlay {
     position: absolute !important;
@@ -306,7 +310,7 @@
 }
 .mkm-card-chap {
     font-size: 12px !important;
-    color: #9ca3af !important;
+    color: #4b5563 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -384,7 +388,7 @@
     flex-shrink: 0 !important;
 }
 .rn1 { background: #f59e0b !important; color: #fff !important; }
-.rn2 { background: #9ca3af !important; color: #fff !important; }
+.rn2 { background: #6b7280 !important; color: #fff !important; }
 .rn3 { background: #b45309 !important; color: #fff !important; }
 .rn-other { background: #f4f4f5 !important; color: #6b7280 !important; }
 .mkm-rank-thumb {
@@ -408,7 +412,7 @@
 }
 .mkm-rank-views {
     font-size: 11px !important;
-    color: #9ca3af !important;
+    color: #4b5563 !important;
     margin-top: 2px !important;
 }
 /* ── HERO SLIDER ── */
@@ -427,18 +431,18 @@
     margin-bottom: 0 !important;
 }
 .mkm-slider-cover {
-    width: 430px !important;
+    width: 320px !important;
     flex-shrink: 0 !important;
     border-radius: 16px !important;
     overflow: hidden !important;
-    aspect-ratio: 4/3 !important;
+    aspect-ratio: 1/1 !important;
 }
 .mkm-slider-cover img { width:100% !important; height:100% !important; object-fit:cover !important; border-radius:16px !important; display:block !important; }
 .mkm-slider-body { flex:1 !important; min-width:0 !important; }
 .mkm-slider-title { font-size:22px !important; font-weight:800 !important; color:#111827 !important; margin:0 0 10px 0 !important; line-height:1.3 !important; }
-.mkm-slider-desc { font-size:13px !important; color:#6b7280 !important; line-height:1.7 !important; margin:0 0 16px !important;
-    display:-webkit-box !important; -webkit-line-clamp:6 !important; -webkit-box-orient:vertical !important; overflow:hidden !important; }
-.mkm-slider-meta { font-size:12px !important; color:#9ca3af !important; margin-bottom:12px !important; }
+.mkm-slider-desc { font-size:18px !important; color:#4b5563 !important; line-height:1.7 !important; margin:0 0 16px !important;
+    display:-webkit-box !important; -webkit-line-clamp:16 !important; -webkit-box-orient:vertical !important; overflow:hidden !important; }
+.mkm-slider-meta { font-size:12px !important; color:#4b5563 !important; margin-bottom:12px !important; }
 .mkm-slider-btns { display:flex !important; gap:10px !important; flex-wrap:wrap !important; margin-bottom:16px !important; }
 /* Thumbnails swiper below */
 .mkm-thumb-swiper { margin-top:14px !important; padding-bottom:2px !important; }
@@ -463,7 +467,7 @@
 .mkm-main-swiper .swiper-button-prev:after { font-size: 17px !important; font-weight: 900 !important; }
 .mkm-main-swiper .swiper-button-next:hover,
 .mkm-main-swiper .swiper-button-prev:hover {
-    background: #f97316 !important; border-color: #f97316 !important; color: #fff !important;
+    background: #c2410c !important; border-color: #c2410c !important; color: #fff !important;
 }
 .mkm-main-swiper .swiper-button-prev { left: auto !important; right: 58px !important; }
 .mkm-main-swiper .swiper-button-next { right: 4px !important; }
@@ -482,7 +486,7 @@
         width: 100% !important;
         height: auto !important;
         border-radius: 0 !important;
-        aspect-ratio: 4/3 !important;
+        aspect-ratio: 1/1 !important;
         display: flex !important;
         background: #111827 !important;
     }
@@ -500,7 +504,7 @@
         background: #fff !important;
     }
     .mkm-slider-title { font-size: 18px !important; }
-    .mkm-slider-desc { -webkit-line-clamp: 6 !important; font-size: 13px !important; }
+    .mkm-slider-desc { -webkit-line-clamp: 12 !important; font-size: 16px !important; }
     .mkm-slider-btns { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
     .mkm-nav-btn { display: none !important; }
     .mkm-main-swiper .swiper-button-next,
@@ -530,14 +534,14 @@
     letter-spacing: 0.2px !important;
 }
 .mkm-btn-card-start {
-    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+    background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%) !important;
     color: #fff !important;
-    box-shadow: 0 2px 6px rgba(249, 115, 22, 0.2) !important;
+    box-shadow: 0 2px 6px rgba(194, 65, 12, 0.2) !important;
 }
 .mkm-btn-card-start:hover {
-    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+    background: linear-gradient(135deg, #9a3412 0%, #7c2d12 100%) !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.35) !important;
+    box-shadow: 0 4px 10px rgba(194, 65, 12, 0.35) !important;
     color: #fff !important;
 }
 .mkm-btn-card-new {
@@ -553,13 +557,18 @@
 }
 @media (max-width: 600px) {
     .mkm-card-btns {
-        flex-direction: column !important;
+        flex-direction: row !important;
         gap: 6px !important;
     }
     .mkm-btn-card {
-        padding: 6px 4px !important;
-        font-size: 10px !important;
+        padding: 6px 2px !important;
+        font-size: 9px !important;
     }
+}
+
+/* Prevent Swiper Layout Shift (CLS) before JS initialization */
+.mkm-main-swiper:not(.swiper-initialized) .swiper-slide:not(:first-child) {
+    display: none !important;
 }
 
 </style>
@@ -569,16 +578,16 @@
 
     <!-- ══ HERO SLIDER ══ -->
     <?php
-    $slider_q = new WP_Query(['post_type'=>'truyen','posts_per_page'=>6,'orderby'=>'rand','no_found_rows'=>true]);
-    if ($slider_q->have_posts()):
+    if (isset($slider_q) && $slider_q->have_posts()):
+        $slider_q->rewind_posts();
     ?>
     <div class="mkm-slider-wrap">
         <!-- MAIN SWIPER -->
         <div class="swiper mkm-main-swiper">
             <div class="swiper-wrapper">
             <?php while($slider_q->have_posts()): $slider_q->the_post();
-                $s_cover = get_the_post_thumbnail_url(null,'large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
-                $s_exc   = wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 100, '...');
+                $s_cover = get_the_post_thumbnail_url(null,'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                $s_exc   = wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 350, '...');
                 $s_date  = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' trước';
                 $s_cats  = wp_get_post_terms(get_the_ID(),'the_loai');
                 $s_cat   = !is_wp_error($s_cats) && !empty($s_cats) ? $s_cats[0]->name : '';
@@ -589,12 +598,12 @@
             <div class="swiper-slide">
                 <div class="mkm-slider-main">
                     <div class="mkm-slider-cover">
-                        <img src="<?php echo esc_url($s_cover); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png';" alt="<?php the_title_attribute(); ?>" width="250" height="250" loading="eager" fetchpriority="high" decoding="async">
+                        <img src="<?php echo esc_url($s_cover); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png?v=3';" alt="<?php the_title_attribute(); ?>" width="250" height="250" loading="eager" fetchpriority="high" decoding="async">
                     </div>
                     <div class="mkm-slider-body">
                         <h2 class="mkm-slider-title"><?php the_title(); ?></h2>
                         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; font-size:11px; color:#4b5563;">
-                            <?php if($s_cat): ?><span style="color:#d97706; font-weight:700; border:1px solid #fcd34d; padding:2px 8px; border-radius:12px; background:#fef3c7;"><?php echo esc_html($s_cat); ?></span><?php endif; ?>
+                            <?php if($s_cat): ?><span style="color:#78350f; font-weight:700; border:1px solid #fcd34d; padding:2px 8px; border-radius:12px; background:#fef3c7;"><?php echo esc_html($s_cat); ?></span><?php endif; ?>
                             <span style="display:flex; align-items:center;">📅 <?php echo $s_date; ?></span>
                         </div>
                         <p class="mkm-slider-desc"><?php echo esc_html($s_exc); ?></p>
@@ -626,15 +635,71 @@
         </div>
     </div>
     <style>
-        .mkm-main-swiper .swiper-button-next, .mkm-main-swiper .swiper-button-prev {
-            color: #d97706 !important;
-            transform: scale(0.6);
-            background: #fff;
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .mkm-main-swiper {
+            padding-bottom: 45px !important;
+            position: relative !important;
         }
-        .mkm-main-swiper .swiper-pagination-bullet-active { background: #d97706 !important; }
+        .mkm-main-swiper .swiper-pagination {
+            bottom: 15px !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 12px !important;
+            width: 100% !important;
+        }
+        .mkm-main-swiper .swiper-pagination-bullet {
+            width: 48px !important;
+            height: 48px !important;
+            background: transparent !important;
+            opacity: 1 !important;
+            margin: 0 !important;
+            cursor: pointer !important;
+            border: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+        }
+        .mkm-main-swiper .swiper-pagination-bullet::after {
+            content: "" !important;
+            width: 8px !important;
+            height: 8px !important;
+            background: #cbd5e1 !important;
+            border-radius: 9999px !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            display: block !important;
+        }
+        .mkm-main-swiper .swiper-pagination-bullet:hover::after {
+            background: #94a3b8 !important;
+            transform: scale(1.2) !important;
+        }
+        .mkm-main-swiper .swiper-pagination-bullet-active::after {
+            width: 24px !important;
+            height: 8px !important;
+            background: linear-gradient(90deg, #c2410c 0%, #9a3412 100%) !important;
+            border-radius: 9999px !important;
+            box-shadow: 0 2px 8px rgba(234, 88, 12, 0.4) !important;
+        }
+        .mkm-main-swiper .swiper-button-next, .mkm-main-swiper .swiper-button-prev {
+            color: #ea580c !important;
+            background: #ffffff !important;
+            width: 42px !important;
+            height: 42px !important;
+            border-radius: 50% !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            margin-top: -21px !important;
+        }
+        .mkm-main-swiper .swiper-button-next:after, .mkm-main-swiper .swiper-button-prev:after {
+            font-size: 16px !important;
+            font-weight: 800 !important;
+        }
+        .mkm-main-swiper .swiper-button-next:hover, .mkm-main-swiper .swiper-button-prev:hover {
+            background: #ea580c !important;
+            color: #ffffff !important;
+            box-shadow: 0 6px 16px rgba(234, 88, 12, 0.4) !important;
+            transform: scale(1.08) !important;
+        }
     </style>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -664,19 +729,47 @@
             </div>
             <div class="mkm-grid">
                 <?php
-                $q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 8, 'no_found_rows' => true]);
+                $q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'no_found_rows' => true]);
                 while ($q->have_posts()) : $q->the_post();
-                    $img = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
-                    $fake_chap = rand(10, 150); $fake_hours = rand(1, 24); $fake_views = rand(100, 9999); $fake_likes = rand(0, 50);
+                    $img = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    
+                    // Fetch real view counts, fallback to _views or random view counts
+                    $views = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
+                    if (!$views) {
+                        $views = (int)get_post_meta(get_the_ID(), '_views', true) ?: rand(500, 15000);
+                    }
+                    
+                    $comment_count = get_comments_number(get_the_ID());
+                    $reading_time = function_exists('tehi_get_story_reading_time') ? tehi_get_story_reading_time(get_the_ID()) : '5 phút';
+                    
+                    // Fetch latest chapter title dynamically
+                    $latest_chap_display = function_exists('tehi_get_last_chapter_display_name') ? tehi_get_last_chapter_display_name(get_the_ID()) : 'Chương mới';
+                    if (empty($latest_chap_display)) {
+                        $latest_chap_display = 'Chương mới';
+                    }
+                    
+                    // Assign premium gradient badges dynamically based on view counts
+                    if ($views > 10000) {
+                        $badge_class = 'mkm-badge-hot';
+                        $badge_text = 'HOT';
+                    } elseif ($views >= 3000) {
+                        $badge_class = 'mkm-badge-outstanding';
+                        $badge_text = 'NỔI BẬT';
+                    } else {
+                        $badge_class = 'mkm-badge-new';
+                        $badge_text = 'MỚI';
+                    }
+                    
+                    $time_diff = human_time_diff(get_the_modified_time('U'), current_time('timestamp')) . ' trước';
                 ?>
                 <div class="mkm-card">
                     <a href="<?php the_permalink(); ?>" style="display:block;">
                         <div class="mkm-card-img" style="--card-bg: url('<?php echo esc_url($img); ?>');">
-                            <span class="mkm-badge-tl">MỚI</span>
-                            <img src="<?php echo esc_url($img); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png';" alt="<?php the_title_attribute(); ?>" width="300" height="400" loading="lazy" decoding="async">
+                            <span class="mkm-badge-tl <?php echo $badge_class; ?>"><?php echo $badge_text; ?></span>
+                            <img src="<?php echo esc_url($img); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png?v=3';" alt="<?php the_title_attribute(); ?>" width="300" height="400" loading="lazy" decoding="async">
                             <div class="mkm-card-overlay">
-                                <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
-                                <span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo $fake_hours; ?> giờ trước</span>
+                                <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> <?php echo esc_html($latest_chap_display); ?></span>
+                                <span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo $time_diff; ?></span>
                             </div>
                         </div>
                     </a>
@@ -685,21 +778,22 @@
                             <p class="mkm-card-name"><?php the_title(); ?></p>
                         </a>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
-                            <div style="display:flex; gap:5px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
-                                <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
-                                <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
+                            <div style="display:flex; gap:6px; color:#4b5563; font-size:10px; align-items:center; font-weight:500;">
+                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#047857; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count; ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#b45309; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time); ?></span>
                             </div>
-                            <span style="background:rgba(79, 70, 229, 0.1); color:#92400e; border:1px solid rgba(79, 70, 229, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Chương mới</span>
+                            <span class="mkm-card-meta-badge" style="background:rgba(249, 115, 22, 0.15); color:#7c2d12; border:1px solid rgba(249, 115, 22, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display); ?></span>
                         </div>
                         <div class="mkm-card-btns">
                             <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
-                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new">Chương mới</a>
+                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new" title="<?php echo esc_attr($latest_chap_display); ?>">Chương mới nhất</a>
                         </div>
                     </div>
                 </div>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
-            <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/the-loai.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
+            <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/truyen-moi-cap-nhat.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
 
             <!-- TRUYỆN HOT -->
             <div class="mkm-sec-hdr">
@@ -711,19 +805,47 @@
             </div>
             <div class="mkm-grid">
                 <?php
-                $q2 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 4, 'orderby' => 'comment_count', 'no_found_rows' => true]);
+                $q2 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'orderby' => 'comment_count', 'no_found_rows' => true]);
                 while ($q2->have_posts()) : $q2->the_post();
-                    $img2 = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
-                    $fake_chap = rand(50, 300); $fake_hours = rand(1, 24); $fake_views = rand(10000, 50000); $fake_likes = rand(50, 900);
+                    $img2 = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    
+                    // Fetch real view counts, fallback to _views or random view counts
+                    $views2 = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
+                    if (!$views2) {
+                        $views2 = (int)get_post_meta(get_the_ID(), '_views', true) ?: rand(500, 15000);
+                    }
+                    
+                    $comment_count2 = get_comments_number(get_the_ID());
+                    $reading_time2 = function_exists('tehi_get_story_reading_time') ? tehi_get_story_reading_time(get_the_ID()) : '5 phút';
+                    
+                    // Fetch latest chapter title dynamically
+                    $latest_chap_display2 = function_exists('tehi_get_last_chapter_display_name') ? tehi_get_last_chapter_display_name(get_the_ID()) : 'Chương mới';
+                    if (empty($latest_chap_display2)) {
+                        $latest_chap_display2 = 'Chương mới';
+                    }
+                    
+                    // Assign premium gradient badges dynamically based on view counts
+                    if ($views2 > 10000) {
+                        $badge_class2 = 'mkm-badge-hot';
+                        $badge_text2 = 'HOT';
+                    } elseif ($views2 >= 3000) {
+                        $badge_class2 = 'mkm-badge-outstanding';
+                        $badge_text2 = 'NỔI BẬT';
+                    } else {
+                        $badge_class2 = 'mkm-badge-new';
+                        $badge_text2 = 'MỚI';
+                    }
+                    
+                    $time_diff2 = human_time_diff(get_the_modified_time('U'), current_time('timestamp')) . ' trước';
                 ?>
                 <div class="mkm-card">
                     <a href="<?php the_permalink(); ?>" style="display:block;">
                         <div class="mkm-card-img" style="--card-bg: url('<?php echo esc_url($img2); ?>');">
-                            <span class="mkm-badge-tr">HOT 🔥</span>
-                            <img src="<?php echo esc_url($img2); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png';" alt="<?php the_title_attribute(); ?>" width="300" height="400" loading="lazy" decoding="async">
+                            <span class="mkm-badge-tl <?php echo $badge_class2; ?>"><?php echo $badge_text2; ?></span>
+                            <img src="<?php echo esc_url($img2); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png?v=3';" alt="<?php the_title_attribute(); ?>" width="300" height="400" loading="lazy" decoding="async">
                             <div class="mkm-card-overlay">
-                                <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
-                                <span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo $fake_hours; ?> giờ trước</span>
+                                <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> <?php echo esc_html($latest_chap_display2); ?></span>
+                                <span style="display:flex;align-items:center;gap:4px;color:#fbbf24;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo $time_diff2; ?></span>
                             </div>
                         </div>
                     </a>
@@ -732,15 +854,16 @@
                             <p class="mkm-card-name"><?php the_title(); ?></p>
                         </a>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
-                            <div style="display:flex; gap:5px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
-                                <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
-                                <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
+                            <div style="display:flex; gap:6px; color:#4b5563; font-size:10px; align-items:center; font-weight:500;">
+                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views2); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#047857; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count2; ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#b45309; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time2); ?></span>
                             </div>
-                            <span style="background:rgba(239, 68, 68, 0.1); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Đang Hot</span>
+                            <span class="mkm-card-meta-badge" style="background:rgba(249, 115, 22, 0.15); color:#7c2d12; border:1px solid rgba(249, 115, 22, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display2); ?></span>
                         </div>
                         <div class="mkm-card-btns">
                             <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
-                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new">Chương mới</a>
+                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new" title="<?php echo esc_attr($latest_chap_display2); ?>">Chương mới nhất</a>
                         </div>
                     </div>
                 </div>
@@ -758,18 +881,32 @@
             </div>
             <div class="mkm-grid">
                 <?php
-                $q3 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 4, 'offset' => 12, 'no_found_rows' => true]);
+                $q3 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'offset' => 12, 'no_found_rows' => true]);
                 while ($q3->have_posts()) : $q3->the_post();
-                    $img3 = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
-                    $fake_chap = rand(80, 500); $fake_views = rand(20000, 99999); $fake_likes = rand(100, 2000);
+                    $img3 = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    
+                    // Fetch real view counts, fallback to _views or random view counts
+                    $views3 = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
+                    if (!$views3) {
+                        $views3 = (int)get_post_meta(get_the_ID(), '_views', true) ?: rand(500, 15000);
+                    }
+                    
+                    $comment_count3 = get_comments_number(get_the_ID());
+                    $reading_time3 = function_exists('tehi_get_story_reading_time') ? tehi_get_story_reading_time(get_the_ID()) : '5 phút';
+                    
+                    // Fetch latest chapter title dynamically
+                    $latest_chap_display3 = function_exists('tehi_get_last_chapter_display_name') ? tehi_get_last_chapter_display_name(get_the_ID()) : 'Chương mới';
+                    if (empty($latest_chap_display3)) {
+                        $latest_chap_display3 = 'Chương mới';
+                    }
                 ?>
                 <div class="mkm-card">
                     <a href="<?php the_permalink(); ?>" style="display:block;">
                         <div class="mkm-card-img" style="--card-bg: url('<?php echo esc_url($img3); ?>');">
-                            <span class="mkm-badge-full-pos">FULL</span>
-                            <img src="<?php echo esc_url($img3); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png';" alt="<?php the_title_attribute(); ?>" width="300" height="400" loading="lazy" decoding="async">
+                            <span class="mkm-badge-tl mkm-badge-full">FULL</span>
+                            <img src="<?php echo esc_url($img3); ?>" onerror="this.onerror=null;this.src='<?php echo get_template_directory_uri(); ?>/img_data/images/no-image-cover.png?v=3';" alt="<?php the_title_attribute(); ?>" width="300" height="400" loading="lazy" decoding="async">
                             <div class="mkm-card-overlay">
-                                <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Ch.<?php echo $fake_chap; ?></span>
+                                <span style="display:flex;align-items:center;gap:4px;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> <?php echo esc_html($latest_chap_display3); ?></span>
                                 <span style="display:flex;align-items:center;gap:4px;color:#10b981;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Đã đủ bộ</span>
                             </div>
                         </div>
@@ -779,15 +916,16 @@
                             <p class="mkm-card-name"><?php the_title(); ?></p>
                         </a>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; flex-wrap:nowrap; gap:2px;">
-                            <div style="display:flex; gap:5px; color:#9ca3af; font-size:10px; align-items:center; font-weight:500;">
-                                <span style="display:flex; align-items:center; gap:4px; color:#3b82f6;"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($fake_views); ?></span>
-                                <span style="display:flex; align-items:center; gap:4px; color:#ef4444;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> <?php echo $fake_likes; ?></span>
+                            <div style="display:flex; gap:6px; color:#4b5563; font-size:10px; align-items:center; font-weight:500;">
+                                <span style="display:flex; align-items:center; gap:2px; color:#2563eb; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo number_format($views3); ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#047857; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg> <?php echo $comment_count3; ?></span>
+                                <span style="display:flex; align-items:center; gap:2px; color:#b45309; white-space:nowrap; flex-shrink:0;"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <?php echo esc_html($reading_time3); ?></span>
                             </div>
-                            <span style="background:rgba(16, 185, 129, 0.1); color:#10b981; border:1px solid rgba(16, 185, 129, 0.2); font-size:10px; font-weight:700; padding:4px 6px; border-radius:6px; font-size:9px !important; letter-spacing:0px; white-space:nowrap; flex-shrink:0;">Hoàn thành</span>
+                            <span class="mkm-card-meta-badge" style="background:rgba(16, 185, 129, 0.15); color:#047857; border:1px solid rgba(16, 185, 129, 0.25); font-size:9px !important; font-weight:700; padding:2px 6px; border-radius:6px; letter-spacing:0px; white-space:nowrap; flex-shrink:0; max-width: 90px; overflow: hidden; text-overflow: ellipsis;"><?php echo esc_html($latest_chap_display3); ?></span>
                         </div>
                         <div class="mkm-card-btns">
                             <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-start">Đọc từ đầu</a>
-                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new">Chương mới</a>
+                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="mkm-btn-card mkm-btn-card-new" title="<?php echo esc_attr($latest_chap_display3); ?>">Chương mới nhất</a>
                         </div>
                     </div>
                 </div>
@@ -813,7 +951,7 @@
                         <svg width="20" height="20" fill="none" stroke="#ea580c" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg>
                         Bảng xếp hạng
                     </span>
-                    <span style="font-size: 11px; color:#9ca3af; font-weight: 500;">Top 10</span>
+                    <span style="font-size: 11px; color:#4b5563; font-weight: 500;">Top 10</span>
                 </h3>
                 
                 <div class="mkm-tabs-new" style="display:flex; justify-content:space-between; margin-bottom: 20px; align-items:center;">
@@ -835,7 +973,7 @@
                     $ri = 1;
                     $max_views = 20000;
                     while ($bxh->have_posts()) : $bxh->the_post();
-                        $rthumb = get_the_post_thumbnail_url(null, 'medium_large') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png";
+                        $rthumb = get_the_post_thumbnail_url(null, 'thumbnail') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                         $views = (int)get_post_meta(get_the_ID(), '_views', true);
                         if($views < 1000) $views = rand(1000, 20000); // mock data if empty
                         
@@ -855,9 +993,9 @@
                         </div>
                         <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:800; color:#c2410c; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php the_title(); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $formatted_views; ?>
                             </div>
                         </div>
@@ -873,9 +1011,9 @@
                         </div>
                         <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:700; color:#374151; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php the_title(); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $formatted_views; ?>
                             </div>
                         </div>
@@ -891,9 +1029,9 @@
                         </div>
                         <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php the_title(); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:700; color:#c2410c; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php the_title(); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $formatted_views; ?>
                             </div>
                         </div>
@@ -902,17 +1040,17 @@
                     <?php else: ?>
                     <!-- Tốp 4 - 10 -->
                     <a href="<?php the_permalink(); ?>" class="mkm-bxh-item" style="padding:6px 0;">
-                        <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $ri; ?></div>
+                        <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#6b7280; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $ri; ?></div>
                         <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="32" height="42" style="width:32px; height:42px; border-radius:4px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; margin-bottom:8px;"><?php the_title(); ?></div>
+                            <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:8px; white-space:normal !important;"><?php the_title(); ?></div>
                             <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
                                 <!-- Bar -->
                                 <div style="flex:1; height:6px; background:#f3f4f6; border-radius:3px; overflow:hidden; display:flex;">
                                     <div style="width:<?php echo $percent; ?>%; height:100%; background:#818cf8; border-radius:3px;"></div>
                                 </div>
                                 <!-- Number -->
-                                <div style="font-size:11px; color:#9ca3af; font-family: ui-sans-serif, sans-serif; font-weight:500; min-width:35px; text-align:right;"><?php echo $formatted_views; ?></div>
+                                <div style="font-size:11px; color:#4b5563; font-family: ui-sans-serif, sans-serif; font-weight:500; min-width:35px; text-align:right;"><?php echo $formatted_views; ?></div>
                             </div>
                         </div>
                     </a>
@@ -930,7 +1068,7 @@
                         <svg width="20" height="20" fill="none" stroke="#a855f7" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         Bảng xếp hạng team
                     </span>
-                    <span style="font-size: 11px; color:#9ca3af; font-weight: 500;">Hôm nay</span>
+                    <span style="font-size: 11px; color:#4b5563; font-weight: 500;">Hôm nay</span>
                 </h3>
 
                 <div class="mkm-rank-list-new" style="display:flex; flex-direction:column; gap:8px;">
@@ -951,9 +1089,7 @@
                         $t_views = number_format($team['views'], 0, ',', '.');
                         $t_percent = round(($team['views'] / $team_max) * 100);
                         $avatar_path = str_replace(get_template_directory_uri(), get_template_directory(), $team['avatar']);
-                        $t_avatar = file_exists($avatar_path)
-                            ? $team['avatar']
-                            : 'https://ui-avatars.com/api/?name='.urlencode($team['name']).'&background=random&color=fff';
+                        $t_avatar = 'https://ui-avatars.com/api/?name='.urlencode($team['name']).'&background=random&color=fff';
                     ?>
                     
                     <?php if($tri === 1): ?>
@@ -966,9 +1102,9 @@
                         </div>
                         <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:800; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:800; color:#c2410c; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $t_views; ?>
                             </div>
                         </div>
@@ -984,9 +1120,9 @@
                         </div>
                         <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#374151; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:700; color:#374151; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $t_views; ?>
                             </div>
                         </div>
@@ -1002,9 +1138,9 @@
                         </div>
                         <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:700; color:#c2410c; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px;"><?php echo esc_html($team['name']); ?></div>
-                            <div style="font-size:11px; color:#9ca3af; display:flex; align-items:center; gap:4px; font-weight:500;">
-                                <svg width="14" height="14" fill="none" stroke="#d1d5db" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
+                            <div style="font-size:13px; font-weight:700; color:#c2410c; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
+                                <svg width="14" height="14" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg> 
                                 <?php echo $t_views; ?>
                             </div>
                         </div>
@@ -1013,17 +1149,17 @@
                     <?php else: ?>
                     <!-- Team Top 4 - 8 -->
                     <a href="<?php echo esc_url(home_url('/nhom-dich/')); ?>" class="mkm-bxh-item" style="padding:6px 0;">
-                        <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#d1d5db; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $tri; ?></div>
+                        <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#6b7280; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $tri; ?></div>
                         <img src="<?php echo esc_url($t_avatar); ?>" alt="<?php echo esc_attr($team['name']); ?>" width="32" height="32" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                            <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; margin-bottom:8px;"><?php echo esc_html($team['name']); ?></div>
+                            <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:8px; white-space:normal !important;"><?php echo esc_html($team['name']); ?></div>
                             <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
                                 <!-- Bar -->
                                 <div style="flex:1; height:6px; background:#f3f4f6; border-radius:3px; overflow:hidden; display:flex;">
                                     <div style="width:<?php echo $t_percent; ?>%; height:100%; background:#d8b4fe; border-radius:3px;"></div>
                                 </div>
                                 <!-- Number -->
-                                <div style="font-size:11px; color:#9ca3af; font-family: ui-sans-serif, sans-serif; font-weight:500; min-width:35px; text-align:right;"><?php echo $t_views; ?></div>
+                                <div style="font-size:11px; color:#4b5563; font-family: ui-sans-serif, sans-serif; font-weight:500; min-width:35px; text-align:right;"><?php echo $t_views; ?></div>
                             </div>
                         </div>
                     </a>

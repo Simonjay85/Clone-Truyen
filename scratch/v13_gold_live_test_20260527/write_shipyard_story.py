@@ -1,0 +1,230 @@
+import json
+from pathlib import Path
+
+TITLE = "Bị Đuổi Khỏi Xưởng Tàu Tiên Sa, Tôi Mang Hồ Sơ Hàn Kín Lật Sập Gói Thầu Nghìn Tỷ"
+AUTHOR = "Lâm Hải Đăng"
+
+INTRO = """<p><strong>"Thợ hàn thuê như mày mà cũng đòi ký vào biên bản nghiệm thu tàu biển? Cút khỏi ụ khô Tiên Sa trước khi tao cho bảo vệ quăng xuống vũng dầu!"</strong></p>
+<p>Đêm mưa ở xưởng tàu Tiên Sa, kỹ sư hàn kín nước Phạm Minh Quân bị chính sếp cũ đổ tội làm nứt sống tàu, bị xé thẻ nhân viên trước mặt đoàn thầu quốc tế và người yêu cũ.</p>
+<p>Nhưng bọn họ không biết trong chiếc USB bọc cao su dính đầy muối biển của anh là nhật ký siêu âm mối hàn, video camera ụ khô và bản vẽ gia cường đã được đăng ký sở hữu trí tuệ trước ngày bị vu oan.</p>
+<p>Khi nữ giám đốc tài chính hàng hải Trần Hải Vy bước vào với đội kiểm toán Big 4, một gói thầu nghìn tỷ tưởng đã nằm trong tay kẻ phản bội bắt đầu rung lên từng mối hàn.</p>"""
+
+COVER_PROMPT = (
+    "Square 1:1 photorealistic Vietnamese web novel cover, real human actors, cinematic movie poster, "
+    "a determined Vietnamese marine welding engineer at a Da Nang dry dock holding a waterproof inspection folder "
+    "and ultrasonic weld scanner, beside him an intelligent Vietnamese maritime finance director in a dark suit and white hard hat, "
+    "huge cargo ship under repair, welding sparks, rain slick concrete, cranes, shocked arrogant shipyard boss in background, "
+    "dark top 30 percent for title readability, high contrast lighting, no text, no watermark."
+)
+
+
+def p(*paragraphs):
+    return "\n".join(f"<p>{text}</p>" for text in paragraphs)
+
+
+chapters = [
+    {
+        "title": "Chương 1: Tấm Thẻ Bị Bẻ Gãy Trên Nền Ụ Khô",
+        "content": p(
+            "Mưa đêm trút xuống ụ khô số ba của cảng Tiên Sa, gõ lên lớp thép vỏ tàu thành những tiếng lộp bộp lạnh buốt. Phạm Minh Quân đứng giữa vũng nước lẫn dầu máy, bộ áo bảo hộ xám sẫm ướt bết vào vai, tay vẫn ôm tập biên bản kiểm tra mối hàn vừa lấy từ phòng siêu âm không phá hủy. Trước mặt anh là con tàu hàng ba vạn tấn mang mã hiệu TS-09, phần sống tàu vừa bị phát hiện rạn dài gần một mét ở khoang dằn nước số hai.",
+            "Nguyễn Trọng Kha, giám đốc xưởng tàu An Hòa, bước đến cùng đoàn khách mặc vest đen. Gã không nhìn vào bản báo cáo trong tay Quân mà giật phắt chiếc thẻ nhân viên đang đeo trên ngực anh. Tiếng nhựa cứng gãy đôi vang lên khô khốc giữa tiếng mưa. Kha ném hai mảnh thẻ xuống nền bê tông, gót giày da Ý nghiền lên logo xưởng như nghiền lên mặt một con kiến.",
+            "\"Thợ hàn thuê như mày mà cũng đòi ký vào biên bản nghiệm thu tàu biển?\" Kha nghiến răng, giọng đủ lớn để cả tổ hàn và đoàn thầu Nhật Bản phía sau nghe thấy. \"Cút khỏi ụ khô Tiên Sa trước khi tao cho bảo vệ quăng xuống vũng dầu! Con tàu rạn là do mày tự ý đổi quy trình hàn, giờ còn bày đặt báo cáo kỹ thuật để tống tiền công ty sao?\"",
+            "Đám công nhân đứng nép dưới mái tôn im phăng phắc. Có người cúi đầu vì từng được Quân chỉ cách chỉnh dòng hàn để khỏi cháy mép thép, nhưng không ai dám nói. Lương tháng, hợp đồng bảo hiểm, tiền học của con đều nằm trong chữ ký của Kha. Ở mép ụ khô, Lê Mai Chi, người yêu cũ của Quân kiêm trợ lý đấu thầu, khoanh tay nhìn anh bằng ánh mắt lạnh như nước mưa.",
+            "\"Anh Quân, anh đừng làm mọi chuyện xấu thêm.\" Mai Chi đặt một tập hồ sơ lên bàn tạm. \"Tôi đã ký xác nhận anh là người phụ trách ca hàn hôm xảy ra lỗi. Nếu anh biết điều, công ty sẽ không truy cứu phần thiệt hại ba mươi tỷ do chậm tiến độ.\"",
+            "Quân nhìn chữ ký của cô dưới bản tường trình giả, cổ họng nghẹn lại trong vài giây. Ba năm trước, chính anh đưa cô từ phòng hành chính vào đội đấu thầu, dạy cô đọc bản vẽ thân tàu, giải thích từng mã thép AH36 và từng tiêu chuẩn kín nước. Giờ cô dùng những thứ đó để đẩy anh thành vật tế thần trước gói thầu cảng biển nghìn tỷ.",
+            "Anh cúi xuống nhặt mảnh thẻ gãy, lau bùn dầu trên mặt nhựa bằng ngón tay chai sần. Trong túi áo trong, chiếc USB bọc cao su vẫn nằm yên, chứa toàn bộ log siêu âm mối hàn, video từ camera ụ khô và ảnh chụp bản vẽ gia cường có timestamp hệ thống. Quân không rút nó ra ngay. Một bằng chứng đưa ra quá sớm chỉ là một viên đá ném xuống biển.",
+            "\"Tôi sẽ rời xưởng tối nay.\" Quân ngẩng lên, giọng thấp nhưng rõ. \"Nhưng trước khi con tàu này ra khỏi Tiên Sa, mọi người sẽ biết ai đã thay thép đáy khoang, ai tắt camera hai mươi bảy phút, và ai bán sự an toàn của thủy thủ lấy phần trăm gói thầu.\"",
+            "Kha bật cười, nhưng mí mắt gã giật nhẹ. Mai Chi quay mặt đi. Mưa đập mạnh hơn lên thân tàu, từng giọt nước chảy dọc vết rạn như những đường mực đen đang viết bản cáo trạng đầu tiên."
+        ),
+    },
+    {
+        "title": "Chương 2: Người Phụ Nữ Đến Từ Quỹ Hàng Hải Vạn An",
+        "content": p(
+            "Sáng hôm sau, Quân thuê một phòng trọ nhỏ gần đường Ngô Quyền. Cả căn phòng chỉ có một chiếc bàn gỗ ép, một ổ cắm lỏng và mùi muối biển bám vào rèm cửa. Anh phơi bộ áo bảo hộ ướt ở ban công, rồi cắm USB vào laptop cũ. Màn hình hiện lên từng thư mục được đặt tên khô khan: `UT_TS09_Seam_B2`, `drydock_camera_23h11`, `weld_map_original`, `material_batch_AH36`.",
+            "Anh không vội tung gì lên mạng. Trước hết, anh xuất hash SHA-256 cho từng file, lưu thêm một bản vào ổ cứng ngoài, rồi in danh sách timestamp. Đây là thói quen của người làm kỹ thuật: cảm xúc có thể vỡ, nhưng bằng chứng phải nguyên vẹn. Sau đó anh gọi cho ông Bình, cựu đăng kiểm viên hàng hải từng nghỉ hưu vì không chịu ký nghiệm thu khống.",
+            "Ông Bình nghe hết câu chuyện rồi im lặng gần một phút. Khi ông nói, giọng ông khàn đi vì tức. \"Nếu đúng như cháu nói, đây không chỉ là tranh chấp lao động. Thay lô thép đáy khoang để ăn chênh lệch mà vẫn đẩy tàu đi biển là đùa với mạng người. Nhưng cháu cần một đơn vị đủ lực kiểm toán, đủ sạch để không bị Kha mua chuộc.\"",
+            "Buổi chiều, một chiếc sedan đen dừng trước quán cà phê nhỏ nhìn ra sông Hàn. Trần Hải Vy bước xuống trong bộ suit màu than, tay cầm tablet và một chiếc mũ bảo hộ trắng không dính bụi. Cô không giống người đến nghe một câu chuyện oan ức. Cô giống người đến thẩm định một thương vụ rủi ro cao.",
+            "\"Tôi là giám đốc tài chính của Quỹ Hàng hải Vạn An.\" Hải Vy ngồi đối diện Quân, mở thẳng laptop. \"Quỹ chúng tôi đang xem xét rót vốn vào liên danh cạnh tranh với An Hòa. Nếu anh chỉ muốn trả thù cá nhân, tôi không tham gia. Nếu anh có bằng chứng kỹ thuật đủ để chặn một con tàu nguy hiểm rời cảng, tôi sẽ cho đội kiểm toán vào cuộc.\"",
+            "Quân đẩy USB qua bàn, không thêm một câu bi kịch. Hải Vy cắm vào máy air-gapped của cô, mở trước log siêu âm. Những dải tín hiệu màu xanh đỏ chạy dài trên màn hình. Cô không hiểu hết từng thông số kỹ thuật, nhưng cô biết đọc sự nhất quán của dữ liệu: thời gian, mã thiết bị, chữ ký kỹ thuật viên, vị trí mối hàn, độ sâu khuyết tật.",
+            "\"Anh có bản gốc máy đo không?\" cô hỏi.",
+            "\"Có. Máy UT-17 vẫn nằm trong phòng thiết bị của xưởng. Tôi có ảnh số serial, phiếu hiệu chuẩn, và video lúc tôi niêm phong đầu dò sau ca kiểm.\"",
+            "Hải Vy ngẩng lên. Lần đầu tiên ánh mắt cô bớt lạnh. \"Tốt. Tôi sẽ không tin anh vì anh bị oan. Tôi sẽ tin nếu dữ liệu khiến tôi không thể không tin.\"",
+            "Tối đó, đội kiểm toán pháp lý của Vạn An lập phòng làm việc tạm trong một khách sạn gần cảng. Quân ký biên bản bàn giao dữ liệu, từng trang có mã hash và chữ ký chứng kiến của luật sư. Bên ngoài cửa kính, cầu Thuận Phước sáng lên trong mưa bụi. Anh biết mình vừa có đồng minh, nhưng cũng hiểu Kha sẽ không ngồi yên để chờ bị mổ xẻ."
+        ),
+    },
+    {
+        "title": "Chương 3: Mẻ Thép Rỗng Và Hai Mươi Bảy Phút Camera Chết",
+        "content": p(
+            "Ba ngày tiếp theo, An Hòa tung tin Quân bị sa thải vì nhận tiền đối thủ. Một tài khoản mạng xã hội mới lập đăng ảnh anh ngồi cùng Hải Vy ở quán cà phê, chú thích rằng anh bán bí mật xưởng tàu cho quỹ ngoại. Bên dưới, hàng trăm bình luận chửi anh phản bội cơm áo của công nhân Đà Nẵng. Mẹ Quân gọi từ Quảng Nam, giọng run run hỏi có phải con trai bà sắp bị bắt không.",
+            "Quân đứng trong hành lang khách sạn, nghe tiếng mẹ thở khó qua điện thoại. Anh muốn nói mình ổn, nhưng cổ họng khô rát. Cuối cùng anh chỉ đáp: \"Con không làm sai. Mẹ đừng đọc mạng nữa.\" Khi tắt máy, anh thấy Hải Vy đứng cách đó vài bước, trên tay là bản báo cáo sơ bộ của đội kiểm toán.",
+            "\"Họ đánh vào gia đình anh để anh mất bình tĩnh.\" Cô nói. \"Nếu anh phản ứng bằng livestream hoặc chửi lại, Kha thắng nửa ván.\"",
+            "Bản báo cáo cho thấy lô thép AH36 dùng cho khoang dằn nước số hai không khớp với chứng chỉ xuất xưởng. Mã nhiệt luyện trên tấm thép bị mài mờ rồi khắc lại. Đơn vị cung cấp là Công ty Minh Cảng, một doanh nghiệp mới thành lập sáu tháng, có địa chỉ đăng ký trùng với căn nhà của em vợ Nguyễn Trọng Kha ở Hòa Khánh.",
+            "Quan trọng hơn, camera ụ khô đêm xảy ra sự cố mất tín hiệu đúng hai mươi bảy phút. Nhật ký hệ thống ghi lỗi nguồn, nhưng log UPS cho thấy điện vẫn ổn định. Người đăng nhập vào phòng camera bằng tài khoản admin phụ là Mai Chi. Dấu vân tay trên tủ thiết bị chưa được lấy, nhưng video từ camera cổng phụ ghi lại bóng dáng cô đi cùng một kỹ thuật viên thuê ngoài lúc 23 giờ 11 phút.",
+            "Quân nhìn khung hình mờ trên màn chiếu. Mai Chi cúi đầu đội mũ lưỡi trai, tay ôm một cuộn bản vẽ. Ký ức cũ vụt qua như tia hàn: cô từng ngủ gục bên bàn khi anh sửa hồ sơ đấu thầu cho cô; từng bảo chỉ cần hai người rời khỏi xưởng nghèo này, mọi thứ sẽ tốt hơn. Bây giờ cô không chỉ rời đi. Cô còn quay lại cắt đứt dây an toàn của anh.",
+            "Hải Vy đặt một tập giấy trước mặt Quân. \"Đây là đơn yêu cầu Cảng vụ Đà Nẵng tạm dừng cấp phép rời cảng cho TS-09 đến khi có giám định độc lập. Anh phải ký với tư cách kỹ sư phụ trách phát hiện khuyết tật ban đầu. Ký rồi, anh sẽ bị An Hòa kiện ngược rất mạnh.\"",
+            "\"Không ký thì con tàu ra biển.\" Quân cầm bút. \"Một vết rạn ở khoang dằn nước không giết người ngay trong ngày nắng. Nhưng khi gặp sóng ngang ngoài khơi, nó sẽ mở ra như miệng cá.\"",
+            "Nét bút của anh kéo xuống trang giấy. Cùng lúc đó, điện thoại Hải Vy sáng lên. Tin nhắn từ nguồn nội bộ báo rằng An Hòa đã mời phóng viên đến buổi ra mắt gói thầu cảng biển vào sáng thứ bảy, nơi họ sẽ công bố TS-09 là mẫu tàu sửa chữa thành công và ký hợp đồng mở rộng trị giá một nghìn hai trăm tỷ đồng.",
+            "Hải Vy nhìn Quân. \"Vậy chúng ta còn bốn mươi tám tiếng.\""
+        ),
+    },
+    {
+        "title": "Chương 4: Đòn Phong Tỏa Và Đêm Ở Kho Vật Tư",
+        "content": p(
+            "Sáng thứ năm, tài khoản ngân hàng của Quân bị phong tỏa tạm thời theo đơn tố cáo anh chiếm đoạt vật tư xưởng. Chủ nhà trọ gõ cửa đòi tiền phòng vì có người gọi báo anh là đối tượng điều tra. Một nhóm phóng viên mạng đứng dưới hẻm, chĩa điện thoại lên ban công chờ anh ló mặt. Những tiếng gọi \"kỹ sư phản bội\" vang lên lẫn trong tiếng xe máy và mùi nước mưa bốc từ cống.",
+            "Hải Vy đưa anh đến văn phòng tạm của Vạn An bằng lối sau. Cô không an ủi nhiều. Cô đặt trước mặt anh ba lựa chọn: kiện dân sự để kéo dài, gửi đơn hành chính để chờ phản hồi, hoặc đột nhập hợp pháp vào kho vật tư bằng quyền kiểm kê của một cổ đông nhỏ trong liên danh cũ mà Vạn An vừa mua lại.",
+            "\"Đột nhập hợp pháp nghe rất Việt Nam.\" Quân cười nhạt.",
+            "\"Không lãng mạn đâu.\" Hải Vy đẩy kính lên. \"Chúng ta đi cùng thừa phát lại, luật sư, đại diện cổ đông và hai camera bodycam. Kha chắc chắn sẽ chặn. Nếu anh mất kiểm soát, chúng ta mất quyền vào kho.\"",
+            "Mười một giờ đêm, đoàn của Vạn An đến cổng phụ xưởng An Hòa. Kha đã đứng chờ sẵn cùng bảo vệ. Gã mặc áo sơ mi trắng, cổ tay đeo đồng hồ vàng, nụ cười bóng bẩy dưới ánh đèn sodium. \"Cô Vy, quỹ của cô mua vài cổ phần lẻ mà tưởng mua cả cái xưởng này sao? Kho vật tư đang niêm phong nội bộ vì có nghi án trộm cắp. Người bị nghi là thằng Quân đứng sau cô đấy.\"",
+            "Hải Vy mở folder, từng văn bản được kẹp tab màu. \"Theo điều lệ công ty và biên bản góp vốn liên danh, cổ đông có quyền kiểm tra vật tư liên quan đến tài sản bảo đảm của gói thầu. Đây là thông báo đã gửi trước sáu giờ. Đây là thừa phát lại. Đây là camera ghi hình liên tục. Anh từ chối thì chúng tôi lập vi bằng ngay tại cổng.\"",
+            "Nụ cười của Kha cứng lại. Mồ hôi rịn trên mép tóc dù gió biển thổi lạnh. Gã nghiêng đầu ra hiệu cho bảo vệ mở cổng. Trong kho, mùi thép ẩm và sơn chống hà bốc lên nồng nặc. Quân đi thẳng đến dãy vật tư ghi mã AH36-B2. Anh dùng đèn pin soi mép tấm thép, nơi lớp sơn mới phủ còn bóng khác thường.",
+            "\"Ở đây.\" Anh nói.",
+            "Dưới lớp sơn, mã nhiệt luyện cũ hiện ra lờ mờ sau khi thừa phát lại lau bằng dung dịch chuyên dụng. Nó không thuộc lô thép được khai báo. Hải Vy đưa mẫu vào túi niêm phong. Kha lao tới định giật lại, nhưng bodycam đã quay rõ từng động tác. Bàn tay gã dừng giữa không trung, các khớp ngón trắng bệch.",
+            "\"Một tấm thép không chứng minh được gì.\" Kha gằn giọng.",
+            "\"Đúng.\" Quân nhìn sâu vào mắt gã. \"Nên tôi sẽ lấy cả mười hai tấm.\"",
+            "Đêm ấy, từng mẫu thép được cắt nhỏ, đánh số, niêm phong. Khi con dấu đỏ cuối cùng ép xuống túi chứng cứ, Quân nghe tiếng thở của Kha nặng dần phía sau. Trận này chưa thắng, nhưng lần đầu tiên, vỏ thép mà gã dựng lên bắt đầu kêu răng rắc."
+        ),
+    },
+    {
+        "title": "Chương 5: Họp Báo Dưới Mũi Cần Cẩu",
+        "content": p(
+            "Sáng thứ bảy, xưởng An Hòa dựng sân khấu ngay dưới mũi cần cẩu lớn nhất. Phông nền in dòng chữ \"Năng lực sửa chữa tàu biển Việt Nam vươn tầm quốc tế\" che gần hết phần thân TS-09. Khách mời có đại diện ngân hàng, nhà thầu logistics, phóng viên địa phương và vài quan chức ngành cảng. Nguyễn Trọng Kha bước lên bục trong tiếng vỗ tay được sắp đặt sẵn.",
+            "Gã nói về niềm tự hào Đà Nẵng, về công nhân ngày đêm bám ụ khô, về gói thầu một nghìn hai trăm tỷ sẽ đưa An Hòa thành trung tâm sửa chữa tàu biển miền Trung. Mỗi câu đều tròn trịa như đã được Mai Chi viết sẵn. Cô đứng bên cánh gà, váy công sở màu kem, mắt thỉnh thoảng liếc về phía cổng như chờ một sự cố.",
+            "Sự cố đến đúng lúc Kha chuẩn bị ký biên bản ghi nhớ với ngân hàng. Cổng xưởng mở ra. Hải Vy bước vào trước, sau cô là Quân, ông Bình, đại diện thừa phát lại và hai kỹ sư giám định độc lập. Không ai hô hào. Chỉ có tiếng giày đi trên nền bê tông ướt vang lên đều đều, khiến đám đông tự động tách ra.",
+            "Kha đặt bút xuống, nụ cười biến mất. \"Bảo vệ đâu? Ai cho kẻ bị sa thải vào đây?\"",
+            "Hải Vy giơ văn bản. \"Cảng vụ Đà Nẵng đã tiếp nhận đơn yêu cầu tạm dừng cấp phép rời cảng cho TS-09. Chúng tôi đề nghị công khai dữ liệu giám định trước khi bất kỳ hợp đồng nào được ký.\"",
+            "Một phóng viên giơ micro. \"Cô có chứng cứ gì ngoài lời tố của một nhân viên cũ?\"",
+            "Quân bước lên. Anh không nhìn Kha, cũng không nhìn Mai Chi. Anh đặt máy siêu âm mối hàn UT-17 lên bàn, bên cạnh là phiếu hiệu chuẩn và USB bọc cao su. Màn hình lớn phía sau sân khấu chuyển từ logo An Hòa sang bản đồ mối hàn khoang B2. Những đường đỏ xuất hiện dọc sống tàu như vết thương dưới da.",
+            "\"Đây là tín hiệu siêu âm gốc ghi lúc 22 giờ 46 phút ngày mười bảy tháng năm.\" Quân nói. \"Mã máy, đầu dò, vị trí quét và chữ ký kỹ thuật số đều khớp với thiết bị của xưởng. Vết rạn không đến từ quy trình hàn của tôi. Nó đến từ tấm thép không đúng chứng chỉ, đã bị mài mã nhiệt luyện.\"",
+            "Ông Bình công bố kết quả soi mẫu. Hàm lượng mangan và carbon lệch khỏi lô AH36 khai báo. Đại diện thừa phát lại chiếu video kho vật tư đêm trước, từng túi mẫu niêm phong hiện rõ trước ống kính. Đám đông bắt đầu xì xào. Một lãnh đạo ngân hàng cúi xuống nói gì đó với trợ lý, mặt tái đi.",
+            "Kha chộp micro. \"Dữ liệu giả! Tất cả là trò dựng chuyện của thằng bị đuổi việc và một quỹ muốn thâu tóm xưởng!\"",
+            "Hải Vy nhấn thêm một file. Camera ụ khô hiện lên. Trong hai mươi bảy phút tưởng đã biến mất, bản sao từ bộ nhớ cục bộ của camera phụ ghi lại Mai Chi và kỹ thuật viên thuê ngoài tháo ổ ghi chính, rồi đưa một cuộn bản vẽ vào phòng vật tư. Mai Chi lùi một bước. Ly nước trên tay cô rơi xuống, vỡ loảng xoảng.",
+            "Kha đứng chết trân. Mồ hôi lạnh chảy thành dòng dưới cổ áo sơ mi trắng. Gã muốn nói tiếp, nhưng môi run đến mức không phát ra tiếng. Tiếng vỗ tay ban nãy đã biến thành tiếng máy ảnh chụp liên hồi, từng ánh flash như mũi hàn đốt thẳng vào mặt gã."
+        ),
+    },
+    {
+        "title": "Chương 6: Cú Lật Từ Bản Vẽ Gia Cường",
+        "content": p(
+            "Kha không đầu hàng ngay. Đó là lý do Quân từng đánh giá gã nguy hiểm. Chỉ ba phút sau khi video camera được chiếu, luật sư của An Hòa tuyên bố file có thể bị can thiệp, mẫu thép có thể bị đánh tráo và bản đồ mối hàn không chứng minh được ai cố ý. Đám đông dao động. Một số phóng viên chuyển tiêu đề livestream từ \"lộ bê bối\" sang \"hai bên tranh cãi\".",
+            "Mai Chi bám lấy cơ hội cuối cùng. Cô bước lên sân khấu, mắt đỏ nhưng giọng cố giữ bình tĩnh. \"Anh Quân từng theo đuổi tôi sau khi chia tay. Anh ấy có động cơ cá nhân để hủy hoại tôi và anh Kha. Những file này đều do anh ấy giữ. Ai bảo đảm anh ấy không sửa chúng?\"",
+            "Câu nói ấy đâm vào Quân đau hơn cả đêm bị đuổi. Không phải vì anh còn yêu cô, mà vì cô dùng ký ức từng có để biến anh thành một kẻ hèn. Anh siết chặt tay, móng bấm vào lòng bàn tay. Hải Vy nhìn thấy, nhưng không ngăn. Cô chỉ đặt bên cạnh anh một tập hồ sơ màu xanh.",
+            "\"Đến lúc dùng bản vẽ đăng ký rồi.\" cô nói khẽ.",
+            "Quân mở tập hồ sơ. Trên màn hình hiện lên bản vẽ gia cường khoang dằn nước B2 do anh lập ba tháng trước, có dấu tiếp nhận của Cục Sở hữu Trí tuệ và timestamp từ hệ thống quản lý tài liệu nội bộ. Bản vẽ này đề xuất thêm hai sườn tăng cứng vì lô thép nhập về có dấu hiệu sai dung sai. Kha đã bác bỏ để tiết kiệm chi phí và kịp tiến độ đấu thầu.",
+            "Tiếp theo là email nội bộ. Người gửi: Phạm Minh Quân. Người nhận: Nguyễn Trọng Kha, Lê Mai Chi, phòng vật tư. Nội dung cảnh báo rõ ràng: không được dùng lô thép chưa có chứng chỉ đối chiếu cho khoang chịu lực. Phía dưới là phản hồi của Kha: \"Không làm chậm tiến độ vì vài con số kỹ thuật. Ai không ký thì tự chịu trách nhiệm.\"",
+            "Luật sư An Hòa tái mặt. Kha giật lấy chai nước, uống một ngụm nhưng nước tràn ra khóe miệng. Bàn tay gã run đến mức nắp chai rơi xuống nền. Những cổ đông nhỏ vốn im lặng bắt đầu đứng lên yêu cầu giải thích.",
+            "Hải Vy không để khoảng trống cho gã thở. Cô công bố thêm biên bản kiểm toán dòng tiền: Công ty Minh Cảng nhận tiền tạm ứng vật tư từ An Hòa, rồi chuyển ba khoản vào tài khoản người thân của Kha dưới dạng \"tư vấn logistics\". Ngân hàng tài trợ gói thầu lập tức yêu cầu tạm dừng giải ngân. Đại diện đối tác Nhật Bản rời khỏi hàng ghế đầu, mặt lạnh như thép tôi.",
+            "Kha quỵ một gối xuống mép sân khấu. Tiếng đầu gối va vào sàn gỗ vang lên cộp. Gương mặt gã xám ngoét, mồ hôi thấm ướt lưng áo. Gã nhìn Quân, giọng khàn đặc: \"Quân, cậu muốn bao nhiêu? Tôi bồi thường. Tôi phục chức. Tôi chia cổ phần.\"",
+            "Quân nhìn người từng bẻ thẻ nhân viên của mình. \"Tôi không bán chữ ký kỹ thuật lần thứ hai. Lần đầu tôi bị ép cũng đã không bán.\"",
+            "Câu nói ấy khiến sân khấu im bặt. Dưới mũi cần cẩu khổng lồ, Nguyễn Trọng Kha lần đầu hiểu rằng thứ hắn làm rạn không chỉ là một con tàu. Hắn đã làm rạn niềm tin của cả một xưởng, và vết nứt đó không thể hàn lại bằng tiền."
+        ),
+    },
+    {
+        "title": "Chương 7: Cảng Vụ Ra Lệnh Niêm Phong",
+        "content": p(
+            "Chiều cùng ngày, Cảng vụ Đà Nẵng ra văn bản tạm dừng cấp phép rời cảng cho TS-09. Cơ quan điều tra kinh tế tiếp nhận hồ sơ về dấu hiệu gian lận vật tư, giả mạo hồ sơ nghiệm thu và vi phạm quy định an toàn hàng hải. Khi hai cán bộ mặc sắc phục bước vào xưởng, tiếng máy cắt, máy hàn, máy mài dần tắt hẳn như một dàn nhạc bị bóp cổ.",
+            "Nguyễn Trọng Kha bị mời làm việc. Gã vẫn cố giữ vẻ bề trên đến phút cuối, nhưng khi cán bộ đọc lệnh niêm phong phòng vật tư và thu giữ máy chủ camera, hai chân gã mềm nhũn. Kha vịn vào mép bàn, ngón tay bấm sâu đến rớm máu. Chiếc đồng hồ vàng trên cổ tay lấp lánh vô duyên dưới ánh đèn xưởng lạnh trắng.",
+            "Mai Chi đứng ở góc phòng, mascara lem thành vệt đen. Cô không bị còng tay ngay, nhưng bị yêu cầu bàn giao laptop và điện thoại. Khi đi ngang qua Quân, cô khựng lại. \"Em chỉ muốn thoát khỏi cảnh nghèo. Anh lúc nào cũng nói đúng quy trình, đúng tiêu chuẩn, đúng đạo đức. Anh có biết sống như vậy mệt thế nào không?\"",
+            "Quân nhìn cô rất lâu. Trong anh có một phần ký ức muốn trả lời dịu dàng hơn, nhưng phần ấy đã bị đêm mưa ở ụ khô rửa sạch. \"Anh biết. Nên anh mới không bắt ai nghèo phải làm sai. Còn em chọn đạp lên mạng người để leo lên, đó không phải là thoát nghèo. Đó là bán mình rẻ hơn một tấm thép lỗi.\"",
+            "Mai Chi bật khóc, nhưng không ai chạy đến đỡ cô. Những người từng sợ Kha nay nhìn cô bằng ánh mắt vừa giận vừa xa lạ. Một bác thợ hàn già nhặt hai mảnh thẻ nhân viên của Quân từ hộp rác bảo vệ, lau sạch rồi đặt lên bàn. \"Tụi chú xin lỗi. Hôm đó tụi chú hèn quá.\"",
+            "Quân cầm hai mảnh thẻ. Lớp nhựa đã nứt, ảnh anh bị xước ngang cằm. Anh không trách họ. Cả đời làm công ăn lương, không phải ai cũng đủ sức đứng trước bão khi bão còn chưa đổi chiều. Nhưng anh cũng không nói câu bỏ qua dễ dãi. Có những im lặng phải được nhớ, để lần sau người ta biết cái giá của việc cúi đầu.",
+            "Hải Vy đưa anh ra ngoài bến cảng. Trời vừa tạnh, ánh hoàng hôn rơi lên mặt nước sông Hàn thành những vệt cam dài. Cô tháo mũ bảo hộ, tóc đen bị gió biển thổi rối. \"Vạn An sẽ lập liên danh mới. Chúng tôi cần một giám đốc kỹ thuật độc lập cho dự án sửa chữa tàu xanh. Lương cao, quyền ký phủ quyết an toàn, và hội đồng sẽ không được can thiệp vào tiêu chuẩn kỹ thuật.\"",
+            "\"Cô tin tôi rồi à?\"",
+            "\"Tôi tin dữ liệu. Nhưng hôm nay tôi cũng tin người giữ dữ liệu đó khi bị dồn đến chân tường.\" Hải Vy nhìn con tàu im lìm trong ụ khô. \"Anh không cần trả lời ngay. Sau một trận như thế này, người ta nên được thở.\"",
+            "Quân bật cười rất khẽ. Lần đầu sau nhiều ngày, tiếng cười không có vị đắng."
+        ),
+    },
+    {
+        "title": "Chương 8: Mối Hàn Dưới Ánh Bình Minh",
+        "content": p(
+            "Một tháng sau, kết luận giám định độc lập được công bố. TS-09 phải thay toàn bộ dãy thép khoang B2 và kiểm tra lại ba khu vực chịu lực khác. Nguyễn Trọng Kha bị khởi tố về hành vi gian lận trong đấu thầu và sử dụng vật tư không đúng hồ sơ kỹ thuật gây nguy cơ mất an toàn nghiêm trọng. Công ty Minh Cảng bị phong tỏa tài khoản. Lê Mai Chi nhận lệnh cấm xuất cảnh để phục vụ điều tra.",
+            "An Hòa mất gói thầu nghìn tỷ. Ngân hàng thu hồi cam kết giải ngân. Các cổ đông bãi nhiệm ban điều hành cũ và chấp nhận phương án tái cấu trúc do Vạn An đề xuất. Điều kiện đầu tiên của Hải Vy rất rõ: mọi hợp đồng sửa chữa tàu biển phải có quyền phủ quyết kỹ thuật độc lập, và chữ ký an toàn không được đặt dưới chỉ tiêu lợi nhuận.",
+            "Sáng ngày Quân quay lại ụ khô, công nhân đứng thành hai hàng nhưng không hô khẩu hiệu. Họ chỉ gật đầu khi anh đi qua. Bác thợ hàn già đưa cho anh một chiếc thẻ mới, dây đeo màu xanh đậm. Trên thẻ ghi: Phạm Minh Quân, Giám đốc Kỹ thuật An toàn Hàng hải. Bên dưới là dòng nhỏ: quyền dừng thi công độc lập.",
+            "Quân đeo thẻ lên ngực. Không ai vỗ tay ầm ĩ, nhưng trong tiếng máy hàn bắt đầu chạy lại, anh nghe thấy một thứ còn chắc hơn tiếng vỗ tay: sự tôn trọng được trả về đúng chỗ. Anh bước xuống khoang B2, nơi tấm thép lỗi đã được cắt bỏ. Ánh bình minh rọi qua miệng ụ khô, chiếu lên mối hàn mới sáng bạc.",
+            "Hải Vy đứng cạnh anh, tay cầm bản hợp đồng liên danh đã ký. \"Gói thầu mới nhỏ hơn ban đầu hai trăm tỷ vì phải trích quỹ an toàn và đào tạo lại công nhân. Hội đồng hơi đau.\"",
+            "\"Đau ít hơn chìm tàu.\" Quân đáp.",
+            "Cô mỉm cười. Không phải nụ cười xã giao trong phòng họp, mà là nụ cười mệt nhưng thật của người vừa đi qua một trận đánh dài. \"Tối nay anh rảnh không? Tôi muốn mời anh ăn mì Quảng. Không phải để cảm ơn, cũng không phải để bàn hợp đồng.\"",
+            "Quân nhìn những vệt nắng trên gò má cô. Anh từng nghĩ sau Mai Chi, lòng mình sẽ giống thép đã tôi quá lửa, cứng nhưng giòn. Nhưng Hải Vy không cố làm tan nó. Cô chỉ đứng bên cạnh, kiểm tra từng dữ kiện, giữ từng đường lui, và để anh tự quyết định khi nào mở cửa.",
+            "\"Nếu không bàn hợp đồng thì tôi rảnh.\" anh nói.",
+            "Ngoài kia, cần cẩu bắt đầu nâng tấm thép mới vào vị trí. Tiếng còi tàu từ xa vọng lại, sâu và dài. Quân cúi xuống kiểm tra đường hàn đầu tiên của ca sáng. Mối hàn đẹp không phải vì nó sáng dưới nắng, mà vì dưới lớp sáng ấy là đủ nhiệt, đủ chiều sâu và không che giấu bọt khí nào. Cuộc đời anh cũng vậy. Sau tất cả những gì bị bẻ gãy, anh không cần một tấm thẻ cũ được dán lại. Anh tự hàn cho mình một đường sống mới, kín nước, chịu lực, và không còn để kẻ nào ký thay."
+        ),
+    },
+]
+
+EXTRA_SCENES = [
+    [
+        "Khi bảo vệ kéo va li dụng cụ của Quân ra khỏi phòng thay đồ, chiếc máy đo khe hở mối hàn rơi xuống nền, bật nắp pin. Một công nhân trẻ tên Tín cúi xuống định nhặt giúp, nhưng ánh mắt Kha quét qua khiến cậu ta đứng khựng lại. Quân tự cúi xuống nhặt từng viên pin, từng đầu đo nhỏ, bỏ vào túi áo như nhặt lại những mảnh danh dự bị giẫm nát. Anh nghe sau lưng có tiếng cười khẩy của vài người mới vào xưởng, những kẻ chưa từng thức trắng với anh trong khoang tàu nóng hầm hập mùi sơn epoxy.",
+        "Bên ngoài cổng, mưa tạt ngang mặt. Quân mở điện thoại, thấy nhóm chat kỹ thuật đã xóa tên anh. Những tin nhắn cuối cùng là ảnh chụp quyết định sa thải và một câu của Kha: `Ai liên lạc với Phạm Minh Quân sẽ bị xem là tiếp tay phá hoại.` Anh đứng dưới bóng đèn cổng vàng vọt, nhìn lại ụ khô nơi mình đã làm mười hai năm. Từ cậu thợ hàn học việc bị bỏng bàn tay đến kỹ sư được giao chữ ký kín nước, tất cả bị gói trong một đêm mưa. Nỗi nhục đủ nặng, nhưng nó cũng làm anh tỉnh táo đến lạ."
+    ],
+    [
+        "Hải Vy không nhận USB rồi lập tức hứa giúp. Cô gọi hai cộng sự vào phòng, yêu cầu một người quay lại toàn bộ quá trình mở file, một người ghi biên bản tình trạng thiết bị. Cô hỏi Quân từng câu nhỏ đến mức khó chịu: ai có quyền vào phòng máy đo, đầu dò siêu âm hiệu chuẩn lần cuối ngày nào, khi xuất dữ liệu có dùng tài khoản cá nhân hay tài khoản ca trực. Quân trả lời hết, không né một chi tiết nào. Càng hỏi, cô càng thấy người đàn ông trước mặt không kể chuyện theo kiểu nạn nhân. Anh kể như một bản báo cáo kỹ thuật biết đau.",
+        "Đến gần nửa đêm, khi đội kiểm toán tạm nghỉ, Hải Vy đặt trước mặt Quân một cốc trà gừng. Cô nói quỹ Vạn An từng mất một tàu hàng nhỏ ngoài khơi Bình Thuận vì một chữ ký nghiệm thu vội. Ba thủy thủ chết, hồ sơ sau đó bị chìm trong những câu xin lỗi đẹp đẽ. Từ hôm ấy, cô không đầu tư vào bất kỳ dự án hàng hải nào nếu quyền an toàn bị đặt sau tiến độ. Quân cầm cốc trà nóng, lần đầu cảm thấy câu chuyện của mình không chỉ là chuyện bị phản bội. Nó chạm vào một vết thương lớn hơn của cả ngành."
+    ],
+    [
+        "Đêm đó, Quân cùng ông Bình dựng lại timeline trên bảng kính. Từ lúc lô thép Minh Cảng vào kho, lúc Mai Chi đổi mã vật tư trong file đấu thầu, đến lúc camera chết đúng khoảng xe nâng đi qua cổng phụ. Mỗi mốc được ghi bằng bút đỏ, bên dưới là nguồn chứng cứ: email, log UPS, phiếu cân, video, chữ ký nhận hàng. Nhìn bảng kính kín đặc mũi tên, Quân mới thấy thủ đoạn của Kha không phải cơn bốc đồng. Đó là một mạng lưới đã được chuẩn bị, chỉ chờ một người như anh đủ nguyên tắc để bị đổ lỗi.",
+        "Hải Vy yêu cầu bổ sung một nhân chứng nội bộ, nhưng không ai dám ra mặt. Quân gọi cho Tín, cậu công nhân trẻ từng định nhặt dụng cụ giúp anh. Đầu dây bên kia im rất lâu. Cuối cùng Tín nói vợ cậu mới sinh, hợp đồng của cậu còn thử việc, cậu không thể mất việc. Quân không ép. Anh chỉ nhắn cho Tín một tấm ảnh vết rạn ở khoang B2 và dòng chữ: `Nếu tàu ra biển, người trả giá không phải chỉ có tôi.` Mười phút sau, Tín gửi lại vị trí kho phụ nơi giấu cuộn bản vẽ bị tráo."
+    ],
+    [
+        "Trong kho vật tư, không khí căng đến mức tiếng máy quay bodycam cũng nghe rõ. Mỗi lần Quân chỉ vào một dấu vết, luật sư của An Hòa lại chen vào hỏi căn cứ nào, quy trình nào, điều khoản nào. Hải Vy trả lời thay anh bằng văn bản, lạnh và gọn. Quân nhận ra cô đã chuẩn bị không chỉ để thắng một cuộc tranh luận, mà để biến từng lời cản trở của đối phương thành bằng chứng về sự che giấu. Đó là kiểu thông minh không phô trương, nhưng càng đi càng siết chặt.",
+        "Khi mẫu thép thứ tám được niêm phong, Tín bất ngờ xuất hiện ở cửa kho. Mặt cậu trắng bệch, tay cầm một phong bì nylon đựng bản photo phiếu xe nâng đêm mất camera. Cậu không dám nhìn Kha, chỉ run giọng nói với thừa phát lại rằng mình nhặt được trong sọt giấy vụn phòng điều độ. Kha gầm lên gọi cậu là thằng ăn cháo đá bát. Tín lùi một bước, nhưng không bỏ chạy. Cảnh đó khiến Quân thấy cổ họng mình nghẹn lại. Có những người cần thêm thời gian để can đảm, nhưng khi họ bước tới, bước ấy đáng được ghi nhận."
+    ],
+    [
+        "Đám đông lúc đầu chỉ đến để xem một lễ ký hợp đồng. Giờ họ bị buộc phải nhìn vào phần bụng tối của ngành đóng tàu: những con số dung sai bị làm mờ, những tấm thép bị tráo, những chữ ký an toàn bị biến thành món hàng. Một bác thợ cẩu đứng dưới sân khấu tháo mũ bảo hộ, lẩm bẩm rằng con trai ông cũng đi biển. Câu nói nhỏ ấy lan qua đám công nhân nhanh hơn mọi khẩu hiệu. Người ta có thể im lặng trước chuyện đấu đá chức vụ, nhưng khó im lặng khi hiểu con tàu lỗi có thể chở người thân của chính mình.",
+        "Mai Chi cố giữ mặt lạnh, nhưng video camera phụ càng chạy, vai cô càng run. Đến đoạn cô nhận cuộn bản vẽ từ kỹ thuật viên thuê ngoài, cô đưa tay bám mép bàn, móng tay cào lên lớp gỗ laminate thành tiếng ken két. Quân không thấy hả hê. Anh thấy một khoảng trống buồn bã. Người từng cùng anh ăn mì gói bên bản vẽ giờ đứng trong ánh flash như một nhân chứng cho chính sự lựa chọn của mình. Sảng khoái không phải vì cô gục, mà vì sự thật cuối cùng đã có hình hài."
+    ],
+    [
+        "Bản vẽ gia cường là nước cờ Kha không ngờ nhất, bởi gã luôn xem những người kỹ thuật là thợ làm thuê, không phải người biết bảo vệ trí tuệ của mình. Quân đã đăng ký bản vẽ không phải để tranh công, mà vì ông Bình từng dạy anh rằng trong ngành này, một ý tưởng đúng nếu không có dấu thời gian sẽ bị kẻ khác biến thành ý kiến miệng. Khi con dấu tiếp nhận hiện lên màn hình, nhiều kỹ sư trẻ dưới sân khấu nhìn nhau. Họ lần đầu thấy một bản vẽ kỹ thuật có thể trở thành thanh kiếm.",
+        "Hải Vy tiếp tục bóc dòng tiền bằng giọng đều đều. Mỗi khoản chuyển, mỗi hóa đơn tư vấn, mỗi lần rút tiền mặt đều được đặt cạnh lịch nhập vật tư. Không có lời chửi, không có kết luận phô trương, chỉ có những con số tự xếp thành hình một cái bẫy. Kha càng nghe càng cúi thấp đầu. Đến khoản cuối cùng, gã đưa tay nới cà vạt nhưng không kéo nổi. Mồ hôi làm cổ áo dính vào da. Vẻ chủ xưởng oai phong ban sáng bị lột từng lớp, để lộ một kẻ tham lam đang sợ tiếng còng số tám hơn bất cứ thứ gì."
+    ],
+    [
+        "Sau khi cơ quan chức năng rời đi, xưởng tàu im lặng khác thường. Không còn tiếng Kha quát tháo, không còn tiếng loa nội bộ hối tiến độ. Quân đi ngang dãy tủ đồ cũ của mình, thấy ai đó đã đặt lại chiếc găng hàn cháy sém anh bỏ quên. Bên trên có mảnh giấy nhỏ: `Anh Quân, tụi em xin lỗi.` Không ký tên. Anh gấp mảnh giấy bỏ vào túi. Lời xin lỗi muộn không xóa được đêm mưa, nhưng nó là dấu hiệu đầu tiên cho thấy nỗi sợ đã đổi chủ.",
+        "Hải Vy đưa anh xem dự thảo cơ chế an toàn mới. Không chỉ là chức danh cho đẹp, nó quy định mọi mối hàn quan trọng phải có hai lớp kiểm định, dữ liệu máy đo tự động đẩy lên kho lưu trữ không thể sửa, và bất kỳ kỹ sư nào cũng có quyền gửi cảnh báo vượt cấp mà không bị sa thải trong bảy ngày điều tra. Quân đọc rất chậm. Đây mới là phần thưởng khiến anh thấy nhẹ người: không phải ghế cao, mà là một hệ thống khiến người sau không phải đơn độc như anh."
+    ],
+    [
+        "Buổi nghiệm thu lại của TS-09 diễn ra không ồn ào. Quân tự tay đặt đầu dò siêu âm lên mối hàn mới, mắt nhìn đường tín hiệu chạy ổn định trên màn hình. Tín đứng cạnh ghi biên bản, tay vẫn còn run nhưng chữ đã thẳng hơn trước. Ông Bình ngồi trên ghế nhựa, uống trà đặc, thỉnh thoảng gật đầu. Hải Vy không chen vào kỹ thuật. Cô đứng xa hơn một chút, để những người từng bị ép im lặng được tự nói bằng chuyên môn của họ.",
+        "Tối hôm đó, quán mì Quảng bên đường Hoàng Diệu đông khách. Quân và Hải Vy ngồi ở chiếc bàn inox gần cửa, không ai nhắc đến Kha hay gói thầu trong gần mười phút đầu. Cô kể chuyện hồi nhỏ sợ tiếng còi tàu vì cha đi biển lâu ngày mới về. Anh kể lần đầu bị bỏng hàn đến phồng cả lòng bàn tay mà vẫn giấu mẹ. Hai câu chuyện chẳng có gì hào nhoáng, nhưng thật. Sau quá nhiều ngày chỉ sống bằng chứng cứ và phản đòn, sự bình thường ấy giống một phần thưởng lặng lẽ."
+    ],
+]
+
+for chapter, extras in zip(chapters, EXTRA_SCENES):
+    chapter["content"] = chapter["content"] + "\n" + p(*extras)
+
+MORE_SCENES = {
+    0: "Trước khi rời cổng, Quân quay lại chụp một tấm ảnh vũng dầu nơi thẻ anh bị bẻ gãy. Không phải để đăng lên mạng than thân, mà để nhắc mình nhớ chính xác điểm bắt đầu của trận này.",
+    1: "Trước khi chia tay, Hải Vy yêu cầu Quân viết lại toàn bộ quy trình phát hiện lỗi bằng tay, không dùng thuật ngữ thừa. Cô nói nếu một thẩm phán không học kỹ thuật vẫn hiểu được nguy cơ, hồ sơ mới đủ sức đi xa. Quân ngồi thêm hai giờ, biến các đường tín hiệu khô khan thành một chuỗi nhân quả rõ ràng: thép sai, hàn sai, kiểm định bị che, tàu ra biển là rủi ro sinh mạng.",
+    2: "Sáng hôm sau, mẹ Quân gửi cho anh một tin nhắn rất ngắn: `Má tin con.` Chỉ bốn chữ ấy khiến anh ngồi lặng trước màn hình gần một phút. Bên ngoài, truyền thông bẩn vẫn réo tên anh, nhưng trong lòng anh có một điểm neo mới. Người ta có thể phong tỏa tài khoản, xóa thẻ nhân viên, bôi bẩn danh dự; họ không thể xóa được sự thật đã được anh lưu thành từng bản hash.",
+    3: "Khi đoàn rời kho, Hải Vy yêu cầu niêm phong cả sổ giao ca của bảo vệ. Trong đó có một dòng bị gạch xóa bằng bút bi đen, nhưng dưới ánh đèn xiên vẫn đọc được biển số xe tải vào cổng lúc nửa đêm. Quân ghi lại biển số ấy vào sổ tay. Một sợi dây nữa nối từ tấm thép lỗi đến bàn tay của Kha.",
+    5: "Đại diện đối tác Nhật cúi đầu rất nhẹ với Quân trước khi rời sân khấu. Cái cúi đầu ấy không phải chúc mừng, mà là sự công nhận thầm lặng giữa những người hiểu tiêu chuẩn an toàn. Quân đáp lại bằng một cái gật đầu ngắn. Sau nhiều ngày bị gọi là thợ hàn thuê, chỉ một nghi thức nhỏ ấy cũng đủ trả lại cho anh tư cách của một kỹ sư.",
+    6: "Tối đó, Quân về phòng trọ lấy lại vài cuốn sách kỹ thuật. Chủ nhà ngượng ngùng nói nếu anh muốn ở tiếp thì không cần đặt cọc thêm. Anh cảm ơn nhưng từ chối. Không phải vì giận, mà vì anh hiểu mình đã bước qua một cánh cửa khác. Có những nơi từng che mưa cho mình, nhưng không còn đủ rộng cho đoạn đường sắp tới.",
+    7: "Khi bát mì Quảng được đặt xuống, Hải Vy gắp cho anh một miếng bánh tráng giòn rồi khựng lại như nhận ra hành động ấy hơi thân mật. Quân giả vờ không thấy, chỉ cúi đầu ăn. Ngoài phố, tiếng xe chạy qua bình thường đến mức lạ lẫm. Sau một trận vả mặt ồn ào, thứ khiến anh muốn giữ lại nhất lại là khoảnh khắc không cần chứng minh gì với ai."
+}
+
+for idx, extra in MORE_SCENES.items():
+    chapters[idx]["content"] = chapters[idx]["content"] + "\n" + p(extra)
+
+chapters[4]["content"] += "\n" + p("Một phóng viên trẻ đứng gần hàng rào thì thầm vào micro rằng đây không còn là drama nội bộ công ty. Đây là câu hỏi về việc ai được quyền quyết định một con tàu đủ an toàn để ra biển.")
+chapters[6]["content"] += "\n" + p("Anh cũng gửi cho mẹ một bức ảnh thẻ mới, không giải thích dài. Mẹ nhắn lại: `Về ăn cơm khi rảnh.` Quân đọc đi đọc lại, thấy mắt mình cay hơn cả lúc đứng trước Kha.")
+chapters[7]["content"] += "\n" + p("Sáng mai còn rất nhiều việc: đào tạo lại đội hàn, sửa quy trình lưu dữ liệu, ký từng biên bản mới. Nhưng tối nay, anh cho phép mình đặt đôi đũa xuống chậm hơn một chút.")
+
+
+def main():
+    payload = {
+        "title": TITLE,
+        "author": AUTHOR,
+        "genre": "Sảng Văn",
+        "intro": INTRO,
+        "cover_prompt": COVER_PROMPT,
+        "chapters": chapters,
+    }
+    root = Path(__file__).resolve().parents[2]
+    out = root / "pending_novel.json"
+    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    archive = Path(__file__).with_name("pending_novel_shipyard_v13_gold.json")
+    archive.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Wrote {out}")
+    print(f"Wrote {archive}")
+    for i, chapter in enumerate(chapters, 1):
+        words = len(chapter["content"].split())
+        print(f"{i:02d}. {chapter['title']} - {words} words")
+
+
+if __name__ == "__main__":
+    main()

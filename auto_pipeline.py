@@ -57,17 +57,19 @@ def generate_novel(idea):
     setting = idea["setting"]
     author = idea["author"]
     
-    system_prompt = """Bạn là bậc thầy tiểu thuyết mạng V12.
+    system_prompt = """Bạn là bậc thầy tiểu thuyết mạng Chuẩn Vàng V13 cho doctieuthuyet.com.
     QUY TẮC BẮT BUỘC (CRITICAL):
     1. TÁCH MỖI CÂU THÀNH 1 HÀNG. Mỗi câu (hoặc lời thoại) phải nằm trong 1 thẻ <p> riêng biệt. Không được viết đoạn văn dài. Xuống dòng liên tục.
-    2. CHI TIẾT TẬN CÙNG: Khai thác sâu vào nội tâm nhân vật, suy nghĩ thầm kín. Các đoạn hội thoại dài, có chiều sâu, tranh luận nảy lửa. Mô tả bối cảnh xung quanh thật chi tiết (quang cảnh, mùi vị, âm thanh, trang phục). Tuyệt đối không đẩy nhanh tình tiết. Một sự kiện nhỏ cũng phải mô tả kỹ lưỡng để kéo dài chương. Cố gắng đạt 1500 từ.
-    3. Thể loại: Sảng Văn (vả mặt, lật kèo), cực kỳ giật gân cuốn hút.
-    4. Bối cảnh Việt Nam 100% chân thực (nhắc đến tên địa danh, cơ quan, ngân hàng cụ thể).
-    5. Show, Don't Tell: Mô tả hành động, vật lý chi tiết, không dùng từ "kinh hoàng", "vô biên", "sốc".
+    2. CHI TIẾT TẬN CÙNG: Khai thác sâu nội tâm, hội thoại, bối cảnh, mùi vị, âm thanh, trang phục và hậu quả cụ thể. Tuyệt đối không đẩy nhanh tình tiết. Mỗi chương mục tiêu 1000-1500 từ.
+    3. Thể loại: Sảng Văn / Vả Mặt, có 3-5 vòng phản kích tăng cấp, không thắng quá dễ.
+    4. Bối cảnh Việt Nam 100% chân thực: địa danh, cơ quan, ngân hàng, giấy tờ, chứng cứ và quy trình pháp lý/kinh doanh cụ thể.
+    5. Show, Don't Tell: Mô tả hành động, vật lý chi tiết, không lạm dụng "kinh hoàng", "vô biên", "sốc".
+    6. Chống template: mỗi truyện phải có story_dna riêng gồm nghề nghiệp, vật chứng trung tâm, 5 set-piece riêng, khủng hoảng giữa truyện và kiểu kết riêng.
+    7. Cover prompt phải dành cho ChatGPT Image Generation: tiếng Anh, photorealistic/cinematic, người Việt thật, ảnh 1:1, không chữ, không watermark.
     """
     
     print(f"Generating Clickbait Title based on hint: {title}")
-    title_prompt = f"""Tạo MỘT (1) tiêu đề truyện Sảng Văn cực kỳ clickbait, dài, giật gân, vả mặt. KHÔNG dùng lại title_hint ban đầu.
+    title_prompt = f"""Tạo MỘT (1) tiêu đề truyện Sảng Văn cực kỳ clickbait, dài 12-22 từ tiếng Việt, có đủ nhục ban đầu -> cú lật -> payoff/vả mặt. KHÔNG dùng lại title_hint ban đầu.
     Gợi ý ban đầu (title_hint): {title}
     Theme: {theme}
     Bối cảnh: {setting}
@@ -79,7 +81,7 @@ def generate_novel(idea):
     print(f"-> CLICKBAIT TITLE: {title}")
     
     print(f"Generating Outline for: {title}")
-    outline_prompt = f"""Tạo dàn ý 8 chương cho truyện:
+    outline_prompt = f"""Tạo dàn ý 8-15 chương cho truyện:
     Tiêu đề: {title}
     Theme: {theme}
     Nam chính: {protagonist}
@@ -89,24 +91,46 @@ def generate_novel(idea):
     Yêu cầu:
     - Chương 1: Bị sỉ nhục, dồn vào đường cùng.
     - Chương 4-5: Khủng hoảng cực đại.
-    - Chương 7: Lật kèo bằng chứng cứ/logic/tiền tài.
-    - Chương 8: Kết viên mãn, tình cảm chân thành.
+    - Phải có 3-5 vòng vả mặt tăng cấp.
+    - Giữa truyện phải có khủng hoảng thật: đình chỉ, phong tỏa, mất đối tác, truyền thông bẩn, hoặc bẫy pháp lý.
+    - Lật kèo bằng chứng cứ nghề nghiệp/pháp lý/kinh doanh cụ thể.
+    - Kết truyện có trả giá rõ cho phản diện và một cảnh tình cảm/chữa lành đủ thuyết phục.
+    - Trước danh sách chương, tạo `story_dna` riêng để chống trùng template.
     
     Trả về định dạng JSON (chỉ có JSON, không markdown):
-    [
-      {{"chap_num": 1, "title": "Chương 1: ...", "outline": "..."}}, ...
-    ]
+    {{
+      "story_dna": {{
+        "profession_world": "...",
+        "central_evidence": "...",
+        "unique_set_pieces": ["...", "...", "...", "...", "..."],
+        "midpoint_crisis": "...",
+        "relationship_signature": "...",
+        "ending_signature": "..."
+      }},
+      "cover_prompt": "Square 1:1 photorealistic Vietnamese web novel cover...",
+      "outlines": [
+        {{"chap_num": 1, "title": "Chương 1: ...", "outline": "..."}}, ...
+      ]
+    }}
     """
     outline_res = call_openai(system_prompt, outline_prompt)
     try:
         outline_res = outline_res.replace('```json', '').replace('```', '').strip()
-        outline = json.loads(outline_res)
+        outline_payload = json.loads(outline_res)
+        if isinstance(outline_payload, list):
+            outline = outline_payload
+            story_dna = {}
+            generated_cover_prompt = ""
+        else:
+            outline = outline_payload["outlines"]
+            story_dna = outline_payload.get("story_dna", {})
+            generated_cover_prompt = outline_payload.get("cover_prompt", "")
     except:
         print("Failed to parse outline, retrying...")
         return None
         
     print(f"Generating Intro...")
-    intro_prompt = f"""Dựa trên truyện: {title}. Viết Intro (đoạn giới thiệu ngắn) khoảng 100-150 từ, bọc trong thẻ <p>. Đoạn đầu là 1 câu trích dẫn cực sốc in đậm <strong>. Tách mỗi câu thành 1 thẻ <p>."""
+    intro_prompt = f"""Dựa trên truyện: {title}. Viết Intro 3-5 đoạn HTML ngắn, hook mạnh trong 2 câu đầu. Đoạn đầu là 1 câu trích dẫn sỉ nhục cực sốc in đậm <p><strong>...</strong></p>. Hứa hẹn vả mặt tăng cấp và bằng chứng lật kèo, không viết lan man."""
     intro = call_openai(system_prompt, intro_prompt)
     intro = intro.replace('```html', '').replace('```', '').strip()
     
@@ -114,6 +138,7 @@ def generate_novel(idea):
     for chap in outline:
         print(f"Generating Chapter {chap['chap_num']}...")
         chap_prompt = f"""Viết chi tiết nội dung {chap['title']}.
+        Story DNA chống trùng: {json.dumps(story_dna, ensure_ascii=False)}
         Dàn ý chương này: {chap['outline']}
         
         LUẬT TỐI THƯỢNG:
@@ -137,7 +162,7 @@ def generate_novel(idea):
         "author": author,
         "genre": "Sảng Văn",
         "intro": intro,
-        "cover_prompt": f"masterpiece, highly detailed book cover, anime illustration style, Vietnamese setting, {setting}, vivid cinematic lighting",
+        "cover_prompt": generated_cover_prompt or f"Square 1:1 photorealistic Vietnamese web novel cover, real human actors, cinematic movie poster, {setting}, a wronged Vietnamese protagonist preparing a legal and business comeback, dramatic conflict visible, dark top 30 percent for title readability, high contrast lighting, no text, no watermark.",
         "chapters": chapters
     }
     return novel_data

@@ -1,0 +1,717 @@
+[
+  {
+    "story_id": 2710,
+    "old_title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+    "new_title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+    "title_changed": false,
+    "chapters_seen": 0,
+    "chapters_updated": [],
+    "issue": "Tên truyện dài (dễ vỡ layout/SEO); Số chương ít (0/8 chương, cần bồi thêm chương)."
+  },
+  {
+    "story_id": 2703,
+    "old_title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+    "new_title": "Giáo Sư Đuổi Học Trò Ra Khỏi Lớp Vì Dốt, Học Trò Đó Là Tác Giả Giáo Trình Giáo Sư Đang Dạy",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Chương 1 chưa bật hook thoại/hành động trong 1.200 ký tự đầu.; Nhiều chương ngắn (8/8 chương dưới 800 từ), đọc sẽ giống tóm tắt.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Chương kết ngắn, cao trào dễ bị xử vội.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2696,
+    "old_title": "Kẻ Khinh Bỉ Tôi, Tôi Đáp Trả Bằng Chiến Thắng",
+    "new_title": "Kẻ Khinh Bỉ Tôi, Tôi Đáp Trả Bằng Chiến Thắng",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [],
+    "issue": "Mô tả hơi mỏng, chưa đủ lời hứa cảm xúc.; Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Chương kết ngắn, cao trào dễ bị xử vội.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2689,
+    "old_title": "Bác Sĩ Thực Tập Chống Tham Nhũng Y Tế",
+    "new_title": "Bác Sĩ Thực Tập Chống Tham Nhũng Y Tế",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [],
+    "issue": "Chương 1 chưa bật hook thoại/hành động trong 1.200 ký tự đầu.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2682,
+    "old_title": "Kẻ Nghèo Hèn Lật Kèo Tỷ Đô: Giây Phút Định Mệnh",
+    "new_title": "Kẻ Nghèo Hèn Lật Kèo Tỷ Đô: Giây Phút Định Mệnh",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [],
+    "issue": "Mô tả hơi mỏng, chưa đủ lời hứa cảm xúc.; Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2675,
+    "old_title": "Vô Địch Quốc Gia: Từ Chân Lau Dọn Đến Vinh Quang",
+    "new_title": "Vô Địch Quốc Gia: Từ Chân Lau Dọn Đến Vinh Quang",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2668,
+    "old_title": "Cô Vợ Hào Môn Khinh Tôi, Tôi Là Chủ Tịch Tập Đoàn Thép",
+    "new_title": "Cô Vợ Hào Môn Khinh Tôi, Tôi Là Chủ Tịch Tập Đoàn Thép",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [],
+    "issue": "Mô tả hơi mỏng, chưa đủ lời hứa cảm xúc.; Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2658,
+    "old_title": "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp",
+    "new_title": "Chàng Rể Ngọc Linh Lật Kèo Cứu Bị Cướp",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [],
+    "issue": "Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2606,
+    "old_title": "Chàng Rể Vạch Trần Âm Mưu Gia Tộc Trầm Hương",
+    "new_title": "Chàng Rể Vạch Trần Âm Mưu Gia Tộc Trầm Hương",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4513,
+      4517,
+      4510
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2587,
+    "old_title": "Thiên Tài Cầu Đường: Kỹ Sư Bị Sa Thải Đối Đầu Với Kẻ Cướp Bản Quyền",
+    "new_title": "Thiên Tài Cầu Đường: Kỹ Sư Bị Sa Thải Đối Đầu Với Kẻ Cướp Bản Quyền",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4107,
+      4110
+    ],
+    "issue": "Chương 1 chưa bật hook thoại/hành động trong 1.200 ký tự đầu.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.."
+  },
+  {
+    "story_id": 2573,
+    "old_title": "Đế Chế Gốm Sứ Bát Tràng: Phản Bội và Bùng Nổ",
+    "new_title": "Đế Chế Gốm Sứ Bát Tràng: Phản Bội và Bùng Nổ",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4122,
+      4115,
+      4118
+    ],
+    "issue": "Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.; Tên chương dùng nhiều cụm chung, chưa tạo cảm giác mỗi chương có sự kiện riêng.."
+  },
+  {
+    "story_id": 2561,
+    "old_title": "Ngọc Hoàng Tôm Hùm: Trận Chiến Khốc Liệt Giữa Ngư Dân Và Thương Lái",
+    "new_title": "Ngọc Hoàng Tôm Hùm: Trận Chiến Khốc Liệt Giữa Ngư Dân Và Thương Lái",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4126,
+      4130
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Tên chương dùng nhiều cụm chung, chưa tạo cảm giác mỗi chương có sự kiện riêng.."
+  },
+  {
+    "story_id": 2549,
+    "old_title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ",
+    "new_title": "Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4134,
+      4138,
+      4131
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2517,
+    "old_title": "Thiên Tài Fintech: Lật Kèo Tại PayBlock",
+    "new_title": "Thiên Tài Fintech: Lật Kèo Tại PayBlock",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4142,
+      4139,
+      4146
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.; Tên chương dùng nhiều cụm chung, chưa tạo cảm giác mỗi chương có sự kiện riêng.."
+  },
+  {
+    "story_id": 2508,
+    "old_title": "Bảo Vệ Quèn Là Võ Thần: Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+    "new_title": "Bảo Vệ Quèn Là Võ Thần: Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4154,
+      4147,
+      4150
+    ],
+    "issue": "Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2497,
+    "old_title": "Công Thức Thuốc Bị Cướp: Bẫy IPO Dược Phẩm Nghìn Tỷ",
+    "new_title": "Công Thức Thuốc Bị Cướp: Bẫy IPO Dược Phẩm Nghìn Tỷ",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4158,
+      4162,
+      4155
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2489,
+    "old_title": "Người Thừa Kế Trăm Tỷ Giả Nghèo: Thử Lòng Đại Gia",
+    "new_title": "Người Thừa Kế Trăm Tỷ Giả Nghèo: Thử Lòng Đại Gia",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4166,
+      4170,
+      4163
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2482,
+    "old_title": "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn",
+    "new_title": "Vương Quốc Nước Mắm Truyền Thống Phú Quốc: Chàng Rể Ẩn Thế Vực Dậy Quốc Hồn",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4174,
+      4178,
+      4171
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2475,
+    "old_title": "Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
+    "new_title": "Trọng Sinh 2008: Vua Đất Đông Anh Thiết Lập Đế Chế",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4182,
+      4186,
+      4179
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2465,
+    "old_title": "Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+    "new_title": "Võ Thần Đất Cảng: Vệ Sĩ Ẩn Thân Phá Bẫy Buôn Lậu 500 Tỷ Cảng Đình Vũ",
+    "title_changed": false,
+    "chapters_seen": 11,
+    "chapters_updated": [
+      4196,
+      4189,
+      4195,
+      4197,
+      4187,
+      4188,
+      4190,
+      4191,
+      4192,
+      4193,
+      4194
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Chương 1 chưa bật hook thoại/hành động trong 1.200 ký tự đầu.; Nhiều chương ngắn (11/11 chương dưới 800 từ), đọc sẽ giống tóm tắt.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Chương kết ngắn, cao trào dễ bị xử vội.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2457,
+    "old_title": "Nguyễn Tấn Đạt: Chàng Rể Bùn Lầy Lật Kèo Vườn Sầu Riêng Trăm Tỷ",
+    "new_title": "Nguyễn Tấn Đạt: Chàng Rể Bùn Lầy Lật Kèo Vườn Sầu Riêng Trăm Tỷ",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4201,
+      4198,
+      4205
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2448,
+    "old_title": "Cuộc Chiến Sinh Tử Của Trà Ô Long Hữu Cơ Việt",
+    "new_title": "Cuộc Chiến Sinh Tử Của Trà Ô Long Hữu Cơ Việt",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4213,
+      4206,
+      4209
+    ],
+    "issue": "Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.; Tên chương dùng nhiều cụm chung, chưa tạo cảm giác mỗi chương có sự kiện riêng.."
+  },
+  {
+    "story_id": 2313,
+    "old_title": "Cướp Mã Nguồn Nghìn Tỷ, Kích Hoạt Bẫy Chôn Vùi Tập Đoàn",
+    "new_title": "Cướp Mã Nguồn Nghìn Tỷ, Kích Hoạt Bẫy Chôn Vùi Tập Đoàn",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4214,
+      4217,
+      4221
+    ],
+    "issue": "Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2289,
+    "old_title": "Cuộc Chiến Nghệ Thuật Tại Nhà Hát Phương Nam",
+    "new_title": "Cuộc Chiến Nghệ Thuật Tại Nhà Hát Phương Nam",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4225,
+      4229,
+      4222
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.; Tên chương dùng nhiều cụm chung, chưa tạo cảm giác mỗi chương có sự kiện riêng.."
+  },
+  {
+    "story_id": 2279,
+    "old_title": "Vương Quốc Bất Động Sản: Cuộc Chiến Sinh Tử",
+    "new_title": "Vương Quốc Bất Động Sản: Cuộc Chiến Sinh Tử",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4230,
+      4237
+    ],
+    "issue": "Chương 1 chưa bật hook thoại/hành động trong 1.200 ký tự đầu.; Chương kết ngắn, cao trào dễ bị xử vội.; Tên chương dùng nhiều cụm chung, chưa tạo cảm giác mỗi chương có sự kiện riêng.."
+  },
+  {
+    "story_id": 2269,
+    "old_title": "Đế Chế Dệt May Bình Thịnh: Chiến Tranh Tài Chính",
+    "new_title": "Đế Chế Dệt May Bình Thịnh: Chiến Tranh Tài Chính",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4238,
+      4241,
+      4245
+    ],
+    "issue": "Mô tả hơi mỏng, chưa đủ lời hứa cảm xúc.; Chương 1 chưa bật hook thoại/hành động trong 1.200 ký tự đầu.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.; Tên chương dùng nhiều cụm chung, chưa tạo cảm giác mỗi chương có sự kiện riêng.."
+  },
+  {
+    "story_id": 2259,
+    "old_title": "Cuộc Chiến Bánh Mì: Bảo Vệ Di Sản Ẩm Thực Hội Nguyên",
+    "new_title": "Cuộc Chiến Bánh Mì: Bảo Vệ Di Sản Ẩm Thực Hội Nguyên",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4246,
+      4249,
+      4253
+    ],
+    "issue": "Chương 1 chưa bật hook thoại/hành động trong 1.200 ký tự đầu.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.; Tên chương dùng nhiều cụm chung, chưa tạo cảm giác mỗi chương có sự kiện riêng.."
+  },
+  {
+    "story_id": 2227,
+    "old_title": "Thiên Tài Lập Trình: Đà Lạt Sương Mù và Kế Hoạch Lật Đổ Tập Đoàn Tài Chính",
+    "new_title": "Thiên Tài Lập Trình: Đà Lạt Sương Mù và Kế Hoạch Lật Đổ Tập Đoàn Tài Chính",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4273,
+      4277,
+      4270
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2217,
+    "old_title": "Bóng Tối Điện Lực Vạn Thịnh: Cuộc Chiến Chống Tham Nhũng",
+    "new_title": "Bóng Tối Điện Lực Vạn Thịnh: Cuộc Chiến Chống Tham Nhũng",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4281,
+      4278,
+      4285
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2207,
+    "old_title": "Thuyền Trưởng Cảng Đà Thành: Cuộc Chiến Bên Bến Cả",
+    "new_title": "Thuyền Trưởng Cảng Đà Thành: Cuộc Chiến Bên Bến Cả",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4289,
+      4286,
+      4293
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2197,
+    "old_title": "Thợ Hồ Nghìn Tỷ: Đập Tan Kiêu Ngạo",
+    "new_title": "Thợ Hồ Nghìn Tỷ: Đập Tan Kiêu Ngạo",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4297,
+      4294,
+      4301
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.; Tên chương dùng nhiều cụm chung, chưa tạo cảm giác mỗi chương có sự kiện riêng.."
+  },
+  {
+    "story_id": 2165,
+    "old_title": "Bị Bạn Thân Cướp Startup, Tôi Lật Kèo Đế Chế FinTech",
+    "new_title": "Bị Bạn Thân Cướp Startup, Tôi Lật Kèo Đế Chế FinTech",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4313,
+      4317,
+      4310
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2156,
+    "old_title": "Tiểu Thư Khinh Tôi Là Bảo Vệ: Đặc Nhiệm Giữa Đế Chế Buôn Lậu",
+    "new_title": "Tiểu Thư Khinh Tôi Là Bảo Vệ: Đặc Nhiệm Giữa Đế Chế Buôn Lậu",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4321,
+      4325,
+      4318
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2145,
+    "old_title": "Sếp Cướp Công Thức Thuốc, Tôi Phá Sập IPO Nghìn Tỷ",
+    "new_title": "Sếp Cướp Công Thức Thuốc, Tôi Phá Sập IPO Nghìn Tỷ",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4329,
+      4333,
+      4326
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2137,
+    "old_title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ, Tôi Là Người Thừa Kế Landmark 81",
+    "new_title": "Mẹ Vợ Đòi Sính Lễ 5 Tỷ, Tôi Là Người Thừa Kế Landmark 81",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4338,
+      4334,
+      4335
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2129,
+    "old_title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
+    "new_title": "Độc Bản Dược Thần: Kẻ Lật Kèo Thế Kỷ",
+    "title_changed": false,
+    "chapters_seen": 11,
+    "chapters_updated": [
+      4875,
+      4868,
+      4874
+    ],
+    "issue": "Danh sách chương thiếu số: 4.; Chương 1 chưa bật hook thoại/hành động trong 1.200 ký tự đầu.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2120,
+    "old_title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
+    "new_title": "Mẹ Vợ Bắt Rửa Bát, Tôi Nấu Tiệc Michelin Chấn Động Phú Quốc",
+    "title_changed": false,
+    "chapters_seen": 13,
+    "chapters_updated": [
+      4886,
+      4878,
+      4885
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Nhiều chương ngắn (8/8 chương dưới 800 từ), đọc sẽ giống tóm tắt.; Chuỗi chứng cứ chưa dày; cú vả mặt có nguy cơ dựa vào tuyên bố hơn là bằng chứng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Chương kết ngắn, cao trào dễ bị xử vội.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2112,
+    "old_title": "Người Thợ Sửa Xe Ở Hầm B2",
+    "new_title": "Người Thợ Sửa Xe Ở Hầm B2",
+    "title_changed": false,
+    "chapters_seen": 10,
+    "chapters_updated": [
+      4899,
+      4893,
+      4898
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Nhiều chương ngắn (8/8 chương dưới 800 từ), đọc sẽ giống tóm tắt.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Chương kết ngắn, cao trào dễ bị xử vội.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2106,
+    "old_title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ",
+    "new_title": "Cô Gái Bán Trà Sữa Và Hợp Đồng Trăm Tỷ",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4366,
+      4373,
+      4367,
+      4368,
+      4369,
+      4370,
+      4371,
+      4372
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Nhiều chương ngắn (8/8 chương dưới 800 từ), đọc sẽ giống tóm tắt.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Chương kết ngắn, cao trào dễ bị xử vội.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2099,
+    "old_title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
+    "new_title": "Bị Đuổi Khỏi Khách Sạn, Tôi Mua Luôn Chuỗi Năm Sao",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4374,
+      4377,
+      4381,
+      4375,
+      4376,
+      4378,
+      4379,
+      4380
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Nhiều chương ngắn (8/8 chương dưới 800 từ), đọc sẽ giống tóm tắt.; Chuỗi chứng cứ chưa dày; cú vả mặt có nguy cơ dựa vào tuyên bố hơn là bằng chứng.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Chương kết ngắn, cao trào dễ bị xử vội.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2089,
+    "old_title": "Trọng Sinh 2008: Ôm Đất Đông Anh Trước Cơn Sốt Nghìn Tỷ",
+    "new_title": "Trọng Sinh 2008: Ôm Đất Đông Anh Trước Cơn Sốt Nghìn Tỷ",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4382,
+      4389,
+      4383,
+      4384,
+      4385,
+      4386,
+      4387,
+      4388
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Nhiều chương ngắn (7/8 chương dưới 800 từ), đọc sẽ giống tóm tắt.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Chương kết ngắn, cao trào dễ bị xử vội.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2067,
+    "old_title": "Bị Sa Thải Trước Giờ Đấu Thầu: Một Mình Thắng Gói AI Nghìn Tỷ",
+    "new_title": "Bị Sa Thải Trước Giờ Đấu Thầu: Một Mình Thắng Gói AI Nghìn Tỷ",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4390,
+      4393,
+      4397
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Chương kết ngắn, cao trào dễ bị xử vội.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2052,
+    "old_title": "Thần Y Quận 5: Kẻ Cướp Công Trình và Siêu Tỷ Phú",
+    "new_title": "Thần Y Quận 5: Kẻ Cướp Công Trình và Siêu Tỷ Phú",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4398,
+      4405,
+      4401
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Chương 1 chưa bật hook thoại/hành động trong 1.200 ký tự đầu.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2044,
+    "old_title": "Chàng Rể Ẩn Thân Miền Tây: Cứu Vườn Sầu Riêng Trăm Tỷ",
+    "new_title": "Chàng Rể Ẩn Thân Miền Tây: Cứu Vườn Sầu Riêng Trăm Tỷ",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4406,
+      4409,
+      4413
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2035,
+    "old_title": "Kẻ Phế Vật Trở Về: Đòi Lại Gia Tộc Sau 12 Năm",
+    "new_title": "Kẻ Phế Vật Trở Về: Đòi Lại Gia Tộc Sau 12 Năm",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4414,
+      4417,
+      4421
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2023,
+    "old_title": "Phế Vật Trở Về: Cuộc Báo Thù Rực Lửa",
+    "new_title": "Phế Vật Trở Về: Cuộc Báo Thù Rực Lửa",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4422,
+      4425,
+      4429
+    ],
+    "issue": "Mô tả hơi mỏng, chưa đủ lời hứa cảm xúc.; Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2020,
+    "old_title": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
+    "new_title": "Hệ Thống Trí Tuệ Nhân Tạo: Xuyên Không Đến Tương Lai",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4430,
+      4433,
+      4437
+    ],
+    "issue": "Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2013,
+    "old_title": "Bức Thư Cuối Cùng Của Biển",
+    "new_title": "Bức Thư Cuối Cùng Của Biển",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4441,
+      4445,
+      4438
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2007,
+    "old_title": "Lột Mặt Người Sếp Cướp Công",
+    "new_title": "Lột Mặt Người Sếp Cướp Công",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4449,
+      4453,
+      4446
+    ],
+    "issue": "Tên truyện quá dài, SEO/card dễ loãng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 2001,
+    "old_title": "Ánh Sáng Trong Đêm",
+    "new_title": "Ánh Sáng Trong Đêm",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4454,
+      4457,
+      4461
+    ],
+    "issue": "Tên truyện quá dài, SEO/card dễ loãng.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 1984,
+    "old_title": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu",
+    "new_title": "Tôi Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ 900 Triệu",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4465,
+      4469,
+      4462
+    ],
+    "issue": "Tên truyện quá dài, SEO/card dễ loãng.; Chuỗi chứng cứ chưa dày; cú vả mặt có nguy cơ dựa vào tuyên bố hơn là bằng chứng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 1968,
+    "old_title": "Ánh Sáng Cuối Cùng: Cuộc Chiến Giữa Bóng Tối",
+    "new_title": "Ánh Sáng Cuối Cùng: Cuộc Chiến Giữa Bóng Tối",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4473,
+      4477
+    ],
+    "issue": "Chuỗi chứng cứ chưa dày; cú vả mặt có nguy cơ dựa vào tuyên bố hơn là bằng chứng.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.."
+  },
+  {
+    "story_id": 1948,
+    "old_title": "Giám Đốc Ngầm: Thực Tập Sinh Dám Vả Mặt Trưởng Phòng Cướp Dự Án",
+    "new_title": "Giám Đốc Ngầm: Thực Tập Sinh Dám Vả Mặt Trưởng Phòng Cướp Dự Án",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4481,
+      4485,
+      4478
+    ],
+    "issue": "Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 1933,
+    "old_title": "Cô Gái Bị Gọi Là Con Bé Gần Máy In, Gấu Bông Quỷ Vương Giúp Cô Lật Mặt Cả Phòng Kế Toán",
+    "new_title": "Cô Gái Bị Gọi Là Con Bé Gần Máy In, Gấu Bông Quỷ Vương Giúp Cô Lật Mặt Cả Phòng Kế Toán",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4486,
+      4489,
+      4493
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 1927,
+    "old_title": "Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân",
+    "new_title": "Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4494,
+      4497,
+      4501
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  },
+  {
+    "story_id": 1921,
+    "old_title": "Khám Phá Bí Mật Căn Nhà 4,8 Tỷ: Khi Con Dâu Đứng Lên",
+    "new_title": "Khám Phá Bí Mật Căn Nhà 4,8 Tỷ: Khi Con Dâu Đứng Lên",
+    "title_changed": false,
+    "chapters_seen": 8,
+    "chapters_updated": [
+      4502,
+      4505,
+      4509
+    ],
+    "issue": "Mở truyện hơi mỏng, cú nhục chưa đủ thời lượng.; Lực cản giữa truyện chưa đủ nặng; nhân vật chính thắng hơi thuận.; Kết truyện chưa có tín hiệu phán quyết/trả giá đủ rõ.; Thuật ngữ kỹ thuật dày; dễ làm truyện giống hồ sơ hơn là cảnh.."
+  }
+]

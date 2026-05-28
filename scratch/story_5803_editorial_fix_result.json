@@ -1,0 +1,59 @@
+{
+  "success": true,
+  "updates": [
+    {
+      "story_id": 5803,
+      "meta": "updated"
+    },
+    {
+      "chapter_id": 5805,
+      "title": "Chương 1: Cô Bé Mười Hai Tuổi",
+      "local_words": 706
+    },
+    {
+      "chapter_id": 5806,
+      "title": "Chương 2: Mười Tháng Địa Ngục",
+      "local_words": 752
+    },
+    {
+      "chapter_id": 5807,
+      "title": "Chương 3: Trốn Chạy — Ba Ngày Qua Rừng",
+      "local_words": 665
+    },
+    {
+      "chapter_id": 5808,
+      "title": "Chương 4: Về Nhà — Nhưng Nhà Đã Khác",
+      "local_words": 700
+    },
+    {
+      "chapter_id": 5809,
+      "title": "Chương 5: Đi Học — Từ Bản Lên Huyện",
+      "local_words": 693
+    },
+    {
+      "chapter_id": 5810,
+      "title": "Chương 6: Đại Học Luật — Giấc Mơ Không Tưởng",
+      "local_words": 737
+    },
+    {
+      "chapter_id": 5811,
+      "title": "Chương 7: Luật Sư Vàng Thị Mai",
+      "local_words": 731
+    },
+    {
+      "chapter_id": 5812,
+      "title": "Chương 8: Chiến Dịch Chống Buôn Người",
+      "local_words": 783
+    },
+    {
+      "chapter_id": 5813,
+      "title": "Chương 9: Bà Ngoại Và Con Hổ",
+      "local_words": 593
+    },
+    {
+      "chapter_id": 5814,
+      "title": "Chương 10: Bình Minh Sa Pa",
+      "local_words": 945
+    }
+  ]
+}

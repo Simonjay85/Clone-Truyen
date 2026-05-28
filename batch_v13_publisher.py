@@ -3,7 +3,7 @@
 """
 batch_v13_publisher.py — Automated V13 Gold Standard Batch Publisher
 =====================================================================
-Orchestrates the creation, design, and publication of 10 new original
+Orchestrates the creation, design, and publication of a V13 Gold batch of
 Vietnamese sảng văn novels on doctieuthuyet.com.
 """
 
@@ -140,8 +140,6 @@ def process_concept(c):
     male_lead = c["male_lead"]
     female_lead = c["female_lead"]
     conflict = c["conflict"]
-    num_chaps = 10 # standard 10 chapters
-    
     log(f"============================================================")
     log(f"📖 STARTING NOVEL INDEX {idx}: {title}")
     log(f"============================================================")
@@ -151,10 +149,10 @@ def process_concept(c):
     pending_cover_file = "pending_cover.png"
     
     if not os.path.exists(base_cover_file):
-        log(f"❌ Error: Base cover file {base_cover_file} not found! Skipping novel index {idx}.")
+        log(f"❌ Error: Approved local cover file {base_cover_file} not found! Skipping novel index {idx}.")
         return False
         
-    log(f"🎨 Running cover overlay engine for base cover: {base_cover_file}...")
+    log(f"🎨 Running cover overlay engine for approved local cover: {base_cover_file}...")
     try:
         # Determine a subtle premium subtitle
         subtitle_text = f"Bản hùng ca sảng văn của {female_lead.split(',')[0]} & {male_lead.split(',')[0]}"
@@ -168,9 +166,9 @@ def process_concept(c):
         res = subprocess.run(cmd, capture_output=True, text=True)
         if res.returncode != 0:
             log(f"⚠️ Cover overlay failed with error:\n{res.stderr}")
-            # fallback: copy base cover directly
+            # fallback: copy the approved local cover directly
             shutil.copy(base_cover_file, pending_cover_file)
-            log("⚠️ Fallback to direct base cover copy.")
+            log("⚠️ Fallback to direct approved local cover copy.")
         else:
             log("✓ Cover overlay created successfully.")
     except Exception as ce:
@@ -185,12 +183,17 @@ Nhiệm vụ của bạn là lập kế hoạch cho một bộ truyện sảng v
 QUY TẮC PHẢI TUÂN THỦ:
 1. GIỚI THIỆU TRUYỆN (INTRO) HƯỚNG 1 (CỰC KỲ NGẮN & KỊCH TÍNH):
    - Phải bắt đầu bằng một câu thoại/trích dẫn sỉ nhục cực sốc in đậm bọc trong <p><strong>"..."</strong></p>.
-   - Theo sau là đúng 2-3 đoạn văn ngắn (tổng cộng tối đa 120-150 từ, mỗi đoạn bọc trong <p>...</p>) giới thiệu mâu thuẫn khốc liệt và đòn lật kèo thâu tóm ngược, có nhắc đến nữ chính thông minh đồng hành.
+   - Theo sau là 2-4 đoạn văn ngắn (tổng cộng tối đa 150-220 từ, mỗi đoạn bọc trong <p>...</p>) giới thiệu mâu thuẫn khốc liệt và đòn lật kèo thâu tóm ngược, có nhắc đến nữ chính thông minh đồng hành.
    - Tuyệt đối không viết lan man dài dòng hay danh sách dài để tránh tràn khung màn hình điện thoại di động (mobile overflow).
-2. DÀN Ý 10 CHƯƠNG:
-   - Hãy thiết lập dàn ý chi tiết kịch tính cho đúng 10 chương."""
+2. DÀN Ý 8-15 CHƯƠNG:
+   - Hãy tự chọn số chương theo độ phức tạp của truyện, không cố định 10 chương cho cả batch.
+   - Phải có 3-5 vòng vả mặt tăng cấp, một khủng hoảng giữa truyện thật, và kết truyện có trả giá rõ.
+3. STORY_DNA RIÊNG:
+   - Phải khai báo bối cảnh nghề riêng, vật chứng trung tâm riêng, 5 set-piece riêng, khủng hoảng giữa truyện riêng, signature quan hệ riêng và kiểu kết riêng.
+4. COVER PROMPT:
+   - Viết prompt tiếng Anh cho ChatGPT Image Generation, phong cách photorealistic/cinematic real human actors, 1:1, no text, no watermark."""
 
-    user_concept_prompt = f"""Hãy lập dàn ý 10 chương và giới thiệu truyện cực kịch tính ngắn gọn theo tiêu chuẩn hướng 1 cho tác phẩm:
+    user_concept_prompt = f"""Hãy lập dàn ý 8-15 chương và giới thiệu truyện cực kịch tính ngắn gọn theo Chuẩn Vàng V13 cho tác phẩm:
 - Tiêu đề: {title}
 - Tác giả: {author}
 - Nam chính: {male_lead}
@@ -203,12 +206,21 @@ Hãy xuất ra cấu trúc JSON nguyên bản tuyệt đối, không chứa ```j
   "title": "{title}",
   "author": "{author}",
   "genre": "Sảng Văn",
-  "intro": "Mở đầu in đậm câu nói sỉ nhục, sau đó là 2 đoạn kịch tính cực ngắn bọc trong các thẻ <p>",
+  "intro": "Mở đầu in đậm câu nói sỉ nhục, sau đó là 2-4 đoạn kịch tính cực ngắn bọc trong các thẻ <p>",
+  "cover_prompt": "Square 1:1 photorealistic Vietnamese web novel cover, real human actors, cinematic movie poster, no text, no watermark...",
+  "story_dna": {{
+    "profession_world": "Bối cảnh nghề/ngành riêng của truyện",
+    "central_evidence": "Vật chứng trung tâm riêng",
+    "unique_set_pieces": ["5 cảnh lớn riêng biệt theo ngành"],
+    "midpoint_crisis": "Khủng hoảng giữa truyện riêng",
+    "relationship_signature": "Cách nam nữ chính tương tác riêng",
+    "ending_signature": "Kiểu kết/đạo cụ/cảnh cuối riêng"
+  }},
   "outlines": [
     {{ "chap_num": 1, "outline": "Tóm tắt mâu thuẫn khốc liệt chương 1..." }},
     {{ "chap_num": 2, "outline": "Tóm tắt chương 2..." }},
     ...
-    {{ "chap_num": 10, "outline": "Tóm tắt chương 10..." }}
+    {{ "chap_num": N, "outline": "Tóm tắt chương N..." }}
   ]
 }}"""
     user_concept_prompt += f"\n[Generation ID: {time.time()} - {random.randint(1000, 9999)}]"
@@ -224,17 +236,19 @@ Hãy xuất ra cấu trúc JSON nguyên bản tuyệt đối, không chứa ```j
     # ─── 3. GENERATE CHAPTERS SEQUENTIALLY ────────────────────────────────────
     chapters_content = []
     
-    for i in range(1, 11):
-        outline_item = novel_blueprint["outlines"][i-1]
-        log(f"✍️ Writing Chapter {i}/10: {outline_item['outline'][:80]}...")
+    outlines = novel_blueprint["outlines"]
+    total_chapters = len(outlines)
+    for i, outline_item in enumerate(outlines, 1):
+        log(f"✍️ Writing Chapter {i}/{total_chapters}: {outline_item['outline'][:80]}...")
         
         system_writer_prompt = """Bạn là THE GHOSTWRITER - Nhà văn truyện mạng sảng văn/vả mặt số 1 Việt Nam. Bạn có văn phong miêu tả cực kỳ sống động, chân thực, sắc sảo.
 QUY TẮC VIẾT 10/10 CHUYÊN NGHIỆP:
 1. SHOW, DON'T TELL: Miêu tả chi tiết hành động vật lý, nét mặt, sự run rẩy, giọt mồ hôi, hay tiếng giày gót nhọn giẫm xuống sàn bê tông. Tránh các tính từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'.
 2. HỘI THOẠI ĐINH TAI NHỨC ÓC: Các câu thoại sắc lẹm, thể hiện sự kiêu ngạo của kẻ thù trước khi bị vả mặt, và sự điềm tĩnh tối thượng của nhân vật chính.
 3. CHI TIẾT KINH DOANH & ĐỜI SỐNG THỰC TẾ TẠI VIỆT NAM: Sử dụng các chi tiết thật về cơ cấu cổ đông, sao kê tài chính ngân hàng Việt Nam, luật doanh nghiệp Việt Nam, cơ quan nhà nước (C03, Bộ Công an, Ủy ban Chứng khoán), kiểm toán Big 4, và thói quen sinh hoạt bản địa.
-4. ĐỘ DÀI (600 - 900 TỪ): Viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Dung lượng khoảng 600 đến 900 từ. Tuyệt đối không viết tóm tắt hay kết thúc chương quá nhanh.
-5. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em>. Tách mỗi câu thành một thẻ <p> riêng biệt."""
+4. ĐỘ DÀI (1000 - 1500 TỪ): Viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Tuyệt đối không viết tóm tắt hay kết thúc chương quá nhanh.
+5. BÁM STORY_DNA: Mỗi chương phải có ít nhất 3 chi tiết nghề/vật chứng/bối cảnh chỉ thuộc riêng truyện này, không viết chương theo khung chung rồi thay tên.
+6. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em>. Tách mỗi câu hoặc nhịp thoại quan trọng thành một thẻ <p> riêng biệt. Không in tiêu đề chương trong content, không in audit/meta."""
         prev_chaps_str = ""
         if chapters_content:
             titles = [c["title"] for c in chapters_content]
@@ -244,13 +258,14 @@ QUY TẮC VIẾT 10/10 CHUYÊN NGHIỆP:
 - Tựa truyện: {novel_blueprint['title']}
 - Giới thiệu thế giới quan & nhân vật: {novel_blueprint['intro']}
 - Tác giả: {novel_blueprint['author']}
+- Story DNA chống trùng: {json.dumps(novel_blueprint.get('story_dna', {}), ensure_ascii=False)}
 
 Hãy viết CHI TIẾT CHƯƠNG {i} của bộ truyện.
 - Dàn ý Chương {i}: {outline_item['outline']}
 {prev_chaps_str}
 
 YÊU CẦU ĐẶC BIỆT VỀ ĐỘ DÀI:
-Bắt buộc nội dung trong phần 'content' phải có độ dài khoảng 600 đến 900 từ. Viết cực kỳ chậm rãi, chi tiết hóa mọi hội thoại và nét mặt.
+Bắt buộc nội dung trong phần 'content' phải có độ dài khoảng 1000 đến 1500 từ. Viết cực kỳ chậm rãi, chi tiết hóa mọi hội thoại, nét mặt, vật chứng và hành động.
 
 YÊU CẦU TRẢ VỀ dạng JSON chính xác không chứa ```json:
 {{

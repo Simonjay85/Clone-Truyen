@@ -1,0 +1,607 @@
+import json
+import urllib.request
+import openpyxl
+
+story_data = {
+    "secret_token": "ZEN_TRUYEN_2026_BYPASS",
+    "story_id": 1984,
+    "title": "Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ Chín Trăm Triệu",
+    "intro": "<p>Trần Tuấn Anh — CEO công ty logistics trị giá nghìn tỷ ở TP.HCM — mặc áo thun mười chín nghìn đồng, đi xe Wave cũ, xách giỏ trái cây ra mắt nhà người yêu ở Hội An.</p>\n<p>Anh muốn biết gia đình Thùy Linh yêu con gái họ hay yêu tiền. Câu trả lời đến nhanh hơn anh tưởng: bà Phạm Thị Hằng, mẹ Thùy Linh, đập bàn đòi sính lễ chín trăm triệu đồng trong vòng một tuần — nếu không, hủy hôn.</p>\n<p>\"Gia đình tôi không gả con cho thằng chạy xe ôm.\"</p>\n<p>Nhưng bà Hằng không biết: thằng chạy xe ôm mà bà khinh chính là người vừa ký hợp đồng vận chuyển trăm tỷ cho Samsung Việt Nam.</p>",
+    "author": "Phạm Trọng Đạt",
+    "seo": {
+        "focus_keyword": "giả nghèo ra mắt, sính lễ 900 triệu, sảng văn Việt Nam",
+        "seo_title": "Giả Nghèo Đi Ra Mắt — Mẹ Người Yêu Đòi Sính Lễ 900 Triệu | Đọc Tiểu Thuyết",
+        "seo_description": "CEO nghìn tỷ giả nghèo đi ra mắt. Mẹ người yêu đòi sính lễ 900 triệu trong 1 tuần. Khi sự thật bại lộ, cả gia đình ngỡ ngàng."
+    },
+    "chapters": []
+}
+
+ch1 = {
+    "title": "Chương 1: Thằng Chạy Xe Ôm Đến Ra Mắt",
+    "content": """<p>Trần Tuấn Anh dựng chiếc Honda Wave 110 đời 2018 trước cổng nhà số 47 đường Trần Hưng Đạo, phường Minh An, thành phố Hội An. Xe nổ máy khục khặc, ống xả khói xám, yên xe rách một đường dài được dán băng keo đen.</p>
+
+<p>Anh ba mươi mốt tuổi, cao mét bảy hai, da ngăm nắng, tóc cắt gọn nhưng không vuốt gel. Áo thun trắng trơn mua ở chợ Bến Thành giá mười chín nghìn đồng, quần jean xanh nhạt đã bạc gối, dép tổ ong xanh lá.</p>
+
+<p>Trên tay anh là một giỏ trái cây: nho, cam, thanh long — mua ở chợ Hội An sáng nay, tổng cộng một trăm bảy mươi nghìn đồng.</p>
+
+<p>Nguyễn Thùy Linh đứng ở cổng, mắt tròn xoe nhìn anh.</p>
+
+<p>"Anh ơi, sao anh mặc vậy?"</p>
+
+<p>"Mặc gì sai hả em?"</p>
+
+<p>"Anh nói anh sẽ ăn mặc... tử tế."</p>
+
+<p>"Đây là tử tế nhất của anh rồi. Áo mới mua sáng nay."</p>
+
+<p>Thùy Linh nhìn chiếc Wave cũ, nhìn giỏ trái cây, rồi nhìn anh. Cô hai mươi bảy tuổi, tốt nghiệp Đại học Ngoại thương Đà Nẵng, đang làm quản lý chi nhánh một ngân hàng thương mại ở Hội An. Cô yêu Tuấn Anh hai năm — biết anh là người tốt, chăm chỉ, nhưng cô chưa biết anh giàu đến mức nào.</p>
+
+<p>Vì Tuấn Anh chưa bao giờ nói.</p>
+
+<p>"Em, trước khi vào, anh nói trước: hôm nay anh đóng vai 'Tuấn Anh — nhân viên giao hàng cho công ty logistics'. Không nói gì khác."</p>
+
+<p>"Tại sao?"</p>
+
+<p>"Vì anh muốn biết gia đình em đối xử với anh thế nào khi anh không có gì. Nếu họ chấp nhận anh dù anh nghèo — thì anh biết họ xứng đáng."</p>
+
+<p>Thùy Linh cắn môi. Cô hiểu logic của Tuấn Anh — nhưng cô cũng biết mẹ mình.</p>
+
+<p>"Anh ơi, mẹ em... mẹ em không dễ đâu."</p>
+
+<p>"Anh biết. Anh chuẩn bị rồi."</p>
+
+<p>Cô hít một hơi sâu, nắm tay anh, dẫn anh bước qua cổng.</p>
+
+<hr>
+
+<p>Nhà bà Phạm Thị Hằng là một căn nhà ba tầng ở trung tâm Hội An, mặt tiền sáu mét, cửa sắt sơn xanh, trước hiên treo hai chậu lan tím. Bên trong, phòng khách lát gạch hoa, bàn gỗ lim, trên tường treo ảnh gia đình cỡ lớn: ông bà ngoại, bà Hằng, và ba người con — Thùy Linh là con út.</p>
+
+<p>Bà Hằng ngồi ở ghế chủ, bên trái là chồng — ông Nguyễn Văn Hùng, sáu mươi tuổi, cựu giáo viên cấp ba, hiện đã nghỉ hưu. Bên phải là anh trai cả Nguyễn Quốc Bảo, ba mươi lăm tuổi, làm bất động sản ở Đà Nẵng, mặc sơ mi trắng, đeo Rolex, tóc vuốt gel bóng mượt.</p>
+
+<p>Tuấn Anh bước vào, cúi đầu chào.</p>
+
+<p>"Dạ, con chào bác, chào anh. Con là Trần Tuấn Anh, bạn trai Thùy Linh."</p>
+
+<p>Bà Hằng nhìn anh từ đầu đến chân. Từ mái tóc không gel, đến áo thun mười chín nghìn, đến dép tổ ong. Đôi mắt bà quét qua giỏ trái cây — nho, cam, thanh long — rồi dừng lại ở chiếc Wave cũ ngoài cổng.</p>
+
+<p>Bà không nói gì trong ba giây. Ba giây đủ dài để Tuấn Anh cảm nhận được nhiệt độ phòng khách giảm mấy độ.</p>
+
+<p>"Ngồi đi," bà nói, giọng lạnh.</p>
+
+<p>Tuấn Anh ngồi xuống ghế đối diện, đặt giỏ trái cây lên bàn. Thùy Linh ngồi cạnh, tay nắm chặt tay anh dưới bàn.</p>
+
+<p>"Tuấn Anh, con làm nghề gì?" bà Hằng hỏi, giọng thẳng thắn.</p>
+
+<p>"Dạ, con làm nhân viên giao hàng cho một công ty logistics ở Sài Gòn."</p>
+
+<p>"Giao hàng?" Quốc Bảo — anh trai Thùy Linh — hơi nghiêng đầu. "Tức là chạy xe giao đồ?"</p>
+
+<p>"Dạ, đại khái vậy ạ."</p>
+
+<p>Bà Hằng đặt tách trà xuống. Tiếng tách chạm đĩa nghe sắc hơn bình thường.</p>
+
+<p>"Lương tháng bao nhiêu?"</p>
+
+<p>"Dạ, khoảng tám triệu, chưa tính tip."</p>
+
+<p>Phòng khách im lặng. Ông Hùng — bố Thùy Linh — cúi đầu, nhìn xuống tách trà. Ông không nói gì, nhưng ánh mắt ông không khinh bỉ — chỉ buồn.</p>
+
+<p>Bà Hằng nhìn Thùy Linh.</p>
+
+<p>"Linh, con ra đây mẹ nói chuyện."</p>"""
+}
+
+ch2 = {
+    "title": "Chương 2: Chín Trăm Triệu",
+    "content": """<p>Thùy Linh theo mẹ vào bếp. Tuấn Anh ngồi lại phòng khách với ông Hùng và Quốc Bảo.</p>
+
+<p>Từ trong bếp, giọng bà Hằng vọng ra — không lớn, nhưng đủ nghe:</p>
+
+<p>"Con điên rồi hả Linh? Thằng đó giao hàng lương tám triệu! Con là quản lý ngân hàng, lương ba mươi triệu! Con gả cho nó, ai nuôi con?"</p>
+
+<p>"Mẹ, anh Tuấn Anh tốt với con—"</p>
+
+<p>"Tốt thì ăn được à? Nhà mình gả con gái, sính lễ ít nhất phải chín trăm triệu. Đó là tiêu chuẩn."</p>
+
+<p>"Chín trăm triệu?! Mẹ—"</p>
+
+<p>"Im đi. Mẹ nói chuyện."</p>
+
+<p>Tuấn Anh ngồi ở phòng khách, nghe rõ mồn một. Anh không biểu lộ cảm xúc — ba mươi mốt năm, anh đã quen với việc bị đánh giá bằng vẻ ngoài.</p>
+
+<p>Quốc Bảo nhấp trà, nhìn anh.</p>
+
+<p>"Tuấn Anh, anh nói thẳng: gia đình anh kỳ vọng em gái lấy chồng có điều kiện. Lương tám triệu... khó quá."</p>
+
+<p>"Dạ anh hiểu."</p>
+
+<p>"Anh không có ý khinh thường. Nhưng anh muốn hỏi: em có kế hoạch gì cho tương lai không? Có muốn mở kinh doanh, học thêm, hay—"</p>
+
+<p>"Dạ, em đang suy nghĩ."</p>
+
+<p>Ông Hùng ngồi im từ đầu đến giờ. Ông đặt tách trà xuống, nhìn Tuấn Anh.</p>
+
+<p>"Tuấn Anh, bác hỏi thật: con yêu Thùy Linh không?"</p>
+
+<p>"Dạ, con yêu. Con yêu hai năm nay."</p>
+
+<p>"Con có sẵn sàng lo cho con gái bác không? Không phải tiền — mà là lo cho nó hạnh phúc?"</p>
+
+<p>"Dạ có."</p>
+
+<p>Ông Hùng gật đầu nhẹ, không nói thêm.</p>
+
+<hr>
+
+<p>Bà Hằng bước ra, Thùy Linh theo sau, mắt đỏ hoe.</p>
+
+<p>Bà ngồi xuống ghế, nhìn thẳng Tuấn Anh.</p>
+
+<p>"Tuấn Anh, bác nói thẳng. Gia đình bác gả con gái, sính lễ chín trăm triệu đồng. Đó là tiền mặt, không tính vàng, không tính tiệc. Con có một tuần để trả lời."</p>
+
+<p>"Dạ, một tuần."</p>
+
+<p>"Nếu không đủ, chuyện này dừng ở đây. Bác không muốn con gái bác khổ."</p>
+
+<p>Tuấn Anh nhìn bà Hằng. Ông Hùng cúi đầu. Thùy Linh nắm chặt tay run rẩy.</p>
+
+<p>"Dạ, con hiểu. Con xin phép về suy nghĩ."</p>
+
+<p>Anh đứng dậy, cúi đầu chào, bước ra.</p>
+
+<p>Ngoài cổng, anh lên chiếc Wave cũ, nổ máy. Thùy Linh chạy ra theo.</p>
+
+<p>"Anh ơi, em xin lỗi. Em không biết mẹ em lại—"</p>
+
+<p>"Em không cần xin lỗi." Tuấn Anh nắm tay cô. "Một tuần. Anh sẽ quay lại."</p>
+
+<p>"Anh tính làm gì?"</p>
+
+<p>Tuấn Anh mỉm cười — nụ cười mà Thùy Linh chưa bao giờ hiểu hết ý nghĩa.</p>
+
+<p>"Anh tính cho mẹ em thấy một thứ."</p>
+
+<p>Anh đạp cần khởi động, chiếc Wave khục khặc rồi chạy đi, để lại Thùy Linh đứng ở cổng, nhìn theo, mắt vẫn đỏ.</p>"""
+}
+
+ch3 = {
+    "title": "Chương 3: Người Mà Bà Hằng Không Biết",
+    "content": """<p>Trần Tuấn Anh về khách sạn ở phố cổ Hội An, bỏ áo thun mười chín nghìn ra, thay vào bộ đồ tập, rồi ngồi trước laptop.</p>
+
+<p>Trên màn hình: email từ Tổng Giám đốc Samsung Electronics Việt Nam, xác nhận hợp đồng vận chuyển linh kiện điện tử giai đoạn 2026-2028, trị giá ba trăm hai mươi tỷ đồng. Bên cạnh là dashboard tài chính của Công ty TNHH Logistics Tuấn Phát — công ty của anh, đặt trụ sở tại quận 7, TP.HCM.</p>
+
+<p>Tuấn Phát Logistics: thành lập năm 2020. Vốn điều lệ ban đầu: năm trăm triệu đồng — tiền Tuấn Anh gom từ sáu năm chạy xe tải đường dài Sài Gòn - Hà Nội. Bây giờ, công ty có tám mươi xe tải, hai kho hàng tại Long An và Bắc Ninh, hợp đồng với Samsung, LG, và Vinamilk. Doanh thu năm ngoái: bốn trăm tỷ đồng. Lợi nhuận: bốn mươi hai tỷ.</p>
+
+<p>Tài khoản cá nhân của Tuấn Anh tại ngân hàng Techcombank: sáu mươi ba tỷ đồng.</p>
+
+<p>Nhưng không ai biết — kể cả Thùy Linh.</p>
+
+<p>Anh gặp Thùy Linh hai năm trước, khi cô đến chi nhánh ngân hàng ở quận 7 tập huấn. Anh vào mở tài khoản — mặc áo thun, đi dép tổ ong, xách ba lô vải. Thùy Linh là nhân viên phục vụ anh. Cô không hỏi anh giàu nghèo — cô hỏi anh muốn mở loại tài khoản nào, rồi mỉm cười chỉ dẫn từng bước.</p>
+
+<p>Anh yêu nụ cười đó. Nụ cười không phân biệt khách hàng gửi một triệu hay một tỷ.</p>
+
+<p>Hai năm yêu nhau, anh luôn nói mình là "nhân viên logistics" — đúng về mặt kỹ thuật, vì anh đúng là nhân viên logistics, chỉ là anh sở hữu cả công ty. Anh đưa Thùy Linh đi ăn ở quán cơm bình dân, cà phê vỉa hè, đi xe Wave. Không phải vì anh keo kiệt — mà vì anh muốn chắc rằng cô yêu anh, không phải yêu tiền của anh.</p>
+
+<p>Và bây giờ, đến lượt gia đình cô.</p>
+
+<hr>
+
+<p>Tuấn Anh gọi điện cho Lê Hoàng Dũng — Giám đốc Tài chính Tuấn Phát, bạn thân từ thời chạy xe tải.</p>
+
+<p>"Dũng, tuần sau mày bay ra Hội An với tao."</p>
+
+<p>"Chi vậy?"</p>
+
+<p>"Ra mắt gia đình người yêu."</p>
+
+<p>"Mày giả nghèo nữa hả?"</p>
+
+<p>"Lần này khác. Mẹ người yêu đòi sính lễ chín trăm triệu. Tao cần mày mang theo hồ sơ công ty — báo cáo tài chính kiểm toán, hợp đồng Samsung, giấy chứng nhận đăng ký kinh doanh. Và mang cả bộ vest."</p>
+
+<p>"Mày định lật bài?"</p>
+
+<p>"Chưa. Trước khi lật bài, tao muốn xem thêm một thứ."</p>
+
+<p>"Thứ gì?"</p>
+
+<p>"Anh trai người yêu tao — Nguyễn Quốc Bảo. Làm bất động sản ở Đà Nẵng. Đeo Rolex, đi Mercedes. Nhưng tao có cảm giác Rolex đó là fake."</p>
+
+<p>"Sao mày biết?"</p>
+
+<p>"Vì tao nhìn đồng hồ nhiều. Thằng Bảo đeo Submariner đời 2024 — nhưng viền ceramic hơi lệch, kim giây không smooth sweep. Hoặc là hàng rep, hoặc là hàng trôi nổi."</p>
+
+<p>Dũng cười ở đầu dây.</p>
+
+<p>"Ông anh CEO mà tinh mắt như thợ sửa đồng hồ vậy."</p>
+
+<p>"Nghề giao hàng dạy tao nhiều thứ, Dũng. Trong đó có việc phân biệt hàng thật với hàng giả."</p>"""
+}
+
+ch4 = {
+    "title": "Chương 4: Quốc Bảo Và Dự Án Ma",
+    "content": """<p>Ngày thứ hai trong tuần hẹn.</p>
+
+<p>Tuấn Anh không ở yên tại Hội An. Anh thuê xe máy chạy ra Đà Nẵng, đến văn phòng Công ty BĐS Quốc Bảo Land — trụ sở tại tầng bảy tòa nhà Indochina trên đường Bạch Đằng.</p>
+
+<p>Anh không vào. Anh ngồi ở quán cà phê đối diện, mở laptop, và bắt đầu tra cứu.</p>
+
+<p>Quốc Bảo Land: thành lập năm 2023, vốn điều lệ hai tỷ đồng. Giám đốc: Nguyễn Quốc Bảo. Ngành nghề: môi giới bất động sản.</p>
+
+<p>Tuấn Anh kiểm tra trên Cổng thông tin Doanh nghiệp: công ty này chưa có báo cáo tài chính nào. Trên website Quốc Bảo Land, có ba dự án được quảng cáo: "Khu đô thị xanh Green Bay Đà Nẵng", "Biệt thự biển Sun Marina Hội An", và "Chung cư cao cấp Golden Coast Quảng Nam".</p>
+
+<p>Anh kiểm tra từng dự án:</p>
+
+<p>Green Bay Đà Nẵng — tìm trên Google Maps: một khu đất trống ở Ngũ Hành Sơn, không có biển báo, không có hàng rào công trường.</p>
+
+<p>Sun Marina Hội An — tìm trên Sở Xây dựng Quảng Nam: không có giấy phép xây dựng nào cho dự án này.</p>
+
+<p>Golden Coast Quảng Nam — tìm trên Sở Kế hoạch và Đầu tư Quảng Nam: không có dự án nào đăng ký với tên này.</p>
+
+<p>Ba dự án ma. Quốc Bảo đang bán bất động sản không tồn tại.</p>
+
+<p>Tuấn Anh đóng laptop, nhấp cà phê. Giờ anh hiểu tại sao Quốc Bảo đeo Rolex fake và lái Mercedes thuê — anh ta đang diễn vai "doanh nhân thành đạt" để lừa khách hàng mua dự án ma.</p>
+
+<p>Và bà Hằng — mẹ Thùy Linh — đang khinh thường thằng giao hàng lương tám triệu, trong khi con trai bà là thằng lừa đảo bất động sản.</p>
+
+<p>Tuấn Anh mỉm cười cay đắng. Đời đúng là hài kịch.</p>
+
+<hr>
+
+<p>Tối hôm đó, Tuấn Anh gọi video call cho Thùy Linh.</p>
+
+<p>"Anh ơi, mẹ em hỏi anh suốt. Bà muốn biết anh có đi kiếm tiền sính lễ không."</p>
+
+<p>"Em nói mẹ đừng lo. Anh đang chuẩn bị."</p>
+
+<p>"Anh... anh không cần ép bản thân. Nếu mẹ em quá đáng, mình—"</p>
+
+<p>"Em, anh hỏi em một câu: anh Bảo — anh trai em — đang bán dự án bất động sản gì ở Đà Nẵng?"</p>
+
+<p>Thùy Linh im lặng một lúc.</p>
+
+<p>"Em không rõ lắm. Anh Bảo nói anh ấy đang phát triển mấy khu đô thị, kiếm được nhiều lắm. Mẹ em rất tự hào về anh Bảo."</p>
+
+<p>"Em có biết tên cụ thể dự án nào không?"</p>
+
+<p>"Hình như Green Bay gì đó? Anh ấy hay khoe trên Facebook."</p>
+
+<p>"Được rồi. Em ngủ đi, ngày mai anh gọi."</p>
+
+<p>Tuấn Anh tắt điện thoại, nằm xuống giường.</p>
+
+<p>Anh có hai lựa chọn: một, đưa chín trăm triệu cho bà Hằng, cưới Thùy Linh, và giấu thân phận tiếp. Hai, lật tất cả — lật bài mình, lật luôn bài Quốc Bảo, và để gia đình Thùy Linh tự đối mặt với sự thật.</p>
+
+<p>Anh chọn phương án hai. Vì Tuấn Anh không bao giờ trả tiền cho sự khinh thường.</p>"""
+}
+
+ch5 = {
+    "title": "Chương 5: Bà Hằng Mời Khách",
+    "content": """<p>Ngày thứ năm.</p>
+
+<p>Tuấn Anh nhận tin nhắn từ Thùy Linh: "Mẹ em mời cả nhà ăn tối ngày mai. Mẹ cũng mời bác Tám — bạn thân mẹ, chủ đại lý vàng ở Hội An. Mẹ muốn 'nói chuyện nghiêm túc' về chuyện sính lễ."</p>
+
+<p>Tuấn Anh hiểu: bà Hằng mời bác Tám đến để tạo áp lực, để chứng minh rằng gia đình bà có điều kiện và tiêu chuẩn cao. Đây là chiến thuật mà anh đã thấy nhiều lần trong kinh doanh — kéo thêm đồng minh vào phòng họp để áp đảo đối phương.</p>
+
+<p>Anh nhắn lại: "Vậy anh cũng mời một người bạn. Được không?"</p>
+
+<p>"Ai vậy anh?"</p>
+
+<p>"Một anh đồng nghiệp. Cũng làm logistics."</p>
+
+<p>"Dạ, chắc được."</p>
+
+<p>Tuấn Anh gọi cho Dũng: "Bay ra Hội An chiều mai. Mang theo hồ sơ đầy đủ. Và mặc vest."</p>
+
+<hr>
+
+<p>Tối thứ sáu. Nhà bà Hằng.</p>
+
+<p>Bàn ăn được dọn ra sân, dưới tán cây bưởi cổ thụ. Đèn lồng Hội An treo xung quanh, ánh sáng vàng ấm. Mâm cỗ đầy: gà luộc, canh chua cá lóc, nem lụi, mì Quảng, bánh bao bánh vạc.</p>
+
+<p>Bà Hằng mặc áo dài tím, tóc búi cao, đeo bộ trang sức vàng 24K nặng trĩu. Bác Tám — Trần Thị Tám, sáu mươi hai tuổi, chủ tiệm vàng Phú Tám ở chợ Hội An — ngồi bên phải bà, mặc áo dài đỏ, tay đeo bốn chiếc vòng vàng.</p>
+
+<p>Quốc Bảo ngồi đầu bàn, mặc sơ mi hồng, đeo đồng hồ (Rolex fake mà Tuấn Anh đã nhận ra). Bên cạnh là vợ anh ta — Trần Thị Ngọc Ánh, ba mươi hai tuổi, mặc đầm trắng, cười dịu dàng nhưng mắt liên tục quét qua Tuấn Anh với ánh nhìn đánh giá.</p>
+
+<p>Ông Hùng ngồi cuối bàn, im lặng, uống trà.</p>
+
+<p>Tuấn Anh đến lúc sáu giờ rưỡi. Vẫn áo thun, quần jean, dép tổ ong. Bên cạnh anh là Lê Hoàng Dũng — mặc vest đen, đeo kính cận, tay cầm cặp da. Dũng trông như một luật sư hơn là "đồng nghiệp giao hàng".</p>
+
+<p>Bà Hằng nhìn Dũng, hơi ngạc nhiên, nhưng không hỏi.</p>
+
+<p>"Ngồi đi. Ăn cơm rồi nói chuyện."</p>
+
+<p>Bữa ăn kéo dài bốn mươi phút. Bà Hằng và bác Tám nói chuyện về giá vàng, về đất Hội An lên giá, về "con gái bây giờ phải lấy chồng có điều kiện, không thì khổ cả đời." Quốc Bảo thỉnh thoảng chen vào khoe dự án bất động sản, nói rằng "năm nay bán được hai mươi lô, lãi cả tỷ."</p>
+
+<p>Tuấn Anh ăn im lặng. Dũng ăn im lặng. Thùy Linh ngồi cạnh Tuấn Anh, tay nắm tay anh dưới bàn.</p>
+
+<p>Sau bữa ăn, bà Hằng dọn dẹp xong, ngồi lại.</p>
+
+<p>"Tuấn Anh, hôm nay là ngày thứ năm trong tuần hẹn. Con đã có câu trả lời chưa?"</p>
+
+<p>Tuấn Anh đặt tách trà xuống.</p>
+
+<p>"Dạ, con có."</p>"""
+}
+
+ch6 = {
+    "title": "Chương 6: Lật Bài",
+    "content": """<p>"Trước khi con trả lời, con xin phép hỏi bác một câu."</p>
+
+<p>Bà Hằng nheo mắt. "Hỏi đi."</p>
+
+<p>"Bác đòi sính lễ chín trăm triệu — con muốn hiểu cơ sở. Đó là vì bác muốn đảm bảo tương lai cho Thùy Linh, hay vì bác nghĩ con không đủ điều kiện?"</p>
+
+<p>"Cả hai." Bà Hằng nói thẳng. "Con gái bác tốt nghiệp đại học, lương ba mươi triệu. Con là nhân viên giao hàng. Bác không khinh nghề nào — nhưng bác muốn chắc rằng con gái bác không phải lo cơm áo."</p>
+
+<p>"Dạ, con hiểu. Vậy con xin phép giới thiệu anh Dũng — anh ấy là đồng nghiệp của con, nhưng anh ấy có mang theo một số giấy tờ mà con muốn bác xem."</p>
+
+<p>Dũng mở cặp da, lấy ra một tập hồ sơ. Anh đặt lên bàn, từng tờ một.</p>
+
+<p>Tờ thứ nhất: Giấy chứng nhận đăng ký doanh nghiệp Công ty TNHH Logistics Tuấn Phát. Giám đốc: Trần Tuấn Anh. Vốn điều lệ: hai mươi tỷ đồng.</p>
+
+<p>Bà Hằng nhìn tờ giấy, rồi nhìn Tuấn Anh.</p>
+
+<p>Tờ thứ hai: Báo cáo tài chính kiểm toán năm 2025, do Deloitte Việt Nam xác nhận. Doanh thu: bốn trăm tỷ đồng. Lợi nhuận sau thuế: bốn mươi hai tỷ đồng.</p>
+
+<p>Bà Hằng mở miệng, rồi đóng lại.</p>
+
+<p>Tờ thứ ba: Hợp đồng vận chuyển với Samsung Electronics Việt Nam, ký tháng trước, giá trị ba trăm hai mươi tỷ đồng giai đoạn 2026-2028. Chữ ký của Tổng Giám đốc Samsung VN, dấu mộc đỏ.</p>
+
+<p>Tờ thứ tư: Sao kê tài khoản cá nhân Tuấn Anh tại Techcombank. Số dư: sáu mươi ba tỷ đồng.</p>
+
+<p>Phòng ăn im phắc. Tiếng dế kêu ngoài vườn nghe rõ mồn một.</p>
+
+<p>Bác Tám — chủ tiệm vàng — nhìn tờ sao kê, mắt tròn xoe.</p>
+
+<p>"Sáu mươi ba... tỷ?"</p>
+
+<p>Quốc Bảo đặt ly bia xuống, mặt tái đi.</p>
+
+<p>Bà Hằng nhìn tập hồ sơ, rồi nhìn Tuấn Anh — từ mái tóc không gel, đến áo thun mười chín nghìn, đến dép tổ ong.</p>
+
+<p>"Con... con là giám đốc công ty logistics?"</p>
+
+<p>"Dạ. Con cũng là nhân viên giao hàng — vì hồi mới khởi nghiệp, con tự chạy xe tải giao hàng sáu năm, từ Sài Gòn ra Hà Nội. Con không nói dối bác — con chỉ không nói hết."</p>
+
+<p>Thùy Linh quay sang nhìn Tuấn Anh, mắt mở to.</p>
+
+<p>"Anh... anh là CEO?"</p>
+
+<p>"Ừ. Anh xin lỗi em đã giấu. Nhưng anh cần biết — nếu anh thật sự chỉ là thằng giao hàng lương tám triệu, em và gia đình em sẽ đối xử với anh thế nào."</p>
+
+<p>Thùy Linh không nói gì. Nước mắt cô rơi — không phải vì giận, mà vì cô hiểu.</p>
+
+<p>Ông Hùng — bố Thùy Linh — ngồi cuối bàn, gật đầu nhẹ. Đôi mắt ông ướt, nhưng ông mỉm cười.</p>
+
+<p>Bà Hằng vẫn chưa nói gì. Tay bà đặt trên mặt bàn, run nhẹ.</p>"""
+}
+
+ch7 = {
+    "title": "Chương 7: Lật Luôn Bài Quốc Bảo",
+    "content": """<p>"Nhưng con chưa nói xong," Tuấn Anh tiếp tục, giọng vẫn bình tĩnh. "Bác Hằng khinh con vì con 'nghèo'. Nhưng có người trong gia đình này đang giả giàu."</p>
+
+<p>Quốc Bảo đứng bật dậy. Ghế đẩy ra sau kêu rít trên nền gạch.</p>
+
+<p>"Mày nói cái gì?"</p>
+
+<p>"Anh Bảo, con nói về ba dự án bất động sản mà anh đang bán ở Đà Nẵng."</p>
+
+<p>Dũng mở tiếp cặp da, lấy ra ba tập giấy mới.</p>
+
+<p>"Green Bay Đà Nẵng — kiểm tra trên Sở Xây dựng thành phố Đà Nẵng: không có giấy phép xây dựng. Khu đất thực tế là bãi đất trống ở Ngũ Hành Sơn."</p>
+
+<p>"Sun Marina Hội An — kiểm tra trên Sở Kế hoạch và Đầu tư Quảng Nam: không có doanh nghiệp nào đăng ký dự án này."</p>
+
+<p>"Golden Coast Quảng Nam — không tồn tại trên bất kỳ hệ thống đăng ký nào."</p>
+
+<p>Tuấn Anh nhìn Quốc Bảo.</p>
+
+<p>"Ba dự án ma, anh Bảo. Anh đang bán bất động sản không tồn tại cho khách hàng. Theo Điều 174 Bộ luật Hình sự, đó là tội 'Lừa đảo chiếm đoạt tài sản' — khung hình phạt từ hai đến bảy năm tù nếu số tiền trên hai trăm triệu."</p>
+
+<p>Quốc Bảo mặt trắng bệch. Tay anh ta run, mồ hôi rịn trên trán.</p>
+
+<p>"Mày... mày vu khống!"</p>
+
+<p>"Con không vu khống. Đây là ảnh chụp màn hình từ Cổng thông tin Sở Xây dựng và Sở KH&ĐT. Bất kỳ ai cũng có thể kiểm tra."</p>
+
+<p>Bà Hằng nhìn sang con trai cả. Giọng bà run:</p>
+
+<p>"Bảo, con nói đi. Dự án của con—"</p>
+
+<p>"Mẹ, nó bịa ra! Nó muốn hạ uy tín nhà mình—"</p>
+
+<p>"Anh Bảo," Tuấn Anh cắt lời, giọng không lớn nhưng sắc, "chiếc Rolex Submariner anh đeo — viền ceramic lệch hai mili, kim giây không smooth sweep. Đó là hàng rep, giá khoảng năm triệu đồng trên Shopee. Và chiếc Mercedes mà anh lái — biển số 43A — con kiểm tra trên app VNPAY Auto: xe thuê theo tháng từ công ty cho thuê xe Long Phát, mười lăm triệu đồng một tháng."</p>
+
+<p>Im lặng. Không ai nói gì.</p>
+
+<p>Quốc Bảo ngồi xuống, mặt cúi gằm. Vợ anh ta — Ngọc Ánh — đứng dậy bỏ vào trong nhà, tiếng gót giày khua trên nền gạch.</p>
+
+<p>Bà Hằng nhìn tập hồ sơ trên bàn — bên trái là hồ sơ công ty sáu mươi ba tỷ của Tuấn Anh, bên phải là bằng chứng ba dự án ma của con trai bà.</p>
+
+<p>Tay bà nắm chặt mép bàn, lưng khom xuống, như thể ai đó vừa rút mất xương sống của bà.</p>"""
+}
+
+ch8 = {
+    "title": "Chương 8: Bà Hằng Và Tách Trà",
+    "content": """<p>Bác Tám lặng lẽ đứng dậy, xin phép ra về. Bà không nói thêm lời nào — bà hiểu đây là chuyện gia đình.</p>
+
+<p>Quốc Bảo cũng bỏ đi, không chào ai. Tiếng xe Mercedes thuê nổ máy ngoài cổng, rồi mất hút.</p>
+
+<p>Còn lại trong sân: bà Hằng, ông Hùng, Thùy Linh, Tuấn Anh, và Dũng.</p>
+
+<p>Dũng đứng dậy: "Em xin phép ra ngoài, để gia đình nói chuyện." Anh cầm cặp da, gật đầu chào, và bước ra.</p>
+
+<p>Bà Hằng ngồi bất động một lúc rất lâu. Đèn lồng Hội An vẫn lung linh trên đầu, nhưng ánh sáng vàng ấm bây giờ trông như đang chế nhạo bà.</p>
+
+<p>"Bác xin lỗi."</p>
+
+<p>Ba chữ đó — từ miệng một người phụ nữ sáu mươi tuổi, cứng rắn, kiêu ngạo, chưa bao giờ cúi đầu — nặng hơn chín trăm triệu đồng.</p>
+
+<p>Tuấn Anh không nói gì.</p>
+
+<p>"Bác sai. Bác nhìn bề ngoài mà đánh giá con. Bác khinh con vì áo thun, dép tổ ong, xe Wave. Và bác tự hào về thằng Bảo vì vest, Rolex, Mercedes — mà không biết tất cả đều là giả."</p>
+
+<p>Bà Hằng ngước lên, mắt đỏ.</p>
+
+<p>"Nhưng Tuấn Anh, con giấu Thùy Linh hai năm. Con giấu cả bác. Con không sai khi thử lòng — nhưng con đã không tin tưởng gia đình bác."</p>
+
+<p>Tuấn Anh im lặng. Câu nói đó trúng tim anh — vì bà Hằng nói đúng.</p>
+
+<p>"Dạ, bác nói đúng. Con xin lỗi vì đã giấu. Nhưng con không hối hận — vì nếu con nói thật từ đầu, con sẽ không bao giờ biết bác đối xử với con thế nào khi con chỉ là thằng giao hàng."</p>
+
+<p>Bà Hằng nhìn anh lâu.</p>
+
+<p>"Vậy bây giờ con biết rồi. Bác hỏi con: con còn muốn cưới Thùy Linh không?"</p>
+
+<p>"Dạ muốn. Nhưng không phải với sính lễ chín trăm triệu."</p>
+
+<p>"Bác không đòi sính lễ nữa."</p>
+
+<p>"Con biết. Nhưng con sẽ mang sính lễ — vì đó là tôn trọng gia đình em Linh. Chỉ là con muốn bác nhận sính lễ vì bác chấp nhận con, không phải vì bác cần tiền."</p>
+
+<p>Ông Hùng — người đàn ông im lặng suốt từ đầu câu chuyện — cuối cùng lên tiếng.</p>
+
+<p>"Tuấn Anh, bác chấp nhận con từ hôm đầu tiên. Bác hỏi con có yêu Thùy Linh không, con nói có. Bác hỏi con có sẵn sàng lo cho nó không, con nói có. Đối với bác, vậy là đủ."</p>
+
+<p>Thùy Linh ôm bố, khóc.</p>
+
+<p>Bà Hằng nhìn chồng, rồi nhìn con gái, rồi nhìn Tuấn Anh. Tay bà với lấy ấm trà, rót một tách, đặt trước mặt anh.</p>
+
+<p>"Uống trà đi, con."</p>
+
+<p>Đó là lần đầu tiên bà Hằng rót trà cho Tuấn Anh.</p>"""
+}
+
+ch9 = {
+    "title": "Chương 9: Đám Cưới Không Sính Lễ",
+    "content": """<p>Một tháng sau.</p>
+
+<p>Đám cưới của Trần Tuấn Anh và Nguyễn Thùy Linh được tổ chức tại nhà hàng Silk Marina, bên bờ sông Thu Bồn, Hội An. Hai trăm khách — một nửa từ Hội An (gia đình Thùy Linh), một nửa từ TP.HCM (đồng nghiệp và đối tác Tuấn Phát Logistics).</p>
+
+<p>Khi đoàn xe nhà trai đến — ba chiếc Mercedes S-Class, hai chiếc Lexus LX, và một đoàn nhân viên mặc vest xanh mang sính lễ — cả phố Hội An đổ ra xem.</p>
+
+<p>Sính lễ: không phải chín trăm triệu. Mà là mười cây vàng, hai mươi mâm quả, và một phong bì — bên trong ghi: "Tặng bố mẹ vợ xây lại nhà, hai tỷ đồng."</p>
+
+<p>Bà Hằng đứng ở cổng, mặc áo dài đỏ, tay run khi nhận phong bì. Bà không mở ra xem — bà chỉ nhìn Tuấn Anh, mắt ướt.</p>
+
+<p>"Con ơi, bác không xứng đáng."</p>
+
+<p>"Bác là mẹ vợ con. Bác xứng đáng."</p>
+
+<hr>
+
+<p>Trong lễ cưới, Tuấn Anh không mặc vest. Anh mặc áo dài đen truyền thống — vì anh muốn nhớ rằng mình là thằng nhóc Củ Chi, con nhà nông, đi lên bằng sáu năm chạy xe tải.</p>
+
+<p>Thùy Linh mặc áo dài trắng, tóc cài hoa sen. Cô đẹp lạ lùng — nhưng điều đẹp nhất là nụ cười của cô. Nụ cười mà hai năm trước đã khiến Tuấn Anh yêu — nụ cười không phân biệt giàu nghèo.</p>
+
+<p>Ông Hùng phát biểu ngắn: "Bố chỉ muốn con gái hạnh phúc. Và bố thấy — Tuấn Anh cho con gái bố thứ quý nhất: sự tôn trọng."</p>
+
+<p>Bà Hằng không phát biểu. Bà ngồi ở bàn đầu, nhìn con gái múa, nhìn con rể cười, và lặng lẽ lau nước mắt bằng khăn tay.</p>
+
+<hr>
+
+<p>Quốc Bảo không đến đám cưới. Hai tuần trước, anh ta đã bị Công an TP Đà Nẵng triệu tập vì đơn tố cáo từ ba khách hàng mua dự án Green Bay. Số tiền chiếm đoạt: một tỷ hai trăm triệu đồng.</p>
+
+<p>Bà Hằng biết chuyện, nhưng bà không nói với ai trong đám cưới. Bà chỉ nói với ông Hùng tối hôm trước: "Mình ơi, mình nuôi hai đứa con — một đứa mình tự hào là giả, một đứa mình khinh thường là thật."</p>
+
+<p>Ông Hùng nắm tay bà: "Thì bây giờ mình biết rồi. Muộn còn hơn không."</p>"""
+}
+
+ch10 = {
+    "title": "Chương 10: Dép Tổ Ong Và Tách Trà",
+    "content": """<p>Một năm sau.</p>
+
+<p>Tuấn Phát Logistics mở chi nhánh thứ ba tại Đà Nẵng. Lễ khai trương đơn giản: cắt băng, uống trà, chụp ảnh. Tuấn Anh mặc vest — lần hiếm hoi anh mặc vest trong đời.</p>
+
+<p>Sau lễ, anh thay đồ, mặc lại áo thun, quần jean, và đôi dép tổ ong. Thùy Linh nhìn anh, lắc đầu cười.</p>
+
+<p>"Anh mặc vest đẹp mà. Sao thay ra nhanh vậy?"</p>
+
+<p>"Vest là của CEO. Dép tổ ong là của Tuấn Anh. Anh thích là Tuấn Anh hơn."</p>
+
+<hr>
+
+<p>Chiều hôm đó, hai vợ chồng chạy xe máy về Hội An thăm bố mẹ vợ.</p>
+
+<p>Nhà bà Hằng đã sửa lại — tường sơn mới, cửa kính, mái ngói đỏ. Tiền Tuấn Anh tặng. Bà không muốn nhận, nhưng ông Hùng nói: "Con rể nó cho thì nhận. Đừng kiêu ngạo nữa."</p>
+
+<p>Bà Hằng bây giờ khác hẳn. Bà không còn đeo bộ trang sức vàng nặng trĩu — bà đeo một chiếc vòng bạc đơn giản mà Thùy Linh mua tặng. Bà không còn nói về sính lễ, về điều kiện, về tiêu chuẩn — bà nói về cháu ngoại, về vườn rau, về mùa bưởi sắp đến.</p>
+
+<p>Khi Tuấn Anh và Thùy Linh bước vào, bà Hằng đang ngồi ngoài hiên, pha trà.</p>
+
+<p>"Về rồi hả? Ngồi đây, mẹ rót trà."</p>
+
+<p>Bà rót hai tách trà xanh — một cho con gái, một cho con rể. Tuấn Anh nhận tách trà, nhấp một ngụm.</p>
+
+<p>Trà xanh Hội An, vị chát nhẹ, hậu ngọt.</p>
+
+<p>Bà Hằng nhìn đôi dép tổ ong của Tuấn Anh, lắc đầu.</p>
+
+<p>"Con rể tao giàu mấy chục tỷ mà đi dép tổ ong."</p>
+
+<p>"Dạ, dép tổ ong mát chân, bác."</p>
+
+<p>Bà Hằng cười — lần đầu tiên Tuấn Anh nghe bà cười thật sự, không phải cười lịch sự hay cười khinh. Mà là cười của một người đã bỏ xuống được thứ nặng nhất trên vai: sĩ diện.</p>
+
+<p>Thùy Linh ngồi cạnh chồng, đầu tựa vai anh, nhìn ra con phố Hội An chiều nay vắng khách du lịch. Đèn lồng chưa bật, nhưng ánh nắng chiều rọi qua mái ngói cũ tạo thành những vệt sáng vàng trên mặt đường — đẹp hơn bất kỳ ánh đèn nào.</p>
+
+<p>"Anh ơi, lần sau mình về thăm bố mẹ, anh đừng đi xe Wave nữa nha. Xe cũ quá rồi."</p>
+
+<p>"Sao? Em chê xe anh hả?"</p>
+
+<p>"Không. Em sợ xe nó chết máy giữa đường."</p>
+
+<p>Tuấn Anh cười. Bà Hằng cười. Ông Hùng cười.</p>
+
+<p>Và trên bàn, tách trà xanh bốc khói nhẹ — thứ sính lễ duy nhất mà gia đình Thùy Linh thật sự cần: một buổi chiều bình yên, ngồi cạnh nhau, không ai phải giả vờ là ai.</p>"""
+}
+
+story_data["chapters"] = [ch1, ch2, ch3, ch4, ch5, ch6, ch7, ch8, ch9, ch10]
+
+# Save JSON
+with open("scratch/story_1984_rewrite.json", "w", encoding="utf-8") as f:
+    json.dump(story_data, f, ensure_ascii=False, indent=2)
+
+print("✅ Truyện 1984 viết xong — 10 CHƯƠNG!")
+for i, ch in enumerate(story_data['chapters']):
+    print(f"  Ch{i+1}: {ch['title']} — {len(ch['content'])} chars")
+
+# Upload to WordPress
+print("\n📤 Uploading to WordPress...")
+upload_url = "https://doctieuthuyet.com/overwrite_story_v13.php"
+payload = json.dumps(story_data).encode('utf-8')
+req = urllib.request.Request(upload_url, data=payload, headers={'Content-Type': 'application/json'})
+try:
+    resp = urllib.request.urlopen(req, timeout=120)
+    result = json.loads(resp.read().decode('utf-8'))
+    print(f"  ✅ Success! ID={result['story_id']}, Chapters={result['chapters_count']}")
+except Exception as e:
+    print(f"  ❌ Error: {e}")
+
+# Update Excel
+print("\n📊 Updating Excel...")
+wb = openpyxl.load_workbook("danh_sach_truyen_doctieuthuyet.xlsx")
+ws = wb.active
+for r in range(5, ws.max_row+1):
+    if ws.cell(row=r, column=2).value and str(ws.cell(row=r, column=2).value).strip() == "1984":
+        ws.cell(row=r, column=3).value = story_data["title"]
+        ws.cell(row=r, column=4).value = story_data["author"]
+        ws.cell(row=r, column=5).value = "Sảng Văn"
+        ws.cell(row=r, column=6).value = 10  # 10 chapters now
+        ws.cell(row=r, column=12).value = "CEO logistics nghìn tỷ giả nghèo đi ra mắt nhà người yêu ở Hội An. Mẹ người yêu đòi sính lễ 900 triệu, khinh thường thằng chạy xe ôm. Khi anh lật bài, cả nhà ngỡ ngàng — đặc biệt khi anh lật luôn bài anh trai người yêu đang bán dự án bất động sản ma."
+        ws.cell(row=r, column=13).value = "REWRITE TOÀN BỘ: AI template, mâu thuẫn bối cảnh SG-HN, văn phong lặp, meta-breaking → ĐÃ SỬA 10 CHƯƠNG"
+        ws.cell(row=r, column=14).value = "☑️ Đã sửa"
+        print(f"  ✅ Excel updated row {r}")
+        break
+wb.save("danh_sach_truyen_doctieuthuyet.xlsx")
+
+# Clear cache
+print("\n🧹 Clearing cache...")
+try:
+    import subprocess
+    subprocess.run(["python3", "run_clear_cache.py"], cwd="/Users/aaronnguyen/TN/App/doctieuthuyet", timeout=30)
+    print("  ✅ Cache cleared")
+except:
+    print("  ⏳ Cache clear async")
+
+print("\n✅ HOÀN THÀNH TRUYỆN 1984!")

@@ -137,9 +137,9 @@ def main():
     title_font = load_bold_font(font_size)
     
     # Điều chỉnh cỡ chữ tự động nếu quá dài để không bị tràn lề
-    max_w = 1850
+    max_w = 1400
     for line in [args.line1, args.line2, args.line3]:
-        while text_width(title_font, line.upper()) > max_w and font_size > 100:
+        while text_width(title_font, line.upper()) > max_w and font_size > 65:
             font_size -= 5
             title_font = load_bold_font(font_size)
             

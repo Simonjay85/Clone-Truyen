@@ -126,7 +126,7 @@
 <?php endif; ?>
 
 <!-- AUTH MODAL -->
-<style>#mkmAuthModal { opacity: 0; pointer-events: none; visibility: hidden; transition: all 0.3s ease; } #mkmAuthModal.active { opacity: 1; pointer-events: auto; visibility: visible; } #mkmAuthModal .mkm-auth-modal { max-height: 90vh; overflow-y: auto; }</style>
+<style>#mkmAuthModal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 100000; display: flex; align-items: center; justify-content: center; padding: 20px 0; opacity: 0; pointer-events: none; visibility: hidden; transition: all 0.3s ease; } #mkmAuthModal.active { opacity: 1; pointer-events: auto; visibility: visible; } #mkmAuthModal .mkm-auth-modal { max-height: 90vh; overflow-y: auto; }</style>
 <div class="mkm-auth-overlay" id="mkmAuthModal">
     <div class="mkm-auth-modal">
         <!-- Header -->

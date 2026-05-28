@@ -284,7 +284,7 @@ def main():
     selected_trope = select_unique_trope(existing)
     print(f"✓ Selected unique trope theme: {selected_trope['trope_title']}")
     
-    # Step 2.5: Apply Blueprint V14 Programmatic Name Filter & Geographical Rotation
+    # Step 2.5: Apply V13 Gold name filter and geographical rotation
     used_text = get_used_text(existing)
     
     selected_protagonist = select_unique_name(PROTAGONISTS, used_text, "Protagonist")
@@ -295,7 +295,7 @@ def main():
     selected_setting = rotate_setting(existing)
     selected_disruptor = random.choice(NARRATIVE_DISRUPTORS)
     
-    print(f"✓ Programmatic V14 constraints selected:")
+    print(f"✓ Programmatic V13 Gold constraints selected:")
     print(f"  - Nam chính: {selected_protagonist}")
     print(f"  - Nữ trợ lý: {selected_helper}")
     print(f"  - Phản diện: {selected_villain}")
@@ -321,26 +321,37 @@ RÀNG BUỘC CỨNG VỀ TÊN NHÂN VẬT & TỔ CHỨC (BẮT BUỘC SỬ DỤN
 5. Tập đoàn phản diện: Phải là "{selected_evil_company}".
 6. Bối cảnh chính của câu chuyện: Phải lấy tại "{selected_setting}" và các địa danh chân thực xung quanh nó.
 
-QUY TẮC CỐT LÕI ĐỂ ĐẠT ĐIỂM 10/10 HOÀN HẢO (BLUEPRINT V14):
-1. ĐỘ DÀI LINH HOẠT (Từ 5 Đến 15 Chương): Số chương có thể từ 5 đến 15 chương tùy thuộc vào độ phức tạp của cốt truyện. Hãy phân bổ cấu trúc câu chuyện hợp lý: mở đầu sỉ nhục (chương 1-2), trợ lý/nữ chính đồng hành (chương 2-3), đòn phản kích nhẹ và phản diện gài bẫy (chương giữa), giai đoạn bế tắc khủng hoảng cực đại (khoảng 2/3 truyện), và cú lật kèo vả mặt hoành tráng kết toán kẻ thù ở (các) chương cuối.
+QUY TẮC CỐT LÕI ĐỂ ĐẠT ĐIỂM 10/10 HOÀN HẢO (CHUẨN VÀNG V13):
+1. ĐỘ DÀI LINH HOẠT (Từ 8 Đến 15 Chương): Số chương tùy thuộc độ phức tạp cốt truyện, không cố định cùng một số chương cho cả batch. Hãy phân bổ cấu trúc hợp lý: mở đầu sỉ nhục (chương 1-2), nữ chính đồng hành sau khi kiểm chứng năng lực (chương 2-3), 3-5 vòng vả mặt tăng cấp, giai đoạn bế tắc khủng hoảng cực đại (khoảng 2/3 truyện), và cú lật kèo kết toán kẻ thù ở các chương cuối.
 2. BIẾN CỐ NÚT THẮT CHƯƠNG KỊCH TÍNH (BẮT BUỘC): Ở chương giữa (thường là khoảng Chương 4 hoặc Chương 5), hãy lồng ghép biến cố sau: "{selected_disruptor}". Đây là đòn hiểm hóc của phản diện khiến nam chính lâm vào tình trạng bế tắc cực đại (chứ không chỉ đơn thuần là bị phong tỏa tài khoản ngân hàng).
 3. PHẢN DIỆN THÔNG MINH, TRÍ TUỆ: Nhân vật phản diện không được ngốc nghếch hay chửi rủa thô thiển. Họ là giới tinh hoa hoặc kẻ trục lợi có thủ đoạn tinh vi, dùng các mưu đồ kinh doanh, pháp lý, tài chính tinh vi thực tế (ví dụ: bẫy thâu tóm thù địch qua thị trường chứng khoán, gài lỗi kiểm toán thuế, rút ruột cổ đông, kiện cáo bản quyền trí tuệ, margin call...).
 4. CHI TIẾT TẢ THỰC (SHOW, DON'T TELL): Thay vì dùng các từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'. Hãy dùng các mô tả vật lý sắc bén: 'mồ hôi lạnh chảy ròng ròng sau gáy', 'môi trắng bệch không còn một giọt máu', 'hai gối đập mạnh xuống sàn kêu cộp', 'ngón tay bấm chặt rỉ máu'.
+5. STORY_DNA RIÊNG: Mỗi truyện phải có bối cảnh nghề riêng, vật chứng trung tâm riêng, ít nhất 5 set-piece không bê sang truyện khác được, khủng hoảng giữa truyện riêng, signature quan hệ nam-nữ riêng và kiểu kết riêng.
+6. TIÊU ĐỀ & INTRO: Tiêu đề dài 12-22 từ, có nhục ban đầu -> cú lật -> payoff. Intro 3-5 đoạn HTML, hook mạnh trong 2 câu đầu.
+7. COVER PROMPT: Viết bằng tiếng Anh cho ChatGPT Image Generation, phong cách photorealistic/cinematic real human actors, 1:1, no text, no watermark, chừa vùng trên tối để đặt title.
 
 Hãy xuất ra định dạng JSON nguyên bản, không chứa bất kỳ văn bản thừa nào bên ngoài (không dùng ```json hoặc ```)."""
 
     user_concept_prompt = f"""Dựa vào các truyện hiện có để tránh trùng lặp đề tài và nhân vật:
 {json.dumps(existing_titles, ensure_ascii=False)}
 
-Hãy tạo ra một bản thiết kế truyện sảng văn/vả mặt từ 5 đến 15 chương hoàn hảo theo chủ đề: "{selected_trope['trope_title']}".
-Quyết định số chương (N) phù hợp nhất cho độ phức tạp của cốt truyện (5 <= N <= 15).
+Hãy tạo ra một bản thiết kế truyện sảng văn/vả mặt từ 8 đến 15 chương hoàn hảo theo chủ đề: "{selected_trope['trope_title']}".
+Quyết định số chương (N) phù hợp nhất cho độ phức tạp của cốt truyện (8 <= N <= 15).
 Trả về chính xác cấu trúc JSON sau:
 {{
-  "title": "Tên truyện giật gân, cuốn hút và thuần Việt",
+  "title": "Tên truyện 12-22 từ, có nhục ban đầu -> cú lật -> payoff",
   "author": "Bút danh nhà văn ấn tượng",
   "genre": "Sảng Văn",
-  "intro": "Giới thiệu truyện tóm tắt cực kỳ kịch tính, lôi cuốn độc giả (khoảng 200-300 từ dạng HTML)",
-   "cover_prompt": "Prompt tiếng Anh chi tiết để vẽ ảnh bìa (phong cách anime web novel chuyên nghiệp, có chữ hoặc không, đậm chất sang trọng)",
+  "intro": "3-5 đoạn HTML, mở bằng hook sỉ nhục hoặc phản bội cực mạnh",
+  "cover_prompt": "Square 1:1 photorealistic Vietnamese web novel cover, real human actors, cinematic movie poster, no text, no watermark...",
+  "story_dna": {{
+    "profession_world": "Bối cảnh nghề/ngành riêng",
+    "central_evidence": "Vật chứng trung tâm riêng",
+    "unique_set_pieces": ["5 cảnh lớn riêng biệt theo ngành"],
+    "midpoint_crisis": "Khủng hoảng giữa truyện riêng",
+    "relationship_signature": "Cách nam nữ chính tương tác riêng",
+    "ending_signature": "Kiểu kết/đạo cụ/cảnh cuối riêng"
+  }},
   "outlines": [
     {{ "chap_num": 1, "outline": "Tóm tắt kịch tính chương 1..." }},
     {{ "chap_num": 2, "outline": "Tóm tắt kịch tính chương 2..." }},
@@ -379,7 +390,8 @@ QUY TẮC VIẾT 10/10 CHUYÊN NGHIỆP:
 3. HỘI THOẠI ĐINH TAI NHỨC ÓC: Các câu thoại sắc lẹm, thể hiện sự kiêu ngạo của kẻ thù trước khi bị vả mặt, và sự điềm tĩnh tối thượng của nhân vật chính.
 4. CHI TIẾT KINH DOANH & ĐỜI SỐNG THỰC TẾ TẠI VIỆT NAM: Sử dụng các chi tiết thật về cơ cấu cổ đông, sao kê tài chính ngân hàng Việt Nam, luật doanh nghiệp Việt Nam, cơ quan nhà nước (Ủy ban Chứng khoán, C03, Sở Kế hoạch Đầu tư), và thói quen sinh hoạt bản địa.
 5. ĐỘ DÀI CỰC KHỦNG (1000 - 1500 TỪ): Bắt buộc viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Dung lượng bắt buộc phải đạt từ 1000 đến 1500 từ (khoảng 6000 - 9000 ký tự tiếng Việt bao gồm khoảng trắng). Tuyệt đối không được viết tóm tắt hay kết thúc chương quá nhanh.
-6. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em> để trình bày nội dung sạch sẽ.
+6. BÁM STORY_DNA: Mỗi chương phải có ít nhất 3 chi tiết nghề/vật chứng/bối cảnh chỉ thuộc riêng truyện này, không mở chương theo template và không lặp câu/cảnh đã dùng.
+7. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em> để trình bày nội dung sạch sẽ. Không in tiêu đề chương trong content, không in ghi chú/audit/meta.
 
 CHỦ ĐỀ ĐANG VIẾT:
 Tên chủ đề: {selected_trope['trope_title']}
@@ -400,6 +412,7 @@ Hướng dẫn bối cảnh: {selected_trope['concept_guidelines']}"""
 - Tựa truyện: {novel_data['title']}
 - Giới thiệu thế giới quan & nhân vật: {novel_data['intro']}
 - Tác giả: {novel_data['author']}
+- Story DNA chống trùng: {json.dumps(novel_data.get('story_dna', {}), ensure_ascii=False)}
  
 - Dàn ý Chương {i}: {outline_item['outline']}
 {prev_chapters_context}
@@ -437,7 +450,7 @@ YÊU CẦU TRẢ VỀ dạng JSON chính xác:
                 
         time.sleep(2)
         
-    # Step 5: Construct premium cover offline using base covers and cover_overlay_standard.py
+    # Step 5: Construct premium cover from an approved local image and cover_overlay_standard.py
     import subprocess
     import shutil
     
@@ -452,7 +465,7 @@ YÊU CẦU TRẢ VỀ dạng JSON chính xác:
                 base_cover_file = f"base_cover_{idx}.png"
                 break
                 
-    print(f"\n🎨 Offline Cover Engine: Compiling title onto {base_cover_file}...")
+    print(f"\n🎨 Local Cover Engine: Compiling title onto approved local image {base_cover_file}...")
     subtitle_text = f"Tác phẩm sảng văn đặc sắc của {novel_data['author']}"
     try:
         cmd = [
@@ -464,12 +477,12 @@ YÊU CẦU TRẢ VỀ dạng JSON chính xác:
         ]
         res = subprocess.run(cmd, capture_output=True, text=True)
         if res.returncode != 0:
-            print(f"⚠️ Cover overlay failed: {res.stderr}. Copying base cover directly.")
+            print(f"⚠️ Cover overlay failed: {res.stderr}. Copying approved local cover directly.")
             shutil.copy(base_cover_file, pending_cover_file)
         else:
             print("✓ Cover overlay generated successfully.")
     except Exception as ce:
-        print(f"⚠️ Cover overlay exception: {ce}. Copying base cover directly.")
+        print(f"⚠️ Cover overlay exception: {ce}. Copying approved local cover directly.")
         shutil.copy(base_cover_file, pending_cover_file)
         
     random_id = random.randint(100000, 999999)

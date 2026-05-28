@@ -28,12 +28,25 @@ $hot_query = new WP_Query([
         
         <!-- Main Content: New Updates -->
         <div class="flex-1">
-            <div class="mb-10">
-                <h1 class="text-4xl font-extrabold font-headline text-on-background tracking-tight mb-2">Truyện Mới Cập Nhật</h1>
-                <p class="text-on-surface-variant font-medium">Khám phá những chương truyện mới nhất vừa được hệ thống cập nhật.</p>
+            <div class="mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 pb-6 border-b border-outline-variant/10">
+                <div>
+                    <h1 class="text-4xl font-extrabold font-headline text-on-background tracking-tight mb-2">Truyện Mới Cập Nhật</h1>
+                    <p class="text-on-surface-variant font-medium">Khám phá những chương truyện mới nhất vừa được hệ thống cập nhật.</p>
+                </div>
+                <!-- Layout Switcher Controls -->
+                <div class="flex items-center gap-2 bg-surface-container-low p-1 rounded-xl border border-outline-variant/10 self-start sm:self-center shrink-0">
+                    <button id="btn-layout-grid" class="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all text-on-surface-variant hover:bg-surface-container-high" onclick="setLatestLayout('grid')">
+                        <span class="material-symbols-outlined text-[16px]">grid_view</span>
+                        Lưới
+                    </button>
+                    <button id="btn-layout-list" class="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-primary text-white shadow-sm" onclick="setLatestLayout('list')">
+                        <span class="material-symbols-outlined text-[16px]">view_list</span>
+                        Danh sách
+                    </button>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 gap-6">
+            <div id="latest-stories-container" class="grid latest-layout-list gap-6">
                 <?php 
                 $current_date = '';
                 if ($latest_query->have_posts()) :
@@ -49,11 +62,11 @@ $hot_query = new WP_Query([
                             $display_date = get_the_modified_date('d/m/Y');
                         }
 
-                        // Print Date Divider if changed
+                        // Print Date Divider if changed (Hidden in Grid Mode via CSS)
                         if ($current_date != $display_date):
                             $current_date = $display_date;
                 ?>
-                            <div class="flex items-center gap-4 mb-2 mt-4">
+                            <div class="latest-date-divider flex items-center gap-4 mb-2 mt-4 w-full col-span-full">
                                 <div class="h-px flex-1 bg-gradient-to-r from-transparent to-outline-variant/30"></div>
                                 <span class="px-3 py-1 rounded-full <?php echo ($display_date == 'Hôm nay') ? 'bg-primary-container/20 text-primary' : 'bg-surface-container-high text-on-surface-variant'; ?> font-bold text-[10px] uppercase tracking-widest font-headline">
                                     <?php echo esc_html($display_date); ?>
@@ -69,16 +82,16 @@ $hot_query = new WP_Query([
                     $time_diff = human_time_diff(get_the_modified_time('U'), current_time('timestamp')) . ' trước';
                     if($display_date != 'Hôm nay' && $display_date != 'Hôm qua') $time_diff = get_the_modified_time('H:i');
                 ?>
-                <!-- Update Item -->
-                <div class="group flex gap-4 md:gap-6 p-4 rounded-2xl bg-surface-container-lowest hover:bg-surface-container-lowest transition-all duration-300 border border-transparent hover:border-primary/20 shadow-sm hover:shadow-[0px_4px_24px_rgba(0,96,169,0.08)] cursor-pointer" onclick="window.location.href='<?php the_permalink(); ?>'">
-                    <div class="relative w-20 md:w-24 h-28 md:h-32 flex-shrink-0 overflow-hidden rounded-xl shadow-md border border-outline-variant/10">
+                <!-- Update Item (Dynamic Card) -->
+                <div class="latest-card group flex flex-col md:flex-row gap-4 p-4 rounded-2xl bg-surface-container-lowest hover:bg-surface-container-lowest transition-all duration-300 border border-outline-variant/10 hover:border-primary/20 shadow-sm hover:shadow-[0px_4px_24px_rgba(0,96,169,0.08)] cursor-pointer" onclick="window.location.href='<?php the_permalink(); ?>'">
+                    <div class="latest-card-img-wrapper relative w-full md:w-24 h-48 md:h-32 flex-shrink-0 overflow-hidden rounded-xl shadow-md border border-outline-variant/10">
                         <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<?php echo esc_url($cover); ?>"/>
                         <?php if ($display_date == "Hôm nay"): ?>
                         <div class="absolute top-2 left-2 px-1.5 py-0.5 bg-primary-container text-on-primary-container text-[8px] font-black tracking-widest rounded uppercase">NEW</div>
                         <?php endif; ?>
                     </div>
                     
-                    <div class="flex flex-col justify-between py-1 flex-1">
+                    <div class="latest-card-body flex flex-col justify-between py-1 flex-1 min-w-0">
                         <div>
                             <div class="flex flex-wrap gap-1 mb-1.5">
                                 <?php 
@@ -92,8 +105,8 @@ $hot_query = new WP_Query([
                                 }
                                 ?>
                             </div>
-                            <h3 class="text-base md:text-lg font-bold text-on-background font-headline leading-tight group-hover:text-primary transition-colors line-clamp-1 md:line-clamp-2"><?php the_title(); ?></h3>
-                            <p class="text-[13px] text-on-surface-variant mt-1 line-clamp-1 opacity-80"><?php echo wp_trim_words(get_the_excerpt(), 10); ?></p>
+                            <h3 class="latest-card-title text-base md:text-lg font-bold text-on-background font-headline leading-tight group-hover:text-primary transition-colors line-clamp-2"><?php the_title(); ?></h3>
+                            <p class="latest-card-excerpt text-[13px] text-on-surface-variant mt-1 line-clamp-1 opacity-80"><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
                         </div>
                         
                         <div class="flex items-center justify-between mt-auto pt-2 border-t border-outline-variant/10">
@@ -112,7 +125,7 @@ $hot_query = new WP_Query([
                     endwhile; 
                 else: 
                 ?>
-                    <div class="text-center py-10 opacity-50">Không có truyện nào.</div>
+                    <div class="text-center py-10 opacity-50 col-span-full">Không có truyện nào.</div>
                 <?php endif; ?>
             </div>
 
@@ -208,6 +221,106 @@ $hot_query = new WP_Query([
 .template-pagination .page-numbers:not(.current):not(.dots):hover { background-color: var(--primary); color: white; border-color: transparent; }
 .template-pagination .current { background-color: var(--primary); color: white; box-shadow: 0 4px 14px rgba(0, 96, 169, 0.35); }
 .template-pagination .dots { border: none; background: transparent; pointer-events: none; opacity: 0.5; }
+
+/* ── GRID / LIST MULTI-LAYOUTS CSS ── */
+/* Layout List mode styles (default horizontal update list) */
+.latest-layout-list {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+.latest-layout-list .latest-card {
+    flex-direction: row !important;
+}
+.latest-layout-list .latest-card-img-wrapper {
+    width: 6rem !important;
+    height: 8rem !important;
+}
+@media (max-width: 640px) {
+    .latest-layout-list .latest-card-img-wrapper {
+        width: 5rem !important;
+        height: 7rem !important;
+    }
+}
+
+/* Layout Grid mode styles */
+.latest-layout-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+@media (min-width: 640px) {
+    .latest-layout-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+@media (min-width: 1280px) {
+    .latest-layout-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+}
+.latest-layout-grid .latest-card {
+    flex-direction: column !important;
+    padding: 12px !important;
+    gap: 12px !important;
+}
+.latest-layout-grid .latest-card-img-wrapper {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 3/4 !important;
+}
+.latest-layout-grid .latest-card-excerpt {
+    display: none !important;
+}
+.latest-layout-grid .latest-card-title {
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+    margin-top: 4px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    height: 38px !important; /* Fixed height to align cards perfectly */
+}
+/* Hide date divider in grid layout to make it look clean and uniform */
+.latest-layout-grid .latest-date-divider {
+    display: none !important;
+}
 </style>
+
+<script>
+function setLatestLayout(mode) {
+    const container = document.getElementById('latest-stories-container');
+    const btnGrid = document.getElementById('btn-layout-grid');
+    const btnList = document.getElementById('btn-layout-list');
+    
+    if (!container || !btnGrid || !btnList) return;
+    
+    if (mode === 'grid') {
+        container.classList.remove('latest-layout-list');
+        container.classList.add('latest-layout-grid');
+        
+        // Highlight Grid Button
+        btnGrid.className = "flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-primary text-white shadow-sm border border-transparent";
+        
+        // Dim List Button
+        btnList.className = "flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all text-on-surface-variant hover:bg-surface-container-high border border-transparent";
+        
+        localStorage.setItem('latest-layout-pref', 'grid');
+    } else {
+        container.classList.remove('latest-layout-grid');
+        container.classList.add('latest-layout-list');
+        
+        // Highlight List Button
+        btnList.className = "flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-primary text-white shadow-sm border border-transparent";
+        
+        // Dim Grid Button
+        btnGrid.className = "flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all text-on-surface-variant hover:bg-surface-container-high border border-transparent";
+        
+        localStorage.setItem('latest-layout-pref', 'list');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const pref = localStorage.getItem('latest-layout-pref') || 'list';
+    setLatestLayout(pref);
+});
+</script>
 
 <?php get_footer(); ?>
