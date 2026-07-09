@@ -210,9 +210,9 @@ def apply_standard_overlay(
     print(f"📐 Title wrapped to {len(title_lines)} lines: {title_lines}")
 
     # 3. Fit cỡ chữ tiêu đề
-    title_max_w = 1400
+    title_max_w = 1680
     font_title, title_size = _autofit_font_multiline(
-        title_lines, start_size=145, max_width=title_max_w, min_size=65
+        title_lines, start_size=175, max_width=title_max_w, min_size=85
     )
     title_line_h = int(title_size * 1.15)
     print(f"📐 Chosen Title Font Size: {title_size}px")
@@ -222,7 +222,7 @@ def apply_standard_overlay(
     if position == "bottom":
         start_y = 1800 - total_height
     else:
-        start_y = 120
+        start_y = 145
 
     # 4. Vẽ tiêu đề màu sắc rực rỡ dạng Card
     img = draw_card_titles_with_shadow(

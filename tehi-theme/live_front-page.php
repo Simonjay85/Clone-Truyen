@@ -506,26 +506,32 @@
 }
 
 .mkm-card-btns {
-    display: flex !important;
-    gap: 8px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 6px !important;
     margin-top: 12px !important;
     width: 100% !important;
 }
 .mkm-btn-card {
-    flex: 1 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    min-height: 38px !important;
     text-align: center !important;
-    padding: 8px 4px !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
+    padding: 8px 3px !important;
+    font-size: clamp(9px, 0.72vw, 11px) !important;
+    font-weight: 800 !important;
     border-radius: 8px !important;
     text-decoration: none !important;
     transition: all 0.2s !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
     white-space: nowrap !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.2px !important;
+    letter-spacing: 0 !important;
+    line-height: 1 !important;
 }
 .mkm-btn-card-start {
     background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
@@ -551,12 +557,13 @@
 }
 @media (max-width: 600px) {
     .mkm-card-btns {
-        flex-direction: row !important;
-        gap: 6px !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 5px !important;
     }
     .mkm-btn-card {
+        min-height: 34px !important;
         padding: 6px 2px !important;
-        font-size: 9px !important;
+        font-size: clamp(8px, 2.45vw, 9px) !important;
     }
 }
 

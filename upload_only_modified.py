@@ -7,15 +7,12 @@ FTP_PASS = "Nghia234!"
 
 modified_files = [
     "tehi-theme/functions.php",
-    "tehi-theme/live_functions.php",
     "tehi-theme/front-page.php",
-    "tehi-theme/live_front-page.php",
-    "tehi-theme/taxonomy-the_loai.php",
-    "tehi-theme/live_taxonomy-the_loai.php",
-    "tehi-theme/page-completed.php",
-    "tehi-theme/page-directory.php",
-    "tehi-theme/assets/css/style.css",
-    "tehi-theme/header.php"
+    "tehi-theme/page-latest.php",
+    "tehi-theme/page-library.php",
+    "tehi-theme/page-bxh.php",
+    "tehi-theme/index.php",
+    "tehi-theme/assets/css/style.css"
 ]
 
 print("=== BẮT ĐẦU UPLOAD CÁC FILE THAY ĐỔI ===")

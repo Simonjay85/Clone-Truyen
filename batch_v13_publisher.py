@@ -180,7 +180,7 @@ def process_concept(c):
     system_concept_prompt = """Bạn là biên tập viên văn học và bậc thầy sảng văn/vả mặt (web novel) hàng đầu Việt Nam.
 Nhiệm vụ của bạn là lập kế hoạch cho một bộ truyện sảng văn/vả mặt 10/10 cực kỳ đặc sắc, lấy bối cảnh 100% tại Việt Nam.
 
-QUY TẮC PHẢI TUÂN THỦ:
+QUY TẮC PHẢI TUÂN THỦ (CHUẨN VÀNG V14):
 1. GIỚI THIỆU TRUYỆN (INTRO) HƯỚNG 1 (CỰC KỲ NGẮN & KỊCH TÍNH):
    - Phải bắt đầu bằng một câu thoại/trích dẫn sỉ nhục cực sốc in đậm bọc trong <p><strong>"..."</strong></p>.
    - Theo sau là 2-4 đoạn văn ngắn (tổng cộng tối đa 150-220 từ, mỗi đoạn bọc trong <p>...</p>) giới thiệu mâu thuẫn khốc liệt và đòn lật kèo thâu tóm ngược, có nhắc đến nữ chính thông minh đồng hành.
@@ -191,9 +191,14 @@ QUY TẮC PHẢI TUÂN THỦ:
 3. STORY_DNA RIÊNG:
    - Phải khai báo bối cảnh nghề riêng, vật chứng trung tâm riêng, 5 set-piece riêng, khủng hoảng giữa truyện riêng, signature quan hệ riêng và kiểu kết riêng.
 4. COVER PROMPT:
-   - Viết prompt tiếng Anh cho ChatGPT Image Generation, phong cách photorealistic/cinematic real human actors, 1:1, no text, no watermark."""
+   - Viết prompt tiếng Anh cho ChatGPT Image Generation, phong cách photorealistic/cinematic real human actors, 1:1, no text, no watermark, chừa vùng trên tối để đặt title.
+5. PHẢN DIỆN CHIỀU SÂU V14: động cơ phức tạp, backstory ngắn 5-10 dòng, có khoảnh khắc suýt thắng, hậu quả sụp đổ có sức nặng.
+6. CẢM XÚC BÙNG NỔ V14: 2 điểm bùng nổ (main yếu đuối ch3-4 và lắng đọng ch7-8), 2-3 thói quen cá nhân đặc trưng.
+7. ĐỐI MẶT TRỰC TIẾP V14: ít nhất 3 cảnh đối thoại mặt đối mặt có xung đột nội tâm sâu sắc (2 cảnh vs phản diện chính, 1 cảnh vs phản diện phụ/quý nhân).
+8. MOTIF BIỂU TƯỢNG V14: 2 motif (vật thể và bối cảnh/cảm giác) lặp lại ≥3 lần xuyên suốt tạo vòng tròn khép kín.
+"""
 
-    user_concept_prompt = f"""Hãy lập dàn ý 8-15 chương và giới thiệu truyện cực kịch tính ngắn gọn theo Chuẩn Vàng V13 cho tác phẩm:
+    user_concept_prompt = f"""Hãy lập dàn ý 8-15 chương và giới thiệu truyện cực kịch tính ngắn gọn theo Chuẩn Vàng V14 cho tác phẩm:
 - Tiêu đề: {title}
 - Tác giả: {author}
 - Nam chính: {male_lead}
@@ -242,13 +247,16 @@ Hãy xuất ra cấu trúc JSON nguyên bản tuyệt đối, không chứa ```j
         log(f"✍️ Writing Chapter {i}/{total_chapters}: {outline_item['outline'][:80]}...")
         
         system_writer_prompt = """Bạn là THE GHOSTWRITER - Nhà văn truyện mạng sảng văn/vả mặt số 1 Việt Nam. Bạn có văn phong miêu tả cực kỳ sống động, chân thực, sắc sảo.
-QUY TẮC VIẾT 10/10 CHUYÊN NGHIỆP:
-1. SHOW, DON'T TELL: Miêu tả chi tiết hành động vật lý, nét mặt, sự run rẩy, giọt mồ hôi, hay tiếng giày gót nhọn giẫm xuống sàn bê tông. Tránh các tính từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'.
-2. HỘI THOẠI ĐINH TAI NHỨC ÓC: Các câu thoại sắc lẹm, thể hiện sự kiêu ngạo của kẻ thù trước khi bị vả mặt, và sự điềm tĩnh tối thượng của nhân vật chính.
-3. CHI TIẾT KINH DOANH & ĐỜI SỐNG THỰC TẾ TẠI VIỆT NAM: Sử dụng các chi tiết thật về cơ cấu cổ đông, sao kê tài chính ngân hàng Việt Nam, luật doanh nghiệp Việt Nam, cơ quan nhà nước (C03, Bộ Công an, Ủy ban Chứng khoán), kiểm toán Big 4, và thói quen sinh hoạt bản địa.
-4. ĐỘ DÀI (1000 - 1500 TỪ): Viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Tuyệt đối không viết tóm tắt hay kết thúc chương quá nhanh.
-5. BÁM STORY_DNA: Mỗi chương phải có ít nhất 3 chi tiết nghề/vật chứng/bối cảnh chỉ thuộc riêng truyện này, không viết chương theo khung chung rồi thay tên.
-6. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em>. Tách mỗi câu hoặc nhịp thoại quan trọng thành một thẻ <p> riêng biệt. Không in tiêu đề chương trong content, không in audit/meta."""
+QUY TẮC VIẾT V14 CHUYÊN NGHIỆP:
+1. SHOW, DON'T TELL THỂ XÁC V14: Miêu tả chi tiết hành động vật lý, nét mặt, sự run rẩy, giọt mồ hôi, hay tiếng giày gót nhọn giẫm xuống sàn bê tông. Tránh các tính từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'. Tả phản ứng sinh học: đầu gối quỵ xuống sàn gạch kêu cộp, ngón tay bấu rỉ máu.
+2. PHẢN DIỆN CHIỀU SÂU V14: Tích hợp động cơ phức tạp của phản diện (backstory 5-10 dòng), cho gã có khoảnh khắc "gần thắng" phản công dữ dội làm main chính lo sợ thực sự ở giữa truyện, và kết cục sụp đổ sâu sắc.
+3. CẢM XÚC BÙNG NỔ V14: Tạo 2 điểm bùng nổ cảm xúc lớn: cảnh nam chính yếu đuối ở Chương 3-4 và cảnh bùng nổ thầm lặng tinh tế ở Chương 7-8. Sử dụng 2-3 thói quen nhỏ lặp lại của nhân vật chính.
+4. ĐỐI MẶT TRỰC TIẾP V14: Bắt buộc viết các cảnh đối thoại mặt đối mặt có chiều sâu và xung đột nội tâm (ít nhất 3 cảnh: 2 cảnh Chính vs Phản diện chính, 1 cảnh Chính vs Phản diện phụ/Quý nhân).
+5. MOTIF VÀ BIỂU TƯỢNG V14: Gắn liền 2 motif (vật thể và bối cảnh/cảm giác) lặp lại ≥3 lần xuyên suốt để dẫn dắt cốt truyện tạo thành vòng lặp khép kín.
+6. CHI TIẾT KINH DOANH & ĐỜI SỐNG THỰC TẾ TẠI VIỆT NAM: Sử dụng các chi tiết thật về cơ cấu cổ đông, sao kê tài chính ngân hàng Việt Nam, luật doanh nghiệp Việt Nam, cơ quan nhà nước (C03, Bộ Công an, Ủy ban Chứng khoán), kiểm toán Big 4, và thói quen sinh hoạt bản địa.
+7. ĐỘ DÀI (1000 - 1500 TỪ): Viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Tuyệt đối không viết tóm tắt hay kết thúc chương quá nhanh.
+8. BÁM STORY_DNA: Mỗi chương phải có ít nhất 3 chi tiết nghề/vật chứng/bối cảnh chỉ thuộc riêng truyện này, không viết chương theo khung chung rồi thay tên.
+9. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em>. Tách mỗi câu hoặc nhịp thoại quan trọng thành một thẻ <p> riêng biệt. Không in tiêu đề chương trong content, không in audit/meta."""
         prev_chaps_str = ""
         if chapters_content:
             titles = [c["title"] for c in chapters_content]

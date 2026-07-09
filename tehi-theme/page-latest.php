@@ -87,7 +87,7 @@ $hot_query = new WP_Query([
                     <div class="latest-card-img-wrapper relative w-full md:w-24 h-48 md:h-32 flex-shrink-0 overflow-hidden rounded-xl shadow-md border border-outline-variant/10">
                         <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<?php echo esc_url($cover); ?>"/>
                         <?php if ($display_date == "Hôm nay"): ?>
-                        <div class="absolute top-2 left-2 px-1.5 py-0.5 bg-primary-container text-on-primary-container text-[8px] font-black tracking-widest rounded uppercase">NEW</div>
+                        <div class="absolute top-2 left-2 px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-black tracking-wider rounded-md shadow-md uppercase z-10" style="background:#10b981 !important; color:#ffffff !important; z-index:10 !important; box-shadow:0 2px 6px rgba(0,0,0,0.3) !important;">NEW</div>
                         <?php endif; ?>
                     </div>
                     
@@ -116,7 +116,10 @@ $hot_query = new WP_Query([
                                     <span class="material-symbols-outlined text-[12px]">schedule</span> <?php echo $time_diff; ?>
                                 </span>
                             </div>
-                            <button class="material-symbols-outlined text-[18px] text-outline hover:text-primary transition-colors" title="Đánh dấu">bookmark_add</button>
+                        </div>
+                        <div class="latest-card-actions grid grid-cols-2 gap-1.5 mt-2 pt-2 border-t border-outline-variant/10" onclick="event.stopPropagation();">
+                            <a href="<?php echo esc_url(tehi_get_first_chapter_url(get_the_ID())); ?>" class="min-w-0 py-1.5 px-1 text-center text-[11px] sm:text-xs font-bold text-primary bg-primary/5 hover:bg-primary hover:text-white rounded-lg transition-colors border border-primary/10" style="text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1;">Đọc từ đầu</a>
+                            <a href="<?php echo esc_url(tehi_get_last_chapter_url(get_the_ID())); ?>" class="min-w-0 py-1.5 px-1 text-center text-[11px] sm:text-xs font-bold text-white bg-primary hover:bg-primary/90 rounded-lg transition-colors shadow-sm" style="text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1;">Chương mới nhất</a>
                         </div>
                     </div>
                 </div>
@@ -232,12 +235,12 @@ $hot_query = new WP_Query([
 }
 .latest-layout-list .latest-card-img-wrapper {
     width: 6rem !important;
-    height: 8rem !important;
+    height: 6rem !important;
 }
 @media (max-width: 640px) {
     .latest-layout-list .latest-card-img-wrapper {
         width: 5rem !important;
-        height: 7rem !important;
+        height: 5rem !important;
     }
 }
 
@@ -263,7 +266,7 @@ $hot_query = new WP_Query([
 .latest-layout-grid .latest-card-img-wrapper {
     width: 100% !important;
     height: auto !important;
-    aspect-ratio: 3/4 !important;
+    aspect-ratio: 1/1 !important;
 }
 .latest-layout-grid .latest-card-excerpt {
     display: none !important;

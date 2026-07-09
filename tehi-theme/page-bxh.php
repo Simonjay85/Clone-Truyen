@@ -206,7 +206,7 @@ $bg_image = "https://lh3.googleusercontent.com/aida-public/AB6AXuBV_SP1Lo5K64DTS
                 </div>
 
                 <!-- Cover -->
-                <div class="w-12 h-16 md:w-16 md:h-20 flex-shrink-0 rounded-lg overflow-hidden shadow-inner hidden sm:block">
+                <div class="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 rounded-lg overflow-hidden shadow-inner hidden sm:block">
                     <img src="<?php echo esc_url($cover); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="width: 100% !important; height: 100% !important; object-fit: cover !important;" />
                 </div>
 

@@ -1,6 +1,6 @@
-# ANTIGRAVITY V13 MASTERPROMPT (SCHEDULE / CHAT MODE)
-# Cập Nhật Chuẩn Vàng V13 Cho Toàn Bộ Hệ Thống doctieuthuyet.com
-# Ngày Cập Nhật: 2026-05-27
+# ANTIGRAVITY V14 MASTERPROMPT (SCHEDULE / CHAT MODE)
+# Cập Nhật Chuẩn Vàng V14 Cho Toàn Bộ Hệ Thống doctieuthuyet.com
+# Ngày Cập Nhật: 2026-05-29
 
 ---
 
@@ -21,11 +21,11 @@ Quy trình tạo truyện trên hệ thống doctieuthuyet.com hỗ trợ 3 ch�
 * **Đặc trưng**:
   * Agent tự nhận diện yêu cầu, tự viết một file Python biên soạn bản thảo tạm thời (ví dụ: `scratch/write_novel_temp.py`) có chứa nội dung đầy đủ các chương để lưu ra `pending_novel.json`.
   * Phương pháp này giúp **vượt qua hoàn toàn giới hạn Max Output Tokens** của khung chat (không bao giờ lo bị nuốt chữ hay hỏng JSON giữa chừng khi viết truyện siêu dài).
-  * Agent tự động kích hoạt script `/Users/aaronnguyen/TN/App/doctieuthuyet/venv/bin/python3 publish_local_novel.py` để đăng bài và dọn dẹp môi trường.
+  * Agent tự động kích hoạt script `/Users/aaronnguyen/TN/App/doctieuthuyet/publish_local_novel.py` để đăng bài và dọn dẹp môi trường.
 
 ---
 
-## 📌 PHẦN 2 — CÁC NGUYÊN TẮC CỐT LÕI CỦA TIÊU CHUẨN VÀNG V13
+## 📌 PHẦN 2 — CÁC NGUYÊN TẮC CỐT LÕI CỦA TIÊU CHUẨN VÀNG V14
 
 ### ⚠️ NGUYÊN TẮC VĂN PHONG: VIẾT TỰ NHIÊN NHƯ NHÀ VĂN
 * **Không viết kiểu prompt/máy móc**: Hạn chế tối đa các cụm từ nghe giống văn AI, sáo rỗng hoặc quá công thức như "cực kỳ", "đỉnh cao", "nghẹt thở", "không thể tin nổi", "định mệnh", "ánh mắt sắc như dao" nếu không thật sự cần.
@@ -39,7 +39,7 @@ Quy trình tạo truyện trên hệ thống doctieuthuyet.com hỗ trợ 3 ch�
 ### 1. CÔNG THỨC TIÊU ĐỀ HÚT CTR (CLICK-THROUGH RATE) CỰC MẠNH
 * Tiêu đề phải dài từ **12 đến 22 từ tiếng Việt**, chia làm 2-3 vế rõ rệt: **Nỗi nhục ban đầu → Cú lật kèo lớn → Phần thưởng hoặc Lời cảnh cáo sảng khoái**.
 * Không được đặt tiêu đề ngắn cũn cỡn như "Chàng Rể Bếp Trưởng" hay "Kỹ Sư AI".
-* **Các từ khóa khuyên dùng**: *Bị đuổi, Bị vu oan, Bị từ từ hôn, Cả gia tộc, Người yêu cũ, Sếp cũ, Hào môn, Hợp đồng trăm tỷ, Bằng chứng cuối, Quỳ xin lỗi, Tôi mua lại, Tôi thâu tóm*.
+* **Các từ khóa khuyên dùng**: *Bị đuổi, Bị vu oan, Bị từ hôn, Cả gia tộc, Người yêu cũ, Sếp cũ, Hào môn, Hợp đồng trăm tỷ, Bằng chứng cuối, Quỳ xin lỗi, Tôi mua lại, Tôi thâu tóm*.
 * **Ví dụ mẫu**:
   * *Ngày Bị Sếp Cũ Ném Khỏi Tập Đoàn, Tôi Mang Nhật Ký Commit Trở Lại Thắng Gói Thầu Nghìn Tỷ*
   * *Bão Nổi Miền Tây: Vương Quốc Sầu Riêng Trăm Tỷ Của Chàng Rể Hào Môn Bị Khinh Rẻ*
@@ -83,11 +83,70 @@ Quy trình tạo truyện trên hệ thống doctieuthuyet.com hỗ trợ 3 ch�
   * Lặp đoạn văn nguyên ý chỉ thay tên nhân vật, địa danh, ngành nghề.
 * Nếu đang viết batch nhiều truyện, sau khi hoàn thành phải tự kiểm: tìm 5-10 cụm từ đặc trưng dài 5 từ trở lên. Nếu cụm nào xuất hiện ở trên 1 truyện, phải viết lại trước khi xuất bản.
 
+### 6. ĐỊNH DẠNG HTML V14 GOLD
+* Mỗi câu hoặc nhịp thoại quan trọng nằm trong THẺ `<p>` RIÊNG (V14 paragraph splitting).
+* Chỉ dùng: `<p>`, `<strong>`, `<em>` — không dùng thẻ khác.
+* Đoạn mở đầu truyện (intro) BẮT BUỘC dùng: `<p><strong>"Trích dẫn kịch tính..."</strong></p>`.
+
+### 7. NHẤT QUÁN TÊN NHÂN VẬT XUYÊN SUỐT
+* ❌ TUYỆT ĐỐI KHÔNG: Cùng 1 nhân vật mà đổi tên giữa các chương (VD: mẹ chồng lúc "bà Hạnh" lúc "bà Hương", chị chồng lúc "Ngọc" lúc "Thúy").
+* ✅ BẮT BUỘC: Lập danh sách nhân vật (character sheet) với tên đầy đủ TRƯỚC khi viết chương 1. Giữ nguyên xuyên suốt toàn bộ truyện.
+
+### 8. KHÔNG LỘ DẤU HIỆU AI / META-NARRATIVE
+* ❌ TUYỆT ĐỐI KHÔNG:
+  * Viết "nhân vật chính", "câu chuyện [tên truyện]", "Sang chương X" trong nội dung truyện.
+  * Đoạn template lộ ra giữa chương (VD: "Đến đoạn này, không ai trong phòng cần nghe thêm thuật ngữ...").
+  * Đoạn mô tả meta như "cốt truyện bước vào giai đoạn mới", "đây là bước ngoặt".
+  * Lặp nguyên đoạn giống nhau ở nhiều chương (copy-paste nội bộ).
+* ✅ Truyện phải đọc tự nhiên như do người viết, KHÔNG có dấu hiệu AI-generated.
+* ✅ Mỗi chương phải tiến triển cốt truyện rõ ràng — KHÔNG lặp lại cùng 1 tình huống.
+
+### 9. TỔ CHỨC / CƠ QUAN / NGÂN HÀNG PHẢI THẬT
+* ❌ TUYỆT ĐỐI KHÔNG: Dùng tên tổ chức hư cấu (VD: "Việt Thương Bank", "Tập đoàn Thịnh Vương", "Đại học Minh Đức").
+* ✅ BẮT BUỘC dùng tên THẬT, có thể xác minh:
+  * Ngân hàng: Vietcombank, Techcombank, Agribank, MB Bank, VPBank, BIDV, Sacombank, TPBank, ACB.
+  * Tập đoàn: Vingroup, Hòa Phát, FPT, Masan, Novaland, TH Group, Thaco.
+  * Đại học: Đại học Bách Khoa, Đại học Y Hà Nội, Đại học Kinh tế thành phố Hồ Chí Minh.
+  * Bệnh viện: Bệnh viện Chợ Rẫy, Bệnh viện Bạch Mai, Bệnh viện Đa khoa Trung ương Huế.
+  * Khu đô thị: Vinhomes, Ecopark, Ciputra, Phú Mỹ Hưng, Sala.
+* **Ngoại lệ**: Nếu cốt truyện cần nhân vật phản diện là chủ doanh nghiệp, ĐƯỢC dùng tên công ty hư cấu cho công ty phản diện — nhưng vẫn phải dùng tên ngân hàng/cơ quan nhà nước thật.
+
+### 10. PHẢN DIỆN PHẢI CÓ CHIỀU SÂU (MỚI V14)
+* ❌ TUYỆT ĐỐI KHÔNG: Phản diện 1 chiều chỉ biết "tham lam, xấu xa" rồi bị vả sập.
+* ✅ BẮT BUỘC cho mỗi phản diện chính:
+  * **Động cơ phức tạp**: Tại sao họ trở nên xấu? (áp lực nợ nần? gia đình? bị phản bội trước? tham vọng chính đáng bị đẩy quá xa?).
+  * **Flashback/backstory ngắn**: Ít nhất 1 đoạn (5-10 dòng) cho thấy phản diện từng tốt, hoặc có lý do đáng thương.
+  * **Khoảnh khắc "gần thắng"**: Phản diện PHẢI có ít nhất 1 cú phản kích thành công khiến nhân vật chính thực sự lo sợ (kiện ngược, phá hoại công trình, cắt nguồn tài trợ, tố cáo công an...).
+  * **Kết cục có trọng lượng**: Không chỉ "bị bắt" — cho thấy hậu quả cụ thể (mất gia đình, sụp đổ tinh thần, thừa nhận sai lầm với nước mắt).
+
+### 11. CẢM XÚC PHẢI BÙNG NỔ ÍT NHẤT 2 LẦN (MỚI V14)
+* ❌ TUYỆT ĐỐI KHÔNG: Nhân vật chính bình tĩnh 100% từ đầu đến cuối, luôn kiềm chế, không bao giờ yếu đuối.
+* ✅ BẮT BUỘC:
+  * **Cảnh bùng nổ cảm xúc #1 (chương 3-4)**: Nhân vật chính có khoảnh khắc YẾU ĐUỐI thực sự — không phải khóc lóc, nhưng: tay run khi cầm bút, ngồi im trong bóng tối cả đêm, nhìn bản vẽ/đồ nghề cũ mà không dám chạm vào. Đủ để người đọc hiểu: anh/cô ấy cũng là CON NGƯỜI.
+  * **Cảnh bùng nổ cảm xúc #2 (chương 7-8)**: Khoảnh khắc giản dị nhưng sâu — nụ cười đầu tiên, ánh mắt ướt, câu nói ngắn gọn mà đầy trọng lượng. VD tốt: "Ta vui" / "Ta cũng vậy", "Đi thôi", "Có chỗ, Hoàng. Luôn có."
+  * **Thói quen cá nhân**: Mỗi nhân vật chính PHẢI có ít nhất 2-3 thói quen nhỏ lặp lại xuyên truyện (xoay tách trà khi suy nghĩ, gõ ngón tay khi tính toán, cắn môi khi lo lắng...) → tạo cảm giác "sống".
+
+### 12. ĐỐI MẶT TRỰC TIẾP GIỮA CÁC CẶP NHÂN VẬT QUAN TRỌNG (MỚI V14)
+* ❌ TUYỆT ĐỐI KHÔNG: Nhân vật phụ quan trọng chỉ xuất hiện → biến mất mà không có cảnh đối thoại trực tiếp với nhân vật chính.
+* ✅ BẮT BUỘC ít nhất 3 cảnh đối mặt trực tiếp (face-to-face, có đối thoại) trong mỗi truyện:
+  * **Nhân vật chính vs Phản diện chính**: Ít nhất 2 cảnh đối mặt (1 lần bị thua, 1 lần thắng).
+  * **Nhân vật chính vs Phản diện phụ** (nếu có): Ít nhất 1 cảnh — đặc biệt nếu phản diện phụ từng là đồng minh/học trò/người thân.
+  * **Nhân vật chính vs Quý nhân**: Ít nhất 2 cảnh đối thoại sâu (không chỉ "giao task").
+* **Cảnh đối mặt tốt** = có xung đột nội tâm, không chỉ đọc bằng chứng/tuyên bố. Ví dụ:
+  * Thầy nhìn học trò phản bội → không giận, chỉ buồn → hỏi "Em biết tại sao tôi luôn ký bằng mực Rotring không?".
+  * Phản diện nhớ lại ngày xưa khi ngồi đối diện nhân vật chính → flashback 5 dòng → ký cam kết bằng cây bút người kia từng tặng.
+
+### 13. MOTIF VÀ BIỂU TƯỢNG XUYÊN TRUYỆN (MỚI V14)
+* ✅ Mỗi truyện PHẢI có ít nhất 2 motif lặp lại xuyên suốt từ chương 1 đến chương cuối:
+  * **Motif vật thể**: Một đồ vật cụ thể xuất hiện ≥3 lần với ý nghĩa biến đổi (VD: bút Rotring, chiếc đồng hồ, con dao bếp, bản vẽ, cuốn sổ...).
+  * **Motif cảm giác/bối cảnh**: Một hình ảnh/mùi/âm thanh lặp lại (VD: bùn đỏ, mùi bê tông, tiếng búa đóng cọc, mùi phù sa sông Sài Gòn...).
+* **Cách dùng motif đúng**: Chương 1 giới thiệu → Chương giữa motif mang nghĩa khác → Chương cuối motif hoàn tất vòng tròn (VD: bản vẽ bị ném xuống bùn → bản vẽ thành bằng sáng chế → bản vẽ thành thành phố thật).
+
 ---
 
 ## 📌 PHẦN 3 — PROMPT CHÍNH CHO CHẾ ĐỘ CHAT (CHAT MODE MASTERPROMPT)
 
-*Dán toàn bộ phần dưới đây vào Claude Opus hoặc mô hình tương đương để sinh truyện hoàn chỉnh.*
+*Dán toàn bộ phần dưới đây vào Claude/Gemini để sinh truyện hoàn chỉnh.*
 
 ```text
 Bạn là Ghostwriter chuyên nghiệp hàng đầu cho các nền tảng tiểu thuyết mạng đô thị tài phiệt lớn nhất Việt Nam. Nhiệm vụ của bạn là viết một bộ truyện sảng văn/vả mặt thuần Việt 10/10 hoàn chỉnh có độ dài từ 8 đến 15 chương (tự chọn theo độ phức tạp cốt truyện, không cố định cùng một số chương cho cả batch) và xuất ra dưới dạng JSON sạch 100%.

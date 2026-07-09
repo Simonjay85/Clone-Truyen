@@ -321,14 +321,17 @@ RÀNG BUỘC CỨNG VỀ TÊN NHÂN VẬT & TỔ CHỨC (BẮT BUỘC SỬ DỤN
 5. Tập đoàn phản diện: Phải là "{selected_evil_company}".
 6. Bối cảnh chính của câu chuyện: Phải lấy tại "{selected_setting}" và các địa danh chân thực xung quanh nó.
 
-QUY TẮC CỐT LÕI ĐỂ ĐẠT ĐIỂM 10/10 HOÀN HẢO (CHUẨN VÀNG V13):
+QUY TẮC CỐT LÕI ĐỂ ĐẠT ĐIỂM 10/10 HOÀN HẢO (CHUẨN VÀNG V14):
 1. ĐỘ DÀI LINH HOẠT (Từ 8 Đến 15 Chương): Số chương tùy thuộc độ phức tạp cốt truyện, không cố định cùng một số chương cho cả batch. Hãy phân bổ cấu trúc hợp lý: mở đầu sỉ nhục (chương 1-2), nữ chính đồng hành sau khi kiểm chứng năng lực (chương 2-3), 3-5 vòng vả mặt tăng cấp, giai đoạn bế tắc khủng hoảng cực đại (khoảng 2/3 truyện), và cú lật kèo kết toán kẻ thù ở các chương cuối.
 2. BIẾN CỐ NÚT THẮT CHƯƠNG KỊCH TÍNH (BẮT BUỘC): Ở chương giữa (thường là khoảng Chương 4 hoặc Chương 5), hãy lồng ghép biến cố sau: "{selected_disruptor}". Đây là đòn hiểm hóc của phản diện khiến nam chính lâm vào tình trạng bế tắc cực đại (chứ không chỉ đơn thuần là bị phong tỏa tài khoản ngân hàng).
-3. PHẢN DIỆN THÔNG MINH, TRÍ TUỆ: Nhân vật phản diện không được ngốc nghếch hay chửi rủa thô thiển. Họ là giới tinh hoa hoặc kẻ trục lợi có thủ đoạn tinh vi, dùng các mưu đồ kinh doanh, pháp lý, tài chính tinh vi thực tế (ví dụ: bẫy thâu tóm thù địch qua thị trường chứng khoán, gài lỗi kiểm toán thuế, rút ruột cổ đông, kiện cáo bản quyền trí tuệ, margin call...).
-4. CHI TIẾT TẢ THỰC (SHOW, DON'T TELL): Thay vì dùng các từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'. Hãy dùng các mô tả vật lý sắc bén: 'mồ hôi lạnh chảy ròng ròng sau gáy', 'môi trắng bệch không còn một giọt máu', 'hai gối đập mạnh xuống sàn kêu cộp', 'ngón tay bấm chặt rỉ máu'.
-5. STORY_DNA RIÊNG: Mỗi truyện phải có bối cảnh nghề riêng, vật chứng trung tâm riêng, ít nhất 5 set-piece không bê sang truyện khác được, khủng hoảng giữa truyện riêng, signature quan hệ nam-nữ riêng và kiểu kết riêng.
-6. TIÊU ĐỀ & INTRO: Tiêu đề dài 12-22 từ, có nhục ban đầu -> cú lật -> payoff. Intro 3-5 đoạn HTML, hook mạnh trong 2 câu đầu.
-7. COVER PROMPT: Viết bằng tiếng Anh cho ChatGPT Image Generation, phong cách photorealistic/cinematic real human actors, 1:1, no text, no watermark, chừa vùng trên tối để đặt title.
+3. PHẢN DIỆN THÔNG MINH, TRÍ TUỆ, CHIỀU SÂU V14: Nhân vật phản diện không được ngốc nghếch hay chửi rủa thô thiển. Họ phải có động cơ phức tạp (áp lực nợ nần, gia đình, hoặc tham vọng chính đáng bị đẩy quá đà), có backstory ngắn 5-10 dòng giải thích lý do đáng thương, có khoảnh khắc "gần thắng" phản công thành công làm nam chính lo sợ, và kết cục sụp đổ sâu sắc có sức nặng.
+4. CẢM XÚC BÙNG NỔ ÍT NHẤT 2 LẦN V14: Nam chính có cảnh bộc lộ sự yếu đuối/con người ở Chương 3-4 (tay run, ngồi im trong tối) và cảnh bùng nổ cảm xúc thầm lặng nhưng sâu ở Chương 7-8 (nụ cười, ánh mắt ướt, câu thoại ngắn sâu). Nhân vật chính phải có 2-3 thói quen cá nhân lặp lại xuyên truyện.
+5. ĐỐI MẶT TRỰC TIẾP V14: Ít nhất 3 cảnh đối thoại mặt đối mặt có xung đột nội tâm gay gắt giữa nhân vật chính và phản diện chính (2 cảnh), phản diện phụ/quý nhân (1 cảnh).
+6. MOTIF VÀ BIỂU TƯỢNG XUYÊN TRUYỆN V14: Ít nhất 2 motif lặp lại ≥3 lần (một motif vật thể như chiếc bút/đồng hồ/cuốn sổ; một motif cảm giác/bối cảnh như mùi bê tông/tiếng búa/bùn đỏ) tạo vòng tròn khép kín từ Chương 1 đến Chương cuối.
+7. CHI TIẾT TẢ THỰC (SHOW, DON'T TELL): Thay vì dùng các từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'. Hãy dùng các mô tả vật lý sắc bén: 'mồ hôi lạnh chảy ròng ròng sau gáy', 'môi trắng bệch không còn một giọt máu', 'hai gối đập mạnh xuống sàn kêu cộp', 'ngón tay bấm chặt rỉ máu'.
+8. STORY_DNA RIÊNG: Mỗi truyện phải có bối cảnh nghề riêng, vật chứng trung tâm riêng, ít nhất 5 set-piece không bê sang truyện khác được, khủng hoảng giữa truyện riêng, signature quan hệ nam-nữ riêng và kiểu kết riêng.
+9. TIÊU ĐỀ & INTRO: Tiêu đề dài 12-22 từ, có nhục ban đầu -> cú lật -> payoff. Intro 3-5 đoạn HTML, hook mạnh trong 2 câu đầu.
+10. COVER PROMPT: Viết bằng tiếng Anh cho ChatGPT Image Generation, phong cách photorealistic/cinematic real human actors, 1:1, no text, no watermark, chừa vùng trên tối để đặt title.
 
 Hãy xuất ra định dạng JSON nguyên bản, không chứa bất kỳ văn bản thừa nào bên ngoài (không dùng ```json hoặc ```)."""
 
@@ -378,7 +381,7 @@ Trả về chính xác cấu trúc JSON sau:
         print(f"Generating detailed Chapter {i}: {outline_item['outline'][:50]}...")
         
         system_writer_prompt = f"""Bạn là THE GHOSTWRITER - Nhà văn truyện mạng sảng văn/vả mặt số 1 Việt Nam. Bạn có văn phong miêu tả cực kỳ sống động, chân thực, sắc sảo.
-QUY TẮC VIẾT 10/10 CHUYÊN NGHIỆP:
+QUY TẮC VIẾT V14 CHUYÊN NGHIỆP:
 1. TUÂN THỦ TUYỆT ĐỐI TÊN NHÂN VẬT & TỔ CHỨC:
    * Nam chính: "{selected_protagonist}"
    * Nữ trợ lý/Nữ chính đồng hành: "{selected_helper}"
@@ -386,12 +389,15 @@ QUY TẮC VIẾT 10/10 CHUYÊN NGHIỆP:
    * Công ty chính diện/Bảo trợ: "{selected_good_company}"
    * Tập đoàn phản diện: "{selected_evil_company}"
    * Bối cảnh: "{selected_setting}"
-2. SHOW, DON'T TELL: Miêu tả chi tiết hành động vật lý, nét mặt, sự run rẩy, giọt mồ hôi, hay tiếng giày gót nhọn giẫm xuống sàn bê tông. Tránh các tính từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'.
-3. HỘI THOẠI ĐINH TAI NHỨC ÓC: Các câu thoại sắc lẹm, thể hiện sự kiêu ngạo của kẻ thù trước khi bị vả mặt, và sự điềm tĩnh tối thượng của nhân vật chính.
-4. CHI TIẾT KINH DOANH & ĐỜI SỐNG THỰC TẾ TẠI VIỆT NAM: Sử dụng các chi tiết thật về cơ cấu cổ đông, sao kê tài chính ngân hàng Việt Nam, luật doanh nghiệp Việt Nam, cơ quan nhà nước (Ủy ban Chứng khoán, C03, Sở Kế hoạch Đầu tư), và thói quen sinh hoạt bản địa.
-5. ĐỘ DÀI CỰC KHỦNG (1000 - 1500 TỪ): Bắt buộc viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Dung lượng bắt buộc phải đạt từ 1000 đến 1500 từ (khoảng 6000 - 9000 ký tự tiếng Việt bao gồm khoảng trắng). Tuyệt đối không được viết tóm tắt hay kết thúc chương quá nhanh.
-6. BÁM STORY_DNA: Mỗi chương phải có ít nhất 3 chi tiết nghề/vật chứng/bối cảnh chỉ thuộc riêng truyện này, không mở chương theo template và không lặp câu/cảnh đã dùng.
-7. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em> để trình bày nội dung sạch sẽ. Không in tiêu đề chương trong content, không in ghi chú/audit/meta.
+2. SHOW, DON'T TELL THỂ XÁC V14: Miêu tả chi tiết hành động vật lý, nét mặt, sự run rẩy, giọt mồ hôi, hay tiếng giày gót nhọn giẫm xuống sàn bê tông. Tránh các tính từ sáo rỗng như 'vô biên', 'tột cùng', 'kinh hoàng'. Tả phản ứng sinh học: đầu gối quỵ xuống sàn gạch kêu cộp, ngón tay bấu rỉ máu.
+3. PHẢN DIỆN CHIỀU SÂU V14: Tích hợp động cơ phức tạp của phản diện (backstory 5-10 dòng), cho gã có khoảnh khắc "gần thắng" phản công dữ dội làm main chính lo sợ thực sự ở giữa truyện, và kết cục sụp đổ sâu sắc.
+4. CẢM XÚC BÙNG NỔ V14: Tạo 2 điểm bùng nổ cảm xúc lớn: cảnh nam chính yếu đuối ở Chương 3-4 và cảnh bùng nổ thầm lặng tinh tế ở Chương 7-8. Sử dụng 2-3 thói quen nhỏ lặp lại của nhân vật chính.
+5. ĐỐI MẶT TRỰC TIẾP V14: Bắt buộc viết các cảnh đối thoại mặt đối mặt có chiều sâu và xung đột nội tâm (ít nhất 3 cảnh: 2 cảnh Chính vs Phản diện chính, 1 cảnh Chính vs Phản diện phụ/Quý nhân).
+6. MOTIF VÀ BIỂU TƯỢNG V14: Gắn liền 2 motif (vật thể và bối cảnh/cảm giác) lặp lại ≥3 lần xuyên suốt để dẫn dắt cốt truyện tạo thành vòng lặp khép kín.
+7. CHI TIẾT KINH DOANH & ĐỜI SỐNG THỰC TẾ TẠI VIỆT NAM: Sử dụng các chi tiết thật về cơ cấu cổ đông, sao kê tài chính ngân hàng Việt Nam, luật doanh nghiệp Việt Nam, cơ quan nhà nước (Ủy ban Chứng khoán, C03, Sở Kế hoạch Đầu tư), và thói quen sinh hoạt bản địa.
+8. ĐỘ DÀI CỰC KHỦNG (1000 - 1500 TỪ): Bắt buộc viết cực kỳ chi tiết, chậm rãi, phát triển sâu sắc tâm lý nhân vật và các đoạn hội thoại gay cấn dài lâu. Dung lượng bắt buộc phải đạt từ 1000 đến 1500 từ (khoảng 6000 - 9000 ký tự tiếng Việt bao gồm khoảng trắng). Tuyệt đối không được viết tóm tắt hay kết thúc chương quá nhanh.
+9. BÁM STORY_DNA: Mỗi chương phải có ít nhất 3 chi tiết nghề/vật chứng/bối cảnh chỉ thuộc riêng truyện này, không mở chương theo template và không lặp câu/cảnh đã dùng.
+10. ĐỊNH DẠNG: Chỉ sử dụng các thẻ HTML cơ bản như <p>, <strong>, <em> để trình bày nội dung sạch sẽ. Không in tiêu đề chương trong content, không in ghi chú/audit/meta.
 
 CHỦ ĐỀ ĐANG VIẾT:
 Tên chủ đề: {selected_trope['trope_title']}

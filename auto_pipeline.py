@@ -57,15 +57,19 @@ def generate_novel(idea):
     setting = idea["setting"]
     author = idea["author"]
     
-    system_prompt = """Bạn là bậc thầy tiểu thuyết mạng Chuẩn Vàng V13 cho doctieuthuyet.com.
+    system_prompt = """Bạn là bậc thầy tiểu thuyết mạng Chuẩn Vàng V14 cho doctieuthuyet.com.
     QUY TẮC BẮT BUỘC (CRITICAL):
     1. TÁCH MỖI CÂU THÀNH 1 HÀNG. Mỗi câu (hoặc lời thoại) phải nằm trong 1 thẻ <p> riêng biệt. Không được viết đoạn văn dài. Xuống dòng liên tục.
-    2. CHI TIẾT TẬN CÙNG: Khai thác sâu nội tâm, hội thoại, bối cảnh, mùi vị, âm thanh, trang phục và hậu quả cụ thể. Tuyệt đối không đẩy nhanh tình tiết. Mỗi chương mục tiêu 1000-1500 từ.
-    3. Thể loại: Sảng Văn / Vả Mặt, có 3-5 vòng phản kích tăng cấp, không thắng quá dễ.
+    2. CHI TIẾT TẬN CÙNG V14: Khai thác sâu nội tâm, hội thoại, bối cảnh, mùi vị, âm thanh, trang phục và hậu quả cụ thể. Tuyệt đối không đẩy nhanh tình tiết. Mỗi chương mục tiêu 1000-1500 từ.
+    3. Thể loại: Sảng Văn / Vả Mặt, có 3-5 vòng phản kích tăng cấp.
     4. Bối cảnh Việt Nam 100% chân thực: địa danh, cơ quan, ngân hàng, giấy tờ, chứng cứ và quy trình pháp lý/kinh doanh cụ thể.
-    5. Show, Don't Tell: Mô tả hành động, vật lý chi tiết, không lạm dụng "kinh hoàng", "vô biên", "sốc".
+    5. Show, Don't Tell thể xác: Mô tả phản ứng vật lý (mồ hôi lạnh, run rẩy, quỳ cộp, bấm rỉ máu), không lạm dụng "kinh hoàng", "vô biên", "sốc".
     6. Chống template: mỗi truyện phải có story_dna riêng gồm nghề nghiệp, vật chứng trung tâm, 5 set-piece riêng, khủng hoảng giữa truyện và kiểu kết riêng.
-    7. Cover prompt phải dành cho ChatGPT Image Generation: tiếng Anh, photorealistic/cinematic, người Việt thật, ảnh 1:1, không chữ, không watermark.
+    7. Cover prompt: tiếng Anh, photorealistic/cinematic, người Việt thật, ảnh 1:1, không chữ, không watermark, chừa vùng trên tối để đặt title.
+    8. Phản diện chiều sâu V14: động cơ phức tạp, backstory ngắn 5-10 dòng, có khoảnh khắc suýt thắng, hậu quả sụp đổ có sức nặng.
+    9. Cảm xúc bùng nổ V14: 2 điểm bùng nổ (main yếu đuối ch3-4 và lắng đọng ch7-8), 2-3 thói quen cá nhân đặc trưng.
+    10. Đối mặt trực tiếp V14: ít nhất 3 cảnh đối thoại mặt đối mặt có xung đột nội tâm sâu sắc (2 cảnh vs phản diện chính, 1 cảnh vs phản diện phụ/quý nhân).
+    11. Motif biểu tượng V14: 2 motif (vật thể và bối cảnh/cảm giác) lặp lại ≥3 lần xuyên suốt tạo vòng tròn khép kín.
     """
     
     print(f"Generating Clickbait Title based on hint: {title}")
@@ -81,20 +85,22 @@ def generate_novel(idea):
     print(f"-> CLICKBAIT TITLE: {title}")
     
     print(f"Generating Outline for: {title}")
-    outline_prompt = f"""Tạo dàn ý 8-15 chương cho truyện:
+    outline_prompt = f"""Tạo dàn ý 8-15 chương cho truyện theo chuẩn V14:
     Tiêu đề: {title}
     Theme: {theme}
     Nam chính: {protagonist}
-    Nữ chính: {love_interest} (thông minh, sắc sảo)
+    Nữ chính: {love_interest} (thông minh, sắc sảo, lý tính)
     Bối cảnh: {setting}
     
-    Yêu cầu:
-    - Chương 1: Bị sỉ nhục, dồn vào đường cùng.
-    - Chương 4-5: Khủng hoảng cực đại.
+    Yêu cầu V14:
+    - Chương 1: Bị sỉ nhục cực đại, dồn vào đường cùng.
+    - Chương 3-4: Có điểm bùng nổ cảm xúc thứ nhất (nam chính bộc lộ sự yếu đuối/con người sâu sắc).
+    - Chương 4-5: Khủng hoảng bế tắc cực đại (phòng khám/doanh nghiệp bị đóng cửa 24h, đối tác quay lưng, truyền thông bẩn vây quanh).
     - Phải có 3-5 vòng vả mặt tăng cấp.
-    - Giữa truyện phải có khủng hoảng thật: đình chỉ, phong tỏa, mất đối tác, truyền thông bẩn, hoặc bẫy pháp lý.
-    - Lật kèo bằng chứng cứ nghề nghiệp/pháp lý/kinh doanh cụ thể.
-    - Kết truyện có trả giá rõ cho phản diện và một cảnh tình cảm/chữa lành đủ thuyết phục.
+    - Phải có ít nhất 3 phân cảnh đối thoại trực diện gay gắt (face-to-face) có xung đột nội tâm sâu sắc.
+    - Thiết kế rõ 2 motif (vật thể và bối cảnh) lặp lại ≥3 lần từ chương 1 đến chương cuối để tạo vòng lặp.
+    - Lật kèo bằng chứng cứ nghề nghiệp/pháp lý/kinh doanh cụ thể thực tế Việt Nam.
+    - Kết truyện phản diện trả giá sâu sắc (mất gia đình, sụp đổ tinh thần), có cảnh lắng đọng cảm xúc ở chương áp cuối/cuối (điểm bùng nổ 2).
     - Trước danh sách chương, tạo `story_dna` riêng để chống trùng template.
     
     Trả về định dạng JSON (chỉ có JSON, không markdown):
@@ -130,25 +136,31 @@ def generate_novel(idea):
         return None
         
     print(f"Generating Intro...")
-    intro_prompt = f"""Dựa trên truyện: {title}. Viết Intro 3-5 đoạn HTML ngắn, hook mạnh trong 2 câu đầu. Đoạn đầu là 1 câu trích dẫn sỉ nhục cực sốc in đậm <p><strong>...</strong></p>. Hứa hẹn vả mặt tăng cấp và bằng chứng lật kèo, không viết lan man."""
+    intro_prompt = f"""Dựa trên truyện: {title}. Viết Intro 3-5 đoạn HTML ngắn theo chuẩn V14, hook mạnh trong 2 câu đầu. Đoạn đầu là 1 câu trích dẫn sỉ nhục cực sốc in đậm <p><strong>...</strong></p>. Hứa hẹn vả mặt tăng cấp và bằng chứng lật kèo, không viết lan man."""
     intro = call_openai(system_prompt, intro_prompt)
     intro = intro.replace('```html', '').replace('```', '').strip()
     
     chapters = []
     for chap in outline:
         print(f"Generating Chapter {chap['chap_num']}...")
-        chap_prompt = f"""Viết chi tiết nội dung {chap['title']}.
+        chap_prompt = f"""Viết chi tiết nội dung {chap['title']} theo quy tắc V14:
         Story DNA chống trùng: {json.dumps(story_dna, ensure_ascii=False)}
         Dàn ý chương này: {chap['outline']}
         
-        LUẬT TỐI THƯỢNG:
+        LUẬT TỐI THƯỢNG V14:
         1. TÁCH MỖI CÂU THÀNH 1 HÀNG. Bọc mỗi câu trong 1 thẻ <p>. Ví dụ:
         <p>Anh ta bước đi.</p>
         <p>"Mày nghĩ mày là ai?" Hắn cười khẩy.</p>
         <p>Gió thổi tung tà áo.</p>
         2. TUYỆT ĐỐI KHÔNG GỘP NHIỀU CÂU VÀO 1 THẺ <P>.
-        3. CỰC KỲ DÀI VÀ CHI TIẾT (Bắt buộc phải đạt 1000 - 1500 từ). Mô tả nội tâm nhân vật sâu sắc, các đoạn hội thoại tranh luận qua lại nhiều lần. Mô tả quang cảnh, âm thanh, mùi vị, trang phục chi tiết. TUYỆT ĐỐI KHÔNG đốt cháy giai đoạn. Kéo dài diễn biến của một tình huống càng lâu càng tốt.
-        4. Trả về mã HTML thuần túy, không chứa markdown ```html.
+        3. CỰC KỲ DÀI VÀ CHI TIẾT (Bắt buộc phải đạt 1000 - 1500 từ). Mô tả nội tâm nhân vật sâu sắc, các đoạn hội thoại tranh luận qua lại nhiều lần.
+        4. BÁM SÁT RÀNG BUỘC V14:
+           - Tả phản ứng vật lý thể xác của nhân vật khi bị chấn động/vả mặt (mồ hôi rịn áo, đầu gối quỵ cộp, ngón tay bấu rỉ máu).
+           - Tích hợp backstory/động cơ sâu sắc của phản diện nếu xuất hiện.
+           - Thực hiện cảnh bùng nổ cảm xúc (main yếu đuối ch3-4, lắng đọng ch7-8) và thói quen cá nhân.
+           - Triển khai cảnh đối thoại mặt đối mặt sâu sắc (face-to-face) nếu nằm trong dàn ý.
+           - Lồng ghép 2 motif biểu tượng lặp lại xuyên suốt.
+        5. Trả về mã HTML thuần túy, không chứa markdown ```html.
         """
         chap_content = call_openai(system_prompt, chap_prompt)
         chap_content = chap_content.replace('```html', '').replace('```', '').strip()

@@ -7,8 +7,8 @@
     
     /* Hero Section */
     .mkm-hero-card { display: flex; background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; margin-top: 20px;}
-    .mkm-hero-img-wrap { width: 250px; flex-shrink: 0; margin-right: 20px; border-radius: 8px; overflow: hidden;}
-    .mkm-hero-img-wrap img { width: 100%; height: auto; object-fit: cover; }
+    .mkm-hero-img-wrap { width: 250px; flex-shrink: 0; margin-right: 20px; border-radius: 8px; overflow: hidden; aspect-ratio: 1/1 !important; height: 250px;}
+    .mkm-hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
     .mkm-hero-info { flex-grow: 1; display: flex; flex-direction: column;}
     .mkm-hero-title { font-size: 24px; font-weight: 700; color: #333; margin-top: 0; margin-bottom: 10px;}
     .mkm-hero-meta { font-size: 13px; color: #888; margin-bottom: 15px; }
@@ -43,7 +43,7 @@
     @media (max-width: 768px) { .mkm-grid { grid-template-columns: repeat(2, 1fr); } }
     
     .mkm-item { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: relative;}
-    .mkm-item-img-wrap { position: relative; padding-top: 133%; /* 3:4 aspect ratio */ overflow: hidden;}
+    .mkm-item-img-wrap { position: relative; padding-top: 100%; /* 1:1 aspect ratio */ overflow: hidden;}
     .mkm-item-img-wrap img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
     .mkm-item:hover .mkm-item-img-wrap img { transform: scale(1.05); }
     
@@ -67,7 +67,7 @@
     .mkm-rank-3 { background: #ffa940; color: #fff; }
     .mkm-rank-other { background: #f0f0f0; color: #888; }
     
-    .mkm-bxh-img { width: 40px; height: 50px; border-radius: 4px; object-fit: cover; margin-right: 10px; flex-shrink: 0;}
+    .mkm-bxh-img { width: 40px; height: 40px; border-radius: 4px; object-fit: cover; margin-right: 10px; flex-shrink: 0;}
     .mkm-bxh-info { flex-grow: 1; overflow: hidden; }
     .mkm-bxh-title { font-size: 13px; font-weight: 600; color: #333; margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; white-space: normal !important; text-overflow: ellipsis; line-height: 1.3;}
     .mkm-bxh-meta { font-size: 11px; color: #888; margin-top: 3px; }

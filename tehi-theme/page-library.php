@@ -61,7 +61,7 @@ $rank_name = "Độc Giả Uyên Bác";
             $cf_chaps = wp_count_posts('chuong')->publish;
         ?>
         <div class="md:col-span-3 bg-gray-50 rounded-3xl p-6 md:p-8 relative overflow-hidden flex flex-col sm:flex-row gap-8 items-center border border-gray-200 shadow-sm">
-            <div class="relative z-10 w-48 shrink-0 aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl rotate-[-2deg] hover:rotate-0 transition-transform duration-500 border-4 border-white/50">
+            <div class="relative z-10 w-48 shrink-0 aspect-square rounded-2xl overflow-hidden shadow-2xl rotate-[-2deg] hover:rotate-0 transition-transform duration-500 border-4 border-white/50">
                 <img class="w-full h-full object-cover" src="<?php echo esc_url($cf_cover); ?>"/>
             </div>
             <div class="relative z-10 flex-1 w-full">

@@ -20,45 +20,58 @@ function smart_truncate($str, $max_len, $append = '') {
     if ($last_space !== false && $last_space > ($max_len * 0.7)) {
         $truncated = mb_substr($truncated, 0, $last_space);
     }
-    return $truncated . $append;
+    return trim($truncated) . $append;
 }
 
 function generate_seo_title($title) {
-    if (strpos($title, ':') !== false) {
-        return smart_truncate($title, 65);
+    $title_clean = html_entity_decode($title, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    $title_clean = trim(preg_replace('/\\s+/', ' ', $title_clean));
+    
+    // Strictly under 60 characters
+    if (mb_strlen($title_clean) <= 58) {
+        return $title_clean;
     }
-    $suffix = " - Siêu Phẩm Sảng Văn Vả Mặt Full Cực Hay";
-    $seo_title = $title . $suffix;
-    if (mb_strlen($seo_title) > 65) {
-        $seo_title = $title . " - Truyện Sảng Văn Full Cực Hay";
-    }
-    if (mb_strlen($seo_title) > 65) {
-        $seo_title = $title . " - Đọc Full";
-    }
-    return smart_truncate($seo_title, 65);
+    
+    return smart_truncate($title_clean, 58, '...');
 }
 
-function get_seo_description($content, $title) {
+function generate_seo_description($post_content, $title) {
     $desc = '';
-    if (preg_match('/<strong>(.*?)<\/strong>/is', $content, $matches)) {
+    if (preg_match('/<strong>(.*?)<\/strong>/is', $post_content, $matches)) {
         $desc = strip_tags($matches[1]);
     } else {
-        $desc = strip_tags($content);
+        $desc = strip_tags($post_content);
     }
     
     $desc = html_entity_decode($desc, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     $desc = trim(preg_replace('/\\s+/', ' ', $desc));
     $desc = str_replace(['"', '\\\\', "'", '“', '”', '‘', '’'], '', $desc);
     
-    if (empty($desc)) {
-        $desc = "Đọc truyện chữ " . $title . " - Siêu phẩm sảng văn, vả mặt lôi cuốn kịch tính. Theo dõi hành trình lật ngược thế cờ đỉnh cao tại doctieuthuyet.com!";
+    $current_len = mb_strlen($desc);
+    
+    // Strictly optimize to ~155-160 characters
+    if ($current_len > 158) {
+        return smart_truncate($desc, 155, '...');
     }
     
-    return smart_truncate($desc, 155, '...');
+    if ($current_len < 140) {
+        $suffix = " Đọc ngay siêu phẩm sảng văn y học cổ truyền, cung đấu vả mặt kịch tính, bản dịch full mới nhất tại doctieuthuyet.com!";
+        $needed = 158 - $current_len;
+        if ($needed > 15) {
+            $truncated_suffix = mb_substr($suffix, 0, $needed);
+            $last_space = mb_strrpos($truncated_suffix, ' ');
+            if ($last_space !== false && $last_space > ($needed * 0.7)) {
+                $truncated_suffix = mb_substr($truncated_suffix, 0, $last_space);
+            }
+            $desc = $desc . rtrim($truncated_suffix, ' .!,') . '...';
+        }
+    }
+    
+    return $desc;
 }
 
 function get_focus_keyword($title) {
-    $title_clean = preg_replace('/[:,\-!?]/', ' ', $title);
+    $title_clean = preg_replace('/[:,\\-!?]/', ' ', $title);
     $words = explode(' ', trim(preg_replace('/\\s+/', ' ', $title_clean)));
     $words = array_slice($words, 0, 4);
     return mb_strtolower(implode(' ', $words));
@@ -71,16 +84,28 @@ $args = [
 ];
 $query = new WP_Query($args);
 $updated_stories = [];
+global $wpdb;
 
 foreach ($query->posts as $post) {
     $id = $post->ID;
     $title = $post->post_title;
     
+    // 1. Optimize Title and Description
     $seo_title = generate_seo_title($title);
-    $seo_desc = get_seo_description($post->post_content, $title);
+    $seo_desc = generate_seo_description($post->post_content, $title);
     $seo_keyword = get_focus_keyword($title);
     
-    // Update RankMath Postmeta (both standard and underscore to be absolutely safe)
+    // 2. Optimize Permalink (slug) to strictly under 75 characters
+    $slug = sanitize_title($title);
+    if (strlen($slug) > 72) {
+        $slug = substr($slug, 0, 72);
+        $slug = rtrim($slug, '-');
+    }
+    
+    // Update slug in database
+    $wpdb->update($wpdb->posts, ['post_name' => $slug], ['ID' => $id]);
+    
+    // Update RankMath postmeta
     update_post_meta($id, '_rank_math_title', $seo_title);
     update_post_meta($id, '_rank_math_description', $seo_desc);
     update_post_meta($id, '_rank_math_focus_keyword', $seo_keyword);
@@ -88,12 +113,12 @@ foreach ($query->posts as $post) {
     update_post_meta($id, 'rank_math_title', $seo_title);
     update_post_meta($id, 'rank_math_description', $seo_desc);
     update_post_meta($id, 'rank_math_focus_keyword', $seo_keyword);
-    
     update_post_meta($id, 'rank_math_rich_snippet', 'article');
     
     $updated_stories[] = [
         'id' => $id,
         'title' => $title,
+        'slug' => $slug,
         'seo_title' => $seo_title,
         'seo_desc' => $seo_desc,
         'seo_keyword' => $seo_keyword
@@ -126,7 +151,7 @@ def main():
     
     print("Executing bulk SEO update via HTTP...")
     try:
-        req = urllib.request.urlopen("https://doctieuthuyet.com/temp_bulk_seo.php", timeout=120)
+        req = urllib.request.urlopen("https://doctieuthuyet.com/temp_bulk_seo.php", timeout=180)
         response_data = json.loads(req.read().decode('utf-8'))
         print(f"Server Response: Success! Total updated: {response_data['total_updated']} stories.")
         with open("scratch/bulk_seo_results.json", "w", encoding="utf-8") as f:

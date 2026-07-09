@@ -1,0 +1,56 @@
+{
+  "7466": {
+    "title": "Hồn Sơn Mài: HỒN SƠN MÀI",
+    "post_id": 7466,
+    "base_image": "base_cover_25.png",
+    "mse": 698.384765625
+  },
+  "7448": {
+    "title": "Vua Tôm Hùm Phú Yên: Chàng Ngư Dân Bị Vu Oan Buôn Lậu Thâu Tóm Vùng Biển Nghìn Tỷ",
+    "post_id": 7448,
+    "base_image": "base_cover_42.png",
+    "mse": 3827.4033203125
+  },
+  "7437": {
+    "title": "Đế Chế Gốm Sứ Bát Tràng: Nghệ Nhân Bị Phản Bội Thiêu Đốt Cả Làng Nghề",
+    "post_id": 7437,
+    "base_image": "base_cover_59.png",
+    "mse": 1866.984375
+  },
+  "1933": {
+    "title": "Bị Gọi Là Con Bé Bên Máy In, Ngày Tôi Tung Báo Cáo Kiểm Toán Nghìn Tỷ Cả Tập Đoàn Quỳ Lạy",
+    "post_id": 1933,
+    "base_image": "scratch/remade_related_three_20260525/base_1933.png",
+    "mse": 627.009765625
+  },
+  "7379": {
+    "title": "Thần Y Châm Cứu Phố Lãn Ông: Bị Vu Oan Giết Bệnh Nhân, Tôi Dùng Kim Cứu Cả Làng Thuốc",
+    "post_id": 7379,
+    "base_image": "lan_ong_base_cover.png",
+    "mse": 994.90234375
+  },
+  "7369": {
+    "title": "Kẻ Bị Đuổi Khỏi Công Trường Hôm Nay Là Ông Chủ Của Cả Thành Phố Ngày Mai",
+    "post_id": 7369,
+    "base_image": "base_cover_16.png",
+    "mse": 383.8212890625
+  },
+  "5046": {
+    "title": "SÁNG KÝ ĐƠN LY HÔN, CHIỀU TÔI GẶP VỢ TRÊN GHẾ CEO HỢP ĐỒNG 500 TỶ",
+    "post_id": 5046,
+    "base_image": "base_cover_20.png",
+    "mse": 293.4228515625
+  },
+  "5180": {
+    "title": "Bị Cấm Bến Ở Nha Trang, Tôi Xây Đội Tàu Cứu Hộ Biển Lớn Nhất Miền Trung",
+    "post_id": 5180,
+    "base_image": "base_cover_33.png",
+    "mse": 258.3056640625
+  },
+  "5294": {
+    "title": "Bị Gạt Khỏi HĐQT Công Ty Mình Sáng Lập, Tôi Xây PayChain Và Thâu Tóm Lại VietPay",
+    "post_id": 5294,
+    "base_image": "base_cover_40.png",
+    "mse": 399.52734375
+  }
+}

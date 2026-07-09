@@ -1895,3 +1895,30 @@ body button, body a, .emojionearea .emojionearea-button > div.emojionearea-butto
     display: none !important;
 }
 
+/* ── 1/1 SQUARE COVER STANDARDIZATION OVERRIDES ── */
+.mkm-hero-cover, 
+.mkm-slider-cover, 
+.mkm-card-img, 
+.mkm-bxh-img, 
+.mkm-rel-img, 
+.latest-card-img-wrapper img, 
+.story-card-library img, 
+.mkm-cover-col img,
+.mkm-hero-cover img,
+.mkm-slider-cover img,
+.mkm-card-img img {
+    aspect-ratio: 1/1 !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+}
+
+/* Ensure all status badges are always on top of cover images */
+.mkm-badge-tl,
+.mkm-badge-tr,
+.mkm-badge-full-pos,
+.latest-card-img-wrapper .absolute,
+.story-card-library .absolute {
+    z-index: 10 !important;
+    position: absolute !important;
+}
+

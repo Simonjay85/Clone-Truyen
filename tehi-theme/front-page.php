@@ -45,7 +45,7 @@ get_header();
     flex-shrink: 0 !important;
     border-radius: 16px !important;
     overflow: hidden !important;
-    aspect-ratio: 2/3 !important;
+    aspect-ratio: 1/1 !important;
 }
 .mkm-hero-cover img {
     width: 100% !important;
@@ -446,8 +446,8 @@ get_header();
 .mkm-slider-btns { display:flex !important; gap:10px !important; flex-wrap:wrap !important; margin-bottom:16px !important; }
 /* Thumbnails swiper below */
 .mkm-thumb-swiper { margin-top:14px !important; padding-bottom:2px !important; }
-.mkm-thumb-swiper .swiper-slide { width: 60px !important; height: 80px !important; }
-.mkm-thumb-swiper .swiper-slide img { width:60px !important; height:80px !important; object-fit:cover !important; border-radius:8px !important; cursor:pointer !important; opacity:.7 !important; transition:opacity .2s !important; }
+.mkm-thumb-swiper .swiper-slide { width: 60px !important; height: 60px !important; }
+.mkm-thumb-swiper .swiper-slide img { width:60px !important; height:60px !important; object-fit:cover !important; border-radius:8px !important; cursor:pointer !important; opacity:.7 !important; transition:opacity .2s !important; }
 .mkm-thumb-swiper .swiper-slide.swiper-slide-thumb-active img { opacity:1 !important; box-shadow:0 0 0 2px #d97706 !important; }
 /* Prev/Next buttons */
 .mkm-slider-wrap { position: relative !important; }
@@ -512,26 +512,32 @@ get_header();
 }
 
 .mkm-card-btns {
-    display: flex !important;
-    gap: 8px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 6px !important;
     margin-top: 12px !important;
     width: 100% !important;
 }
 .mkm-btn-card {
-    flex: 1 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    min-height: 38px !important;
     text-align: center !important;
-    padding: 8px 4px !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
+    padding: 8px 3px !important;
+    font-size: clamp(9px, 0.72vw, 11px) !important;
+    font-weight: 800 !important;
     border-radius: 8px !important;
     text-decoration: none !important;
     transition: all 0.2s !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
     white-space: nowrap !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.2px !important;
+    letter-spacing: 0 !important;
+    line-height: 1 !important;
 }
 .mkm-btn-card-start {
     background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%) !important;
@@ -557,12 +563,13 @@ get_header();
 }
 @media (max-width: 600px) {
     .mkm-card-btns {
-        flex-direction: row !important;
-        gap: 6px !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 5px !important;
     }
     .mkm-btn-card {
+        min-height: 34px !important;
         padding: 6px 2px !important;
-        font-size: 9px !important;
+        font-size: clamp(8px, 2.45vw, 9px) !important;
     }
 }
 
@@ -991,7 +998,7 @@ get_header();
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
                             <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #fcd34d, #d97706); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(217,119,6,0.3); border:1.5px solid #fff; z-index:2;">1</div>
                         </div>
-                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:800; color:#c2410c; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php the_title(); ?></div>
                             <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
@@ -1009,7 +1016,7 @@ get_header();
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
                             <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #e5e7eb, #6b7280); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(107,114,128,0.3); border:1.5px solid #fff; z-index:2;">2</div>
                         </div>
-                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:700; color:#374151; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php the_title(); ?></div>
                             <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
@@ -1027,7 +1034,7 @@ get_header();
                             <div style="position:absolute; top:-2px; right:6px; width:6px; height:10px; background:#3b82f6; border-radius:1px; transform:rotate(25deg);"></div>
                             <div style="position:relative; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #fdba74, #c2410c); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; box-shadow:0 2px 4px rgba(194,65,12,0.3); border:1.5px solid #fff; z-index:2;">3</div>
                         </div>
-                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="48" style="width:36px; height:48px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="36" height="36" style="width:36px; height:36px; border-radius:6px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:700; color:#c2410c; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:6px; white-space:normal !important;"><?php the_title(); ?></div>
                             <div style="font-size:11px; color:#4b5563; display:flex; align-items:center; gap:4px; font-weight:500;">
@@ -1041,7 +1048,7 @@ get_header();
                     <!-- Tốp 4 - 10 -->
                     <a href="<?php the_permalink(); ?>" class="mkm-bxh-item" style="padding:6px 0;">
                         <div style="width:28px; text-align:center; font-size:15px; font-weight:800; color:#6b7280; flex-shrink:0; font-family: ui-sans-serif, system-ui, sans-serif;"><?php echo $ri; ?></div>
-                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="32" height="42" style="width:32px; height:42px; border-radius:4px; object-fit:cover; flex-shrink:0;">
+                        <img src="<?php echo esc_url($rthumb); ?>" alt="<?php the_title_attribute(); ?>" width="32" height="32" style="width:32px; height:32px; border-radius:4px; object-fit:cover; flex-shrink:0;">
                         <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
                             <div style="font-size:13px; font-weight:600; color:#4b5563; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height:1.3; margin-bottom:8px; white-space:normal !important;"><?php the_title(); ?></div>
                             <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">

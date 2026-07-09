@@ -283,7 +283,7 @@ function tehi_ajax_get_followed_stories() {
             ?>
             <!-- Story Card -->
             <div class="group flex flex-col h-full bg-transparent relative story-card-library" data-id="<?php the_ID(); ?>" style="transition: all 0.3s ease;">
-                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden mb-3 shadow-[0px_8px_24px_rgba(0,0,0,0.06)] group-hover:shadow-[0px_16px_40px_rgba(0,96,169,0.15)] transition-all duration-300 border border-gray-200 group-hover:-translate-y-1">
+                <div class="relative aspect-square rounded-2xl overflow-hidden mb-3 shadow-[0px_8px_24px_rgba(0,0,0,0.06)] group-hover:shadow-[0px_16px_40px_rgba(0,96,169,0.15)] transition-all duration-300 border border-gray-200 group-hover:-translate-y-1">
                     
                     <!-- Premium Unfollow Button with direct tooltip -->
                     <button class="absolute top-2.5 left-2.5 w-7.5 h-7.5 rounded-full bg-slate-900/60 hover:bg-red-600 text-white transition-all flex items-center justify-center shadow-lg border border-white/20 z-20 btn-unfollow-card opacity-0 group-hover:opacity-100 focus:opacity-100" data-id="<?php the_ID(); ?>" title="Bỏ theo dõi" style="width: 30px; height: 30px; border-radius: 50%; font-size: 14px; cursor: pointer; font-weight: bold;">
@@ -333,12 +333,80 @@ function tehi_ajax_get_followed_stories() {
     ]);
 }
 
+function tehi_build_contextual_story_comments($post_id) {
+    $title = wp_strip_all_tags(get_the_title($post_id));
+    $parts = explode(':', $title, 2);
+    $base = trim($parts[0]);
+    $hook = trim(count($parts) > 1 ? $parts[1] : $title);
+    if (mb_strlen($hook) > 86) {
+        $hook = mb_substr($hook, 0, 83) . '...';
+    }
+
+    $terms = wp_get_post_terms($post_id, 'the_loai', ['fields' => 'names']);
+    if (is_wp_error($terms) || empty($terms)) {
+        $terms = ['sảng văn'];
+    }
+
+    $source = mb_strtolower($title . ' ' . wp_strip_all_tags(get_post_field('post_content', $post_id)));
+    $pressure = (mb_strpos($source, 'vu oan') !== false) ? 'bị vu oan' : ((mb_strpos($source, 'cướp') !== false) ? 'bị cướp công' : 'bị xem thường');
+    $antagonist = (mb_strpos($source, 'vu oan') !== false) ? 'bọn vu oan' : ((mb_strpos($source, 'cướp') !== false) ? 'người cướp công' : 'những người khinh thường');
+
+    $chapter = get_posts([
+        'post_type' => 'chuong',
+        'meta_key' => '_truyen_id',
+        'meta_value' => $post_id,
+        'posts_per_page' => 1,
+        'orderby' => 'date',
+        'order' => 'ASC',
+    ]);
+    $first_chapter = !empty($chapter) ? wp_strip_all_tags($chapter[0]->post_title) : 'Chương đầu';
+
+    return [
+        "Đọc tên truyện đã thấy đúng gu: {$hook}. Cú bị dồn vào đường cùng rồi dùng bằng chứng bật lại rất đã.",
+        "{$base} nghe tưởng đơn giản mà vào truyện căng thật. Mâu thuẫn bám đúng tên truyện nên đọc không bị lạc.",
+        "Thích cách truyện bám vào vụ " . mb_strtolower($hook) . ", có mâu thuẫn rõ nên lúc phản công mới sướng.",
+        "Nếu ai thích {$terms[0]} kiểu có nghề, có chứng cứ, có cú lật mặt trước đám đông thì bộ này hợp lắm.",
+        "Đoạn đầu dựng mâu thuẫn chắc, nhân vật chính không thắng dễ. Càng đọc càng muốn xem {$antagonist} phải trả giá.",
+        "Không ngờ chủ đề của bộ này mà viết thành sảng văn cuốn vậy. Vừa tức thay nhân vật chính vừa hóng màn phản đòn.",
+        "Đọc tới mấy cảnh bị khinh thường mới thấy cú thâu tóm phía sau đã. Vả mặt phải có nền đau như vậy mới ngấm.",
+        "Điểm mình thích là truyện không chỉ hô khẩu hiệu cho kêu, mà có mâu thuẫn cụ thể và cách gỡ từng lớp.",
+        "{$first_chapter} mở khá bắt. Hy vọng các chương sau giữ nhịp căng như phần giới thiệu.",
+        "Nhân vật phản diện trong vụ " . mb_strtolower($hook) . " đọc mà bực thật, nhưng càng bực thì đoạn lật kèo càng đáng chờ.",
+        "Bộ này nên đọc từ đầu để thấy quá trình nhân vật chính {$pressure} rồi mới bật lên, đọc lẻ chương sẽ không đã bằng.",
+        "Mình thích kiểu vả mặt bằng hành động và chứng cứ hơn là chỉ nói suông. Bộ này đi đúng hướng đó.",
+        "Tên truyện dài nhưng vào đọc thấy có lý do: vừa có nỗi oan, vừa có mục tiêu lớn để nhân vật chính bật lại.",
+    ];
+}
+
 // Database Seeder to pre-populate comments once when empty
 function tehi_seed_story_comments_if_empty($post_id) {
     $post_comments = get_comments(['post_id' => $post_id, 'status' => 'approve']);
     if (!empty($post_comments)) {
         return;
     }
+
+    $names = [
+        'Lan Hương', 'Minh Nhật', 'Khánh Linh', 'Quốc Bảo', 'Ngọc Diệp', 'Thu Trang',
+        'Hữu Phước', 'Bích Trâm', 'Tuấn Phong', 'Mai Anh', 'Đức Thịnh', 'Thùy Chi',
+        'Nguyễn Dũng', 'Quỳnh Hương', 'Bảo Lâm', 'Kim Ngân', 'Đăng Khoa', 'Ngọc Ánh',
+    ];
+    $reviews = tehi_build_contextual_story_comments($post_id);
+    foreach ($reviews as $i => $content) {
+        $author_name = $names[($post_id + $i * 7) % count($names)];
+        $comment_id = wp_insert_comment([
+            'comment_post_ID'      => $post_id,
+            'comment_author'       => $author_name,
+            'comment_author_email' => sanitize_title($author_name) . $post_id . $i . '@gmail.com',
+            'comment_content'      => $content,
+            'comment_type'         => 'comment',
+            'comment_date'         => date('Y-m-d H:i:s', current_time('timestamp') - ((3 + (($post_id + $i * 7) % 60)) * DAY_IN_SECONDS)),
+            'comment_approved'     => 1,
+        ]);
+        if ($comment_id) {
+            update_comment_meta($comment_id, 'comment_rating', ($i === 6 || $i === 11) ? 4 : 5);
+        }
+    }
+    return;
 
     $names = [
         'Lan Hương', 'Minh Nhật', 'Khánh Linh', 'Quốc Bảo', 'Ngọc Diệp', 'Thu Trang', 
@@ -2472,4 +2540,3 @@ function tehi_serve_webp_image_srcset($sources, $size_array, $image_src, $image_
     return $sources;
 }
 add_filter('wp_calculate_image_srcset', 'tehi_serve_webp_image_srcset', 10, 5);
-
