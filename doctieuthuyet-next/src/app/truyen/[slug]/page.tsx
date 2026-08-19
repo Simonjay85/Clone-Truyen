@@ -18,6 +18,14 @@ export default async function StoryDetail({ params }: { params: Promise<{ slug: 
 
   const story = data[0];
   const thumbnailSrc = story._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'https://via.placeholder.com/150x200?text=No+Cover';
+
+  const chapterNumberOf = (chapter: any) => {
+    const stored = chapter.meta?._dtt_chapter_number ?? chapter.meta?._dtt_sort_order;
+    const numeric = Number(stored);
+    if (Number.isInteger(numeric) && numeric > 0) return numeric;
+    const match = String(chapter.title?.rendered || '').match(/(?:chương|chuong|chapter)\s*[-:#.]?\s*(\d+)/i);
+    return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
+  };
   
   // Lấy danh sách chương (Giả lập lấy 50 chương mới nhất của truyện này)
   let chapters = [];
@@ -26,12 +34,9 @@ export default async function StoryDetail({ params }: { params: Promise<{ slug: 
     // Tạm thời kéo chap mới về lọc:
     const chapRes = await fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/chuong?per_page=100`, { cache: 'no-store' });
     const allChaps = await chapRes.json();
-    chapters = allChaps.filter((c: any) => c.meta?._truyen_id === story.id);
-    
-    // Nếu API không filter được _truyen_id, ta hiển thị tạm 10 chương mới nhất bất kỳ để Demo luồng click
-    if(chapters.length === 0) {
-        chapters = allChaps.slice(0, 10);
-    }
+    chapters = allChaps
+      .filter((c: any) => c.meta?._truyen_id === story.id)
+      .sort((a: any, b: any) => chapterNumberOf(a) - chapterNumberOf(b));
   } catch (e) {}
 
   return (
@@ -73,7 +78,7 @@ export default async function StoryDetail({ params }: { params: Promise<{ slug: 
                   key={chap.id}
                   className="p-3 bg-[#fcf9f2] border border-[#eee4d9] rounded hover:border-[#8b5a2b] hover:text-[#8b5a2b] text-[#4a3f35] transition flex items-center gap-2 cursor-pointer relative z-10"
                 >
-                  <span className="text-[#8b5a2b] font-mono text-sm">#{chapters.length - index}</span>
+                  <span className="text-[#8b5a2b] font-mono text-sm">#{chapterNumberOf(chap) === Number.MAX_SAFE_INTEGER ? index + 1 : chapterNumberOf(chap)}</span>
                   <span className="truncate" dangerouslySetInnerHTML={{ __html: chap.title.rendered }} />
                 </Link>
              )) : (

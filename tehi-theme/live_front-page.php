@@ -1118,4 +1118,14 @@
     </div>
 </div>
 
+<style>
+/* Card button fit refinement */
+.mkm-card-btns { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr) !important; gap: 8px !important; padding-right: 2px !important; }
+.mkm-btn-card-start { margin-left: 4px !important; width: calc(100% - 4px) !important; }
+.mkm-btn-card-new { width: 100% !important; padding-left: 5px !important; padding-right: 5px !important; }
+@media (max-width: 600px) {
+  .mkm-card-btns { grid-template-columns: minmax(0, .76fr) minmax(0, 1.24fr) !important; gap: 5px !important; padding-right: 2px !important; }
+  .mkm-btn-card { padding-left: 1px !important; padding-right: 1px !important; font-size: 7.5px !important; letter-spacing: -0.12px !important; }
+}
+</style>
 <?php get_footer(); ?>

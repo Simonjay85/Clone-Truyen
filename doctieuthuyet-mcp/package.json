@@ -1,0 +1,25 @@
+{
+  "name": "doctieuthuyet-mcp",
+  "version": "4.2.0",
+  "description": "Secure MCP server and WordPress bridge client for doctieuthuyet.com story workflows",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "npm run build && node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "express": "^4.21.2",
+    "dotenv": "^16.4.7",
+    "zod": "^3.25.28"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": { "node": ">=20" }
+}

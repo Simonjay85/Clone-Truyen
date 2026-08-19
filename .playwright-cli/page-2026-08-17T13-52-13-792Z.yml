@@ -1,0 +1,495 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "DTT." [ref=e6] [cursor=pointer]:
+        - /url: https://doctieuthuyet.com
+      - generic [ref=e8]:
+        - button "Tìm kiếm" [ref=e9] [cursor=pointer]:
+          - generic [ref=e10]: 
+        - textbox "Tìm tên truyện, tên người đăng.." [ref=e11]
+      - generic [ref=e12]:
+        - link " Thể loại" [ref=e13] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/the-loai.html
+          - generic [ref=e14]: 
+          - text: Thể loại
+        - link " Truyện full" [ref=e15] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=e16]: 
+          - text: Truyện full
+        - link " BXH" [ref=e17] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e18]: 
+          - text: BXH
+        - link " Theo dõi" [ref=e19] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/theo-doi.html
+          - generic [ref=e20]: 
+          - text: Theo dõi
+        - button " Đăng nhập" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: 
+          - text: Đăng nhập
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - img "HUYỀN NỮ GIỮ NGỌC ẤN" [ref=e27]
+        - generic [ref=e28]:
+          - heading "HUYỀN NỮ GIỮ NGỌC ẤN" [level=1] [ref=e29]
+          - generic [ref=e30]:
+            - generic [ref=e31]: Đề Cử
+            - generic [ref=e32]: Hoàn Thành
+            - generic [ref=e33]:
+              - generic [ref=e34]: 
+              - text: "Tác giả: Đang cập nhật"
+            - generic [ref=e35]:
+              - generic [ref=e36]: 
+              - text: "Chương: 1230"
+          - generic [ref=e37]: Cố Huyền Ngọc xuyên vào tiểu thư của gia tộc chuyên bảo quản quốc bảo. Nguyên chủ bị coi là kẻ mê tín vì thường nói ngọc ấn có vấn đề. Huyền Ngọc biết đó là một vật giả được...
+          - generic [ref=e38]:
+            - link " Đọc ngay" [ref=e39] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/truyen/huyen-nu-giu-ngoc-an/
+              - generic [ref=e40]: 
+              - text: Đọc ngay
+            - link "Xem đánh giá" [ref=e41] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/truyen/huyen-nu-giu-ngoc-an/#review
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: 
+              - text: Mới cập nhật
+            - link "Xem tất cả " [ref=e47] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/truyen-moi-cap-nhat.html
+              - text: Xem tất cả
+              - generic [ref=e48]: 
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - link "MỚI SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG  2926  397" [ref=e51] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+                - generic [ref=e52]:
+                  - generic [ref=e53]: MỚI
+                  - img "SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e54]
+                  - generic [ref=e55]:
+                    - generic [ref=e56]:
+                      - generic [ref=e57]: 
+                      - text: "2926"
+                    - generic [ref=e58]:
+                      - generic [ref=e59]: 
+                      - text: "397"
+              - generic [ref=e60]:
+                - link "SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e61] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+                - generic [ref=e62]: Chương mới nhất
+            - generic [ref=e63]:
+              - link "MỚI CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT  2539  266" [ref=e64] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/cung-dau-khong-co-nuoc-mat/
+                - generic [ref=e65]:
+                  - generic [ref=e66]: MỚI
+                  - img "CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT" [ref=e67]
+                  - generic [ref=e68]:
+                    - generic [ref=e69]:
+                      - generic [ref=e70]: 
+                      - text: "2539"
+                    - generic [ref=e71]:
+                      - generic [ref=e72]: 
+                      - text: "266"
+              - generic [ref=e73]:
+                - link "CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT" [ref=e74] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/cung-dau-khong-co-nuoc-mat/
+                - generic [ref=e75]: Chương mới nhất
+            - generic [ref=e76]:
+              - link "MỚI HÀO MÔN NỮ VƯƠNG  2263  128" [ref=e77] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/hao-mon-nu-vuong/
+                - generic [ref=e78]:
+                  - generic [ref=e79]: MỚI
+                  - img "HÀO MÔN NỮ VƯƠNG" [ref=e80]
+                  - generic [ref=e81]:
+                    - generic [ref=e82]:
+                      - generic [ref=e83]: 
+                      - text: "2263"
+                    - generic [ref=e84]:
+                      - generic [ref=e85]: 
+                      - text: "128"
+              - generic [ref=e86]:
+                - link "HÀO MÔN NỮ VƯƠNG" [ref=e87] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/hao-mon-nu-vuong/
+                - generic [ref=e88]: Chương mới nhất
+            - generic [ref=e89]:
+              - link "MỚI CÔNG CHÚA BỊ ĐÁNH TRÁO  2392  313" [ref=e90] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/cong-chua-bi-danh-trao/
+                - generic [ref=e91]:
+                  - generic [ref=e92]: MỚI
+                  - img "CÔNG CHÚA BỊ ĐÁNH TRÁO" [ref=e93]
+                  - generic [ref=e94]:
+                    - generic [ref=e95]:
+                      - generic [ref=e96]: 
+                      - text: "2392"
+                    - generic [ref=e97]:
+                      - generic [ref=e98]: 
+                      - text: "313"
+              - generic [ref=e99]:
+                - link "CÔNG CHÚA BỊ ĐÁNH TRÁO" [ref=e100] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/cong-chua-bi-danh-trao/
+                - generic [ref=e101]: Chương mới nhất
+            - generic [ref=e102]:
+              - link "MỚI NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU  3444  329" [ref=e103] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nu-tong-tai-xuyen-thanh-ke-mau/
+                - generic [ref=e104]:
+                  - generic [ref=e105]: MỚI
+                  - img "NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU" [ref=e106]
+                  - generic [ref=e107]:
+                    - generic [ref=e108]:
+                      - generic [ref=e109]: 
+                      - text: "3444"
+                    - generic [ref=e110]:
+                      - generic [ref=e111]: 
+                      - text: "329"
+              - generic [ref=e112]:
+                - link "NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU" [ref=e113] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/nu-tong-tai-xuyen-thanh-ke-mau/
+                - generic [ref=e114]: Chương mới nhất
+            - generic [ref=e115]:
+              - link "MỚI HUYỀN NỮ GIỮ NGỌC ẤN  4193  113" [ref=e116] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/huyen-nu-giu-ngoc-an/
+                - generic [ref=e117]:
+                  - generic [ref=e118]: MỚI
+                  - img "HUYỀN NỮ GIỮ NGỌC ẤN" [ref=e119]
+                  - generic [ref=e120]:
+                    - generic [ref=e121]:
+                      - generic [ref=e122]: 
+                      - text: "4193"
+                    - generic [ref=e123]:
+                      - generic [ref=e124]: 
+                      - text: "113"
+              - generic [ref=e125]:
+                - link "HUYỀN NỮ GIỮ NGỌC ẤN" [ref=e126] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/huyen-nu-giu-ngoc-an/
+                - generic [ref=e127]: Chương mới nhất
+            - generic [ref=e128]:
+              - link "MỚI THIẾU PHU NHÂN CẦM DAO  1531  378" [ref=e129] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/thieu-phu-nhan-cam-dao/
+                - generic [ref=e130]:
+                  - generic [ref=e131]: MỚI
+                  - img "THIẾU PHU NHÂN CẦM DAO" [ref=e132]
+                  - generic [ref=e133]:
+                    - generic [ref=e134]:
+                      - generic [ref=e135]: 
+                      - text: "1531"
+                    - generic [ref=e136]:
+                      - generic [ref=e137]: 
+                      - text: "378"
+              - generic [ref=e138]:
+                - link "THIẾU PHU NHÂN CẦM DAO" [ref=e139] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/thieu-phu-nhan-cam-dao/
+                - generic [ref=e140]: Chương mới nhất
+            - generic [ref=e141]:
+              - link "MỚI NỮ ĐẾ TRỞ VỀ TỪ HỎA NGỤC  1158  352" [ref=e142] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nu-de-tro-ve-tu-hoa-nguc/
+                - generic [ref=e143]:
+                  - generic [ref=e144]: MỚI
+                  - img "NỮ ĐẾ TRỞ VỀ TỪ HỎA NGỤC" [ref=e145]
+                  - generic [ref=e146]:
+                    - generic [ref=e147]:
+                      - generic [ref=e148]: 
+                      - text: "1158"
+                    - generic [ref=e149]:
+                      - generic [ref=e150]: 
+                      - text: "352"
+              - generic [ref=e151]:
+                - link "NỮ ĐẾ TRỞ VỀ TỪ HỎA NGỤC" [ref=e152] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/nu-de-tro-ve-tu-hoa-nguc/
+                - generic [ref=e153]: Chương mới nhất
+          - generic [ref=e154]:
+            - generic [ref=e155]:
+              - generic [ref=e156]: 
+              - text: Truyện hot
+            - link "Xem tất cả " [ref=e157] [cursor=pointer]:
+              - /url: "#"
+              - text: Xem tất cả
+              - generic [ref=e158]: 
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - link "HOT SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG  7136" [ref=e161] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+                - generic [ref=e162]:
+                  - generic [ref=e163]: HOT
+                  - img "SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e164]
+                  - generic [ref=e166]:
+                    - generic [ref=e167]: 
+                    - text: "7136"
+              - link "SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e169] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+            - generic [ref=e170]:
+              - 'link "HOT Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân  5558" [ref=e171] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/biet-thu-go-vap-tu-nguoi-ngoai-tro-thanh-chu-nhan/
+                - generic [ref=e172]:
+                  - generic [ref=e173]: HOT
+                  - 'img "Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân" [ref=e174]'
+                  - generic [ref=e176]:
+                    - generic [ref=e177]: 
+                    - text: "5558"
+              - 'link "Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân" [ref=e179] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/biet-thu-go-vap-tu-nguoi-ngoai-tro-thanh-chu-nhan/
+            - generic [ref=e180]:
+              - link "HOT Bị Gọi Là Con Bé Bên Máy In, Ngày Tôi Tung Báo Cáo Kiểm Toán Nghìn Tỷ Cả Tập Đoàn Quỳ Lạy  7339" [ref=e181] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/bi-goi-la-con-be-ben-may-in-ngay-toi-tung-bao-cao-kiem-toan-nghin-ty-ca/
+                - generic [ref=e182]:
+                  - generic [ref=e183]: HOT
+                  - img "Bị Gọi Là Con Bé Bên Máy In, Ngày Tôi Tung Báo Cáo Kiểm Toán Nghìn Tỷ Cả Tập Đoàn Quỳ Lạy" [ref=e184]
+                  - generic [ref=e186]:
+                    - generic [ref=e187]: 
+                    - text: "7339"
+              - link "Bị Gọi Là Con Bé Bên Máy In, Ngày Tôi Tung Báo Cáo Kiểm Toán Nghìn Tỷ Cả Tập Đoàn Quỳ Lạy" [ref=e189] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/bi-goi-la-con-be-ben-may-in-ngay-toi-tung-bao-cao-kiem-toan-nghin-ty-ca/
+            - generic [ref=e190]:
+              - link "HOT Thực Tập Sinh Bị Đuổi Giữa Phòng Họp, Không Ai Biết Cô Là Con Gái Chủ Tịch  16751" [ref=e191] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/thuc-tap-sinh-bi-duoi-giua-phong-hop-khong-ai-biet-co-la-con-gai-chu-tic/
+                - generic [ref=e192]:
+                  - generic [ref=e193]: HOT
+                  - img "Thực Tập Sinh Bị Đuổi Giữa Phòng Họp, Không Ai Biết Cô Là Con Gái Chủ Tịch" [ref=e194]
+                  - generic [ref=e196]:
+                    - generic [ref=e197]: 
+                    - text: "16751"
+              - link "Thực Tập Sinh Bị Đuổi Giữa Phòng Họp, Không Ai Biết Cô Là Con Gái Chủ Tịch" [ref=e199] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/thuc-tap-sinh-bi-duoi-giua-phong-hop-khong-ai-biet-co-la-con-gai-chu-tic/
+          - generic [ref=e200]:
+            - generic [ref=e201]:
+              - generic [ref=e202]: 
+              - text: Truyện full
+            - link "Xem tất cả " [ref=e203] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/hoan-thanh.html
+              - text: Xem tất cả
+              - generic [ref=e204]: 
+          - generic [ref=e205]:
+            - generic [ref=e206]:
+              - link "FULL SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e207] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+                - generic [ref=e208]:
+                  - generic [ref=e209]: FULL
+                  - img "SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e210]
+              - link "SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e212] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+            - generic [ref=e213]:
+              - link "FULL CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT" [ref=e214] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/cung-dau-khong-co-nuoc-mat/
+                - generic [ref=e215]:
+                  - generic [ref=e216]: FULL
+                  - img "CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT" [ref=e217]
+              - link "CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT" [ref=e219] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/cung-dau-khong-co-nuoc-mat/
+            - generic [ref=e220]:
+              - link "FULL HÀO MÔN NỮ VƯƠNG" [ref=e221] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/hao-mon-nu-vuong/
+                - generic [ref=e222]:
+                  - generic [ref=e223]: FULL
+                  - img "HÀO MÔN NỮ VƯƠNG" [ref=e224]
+              - link "HÀO MÔN NỮ VƯƠNG" [ref=e226] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/hao-mon-nu-vuong/
+            - generic [ref=e227]:
+              - link "FULL CÔNG CHÚA BỊ ĐÁNH TRÁO" [ref=e228] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/cong-chua-bi-danh-trao/
+                - generic [ref=e229]:
+                  - generic [ref=e230]: FULL
+                  - img "CÔNG CHÚA BỊ ĐÁNH TRÁO" [ref=e231]
+              - link "CÔNG CHÚA BỊ ĐÁNH TRÁO" [ref=e233] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/cong-chua-bi-danh-trao/
+        - generic [ref=e234]:
+          - generic [ref=e235]:
+            - generic [ref=e236]:
+              - generic [ref=e237]: 
+              - text: Bảng xếp hạng
+            - generic [ref=e238]:
+              - generic [ref=e239] [cursor=pointer]: Thứ Ảo
+              - generic [ref=e240] [cursor=pointer]: Lượt Thích
+              - generic [ref=e241] [cursor=pointer]: Đọc Nhiều
+            - list [ref=e242]:
+              - listitem [ref=e243]:
+                - generic [ref=e244]: "1"
+                - generic [ref=e245]:
+                  - link "SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e246] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+                  - generic [ref=e247]:
+                    - generic [ref=e248]: 
+                    - text: "98882"
+              - listitem [ref=e249]:
+                - generic [ref=e250]: "2"
+                - generic [ref=e251]:
+                  - link "CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT" [ref=e252] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/cung-dau-khong-co-nuoc-mat/
+                  - generic [ref=e253]:
+                    - generic [ref=e254]: 
+                    - text: "57376"
+              - listitem [ref=e255]:
+                - generic [ref=e256]: "3"
+                - generic [ref=e257]:
+                  - link "HÀO MÔN NỮ VƯƠNG" [ref=e258] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/hao-mon-nu-vuong/
+                  - generic [ref=e259]:
+                    - generic [ref=e260]: 
+                    - text: "59254"
+              - listitem [ref=e261]:
+                - generic [ref=e262]: "4"
+                - generic [ref=e263]:
+                  - link "CÔNG CHÚA BỊ ĐÁNH TRÁO" [ref=e264] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/cong-chua-bi-danh-trao/
+                  - generic [ref=e265]:
+                    - generic [ref=e266]: 
+                    - text: "14670"
+              - listitem [ref=e267]:
+                - generic [ref=e268]: "5"
+                - generic [ref=e269]:
+                  - link "NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU" [ref=e270] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/nu-tong-tai-xuyen-thanh-ke-mau/
+                  - generic [ref=e271]:
+                    - generic [ref=e272]: 
+                    - text: "16004"
+              - listitem [ref=e273]:
+                - generic [ref=e274]: "6"
+                - generic [ref=e275]:
+                  - link "HUYỀN NỮ GIỮ NGỌC ẤN" [ref=e276] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/huyen-nu-giu-ngoc-an/
+                  - generic [ref=e277]:
+                    - generic [ref=e278]: 
+                    - text: "55761"
+              - listitem [ref=e279]:
+                - generic [ref=e280]: "7"
+                - generic [ref=e281]:
+                  - link "THIẾU PHU NHÂN CẦM DAO" [ref=e282] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/thieu-phu-nhan-cam-dao/
+                  - generic [ref=e283]:
+                    - generic [ref=e284]: 
+                    - text: "46979"
+              - listitem [ref=e285]:
+                - generic [ref=e286]: "8"
+                - generic [ref=e287]:
+                  - link "NỮ ĐẾ TRỞ VỀ TỪ HỎA NGỤC" [ref=e288] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/nu-de-tro-ve-tu-hoa-nguc/
+                  - generic [ref=e289]:
+                    - generic [ref=e290]: 
+                    - text: "90352"
+              - listitem [ref=e291]:
+                - generic [ref=e292]: "9"
+                - generic [ref=e293]:
+                  - link "VỢ HỢP ĐỒNG CỦA NHIẾP CHÍNH VƯƠNG" [ref=e294] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/vo-hop-dong-cua-nhiep-chinh-vuong/
+                  - generic [ref=e295]:
+                    - generic [ref=e296]: 
+                    - text: "70214"
+              - listitem [ref=e297]:
+                - generic [ref=e298]: "10"
+                - generic [ref=e299]:
+                  - link "MẸ KẾ CỦA THÁI TỬ" [ref=e300] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/me-ke-cua-thai-tu/
+                  - generic [ref=e301]:
+                    - generic [ref=e302]: 
+                    - text: "39266"
+          - generic [ref=e303]:
+            - generic [ref=e304]:
+              - generic [ref=e305]: 
+              - text: Bảng xếp hạng User
+            - generic [ref=e306]:
+              - generic [ref=e307] [cursor=pointer]: Cống hiến
+              - generic [ref=e308] [cursor=pointer]: Đề cử
+            - generic [ref=e309]:
+              - img "user" [ref=e310]
+              - generic [ref=e311]:
+                - generic [ref=e312]: Lão Nhị Tehi
+                - generic [ref=e313]:
+                  - generic [ref=e314]: 
+                  - text: Đại Thánh 8 Đời
+            - generic [ref=e315]:
+              - img "user" [ref=e316]
+              - generic [ref=e317]:
+                - generic [ref=e318]: Thẩm Nguyệt
+                - generic [ref=e319]:
+                  - generic [ref=e320]: 
+                  - text: Trúc Cơ Kỳ
+            - generic [ref=e321]:
+              - img "user" [ref=e322]
+              - generic [ref=e323]:
+                - generic [ref=e324]: Nhiếp Phong
+                - generic [ref=e325]:
+                  - generic [ref=e326]: 
+                  - text: Luyện Khí Kỳ
+  - contentinfo [ref=e327]:
+    - generic [ref=e328]:
+      - generic [ref=e329]:
+        - link "DTT." [ref=e330] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/
+        - paragraph [ref=e332]: Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.
+      - generic [ref=e333]:
+        - heading "Thông tin" [level=4] [ref=e334]
+        - list [ref=e335]:
+          - listitem [ref=e336]:
+            - link "Giới thiệu" [ref=e337] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/gioi-thieu/
+          - listitem [ref=e341]:
+            - link "Chính sách bảo mật" [ref=e342] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chinh-sach-bao-mat/
+          - listitem [ref=e345]:
+            - link "Điều khoản sử dụng" [ref=e346] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-khoan-su-dung/
+      - generic [ref=e349]:
+        - heading "Danh sách truyện" [level=4] [ref=e350]
+        - list [ref=e351]:
+          - listitem [ref=e352]:
+            - link "• Sảng Văn" [ref=e353] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+          - listitem [ref=e354]:
+            - link "• Vả Mặt" [ref=e355] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - listitem [ref=e356]:
+            - link "• Đô thị vả mặt" [ref=e357] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+          - listitem [ref=e358]:
+            - link "• Đô thị thương chiến" [ref=e359] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/
+          - listitem [ref=e360]:
+            - link "• Hào Môn" [ref=e361] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/hao-mon/
+          - listitem [ref=e362]:
+            - link "• Ẩm Thực" [ref=e363] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/am-thuc/
+      - generic [ref=e364]:
+        - heading "Top truyện" [level=4] [ref=e365]
+        - list [ref=e366]:
+          - listitem [ref=e367]:
+            - link "• Top ngôn tình hay nhất" [ref=e368] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang/
+          - listitem [ref=e369]:
+            - link "• Top ngôn tình hiện đại" [ref=e370] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+hien+dai
+          - listitem [ref=e371]:
+            - link "• Top tổng tài hay nhất" [ref=e372] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=tong+tai
+          - listitem [ref=e373]:
+            - link "• Top ngôn tình cổ đại" [ref=e374] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+co+dai
+          - listitem [ref=e375]:
+            - link "• Top xuyên không hay" [ref=e376] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=xuyen+khong
+          - listitem [ref=e377]:
+            - link "• Top truyện quân nhân" [ref=e378] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=quan+nhan
+      - generic [ref=e379]:
+        - heading "Kết nối" [level=4] [ref=e380]
+        - paragraph [ref=e381]: "Theo dõi để nhận thông báo chương mới:"
+        - generic [ref=e382]:
+          - link "Fanpage" [ref=e383] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+          - link "YouTube" [ref=e386] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/nhom-dich/
+        - paragraph [ref=e389]: Tải ứng dụng
+        - generic [ref=e390]:
+          - link "Tải về App Store" [ref=e391] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=e394]:
+              - generic [ref=e395]: Tải về
+              - strong [ref=e396]: App Store
+          - link "Tải về Google Play" [ref=e397] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=e400]:
+              - generic [ref=e401]: Tải về
+              - strong [ref=e402]: Google Play
+    - paragraph [ref=e408]:
+      - strong [ref=e409]: "Tuyên bố miễn trừ trách nhiệm:"
+      - text: DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.
+    - generic [ref=e410]: © 2026 DTT. All rights reserved.

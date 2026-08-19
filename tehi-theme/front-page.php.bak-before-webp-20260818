@@ -1,9 +1,4 @@
 <?php
-if (!function_exists("tehi_frontpage_webp_url")) {
-    function tehi_frontpage_webp_url($url) {
-        return function_exists("dtt_rewrite_webp_url") ? dtt_rewrite_webp_url($url) : $url;
-    }
-}
 // Query the slider posts before loading the header to enable preloading the LCP candidate
 $slider_q = new WP_Query([
     'post_type'      => 'truyen',
@@ -422,8 +417,6 @@ get_header();
 }
 /* ── HERO SLIDER ── */
 .mkm-slider-wrap {
-    display: block !important;
-    min-height: 280px !important;
     background: #fff !important;
     border-radius: 24px !important;
     padding: 20px !important;
@@ -432,7 +425,6 @@ get_header();
     overflow: hidden !important;
 }
 .mkm-slider-main {
-    min-height: 240px !important;
     display: flex !important;
     gap: 20px !important;
     align-items: flex-start !important;
@@ -593,16 +585,7 @@ get_header();
 
     <!-- ══ HERO SLIDER ══ -->
     <?php
-    if (!isset($slider_q) || !$slider_q->have_posts()) {
-        $slider_q = new WP_Query([
-            "post_type"      => "truyen",
-            "posts_per_page" => 6,
-            "orderby"        => "date",
-            "order"          => "DESC",
-            "no_found_rows"  => true,
-        ]);
-    }
-    if ($slider_q->have_posts()):
+    if (isset($slider_q) && $slider_q->have_posts()):
         $slider_q->rewind_posts();
     ?>
     <div class="mkm-slider-wrap">
@@ -610,7 +593,7 @@ get_header();
         <div class="swiper mkm-main-swiper">
             <div class="swiper-wrapper">
             <?php while($slider_q->have_posts()): $slider_q->the_post();
-                $s_cover = tehi_frontpage_webp_url(get_the_post_thumbnail_url(null,'medium')) ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                $s_cover = get_the_post_thumbnail_url(null,'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                 $s_exc   = wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 350, '...');
                 $s_date  = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' trước';
                 $s_cats  = wp_get_post_terms(get_the_ID(),'the_loai');
@@ -660,14 +643,9 @@ get_header();
     </div>
     <style>
         .mkm-main-swiper {
-            display: block !important;
-            height: auto !important;
-            min-height: 280px !important;
             padding-bottom: 45px !important;
             position: relative !important;
         }
-        .mkm-main-swiper .swiper-wrapper { height: auto !important; min-height: 240px !important; }
-        .mkm-main-swiper .swiper-slide { height: auto !important; min-height: 240px !important; }
         .mkm-main-swiper .swiper-pagination {
             bottom: 15px !important;
             display: flex !important;
@@ -760,7 +738,7 @@ get_header();
                 <?php
                 $q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'no_found_rows' => true]);
                 while ($q->have_posts()) : $q->the_post();
-                    $img = tehi_frontpage_webp_url(get_the_post_thumbnail_url(null, 'medium')) ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    $img = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                     
                     // Fetch real view counts, fallback to _views or random view counts
                     $views = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
@@ -836,7 +814,7 @@ get_header();
                 <?php
                 $q2 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'orderby' => 'comment_count', 'no_found_rows' => true]);
                 while ($q2->have_posts()) : $q2->the_post();
-                    $img2 = tehi_frontpage_webp_url(get_the_post_thumbnail_url(null, 'medium')) ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    $img2 = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                     
                     // Fetch real view counts, fallback to _views or random view counts
                     $views2 = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
@@ -912,7 +890,7 @@ get_header();
                 <?php
                 $q3 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'offset' => 12, 'no_found_rows' => true]);
                 while ($q3->have_posts()) : $q3->the_post();
-                    $img3 = tehi_frontpage_webp_url(get_the_post_thumbnail_url(null, 'medium')) ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    $img3 = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                     
                     // Fetch real view counts, fallback to _views or random view counts
                     $views3 = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
@@ -1002,7 +980,7 @@ get_header();
                     $ri = 1;
                     $max_views = 20000;
                     while ($bxh->have_posts()) : $bxh->the_post();
-                        $rthumb = tehi_frontpage_webp_url(get_the_post_thumbnail_url(null, 'thumbnail')) ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                        $rthumb = get_the_post_thumbnail_url(null, 'thumbnail') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                         $views = (int)get_post_meta(get_the_ID(), '_views', true);
                         if($views < 1000) $views = rand(1000, 20000); // mock data if empty
                         

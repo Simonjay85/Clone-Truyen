@@ -17,7 +17,7 @@ $all_terms = get_terms([
 ]);
 ?>
 
-<main class="pt-24 pb-20 px-4 w-full max-w-[95%] 2xl:max-w-[1400px] mx-auto flex-grow">
+<main class="pt-6 sm:pt-12 pb-20 px-4 w-full max-w-[95%] 2xl:max-w-[1400px] mx-auto flex-grow">
     <!-- Hero / Header Section -->
     <header class="mb-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between rounded-[2rem] bg-gradient-to-r from-surface-container-low to-surface-container-highest p-8 md:p-12 border border-gray-200 shadow-sm text-left">
         
@@ -46,15 +46,15 @@ $all_terms = get_terms([
     </header>
     
     <!-- Filters Section -->
-    <div class="mb-12 flex flex-col gap-6 bg-white p-6 rounded-3xl border border-gray-200 shadow-sm">
+    <div class="mb-8 flex flex-col gap-4 bg-white p-3 sm:p-6 rounded-2xl sm:rounded-3xl border border-gray-200 shadow-sm">
         <!-- Genre Chips -->
-        <div class="flex flex-wrap gap-2 md:gap-3">
-            <a href="<?php echo get_site_url(); ?>/?post_type=truyen" class="px-5 py-2 rounded-xl font-bold text-sm transition-all duration-300 <?php echo (!$current_term_id) ? 'bg-blue-600 shadow-md shadow-blue-600/20 text-white' : 'bg-gray-100 text-red-500 hover:text-red-600 hover:bg-red-50'; ?>">Tất cả</a>
+        <div class="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap md:gap-3 mkm-genre-chips w-full">
+            <a href="<?php echo get_site_url(); ?>/?post_type=truyen" class="flex items-center justify-center text-center px-1.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 w-full sm:w-auto sm:inline-flex sm:px-5 sm:py-2 <?php echo (!$current_term_id) ? 'bg-blue-600 shadow-md shadow-blue-600/20 text-white' : 'bg-gray-100 text-red-500 hover:text-red-600 hover:bg-red-50'; ?>">Tất cả</a>
             <?php foreach($all_terms as $t): 
                 $is_active = ($t->term_id === $current_term_id);
                 $link = get_term_link($t);
             ?>
-                <a href="<?php echo esc_url($link); ?>" class="px-5 py-2 rounded-xl font-bold text-sm transition-all duration-300 <?php echo $is_active ? 'bg-blue-600 shadow-md shadow-blue-600/20 text-white' : 'bg-gray-100 text-red-500 hover:text-red-600 hover:bg-red-50'; ?>"><?php echo esc_html($t->name); ?></a>
+                <a href="<?php echo esc_url($link); ?>" class="flex items-center justify-center text-center px-1.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 w-full sm:w-auto sm:inline-flex sm:px-5 sm:py-2 <?php echo $is_active ? 'bg-blue-600 shadow-md shadow-blue-600/20 text-white' : 'bg-gray-100 text-red-500 hover:text-red-600 hover:bg-red-50'; ?>"><?php echo esc_html($t->name); ?></a>
             <?php endforeach; ?>
         </div>
         
@@ -98,7 +98,7 @@ $all_terms = get_terms([
         <?php if (have_posts()) : while (have_posts()) : the_post(); 
             $views = (int)get_post_meta(get_the_ID(), '_views', true);
             if ($views == 0) $views = rand(100, 5000);
-            $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : get_template_directory_uri() . '/img_data/images/no-image-cover.png?v=3';
+            $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
             $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
             
             // Format views
@@ -112,7 +112,6 @@ $all_terms = get_terms([
         <div class="mkm-card group" style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex !important; flex-direction:column !important; height:100% !important; transition:transform 0.2s, box-shadow 0.2s; border: 1px solid #f3f4f6;">
             <a href="<?php the_permalink(); ?>" style="display:block;">
                 <div class="mkm-card-img" style="--card-bg: url('<?php echo esc_url($cover); ?>');">
-                    <span style="position:absolute; top:8px; left:8px; background:#10b981; color:#fff; font-size:10px; font-weight:700; padding:2px 7px; border-radius:6px; z-index:2; box-shadow:0 2px 4px rgba(0,0,0,0.1);">Ch.<?php echo $chaps; ?></span>
                     <img src="<?php echo esc_url($cover); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy"/>
                     <div style="position:absolute; bottom:0; left:0; right:0; padding:20px 10px 8px 10px; background:linear-gradient(transparent, rgba(0,0,0,.7)); display:flex; justify-content:space-between; align-items:center; color:#fff; font-size:11px; font-weight:600; z-index:1;">
                         <span style="display:flex;align-items:center;gap:3px;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> <?php echo $formatted_views; ?></span>
@@ -154,16 +153,19 @@ $all_terms = get_terms([
     <nav class="mkm-pagination" style="margin-top: 40px; display: flex; justify-content: center;">
         <?php
             global $wp_query;
-            $big = 999999999;
-            echo paginate_links([
-                'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                'format' => '?paged=%#%',
-                'current' => max(1, get_query_var('paged')),
-                'total' => $wp_query->max_num_pages,
-                'prev_text' => '&laquo; Trước',
-                'next_text' => 'Sau &raquo;',
-                'type' => 'plain',
-            ]);
+            if ($wp_query->max_num_pages > 1) {
+                $current_page_url = strtok(get_term_link($current_term), '?');
+                echo paginate_links([
+                    'base'      => add_query_arg('paged', '%#%', $current_page_url),
+                    'format'    => '',
+                    'current'   => max(1, get_query_var('paged') ?: 1),
+                    'total'     => $wp_query->max_num_pages,
+                    'prev_text' => '&laquo; Trước',
+                    'next_text' => 'Sau &raquo;',
+                    'type'      => 'plain',
+                    'add_args'  => false,
+                ]);
+            }
         ?>
     </nav>
 </div>
@@ -305,14 +307,4 @@ $all_terms = get_terms([
 .mkm-pagination .current { background: #2563eb; color: #fff; border-color: #2563eb; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
 </style>
 
-<style>
-/* Card button fit refinement */
-.mkm-card-btns { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr) !important; gap: 8px !important; padding-right: 2px !important; }
-.mkm-btn-card-start { margin-left: 4px !important; width: calc(100% - 4px) !important; }
-.mkm-btn-card-new { width: 100% !important; padding-left: 5px !important; padding-right: 5px !important; }
-@media (max-width: 600px) {
-  .mkm-card-btns { grid-template-columns: minmax(0, .76fr) minmax(0, 1.24fr) !important; gap: 5px !important; padding-right: 2px !important; }
-  .mkm-btn-card { padding-left: 1px !important; padding-right: 1px !important; font-size: 7.5px !important; letter-spacing: -0.12px !important; }
-}
-</style>
 <?php get_footer(); ?>

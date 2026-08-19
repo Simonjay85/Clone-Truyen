@@ -1,0 +1,204 @@
+import { randomUUID, timingSafeEqual } from "crypto";
+import { pathToFileURL } from "url";
+import express, { type NextFunction, type Request, type Response } from "express";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import { config, loadConfig, validateConfig, type AppConfig } from "./config.js";
+import { registerTools } from "./tools.js";
+import { wpBridge, type WordPressBridgeClient } from "./wp-bridge.js";
+
+export interface DttApplication {
+  app: express.Express;
+  server: McpServer;
+  transports: Map<string, StreamableHTTPServerTransport>;
+}
+
+export interface DttApplicationOptions {
+  appConfig?: AppConfig;
+  bridgeClient?: WordPressBridgeClient;
+}
+
+export function timingSafeEqualString(a: string, b: string): boolean {
+  const left = Buffer.from(a);
+  const right = Buffer.from(b);
+  if (left.length !== right.length) {
+    timingSafeEqual(left, left);
+    return false;
+  }
+  return timingSafeEqual(left, right);
+}
+
+export function extractBearerToken(header: string | undefined): string | null {
+  const value = header?.trim() ?? "";
+  const match = value.match(/^Bearer\s+(.+)$/i);
+  return match?.[1]?.trim() || null;
+}
+
+function requestId(req: Request): string {
+  const supplied = req.get("x-request-id")?.trim() ?? "";
+  return /^[A-Za-z0-9._:-]{1,100}$/.test(supplied) ? supplied : randomUUID();
+}
+
+function envelope(request_id: string, ok: boolean, data: unknown = null, error: { code: string; message: string; details?: Record<string, unknown> } | null = null, warnings: string[] = []) {
+  return { ok, request_id, data, warnings, error };
+}
+
+function requestLogFields(req: Request): Record<string, unknown> {
+  return {
+    method: req.method,
+    path: req.path,
+    hasAuthorizationHeader: Boolean(req.get("authorization")),
+    authorizationScheme: req.get("authorization")?.trim().split(/\s+/)[0] || null,
+    ip: req.ip,
+  };
+}
+
+function verifyAuth(req: Request, res: Response, appConfig: AppConfig, id: string): boolean {
+  if (!appConfig.mcpBearerToken) {
+    console.error(JSON.stringify({ component: "mcp-auth", event: "missing_server_token" }));
+    res.status(503).json(envelope(id, false, null, { code: "MCP_AUTH_NOT_CONFIGURED", message: "MCP authentication is not configured." }));
+    return false;
+  }
+  const receivedToken = extractBearerToken(req.get("authorization"));
+  if (!receivedToken || !timingSafeEqualString(receivedToken, appConfig.mcpBearerToken)) {
+    console.warn(JSON.stringify({ component: "mcp-auth", event: "rejected", ...requestLogFields(req) }));
+    res.setHeader("WWW-Authenticate", 'Bearer realm="DTT MCP"');
+    res.status(401).json(envelope(id, false, null, { code: "MCP_AUTH_FAILED", message: "MCP authentication failed." }));
+    return false;
+  }
+  return true;
+}
+
+function isSessionId(value: string | string[] | undefined): value is string {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function isInitializeRequest(body: unknown): boolean {
+  if (Array.isArray(body)) {
+    return body.some((item) => typeof item === "object" && item !== null && (item as { method?: unknown }).method === "initialize");
+  }
+  return typeof body === "object" && body !== null && (body as { method?: unknown }).method === "initialize";
+}
+
+function safeError(error: unknown): { code: string; message: string } {
+  if (error instanceof SyntaxError) return { code: "INVALID_JSON", message: "Request body is not valid JSON." };
+  return { code: "MCP_INTERNAL_ERROR", message: "The MCP HTTP operation failed unexpectedly." };
+}
+
+/** Build the HTTP application without binding a port; useful for local fixture tests. */
+export function createApplication(options: DttApplicationOptions = {}): DttApplication {
+  const appConfig = options.appConfig ?? config;
+  const bridgeClient = options.bridgeClient ?? wpBridge;
+  const server = new McpServer({ name: "doctieuthuyet-mcp", version: appConfig.serviceVersion });
+  registerTools(server, bridgeClient);
+  const transports = new Map<string, StreamableHTTPServerTransport>();
+  const app = express();
+  app.disable("x-powered-by");
+  app.use(express.json({ limit: "2mb" }));
+
+  app.get("/health", (req: Request, res: Response) => {
+    const id = requestId(req);
+    const missing = validateConfig(appConfig);
+    const data = {
+      mcp: "online",
+      service: "doctieuthuyet-mcp",
+      version: appConfig.serviceVersion,
+      authenticated: null,
+      auth_configured: Boolean(appConfig.mcpBearerToken),
+      wordpress_bridge_configured: Boolean(appConfig.wpBridgeBaseUrl && appConfig.wpBridgeToken),
+      sessions: transports.size,
+      timestamp: new Date().toISOString(),
+    };
+    if (missing.length) {
+      res.status(503).json(envelope(id, false, data, { code: "MCP_CONFIGURATION_INCOMPLETE", message: "MCP configuration is incomplete.", details: { missing } }));
+      return;
+    }
+    res.status(200).json(envelope(id, true, data));
+  });
+
+  async function handlePost(req: Request, res: Response): Promise<void> {
+    const id = requestId(req);
+    if (!verifyAuth(req, res, appConfig, id)) return;
+    const requestedSessionId = req.headers["mcp-session-id"];
+    let transport: StreamableHTTPServerTransport | undefined;
+    if (isSessionId(requestedSessionId) && transports.has(requestedSessionId)) {
+      transport = transports.get(requestedSessionId);
+    } else if (!isSessionId(requestedSessionId) && isInitializeRequest(req.body)) {
+      let initializedTransport: StreamableHTTPServerTransport | undefined;
+      initializedTransport = new StreamableHTTPServerTransport({
+        sessionIdGenerator: () => randomUUID(),
+        onsessioninitialized: (newSessionId) => {
+          if (initializedTransport) transports.set(newSessionId, initializedTransport);
+        },
+      });
+      transport = initializedTransport;
+      transport.onclose = () => {
+        const entry = [...transports.entries()].find(([, item]) => item === transport);
+        if (entry) transports.delete(entry[0]);
+      };
+      await server.connect(transport);
+    } else {
+      res.status(400).json(envelope(id, false, null, { code: "MCP_SESSION_REQUIRED", message: "Initialize an MCP session before sending this request." }));
+      return;
+    }
+    if (!transport) {
+      res.status(400).json(envelope(id, false, null, { code: "MCP_SESSION_INVALID", message: "The MCP session is invalid." }));
+      return;
+    }
+    await transport.handleRequest(req, res, req.body);
+  }
+
+  async function handleGet(req: Request, res: Response): Promise<void> {
+    const id = requestId(req);
+    if (!verifyAuth(req, res, appConfig, id)) return;
+    const sessionId = req.headers["mcp-session-id"];
+    if (!isSessionId(sessionId) || !transports.has(sessionId)) {
+      res.status(400).json(envelope(id, false, null, { code: "MCP_SESSION_REQUIRED", message: "A valid MCP session is required." }));
+      return;
+    }
+    await transports.get(sessionId)!.handleRequest(req, res);
+  }
+
+  async function handleDelete(req: Request, res: Response): Promise<void> {
+    const id = requestId(req);
+    if (!verifyAuth(req, res, appConfig, id)) return;
+    const sessionId = req.headers["mcp-session-id"];
+    if (!isSessionId(sessionId) || !transports.has(sessionId)) {
+      res.status(400).json(envelope(id, false, null, { code: "MCP_SESSION_REQUIRED", message: "A valid MCP session is required." }));
+      return;
+    }
+    await transports.get(sessionId)!.handleRequest(req, res);
+  }
+
+  app.post("/mcp", (req: Request, res: Response, next: NextFunction) => { void handlePost(req, res).catch(next); });
+  app.get("/mcp", (req: Request, res: Response, next: NextFunction) => { void handleGet(req, res).catch(next); });
+  app.delete("/mcp", (req: Request, res: Response, next: NextFunction) => { void handleDelete(req, res).catch(next); });
+
+  app.use((error: unknown, req: Request, res: Response, _next: NextFunction) => {
+    const id = requestId(req);
+    const safe = safeError(error);
+    console.error(JSON.stringify({ component: "mcp-http", event: "request_failed", request_id: id, code: safe.code }));
+    if (res.headersSent) return;
+    res.status(safe.code === "INVALID_JSON" ? 400 : 500).json(envelope(id, false, null, safe));
+  });
+
+  return { app, server, transports };
+}
+
+export function startServer(appConfig: AppConfig = loadConfig(process.env, { requireSecrets: true })): ReturnType<express.Express["listen"]> {
+  const { app } = createApplication({ appConfig });
+  const listener = app.listen(appConfig.port, () => {
+    console.log(JSON.stringify({ component: "doctieuthuyet-mcp", event: "started", port: appConfig.port, version: appConfig.serviceVersion, mcpPath: "/mcp", healthPath: "/health" }));
+  });
+  return listener;
+}
+
+const invokedPath = process.argv[1] ? pathToFileURL(process.argv[1]).href : "";
+if (import.meta.url === invokedPath) {
+  try {
+    startServer();
+  } catch (error) {
+    console.error(JSON.stringify({ component: "doctieuthuyet-mcp", event: "startup_failed", code: safeError(error).code }));
+    process.exitCode = 1;
+  }
+}

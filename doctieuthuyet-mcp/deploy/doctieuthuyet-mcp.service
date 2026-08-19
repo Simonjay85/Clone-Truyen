@@ -1,0 +1,24 @@
+[Unit]
+Description=DocTieuThuyet MCP Server
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/mcp/doctieuthuyet-mcp
+ExecStart=/usr/bin/node dist/index.js
+Restart=on-failure
+RestartSec=5
+EnvironmentFile=/opt/mcp/doctieuthuyet-mcp/.env
+Environment=NODE_ENV=production
+UMask=027
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/mcp/doctieuthuyet-mcp
+
+[Install]
+WantedBy=multi-user.target

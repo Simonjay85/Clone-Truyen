@@ -104,7 +104,10 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 
 /* ===== HERO CARD ===== */
 .mkm-hero {
-    background: #2a221f; /* Vintage dark fallback */
+    display: block !important;
+    background: #2a221f !important; /* Vintage dark fallback */
+    padding: 0 !important;
+    gap: 0 !important;
     position: relative;
     border-radius: 16px;
     overflow: hidden;
@@ -129,8 +132,8 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
 
 /* Cover */
 .mkm-cover-col img {
-    width: 100%; border-radius: 12px; display: block;
-    aspect-ratio: 1/1; object-fit: cover; object-position: top center;
+    width: 100%; height: auto !important; border-radius: 12px; display: block;
+    aspect-ratio: 2/3 !important; object-fit: cover; object-position: top center;
     box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 .mkm-cover-badge {
@@ -272,7 +275,7 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     background: #2a221f; /* Vintage dark fallback */ padding: 12px 0; }
     .mkm-hero-inner { grid-template-columns: 1fr; gap: 16px; padding: 12px !important; }
     .mkm-cover-col { max-width: 100%; margin: 0 auto; width: 100%; }
-    .mkm-cover-col img { aspect-ratio: 1/1; width: 100%; }
+    .mkm-cover-col img { aspect-ratio: 1/1 !important; width: 100%; height: auto !important; }
     .mkm-action-btns {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
@@ -297,6 +300,45 @@ $latest_chapter_url = $chapters ? get_permalink($chapters[count($chapters)-1]->I
     .mkm-chaps-grid { grid-template-columns: 1fr !important; }
     .mkm-rel-grid { grid-template-columns: repeat(2, 1fr); }
     .mkm-extra-stats { display: none !important; }
+}
+/* Responsive hardening for story detail */
+@media (max-width: 900px) {
+    .mkm-hero-inner { grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 18px; padding: 18px; }
+    .mkm-cover-col, .mkm-info-col { min-width: 0; }
+    .mkm-book-title { font-size: 24px; overflow-wrap: anywhere; }
+    .mkm-synopsis-box { font-size: 16px; padding: 14px; }
+}
+@media (max-width: 600px) {
+    .mkm-single-wrap { margin: 12px auto; padding: 0 8px !important; }
+    .mkm-hero { border-radius: 14px !important; margin-bottom: 16px; }
+    .mkm-hero-inner { grid-template-columns: 1fr !important; gap: 14px; padding: 12px !important; }
+    .mkm-cover-col { width: 100%; max-width: 220px; margin-left: auto; margin-right: auto; }
+    .mkm-cover-badge { gap: 6px; margin-top: 8px; }
+    .mkm-cover-badge span { font-size: 10px; padding: 4px 8px; }
+    .mkm-info-col { width: 100%; }
+    .mkm-book-title { font-size: 24px; line-height: 1.18; margin-bottom: 8px; overflow-wrap: anywhere; }
+    .mkm-genre-chips { gap: 5px; margin-bottom: 10px; }
+    .mkm-genre-chip { font-size: 12px; padding: 5px 10px; }
+    .mkm-info-grid { gap: 8px; }
+    .mkm-info-item { padding: 8px 10px; }
+    .mkm-info-item .lbl { font-size: 10px; letter-spacing: .4px; }
+    .mkm-info-item .val { font-size: 13px; overflow-wrap: anywhere; }
+    .mkm-synopsis-box { font-size: 14px; line-height: 1.55; padding: 12px 14px; margin-bottom: 12px; }
+    .mkm-action-btns { margin-top: 14px !important; }
+    .mkm-btn-prim, .mkm-btn-sec, .mkm-btn-follow { font-size: 12px !important; padding: 10px 3px !important; gap: 4px !important; }
+    .mkm-chaps-box { padding: 12px; border-radius: 10px; margin-bottom: 16px; }
+    .mkm-chaps-hdr { margin-bottom: 14px; gap: 8px; }
+    .mkm-chaps-hdr select, .mkm-chaps-hdr input { flex: 1 1 140px; min-width: 0; width: auto; }
+    .mkm-chap-card { padding: 10px; gap: 10px; }
+    .mkm-chap-icon { width: 34px; height: 34px; border-radius: 8px; }
+    .mkm-chap-t { font-size: 11px; }
+    .mkm-chap-n { font-size: 14px; }
+}
+@media (max-width: 400px) {
+    .mkm-cover-col { max-width: 100%; }
+    .mkm-info-grid { grid-template-columns: 1fr; }
+    .mkm-action-btns { grid-template-columns: 1fr !important; }
+    .mkm-btn-prim, .mkm-btn-sec, .mkm-btn-follow { grid-column: span 1 !important; }
 }
 </style>
 

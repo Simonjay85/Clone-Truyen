@@ -1,0 +1,60 @@
+import "dotenv/config";
+
+export interface AppConfig {
+  port: number;
+  mcpAuthMode: "none" | "bearer";
+  mcpBearerToken: string;
+  wpBridgeBaseUrl: string;
+  wpBridgeToken: string;
+  requestTimeoutMs: number;
+  maxBulkChapters: number;
+  serviceVersion: string;
+}
+
+export interface ConfigOptions {
+  requireSecrets?: boolean;
+}
+
+function positiveInteger(value: string | undefined, fallback: number): number {
+  const parsed = Number.parseInt(value ?? "", 10);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+/** Load configuration without ever logging secret values. */
+export function loadConfig(
+  env: NodeJS.ProcessEnv = process.env,
+  options: ConfigOptions = {}
+): AppConfig {
+  const config: AppConfig = {
+    port: positiveInteger(env.PORT, 8792),
+    mcpAuthMode: env.MCP_AUTH_MODE?.trim().toLowerCase() === "bearer" ? "bearer" : "none",
+    mcpBearerToken: env.MCP_BEARER_TOKEN?.trim() ?? "",
+    wpBridgeBaseUrl: (env.WP_BRIDGE_BASE_URL?.trim() ?? "").replace(/\/$/, ""),
+    wpBridgeToken: env.WP_BRIDGE_TOKEN?.trim() ?? "",
+    requestTimeoutMs: positiveInteger(env.WP_REQUEST_TIMEOUT_MS, 20_000),
+    maxBulkChapters: Math.min(positiveInteger(env.DTT_MAX_BULK_CHAPTERS, 50), 200),
+    serviceVersion: env.DTT_MCP_VERSION?.trim() || "4.2.0",
+  };
+
+  if (options.requireSecrets) {
+    const missing: string[] = [];
+    if (config.mcpAuthMode === "bearer" && !config.mcpBearerToken) missing.push("MCP_BEARER_TOKEN");
+    if (!config.wpBridgeBaseUrl) missing.push("WP_BRIDGE_BASE_URL");
+    if (!config.wpBridgeToken) missing.push("WP_BRIDGE_TOKEN");
+    if (missing.length > 0) {
+      throw new Error(`Missing required environment variables: ${missing.join(", ")}`);
+    }
+  }
+
+  return config;
+}
+
+export function validateConfig(config: AppConfig): string[] {
+  const missing: string[] = [];
+  if (config.mcpAuthMode === "bearer" && !config.mcpBearerToken) missing.push("MCP_BEARER_TOKEN");
+  if (!config.wpBridgeBaseUrl) missing.push("WP_BRIDGE_BASE_URL");
+  if (!config.wpBridgeToken) missing.push("WP_BRIDGE_TOKEN");
+  return missing;
+}
+
+export const config = loadConfig();
