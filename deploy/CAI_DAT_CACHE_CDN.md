@@ -1,69 +1,50 @@
-# Hướng dẫn bật Page Cache + Cloudflare CDN — doctieuthuyet.com
+# Hướng dẫn Cache + CDN — doctieuthuyet.com
 
-> Ngày tạo: 26/08/2026. Vấn đề đo được: TTFB 1–5.7s, tổng tải tới 23s,
-> static file (style.css 41KB) mất tới 15.8s → origin chậm, không CDN.
+> Ngày: 26/08/2026. Vấn đề đo được: TTFB 1–5.7s (có lúc tới 23–30s),
+> static file mất tới 15.8s → origin chậm, không CDN.
 
-## Phần 1 — Nginx page cache + Cache-Control (bắt buộc làm trước)
+## ✅ ĐÃ DEPLOY XONG (26/08/2026)
 
-File cấu hình sẵn: `nginx-cache-config.conf` (cùng thư mục).
+Server = BT Panel (Bảo Tháp), SSH alias `templystudio` (user ubuntu).
 
-1. SSH vào server: `ssh root@51.79.53.190`
-2. Tìm vhost: `nginx -T | grep -E 'server_name|conf'`
-3. Dán nội dung theo chú thích trong file conf (block ngoài server{} + location trong server{})
-4. Sửa `fastcgi_pass` đúng version PHP đang chạy (`ls /run/php/`)
-5. Tạo thư mục cache: `mkdir -p /var/cache/nginx/dtt && chown www-data:www-data /var/cache/nginx/dtt`
-6. `nginx -t && systemctl reload nginx`
-7. Kiểm tra: `curl -sI https://doctieuthuyet.com/thien-nguu-that-huyet/ | grep X-DTT-Cache`
-   - Request 1: `MISS`, request 2: `HIT` → thành công (TTFB < 100ms)
+- **Page cache**: đã sửa vhost `/www/server/panel/vhost/nginx/doctieuthuyet.com.conf`:
+  - Dùng sẵn zone `WORDPRESS` từ `0.fastcgi_cache.conf` (BT tạo sẵn)
+  - Thêm `$skip_cache` cho POST/query-string/wp-admin/wp-json/feed/search + user logged-in
+  - PHP location có `fastcgi_cache WORDPRESS` + header `X-DTT-Cache`
+- **Cache-Control static**: location regex static assets →
+  `Cache-Control: public, max-age=31536000, immutable`
+- Backup vhost cũ: `/www/server/panel/vhost/nginx/doctieuthuyet.com.conf.bak-cache-20260826`
+- Bản config đang chạy lưu tại repo: `deploy/doctieuthuyet.com.conf.deployed`
 
-### Purge cache khi có bài/chương mới (khuyến nghị)
+### Kết quả kiểm chứng
 
-Cài plugin **Nginx Helper** (WordPress.org) → chọn phương thức purge
-"Delete local server cache files", đường dẫn cache `/var/cache/nginx/dtt`.
-Plugin sẽ tự xóa cache khi publish/cập nhật post.
+| Hạng mục | Kết quả |
+|---|---|
+| Trang bài viết | `x-dtt-cache: HIT`, TTFB ~0.85–1.2s (trước 1–5.7s+) |
+| Static assets | 1 dòng `cache-control: public, max-age=31536000, immutable` |
+| Homepage | HTTP 200 OK |
+| MCP bridge (`/wp-json/doctieuthuyet-mcp/v1/*`) | vẫn hoạt động bình thường |
 
-## Phần 2 — Cloudflare CDN (che origin + cache static toàn cầu)
+## Còn lại (tuỳ chọn): Cloudflare CDN
 
-1. Đăng ký tại cloudflare.com → Add site `doctieuthuyet.com` (Free plan là đủ)
-2. Cloudflare tự quét DNS → xác nhận → đổi nameserver tại nhà đăng ký tên miền
-3. Sau khi Active, bật lần lượt:
+Phần này cần account Cloudflare của chủ domain (đổi nameserver ở nhà đăng ký):
 
-| Setting | Giá trị | Lý do |
-|---|---|---|
-| SSL/TLS mode | **Full (strict)** | HTTPS end-to-end |
-| Speed → Optimization | Brotli ON, Early Hints ON | Nén tốt hơn gzip |
-| Caching → Tiered Cache | ON | Giảm load origin |
-| Rules → Cache Rule | `Cache Eligible` cho `*doctieuthuyet.com/wp-content/*` | Static hit edge |
-| Rules → Cache Rule | `Bypass cache` cho `/wp-admin*` và `/wp-json/doctieuthuyet-mcp/*` | Không phá admin/MCP bridge |
-| Scrape Shield | Bot Fight Mode: OFF trước | Tránh chặn crawler của chính mình (tehi-crawler) |
+1. Add site `doctieuthuyet.com` (Free plan) → đổi nameserver
+2. SSL/TLS mode: **Full (strict)**
+3. Speed → Brotli ON, Early Hints ON; Caching → Tiered Cache ON
+4. Cache Rule: cache `*/wp-content/*`; **Bypass** `/wp-admin*` và `/wp-json/doctieuthuyet-mcp/*`
+5. Kiểm chứng: `curl -sI <static url> | grep cf-cache-status` → HIT
 
-4. Lưu ý MCP bridge: sau khi bật Cloudflare, request đến
-   `https://doctieuthuyet.com/wp-json/doctieuthuyet-mcp/v1/*` phải đặt
-   **Cache Rule Bypass** (mục 3) để không bị cache response POST.
+## Purge page cache khi có bài mới
 
-5. Kiểm chứng cuối:
-   ```bash
-   curl -sI https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/style.css | grep -iE 'cf-cache-status|cache-control'
-   # kỳ vọng: cf-cache-status: HIT + cache-control max-age lớn
-   curl -o /dev/null -s -w '%{time_starttransfer}\n' https://doctieuthuyet.com/thien-nguu-that-huyet/
-   # kỳ vọng: < 0.3s (trước đây 1–5.7s)
-   ```
+Hiện cache TTL = 60m. Muốn purge ngay khi publish: cài plugin **Nginx Helper**
+(WordPress.org), cấu hình method "Delete local server cache files",
+path `/www/server/fastcgi_cache`.
 
-## Những gì đã hoàn tất tự động (26/08/2026)
+## Đã hoàn tất tự động trước đó (cùng ngày)
 
 - [x] Gỡ meta description/keywords/canonical/OG/Twitter hardcode trong
       `tehi-theme/header.php` → chỉ Rank Math xuất (hết duplicate meta)
-- [x] Thêm hook auto featured image vào `tehi-theme/functions.php`
-      (ưu tiên ảnh đầu bài → fallback cover mặc định)
-- [x] Set featured image cho bài 10286 (Thiên Ngưu Thất Huyệt),
-      attachment ID 12194, đã kiểm tra og:image live = OK
-- [x] Backup file remote cũ tại server + `/tmp/dtt-backups-20260826/`
+- [x] Hook auto featured image trong `tehi-theme/functions.php`
+- [x] Set featured image cho post 10286 (attachment 12194), og:image live OK
 
-## Checklist khi áp dụng phần nginx/Cloudflare
-
-- [ ] nginx -t pass, reload OK
-- [ ] X-DTT-Cache: HIT trên trang bài viết
-- [ ] Cache-Control 365d trên /wp-content/*
-- [ ] Cloudflare active, cf-cache-status HIT cho static
-- [ ] Đăng bài thử mới → có featured image tự động
-- [ ] PageSpeed Insights mobile: LCP mục tiêu < 2.5s
