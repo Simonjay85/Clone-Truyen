@@ -1,6 +1,6 @@
 <?php
 // ── Browser Cache Headers for static pages ──
-if (!is_user_logged_in() && !is_admin()) {
+if (!is_user_logged_in() && !is_admin() && !is_search()) {
     header('Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800');
     header('Vary: Accept-Encoding');
 }
@@ -692,15 +692,20 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
             </span>
         </a>
         
-        <form class="mkm-search-form d-none d-md-block hidden md:block" action="<?php echo esc_url(home_url('/')); ?>" method="get">
+        <form class="mkm-search-form d-none d-md-block hidden md:block" action="<?php echo esc_url(home_url('/')); ?>" method="get" role="search" autocomplete="off">
             <button type="submit" class="mkm-search-btn" aria-label="Tìm kiếm">
                 <i class="fa-solid fa-search"></i>
             </button>
-            <input type="text" name="s" placeholder="Tìm tên truyện, tên người đăng..">
+            <input type="search" name="s" placeholder="Tìm tên truyện, tên người đăng..." aria-label="Tìm tên truyện hoặc tên người đăng" aria-autocomplete="list" autocomplete="off">
+            <div class="mkm-search-suggestions" hidden>
+                <div class="mkm-search-suggestions-list" role="listbox" aria-label="Gợi ý tìm kiếm"></div>
+                <button type="submit" class="mkm-search-suggestions-submit" hidden></button>
+            </div>
         </form>
         
         <div class="mkm-nav d-none d-md-flex hidden md:flex">
             <a href="<?php echo get_site_url(); ?>/the-loai.html"><i class="fa-solid fa-list"></i> Thể loại</a>
+            <a href="<?php echo esc_url(home_url('/bai-viet/')); ?>"><i class="fa-solid fa-newspaper"></i> Bài viết</a>
             <a href="<?php echo get_site_url(); ?>/hoan-thanh.html"><i class="fa-solid fa-check-circle"></i> Truyện full</a>
             <a href="<?php echo get_site_url(); ?>/bang-xep-hang.html"><i class="fa-solid fa-trophy"></i> BXH</a>
             <a href="<?php echo get_site_url(); ?>/theo-doi.html"><i class="fa-solid fa-bookmark"></i> Theo dõi</a>
@@ -721,12 +726,17 @@ body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, 
     
     <!-- Mobile Dropdown Menu -->
     <div id="mkm-mobile-menu" class="mkm-mobile-menu">
-        <form class="mkm-mobile-search" action="<?php echo esc_url(home_url('/')); ?>" method="get">
-            <input type="text" name="s" placeholder="Tìm tên truyện...">
+        <form class="mkm-mobile-search" action="<?php echo esc_url(home_url('/')); ?>" method="get" role="search" autocomplete="off">
+            <input type="search" name="s" placeholder="Tìm tên truyện hoặc tác giả..." aria-label="Tìm tên truyện hoặc tên người đăng" aria-autocomplete="list" autocomplete="off">
             <button type="submit"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+            <div class="mkm-search-suggestions" hidden>
+                <div class="mkm-search-suggestions-list" role="listbox" aria-label="Gợi ý tìm kiếm"></div>
+                <button type="submit" class="mkm-search-suggestions-submit" hidden></button>
+            </div>
         </form>
         <div class="mkm-mobile-nav">
             <a href="<?php echo get_site_url(); ?>/the-loai.html">Thể loại</a>
+            <a href="<?php echo esc_url(home_url('/bai-viet/')); ?>">Bài viết</a>
             <a href="<?php echo get_site_url(); ?>/hoan-thanh.html">Truyện full</a>
             <a href="<?php echo get_site_url(); ?>/bang-xep-hang.html">Bảng xếp hạng</a>
             <a href="<?php echo get_site_url(); ?>/theo-doi.html">Theo dõi</a>

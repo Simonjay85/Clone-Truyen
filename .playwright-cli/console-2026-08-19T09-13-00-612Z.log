@@ -1,0 +1,12 @@
+[    4848ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[    6074ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:247
+[    6090ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:0
+[    6090ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:0
+[    6430ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:194
+[    6532ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:222
+[   72130ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/08/MoLRWrOfVxiMTncA-683x1024.png?v=5:0
+[   72131ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/08/XYLRLCxYidDApkrC-683x1024.png?v=5:0
+[   72131ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/08/dtt-cover-01-1-683x1024.png?v=5:0
+[   72131ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/08/cdvpzlSuujVPUXRx-683x1024.png?v=5:0
+[   72131ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/img_data/images/background-repeat-2.png:0
+[   72131ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-includes/js/wp-emoji-release.min.js?ver=7.0.4:0

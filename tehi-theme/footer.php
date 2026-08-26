@@ -21,6 +21,44 @@
 .mkm-footer-disclaimer-inner svg { flex-shrink: 0; color: #f59e0b; margin-top: 2px; }
 .mkm-footer-disclaimer p { font-size: 12px; color: #78350f; line-height: 1.6; margin: 0; }
 .mkm-footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px; text-align: center; font-size: 13px; color: #6b7280; border-top: 1px solid #f3f4f6; }
+.mkm-scroll-to-top {
+    display: inline-grid;
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(18px, calc(18px + env(safe-area-inset-bottom)));
+    z-index: 9999;
+    width: 46px;
+    height: 46px;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    outline: none;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 5px 16px rgba(234, 88, 12, .34);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity .2s ease, visibility .2s ease, transform .2s ease, box-shadow .2s ease;
+    will-change: opacity, transform;
+}
+.mkm-scroll-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.mkm-scroll-to-top.is-visible:hover,
+.mkm-scroll-to-top.is-visible:focus-visible {
+    box-shadow: 0 8px 20px rgba(234, 88, 12, .44);
+    transform: translateY(-3px);
+}
+.mkm-scroll-to-top:focus-visible {
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, .25), 0 5px 16px rgba(234, 88, 12, .34);
+}
 @media (max-width: 900px) {
     .mkm-footer-top { grid-template-columns: 1fr 1fr; }
     .mkm-footer-grid-list { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px 16px !important; }
@@ -311,21 +349,24 @@ function mkmSubmitAuth(e, type) {
 <?php if (!is_singular('chuong')): ?>
 document.addEventListener("DOMContentLoaded", function() {
     let mkmScrollBtn = document.createElement("button");
+    mkmScrollBtn.type = "button";
+    mkmScrollBtn.className = "mkm-scroll-to-top";
+    mkmScrollBtn.setAttribute("data-dtt-scroll-top", "true");
+    mkmScrollBtn.setAttribute("aria-label", "Lên đầu trang");
+    mkmScrollBtn.setAttribute("aria-hidden", "true");
     mkmScrollBtn.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>';
     mkmScrollBtn.title = "Lên đầu trang";
-    mkmScrollBtn.style.cssText = "display:none; position:fixed; bottom:30px; right:30px; z-index:99; width:45px; height:45px; border:none; outline:none; background:linear-gradient(135deg, #f97316, #ea580c); color:white; cursor:pointer; border-radius:50%; box-shadow:0 4px 12px rgba(234,88,12,0.3); transition:all 0.3s; align-items:center; justify-content:center;";
     document.body.appendChild(mkmScrollBtn);
 
-    mkmScrollBtn.addEventListener("mouseover", () => mkmScrollBtn.style.transform = "translateY(-3px)");
-    mkmScrollBtn.addEventListener("mouseout", () => mkmScrollBtn.style.transform = "translateY(0)");
+    function updateMkmScrollButton() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const isVisible = scrollTop > 300;
+        mkmScrollBtn.classList.toggle("is-visible", isVisible);
+        mkmScrollBtn.setAttribute("aria-hidden", isVisible ? "false" : "true");
+    }
 
-    window.addEventListener("scroll", function() {
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            mkmScrollBtn.style.display = "flex";
-        } else {
-            mkmScrollBtn.style.display = "none";
-        }
-    });
+    window.addEventListener("scroll", updateMkmScrollButton, { passive: true });
+    updateMkmScrollButton();
 
     mkmScrollBtn.addEventListener("click", function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });

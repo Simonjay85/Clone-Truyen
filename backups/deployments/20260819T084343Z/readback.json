@@ -1,0 +1,22 @@
+{
+  "deploy_id": "20260819T084343Z",
+  "target": "/wp-content/themes/tehi-theme/assets/css/kiem-lai-wiki.css",
+  "source": "tehi-theme/assets/css/kiem-lai-wiki.css",
+  "local": {
+    "bytes": 22512,
+    "sha256": "11d283d9cc204c8254056c5f0f1709717c9792f6e2d264fc853a72dc3d5d2134"
+  },
+  "remote_before": {
+    "bytes": 19814,
+    "sha256": "08efba075b0299af31e1f0b9022f401410f5e49e35b1cda7693f6f6ace7deac0",
+    "backup": "backups/deployments/20260819T084343Z/remote-before/kiem-lai-wiki.css"
+  },
+  "remote_after": {
+    "bytes": 22512,
+    "sha256": "11d283d9cc204c8254056c5f0f1709717c9792f6e2d264fc853a72dc3d5d2134",
+    "matches_local": true
+  },
+  "ftp_listing_before": [
+    "-rw-r--r--    1 1001       www             19814 Aug 19 07:36 /wp-content/themes/tehi-theme/assets/css/kiem-lai-wiki.css"
+  ]
+}

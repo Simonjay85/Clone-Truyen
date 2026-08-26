@@ -1,0 +1,836 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "DTT." [ref=e6] [cursor=pointer]:
+        - /url: https://doctieuthuyet.com
+      - generic [ref=e8]:
+        - button "Tìm kiếm" [ref=e9] [cursor=pointer]:
+          - generic [ref=e10]: 
+        - textbox "Tìm tên truyện, tên người đăng.." [ref=e11]
+      - generic [ref=e12]:
+        - link " Thể loại" [ref=e13] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/the-loai.html
+          - generic [ref=e14]: 
+          - text: Thể loại
+        - link " Truyện full" [ref=e15] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=e16]: 
+          - text: Truyện full
+        - link " BXH" [ref=e17] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e18]: 
+          - text: BXH
+        - link " Theo dõi" [ref=e19] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/theo-doi.html
+          - generic [ref=e20]: 
+          - text: Theo dõi
+        - button " Đăng nhập" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: 
+          - text: Đăng nhập
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - heading "DTT - Đọc Truyện Online" [level=1] [ref=e25]
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - group "1 / 6" [ref=e29]:
+            - generic [ref=e30]:
+              - 'img "Bóng Tối Điện Lực Vạn Thịnh: Cuộc Chiến Chống Tham Nhũng" [ref=e32]'
+              - generic [ref=e33]:
+                - 'heading "Bóng Tối Điện Lực Vạn Thịnh: Cuộc Chiến Chống Tham Nhũng" [level=2] [ref=e34]'
+                - generic [ref=e35]:
+                  - generic [ref=e36]: Sảng Văn
+                  - generic [ref=e37]: 📅 3 tháng trước
+                - paragraph [ref=e38]: Trong một đêm mưa bão, Phan Đức Thành đã phát hiện ra đường dây tham nhũng thiết bị trạm biến áp, đe dọa sự an toàn của lưới điện quốc gia. Với trái tim đầy nhiệt huyết và tâm huyết với nghề, anh quyết định báo cáo sự việc, nhưng không ngờ bị sếp cũ […]
+                - generic [ref=e39]:
+                  - generic [ref=e40]: ✍️ Đang cập nhật
+                  - generic [ref=e41]: 👁️ 587 xem
+                  - generic [ref=e42]: 💬 16 bình luận
+                - generic [ref=e43]:
+                  - link "📖 Đọc ngay" [ref=e44] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/bong-toi-dien-luc-van-thinh-cuoc-chien-chong-tham-nhung/
+                  - link "Danh sách chương" [ref=e45] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/bong-toi-dien-luc-van-thinh-cuoc-chien-chong-tham-nhung/#chapters
+          - group "2 / 6" [ref=e46]:
+            - generic [ref=e47]:
+              - img "Vợ Đòi Ly Hôn Vì Chồng Thất Nghiệp, Ngày Ký Đơn Chồng Nhận Danh Hiệu Kiến Trúc Sư Quốc Gia" [ref=e49]
+              - generic [ref=e50]:
+                - heading "Vợ Đòi Ly Hôn Vì Chồng Thất Nghiệp, Ngày Ký Đơn Chồng Nhận Danh Hiệu Kiến Trúc Sư Quốc Gia" [level=2] [ref=e51]
+                - generic [ref=e52]:
+                  - generic [ref=e53]: Ngôn Tình
+                  - generic [ref=e54]: 📅 3 tháng trước
+                - paragraph [ref=e55]: “Kiến trúc sinh mệnh không phải là những khối bê tông vô hồn vươn lên giữa bầu trời ô nhiễm, mà là sự hòa quyện tuyệt đối giữa hơi thở của đất mẹ, tre đan truyền thống và công nghệ xanh bền vững.” Lê Quang Minh, một thiên tài kiến trúc ẩn danh, đã dành […]
+                - generic [ref=e56]:
+                  - generic [ref=e57]: ✍️ Đang cập nhật
+                  - generic [ref=e58]: 👁️ 376 xem
+                  - generic [ref=e59]: 💬 14 bình luận
+                - generic [ref=e60]:
+                  - link "📖 Đọc ngay" [ref=e61] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/vo-doi-ly-hon-vi-chong-that-nghiep-ngay-ky-don-chong-nhan-danh-hieu-kien/
+                  - link "Danh sách chương" [ref=e62] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/vo-doi-ly-hon-vi-chong-that-nghiep-ngay-ky-don-chong-nhan-danh-hieu-kien/#chapters
+          - group "3 / 6" [ref=e63]:
+            - generic [ref=e64]:
+              - img "Bố Mẹ Phá Sản, Tôi Thành Ông Trùm Bất Động Sản Miền Tây" [ref=e66]
+              - generic [ref=e67]:
+                - heading "Bố Mẹ Phá Sản, Tôi Thành Ông Trùm Bất Động Sản Miền Tây" [level=2] [ref=e68]
+                - generic [ref=e69]:
+                  - generic [ref=e70]: Ngược
+                  - generic [ref=e71]: 📅 3 tháng trước
+                - paragraph [ref=e72]: Năm Bùi Đức Thịnh mười bốn tuổi, chủ nợ đến nhà đập phá, lấy đi mọi thứ — tivi, tủ lạnh, xe máy, cả bàn thờ ông bà. Bố mẹ nợ hai tỷ đồng vì kinh doanh thất bại, gia đình bị đẩy ra đường. Từ cậu bé mười bốn tuổi ngủ dưới gầm cầu, […]
+                - generic [ref=e73]:
+                  - generic [ref=e74]: ✍️ Đang cập nhật
+                  - generic [ref=e75]: 👁️ 574 xem
+                  - generic [ref=e76]: 💬 6 bình luận
+                - generic [ref=e77]:
+                  - link "📖 Đọc ngay" [ref=e78] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/bo-me-pha-san-toi-thanh-ong-trum-bat-dong-san-mien-tay/
+                  - link "Danh sách chương" [ref=e79] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/bo-me-pha-san-toi-thanh-ong-trum-bat-dong-san-mien-tay/#chapters
+          - group "4 / 6" [ref=e80]:
+            - generic [ref=e81]:
+              - img "Bị Ép Nghỉ Vì Từ Chối Phong Bì, Tôi Lập Viện Riêng" [ref=e83]
+              - generic [ref=e84]:
+                - heading "Bị Ép Nghỉ Vì Từ Chối Phong Bì, Tôi Lập Viện Riêng" [level=2] [ref=e85]
+                - generic [ref=e86]:
+                  - generic [ref=e87]: Cung Đấu
+                  - generic [ref=e88]: 📅 3 tháng trước
+                - paragraph [ref=e89]: Mười lăm năm làm Trưởng khoa Ngoại ở BV Nhân Dân, bác sĩ Trần Minh Đức nổi tiếng vì không nhận phong bì. Một ca mổ cứu người khiến ông trả lại chiếc phong bì dày trước mặt cả phòng trực, và cũng khiến ban giám đốc coi ông là cái gai. Bị cô lập, […]
+                - generic [ref=e90]:
+                  - generic [ref=e91]: ✍️ Đang cập nhật
+                  - generic [ref=e92]: 👁️ 1,115 xem
+                  - generic [ref=e93]: 💬 41 bình luận
+                - generic [ref=e94]:
+                  - link "📖 Đọc ngay" [ref=e95] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/bi-ep-nghi-vi-tu-choi-phong-bi-toi-lap-vien-rieng/
+                  - link "Danh sách chương" [ref=e96] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/bi-ep-nghi-vi-tu-choi-phong-bi-toi-lap-vien-rieng/#chapters
+          - group "5 / 6" [ref=e97]:
+            - generic [ref=e98]:
+              - img "Tú Nữ Áo Vải Bị Cả Hậu Cung Khinh Rẻ, Một Tay Cứu Quý Phi Khiến Thừa Tướng Phủ Sụp Đổ" [ref=e100]
+              - generic [ref=e101]:
+                - heading "Tú Nữ Áo Vải Bị Cả Hậu Cung Khinh Rẻ, Một Tay Cứu Quý Phi Khiến Thừa Tướng Phủ Sụp Đổ" [level=2] [ref=e102]
+                - generic [ref=e103]:
+                  - generic [ref=e104]: Cổ Đại
+                  - generic [ref=e105]: 📅 3 tháng trước
+                - paragraph [ref=e106]: “Một tú nữ áo vải thấp hèn mà cũng đòi nói cứu Quý phi? Ngươi muốn leo cao đến phát điên rồi sao?” Thẩm Yên Nhi, con gái viên quan nghèo Hàn Lâm viện, bước vào cung đình với thân phận tú nữ bị cả hậu cung khinh rẻ. Khi Quý phi Tô Uyển Nhi […]
+                - generic [ref=e107]:
+                  - generic [ref=e108]: ✍️ Đang cập nhật
+                  - generic [ref=e109]: 👁️ 1,491 xem
+                  - generic [ref=e110]: 💬 34 bình luận
+                - generic [ref=e111]:
+                  - link "📖 Đọc ngay" [ref=e112] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/tu-nu-ao-vai-bi-ca-hau-cung-khinh-re-mot-tay-cuu-quy-phi-khien-thua-tuon/
+                  - link "Danh sách chương" [ref=e113] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/tu-nu-ao-vai-bi-ca-hau-cung-khinh-re-mot-tay-cuu-quy-phi-khien-thua-tuon/#chapters
+          - group "6 / 6" [ref=e114]:
+            - generic [ref=e115]:
+              - img "Cướp Công Thức Sâm Ngọc Linh, Kỹ Sư Lật Kèo Thâu Tóm Tập Đoàn Dược Khiến Kẻ Phản Bội Phải Trả Giá" [ref=e117]
+              - generic [ref=e118]:
+                - heading "Cướp Công Thức Sâm Ngọc Linh, Kỹ Sư Lật Kèo Thâu Tóm Tập Đoàn Dược Khiến Kẻ Phản Bội Phải Trả Giá" [level=2] [ref=e119]
+                - generic [ref=e120]:
+                  - generic [ref=e121]: Sảng Văn
+                  - generic [ref=e122]: 📅 3 tháng trước
+                - paragraph [ref=e123]: “Anh chỉ là một thằng thầy lang vườn rách nát mang chút kiến thức thảo dược vụn vặt, lấy tư cách gì mà đòi đứng chung hàng ngũ với các giáo sư đầu ngành của viện công nghệ sinh học? Biến khỏi đây trước khi tôi hủy hoại hoàn toàn tương lai của anh!” Đoàn […]
+                - generic [ref=e124]:
+                  - generic [ref=e125]: ✍️ Đang cập nhật
+                  - generic [ref=e126]: 👁️ 1,302 xem
+                  - generic [ref=e127]: 💬 30 bình luận
+                - generic [ref=e128]:
+                  - link "📖 Đọc ngay" [ref=e129] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/cuop-cong-thuc-sam-ngoc-linh-ky-su-lat-keo-thau-tom-tap-doan-duoc-khien/
+                  - link "Danh sách chương" [ref=e130] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truyen/cuop-cong-thuc-sam-ngoc-linh-ky-su-lat-keo-thau-tom-tap-doan-duoc-khien/#chapters
+        - generic [ref=e131]:
+          - button "Go to slide 1" [ref=e132] [cursor=pointer]
+          - button "Go to slide 2" [ref=e133] [cursor=pointer]
+          - button "Go to slide 3" [ref=e134] [cursor=pointer]
+          - button "Go to slide 4" [ref=e135] [cursor=pointer]
+          - button "Go to slide 5" [ref=e136] [cursor=pointer]
+          - button "Go to slide 6" [ref=e137] [cursor=pointer]
+        - button "Next slide" [ref=e138] [cursor=pointer]: next
+        - button "Previous slide" [ref=e139] [cursor=pointer]: prev
+      - generic [ref=e140]:
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - heading "Mới cập nhật" [level=2] [ref=e143]
+            - link "Xem tất cả >" [ref=e146] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/truyen-moi-cap-nhat.html
+          - generic [ref=e147]:
+            - generic [ref=e148]:
+              - link "MỚI SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG Chương 12 1 ngày trước" [ref=e149] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+                - generic [ref=e150]:
+                  - generic [ref=e151]: MỚI
+                  - img "SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e152]
+                  - generic [ref=e153]:
+                    - generic [ref=e154]: Chương 12
+                    - generic [ref=e157]: 1 ngày trước
+              - generic [ref=e160]:
+                - link [ref=e161] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+                  - paragraph [ref=e162]: SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG
+                - generic [ref=e163]:
+                  - generic [ref=e164]:
+                    - generic [ref=e165]: 1,465
+                    - generic [ref=e169]: "13"
+                    - generic [ref=e172]: 1.2 giờ
+                  - generic [ref=e175]: Chương 12
+                - generic [ref=e176]:
+                  - link "Đọc từ đầu" [ref=e177] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/sau-khi-toi-tro-thanh-hoang-thuong-chuong-1/
+                  - link "Chương mới nhất" [ref=e178] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/sau-khi-toi-tro-thanh-hoang-thuong-chuong-12/
+            - generic [ref=e179]:
+              - link "MỚI CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT Chương 12 1 ngày trước" [ref=e180] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/cung-dau-khong-co-nuoc-mat/
+                - generic [ref=e181]:
+                  - generic [ref=e182]: MỚI
+                  - img "CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT" [ref=e183]
+                  - generic [ref=e184]:
+                    - generic [ref=e185]: Chương 12
+                    - generic [ref=e188]: 1 ngày trước
+              - generic [ref=e191]:
+                - link [ref=e192] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/cung-dau-khong-co-nuoc-mat/
+                  - paragraph [ref=e193]: CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT
+                - generic [ref=e194]:
+                  - generic [ref=e195]:
+                    - generic [ref=e196]: 2,118
+                    - generic [ref=e200]: "13"
+                    - generic [ref=e203]: 1.2 giờ
+                  - generic [ref=e206]: Chương 12
+                - generic [ref=e207]:
+                  - link "Đọc từ đầu" [ref=e208] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/cung-dau-khong-co-nuoc-mat-chuong-1/
+                  - link "Chương mới nhất" [ref=e209] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/cung-dau-khong-co-nuoc-mat-chuong-12/
+            - generic [ref=e210]:
+              - link "NỔI BẬT HÀO MÔN NỮ VƯƠNG Chương 12 1 ngày trước" [ref=e211] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/hao-mon-nu-vuong/
+                - generic [ref=e212]:
+                  - generic [ref=e213]: NỔI BẬT
+                  - img "HÀO MÔN NỮ VƯƠNG" [ref=e214]
+                  - generic [ref=e215]:
+                    - generic [ref=e216]: Chương 12
+                    - generic [ref=e219]: 1 ngày trước
+              - generic [ref=e222]:
+                - link [ref=e223] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/hao-mon-nu-vuong/
+                  - paragraph [ref=e224]: HÀO MÔN NỮ VƯƠNG
+                - generic [ref=e225]:
+                  - generic [ref=e226]:
+                    - generic [ref=e227]: 6,787
+                    - generic [ref=e231]: "13"
+                    - generic [ref=e234]: 1.2 giờ
+                  - generic [ref=e237]: Chương 12
+                - generic [ref=e238]:
+                  - link "Đọc từ đầu" [ref=e239] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/hao-mon-nu-vuong-chuong-1/
+                  - link "Chương mới nhất" [ref=e240] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/hao-mon-nu-vuong-chuong-12/
+            - generic [ref=e241]:
+              - link "HOT CÔNG CHÚA BỊ ĐÁNH TRÁO Chương 12 1 ngày trước" [ref=e242] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/cong-chua-bi-danh-trao/
+                - generic [ref=e243]:
+                  - generic [ref=e244]: HOT
+                  - img "CÔNG CHÚA BỊ ĐÁNH TRÁO" [ref=e245]
+                  - generic [ref=e246]:
+                    - generic [ref=e247]: Chương 12
+                    - generic [ref=e250]: 1 ngày trước
+              - generic [ref=e253]:
+                - link [ref=e254] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/cong-chua-bi-danh-trao/
+                  - paragraph [ref=e255]: CÔNG CHÚA BỊ ĐÁNH TRÁO
+                - generic [ref=e256]:
+                  - generic [ref=e257]:
+                    - generic [ref=e258]: 10,184
+                    - generic [ref=e262]: "13"
+                    - generic [ref=e265]: 1.2 giờ
+                  - generic [ref=e268]: Chương 12
+                - generic [ref=e269]:
+                  - link "Đọc từ đầu" [ref=e270] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/cong-chua-bi-danh-trao-chuong-1/
+                  - link "Chương mới nhất" [ref=e271] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/cong-chua-bi-danh-trao-chuong-12/
+            - generic [ref=e272]:
+              - link "NỔI BẬT NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU Chương 12 1 ngày trước" [ref=e273] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nu-tong-tai-xuyen-thanh-ke-mau/
+                - generic [ref=e274]:
+                  - generic [ref=e275]: NỔI BẬT
+                  - img "NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU" [ref=e276]
+                  - generic [ref=e277]:
+                    - generic [ref=e278]: Chương 12
+                    - generic [ref=e281]: 1 ngày trước
+              - generic [ref=e284]:
+                - link [ref=e285] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/nu-tong-tai-xuyen-thanh-ke-mau/
+                  - paragraph [ref=e286]: NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU
+                - generic [ref=e287]:
+                  - generic [ref=e288]:
+                    - generic [ref=e289]: 3,452
+                    - generic [ref=e293]: "13"
+                    - generic [ref=e296]: 1.2 giờ
+                  - generic [ref=e299]: Chương 12
+                - generic [ref=e300]:
+                  - link "Đọc từ đầu" [ref=e301] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/nu-tong-tai-xuyen-thanh-ke-mau-chuong-1/
+                  - link "Chương mới nhất" [ref=e302] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/nu-tong-tai-xuyen-thanh-ke-mau-chuong-12/
+            - generic [ref=e303]:
+              - link "NỔI BẬT HUYỀN NỮ GIỮ NGỌC ẤN Chương 12 1 ngày trước" [ref=e304] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/huyen-nu-giu-ngoc-an/
+                - generic [ref=e305]:
+                  - generic [ref=e306]: NỔI BẬT
+                  - img "HUYỀN NỮ GIỮ NGỌC ẤN" [ref=e307]
+                  - generic [ref=e308]:
+                    - generic [ref=e309]: Chương 12
+                    - generic [ref=e312]: 1 ngày trước
+              - generic [ref=e315]:
+                - link [ref=e316] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/huyen-nu-giu-ngoc-an/
+                  - paragraph [ref=e317]: HUYỀN NỮ GIỮ NGỌC ẤN
+                - generic [ref=e318]:
+                  - generic [ref=e319]:
+                    - generic [ref=e320]: 9,753
+                    - generic [ref=e324]: "13"
+                    - generic [ref=e327]: 1.2 giờ
+                  - generic [ref=e330]: Chương 12
+                - generic [ref=e331]:
+                  - link "Đọc từ đầu" [ref=e332] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/huyen-nu-giu-ngoc-an-chuong-1/
+                  - link "Chương mới nhất" [ref=e333] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/huyen-nu-giu-ngoc-an-chuong-12/
+          - link "Xem thêm 3,335 kết quả ⌄" [ref=e335] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/truyen-moi-cap-nhat.html
+          - generic [ref=e336]:
+            - heading "Truyện hot" [level=2] [ref=e337]
+            - link "Xem tất cả ⟩" [ref=e340] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e341]:
+            - generic [ref=e342]:
+              - link "NỔI BẬT SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG Chương 12 1 ngày trước" [ref=e343] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+                - generic [ref=e344]:
+                  - generic [ref=e345]: NỔI BẬT
+                  - img "SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e346]
+                  - generic [ref=e347]:
+                    - generic [ref=e348]: Chương 12
+                    - generic [ref=e351]: 1 ngày trước
+              - generic [ref=e354]:
+                - link [ref=e355] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+                  - paragraph [ref=e356]: SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG
+                - generic [ref=e357]:
+                  - generic [ref=e358]:
+                    - generic [ref=e359]: 8,458
+                    - generic [ref=e363]: "13"
+                    - generic [ref=e366]: 1.2 giờ
+                  - generic [ref=e369]: Chương 12
+                - generic [ref=e370]:
+                  - link "Đọc từ đầu" [ref=e371] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/sau-khi-toi-tro-thanh-hoang-thuong-chuong-1/
+                  - link "Chương mới nhất" [ref=e372] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/sau-khi-toi-tro-thanh-hoang-thuong-chuong-12/
+            - generic [ref=e373]:
+              - 'link "HOT Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân Chương 8 3 tháng trước" [ref=e374] [cursor=pointer]':
+                - /url: https://doctieuthuyet.com/truyen/biet-thu-go-vap-tu-nguoi-ngoai-tro-thanh-chu-nhan/
+                - generic [ref=e375]:
+                  - generic [ref=e376]: HOT
+                  - 'img "Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân" [ref=e377]'
+                  - generic [ref=e378]:
+                    - generic [ref=e379]: Chương 8
+                    - generic [ref=e382]: 3 tháng trước
+              - generic [ref=e385]:
+                - link [ref=e386] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/biet-thu-go-vap-tu-nguoi-ngoai-tro-thanh-chu-nhan/
+                  - paragraph [ref=e387]: "Biệt Thự Gò Vấp: Từ Người Ngoài Trở Thành Chủ Nhân"
+                - generic [ref=e388]:
+                  - generic [ref=e389]:
+                    - generic [ref=e390]: 10,033
+                    - generic [ref=e394]: "13"
+                    - generic [ref=e397]: 48 phút
+                  - generic [ref=e400]: Chương 8
+                - generic [ref=e401]:
+                  - link "Đọc từ đầu" [ref=e402] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-nguoi-ngoai-trong-chinh-ngoi-nha-minh/
+                  - link "Chương mới nhất" [ref=e403] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-chu-nhan/
+            - generic [ref=e404]:
+              - link "HOT Bị Gọi Là Con Bé Bên Máy In, Ngày Tôi Tung Báo Cáo Kiểm Toán Nghìn Tỷ Cả Tập Đoàn Quỳ Lạy Chương 10 3 tháng trước" [ref=e405] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/bi-goi-la-con-be-ben-may-in-ngay-toi-tung-bao-cao-kiem-toan-nghin-ty-ca/
+                - generic [ref=e406]:
+                  - generic [ref=e407]: HOT
+                  - img "Bị Gọi Là Con Bé Bên Máy In, Ngày Tôi Tung Báo Cáo Kiểm Toán Nghìn Tỷ Cả Tập Đoàn Quỳ Lạy" [ref=e408]
+                  - generic [ref=e409]:
+                    - generic [ref=e410]: Chương 10
+                    - generic [ref=e413]: 3 tháng trước
+              - generic [ref=e416]:
+                - link [ref=e417] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/bi-goi-la-con-be-ben-may-in-ngay-toi-tung-bao-cao-kiem-toan-nghin-ty-ca/
+                  - paragraph [ref=e418]: Bị Gọi Là Con Bé Bên Máy In, Ngày Tôi Tung Báo Cáo Kiểm Toán Nghìn Tỷ Cả Tập Đoàn Quỳ Lạy
+                - generic [ref=e419]:
+                  - generic [ref=e420]:
+                    - generic [ref=e421]: 14,837
+                    - generic [ref=e425]: "13"
+                    - generic [ref=e428]: 1 giờ
+                  - generic [ref=e431]: Chương 10
+                - generic [ref=e432]:
+                  - link "Đọc từ đầu" [ref=e433] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-con-be-chay-viec-vat-ben-may-in/
+                  - link "Chương mới nhất" [ref=e434] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-10-vong-tron-khep-kin-cua-mui-muc-in/
+            - generic [ref=e435]:
+              - link "NỔI BẬT Thực Tập Sinh Bị Đuổi Giữa Phòng Họp, Không Ai Biết Cô Là Con Gái Chủ Tịch Chương 8 3 tháng trước" [ref=e436] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/thuc-tap-sinh-bi-duoi-giua-phong-hop-khong-ai-biet-co-la-con-gai-chu-tic/
+                - generic [ref=e437]:
+                  - generic [ref=e438]: NỔI BẬT
+                  - img "Thực Tập Sinh Bị Đuổi Giữa Phòng Họp, Không Ai Biết Cô Là Con Gái Chủ Tịch" [ref=e439]
+                  - generic [ref=e440]:
+                    - generic [ref=e441]: Chương 8
+                    - generic [ref=e444]: 3 tháng trước
+              - generic [ref=e447]:
+                - link [ref=e448] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/thuc-tap-sinh-bi-duoi-giua-phong-hop-khong-ai-biet-co-la-con-gai-chu-tic/
+                  - paragraph [ref=e449]: Thực Tập Sinh Bị Đuổi Giữa Phòng Họp, Không Ai Biết Cô Là Con Gái Chủ Tịch
+                - generic [ref=e450]:
+                  - generic [ref=e451]:
+                    - generic [ref=e452]: 4,654
+                    - generic [ref=e456]: "13"
+                    - generic [ref=e459]: 48 phút
+                  - generic [ref=e462]: Chương 8
+                - generic [ref=e463]:
+                  - link "Đọc từ đầu" [ref=e464] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-nguyen-mai-anh-thuc-tap-sinh-quen/
+                  - link "Chương mới nhất" [ref=e465] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-co-gai-khong-con-ngoi-canh-may-photocopy/
+            - generic [ref=e466]:
+              - link "NỔI BẬT Bị Vu Oan Gây Cháy Nhà Máy, Tôi Dùng Camera Giấu Kín Lật Mặt Giám Đốc Bảo Hiểm Chương 8 3 tháng trước" [ref=e467] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/bi-vu-oan-gay-chay-nha-may-toi-dung-camera-giau-kin-lat-mat-giam-doc-bao/
+                - generic [ref=e468]:
+                  - generic [ref=e469]: NỔI BẬT
+                  - img "Bị Vu Oan Gây Cháy Nhà Máy, Tôi Dùng Camera Giấu Kín Lật Mặt Giám Đốc Bảo Hiểm" [ref=e470]
+                  - generic [ref=e471]:
+                    - generic [ref=e472]: Chương 8
+                    - generic [ref=e475]: 3 tháng trước
+              - generic [ref=e478]:
+                - link [ref=e479] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/bi-vu-oan-gay-chay-nha-may-toi-dung-camera-giau-kin-lat-mat-giam-doc-bao/
+                  - paragraph [ref=e480]: Bị Vu Oan Gây Cháy Nhà Máy, Tôi Dùng Camera Giấu Kín Lật Mặt Giám Đốc Bảo Hiểm
+                - generic [ref=e481]:
+                  - generic [ref=e482]:
+                    - generic [ref=e483]: 4,609
+                    - generic [ref=e487]: "13"
+                    - generic [ref=e490]: 48 phút
+                  - generic [ref=e493]: Chương 8
+                - generic [ref=e494]:
+                  - link "Đọc từ đầu" [ref=e495] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-dam-chay-luc-ba-gio-sang/
+                  - link "Chương mới nhất" [ref=e496] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-8-ky-su-phong-chay-khong-bao-gio-tat-lua/
+            - generic [ref=e497]:
+              - link "NỔI BẬT Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ Chín Trăm Triệu Chương 10 3 tháng trước" [ref=e498] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/gia-ngheo-di-ra-mat-me-nguoi-yeu-doi-sinh-le-chin-tram-trieu/
+                - generic [ref=e499]:
+                  - generic [ref=e500]: NỔI BẬT
+                  - img "Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ Chín Trăm Triệu" [ref=e501]
+                  - generic [ref=e502]:
+                    - generic [ref=e503]: Chương 10
+                    - generic [ref=e506]: 3 tháng trước
+              - generic [ref=e509]:
+                - link [ref=e510] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/gia-ngheo-di-ra-mat-me-nguoi-yeu-doi-sinh-le-chin-tram-trieu/
+                  - paragraph [ref=e511]: Giả Nghèo Đi Ra Mắt, Mẹ Người Yêu Đòi Sính Lễ Chín Trăm Triệu
+                - generic [ref=e512]:
+                  - generic [ref=e513]:
+                    - generic [ref=e514]: 3,786
+                    - generic [ref=e518]: "13"
+                    - generic [ref=e521]: 1 giờ
+                  - generic [ref=e524]: Chương 10
+                - generic [ref=e525]:
+                  - link "Đọc từ đầu" [ref=e526] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-1-thang-chay-xe-om-den-ra-mat/
+                  - link "Chương mới nhất" [ref=e527] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/chuong-10-dep-to-ong-va-tach-tra/
+          - link "Xem thêm 4,561 kết quả ⌄" [ref=e529] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e530]:
+            - heading "Truyện full" [level=2] [ref=e531]
+            - link "Xem tất cả >" [ref=e534] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=e535]:
+            - generic [ref=e536]:
+              - link "FULL ĐÍCH NỮ KHÔNG NHẬN THUA Chương 12 Đã đủ bộ" [ref=e537] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/dich-nu-khong-nhan-thua/
+                - generic [ref=e538]:
+                  - generic [ref=e539]: FULL
+                  - img "ĐÍCH NỮ KHÔNG NHẬN THUA" [ref=e540]
+                  - generic [ref=e541]:
+                    - generic [ref=e542]: Chương 12
+                    - generic [ref=e545]: Đã đủ bộ
+              - generic [ref=e548]:
+                - link [ref=e549] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/dich-nu-khong-nhan-thua/
+                  - paragraph [ref=e550]: ĐÍCH NỮ KHÔNG NHẬN THUA
+                - generic [ref=e551]:
+                  - generic [ref=e552]:
+                    - generic [ref=e553]: 7,411
+                    - generic [ref=e557]: "13"
+                    - generic [ref=e560]: 1.2 giờ
+                  - generic [ref=e563]: Chương 12
+                - generic [ref=e564]:
+                  - link "Đọc từ đầu" [ref=e565] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/dich-nu-khong-nhan-thua-chuong-1/
+                  - link "Chương mới nhất" [ref=e566] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/dich-nu-khong-nhan-thua-chuong-12/
+            - generic [ref=e567]:
+              - link "FULL NỮ HẦU CỦA PHỦ HẦU Chương 12 Đã đủ bộ" [ref=e568] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nu-hau-cua-phu-hau/
+                - generic [ref=e569]:
+                  - generic [ref=e570]: FULL
+                  - img "NỮ HẦU CỦA PHỦ HẦU" [ref=e571]
+                  - generic [ref=e572]:
+                    - generic [ref=e573]: Chương 12
+                    - generic [ref=e576]: Đã đủ bộ
+              - generic [ref=e579]:
+                - link [ref=e580] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/nu-hau-cua-phu-hau/
+                  - paragraph [ref=e581]: NỮ HẦU CỦA PHỦ HẦU
+                - generic [ref=e582]:
+                  - generic [ref=e583]:
+                    - generic [ref=e584]: 11,204
+                    - generic [ref=e588]: "13"
+                    - generic [ref=e591]: 1.2 giờ
+                  - generic [ref=e594]: Chương 12
+                - generic [ref=e595]:
+                  - link "Đọc từ đầu" [ref=e596] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/nu-hau-cua-phu-hau-chuong-1/
+                  - link "Chương mới nhất" [ref=e597] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/nu-hau-cua-phu-hau-chuong-12/
+            - generic [ref=e598]:
+              - link "FULL HOÀNG HẬU TỪNG BỊ PHẾ Chương 12 Đã đủ bộ" [ref=e599] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/hoang-hau-tung-bi-phe/
+                - generic [ref=e600]:
+                  - generic [ref=e601]: FULL
+                  - img "HOÀNG HẬU TỪNG BỊ PHẾ" [ref=e602]
+                  - generic [ref=e603]:
+                    - generic [ref=e604]: Chương 12
+                    - generic [ref=e607]: Đã đủ bộ
+              - generic [ref=e610]:
+                - link [ref=e611] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/hoang-hau-tung-bi-phe/
+                  - paragraph [ref=e612]: HOÀNG HẬU TỪNG BỊ PHẾ
+                - generic [ref=e613]:
+                  - generic [ref=e614]:
+                    - generic [ref=e615]: 10,484
+                    - generic [ref=e619]: "13"
+                    - generic [ref=e622]: 1.2 giờ
+                  - generic [ref=e625]: Chương 12
+                - generic [ref=e626]:
+                  - link "Đọc từ đầu" [ref=e627] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/hoang-hau-tung-bi-phe-chuong-1/
+                  - link "Chương mới nhất" [ref=e628] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/hoang-hau-tung-bi-phe-chuong-12/
+            - generic [ref=e629]:
+              - link "FULL CÔ DÂU CỦA TẬP ĐOÀN CỐ GIA Chương 12 Đã đủ bộ" [ref=e630] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/co-dau-cua-tap-doan-co-gia/
+                - generic [ref=e631]:
+                  - generic [ref=e632]: FULL
+                  - img "CÔ DÂU CỦA TẬP ĐOÀN CỐ GIA" [ref=e633]
+                  - generic [ref=e634]:
+                    - generic [ref=e635]: Chương 12
+                    - generic [ref=e638]: Đã đủ bộ
+              - generic [ref=e641]:
+                - link [ref=e642] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/co-dau-cua-tap-doan-co-gia/
+                  - paragraph [ref=e643]: CÔ DÂU CỦA TẬP ĐOÀN CỐ GIA
+                - generic [ref=e644]:
+                  - generic [ref=e645]:
+                    - generic [ref=e646]: 11,117
+                    - generic [ref=e650]: "13"
+                    - generic [ref=e653]: 1.2 giờ
+                  - generic [ref=e656]: Chương 12
+                - generic [ref=e657]:
+                  - link "Đọc từ đầu" [ref=e658] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/co-dau-cua-tap-doan-co-gia-chuong-1/
+                  - link "Chương mới nhất" [ref=e659] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/co-dau-cua-tap-doan-co-gia-chuong-12/
+            - generic [ref=e660]:
+              - link "FULL VỢ CŨ CỦA NHIẾP CHÍNH VƯƠNG Chương 12 Đã đủ bộ" [ref=e661] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/vo-cu-cua-nhiep-chinh-vuong/
+                - generic [ref=e662]:
+                  - generic [ref=e663]: FULL
+                  - img "VỢ CŨ CỦA NHIẾP CHÍNH VƯƠNG" [ref=e664]
+                  - generic [ref=e665]:
+                    - generic [ref=e666]: Chương 12
+                    - generic [ref=e669]: Đã đủ bộ
+              - generic [ref=e672]:
+                - link [ref=e673] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/vo-cu-cua-nhiep-chinh-vuong/
+                  - paragraph [ref=e674]: VỢ CŨ CỦA NHIẾP CHÍNH VƯƠNG
+                - generic [ref=e675]:
+                  - generic [ref=e676]:
+                    - generic [ref=e677]: 1,558
+                    - generic [ref=e681]: "13"
+                    - generic [ref=e684]: 1.2 giờ
+                  - generic [ref=e687]: Chương 12
+                - generic [ref=e688]:
+                  - link "Đọc từ đầu" [ref=e689] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/vo-cu-cua-nhiep-chinh-vuong-chuong-1/
+                  - link "Chương mới nhất" [ref=e690] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/vo-cu-cua-nhiep-chinh-vuong-chuong-12/
+            - generic [ref=e691]:
+              - link "FULL THÁI TỬ PHI KHÔNG MUỐN HIỀN Chương 12 Đã đủ bộ" [ref=e692] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/thai-tu-phi-khong-muon-hien/
+                - generic [ref=e693]:
+                  - generic [ref=e694]: FULL
+                  - img "THÁI TỬ PHI KHÔNG MUỐN HIỀN" [ref=e695]
+                  - generic [ref=e696]:
+                    - generic [ref=e697]: Chương 12
+                    - generic [ref=e700]: Đã đủ bộ
+              - generic [ref=e703]:
+                - link [ref=e704] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truyen/thai-tu-phi-khong-muon-hien/
+                  - paragraph [ref=e705]: THÁI TỬ PHI KHÔNG MUỐN HIỀN
+                - generic [ref=e706]:
+                  - generic [ref=e707]:
+                    - generic [ref=e708]: 12,210
+                    - generic [ref=e712]: "13"
+                    - generic [ref=e715]: 1.2 giờ
+                  - generic [ref=e718]: Chương 12
+                - generic [ref=e719]:
+                  - link "Đọc từ đầu" [ref=e720] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/thai-tu-phi-khong-muon-hien-chuong-1/
+                  - link "Chương mới nhất" [ref=e721] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/chuong/thai-tu-phi-khong-muon-hien-chuong-12/
+          - link "Xem thêm 4,190 kết quả ⌄" [ref=e723] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/hoan-thanh.html
+        - generic [ref=e724]:
+          - generic [ref=e725]:
+            - heading "Bảng xếp hạng Top 10" [level=3] [ref=e726]:
+              - generic [ref=e727]: Bảng xếp hạng
+              - generic [ref=e731]: Top 10
+            - generic [ref=e732]:
+              - link "Ngày" [ref=e733] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bang-xep-hang/?range=day
+              - link "Tuần" [ref=e734] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bang-xep-hang/?range=week
+              - link "Tháng" [ref=e735] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bang-xep-hang/?range=month
+              - link "Năm" [ref=e736] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bang-xep-hang/?range=year
+            - generic [ref=e737]:
+              - link "1 SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG 18.164" [ref=e738] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/sau-khi-toi-tro-thanh-hoang-thuong/
+                - generic [ref=e739]: "1"
+                - img "SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG" [ref=e743]
+                - generic [ref=e744]:
+                  - generic [ref=e745]: SAU KHI TÔI TRỞ THÀNH HOÀNG THƯƠNG
+                  - generic [ref=e746]: "18.164"
+              - link "2 CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT 16.589" [ref=e750] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/cung-dau-khong-co-nuoc-mat/
+                - generic [ref=e751]: "2"
+                - img "CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT" [ref=e755]
+                - generic [ref=e756]:
+                  - generic [ref=e757]: CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT
+                  - generic [ref=e758]: "16.589"
+              - link "3 HÀO MÔN NỮ VƯƠNG HÀO MÔN NỮ VƯƠNG 15.190" [ref=e762] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/hao-mon-nu-vuong/
+                - generic [ref=e763]: "3"
+                - img "HÀO MÔN NỮ VƯƠNG" [ref=e767]
+                - generic [ref=e768]:
+                  - generic [ref=e769]: HÀO MÔN NỮ VƯƠNG
+                  - generic [ref=e770]: "15.190"
+              - link "4 CÔNG CHÚA BỊ ĐÁNH TRÁO CÔNG CHÚA BỊ ĐÁNH TRÁO 13.900" [ref=e774] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/cong-chua-bi-danh-trao/
+                - generic [ref=e775]: "4"
+                - img "CÔNG CHÚA BỊ ĐÁNH TRÁO" [ref=e776]
+                - generic [ref=e777]:
+                  - generic [ref=e778]: CÔNG CHÚA BỊ ĐÁNH TRÁO
+                  - generic [ref=e779]: "13.900"
+              - link "5 NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU 12.215" [ref=e783] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nu-tong-tai-xuyen-thanh-ke-mau/
+                - generic [ref=e784]: "5"
+                - img "NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU" [ref=e785]
+                - generic [ref=e786]:
+                  - generic [ref=e787]: NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU
+                  - generic [ref=e788]: "12.215"
+              - link "6 HUYỀN NỮ GIỮ NGỌC ẤN HUYỀN NỮ GIỮ NGỌC ẤN 10.992" [ref=e792] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/huyen-nu-giu-ngoc-an/
+                - generic [ref=e793]: "6"
+                - img "HUYỀN NỮ GIỮ NGỌC ẤN" [ref=e794]
+                - generic [ref=e795]:
+                  - generic [ref=e796]: HUYỀN NỮ GIỮ NGỌC ẤN
+                  - generic [ref=e797]: "10.992"
+              - link "7 THIẾU PHU NHÂN CẦM DAO THIẾU PHU NHÂN CẦM DAO 9.540" [ref=e801] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/thieu-phu-nhan-cam-dao/
+                - generic [ref=e802]: "7"
+                - img "THIẾU PHU NHÂN CẦM DAO" [ref=e803]
+                - generic [ref=e804]:
+                  - generic [ref=e805]: THIẾU PHU NHÂN CẦM DAO
+                  - generic [ref=e806]: "9.540"
+              - link "8 NỮ ĐẾ TRỞ VỀ TỪ HỎA NGỤC NỮ ĐẾ TRỞ VỀ TỪ HỎA NGỤC 7.736" [ref=e810] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/nu-de-tro-ve-tu-hoa-nguc/
+                - generic [ref=e811]: "8"
+                - img "NỮ ĐẾ TRỞ VỀ TỪ HỎA NGỤC" [ref=e812]
+                - generic [ref=e813]:
+                  - generic [ref=e814]: NỮ ĐẾ TRỞ VỀ TỪ HỎA NGỤC
+                  - generic [ref=e815]: "7.736"
+              - link "9 VỢ HỢP ĐỒNG CỦA NHIẾP CHÍNH VƯƠNG VỢ HỢP ĐỒNG CỦA NHIẾP CHÍNH VƯƠNG 6.646" [ref=e819] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/vo-hop-dong-cua-nhiep-chinh-vuong/
+                - generic [ref=e820]: "9"
+                - img "VỢ HỢP ĐỒNG CỦA NHIẾP CHÍNH VƯƠNG" [ref=e821]
+                - generic [ref=e822]:
+                  - generic [ref=e823]: VỢ HỢP ĐỒNG CỦA NHIẾP CHÍNH VƯƠNG
+                  - generic [ref=e824]: "6.646"
+              - link "10 MẸ KẾ CỦA THÁI TỬ MẸ KẾ CỦA THÁI TỬ 5.341" [ref=e828] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truyen/me-ke-cua-thai-tu/
+                - generic [ref=e829]: "10"
+                - img "MẸ KẾ CỦA THÁI TỬ" [ref=e830]
+                - generic [ref=e831]:
+                  - generic [ref=e832]: MẸ KẾ CỦA THÁI TỬ
+                  - generic [ref=e833]: "5.341"
+          - generic [ref=e837]:
+            - heading "Bảng xếp hạng team Hôm nay" [level=3] [ref=e838]:
+              - generic [ref=e839]: Bảng xếp hạng team
+              - generic [ref=e842]: Hôm nay
+            - generic [ref=e843]:
+              - link "1 Mèo Kam Mập Mèo Kam Mập 36.697" [ref=e844] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e845]: "1"
+                - img "Mèo Kam Mập" [ref=e849]
+                - generic [ref=e850]:
+                  - generic [ref=e851]: Mèo Kam Mập
+                  - generic [ref=e852]: "36.697"
+              - link "2 Lạc Giới Tinh Thư Lạc Giới Tinh Thư 29.293" [ref=e856] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e857]: "2"
+                - img "Lạc Giới Tinh Thư" [ref=e861]
+                - generic [ref=e862]:
+                  - generic [ref=e863]: Lạc Giới Tinh Thư
+                  - generic [ref=e864]: "29.293"
+              - link "3 Mỗi Ngày Chỉ Muốn... Mỗi Ngày Chỉ Muốn... 10.969" [ref=e868] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e869]: "3"
+                - img "Mỗi Ngày Chỉ Muốn..." [ref=e873]
+                - generic [ref=e874]:
+                  - generic [ref=e875]: Mỗi Ngày Chỉ Muốn...
+                  - generic [ref=e876]: "10.969"
+              - link "4 Cá Chép Ngắm Mưa Cá Chép Ngắm Mưa 6.578" [ref=e880] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e881]: "4"
+                - img "Cá Chép Ngắm Mưa" [ref=e882]
+                - generic [ref=e883]:
+                  - generic [ref=e884]: Cá Chép Ngắm Mưa
+                  - generic [ref=e885]: "6.578"
+              - link "5 Trong Tim Có Cậu Trong Tim Có Cậu 5.507" [ref=e889] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e890]: "5"
+                - img "Trong Tim Có Cậu" [ref=e891]
+                - generic [ref=e892]:
+                  - generic [ref=e893]: Trong Tim Có Cậu
+                  - generic [ref=e894]: "5.507"
+              - link "6 Ổ Mật Mật Ổ Mật Mật 4.725" [ref=e898] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e899]: "6"
+                - img "Ổ Mật Mật" [ref=e900]
+                - generic [ref=e901]:
+                  - generic [ref=e902]: Ổ Mật Mật
+                  - generic [ref=e903]: "4.725"
+              - link "7 Nguyệt Sát Tinh C... Nguyệt Sát Tinh C... 2.500" [ref=e907] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e908]: "7"
+                - img "Nguyệt Sát Tinh C..." [ref=e909]
+                - generic [ref=e910]:
+                  - generic [ref=e911]: Nguyệt Sát Tinh C...
+                  - generic [ref=e912]: "2.500"
+              - link "8 Mèo Bủng Beo Mèo Bủng Beo 1.300" [ref=e916] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/nhom-dich/
+                - generic [ref=e917]: "8"
+                - img "Mèo Bủng Beo" [ref=e918]
+                - generic [ref=e919]:
+                  - generic [ref=e920]: Mèo Bủng Beo
+                  - generic [ref=e921]: "1.300"
+  - contentinfo [ref=e925]:
+    - generic [ref=e926]:
+      - generic [ref=e927]:
+        - link "DTT." [ref=e928] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/
+        - paragraph [ref=e930]: Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.
+      - generic [ref=e931]:
+        - heading "Thông tin" [level=4] [ref=e932]
+        - list [ref=e933]:
+          - listitem [ref=e934]:
+            - link "Giới thiệu" [ref=e935] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/gioi-thieu/
+          - listitem [ref=e939]:
+            - link "Chính sách bảo mật" [ref=e940] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chinh-sach-bao-mat/
+          - listitem [ref=e943]:
+            - link "Điều khoản sử dụng" [ref=e944] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-khoan-su-dung/
+      - generic [ref=e947]:
+        - heading "Danh sách truyện" [level=4] [ref=e948]
+        - list [ref=e949]:
+          - listitem [ref=e950]:
+            - link "• Sảng Văn" [ref=e951] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+          - listitem [ref=e952]:
+            - link "• Vả Mặt" [ref=e953] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - listitem [ref=e954]:
+            - link "• Đô thị vả mặt" [ref=e955] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+          - listitem [ref=e956]:
+            - link "• Đô thị thương chiến" [ref=e957] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/
+          - listitem [ref=e958]:
+            - link "• Hào Môn" [ref=e959] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/hao-mon/
+          - listitem [ref=e960]:
+            - link "• Ẩm Thực" [ref=e961] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/am-thuc/
+      - generic [ref=e962]:
+        - heading "Top truyện" [level=4] [ref=e963]
+        - list [ref=e964]:
+          - listitem [ref=e965]:
+            - link "• Top ngôn tình hay nhất" [ref=e966] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang/
+          - listitem [ref=e967]:
+            - link "• Top ngôn tình hiện đại" [ref=e968] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+hien+dai
+          - listitem [ref=e969]:
+            - link "• Top tổng tài hay nhất" [ref=e970] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=tong+tai
+          - listitem [ref=e971]:
+            - link "• Top ngôn tình cổ đại" [ref=e972] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+co+dai
+          - listitem [ref=e973]:
+            - link "• Top xuyên không hay" [ref=e974] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=xuyen+khong
+          - listitem [ref=e975]:
+            - link "• Top truyện quân nhân" [ref=e976] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=quan+nhan
+      - generic [ref=e977]:
+        - heading "Kết nối" [level=4] [ref=e978]
+        - paragraph [ref=e979]: "Theo dõi để nhận thông báo chương mới:"
+        - generic [ref=e980]:
+          - link "Fanpage" [ref=e981] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+          - link "YouTube" [ref=e984] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/nhom-dich/
+        - paragraph [ref=e987]: Tải ứng dụng
+        - generic [ref=e988]:
+          - link "Tải về App Store" [ref=e989] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=e992]:
+              - generic [ref=e993]: Tải về
+              - strong [ref=e994]: App Store
+          - link "Tải về Google Play" [ref=e995] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=e998]:
+              - generic [ref=e999]: Tải về
+              - strong [ref=e1000]: Google Play
+    - paragraph [ref=e1006]:
+      - strong [ref=e1007]: "Tuyên bố miễn trừ trách nhiệm:"
+      - text: DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.
+    - generic [ref=e1008]: © 2026 DTT. All rights reserved.

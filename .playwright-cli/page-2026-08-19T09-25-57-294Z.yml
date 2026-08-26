@@ -1,0 +1,535 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "DTT." [ref=e6] [cursor=pointer]:
+        - /url: https://doctieuthuyet.com
+      - generic [ref=e8]:
+        - button "Tìm kiếm" [ref=e9] [cursor=pointer]:
+          - generic [ref=e10]: 
+        - textbox "Tìm tên truyện, tên người đăng.." [ref=e11]
+      - generic [ref=e12]:
+        - link " Thể loại" [ref=e13] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/the-loai.html
+          - generic [ref=e14]: 
+          - text: Thể loại
+        - link " Bài viết" [ref=e15] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bai-viet/
+          - generic [ref=e16]: 
+          - text: Bài viết
+        - link " Truyện full" [ref=e17] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=e18]: 
+          - text: Truyện full
+        - link " BXH" [ref=e19] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e20]: 
+          - text: BXH
+        - link " Theo dõi" [ref=e21] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/theo-doi.html
+          - generic [ref=e22]: 
+          - text: Theo dõi
+        - button " Đăng nhập" [ref=e23] [cursor=pointer]:
+          - generic [ref=e24]: 
+          - text: Đăng nhập
+  - main [ref=e25]:
+    - main [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - link "Về Kiếm Lai Wiki" [ref=e30] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/kiem-lai-wiki/
+              - generic [ref=e31]: ←
+              - text: Về Kiếm Lai Wiki
+            - generic [ref=e32]: Hồ sơ nội dung
+          - link "Kiếm Lai" [ref=e34] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/category/kiem-lai/
+          - heading "Bạch Ngọc Kinh là gì? Ngũ Thành Thập Nhị Lâu, ba vị chưởng giáo và trung tâm Thanh Minh Thiên Hạ" [level=1] [ref=e35]
+          - generic "Thông tin bài viết" [ref=e36]:
+            - generic [ref=e37]: Đăng ngày 18 Tháng 8, 2026
+            - generic [ref=e38]: Cập nhật 18 Tháng 8, 2026
+            - generic [ref=e39]: Tác giả
+        - generic [ref=e40]:
+          - complementary [ref=e41]:
+            - navigation "Mục lục Bạch Ngọc Kinh" [ref=e42]:
+              - heading "Mục lục" [level=2] [ref=e43]
+              - list [ref=e44]:
+                - listitem [ref=e45]:
+                  - link "Hồ sơ nhanh" [ref=e46] [cursor=pointer]:
+                    - /url: "#bnk-ho-so"
+                - listitem [ref=e47]:
+                  - link "Bạch Ngọc Kinh là tổ chức hay địa danh?" [ref=e48] [cursor=pointer]:
+                    - /url: "#bnk-ban-chat"
+                - listitem [ref=e49]:
+                  - link "Ngũ Thành Thập Nhị Lâu" [ref=e50] [cursor=pointer]:
+                    - /url: "#bnk-ngu-thanh"
+                - listitem [ref=e51]:
+                  - link "Thượng Thanh Các và tầng cao nhất" [ref=e52] [cursor=pointer]:
+                    - /url: "#bnk-thuong-thanh"
+                - listitem [ref=e53]:
+                  - link "Ba vị chưởng giáo" [ref=e54] [cursor=pointer]:
+                    - /url: "#bnk-ba-chuong-giao"
+                - listitem [ref=e55]:
+                  - link "Dư Đấu" [ref=e56] [cursor=pointer]:
+                    - /url: "#bnk-du-dau"
+                - listitem [ref=e57]:
+                  - link "Lục Trầm" [ref=e58] [cursor=pointer]:
+                    - /url: "#bnk-luc-tram"
+                - listitem [ref=e59]:
+                  - link "Quan hệ với Đạo Tổ" [ref=e60] [cursor=pointer]:
+                    - /url: "#bnk-dao-to"
+                - listitem [ref=e61]:
+                  - link "Thanh Minh 14 châu" [ref=e62] [cursor=pointer]:
+                    - /url: "#bnk-14-chau"
+                - listitem [ref=e63]:
+                  - link "Các đại độc chia cắt địa lý" [ref=e64] [cursor=pointer]:
+                    - /url: "#bnk-dai-doc"
+                - listitem [ref=e65]:
+                  - link "Bạch Ngọc Kinh quản Thanh Minh thế nào?" [ref=e66] [cursor=pointer]:
+                    - /url: "#bnk-quan-tri"
+                - listitem [ref=e67]:
+                  - link "Phi Thăng cảnh chấp chưởng một thành" [ref=e68] [cursor=pointer]:
+                    - /url: "#bnk-phi-thang"
+                - listitem [ref=e69]:
+                  - link "So sánh Văn Miếu" [ref=e70] [cursor=pointer]:
+                    - /url: "#bnk-van-mieu"
+                - listitem [ref=e71]:
+                  - link "Huyền Đô Quan và các đạo thống khác" [ref=e72] [cursor=pointer]:
+                    - /url: "#bnk-huyen-do"
+                - listitem [ref=e73]:
+                  - link "Trần Bình An xé thiên mạc" [ref=e74] [cursor=pointer]:
+                    - /url: "#bnk-tran-binh-an"
+                - listitem [ref=e75]:
+                  - link "Ý nghĩa worldbuilding" [ref=e76] [cursor=pointer]:
+                    - /url: "#bnk-y-nghia"
+                - listitem [ref=e77]:
+                  - link "FAQ" [ref=e78] [cursor=pointer]:
+                    - /url: "#bnk-faq"
+                - listitem [ref=e79]:
+                  - link "Nguồn đối chiếu" [ref=e80] [cursor=pointer]:
+                    - /url: "#bnk-nguon"
+          - article [ref=e81]:
+            - generic [ref=e82]:
+              - paragraph [ref=e83]:
+                - strong [ref=e84]: Bạch Ngọc Kinh là gì?
+                - text: Bạch Ngọc Kinh (白玉京) là trung tâm quyền lực và đạo thống lớn nhất của
+                - link "Thanh Minh Thiên Hạ" [ref=e85] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thanh-minh-thien-ha-la-gi/
+                - text: ", gắn trực tiếp với"
+                - link "Đạo Tổ" [ref=e86] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dao-to-la-ai/
+                - text: và hệ chưởng giáo như
+                - link "Dư Đấu" [ref=e87] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/du-dau-la-ai/
+                - text: ","
+                - link "Lục Trầm" [ref=e88] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/luc-tram-la-ai/
+                - text: . Chính văn chương 974 mở cảnh bằng “Bạch Ngọc Kinh, nơi cao nhất” và để Lục Trầm nhìn xuống toàn bộ
+                - strong [ref=e89]: Ngũ Thành Thập Nhị Lâu
+                - text: "— năm thành, mười hai lầu. Chương 1197 còn nói thẳng:"
+                - strong [ref=e90]: mức độ quản trị và cai quản Thanh Minh của Bạch Ngọc Kinh nghiêm hơn sự ràng buộc của Trung Thổ Văn Miếu đối với Hạo Nhiên
+                - text: .
+              - paragraph [ref=e91]:
+                - text: Vì vậy Bạch Ngọc Kinh không nên bị thu nhỏ thành “một cung điện Đạo gia” hay “mười bảy tòa nhà”. Nó gần với một
+                - strong [ref=e92]: hệ thống đạo thống–quản trị cấp thiên hạ
+                - text: ": có thành, lầu, đạo quan, tiên quân, pháp chỉ, chưởng giáo và các tầng quyền lực có thể trực tiếp ảnh hưởng trật tự 14 châu."
+              - generic [ref=e93]:
+                - heading "Bạch Ngọc Kinh là gì? Trả lời ngắn gọn" [level=2] [ref=e94]
+                - paragraph [ref=e95]:
+                  - strong [ref=e96]: Bạch Ngọc Kinh là trung tâm Đạo gia và bộ máy quyền lực lớn nhất của Thanh Minh Thiên Hạ.
+                  - text: Cấu trúc nổi tiếng là Ngũ Thành Thập Nhị Lâu; tầng cao có Thượng Thanh Các. Dư Đấu và Lục Trầm là các chưởng giáo quan trọng. Chính văn xác nhận Bạch Ngọc Kinh quản Thanh Minh chặt hơn Văn Miếu quản Hạo Nhiên; một đạo quan Phi Thăng cảnh có thể chấp chưởng một thành. Tuy nhiên Thanh Minh vẫn có những đại đạo thống khác như Huyền Đô Quan, nên không phải mọi đạo sĩ đều trực thuộc Bạch Ngọc Kinh.
+              - heading "Hồ sơ nhanh Bạch Ngọc Kinh" [level=2] [ref=e97]
+              - table [ref=e98]:
+                - rowgroup [ref=e99]:
+                  - row [ref=e100]:
+                    - columnheader "Thông tin" [ref=e101]
+                    - columnheader "Nội dung" [ref=e102]
+                  - row [ref=e103]:
+                    - cell "Tên" [ref=e104]
+                    - cell "Bạch Ngọc Kinh" [ref=e105]
+                  - row [ref=e106]:
+                    - cell "Tên Hán" [ref=e107]
+                    - cell "白玉京" [ref=e108]
+                  - row [ref=e109]:
+                    - cell "Thiên hạ" [ref=e110]
+                    - cell "Thanh Minh Thiên Hạ" [ref=e111]
+                  - row [ref=e112]:
+                    - cell "Đạo thống" [ref=e113]
+                    - cell "Đạo gia" [ref=e114]
+                  - row [ref=e115]:
+                    - cell "Cấu trúc nổi tiếng" [ref=e116]
+                    - cell "Ngũ Thành Thập Nhị Lâu – 五城十二楼" [ref=e117]
+                  - row [ref=e118]:
+                    - cell "Tầng cao được chính văn nhắc" [ref=e119]
+                    - cell "Thượng Thanh Các – 上清阁" [ref=e120]
+                  - row [ref=e121]:
+                    - cell "Nhân vật lõi" [ref=e122]
+                    - cell "Đạo Tổ, Dư Đấu, Lục Trầm và hệ chưởng giáo" [ref=e123]
+                  - row [ref=e124]:
+                    - cell "Phạm vi ảnh hưởng" [ref=e125]
+                    - cell "Thanh Minh 14 châu" [ref=e126]
+                  - row [ref=e127]:
+                    - cell "Mức độ quản trị" [ref=e128]
+                    - cell "Chính văn nói nghiêm hơn Văn Miếu đối với Hạo Nhiên" [ref=e129]
+                  - row [ref=e130]:
+                    - cell "Đạo thống lớn ngoài hệ trực tiếp" [ref=e131]
+                    - cell "Ví dụ Huyền Đô Quan" [ref=e132]
+              - heading "Bạch Ngọc Kinh là một tòa thành, một tông môn hay cả hệ thống?" [level=2] [ref=e133]
+              - paragraph [ref=e134]:
+                - text: Cách hiểu tốt nhất là
+                - strong [ref=e135]: một trung tâm địa lý đồng thời là một hệ thống đạo thống–quản trị
+                - text: . Chính văn dùng “Bạch Ngọc Kinh” để chỉ nơi các chưởng giáo ngự trị, nhưng bên trong lại có Ngũ Thành Thập Nhị Lâu và từng đơn vị có người chấp chưởng.
+              - paragraph [ref=e136]: Do đó nói Bạch Ngọc Kinh chỉ là “tông môn” sẽ thiếu tầng chính trị; gọi chỉ là “thành phố” lại thiếu đạo thống; gọi “triều đình” cũng chưa đúng vì nó gắn trực tiếp với Đạo gia và đại đạo.
+              - paragraph [ref=e137]:
+                - text: "Đây là một entity lai:"
+                - strong [ref=e138]: đạo trường + tổ chức + thiết chế quyền lực
+                - text: . Hiểu đúng type giúp người đọc dễ phân biệt nó với một tông môn như Thái Huy Kiếm Tông hoặc một vương triều như Đại Ly.
+              - heading "Ngũ Thành Thập Nhị Lâu là gì?" [level=2] [ref=e139]
+              - paragraph [ref=e140]:
+                - text: Chương 974 dùng cụm
+                - strong [ref=e141]: 五城十二楼
+                - text: ", nghĩa là năm thành và mười hai lầu. Lục Trầm đứng ở nơi cao nhìn xuống toàn hệ thống, cho thấy đây là cấu trúc không gian–quyền lực thật trong Bạch Ngọc Kinh."
+              - paragraph [ref=e142]: Không nên hiểu đơn giản là “17 tòa nhà du lịch”. Mỗi thành/lầu gắn với đạo quan, tiên quân, chức vị và phân cấp riêng; toàn thể tạo nên mạng Bạch Ngọc Kinh.
+              - paragraph [ref=e143]: Ở tầng SEO entity, “Ngũ Thành Thập Nhị Lâu” là thuộc tính quan trọng nhất của Bạch Ngọc Kinh, giống “chín châu” với Hạo Nhiên hay “Ngũ Nhạc” với Đại Ly.
+              - heading "Thượng Thanh Các là gì và vì sao lên đó là vinh dự?" [level=2] [ref=e144]
+              - paragraph [ref=e145]:
+                - text: Chương 974 kể một người nhận
+                - strong [ref=e146]: chưởng giáo pháp chỉ
+                - text: rồi ngự phong tới Thượng Thanh Các gặp Lục Trầm. Các tiên quân nhận ra quỹ tích “phi thăng” ấy và rất ngưỡng mộ, bởi có thể lên Thượng Thanh Các nhìn xuống toàn bộ Ngũ Thành Thập Nhị Lâu là một
+                - strong [ref=e147]: vinh dự, biểu thị đã lọt vào pháp nhãn chưởng giáo
+                - text: .
+              - paragraph [ref=e148]: Điểm này cho thấy tầng cao nhất Bạch Ngọc Kinh không phải nơi đạo quan bình thường muốn tới là tới. Không gian vật lý đồng thời phản ánh cấp bậc.
+              - paragraph [ref=e149]: Nó cũng giúp hiểu “chưởng giáo” không chỉ là danh dự. Một pháp chỉ có thể mở đường cho người khác bước vào tầng quyền lực cao nhất.
+              - heading "Bạch Ngọc Kinh có ba vị chưởng giáo?" [level=2] [ref=e150]
+              - paragraph [ref=e151]:
+                - text: Bạch Ngọc Kinh nổi tiếng với cấu trúc
+                - strong [ref=e152]: ba vị chưởng giáo
+                - text: ", nằm trong hệ truyền thừa của Đạo Tổ. Cluster hiện đã có bài chuyên sâu cho Dư Đấu và Lục Trầm; vị trí/chức năng của từng người thay đổi theo đại cục và thời điểm."
+              - paragraph [ref=e153]: Không nên nhìn ba chưởng giáo như ba CEO ngang chức đơn giản. Mỗi người có đạo pháp, tính cách và cách nhìn quy củ rất khác.
+              - paragraph [ref=e154]: Điều này giúp Bạch Ngọc Kinh có tính chính trị nội bộ. Một thiết chế mạnh vẫn có khác biệt giữa những người đứng đầu, chứ không phải một giọng nói duy nhất.
+              - heading "Dư Đấu có vai trò gì tại Bạch Ngọc Kinh?" [level=2] [ref=e155]
+              - paragraph [ref=e156]:
+                - link "Dư Đấu" [ref=e157] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/du-dau-la-ai/
+                - text: thường được độc giả gọi Đạo Lão Nhị, là đệ tử quan trọng của Đạo Tổ và chưởng giáo Bạch Ngọc Kinh. Ông nổi bật ở chiến lực, quy củ và tiên kiếm Đạo Tạng.
+              - paragraph [ref=e158]: Chương 948 nhắc “Dư sư huynh vẫn đang ở Bạch Ngọc Kinh chờ”, cho thấy ông ở ngay trung tâm đại cục khi Lục Trầm di chuyển giữa các nơi.
+              - paragraph [ref=e159]: Dư Đấu phù hợp với mặt “trật tự–chấp hành” của Bạch Ngọc Kinh, nhưng bài tránh biến toàn bộ chính sách Thanh Minh thành ý chí cá nhân ông.
+              - heading "Lục Trầm đại diện mặt nào của Bạch Ngọc Kinh?" [level=2] [ref=e160]
+              - paragraph [ref=e161]:
+                - link "Lục Trầm" [ref=e162] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/luc-tram-la-ai/
+                - text: "là chưởng giáo có phong cách rất khác: biến hóa, thích đi xa, can dự nhân quả và thường xuất hiện ở nơi khó đoán."
+              - paragraph [ref=e163]: "Chương 974 chính là cảnh Lục Trầm ở tầng cao nhất Bạch Ngọc Kinh, nhàn nhã nhìn xuống Ngũ Thành Thập Nhị Lâu. Hình ảnh này rất hợp nhân vật: ở vị trí quyền lực cực cao nhưng cách thể hiện không nặng nghi lễ."
+              - paragraph [ref=e164]: Sự tồn tại đồng thời của Dư Đấu và Lục Trầm cho thấy hệ thống đủ lớn để chứa những phong cách trị đạo rất khác nhau.
+              - heading "Bạch Ngọc Kinh có quan hệ gì với Đạo Tổ?" [level=2] [ref=e165]
+              - paragraph [ref=e166]:
+                - link "Đạo Tổ" [ref=e167] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dao-to-la-ai/
+                - text: là nguồn đạo thống cao nhất của Thanh Minh. Hệ chưởng giáo Bạch Ngọc Kinh thuộc truyền thừa trực tiếp từ ông, khiến thiết chế này có chính danh đại đạo vượt xa một tổ chức thế tục.
+              - paragraph [ref=e168]: Vì vậy Bạch Ngọc Kinh vừa quản trị vừa đại diện cho một cách hiểu về Đạo gia. Khi nó ban pháp chỉ, sức nặng đến từ cả tổ chức lẫn truyền thừa.
+              - paragraph [ref=e169]: "Đây là điểm khác với hoàng đế: quyền lực hoàng đế dựa nhà nước và quốc vận; Bạch Ngọc Kinh dựa vào hệ đạo thống cùng sức mạnh của chưởng giáo."
+              - heading "Thanh Minh Thiên Hạ có 14 châu?" [level=2] [ref=e170]
+              - paragraph [ref=e171]:
+                - text: Có. Chương 948 nhắc rõ
+                - strong [ref=e172]: Thanh Minh 14 châu
+                - text: . Đây là một trong những con số địa lý quan trọng nhất để phân biệt Thanh Minh với Hạo Nhiên có chín châu.
+              - paragraph [ref=e173]: Điều đáng chú ý là cấu trúc địa lý hai thiên hạ cũng khác. Hạo Nhiên giống các khối lục địa/châu nổi giữa bốn biển; Thanh Minh được chính văn mô tả như 14 châu bị những đại thủy đạo lớn cắt chia.
+              - paragraph [ref=e174]: Vì vậy Bạch Ngọc Kinh phải quản một thiên hạ có địa lý vận hành khác Hạo Nhiên, không thể chỉ “copy mô hình Văn Miếu”.
+              - heading "Các đại độc chia cắt Thanh Minh có ý nghĩa gì?" [level=2] [ref=e175]
+              - paragraph [ref=e176]:
+                - text: Chương 948 mô tả núi sông dưới mặt đất như rồng rắn uốn lượn và nói Thanh Minh 14 châu giống như bị các
+                - strong [ref=e177]: đại độc
+                - text: cắt ra.
+              - paragraph [ref=e178]:
+                - text: “Đại độc” ở đây là chữ 渎 chỉ đại thủy đạo, không liên quan tên riêng
+                - link "Tề Độ (齐渡)" [ref=e179] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/te-do-la-gi/
+                - text: . Đây là một điểm Hán–Việt rất dễ nhầm mà cluster đã chuẩn hóa.
+              - paragraph [ref=e180]: Hệ đại thủy đạo làm địa lý Thanh Minh có tính tuyến và chia cắt mạnh, từ đó ảnh hưởng giao thông, biên giới và cách Bạch Ngọc Kinh kiểm soát các châu.
+              - heading "Bạch Ngọc Kinh quản Thanh Minh chặt tới mức nào?" [level=2] [ref=e181]
+              - paragraph [ref=e182]:
+                - text: "Chương 1197 nói thẳng:"
+                - strong [ref=e183]: Bạch Ngọc Kinh đối với Thanh Minh có mức quản hạt và cai trị nghiêm hơn Trung Thổ Văn Miếu ràng buộc Hạo Nhiên
+                - text: .
+              - paragraph [ref=e184]: Đây là câu mấu chốt để so hai mô hình. Hạo Nhiên cho phép vương triều, tông môn và chư tử bách gia có khoảng tự trị tương đối lớn; Văn Miếu đặt quy củ chung và can thiệp khi chạm đại cục. Thanh Minh tập trung quyền lực quanh Bạch Ngọc Kinh hơn.
+              - paragraph [ref=e185]:
+                - text: Điều này không có nghĩa mọi quyết định của Bạch Ngọc Kinh đều “độc tài” theo nghĩa hiện đại. Chính văn đang mô tả
+                - strong [ref=e186]: mức độ tập trung quyền lực
+                - text: ", không đưa một phán xét chính trị đơn giản."
+              - heading "Một Phi Thăng cảnh có thể chấp chưởng một thành Bạch Ngọc Kinh?" [level=2] [ref=e187]
+              - paragraph [ref=e188]:
+                - text: Chương 1197, khi Trần Bình An xé thiên mạc, nhắc một
+                - strong [ref=e189]: Phi Thăng cảnh đạo quan vị cao quyền trọng, chấp chưởng một thành
+                - text: trong Bạch Ngọc Kinh.
+              - paragraph [ref=e190]: Chi tiết này cho thấy cấp thành không phải chức vụ tượng trưng. Người đứng đầu có thể đã ở cảnh giới cực cao và đủ tư cách tham gia phản ứng trước sự kiện cấp thiên hạ.
+              - paragraph [ref=e191]: Nhưng không nên từ một trường hợp suy ra “cả năm thành đều luôn do Phi Thăng cảnh quản” nếu chưa có nguồn cho từng thành. Bài chỉ dùng nó như bằng chứng về trần quyền lực của một đơn vị thành.
+              - heading "Bạch Ngọc Kinh khác Văn Miếu thế nào?" [level=2] [ref=e192]
+              - table [ref=e193]:
+                - rowgroup [ref=e194]:
+                  - row [ref=e195]:
+                    - columnheader "Khía cạnh" [ref=e196]
+                    - columnheader "Bạch Ngọc Kinh" [ref=e197]
+                    - columnheader [ref=e198]:
+                      - link "Văn Miếu" [ref=e199] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/van-mieu-la-gi/
+                - rowgroup [ref=e200]:
+                  - row [ref=e201]:
+                    - cell "Thiên hạ" [ref=e202]
+                    - cell "Thanh Minh" [ref=e203]
+                    - cell "Hạo Nhiên" [ref=e204]
+                  - row [ref=e205]:
+                    - cell "Đạo thống chủ đạo" [ref=e206]
+                    - cell "Đạo gia" [ref=e207]
+                    - cell "Nho gia" [ref=e208]
+                  - row [ref=e209]:
+                    - cell "Cấu trúc nổi bật" [ref=e210]
+                    - cell "Ngũ Thành Thập Nhị Lâu, chưởng giáo" [ref=e211]
+                    - cell "Văn Miếu, học cung, thư viện, thánh hiền" [ref=e212]
+                  - row [ref=e213]:
+                    - cell "Mức quản trị theo chính văn" [ref=e214]
+                    - cell "Chặt hơn" [ref=e215]
+                    - cell "Ràng buộc lỏng hơn tương đối" [ref=e216]
+                  - row [ref=e217]:
+                    - cell "Đa dạng thế lực" [ref=e218]
+                    - cell "Vẫn có đại đạo thống ngoài hệ trực tiếp" [ref=e219]
+                    - cell "Vương triều/tông môn/chư tử có tự trị mạnh" [ref=e220]
+              - paragraph [ref=e221]:
+                - text: So sánh này giúp hiểu hai nơi là
+                - strong [ref=e222]: hai mô hình văn minh
+                - text: ", không chỉ “hai môn phái mạnh”."
+              - heading "Huyền Đô Quan có chứng minh không phải mọi Đạo gia đều thuộc Bạch Ngọc Kinh?" [level=2] [ref=e223]
+              - paragraph [ref=e224]:
+                - text: Có. Chương 953 đặt cảnh trực tiếp tại
+                - strong [ref=e225]: Huyền Đô Quan
+                - text: ở Thanh Minh và mô tả đây là một “khổng lồ” có nhiều sơn đầu phụ thuộc. Một nhóm kiếm tu từ Kiếm Khí Trường Thành còn được chia tới Bạch Ngọc Kinh Thần Tiêu Thành, Tuế Trừ Cung và Huyền Đô Quan như ba điểm khác nhau.
+              - paragraph [ref=e226]: Chương 918 cũng nhắc có tiên quân Bạch Ngọc Kinh nói không kính trọng lão đạo trưởng Huyền Đô Quan, qua đó cho thấy giữa các đại đạo thống có quan hệ và xung đột riêng.
+              - paragraph [ref=e227]:
+                - text: "Vì vậy cách viết “Bạch Ngọc Kinh = toàn bộ Đạo gia Thanh Minh” là sai. Chính xác hơn:"
+                - strong [ref=e228]: Bạch Ngọc Kinh là trung tâm quyền lực Đạo gia lớn nhất và quản thiên hạ rất chặt, nhưng Thanh Minh vẫn có các đại đạo thống khác
+                - text: .
+              - heading "Trần Bình An đã làm gì khi tới Thanh Minh?" [level=2] [ref=e229]
+              - paragraph [ref=e230]:
+                - text: "Chương 1197 tạo một hình ảnh cấp hậu kỳ: pháp tướng của"
+                - link "Trần Bình An" [ref=e231] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tran-binh-an-la-ai/
+                - text: một mình dùng hai tay
+                - strong [ref=e232]: xé thiên mạc
+                - text: ", làm khách Thanh Minh và từ trên cao nhìn xuống Bạch Ngọc Kinh."
+              - paragraph [ref=e233]: Chính văn gọi đây gần như “một kiếm tu đối đầu cả một thiên hạ”. Một đạo quan Phi Thăng cảnh trong Bạch Ngọc Kinh còn cố tình nhận nhầm người trẻ là 14 cảnh để châm chọc.
+              - paragraph [ref=e234]: Không cần biến cảnh này thành kết luận “Trần Bình An đánh thắng Bạch Ngọc Kinh” nếu sự kiện chưa được kể theo cách đó. Giá trị của đoạn là cho thấy quy mô thân phận nam chính đã đi xa tới mức có thể khiến trung tâm Thanh Minh trực tiếp phản ứng.
+              - heading "Vì sao Bạch Ngọc Kinh quan trọng trong Kiếm Lai?" [level=2] [ref=e235]
+              - paragraph [ref=e236]:
+                - text: Bạch Ngọc Kinh giúp thế giới truyện có
+                - strong [ref=e237]: một mô hình quyền lực đối chiếu với Văn Miếu
+                - text: . Nếu Hạo Nhiên là đa trung tâm dưới một bộ quy củ chung, Thanh Minh tập trung hơn quanh Bạch Ngọc Kinh.
+              - paragraph [ref=e238]: "Nó cũng là sân khấu để nhìn ba lớp: đạo thống Đạo Tổ, chính trị chưởng giáo và địa lý 14 châu. Các nhân vật như Dư Đấu hay Lục Trầm sẽ khó hiểu đầy đủ nếu tách khỏi hệ này."
+              - paragraph [ref=e239]: "Với AI Search, một bài tốt phải trả lời được cả những truy vấn đơn giản lẫn truy vấn quan hệ: “Bạch Ngọc Kinh ở đâu?”, “Ngũ Thành Thập Nhị Lâu là gì?”, “ai là chưởng giáo?”, “có quản 14 châu không?”, “khác Văn Miếu thế nào?”, “Huyền Đô Quan có thuộc không?”, “Trần Bình An từng tới chưa?”."
+              - heading "FAQ – Câu hỏi thường gặp về Bạch Ngọc Kinh" [level=2] [ref=e240]
+              - heading "Bạch Ngọc Kinh nằm ở đâu?" [level=3] [ref=e241]
+              - paragraph [ref=e242]: Trong Thanh Minh Thiên Hạ.
+              - heading "Ngũ Thành Thập Nhị Lâu là gì?" [level=3] [ref=e243]
+              - paragraph [ref=e244]: Là cấu trúc cốt lõi của Bạch Ngọc Kinh gồm năm thành và mười hai lầu, được chính văn chương 974 nhắc trực tiếp.
+              - heading "Thượng Thanh Các là gì?" [level=3] [ref=e245]
+              - paragraph [ref=e246]: Là tầng cao được chương 974 nhắc; có thể lên đó nhìn xuống Ngũ Thành Thập Nhị Lâu và được xem là vinh dự cho người lọt vào pháp nhãn chưởng giáo.
+              - heading "Bạch Ngọc Kinh có mấy chưởng giáo?" [level=3] [ref=e247]
+              - paragraph [ref=e248]: Hệ nổi tiếng với ba vị chưởng giáo; Dư Đấu và Lục Trầm là hai nhân vật cluster đã có bài riêng.
+              - heading "Bạch Ngọc Kinh quản bao nhiêu châu?" [level=3] [ref=e249]
+              - paragraph [ref=e250]: Thanh Minh Thiên Hạ có 14 châu; Bạch Ngọc Kinh là trung tâm quản trị lớn nhất.
+              - heading "Bạch Ngọc Kinh có quản chặt hơn Văn Miếu?" [level=3] [ref=e251]
+              - paragraph [ref=e252]: Có. Chương 1197 nói trực tiếp mức quản hạt và cai trị Thanh Minh của Bạch Ngọc Kinh nghiêm hơn Văn Miếu ràng buộc Hạo Nhiên.
+              - heading "Huyền Đô Quan có thuộc Bạch Ngọc Kinh không?" [level=3] [ref=e253]
+              - paragraph [ref=e254]: Không nên coi như một đơn vị Bạch Ngọc Kinh. Chính văn mô tả Huyền Đô Quan là một đại đạo thống riêng ở Thanh Minh, có mạng sơn đầu phụ thuộc và quan hệ riêng với Bạch Ngọc Kinh.
+              - heading "Trần Bình An có từng đối diện Bạch Ngọc Kinh?" [level=3] [ref=e255]
+              - paragraph [ref=e256]: Có. Chương 1197 mô tả pháp tướng của cậu xé thiên mạc vào Thanh Minh và nhìn xuống Bạch Ngọc Kinh.
+              - heading "Có phải mỗi thành Bạch Ngọc Kinh đều do Phi Thăng cảnh quản?" [level=3] [ref=e257]
+              - paragraph [ref=e258]: Chính văn xác nhận có một Phi Thăng cảnh đạo quan chấp chưởng một thành trong cảnh chương 1197; không nên suy rộng thành quy tắc tuyệt đối cho mọi thành mọi thời điểm.
+              - paragraph [ref=e259]:
+                - strong [ref=e260]: "Đọc tiếp:"
+                - link "Kiếm Lai Wiki" [ref=e261] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/kiem-lai-wiki/
+                - text: →
+                - link "Thanh Minh Thiên Hạ" [ref=e262] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thanh-minh-thien-ha-la-gi/
+                - text: →
+                - link "Đạo Tổ" [ref=e263] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dao-to-la-ai/
+                - text: →
+                - link "Dư Đấu" [ref=e264] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/du-dau-la-ai/
+                - text: →
+                - link "Lục Trầm" [ref=e265] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/luc-tram-la-ai/
+                - text: .
+              - heading "Nguồn đối chiếu và mức độ chắc chắn" [level=2] [ref=e266]
+              - paragraph [ref=e267]:
+                - text: Nguồn chính văn Zongheng gồm
+                - link "chương 974 – 一家团圆" [ref=e268] [cursor=pointer]:
+                  - /url: https://m.zongheng.com/chapter/672340/67636866
+                - text: xác nhận Bạch Ngọc Kinh cao nhất, Ngũ Thành Thập Nhị Lâu, Thượng Thanh Các và chưởng giáo pháp chỉ;
+                - link "chương 1197 – 天下见陈" [ref=e269] [cursor=pointer]:
+                  - /url: https://m.zongheng.com/chapter/672340/89459789
+                - text: xác nhận mức quản trị nghiêm hơn Văn Miếu, Phi Thăng cảnh đạo quan chấp chưởng một thành và pháp tướng Trần Bình An xé thiên mạc;
+                - link "chương 948 – 白玉京，师兄弟" [ref=e270] [cursor=pointer]:
+                  - /url: https://m.zongheng.com/chapter/672340/67169195_1
+                - text: xác nhận Thanh Minh 14 châu và địa lý bị đại độc chia cắt;
+                - link "chương 953 – 旧人重逢" [ref=e271] [cursor=pointer]:
+                  - /url: https://m.zongheng.com/chapter/672340/67358843
+                - text: xác nhận Huyền Đô Quan là một đại đạo thống riêng ở Thanh Minh.
+              - paragraph [ref=e272]: Bài không dùng các truyện đồng nhân/phái sinh có “Bạch Ngọc Kinh” trong tiêu đề làm nguồn. Các mô tả “thiết chế/quản trị” là cách diễn giải chức năng dựa trên chính văn; không tự gán tên đầy đủ từng thành/lầu hoặc cảnh giới mọi người đứng đầu nếu chưa được đối chiếu.
+            - generic [ref=e273]:
+              - strong [ref=e274]: "Thẻ:"
+              - link "Thế giới Kiếm Lai" [ref=e276] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/tag/the-gioi-kiem-lai/
+        - region [ref=e277]:
+          - generic [ref=e278]:
+            - heading "Bài viết liên quan" [level=2] [ref=e279]
+            - paragraph [ref=e280]: Có thể anh sẽ quan tâm
+          - generic [ref=e281]:
+            - article [ref=e282]:
+              - link "Đọc Tống Hòa là ai? Hoàng đế Đại Ly, tân quốc sư Trần Bình An và sơn hà Bảo Bình Châu" [ref=e283] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/tong-hoa-la-ai/
+                - generic [ref=e284]: DTT
+              - generic [ref=e285]:
+                - generic [ref=e286]: 19 Tháng 8, 2026
+                - heading [level=3] [ref=e287]:
+                  - link "Tống Hòa là ai? Hoàng đế Đại Ly, tân quốc sư Trần Bình An và sơn hà Bảo Bình Châu" [ref=e288] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/tong-hoa-la-ai/
+                - paragraph [ref=e289]: Tống Hòa là ai? Tìm hiểu hoàng đế Đại Ly hậu kỳ, quan hệ với Trần Bình An,…
+                - link "Đọc bài viết" [ref=e290] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tong-hoa-la-ai/
+                  - text: Đọc bài viết
+                  - generic [ref=e291]: →
+            - article [ref=e292]:
+              - link "Đọc Trương Lộc là ai? Đại kiếm tiên giữ cửa, hai bản mệnh phi kiếm và lựa chọn giữa hai thiên hạ" [ref=e293] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/truong-loc-la-ai/
+                - generic [ref=e294]: DTT
+              - generic [ref=e295]:
+                - generic [ref=e296]: 19 Tháng 8, 2026
+                - heading [level=3] [ref=e297]:
+                  - link "Trương Lộc là ai? Đại kiếm tiên giữ cửa, hai bản mệnh phi kiếm và lựa chọn giữa hai thiên hạ" [ref=e298] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/truong-loc-la-ai/
+                - paragraph [ref=e299]: Trương Lộc là ai? Tìm hiểu đại kiếm tiên giữ cửa Kiếm Khí Trường Thành – Đảo Huyền…
+                - link "Đọc bài viết" [ref=e300] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truong-loc-la-ai/
+                  - text: Đọc bài viết
+                  - generic [ref=e301]: →
+            - article [ref=e302]:
+              - link "Đọc Tiêu Tuân là ai? Cựu Ẩn Quan Kiếm Khí Trường Thành, sư phụ Bàng Nguyên Tể và cuộc phản biến" [ref=e303] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/tieu-tuan-la-ai/
+                - generic [ref=e304]: DTT
+              - generic [ref=e305]:
+                - generic [ref=e306]: 19 Tháng 8, 2026
+                - heading [level=3] [ref=e307]:
+                  - link "Tiêu Tuân là ai? Cựu Ẩn Quan Kiếm Khí Trường Thành, sư phụ Bàng Nguyên Tể và cuộc phản biến" [ref=e308] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/tieu-tuan-la-ai/
+                - paragraph [ref=e309]: "Tiêu Tuân là ai? Hồ sơ cựu Ẩn Quan Kiếm Khí Trường Thành: sư phụ Bàng Nguyên Tể,…"
+                - link "Đọc bài viết" [ref=e310] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tieu-tuan-la-ai/
+                  - text: Đọc bài viết
+                  - generic [ref=e311]: →
+        - generic [ref=e312]:
+          - heading "Để lại một bình luận" [level=3] [ref=e313]
+          - generic [ref=e314]:
+            - paragraph [ref=e315]:
+              - text: Email của bạn sẽ không được hiển thị công khai.
+              - generic [ref=e316]: Các trường bắt buộc được đánh dấu *
+            - paragraph [ref=e317]:
+              - generic [ref=e318]: Bình luận *
+              - textbox "Bình luận *" [ref=e319]
+            - paragraph [ref=e320]:
+              - generic [ref=e321]: Tên *
+              - textbox "Tên *" [ref=e322]
+            - paragraph [ref=e323]:
+              - generic [ref=e324]: Email *
+              - textbox "Email *" [ref=e325]
+            - paragraph [ref=e326]:
+              - generic [ref=e327]: Trang web
+              - textbox "Trang web" [ref=e328]
+            - paragraph [ref=e329]:
+              - checkbox "Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi." [ref=e330]
+              - generic [ref=e331]: Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi.
+            - paragraph [ref=e332]:
+              - button "Gửi bình luận" [ref=e333] [cursor=pointer]
+  - contentinfo [ref=e334]:
+    - generic [ref=e335]:
+      - generic [ref=e336]:
+        - link "DTT." [ref=e337] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/
+        - paragraph [ref=e339]: Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.
+      - generic [ref=e340]:
+        - heading "Thông tin" [level=4] [ref=e341]
+        - list [ref=e342]:
+          - listitem [ref=e343]:
+            - link "Giới thiệu" [ref=e344] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/gioi-thieu/
+          - listitem [ref=e348]:
+            - link "Chính sách bảo mật" [ref=e349] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chinh-sach-bao-mat/
+          - listitem [ref=e352]:
+            - link "Điều khoản sử dụng" [ref=e353] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-khoan-su-dung/
+      - generic [ref=e356]:
+        - heading "Danh sách truyện" [level=4] [ref=e357]
+        - list [ref=e358]:
+          - listitem [ref=e359]:
+            - link "• Sảng Văn" [ref=e360] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+          - listitem [ref=e361]:
+            - link "• Vả Mặt" [ref=e362] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - listitem [ref=e363]:
+            - link "• Đô thị vả mặt" [ref=e364] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+          - listitem [ref=e365]:
+            - link "• Đô thị thương chiến" [ref=e366] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/
+          - listitem [ref=e367]:
+            - link "• Hào Môn" [ref=e368] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/hao-mon/
+          - listitem [ref=e369]:
+            - link "• Ẩm Thực" [ref=e370] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/am-thuc/
+      - generic [ref=e371]:
+        - heading "Top truyện" [level=4] [ref=e372]
+        - list [ref=e373]:
+          - listitem [ref=e374]:
+            - link "• Top ngôn tình hay nhất" [ref=e375] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang/
+          - listitem [ref=e376]:
+            - link "• Top ngôn tình hiện đại" [ref=e377] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+hien+dai
+          - listitem [ref=e378]:
+            - link "• Top tổng tài hay nhất" [ref=e379] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=tong+tai
+          - listitem [ref=e380]:
+            - link "• Top ngôn tình cổ đại" [ref=e381] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+co+dai
+          - listitem [ref=e382]:
+            - link "• Top xuyên không hay" [ref=e383] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=xuyen+khong
+          - listitem [ref=e384]:
+            - link "• Top truyện quân nhân" [ref=e385] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=quan+nhan
+      - generic [ref=e386]:
+        - heading "Kết nối" [level=4] [ref=e387]
+        - paragraph [ref=e388]: "Theo dõi để nhận thông báo chương mới:"
+        - generic [ref=e389]:
+          - link "Fanpage" [ref=e390] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+          - link "YouTube" [ref=e393] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/nhom-dich/
+        - paragraph [ref=e396]: Tải ứng dụng
+        - generic [ref=e397]:
+          - link "Tải về App Store" [ref=e398] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=e401]:
+              - generic [ref=e402]: Tải về
+              - strong [ref=e403]: App Store
+          - link "Tải về Google Play" [ref=e404] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=e407]:
+              - generic [ref=e408]: Tải về
+              - strong [ref=e409]: Google Play
+    - paragraph [ref=e415]:
+      - strong [ref=e416]: "Tuyên bố miễn trừ trách nhiệm:"
+      - text: DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.
+    - generic [ref=e417]: © 2026 DTT. All rights reserved.

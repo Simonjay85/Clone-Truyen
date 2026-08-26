@@ -35,18 +35,18 @@ $hot_query = new WP_Query([
                 </div>
                 <!-- Layout Switcher Controls -->
                 <div class="flex items-center gap-2 bg-surface-container-low p-1 rounded-xl border border-outline-variant/10 self-start sm:self-center shrink-0">
-                    <button id="btn-layout-grid" class="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all text-on-surface-variant hover:bg-surface-container-high" onclick="setLatestLayout('grid')">
+                    <button id="btn-layout-grid" class="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-primary text-white shadow-sm border border-transparent" onclick="setLatestLayout('grid')">
                         <span class="material-symbols-outlined text-[16px]">grid_view</span>
                         Lưới
                     </button>
-                    <button id="btn-layout-list" class="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-primary text-white shadow-sm" onclick="setLatestLayout('list')">
+                    <button id="btn-layout-list" class="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all text-on-surface-variant hover:bg-surface-container-high border border-transparent" onclick="setLatestLayout('list')">
                         <span class="material-symbols-outlined text-[16px]">view_list</span>
                         Danh sách
                     </button>
                 </div>
             </div>
 
-            <div id="latest-stories-container" class="grid latest-layout-list gap-6">
+            <div id="latest-stories-container" class="grid latest-layout-grid gap-6">
                 <?php 
                 $current_date = '';
                 if ($latest_query->have_posts()) :
@@ -76,7 +76,9 @@ $hot_query = new WP_Query([
                 <?php   endif; ?>
 
                 <?php 
-                    $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=5';
+                    // Cards are capped at roughly 225px, so the generated thumbnail avoids
+                    // opening many 683x1024 (~1MB) cover streams on the update page.
+                    $cover = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'thumbnail') : get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=6';
                     $genres = wp_get_post_terms(get_the_ID(), 'the_loai');
                     $chapters_arr = get_posts(['post_type' => 'chuong', 'meta_key' => '_truyen_id', 'meta_value' => get_the_ID(), 'posts_per_page' => -1, 'fields' => 'ids']); $chaps = count($chapters_arr);
                     $time_diff = human_time_diff(get_the_modified_time('U'), current_time('timestamp')) . ' trước';
@@ -85,7 +87,7 @@ $hot_query = new WP_Query([
                 <!-- Update Item (Dynamic Card) -->
                 <div class="latest-card group flex flex-col md:flex-row gap-4 p-4 rounded-2xl bg-surface-container-lowest hover:bg-surface-container-lowest transition-all duration-300 border border-outline-variant/10 hover:border-primary/20 shadow-sm hover:shadow-[0px_4px_24px_rgba(0,96,169,0.08)] cursor-pointer" onclick="window.location.href='<?php the_permalink(); ?>'">
                     <div class="latest-card-img-wrapper relative w-full md:w-24 h-48 md:h-32 flex-shrink-0 overflow-hidden rounded-xl shadow-md border border-outline-variant/10">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<?php echo esc_url($cover); ?>"/>
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<?php echo esc_url($cover); ?>" loading="lazy" decoding="async" alt="<?php echo esc_attr(get_the_title()); ?>"/>
                         <?php if ($display_date == "Hôm nay"): ?>
                         <div class="absolute top-2 left-2 px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-black tracking-wider rounded-md shadow-md uppercase z-10" style="background:#10b981 !important; color:#ffffff !important; z-index:10 !important; box-shadow:0 2px 6px rgba(0,0,0,0.3) !important;">NEW</div>
                         <?php endif; ?>
@@ -288,6 +290,8 @@ $hot_query = new WP_Query([
 </style>
 
 <script>
+const latestLayoutStorageKey = 'latest-layout-pref-v2';
+
 function setLatestLayout(mode) {
     const container = document.getElementById('latest-stories-container');
     const btnGrid = document.getElementById('btn-layout-grid');
@@ -305,7 +309,7 @@ function setLatestLayout(mode) {
         // Dim List Button
         btnList.className = "flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all text-on-surface-variant hover:bg-surface-container-high border border-transparent";
         
-        localStorage.setItem('latest-layout-pref', 'grid');
+        localStorage.setItem(latestLayoutStorageKey, 'grid');
     } else {
         container.classList.remove('latest-layout-grid');
         container.classList.add('latest-layout-list');
@@ -316,12 +320,12 @@ function setLatestLayout(mode) {
         // Dim Grid Button
         btnGrid.className = "flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all text-on-surface-variant hover:bg-surface-container-high border border-transparent";
         
-        localStorage.setItem('latest-layout-pref', 'list');
+        localStorage.setItem(latestLayoutStorageKey, 'list');
     }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const pref = localStorage.getItem('latest-layout-pref') || 'list';
+    const pref = localStorage.getItem(latestLayoutStorageKey) || 'grid';
     setLatestLayout(pref);
 });
 </script>

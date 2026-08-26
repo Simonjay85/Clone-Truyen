@@ -1,0 +1,13 @@
+[    8461ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[   10919ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:247
+[   10920ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:194
+[   10923ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:0
+[   10923ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:0
+[   11141ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:222
+[   75634ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/08/JFAgCbfoVoMjWuBQ-150x150.png?v=5:0
+[   75634ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/08/MoLRWrOfVxiMTncA-150x150.png?v=5:0
+[   75634ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/08/XYLRLCxYidDApkrC-150x150.png?v=5:0
+[   75634ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/08/dtt-cover-01-1-150x150.png?v=5:0
+[   75634ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/08/cdvpzlSuujVPUXRx-150x150.png?v=5:0
+[   77743ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-includes/js/wp-emoji-release.min.js?ver=7.0.4:0
+[   77743ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/img_data/images/background-repeat-2.png:0

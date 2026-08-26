@@ -1,0 +1,454 @@
+- generic [active] [ref=f6e1]:
+  - banner [ref=f6e4]:
+    - generic [ref=f6e5]:
+      - link "DTT." [ref=f6e6] [cursor=pointer]:
+        - /url: https://doctieuthuyet.com
+      - generic [ref=f6e8]:
+        - button "Tìm kiếm" [ref=f6e9] [cursor=pointer]:
+          - generic [ref=f6e10]: 
+        - textbox "Tìm tên truyện, tên người đăng.." [ref=f6e11]
+      - generic [ref=f6e12]:
+        - link " Thể loại" [ref=f6e13] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/the-loai.html
+          - generic [ref=f6e14]: 
+          - text: Thể loại
+        - link " Bài viết" [ref=f6e15] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bai-viet/
+          - generic [ref=f6e16]: 
+          - text: Bài viết
+        - link " Truyện full" [ref=f6e17] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=f6e18]: 
+          - text: Truyện full
+        - link " BXH" [ref=f6e19] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=f6e20]: 
+          - text: BXH
+        - link " Theo dõi" [ref=f6e21] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/theo-doi.html
+          - generic [ref=f6e22]: 
+          - text: Theo dõi
+        - button " Đăng nhập" [ref=f6e23] [cursor=pointer]:
+          - generic [ref=f6e24]: 
+          - text: Đăng nhập
+  - main [ref=f6e25]:
+    - main [ref=f6e26]:
+      - generic [ref=f6e27]:
+        - 'heading "Kết Quả Tìm Kiếm: \"\"" [level=1] [ref=f6e28]'
+        - paragraph [ref=f6e29]: Tìm thấy 219 tác phẩm phù hợp với từ khóa của bạn.
+      - generic [ref=f6e30]:
+        - generic [ref=f6e31] [cursor=pointer]:
+          - generic [ref=f6e32]:
+            - link "Đọc Ngay" [ref=f6e36]:
+              - /url: https://doctieuthuyet.com/chuong/sau-khi-toi-tro-thanh-hoang-thuong-chuong-1/
+            - generic [ref=f6e37]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e38]: bookmark_add
+          - generic [ref=f6e40]:
+            - heading "Sau Khi Tôi Trở Thành Hoàng Thương" [level=3] [ref=f6e41]
+            - generic [ref=f6e42]:
+              - generic [ref=f6e43]: format_list_bulleted
+              - generic [ref=f6e44]: Chương 15
+            - generic [ref=f6e45]:
+              - generic [ref=f6e46]:
+                - generic [ref=f6e47]: visibility
+                - text: "0"
+              - generic [ref=f6e49]: Chính kịch
+        - generic [ref=f6e50] [cursor=pointer]:
+          - generic [ref=f6e51]:
+            - link "Đọc Ngay" [ref=f6e55]:
+              - /url: https://doctieuthuyet.com/chuong/cung-dau-khong-co-nuoc-mat-chuong-1/
+            - generic [ref=f6e56]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e57]: bookmark_add
+          - generic [ref=f6e59]:
+            - heading "CUNG ĐẤU KHÔNG CÓ NƯỚC MẮT" [level=3] [ref=f6e60]
+            - generic [ref=f6e61]:
+              - generic [ref=f6e62]: format_list_bulleted
+              - generic [ref=f6e63]: Chương 12
+            - generic [ref=f6e64]:
+              - generic [ref=f6e65]:
+                - generic [ref=f6e66]: visibility
+                - text: "0"
+              - generic [ref=f6e68]: Cổ Đại
+        - generic [ref=f6e69] [cursor=pointer]:
+          - generic [ref=f6e70]:
+            - link "Đọc Ngay" [ref=f6e74]:
+              - /url: https://doctieuthuyet.com/chuong/hao-mon-nu-vuong-chuong-1/
+            - generic [ref=f6e75]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e76]: bookmark_add
+          - generic [ref=f6e78]:
+            - heading "HÀO MÔN NỮ VƯƠNG" [level=3] [ref=f6e79]
+            - generic [ref=f6e80]:
+              - generic [ref=f6e81]: format_list_bulleted
+              - generic [ref=f6e82]: Chương 12
+            - generic [ref=f6e83]:
+              - generic [ref=f6e84]:
+                - generic [ref=f6e85]: visibility
+                - text: "0"
+              - generic [ref=f6e87]: Đô thị thương chiến
+        - generic [ref=f6e88] [cursor=pointer]:
+          - generic [ref=f6e89]:
+            - link "Đọc Ngay" [ref=f6e93]:
+              - /url: https://doctieuthuyet.com/chuong/cong-chua-bi-danh-trao-chuong-1/
+            - generic [ref=f6e94]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e95]: bookmark_add
+          - generic [ref=f6e97]:
+            - heading "CÔNG CHÚA BỊ ĐÁNH TRÁO" [level=3] [ref=f6e98]
+            - generic [ref=f6e99]:
+              - generic [ref=f6e100]: format_list_bulleted
+              - generic [ref=f6e101]: Chương 12
+            - generic [ref=f6e102]:
+              - generic [ref=f6e103]:
+                - generic [ref=f6e104]: visibility
+                - text: "0"
+              - generic [ref=f6e106]: Bí mật huyết thống
+        - generic [ref=f6e107] [cursor=pointer]:
+          - generic [ref=f6e108]:
+            - link "Đọc Ngay" [ref=f6e112]:
+              - /url: https://doctieuthuyet.com/chuong/nu-tong-tai-xuyen-thanh-ke-mau-chuong-1/
+            - generic [ref=f6e113]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e114]: bookmark_add
+          - generic [ref=f6e116]:
+            - heading "NỮ TỔNG TÀI XUYÊN THÀNH KẾ MẪU" [level=3] [ref=f6e117]
+            - generic [ref=f6e118]:
+              - generic [ref=f6e119]: format_list_bulleted
+              - generic [ref=f6e120]: Chương 12
+            - generic [ref=f6e121]:
+              - generic [ref=f6e122]:
+                - generic [ref=f6e123]: visibility
+                - text: "0"
+              - generic [ref=f6e125]: Gia Đấu
+        - generic [ref=f6e126] [cursor=pointer]:
+          - generic [ref=f6e127]:
+            - link "Đọc Ngay" [ref=f6e131]:
+              - /url: https://doctieuthuyet.com/chuong/huyen-nu-giu-ngoc-an-chuong-1/
+            - generic [ref=f6e132]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e133]: bookmark_add
+          - generic [ref=f6e135]:
+            - heading "HUYỀN NỮ GIỮ NGỌC ẤN" [level=3] [ref=f6e136]
+            - generic [ref=f6e137]:
+              - generic [ref=f6e138]: format_list_bulleted
+              - generic [ref=f6e139]: Chương 15
+            - generic [ref=f6e140]:
+              - generic [ref=f6e141]:
+                - generic [ref=f6e142]: visibility
+                - text: "0"
+              - generic [ref=f6e144]: Chính Trị
+        - generic [ref=f6e145] [cursor=pointer]:
+          - generic [ref=f6e146]:
+            - link "Đọc Ngay" [ref=f6e150]:
+              - /url: https://doctieuthuyet.com/chuong/thieu-phu-nhan-cam-dao-chuong-1/
+            - generic [ref=f6e151]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e152]: bookmark_add
+          - generic [ref=f6e154]:
+            - heading "THIẾU PHU NHÂN CẦM DAO" [level=3] [ref=f6e155]
+            - generic [ref=f6e156]:
+              - generic [ref=f6e157]: format_list_bulleted
+              - generic [ref=f6e158]: Chương 12
+            - generic [ref=f6e159]:
+              - generic [ref=f6e160]:
+                - generic [ref=f6e161]: visibility
+                - text: "0"
+              - generic [ref=f6e163]: Truyện chữ
+        - generic [ref=f6e164] [cursor=pointer]:
+          - generic [ref=f6e165]:
+            - link "Đọc Ngay" [ref=f6e169]:
+              - /url: https://doctieuthuyet.com/chuong/nu-de-tro-ve-tu-hoa-nguc-chuong-1/
+            - generic [ref=f6e170]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e171]: bookmark_add
+          - generic [ref=f6e173]:
+            - heading "NỮ ĐẾ TRỞ VỀ TỪ HỎA NGỤC" [level=3] [ref=f6e174]
+            - generic [ref=f6e175]:
+              - generic [ref=f6e176]: format_list_bulleted
+              - generic [ref=f6e177]: Chương 12
+            - generic [ref=f6e178]:
+              - generic [ref=f6e179]:
+                - generic [ref=f6e180]: visibility
+                - text: "0"
+              - generic [ref=f6e182]: Truyện chữ
+        - generic [ref=f6e183] [cursor=pointer]:
+          - generic [ref=f6e184]:
+            - link "Đọc Ngay" [ref=f6e188]:
+              - /url: https://doctieuthuyet.com/chuong/vo-hop-dong-cua-nhiep-chinh-vuong-chuong-1/
+            - generic [ref=f6e189]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e190]: bookmark_add
+          - generic [ref=f6e192]:
+            - heading "VỢ HỢP ĐỒNG CỦA NHIẾP CHÍNH VƯƠNG" [level=3] [ref=f6e193]
+            - generic [ref=f6e194]:
+              - generic [ref=f6e195]: format_list_bulleted
+              - generic [ref=f6e196]: Chương 12
+            - generic [ref=f6e197]:
+              - generic [ref=f6e198]:
+                - generic [ref=f6e199]: visibility
+                - text: "0"
+              - generic [ref=f6e201]: Truyện chữ
+        - generic [ref=f6e202] [cursor=pointer]:
+          - generic [ref=f6e203]:
+            - link "Đọc Ngay" [ref=f6e207]:
+              - /url: https://doctieuthuyet.com/chuong/me-ke-cua-thai-tu-chuong-1/
+            - generic [ref=f6e208]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e209]: bookmark_add
+          - generic [ref=f6e211]:
+            - heading "MẸ KẾ CỦA THÁI TỬ" [level=3] [ref=f6e212]
+            - generic [ref=f6e213]:
+              - generic [ref=f6e214]: format_list_bulleted
+              - generic [ref=f6e215]: Chương 12
+            - generic [ref=f6e216]:
+              - generic [ref=f6e217]:
+                - generic [ref=f6e218]: visibility
+                - text: "0"
+              - generic [ref=f6e220]: Truyện chữ
+        - generic [ref=f6e221] [cursor=pointer]:
+          - generic [ref=f6e222]:
+            - link "Đọc Ngay" [ref=f6e226]:
+              - /url: https://doctieuthuyet.com/chuong/cung-nu-cam-but-chuong-1/
+            - generic [ref=f6e227]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e228]: bookmark_add
+          - generic [ref=f6e230]:
+            - heading "CUNG NỮ CẦM BÚT" [level=3] [ref=f6e231]
+            - generic [ref=f6e232]:
+              - generic [ref=f6e233]: format_list_bulleted
+              - generic [ref=f6e234]: Chương 12
+            - generic [ref=f6e235]:
+              - generic [ref=f6e236]:
+                - generic [ref=f6e237]: visibility
+                - text: "0"
+              - generic [ref=f6e239]: Truyện chữ
+        - generic [ref=f6e240] [cursor=pointer]:
+          - generic [ref=f6e241]:
+            - link "Đọc Ngay" [ref=f6e245]:
+              - /url: https://doctieuthuyet.com/chuong/bach-nguyet-quang-cua-hao-mon-chuong-1/
+            - generic [ref=f6e246]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e247]: bookmark_add
+          - generic [ref=f6e249]:
+            - heading "BẠCH NGUYỆT QUANG CỦA HÀO MÔN" [level=3] [ref=f6e250]
+            - generic [ref=f6e251]:
+              - generic [ref=f6e252]: format_list_bulleted
+              - generic [ref=f6e253]: Chương 12
+            - generic [ref=f6e254]:
+              - generic [ref=f6e255]:
+                - generic [ref=f6e256]: visibility
+                - text: "0"
+              - generic [ref=f6e258]: Truyện chữ
+        - generic [ref=f6e259] [cursor=pointer]:
+          - generic [ref=f6e260]:
+            - link "Đọc Ngay" [ref=f6e264]:
+              - /url: https://doctieuthuyet.com/chuong/dich-nu-khong-nhan-thua-chuong-1/
+            - generic [ref=f6e265]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e266]: bookmark_add
+          - generic [ref=f6e268]:
+            - heading "ĐÍCH NỮ KHÔNG NHẬN THUA" [level=3] [ref=f6e269]
+            - generic [ref=f6e270]:
+              - generic [ref=f6e271]: format_list_bulleted
+              - generic [ref=f6e272]: Chương 12
+            - generic [ref=f6e273]:
+              - generic [ref=f6e274]:
+                - generic [ref=f6e275]: visibility
+                - text: "0"
+              - generic [ref=f6e277]: Truyện chữ
+        - generic [ref=f6e278] [cursor=pointer]:
+          - generic [ref=f6e279]:
+            - link "Đọc Ngay" [ref=f6e283]:
+              - /url: https://doctieuthuyet.com/chuong/nu-hau-cua-phu-hau-chuong-1/
+            - generic [ref=f6e284]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e285]: bookmark_add
+          - generic [ref=f6e287]:
+            - heading "NỮ HẦU CỦA PHỦ HẦU" [level=3] [ref=f6e288]
+            - generic [ref=f6e289]:
+              - generic [ref=f6e290]: format_list_bulleted
+              - generic [ref=f6e291]: Chương 12
+            - generic [ref=f6e292]:
+              - generic [ref=f6e293]:
+                - generic [ref=f6e294]: visibility
+                - text: "0"
+              - generic [ref=f6e296]: Truyện chữ
+        - generic [ref=f6e297] [cursor=pointer]:
+          - generic [ref=f6e298]:
+            - link "Đọc Ngay" [ref=f6e302]:
+              - /url: https://doctieuthuyet.com/chuong/hoang-hau-tung-bi-phe-chuong-1/
+            - generic [ref=f6e303]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e304]: bookmark_add
+          - generic [ref=f6e306]:
+            - heading "HOÀNG HẬU TỪNG BỊ PHẾ" [level=3] [ref=f6e307]
+            - generic [ref=f6e308]:
+              - generic [ref=f6e309]: format_list_bulleted
+              - generic [ref=f6e310]: Chương 12
+            - generic [ref=f6e311]:
+              - generic [ref=f6e312]:
+                - generic [ref=f6e313]: visibility
+                - text: "0"
+              - generic [ref=f6e315]: Truyện chữ
+        - generic [ref=f6e316] [cursor=pointer]:
+          - generic [ref=f6e317]:
+            - link "Đọc Ngay" [ref=f6e321]:
+              - /url: https://doctieuthuyet.com/chuong/co-dau-cua-tap-doan-co-gia-chuong-1/
+            - generic [ref=f6e322]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e323]: bookmark_add
+          - generic [ref=f6e325]:
+            - heading "CÔ DÂU CỦA TẬP ĐOÀN CỐ GIA" [level=3] [ref=f6e326]
+            - generic [ref=f6e327]:
+              - generic [ref=f6e328]: format_list_bulleted
+              - generic [ref=f6e329]: Chương 12
+            - generic [ref=f6e330]:
+              - generic [ref=f6e331]:
+                - generic [ref=f6e332]: visibility
+                - text: "0"
+              - generic [ref=f6e334]: Truyện chữ
+        - generic [ref=f6e335] [cursor=pointer]:
+          - generic [ref=f6e336]:
+            - link "Đọc Ngay" [ref=f6e340]:
+              - /url: https://doctieuthuyet.com/chuong/vo-cu-cua-nhiep-chinh-vuong-chuong-1/
+            - generic [ref=f6e341]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e342]: bookmark_add
+          - generic [ref=f6e344]:
+            - heading "VỢ CŨ CỦA NHIẾP CHÍNH VƯƠNG" [level=3] [ref=f6e345]
+            - generic [ref=f6e346]:
+              - generic [ref=f6e347]: format_list_bulleted
+              - generic [ref=f6e348]: Chương 12
+            - generic [ref=f6e349]:
+              - generic [ref=f6e350]:
+                - generic [ref=f6e351]: visibility
+                - text: "0"
+              - generic [ref=f6e353]: Truyện chữ
+        - generic [ref=f6e354] [cursor=pointer]:
+          - generic [ref=f6e355]:
+            - link "Đọc Ngay" [ref=f6e359]:
+              - /url: https://doctieuthuyet.com/chuong/thai-tu-phi-khong-muon-hien-chuong-1/
+            - generic [ref=f6e360]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e361]: bookmark_add
+          - generic [ref=f6e363]:
+            - heading "THÁI TỬ PHI KHÔNG MUỐN HIỀN" [level=3] [ref=f6e364]
+            - generic [ref=f6e365]:
+              - generic [ref=f6e366]: format_list_bulleted
+              - generic [ref=f6e367]: Chương 12
+            - generic [ref=f6e368]:
+              - generic [ref=f6e369]:
+                - generic [ref=f6e370]: visibility
+                - text: "0"
+              - generic [ref=f6e372]: Truyện chữ
+        - generic [ref=f6e373] [cursor=pointer]:
+          - generic [ref=f6e374]:
+            - link "Đọc Ngay" [ref=f6e378]:
+              - /url: https://doctieuthuyet.com/chuong/phuong-hoang-doi-no-chuong-1-2/
+            - generic [ref=f6e379]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e380]: bookmark_add
+          - generic [ref=f6e382]:
+            - heading "PHƯỢNG HOÀNG ĐÒI NỢ" [level=3] [ref=f6e383]
+            - generic [ref=f6e384]:
+              - generic [ref=f6e385]: format_list_bulleted
+              - generic [ref=f6e386]: Chương 12
+            - generic [ref=f6e387]:
+              - generic [ref=f6e388]:
+                - generic [ref=f6e389]: visibility
+                - text: "0"
+              - generic [ref=f6e391]: Truyện chữ
+        - generic [ref=f6e392] [cursor=pointer]:
+          - generic [ref=f6e393]:
+            - link "Đọc Ngay" [ref=f6e397]:
+              - /url: https://doctieuthuyet.com/chuong/huyet-an-truong-ninh-chuong-1/
+            - generic [ref=f6e398]: MỚI
+            - generic "Đánh dấu truyện" [ref=f6e399]: bookmark_add
+          - generic [ref=f6e401]:
+            - heading "HUYẾT ẤN TRƯỜNG NINH" [level=3] [ref=f6e402]
+            - generic [ref=f6e403]:
+              - generic [ref=f6e404]: format_list_bulleted
+              - generic [ref=f6e405]: Chương 12
+            - generic [ref=f6e406]:
+              - generic [ref=f6e407]:
+                - generic [ref=f6e408]: visibility
+                - text: "0"
+              - generic [ref=f6e410]: Truyện chữ
+      - generic [ref=f6e411]:
+        - generic [ref=f6e412]: "1"
+        - link "2" [ref=f6e413] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/page/2/?s=Huy%E1%BB%81n+N%E1%25+%E0%A4%A6%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n
+        - link "3" [ref=f6e414] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/page/3/?s=Huy%E1%BB%81n+N%E1%25+%E0%A4%A6%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n
+        - generic: …
+        - link "11" [ref=f6e415] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/page/11/?s=Huy%E1%BB%81n+N%E1%25+%E0%A4%A6%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n
+        - link "chevron_right" [ref=f6e416] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/page/2/?s=Huy%E1%BB%81n+N%E1%25+%E0%A4%A6%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n
+  - contentinfo [ref=f6e418]:
+    - generic [ref=f6e419]:
+      - generic [ref=f6e420]:
+        - link "DTT." [ref=f6e421] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/
+        - paragraph [ref=f6e423]: Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.
+      - generic [ref=f6e424]:
+        - heading "Thông tin" [level=4] [ref=f6e425]
+        - list [ref=f6e426]:
+          - listitem [ref=f6e427]:
+            - link "Giới thiệu" [ref=f6e428] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/gioi-thieu/
+          - listitem [ref=f6e432]:
+            - link "Chính sách bảo mật" [ref=f6e433] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chinh-sach-bao-mat/
+          - listitem [ref=f6e436]:
+            - link "Điều khoản sử dụng" [ref=f6e437] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-khoan-su-dung/
+      - generic [ref=f6e440]:
+        - heading "Danh sách truyện" [level=4] [ref=f6e441]
+        - list [ref=f6e442]:
+          - listitem [ref=f6e443]:
+            - link "• Sảng Văn" [ref=f6e444] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+          - listitem [ref=f6e445]:
+            - link "• Đô thị vả mặt" [ref=f6e446] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+          - listitem [ref=f6e447]:
+            - link "• Vả Mặt" [ref=f6e448] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - listitem [ref=f6e449]:
+            - link "• Đô thị thương chiến" [ref=f6e450] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/
+          - listitem [ref=f6e451]:
+            - link "• Hào Môn" [ref=f6e452] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/hao-mon/
+          - listitem [ref=f6e453]:
+            - link "• Ẩm Thực" [ref=f6e454] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/am-thuc/
+      - generic [ref=f6e455]:
+        - heading "Top truyện" [level=4] [ref=f6e456]
+        - list [ref=f6e457]:
+          - listitem [ref=f6e458]:
+            - link "• Top ngôn tình hay nhất" [ref=f6e459] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang/
+          - listitem [ref=f6e460]:
+            - link "• Top ngôn tình hiện đại" [ref=f6e461] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+hien+dai
+          - listitem [ref=f6e462]:
+            - link "• Top tổng tài hay nhất" [ref=f6e463] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=tong+tai
+          - listitem [ref=f6e464]:
+            - link "• Top ngôn tình cổ đại" [ref=f6e465] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+co+dai
+          - listitem [ref=f6e466]:
+            - link "• Top xuyên không hay" [ref=f6e467] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=xuyen+khong
+          - listitem [ref=f6e468]:
+            - link "• Top truyện quân nhân" [ref=f6e469] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=quan+nhan
+      - generic [ref=f6e470]:
+        - heading "Kết nối" [level=4] [ref=f6e471]
+        - paragraph [ref=f6e472]: "Theo dõi để nhận thông báo chương mới:"
+        - generic [ref=f6e473]:
+          - link "Fanpage" [ref=f6e474] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+          - link "YouTube" [ref=f6e477] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/nhom-dich/
+        - paragraph [ref=f6e480]: Tải ứng dụng
+        - generic [ref=f6e481]:
+          - link "Tải về App Store" [ref=f6e482] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=f6e485]:
+              - generic [ref=f6e486]: Tải về
+              - strong [ref=f6e487]: App Store
+          - link "Tải về Google Play" [ref=f6e488] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=f6e491]:
+              - generic [ref=f6e492]: Tải về
+              - strong [ref=f6e493]: Google Play
+    - paragraph [ref=f6e499]:
+      - strong [ref=f6e500]: "Tuyên bố miễn trừ trách nhiệm:"
+      - text: DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.
+    - generic [ref=f6e501]: © 2026 DTT. All rights reserved.

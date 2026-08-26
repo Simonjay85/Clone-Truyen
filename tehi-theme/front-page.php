@@ -1,4 +1,9 @@
 <?php
+if (!function_exists("tehi_frontpage_webp_url")) {
+    function tehi_frontpage_webp_url($url) {
+        return function_exists("dtt_rewrite_webp_url") ? dtt_rewrite_webp_url($url) : $url;
+    }
+}
 // Query the slider posts before loading the header to enable preloading the LCP candidate
 $slider_q = new WP_Query([
     'post_type'      => 'truyen',
@@ -585,7 +590,16 @@ get_header();
 
     <!-- ══ HERO SLIDER ══ -->
     <?php
-    if (isset($slider_q) && $slider_q->have_posts()):
+    if (!isset($slider_q) || !$slider_q->have_posts()) {
+        $slider_q = new WP_Query([
+            "post_type"      => "truyen",
+            "posts_per_page" => 6,
+            "orderby"        => "date",
+            "order"          => "DESC",
+            "no_found_rows"  => true,
+        ]);
+    }
+    if ($slider_q->have_posts()):
         $slider_q->rewind_posts();
     ?>
     <div class="mkm-slider-wrap">
@@ -593,7 +607,7 @@ get_header();
         <div class="swiper mkm-main-swiper">
             <div class="swiper-wrapper">
             <?php while($slider_q->have_posts()): $slider_q->the_post();
-                $s_cover = get_the_post_thumbnail_url(null,'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                $s_cover = tehi_frontpage_webp_url(get_the_post_thumbnail_url(null,'medium')) ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                 $s_exc   = wp_trim_words(get_the_excerpt() ?: wp_strip_all_tags(get_the_content()), 350, '...');
                 $s_date  = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' trước';
                 $s_cats  = wp_get_post_terms(get_the_ID(),'the_loai');
@@ -738,7 +752,7 @@ get_header();
                 <?php
                 $q = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'no_found_rows' => true]);
                 while ($q->have_posts()) : $q->the_post();
-                    $img = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    $img = tehi_frontpage_webp_url(get_the_post_thumbnail_url(null, 'medium')) ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                     
                     // Fetch real view counts, fallback to _views or random view counts
                     $views = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
@@ -814,7 +828,7 @@ get_header();
                 <?php
                 $q2 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'orderby' => 'comment_count', 'no_found_rows' => true]);
                 while ($q2->have_posts()) : $q2->the_post();
-                    $img2 = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    $img2 = tehi_frontpage_webp_url(get_the_post_thumbnail_url(null, 'medium')) ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                     
                     // Fetch real view counts, fallback to _views or random view counts
                     $views2 = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
@@ -890,7 +904,7 @@ get_header();
                 <?php
                 $q3 = new WP_Query(['post_type' => 'truyen', 'posts_per_page' => 6, 'offset' => 12, 'no_found_rows' => true]);
                 while ($q3->have_posts()) : $q3->the_post();
-                    $img3 = get_the_post_thumbnail_url(null, 'medium') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                    $img3 = tehi_frontpage_webp_url(get_the_post_thumbnail_url(null, 'medium')) ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                     
                     // Fetch real view counts, fallback to _views or random view counts
                     $views3 = (int)get_post_meta(get_the_ID(), 'tieuthuyet_views', true);
@@ -940,6 +954,209 @@ get_header();
             </div>
             <div style="text-align:center; padding: 24px 0;"><a href="<?php echo get_site_url(); ?>/hoan-thanh.html" class="mkm-load-more">Xem thêm <?php echo number_format(rand(1200, 4800)); ?> kết quả ⌄</a></div>
 
+            <!-- ══ BÀI VIẾT MỚI ══ -->
+            <?php
+            $article_home_url = function_exists('dtt_article_archive_url')
+                ? dtt_article_archive_url()
+                : home_url('/bai-viet/');
+            $article_home_query = new WP_Query([
+                'post_type'           => 'post',
+                'post_status'         => 'publish',
+                'posts_per_page'      => 6,
+                'orderby'             => [
+                    'date' => 'DESC',
+                    'ID'   => 'DESC',
+                ],
+                'ignore_sticky_posts' => true,
+                'no_found_rows'       => true,
+            ]);
+            ?>
+            <section class="dtt-home-articles" aria-labelledby="dtt-home-articles-title">
+                <style>
+                    .dtt-home-articles {
+                        margin-top: 28px;
+                        padding: 22px;
+                        border: 1px solid #f3f4f6;
+                        border-radius: 18px;
+                        background: #fff;
+                        box-shadow: 0 4px 20px rgba(0,0,0,.025);
+                    }
+                    .dtt-home-articles__head {
+                        display: flex;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                        gap: 16px;
+                        margin-bottom: 18px;
+                    }
+                    .dtt-home-articles__title {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        margin: 0;
+                        color: #111827;
+                        font-size: 20px;
+                        font-weight: 800;
+                    }
+                    .dtt-home-articles__title svg { flex: 0 0 auto; }
+                    .dtt-home-articles__subtitle {
+                        margin: 5px 0 0;
+                        color: #6b7280;
+                        font-size: 12px;
+                        line-height: 1.5;
+                    }
+                    .dtt-home-articles__all {
+                        flex: 0 0 auto;
+                        color: #4f46e5;
+                        font-size: 12px;
+                        font-weight: 800;
+                        text-decoration: none;
+                        white-space: nowrap;
+                    }
+                    .dtt-home-articles__all:hover,
+                    .dtt-home-article-card__title a:hover,
+                    .dtt-home-article-card__read:hover { color: #3730a3; }
+                    .dtt-home-articles__grid {
+                        display: grid;
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                        gap: 14px;
+                    }
+                    .dtt-home-article-card {
+                        display: flex;
+                        min-width: 0;
+                        flex-direction: column;
+                        overflow: hidden;
+                        border: 1px solid #f1f5f9;
+                        border-radius: 14px;
+                        background: #fff;
+                    }
+                    .dtt-home-article-card__thumb {
+                        display: block;
+                        aspect-ratio: 16 / 9;
+                        overflow: hidden;
+                        background: #eef2ff;
+                    }
+                    .dtt-home-article-card__thumb img {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: transform .35s ease;
+                    }
+                    .dtt-home-article-card:hover .dtt-home-article-card__thumb img { transform: scale(1.03); }
+                    .dtt-home-article-card__body {
+                        display: flex;
+                        min-width: 0;
+                        flex: 1;
+                        flex-direction: column;
+                        padding: 13px;
+                    }
+                    .dtt-home-article-card__meta {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 7px;
+                        margin-bottom: 7px;
+                        color: #6b7280;
+                        font-size: 10px;
+                        font-weight: 600;
+                    }
+                    .dtt-home-article-card__category {
+                        color: #4f46e5;
+                        font-weight: 800;
+                    }
+                    .dtt-home-article-card__title {
+                        margin: 0;
+                        font-size: 15px;
+                        font-weight: 800;
+                        line-height: 1.4;
+                    }
+                    .dtt-home-article-card__title a {
+                        display: -webkit-box;
+                        overflow: hidden;
+                        color: #111827;
+                        text-decoration: none;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                    }
+                    .dtt-home-article-card__excerpt {
+                        display: -webkit-box;
+                        overflow: hidden;
+                        margin: 7px 0 12px;
+                        color: #6b7280;
+                        font-size: 12px;
+                        line-height: 1.55;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 3;
+                    }
+                    .dtt-home-article-card__read {
+                        margin-top: auto;
+                        color: #4f46e5;
+                        font-size: 12px;
+                        font-weight: 800;
+                        text-decoration: none;
+                    }
+                    .dtt-home-articles__empty {
+                        grid-column: 1 / -1;
+                        margin: 0;
+                        padding: 18px;
+                        color: #6b7280;
+                        text-align: center;
+                    }
+                    @media (max-width: 1050px) {
+                        .dtt-home-articles__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                    }
+                    @media (max-width: 600px) {
+                        .dtt-home-articles { padding: 15px; }
+                        .dtt-home-articles__head { align-items: flex-start; }
+                        .dtt-home-articles__title { font-size: 17px; }
+                        .dtt-home-articles__subtitle { font-size: 11px; }
+                        .dtt-home-articles__grid { grid-template-columns: minmax(0, 1fr); }
+                    }
+                </style>
+                <div class="dtt-home-articles__head">
+                    <div>
+                        <h2 id="dtt-home-articles-title" class="dtt-home-articles__title">
+                            <svg width="18" height="18" fill="none" stroke="#4f46e5" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5.5A2.5 2.5 0 016.5 3H20v16H6.5A2.5 2.5 0 004 16.5v-11z"/><path stroke-linecap="round" stroke-linejoin="round" d="M4 16.5A2.5 2.5 0 016.5 14H20M8 7h8M8 10h6"/></svg>
+                            Bài viết mới
+                        </h2>
+                        <p class="dtt-home-articles__subtitle">Những nội dung mới nhất trên DTT.</p>
+                    </div>
+                    <a class="dtt-home-articles__all" href="<?php echo esc_url($article_home_url); ?>">Xem tất cả &gt;</a>
+                </div>
+                <div class="dtt-home-articles__grid">
+                    <?php if ($article_home_query->have_posts()) : ?>
+                        <?php while ($article_home_query->have_posts()) : $article_home_query->the_post(); ?>
+                            <?php
+                            $article_image = has_post_thumbnail()
+                                ? get_the_post_thumbnail_url(get_the_ID(), 'medium_large')
+                                : get_template_directory_uri() . '/img_data/images/no-image-cover.png?v=3';
+                            $article_categories = get_the_category();
+                            $article_excerpt = wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 24, '…');
+                            ?>
+                            <article class="dtt-home-article-card">
+                                <a class="dtt-home-article-card__thumb" href="<?php the_permalink(); ?>">
+                                    <img src="<?php echo esc_url($article_image); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" decoding="async">
+                                </a>
+                                <div class="dtt-home-article-card__body">
+                                    <div class="dtt-home-article-card__meta">
+                                        <?php if (!empty($article_categories) && !is_wp_error($article_categories)) : ?>
+                                            <span class="dtt-home-article-card__category"><?php echo esc_html($article_categories[0]->name); ?></span>
+                                            <span aria-hidden="true">•</span>
+                                        <?php endif; ?>
+                                        <time datetime="<?php echo esc_attr(get_the_date('c')); ?>"><?php echo esc_html(get_the_date('d/m/Y')); ?></time>
+                                    </div>
+                                    <h3 class="dtt-home-article-card__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                                    <?php if ($article_excerpt) : ?><p class="dtt-home-article-card__excerpt"><?php echo esc_html($article_excerpt); ?></p><?php endif; ?>
+                                    <a class="dtt-home-article-card__read" href="<?php the_permalink(); ?>">Đọc bài viết <span aria-hidden="true">→</span></a>
+                                </div>
+                            </article>
+                        <?php endwhile; ?>
+                        <?php wp_reset_postdata(); ?>
+                    <?php else : ?>
+                        <p class="dtt-home-articles__empty">Chưa có bài viết nào.</p>
+                    <?php endif; ?>
+                </div>
+            </section>
+
         </div>
         
     <style>
@@ -980,7 +1197,7 @@ get_header();
                     $ri = 1;
                     $max_views = 20000;
                     while ($bxh->have_posts()) : $bxh->the_post();
-                        $rthumb = get_the_post_thumbnail_url(null, 'thumbnail') ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
+                        $rthumb = tehi_frontpage_webp_url(get_the_post_thumbnail_url(null, 'thumbnail')) ?: "/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png?v=3";
                         $views = (int)get_post_meta(get_the_ID(), '_views', true);
                         if($views < 1000) $views = rand(1000, 20000); // mock data if empty
                         
@@ -1179,4 +1396,14 @@ get_header();
     </div>
 </div>
 
+<style>
+/* Card button fit refinement */
+.mkm-card-btns { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr) !important; gap: 8px !important; padding-right: 2px !important; }
+.mkm-btn-card-start { margin-left: 4px !important; width: calc(100% - 4px) !important; }
+.mkm-btn-card-new { width: 100% !important; padding-left: 5px !important; padding-right: 5px !important; }
+@media (max-width: 600px) {
+  .mkm-card-btns { grid-template-columns: minmax(0, .76fr) minmax(0, 1.24fr) !important; gap: 5px !important; padding-right: 2px !important; }
+  .mkm-btn-card { padding-left: 1px !important; padding-right: 1px !important; font-size: 7.5px !important; letter-spacing: -0.12px !important; }
+}
+</style>
 <?php get_footer(); ?>

@@ -1,0 +1,50 @@
+{
+  "scope": "shared interior article surface",
+  "remote_dir": "/wp-content/themes/tehi-theme",
+  "backup": {
+    "path": "backups/deployments/20260819T082709Z/remote-before/single.php",
+    "bytes": 39969,
+    "sha256": "381e5cbfc3a80b315ac5152c470a55e03198312ec6438b967266d7ffbddf9d49"
+  },
+  "files": {
+    "single.php": {
+      "local_bytes": 40863,
+      "local_sha256": "191d6adf2ecce04e9102a9b841f9e05d40c4e2fcf67df28376c87193d0fe1244",
+      "remote_bytes": 40863,
+      "remote_sha256": "191d6adf2ecce04e9102a9b841f9e05d40c4e2fcf67df28376c87193d0fe1244",
+      "matches": true,
+      "mode": "0644",
+      "owner_group": "1001:www"
+    },
+    "assets/css/single-post-sync.css": {
+      "local_bytes": 14558,
+      "local_sha256": "c78d825b3244514e7b2cb9c9cfbd39930a86d20cb61a4a32eb192f1c6b079966",
+      "remote_bytes": 14558,
+      "remote_sha256": "c78d825b3244514e7b2cb9c9cfbd39930a86d20cb61a4a32eb192f1c6b079966",
+      "matches": true,
+      "mode": "0644",
+      "owner_group": "1001:www"
+    }
+  },
+  "public_readback": {
+    "page_url": "https://doctieuthuyet.com/ninh-dieu-la-ai/?dtt_sync_deploy=20260819",
+    "page": {"http": 200, "bytes": 154561, "content_type": "text/html; charset=UTF-8"},
+    "css": {"http": 200, "bytes": 14558, "content_type": "text/css", "sha256": "c78d825b3244514e7b2cb9c9cfbd39930a86d20cb61a4a32eb192f1c6b079966"},
+    "markers": ["dtt-article-sync", "single-post-sync.css", "dtt-article-sync__topline"],
+    "header_before_article_layout": true,
+    "back_href": "https://doctieuthuyet.com/kiem-lai-wiki/",
+    "playwright": {
+      "desktop_viewport": "1440x900",
+      "desktop_scroll_width": 1440,
+      "mobile_viewport": "390x844",
+      "mobile_scroll_width": 390,
+      "mobile_geometry": {
+        "header": {"x": 16, "y": 80, "width": 358, "height": 410.5625},
+        "toc": {"x": 16, "y": 506.5625, "width": 358},
+        "article": {"x": 16, "y": 801.546875, "width": 358}
+      },
+      "console_errors": 0,
+      "console_warnings": 0
+    }
+  }
+}

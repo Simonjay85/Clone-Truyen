@@ -1,0 +1,51 @@
+{
+  "remote_dir": "/wp-content/themes/tehi-theme",
+  "backup": {
+    "path": "backups/deployments/20260819T073507Z/remote-before/single.php",
+    "bytes": 35310,
+    "sha256": "d5f8fece78e01822e5582cd9640d4e9ac9265578b911c490f456d1c86d76b945"
+  },
+  "files": {
+    "single.php": {
+      "local_bytes": 39969,
+      "local_sha256": "381e5cbfc3a80b315ac5152c470a55e03198312ec6438b967266d7ffbddf9d49",
+      "remote_bytes": 39969,
+      "remote_sha256": "381e5cbfc3a80b315ac5152c470a55e03198312ec6438b967266d7ffbddf9d49",
+      "matches": true,
+      "mode": "0644",
+      "owner_group": "1001:www"
+    },
+    "assets/css/kiem-lai-wiki.css": {
+      "local_bytes": 19814,
+      "local_sha256": "08efba075b0299af31e1f0b9022f401410f5e49e35b1cda7693f6f6ace7deac0",
+      "remote_bytes": 19814,
+      "remote_sha256": "08efba075b0299af31e1f0b9022f401410f5e49e35b1cda7693f6f6ace7deac0",
+      "matches": true,
+      "mode": "0644",
+      "owner_group": "1001:www"
+    },
+    "assets/images/kiem-lai-wiki-hero.webp": {
+      "local_bytes": 186376,
+      "local_sha256": "e67728248cabd8029d03451f8f041acc565174078a9bb9f4fd2242c884a54842",
+      "remote_bytes": 186376,
+      "remote_sha256": "e67728248cabd8029d03451f8f041acc565174078a9bb9f4fd2242c884a54842",
+      "matches": true,
+      "mode": "0644",
+      "owner_group": "1001:www"
+    }
+  },
+  "public_readback": {
+    "page": {"http": 200, "content_type": "text/html; charset=UTF-8"},
+    "css": {"http": 200, "content_type": "text/css"},
+    "hero": {"http": 200, "content_type": "image/webp"},
+    "page_markers": ["dtt-kiem-lai-hero", "dtt-kiem-lai-wiki", "assets/css/kiem-lai-wiki.css", "kiem-lai-wiki-hero.webp"],
+    "playwright": {
+      "desktop_viewport": "1440x900",
+      "desktop_scroll_width": 1440,
+      "mobile_viewport": "390x844",
+      "mobile_scroll_width": 390,
+      "anchors": ["#kiem-lai-noi-gi", "#thu-vien"]
+    },
+    "out_of_scope_console_error": "favicon.ico returned 404 from 127.0.0.1:8090"
+  }
+}

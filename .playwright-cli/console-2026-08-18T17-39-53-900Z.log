@@ -1,0 +1,70 @@
+[    1914ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/kiem-lai-wiki/:247
+[    1930ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[    1930ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[    1977ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/kiem-lai-wiki/:194
+[    2079ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/kiem-lai-wiki/:222
+[  125883ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  125915ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  125915ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[  188322ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/kiem-lai-wiki/:247
+[  188326ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  188326ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  188331ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/kiem-lai-wiki/:194
+[  188432ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/kiem-lai-wiki/:222
+[  189588ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  189605ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  189605ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[  248831ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/kiem-lai-wiki/:247
+[  248836ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  248836ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  248843ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/kiem-lai-wiki/:194
+[  248944ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/kiem-lai-wiki/:222
+[  250492ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  250508ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  250508ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[  269008ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  269024ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  269024ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[  271155ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/kiem-lai-wiki/:247
+[  271159ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  271159ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  271163ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/kiem-lai-wiki/:194
+[  271264ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/kiem-lai-wiki/:222
+[  272514ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  272530ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  272530ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[  354758ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/kiem-lai-wiki/:247
+[  354762ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  354762ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  354767ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/kiem-lai-wiki/:194
+[  354867ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/kiem-lai-wiki/:222
+[  356081ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  356096ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  356097ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[  464548ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  464570ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  464570ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[  467237ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/kiem-lai-wiki/:247
+[  467241ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  467241ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  467246ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/kiem-lai-wiki/:194
+[  467347ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/kiem-lai-wiki/:222
+[  468857ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  468877ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  468878ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[  471266ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  471297ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  471297ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[  471301ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  471316ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  471316ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[  528132ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/kiem-lai-wiki/:247
+[  528136ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  528136ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  528142ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/kiem-lai-wiki/:194
+[  528244ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/kiem-lai-wiki/:222
+[  529422ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  529438ms] [ERROR] Access to image at 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp' from origin 'https://doctieuthuyet.com' has been blocked by CORS policy: Permission was denied for this request to access the `loopback` address space. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[  529438ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0
+[17041850ms] [WARNING] Mixed Content: The page at 'https://doctieuthuyet.com/kiem-lai-wiki/' was loaded over HTTPS, but requested an insecure element 'http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp'. This request was not upgraded to HTTPS because its URL's host is an IP address. @ https://doctieuthuyet.com/kiem-lai-wiki/:0
+[17041878ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:8765/tehi-theme/assets/images/kiem-lai-wiki-hero.webp:0

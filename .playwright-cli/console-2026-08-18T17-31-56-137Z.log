@@ -1,0 +1,6 @@
+[    1086ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[    1142ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html?dttqa=2026081903:247
+[    1153ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html?dttqa=2026081903:0
+[    1153ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html?dttqa=2026081903:0
+[    1157ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html?dttqa=2026081903:194
+[    1259ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html?dttqa=2026081903:222

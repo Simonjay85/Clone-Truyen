@@ -1,0 +1,7 @@
+[    6940ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[   17984ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/img_data/images/no-image-cover-v5.png?v=5:0
+[   25509ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html:247
+[   25526ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html:0
+[   25526ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html:0
+[   33281ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html:194
+[   33383ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html:222

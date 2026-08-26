@@ -1,0 +1,7 @@
+[    1849ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[    1855ms] Unexpected identifier 'rc'
+[    2344ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/?s=Huy%E1%BB%81n+N%E1%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n&dttqa=2026081901:247
+[    2345ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/?s=Huy%E1%BB%81n+N%E1%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n&dttqa=2026081901:194
+[    2346ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/?s=Huy%E1%BB%81n+N%E1%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n&dttqa=2026081901:0
+[    2346ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/?s=Huy%E1%BB%81n+N%E1%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n&dttqa=2026081901:0
+[    2446ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/?s=Huy%E1%BB%81n+N%E1%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n&dttqa=2026081901:222

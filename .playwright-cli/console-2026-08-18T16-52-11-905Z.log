@@ -1,0 +1,16 @@
+[    2095ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[    2108ms] Unexpected identifier 'rc'
+[    3428ms] [WARNING] [VH Skeleton] jQuery is unavailable; skeleton initialization skipped. @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/vh-skeleton.js?ver=1.12:6
+[    3429ms] Uncaught ReferenceError: jQuery is not defined
+    at <anonymous> (https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js:1:240)
+    at <anonymous> (https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js:1:248)
+[    3430ms] TypeError: Cannot read properties of undefined (reading 'fn')
+    at https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/emojionearea.js:1711:7
+    at https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/emojionearea.js:23:9
+    at https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/emojionearea.js:25:2
+[    3433ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html:243
+[    3445ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html:0
+[    3445ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html:0
+[    5411ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html:190
+[    5512ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html:218
+[   35109ms] [WARNING] [VH Skeleton] jQuery is unavailable; skeleton initialization skipped. @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/vh-skeleton.js?ver=1.12:6

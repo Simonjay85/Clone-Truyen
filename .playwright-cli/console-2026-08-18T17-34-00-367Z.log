@@ -1,0 +1,15 @@
+[      70ms] Unexpected identifier 'rc'
+[      68ms] [WARNING] [VH Skeleton] jQuery is unavailable; skeleton initialization skipped. @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/vh-skeleton.js?ver=1.12:6
+[      71ms] Uncaught ReferenceError: jQuery is not defined
+    at <anonymous> (https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js:1:240)
+    at <anonymous> (https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js:1:248)
+[      71ms] TypeError: Cannot read properties of undefined (reading 'fn')
+    at https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/emojionearea.js:1711:7
+    at https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/emojionearea.js:23:9
+    at https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/emojionearea.js:25:2
+[      70ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/?s=Huy%E1%BB%81n+N%E1%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n:243
+[      76ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/?s=Huy%E1%BB%81n+N%E1%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n:0
+[      76ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/?s=Huy%E1%BB%81n+N%E1%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n:0
+[      77ms] [WARNING] [VH Skeleton] jQuery is unavailable; skeleton initialization skipped. @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/vh-skeleton.js?ver=1.12:6
+[      78ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/?s=Huy%E1%BB%81n+N%E1%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n:190
+[     179ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/?s=Huy%E1%BB%81n+N%E1%BB%AF+Gi%E1%BB%AF+Ng%E1%BB%8Dc+%E1%BA%A4n:218

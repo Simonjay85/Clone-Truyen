@@ -1,0 +1,515 @@
+<?php
+/**
+ * Template for standard WordPress posts.
+ *
+ * This file intentionally handles only regular posts. Custom post types
+ * continue to use their more specific templates, such as single-truyen.php
+ * and single-chuong.php.
+ *
+ * @package Tehi_Theme
+ */
+
+get_header();
+?>
+
+<style id="dtt-single-post-inline-css">
+.dtt-single-post {
+    padding: 28px 15px 64px;
+}
+.dtt-single-post__inner {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+.dtt-post-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, .08);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, .06);
+}
+.dtt-post-header {
+    padding: clamp(24px, 4vw, 48px) clamp(20px, 5vw, 64px) 28px;
+    border-bottom: 1px solid #eef0f4;
+}
+.dtt-post-kicker {
+    margin-bottom: 10px;
+    color: #6366f1;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.dtt-post-title {
+    margin: 0;
+    color: #111827;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+}
+.dtt-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-top: 16px;
+    color: #6b7280;
+    font-size: 14px;
+}
+.dtt-post-meta a {
+    color: inherit;
+    text-decoration: none;
+}
+.dtt-post-meta a:hover {
+    color: #4f46e5;
+}
+.dtt-post-featured {
+    margin: 0;
+    background: #f8fafc;
+}
+.dtt-post-featured img {
+    display: block;
+    width: 100%;
+    max-height: 560px;
+    margin: 0 auto;
+    object-fit: cover;
+}
+.dtt-post-content {
+    padding: clamp(24px, 5vw, 64px);
+    color: #263244;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+}
+.dtt-post-content > *:first-child {
+    margin-top: 0;
+}
+.dtt-post-content > *:last-child {
+    margin-bottom: 0;
+}
+.dtt-post-content h2,
+.dtt-post-content h3,
+.dtt-post-content h4 {
+    margin: 1.6em 0 .55em;
+    color: #111827;
+    font-family: inherit;
+    line-height: 1.3;
+}
+.dtt-post-content h2 { font-size: 1.55em; }
+.dtt-post-content h3 { font-size: 1.3em; }
+.dtt-post-content h4 { font-size: 1.12em; }
+.dtt-post-content p { margin: 0 0 1.25em; }
+.dtt-post-content a {
+    color: #4f46e5;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.dtt-post-content img,
+.dtt-post-content iframe,
+.dtt-post-content video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5em auto;
+}
+.dtt-post-content img {
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, .1);
+}
+.dtt-post-content blockquote {
+    margin: 1.5em 0;
+    padding: 12px 20px;
+    border-left: 4px solid #818cf8;
+    background: #f5f7ff;
+    color: #4b5563;
+}
+.dtt-post-content ul,
+.dtt-post-content ol {
+    margin: 0 0 1.25em;
+    padding-left: 1.5em;
+}
+.dtt-post-content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+.dtt-post-content th,
+.dtt-post-content td {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+}
+.dtt-post-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    align-items: center;
+    padding: 20px clamp(24px, 5vw, 64px) 28px;
+    border-top: 1px solid #eef0f4;
+    color: #6b7280;
+    font-size: 14px;
+}
+.dtt-post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.dtt-post-tags a {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #4f46e5;
+    text-decoration: none;
+}
+.dtt-post-pagination {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+}
+.dtt-post-pagination a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: #fff;
+    color: #4f46e5;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, .06);
+    text-decoration: none;
+}
+:root {
+    --dtt-ink: #172033;
+    --dtt-muted: #697386;
+    --dtt-primary: #5b5bd6;
+    --dtt-primary-dark: #4545b8;
+    --dtt-surface: #ffffff;
+    --dtt-border: rgba(30, 41, 59, .10);
+    --dtt-soft: #f5f7ff;
+}
+.dtt-single-post {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(28px, 5vw, 72px) 16px 88px;
+    background: linear-gradient(180deg, #f6f8fc 0%, #eef2f8 100%);
+}
+.dtt-single-post::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 240px;
+    background: radial-gradient(circle at 15% 0%, rgba(99, 102, 241, .18), transparent 42%),
+                radial-gradient(circle at 88% 8%, rgba(14, 165, 233, .13), transparent 34%);
+    content: '';
+    pointer-events: none;
+}
+.dtt-single-post__inner {
+    width: min(100%, 900px);
+}
+.dtt-post-card {
+    position: relative;
+    background: var(--dtt-surface);
+    border: 1px solid var(--dtt-border);
+    border-radius: 22px;
+    box-shadow: 0 18px 55px rgba(30, 41, 59, .10);
+}
+.dtt-post-card::before {
+    position: absolute;
+    top: 0;
+    right: 12%;
+    left: 12%;
+    height: 4px;
+    border-radius: 0 0 99px 99px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+    content: '';
+}
+.dtt-post-header {
+    padding: clamp(32px, 6vw, 64px) clamp(22px, 7vw, 78px) 30px;
+    border-bottom: 1px solid #edf0f5;
+}
+.dtt-post-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding: 6px 12px;
+    border: 1px solid rgba(91, 91, 214, .16);
+    border-radius: 999px;
+    background: #f0f1ff;
+    color: var(--dtt-primary-dark);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+.dtt-post-kicker::before {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #6366f1;
+    content: '';
+}
+.dtt-post-kicker a { color: inherit; text-decoration: none; }
+.dtt-post-title {
+    max-width: 780px;
+    color: var(--dtt-ink);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -.035em;
+    line-height: 1.14;
+    text-wrap: balance;
+}
+.dtt-post-meta {
+    align-items: center;
+    gap: 8px 16px;
+    margin-top: 20px;
+    color: var(--dtt-muted);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+}
+.dtt-post-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.dtt-post-meta span + span::before {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #c8ceda;
+    content: '';
+}
+.dtt-post-meta a { color: var(--dtt-primary); font-weight: 700; }
+.dtt-post-featured {
+    padding: 20px 22px 0;
+    background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
+}
+.dtt-post-featured img {
+    width: min(100%, 820px);
+    max-height: 480px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(30, 41, 59, .14);
+    object-fit: cover;
+}
+.dtt-post-content {
+    padding: clamp(28px, 7vw, 72px) clamp(22px, 7vw, 78px);
+    color: #334155;
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(17px, 1.6vw, 19px);
+    letter-spacing: -.005em;
+    line-height: 1.9;
+}
+.dtt-post-content p { margin: 0 0 1.35em; }
+.dtt-post-content h2,
+.dtt-post-content h3,
+.dtt-post-content h4 {
+    position: relative;
+    margin: 2em 0 .7em;
+    padding-left: 14px;
+    color: var(--dtt-ink);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1.35;
+}
+.dtt-post-content h2::before,
+.dtt-post-content h3::before,
+.dtt-post-content h4::before {
+    position: absolute;
+    top: .18em;
+    bottom: .18em;
+    left: 0;
+    width: 4px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #6366f1, #06b6d4);
+    content: '';
+}
+.dtt-post-content h2 { font-size: clamp(24px, 3vw, 32px); }
+.dtt-post-content h3 { font-size: clamp(21px, 2.5vw, 27px); }
+.dtt-post-content h4 { font-size: 1.08em; }
+.dtt-post-content a {
+    color: var(--dtt-primary-dark);
+    font-weight: 600;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+.dtt-post-content a:hover { color: #3730a3; }
+.dtt-post-content img,
+.dtt-post-content iframe,
+.dtt-post-content video {
+    width: auto;
+    max-width: 100%;
+    border-radius: 14px;
+}
+.dtt-post-content img { box-shadow: 0 8px 24px rgba(30, 41, 59, .12); }
+.dtt-post-content figcaption {
+    margin-top: -1em;
+    color: var(--dtt-muted);
+    font-size: .78em;
+    font-style: italic;
+    line-height: 1.5;
+    text-align: center;
+}
+.dtt-post-content blockquote {
+    position: relative;
+    margin: 1.8em 0;
+    padding: 18px 22px 18px 28px;
+    border: 1px solid #dfe3ff;
+    border-left: 4px solid #6366f1;
+    border-radius: 0 14px 14px 0;
+    background: linear-gradient(135deg, #f7f7ff, #f1faff);
+    color: #475569;
+}
+.dtt-post-content code {
+    padding: 2px 6px;
+    border-radius: 5px;
+    background: #f1f5f9;
+    color: #be185d;
+    font-size: .88em;
+}
+.dtt-post-content pre {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 18px;
+    border-radius: 12px;
+    background: #111827;
+    color: #e5e7eb;
+    font-size: .82em;
+    line-height: 1.6;
+}
+.dtt-post-content pre code { padding: 0; background: transparent; color: inherit; }
+.dtt-post-content table { width: 100%; margin: 1.5em 0; }
+.dtt-post-content th { background: #f5f7ff; color: var(--dtt-ink); font-weight: 800; }
+.dtt-post-footer {
+    padding: 22px clamp(22px, 7vw, 78px) 30px;
+    border-top: 1px solid #edf0f5;
+    color: var(--dtt-muted);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+}
+.dtt-post-tags a {
+    padding: 6px 11px;
+    border: 1px solid #dde2ff;
+    background: #f5f6ff;
+    color: var(--dtt-primary-dark);
+    font-size: 12px;
+    font-weight: 700;
+    transition: .2s ease;
+}
+.dtt-post-tags a:hover {
+    background: var(--dtt-primary);
+    color: #fff;
+    transform: translateY(-1px);
+}
+.dtt-post-pagination {
+    margin-top: 34px;
+    padding-top: 22px;
+    border-top: 1px dashed #d9dfeb;
+}
+.dtt-post-pagination a {
+    border: 1px solid #e2e6f2;
+    background: #fff;
+    color: var(--dtt-primary-dark);
+    font-weight: 700;
+    transition: .2s ease;
+}
+.dtt-post-pagination a:hover {
+    border-color: #b9bdf7;
+    background: #f6f7ff;
+    transform: translateY(-2px);
+}
+.dtt-post-card + .comments-area,
+.dtt-post-card ~ .comments-area {
+    margin-top: 24px;
+    padding: 26px clamp(22px, 5vw, 48px);
+    border: 1px solid var(--dtt-border);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(30, 41, 59, .06);
+}
+@media (max-width: 640px) {
+    .dtt-single-post { padding: 22px 10px 58px; }
+    .dtt-post-card { border-radius: 16px; }
+    .dtt-post-header { padding-top: 34px; }
+    .dtt-post-title { font-size: clamp(28px, 9vw, 38px); letter-spacing: -.025em; }
+    .dtt-post-meta { display: grid; gap: 8px; }
+    .dtt-post-meta span + span::before { display: none; }
+    .dtt-post-featured { padding: 12px 12px 0; }
+    .dtt-post-featured img { max-height: 360px; border-radius: 12px; }
+    .dtt-post-content { font-size: 17px; line-height: 1.82; }
+    .dtt-post-content h2 { font-size: 25px; }
+    .dtt-post-content h3 { font-size: 22px; }
+    .dtt-post-pagination { flex-direction: column; }
+    .dtt-post-pagination a { text-align: center; }
+}
+</style>
+
+<main id="primary" class="site-main dtt-single-post">
+    <div class="dtt-single-post__inner">
+        <?php while (have_posts()) : the_post(); ?>
+            <?php
+            $categories = get_the_category();
+            $primary_category = !empty($categories) ? $categories[0] : null;
+            ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class('dtt-post-card'); ?>>
+                <header class="dtt-post-header">
+                    <?php if ($primary_category) : ?>
+                        <div class="dtt-post-kicker">
+                            <a href="<?php echo esc_url(get_category_link($primary_category->term_id)); ?>">
+                                <?php echo esc_html($primary_category->name); ?>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+
+                    <h1 class="dtt-post-title"><?php the_title(); ?></h1>
+
+                    <div class="dtt-post-meta" aria-label="Thông tin bài viết">
+                        <span>Đăng ngày <?php echo esc_html(get_the_date()); ?></span>
+                        <?php if (get_the_modified_time('U') !== get_the_time('U')) : ?>
+                            <span>Cập nhật <?php echo esc_html(get_the_modified_date()); ?></span>
+                        <?php endif; ?>
+                        <span>Tác giả <?php the_author_posts_link(); ?></span>
+                    </div>
+                </header>
+
+                <?php if (has_post_thumbnail()) : ?>
+                    <figure class="dtt-post-featured">
+                        <?php the_post_thumbnail('full', array(
+                            'loading' => 'eager',
+                            'decoding' => 'async',
+                        )); ?>
+                    </figure>
+                <?php endif; ?>
+
+                <div class="dtt-post-content entry-content">
+                    <?php
+                    the_content();
+
+                    wp_link_pages(array(
+                        'before' => '<nav class="dtt-post-pagination" aria-label="Phân trang bài viết">',
+                        'after'  => '</nav>',
+                        'link_before' => '<span>',
+                        'link_after'  => '</span>',
+                    ));
+                    ?>
+                </div>
+
+                <?php if (has_tag()) : ?>
+                    <footer class="dtt-post-footer">
+                        <strong>Thẻ:</strong>
+                        <div class="dtt-post-tags">
+                            <?php the_tags('', '', ''); ?>
+                        </div>
+                    </footer>
+                <?php endif; ?>
+            </article>
+
+            <?php if (comments_open() || get_comments_number()) : ?>
+                <?php comments_template(); ?>
+            <?php endif; ?>
+        <?php endwhile; ?>
+    </div>
+</main>
+
+<?php get_footer(); ?>

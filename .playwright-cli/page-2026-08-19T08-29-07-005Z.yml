@@ -1,0 +1,711 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e3]:
+    - generic [ref=f2e4]:
+      - link "DTT." [ref=f2e5] [cursor=pointer]:
+        - /url: https://doctieuthuyet.com
+      - text:       
+      - button "Mở menu" [ref=f2e7] [cursor=pointer]
+  - main [ref=f2e9]:
+    - main [ref=f2e10]:
+      - generic [ref=f2e11]:
+        - generic [ref=f2e12]:
+          - generic [ref=f2e13]:
+            - link "Về Kiếm Lai Wiki" [ref=f2e14] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/kiem-lai-wiki/
+              - generic [ref=f2e15]: ←
+              - text: Về Kiếm Lai Wiki
+            - generic [ref=f2e16]: Hồ sơ nội dung
+          - link "Kiếm Lai" [ref=f2e18] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/category/kiem-lai/
+          - heading "Ninh Diêu là ai? Toàn bộ thân thế, cảnh giới, kiếm đạo và tình duyên" [level=1] [ref=f2e19]
+          - generic "Thông tin bài viết" [ref=f2e20]:
+            - generic [ref=f2e21]: Đăng ngày 17 Tháng 8, 2026
+            - generic [ref=f2e22]: Cập nhật 19 Tháng 8, 2026
+            - generic [ref=f2e23]: Tác giả
+        - generic [ref=f2e24]:
+          - complementary [ref=f2e25]:
+            - navigation "Mục lục Ninh Diêu" [ref=f2e26]:
+              - heading "Mục lục" [level=2] [ref=f2e27]
+              - list [ref=f2e28]:
+                - listitem [ref=f2e29]:
+                  - link "Hồ sơ nhanh" [ref=f2e30] [cursor=pointer]:
+                    - /url: "#ho-so-ninh-dieu"
+                - listitem [ref=f2e31]:
+                  - link "Thân thế" [ref=f2e32] [cursor=pointer]:
+                    - /url: "#than-the-ninh-dieu"
+                - listitem [ref=f2e33]:
+                  - link "Chuyện tình Trần Bình An" [ref=f2e34] [cursor=pointer]:
+                    - /url: "#tinh-cam-ninh-dieu"
+                - listitem [ref=f2e35]:
+                  - link "Kiếm Khí Trường Thành" [ref=f2e36] [cursor=pointer]:
+                    - /url: "#ninh-dieu-kiem-khi"
+                - listitem [ref=f2e37]:
+                  - link "Bản mệnh phi kiếm" [ref=f2e38] [cursor=pointer]:
+                    - /url: "#ninh-dieu-phi-kiem"
+                - listitem [ref=f2e39]:
+                  - link "Cảnh giới" [ref=f2e40] [cursor=pointer]:
+                    - /url: "#ninh-dieu-canh-gioi"
+                - listitem [ref=f2e41]:
+                  - link "Phi Thăng Thành" [ref=f2e42] [cursor=pointer]:
+                    - /url: "#ninh-dieu-phi-thang-thanh"
+                - listitem [ref=f2e43]:
+                  - link "Timeline" [ref=f2e44] [cursor=pointer]:
+                    - /url: "#ninh-dieu-timeline"
+                - listitem [ref=f2e45]:
+                  - link "FAQ" [ref=f2e46] [cursor=pointer]:
+                    - /url: "#ninh-dieu-faq"
+          - article [ref=f2e47]:
+            - generic [ref=f2e48]:
+              - paragraph [ref=f2e49]:
+                - strong [ref=f2e50]: Ninh Diêu là ai?
+                - text: Ninh Diêu là nữ chính của
+                - emphasis [ref=f2e51]: Kiếm Lai
+                - text: ", sinh ra ở"
+                - link "Kiếm Khí Trường Thành" [ref=f2e52] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/kiem-khi-truong-thanh-la-gi/
+                - text: ", là con gái của một đôi kiếm tiên và được Zongheng mô tả như một trong những kiếm tu có thiên phú cao nhất từ xưa tới nay. Nếu Trần Bình An đi lên bằng một hành trình chậm, nặng căn cơ và liên tục bị số phận lấy mất thứ mình vừa có, thì Ninh Diêu lại đại diện cho một loại thiên tài gần như sinh ra đã phù hợp với kiếm đạo: kiếm tâm thuần, quyết đoán, thăng cảnh cực nhanh và có sát lực khiến việc chỉ nhìn cảnh giới thường không đủ để đánh giá."
+              - paragraph [ref=f2e53]:
+                - text: Tuy nhiên, nếu chỉ gọi Ninh Diêu là “người yêu của Trần Bình An” thì sẽ làm nhỏ nhân vật. Cô có quê hương riêng, lịch sử gia đình riêng, chiến trường riêng, thế lực riêng và trách nhiệm riêng. Khi Trần Bình An dần xây Lạc Phách Sơn, Ninh Diêu lại đi cùng
+                - link "Kiếm Khí Trường Thành" [ref=f2e54] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/kiem-khi-truong-thanh-la-gi/
+                - text: bước sang một thời đại khác tại
+                - link "Phi Thăng Thành" [ref=f2e55] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/phi-thang-thanh-la-gi/
+                - text: . Hai người có thể yêu nhau mà không cần một người từ bỏ con đường của mình để trở thành phần phụ của người kia.
+              - paragraph [ref=f2e56]:
+                - text: Trang bách khoa chính thức của Zongheng ghi rõ Ninh Diêu là con gái của một đôi kiếm tiên Kiếm Khí Trường Thành, có
+                - link [ref=f2e57] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ban-menh-phi-kiem-la-gi/
+                  - strong [ref=f2e58]: hai bản mệnh phi kiếm
+                - text: ", từng cùng Trần Bình An đối địch ở Ly Châu Động Thiên, truyền cho anh"
+                - emphasis [ref=f2e59]: Hám Sơn Phổ
+                - text: ", phá cảnh lên Nguyên Anh ngay khi Kiếm Khí Trường Thành mở trận, sau đó theo nửa Kiếm Khí Trường Thành tới thiên hạ thứ năm và lần lượt trở thành người đầu tiên bước vào Ngọc Phác, Tiên Nhân rồi Phi Thăng ở vùng thiên địa mới. Bài này dùng các mốc đó làm xương sống và tách rõ"
+                - link [ref=f2e60] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ban-menh-phi-kiem-la-gi/
+                  - strong [ref=f2e61]: bản mệnh phi kiếm
+                - text: với
+                - strong [ref=f2e62]: tiên kiếm Thiên Chân
+                - text: để tránh lỗi thường gặp trong bài tổng hợp.
+              - paragraph [ref=f2e63]:
+                - emphasis [ref=f2e64]:
+                  - text: "Cảnh báo spoiler lớn: bài phân tích từ Ly Châu Động Thiên, Đảo Huyền Sơn,"
+                  - link "Kiếm Khí Trường Thành" [ref=f2e65] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/kiem-khi-truong-thanh-la-gi/
+                  - text: tới
+                  - link "Phi Thăng Thành" [ref=f2e66] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/phi-thang-thanh-la-gi/
+                  - text: và nhiều mốc cảnh giới hậu kỳ.
+              - generic [ref=f2e67]:
+                - heading "Ninh Diêu là ai? Trả lời ngắn gọn" [level=2] [ref=f2e68]
+                - paragraph [ref=f2e69]:
+                  - strong [ref=f2e70]: Ninh Diêu là nữ chính Kiếm Lai
+                  - text: ", kiếm tu thiên tài xuất thân"
+                  - link "Kiếm Khí Trường Thành" [ref=f2e71] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/kiem-khi-truong-thanh-la-gi/
+                  - text: ", con gái của một đôi kiếm tiên đã tử trận. Cô gặp Trần Bình An khi bị thương ở Ly Châu Động Thiên, từng cùng anh đối địch và dạy anh"
+                  - emphasis [ref=f2e72]: Hám Sơn Phổ
+                  - text: . Ninh Diêu có
+                  - link "hai bản mệnh phi kiếm" [ref=f2e73] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/ban-menh-phi-kiem-la-gi/
+                  - text: ", được tiên kiếm"
+                  - strong [ref=f2e74]: Thiên Chân
+                  - text: chủ động chọn làm chủ, về sau trở thành trụ cột của
+                  - link "Phi Thăng Thành" [ref=f2e75] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/phi-thang-thanh-la-gi/
+                  - text: và là đạo lữ của
+                  - link "Trần Bình An" [ref=f2e76] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/tran-binh-an-la-ai/
+                  - text: .
+              - heading "Hồ sơ nhanh Ninh Diêu" [level=2] [ref=f2e77]
+              - table [ref=f2e78]:
+                - rowgroup [ref=f2e79]:
+                  - row [ref=f2e80]:
+                    - columnheader "Thông tin" [ref=f2e81]
+                    - columnheader "Nội dung" [ref=f2e82]
+                  - row [ref=f2e83]:
+                    - cell "Tên" [ref=f2e84]
+                    - cell "Ninh Diêu" [ref=f2e85]
+                  - row [ref=f2e86]:
+                    - cell "Tên Hán" [ref=f2e87]
+                    - cell "宁姚" [ref=f2e88]
+                  - row [ref=f2e89]:
+                    - cell "Tác phẩm" [ref=f2e90]
+                    - cell "Kiếm Lai" [ref=f2e91]
+                  - row [ref=f2e92]:
+                    - cell "Vai trò" [ref=f2e93]
+                    - cell "Nữ chính, kiếm tu thiên tài" [ref=f2e94]
+                  - row [ref=f2e95]:
+                    - cell "Xuất thân" [ref=f2e96]
+                    - cell [ref=f2e97]:
+                      - link "Kiếm Khí Trường Thành" [ref=f2e98] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/kiem-khi-truong-thanh-la-gi/
+                  - row [ref=f2e99]:
+                    - cell "Cha mẹ" [ref=f2e100]
+                    - cell "Một đôi kiếm tiên của Kiếm Khí Trường Thành, tử trận trong cuộc cược đấu với yêu tộc" [ref=f2e101]
+                  - row [ref=f2e102]:
+                    - cell "Con đường" [ref=f2e103]
+                    - cell "Kiếm tu" [ref=f2e104]
+                  - row [ref=f2e105]:
+                    - cell "Bản mệnh phi kiếm" [ref=f2e106]
+                    - cell [ref=f2e107]:
+                      - link "Hai bản mệnh phi kiếm" [ref=f2e108] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/ban-menh-phi-kiem-la-gi/
+                      - text: ; chi tiết tên/cơ chế được hé lộ dần theo chính văn
+                  - row [ref=f2e109]:
+                    - cell "Tiên kiếm nổi bật" [ref=f2e110]
+                    - cell "Thiên Chân – chủ động chọn Ninh Diêu" [ref=f2e111]
+                  - row [ref=f2e112]:
+                    - cell "Đạo lữ" [ref=f2e113]
+                    - cell "Trần Bình An" [ref=f2e114]
+                  - row [ref=f2e115]:
+                    - cell "Thế lực gắn bó" [ref=f2e116]
+                    - cell [ref=f2e117]:
+                      - text: Kiếm Khí Trường Thành,
+                      - link "Phi Thăng Thành" [ref=f2e118] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/phi-thang-thanh-la-gi/
+                  - row [ref=f2e119]:
+                    - cell "Cảnh giới tiêu biểu" [ref=f2e120]
+                    - cell "Nguyên Anh → Ngọc Phác → Tiên Nhân → Phi Thăng và các mốc cao hơn tùy tiến trình chính văn" [ref=f2e121]
+                  - row [ref=f2e122]:
+                    - cell "Đặc điểm" [ref=f2e123]
+                    - cell "Thẳng thắn, độc lập, kiêu hãnh, quyết đoán, kiếm tâm thuần túy" [ref=f2e124]
+              - 'heading "Thân thế Ninh Diêu: sinh ra giữa một thành trì chỉ biết cầm kiếm mà sống" [level=2] [ref=f2e125]'
+              - paragraph [ref=f2e126]:
+                - text: Muốn hiểu Ninh Diêu trước hết phải hiểu
+                - link "Kiếm Khí Trường Thành" [ref=f2e127] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/kiem-khi-truong-thanh-la-gi/
+                - text: . Đây không phải một tông môn yên bình nơi đệ tử sáng luyện kiếm, tối nghe trưởng bối giảng đạo. Nó là một chiến tuyến tồn tại qua nhiều thế hệ, ngăn Man Hoang Thiên Hạ và yêu tộc tràn sang. Một đứa trẻ sinh ra ở đây từ nhỏ đã nghe tên người chết, biết thành trì có thể vỡ, biết kiếm không chỉ dùng để biểu diễn.
+              - paragraph [ref=f2e128]: Ninh Diêu trưởng thành trong môi trường đó nên tính cách rất khác nhiều nữ tu ở Hạo Nhiên Thiên Hạ. Cô ít vòng vo, không quá quan tâm lễ nghi hình thức và nhìn chiến đấu như một phần tự nhiên của đời sống. Với người ở nơi chiến tranh có thể tới bất cứ lúc nào, việc biết mình muốn gì và dám chịu hậu quả quan trọng hơn việc nói sao cho đẹp.
+              - paragraph [ref=f2e129]: Thân thế cao khiến Ninh Diêu được chú ý, nhưng cũng tạo áp lực. Cô là con của kiếm tiên, lại có thiên phú khiến người khác gần như mặc định cô phải trở thành người đứng đầu thế hệ trẻ. Trong bối cảnh đó, Ninh Diêu không có quyền “chỉ làm con gái của ai đó”; cô phải dùng chính kiếm của mình để chứng minh mình là Ninh Diêu.
+              - heading "Cha mẹ Ninh Diêu là ai? Vì sao cái chết của họ ảnh hưởng lớn tới cô?" [level=2] [ref=f2e130]
+              - paragraph [ref=f2e131]: Zongheng mô tả Ninh Diêu là con gái của một đôi kiếm tiên Kiếm Khí Trường Thành. Cha mẹ cô tử trận trong một cuộc cược đấu với yêu tộc. Sau cái chết ấy, gia đình còn chịu những ánh nhìn và lời trách móc từ người khác, khiến tuổi thơ Ninh Diêu không chỉ có mất mát mà còn có áp lực danh dự.
+              - paragraph [ref=f2e132]: Chi tiết này giúp giải thích vì sao Ninh Diêu rất nhạy với việc một người có tự chịu trách nhiệm cho lựa chọn của mình hay không. Cô không thích người dùng danh nghĩa tập thể để đẩy lỗi cho một cá nhân, cũng không thích người núp sau xuất thân để tránh trả giá.
+              - paragraph [ref=f2e133]: Cha mẹ là kiếm tiên nhưng Ninh Diêu không được “thừa kế” một đời an nhàn. Ngược lại, chính vì gia đình đã trả giá lớn, cô càng phải tự xây uy tín bằng chiến lực của mình.
+              - 'heading "Tính cách Ninh Diêu: lạnh lùng hay chỉ quá thẳng?" [level=2] [ref=f2e134]'
+              - paragraph [ref=f2e135]: "Ninh Diêu thường được mô tả là lạnh, nhưng “thẳng” chính xác hơn. Cô không thích kéo dài những cuộc đối thoại chỉ để giữ mặt mũi. Thích thì công nhận, không thích thì không giả vờ. Kiếm đạo của cô cũng giống tính cách: trực tiếp, sắc và không cần quá nhiều lớp ngụy trang."
+              - heading "1. Thẳng thắn" [level=3] [ref=f2e136]
+              - paragraph [ref=f2e137]: Đây là đặc điểm dễ thấy nhất trong tuyến tình cảm. Khi Ninh Diêu nhận ra tình cảm, cô không xây hàng trăm chương hiểu lầm chỉ để kéo dài. Có ngượng, có khoảng cách, nhưng cuối cùng vẫn nói rõ.
+              - heading "2. Độc lập" [level=3] [ref=f2e138]
+              - paragraph [ref=f2e139]: Ninh Diêu yêu Trần Bình An nhưng không biến mình thành người “đi theo nam chính”. Khi Trần Bình An có Lạc Phách Sơn, Ninh Diêu vẫn có Kiếm Khí Trường Thành và Phi Thăng Thành. Hai người gặp nhau ở những mốc lớn nhưng không nuốt mất cuộc đời nhau.
+              - heading "3. Kiêu hãnh dựa trên thực lực" [level=3] [ref=f2e140]
+              - paragraph [ref=f2e141]: Ninh Diêu biết mình rất mạnh và không cần giả vờ khiêm tốn. Sự kiêu hãnh ấy không phải nói miệng; nó được hậu thuẫn bởi thiên phú, tốc độ thăng cảnh và chiến tích.
+              - heading "4. Quyết đoán" [level=3] [ref=f2e142]
+              - paragraph [ref=f2e143]: Kiếm tu càng do dự càng dễ chết. Ninh Diêu có năng lực ra quyết định rất nhanh, đặc biệt khi chiến trường đã rõ.
+              - heading "5. Không thích dùng tình cảm để ép người" [level=3] [ref=f2e144]
+              - paragraph [ref=f2e145]: Đây là điểm làm cặp Trần Bình An – Ninh Diêu bền. Cô không yêu cầu Trần Bình An bỏ Lạc Phách Sơn để theo mình, và Trần Bình An cũng không yêu cầu cô bỏ Phi Thăng Thành.
+              - heading "Ninh Diêu gặp Trần Bình An như thế nào?" [level=2] [ref=f2e146]
+              - paragraph [ref=f2e147]: "Ninh Diêu xuất hiện từ giai đoạn Ly Châu Động Thiên khi đang bị thương. Do nhân quả liên quan Lục Trầm và những người quanh tiểu trấn, cô được Trần Bình An chăm sóc. Đây là lần gặp có khoảng cách thân phận rất lớn: Ninh Diêu đã là thiên tài kiếm tu của Kiếm Khí Trường Thành, còn Trần Bình An chỉ là thiếu niên nghèo ở ngõ Nê Bình."
+              - paragraph [ref=f2e148]: Điểm quan trọng là Trần Bình An giúp cô trước khi thật sự hiểu “Ninh Diêu đáng giá bao nhiêu”. Đối với một người từ nhỏ đã bị người khác nhìn bằng thiên phú, sự giúp đỡ không tính toán này tạo ấn tượng rất khác.
+              - paragraph [ref=f2e149]: Hai người sau đó cùng đối địch Bàn Sơn Viên, cùng trải qua nguy hiểm trong tiểu trấn. Tình cảm không xuất hiện từ một cảnh “vừa gặp đã yêu” đơn giản, mà từ việc nhìn thấy người kia làm gì khi tình huống khó.
+              - 'heading "Hám Sơn Phổ: Ninh Diêu có phải người dẫn Trần Bình An vào võ đạo?" [level=2] [ref=f2e150]'
+              - paragraph [ref=f2e151]:
+                - text: Zongheng ghi Ninh Diêu từng dạy Trần Bình An quyền phổ
+                - strong [ref=f2e152]: Hám Sơn Phổ
+                - text: . Đây là một trong những mốc đầu khiến mối quan hệ của hai người không chỉ là tình cảm mà còn liên quan tới con đường tu hành.
+              - paragraph [ref=f2e153]: Ninh Diêu không phải “sư phụ võ đạo” lâu dài của Trần Bình An, nhưng cô là người mở cánh cửa. Về sau Thôi Thành và nhiều cao thủ khác mới tiếp tục mài võ đạo tới mức cực sâu.
+              - paragraph [ref=f2e154]: "Chi tiết này cũng tạo một vòng đẹp: thuở đầu Ninh Diêu dạy Trần Bình An quyền; rất lâu sau, Trần Bình An đã có thể đứng bên cô bằng cả quyền lẫn kiếm."
+              - heading "Toàn bộ chuyện tình Ninh Diêu – Trần Bình An" [level=2] [ref=f2e155]
+              - paragraph [ref=f2e156]: Chuyện tình của hai người có thể chia thành nhiều giai đoạn rõ ràng.
+              - heading "Giai đoạn 1 – Ly Châu Động Thiên" [level=3] [ref=f2e157]
+              - paragraph [ref=f2e158]: Hai người gặp nhau khi còn rất trẻ. Trần Bình An chưa có vị trí trong giới tu hành; Ninh Diêu đã là thiên tài kiếm tu. Cảm tình hình thành từ sinh hoạt nhỏ và những lần cùng đối địch.
+              - heading "Giai đoạn 2 – chia xa" [level=3] [ref=f2e159]
+              - paragraph [ref=f2e160]: Ninh Diêu phải trở về thế giới của mình; Trần Bình An bắt đầu đi xa. Khoảng cách giữa họ là cả thiên hạ, cảnh giới và trách nhiệm. Nhưng chính giai đoạn này kiểm tra xem tình cảm đầu đời có chỉ là cảm xúc nhất thời không.
+              - heading "Giai đoạn 3 – Đảo Huyền Sơn và lời xác nhận tình cảm" [level=3] [ref=f2e161]
+              - paragraph [ref=f2e162]: "Zongheng ghi Ninh Diêu từng công khai nói với Trần Bình An rằng tình cảm của cô không ít hơn tình cảm anh dành cho cô. Đây là một trong những đặc điểm khiến cặp đôi được yêu thích: nữ chính không để nam chính phải “đoán đến cuối truyện”."
+              - heading "Giai đoạn 4 – lời hẹn và Kiếm Khí Trường Thành" [level=3] [ref=f2e163]
+              - paragraph [ref=f2e164]: Trần Bình An tới Kiếm Khí Trường Thành, phải đối diện ánh mắt của cả thế giới kiếm tu nơi Ninh Diêu lớn lên. Anh cần chứng minh mình không chỉ là “người Ninh Diêu chọn”, mà là người có thể tự đứng vững.
+              - heading "Giai đoạn 5 – chiến tranh" [level=3] [ref=f2e165]
+              - paragraph [ref=f2e166]: Khi chiến tranh thật sự nổ ra, chuyện tình không còn nằm trong thế giới riêng của hai người. Trần Bình An thành Ẩn Quan; Ninh Diêu ra trận. Cả hai phải chấp nhận có những lúc trách nhiệm với thành trì cao hơn mong muốn được ở bên nhau.
+              - heading "Giai đoạn 6 – Phi Thăng Thành và Lạc Phách Sơn" [level=3] [ref=f2e167]
+              - paragraph [ref=f2e168]:
+                - text: Sau khi Kiếm Khí Trường Thành thay đổi, Ninh Diêu có con đường riêng ở
+                - link "Phi Thăng Thành" [ref=f2e169] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/phi-thang-thanh-la-gi/
+                - text: . Trần Bình An trở về Hạo Nhiên và tiếp tục Lạc Phách Sơn. Hai thế lực tồn tại song song, giống chính hai người.
+              - heading [level=2] [ref=f2e170]:
+                - text: Ninh Diêu và
+                - link "Kiếm Khí Trường Thành" [ref=f2e171] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/kiem-khi-truong-thanh-la-gi/
+              - paragraph [ref=f2e172]: Kiếm Khí Trường Thành là quê hương, trường học, gia đình và chiến trường của Ninh Diêu. Không có nơi này thì không có Ninh Diêu như độc giả biết.
+              - paragraph [ref=f2e173]: Cô thuộc thế hệ trẻ được kỳ vọng tiếp nối kiếm tiên tiền bối. Nhưng “được kỳ vọng” ở Kiếm Khí Trường Thành không đồng nghĩa được bảo vệ khỏi chiến tranh. Trái lại, người càng mạnh càng phải ra tuyến đầu.
+              - paragraph [ref=f2e174]: Ninh Diêu vì thế không có tâm lý “mình là thiên tài nên phải sống để tương lai còn hy vọng”. Với cô, nếu tất cả tiền bối đều dùng lý do đó để tránh trận, Kiếm Khí Trường Thành đã không tồn tại qua nhiều thế hệ.
+              - heading "Kiếm đạo Ninh Diêu mạnh cỡ nào?" [level=2] [ref=f2e175]
+              - paragraph [ref=f2e176]: "Zongheng mô tả Ninh Diêu bằng cách rất mạnh: thiên phú kiếm tu thuộc hàng cao nhất từ xưa tới nay. Nhưng thiên phú chỉ là một phần."
+              - paragraph [ref=f2e177]:
+                - text: Kiếm đạo Ninh Diêu mạnh vì
+                - strong [ref=f2e178]: thiên phú + kiếm tâm + môi trường chiến trường + khả năng thăng cảnh + sát lực thực chiến
+                - text: . Một thiên tài sống trong tông môn yên bình có thể giỏi kỹ thuật; Ninh Diêu lớn lên trong thành trì nơi kiếm dùng để giết đại yêu, nên thiên phú được kiểm tra bằng sinh tử thật.
+              - heading "Ninh Diêu có phải kiểu kiếm tu “chỉ biết chém”?" [level=3] [ref=f2e179]
+              - paragraph [ref=f2e180]: Cô thiên về trực tiếp, nhưng không phải thiếu đầu óc. Sự thẳng của Ninh Diêu là lựa chọn sau khi nhìn rõ, không phải vì không biết tính toán. Điểm khác Trần Bình An là cô ít cần xây quá nhiều lớp trước khi ra kiếm.
+              - heading "Ninh Diêu có đánh vượt cảnh không?" [level=3] [ref=f2e181]
+              - paragraph [ref=f2e182]: Trong truyện nhiều người xem sát lực Ninh Diêu là thứ không thể dùng cảnh giới bình thường để đo. Zongheng còn ghi nhận quan niệm rằng đối diện Ninh Diêu, cao hơn một cảnh vẫn chưa chắc đủ an toàn. Đây là cách tác phẩm nhấn mạnh phẩm chất kiếm tu của cô.
+              - heading [level=2] [ref=f2e183]:
+                - link "Hai bản mệnh phi kiếm" [ref=f2e184] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ban-menh-phi-kiem-la-gi/
+                - text: của Ninh Diêu
+              - paragraph [ref=f2e185]:
+                - text: Zongheng ghi Ninh Diêu có
+                - strong [ref=f2e186]: hai bản mệnh phi kiếm
+                - text: . Đây là dữ kiện quan trọng nhưng cũng là nơi bài fan rất hay trộn lẫn với tiên kiếm Thiên Chân.
+              - paragraph [ref=f2e187]:
+                - link "Bản mệnh phi kiếm" [ref=f2e188] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ban-menh-phi-kiem-la-gi/
+                - text: là năng lực sinh ra gắn với chính kiếm tu, mang thần thông riêng. Một thanh tiên kiếm bên ngoài, dù cấp cực cao và chủ động chọn chủ, vẫn không nhất thiết đồng nghĩa “bản mệnh phi kiếm”.
+              - paragraph [ref=f2e189]:
+                - text: "Ở các bản tổng hợp, một bản mệnh phi kiếm của Ninh Diêu thường được nhắc cùng cụm “Trảm Tiên/ Vấn Kiếm Thiên Chân”, còn bản còn lại từng được giữ kín trong thời gian dài. Vì cách chấm câu và dịch tên giữa nguồn Trung – Việt khác nhau, bài SEO tốt nhất nên tách dữ kiện chắc chắn:"
+                - strong [ref=f2e190]: Ninh Diêu có hai bản mệnh phi kiếm; tiên kiếm Thiên Chân là thanh kiếm cực cao chủ động chọn cô
+                - text: .
+              - heading "Tiên kiếm Thiên Chân có phải bản mệnh phi kiếm của Ninh Diêu không?" [level=2] [ref=f2e191]
+              - paragraph [ref=f2e192]:
+                - strong [ref=f2e193]: Không nên đồng nhất hai khái niệm.
+                - text: Zongheng ghi Ninh Diêu sử dụng tiên kiếm Thiên Chân, và chính “Thiên Chân” chủ động chọn cô. Đồng thời trang này cũng tách riêng dữ kiện cô có hai bản mệnh phi kiếm.
+              - paragraph [ref=f2e194]:
+                - text: "Vì vậy cách viết chính xác hơn là: Ninh Diêu có hai bản mệnh phi kiếm của riêng mình và còn có"
+                - strong [ref=f2e195]: tiên kiếm Thiên Chân
+                - text: – một binh khí/tiên kiếm cấp cực cao.
+              - heading "Vì sao Thiên Chân chọn Ninh Diêu?" [level=3] [ref=f2e196]
+              - paragraph [ref=f2e197]: Trong thế giới Kiếm Lai, kiếm cấp cao có linh tính và tiêu chuẩn chọn chủ. Thiên phú chỉ là một phần; độ phù hợp giữa kiếm tâm, đại đạo và người cầm kiếm mới quyết định việc “chọn”. Việc Thiên Chân chủ động chọn Ninh Diêu là cách tác giả xác nhận cô không chỉ mạnh do gia thế.
+              - heading "Cảnh giới Ninh Diêu theo từng giai đoạn" [level=2] [ref=f2e198]
+              - paragraph [ref=f2e199]: “Ninh Diêu cảnh giới bao nhiêu?” là truy vấn rất phổ biến nhưng dễ lỗi thời. Cô tăng cảnh cực nhanh. Vì vậy nên xem theo timeline thay vì một dòng “hiện tại”.
+              - paragraph [ref=f2e200]:
+                - text: Để hiểu Nguyên Anh, Ngọc Phác, Tiên Nhân và Phi Thăng đứng ở đâu, xem
+                - link "cảnh giới Kiếm Lai đầy đủ" [ref=f2e201] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/canh-gioi-kiem-lai/
+                - text: .
+              - table [ref=f2e202]:
+                - rowgroup [ref=f2e203]:
+                  - row [ref=f2e204]:
+                    - columnheader "Giai đoạn" [ref=f2e205]
+                    - columnheader "Cảnh giới/mốc" [ref=f2e206]
+                    - columnheader "Ý nghĩa" [ref=f2e207]
+                - rowgroup [ref=f2e208]:
+                  - row [ref=f2e209]:
+                    - cell "Ly Châu Động Thiên" [ref=f2e210]
+                    - cell "Kiếm tu trẻ đã có nền vượt xa Trần Bình An" [ref=f2e211]
+                    - cell "Thiên phú được giới thiệu ngay từ đầu" [ref=f2e212]
+                  - row [ref=f2e213]:
+                    - cell "Kiếm Khí Trường Thành mở trận" [ref=f2e214]
+                    - cell "Phá cảnh Nguyên Anh" [ref=f2e215]
+                    - cell "Thăng cảnh ngay trong bối cảnh chiến đấu" [ref=f2e216]
+                  - row [ref=f2e217]:
+                    - cell "Thiên hạ thứ năm" [ref=f2e218]
+                    - cell "Ngọc Phác" [ref=f2e219]
+                    - cell "Người đầu tiên bước vào Thượng Ngũ Cảnh ở thiên địa mới theo bách khoa Zongheng" [ref=f2e220]
+                  - row [ref=f2e221]:
+                    - cell "Phi Thăng Thành" [ref=f2e222]
+                    - cell "Tiên Nhân" [ref=f2e223]
+                    - cell "Tiếp tục giữ khoảng cách lớn với thế hệ trẻ" [ref=f2e224]
+                  - row [ref=f2e225]:
+                    - cell "Hậu kỳ" [ref=f2e226]
+                    - cell "Phi Thăng" [ref=f2e227]
+                    - cell "Trở thành kiếm tiên Phi Thăng, chiến lực cấp thiên hạ" [ref=f2e228]
+                  - row [ref=f2e229]:
+                    - cell "Phần rất muộn" [ref=f2e230]
+                    - cell "Các mốc cao hơn tùy chính văn" [ref=f2e231]
+                    - cell "Nên đối chiếu chương cụ thể, không khóa bằng bách khoa cũ" [ref=f2e232]
+              - heading "Ninh Diêu phá cảnh Nguyên Anh như thế nào?" [level=2] [ref=f2e233]
+              - paragraph [ref=f2e234]:
+                - text: Zongheng ghi khi Kiếm Khí Trường Thành mở trận, Ninh Diêu
+                - strong [ref=f2e235]: đương trường phá cảnh, bước vào Nguyên Anh
+                - text: ". Đây là chi tiết rất đúng phong cách nhân vật: người khác chuẩn bị động phủ, tâm cảnh, thời cơ; Ninh Diêu có thể biến chiến trường thành thời cơ."
+              - paragraph [ref=f2e236]: Điều đó không có nghĩa cô thăng cảnh “ẩu”. Kiếm Khí Trường Thành nhìn Ninh Diêu từ nhỏ, nên việc phá cảnh nhanh được xem là biểu hiện của nền đủ mạnh chứ không phải cưỡng ép.
+              - heading [level=2] [ref=f2e237]:
+                - link "Phi Thăng Thành" [ref=f2e238] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/phi-thang-thanh-la-gi/
+                - text: ": nơi Ninh Diêu thật sự trở thành người đứng đầu một thời đại mới"
+              - paragraph [ref=f2e239]:
+                - text: Khi nửa Kiếm Khí Trường Thành bay tới thiên hạ thứ năm, thành trì mới được gọi là
+                - link [ref=f2e240] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/phi-thang-thanh-la-gi/
+                  - strong [ref=f2e241]: Phi Thăng Thành
+                - text: . Ninh Diêu đi cùng tập thể kiếm tu tới vùng thiên địa gần như trắng về trật tự.
+              - paragraph [ref=f2e242]: Đây là lúc tuyến riêng của Ninh Diêu rõ nhất. Trần Bình An không ở bên để giải quyết mọi thứ. Cô cùng thế hệ kiếm tu phải tự xây vị trí, tự đối diện cơ duyên và quy củ thiên hạ mới.
+              - heading "Ninh Diêu có phải thành chủ Phi Thăng Thành không?" [level=3] [ref=f2e243]
+              - paragraph [ref=f2e244]: Vai trò tổ chức và chức danh cụ thể thay đổi theo từng giai đoạn, nhưng điều chắc chắn là Ninh Diêu thuộc nhóm trụ cột cao nhất về chiến lực và ảnh hưởng. Khi phân tích SEO, nên nói “nhân vật trụ cột/chiến lực hàng đầu của Phi Thăng Thành” thay vì đơn giản hóa mọi thời điểm vào một chức danh.
+              - heading "Ninh Diêu từ Ngọc Phác tới Tiên Nhân và Phi Thăng" [level=2] [ref=f2e245]
+              - paragraph [ref=f2e246]: Bách khoa Zongheng ghi Ninh Diêu trở thành người đầu tiên ở thiên hạ thứ năm bước vào Ngọc Phác, sau đó lại là người đầu tiên bước vào Tiên Nhân và cuối cùng trở thành kiếm tiên Phi Thăng.
+              - paragraph [ref=f2e247]: Chuỗi này quan trọng ở hai mặt. Thứ nhất, nó xác nhận tốc độ thăng cảnh gần như bỏ xa phần lớn cùng thế hệ. Thứ hai, Ninh Diêu không vì rời Kiếm Khí Trường Thành cũ mà mất mục tiêu; chính thiên hạ mới trở thành nơi đại đạo mở rộng hơn.
+              - heading "Vì sao Ninh Diêu có thể tăng cảnh nhanh mà không “rỗng căn cơ”?" [level=3] [ref=f2e248]
+              - paragraph [ref=f2e249]: Trong Kiếm Lai, tốc độ nhanh không tự động đồng nghĩa nền yếu. Thiên tài thật sự là người đủ nền để cảnh giới mới không trở thành gánh nặng. Ninh Diêu từ nhỏ sống giữa đại kiếm tiên, chiến tranh và kiếm đạo cao cấp, nên tốc độ của cô là kết quả của việc “đã chuẩn bị từ rất lâu” hơn là may mắn đột ngột.
+              - heading "Ninh Diêu có thuộc Lạc Phách Sơn không?" [level=2] [ref=f2e250]
+              - paragraph [ref=f2e251]:
+                - text: Ninh Diêu có vị trí cực kỳ đặc biệt với
+                - link "Lạc Phách Sơn" [ref=f2e252] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/lac-phach-son-la-gi/
+                - text: vì là đạo lữ của sơn chủ Trần Bình An. Người trong núi có thể nhìn cô như “sơn chủ phu nhân”. Nhưng cô không phải môn nhân thông thường của Lạc Phách Sơn.
+              - paragraph [ref=f2e253]:
+                - text: "Đây là điểm cần giữ chính xác:"
+                - strong [ref=f2e254]: quan hệ gia đình không xóa thân phận tông môn/thế lực riêng
+                - text: . Ninh Diêu vẫn gắn sâu với
+                - link "Phi Thăng Thành" [ref=f2e255] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/phi-thang-thanh-la-gi/
+                - text: .
+              - heading "Ninh Diêu và A Lương" [level=2] [ref=f2e256]
+              - paragraph [ref=f2e257]:
+                - link "A Lương" [ref=f2e258] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/a-luong-la-ai/
+                - text: và Ninh Diêu đều là kiếm tu đỉnh cấp nhưng đại diện hai thế hệ. A Lương là người đã đi qua rất nhiều chiến trường, có kiếm ý và kinh nghiệm khó đo. Ninh Diêu là thế hệ mới với thiên phú gần như không thấy trần.
+              - paragraph [ref=f2e259]: Nếu A Lương thể hiện “kiếm khách giang hồ”, Ninh Diêu thể hiện “kiếm tu thuần túy”. Một người nói đùa, uống rượu, lang bạt; một người ít lời, rõ ràng, quyết đoán. Cả hai đều chứng minh kiếm đạo không có một tính cách duy nhất.
+              - heading "Ninh Diêu mạnh hơn Trần Bình An không?" [level=2] [ref=f2e260]
+              - paragraph [ref=f2e261]:
+                - text: Ở rất nhiều giai đoạn đầu và giữa truyện,
+                - strong [ref=f2e262]: Ninh Diêu có cảnh giới kiếm tu cao hơn Trần Bình An
+                - text: . Trần Bình An bù lại bằng võ đạo, nhiều pháp môn, bản mệnh vật và khả năng bố cục.
+              - paragraph [ref=f2e263]: Về sau, khi cả hai đều bước vào tầng rất cao, câu hỏi phải gắn với mốc chương. Ninh Diêu có lợi thế kiếm đạo thuần, sát lực và tốc độ; Trần Bình An có hệ chiến đấu đa lớp.
+              - heading "Ninh Diêu mạnh hơn A Lương không?" [level=3] [ref=f2e264]
+              - paragraph [ref=f2e265]: Không thể trả lời cho mọi thời điểm. A Lương có kinh nghiệm và từng bước vào tầng 14; Ninh Diêu có thiên phú và tốc độ tăng cảnh cực cao. Khi nhân vật đều ở tầng đỉnh, địa lợi, trạng thái và đại đạo quan trọng hơn một dòng xếp hạng.
+              - heading "Ninh Diêu có phải kiếm tu thiên phú cao nhất không?" [level=3] [ref=f2e266]
+              - paragraph [ref=f2e267]: Zongheng dùng mô tả cực cao cho thiên phú của cô, gần với “từ xưa tới nay thuộc loại cao nhất, không có người thứ hai”. Tuy nhiên khi viết SEO nên hiểu đây là cách mô tả nhân vật trong bách khoa, không nên biến thành bảng xếp hạng toán học cho mọi nhân vật cổ đại chưa lộ hết.
+              - heading "Vì sao Ninh Diêu mạnh? 12 yếu tố" [level=2] [ref=f2e268]
+              - list [ref=f2e269]:
+                - listitem [ref=f2e270]:
+                  - strong [ref=f2e271]: Thiên phú kiếm tu cực cao.
+                - listitem [ref=f2e272]:
+                  - strong [ref=f2e273]: "Sinh ra ở Kiếm Khí Trường Thành:"
+                  - text: môi trường kiếm đạo đỉnh cao từ nhỏ.
+                - listitem [ref=f2e274]:
+                  - strong [ref=f2e275]: "Cha mẹ là kiếm tiên:"
+                  - text: nền gia học và hiểu biết kiếm đạo mạnh.
+                - listitem [ref=f2e276]:
+                  - strong [ref=f2e277]: "Kiếm tâm thuần:"
+                  - text: ít bị tạp niệm kéo lệch khi ra kiếm.
+                - listitem [ref=f2e278]:
+                  - strong [ref=f2e279]:
+                    - link "Hai bản mệnh phi kiếm" [ref=f2e280] [cursor=pointer]:
+                      - /url: https://doctieuthuyet.com/ban-menh-phi-kiem-la-gi/
+                    - text: ":"
+                  - text: tạo chiều sâu thần thông.
+                - listitem [ref=f2e281]:
+                  - strong [ref=f2e282]: "Tiên kiếm Thiên Chân:"
+                  - text: binh khí cấp cao chủ động chọn chủ.
+                - listitem [ref=f2e283]:
+                  - strong [ref=f2e284]: "Kinh nghiệm chiến trường sớm:"
+                  - text: không phải thiên tài chỉ luyện trong động phủ.
+                - listitem [ref=f2e285]:
+                  - strong [ref=f2e286]: "Quyết đoán:"
+                  - text: biến thiên phú thành chiến lực thực tế.
+                - listitem [ref=f2e287]:
+                  - strong [ref=f2e288]: Thăng cảnh nhanh nhưng nền đủ dày.
+                - listitem [ref=f2e289]:
+                  - strong [ref=f2e290]: "Đại đạo được thiên hạ mới hỗ trợ:"
+                  - text: Phi Thăng Thành mở một không gian phát triển lớn.
+                - listitem [ref=f2e291]:
+                  - strong [ref=f2e292]: "Không phụ thuộc tình cảm:"
+                  - text: không để quan hệ với Trần Bình An làm chậm con đường kiếm.
+                - listitem [ref=f2e293]:
+                  - strong [ref=f2e294]: "Trách nhiệm lớn:"
+                  - text: gánh tập thể khiến tâm cảnh và đại đạo không chỉ xoay quanh cá nhân.
+              - heading "Timeline toàn bộ hành trình Ninh Diêu" [level=2] [ref=f2e295]
+              - table [ref=f2e296]:
+                - rowgroup [ref=f2e297]:
+                  - row [ref=f2e298]:
+                    - columnheader "Giai đoạn" [ref=f2e299]
+                    - columnheader "Sự kiện" [ref=f2e300]
+                    - columnheader "Cảnh giới/chiến lực" [ref=f2e301]
+                    - columnheader "Ý nghĩa" [ref=f2e302]
+                - rowgroup [ref=f2e303]:
+                  - row [ref=f2e304]:
+                    - cell "Tuổi thơ" [ref=f2e305]
+                    - cell "Sinh tại Kiếm Khí Trường Thành" [ref=f2e306]
+                    - cell "Thiên phú kiếm tu cực cao" [ref=f2e307]
+                    - cell "Lớn lên giữa chiến tranh và đại kiếm tiên" [ref=f2e308]
+                  - row [ref=f2e309]:
+                    - cell "Gia đình" [ref=f2e310]
+                    - cell "Cha mẹ tử trận" [ref=f2e311]
+                    - cell "Chưa phải mốc cảnh giới" [ref=f2e312]
+                    - cell "Hình thành tính độc lập và sức chịu đựng" [ref=f2e313]
+                  - row [ref=f2e314]:
+                    - cell "Ly Châu Động Thiên" [ref=f2e315]
+                    - cell "Bị thương, gặp Trần Bình An" [ref=f2e316]
+                    - cell "Đã mạnh hơn nam chính rất xa" [ref=f2e317]
+                    - cell "Bắt đầu nhân quả và tình cảm" [ref=f2e318]
+                  - row [ref=f2e319]:
+                    - cell "Ly Châu" [ref=f2e320]
+                    - cell "Cùng Trần Bình An chiến Bàn Sơn Viên" [ref=f2e321]
+                    - cell "Thực chiến" [ref=f2e322]
+                    - cell "Hai người bắt đầu tin nhau" [ref=f2e323]
+                  - row [ref=f2e324]:
+                    - cell "Ly Châu" [ref=f2e325]
+                    - cell "Dạy Hám Sơn Phổ" [ref=f2e326]
+                    - cell "Ảnh hưởng võ đạo Trần Bình An" [ref=f2e327]
+                    - cell "Liên kết tu hành đầu tiên" [ref=f2e328]
+                  - row [ref=f2e329]:
+                    - cell "Đảo Huyền Sơn/Trường Thành" [ref=f2e330]
+                    - cell "Xác nhận tình cảm" [ref=f2e331]
+                    - cell "Kiếm tu thế hệ trẻ hàng đầu" [ref=f2e332]
+                    - cell "Tuyến tình cảm rõ ràng" [ref=f2e333]
+                  - row [ref=f2e334]:
+                    - cell "Kiếm Khí Trường Thành" [ref=f2e335]
+                    - cell "Mở trận, phá cảnh" [ref=f2e336]
+                    - cell "Nguyên Anh" [ref=f2e337]
+                    - cell "Thăng cảnh trong chiến tranh" [ref=f2e338]
+                  - row [ref=f2e339]:
+                    - cell "Đại chiến" [ref=f2e340]
+                    - cell "Ra tuyến đầu" [ref=f2e341]
+                    - cell "Sát lực vượt chuẩn" [ref=f2e342]
+                    - cell "Gánh trách nhiệm quê hương" [ref=f2e343]
+                  - row [ref=f2e344]:
+                    - cell "Thiên hạ thứ năm" [ref=f2e345]
+                    - cell "Theo nửa thành phi thăng" [ref=f2e346]
+                    - cell "Ngọc Phác" [ref=f2e347]
+                    - cell "Người đầu tiên bước Thượng Ngũ theo bách khoa" [ref=f2e348]
+                  - row [ref=f2e349]:
+                    - cell "Phi Thăng Thành" [ref=f2e350]
+                    - cell "Tiếp tục mở đại đạo" [ref=f2e351]
+                    - cell "Tiên Nhân" [ref=f2e352]
+                    - cell "Giữ khoảng cách lớn với thế hệ trẻ" [ref=f2e353]
+                  - row [ref=f2e354]:
+                    - cell "Hậu kỳ" [ref=f2e355]
+                    - cell "Tiếp tục phá cảnh" [ref=f2e356]
+                    - cell "Phi Thăng" [ref=f2e357]
+                    - cell "Trở thành kiếm tiên cấp thiên hạ" [ref=f2e358]
+              - heading "Ý nghĩa hình tượng Ninh Diêu" [level=2] [ref=f2e359]
+              - paragraph [ref=f2e360]: Ninh Diêu quan trọng không chỉ vì “nữ chính mạnh”. Cô đại diện cho một kiểu quan hệ tình cảm mà hai người có thể cùng mạnh mà không cần cạnh tranh quyền lực trong tình yêu.
+              - paragraph [ref=f2e361]: "Trần Bình An không yêu Ninh Diêu vì cô cần được cứu. Ninh Diêu cũng không yêu Trần Bình An vì anh sẽ trở thành người mạnh nhất. Họ gặp nhau khi khoảng cách sức mạnh rất lớn theo hướng ngược lại: Ninh Diêu mạnh hơn. Điều đó khiến nền tình cảm không dựa vào việc nam chính cung cấp địa vị."
+              - paragraph [ref=f2e362]: Về mặt kiếm đạo, Ninh Diêu còn là biểu tượng của sự tiếp nối Kiếm Khí Trường Thành. Thành cũ có thể vỡ, tiền bối có thể chết, nhưng kiếm đạo không chết nếu thế hệ sau mang nó sang một thiên hạ mới.
+              - heading "Vì sao Ninh Diêu được độc giả yêu thích?" [level=2] [ref=f2e363]
+              - list [ref=f2e364]:
+                - listitem [ref=f2e365]: Không bị viết thành phụ kiện của nam chính.
+                - listitem [ref=f2e366]: Mạnh thật sự và giữ sức mạnh xuyên suốt.
+                - listitem [ref=f2e367]: Tình cảm rõ, ít hiểu lầm kéo dài.
+                - listitem [ref=f2e368]: Có trách nhiệm với quê hương và tập thể.
+                - listitem [ref=f2e369]: Không cần giả yếu để tạo cảm giác “nữ tính”.
+                - listitem [ref=f2e370]: Kiêu hãnh nhưng không dựa vào lời nói.
+                - listitem [ref=f2e371]: Độc lập nhưng không lạnh tới mức vô cảm.
+                - listitem [ref=f2e372]: Có tuyến phát triển riêng ở Phi Thăng Thành.
+              - heading "FAQ – Câu hỏi thường gặp về Ninh Diêu" [level=2] [ref=f2e373]
+              - heading "Ninh Diêu là ai?" [level=3] [ref=f2e374]
+              - paragraph [ref=f2e375]:
+                - text: Ninh Diêu là nữ chính Kiếm Lai, kiếm tu thiên tài của
+                - link "Kiếm Khí Trường Thành" [ref=f2e376] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/kiem-khi-truong-thanh-la-gi/
+                - text: và đạo lữ của Trần Bình An.
+              - heading "Ninh Diêu là con ai?" [level=3] [ref=f2e377]
+              - paragraph [ref=f2e378]: Cô là con gái của một đôi kiếm tiên Kiếm Khí Trường Thành đã tử trận trong cuộc cược đấu với yêu tộc.
+              - heading "Ninh Diêu có phải vợ Trần Bình An không?" [level=3] [ref=f2e379]
+              - paragraph [ref=f2e380]: Có thể hiểu Ninh Diêu là đạo lữ/người yêu chính thức và xuyên suốt của Trần Bình An.
+              - heading "Trần Bình An có mấy vợ?" [level=3] [ref=f2e381]
+              - paragraph [ref=f2e382]: Tuyến tình cảm chính không theo hậu cung; Ninh Diêu là đạo lữ trung tâm được xác định rõ.
+              - heading "Ninh Diêu gặp Trần Bình An ở đâu?" [level=3] [ref=f2e383]
+              - paragraph [ref=f2e384]: Tại Ly Châu Động Thiên, khi Ninh Diêu bị thương.
+              - heading "Ninh Diêu dạy Trần Bình An gì?" [level=3] [ref=f2e385]
+              - paragraph [ref=f2e386]: Cô giúp anh tiếp xúc với Hám Sơn Phổ và quyền thung trong giai đoạn đầu.
+              - heading "Ninh Diêu có mấy bản mệnh phi kiếm?" [level=3] [ref=f2e387]
+              - paragraph [ref=f2e388]:
+                - text: Zongheng ghi cô có
+                - link "hai bản mệnh phi kiếm" [ref=f2e389] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ban-menh-phi-kiem-la-gi/
+                - text: .
+              - heading "Thiên Chân có phải bản mệnh phi kiếm của Ninh Diêu không?" [level=3] [ref=f2e390]
+              - paragraph [ref=f2e391]: Không nên đồng nhất. Zongheng tách dữ kiện hai bản mệnh phi kiếm với tiên kiếm Thiên Chân – thanh tiên kiếm chủ động chọn Ninh Diêu.
+              - heading "Ninh Diêu cảnh giới bao nhiêu?" [level=3] [ref=f2e392]
+              - paragraph [ref=f2e393]: Phải xác định mốc. Cô từng phá Nguyên Anh tại Kiếm Khí Trường Thành, sau đó ở thiên hạ thứ năm lần lượt vào Ngọc Phác, Tiên Nhân và Phi Thăng theo bách khoa Zongheng.
+              - heading "Ninh Diêu có phải Nguyên Anh không?" [level=3] [ref=f2e394]
+              - paragraph [ref=f2e395]: Đó là một mốc trung kỳ quan trọng, nhưng không phải cảnh giới cuối của cô.
+              - heading "Ninh Diêu có lên Phi Thăng không?" [level=3] [ref=f2e396]
+              - paragraph [ref=f2e397]: Có. Bách khoa Zongheng ghi cô trở thành kiếm tiên Phi Thăng.
+              - heading "Ninh Diêu có thuộc Lạc Phách Sơn không?" [level=3] [ref=f2e398]
+              - paragraph [ref=f2e399]:
+                - text: Cô có vị trí cực gần vì là đạo lữ sơn chủ, nhưng không phải môn nhân thông thường; con đường của cô gắn sâu với
+                - link "Phi Thăng Thành" [ref=f2e400] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/phi-thang-thanh-la-gi/
+                - text: .
+              - heading "Ninh Diêu có phải người Phi Thăng Thành không?" [level=3] [ref=f2e401]
+              - paragraph [ref=f2e402]: Có. Cô là một trong những nhân vật trụ cột của tập thể kiếm tu sang thiên hạ thứ năm.
+              - heading "Ninh Diêu mạnh hơn Trần Bình An không?" [level=3] [ref=f2e403]
+              - paragraph [ref=f2e404]: Nhiều giai đoạn cô có cảnh giới cao hơn. Hậu kỳ phải so theo đúng thời điểm vì hai người đi hai hệ chiến đấu khác nhau.
+              - heading "Ninh Diêu mạnh hơn A Lương không?" [level=3] [ref=f2e405]
+              - paragraph [ref=f2e406]: Không thể chốt cho mọi thời điểm. A Lương có kinh nghiệm và cảnh giới tiền bối; Ninh Diêu có thiên phú và tốc độ phá cảnh cực cao.
+              - heading "Ninh Diêu có chết không?" [level=3] [ref=f2e407]
+              - paragraph [ref=f2e408]: Không nên dùng spoiler rời rạc để kết luận; trong tuyến chính cô là nhân vật trọng yếu xuyên suốt và tiếp tục phát triển tới các cảnh rất cao.
+              - heading "Vì sao Ninh Diêu thích Trần Bình An?" [level=3] [ref=f2e409]
+              - paragraph [ref=f2e410]: Tình cảm phát triển từ sự chân thành, việc cùng đối địch, giữ lời hứa và cách Trần Bình An nhìn cô như một con người độc lập thay vì chỉ một thiên tài kiếm tu.
+              - heading "Ninh Diêu có đẹp không?" [level=3] [ref=f2e411]
+              - paragraph [ref=f2e412]: Tác phẩm xây cô là nữ nhân vật nổi bật về dung mạo, nhưng điểm khiến người đọc nhớ lâu hơn vẫn là khí chất và kiếm đạo.
+              - heading "Ninh Diêu có phải nữ nhân vật mạnh nhất Kiếm Lai không?" [level=3] [ref=f2e413]
+              - paragraph [ref=f2e414]: Không nên chốt “top 1” cho mọi thời điểm vì truyện có nhiều tồn tại cổ và thần linh. Nhưng Ninh Diêu chắc chắn thuộc nhóm nữ kiếm tu có chiến lực và thiên phú hàng đầu.
+              - separator [ref=f2e415]
+              - heading "Đọc tiếp series Kiếm Lai" [level=2] [ref=f2e416]
+              - list [ref=f2e417]:
+                - listitem [ref=f2e418]:
+                  - link "Kiếm Lai Wiki – bản đồ tổng hợp nhân vật, cảnh giới, thiên hạ và thế lực" [ref=f2e419] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/kiem-lai-wiki/
+                - listitem [ref=f2e420]:
+                  - link "Trần Bình An là ai? Toàn bộ tiểu sử, tu vi, sức mạnh và đạo lữ" [ref=f2e421] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/tran-binh-an-la-ai/
+                - listitem [ref=f2e422]:
+                  - link "Tề Tĩnh Xuân là ai? Toàn bộ cảnh giới, thân phận, bản mệnh tự và vai trò" [ref=f2e423] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/te-tinh-xuan-la-ai/
+                - listitem [ref=f2e424]:
+                  - link "A Lương là ai? Toàn bộ thân phận, cảnh giới, phi kiếm và chiến tích" [ref=f2e425] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/a-luong-la-ai/
+                - listitem [ref=f2e426]:
+                  - link "Lạc Phách Sơn là gì? Toàn bộ nguồn gốc, thành viên, sơn chủ và sức mạnh" [ref=f2e427] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/lac-phach-son-la-gi/
+                - listitem [ref=f2e428]:
+                  - 'link "Cảnh giới Kiếm Lai: toàn bộ luyện khí sĩ, võ phu và kiếm tu từ thấp đến cao" [ref=f2e429] [cursor=pointer]':
+                    - /url: https://doctieuthuyet.com/canh-gioi-kiem-lai/
+              - heading "Nguồn đối chiếu và lưu ý bản dịch" [level=2] [ref=f2e430]
+              - paragraph [ref=f2e431]:
+                - text: Bài viết ưu tiên đối chiếu với
+                - link "bách khoa Kiếm Lai trên Zongheng" [ref=f2e432] [cursor=pointer]:
+                  - /url: https://book.zongheng.com/baike/105.html
+                - text: . Phần Ninh Diêu trong nguồn này xác nhận cô là con của đôi kiếm tiên Kiếm Khí Trường Thành, có hai bản mệnh phi kiếm, sử dụng tiên kiếm Thiên Chân, từng cùng Trần Bình An đối địch, dạy Hám Sơn Phổ và trải qua các mốc Nguyên Anh – Ngọc Phác – Tiên Nhân – Phi Thăng. Tên phi kiếm và phiên âm có thể khác giữa các bản dịch Việt, vì vậy bài ưu tiên tách dữ kiện chắc chắn khỏi cách gọi fandom.
+            - generic [ref=f2e433]:
+              - strong [ref=f2e434]: "Thẻ:"
+              - generic [ref=f2e435]:
+                - link "Cảnh giới Kiếm Lai" [ref=f2e436] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tag/canh-gioi-kiem-lai/
+                - link "Nhân vật Kiếm Lai" [ref=f2e437] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tag/nhan-vat-kiem-lai/
+        - region [ref=f2e438]:
+          - generic [ref=f2e439]:
+            - heading "Bài viết liên quan" [level=2] [ref=f2e440]
+            - paragraph [ref=f2e441]: Có thể anh sẽ quan tâm
+          - generic [ref=f2e442]:
+            - article [ref=f2e443]:
+              - link "Đọc Tề Độ (齐渡) là gì? Đại thủy đạo Đại Ly, Vương Chu và ấn quốc sư Trần Bình An" [ref=f2e444] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/te-do-la-gi/
+                - generic [ref=f2e445]: DTT
+              - generic [ref=f2e446]:
+                - generic [ref=f2e447]: 18 Tháng 8, 2026
+                - heading [level=3] [ref=f2e448]:
+                  - link "Tề Độ (齐渡) là gì? Đại thủy đạo Đại Ly, Vương Chu và ấn quốc sư Trần Bình An" [ref=f2e449] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/te-do-la-gi/
+                - link "Đọc bài viết" [ref=f2e450] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/te-do-la-gi/
+                  - text: Đọc bài viết
+                  - generic [ref=f2e451]: →
+            - article [ref=f2e452]:
+              - link "Đọc Thác Nguyệt Sơn là gì? Trung tâm Man Hoang, đại tổ, Vương Tọa và đại chiến Kiếm Khí Trường Thành" [ref=f2e453] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/thac-nguyet-son-la-gi/
+                - generic [ref=f2e454]: DTT
+              - generic [ref=f2e455]:
+                - generic [ref=f2e456]: 18 Tháng 8, 2026
+                - heading [level=3] [ref=f2e457]:
+                  - link "Thác Nguyệt Sơn là gì? Trung tâm Man Hoang, đại tổ, Vương Tọa và đại chiến Kiếm Khí Trường Thành" [ref=f2e458] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/thac-nguyet-son-la-gi/
+                - link "Đọc bài viết" [ref=f2e459] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thac-nguyet-son-la-gi/
+                  - text: Đọc bài viết
+                  - generic [ref=f2e460]: →
+            - article [ref=f2e461]:
+              - link "Đọc Bạch Ngọc Kinh là gì? Ngũ Thành Thập Nhị Lâu, ba vị chưởng giáo và trung tâm Thanh Minh Thiên Hạ" [ref=f2e462] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bach-ngoc-kinh-la-gi/
+                - generic [ref=f2e463]: DTT
+              - generic [ref=f2e464]:
+                - generic [ref=f2e465]: 18 Tháng 8, 2026
+                - heading [level=3] [ref=f2e466]:
+                  - link "Bạch Ngọc Kinh là gì? Ngũ Thành Thập Nhị Lâu, ba vị chưởng giáo và trung tâm Thanh Minh Thiên Hạ" [ref=f2e467] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/bach-ngoc-kinh-la-gi/
+                - link "Đọc bài viết" [ref=f2e468] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/bach-ngoc-kinh-la-gi/
+                  - text: Đọc bài viết
+                  - generic [ref=f2e469]: →
+        - generic [ref=f2e470]:
+          - heading "Để lại một bình luận" [level=3] [ref=f2e471]
+          - generic [ref=f2e472]:
+            - paragraph [ref=f2e473]:
+              - text: Email của bạn sẽ không được hiển thị công khai.
+              - generic [ref=f2e474]: Các trường bắt buộc được đánh dấu *
+            - paragraph [ref=f2e475]:
+              - generic [ref=f2e476]: Bình luận *
+              - textbox "Bình luận *" [ref=f2e477]
+            - paragraph [ref=f2e478]:
+              - generic [ref=f2e479]: Tên *
+              - textbox "Tên *" [ref=f2e480]
+            - paragraph [ref=f2e481]:
+              - generic [ref=f2e482]: Email *
+              - textbox "Email *" [ref=f2e483]
+            - paragraph [ref=f2e484]:
+              - generic [ref=f2e485]: Trang web
+              - textbox "Trang web" [ref=f2e486]
+            - paragraph [ref=f2e487]:
+              - checkbox "Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi." [ref=f2e488]
+              - generic [ref=f2e489]: Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi.
+            - paragraph [ref=f2e490]:
+              - button "Gửi bình luận" [ref=f2e491] [cursor=pointer]
+  - contentinfo [ref=f2e492]:
+    - generic [ref=f2e493]:
+      - generic [ref=f2e494]:
+        - link "DTT." [ref=f2e495] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/
+        - paragraph [ref=f2e497]: Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.
+      - generic [ref=f2e498]:
+        - heading "Thông tin" [level=4] [ref=f2e499]
+        - list [ref=f2e500]:
+          - listitem [ref=f2e501]:
+            - link "Giới thiệu" [ref=f2e502] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/gioi-thieu/
+          - listitem [ref=f2e506]:
+            - link "Chính sách bảo mật" [ref=f2e507] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chinh-sach-bao-mat/
+          - listitem [ref=f2e510]:
+            - link "Điều khoản sử dụng" [ref=f2e511] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-khoan-su-dung/
+      - generic [ref=f2e514]:
+        - heading "Danh sách truyện" [level=4] [ref=f2e515]
+        - list [ref=f2e516]:
+          - listitem [ref=f2e517]:
+            - link "• Sảng Văn" [ref=f2e518] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+          - listitem [ref=f2e519]:
+            - link "• Vả Mặt" [ref=f2e520] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - listitem [ref=f2e521]:
+            - link "• Đô thị vả mặt" [ref=f2e522] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+          - listitem [ref=f2e523]:
+            - link "• Đô thị thương chiến" [ref=f2e524] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/
+          - listitem [ref=f2e525]:
+            - link "• Hào Môn" [ref=f2e526] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/hao-mon/
+          - listitem [ref=f2e527]:
+            - link "• Ẩm Thực" [ref=f2e528] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/am-thuc/
+      - generic [ref=f2e529]:
+        - heading "Top truyện" [level=4] [ref=f2e530]
+        - list [ref=f2e531]:
+          - listitem [ref=f2e532]:
+            - link "• Top ngôn tình hay nhất" [ref=f2e533] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang/
+          - listitem [ref=f2e534]:
+            - link "• Top ngôn tình hiện đại" [ref=f2e535] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+hien+dai
+          - listitem [ref=f2e536]:
+            - link "• Top tổng tài hay nhất" [ref=f2e537] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=tong+tai
+          - listitem [ref=f2e538]:
+            - link "• Top ngôn tình cổ đại" [ref=f2e539] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+co+dai
+          - listitem [ref=f2e540]:
+            - link "• Top xuyên không hay" [ref=f2e541] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=xuyen+khong
+          - listitem [ref=f2e542]:
+            - link "• Top truyện quân nhân" [ref=f2e543] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=quan+nhan
+      - generic [ref=f2e544]:
+        - heading "Kết nối" [level=4] [ref=f2e545]
+        - paragraph [ref=f2e546]: "Theo dõi để nhận thông báo chương mới:"
+        - generic [ref=f2e547]:
+          - link "Fanpage" [ref=f2e548] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+          - link "YouTube" [ref=f2e551] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/nhom-dich/
+        - paragraph [ref=f2e554]: Tải ứng dụng
+        - generic [ref=f2e555]:
+          - link "Tải về App Store" [ref=f2e556] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=f2e559]:
+              - generic [ref=f2e560]: Tải về
+              - strong [ref=f2e561]: App Store
+          - link "Tải về Google Play" [ref=f2e562] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=f2e565]:
+              - generic [ref=f2e566]: Tải về
+              - strong [ref=f2e567]: Google Play
+    - paragraph [ref=f2e573]:
+      - strong [ref=f2e574]: "Tuyên bố miễn trừ trách nhiệm:"
+      - text: DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.
+    - generic [ref=f2e575]: © 2026 DTT. All rights reserved.

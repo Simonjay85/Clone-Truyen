@@ -1,0 +1,9 @@
+[   18460ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/bai-viet/:247
+[   18469ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/bai-viet/:0
+[   18470ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/bai-viet/:0
+[   27900ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/bai-viet/:194
+[   28002ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/bai-viet/:222
+[  132444ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/img_data/images/no-image-cover-v5.png?v=5:0
+[  132449ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/img_data/images/no-image-cover-v5.png?v=5:0
+[  245160ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/img_data/images/no-image-cover-v5.png?v=5:0
+[  245162ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://doctieuthuyet.com/wp-content/themes/tehi-theme/img_data/images/no-image-cover-v5.png?v=5:0

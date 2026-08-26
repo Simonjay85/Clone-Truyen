@@ -1,0 +1,15 @@
+[    3693ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[    8236ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:247
+[    8243ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:0
+[    8243ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:0
+[    9801ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:194
+[    9903ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:222
+[   78785ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[   79943ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:247
+[   79959ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:0
+[   79959ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:0
+[   79963ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:194
+[   80064ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/truyen-moi-cap-nhat.html/:222
+[  177092ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_RESET @ https://doctieuthuyet.com/wp-content/uploads/2026/08/XYLRLCxYidDApkrC-683x1024.png?v=5:0
+[  177092ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_RESET @ https://doctieuthuyet.com/wp-content/uploads/2026/08/dtt-cover-01-1-683x1024.png?v=5:0
+[  177092ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_RESET @ https://doctieuthuyet.com/wp-content/uploads/2026/08/cdvpzlSuujVPUXRx-683x1024.png?v=5:0

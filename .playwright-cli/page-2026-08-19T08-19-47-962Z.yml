@@ -1,0 +1,456 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "DTT." [ref=e6] [cursor=pointer]:
+        - /url: https://doctieuthuyet.com
+      - generic [ref=e8]:
+        - button "Tìm kiếm" [ref=e9] [cursor=pointer]:
+          - generic [ref=e10]: 
+        - textbox "Tìm tên truyện, tên người đăng.." [ref=e11]
+      - generic [ref=e12]:
+        - link " Thể loại" [ref=e13] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/the-loai.html
+          - generic [ref=e14]: 
+          - text: Thể loại
+        - link " Bài viết" [ref=e15] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bai-viet/
+          - generic [ref=e16]: 
+          - text: Bài viết
+        - link " Truyện full" [ref=e17] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=e18]: 
+          - text: Truyện full
+        - link " BXH" [ref=e19] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e20]: 
+          - text: BXH
+        - link " Theo dõi" [ref=e21] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/theo-doi.html
+          - generic [ref=e22]: 
+          - text: Theo dõi
+        - button " Đăng nhập" [ref=e23] [cursor=pointer]:
+          - generic [ref=e24]: 
+          - text: Đăng nhập
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - img "Bị Cha Nuôi Lừa Quỹ Đầu Tư, Tôi Đánh Bại Ông Trên Sàn" [ref=e31]
+          - generic [ref=e32]:
+            - generic [ref=e33]:
+              - img "📖" [ref=e34]
+              - text: Truyện Chữ
+            - generic [ref=e35]:
+              - img "✅" [ref=e36]
+              - text: Đã đủ bộ
+          - generic [ref=e37]:
+            - link [ref=e38] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chuong/chuong-1-cha-nuoi-va-con-gai-thien-tai/
+              - img "📖" [ref=e39]
+              - text: Đọc ngay (Từ đầu)
+            - link "★ Đọc chương mới nhất" [ref=e40] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chuong/chuong-8-quay-ve-trai-tre-so-5/
+            - button "🔖 Theo dõi truyện" [ref=e41] [cursor=pointer]:
+              - img "🔖" [ref=e43]
+              - generic [ref=e44]: Theo dõi truyện
+          - generic [ref=e45]:
+            - generic [ref=e46]:
+              - generic [ref=e47]:
+                - img "⏱️" [ref=e48]
+                - text: Thời gian
+              - strong [ref=e49]: ~4 giờ
+            - generic [ref=e51]:
+              - generic [ref=e52]:
+                - img "💬" [ref=e53]
+                - text: Thảo luận
+              - strong [ref=e54]: 13 lượt
+            - generic [ref=e56]:
+              - generic [ref=e57]:
+                - img "⭐" [ref=e58]
+                - text: Đánh giá
+              - strong [ref=e59]: 4.9/5 (190 đánh giá)
+        - generic [ref=e60]:
+          - heading "Bị Cha Nuôi Lừa Quỹ Đầu Tư, Tôi Đánh Bại Ông Trên Sàn" [level=1] [ref=e61]
+          - link "Cung Đấu" [ref=e63] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/the-loai/cung-dau/
+          - generic [ref=e64]:
+            - generic [ref=e65]:
+              - generic [ref=e66]: ✍️ Tác giả
+              - generic [ref=e67]: Đang cập nhật
+            - generic [ref=e68]:
+              - generic [ref=e69]:
+                - img "🕒" [ref=e70]
+                - text: Cập nhật
+              - generic [ref=e71]: 27/05/2026
+            - generic [ref=e72]:
+              - generic [ref=e73]:
+                - img "📚" [ref=e74]
+                - text: Số chương
+              - generic [ref=e75]: 8 chương
+            - generic [ref=e76]:
+              - generic [ref=e77]:
+                - img "🏷️" [ref=e78]
+                - text: Nhóm dịch
+              - generic [ref=e79]: ST
+          - generic [ref=e80]:
+            - generic [ref=e81]: "Hoàng Khánh Linh, mồ côi từ nhỏ, được ông Vũ Quốc Thắng — chủ quỹ đầu tư Thắng Capital — nhận nuôi. Linh tưởng cha nuôi yêu thương, nhưng thực chất ông ta cần cô: IQ 145, tốt nghiệp đầu MIT, và khả năng phân tích tài chính thiên tài. Khi Linh phát hiện cha nuôi dùng tên cô để lừa nhà đầu tư, cô phải chọn: im lặng hay đối đầu người đã nuôi mình lớn."
+            - link "▼ Xem toàn bộ" [ref=e82] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e83]:
+          - generic [ref=e84]:
+            - generic [ref=e85]: 👁
+            - generic [ref=e86]: 3,672
+            - generic [ref=e87]: Lượt xem
+          - generic [ref=e88]:
+            - img "👍" [ref=e90]
+            - generic [ref=e91]: "495"
+            - generic [ref=e92]: Yêu thích
+          - generic [ref=e93]:
+            - img "📚" [ref=e95]
+            - generic [ref=e96]: "8"
+            - generic [ref=e97]: Chương
+          - generic [ref=e98]:
+            - img "✅" [ref=e99]
+            - text: Đã đủ bộ
+          - generic [ref=e100]:
+            - button "♡ Yêu thích" [ref=e101] [cursor=pointer]
+            - button "➦ Chia sẻ" [ref=e102] [cursor=pointer]
+            - button "⚑ Báo lỗi" [ref=e103] [cursor=pointer]
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - generic [ref=e106]:
+            - combobox [ref=e107]:
+              - option "↑↓ Giảm dần" [selected]
+              - option "↑↓ Tăng dần"
+            - textbox "🔍 Tìm chương" [ref=e108]
+          - generic [ref=e109]:
+            - text: "Tổng:"
+            - strong [ref=e110]: "8"
+            - text: chương • Trang 1 / 1
+        - generic [ref=e111]:
+          - 'link "Ch. 8 • 🕒 3 tháng trước 👁 511 Chương 8: Quay Về Trại Trẻ Số 5" [ref=e112] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-8-quay-ve-trai-tre-so-5/
+            - generic [ref=e116]:
+              - paragraph [ref=e117]:
+                - generic [ref=e118]:
+                  - text: Ch. 8 •
+                  - img "🕒" [ref=e119]
+                  - text: 3 tháng trước
+                - generic [ref=e120]: 👁 511
+              - paragraph [ref=e121]: "Chương 8: Quay Về Trại Trẻ Số 5"
+          - 'link "Ch. 7 • 🕒 3 tháng trước 👁 577 Chương 7: Thăm Cha Trong Tù" [ref=e122] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-7-tham-cha-trong-tu/
+            - generic [ref=e126]:
+              - paragraph [ref=e127]:
+                - generic [ref=e128]:
+                  - text: Ch. 7 •
+                  - img "🕒" [ref=e129]
+                  - text: 3 tháng trước
+                - generic [ref=e130]: 👁 577
+              - paragraph [ref=e131]: "Chương 7: Thăm Cha Trong Tù"
+          - 'link "Ch. 6 • 🕒 3 tháng trước 👁 188 Chương 6: Lập Quỹ Riêng — Linh Capital" [ref=e132] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-6-lap-quy-rieng-linh-capital/
+            - generic [ref=e136]:
+              - paragraph [ref=e137]:
+                - generic [ref=e138]:
+                  - text: Ch. 6 •
+                  - img "🕒" [ref=e139]
+                  - text: 3 tháng trước
+                - generic [ref=e140]: 👁 188
+              - paragraph [ref=e141]: "Chương 6: Lập Quỹ Riêng — Linh Capital"
+          - 'link "Ch. 5 • 🕒 3 tháng trước 👁 597 Chương 5: UBCK Vào Cuộc — Sụp Đổ" [ref=e142] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-5-ubck-vao-cuoc-sup-do/
+            - generic [ref=e146]:
+              - paragraph [ref=e147]:
+                - generic [ref=e148]:
+                  - text: Ch. 5 •
+                  - img "🕒" [ref=e149]
+                  - text: 3 tháng trước
+                - generic [ref=e150]: 👁 597
+              - paragraph [ref=e151]: "Chương 5: UBCK Vào Cuộc — Sụp Đổ"
+          - 'link "Ch. 4 • 🕒 3 tháng trước 👁 544 Chương 4: Tố Giác Và Chiến Tranh" [ref=e152] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-4-to-giac-va-chien-tranh/
+            - generic [ref=e156]:
+              - paragraph [ref=e157]:
+                - generic [ref=e158]:
+                  - text: Ch. 4 •
+                  - img "🕒" [ref=e159]
+                  - text: 3 tháng trước
+                - generic [ref=e160]: 👁 544
+              - paragraph [ref=e161]: "Chương 4: Tố Giác Và Chiến Tranh"
+          - 'link "Ch. 3 • 🕒 3 tháng trước 👁 904 Chương 3: Chọn Lựa Đau Đớn" [ref=e162] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-3-chon-lua-dau-don/
+            - generic [ref=e166]:
+              - paragraph [ref=e167]:
+                - generic [ref=e168]:
+                  - text: Ch. 3 •
+                  - img "🕒" [ref=e169]
+                  - text: 3 tháng trước
+                - generic [ref=e170]: 👁 904
+              - paragraph [ref=e171]: "Chương 3: Chọn Lựa Đau Đớn"
+          - 'link "Ch. 2 • 🕒 3 tháng trước 👁 959 Chương 2: Phát Hiện Sự Thật" [ref=e172] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-2-phat-hien-su-that/
+            - generic [ref=e176]:
+              - paragraph [ref=e177]:
+                - generic [ref=e178]:
+                  - text: Ch. 2 •
+                  - img "🕒" [ref=e179]
+                  - text: 3 tháng trước
+                - generic [ref=e180]: 👁 959
+              - paragraph [ref=e181]: "Chương 2: Phát Hiện Sự Thật"
+          - 'link "Ch. 1 • 🕒 3 tháng trước 👁 198 Chương 1: Cha Nuôi Và Con Gái Thiên Tài" [ref=e182] [cursor=pointer]':
+            - /url: https://doctieuthuyet.com/chuong/chuong-1-cha-nuoi-va-con-gai-thien-tai/
+            - generic [ref=e186]:
+              - paragraph [ref=e187]:
+                - generic [ref=e188]:
+                  - text: Ch. 1 •
+                  - img "🕒" [ref=e189]
+                  - text: 3 tháng trước
+                - generic [ref=e190]: 👁 198
+              - paragraph [ref=e191]: "Chương 1: Cha Nuôi Và Con Gái Thiên Tài"
+      - generic [ref=e192]:
+        - heading "💬 Bình luận 13 bình luận" [level=3] [ref=e193]:
+          - img "💬" [ref=e195]
+          - text: Bình luận
+          - generic [ref=e196]: 13 bình luận
+        - generic [ref=e197]:
+          - generic [ref=e198]:
+            - generic [ref=e199]: H
+            - generic [ref=e200]:
+              - generic [ref=e201]:
+                - generic [ref=e202]:
+                  - strong [ref=e203]: Hoàng Nam
+                  - generic [ref=e204]: ★★★★★
+                - generic [ref=e205]: 5 tháng trước
+              - generic [ref=e206]: Thích cách truyện bám vào vụ tôi đánh bại ông trên sàn, có mâu thuẫn rõ nên lúc phản công mới sướng.
+          - generic [ref=e207]:
+            - generic [ref=e208]: M
+            - generic [ref=e209]:
+              - generic [ref=e210]:
+                - generic [ref=e211]:
+                  - strong [ref=e212]: Mai Anh
+                  - generic [ref=e213]: ★★★★☆
+                - generic [ref=e214]: 4 tháng trước
+              - generic [ref=e215]: Bộ này nên đọc từ đầu để thấy quá trình nhân vật chính bị xem thường rồi mới bật lên, đọc lẻ chương sẽ không đã bằng.
+          - generic [ref=e216]:
+            - generic [ref=e217]: Đ
+            - generic [ref=e218]:
+              - generic [ref=e219]:
+                - generic [ref=e220]:
+                  - strong [ref=e221]: Đăng Khoa
+                  - generic [ref=e222]: ★★★★★
+                - generic [ref=e223]: 4 tháng trước
+              - generic [ref=e224]: Điểm mình thích là truyện không chỉ hô khẩu hiệu cho kêu, mà có mâu thuẫn cụ thể và cách gỡ từng lớp.
+          - generic [ref=e225]:
+            - generic [ref=e226]: C
+            - generic [ref=e227]:
+              - generic [ref=e228]:
+                - generic [ref=e229]:
+                  - strong [ref=e230]: Cẩm Tú
+                  - generic [ref=e231]: ★★★★★
+                - generic [ref=e232]: 4 tháng trước
+              - generic [ref=e233]: Đoạn đầu dựng mâu thuẫn chắc, nhân vật chính không thắng dễ. Càng đọc càng muốn xem những người khinh thường phải trả giá.
+          - generic [ref=e234]:
+            - generic [ref=e235]: T
+            - generic [ref=e236]:
+              - generic [ref=e237]:
+                - generic [ref=e238]:
+                  - strong [ref=e239]: Tuyết Mai
+                  - generic [ref=e240]: ★★★★★
+                - generic [ref=e241]: 4 tháng trước
+              - generic [ref=e242]: Nhân vật phản diện trong vụ tôi đánh bại ông trên sàn đọc mà bực thật, nhưng càng bực thì đoạn lật kèo càng đáng chờ.
+          - generic [ref=e243]:
+            - generic [ref=e244]: M
+            - generic [ref=e245]:
+              - generic [ref=e246]:
+                - generic [ref=e247]:
+                  - strong [ref=e248]: Minh Nhật
+                  - generic [ref=e249]: ★★★★★
+                - generic [ref=e250]: 4 tháng trước
+              - generic [ref=e251]: Đọc tới mấy cảnh bị khinh thường mới thấy cú thâu tóm phía sau đã. Vả mặt phải có nền đau như vậy mới ngấm.
+          - generic [ref=e252]:
+            - generic [ref=e253]: Đ
+            - generic [ref=e254]:
+              - generic [ref=e255]:
+                - generic [ref=e256]:
+                  - strong [ref=e257]: Đức Thịnh
+                  - generic [ref=e258]: ★★★★☆
+                - generic [ref=e259]: 4 tháng trước
+              - generic [ref=e260]: "Đọc tên truyện đã thấy đúng gu: Tôi Đánh Bại Ông Trên Sàn. Cú bị dồn vào đường cùng rồi dùng bằng chứng bật lại rất đã."
+          - generic [ref=e261]:
+            - generic [ref=e262]: T
+            - generic [ref=e263]:
+              - generic [ref=e264]:
+                - generic [ref=e265]:
+                  - strong [ref=e266]: Trọng Nghĩa
+                  - generic [ref=e267]: ★★★★★
+                - generic [ref=e268]: 4 tháng trước
+              - generic [ref=e269]: Bị Cha Nuôi Lừa Quỹ Đầu Tư nghe tưởng đơn giản mà vào truyện căng thật. Mấy đoạn liên quan cha làm mình đọc liền mấy chương.
+          - generic [ref=e270]:
+            - generic [ref=e271]: "N"
+            - generic [ref=e272]:
+              - generic [ref=e273]:
+                - generic [ref=e274]:
+                  - strong [ref=e275]: Ngọc Diệp
+                  - generic [ref=e276]: ★★★★★
+                - generic [ref=e277]: 3 tháng trước
+              - generic [ref=e278]: Không ngờ chủ đề cha mà viết thành sảng văn cuốn vậy. Vừa tức thay nhân vật chính vừa hóng màn phản đòn.
+          - generic [ref=e279]:
+            - generic [ref=e280]: M
+            - generic [ref=e281]:
+              - generic [ref=e282]:
+                - generic [ref=e283]:
+                  - strong [ref=e284]: Minh An
+                  - generic [ref=e285]: ★★★★★
+                - generic [ref=e286]: 3 tháng trước
+              - generic [ref=e287]: "Chương 1: Cha Nuôi Và Con Gái Thiên Tài mở khá bắt. Hy vọng các chương sau giữ nhịp căng như phần giới thiệu."
+          - generic [ref=e288]:
+            - generic [ref=e289]: B
+            - generic [ref=e290]:
+              - generic [ref=e291]:
+                - generic [ref=e292]:
+                  - strong [ref=e293]: Bích Trâm
+                  - generic [ref=e294]: ★★★★★
+                - generic [ref=e295]: 3 tháng trước
+              - generic [ref=e296]: Phần cha nuôi viết có chất riêng, không phải kiểu vả mặt nói miệng. Mình thích nhất cảm giác nhân vật chính càng bị ép càng tỉnh.
+          - generic [ref=e297]:
+            - generic [ref=e298]: T
+            - generic [ref=e299]:
+              - generic [ref=e300]:
+                - generic [ref=e301]:
+                  - strong [ref=e302]: Thu Trang
+                  - generic [ref=e303]: ★★★★★
+                - generic [ref=e304]: 3 tháng trước
+              - generic [ref=e305]: Chi tiết cha nuôi làm bối cảnh truyện khác hẳn mấy bộ chung chung. Có cảm giác tác giả có tìm hiểu thật.
+          - generic [ref=e306]:
+            - generic [ref=e307]: T
+            - generic [ref=e308]:
+              - generic [ref=e309]:
+                - generic [ref=e310]:
+                  - strong [ref=e311]: Thanh Hằng
+                  - generic [ref=e312]: ★★★★★
+                - generic [ref=e313]: 3 tháng trước
+              - generic [ref=e314]: Nếu ai thích Cung Đấu kiểu có nghề, có chứng cứ, có cú lật mặt trước đám đông thì bộ này hợp lắm.
+        - generic [ref=e315]:
+          - img "😋" [ref=e317]
+          - generic [ref=e319]:
+            - textbox "Biệt danh của bạn (tùy chọn)" [ref=e320]
+            - generic [ref=e321]:
+              - generic [ref=e322]: "Đánh giá của bạn:"
+              - generic [ref=e323] [cursor=pointer]:
+                - generic [ref=e324]: ★
+                - generic [ref=e325]: ★
+                - generic [ref=e326]: ★
+                - generic [ref=e327]: ★
+                - generic [ref=e328]: ★
+            - textbox "Viết bình luận của bạn..." [ref=e329]
+            - generic [ref=e330]:
+              - generic [ref=e331]: 0/300
+              - button "Đăng bình luận" [ref=e332] [cursor=pointer]
+      - generic [ref=e334]:
+        - heading "Gợi ý danh sách truyện liên quan" [level=3] [ref=e335]
+        - generic [ref=e336]:
+          - link [ref=e337] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/truyen/nu-hoang-tra-sen-tay-ho-bi-duoi-khoi-gia-toc-co-xay-de-che-tra-nghin-ty/
+            - generic [ref=e339]:
+              - 'heading "Nữ Hoàng Trà Sen Tây Hồ: Bị Đuổi Khỏi Gia..." [level=4] [ref=e340]'
+              - paragraph [ref=e341]: “Hơn một trăm năm Lê Gia Trà danh chấn Hà Thành, nay lại để...
+          - link [ref=e342] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/truyen/bi-gat-khoi-hdqt-cong-ty-minh-sang-lap-toi-xay-paychain-va-thau-tom-lai/
+            - generic [ref=e344]:
+              - heading "Bị Gạt Khỏi HĐQT Công Ty Mình Sáng Lập, Tôi..." [level=4] [ref=e345]
+              - paragraph [ref=e346]: Lê Minh Khoa — co-founder VietPay, ứng dụng thanh toán di động — bị...
+          - link [ref=e347] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/truyen/bac-si-tham-my-sai-gon-bi-vu-oan-phau-thuat-hong-toi-lat-mat-ca-benh-vie/
+            - generic [ref=e349]:
+              - 'heading "Bác Sĩ Thẩm Mỹ Sài Gòn: Bị Vu Oan Phẫu..." [level=4] [ref=e350]'
+              - paragraph [ref=e351]: “Ngô Hoàng Khải, y đức và tay nghề của anh cũng chỉ đến thế...
+          - link [ref=e352] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/truyen/bi-duoi-khoi-nha-hang-sao-toi-mo-quan-via-he-khien-ca-sai-gon-xep-hang/
+            - generic [ref=e354]:
+              - heading "BỊ ĐUỔI KHỎI NHÀ HÀNG SAO, TÔI MỞ QUÁN VỈA..." [level=4] [ref=e355]
+              - paragraph [ref=e356]: Nguyễn Trọng Khang bị sa thải khỏi nhà hàng Sao Đỏ vì từ chối...
+  - contentinfo [ref=e357]:
+    - generic [ref=e358]:
+      - generic [ref=e359]:
+        - link "DTT." [ref=e360] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/
+        - paragraph [ref=e362]: Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.
+      - generic [ref=e363]:
+        - heading "Thông tin" [level=4] [ref=e364]
+        - list [ref=e365]:
+          - listitem [ref=e366]:
+            - link "Giới thiệu" [ref=e367] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/gioi-thieu/
+          - listitem [ref=e371]:
+            - link "Chính sách bảo mật" [ref=e372] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chinh-sach-bao-mat/
+          - listitem [ref=e375]:
+            - link "Điều khoản sử dụng" [ref=e376] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-khoan-su-dung/
+      - generic [ref=e379]:
+        - heading "Danh sách truyện" [level=4] [ref=e380]
+        - list [ref=e381]:
+          - listitem [ref=e382]:
+            - link "• Sảng Văn" [ref=e383] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+          - listitem [ref=e384]:
+            - link "• Vả Mặt" [ref=e385] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - listitem [ref=e386]:
+            - link "• Đô thị vả mặt" [ref=e387] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+          - listitem [ref=e388]:
+            - link "• Đô thị thương chiến" [ref=e389] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/
+          - listitem [ref=e390]:
+            - link "• Hào Môn" [ref=e391] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/hao-mon/
+          - listitem [ref=e392]:
+            - link "• Ẩm Thực" [ref=e393] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/am-thuc/
+      - generic [ref=e394]:
+        - heading "Top truyện" [level=4] [ref=e395]
+        - list [ref=e396]:
+          - listitem [ref=e397]:
+            - link "• Top ngôn tình hay nhất" [ref=e398] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang/
+          - listitem [ref=e399]:
+            - link "• Top ngôn tình hiện đại" [ref=e400] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+hien+dai
+          - listitem [ref=e401]:
+            - link "• Top tổng tài hay nhất" [ref=e402] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=tong+tai
+          - listitem [ref=e403]:
+            - link "• Top ngôn tình cổ đại" [ref=e404] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+co+dai
+          - listitem [ref=e405]:
+            - link "• Top xuyên không hay" [ref=e406] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=xuyen+khong
+          - listitem [ref=e407]:
+            - link "• Top truyện quân nhân" [ref=e408] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=quan+nhan
+      - generic [ref=e409]:
+        - heading "Kết nối" [level=4] [ref=e410]
+        - paragraph [ref=e411]: "Theo dõi để nhận thông báo chương mới:"
+        - generic [ref=e412]:
+          - link "Fanpage" [ref=e413] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+          - link "YouTube" [ref=e416] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/nhom-dich/
+        - paragraph [ref=e419]: Tải ứng dụng
+        - generic [ref=e420]:
+          - link "Tải về App Store" [ref=e421] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=e424]:
+              - generic [ref=e425]: Tải về
+              - strong [ref=e426]: App Store
+          - link "Tải về Google Play" [ref=e427] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=e430]:
+              - generic [ref=e431]: Tải về
+              - strong [ref=e432]: Google Play
+    - paragraph [ref=e438]:
+      - strong [ref=e439]: "Tuyên bố miễn trừ trách nhiệm:"
+      - text: DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.
+    - generic [ref=e440]: © 2026 DTT. All rights reserved.

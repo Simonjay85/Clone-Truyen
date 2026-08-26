@@ -1,0 +1,555 @@
+/*
+ * Shared interior article surface.
+ *
+ * The novel detail template is the reference language for DTT interiors:
+ * mist-blue page field, ink-brown hero, bright action accents and a calm
+ * reading surface. This file is intentionally scoped away from the Kiếm Lai
+ * Wiki hub, which has its own archival visual system.
+ */
+.dtt-article-sync {
+    --dtt-sync-ink: #201916;
+    --dtt-sync-ink-deep: #15110f;
+    --dtt-sync-ink-soft: #302521;
+    --dtt-sync-orange: #f97316;
+    --dtt-sync-orange-dark: #c2410c;
+    --dtt-sync-green: #10b981;
+    --dtt-sync-purple: #8b5cf6;
+    --dtt-sync-blue: #4f46e5;
+    --dtt-sync-page: #edf4fa;
+    --dtt-sync-paper: #ffffff;
+    --dtt-sync-paper-soft: #f8fafc;
+    --dtt-sync-line: #e1e8f0;
+    --dtt-sync-text: #334155;
+    --dtt-sync-muted: #64748b;
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    padding: 30px 15px 92px;
+    background:
+        radial-gradient(circle at 8% 0%, rgba(147, 197, 253, .22), transparent 23rem),
+        radial-gradient(circle at 94% 16%, rgba(196, 181, 253, .16), transparent 25rem),
+        linear-gradient(180deg, #f2f7fb 0%, var(--dtt-sync-page) 100%) !important;
+    color: var(--dtt-sync-text);
+}
+
+#main-content:has(.dtt-article-sync) {
+    background: var(--dtt-sync-page);
+}
+
+.dtt-article-sync,
+.dtt-article-sync * {
+    box-sizing: border-box;
+}
+
+.dtt-article-sync .dtt-single-post__inner {
+    width: min(100%, 1250px);
+    margin: 0 auto;
+}
+
+/* Article hero: the same dark, layered object used by single-truyen. */
+.dtt-article-sync .dtt-post-header {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin: 0 auto 24px;
+    padding: clamp(26px, 4vw, 46px) clamp(22px, 5vw, 62px) 34px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 86% 8%, rgba(249, 115, 22, .19), transparent 18rem),
+        radial-gradient(circle at 52% 104%, rgba(139, 92, 246, .17), transparent 24rem),
+        linear-gradient(115deg, var(--dtt-sync-ink-deep), var(--dtt-sync-ink-soft) 54%, #191412);
+    box-shadow: 0 14px 36px rgba(30, 41, 59, .16);
+    color: #fff;
+}
+
+.dtt-article-sync .dtt-post-header::before {
+    position: absolute;
+    top: -150px;
+    right: -60px;
+    width: 360px;
+    height: 360px;
+    border: 1px solid rgba(249, 115, 22, .24);
+    border-radius: 50%;
+    box-shadow: 0 0 0 22px rgba(249, 115, 22, .035), 0 0 0 44px rgba(249, 115, 22, .025);
+    content: '';
+    pointer-events: none;
+}
+
+.dtt-article-sync .dtt-post-header::after {
+    position: absolute;
+    right: 9%;
+    bottom: 0;
+    width: 1px;
+    height: 72%;
+    background: linear-gradient(180deg, transparent, rgba(249, 115, 22, .50), transparent);
+    content: '';
+    opacity: .65;
+    pointer-events: none;
+    transform: rotate(23deg);
+    transform-origin: bottom center;
+}
+
+.dtt-article-sync__topline {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.dtt-article-sync__back {
+    display: inline-flex;
+    min-height: 34px;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 255, 255, .20);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .07);
+    color: rgba(255, 255, 255, .84);
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.dtt-article-sync__back:hover,
+.dtt-article-sync__back:focus-visible {
+    border-color: rgba(249, 115, 22, .62);
+    background: rgba(249, 115, 22, .18);
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.dtt-article-sync__status {
+    color: rgba(255, 255, 255, .52);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.dtt-article-sync .dtt-post-kicker {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0 0 14px;
+    padding: 6px 12px;
+    border: 1px solid rgba(167, 139, 250, .58);
+    border-radius: 999px;
+    background: rgba(99, 102, 241, .30);
+    color: #ede9fe;
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: .08em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.dtt-article-sync .dtt-post-kicker::before {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #c4b5fd;
+    box-shadow: 0 0 0 3px rgba(196, 181, 253, .12);
+    content: '';
+}
+
+.dtt-article-sync .dtt-post-kicker a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.dtt-article-sync .dtt-post-kicker a:hover,
+.dtt-article-sync .dtt-post-kicker a:focus-visible {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.dtt-article-sync .dtt-post-title {
+    position: relative;
+    z-index: 1;
+    max-width: 980px;
+    margin: 0;
+    color: #fff;
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(32px, 5vw, 62px);
+    font-weight: 850;
+    letter-spacing: -.045em;
+    line-height: 1.08;
+    text-wrap: balance;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .24);
+}
+
+.dtt-article-sync .dtt-post-meta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 18px;
+    margin-top: 22px;
+    color: rgba(255, 255, 255, .62);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+}
+
+.dtt-article-sync .dtt-post-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.dtt-article-sync .dtt-post-meta span + span::before {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .34);
+    content: '';
+}
+
+.dtt-article-sync .dtt-post-meta a {
+    color: #fed7aa;
+    font-weight: 800;
+}
+
+.dtt-article-sync .dtt-article-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 30px;
+    align-items: start;
+    margin: 0 auto;
+}
+
+.dtt-article-sync .dtt-toc-rail {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+    min-width: 0;
+}
+
+.dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] {
+    width: 100%;
+    max-height: calc(100vh - 124px);
+    box-sizing: border-box;
+    overflow-y: auto;
+    margin: 0;
+    padding: 18px 16px 20px;
+    border: 1px solid #dbe5ef;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .86);
+    box-shadow: 0 10px 26px rgba(30, 41, 59, .08);
+    scrollbar-color: #c4b5fd transparent;
+    scrollbar-width: thin;
+}
+
+.dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] h2 {
+    margin: 0 0 12px;
+    color: #172033;
+    font-size: 18px;
+    font-weight: 850;
+    line-height: 1.3;
+}
+
+.dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] ol {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] li {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] li + li { margin-top: 5px; }
+
+.dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .18s ease, background-color .18s ease;
+}
+
+.dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] a:hover,
+.dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] a:focus-visible {
+    color: var(--dtt-sync-blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.dtt-article-sync .dtt-post-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--dtt-sync-line);
+    border-radius: 16px;
+    background: var(--dtt-sync-paper);
+    box-shadow: 0 14px 34px rgba(30, 41, 59, .09);
+}
+
+.dtt-article-sync .dtt-post-featured {
+    margin: 0;
+    padding: 20px 34px 0;
+    background: var(--dtt-sync-paper);
+}
+
+.dtt-article-sync .dtt-post-featured img {
+    width: 100%;
+    max-height: 420px;
+    border-radius: 12px;
+    box-shadow: 0 10px 26px rgba(30, 41, 59, .14);
+    object-fit: cover;
+}
+
+.dtt-article-sync .dtt-post-content {
+    padding: clamp(28px, 5vw, 54px) clamp(22px, 5vw, 56px);
+    color: var(--dtt-sync-text);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(17px, 1.45vw, 19px);
+    line-height: 1.88;
+}
+
+.dtt-article-sync .dtt-post-content > *:first-child { margin-top: 0; }
+.dtt-article-sync .dtt-post-content > *:last-child { margin-bottom: 0; }
+
+.dtt-article-sync .dtt-post-content > p:first-child {
+    margin-bottom: 1.65em;
+    padding: 20px 24px;
+    border-left: 4px solid var(--dtt-sync-orange);
+    border-radius: 0 12px 12px 0;
+    background: #fff7ed;
+    color: #3b2a21;
+    font-size: 1.04em;
+}
+
+.dtt-article-sync .dtt-post-content p { margin: 0 0 1.35em; }
+
+.dtt-article-sync .dtt-post-content h2,
+.dtt-article-sync .dtt-post-content h3,
+.dtt-article-sync .dtt-post-content h4 {
+    position: relative;
+    margin: 2em 0 .7em;
+    color: #172033;
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 850;
+    letter-spacing: -.025em;
+    line-height: 1.32;
+}
+
+.dtt-article-sync .dtt-post-content h2 {
+    padding-bottom: 11px;
+    border-bottom: 1px solid var(--dtt-sync-line);
+    font-size: clamp(24px, 3vw, 34px);
+}
+
+.dtt-article-sync .dtt-post-content h2::before {
+    display: inline-block;
+    width: 6px;
+    height: 22px;
+    margin: 0 11px 0 0;
+    border-radius: 99px;
+    background: var(--dtt-sync-orange);
+    content: '';
+    vertical-align: -2px;
+}
+
+.dtt-article-sync .dtt-post-content h3 { font-size: clamp(20px, 2.4vw, 27px); }
+.dtt-article-sync .dtt-post-content h4 { font-size: 1.08em; }
+
+.dtt-article-sync .dtt-post-content a {
+    color: var(--dtt-sync-blue);
+    font-weight: 700;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.dtt-article-sync .dtt-post-content a:hover { color: var(--dtt-sync-orange-dark); }
+
+.dtt-article-sync .dtt-post-content strong { color: #172033; font-weight: 850; }
+
+.dtt-article-sync .dtt-post-content blockquote {
+    margin: 1.7em 0;
+    padding: 18px 22px;
+    border: 1px solid #dbeafe;
+    border-left: 4px solid var(--dtt-sync-blue);
+    border-radius: 0 12px 12px 0;
+    background: #f8fbff;
+    color: #475569;
+}
+
+.dtt-article-sync .dtt-post-content table {
+    width: 100%;
+    margin: 1.5em 0;
+    border: 1px solid var(--dtt-sync-line);
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.dtt-article-sync .dtt-post-content th,
+.dtt-article-sync .dtt-post-content td {
+    padding: 12px 14px;
+    border: 0;
+    border-bottom: 1px solid var(--dtt-sync-line);
+    text-align: left;
+    vertical-align: top;
+}
+
+.dtt-article-sync .dtt-post-content th {
+    background: var(--dtt-sync-ink-soft);
+    color: #fff;
+    font-size: .82em;
+    font-weight: 850;
+}
+
+.dtt-article-sync .dtt-post-content tbody tr:nth-child(even) td { background: #f8fafc; }
+.dtt-article-sync .dtt-post-content tbody tr:last-child td { border-bottom: 0; }
+
+.dtt-article-sync .dtt-post-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    padding: 20px clamp(22px, 5vw, 56px) 28px;
+    border-top: 1px solid var(--dtt-sync-line);
+    color: var(--dtt-sync-muted);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+}
+
+.dtt-article-sync .dtt-post-tags a {
+    padding: 6px 11px;
+    border: 1px solid #ddd6fe;
+    background: #f5f3ff;
+    color: #5b21b6;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.dtt-article-sync .dtt-post-tags a:hover {
+    border-color: var(--dtt-sync-purple);
+    background: var(--dtt-sync-purple);
+    color: #fff;
+}
+
+.dtt-article-sync .dtt-related-posts {
+    margin-top: 26px;
+    padding: 26px;
+    border: 1px solid var(--dtt-sync-line);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .84);
+    box-shadow: 0 12px 28px rgba(30, 41, 59, .06);
+}
+
+.dtt-article-sync .dtt-related-title { color: #172033; }
+.dtt-article-sync .dtt-related-subtitle { color: var(--dtt-sync-muted); }
+
+@media (max-width: 1199px) {
+    .dtt-article-sync .dtt-article-layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .dtt-article-sync .dtt-toc-rail {
+        position: relative;
+        top: auto;
+    }
+
+    .dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] {
+        max-height: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .dtt-article-sync {
+        padding: 16px 10px 74px;
+    }
+
+    .dtt-article-sync .dtt-post-header {
+        margin-bottom: 16px;
+        padding: 22px 18px 24px;
+        border-radius: 14px;
+    }
+
+    .dtt-article-sync__topline {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+        margin-bottom: 19px;
+    }
+
+    .dtt-article-sync__status { font-size: 10px; }
+
+    .dtt-article-sync .dtt-post-title {
+        font-size: clamp(30px, 9vw, 42px);
+        letter-spacing: -.04em;
+    }
+
+    .dtt-article-sync .dtt-post-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 18px;
+    }
+
+    .dtt-article-sync .dtt-post-meta span + span::before { display: none; }
+
+    .dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] {
+        padding: 14px 13px 16px;
+        border-radius: 12px;
+    }
+
+    .dtt-article-sync .dtt-post-card { border-radius: 14px; }
+
+    .dtt-article-sync .dtt-post-featured { padding: 12px 12px 0; }
+    .dtt-article-sync .dtt-post-featured img { border-radius: 10px; }
+
+    .dtt-article-sync .dtt-post-content {
+        padding: 27px 17px 38px;
+        font-size: 16px;
+        line-height: 1.82;
+    }
+
+    .dtt-article-sync .dtt-post-content > p:first-child {
+        padding: 16px 17px;
+    }
+
+    .dtt-article-sync .dtt-post-content h2 {
+        font-size: 25px;
+    }
+
+    .dtt-article-sync .dtt-post-content table {
+        display: block;
+        overflow-x: auto;
+        white-space: normal;
+    }
+
+    .dtt-article-sync .dtt-post-content th,
+    .dtt-article-sync .dtt-post-content td {
+        min-width: 145px;
+        padding: 11px 12px;
+    }
+
+    .dtt-article-sync .dtt-related-posts {
+        margin-top: 16px;
+        padding: 18px 14px;
+        border-radius: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dtt-article-sync *,
+    .dtt-article-sync *::before,
+    .dtt-article-sync *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}

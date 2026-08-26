@@ -1,0 +1,344 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e4]:
+    - generic [ref=f1e5]:
+      - link "DTT." [ref=f1e6] [cursor=pointer]:
+        - /url: https://doctieuthuyet.com
+      - generic [ref=f1e8]:
+        - button "Tìm kiếm" [ref=f1e9] [cursor=pointer]:
+          - generic [ref=f1e10]: 
+        - textbox "Tìm tên truyện, tên người đăng.." [ref=f1e11]
+      - generic [ref=f1e12]:
+        - link " Thể loại" [ref=f1e13] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/the-loai.html
+          - generic [ref=f1e14]: 
+          - text: Thể loại
+        - link " Bài viết" [ref=f1e15] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bai-viet/
+          - generic [ref=f1e16]: 
+          - text: Bài viết
+        - link " Truyện full" [ref=f1e17] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=f1e18]: 
+          - text: Truyện full
+        - link " BXH" [ref=f1e19] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=f1e20]: 
+          - text: BXH
+        - link " Theo dõi" [ref=f1e21] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/theo-doi.html
+          - generic [ref=f1e22]: 
+          - text: Theo dõi
+        - button " Đăng nhập" [ref=f1e23] [cursor=pointer]:
+          - generic [ref=f1e24]: 
+          - text: Đăng nhập
+  - main [ref=f1e25]:
+    - generic [ref=f1e26]:
+      - generic [ref=f1e27]:
+        - navigation "Đường dẫn" [ref=f1e28]:
+          - link "Trang chủ" [ref=f1e29] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+          - generic [ref=f1e30]: /
+          - generic [ref=f1e31]: Bài viết
+        - heading "Bài viết" [level=1] [ref=f1e32]
+        - paragraph [ref=f1e33]: Tổng hợp những nội dung mới nhất, kiến thức và bài viết chuyên sâu trên DTT.
+      - paragraph [ref=f1e34]: 109 bài viết
+      - region "Danh sách bài viết" [ref=f1e35]:
+        - article [ref=f1e36]:
+          - link [ref=f1e37] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/te-do-la-gi/
+            - img "Tề Độ (齐渡) là gì? Đại thủy đạo Đại Ly, Vương Chu và ấn quốc sư Trần Bình An" [ref=f1e38]
+          - generic [ref=f1e39]:
+            - generic [ref=f1e40]:
+              - generic [ref=f1e41]: Kiếm Lai
+              - generic [ref=f1e42]: •
+              - time [ref=f1e43]: 18/08/2026
+            - heading [level=2] [ref=f1e44]:
+              - link "Tề Độ (齐渡) là gì? Đại thủy đạo Đại Ly, Vương Chu và ấn quốc sư Trần Bình An" [ref=f1e45] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/te-do-la-gi/
+            - paragraph [ref=f1e46]: Tề Độ (齐渡) là gì? Tìm hiểu đại thủy đạo quan trọng của Đại Ly, quan hệ với Vương Chu/Trĩ Khuê, thủy vận Bảo Bình Châu và vị trí trên ấn quốc…
+            - link "Đọc bài viết" [ref=f1e47] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/te-do-la-gi/
+              - text: Đọc bài viết
+              - generic [ref=f1e48]: →
+        - article [ref=f1e49]:
+          - link [ref=f1e50] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/thac-nguyet-son-la-gi/
+            - img "Thác Nguyệt Sơn là gì? Trung tâm Man Hoang, đại tổ, Vương Tọa và đại chiến Kiếm Khí Trường Thành" [ref=f1e51]
+          - generic [ref=f1e52]:
+            - generic [ref=f1e53]:
+              - generic [ref=f1e54]: Kiếm Lai
+              - generic [ref=f1e55]: •
+              - time [ref=f1e56]: 18/08/2026
+            - heading [level=2] [ref=f1e57]:
+              - link "Thác Nguyệt Sơn là gì? Trung tâm Man Hoang, đại tổ, Vương Tọa và đại chiến Kiếm Khí Trường Thành" [ref=f1e58] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/thac-nguyet-son-la-gi/
+            - paragraph [ref=f1e59]: Thác Nguyệt Sơn là gì? Tìm hiểu trung tâm nghị sự Man Hoang Thiên Hạ, đại tổ, hệ Vương Tọa – quân trướng, quan hệ Chu Mật, đại chiến Kiếm Khí Trường…
+            - link "Đọc bài viết" [ref=f1e60] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/thac-nguyet-son-la-gi/
+              - text: Đọc bài viết
+              - generic [ref=f1e61]: →
+        - article [ref=f1e62]:
+          - link [ref=f1e63] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/bach-ngoc-kinh-la-gi/
+            - img "Bạch Ngọc Kinh là gì? Ngũ Thành Thập Nhị Lâu, ba vị chưởng giáo và trung tâm Thanh Minh Thiên Hạ" [ref=f1e64]
+          - generic [ref=f1e65]:
+            - generic [ref=f1e66]:
+              - generic [ref=f1e67]: Kiếm Lai
+              - generic [ref=f1e68]: •
+              - time [ref=f1e69]: 18/08/2026
+            - heading [level=2] [ref=f1e70]:
+              - link "Bạch Ngọc Kinh là gì? Ngũ Thành Thập Nhị Lâu, ba vị chưởng giáo và trung tâm Thanh Minh Thiên Hạ" [ref=f1e71] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bach-ngoc-kinh-la-gi/
+            - paragraph [ref=f1e72]: "Bạch Ngọc Kinh là gì? Bài đầy đủ về trung tâm Đạo gia Thanh Minh Thiên Hạ: Ngũ Thành Thập Nhị Lâu, Thượng Thanh Các, ba vị chưởng giáo, Dư Đấu–Lục Trầm,…"
+            - link "Đọc bài viết" [ref=f1e73] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bach-ngoc-kinh-la-gi/
+              - text: Đọc bài viết
+              - generic [ref=f1e74]: →
+        - article [ref=f1e75]:
+          - link [ref=f1e76] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/a-thanh-la-ai/
+            - img "Á Thánh là ai? Địa vị Nho gia, Tam Tứ chi tranh với Văn Thánh và vai trò tại Văn Miếu" [ref=f1e77]
+          - generic [ref=f1e78]:
+            - generic [ref=f1e79]:
+              - generic [ref=f1e80]: Kiếm Lai
+              - generic [ref=f1e81]: •
+              - time [ref=f1e82]: 18/08/2026
+            - heading [level=2] [ref=f1e83]:
+              - link "Á Thánh là ai? Địa vị Nho gia, Tam Tứ chi tranh với Văn Thánh và vai trò tại Văn Miếu" [ref=f1e84] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/a-thanh-la-ai/
+            - paragraph [ref=f1e85]: "Á Thánh là ai? Hồ sơ cân bằng về trụ cột Nho gia Văn Miếu: địa vị học mạch, Tam Tứ chi tranh với Văn Thánh, tín vật đại trận Ly Châu,…"
+            - link "Đọc bài viết" [ref=f1e86] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/a-thanh-la-ai/
+              - text: Đọc bài viết
+              - generic [ref=f1e87]: →
+        - article [ref=f1e88]:
+          - link [ref=f1e89] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/tam-son-cuu-hau-tien-sinh-la-ai/
+            - img "Tam Sơn Cửu Hầu tiên sinh là ai? Viễn cổ Thập Hào hậu bổ, phù lục tổ sư và đại tu sĩ 14 cảnh" [ref=f1e90]
+          - generic [ref=f1e91]:
+            - generic [ref=f1e92]:
+              - generic [ref=f1e93]: Kiếm Lai
+              - generic [ref=f1e94]: •
+              - time [ref=f1e95]: 18/08/2026
+            - heading [level=2] [ref=f1e96]:
+              - link "Tam Sơn Cửu Hầu tiên sinh là ai? Viễn cổ Thập Hào hậu bổ, phù lục tổ sư và đại tu sĩ 14 cảnh" [ref=f1e97] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/tam-son-cuu-hau-tien-sinh-la-ai/
+            - paragraph [ref=f1e98]: Tam Sơn Cửu Hầu tiên sinh là ai? Hồ sơ đầy đủ đại tu sĩ viễn cổ 14 cảnh, Thập Hào hậu bổ, uy thế với đại yêu cùng thời, sắc lệnh…
+            - link "Đọc bài viết" [ref=f1e99] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/tam-son-cuu-hau-tien-sinh-la-ai/
+              - text: Đọc bài viết
+              - generic [ref=f1e100]: →
+        - article [ref=f1e101]:
+          - link [ref=f1e102] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/van-quat-phuc-dia-la-gi/
+            - img "Vân Quật Phúc Địa là gì? Khương Thượng Chân, Khương thị và thế giới nhỏ của Ngọc Khuê Tông" [ref=f1e103]
+          - generic [ref=f1e104]:
+            - generic [ref=f1e105]:
+              - generic [ref=f1e106]: Kiếm Lai
+              - generic [ref=f1e107]: •
+              - time [ref=f1e108]: 18/08/2026
+            - heading [level=2] [ref=f1e109]:
+              - link "Vân Quật Phúc Địa là gì? Khương Thượng Chân, Khương thị và thế giới nhỏ của Ngọc Khuê Tông" [ref=f1e110] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/van-quat-phuc-dia-la-gi/
+            - paragraph [ref=f1e111]: "Vân Quật Phúc Địa là gì? Bài đầy đủ về thượng đẳng phúc địa Khương thị–Khương Thượng Chân: dân số, 18 thắng cảnh, Hoàng Hạc Cơ, phản loạn Ngọc Phác cảnh, trận…"
+            - link "Đọc bài viết" [ref=f1e112] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/van-quat-phuc-dia-la-gi/
+              - text: Đọc bài viết
+              - generic [ref=f1e113]: →
+        - article [ref=f1e114]:
+          - link [ref=f1e115] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/thap-van-dai-son-la-gi/
+            - img "Thập Vạn Đại Sơn là gì? Lãnh địa lão mù Man Hoang, Lý Hòe và quy củ riêng ngoài Thác Nguyệt Sơn" [ref=f1e116]
+          - generic [ref=f1e117]:
+            - generic [ref=f1e118]:
+              - generic [ref=f1e119]: Kiếm Lai
+              - generic [ref=f1e120]: •
+              - time [ref=f1e121]: 18/08/2026
+            - heading [level=2] [ref=f1e122]:
+              - link "Thập Vạn Đại Sơn là gì? Lãnh địa lão mù Man Hoang, Lý Hòe và quy củ riêng ngoài Thác Nguyệt Sơn" [ref=f1e123] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/thap-van-dai-son-la-gi/
+            - paragraph [ref=f1e124]: "Thập Vạn Đại Sơn là gì? Bài worldbuilding đầy đủ về lãnh địa lão mù Man Hoang: đại tu sĩ 14 cảnh, kim giáp khôi lỗi dời núi, Lý Hòe, quy củ…"
+            - link "Đọc bài viết" [ref=f1e125] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/thap-van-dai-son-la-gi/
+              - text: Đọc bài viết
+              - generic [ref=f1e126]: →
+        - article [ref=f1e127]:
+          - link [ref=f1e128] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/bac-tan-la-gi/
+            - img "Bắc Tấn là gì? Vương triều láng giềng Đại Tuyền và tuyến biên giới Đồng Diệp Châu" [ref=f1e129]
+          - generic [ref=f1e130]:
+            - generic [ref=f1e131]:
+              - generic [ref=f1e132]: Kiếm Lai
+              - generic [ref=f1e133]: •
+              - time [ref=f1e134]: 18/08/2026
+            - heading [level=2] [ref=f1e135]:
+              - link "Bắc Tấn là gì? Vương triều láng giềng Đại Tuyền và tuyến biên giới Đồng Diệp Châu" [ref=f1e136] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/bac-tan-la-gi/
+            - paragraph [ref=f1e137]: Bắc Tấn là gì? Bài worldbuilding đầy đủ về vương triều Đồng Diệp Châu giáp Đại Tuyền, Tùng Châm Hồ 800 dặm, Kim Hoàng Sơn thần phủ, Diêu gia biên quân, chiến…
+            - link "Đọc bài viết" [ref=f1e138] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bac-tan-la-gi/
+              - text: Đọc bài viết
+              - generic [ref=f1e139]: →
+        - article [ref=f1e140]:
+          - link [ref=f1e141] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/tung-cham-ho-la-gi/
+            - img "Tùng Châm Hồ là gì? Thủy thần Liễu Ấu Dung, Đại Tuyền và tuyến biên giới Bắc Tấn" [ref=f1e142]
+          - generic [ref=f1e143]:
+            - generic [ref=f1e144]:
+              - generic [ref=f1e145]: Kiếm Lai
+              - generic [ref=f1e146]: •
+              - time [ref=f1e147]: 18/08/2026
+            - heading [level=2] [ref=f1e148]:
+              - link "Tùng Châm Hồ là gì? Thủy thần Liễu Ấu Dung, Đại Tuyền và tuyến biên giới Bắc Tấn" [ref=f1e149] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/tung-cham-ho-la-gi/
+            - paragraph [ref=f1e150]: Tùng Châm Hồ là gì? Bài đầy đủ về thủy vực 800 dặm giữa Đại Tuyền–Bắc Tấn, thủy thần Liễu Ấu Dung, Kim Hoàng Sơn thần phủ, Diêu Cận Chi, chiến tranh…
+            - link "Đọc bài viết" [ref=f1e151] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/tung-cham-ho-la-gi/
+              - text: Đọc bài viết
+              - generic [ref=f1e152]: →
+        - article [ref=f1e153]:
+          - link [ref=f1e154] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/ma-tri-la-ai/
+            - img "Mã Trí là ai? Kim Đan lão kiếm tu Phạm gia, Quế Hoa Đảo và quan hệ Trần Bình An" [ref=f1e155]
+          - generic [ref=f1e156]:
+            - generic [ref=f1e157]:
+              - generic [ref=f1e158]: Kiếm Lai
+              - generic [ref=f1e159]: •
+              - time [ref=f1e160]: 18/08/2026
+            - heading [level=2] [ref=f1e161]:
+              - link "Mã Trí là ai? Kim Đan lão kiếm tu Phạm gia, Quế Hoa Đảo và quan hệ Trần Bình An" [ref=f1e162] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/ma-tri-la-ai/
+            - paragraph [ref=f1e163]: "Mã Trí là ai? Hồ sơ đầy đủ Kim Đan lão kiếm tu gắn với Phạm gia – Quế Hoa Đảo: mốc cảnh giới chính văn, quan hệ Trần Bình An, Quế…"
+            - link "Đọc bài viết" [ref=f1e164] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/ma-tri-la-ai/
+              - text: Đọc bài viết
+              - generic [ref=f1e165]: →
+        - article [ref=f1e166]:
+          - link [ref=f1e167] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/que-di-la-ai/
+            - img "Quế di là ai? Người quản Quế Hoa Đảo, Phạm gia và trưởng bối đặc biệt của Trần Bình An" [ref=f1e168]
+          - generic [ref=f1e169]:
+            - generic [ref=f1e170]:
+              - generic [ref=f1e171]: Kiếm Lai
+              - generic [ref=f1e172]: •
+              - time [ref=f1e173]: 18/08/2026
+            - heading [level=2] [ref=f1e174]:
+              - link "Quế di là ai? Người quản Quế Hoa Đảo, Phạm gia và trưởng bối đặc biệt của Trần Bình An" [ref=f1e175] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/que-di-la-ai/
+            - paragraph [ref=f1e176]: "Quế di là ai? Hồ sơ đầy đủ người gắn với Quế Hoa Đảo – Phạm gia: vận hành hàng hóa xuyên châu, quan hệ Mã Trí – Kim Túc – Trần…"
+            - link "Đọc bài viết" [ref=f1e177] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/que-di-la-ai/
+              - text: Đọc bài viết
+              - generic [ref=f1e178]: →
+        - article [ref=f1e179]:
+          - link [ref=f1e180] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/dieu-can-chi-la-ai/
+            - img "Diêu Cận Chi là ai? Nữ đế Đại Tuyền, Diêu gia biên quân và người trị quốc tại Đồng Diệp Châu" [ref=f1e181]
+          - generic [ref=f1e182]:
+            - generic [ref=f1e183]:
+              - generic [ref=f1e184]: Kiếm Lai
+              - generic [ref=f1e185]: •
+              - time [ref=f1e186]: 18/08/2026
+            - heading [level=2] [ref=f1e187]:
+              - link "Diêu Cận Chi là ai? Nữ đế Đại Tuyền, Diêu gia biên quân và người trị quốc tại Đồng Diệp Châu" [ref=f1e188] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/dieu-can-chi-la-ai/
+            - paragraph [ref=f1e189]: Diêu Cận Chi là ai? Tìm hiểu nữ đế Đại Tuyền, xuất thân Diêu gia biên quân, tuyến Trần Bình An tại Đồng Diệp Châu, biên giới Bắc Tấn và vai trò…
+            - link "Đọc bài viết" [ref=f1e190] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-can-chi-la-ai/
+              - text: Đọc bài viết
+              - generic [ref=f1e191]: →
+      - navigation "Phân trang bài viết" [ref=f1e192]:
+        - generic [ref=f1e193]: "1"
+        - link "2" [ref=f1e194] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bai-viet/page/2/
+        - link "3" [ref=f1e195] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bai-viet/page/3/
+        - generic [ref=f1e196]: …
+        - link "10" [ref=f1e197] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bai-viet/page/10/
+        - link "Sau →" [ref=f1e198] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bai-viet/page/2/
+  - contentinfo [ref=f1e199]:
+    - generic [ref=f1e200]:
+      - generic [ref=f1e201]:
+        - link "DTT." [ref=f1e202] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/
+        - paragraph [ref=f1e204]: Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.
+      - generic [ref=f1e205]:
+        - heading "Thông tin" [level=4] [ref=f1e206]
+        - list [ref=f1e207]:
+          - listitem [ref=f1e208]:
+            - link "Giới thiệu" [ref=f1e209] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/gioi-thieu/
+          - listitem [ref=f1e213]:
+            - link "Chính sách bảo mật" [ref=f1e214] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chinh-sach-bao-mat/
+          - listitem [ref=f1e217]:
+            - link "Điều khoản sử dụng" [ref=f1e218] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-khoan-su-dung/
+      - generic [ref=f1e221]:
+        - heading "Danh sách truyện" [level=4] [ref=f1e222]
+        - list [ref=f1e223]:
+          - listitem [ref=f1e224]:
+            - link "• Sảng Văn" [ref=f1e225] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+          - listitem [ref=f1e226]:
+            - link "• Vả Mặt" [ref=f1e227] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - listitem [ref=f1e228]:
+            - link "• Đô thị vả mặt" [ref=f1e229] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+          - listitem [ref=f1e230]:
+            - link "• Đô thị thương chiến" [ref=f1e231] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/
+          - listitem [ref=f1e232]:
+            - link "• Hào Môn" [ref=f1e233] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/hao-mon/
+          - listitem [ref=f1e234]:
+            - link "• Ẩm Thực" [ref=f1e235] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/am-thuc/
+      - generic [ref=f1e236]:
+        - heading "Top truyện" [level=4] [ref=f1e237]
+        - list [ref=f1e238]:
+          - listitem [ref=f1e239]:
+            - link "• Top ngôn tình hay nhất" [ref=f1e240] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang/
+          - listitem [ref=f1e241]:
+            - link "• Top ngôn tình hiện đại" [ref=f1e242] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+hien+dai
+          - listitem [ref=f1e243]:
+            - link "• Top tổng tài hay nhất" [ref=f1e244] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=tong+tai
+          - listitem [ref=f1e245]:
+            - link "• Top ngôn tình cổ đại" [ref=f1e246] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+co+dai
+          - listitem [ref=f1e247]:
+            - link "• Top xuyên không hay" [ref=f1e248] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=xuyen+khong
+          - listitem [ref=f1e249]:
+            - link "• Top truyện quân nhân" [ref=f1e250] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=quan+nhan
+      - generic [ref=f1e251]:
+        - heading "Kết nối" [level=4] [ref=f1e252]
+        - paragraph [ref=f1e253]: "Theo dõi để nhận thông báo chương mới:"
+        - generic [ref=f1e254]:
+          - link "Fanpage" [ref=f1e255] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+          - link "YouTube" [ref=f1e258] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/nhom-dich/
+        - paragraph [ref=f1e261]: Tải ứng dụng
+        - generic [ref=f1e262]:
+          - link "Tải về App Store" [ref=f1e263] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=f1e266]:
+              - generic [ref=f1e267]: Tải về
+              - strong [ref=f1e268]: App Store
+          - link "Tải về Google Play" [ref=f1e269] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=f1e272]:
+              - generic [ref=f1e273]: Tải về
+              - strong [ref=f1e274]: Google Play
+    - paragraph [ref=f1e280]:
+      - strong [ref=f1e281]: "Tuyên bố miễn trừ trách nhiệm:"
+      - text: DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.
+    - generic [ref=f1e282]: © 2026 DTT. All rights reserved.

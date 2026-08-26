@@ -1,0 +1,8 @@
+[    2045ms] [LOG] Lenis disabled, using native smooth scrolling @ https://doctieuthuyet.com/truyen/bi-cha-nuoi-lua-quy-dau-tu-toi-danh-bai-ong-tren-san/?dtt_ui_audit=20260819:247
+[    2054ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen/bi-cha-nuoi-lua-quy-dau-tu-toi-danh-bai-ong-tren-san/?dtt_ui_audit=20260819:0
+[    2054ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://doctieuthuyet.com/truyen/bi-cha-nuoi-lua-quy-dau-tu-toi-danh-bai-ong-tren-san/?dtt_ui_audit=20260819:0
+[    2059ms] [LOG] Fonts loaded successfully @ https://doctieuthuyet.com/truyen/bi-cha-nuoi-lua-quy-dau-tu-toi-danh-bai-ong-tren-san/?dtt_ui_audit=20260819:194
+[    2160ms] [LOG] Font applied: arial-font @ https://doctieuthuyet.com/truyen/bi-cha-nuoi-lua-quy-dau-tu-toi-danh-bai-ong-tren-san/?dtt_ui_audit=20260819:222
+[  118548ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-5294-452-768x768.png?v=5:0
+[  118548ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-3755-chatgpt-image-20260525-656-768x768.png?v=5:0
+[  118548ms] [ERROR] Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR @ https://doctieuthuyet.com/wp-content/uploads/2026/05/cover-5116-hq-986-768x768.png?v=5:0

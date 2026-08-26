@@ -1,0 +1,659 @@
+/*
+ * Kiếm Lai Wiki
+ *
+ * A scoped visual system for the Kiếm Lai hub. The shared post template stays
+ * untouched for regular posts.
+ */
+.dtt-kiem-lai-wiki {
+    --kl-ink: #0a1211;
+    --kl-ink-soft: #13201d;
+    --kl-paper: #f3eddf;
+    --kl-paper-deep: #e8ddc7;
+    --kl-paper-light: #fbf8ef;
+    --kl-gold: #c79b55;
+    --kl-gold-light: #e7c982;
+    --kl-cinnabar: #9e3f32;
+    --kl-jade: #759f8a;
+    --kl-text: #26312d;
+    --kl-muted: #67736b;
+    --kl-line: #d9ccb4;
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    padding: 0 0 112px;
+    background-color: var(--kl-ink) !important;
+    background-image:
+        radial-gradient(circle at 8% 30%, rgba(117, 159, 138, .11), transparent 24rem),
+        radial-gradient(circle at 92% 64%, rgba(199, 155, 85, .10), transparent 26rem),
+        linear-gradient(var(--kl-ink), var(--kl-ink)) !important;
+    color: var(--kl-text);
+}
+
+:root:has(.dtt-kiem-lai-wiki),
+body:has(.dtt-kiem-lai-wiki) {
+    background-color: #07100f !important;
+    background-image: none !important;
+}
+#main-content:has(.dtt-kiem-lai-wiki) {
+    background-color: var(--kl-ink) !important;
+    background-image: none !important;
+}
+.dtt-single-post.dtt-kiem-lai-wiki::before {
+    position: absolute;
+    inset: 0;
+    z-index: 0 !important;
+    height: auto !important;
+    background:
+        radial-gradient(ellipse 560px 320px at 8% 10%, rgba(117, 159, 138, .12), transparent 72%),
+        radial-gradient(ellipse 640px 420px at 95% 16%, rgba(199, 155, 85, .10), transparent 72%),
+        linear-gradient(180deg, #07100f 0%, var(--kl-ink) 42%, var(--kl-ink) 100%) !important;
+    content: '';
+    pointer-events: none;
+    animation: kl-ink-breathe 18s ease-in-out infinite alternate;
+}
+.dtt-single-post.dtt-kiem-lai-wiki::after {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 0;
+    height: min(700px, 100%);
+    background:
+        radial-gradient(circle at 12% 18%, rgba(231, 201, 130, .72) 0 1px, transparent 1.7px),
+        radial-gradient(circle at 28% 34%, rgba(117, 159, 138, .72) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 76% 24%, rgba(231, 201, 130, .58) 0 1px, transparent 1.7px),
+        radial-gradient(circle at 88% 54%, rgba(117, 159, 138, .58) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 62% 78%, rgba(231, 201, 130, .42) 0 1px, transparent 1.7px);
+    content: '';
+    opacity: .18;
+    pointer-events: none;
+    animation: kl-qi-drift 24s linear infinite;
+}
+.dtt-kiem-lai-wiki > .dtt-single-post__inner {
+    position: relative;
+    z-index: 1;
+}
+.dtt-kiem-lai-wiki .dtt-single-post__inner {
+    width: min(100%, 1240px);
+}
+.dtt-kiem-lai-hero {
+    position: relative;
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    min-height: 500px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(231, 201, 130, .25);
+    background-color: var(--kl-ink);
+    background-image:
+        linear-gradient(90deg, rgba(5, 12, 11, .97) 0%, rgba(5, 12, 11, .90) 27%, rgba(5, 12, 11, .54) 57%, rgba(5, 12, 11, .13) 100%),
+        var(--kl-hero-image);
+    background-position: center, center right;
+    background-size: cover;
+}
+.dtt-kiem-lai-hero::before {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(5, 12, 11, .42), transparent 34%, rgba(5, 12, 11, .72) 100%),
+        radial-gradient(circle at 15% 80%, rgba(199, 155, 85, .11), transparent 20rem);
+    content: '';
+    pointer-events: none;
+}
+.dtt-kiem-lai-hero::after {
+    position: absolute;
+    top: -8%;
+    left: 59%;
+    z-index: 0;
+    width: 1px;
+    height: 78%;
+    background: linear-gradient(180deg, transparent, rgba(231, 201, 130, .55), transparent);
+    box-shadow: 0 0 10px rgba(231, 201, 130, .2);
+    content: '';
+    opacity: .22;
+    pointer-events: none;
+    animation: kl-sword-aura 10s ease-in-out infinite;
+}
+.dtt-kiem-lai-hero__content {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1110px);
+    min-height: 500px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: clamp(70px, 8vw, 110px) 24px 34px;
+    color: #f7f0e1;
+}
+.dtt-kiem-lai-hero__content { z-index: 1; }
+
+@keyframes kl-ink-breathe {
+    0% { opacity: .92; }
+    100% { opacity: 1; }
+}
+@keyframes kl-qi-drift {
+    0% { transform: translate3d(-5px, 0, 0); }
+    50% { transform: translate3d(4px, -8px, 0); }
+    100% { transform: translate3d(-5px, 0, 0); }
+}
+@keyframes kl-sword-aura {
+    0%, 100% { opacity: .12; transform: translateY(8px) scaleY(.86); }
+    50% { opacity: .30; transform: translateY(-4px) scaleY(1); }
+}
+.dtt-kiem-lai-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+    color: rgba(247, 240, 225, .66);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.dtt-kiem-lai-breadcrumb a {
+    color: var(--kl-gold-light);
+    text-decoration: none;
+}
+.dtt-kiem-lai-breadcrumb a:hover,
+.dtt-kiem-lai-breadcrumb a:focus-visible {
+    color: #fff3c6;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.dtt-kiem-lai-breadcrumb__slash { color: rgba(231, 201, 130, .45); }
+.dtt-kiem-lai-hero__title {
+    max-width: 780px;
+    margin: 0;
+    color: #fff7e8;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(42px, 6vw, 78px);
+    font-weight: 700;
+    letter-spacing: -.045em;
+    line-height: 1.04;
+    text-wrap: balance;
+}
+.dtt-kiem-lai-hero__title em {
+    color: var(--kl-gold-light);
+    font-style: normal;
+}
+.dtt-kiem-lai-hero__summary {
+    max-width: 650px;
+    margin: 24px 0 0;
+    color: rgba(247, 240, 225, .78);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(15px, 1.7vw, 18px);
+    line-height: 1.75;
+}
+.dtt-kiem-lai-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+.dtt-kiem-lai-hero__actions a {
+    display: inline-flex;
+    min-height: 46px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border: 1px solid rgba(231, 201, 130, .52);
+    border-radius: 2px 14px 14px 14px;
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    transition: transform .22s ease, background-color .22s ease, border-color .22s ease, color .22s ease;
+}
+.dtt-kiem-lai-hero__actions a:first-child {
+    border-color: var(--kl-gold-light);
+    background: var(--kl-gold-light);
+    color: #18221d;
+}
+.dtt-kiem-lai-hero__actions a:last-child {
+    background: rgba(10, 18, 17, .28);
+    color: #f7f0e1;
+}
+.dtt-kiem-lai-hero__actions a:hover,
+.dtt-kiem-lai-hero__actions a:focus-visible {
+    transform: translateY(-2px);
+}
+.dtt-kiem-lai-hero__actions a:first-child:hover,
+.dtt-kiem-lai-hero__actions a:first-child:focus-visible {
+    background: #f3d990;
+    border-color: #f3d990;
+}
+.dtt-kiem-lai-hero__actions a:last-child:hover,
+.dtt-kiem-lai-hero__actions a:last-child:focus-visible {
+    border-color: var(--kl-gold-light);
+    background: rgba(199, 155, 85, .15);
+    color: #fff7e8;
+}
+.dtt-kiem-lai-hero__actions a:focus-visible,
+.dtt-kiem-lai-breadcrumb a:focus-visible,
+.dtt-kiem-lai-wiki a:focus-visible,
+.dtt-kiem-lai-wiki button:focus-visible {
+    outline: 3px solid rgba(231, 201, 130, .7);
+    outline-offset: 3px;
+}
+.dtt-kiem-lai-hero__stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 700px;
+    margin-top: 48px;
+    border-top: 1px solid rgba(231, 201, 130, .26);
+}
+.dtt-kiem-lai-hero__stat {
+    padding: 17px 18px 0 0;
+    border-right: 1px solid rgba(231, 201, 130, .20);
+}
+.dtt-kiem-lai-hero__stat + .dtt-kiem-lai-hero__stat { padding-left: 18px; }
+.dtt-kiem-lai-hero__stat:last-child { border-right: 0; }
+.dtt-kiem-lai-hero__stat strong {
+    display: block;
+    color: var(--kl-gold-light);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+}
+.dtt-kiem-lai-hero__stat span {
+    display: block;
+    margin-top: 7px;
+    color: rgba(247, 240, 225, .58);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    line-height: 1.45;
+    text-transform: uppercase;
+}
+.dtt-kiem-lai-wiki .dtt-article-layout {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 254px minmax(0, 1fr);
+    gap: 26px;
+    width: min(100% - 32px, 1190px);
+    margin: 0 auto;
+    align-items: start;
+}
+.dtt-kiem-lai-wiki .dtt-toc-rail {
+    position: sticky;
+    top: 96px;
+    min-width: 0;
+}
+.dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] {
+    width: 100%;
+    max-height: calc(100vh - 118px);
+    box-sizing: border-box;
+    overflow-y: auto;
+    margin: 0;
+    padding: 19px 16px 20px;
+    border: 1px solid rgba(231, 201, 130, .30) !important;
+    border-left: 3px solid var(--kl-gold) !important;
+    border-radius: 2px 16px 16px 16px;
+    background: rgba(19, 32, 29, .94);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, .22);
+    color: #e7decd;
+    scrollbar-color: #7f6843 transparent;
+}
+.dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff0c8;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 19px;
+    font-weight: 700;
+}
+.dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] > ol {
+    margin: 0;
+    padding-left: 20px;
+}
+.dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] li {
+    color: rgba(231, 222, 205, .55);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    line-height: 1.48;
+}
+.dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] li + li { margin-top: 7px; }
+.dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] a {
+    display: inline-block;
+    padding: 2px 4px;
+    border-left: 2px solid transparent;
+    color: rgba(231, 222, 205, .70);
+    text-decoration: none;
+    transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+.dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] a:hover,
+.dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] a:focus-visible,
+.dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] a.is-active {
+    border-left-color: var(--kl-gold-light);
+    background: rgba(199, 155, 85, .12);
+    color: #fff2ca;
+    text-decoration: none;
+}
+.dtt-kiem-lai-wiki .dtt-toc-rail .dtt-toc-toggle {
+    border-color: rgba(231, 201, 130, .35);
+    background: rgba(10, 18, 17, .45);
+    color: var(--kl-gold-light);
+}
+.dtt-kiem-lai-wiki .dtt-toc-rail .dtt-toc-toggle:hover,
+.dtt-kiem-lai-wiki .dtt-toc-rail .dtt-toc-toggle:focus-visible {
+    border-color: var(--kl-gold-light);
+    background: rgba(199, 155, 85, .16);
+}
+.dtt-kiem-lai-wiki .dtt-post-card {
+    overflow: hidden;
+    border: 1px solid rgba(231, 201, 130, .42);
+    border-radius: 2px 24px 24px 24px;
+    background: var(--kl-paper);
+    box-shadow: 0 28px 72px rgba(0, 0, 0, .28);
+}
+.dtt-kiem-lai-wiki .dtt-post-card::before {
+    right: 0;
+    left: 0;
+    height: 4px;
+    border-radius: 0;
+    background: linear-gradient(90deg, var(--kl-cinnabar), var(--kl-gold-light) 46%, var(--kl-jade));
+}
+.dtt-kiem-lai-wiki .dtt-post-header { display: none; }
+.dtt-kiem-lai-wiki .dtt-post-content {
+    counter-reset: wiki-section;
+    padding: clamp(30px, 5vw, 70px) clamp(22px, 6vw, 78px) 62px;
+    background:
+        linear-gradient(rgba(243, 237, 223, .92), rgba(243, 237, 223, .92)),
+        repeating-linear-gradient(0deg, rgba(102, 80, 43, .035) 0, rgba(102, 80, 43, .035) 1px, transparent 1px, transparent 4px);
+    color: var(--kl-text);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(16px, 1.35vw, 18px);
+    line-height: 1.88;
+}
+.dtt-kiem-lai-wiki .dtt-post-content > .wp-block-group:first-child {
+    position: relative;
+    margin: 0 0 42px !important;
+    padding: 26px 28px 22px !important;
+    border: 1px solid rgba(158, 63, 50, .25) !important;
+    border-radius: 2px 18px 18px 18px !important;
+    background: linear-gradient(135deg, #efe1c5, #f8f1e2) !important;
+    box-shadow: inset 4px 0 0 var(--kl-cinnabar), 0 12px 26px rgba(95, 66, 28, .06);
+}
+.dtt-kiem-lai-wiki .dtt-post-content > .wp-block-group:first-child::before {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    color: rgba(158, 63, 50, .48);
+    content: '✦';
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+}
+.dtt-kiem-lai-wiki .dtt-post-content p { margin: 0 0 1.35em; color: var(--kl-text); }
+.dtt-kiem-lai-wiki .dtt-post-content > .wp-block-group:first-child p:last-child { margin-bottom: 0; }
+.dtt-kiem-lai-wiki .dtt-post-content em { color: #5d4330; }
+.dtt-kiem-lai-wiki .dtt-post-content strong { color: #17221e; font-weight: 800; }
+.dtt-kiem-lai-wiki .dtt-post-content code {
+    border: 1px solid rgba(117, 159, 138, .28);
+    background: #e0e9df;
+    color: #315c4b;
+}
+.dtt-kiem-lai-wiki .dtt-post-content h2[id] {
+    counter-increment: wiki-section;
+    margin: 2.2em 0 .75em;
+    padding: 18px 0 15px 46px;
+    border-top: 1px solid var(--kl-line);
+    color: #18221e;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(25px, 3vw, 35px);
+    font-weight: 700;
+    letter-spacing: -.025em;
+    line-height: 1.18;
+}
+.dtt-kiem-lai-wiki .dtt-post-content h2[id]::before {
+    top: 18px;
+    bottom: auto;
+    left: 0;
+    width: auto;
+    height: auto;
+    border: 0;
+    background: none;
+    color: var(--kl-cinnabar);
+    content: counter(wiki-section, decimal-leading-zero);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    line-height: 1.4;
+}
+.dtt-kiem-lai-wiki .dtt-post-content h2[id]::after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 42px;
+    height: 2px;
+    background: var(--kl-gold);
+    content: '';
+}
+.dtt-kiem-lai-wiki .dtt-post-content h3 {
+    margin: 1.65em 0 .65em;
+    padding-left: 17px;
+    color: #25342e;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(20px, 2.1vw, 25px);
+    font-weight: 700;
+    line-height: 1.3;
+}
+.dtt-kiem-lai-wiki .dtt-post-content h3::before {
+    top: .25em;
+    bottom: .25em;
+    width: 3px;
+    border-radius: 0;
+    background: var(--kl-gold);
+}
+.dtt-kiem-lai-wiki .dtt-post-content a {
+    color: #7f4028;
+    font-weight: 700;
+    text-decoration-color: rgba(127, 64, 40, .38);
+    text-underline-offset: 3px;
+}
+.dtt-kiem-lai-wiki .dtt-post-content a:hover { color: #9e3f32; }
+.dtt-kiem-lai-wiki .dtt-post-content blockquote {
+    border: 1px solid rgba(117, 159, 138, .28);
+    border-left: 4px solid var(--kl-jade);
+    border-radius: 0 14px 14px 0;
+    background: #e8eee6;
+    color: #43584d;
+}
+.dtt-kiem-lai-wiki .dtt-post-content ul,
+.dtt-kiem-lai-wiki .dtt-post-content ol { padding-left: 1.45em; }
+.dtt-kiem-lai-wiki .dtt-post-content li { margin-bottom: .6em; }
+.dtt-kiem-lai-wiki .dtt-post-content table {
+    display: table;
+    width: 100%;
+    margin: 1.7em 0;
+    border: 1px solid var(--kl-line);
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 2px 14px 14px 14px;
+    background: var(--kl-paper-light);
+    font-size: .90em;
+    line-height: 1.62;
+}
+.dtt-kiem-lai-wiki .dtt-post-content th,
+.dtt-kiem-lai-wiki .dtt-post-content td {
+    padding: 13px 15px;
+    border: 0;
+    border-bottom: 1px solid var(--kl-line);
+    text-align: left;
+    vertical-align: top;
+}
+.dtt-kiem-lai-wiki .dtt-post-content th {
+    background: #20332d;
+    color: #fff2ca;
+    font-size: .82em;
+    font-weight: 800;
+    letter-spacing: .02em;
+}
+.dtt-kiem-lai-wiki .dtt-post-content tbody tr:nth-child(even) td { background: rgba(232, 221, 199, .42); }
+.dtt-kiem-lai-wiki .dtt-post-content tbody tr:last-child td { border-bottom: 0; }
+.dtt-kiem-lai-wiki .dtt-post-content h2#timeline + ol {
+    position: relative;
+    counter-reset: wiki-timeline;
+    list-style: none;
+    margin: 1.4em 0 2em;
+    padding: 0 0 0 22px;
+    border-left: 1px solid var(--kl-gold);
+}
+.dtt-kiem-lai-wiki .dtt-post-content h2#timeline + ol > li {
+    position: relative;
+    counter-increment: wiki-timeline;
+    margin: 0;
+    padding: 0 0 20px 29px;
+}
+.dtt-kiem-lai-wiki .dtt-post-content h2#timeline + ol > li::before {
+    position: absolute;
+    top: 0;
+    left: -36px;
+    display: grid;
+    width: 25px;
+    height: 25px;
+    place-items: center;
+    border: 1px solid var(--kl-gold);
+    border-radius: 50%;
+    background: var(--kl-paper);
+    color: var(--kl-cinnabar);
+    content: counter(wiki-timeline, decimal-leading-zero);
+    font-size: 9px;
+    font-weight: 800;
+}
+.dtt-kiem-lai-wiki .dtt-post-content h2#thu-vien ~ h3 + ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 10px;
+    margin: 0 0 1.5em;
+    padding: 0;
+    list-style: none;
+}
+.dtt-kiem-lai-wiki .dtt-post-content h2#thu-vien ~ h3 + ul li { margin: 0; }
+.dtt-kiem-lai-wiki .dtt-post-content h2#thu-vien ~ h3 + ul a {
+    display: flex;
+    min-height: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--kl-line);
+    border-radius: 2px 10px 10px 10px;
+    background: rgba(251, 248, 239, .72);
+    color: #354b40;
+    font-size: .82em;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: transform .22s ease, border-color .22s ease, background-color .22s ease, color .22s ease;
+}
+.dtt-kiem-lai-wiki .dtt-post-content h2#thu-vien ~ h3 + ul a::after {
+    flex: 0 0 auto;
+    color: var(--kl-cinnabar);
+    content: '↗';
+    font-size: 14px;
+}
+.dtt-kiem-lai-wiki .dtt-post-content h2#thu-vien ~ h3 + ul a:hover {
+    border-color: var(--kl-gold);
+    background: #fffaf0;
+    color: #7f4028;
+    transform: translateY(-2px);
+}
+.dtt-kiem-lai-wiki .dtt-post-footer {
+    padding: 21px clamp(22px, 6vw, 78px) 29px;
+    border-top: 1px solid var(--kl-line);
+    background: var(--kl-paper-deep);
+    color: var(--kl-muted);
+}
+.dtt-kiem-lai-wiki .dtt-post-tags a {
+    border-color: rgba(158, 63, 50, .22);
+    background: rgba(158, 63, 50, .08);
+    color: #7f4028;
+}
+.dtt-kiem-lai-wiki .dtt-post-tags a:hover { background: var(--kl-cinnabar); }
+.dtt-kiem-lai-wiki .dtt-related-posts,
+.dtt-kiem-lai-wiki #respond,
+.dtt-kiem-lai-wiki .dtt-post-card ~ .comments-area {
+    border-color: rgba(231, 201, 130, .35);
+    background: #eee5d2;
+}
+.dtt-kiem-lai-wiki .dtt-related-title,
+.dtt-kiem-lai-wiki #respond .comment-reply-title { color: #25342e; }
+.dtt-kiem-lai-wiki .dtt-related-subtitle { color: var(--kl-muted); }
+.dtt-kiem-lai-wiki .dtt-related-card { border-color: var(--kl-line); background: var(--kl-paper-light); }
+.dtt-kiem-lai-wiki .dtt-related-card-title { color: #25342e; }
+.dtt-kiem-lai-wiki .dtt-related-card-title a { color: inherit; }
+.dtt-kiem-lai-wiki .dtt-related-read { color: #7f4028; }
+.dtt-kiem-lai-wiki .dtt-related-meta,
+.dtt-kiem-lai-wiki .dtt-related-excerpt { color: var(--kl-muted); }
+@media (max-width: 1199px) {
+    .dtt-kiem-lai-wiki .dtt-article-layout {
+        display: block;
+        width: min(100% - 28px, 930px);
+        margin-top: 0;
+    }
+    .dtt-kiem-lai-wiki .dtt-toc-rail {
+        position: relative;
+        top: auto;
+        margin-bottom: 18px;
+    }
+    .dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] {
+        max-height: none;
+        margin: 0;
+    }
+}
+@media (max-width: 640px) {
+    .dtt-kiem-lai-wiki { padding-bottom: 70px; }
+    .dtt-single-post.dtt-kiem-lai-wiki::after { opacity: .12; }
+    .dtt-kiem-lai-hero {
+        min-height: 0;
+        background-position: center, 69% center;
+    }
+    .dtt-kiem-lai-hero::after {
+        left: 57%;
+        height: 70%;
+    }
+    .dtt-kiem-lai-hero__content {
+        min-height: 0;
+        padding: 58px 20px 30px;
+    }
+    .dtt-kiem-lai-breadcrumb { margin-bottom: 22px; font-size: 9px; }
+    .dtt-kiem-lai-hero__title { max-width: 530px; font-size: clamp(40px, 12vw, 58px); }
+    .dtt-kiem-lai-hero__summary { margin-top: 18px; font-size: 14px; line-height: 1.7; }
+    .dtt-kiem-lai-hero__actions { display: grid; margin-top: 24px; }
+    .dtt-kiem-lai-hero__actions a { width: 100%; }
+    .dtt-kiem-lai-hero__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 34px; }
+    .dtt-kiem-lai-hero__stat { padding-top: 14px; padding-bottom: 13px; }
+    .dtt-kiem-lai-hero__stat:nth-child(2) { border-right: 0; }
+    .dtt-kiem-lai-hero__stat:nth-child(n + 3) { border-top: 1px solid rgba(231, 201, 130, .20); }
+    .dtt-kiem-lai-hero__stat:nth-child(3) { padding-left: 0; }
+    .dtt-kiem-lai-hero__stat:nth-child(4) { padding-left: 18px; }
+    .dtt-kiem-lai-wiki .dtt-article-layout { width: min(100% - 20px, 930px); margin-top: 0; }
+    .dtt-kiem-lai-wiki .dtt-post-card { border-radius: 2px 16px 16px 16px; }
+    .dtt-kiem-lai-wiki .dtt-post-content { padding: 28px 17px 42px; font-size: 16px; line-height: 1.8; }
+    .dtt-kiem-lai-wiki .dtt-post-content > .wp-block-group:first-child { padding: 21px 19px 17px !important; }
+    .dtt-kiem-lai-wiki .dtt-post-content h2[id] { margin-top: 1.9em; padding-left: 39px; font-size: 25px; }
+    .dtt-kiem-lai-wiki .dtt-post-content h2[id]::before { top: 17px; }
+    .dtt-kiem-lai-wiki .dtt-post-content h3 { padding-left: 14px; font-size: 21px; }
+    .dtt-kiem-lai-wiki .dtt-post-content table { display: block; overflow-x: auto; white-space: normal; }
+    .dtt-kiem-lai-wiki .dtt-post-content th,
+    .dtt-kiem-lai-wiki .dtt-post-content td { min-width: 145px; padding: 11px 12px; }
+    .dtt-kiem-lai-wiki .dtt-post-content h2#thu-vien ~ h3 + ul { grid-template-columns: 1fr; }
+    .dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] { padding: 17px 14px 18px; border-radius: 2px 14px 14px 14px; }
+    .dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] li { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .dtt-single-post.dtt-kiem-lai-wiki::before,
+    .dtt-single-post.dtt-kiem-lai-wiki::after,
+    .dtt-kiem-lai-hero::after { animation: none; }
+    .dtt-kiem-lai-wiki .dtt-kiem-lai-hero__actions a,
+    .dtt-kiem-lai-wiki .dtt-post-content h2#thu-vien ~ h3 + ul a,
+    .dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] a { transition: none; }
+}

@@ -26,8 +26,161 @@ function tehi_clone_scripts() {
     // for plugin compatibility and scripts that depend on wp_head/wp_footer.
     wp_enqueue_style( 'tehi-clone-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version') );
     wp_enqueue_script( 'bootstrap-js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js', array(), null, true );
+
+    // Search suggestions are shared by the desktop and mobile header forms.
+    $search_css_path = __DIR__ . '/assets/css/search-suggestions.css';
+    $search_js_path  = __DIR__ . '/assets/js/search-suggestions.js';
+    $theme_uri       = get_template_directory_uri();
+
+    if ( file_exists( $search_css_path ) ) {
+        wp_enqueue_style(
+            'tehi-search-suggestions',
+            $theme_uri . '/assets/css/search-suggestions.css',
+            array(),
+            (string) filemtime( $search_css_path )
+        );
+    }
+
+    if ( file_exists( $search_js_path ) ) {
+        wp_enqueue_script(
+            'tehi-search-suggestions',
+            $theme_uri . '/assets/js/search-suggestions.js',
+            array(),
+            (string) filemtime( $search_js_path ),
+            true
+        );
+
+        wp_localize_script( 'tehi-search-suggestions', 'tehiSearchSuggestions', array(
+            'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
+            'minChars'   => 2,
+            'fallback'   => $theme_uri . '/img_data/images/no-image-cover.png?v=3',
+            'strings'    => array(
+                'loading' => 'Đang tìm gợi ý...',
+                'empty'   => 'Chưa tìm thấy truyện phù hợp.',
+                'error'   => 'Không thể tải gợi ý lúc này.',
+                'all'     => 'Xem tất cả kết quả cho',
+            ),
+        ) );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'tehi_clone_scripts' );
+
+/**
+ * Return lightweight, public search suggestions for the header autocomplete.
+ * Results are cached briefly because this endpoint is called while a visitor types.
+ */
+function tehi_get_search_suggestions( $term ) {
+    $term = trim( sanitize_text_field( wp_unslash( (string) $term ) ) );
+    $length = function_exists( 'mb_strlen' ) ? mb_strlen( $term ) : strlen( $term );
+
+    if ( $length < 2 ) {
+        return array();
+    }
+
+    if ( function_exists( 'mb_substr' ) ) {
+        $term = mb_substr( $term, 0, 80 );
+    } else {
+        $term = substr( $term, 0, 80 );
+    }
+
+    $cache_key = 'tehi_search_suggest_' . md5( strtolower( $term ) );
+    $cached = get_transient( $cache_key );
+    if ( is_array( $cached ) ) {
+        return $cached;
+    }
+
+    $results = array();
+    $append_posts = static function( $posts, $match_type ) use ( &$results ) {
+        foreach ( $posts as $post ) {
+            $post_id = (int) $post->ID;
+            if ( isset( $results[ $post_id ] ) ) {
+                continue;
+            }
+
+            $author = trim( wp_strip_all_tags( (string) get_post_meta( $post_id, 'truyen_tac_gia', true ) ) );
+            if ( '' === $author ) {
+                $author = 'Đang cập nhật';
+            }
+
+            $terms = wp_get_post_terms( $post_id, 'the_loai', array( 'fields' => 'names' ) );
+            $genre = '';
+            if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
+                $genre = implode( ' · ', array_slice( $terms, 0, 2 ) );
+            }
+
+            $url = get_permalink( $post_id );
+            if ( ! $url ) {
+                continue;
+            }
+
+            $results[ $post_id ] = array(
+                'id'      => $post_id,
+                'title'   => wp_strip_all_tags( get_the_title( $post_id ) ),
+                'author'  => $author,
+                'genre'   => $genre,
+                'type'    => $match_type,
+                'url'     => esc_url_raw( $url ),
+                'cover'   => esc_url_raw( get_the_post_thumbnail_url( $post_id, 'thumbnail' ) ?: get_template_directory_uri() . '/img_data/images/no-image-cover.png?v=3' ),
+            );
+        }
+    };
+
+    $title_query = new WP_Query( array(
+        'post_type'              => 'truyen',
+        'post_status'            => 'publish',
+        's'                      => $term,
+        'posts_per_page'         => 6,
+        'orderby'                => 'relevance',
+        'order'                  => 'DESC',
+        'no_found_rows'          => true,
+        'ignore_sticky_posts'    => true,
+        'update_post_meta_cache' => true,
+        'update_post_term_cache' => true,
+    ) );
+    $append_posts( $title_query->posts, 'Truyện' );
+
+    // The header promises title/author search, so fill unused slots with author matches.
+    if ( count( $results ) < 6 ) {
+        $author_query = new WP_Query( array(
+            'post_type'              => 'truyen',
+            'post_status'            => 'publish',
+            'posts_per_page'         => 6,
+            'orderby'                => 'date',
+            'order'                  => 'DESC',
+            'no_found_rows'          => true,
+            'ignore_sticky_posts'    => true,
+            'update_post_meta_cache' => true,
+            'update_post_term_cache' => true,
+            'meta_query'             => array(
+                array(
+                    'key'     => 'truyen_tac_gia',
+                    'value'   => $term,
+                    'compare' => 'LIKE',
+                ),
+            ),
+        ) );
+        $append_posts( $author_query->posts, 'Tác giả' );
+    }
+
+    $results = array_slice( array_values( $results ), 0, 6 );
+    set_transient( $cache_key, $results, 10 * MINUTE_IN_SECONDS );
+
+    return $results;
+}
+
+add_action( 'wp_ajax_tehi_search_suggestions', 'tehi_ajax_search_suggestions' );
+add_action( 'wp_ajax_nopriv_tehi_search_suggestions', 'tehi_ajax_search_suggestions' );
+
+function tehi_ajax_search_suggestions() {
+    // This is a public, read-only endpoint. Avoid a nonce so a stale cached page
+    // cannot make its autocomplete payload expire before the page itself does.
+    $term = isset( $_POST['q'] ) && ! is_array( $_POST['q'] ) ? $_POST['q'] : '';
+    $items = tehi_get_search_suggestions( $term );
+
+    wp_send_json_success( array(
+        'items' => $items,
+    ) );
+}
 
 function tehi_get_meta_description() {
     if (is_singular('truyen')) {
@@ -375,6 +528,13 @@ function tehi_build_contextual_story_comments($post_id) {
         "Bộ này nên đọc từ đầu để thấy quá trình nhân vật chính {$pressure} rồi mới bật lên, đọc lẻ chương sẽ không đã bằng.",
         "Mình thích kiểu vả mặt bằng hành động và chứng cứ hơn là chỉ nói suông. Bộ này đi đúng hướng đó.",
         "Tên truyện dài nhưng vào đọc thấy có lý do: vừa có nỗi oan, vừa có mục tiêu lớn để nhân vật chính bật lại.",
+        "Mỗi chương đều đẩy thêm một nút thắt nên đọc rất dễ bị cuốn theo, nhất là lúc nhân vật chính bắt đầu gom chứng cứ.",
+        "Bối cảnh của bộ này tạo cảm giác khá thật, vì nhân vật chính phải tự tìm cách thoát thế khó chứ không được cứu quá dễ.",
+        "Đọc đến đoạn đối đầu mới thấy phần mở đầu cài chi tiết khá khéo. Mong màn đối chất phía sau còn căng hơn nữa.",
+        "Nhân vật chính có mục tiêu rõ ràng nên mạch truyện không bị lan man, các cú phản công cũng có lý do để chờ.",
+        "Một bộ hợp để đọc liền mạch: vừa có áp lực, vừa có cảm giác giải tỏa sau mỗi lần nhân vật chính lật lại tình thế.",
+        "Phần giới thiệu không nói quá, vào đọc mới thấy mâu thuẫn được mở ra từng lớp khá chắc tay.",
+        "Mình thích cách truyện để nhân vật chính tích lũy lợi thế rồi mới phản đòn, cảm giác chiến thắng thuyết phục hơn nhiều.",
     ];
 }
 
@@ -391,8 +551,11 @@ function tehi_seed_story_comments_if_empty($post_id) {
         'Nguyễn Dũng', 'Quỳnh Hương', 'Bảo Lâm', 'Kim Ngân', 'Đăng Khoa', 'Ngọc Ánh',
     ];
     $reviews = tehi_build_contextual_story_comments($post_id);
-    foreach ($reviews as $i => $content) {
+    $num_to_seed = (($post_id * 3) % 11) + 10; // Seeds between 10 and 20 comments persistently
+
+    for ($i = 0; $i < $num_to_seed; $i++) {
         $author_name = $names[($post_id + $i * 7) % count($names)];
+        $content = $reviews[$i % count($reviews)];
         $comment_id = wp_insert_comment([
             'comment_post_ID'      => $post_id,
             'comment_author'       => $author_name,
@@ -403,80 +566,7 @@ function tehi_seed_story_comments_if_empty($post_id) {
             'comment_approved'     => 1,
         ]);
         if ($comment_id) {
-            update_comment_meta($comment_id, 'comment_rating', ($i === 6 || $i === 11) ? 4 : 5);
-        }
-    }
-    return;
-
-    $names = [
-        'Lan Hương', 'Minh Nhật', 'Khánh Linh', 'Quốc Bảo', 'Ngọc Diệp', 'Thu Trang', 
-        'Hữu Phước', 'Bích Trâm', 'Tuấn Phong', 'Mai Anh', 'Đức Thịnh', 'Thùy Chi', 
-        'Nguyễn Dũng', 'Quỳnh Hương', 'Bảo Lâm', 'Kim Ngân', 'Đăng Khoa', 'Ngọc Ánh', 
-        'Thế Anh', 'Phương Thảo', 'Hồng Nhung', 'Phan Khải', 'Vũ Phong', 'Thanh Hằng',
-        'Hoàng Nam', 'Tuyết Mai', 'Minh Tuấn', 'Thu Hà', 'Trọng Nghĩa', 'Cẩm Tú',
-        'Khắc Nam', 'Đinh Hưng', 'Thành Long', 'Mỹ Duyên', 'Tấn Đạt', 'Minh An', 
-        'Việt Anh', 'Khánh Vy', 'Minh Triết', 'Thanh Nhàn', 'Trần Quân', 'Ngọc Trinh'
-    ];
-
-    $reviews = [
-        'Truyện lôi cuốn quá chừng, tình tiết logic nhân vật nam chính ngầu xỉu! Chấm 5 sao cho truyện và nhóm dịch nhé.',
-        'Lâu lắm mới đọc được bộ ngôn tình hay như thế này. Văn phong dịch rất mượt và có tâm, cảm ơn ad nhiều nha.',
-        'Nội dung rất sâu sắc, không bị mì ăn liền như các truyện khác. Chờ ad cập nhật thêm chương mới hóng quá đi!',
-        'Web đọc truyện thích thật sự, giao diện đẹp load nhanh và không có quảng cáo che màn hình. Mọi người nên đọc thử truyện này nha.',
-        'Truyện ngọt sủng siêu dễ thương, đọc giải trí cuối tuần cực kỳ hợp lý luôn ạ. Vote 5 sao!',
-        'Đọc đấu trí gay cấn thực sự, các chiêu trò tài chính và pháp lý được tác giả viết cực kỳ chuẩn xác và logic, không hề buff quá đà.',
-        'Nữ chính thông minh sắc sảo chứ không phải kiểu bánh bèo chỉ biết khóc lóc. Thích hình tượng nữ cường lý trí thế này!',
-        'Cú lật kèo hay quá, đúng chuẩn sảng văn trí tuệ! Đọc mà sướng vô cùng.',
-        'Văn phong viết rất cuốn, tác giả chắc chắn có hiểu biết thực tế sâu sắc về giới đầu tư và kinh doanh.',
-        'Đọc mô tả các tình tiết mà thèm chảy nước miếng. Tác giả chắc chắn có kiến thức đời sống rất sâu sắc.',
-        'Truyện vả mặt cực gắt, gã chồng cũ và mẹ chồng coi thường nhân vật chính giờ thì tha hồ mà hối hận!',
-        'Quá hay, vừa sảng khoái vừa giàu tính nhân văn. Đọc một mạch hết luôn không dừng lại được.',
-        'Ý tưởng cốt truyện quá độc đáo và sát thực tế luôn á. Cách thắt nút mở nút cực kỳ thông minh.',
-        'Bối cảnh chân thực dã man, đọc mà nhập tâm ghê gớm. Đọc cuốn không dứt ra được, mong nhóm dịch ra chương mới nhanh nhanh nha.',
-        'Cơ hội trọng sinh lật ngược thế cờ quá sướng, đọc đã mắt thực sự!',
-        'Đọc chương nào sướng chương đó, vả mặt cực kỳ thuyết phục bằng chứng cứ hẳn hoi chứ không vô lý.',
-        'Nhân vật chính ẩn thân quá đỉnh, quả nhiên là người có thực lực thì không cần nói nhiều. Càng đọc càng mê.',
-        'Lật kèo khét lẹt dã man, xem bọn khinh người phải quỳ xuống xin lỗi mà đã cái nư! Rất đáng đọc.',
-        'Lối viết chắc tay, cốt truyện kịch tính nhiều plot twist bất ngờ. Một trong những bộ hay nhất năm nay.',
-        'Siêu phẩm sảng văn, đề cử nhiệt liệt nha cả nhà. Đọc giải trí cực kỳ.',
-        'Drama ngược tâm dã man, nhưng đoạn sau lật kèo vả mặt thì sướng vô cùng. Gieo gió gặp bão quả không sai.',
-        'Giao diện web mượt, đọc không quảng cáo, truyện lại hay nữa, tuyệt vời! Cảm ơn admin nhiều nha.',
-        'Chàng rể ẩn thế cứu vợ đỉnh quá, xứng đáng 5 sao! Càng về sau càng kịch tính.',
-        'Tình tiết nhanh, dồn dập, đọc không bị chán. Nhân vật phụ cũng có não chứ không bị dìm quá đà.',
-        'Tác giả bẻ lái khét lẹt, đọc mà tim đập thình thịch luôn. Hóng chương sau quá đi mất.',
-        'Mỗi chương đều có điểm nhấn riêng, không bị loãng. Hy vọng tác giả giữ vững phong độ.',
-        'Cực kỳ thích cách xây dựng nhân vật chính, bản lĩnh, lạnh lùng nhưng rất trọng tình nghĩa.',
-        'Đọc đi đọc lại vẫn thấy hay. Một bộ truyện xứng đáng được biết đến nhiều hơn.',
-        'Cốt truyện mạch lạc, không bị sạn. Team dịch siêu có tâm, câu từ chau chuốt mượt mà.',
-        'Mới lọt hố mà đọc một lèo mấy chục chương luôn. Nghiện mất rồi ad ơi, cứu em với!'
-    ];
-
-    $num_to_seed = (($post_id * 3) % 11) + 10; // Seeds between 10 and 20 comments persistently
-    for ($i = 0; $i < $num_to_seed; $i++) {
-        $name_idx = ($post_id + $i * 7) % count($names);
-        $rev_idx = ($post_id + $i * 11) % count($reviews);
-        $rating = (($post_id + $i) % 7 === 0) ? 4 : 5; // Mostly 5 stars, occasionally 4 stars
-        
-        $author_name = $names[$name_idx];
-        $content = $reviews[$rev_idx];
-        
-        $days_ago = ($post_id + $i * 13) % 45;
-        $comment_date = date('Y-m-d H:i:s', strtotime("-$days_ago days -{$i} hours"));
-
-        $email_prefix = sanitize_title($author_name) . $i;
-        $commentdata = [
-            'comment_post_ID'      => $post_id,
-            'comment_author'       => $author_name,
-            'comment_author_email' => $email_prefix . '@gmail.com',
-            'comment_content'      => $content,
-            'comment_type'         => 'comment',
-            'comment_date'         => $comment_date,
-            'comment_approved'     => 1
-        ];
-        
-        $comment_id = wp_insert_comment($commentdata);
-        if ($comment_id) {
-            update_comment_meta($comment_id, 'comment_rating', $rating);
+            update_comment_meta($comment_id, 'comment_rating', (($post_id + $i) % 7 === 0) ? 4 : 5);
         }
     }
 }
@@ -484,6 +574,10 @@ function tehi_seed_story_comments_if_empty($post_id) {
 function tehi_get_canonical_url() {
     $request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '/';
     $path = parse_url($request_uri, PHP_URL_PATH);
+
+    if (function_exists('dtt_is_article_archive_request') && dtt_is_article_archive_request()) {
+        return dtt_article_archive_url();
+    }
 
     $legacy_map = array(
         '/the-loai.html'            => '/the-loai/',
@@ -519,7 +613,10 @@ function tehi_get_canonical_url() {
 
 function tehi_current_legacy_page_title() {
     $request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '';
-    $path = parse_url($request_uri, PHP_URL_PATH);
+    $path = rtrim((string) parse_url($request_uri, PHP_URL_PATH), '/');
+    if ('' === $path) {
+        $path = '/';
+    }
     $titles = array(
         '/the-loai.html'            => 'Thể loại',
         '/danh-muc.html'            => 'Thể loại',
@@ -568,7 +665,10 @@ add_filter('document_title_separator', function() {
  * Inject Tailwind CDN + Material Symbols để các template cũ render đúng
  */
 add_action('wp_head', function() {
-    if (!is_front_page()) {
+    global $tehi_tailwind_page;
+    // The search template is Tailwind-based but uses WordPress's regular
+    // search.php path, so it is not marked by the custom page router.
+    if (!empty($tehi_tailwind_page) || is_search()) {
         echo '<script>window.tailwind=window.tailwind||{};window.tailwind.config={corePlugins:{preflight:false},theme:{extend:{colors:{"surface-container-lowest":"#ffffff","surface-container-low":"#f6f3f2","surface-container":"#f0eded","surface-container-high":"#eae8e7","surface-container-highest":"#e4e2e1","surface-bright":"#fbf9f8","surface":"#fbf9f8","on-surface":"#1b1c1c","on-surface-variant":"#404752","outline":"#707783","outline-variant":"#c0c7d4","primary":"#0060a9","primary-container":"#3f9cfb","on-primary":"#ffffff","on-primary-container":"#00325c","secondary":"#536068","secondary-container":"#d4e2eb","on-secondary-container":"#57656c","background":"#fbf9f8","on-background":"#1b1c1c"}}}};</script>' . "\n";
         echo '<script src="https://cdn.tailwindcss.com"></script>' . "\n";
     }
@@ -2540,3 +2640,256 @@ function tehi_serve_webp_image_srcset($sources, $size_array, $image_src, $image_
     return $sources;
 }
 add_filter('wp_calculate_image_srcset', 'tehi_serve_webp_image_srcset', 10, 5);
+
+/* DTT global SEO schema and image optimization hooks. */
+if (file_exists(get_template_directory() . '/dtt-seo-image-optimization.php')) {
+    require_once get_template_directory() . '/dtt-seo-image-optimization.php';
+}
+
+/**
+ * DTT route hardening: serve existing templates for pretty archive/studio paths
+ * that otherwise fall through to the WordPress 404 template.
+ */
+function dtt_route_hardening_template( $template ) {
+    if ( is_admin() ) {
+        return $template;
+    }
+
+    $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/';
+    $path = trim( (string) parse_url( $request_uri, PHP_URL_PATH ), '/' );
+    $home_path = trim( (string) parse_url( home_url( '/' ), PHP_URL_PATH ), '/' );
+    if ( $home_path && 0 === strpos( $path, $home_path ) ) {
+        $path = trim( substr( $path, strlen( $home_path ) ), '/' );
+    }
+
+    $mapped_file = '';
+    $paged = 1;
+
+    if ( preg_match( '#^(?:the-loai|the-loai\\.html)(?:/page/([0-9]+))?$#i', $path, $m ) ) {
+        $mapped_file = get_template_directory() . '/page-directory.php';
+        $paged = ! empty( $m[1] ) ? max( 1, (int) $m[1] ) : 1;
+    } elseif ( preg_match( '#^(?:truyen-moi-cap-nhat|truyen-moi-cap-nhat\\.html)(?:/page/([0-9]+))?$#i', $path, $m ) ) {
+        $mapped_file = get_template_directory() . '/page-latest.php';
+        $paged = ! empty( $m[1] ) ? max( 1, (int) $m[1] ) : 1;
+    } elseif ( preg_match( '#^(?:truyen-hoan-thanh|hoan-thanh\\.html)(?:/page/([0-9]+))?$#i', $path, $m ) ) {
+        $mapped_file = get_template_directory() . '/page-completed.php';
+        $paged = ! empty( $m[1] ) ? max( 1, (int) $m[1] ) : 1;
+    } elseif ( preg_match( '#^story-studio$#i', $path ) ) {
+        $mapped_file = get_template_directory() . '/page-story-studio.php';
+        global $wp_query;
+        if ( $paged > 1 ) {
+            $wp_query->set( 'paged', $paged );
+            $wp_query->set( 'page', $paged );
+        }
+        $wp_query->is_404 = false;
+        status_header( 200 );
+        return $mapped_file;
+    }
+
+    return $template;
+}
+add_filter( 'template_include', 'dtt_route_hardening_template', 99 );
+
+/** Clear the stale 404 status before the legacy latest-updates template renders. */
+function dtt_mark_latest_html_route_ready() {
+    if ( is_admin() ) {
+        return;
+    }
+
+    $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/';
+    $path = (string) parse_url( $request_uri, PHP_URL_PATH );
+    if ( ! preg_match( '#^/truyen-moi-cap-nhat\.html(?:/page/[0-9]+)?/?$#i', $path ) ) {
+        return;
+    }
+
+    global $wp_query, $tehi_tailwind_page;
+    $tehi_tailwind_page = true;
+    if ( isset( $wp_query ) && $wp_query instanceof WP_Query ) {
+        $wp_query->is_404 = false;
+    }
+    status_header( 200 );
+}
+add_action( 'wp', 'dtt_mark_latest_html_route_ready', 1 );
+
+/** Improve attachment image defaults without overriding explicit template choices. */
+function dtt_image_loading_attributes( $attr, $attachment, $size ) {
+    if ( is_admin() ) {
+        return $attr;
+    }
+    if ( empty( $attr['decoding'] ) ) {
+        $attr['decoding'] = 'async';
+    }
+    if ( empty( $attr['loading'] ) ) {
+        $attr['loading'] = 'lazy';
+    }
+    return $attr;
+}
+add_filter( 'wp_get_attachment_image_attributes', 'dtt_image_loading_attributes', 10, 3 );
+
+/** Above-the-fold image tuning and safe fallback for slow/failed remote covers. */
+function dtt_image_loading_hardening() {
+    if ( is_admin() ) {
+        return;
+    }
+    $fallback = get_template_directory_uri() . '/img_data/images/no-image-cover-v5.png?v=6';
+    ?>
+    <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
+    <script>
+    (function () {
+        var fallback = <?php echo wp_json_encode( esc_url( $fallback ) ); ?>;
+        function tuneDttImages() {
+            var images = Array.prototype.slice.call(document.images || []);
+            images.forEach(function (img, index) {
+                var dataSrc = img.getAttribute('data-src');
+                if (dataSrc && (!img.getAttribute('src') || img.getAttribute('src') === 'about:blank')) {
+                    img.setAttribute('src', dataSrc);
+                }
+                if (!img.getAttribute('decoding')) {
+                    img.setAttribute('decoding', 'async');
+                }
+                var rect = img.getBoundingClientRect();
+                var nearViewport = rect.top < (window.innerHeight || 800) + 600;
+                if (nearViewport) {
+                    img.setAttribute('loading', 'eager');
+                    if (!img.getAttribute('fetchpriority')) {
+                        img.setAttribute('fetchpriority', index < 4 ? 'high' : 'auto');
+                    }
+                } else if (!img.getAttribute('loading')) {
+                    img.setAttribute('loading', 'lazy');
+                }
+                if (!img.dataset.dttFallbackBound) {
+                                                                            img.addEventListener('error', function () {
+                        if (this.dataset.dttFallbackUsed || this.src === fallback) {
+                            return;
+                        }
+                        this.dataset.dttFallbackUsed = '1';
+                        this.removeAttribute('srcset');
+                        this.removeAttribute('sizes');
+                        this.src = fallback;
+                    }, { once: true });
+                    img.dataset.dttFallbackBound = '1';
+                }
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', tuneDttImages, { once: true });
+        } else {
+            tuneDttImages();
+        }
+    }());
+    </script>
+    <?php
+}
+add_action( 'wp_head', 'dtt_image_loading_hardening', 30 );
+
+/** Provide a basic intrinsic constraint for direct cover images. */
+function dtt_cover_image_style_hardening() {
+    if ( is_admin() ) {
+        return;
+    }
+    echo '<style id="dtt-cover-image-hardening">img[src*="/uploads/"], img[src*="lh3.googleusercontent.com"] { max-width: 100%; } .mkm-card img, .mkm-item img { display: block; }</style>';
+}
+add_action( 'wp_head', 'dtt_cover_image_style_hardening', 31 );
+
+/** Canonicalize legacy-backed archive paths that WordPress resolves as 404. */
+function dtt_canonical_route_redirect() {
+    if ( is_admin() || wp_doing_ajax() || wp_doing_cron() ) {
+        return;
+    }
+    $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/';
+    $path = trim( (string) parse_url( $request_uri, PHP_URL_PATH ), '/' );
+    $query = array();
+    parse_str( (string) parse_url( $request_uri, PHP_URL_QUERY ), $query );
+    $target = '';
+
+    if ( preg_match( '#^truyen-moi-cap-nhat/page/([0-9]+)/?$#i', $path, $m ) ) {
+        $target = home_url( '/truyen-moi-cap-nhat.html' );
+        $query['paged'] = max( 1, (int) $m[1] );
+    } elseif ( preg_match( '#^truyen-moi-cap-nhat/?$#i', $path ) ) {
+        $target = home_url( '/truyen-moi-cap-nhat.html' );
+    } elseif ( preg_match( '#^the-loai/?$#i', $path ) ) {
+        $target = home_url( '/the-loai.html' );
+    } elseif ( preg_match( '#^hoan-thanh\.html/page/([0-9]+)/?$#i', $path, $m ) ) {
+        $target = home_url( '/hoan-thanh.html' );
+        $query['paged'] = max( 1, (int) $m[1] );
+    }
+
+
+    if ( $target ) {
+        $target = add_query_arg( array_filter( $query, static function( $value ) {
+            return '' !== (string) $value;
+        } ), $target );
+        wp_safe_redirect( $target, 301 );
+        exit;
+    }
+}
+add_action( 'template_redirect', 'dtt_canonical_route_redirect', 1 );
+
+/**
+ * Dynamic archive for regular WordPress posts.
+ *
+ * This route intentionally does not create a WordPress Page. It keeps the
+ * archive data-driven and avoids adding a CMS record solely for navigation.
+ */
+function dtt_article_archive_url() {
+    return trailingslashit(home_url('/bai-viet/'));
+}
+
+function dtt_article_archive_request_path() {
+    $request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '/';
+    $path = trim((string) parse_url($request_uri, PHP_URL_PATH), '/');
+    $home_path = trim((string) parse_url(home_url('/'), PHP_URL_PATH), '/');
+
+    if ($home_path && 0 === strpos($path, $home_path)) {
+        $path = trim(substr($path, strlen($home_path)), '/');
+    }
+
+    return $path;
+}
+
+function dtt_is_article_archive_request() {
+    return (bool) preg_match(
+        '#^bai-viet(?:/page/[0-9]+)?$#i',
+        dtt_article_archive_request_path()
+    );
+}
+
+function dtt_article_archive_template($template) {
+    if (is_admin() || !dtt_is_article_archive_request()) {
+        return $template;
+    }
+
+    $archive_template = get_template_directory() . '/page-bai-viet.php';
+    if (!is_readable($archive_template)) {
+        return $template;
+    }
+
+    $path = dtt_article_archive_request_path();
+    $paged = 1;
+    if (preg_match('#^bai-viet/page/([0-9]+)$#i', $path, $matches)) {
+        $paged = max(1, absint($matches[1]));
+    }
+
+    set_query_var('paged', $paged);
+    set_query_var('page', $paged);
+
+    global $wp_query;
+    if (isset($wp_query) && $wp_query instanceof WP_Query) {
+        $wp_query->set('paged', $paged);
+        $wp_query->set('page', $paged);
+        $wp_query->is_404 = false;
+    }
+
+    status_header(200);
+    return $archive_template;
+}
+add_filter('template_include', 'dtt_article_archive_template', 100);
+
+add_filter('pre_get_document_title', function($title) {
+    if (!dtt_is_article_archive_request()) {
+        return $title;
+    }
+
+    $site_name = get_bloginfo('name') ?: 'DTT';
+    return 'Bài viết - ' . $site_name;
+}, 20);

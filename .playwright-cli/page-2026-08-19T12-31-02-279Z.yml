@@ -1,0 +1,748 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "DTT." [ref=e6] [cursor=pointer]:
+        - /url: https://doctieuthuyet.com
+      - generic [ref=e8]:
+        - button "Tìm kiếm" [ref=e9] [cursor=pointer]:
+          - generic [ref=e10]: 
+        - textbox "Tìm tên truyện, tên người đăng.." [ref=e11]
+      - generic [ref=e12]:
+        - link " Thể loại" [ref=e13] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/the-loai.html
+          - generic [ref=e14]: 
+          - text: Thể loại
+        - link " Bài viết" [ref=e15] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bai-viet/
+          - generic [ref=e16]: 
+          - text: Bài viết
+        - link " Truyện full" [ref=e17] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/hoan-thanh.html
+          - generic [ref=e18]: 
+          - text: Truyện full
+        - link " BXH" [ref=e19] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/bang-xep-hang.html
+          - generic [ref=e20]: 
+          - text: BXH
+        - link " Theo dõi" [ref=e21] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/theo-doi.html
+          - generic [ref=e22]: 
+          - text: Theo dõi
+        - button " Đăng nhập" [ref=e23] [cursor=pointer]:
+          - generic [ref=e24]: 
+          - text: Đăng nhập
+  - main [ref=e25]:
+    - main [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e29]:
+          - navigation "Đường dẫn Kiếm Lai Wiki" [ref=e30]:
+            - link "DTT" [ref=e31] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/
+            - generic [ref=e32]: /
+            - link "Kiếm Lai" [ref=e33] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/category/kiem-lai/
+            - generic [ref=e34]: /
+            - generic [ref=e35]: Wiki trung tâm
+          - heading [level=1] [ref=e36]:
+            - text: Kiếm Lai
+            - emphasis [ref=e37]: Wiki
+          - paragraph [ref=e38]: Bản đồ tra cứu thế giới Kiếm Lai — từ Ly Châu và Lạc Phách Sơn đến Kiếm Khí Trường Thành, gom nhân vật, thế lực, cảnh giới và những chặng đường lớn vào một lộ trình dễ khám phá.
+          - generic "Điều hướng nhanh" [ref=e39]:
+            - link "Khởi hành từ Ly Châu" [ref=e40] [cursor=pointer]:
+              - /url: "#kiem-lai-noi-gi"
+              - text: Khởi hành từ Ly Châu
+              - generic [ref=e41]: →
+            - link "Tra thư viện 108 bài" [ref=e42] [cursor=pointer]:
+              - /url: "#thu-vien"
+              - text: Tra thư viện 108 bài
+              - generic [ref=e43]: ↗
+          - generic "Tổng quan thư viện Kiếm Lai" [ref=e44]:
+            - generic [ref=e45]:
+              - strong [ref=e46]: "109"
+              - generic [ref=e47]: Bài Kiếm Lai
+            - generic [ref=e48]:
+              - strong [ref=e49]: "108"
+              - generic [ref=e50]: Bài chuyên sâu
+            - generic [ref=e51]:
+              - strong [ref=e52]: "05"
+              - generic [ref=e53]: Thiên hạ
+            - generic [ref=e54]:
+              - strong [ref=e55]: "10"
+              - generic [ref=e56]: Chặng lớn
+        - generic [ref=e57]:
+          - complementary [ref=e58]:
+            - navigation "Mục lục Kiếm Lai Wiki" [ref=e59]:
+              - strong [ref=e60]: Mục lục
+              - paragraph
+              - list [ref=e61]:
+                - listitem [ref=e62]:
+                  - link "Nhân vật trung tâm" [ref=e63] [cursor=pointer]:
+                    - /url: "#kl-core"
+                - listitem [ref=e64]:
+                  - link "Năm thiên hạ và Hạo Nhiên" [ref=e65] [cursor=pointer]:
+                    - /url: "#kl-world"
+                - listitem [ref=e66]:
+                  - link "Đại Ly, Ngũ Nhạc và sơn thủy" [ref=e67] [cursor=pointer]:
+                    - /url: "#kl-daily"
+                - listitem [ref=e68]:
+                  - link "Nho gia – Văn Miếu" [ref=e69] [cursor=pointer]:
+                    - /url: "#kl-nho"
+                - listitem [ref=e70]:
+                  - link "Đạo gia – Bắc Câu Lô" [ref=e71] [cursor=pointer]:
+                    - /url: "#kl-dao"
+                - listitem [ref=e72]:
+                  - link "Kiếm đạo Bảo Bình" [ref=e73] [cursor=pointer]:
+                    - /url: "#kl-sword"
+                - listitem [ref=e74]:
+                  - link "Kiếm Khí Trường Thành" [ref=e75] [cursor=pointer]:
+                    - /url: "#kl-wall"
+                - listitem [ref=e76]:
+                  - link "Lạc Phách Sơn" [ref=e77] [cursor=pointer]:
+                    - /url: "#kl-lacphach"
+                - listitem [ref=e78]:
+                  - link "Đồng Diệp – Đại Tuyền" [ref=e79] [cursor=pointer]:
+                    - /url: "#kl-dongdiep"
+                - listitem [ref=e80]:
+                  - link "Man Hoang" [ref=e81] [cursor=pointer]:
+                    - /url: "#kl-manhoang"
+                - listitem [ref=e82]:
+                  - link "Cảnh giới – phi kiếm" [ref=e83] [cursor=pointer]:
+                    - /url: "#kl-level"
+                - listitem [ref=e84]:
+                  - link "Batch mới nhất" [ref=e85] [cursor=pointer]:
+                    - /url: "#kl-new"
+                - listitem [ref=e86]:
+                  - link "Lộ trình đọc" [ref=e87] [cursor=pointer]:
+                    - /url: "#kl-route"
+                - listitem [ref=e88]:
+                  - link "FAQ" [ref=e89] [cursor=pointer]:
+                    - /url: "#kl-faq"
+          - article [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - text: ✦
+                - 'heading "Kiếm Lai Wiki: tra cứu nhanh" [level=2] [ref=e93]'
+                - paragraph [ref=e94]:
+                  - strong [ref=e95]: Kiếm Lai Wiki
+                  - text: là hub trung tâm của toàn bộ cluster
+                  - emphasis [ref=e96]: Kiếm Lai
+                  - text: trên Đọc Tiểu Thuyết. Sau batch ngày 19/08/2026, hệ thống hiện có
+                  - strong [ref=e97]: 121 bài publish
+                  - text: ": 1 hub này +"
+                  - strong [ref=e98]: 120 bài chuyên sâu
+                  - text: về nhân vật, cảnh giới, thiên hạ, châu, tông môn, vương triều, thần đạo, kiếm đạo và các tuyến chiến tranh.
+                - paragraph [ref=e99]:
+                  - text: "Nguyên tắc biên soạn: ưu tiên chính văn Zongheng; dữ kiện bách khoa cũ chỉ coi là mốc tham khảo; không tự gán “cảnh giới cuối”; các chức vị đời đầu chỉ khóa khi có nguồn trực tiếp đủ chắc; tên riêng"
+                  - strong [ref=e100]: 齐渡
+                  - text: dùng là
+                  - strong [ref=e101]: Tề Độ
+                  - text: ", phân biệt với khái niệm đại độc 大渎."
+              - heading "Nhân vật trung tâm và tuyến Ly Châu" [level=2] [ref=e102]
+              - paragraph [ref=e103]:
+                - text: Điểm bắt đầu tốt nhất vẫn là
+                - link "Trần Bình An" [ref=e104] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tran-binh-an-la-ai/
+                - text: ","
+                - link "Ninh Diêu" [ref=e105] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ninh-dieu-la-ai/
+                - text: ","
+                - link "Tề Tĩnh Xuân" [ref=e106] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/te-tinh-xuan-la-ai/
+                - text: và
+                - link "A Lương" [ref=e107] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/a-luong-la-ai/
+                - text: . Từ ngõ Nê Bình, cluster mở sang
+                - link "Lưu Tiện Dương" [ref=e108] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/luu-tien-duong-la-ai/
+                - text: ","
+                - link "Cố Xán" [ref=e109] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/co-xan-la-ai/
+                - text: ","
+                - link "Lý Bảo Bình" [ref=e110] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ly-bao-binh-la-ai/
+                - text: ","
+                - link "Tống Tập Tân" [ref=e111] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tong-tap-tan-la-ai/
+                - text: ","
+                - link "Trĩ Khuê/Vương Chu" [ref=e112] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tri-khue-vuong-chu-la-ai/
+                - text: ","
+                - link "Nguyễn Cung" [ref=e113] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/nguyen-cung-la-ai/
+                - text: ","
+                - link "Nguyễn Tú" [ref=e114] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/nguyen-tu-la-ai/
+                - text: ","
+                - link "Dương lão đầu" [ref=e115] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/duong-lao-dau-la-ai/
+                - text: ","
+                - link "Lý Nhị" [ref=e116] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ly-nhi-la-ai/
+                - text: ","
+                - link "Lý Liễu" [ref=e117] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ly-lieu-la-ai/
+                - text: và
+                - link "Trịnh Đại Phong" [ref=e118] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/trinh-dai-phong-la-ai/
+                - text: .
+              - paragraph [ref=e119]: "Đây là lớp nền giúp hiểu vì sao một tiểu trấn nhỏ lại chứa quá nhiều đại nhân quả: Nho gia, thần đạo viễn cổ, chân long, binh gia, kiếm kinh và tương lai của cả Bảo Bình Châu cùng giao nhau."
+              - heading "Năm thiên hạ và bản đồ Hạo Nhiên" [level=2] [ref=e120]
+              - paragraph [ref=e121]:
+                - text: "Thế giới hiện được cluster hóa theo năm thiên hạ:"
+                - link "Hạo Nhiên Thiên Hạ" [ref=e122] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/hao-nhien-thien-ha-la-gi/
+                - text: ","
+                - link "Thanh Minh Thiên Hạ" [ref=e123] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thanh-minh-thien-ha-la-gi/
+                - text: ","
+                - link "Liên Hoa Thiên Hạ" [ref=e124] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/lien-hoa-thien-ha-la-gi/
+                - text: ","
+                - link "Man Hoang Thiên Hạ" [ref=e125] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/man-hoang-thien-ha-la-gi/
+                - text: và
+                - link "Ngũ Thải Thiên Hạ" [ref=e126] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ngu-thai-thien-ha-la-gi/
+                - text: .
+              - paragraph [ref=e127]:
+                - text: Trong Hạo Nhiên, các châu đã có bài riêng gồm
+                - link "Bảo Bình Châu" [ref=e128] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/bao-binh-chau-la-gi/
+                - text: ","
+                - link "Bắc Câu Lô Châu" [ref=e129] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/bac-cau-lo-chau-la-gi/
+                - text: ","
+                - link "Trung Thổ Thần Châu" [ref=e130] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/trung-tho-than-chau-la-gi/
+                - text: ","
+                - link "Đồng Diệp Châu" [ref=e131] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dong-diep-chau-la-gi/
+                - text: và
+                - link "Phù Diêu Châu" [ref=e132] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/phu-dieu-chau-la-gi/
+                - text: ". Mỗi châu đại diện một loại bài toán khác: nhà nước, kiếm đạo, chính danh, chiến tranh – tái thiết và chiến trường cấp thiên hạ."
+              - heading "Đại Ly, Ngũ Nhạc, Tề Độ và hệ sơn thủy" [level=2] [ref=e133]
+              - paragraph [ref=e134]:
+                - link "Đại Ly" [ref=e135] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dai-ly-la-gi/
+                - text: không mạnh chỉ vì thiết kỵ.
+                - link "Thôi Sàm" [ref=e136] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thoi-sam-la-ai/
+                - text: giúp xây một hệ thống nơi quân đội, quan liêu, đường vận chuyển, sơn thần, thủy thần và quốc vận phối hợp với nhau. Hậu kỳ
+                - link "Tống Hòa" [ref=e137] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tong-hoa-la-ai/
+                - text: tiếp quản một quốc gia đã trưởng thành và trao phương ấn tân quốc sư cho Trần Bình An.
+              - paragraph [ref=e138]:
+                - text: Hai bài quan trọng để hiểu sơn hà Đại Ly là
+                - link "Đại Ly Ngũ Nhạc" [ref=e139] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dai-ly-ngu-nhac-la-gi/
+                - text: và
+                - link "Tề Độ" [ref=e140] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/te-do-la-gi/
+                - text: . Năm sơn quân gồm Bắc Nhạc
+                - link "Ngụy Bách" [ref=e141] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/nguy-bach-la-ai/
+                - text: ", Trung Nhạc Tấn Thanh, Nam Nhạc Phạm Tuấn Mậu, Đông Nhạc Mông Tung và Tây Nhạc Đồng Văn Sướng. Trên ấn quốc sư, Ngũ Nhạc chân hình được đặt cùng Tề Độ, sông ngòi và các hồ lớn như"
+                - link "Thư Giản Hồ" [ref=e142] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thu-gian-ho-la-gi/
+                - text: .
+              - heading "Nho gia, Văn Miếu và Văn Thánh nhất mạch" [level=2] [ref=e143]
+              - paragraph [ref=e144]:
+                - text: Để hiểu Nho gia, nên đọc theo trục
+                - link "Chí Thánh Tiên Sư" [ref=e145] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/chi-thanh-tien-su-la-ai/
+                - text: →
+                - link "Lễ Thánh" [ref=e146] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/le-thanh-la-ai/
+                - text: →
+                - link "Á Thánh" [ref=e147] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/a-thanh-la-ai/
+                - text: →
+                - link "Văn Thánh" [ref=e148] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/van-thanh-la-ai/
+                - text: →
+                - link "Văn Miếu" [ref=e149] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/van-mieu-la-gi/
+                - text: . Nhánh Văn Thánh nối tiếp qua Tề Tĩnh Xuân,
+                - link "Tả Hữu" [ref=e150] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ta-huu-la-ai/
+                - text: ", Thôi Sàm,"
+                - link "Thôi Đông Sơn" [ref=e151] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thoi-dong-son-la-ai/
+                - text: ","
+                - link "Mao Tiểu Đông" [ref=e152] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/mao-tieu-dong-la-ai/
+                - text: và
+                - link "Tào Tình Lãng" [ref=e153] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tao-tinh-lang-la-ai/
+                - text: .
+              - paragraph [ref=e154]:
+                - text: Các bài
+                - link "Sơn Nhai Thư Viện" [ref=e155] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/son-nhai-thu-vien-la-gi/
+                - text: ","
+                - link "Bạch Dã" [ref=e156] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/bach-da-la-ai/
+                - text: và
+                - link "Tam Sơn Cửu Hầu tiên sinh" [ref=e157] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tam-son-cuu-hau-tien-sinh-la-ai/
+                - text: mở rộng từ học cung – văn mạch sang đại tu sĩ, phù lục và lớp viễn cổ.
+              - heading "Đạo gia, Bạch Ngọc Kinh và Bắc Câu Lô" [level=2] [ref=e158]
+              - paragraph [ref=e159]:
+                - text: Trục Thanh Minh gồm
+                - link "Đạo Tổ" [ref=e160] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dao-to-la-ai/
+                - text: ","
+                - link "Bạch Ngọc Kinh" [ref=e161] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/bach-ngoc-kinh-la-gi/
+                - text: ","
+                - link "Dư Đấu" [ref=e162] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/du-dau-la-ai/
+                - text: và
+                - link "Lục Trầm" [ref=e163] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/luc-tram-la-ai/
+                - text: . Ở Hạo Nhiên có
+                - link "Long Hổ Sơn" [ref=e164] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/long-ho-son-la-gi/
+                - text: và hệ
+                - link "Hỏa Long Chân Nhân" [ref=e165] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/hoa-long-chan-nhan-la-ai/
+                - text: tại Bắc Câu Lô.
+              - paragraph [ref=e166]:
+                - text: "Batch mới đã tách sâu Pha Địa Phong thành hai bài quan trọng:"
+                - link "Lý Dư" [ref=e167] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ly-du-la-ai/
+                - text: đại diện Thái Hà nhất mạch, giỏi trừ yêu – dịch quỷ;
+                - link "Viên Linh Điện" [ref=e168] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/vien-linh-dien-la-ai/
+                - text: đại diện Chỉ Huyền nhất mạch thuộc Đạo môn kiếm tiên. Đọc cùng
+                - link "Trương Sơn Phong" [ref=e169] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truong-son-phong-la-ai/
+                - text: ","
+                - link "Thái Huy Kiếm Tông" [ref=e170] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thai-huy-kiem-tong-la-gi/
+                - text: ","
+                - link "Tề Cảnh Long" [ref=e171] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/te-canh-long-la-ai/
+                - text: và
+                - link "Bạch Thủ" [ref=e172] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/bach-thu-la-ai/
+                - text: sẽ thấy rõ phong khí Bắc Câu Lô.
+              - 'heading "Kiếm đạo Bảo Bình: nhiều truyền thừa, không chỉ một tông môn" [level=2] [ref=e173]'
+              - paragraph [ref=e174]:
+                - link "Ngụy Tấn" [ref=e175] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/nguy-tan-la-ai/
+                - text: mở nhánh Phong Tuyết Miếu – Thần Tiên Đài, nơi chính văn xác nhận ông là độc truyền một mạch. Bên cạnh đó là
+                - link "Phong Lôi Viên" [ref=e176] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/phong-loi-vien-la-gi/
+                - text: với
+                - link "Lý Đoàn Cảnh" [ref=e177] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ly-doan-canh-la-ai/
+                - text: ","
+                - link "Lưu Bá Kiều" [ref=e178] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/luu-ba-kieu-la-ai/
+                - text: ","
+                - link "Hoàng Hà" [ref=e179] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/hoang-ha-la-ai/
+                - text: ;
+                - link "Chính Dương Sơn" [ref=e180] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/chinh-duong-son-la-gi/
+                - text: với
+                - link "Tô Giá" [ref=e181] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/to-gia-la-ai/
+                - text: và món nợ nhà Lưu.
+              - paragraph [ref=e182]:
+                - link "Bàn Sơn Viên" [ref=e183] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ban-son-vien-la-ai/
+                - text: "là mắt xích quan trọng của món nợ đó: hộ sơn lão viên từng đánh Lưu Tiện Dương gần chết vì kiếm kinh tổ truyền, đối đầu Tề Tĩnh Xuân và có cảnh thật sự nhổ núi. Tuyến này về sau nối thẳng tới"
+                - link "Long Tuyền Kiếm Tông" [ref=e184] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/long-tuyen-kiem-tong-la-gi/
+                - text: và trận hỏi kiếm Chính Dương Sơn.
+              - heading "Kiếm Khí Trường Thành và đại chiến Man Hoang" [level=2] [ref=e185]
+              - paragraph [ref=e186]:
+                - text: Cluster hiện có một cụm riêng cho
+                - link "Kiếm Khí Trường Thành" [ref=e187] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/kiem-khi-truong-thanh-la-gi/
+                - text: ":"
+                - link "Trần Thanh Đô" [ref=e188] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tran-thanh-do-la-ai/
+                - text: ","
+                - link "Long Quân" [ref=e189] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/long-quan-la-ai/
+                - text: ","
+                - link "Quan Chiếu" [ref=e190] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/quan-chieu-la-ai/
+                - text: ","
+                - link "Tiêu Tuân" [ref=e191] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tieu-tuan-la-ai/
+                - text: ","
+                - link "Trương Lộc" [ref=e192] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/truong-loc-la-ai/
+                - text: ","
+                - link "Ẩn Quan" [ref=e193] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/an-quan-la-gi/
+                - text: ","
+                - link "Đảo Huyền Sơn" [ref=e194] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dao-huyen-son-la-gi/
+                - text: và
+                - link "Phi Thăng Thành" [ref=e195] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/phi-thang-thanh-la-gi/
+                - text: .
+              - paragraph [ref=e196]: "Ở đây cần phân biệt chức vị với cảnh giới và tránh ép lịch sử viễn cổ vào mapping fandom. Dữ kiện chắc nhất của Tiêu Tuân là cựu Ẩn Quan trước Trần Bình An; sau khi bà phản biến, Trần Bình An được công bố là tân Ẩn Quan. Trương Lộc lại là trường hợp phức tạp: rời thành là thật nhưng vẫn giữ cửa và trong trận quyết định không xuất kiếm cho cả hai phía."
+              - heading "Lạc Phách Sơn và hạ tông" [level=2] [ref=e197]
+              - paragraph [ref=e198]:
+                - link "Lạc Phách Sơn" [ref=e199] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/lac-phach-son-la-gi/
+                - text: phát triển từ một mái nhà thành tông môn. Các thành viên tiêu biểu có
+                - link "Bùi Tiền" [ref=e200] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/bui-tien-la-ai/
+                - text: ","
+                - link "Chu Liễm" [ref=e201] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/chu-liem-la-ai/
+                - text: ","
+                - link "Trần Noãn Thụ" [ref=e202] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tran-noan-thu-la-ai/
+                - text: ","
+                - link "Chu Mễ Lạp" [ref=e203] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/chu-me-lap-la-ai/
+                - text: ","
+                - link "Trần Linh Quân" [ref=e204] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tran-linh-quan-la-ai/
+                - text: ","
+                - link "Khương Thượng Chân" [ref=e205] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/khuong-thuong-chan-la-ai/
+                - text: và Ngụy Bách.
+              - paragraph [ref=e206]:
+                - text: Hậu kỳ, Thôi Đông Sơn mở
+                - link "Thanh Bình Kiếm Tông" [ref=e207] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thanh-binh-kiem-tong-la-gi/
+                - text: ", khiến truyền thừa Lạc Phách Sơn phải học cách vận hành ở một châu khác chứ không thể chỉ dựa vào tình nghĩa sân nhà."
+              - heading "Đồng Diệp, Đại Tuyền và Diêu gia" [level=2] [ref=e208]
+              - paragraph [ref=e209]:
+                - link "Đồng Diệp Châu" [ref=e210] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dong-diep-chau-la-gi/
+                - text: có
+                - link "Thái Bình Sơn" [ref=e211] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thai-binh-son-la-gi/
+                - text: ","
+                - link "Ngọc Khuê Tông" [ref=e212] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ngoc-khue-tong-la-gi/
+                - text: ","
+                - link "Đồng Diệp Tông" [ref=e213] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dong-diep-tong-la-gi/
+                - text: ","
+                - link "Vân Quật Phúc Địa" [ref=e214] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/van-quat-phuc-dia-la-gi/
+                - text: và
+                - link "Đại Tuyền vương triều" [ref=e215] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dai-tuyen-vuong-trieu-la-gi/
+                - text: .
+              - paragraph [ref=e216]:
+                - text: Batch mới bổ sung
+                - link "Đại Tuyền Diêu gia" [ref=e217] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dai-tuyen-dieu-gia-la-gi/
+                - text: ": gia tộc quân công đi từ lão tướng Diêu Trấn và biên quân tới thời"
+                - link "Diêu Cận Chi" [ref=e218] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dieu-can-chi-la-ai/
+                - text: trở thành nữ đế, Diêu Tiên Chi giữ chức thực quyền tại kinh thành và Diêu Lĩnh Chi vẫn giữ màu giang hồ. Nên đọc cùng
+                - link "Bắc Tấn" [ref=e219] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/bac-tan-la-gi/
+                - text: và
+                - link "Tùng Châm Hồ" [ref=e220] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tung-cham-ho-la-gi/
+                - text: để hiểu biên quân – thần đạo – triều đình gắn nhau thế nào.
+              - 'heading "Man Hoang: Thác Nguyệt Sơn, quân trướng và đại yêu" [level=2] [ref=e221]'
+              - paragraph [ref=e222]:
+                - text: Trục lớn gồm
+                - link "Thác Nguyệt Sơn" [ref=e223] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thac-nguyet-son-la-gi/
+                - text: ","
+                - link "Chu Mật" [ref=e224] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/chu-mat-la-ai/
+                - text: ","
+                - link "Lưu Xoa" [ref=e225] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/luu-xoa-la-ai/
+                - text: ","
+                - link "Bạch Trạch" [ref=e226] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/bach-trach-la-ai/
+                - text: ","
+                - link "Trọng Quang" [ref=e227] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/trong-quang-la-ai/
+                - text: ","
+                - link "lão mù Man Hoang" [ref=e228] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/lao-mu-man-hoang-la-ai/
+                - text: và
+                - link "Thập Vạn Đại Sơn" [ref=e229] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/thap-van-dai-son-la-gi/
+                - text: .
+              - paragraph [ref=e230]:
+                - link "Giáp Thân Trướng" [ref=e231] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/giap-than-truong-la-gi/
+                - text: là bài mới giúp thấy Man Hoang tổ chức thiên tài trẻ như thế nào. Thủ lĩnh Mộc Kịch không phải kiếm tu; dưới trướng có năm kiếm tiên phôi tử Trúc Khiếp, Ly Chân, Vũ Tứ, Thôn Than và Lưu Bạch. Thất bại trong cuộc phục sát Trần Bình An cho thấy chiến tranh không thể đọc bằng bảng cảnh giới đơn giản.
+              - heading "Cảnh giới và bản mệnh phi kiếm" [level=2] [ref=e232]
+              - paragraph [ref=e233]:
+                - text: Hai bài nền tảng là
+                - link "Cảnh giới Kiếm Lai" [ref=e234] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/canh-gioi-kiem-lai/
+                - text: và
+                - link "Bản mệnh phi kiếm" [ref=e235] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ban-menh-phi-kiem-la-gi/
+                - text: . Khung luyện khí đi từ Hạ Ngũ → Trung Ngũ → Thượng Ngũ → cảnh 14 → cảnh 15; võ phu có hệ riêng đi tới Chỉ Cảnh và Võ Thần.
+              - paragraph [ref=e236]: Quan trọng hơn, cùng cảnh chưa chắc cùng chiến lực. Kiếm tu còn phụ thuộc bản mệnh phi kiếm, kiếm thuật, tâm cảnh, kinh nghiệm và điều kiện chiến trường; thần linh có thần vị, kim thân, hương hỏa; yêu tộc còn có huyết mạch và chân thân. Vì vậy cluster luôn gắn cảnh giới với mốc thời gian thay vì tự chốt “final realm”.
+              - 'heading "Batch mới nhất: 7 bài đã publish" [level=2] [ref=e237]'
+              - table [ref=e238]:
+                - rowgroup [ref=e239]:
+                  - row [ref=e240]:
+                    - columnheader "Bài" [ref=e241]
+                    - columnheader "Trục internal-link" [ref=e242]
+                - rowgroup [ref=e243]:
+                  - row [ref=e244]:
+                    - cell [ref=e245]:
+                      - link "Ngụy Tấn" [ref=e246] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/nguy-tan-la-ai/
+                    - cell "Phong Tuyết Miếu – Thần Tiên Đài – kiếm đạo Bảo Bình" [ref=e247]
+                  - row [ref=e248]:
+                    - cell [ref=e249]:
+                      - link "Lý Dư" [ref=e250] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/ly-du-la-ai/
+                    - cell "Hỏa Long – Thái Hà – trừ yêu dịch quỷ" [ref=e251]
+                  - row [ref=e252]:
+                    - cell [ref=e253]:
+                      - link "Viên Linh Điện" [ref=e254] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/vien-linh-dien-la-ai/
+                    - cell "Hỏa Long – Chỉ Huyền – Đạo môn kiếm tiên" [ref=e255]
+                  - row [ref=e256]:
+                    - cell [ref=e257]:
+                      - link "Đại Ly Ngũ Nhạc" [ref=e258] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/dai-ly-ngu-nhac-la-gi/
+                    - cell "Ngụy Bách – Tống Hòa – Tề Độ – quốc sư" [ref=e259]
+                  - row [ref=e260]:
+                    - cell [ref=e261]:
+                      - link "Giáp Thân Trướng" [ref=e262] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/giap-than-truong-la-gi/
+                    - cell "Chu Mật – Thác Nguyệt – Ẩn Quan – Trần Bình An" [ref=e263]
+                  - row [ref=e264]:
+                    - cell [ref=e265]:
+                      - link "Bàn Sơn Viên" [ref=e266] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/ban-son-vien-la-ai/
+                    - cell "Chính Dương Sơn – Lưu Tiện Dương – Tề Tĩnh Xuân" [ref=e267]
+                  - row [ref=e268]:
+                    - cell [ref=e269]:
+                      - link "Đại Tuyền Diêu gia" [ref=e270] [cursor=pointer]:
+                        - /url: https://doctieuthuyet.com/dai-tuyen-dieu-gia-la-gi/
+                    - cell "Diêu Cận Chi – Bắc Tấn – Tùng Châm Hồ – Đại Tuyền" [ref=e271]
+              - heading "Lộ trình đọc theo nhu cầu" [level=2] [ref=e272]
+              - table [ref=e273]:
+                - rowgroup [ref=e274]:
+                  - row [ref=e275]:
+                    - rowheader "Mới bắt đầu" [ref=e276]
+                    - cell "Trần Bình An → Ninh Diêu → Tề Tĩnh Xuân → Cảnh giới → Hạo Nhiên → Bảo Bình → Lạc Phách Sơn" [ref=e277]
+                  - row [ref=e278]:
+                    - rowheader "Đại Ly – sơn thủy" [ref=e279]
+                    - cell "Đại Ly → Thôi Sàm → Tống Hòa → Đại Ly Ngũ Nhạc → Tề Độ → Trần Bình An quốc sư" [ref=e280]
+                  - row [ref=e281]:
+                    - rowheader "Pha Địa Phong" [ref=e282]
+                    - cell "Hỏa Long Chân Nhân → Lý Dư → Viên Linh Điện → Trương Sơn Phong" [ref=e283]
+                  - row [ref=e284]:
+                    - rowheader "Kiếm đạo Bảo Bình" [ref=e285]
+                    - cell "Ngụy Tấn → Phong Lôi Viên → Chính Dương Sơn → Bàn Sơn Viên → Lưu Tiện Dương → Long Tuyền Kiếm Tông" [ref=e286]
+                  - row [ref=e287]:
+                    - rowheader "Kiếm Khí Trường Thành" [ref=e288]
+                    - cell "Trần Thanh Đô → Long Quân → Quan Chiếu → Tiêu Tuân → Trương Lộc → Ẩn Quan → Trần Bình An → Phi Thăng Thành" [ref=e289]
+                  - row [ref=e290]:
+                    - rowheader "Đại Tuyền" [ref=e291]
+                    - cell "Đồng Diệp Châu → Đại Tuyền → Diêu gia → Diêu Cận Chi → Bắc Tấn → Tùng Châm Hồ → Thanh Bình Kiếm Tông" [ref=e292]
+                  - row [ref=e293]:
+                    - rowheader "Man Hoang" [ref=e294]
+                    - cell "Man Hoang → Thác Nguyệt Sơn → Chu Mật → Giáp Thân Trướng → Lưu Xoa → Trọng Quang → Kiếm Khí Trường Thành" [ref=e295]
+              - heading "FAQ Kiếm Lai Wiki" [level=2] [ref=e296]
+              - heading "Cluster hiện có bao nhiêu bài?" [level=3] [ref=e297]
+              - paragraph [ref=e298]:
+                - strong [ref=e299]: 121 bài publish
+                - text: ": 1 hub + 120 bài chuyên sâu."
+              - heading "Batch mới nhất gồm gì?" [level=3] [ref=e300]
+              - paragraph [ref=e301]: Ngụy Tấn, Lý Dư, Viên Linh Điện, Đại Ly Ngũ Nhạc, Giáp Thân Trướng, Bàn Sơn Viên và Đại Tuyền Diêu gia.
+              - heading "Tề Độ hay Tề Độc?" [level=3] [ref=e302]
+              - paragraph [ref=e303]:
+                - text: Tên riêng chính văn là
+                - strong [ref=e304]: 齐渡
+                - text: ", cluster dùng"
+                - strong [ref=e305]: Tề Độ
+                - text: . “Đại độc” từ 大渎 là khái niệm loại thủy đạo.
+              - heading "Long Quân có phải sơ đại Ẩn Quan không?" [level=3] [ref=e306]
+              - paragraph [ref=e307]: Cluster hiện không đóng dấu kết luận này như canon cứng nếu chưa có câu chính văn trực tiếp đủ chắc.
+              - heading "Ai là Ẩn Quan ngay trước Trần Bình An?" [level=3] [ref=e308]
+              - paragraph [ref=e309]: Tiêu Tuân. Sau biến cố phản biến của bà, Trần Bình An được công bố là tân Ẩn Quan.
+              - heading "Giáp Thân Trướng có gì đặc biệt?" [level=3] [ref=e310]
+              - paragraph [ref=e311]: Thủ lĩnh Mộc Kịch không phải kiếm tu nhưng dưới trướng tập trung năm kiếm tiên phôi tử, phản ánh cách Man Hoang tổ chức và bồi dưỡng thiên tài chiến tranh.
+              - heading "Diêu gia có phải hoàng tộc Đại Tuyền từ đầu?" [level=3] [ref=e312]
+              - paragraph [ref=e313]: Không. Tuyến đầu thể hiện họ là gia tộc quân công – biên quân; hậu kỳ Diêu Cận Chi trở thành nữ đế.
+              - generic [ref=e314]:
+                - heading "Hướng mở rộng tiếp theo" [level=2] [ref=e315]
+                - paragraph [ref=e316]:
+                  - text: Nhóm entity có thể nối cluster tốt ở batch kế tiếp gồm
+                  - strong [ref=e317]: Phong Tuyết Miếu, Pha Địa Phong, Tấn Thanh, Phạm Tuấn Mậu, Mộc Kịch, Lưu Bạch, Ly Chân, Lễ ký – học cung
+                  - text: . Mục tiêu tiếp theo có thể nâng dần từ 121 lên khoảng 150 bài mà vẫn giữ topology rõ, tránh tạo bài mỏng chỉ để tăng số lượng.
+            - generic [ref=e318]:
+              - strong [ref=e319]: "Thẻ:"
+              - generic [ref=e320]:
+                - link "Cảnh giới Kiếm Lai" [ref=e321] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tag/canh-gioi-kiem-lai/
+                - link "Nhân vật Kiếm Lai" [ref=e322] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tag/nhan-vat-kiem-lai/
+                - link "Thế giới Kiếm Lai" [ref=e323] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/tag/the-gioi-kiem-lai/
+        - region [ref=e324]:
+          - generic [ref=e325]:
+            - heading "Bài viết liên quan" [level=2] [ref=e326]
+            - paragraph [ref=e327]: Có thể anh sẽ quan tâm
+          - generic [ref=e328]:
+            - article [ref=e329]:
+              - link "Đọc Đại Tuyền Diêu gia là gì? Diêu Trấn, nữ đế Diêu Cận Chi và biên quân Đồng Diệp Châu" [ref=e330] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/dai-tuyen-dieu-gia-la-gi/
+                - generic [ref=e331]: DTT
+              - generic [ref=e332]:
+                - generic [ref=e333]: 19 Tháng 8, 2026
+                - heading [level=3] [ref=e334]:
+                  - link "Đại Tuyền Diêu gia là gì? Diêu Trấn, nữ đế Diêu Cận Chi và biên quân Đồng Diệp Châu" [ref=e335] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/dai-tuyen-dieu-gia-la-gi/
+                - paragraph [ref=e336]: Đại Tuyền Diêu gia là gì? Tìm hiểu gia tộc biên quân từ lão tướng Diêu Trấn tới…
+                - link "Đọc bài viết" [ref=e337] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/dai-tuyen-dieu-gia-la-gi/
+                  - text: Đọc bài viết
+                  - generic [ref=e338]: →
+            - article [ref=e339]:
+              - link "Đọc Bàn Sơn Viên là ai? Hộ sơn lão viên Chính Dương Sơn, Lưu Tiện Dương và Tề Tĩnh Xuân" [ref=e340] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/ban-son-vien-la-ai/
+                - generic [ref=e341]: DTT
+              - generic [ref=e342]:
+                - generic [ref=e343]: 19 Tháng 8, 2026
+                - heading [level=3] [ref=e344]:
+                  - link "Bàn Sơn Viên là ai? Hộ sơn lão viên Chính Dương Sơn, Lưu Tiện Dương và Tề Tĩnh Xuân" [ref=e345] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/ban-son-vien-la-ai/
+                - paragraph [ref=e346]: Bàn Sơn Viên là ai? Tìm hiểu hộ sơn lão viên Chính Dương Sơn từng đánh Lưu Tiện…
+                - link "Đọc bài viết" [ref=e347] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/ban-son-vien-la-ai/
+                  - text: Đọc bài viết
+                  - generic [ref=e348]: →
+            - article [ref=e349]:
+              - link "Đọc Giáp Thân Trướng là gì? Mộc Kịch, năm kiếm tiên phôi tử và trận vây giết Trần Bình An" [ref=e350] [cursor=pointer]:
+                - /url: https://doctieuthuyet.com/giap-than-truong-la-gi/
+                - generic [ref=e351]: DTT
+              - generic [ref=e352]:
+                - generic [ref=e353]: 19 Tháng 8, 2026
+                - heading [level=3] [ref=e354]:
+                  - link "Giáp Thân Trướng là gì? Mộc Kịch, năm kiếm tiên phôi tử và trận vây giết Trần Bình An" [ref=e355] [cursor=pointer]:
+                    - /url: https://doctieuthuyet.com/giap-than-truong-la-gi/
+                - paragraph [ref=e356]: Giáp Thân Trướng là gì? Tìm hiểu quân trướng thiên tài Man Hoang do Mộc Kịch dẫn dắt,…
+                - link "Đọc bài viết" [ref=e357] [cursor=pointer]:
+                  - /url: https://doctieuthuyet.com/giap-than-truong-la-gi/
+                  - text: Đọc bài viết
+                  - generic [ref=e358]: →
+        - generic [ref=e359]:
+          - heading "Để lại một bình luận" [level=3] [ref=e360]
+          - generic [ref=e361]:
+            - paragraph [ref=e362]:
+              - text: Email của bạn sẽ không được hiển thị công khai.
+              - generic [ref=e363]: Các trường bắt buộc được đánh dấu *
+            - paragraph [ref=e364]:
+              - generic [ref=e365]: Bình luận *
+              - textbox "Bình luận *" [ref=e366]
+            - paragraph [ref=e367]:
+              - generic [ref=e368]: Tên *
+              - textbox "Tên *" [ref=e369]
+            - paragraph [ref=e370]:
+              - generic [ref=e371]: Email *
+              - textbox "Email *" [ref=e372]
+            - paragraph [ref=e373]:
+              - generic [ref=e374]: Trang web
+              - textbox "Trang web" [ref=e375]
+            - paragraph [ref=e376]:
+              - checkbox "Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi." [ref=e377]
+              - generic [ref=e378]: Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi.
+            - paragraph [ref=e379]:
+              - button "Gửi bình luận" [ref=e380] [cursor=pointer]
+  - contentinfo [ref=e381]:
+    - generic [ref=e382]:
+      - generic [ref=e383]:
+        - link "DTT." [ref=e384] [cursor=pointer]:
+          - /url: https://doctieuthuyet.com/
+        - paragraph [ref=e386]: Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.
+      - generic [ref=e387]:
+        - heading "Thông tin" [level=4] [ref=e388]
+        - list [ref=e389]:
+          - listitem [ref=e390]:
+            - link "Giới thiệu" [ref=e391] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/gioi-thieu/
+          - listitem [ref=e395]:
+            - link "Chính sách bảo mật" [ref=e396] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/chinh-sach-bao-mat/
+          - listitem [ref=e399]:
+            - link "Điều khoản sử dụng" [ref=e400] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/dieu-khoan-su-dung/
+      - generic [ref=e403]:
+        - heading "Danh sách truyện" [level=4] [ref=e404]
+        - list [ref=e405]:
+          - listitem [ref=e406]:
+            - link "• Sảng Văn" [ref=e407] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/sang-van/
+          - listitem [ref=e408]:
+            - link "• Đô thị vả mặt" [ref=e409] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/
+          - listitem [ref=e410]:
+            - link "• Vả Mặt" [ref=e411] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/va-mat/
+          - listitem [ref=e412]:
+            - link "• Đô thị thương chiến" [ref=e413] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/
+          - listitem [ref=e414]:
+            - link "• Hào Môn" [ref=e415] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/hao-mon/
+          - listitem [ref=e416]:
+            - link "• Ẩm Thực" [ref=e417] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/the-loai/am-thuc/
+      - generic [ref=e418]:
+        - heading "Top truyện" [level=4] [ref=e419]
+        - list [ref=e420]:
+          - listitem [ref=e421]:
+            - link "• Top ngôn tình hay nhất" [ref=e422] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/bang-xep-hang/
+          - listitem [ref=e423]:
+            - link "• Top ngôn tình hiện đại" [ref=e424] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+hien+dai
+          - listitem [ref=e425]:
+            - link "• Top tổng tài hay nhất" [ref=e426] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=tong+tai
+          - listitem [ref=e427]:
+            - link "• Top ngôn tình cổ đại" [ref=e428] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=ngon+tinh+co+dai
+          - listitem [ref=e429]:
+            - link "• Top xuyên không hay" [ref=e430] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=xuyen+khong
+          - listitem [ref=e431]:
+            - link "• Top truyện quân nhân" [ref=e432] [cursor=pointer]:
+              - /url: https://doctieuthuyet.com/?s=quan+nhan
+      - generic [ref=e433]:
+        - heading "Kết nối" [level=4] [ref=e434]
+        - paragraph [ref=e435]: "Theo dõi để nhận thông báo chương mới:"
+        - generic [ref=e436]:
+          - link "Fanpage" [ref=e437] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+          - link "YouTube" [ref=e440] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/nhom-dich/
+        - paragraph [ref=e443]: Tải ứng dụng
+        - generic [ref=e444]:
+          - link "Tải về App Store" [ref=e445] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=e448]:
+              - generic [ref=e449]: Tải về
+              - strong [ref=e450]: App Store
+          - link "Tải về Google Play" [ref=e451] [cursor=pointer]:
+            - /url: https://doctieuthuyet.com/
+            - generic [ref=e454]:
+              - generic [ref=e455]: Tải về
+              - strong [ref=e456]: Google Play
+    - paragraph [ref=e462]:
+      - strong [ref=e463]: "Tuyên bố miễn trừ trách nhiệm:"
+      - text: DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.
+    - generic [ref=e464]: © 2026 DTT. All rights reserved.
