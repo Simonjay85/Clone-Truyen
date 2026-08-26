@@ -15,14 +15,9 @@ if (!is_user_logged_in() && !is_admin() && !is_search()) {
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php
-$tehi_meta_description = function_exists('tehi_get_meta_description') ? tehi_get_meta_description() : get_bloginfo('description');
-$tehi_fallback_path    = isset($_SERVER['REQUEST_URI']) ? parse_url(wp_unslash($_SERVER['REQUEST_URI']), PHP_URL_PATH) : '/';
-$tehi_canonical_url    = function_exists('tehi_get_canonical_url') ? tehi_get_canonical_url() : home_url($tehi_fallback_path ?: '/');
-?>
-<meta name="keywords" content="<?php echo esc_attr(function_exists('tehi_get_meta_keywords') ? tehi_get_meta_keywords() : ''); ?>" />
-<meta name="description" content="<?php echo esc_attr($tehi_meta_description); ?>" />
-<link href="<?php echo esc_url($tehi_canonical_url); ?>" rel="canonical" />
-<?php
+// NOTE: Meta description / keywords / canonical / OG / Twitter Card
+// được Rank Math SEO xuất toàn bộ ở wp_head.
+// Không hardcode lại tại đây để tránh trùng lặp meta (SEO duplicate).
 // Preload the correct LCP image matching the first slide of the hero swiper on the front page
 if (is_front_page() && isset($GLOBALS['slider_query'])) {
     $slider_q = $GLOBALS['slider_query'];
@@ -52,17 +47,8 @@ if (is_front_page() && isset($GLOBALS['slider_query'])) {
       };
     }, 3000);
   });
-</script><!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>">
-<meta name="twitter:site" content="@<?php bloginfo('name'); ?>">
-<meta name="twitter:description" content="<?php echo esc_attr($tehi_meta_description); ?>">
-<meta name="twitter:image:alt" content="<?php echo esc_attr(get_the_title()); ?>">
-<!-- Open Graph -->
-<meta property="og:type" content="<?php echo is_single() ? 'article' : 'website'; ?>">
-<meta property="og:url" content="<?php echo esc_url($tehi_canonical_url); ?>" />
-<meta property="og:title" content="<?php echo esc_attr(get_the_title() ?: get_bloginfo('name')); ?>" />
-<meta property="og:description" content="<?php echo esc_attr($tehi_meta_description); ?>" />
+</script>
+<!-- Twitter Card + Open Graph: do Rank Math SEO phụ trách (tránh duplicate meta) -->
 <!-- Khai báo ngôn ngữ -->
 <script type="application/ld+json">
     {

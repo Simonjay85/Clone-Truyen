@@ -2893,3 +2893,74 @@ add_filter('pre_get_document_title', function($title) {
     $site_name = get_bloginfo('name') ?: 'DTT';
     return 'Bài viết - ' . $site_name;
 }, 20);
+
+/**
+ * ══ AUTO FEATURED IMAGE (fix thiếu og:image) ══
+ * Khi một bài viết (post) được publish mà chưa có ảnh đại diện:
+ *   1. Ưu tiên ảnh <img> đầu tiên trong nội dung (sideload vào media library).
+ *   2. Fallback: dùng ảnh cover mặc định của theme (img_data/images/no-image-cover.png).
+ * Giúp mọi bài luôn có og:image / twitter:image khi Rank Math xuất meta.
+ */
+function dtt_auto_set_featured_image( $post_id, $post ) {
+    if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) {
+        return;
+    }
+    if ( 'post' !== $post->post_type || 'publish' !== $post->post_status ) {
+        return;
+    }
+    if ( has_post_thumbnail( $post_id ) ) {
+        return;
+    }
+
+    // Tránh loop khi sideload media
+    remove_action( 'save_post_post', 'dtt_auto_set_featured_image', 10 );
+
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+
+    $attachment_id = 0;
+
+    // ── 1. Ảnh đầu tiên trong nội dung ──
+    if ( preg_match( '/<img[^>]+src=["\']([^"\']+)["\']/i', $post->post_content, $m ) ) {
+        $first_img = esc_url_raw( $m[1] );
+        if ( $first_img && ! preg_match( '#\.svg($|\?)#i', $first_img ) ) {
+            // Nếu ảnh đã nằm trong media library thì lấy ID luôn, không upload lại
+            $existing = attachment_url_to_postid( $first_img );
+            if ( $existing ) {
+                $attachment_id = (int) $existing;
+            } elseif ( strpos( $first_img, home_url() ) === false || strpos( $first_img, '/wp-content/uploads/' ) !== false ) {
+                $attachment_id = (int) media_sideload_attachment( $first_img, $post_id, get_the_title( $post_id ) );
+            }
+        }
+    }
+
+    // ── 2. Fallback: cover mặc định của theme ──
+    if ( ! $attachment_id ) {
+        $default_path = get_template_directory() . '/img_data/images/no-image-cover.png';
+        $default_url  = get_site_url() . '/wp-content/themes/tehi-theme/img_data/images/no-image-cover.png';
+
+        $existing = attachment_url_to_postid( $default_url );
+        if ( $existing ) {
+            $attachment_id = (int) $existing;
+        } elseif ( file_exists( $default_path ) ) {
+            $attachment_id = (int) media_handle_sideload(
+                array(
+                    'name'     => 'dtt-default-cover-' . time() . '.png',
+                    'tmp_name' => $default_path,
+                ),
+                $post_id,
+                array( 'post_title' => get_the_title( $post_id ) )
+            );
+        }
+    }
+
+    if ( $attachment_id && ! is_wp_error( $attachment_id ) ) {
+        set_post_thumbnail( $post_id, $attachment_id );
+        update_post_meta( $attachment_id, '_wp_attachment_image_alt', get_the_title( $post_id ) );
+    }
+
+    add_action( 'save_post_post', 'dtt_auto_set_featured_image', 10, 2 );
+}
+add_action( 'save_post_post', 'dtt_auto_set_featured_image', 10, 2 );
+
