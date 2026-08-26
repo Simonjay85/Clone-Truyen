@@ -1,0 +1,2456 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) - Deferred 3s to unblock render (#4 fix) -->
+<script>
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-BMCE7V4VHX';
+      s.async = true;
+      document.head.appendChild(s);
+      s.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BMCE7V4VHX');
+      };
+    }, 3000);
+  });
+</script>
+<!-- Twitter Card + Open Graph: do Rank Math SEO phụ trách (tránh duplicate meta) -->
+<!-- Khai báo ngôn ngữ -->
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "legalname": "DTT",
+        "url": "https://doctieuthuyet.com",
+        "contactPoint": [{
+            "@type": "ContactPoint",
+            "telephone": "+840373685221",
+            "contactType": "customer service",
+            "contactOption": "TollFree",
+            "areaServed": "VN"
+        }],
+        "logo": "https://doctieuthuyet.com/img_data/images/logo-truyen-moi-v1.png"
+    }
+</script>
+<!-- DNS Prefetch for speed -->
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Be Vietnam Pro - non-blocking -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<style>
+/* System font fallback while web font loads */
+body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea, select, label, strong, b, i, em {
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+.fa, .fas, .far, .fal, .fad, .fab, .fa-solid, .fa-brands, .fa-regular {
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
+}
+.fas, .fa-solid { font-weight: 900 !important; }
+.fa-brands { font-family: "Font Awesome 6 Brands" !important; }
+/* Fix #11: font-display swap for Font Awesome */
+@font-face { font-family: "Font Awesome 6 Free"; font-display: swap; }
+@font-face { font-family: "Font Awesome 6 Brands"; font-display: swap; }
+/* Fix #15: Swiper pagination touch targets using transparent pseudo-element */
+.swiper-pagination-bullet {
+    position: relative !important;
+    width: 8px !important;
+    height: 8px !important;
+    margin: 0 8px !important;
+}
+.swiper-pagination-bullet::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 44px !important;
+    height: 44px !important;
+    transform: translate(-50%, -50%) !important;
+    cursor: pointer !important;
+}
+</style>
+
+<!-- ══ CRITICAL CSS - Only what's needed for above-fold render ══ -->
+<!-- bootstrap: grid + utilities needed before render -->
+<link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/bootstrap.min.css">
+<!-- base theme vars + body font (6.8KB) -->
+<link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/style.css?ver=1120">
+
+<!-- ══ NON-CRITICAL CSS (async via print trick - most reliable) ══ -->
+<!-- FontAwesome - icons not above-fold critical -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+<!-- style-truyen-moi-v1.css - page-specific -->
+<link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/style-truyen-moi-v1.css?ver=1120" media="print" onload="this.media='all'">
+<!-- media.css - responsive breakpoints only -->
+<link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/media.css?ver=1120" media="print" onload="this.media='all'">
+<!-- style-mongdaovien.css - large 280KB, non-critical -->
+<link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/style-mongdaovien.css?ver=1120" media="print" onload="this.media='all'">
+<!-- bootstrap-icons - icon pack -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" media="print" onload="this.media='all'">
+<!-- swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" media="print" onload="this.media='all'">
+<!-- misc UI extras -->
+<link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/vh-skeleton.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/hover-min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/style-truyen-moi-v1.css?ver=1120">
+    <link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/media.css?ver=1120">
+    <link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/style-mongdaovien.css?ver=1120">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/vh-skeleton.css">
+  <link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/hover-min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+</noscript>
+
+<!-- ══ PAGE-SPECIFIC CSS (not on reading page) ══ -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/emojionearea.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+  <link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/emojionearea.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css">
+</noscript>
+
+<!-- ══ JQUERY: defer first – guarantees load order before other defer scripts ══ -->
+<script defer src="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/jquery.min.js?ver=3.6.1_v2"></script>
+
+<!-- ══ ALL JS: defer (won't block render, runs in order after jQuery) ══ -->
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.4/bundled/lenis.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
+<script defer src="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/vh-skeleton.js?ver=1.12"></script>
+<script defer src="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/vanhiep_script.js"></script>
+
+<!-- ══ PAGE-SPECIFIC JS (not on reading page) ══ -->
+<script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script defer src="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/js/emojionearea.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"></script>
+<script defer src="https://doctieuthuyet.com/wp-content/themes/tehi-theme/templates/module/sweetalert/sweetalert2.min.js?ver=11.20_v2"></script>
+
+
+
+
+
+<script>
+    let lenis; // Khai báo biến lenis toàn cục
+    let destroyTimeout; // Biến lưu timeout để kiểm tra thời gian hover
+    var currentPage = 'index';
+
+    // 🌟 Font loading optimization for iOS
+    let fontsLoaded = false;
+    let fontLoadPromise = null;
+
+    // Check if FontFaceSet API is supported (for modern browsers)
+    function checkFontsLoaded() {
+        if (document.fonts && document.fonts.ready) {
+            return document.fonts.ready;
+        }
+        // Fallback for older browsers
+        return new Promise((resolve) => {
+            setTimeout(resolve, 1000); // Wait 1s for fonts to load
+        });
+    }
+
+    // Improved font handling with iOS support
+    async function initializeFonts() {
+        try {
+            // Wait for fonts to be ready
+            await checkFontsLoaded();
+            fontsLoaded = true;
+            console.log('Fonts loaded successfully');
+            
+            // Apply font selection after fonts are ready
+            applyFontSelection();
+        } catch (error) {
+            console.warn('Font loading error:', error);
+            // Still apply fonts as fallback
+            applyFontSelection();
+        }
+    }
+
+    function applyFontSelection() {
+        // 🌟 Font mặc định (Arial for better iOS compatibility)
+        const defaultFont = "arial-font";
+        let selectedFont = localStorage.getItem("selectedFont");
+
+        // Nếu chưa có font nào được chọn, đặt font mặc định
+        if (!selectedFont) {
+            selectedFont = defaultFont;
+            localStorage.setItem("selectedFont", selectedFont);
+        }
+
+        // Xóa class font cũ trước khi áp dụng font mới
+        document.documentElement.classList.remove("roboto-font", "arial-font", "times-font", "lato-font", "josefinsans-font");
+        
+        // Apply new font class with delay for iOS
+        setTimeout(() => {
+            document.documentElement.classList.add(selectedFont);
+            console.log('Font applied:', selectedFont);
+        }, 100);
+    }
+
+    var toc_do_cuon_number = '5';
+    var toc_do = 1;
+    if (toc_do_cuon_number == 1) {
+        toc_do = 30.0;
+    } else if (toc_do_cuon_number == 2) {
+        toc_do = 10.0;
+    } else if (toc_do_cuon_number == 3) {
+        toc_do = 6.0;
+    } else if (toc_do_cuon_number == 4) {
+        toc_do = 3.5;
+    } else if (toc_do_cuon_number == 5) {
+        toc_do = 1.1;
+    } else {
+        // off
+        toc_do = 1.0;
+    }
+
+
+    // Hàm khởi tạo Lenis 
+    function initLenis() {
+        // [MINIMAL MODE] Đã tắt Lenis theo yêu cầu để dùng cuộn mặc định của trình duyệt cho nhẹ web
+        console.log('Lenis disabled, using native smooth scrolling');
+    }
+
+    // ── Wait for Lenis library to load (deferred) before calling initLenis ──
+    function tryInitLenis(attempt) {
+        attempt = attempt || 0;
+        if (typeof Lenis !== 'undefined') {
+            initLenis();
+        } else if (attempt < 50) {
+            // Retry every 100ms for up to 5 seconds
+            setTimeout(function() { tryInitLenis(attempt + 1); }, 100);
+        } else {
+            console.warn('Lenis library did not load in time');
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Initialize fonts first, then other components
+        initializeFonts();
+        
+        // Gọi hàm khởi tạo Lenis với retry (vì Lenis load defer)
+        tryInitLenis();
+
+
+        // Kiểm tra nếu phần tử scrollbarThumb tồn tại trước khi thêm sự kiện
+        const scrollbarThumb = document.querySelector('.lenis-scrollbar-thumb');
+        if (scrollbarThumb) {
+            // Drag functionality for scrollbar thumb
+            let isDragging = false;
+            let startY = 0;
+            let startScroll = 0;
+            scrollbarThumb.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startY = e.clientY;
+                startScroll = lenis.scroll;
+                document.body.style.userSelect = 'none'; // Disable text selection
+            });
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaY = e.clientY - startY;
+                const scrollAmount = deltaY * (lenis.limit / (scrollbarThumb.parentElement.clientHeight - scrollbarThumb.clientHeight));
+                lenis.scrollTo(startScroll + scrollAmount, {
+                    immediate: true
+                });
+            });
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    document.body.style.userSelect = ''; // Re-enable text selection
+                }
+            });
+        }
+        // Init Fancybox safely (may be deferred)
+        if (typeof Fancybox !== 'undefined') {
+            Fancybox.bind("[data-fancybox]", {});
+        } else {
+            window.addEventListener('load', function() {
+                if (typeof Fancybox !== 'undefined') Fancybox.bind("[data-fancybox]", {});
+            });
+        }
+
+        // Khởi tạo skeletons – only when jQuery is available
+        if (typeof $ !== 'undefined') {
+            if (typeof initializeVHSkeleton === 'function') initializeVHSkeleton();
+            if (typeof initializeSkeletonOnScroll === 'function') initializeSkeletonOnScroll();
+        } else {
+            window.addEventListener('load', function() {
+                if (typeof initializeVHSkeleton === 'function') initializeVHSkeleton();
+                if (typeof initializeSkeletonOnScroll === 'function') initializeSkeletonOnScroll();
+            });
+        }
+
+
+
+
+
+        // chữ title start
+        // Refresh ScrollTrigger sau khi khởi tạo animation
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
+
+        // trang liên hệ start
+        if (currentPage == 'lien-he') {
+            // Hiệu ứng GSAP cho ".hq-contact-page-section-title-item span" khi trang load xong
+            gsap.fromTo(
+                ".hq-contact-page-section-title-item span", // Chọn tất cả các span bên trong phần tử tiêu đề
+                {
+                    y: -100, // Ban đầu di chuyển lên trên (ẩn đi)
+                    opacity: 0, // Ban đầu ẩn
+                    willChange: "transform, opacity" // Khai báo thuộc tính sẽ thay đổi để tối ưu hiệu suất
+                }, {
+                    y: 0, // Di chuyển về vị trí ban đầu
+                    opacity: 1, // Hiển thị hoàn toàn
+                    duration: 0.6, // Thời gian thực hiện hiệu ứng mỗi phần tử
+                    ease: "power3.out", // Hiệu ứng nhanh dần và mượt mà
+                    stagger: 0.2 // Khoảng thời gian giữa các phần tử để thực hiện hiệu ứng lần lượt
+                }
+            );
+
+            // Hiệu ứng parallax cho hình ảnh khi scroll đến trigger hq-contact-page-introduce
+            gsap.utils.toArray(".hq-contact-page-introduce-image img").forEach((image) => {
+                gsap.fromTo(
+                    image, {
+                        y: -70, // Di chuyển lên trên một chút để tạo hiệu ứng parallax
+                    }, {
+                        y: 70, // Di chuyển xuống dưới khi scroll
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: ".hq-contact-page-introduce",
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: true, // Tạo hiệu ứng parallax mượt mà
+                        },
+                    }
+                );
+            });
+
+            // Hiệu ứng bay lên cho .hq-contact-page-introduce-content
+            gsap.utils.toArray(".hq-contact-page-introduce-content").forEach((content) => {
+                gsap.fromTo(
+                    content, {
+                        y: 100, // Ban đầu di chuyển xuống
+                        opacity: 0, // Ẩn đi
+                        willChange: "transform, opacity"
+                    }, {
+                        y: 0, // Di chuyển về vị trí ban đầu
+                        opacity: 1, // Hiện thị hoàn toàn
+                        duration: 1, // Thời gian thực hiện hiệu ứng
+                        ease: "power3.out", // Hiệu ứng nhanh dần và mượt mà
+                        scrollTrigger: {
+                            trigger: ".hq-contact-page-introduce",
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: true, // Tạo hiệu ứng mượt mà
+                        },
+                    }
+                );
+            });
+        }
+        // trang liên hệ end
+
+        // Tạo hiệu ứng chữ title với SplitType và GSAP - Wait for fonts
+        setTimeout(function() {
+            if (fontsLoaded || document.readyState === 'complete') {
+                initTextAnimations();
+            } else {
+                // Retry after more time if fonts not loaded
+                setTimeout(initTextAnimations, 1000);
+            }
+        }, 200);
+
+        // hover vào box scrollbar dừng lại
+        // Xử lý hover trên phần tử .ql-editor
+        // Pause/resume Lenis when hovering scrollable elements (no jQuery needed)
+        var scrollableSelectors = [
+            '.ql-editor', '.vh-scrollbar', '.select2-results__options',
+            '.emojionearea-scroll-area', '.msv-chuong-list-container',
+            '.danh-sach-the-loai-chinh-ul', '#modalDanhSachChuong .modal-body'
+        ];
+        document.addEventListener('mouseenter', function(e) {
+            var target = e.target;
+            var isScrollable = scrollableSelectors.some(function(sel) {
+                return target.matches && target.matches(sel);
+            });
+            if (isScrollable && typeof lenis !== 'undefined' && lenis) {
+                lenis.stop();
+            }
+        }, true);
+        document.addEventListener('mouseleave', function(e) {
+            var target = e.target;
+            var isScrollable = scrollableSelectors.some(function(sel) {
+                return target.matches && target.matches(sel);
+            });
+            if (isScrollable && typeof lenis !== 'undefined' && lenis) {
+                lenis.start();
+            }
+        }, true);
+
+    });
+
+    // Separate function for text animations to ensure fonts are ready
+    function initTextAnimations() {
+        try {
+            let textTitles = gsap.utils.toArray('.vanhiep-title'); // Tìm tất cả các tiêu đề
+            textTitles.forEach((title) => {
+                let splitTitle = new SplitType(title, {
+                    types: 'chars'
+                }); // Tách từng ký tự
+                // Tạo hoạt hình cho các ký tự với GSAP và ScrollTrigger
+                gsap.to(
+                    splitTitle.chars, // Áp dụng cho từng ký tự đã tách
+                    {
+                        autoAlpha: 1,
+                        y: 0,
+                        stagger: 0.1, // Thời gian giữa các ký tự
+                        rotate: 0,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            // markers: true, // Bật marker để debug (có thể tắt sau)
+                            trigger: title, // Kích hoạt khi cuộn đến tiêu đề
+                            start: 'top 80%', // Bắt đầu khi tiêu đề vào 50% viewport
+                        },
+                    }
+                );
+            });
+        } catch (error) {
+            console.warn('Text animation error:', error);
+        }
+    }
+
+    function scrollToElement(selector, duration = 3.0) {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches; // Kiểm tra nếu là thiết bị di động hoặc tablet
+        const element = document.querySelector(selector);
+
+        if (!element) {
+            console.warn(`Phần tử với selector "${selector}" không tồn tại.`);
+            return;
+        }
+
+        if (isMobile) {
+            // Cuộn bằng cách sử dụng scrollTo cho mobile và tablet
+            const offsetTop = element.offsetTop;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        } else {
+            // Cuộn bằng cách sử dụng Lenis cho PC, Laptop
+            if (typeof lenis !== 'undefined' && lenis) {
+                lenis.scrollTo(selector, {
+                    duration: duration,
+                    offset: -80,
+                });
+            } else {
+                const offsetTop = element.offsetTop;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }
+</script>
+
+
+
+
+<!-- 
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+           
+            let parallax = gsap.utils.toArray(".parallax");
+            parallax.forEach((box, key) => {
+                var box_parent = $(box).parents(".parallax-box");
+                gsap.to(box, {
+                    y: '50%',
+                    scrollTrigger: {
+                        trigger: box_parent,
+                        scrub: 1,
+                        markers: true,
+                        start: "top bottom"
+                    }
+                })
+            });
+        }, 1000);
+
+
+    });
+</script> -->
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+<!-- Tối ưu hóa công cụ tìm kiếm bởi Rank Math PRO - https://rankmath.com/ -->
+<title>Quỷ Phiên là gì trong Tiên Nghịch? 鬼帆, tử hồn Côn Hư và pháp bảo thi triển Đa Trọng Huyễn Thuật - DTT</title>
+<meta name="description" content="Quỷ Phiên (鬼帆) là pháp bảo hỗ trợ Đa Trọng Huyễn Thuật của Đại Hồn Môn. Vương Lâm luyện thân phiên bằng vật liệu Thanh Ngưu ban, rồi tới Quỷ Phong chọn nữ tử hồn áo trắng và đặt tên Côn Hư; sau khi dung hồn, Quỷ Phiên từ màu đen chuyển thành màu trắng."/>
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://doctieuthuyet.com/quy-phien-tien-nghich/" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Quỷ Phiên là gì trong Tiên Nghịch? 鬼帆, tử hồn Côn Hư và pháp bảo thi triển Đa Trọng Huyễn Thuật - DTT" />
+<meta property="og:description" content="Quỷ Phiên (鬼帆) là pháp bảo hỗ trợ Đa Trọng Huyễn Thuật của Đại Hồn Môn. Vương Lâm luyện thân phiên bằng vật liệu Thanh Ngưu ban, rồi tới Quỷ Phong chọn nữ tử hồn áo trắng và đặt tên Côn Hư; sau khi dung hồn, Quỷ Phiên từ màu đen chuyển thành màu trắng." />
+<meta property="og:url" content="https://doctieuthuyet.com/quy-phien-tien-nghich/" />
+<meta property="og:site_name" content="DTT" />
+<meta property="article:section" content="Tiên Nghịch" />
+<meta property="og:updated_time" content="2026-08-23T11:22:54+00:00" />
+<meta property="article:published_time" content="2026-08-23T11:22:15+00:00" />
+<meta property="article:modified_time" content="2026-08-23T11:22:54+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Quỷ Phiên là gì trong Tiên Nghịch? 鬼帆, tử hồn Côn Hư và pháp bảo thi triển Đa Trọng Huyễn Thuật - DTT" />
+<meta name="twitter:description" content="Quỷ Phiên (鬼帆) là pháp bảo hỗ trợ Đa Trọng Huyễn Thuật của Đại Hồn Môn. Vương Lâm luyện thân phiên bằng vật liệu Thanh Ngưu ban, rồi tới Quỷ Phong chọn nữ tử hồn áo trắng và đặt tên Côn Hư; sau khi dung hồn, Quỷ Phiên từ màu đen chuyển thành màu trắng." />
+<meta name="twitter:label1" content="Thời gian để đọc" />
+<meta name="twitter:data1" content="9 phút" />
+<script type="application/ld+json" class="rank-math-schema-pro">{"@context":"https://schema.org","@graph":[{"@type":["Person","Organization"],"@id":"https://doctieuthuyet.com/#person","name":"DTT"},{"@type":"WebSite","@id":"https://doctieuthuyet.com/#website","url":"https://doctieuthuyet.com","name":"DTT","publisher":{"@id":"https://doctieuthuyet.com/#person"},"inLanguage":"vi"},{"@type":"WebPage","@id":"https://doctieuthuyet.com/quy-phien-tien-nghich/#webpage","url":"https://doctieuthuyet.com/quy-phien-tien-nghich/","name":"Qu\u1ef7 Phi\u00ean l\u00e0 g\u00ec trong Ti\u00ean Ngh\u1ecbch? \u9b3c\u5e06, t\u1eed h\u1ed3n C\u00f4n H\u01b0 v\u00e0 ph\u00e1p b\u1ea3o thi tri\u1ec3n \u0110a Tr\u1ecdng Huy\u1ec5n Thu\u1eadt - DTT","datePublished":"2026-08-23T11:22:15+00:00","dateModified":"2026-08-23T11:22:54+00:00","isPartOf":{"@id":"https://doctieuthuyet.com/#website"},"inLanguage":"vi"},{"@type":"Person","@id":"https://doctieuthuyet.com/author/","url":"https://doctieuthuyet.com/author/","image":{"@type":"ImageObject","@id":"https://secure.gravatar.com/avatar/?s=96&amp;d=mm&amp;r=g","url":"https://secure.gravatar.com/avatar/?s=96&amp;d=mm&amp;r=g","inLanguage":"vi"}},{"@type":"BlogPosting","headline":"Qu\u1ef7 Phi\u00ean l\u00e0 g\u00ec trong Ti\u00ean Ngh\u1ecbch? \u9b3c\u5e06, t\u1eed h\u1ed3n C\u00f4n H\u01b0 v\u00e0 ph\u00e1p b\u1ea3o thi tri\u1ec3n \u0110a Tr\u1ecdng Huy\u1ec5n Thu\u1eadt - DTT","datePublished":"2026-08-23T11:22:15+00:00","dateModified":"2026-08-23T11:22:54+00:00","articleSection":"Ti\u00ean Ngh\u1ecbch","author":{"@id":"https://doctieuthuyet.com/author/"},"publisher":{"@id":"https://doctieuthuyet.com/#person"},"description":"Qu\u1ef7 Phi\u00ean (\u9b3c\u5e06) l\u00e0 ph\u00e1p b\u1ea3o h\u1ed7 tr\u1ee3 \u0110a Tr\u1ecdng Huy\u1ec5n Thu\u1eadt c\u1ee7a \u0110\u1ea1i H\u1ed3n M\u00f4n. V\u01b0\u01a1ng L\u00e2m luy\u1ec7n th\u00e2n phi\u00ean b\u1eb1ng v\u1eadt li\u1ec7u Thanh Ng\u01b0u ban, r\u1ed3i t\u1edbi Qu\u1ef7 Phong ch\u1ecdn n\u1eef t\u1eed h\u1ed3n \u00e1o tr\u1eafng v\u00e0 \u0111\u1eb7t t\u00ean C\u00f4n H\u01b0; sau khi dung h\u1ed3n, Qu\u1ef7 Phi\u00ean t\u1eeb m\u00e0u \u0111en chuy\u1ec3n th\u00e0nh m\u00e0u tr\u1eafng.","name":"Qu\u1ef7 Phi\u00ean l\u00e0 g\u00ec trong Ti\u00ean Ngh\u1ecbch? \u9b3c\u5e06, t\u1eed h\u1ed3n C\u00f4n H\u01b0 v\u00e0 ph\u00e1p b\u1ea3o thi tri\u1ec3n \u0110a Tr\u1ecdng Huy\u1ec5n Thu\u1eadt - DTT","inLanguage":"vi","mainEntityOfPage":{"@id":"https://doctieuthuyet.com/quy-phien-tien-nghich/#webpage"},"wordCount":"1811","@id":"https://doctieuthuyet.com/quy-phien-tien-nghich/#richSnippet","isPartOf":{"@id":"https://doctieuthuyet.com/quy-phien-tien-nghich/#webpage"}}]}</script>
+<!-- /Plugin SEO WordPress Rank Math -->
+
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel="alternate" type="application/rss+xml" title="DTT &raquo; Quỷ Phiên là gì trong Tiên Nghịch? 鬼帆, tử hồn Côn Hư và pháp bảo thi triển Đa Trọng Huyễn Thuật Dòng bình luận" href="https://doctieuthuyet.com/quy-phien-tien-nghich/feed/" />
+<link rel="alternate" title="oNhúng (JSON)" type="application/json+oembed" href="https://doctieuthuyet.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdoctieuthuyet.com%2Fquy-phien-tien-nghich%2F" />
+<link rel="alternate" title="oNhúng (XML)" type="text/xml+oembed" href="https://doctieuthuyet.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdoctieuthuyet.com%2Fquy-phien-tien-nghich%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://doctieuthuyet.com/wp-includes/css/dist/block-library/style.min.css?ver=7.1' media='all' />
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:root :where(.wp-block-icon svg){width: 24px;}
+:where(.wp-block-gallery.is-layout-flex){gap: var( --wp--style--gallery-gap-default, var( --gallery-block--gutter-size, var( --wp--style--block-gap, 0.5em ) ) );}:where(.wp-block-gallery.is-layout-grid){gap: var( --wp--style--gallery-gap-default, var( --gallery-block--gutter-size, var( --wp--style--block-gap, 0.5em ) ) );}
+:where(.wp-block-latest-posts.is-layout-flex){gap: 1.25em;}:where(.wp-block-latest-posts.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-term-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-term-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<link rel='stylesheet' id='tehi-clone-style-css' href='https://doctieuthuyet.com/wp-content/themes/tehi-theme/style.css?ver=1.0.0' media='all' />
+<link rel="https://api.w.org/" href="https://doctieuthuyet.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://doctieuthuyet.com/wp-json/wp/v2/posts/10373" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://doctieuthuyet.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.1" />
+<link rel='shortlink' href='https://doctieuthuyet.com/?p=10373' />
+<meta name="generator" content="Elementor 4.0.7; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			    <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
+    <script>
+    (function () {
+        var fallback = "https:\/\/doctieuthuyet.com\/wp-content\/themes\/tehi-theme\/img_data\/images\/no-image-cover-v5.png?v=6";
+        function tuneDttImages() {
+            var images = Array.prototype.slice.call(document.images || []);
+            images.forEach(function (img, index) {
+                var dataSrc = img.getAttribute('data-src');
+                if (dataSrc && (!img.getAttribute('src') || img.getAttribute('src') === 'about:blank')) {
+                    img.setAttribute('src', dataSrc);
+                }
+                if (!img.getAttribute('decoding')) {
+                    img.setAttribute('decoding', 'async');
+                }
+                var rect = img.getBoundingClientRect();
+                var nearViewport = rect.top < (window.innerHeight || 800) + 600;
+                if (nearViewport) {
+                    img.setAttribute('loading', 'eager');
+                    if (!img.getAttribute('fetchpriority')) {
+                        img.setAttribute('fetchpriority', index < 4 ? 'high' : 'auto');
+                    }
+                } else if (!img.getAttribute('loading')) {
+                    img.setAttribute('loading', 'lazy');
+                }
+                if (!img.dataset.dttFallbackBound) {
+                                                                            img.addEventListener('error', function () {
+                        if (this.dataset.dttFallbackUsed || this.src === fallback) {
+                            return;
+                        }
+                        this.dataset.dttFallbackUsed = '1';
+                        this.removeAttribute('srcset');
+                        this.removeAttribute('sizes');
+                        this.src = fallback;
+                    }, { once: true });
+                    img.dataset.dttFallbackBound = '1';
+                }
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', tuneDttImages, { once: true });
+        } else {
+            tuneDttImages();
+        }
+    }());
+    </script>
+    <style id="dtt-cover-image-hardening">img[src*="/uploads/"], img[src*="lh3.googleusercontent.com"] { max-width: 100%; } .mkm-card img, .mkm-item img { display: block; }</style><style>
+/* Prevent Tailwind from overriding Material Icon font */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+</style>
+</head>
+
+
+<body class="wp-singular post-template-default single single-post postid-10373 single-format-standard wp-theme-tehi-theme index position-relative elementor-default elementor-kit-217" style="--background-body: url(https://doctieuthuyet.com/wp-content/themes/tehi-theme/img_data/images/background-repeat-2.png)">
+  <!-- <div class="anh-nen lt-truyen-body"></div> -->
+  <!-- lenis scroll bar start -->
+  <div class="lenis-scrollbar">
+    <div class="lenis-scrollbar-thumb"></div>
+  </div>
+  <!-- lenis scroll bar end -->
+  <div id="fui-toast"></div>
+  
+
+  
+
+  
+
+
+
+
+<!-- Header Navigation -->
+
+<style>
+/* Meokammap Header Styles */
+.mkm-header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+.mkm-header-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.mkm-logo img { height: 40px; }
+.mkm-search-form { flex-grow: 1; max-width: 400px; margin: 0 20px; position: relative; }
+.mkm-search-form input { width: 100%; border: 1px solid #e1e4e8; border-radius: 20px; padding: 8px 15px 8px 35px; outline: none; transition: border-color 0.2s; }
+.mkm-search-form input:focus { border-color: #1d4ed8; }
+.mkm-search-btn { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 0; color: #888; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: color 0.2s; }
+.mkm-search-btn:hover { color: #1d4ed8; }
+.mkm-nav { display: flex; align-items: center; gap: 20px; }
+.mkm-nav a { color: #333; font-weight: 600; font-size: 14px; text-decoration: none; transition: color 0.2s; }
+.mkm-nav a:hover { color: #1d4ed8; }
+.mkm-nav-login { color: #1d4ed8 !important; display: flex; align-items: center; gap: 5px; }
+
+@media (max-width: 768px) {
+    .mkm-nav { display: none; }
+    .mkm-search-form { display: none; }
+}
+
+/* Mobile Menu Styles */
+.mkm-mobile-menu {
+    display: none;
+    background: #fff;
+    border-top: 1px solid #f3f4f6;
+    padding: 16px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+.mkm-mobile-menu.open {
+    display: block;
+    animation: slideDown 0.2s ease-out;
+}
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.mkm-mobile-search {
+    display: flex;
+    margin-bottom: 16px;
+}
+.mkm-mobile-search input {
+    flex: 1;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px 0 0 8px;
+    padding: 10px 14px;
+    outline: none;
+    font-size: 14px;
+}
+.mkm-mobile-search button {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    padding: 0 16px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+.mkm-mobile-nav {
+    display: flex;
+    flex-direction: column;
+}
+.mkm-mobile-nav a {
+    color: #374151;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 12px 6px;
+    border-bottom: 1px dashed #e5e7eb;
+}
+.mkm-mobile-nav a:last-child {
+    border-bottom: none;
+}
+</style>
+
+<header class="mkm-header">
+    <div class="mkm-header-container">
+        <!-- Text Logo "DTT" as requested -->
+        <a href="https://doctieuthuyet.com" class="mkm-logo" style="text-decoration: none;">
+            <span style="font-weight: 900; font-size: 24px; color: #1e1e2d; letter-spacing: -1px;">
+                DTT<span style="color: #6366f1;">.</span>
+            </span>
+        </a>
+        
+        <form class="mkm-search-form d-none d-md-block hidden md:block" action="https://doctieuthuyet.com/" method="get" role="search" autocomplete="off">
+            <button type="submit" class="mkm-search-btn" aria-label="Tìm kiếm">
+                <i class="fa-solid fa-search"></i>
+            </button>
+            <input type="search" name="s" placeholder="Tìm tên truyện, tên người đăng..." aria-label="Tìm tên truyện hoặc tên người đăng" aria-autocomplete="list" autocomplete="off">
+            <div class="mkm-search-suggestions" hidden>
+                <div class="mkm-search-suggestions-list" role="listbox" aria-label="Gợi ý tìm kiếm"></div>
+                <button type="submit" class="mkm-search-suggestions-submit" hidden></button>
+            </div>
+        </form>
+        
+        <div class="mkm-nav d-none d-md-flex hidden md:flex">
+            <a href="https://doctieuthuyet.com/the-loai.html"><i class="fa-solid fa-list"></i> Thể loại</a>
+            <a href="https://doctieuthuyet.com/bai-viet/"><i class="fa-solid fa-newspaper"></i> Bài viết</a>
+            <a href="https://doctieuthuyet.com/hoan-thanh.html"><i class="fa-solid fa-check-circle"></i> Truyện full</a>
+            <a href="https://doctieuthuyet.com/bang-xep-hang.html"><i class="fa-solid fa-trophy"></i> BXH</a>
+            <a href="https://doctieuthuyet.com/theo-doi.html"><i class="fa-solid fa-bookmark"></i> Theo dõi</a>
+                            <button type="button" onclick="mkmOpenAuthModal('login')" class="mkm-nav-login" style="background:none;border:none;cursor:pointer;font:inherit;"><i class="fa-solid fa-user-circle"></i> Đăng nhập</button>
+                    </div>
+        <button id="mkm-mobile-menu-btn" class="btn btn-link d-md-none" onclick="document.getElementById('mkm-mobile-menu').classList.toggle('open')" aria-label="Mở menu" style="background:transparent; border:none; padding:10px; display:flex; align-items:center; justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1e1e2d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Mobile Dropdown Menu -->
+    <div id="mkm-mobile-menu" class="mkm-mobile-menu">
+        <form class="mkm-mobile-search" action="https://doctieuthuyet.com/" method="get" role="search" autocomplete="off">
+            <input type="search" name="s" placeholder="Tìm tên truyện hoặc tác giả..." aria-label="Tìm tên truyện hoặc tên người đăng" aria-autocomplete="list" autocomplete="off">
+            <button type="submit"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+            <div class="mkm-search-suggestions" hidden>
+                <div class="mkm-search-suggestions-list" role="listbox" aria-label="Gợi ý tìm kiếm"></div>
+                <button type="submit" class="mkm-search-suggestions-submit" hidden></button>
+            </div>
+        </form>
+        <div class="mkm-mobile-nav">
+            <a href="https://doctieuthuyet.com/the-loai.html">Thể loại</a>
+            <a href="https://doctieuthuyet.com/bai-viet/">Bài viết</a>
+            <a href="https://doctieuthuyet.com/hoan-thanh.html">Truyện full</a>
+            <a href="https://doctieuthuyet.com/bang-xep-hang.html">Bảng xếp hạng</a>
+            <a href="https://doctieuthuyet.com/theo-doi.html">Theo dõi</a>
+                            <button type="button" onclick="mkmOpenAuthModal('login')" style="color:#4f46e5; background:none; border:none; cursor:pointer; font:inherit; font-weight:600; padding:12px 6px; width:100%; text-align:left;">Đăng nhập</button>
+                    </div>
+    </div>
+</header>
+
+<!-- Fix #16: Main landmark for accessibility -->
+<main id="main-content" role="main">
+
+<style id="dtt-single-post-inline-css">
+.dtt-single-post {
+    padding: 28px 15px 64px;
+}
+.dtt-single-post__inner {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+.dtt-post-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, .08);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, .06);
+}
+.dtt-post-header {
+    padding: clamp(24px, 4vw, 48px) clamp(20px, 5vw, 64px) 28px;
+    border-bottom: 1px solid #eef0f4;
+}
+.dtt-post-kicker {
+    margin-bottom: 10px;
+    color: #6366f1;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.dtt-post-title {
+    margin: 0;
+    color: #111827;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+}
+.dtt-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-top: 16px;
+    color: #6b7280;
+    font-size: 14px;
+}
+.dtt-post-meta a {
+    color: inherit;
+    text-decoration: none;
+}
+.dtt-post-meta a:hover {
+    color: #4f46e5;
+}
+.dtt-post-featured {
+    margin: 0;
+    background: #f8fafc;
+}
+.dtt-post-featured img {
+    display: block;
+    width: 100%;
+    max-height: 560px;
+    margin: 0 auto;
+    object-fit: cover;
+}
+.dtt-post-content {
+    padding: clamp(24px, 5vw, 64px);
+    color: #263244;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+}
+.dtt-post-content > *:first-child {
+    margin-top: 0;
+}
+.dtt-post-content > *:last-child {
+    margin-bottom: 0;
+}
+.dtt-post-content h2,
+.dtt-post-content h3,
+.dtt-post-content h4 {
+    margin: 1.6em 0 .55em;
+    color: #111827;
+    font-family: inherit;
+    line-height: 1.3;
+}
+.dtt-post-content h2 { font-size: 1.55em; }
+.dtt-post-content h3 { font-size: 1.3em; }
+.dtt-post-content h4 { font-size: 1.12em; }
+.dtt-post-content p { margin: 0 0 1.25em; }
+.dtt-post-content a {
+    color: #4f46e5;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.dtt-post-content img,
+.dtt-post-content iframe,
+.dtt-post-content video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5em auto;
+}
+.dtt-post-content img {
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, .1);
+}
+.dtt-post-content blockquote {
+    margin: 1.5em 0;
+    padding: 12px 20px;
+    border-left: 4px solid #818cf8;
+    background: #f5f7ff;
+    color: #4b5563;
+}
+.dtt-post-content ul,
+.dtt-post-content ol {
+    margin: 0 0 1.25em;
+    padding-left: 1.5em;
+}
+.dtt-post-content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+.dtt-post-content th,
+.dtt-post-content td {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+}
+.dtt-post-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    align-items: center;
+    padding: 20px clamp(24px, 5vw, 64px) 28px;
+    border-top: 1px solid #eef0f4;
+    color: #6b7280;
+    font-size: 14px;
+}
+.dtt-post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.dtt-post-tags a {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #4f46e5;
+    text-decoration: none;
+}
+.dtt-post-pagination {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+}
+.dtt-post-pagination a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: #fff;
+    color: #4f46e5;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, .06);
+    text-decoration: none;
+}
+:root {
+    --dtt-ink: #172033;
+    --dtt-muted: #697386;
+    --dtt-primary: #5b5bd6;
+    --dtt-primary-dark: #4545b8;
+    --dtt-surface: #ffffff;
+    --dtt-border: rgba(30, 41, 59, .10);
+    --dtt-soft: #f5f7ff;
+}
+.dtt-single-post {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(28px, 5vw, 72px) 16px 88px;
+    background: linear-gradient(180deg, #f6f8fc 0%, #eef2f8 100%);
+}
+.dtt-single-post::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 240px;
+    background: radial-gradient(circle at 15% 0%, rgba(99, 102, 241, .18), transparent 42%),
+                radial-gradient(circle at 88% 8%, rgba(14, 165, 233, .13), transparent 34%);
+    content: '';
+    pointer-events: none;
+}
+.dtt-single-post__inner {
+    width: min(100%, 900px);
+}
+.dtt-post-card {
+    position: relative;
+    background: var(--dtt-surface);
+    border: 1px solid var(--dtt-border);
+    border-radius: 22px;
+    box-shadow: 0 18px 55px rgba(30, 41, 59, .10);
+}
+.dtt-post-card::before {
+    position: absolute;
+    top: 0;
+    right: 12%;
+    left: 12%;
+    height: 4px;
+    border-radius: 0 0 99px 99px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+    content: '';
+}
+.dtt-post-header {
+    padding: clamp(32px, 6vw, 64px) clamp(22px, 7vw, 78px) 30px;
+    border-bottom: 1px solid #edf0f5;
+}
+.dtt-post-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding: 6px 12px;
+    border: 1px solid rgba(91, 91, 214, .16);
+    border-radius: 999px;
+    background: #f0f1ff;
+    color: var(--dtt-primary-dark);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+.dtt-post-kicker::before {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #6366f1;
+    content: '';
+}
+.dtt-post-kicker a { color: inherit; text-decoration: none; }
+.dtt-post-title {
+    max-width: 780px;
+    color: var(--dtt-ink);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -.035em;
+    line-height: 1.14;
+    text-wrap: balance;
+}
+.dtt-post-meta {
+    align-items: center;
+    gap: 8px 16px;
+    margin-top: 20px;
+    color: var(--dtt-muted);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+}
+.dtt-post-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.dtt-post-meta span + span::before {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #c8ceda;
+    content: '';
+}
+.dtt-post-meta a { color: var(--dtt-primary); font-weight: 700; }
+.dtt-post-featured {
+    padding: 20px 22px 0;
+    background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
+}
+.dtt-post-featured img {
+    width: min(100%, 820px);
+    max-height: 480px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(30, 41, 59, .14);
+    object-fit: cover;
+}
+.dtt-post-content {
+    padding: clamp(28px, 7vw, 72px) clamp(22px, 7vw, 78px);
+    color: #334155;
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(17px, 1.6vw, 19px);
+    letter-spacing: -.005em;
+    line-height: 1.9;
+}
+.dtt-post-content p { margin: 0 0 1.35em; }
+.dtt-post-content h2,
+.dtt-post-content h3,
+.dtt-post-content h4 {
+    position: relative;
+    margin: 2em 0 .7em;
+    padding-left: 14px;
+    color: var(--dtt-ink);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1.35;
+}
+.dtt-post-content h2::before,
+.dtt-post-content h3::before,
+.dtt-post-content h4::before {
+    position: absolute;
+    top: .18em;
+    bottom: .18em;
+    left: 0;
+    width: 4px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #6366f1, #06b6d4);
+    content: '';
+}
+.dtt-post-content h2 { font-size: clamp(24px, 3vw, 32px); }
+.dtt-post-content h3 { font-size: clamp(21px, 2.5vw, 27px); }
+.dtt-post-content h4 { font-size: 1.08em; }
+.dtt-post-content a {
+    color: var(--dtt-primary-dark);
+    font-weight: 600;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+.dtt-post-content a:hover { color: #3730a3; }
+.dtt-post-content img,
+.dtt-post-content iframe,
+.dtt-post-content video {
+    width: auto;
+    max-width: 100%;
+    border-radius: 14px;
+}
+.dtt-post-content img { box-shadow: 0 8px 24px rgba(30, 41, 59, .12); }
+.dtt-post-content figcaption {
+    margin-top: -1em;
+    color: var(--dtt-muted);
+    font-size: .78em;
+    font-style: italic;
+    line-height: 1.5;
+    text-align: center;
+}
+.dtt-post-content blockquote {
+    position: relative;
+    margin: 1.8em 0;
+    padding: 18px 22px 18px 28px;
+    border: 1px solid #dfe3ff;
+    border-left: 4px solid #6366f1;
+    border-radius: 0 14px 14px 0;
+    background: linear-gradient(135deg, #f7f7ff, #f1faff);
+    color: #475569;
+}
+.dtt-post-content code {
+    padding: 2px 6px;
+    border-radius: 5px;
+    background: #f1f5f9;
+    color: #be185d;
+    font-size: .88em;
+}
+.dtt-post-content pre {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 18px;
+    border-radius: 12px;
+    background: #111827;
+    color: #e5e7eb;
+    font-size: .82em;
+    line-height: 1.6;
+}
+.dtt-post-content pre code { padding: 0; background: transparent; color: inherit; }
+.dtt-post-content table { width: 100%; margin: 1.5em 0; }
+.dtt-post-content th { background: #f5f7ff; color: var(--dtt-ink); font-weight: 800; }
+.dtt-post-footer {
+    padding: 22px clamp(22px, 7vw, 78px) 30px;
+    border-top: 1px solid #edf0f5;
+    color: var(--dtt-muted);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+}
+.dtt-post-tags a {
+    padding: 6px 11px;
+    border: 1px solid #dde2ff;
+    background: #f5f6ff;
+    color: var(--dtt-primary-dark);
+    font-size: 12px;
+    font-weight: 700;
+    transition: .2s ease;
+}
+.dtt-post-tags a:hover {
+    background: var(--dtt-primary);
+    color: #fff;
+    transform: translateY(-1px);
+}
+.dtt-post-pagination {
+    margin-top: 34px;
+    padding-top: 22px;
+    border-top: 1px dashed #d9dfeb;
+}
+.dtt-post-pagination a {
+    border: 1px solid #e2e6f2;
+    background: #fff;
+    color: var(--dtt-primary-dark);
+    font-weight: 700;
+    transition: .2s ease;
+}
+.dtt-post-pagination a:hover {
+    border-color: #b9bdf7;
+    background: #f6f7ff;
+    transform: translateY(-2px);
+}
+/* TOC outside article card: desktop sidebar on the far left, inline on mobile. */
+@media   (min-width: 1200px) {
+    .dtt-single-post__inner {
+        width: min(100%, 1190px);
+        margin: 0 auto;
+    }
+    .dtt-article-layout {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 900px);
+        gap: 30px;
+        align-items: start;
+    }
+    .dtt-toc-rail {
+        position: sticky;
+        top: 96px;
+        align-self: start;
+        min-width: 0;
+    }
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] {
+    width: 100%;
+    max-height: calc(100vh - 124px);
+    box-sizing: border-box;
+    overflow-y: auto;
+    margin: 0;
+    padding: 18px 16px 20px;
+    border: 1px solid #e2e6f2;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #fbfcff 0%, #f6f7ff 100%);
+    box-shadow: 0 10px 26px rgba(30, 41, 59, .08);
+    scrollbar-color: #a8acef transparent;
+    scrollbar-width: thin;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"]::-webkit-scrollbar { width: 6px; }
+.dtt-toc-rail nav[aria-label^="Mục lục"]::-webkit-scrollbar-thumb {
+    border-radius: 99px;
+    background: #a8acef;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] .dtt-auto-toc__head {
+    margin-bottom: 12px;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] .dtt-auto-toc__hint {
+    display: block;
+    margin-top: 3px;
+    color: #8a94a6;
+    font-size: 10px;
+    line-height: 1.4;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] h2 {
+    margin: 0 0 12px;
+    color: var(--dtt-ink);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] ol {
+    margin: 0;
+    padding-left: 22px;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] li {
+    margin: 0;
+    color: #8a94a6;
+    font-size: 12px;
+    line-height: 1.45;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] li + li { margin-top: 7px; }
+.dtt-toc-rail nav[aria-label^="Mục lục"] a {
+    color: #596174;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] a:hover,
+.dtt-toc-rail nav[aria-label^="Mục lục"] a:focus-visible {
+    color: var(--dtt-primary-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.dtt-post-content::after { display: block; clear: both; content: ''; }
+.dtt-post-content h2[id],
+.dtt-post-content h3[id] { scroll-margin-top: 104px; }
+.dtt-toc-rail nav[aria-label^="Mục lục"] li {
+    position: relative;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] li > ol {
+    margin-top: 7px;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] li.dtt-toc-collapsed > ol {
+    display: none;
+}
+.dtt-toc-toggle {
+    display: inline-grid;
+    width: 18px;
+    height: 18px;
+    margin: 0 5px 0 -23px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid #c9cdf5;
+    border-radius: 5px;
+    background: #fff;
+    color: var(--dtt-primary-dark);
+    cursor: pointer;
+    font: 800 14px/1 system-ui, sans-serif;
+    vertical-align: -3px;
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.dtt-toc-toggle:hover,
+.dtt-toc-toggle:focus-visible {
+    border-color: #8589e8;
+    background: #eef0ff;
+    outline: none;
+}
+.dtt-toc-toggle[aria-expanded="false"] { transform: rotate(0deg); }
+.dtt-toc-toggle[aria-expanded="true"] { transform: rotate(0deg); }
+@media (max-width: 1199px) {
+    .dtt-toc-toggle { display: none; }
+}
+
+@media (max-width: 1199px) {
+    .dtt-toc-rail nav[aria-label^="Mục lục"] {
+        float: none;
+        position: static;
+        width: auto;
+        max-height: none;
+        margin: 28px 0;
+    }
+}
+#respond {
+    position: relative;
+    width: min(100%, 900px);
+    box-sizing: border-box;
+    margin: 30px auto 0;
+    padding: clamp(24px, 5vw, 42px) clamp(20px, 5vw, 54px);
+    border: 1px solid var(--dtt-border);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 14px 40px rgba(30, 41, 59, .08);
+}
+#respond::before {
+    position: absolute;
+    top: 0;
+    right: 12%;
+    left: 12%;
+    height: 3px;
+    border-radius: 0 0 99px 99px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+    content: '';
+}
+#respond .comment-reply-title {
+    margin: 0 0 8px;
+    color: var(--dtt-ink);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 800;
+    letter-spacing: -.025em;
+    line-height: 1.25;
+}
+#respond .comment-reply-title small {
+    font-size: 12px;
+    font-weight: 600;
+}
+#respond .comment-reply-title small a { color: var(--dtt-primary); }
+#respond .comment-notes {
+    margin: 0 0 20px;
+    color: var(--dtt-muted);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+#respond .comment-form {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0;
+}
+#respond .comment-form p {
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+}
+#respond .comment-form-comment,
+#respond .comment-form-cookies-consent,
+#respond .form-submit {
+    grid-column: 1 / -1;
+}
+#respond .comment-form label {
+    display: block;
+    margin: 0 0 7px;
+    color: #344054;
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+#respond .comment-form .required { color: #e05252; }
+#respond .comment-form textarea,
+#respond .comment-form input[type="text"],
+#respond .comment-form input[type="email"],
+#respond .comment-form input[type="url"] {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 11px 13px;
+    border: 1px solid #d9deea;
+    border-radius: 10px;
+    outline: none;
+    background: #fbfcff;
+    color: var(--dtt-ink);
+    font: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+#respond .comment-form textarea { min-height: 170px; resize: vertical; }
+#respond .comment-form textarea:focus,
+#respond .comment-form input:focus {
+    border-color: #7c83ed;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, .12);
+}
+#respond .comment-form-cookies-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: var(--dtt-muted);
+    font-size: 12px;
+    line-height: 1.55;
+}
+#respond .comment-form-cookies-consent input {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 auto;
+    margin: 2px 0 0;
+    accent-color: var(--dtt-primary);
+}
+#respond .comment-form-cookies-consent label {
+    margin: 0;
+    color: var(--dtt-muted);
+    font-size: 12px;
+    font-weight: 500;
+}
+#respond .form-submit { margin-top: 2px; }
+#respond .form-submit input[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    box-shadow: 0 7px 16px rgba(79, 70, 229, .22);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+#respond .form-submit input[type="submit"]:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 10px 20px rgba(79, 70, 229, .28);
+    transform: translateY(-1px);
+}
+.dtt-single-post .comment-respond,
+.dtt-single-post .comment-form,
+.dtt-single-post .comment-form p {
+    min-width: 0;
+    max-width: 100%;
+}
+.dtt-single-post .comment-form textarea,
+.dtt-single-post .comment-form input[type="text"],
+.dtt-single-post .comment-form input[type="email"],
+.dtt-single-post .comment-form input[type="url"] {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+.dtt-post-card + .comments-area,
+.dtt-post-card ~ .comments-area {
+    margin-top: 24px;
+    padding: 26px clamp(22px, 5vw, 48px);
+    border: 1px solid var(--dtt-border);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(30, 41, 59, .06);
+}
+.dtt-related-posts,
+#respond {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 520px;
+}
+.dtt-related-posts {
+    margin-top: 28px;
+    padding: clamp(22px, 5vw, 36px);
+    border: 1px solid var(--dtt-border);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .92);
+    box-shadow: 0 12px 34px rgba(30, 41, 59, .07);
+}
+.dtt-related-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.dtt-related-title {
+    margin: 0;
+    color: var(--dtt-ink);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 800;
+    letter-spacing: -.025em;
+}
+.dtt-related-subtitle {
+    margin: 5px 0 0;
+    color: var(--dtt-muted);
+    font-size: 13px;
+}
+.dtt-related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+.dtt-related-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #e6e9f2;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 5px 16px rgba(30, 41, 59, .05);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.dtt-related-card:hover {
+    border-color: #c9ccff;
+    box-shadow: 0 12px 24px rgba(30, 41, 59, .11);
+    transform: translateY(-3px);
+}
+.dtt-related-thumb {
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: linear-gradient(135deg, #eef2ff, #ecfeff);
+}
+.dtt-related-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .35s ease;
+}
+.dtt-related-card:hover .dtt-related-thumb img { transform: scale(1.04); }
+.dtt-related-placeholder {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    color: #6366f1;
+    font-size: 24px;
+    font-weight: 800;
+}
+.dtt-related-body {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    padding: 14px 15px 16px;
+}
+.dtt-related-meta {
+    margin-bottom: 7px;
+    color: #8a94a6;
+    font-size: 11px;
+}
+.dtt-related-card-title {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 0;
+    color: var(--dtt-ink);
+    font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.dtt-related-card-title a {
+    color: inherit;
+    text-decoration: none;
+}
+.dtt-related-card-title a:hover { color: var(--dtt-primary-dark); }
+.dtt-related-excerpt {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 8px 0 12px;
+    color: #697386;
+    font-size: 12px;
+    line-height: 1.55;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.dtt-related-read {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: auto;
+    color: var(--dtt-primary-dark);
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+}
+.dtt-related-read span { transition: transform .2s ease; }
+.dtt-related-card:hover .dtt-related-read span { transform: translateX(3px); }
+.dtt-related-empty { margin: 0; color: var(--dtt-muted); font-size: 14px; }
+@media (max-width: 900px) {
+    .dtt-related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+    .dtt-single-post { padding: 22px 10px 58px; }
+    .dtt-post-card { border-radius: 16px; }
+    .dtt-post-header { padding-top: 34px; }
+    .dtt-post-title { font-size: clamp(28px, 9vw, 38px); letter-spacing: -.025em; }
+    .dtt-post-meta { display: grid; gap: 8px; }
+    .dtt-post-meta span + span::before { display: none; }
+    .dtt-post-featured { padding: 12px 12px 0; }
+    .dtt-post-featured img { max-height: 360px; border-radius: 12px; }
+    .dtt-post-content { font-size: 17px; line-height: 1.82; }
+    .dtt-post-content h2 { font-size: 25px; }
+    .dtt-post-content h3 { font-size: 22px; }
+    .dtt-post-pagination { flex-direction: column; }
+    .dtt-post-pagination a { text-align: center; }
+    .dtt-single-post,
+    .dtt-single-post * { min-width: 0; }
+    #respond {
+        width: 100%;
+        margin-top: 20px;
+        padding: 28px 16px 22px;
+        border-radius: 16px;
+    }
+    #respond .comment-form {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    #respond .comment-form-comment,
+    #respond .comment-form-cookies-consent,
+    #respond .form-submit { grid-column: auto; }
+    #respond .comment-form textarea { min-height: 150px; }
+    #respond .form-submit input[type="submit"] { width: 100%; }
+
+    .dtt-single-post .comment-form textarea,
+    .dtt-single-post .comment-form input[type="text"],
+    .dtt-single-post .comment-form input[type="email"],
+    .dtt-single-post .comment-form input[type="url"] {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+    }
+    .dtt-related-posts { margin-top: 20px; padding: 20px 14px; border-radius: 16px; }
+    .dtt-related-head { display: block; margin-bottom: 15px; }
+    .dtt-related-subtitle { margin-top: 4px; }
+    .dtt-related-grid { grid-template-columns: 1fr; gap: 12px; }
+    .dtt-related-card { display: grid; grid-template-columns: 112px minmax(0, 1fr); }
+    .dtt-related-thumb { aspect-ratio: 1 / 1; height: 100%; }
+    .dtt-related-body { padding: 12px 13px; }
+    .dtt-related-excerpt { display: none; }
+    .dtt-related-card-title { font-size: 14px; -webkit-line-clamp: 3; }
+    .dtt-related-read { margin-top: 8px; }
+}
+/* Refined TOC motion, depth, and mobile layout. */
+.dtt-toc-rail nav[aria-label^="Mục lục"] {
+    transition: box-shadow .28s ease, border-color .28s ease, transform .28s ease;
+    box-shadow: 0 12px 30px rgba(30, 41, 59, .10), 0 2px 6px rgba(91, 91, 214, .06);
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"]:hover,
+.dtt-toc-rail nav[aria-label^="Mục lục"]:focus-within {
+    border-color: rgba(99, 102, 241, .34);
+    box-shadow: 0 18px 38px rgba(30, 41, 59, .14), 0 4px 12px rgba(91, 91, 214, .10);
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] li > ol {
+    display: block;
+    max-height: 2200px;
+    overflow: hidden;
+    margin-top: 7px;
+    opacity: 1;
+    transition: max-height .34s ease, opacity .24s ease, margin-top .34s ease;
+}
+.dtt-toc-rail nav[aria-label^="Mục lục"] li.dtt-toc-collapsed > ol {
+    display: block;
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+}
+.dtt-toc-toggle {
+    box-shadow: 0 2px 5px rgba(91, 91, 214, .10);
+    transition: background .22s ease, border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+    touch-action: manipulation;
+}
+.dtt-toc-toggle:.dtt-toc-toggle:.dtt-toc-toggle:.dtt-toc-toggle:.dtt-toc-toggle:.dtt-toc-toggle:14, .18);
+    transform: translateY(-1px);
+}
+@media (max-width: 1199px) {
+    .dtt-article-layout { display: block; }
+    .dtt-toc-rail {
+                                                            t-toc-rail nav[aria-label^="Mục lục"] {
+        max-height: none;
+        margin: 0;
+        padding: 14px 14px 16px;
+        border-radius: 14px;
+        box-shadow: 0 8px 22px rgba(30, 41, 59, .10);
+    }
+    .dtt-toc-rail nav[aria-label^="Mục lục"] h2 {
+        margin-bottom: 9px;
+        font-size: 16px;
+    }
+    .dtt-toc-rail nav[aria-label^="Mục lục"] ol {
+        padding-left: 20px;
+    }
+    .dtt-toc-rail nav[aria-label^="Mục lục"] li {
+        font-size: 13px;
+        line-height: 1.42;
+    }
+    .dtt-toc-rail nav[aria-label^="Mục lục"] li + li { margin-top: 4px; }
+    .dtt-toc-rail nav[aria-label^="Mục lục"] a {
+        display: inline-block;
+        padding: 2px 0;
+    }
+    .dtt-toc-rail .dtt-toc-toggle {
+        display: inline-grid;
+        width: 19px;
+        height: 19px;
+        margin-left: -24px;
+        font-size: 13px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .dtt-toc-rail nav[aria-label^="Mục lục"],
+    .dtt-toc-rail nav[aria-label^="Mục lục"] li > ol,
+    .dtt-toc-toggle { transition: none; }
+}
+</style>
+
+    <link rel="stylesheet" href="https://doctieuthuyet.com/wp-content/themes/tehi-theme/assets/css/single-post-sync.css?ver=1.0.1">
+
+<main id="primary" class="site-main dtt-single-post dtt-article-sync">
+    <div class="dtt-single-post__inner">
+                                                            <header class="dtt-post-header">
+                    <div class="dtt-article-sync__topline">
+                        <a class="dtt-article-sync__back" href="https://doctieuthuyet.com/bai-viet/">
+                            <span aria-hidden="true">←</span>
+                            Về thư viện bài viết                        </a>
+                        <span class="dtt-article-sync__status">Hồ sơ nội dung</span>
+                    </div>
+
+                                            <div class="dtt-post-kicker">
+                            <a href="https://doctieuthuyet.com/category/tien-nghich/">
+                                Tiên Nghịch                            </a>
+                        </div>
+                    
+                    <h1 class="dtt-post-title">Quỷ Phiên là gì trong Tiên Nghịch? 鬼帆, tử hồn Côn Hư và pháp bảo thi triển Đa Trọng Huyễn Thuật</h1>
+
+                    <div class="dtt-post-meta" aria-label="Thông tin bài viết">
+                        <span>Đăng ngày 23 Tháng 8, 2026</span>
+                                                    <span>Cập nhật 23 Tháng 8, 2026</span>
+                                                <span>Tác giả </span>
+                    </div>
+                </header>
+                        <div class="dtt-article-layout">
+                            <article id="post-10373" class="dtt-post-card post-10373 post type-post status-publish format-standard hentry category-tien-nghich">
+                
+                <div class="dtt-post-content entry-content">
+                    <p><strong>Quỷ Phiên</strong> (鬼帆, một số bản dịch có thể ghi Quỷ Phàm) là pháp bảo hồn đạo dùng để phối hợp thi triển <a href="https://doctieuthuyet.com/da-trong-huyen-thuat/">Đa Trọng Huyễn Thuật</a> của <a href="https://doctieuthuyet.com/dai-hon-mon/">Đại Hồn Môn</a>. Với Vương Lâm, Quỷ Phiên không phải một món bảo vật hắn nhặt được nguyên vẹn, mà là thứ hắn <strong>tự luyện từ vật liệu Thanh Ngưu Chân Nhân ban</strong>, sau đó phải tìm một tử hồn thích hợp để hoàn thiện.</p>
+<p>Điểm đáng nhớ nhất của Quỷ Phiên nằm ở lựa chọn của Vương Lâm tại <a href="https://doctieuthuyet.com/quy-phong/">Quỷ Phong</a>. Trên đỉnh núi có những tử hồn phẩm chất tốt hơn, đủ để luyện trung phẩm Quỷ Phiên, nhưng hắn lại chọn một nữ tử hồn áo trắng chỉ đủ cho sơ phẩm. Nàng đã quên tên, không tìm được thi thể và chỉ còn nhớ nỗi khắc khoải về quê nhà, người thân. Vương Lâm đặt cho nàng cái tên <strong>Côn Hư</strong>, rồi đưa hồn vào phiên. Sau một ngày dung hợp, cây phiên vốn đen chuyển thành màu trắng.</p>
+<h2>Thông tin nhanh về Quỷ Phiên</h2>
+<table>
+<tbody>
+<tr>
+<th>Thuộc tính</th>
+<th>Chi tiết</th>
+</tr>
+<tr>
+<td>Tên gốc</td>
+<td>鬼帆</td>
+</tr>
+<tr>
+<td>Tên thường dùng</td>
+<td>Quỷ Phiên / Quỷ Phàm tùy bản dịch</td>
+</tr>
+<tr>
+<td>Thuộc hệ</td>
+<td>Hồn đạo Đại Hồn Môn</td>
+</tr>
+<tr>
+<td>Công dụng chính</td>
+<td>Làm vật dẫn cho Đa Trọng Huyễn Thuật</td>
+</tr>
+<tr>
+<td>Người luyện</td>
+<td>Vương Lâm</td>
+</tr>
+<tr>
+<td>Vật liệu</td>
+<td>Thanh Ngưu Chân Nhân ban</td>
+</tr>
+<tr>
+<td>Tử hồn Vương Lâm chọn</td>
+<td>Nữ tử áo trắng được đặt tên Côn Hư</td>
+</tr>
+<tr>
+<td>Phẩm ban đầu</td>
+<td>Sơ phẩm</td>
+</tr>
+<tr>
+<td>Màu sau dung hồn</td>
+<td>Trắng</td>
+</tr>
+</tbody>
+</table>
+<h2>Quỷ Phiên được dùng để làm gì?</h2>
+<p>Công dụng quan trọng nhất là làm <strong>vật chứa và môi giới cho tử hồn</strong> khi người tu vận dụng Đa Trọng Huyễn Thuật. Huyễn thuật này cần ý chí tử hồn làm “dinh dưỡng” để hình thành nhiều lớp giả cảnh chồng lên nhau; Quỷ Phiên giúp giữ hồn và đưa nó vào cấu trúc thi pháp có thể kiểm soát.</p>
+<p>Vì vậy Quỷ Phiên không phải một cây cờ chỉ dùng để phóng quỷ ra cắn đối thủ. Giá trị của nó nằm ở mối liên hệ trực tiếp với cơ chế huyễn thuật Đại Hồn Môn.</p>
+<h2>Vương Lâm lấy công thức luyện Quỷ Phiên ở đâu?</h2>
+<p>Sau khi lập công trong chiến tranh Thiên Ngưu – Lục Ma, Vương Lâm nhận được bản đầy đủ chín trọng của Đa Trọng Huyễn Thuật. Trong ngọc giản không chỉ có pháp quyết mà còn kèm phương pháp luyện vật dẫn cần thiết để thi triển thuật.</p>
+<p>Thanh Ngưu Chân Nhân còn trực tiếp đưa một nhóm vật liệu luyện khí chất lượng cao, giúp Vương Lâm không phải mất thời gian tự đi gom từng thứ trước lúc chiến tranh bùng nổ.</p>
+<h2>Vương Lâm mất bao lâu để luyện thân Quỷ Phiên?</h2>
+<p>Nguyên tác cho thấy trong khoảng năm ngày đầu của thời hạn bảy ngày trước khi nhận nhiệm vụ trấn thủ Thiên Ngưu Đệ Tam Huyệt, Vương Lâm vừa nghiên cứu Đa Trọng Huyễn Thuật vừa luyện toàn bộ vật liệu thành một cây phiên lớn màu đen.</p>
+<p>Lúc đó pháp bảo mới chỉ có “khung”, chưa hoàn chỉnh vì <strong>chưa có tử hồn</strong>. Chỉ khi đưa hồn vào, Quỷ Phiên mới có thể thật sự phục vụ huyễn thuật.</p>
+<h2>Vì sao Quỷ Phiên cần tử hồn?</h2>
+<p>Đa Trọng Huyễn Thuật dựa vào ý chí của người chết. Tử hồn càng trải qua thời gian dài và ý chí càng bền, khả năng chịu nhiều tầng huyễn thuật càng cao.</p>
+<p>Không có hồn, Quỷ Phiên chỉ là một vật dẫn rỗng. Có hồn nhưng hồn quá yếu, số trọng huyễn cảnh mà pháp bảo có thể chịu cũng bị giới hạn.</p>
+<h2>Sơ phẩm và trung phẩm Quỷ Phiên khác nhau thế nào?</h2>
+<p>Nguyên tác khi Vương Lâm đi Quỷ Phong cho thấy tử hồn có phẩm chất khác nhau. Những hồn mạnh nhất gần đỉnh núi có thể luyện <strong>trung phẩm Quỷ Phiên</strong>, trong khi nữ tử áo trắng Vương Lâm chọn chỉ đủ cho một cây <strong>sơ phẩm</strong>.</p>
+<p>Điểm quan trọng là cấp Quỷ Phiên phụ thuộc rất mạnh vào chất lượng tử hồn được dung nhập, không chỉ chất lượng thân phiên.</p>
+<h2>Vì sao Vương Lâm không chọn tử hồn mạnh nhất?</h2>
+<p>Đây là chi tiết làm Quỷ Phiên của hắn khác cách tối ưu thuần chiến lực. Vương Lâm đã nhìn thấy vài tử hồn mạnh hơn ở gần đỉnh Quỷ Phong, nhưng tiếng khóc và câu hỏi của nữ tử áo trắng về thi thể, quê nhà và người thân khiến hắn dừng lại.</p>
+<p>Những lời ấy đánh trúng chính một phần nhân sinh của Vương Lâm: người đã rời quê quá lâu, trải qua vô số sinh tử và luôn mang ký ức người thân trong lòng. Hắn vì vậy bỏ qua lựa chọn “tốt hơn trên giấy”.</p>
+<h2>Côn Hư là ai?</h2>
+<p>Côn Hư là tên Vương Lâm đặt cho nữ tử hồn áo trắng tại Quỷ Phong. Nàng đã quên tên thật, không nhớ thân phận, chỉ biết tấm bia mộ trước mặt là của mình nhưng không biết thi thể nằm ở đâu.</p>
+<p>Khi Vương Lâm hỏi tên, nàng nói đã quên. Hắn mới nói từ nay gọi là Côn Hư, rồi thu hồn vào Quỷ Phiên.</p>
+<h2>Vì sao cái tên Côn Hư có ý nghĩa với Vương Lâm?</h2>
+<p>Nguyên tác không đưa một lời giải thích dài ngay tại cảnh đặt tên, vì vậy không nên tự khẳng định đây chắc chắn là một đại biểu tượng vũ trụ nào đó. Tuy nhiên với độc giả Tiên Nghịch, “Côn Hư” dễ gợi lại rất nhiều nhân quả cũ của Vương Lâm trong Động Phủ Giới.</p>
+<p>Điều chắc chắn hơn là Vương Lâm chủ động cho một tử hồn vô danh một tên mới thay vì coi nàng như nguyên liệu vô danh.</p>
+<h2>Vì sao Quỷ Phiên đổi từ đen sang trắng?</h2>
+<p>Trước khi dung hồn, Vương Lâm luyện ra một cây phiên bố lớn màu đen. Sau khi nữ tử áo trắng hòa vào trong suốt khoảng một ngày, màu của pháp bảo thay đổi thành <strong>trắng</strong>.</p>
+<p>Bên trong cây phiên còn thỉnh thoảng vang tiếng khóc, khiến người nghe hiện lên hình ảnh một nữ tử tóc dài quay lưng khóc. Đây là biểu hiện hồn tính của Côn Hư đã gắn trực tiếp với pháp bảo.</p>
+<h2>Quỷ Phiên có phải Đạo Hồn Hồ Lô không?</h2>
+<p><strong>Không.</strong> <a href="https://doctieuthuyet.com/dao-hon-ho-lo/">Đạo Hồn Hồ Lô</a> là pháp bảo cổ của Đại Hồn Môn chứa số lượng cực lớn đạo hồn, phối hợp với <a href="https://doctieuthuyet.com/hon-dan-quy/">Hồn Dẫn Quy</a>. Quỷ Phiên lại là pháp bảo Vương Lâm tự luyện để phục vụ Đa Trọng Huyễn Thuật.</p>
+<p>Một bên nghiêng về triệu dẫn đạo hồn; một bên là vật dẫn tử hồn cho huyễn thuật. Cùng thuộc hồn đạo nhưng không thể gộp làm một.</p>
+<h2>Quỷ Phiên có phải Tôn Hồn Phiên thời đầu truyện?</h2>
+<p><strong>Không.</strong> Đây là một nhầm lẫn dễ xảy ra vì Vương Lâm từng tiếp xúc nhiều loại hồn phiên trong hành trình trước Tiên Cương. Quỷ Phiên của Đại Hồn Môn xuất hiện trong hệ truyền thừa Đa Trọng Huyễn Thuật và được luyện theo phương pháp riêng ở giai đoạn Thiên Ngưu Châu.</p>
+<p>Không nên lấy toàn bộ cơ chế của Tôn Hồn Phiên hoặc các hồn kỳ cũ để áp sang cây phiên này.</p>
+<h2>Quỷ Phiên có phải bản nguyên?</h2>
+<p>Không. Đây là <strong>pháp bảo hỗ trợ thần thông</strong>. Bản nguyên của Vương Lâm là hệ cảm ngộ – quy tắc như Sinh Tử, Nhân Quả, Chân Giả, Hỏa, Lôi và các bản nguyên về sau; Quỷ Phiên không thuộc danh sách đó.</p>
+<h2>Quỷ Phiên có liên quan Sinh Tử Bản Nguyên?</h2>
+<p>Cơ chế chính của Quỷ Phiên đến từ Đa Trọng Huyễn Thuật, nhưng Sinh Tử Bản Nguyên của Vương Lâm giúp hắn nhìn và nghe tử hồn tại Quỷ Phong rất rõ. Chính truyện nói khả năng cảm nhận các tử hồn có liên hệ lớn với nền sinh tử của hắn.</p>
+<p>Đây là ví dụ một bản nguyên cũ hỗ trợ Vương Lâm dùng một truyền thừa mới mà không biến hai hệ thành cùng một công pháp.</p>
+<h2>Quỷ Phiên và Quỷ Phong liên quan thế nào?</h2>
+<p>Quỷ Phong là kho tử hồn lâu đời của Đại Hồn Môn. Tông giữ rất nhiều mộ phần có hồn bị phong, để đệ tử cần luyện hồn thuật hoặc Quỷ Phiên có thể tới chọn dưới sự cho phép.</p>
+<p>Nếu không có Quỷ Phong, việc tìm đúng tử hồn đủ phẩm chất giữa lúc chiến tranh chỉ còn vài ngày sẽ khó hơn rất nhiều.</p>
+<h2>Quỷ Phiên có liên quan Thiên Ngưu Đệ Tam Huyệt không?</h2>
+<p>Về timeline, có. Vương Lâm hoàn thiện Quỷ Phiên ngay trước khi nhận lệnh đi trấn thủ khu vực thuộc <a href="https://doctieuthuyet.com/thien-nguu-that-huyet/">Thiên Ngưu Thất Huyệt</a>. Điều này cho thấy việc luyện phiên là một phần chuẩn bị chiến lực trước đại chiến.</p>
+<p>Tuy nhiên Thiên Ngưu Hồn Khải và Quỷ Phiên là hai hệ hoàn toàn khác nhau, không nên gộp cơ chế.</p>
+<h2>Vương Lâm có luyện Quỷ Phiên vì thiếu pháp bảo?</h2>
+<p>Một phần. Sau khi tới Tiên Cương, Vương Lâm nhiều lần nhận ra tài nguyên và pháp bảo cũ không còn đủ áp đảo như trước. Học truyền thừa Đại Hồn Môn đồng thời cho hắn thêm những thủ đoạn thích nghi với chuẩn chiến lực mới.</p>
+<p>Nhưng lý do trực tiếp vẫn là yêu cầu kỹ thuật của Đa Trọng Huyễn Thuật: muốn phát huy đúng thuật, cần một Quỷ Phiên có tử hồn thích hợp.</p>
+<h2>Những hiểu lầm phổ biến</h2>
+<ul>
+<li><strong>“Quỷ Phiên là Đạo Hồn Hồ Lô”:</strong> sai, là hai pháp bảo khác hệ ứng dụng.</li>
+<li><strong>“Quỷ Phiên ban đầu màu trắng”:</strong> thân phiên ban đầu màu đen, sau khi dung Côn Hư mới chuyển trắng.</li>
+<li><strong>“Vương Lâm chọn hồn mạnh nhất Quỷ Phong”:</strong> không, hắn bỏ qua những hồn đủ luyện trung phẩm để chọn nữ tử áo trắng.</li>
+<li><strong>“Quỷ Phiên chính là Tôn Hồn Phiên thời đầu”:</strong> không nên đồng nhất.</li>
+<li><strong>“Quỷ Phiên là bản nguyên”:</strong> đây là pháp bảo hỗ trợ huyễn thuật.</li>
+</ul>
+<h2>Câu hỏi thường gặp</h2>
+<h3>Quỷ Phiên dùng cho thần thông nào?</h3>
+<p>Đa Trọng Huyễn Thuật của Đại Hồn Môn.</p>
+<h3>Ai luyện Quỷ Phiên của Vương Lâm?</h3>
+<p>Vương Lâm tự luyện thân phiên từ vật liệu Thanh Ngưu ban.</p>
+<h3>Tử hồn bên trong là ai?</h3>
+<p>Một nữ tử áo trắng vô danh được Vương Lâm đặt tên Côn Hư.</p>
+<h3>Quỷ Phiên của Vương Lâm màu gì?</h3>
+<p>Sau khi dung hồn Côn Hư, nó chuyển thành màu trắng.</p>
+<h3>Vì sao chỉ là sơ phẩm?</h3>
+<p>Vì tử hồn Vương Lâm chọn không phải nhóm hồn mạnh nhất Quỷ Phong, dù chính lựa chọn này có ý nghĩa nhân quả riêng.</p>
+<h2>Kết luận</h2>
+<p>Quỷ Phiên là một pháp bảo không quá nổi tiếng nếu đặt cạnh những thần binh đỉnh cao, nhưng nó thể hiện rất rõ cách Vương Lâm tu hành ở Tiên Cương. Hắn nhận một truyền thừa mới, tự luyện công cụ phù hợp, rồi ở khoảnh khắc chọn “nguyên liệu”, lại không chọn phương án mạnh nhất mà chọn một tử hồn khiến mình nhớ tới quê nhà và người thân. Từ một cây phiên đen chưa có hồn, Quỷ Phiên trở thành màu trắng và mang theo tiếng khóc Côn Hư – một chi tiết nhỏ nhưng rất đúng chất nhân quả của Tiên Nghịch.</p>
+                </div>
+
+                            </article>
+            </div>
+
+            
+                            <section class="dtt-related-posts" aria-labelledby="dtt-related-title">
+                    <div class="dtt-related-head">
+                        <div>
+                            <h2 id="dtt-related-title" class="dtt-related-title">Bài viết liên quan</h2>
+                            <p class="dtt-related-subtitle">Có thể anh sẽ quan tâm</p>
+                        </div>
+                    </div>
+                    <div class="dtt-related-grid">
+                                                    <article class="dtt-related-card">
+                                <a class="dtt-related-thumb" href="https://doctieuthuyet.com/lu-van-nhiem/" aria-label="Đọc Lữ Văn Nhiễm là ai? Trưởng lão Không Kiếp trung kỳ, phản đồ Đại Hồn Môn và cuộc tranh Thiên Ngưu Hồn Giáp">
+                                                                            <span class="dtt-related-placeholder" aria-hidden="true">DTT</span>
+                                                                    </a>
+                                <div class="dtt-related-body">
+                                    <div class="dtt-related-meta">23 Tháng 8, 2026</div>
+                                    <h3 class="dtt-related-card-title">
+                                        <a href="https://doctieuthuyet.com/lu-van-nhiem/">Lữ Văn Nhiễm là ai? Trưởng lão Không Kiếp trung kỳ, phản đồ Đại Hồn Môn và cuộc tranh Thiên Ngưu Hồn Giáp</a>
+                                    </h3>
+                                    <p class="dtt-related-excerpt">Lữ Văn Nhiễm là trưởng lão Không Kiếp trung kỳ của Đại Hồn Môn, đệ tử Thanh Ngưu…</p>
+                                    <a class="dtt-related-read" href="https://doctieuthuyet.com/lu-van-nhiem/">Đọc bài viết <span aria-hidden="true">→</span></a>
+                                </div>
+                            </article>
+                                                    <article class="dtt-related-card">
+                                <a class="dtt-related-thumb" href="https://doctieuthuyet.com/hua-dong-duc/" aria-label="Đọc Hứa Đông Đức là ai? Trưởng lão Đại Hồn Môn, Không Kiếp sơ kỳ và người trấn thủ Thiên Ngưu Đệ Tam Huyệt">
+                                                                            <span class="dtt-related-placeholder" aria-hidden="true">DTT</span>
+                                                                    </a>
+                                <div class="dtt-related-body">
+                                    <div class="dtt-related-meta">23 Tháng 8, 2026</div>
+                                    <h3 class="dtt-related-card-title">
+                                        <a href="https://doctieuthuyet.com/hua-dong-duc/">Hứa Đông Đức là ai? Trưởng lão Đại Hồn Môn, Không Kiếp sơ kỳ và người trấn thủ Thiên Ngưu Đệ Tam Huyệt</a>
+                                    </h3>
+                                    <p class="dtt-related-excerpt">Hứa Đông Đức là trưởng lão Đại Hồn Môn có tu vi Không Kiếp, cùng Vương Lâm, Lữ…</p>
+                                    <a class="dtt-related-read" href="https://doctieuthuyet.com/hua-dong-duc/">Đọc bài viết <span aria-hidden="true">→</span></a>
+                                </div>
+                            </article>
+                                                    <article class="dtt-related-card">
+                                <a class="dtt-related-thumb" href="https://doctieuthuyet.com/phan-san-lo/" aria-label="Đọc Phàn San Lộ là ai? Thất Thải Tiên Tôn Đệ Nhất Phi, em gái Phàn San Mộng và đệ tử Đại Hồn Môn">
+                                                                            <span class="dtt-related-placeholder" aria-hidden="true">DTT</span>
+                                                                    </a>
+                                <div class="dtt-related-body">
+                                    <div class="dtt-related-meta">23 Tháng 8, 2026</div>
+                                    <h3 class="dtt-related-card-title">
+                                        <a href="https://doctieuthuyet.com/phan-san-lo/">Phàn San Lộ là ai? Thất Thải Tiên Tôn Đệ Nhất Phi, em gái Phàn San Mộng và đệ tử Đại Hồn Môn</a>
+                                    </h3>
+                                    <p class="dtt-related-excerpt">Phàn San Lộ là Thất Thải Tiên Tôn Đệ Nhất Phi, em gái Phàn San Mộng và người…</p>
+                                    <a class="dtt-related-read" href="https://doctieuthuyet.com/phan-san-lo/">Đọc bài viết <span aria-hidden="true">→</span></a>
+                                </div>
+                            </article>
+                                            </div>
+                </section>
+                            
+                            
+<!-- You can start editing here. -->
+
+
+			<!-- If comments are open, but there are no comments. -->
+
+	
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Để lại một bình luận <small><a rel="nofollow" id="cancel-comment-reply-link" href="/quy-phien-tien-nghich/#respond" style="display:none;">Hủy</a></small></h3><form action="https://doctieuthuyet.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Email của bạn sẽ không được hiển thị công khai.</span> <span class="required-field-message">Các trường bắt buộc được đánh dấu <span class="required">*</span></span></p><p class="comment-form-comment"><label for="comment">Bình luận <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Tên <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required="required" /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required="required" /></p>
+<p class="comment-form-url"><label for="url">Trang web</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" autocomplete="url" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Gửi bình luận" /> <input type='hidden' name='comment_post_ID' value='10373' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	                        </div>
+<script>
+(function () {
+    function initDttTocToggles() {
+
+        document.querySelectorAll('.dtt-toc-rail nav[aria-label^="Mục lục"]').forEach(function (toc) {
+            var toggleIndex = 0;
+            toc.querySelectorAll('li').forEach(function (item) {
+                var nestedList = null;
+                Array.prototype.forEach.call(item.children, function (child) {
+                    if (child.tagName === 'OL') {
+                        nestedList = child;
+                    }
+                });
+
+                if (!nestedList || item.querySelector('.dtt-toc-toggle')) {
+                    return;
+                }
+
+                toggleIndex += 1;
+                var button = document.createElement('button');
+                var label = item.querySelector(':scope > a');
+                var labelText = label ? label.textContent.trim() : 'mục này';
+                var controlId = 'dtt-toc-sublist-' + toggleIndex;
+
+                nestedList.id = nestedList.id || controlId;
+                var initiallyCollapsed = item.classList.contains('dtt-toc-collapsed');
+                button.type = 'button';
+                button.className = 'dtt-toc-toggle';
+                button.textContent = initiallyCollapsed ? '+' : '−';
+                button.setAttribute('aria-expanded', initiallyCollapsed ? 'false' : 'true');
+                button.setAttribute('aria-controls', nestedList.id);
+                button.setAttribute('aria-label', (initiallyCollapsed ? 'Mở rộng ' : 'Thu gọn ') + labelText);
+
+                button.addEventListener('click', function () {
+                    var expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+                    button.textContent = expanded ? '+' : '−';
+                    button.setAttribute('aria-label', (expanded ? 'Mở rộng ' : 'Thu gọn ') + labelText);
+                    item.classList.toggle('dtt-toc-collapsed', expanded);
+                });
+
+                item.insertBefore(button, item.firstChild);
+            });
+        });
+    }
+
+    function initDttWikiScrollspy() {
+        var page = document.querySelector('.dtt-kiem-lai-wiki');
+        if (!page || !window.IntersectionObserver) {
+            return;
+        }
+
+        var links = Array.prototype.slice.call(
+            page.querySelectorAll('.dtt-toc-rail nav[aria-label^="Mục lục"] a[href^="#"]')
+        );
+        var sections = links.map(function (link) {
+            return document.getElementById(link.getAttribute('href').slice(1));
+        }).filter(Boolean);
+
+        if (!sections.length) {
+            return;
+        }
+
+        function setActive(id) {
+            links.forEach(function (link) {
+                link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+            });
+        }
+
+        setActive(sections[0].id);
+        var observer = new IntersectionObserver(function (entries) {
+            var visible = entries.filter(function (entry) { return entry.isIntersecting; });
+            if (!visible.length) {
+                return;
+            }
+            visible.sort(function (a, b) {
+                return a.boundingClientRect.top - b.boundingClientRect.top;
+            });
+            setActive(visible[0].target.id);
+        }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, 1] });
+
+        sections.forEach(function (section) { observer.observe(section); });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+            initDttTocToggles();
+            initDttWikiScrollspy();
+        });
+    } else {
+        initDttTocToggles();
+        initDttWikiScrollspy();
+    }
+}());
+</script>
+
+</main>
+
+<style>
+.mkm-footer { background: #fff; border-top: 1px solid #e5e7eb; margin-top: 48px; font-family: 'Be Vietnam Pro', sans-serif; }
+.mkm-footer-top { max-width: 1200px; margin: 0 auto; padding: 40px 16px 32px; display: grid; grid-template-columns: 1.6fr 1fr 1.4fr 1.2fr 1.2fr; gap: 32px; }
+.mkm-footer-brand { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.mkm-footer-brand p { font-size: 13px; color: #6b7280; line-height: 1.7; margin: 0; text-align: center; }
+.mkm-footer-col h4 { font-size: 14px; font-weight: 800; color: #111827; margin: 0 0 14px 0; }
+.mkm-footer-col ul { list-style: none; padding: 0; margin: 0; }
+.mkm-footer-col ul li { margin-bottom: 8px; }
+.mkm-footer-col ul li a { font-size: 13px; color: #6b7280; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .15s; }
+.mkm-footer-col ul li a:hover { color: #4f46e5; }
+.mkm-footer-social { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.mkm-footer-social a { display: flex; align-items: center; gap: 10px; padding: 8px 14px; border: 1px solid #e5e7eb; border-radius: 10px; font-size: 13px; font-weight: 600; color: #374151; text-decoration: none; transition: all .15s; }
+.mkm-footer-social a:hover { border-color: #4f46e5; color: #4f46e5; background: #f5f3ff; }
+.mkm-footer-apps { display: flex; flex-direction: column; gap: 8px; }
+.mkm-footer-apps a { display: flex; align-items: center; gap: 8px; background: #111827; color: #fff; border-radius: 10px; padding: 8px 14px; text-decoration: none; font-size: 12px; transition: background .15s; }
+.mkm-footer-apps a:hover { background: #4f46e5; }
+.mkm-footer-apps a span { font-size: 11px; opacity: .7; display: block; }
+.mkm-footer-apps a strong { font-size: 13px; display: block; }
+.mkm-footer-disclaimer { background: #fffbeb; border-top: 1px solid #fde68a; }
+.mkm-footer-disclaimer-inner { max-width: 1200px; margin: 0 auto; padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; }
+.mkm-footer-disclaimer-inner svg { flex-shrink: 0; color: #f59e0b; margin-top: 2px; }
+.mkm-footer-disclaimer p { font-size: 12px; color: #78350f; line-height: 1.6; margin: 0; }
+.mkm-footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px; text-align: center; font-size: 13px; color: #6b7280; border-top: 1px solid #f3f4f6; }
+@media (max-width: 900px) {
+    .mkm-footer-top { grid-template-columns: 1fr 1fr; }
+    .mkm-footer-grid-list { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px 16px !important; }
+    .mkm-footer-grid-list li { margin-bottom: 0 !important; }
+}
+@media (max-width: 600px) { .mkm-footer-top { grid-template-columns: 1fr; } }
+</style>
+
+</main><!-- /main-content -->
+<footer class="mkm-footer">
+    <div class="mkm-footer-top">
+        <!-- ... inside stays the same ... -->
+        <!-- BRAND -->
+        <div class="mkm-footer-brand">
+            <a href="https://doctieuthuyet.com/" style="text-decoration: none; margin-bottom: 12px; display: inline-block;">
+                <span style="font-weight: 900; font-size: 28px; color: #1e1e2d; letter-spacing: -1px; font-family: 'Be Vietnam Pro', sans-serif;">
+                    DTT<span style="color: #6366f1;">.</span>
+                </span>
+            </a>
+            <p>Kho truyện full & ngôn tình tuyển chọn – đọc mượt, giao diện hiện đại, nhiều chế độ nền.</p>
+        </div>
+
+        <!-- THÔNG TIN -->
+        <div class="mkm-footer-col">
+            <h4>Thông tin</h4>
+            <ul>
+                <li><a href="https://doctieuthuyet.com/gioi-thieu/"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Giới thiệu</a></li>
+                <li><a href="https://doctieuthuyet.com/chinh-sach-bao-mat/"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Chính sách bảo mật</a></li>
+                <li><a href="https://doctieuthuyet.com/dieu-khoan-su-dung/"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Điều khoản sử dụng</a></li>
+            </ul>
+        </div>
+
+        <!-- DANH SÁCH TRUYỆN -->
+        <div class="mkm-footer-col">
+            <h4>Danh sách truyện</h4>
+            <ul class="mkm-footer-grid-list">
+                                <li><a href="https://doctieuthuyet.com/the-loai/sang-van/">• Sảng Văn</a></li>
+                                <li><a href="https://doctieuthuyet.com/the-loai/va-mat/">• Vả Mặt</a></li>
+                                <li><a href="https://doctieuthuyet.com/the-loai/do-thi-va-mat-2/">• Đô thị vả mặt</a></li>
+                                <li><a href="https://doctieuthuyet.com/the-loai/do-thi-thuong-chien/">• Đô thị thương chiến</a></li>
+                                <li><a href="https://doctieuthuyet.com/the-loai/hao-mon/">• Hào Môn</a></li>
+                                <li><a href="https://doctieuthuyet.com/the-loai/hien-dai/">• Hiện đại</a></li>
+                            </ul>
+        </div>
+
+        <!-- TOP TRUYỆN -->
+        <div class="mkm-footer-col">
+            <h4>Top truyện</h4>
+            <ul class="mkm-footer-grid-list">
+                <li><a href="https://doctieuthuyet.com/bang-xep-hang/">• Top ngôn tình hay nhất</a></li>
+                <li><a href="https://doctieuthuyet.com/?s=ngon+tinh+hien+dai">• Top ngôn tình hiện đại</a></li>
+                <li><a href="https://doctieuthuyet.com/?s=tong+tai">• Top tổng tài hay nhất</a></li>
+                <li><a href="https://doctieuthuyet.com/?s=ngon+tinh+co+dai">• Top ngôn tình cổ đại</a></li>
+                <li><a href="https://doctieuthuyet.com/?s=xuyen+khong">• Top xuyên không hay</a></li>
+                <li><a href="https://doctieuthuyet.com/?s=quan+nhan">• Top truyện quân nhân</a></li>
+            </ul>
+        </div>
+
+        <!-- KẾT NỐI -->
+        <div class="mkm-footer-col">
+            <h4>Kết nối</h4>
+            <p style="font-size:12px; color:#6b7280; margin:0 0 10px;">Theo dõi để nhận thông báo chương mới:</p>
+            <div class="mkm-footer-social">
+                <a href="https://doctieuthuyet.com/">
+                    <svg width="18" height="18" fill="#1877f2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Fanpage
+                </a>
+                <a href="https://doctieuthuyet.com/nhom-dich/">
+                    <svg width="18" height="18" fill="#ff0000" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                    YouTube
+                </a>
+            </div>
+            <p style="font-size:12px; color:#6b7280; margin:0 0 8px;">Tải ứng dụng</p>
+            <div class="mkm-footer-apps">
+                <a href="https://doctieuthuyet.com/">
+                    <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    <div><span>Tải về</span><strong>App Store</strong></div>
+                </a>
+                <a href="https://doctieuthuyet.com/">
+                    <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M3.18 23.76c.27.15.54.24.81.24.27 0 .54-.09.81-.24L17.1 12 3.18.24C2.91.09 2.64 0 2.37 0c-.54 0-.99.45-.99.99v22.02c0 .54.45.75.8.75zM17.82 11.28L5.58 4.92 15.6 12 5.58 19.08l12.24-6.36c.54-.27.54-1.17 0-1.44z"/></svg>
+                    <div><span>Tải về</span><strong>Google Play</strong></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="mkm-footer-disclaimer">
+        <div class="mkm-footer-disclaimer-inner">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <p><strong>Tuyên bố miễn trừ trách nhiệm:</strong> DTT là nền tảng tổng hợp và chia sẻ nội dung giải trí. Chúng tôi luôn tôn trọng quyền sở hữu trí tuệ của người khác. Nếu bạn là tác giả hoặc chủ sở hữu bản quyền của bất kỳ nội dung nào trên website, vui lòng liên hệ để chúng tôi gỡ bỏ trong vòng 24-48 giờ.</p>
+        </div>
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="mkm-footer-bottom">
+        © 2026 DTT. All rights reserved.
+    </div>
+</footer>
+
+<!-- AUTH MODAL -->
+<style>#mkmAuthModal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 100000; display: flex; align-items: center; justify-content: center; padding: 20px 0; opacity: 0; pointer-events: none; visibility: hidden; transition: all 0.3s ease; } #mkmAuthModal.active { opacity: 1; pointer-events: auto; visibility: visible; } #mkmAuthModal .mkm-auth-modal { max-height: 90vh; overflow-y: auto; }</style>
+<div class="mkm-auth-overlay" id="mkmAuthModal">
+    <div class="mkm-auth-modal">
+        <!-- Header -->
+        <div class="mkm-auth-header">
+            <div class="mkm-auth-tabs">
+                <button class="mkm-auth-tab active" data-tab="login" onclick="mkmSwitchAuthTab('login')">Đăng nhập</button>
+                <div class="mkm-auth-tab-divider">/</div>
+                <button class="mkm-auth-tab" data-tab="register" onclick="mkmSwitchAuthTab('register')">Đăng ký</button>
+            </div>
+            <button class="mkm-auth-close" onclick="mkmCloseAuthModal()">×</button>
+        </div>
+        
+        <div class="mkm-auth-body">
+            <!-- LOGIN FORM -->
+            <form id="mkmLoginForm" class="mkm-auth-form active" onsubmit="mkmSubmitAuth(event, 'login')">
+                <div class="mkm-form-group">
+                    <label>Email</label>
+                    <div class="mkm-input-wrap">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" name="user_email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+                <div class="mkm-form-group">
+                    <label>Mật khẩu</label>
+                    <div class="mkm-input-wrap">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="user_pass" placeholder="••••••••" required>
+                        <i class="fa-regular fa-eye mkm-pwd-toggle" onclick="mkmTogglePwd(this)"></i>
+                    </div>
+                </div>
+                
+                <div class="mkm-auth-options">
+                    <a href="https://doctieuthuyet.com/wp-login.php?action=lostpassword" class="mkm-auth-link">Quên mật khẩu?</a>
+                </div>
+                
+                <div class="mkm-auth-alert" id="mkmLoginAlert" style="display:none;"></div>
+                
+                <button type="submit" class="mkm-btn-primary mkm-btn-submit">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Đăng nhập
+                </button>
+                
+                <!-- Google Login Button (Requires Nextend Social Login) -->
+                <a href="https://doctieuthuyet.com/?loginSocial=google" class="mkm-btn-google">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"> Tiếp tục với Google
+                </a>
+                
+                <div class="mkm-auth-footer-text">
+                    Chưa có tài khoản? <button type="button" onclick="mkmSwitchAuthTab('register')" style="background:none;border:none;color:#4f46e5;cursor:pointer;font:inherit;font-weight:600;padding:0;">Đăng ký</button>
+                </div>
+                
+                <div class="mkm-auth-close-text" onclick="mkmCloseAuthModal()">Đóng</div>
+            </form>
+
+            <!-- REGISTER FORM -->
+            <form id="mkmRegisterForm" class="mkm-auth-form" onsubmit="mkmSubmitAuth(event, 'register')">
+                <div class="mkm-form-group">
+                    <label>Tên hiển thị</label>
+                    <div class="mkm-input-wrap">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" name="user_display" placeholder="VD: Mèo Mập" required>
+                    </div>
+                </div>
+                <div class="mkm-form-group">
+                    <label>Email</label>
+                    <div class="mkm-input-wrap">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" name="user_email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+                <div class="mkm-form-group">
+                    <label>Mật khẩu</label>
+                    <div class="mkm-input-wrap">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="user_pass" placeholder="Tối thiểu 6 ký tự" minlength="6" required>
+                         <i class="fa-regular fa-eye mkm-pwd-toggle" onclick="mkmTogglePwd(this)"></i>
+                    </div>
+                </div>
+                
+                <div class="mkm-auth-alert" id="mkmRegisterAlert" style="display:none;"></div>
+                
+                <button type="submit" class="mkm-btn-primary mkm-btn-submit">
+                    <i class="fa-solid fa-user-plus"></i> Đăng ký
+                </button>
+                
+                <!-- Google Login Button -->
+                <a href="https://doctieuthuyet.com/?loginSocial=google" class="mkm-btn-google">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"> Tiếp tục với Google
+                </a>
+                
+                <div class="mkm-auth-footer-text">
+                    Đã có tài khoản? <button type="button" onclick="mkmSwitchAuthTab('login')" style="background:none;border:none;color:#4f46e5;cursor:pointer;font:inherit;font-weight:600;padding:0;">Đăng nhập</button>
+                </div>
+                
+                <div class="mkm-auth-close-text" onclick="mkmCloseAuthModal()">Đóng</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// JS Logic for the Auth Modal
+function mkmOpenAuthModal(tab = 'login') {
+    const modal = document.getElementById('mkmAuthModal');
+    if (!modal) return;
+    modal.classList.add('active');
+    mkmSwitchAuthTab(tab);
+    document.body.style.overflow = 'hidden';
+}
+function mkmCloseAuthModal() {
+    const modal = document.getElementById('mkmAuthModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+function mkmSwitchAuthTab(tab) {
+    // Reset tabs
+    document.querySelectorAll('.mkm-auth-tab').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.mkm-auth-form').forEach(el => el.classList.remove('active'));
+    // Set active
+    const activeTab = document.querySelector('.mkm-auth-tab[data-tab="'+tab+'"]');
+    const activeForm = document.getElementById(tab === 'login' ? 'mkmLoginForm' : 'mkmRegisterForm');
+    if (activeTab) activeTab.classList.add('active');
+    if (activeForm) activeForm.classList.add('active');
+}
+function mkmTogglePwd(icon) {
+    const input = icon.previousElementSibling;
+    if (!input) return;
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+}
+function mkmSubmitAuth(e, type) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.mkm-btn-submit');
+    const alertBox = form.querySelector('.mkm-auth-alert');
+    const formData = new FormData(form);
+    formData.append('action', type === 'login' ? 'tehi_ajax_login' : 'tehi_ajax_register');
+    
+    // UI Loading state
+    const originalBtnText = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Đang xử lý...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    alertBox.style.display = 'none';
+
+    fetch('https://doctieuthuyet.com/wp-admin/admin-ajax.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        alertBox.style.display = 'block';
+        if(data.success) {
+            alertBox.style.backgroundColor = '#d1fae5';
+            alertBox.style.color = '#065f46';
+            alertBox.innerHTML = '<i class="fa-solid fa-check-circle"></i> ' + data.data.message;
+            setTimeout(() => { window.location.reload(); }, 1000);
+        } else {
+            alertBox.style.backgroundColor = '#fee2e2';
+            alertBox.style.color = '#991b1b';
+            alertBox.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> ' + data.data.message;
+            btn.innerHTML = originalBtnText;
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        }
+    })
+    .catch(err => {
+        alert("Lỗi kết nối máy chủ!");
+        btn.innerHTML = originalBtnText;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+    });
+}
+// Scroll to top logic
+document.addEventListener("DOMContentLoaded", function() {
+    let mkmScrollBtn = document.createElement("button");
+    mkmScrollBtn.innerHTML = '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>';
+    mkmScrollBtn.title = "Lên đầu trang";
+    mkmScrollBtn.style.cssText = "display:none; position:fixed; bottom:30px; right:30px; z-index:99; width:45px; height:45px; border:none; outline:none; background:linear-gradient(135deg, #f97316, #ea580c); color:white; cursor:pointer; border-radius:50%; box-shadow:0 4px 12px rgba(234,88,12,0.3); transition:all 0.3s; align-items:center; justify-content:center;";
+    document.body.appendChild(mkmScrollBtn);
+
+    mkmScrollBtn.addEventListener("mouseover", () => mkmScrollBtn.style.transform = "translateY(-3px)");
+    mkmScrollBtn.addEventListener("mouseout", () => mkmScrollBtn.style.transform = "translateY(0)");
+
+    window.addEventListener("scroll", function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            mkmScrollBtn.style.display = "flex";
+        } else {
+            mkmScrollBtn.style.display = "none";
+        }
+    });
+
+    mkmScrollBtn.addEventListener("click", function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+</script>
+
+<div id="shareModal" style="display:none;"></div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/tehi-theme/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+			<script>
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			<script id="bootstrap-js-js" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://doctieuthuyet.com/wp-includes/js/wp-emoji-release.min.js?ver=7.1"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://doctieuthuyet.com/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>
+
+
+<!-- Page supported by LiteSpeed Cache 7.8.1 on 2026-08-26 11:13:23 -->
