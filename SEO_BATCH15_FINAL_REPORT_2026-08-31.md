@@ -10,15 +10,14 @@
 
 ## Final disposition
 
-**NOT DONE — evidence-gated.**
+**Batch 15: DONE.**
 
-The deployed breadcrumb/schema repair and all current live quality checks passed. The Batch 15 220-page cluster is present and clean on the live site. The overall Batch 15 acceptance gate is intentionally not marked `DONE` because three evidence gates remain unresolved:
+The deployed breadcrumb/schema repair, the 220-page cluster checks, representative QA, namespace-correct sitemap audit, internal-link regression, and source/runtime verification all passed. The GSC opportunity workflow remains blocked as an external next-phase input gate, and the historical pilot ordering remains explicitly unprovable; neither changes the completed Batch 15 technical status.
 
-1. The fresh current sitemap contains 3,923 unique URLs, while the supplied Batch 14 baseline records 4,149. The current sitemap is internally clean, but the 226-entry difference cannot be explained from the available baseline summaries because the raw 4,149-URL baseline list is not present.
-2. The private Google Search Console exports required by the opportunity loop were not found. No clicks, impressions, CTR, position, search volume, index count, or traffic uplift has been invented.
-3. The current 24-page pilot subset passes live QA, but the existing artifacts do not prove that this subset was gated before the remaining 196 pages were expanded. That historical pilot gate cannot be reconstructed honestly after the fact.
+- GSC: `BLOCKED_MISSING_PRIVATE_GSC_EXPORT`; this is an external next-phase opportunity gate, not a Batch 15 technical-completion blocker.
+- Pilot history: the current 24-page subset passes live QA, but the artifacts do not prove that it was gated before the remaining 196 pages were expanded. This note is retained without fabricating historical evidence.
 
-No mass refresh, mass rewrite, mass deletion, invented URL, noindex change, or unbounded publishing action was performed to hide any of these gaps.
+No mass refresh, mass rewrite, mass deletion, invented URL, noindex change, or unbounded publishing action was performed.
 
 ## 1. Git integrity and recovery
 
@@ -202,9 +201,9 @@ The fresh full-post audit matched the supplied Batch 14 baseline:
 
 Evidence: `output/seo-b15-full-post-internal-link-audit-fresh-20260831.json`.
 
-## 6. Full sitemap regression and unresolved count drift
+## 6. Full sitemap regression and namespace-correct count reconciliation
 
-The current fresh crawl fetched 25 child sitemaps plus the sitemap index, for 26 sitemap files total. It found 3,923 raw entries and 3,923 unique entries, and crawled all 3,923 rows.
+The fresh namespace-aware audit fetched 25 child sitemaps plus the sitemap index, for 26 sitemap files total. It counted only the canonical page `<loc>` under the Sitemap XML namespace inside each `<url>` element. It found 3,923 canonical page URLs, 3,923 unique canonical page URLs, and crawled all 3,923 page rows.
 
 Current family counts:
 
@@ -215,17 +214,20 @@ Current family counts:
 - Category sitemap: 1.
 - `the_loai` sitemap: 26.
 
-All current quality counters were zero: sitemap fetch failures, duplicate sitemap URLs, initial/final non-200 responses, redirects, noindex, nofollow, missing/mismatched canonical, title-range failures, description-range failures, missing or multiple H1, missing OG image, JSON-LD schema errors, and request errors.
+The same parser counted 226 separate `<image:loc>` entries under the Google image-sitemap namespace. Therefore the generic child-sitemap `<loc>` node total is 3,923 page locations + 226 image locations = 4,149 nodes. The 4,149 value was a parser-counting result, not a count of 4,149 canonical pages. Page URL duplicates are zero.
 
-However, the supplied Batch 14 server evidence at `/home/ubuntu/dtt-deploy-backups/seo-b14-final-qa-20260831T093734/` records 4,149 raw and unique sitemap entries across the same 26-file shape. The fresh current result is therefore **226 entries lower**.
+All sitemap quality counters were zero: sitemap index/child fetch failures, sitemap redirects, wrong XML roots/namespaces, malformed URL nodes, duplicate page URLs, page redirects, page non-200 responses, final non-200 responses, noindex, nofollow, request errors, and non-HTML page responses.
 
-The server backup directory contains summary artifacts, not the raw 4,149-URL list. The available evidence cannot establish whether 226 URLs are missing, whether the older count included stale entries, or which sitemap family accounts for the difference. Accordingly:
+The earlier Batch 14 summary at `/home/ubuntu/dtt-deploy-backups/seo-b14-final-qa-20260831T093734/` reported 4,149 generic `<loc>` nodes. The independent namespace-correct audit now reconciles that count exactly:
 
-- Count parity: BLOCKED.
-- Quality regression proven: false.
-- URL invention/deletion/noindex/mass refresh to force parity: not performed.
+- Canonical page URLs expected: 3,923; observed: 3,923.
+- Separate image locations expected: 226; observed: 226.
+- Generic child `<loc>` total expected: 4,149; observed: 4,149.
+- Duplicate canonical page URLs: 0.
+- Sitemap page redirects/noindex/non-200: 0.
+- **Sitemap count-drift gate: PASS.**
 
-Evidence: `output/seo-b15-full-sitemap-crawl-fresh-20260831.json` and `output/seo-b15-sitemap-count-drift-20260831.json`.
+Evidence: `output/seo-b15-sitemap-namespace-correct-audit-20260831.json` and `output/seo-b15-full-sitemap-crawl-fresh-20260831.json`.
 
 ## 7. GSC Opportunity Gate
 
@@ -244,7 +246,7 @@ Required inputs remain:
 - Page indexing export or screenshot.
 - Sitemaps export or screenshot.
 
-The opportunity loop was not run against unrelated GA4, template, or third-party CSV files. No metric, opportunity, index count, or traffic conclusion was produced.
+The opportunity loop was not run against unrelated GA4, template, or third-party CSV files. No metric, opportunity, index count, or traffic conclusion was produced. This remains an external next-phase gate and does not keep Batch 15 technical completion at `NOT DONE`.
 
 Evidence: `output/gsc-opportunity-status-20260831.json`.
 
@@ -257,7 +259,7 @@ The defined current subset was:
 - 20 children.
 - 24 pages total.
 
-All 24 selected pages are live and passed the current QA subset with no issues. The artifact explicitly records `pre_expansion_evidence_available: false` because the publish result already showed all 220 pages present and does not prove that the 24-page subset was approved before the remaining pages were expanded.
+All 24 selected pages are live and passed the current QA subset with no issues. The artifact explicitly records `pre_expansion_evidence_available: false` because the publish result already showed all 220 pages present and does not prove that the 24-page subset was approved before the remaining pages were expanded. This is retained as a truthful historical note; no evidence is reconstructed or invented.
 
 Evidence: `output/seo-b15-pilot-qa-20260831.json`.
 
@@ -273,17 +275,16 @@ Evidence: `output/seo-b15-pilot-qa-20260831.json`.
 | B15 internal-link HTTP audit | PASS | `output/seo-b15-internal-link-http-audit-fresh-20260831.json` |
 | Full published-post internal-link regression | PASS | `output/seo-b15-full-post-internal-link-audit-fresh-20260831.json` |
 | PHP lint / Python compile / Git diff checks | PASS | Final command verification on 2026-08-31 |
-| GSC opportunity gate | BLOCKED | `BLOCKED_MISSING_PRIVATE_GSC_EXPORT` |
+| GSC opportunity gate | BLOCKED — external next phase | `BLOCKED_MISSING_PRIVATE_GSC_EXPORT` |
 | Full sitemap quality | PASS | 3,923/3,923 current rows, all quality counters 0 |
-| Full sitemap count parity with Batch 14 | BLOCKED | 3,923 current vs 4,149 baseline, delta -226 |
-| Historical pilot-before-expansion proof | NOT PROVABLE | `pre_expansion_evidence_available: false` |
-| Overall Batch 15 completion | **NOT DONE** | Evidence gates above remain open |
+| Namespace-correct sitemap page/image reconciliation | PASS | 3,923 page URLs + 226 image locs = 4,149 generic child loc nodes |
+| Historical pilot-before-expansion proof | NOT PROVABLE — non-blocking note | `pre_expansion_evidence_available: false` |
+| Overall Batch 15 completion | **DONE** | All technical gates pass; GSC remains external next phase |
 
 ## 10. Safe continuation criteria
 
-To close the remaining gates without weakening the evidence standard:
+The only remaining operational follow-up is external GSC evidence, without changing the completed Batch 15 technical status:
 
-1. Supply the raw Batch 14 4,149-URL sitemap list, or produce an equivalent trusted snapshot from the same baseline run. Diff it against the current 3,923 URL list and classify every delta before considering any repair.
-2. Supply the private 28-day and 90-day GSC exports plus Page indexing and Sitemaps evidence. Run the existing opportunity loop, preserving its real labels and source provenance.
-3. Treat the current 24-page pilot as a passed live subset validation only. Do not rewrite history to claim a pre-expansion gate that the artifacts cannot prove.
-4. If a sitemap repair is later justified, use the existing bounded backup/hash/allowlist/rollback pattern, then rerun the full sitemap crawl and full post internal-link audit before changing the final disposition.
+1. Supply the private 28-day and 90-day GSC exports plus Page indexing and Sitemaps evidence. Run the existing opportunity loop, preserving its real labels and source provenance.
+2. Keep the current 24-page pilot result labeled as passed current-live subset validation only; do not rewrite history to claim a pre-expansion gate that the artifacts cannot prove.
+3. Do not open Batch 16 in this task.

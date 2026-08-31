@@ -2642,6 +2642,13 @@ function tehi_serve_webp_image_srcset($sources, $size_array, $image_src, $image_
 add_filter('wp_calculate_image_srcset', 'tehi_serve_webp_image_srcset', 10, 5);
 
 /* DTT global SEO schema and image optimization hooks. */
+if (file_exists(get_template_directory() . '/inc/dtt-seo-batch2.php')) {
+    require_once get_template_directory() . '/inc/dtt-seo-batch2.php';
+}
+
+if (file_exists(get_template_directory() . '/inc/dtt-seo-goal.php')) {
+    require_once get_template_directory() . '/inc/dtt-seo-goal.php';
+}
 if (file_exists(get_template_directory() . '/dtt-seo-image-optimization.php')) {
     require_once get_template_directory() . '/dtt-seo-image-optimization.php';
 }

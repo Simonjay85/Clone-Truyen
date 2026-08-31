@@ -84,6 +84,8 @@ get_header();
             $dtt_article_return_url = $dtt_is_kiem_lai_article ? home_url('/kiem-lai-wiki/') : home_url('/bai-viet/');
             $dtt_article_return_label = $dtt_is_kiem_lai_article ? 'Về Kiếm Lai Wiki' : 'Về thư viện bài viết';
             $has_toc = !empty($toc_html);
+            $dtt_is_b15_hmtg_post = !$dtt_is_kiem_lai_wiki && has_category(179, get_the_ID());
+            $dtt_b15_root_url = home_url('/hoan-my-the-gioi-wiki/');
             ?>
 
             <?php if ($dtt_is_kiem_lai_wiki) : ?>
@@ -131,6 +133,20 @@ get_header();
                         </a>
                         <span class="dtt-article-sync__status">Hồ sơ nội dung</span>
                     </div>
+
+                    <?php if ($dtt_is_b15_hmtg_post) : ?>
+                        <nav class="dtt-b15-breadcrumb" aria-label="Đường dẫn Hoàn Mỹ Thế Giới">
+                            <a href="<?php echo esc_url(home_url('/')); ?>">DTT</a>
+                            <span aria-hidden="true">/</span>
+                            <?php if (is_single('hoan-my-the-gioi-wiki')) : ?>
+                                <span aria-current="page">Hoàn Mỹ Thế Giới Wiki</span>
+                            <?php else : ?>
+                                <a href="<?php echo esc_url($dtt_b15_root_url); ?>">Hoàn Mỹ Thế Giới Wiki</a>
+                                <span aria-hidden="true">/</span>
+                                <span aria-current="page"><?php echo esc_html(wp_strip_all_tags(get_the_title())); ?></span>
+                            <?php endif; ?>
+                        </nav>
+                    <?php endif; ?>
 
                     <?php if ($primary_category) : ?>
                         <div class="dtt-post-kicker">
