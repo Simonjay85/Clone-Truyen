@@ -52,7 +52,7 @@ Only the confirmed-invalid local metadata was repaired: the absent upstream stas
 | Current branch | `main` |
 | Recovery checkpoint HEAD | `48499bafa0856573ede73f1a019b1a828c58490e` |
 | Checkpoint commit | `48499ba Document Git recovery checkpoint 2026-08-31` |
-| Current remote `origin/main` | `ae68df4d90c8d9aa081063177126e76e6682d000` |
+| Remote ref at divergence check | `c93d7d929360b211ae0365938ccb7b4bd273fb8b` → merge `ae68df4d90c8d9aa081063177126e76e6682d000`; non-force push/read-back PASS |
 | `main` ↔ `origin/main` after non-force reconciliation | `0 / 0`; merge commit `ae68df4`; remote read-back PASS |
 | Required status/rev-parse/log/diff commands | PASS |
 | `git fsck --full --no-reflogs --connectivity-only` | Exit 0; no missing/broken/fatal/error/invalid problem lines; only dangling historical objects remain |
