@@ -422,6 +422,8 @@ get_header();
 }
 /* ── HERO SLIDER ── */
 .mkm-slider-wrap {
+    display: block !important;
+    min-height: 280px !important;
     background: #fff !important;
     border-radius: 24px !important;
     padding: 20px !important;
@@ -430,6 +432,7 @@ get_header();
     overflow: hidden !important;
 }
 .mkm-slider-main {
+    min-height: 240px !important;
     display: flex !important;
     gap: 20px !important;
     align-items: flex-start !important;
@@ -583,7 +586,7 @@ get_header();
     display: none !important;
 }
 
-</style>
+
 
 <div class="mkm-wrap">
     <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"><?php echo esc_html(get_bloginfo('name')); ?> - Đọc Truyện Online</h1>
@@ -657,9 +660,14 @@ get_header();
     </div>
     <style>
         .mkm-main-swiper {
+            display: block !important;
+            height: auto !important;
+            min-height: 280px !important;
             padding-bottom: 45px !important;
             position: relative !important;
         }
+        .mkm-main-swiper .swiper-wrapper { height: auto !important; min-height: 240px !important; }
+        .mkm-main-swiper .swiper-slide { height: auto !important; min-height: 240px !important; }
         .mkm-main-swiper .swiper-pagination {
             bottom: 15px !important;
             display: flex !important;
