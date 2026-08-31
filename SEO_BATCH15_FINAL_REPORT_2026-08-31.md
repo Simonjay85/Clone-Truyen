@@ -52,14 +52,15 @@ Only the confirmed-invalid local metadata was repaired: the absent upstream stas
 | Current branch | `main` |
 | Recovery checkpoint HEAD | `48499bafa0856573ede73f1a019b1a828c58490e` |
 | Checkpoint commit | `48499ba Document Git recovery checkpoint 2026-08-31` |
-| Current remote `origin/main` | `c93d7d929360b211ae0365938ccb7b4bd273fb8b` |
+| Current remote `origin/main` | `ae68df4d90c8d9aa081063177126e76e6682d000` |
+| `main` ↔ `origin/main` after non-force reconciliation | `0 / 0`; merge commit `ae68df4`; remote read-back PASS |
 | Required status/rev-parse/log/diff commands | PASS |
 | `git fsck --full --no-reflogs --connectivity-only` | Exit 0; no missing/broken/fatal/error/invalid problem lines; only dangling historical objects remain |
 | `git diff --check` | PASS |
 | `git diff --cached --check` | PASS |
 | Staged files after verification | 0 |
 
-The repository is now a partial/promisor clone (`blob:none`). Some promised historical blobs remain unhydrated; this is documented in `GIT_RECOVERY_REPORT_2026-08-31.md` and did not prevent validation of `HEAD`, the current branch, the target source files, or the live-readback work. The worktree remains intentionally dirty: the final check observed 23 tracked modifications and 1,649 untracked paths, with no mass staging or cleanup of user work.
+The repository is now a partial/promisor clone (`blob:none`). Some promised historical blobs remain unhydrated; this is documented in `GIT_RECOVERY_REPORT_2026-08-31.md` and did not prevent validation of `HEAD`, the current branch, the target source files, or the live-readback work. The worktree remains intentionally dirty: the post-reconcile check observed 22 tracked modifications and 1,666 untracked paths, with no mass staging or cleanup of user work. The remote divergence was reconciled in an isolated worktree; the merge preserved the local B15 runtime/report tree, retained the selected remote chapter-ordering/frontend fix, and did not stage the unrelated dirty paths.
 
 Full recovery evidence: [GIT_RECOVERY_REPORT_2026-08-31.md](GIT_RECOVERY_REPORT_2026-08-31.md)
 
