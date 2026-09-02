@@ -1,0 +1,144 @@
+{
+  "status": "DONE",
+  "date": "2026-09-02",
+  "site": "https://doctieuthuyet.com",
+  "cluster": "Thánh Khư / The Sacred Ruins",
+  "architecture": {
+    "total": 180,
+    "root": 1,
+    "subhub": 9,
+    "child": 170
+  },
+  "generation_qa": {
+    "count": 180,
+    "unique_slugs": 180,
+    "word_min": 659,
+    "word_median": 1129.5,
+    "word_max": 2638,
+    "h2_min": 5,
+    "issue_counts": {
+      "missing_slug": 0,
+      "extra_slug": 0,
+      "title_mismatch": 0,
+      "source_refs_mismatch": 0,
+      "seo_title": 0,
+      "meta_description": 0,
+      "excerpt": 0,
+      "h1_in_content": 0,
+      "h2_floor": 0,
+      "word_floor": 0,
+      "foreign_script": 0,
+      "forbidden_process": 0,
+      "missing_root_link": 0,
+      "missing_parent_link": 0,
+      "self_link": 0,
+      "exact_duplicate": 0,
+      "source_overlap16": 0
+    },
+    "hard_pass": true
+  },
+  "pilot_qa": {
+    "pages": 24,
+    "passed": 24,
+    "page_issue_rows": 0,
+    "unique_internal_targets": 43,
+    "broken_internal_targets": 0,
+    "redirecting_internal_targets_excluding_expected_category": 0,
+    "category_redirect": {
+      "status": 301,
+      "location": "https://doctieuthuyet.com/thanh-khu-wiki/"
+    },
+    "sitemap_page_urls": 3947,
+    "pilot_urls_in_sitemap": 24,
+    "category_alias_in_sitemap": false,
+    "pass": true
+  },
+  "live_cluster_qa": {
+    "pages": 180,
+    "passed": 180,
+    "page_issue_rows": 0,
+    "unique_internal_targets": 199,
+    "broken_internal_targets": 0,
+    "redirecting_internal_targets_excluding_expected_category": 0,
+    "category_redirect": {
+      "status": 301,
+      "location": "https://doctieuthuyet.com/thanh-khu-wiki/"
+    },
+    "sitemap_page_urls": 4103,
+    "b17_urls_in_sitemap": 180,
+    "category_alias_in_sitemap": false,
+    "pass": true
+  },
+  "full_sitemap_crawl": {
+    "generated_at": "2026-09-02T00:54:00Z",
+    "duration_sec": 227.4,
+    "sitemap_index_status": 200,
+    "child_sitemaps": 26,
+    "sitemap_file_non200": 0,
+    "raw_page_urls": 4103,
+    "unique_page_urls": 4103,
+    "duplicate_page_urls": 0,
+    "image_locs": 226,
+    "rows": 4103,
+    "issue_counts": {},
+    "pass": true
+  },
+  "full_post_internal_links": {
+    "published_posts": 1817,
+    "unique_internal_targets": 1817,
+    "no_outbound_internal": 0,
+    "no_inbound_from_post_corpus": 0,
+    "broken_internal_targets": 0,
+    "redirecting_internal_targets": 0,
+    "pass": true
+  },
+  "representative_regression": {
+    "routes": 13,
+    "passed": 13,
+    "issues": 0,
+    "pass": true
+  },
+  "live_state": {
+    "category_posts": 180,
+    "full_marker": 180,
+    "pilot_marker": 0,
+    "bad_cluster_meta": 0,
+    "kinds": {
+      "child": 170,
+      "root": 1,
+      "subhub": 9
+    }
+  },
+  "mutations": {
+    "pilot_initial_created": 24,
+    "full_phase_created": 156,
+    "full_phase_updated": 24,
+    "full_phase_conflict": 0,
+    "full_phase_mismatch": 0,
+    "full_phase_failed": 0,
+    "chunk3_evidence": "live full-marker count reached 90 after chunks 1-3; idempotent recheck returned already=30"
+  },
+  "runtime_sha256": {
+    "functions.php": "a339bfe23365d9c508dce0a58e9b041a552d7eb4d590d97132bfd30c6c72300e",
+    "inc/dtt-seo-goal.php": "ec291f6ebf47294801fb05568aa3142fe722b2730143f46ba1d9d94d207eaa58",
+    "inc/dtt-seo-batch2.php": "e94347b909e6a659162699f4a91dfab0954de53a3db9d48d1cc2a94d7f817bc7"
+  },
+  "backups": [
+    "backups/deployments/seo-b17-pilot-20260902T022159",
+    "backups/deployments/seo-b17-full-20260902T022700"
+  ],
+  "gsc": "BLOCKED_MISSING_PRIVATE_GSC_EXPORT (external opportunity phase; not a Batch 17 technical blocker)",
+  "runtime_final_backup": "backups/deployments/seo-b17-runtime-final-20260902T074805",
+  "representative_regression_artifact": "output/seo-b17-representative-regression-final-20260902.json",
+  "full_sitemap_final_artifact": "output/seo-b17-full-sitemap-crawl-final-20260902.json",
+  "final_acceptance": {
+    "generation_qa": true,
+    "pilot_qa": true,
+    "b17_live_qa": true,
+    "full_sitemap_qa": true,
+    "full_post_internal_links": true,
+    "representative_regression": true,
+    "local_live_runtime_match": true,
+    "overall": true
+  }
+}

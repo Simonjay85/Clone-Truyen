@@ -22,6 +22,7 @@ function dtt_seo_b2_clusters() {
         174 => array('slug' => 'pham-nhan-tu-tien-bo-tro', 'label' => 'Phàm Nhân Tu Tiên', 'rgb' => array(27, 67, 57), 'accent' => array(108, 211, 173)),
         164 => array('slug' => 'tien-nghich', 'label' => 'Tiên Nghịch', 'rgb' => array(66, 30, 43), 'accent' => array(238, 117, 143)),
         179 => array('slug' => 'hoan-my-the-gioi', 'label' => 'Hoàn Mỹ Thế Giới', 'rgb' => array(38, 63, 55), 'accent' => array(217, 182, 94)),
+        180 => array('slug' => 'thanh-khu', 'label' => 'Thánh Khư', 'rgb' => array(36, 48, 66), 'accent' => array(130, 194, 255)),
     );
 }
 

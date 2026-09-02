@@ -266,6 +266,7 @@ function dtt_goal_wiki_answer_first( $post_id = 0 ) {
         174 => array('label' => 'Phàm Nhân Tu Tiên Wiki', 'url' => home_url('/pham-nhan-tu-tien-wiki/')),
         164 => array('label' => 'Tiên Nghịch Wiki', 'url' => home_url('/tien-nghich-wiki/')),
         179 => array('label' => 'Hoàn Mỹ Thế Giới Wiki', 'url' => home_url('/hoan-my-the-gioi-wiki/')),
+        180 => array('label' => 'Thánh Khư Wiki', 'url' => home_url('/thanh-khu-wiki/')),
     );
     $hub = array();
     foreach ( $hub_map as $category_id => $item ) {
@@ -338,6 +339,177 @@ function dtt_goal_b15_breadcrumb_schema( $data, $jsonld = null ) {
     return $data;
 }
 add_filter( 'rank_math/json_ld', 'dtt_goal_b15_breadcrumb_schema', 710, 2 );
+
+
+/** Add one canonical BreadcrumbList for the bounded Thánh Khư post cluster. */
+function dtt_goal_b17_breadcrumb_schema( $data, $jsonld = null ) {
+    if ( ! is_singular( 'post' ) || ! has_category( 180 ) ) {
+        return $data;
+    }
+
+    $has_breadcrumb = false;
+    $scan = function ( $node ) use ( &$scan, &$has_breadcrumb ) {
+        if ( ! is_array( $node ) || $has_breadcrumb ) {
+            return;
+        }
+        $type  = $node['@type'] ?? '';
+        $types = is_array( $type ) ? $type : array( $type );
+        if ( in_array( 'BreadcrumbList', $types, true ) ) {
+            $has_breadcrumb = true;
+            return;
+        }
+        foreach ( $node as $child ) {
+            $scan( $child );
+        }
+    };
+    $scan( $data );
+    if ( $has_breadcrumb ) {
+        return $data;
+    }
+
+    $post_id    = get_queried_object_id();
+    $post_url   = get_permalink( $post_id );
+    $post_title = trim( wp_strip_all_tags( get_the_title( $post_id ) ) );
+    if ( ! $post_id || ! $post_url || ! $post_title ) {
+        return $data;
+    }
+
+    $root       = get_page_by_path( 'thanh-khu-wiki', OBJECT, 'post' );
+    $root_id    = $root instanceof WP_Post ? (int) $root->ID : 0;
+    $root_url   = $root_id ? get_permalink( $root_id ) : home_url( '/thanh-khu-wiki/' );
+    $root_title = $root_id ? trim( wp_strip_all_tags( get_the_title( $root_id ) ) ) : 'Thánh Khư Wiki';
+    $items      = array(
+        array( '@type' => 'ListItem', 'position' => 1, 'name' => 'Trang chủ', 'item' => home_url( '/' ) ),
+    );
+
+    if ( $root_id && $root_id === (int) $post_id ) {
+        $items[] = array( '@type' => 'ListItem', 'position' => 2, 'name' => $post_title, 'item' => $post_url );
+    } else {
+        $items[] = array( '@type' => 'ListItem', 'position' => 2, 'name' => $root_title, 'item' => $root_url );
+        $items[] = array( '@type' => 'ListItem', 'position' => 3, 'name' => $post_title, 'item' => $post_url );
+    }
+
+    $data['dttB17Breadcrumb'] = array(
+        '@type'           => 'BreadcrumbList',
+        '@id'             => trailingslashit( $post_url ) . '#breadcrumb',
+        'itemListElement' => $items,
+    );
+    return $data;
+}
+add_filter( 'rank_math/json_ld', 'dtt_goal_b17_breadcrumb_schema', 715, 2 );
+
+
+/** Keep the Thánh Khư category alias canonical to the curated Wiki hub. */
+function dtt_goal_b17_category_redirect() {
+    if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || ! is_category( 180 ) ) {
+        return;
+    }
+    wp_safe_redirect( home_url( '/thanh-khu-wiki/' ), 301 );
+    exit;
+}
+add_action( 'template_redirect', 'dtt_goal_b17_category_redirect', 0 );
+
+/** Keep the redirecting Thánh Khư category alias out of Rank Math sitemaps. */
+function dtt_goal_b17_sitemap_entry_cleanup( $url, $type, $object ) {
+    if ( 'term' === $type && $object instanceof WP_Term && 'category' === $object->taxonomy && 180 === (int) $object->term_id ) {
+        return false;
+    }
+    return $url;
+}
+add_filter( 'rank_math/sitemap/entry', 'dtt_goal_b17_sitemap_entry_cleanup', 30, 3 );
+
+
+/**
+ * Batch 16: expose the already-visible Hoàn Mỹ FAQ as FAQPage JSON-LD.
+ *
+ * This hook never invents questions or answers. It only reads the bounded
+ * category-179 post_content, finds the visible "Câu hỏi thường gặp" section,
+ * and mirrors direct H3 + P pairs into structured data. If Rank Math (or any
+ * other hook) already emitted FAQPage, this function leaves the graph alone.
+ */
+function dtt_goal_b16_faq_schema( $data, $jsonld = null ) {
+    if ( ! is_singular( 'post' ) || ! has_category( 179 ) ) {
+        return $data;
+    }
+
+    $has_faq = false;
+    $scan = function ( $node ) use ( &$scan, &$has_faq ) {
+        if ( ! is_array( $node ) || $has_faq ) {
+            return;
+        }
+        $type  = $node['@type'] ?? '';
+        $types = is_array( $type ) ? $type : array( $type );
+        if ( in_array( 'FAQPage', $types, true ) ) {
+            $has_faq = true;
+            return;
+        }
+        foreach ( $node as $child ) {
+            $scan( $child );
+        }
+    };
+    $scan( $data );
+    if ( $has_faq ) {
+        return $data;
+    }
+
+    $post_id = get_queried_object_id();
+    $content = (string) get_post_field( 'post_content', $post_id );
+    if ( ! $post_id || '' === $content ) {
+        return $data;
+    }
+
+    $faq_body = '';
+    if ( preg_match_all( '#<h2\\b[^>]*>(.*?)</h2>(.*?)(?=<h2\\b|$)#isu', $content, $sections, PREG_SET_ORDER ) ) {
+        foreach ( $sections as $section ) {
+            $heading    = trim( preg_replace( '/\\s+/u', ' ', wp_strip_all_tags( html_entity_decode( $section[1], ENT_QUOTES | ENT_HTML5, 'UTF-8' ) ) ) );
+            $heading_lc = mb_strtolower( $heading, 'UTF-8' );
+            if ( false !== mb_strpos( $heading_lc, 'câu hỏi thường gặp', 0, 'UTF-8' ) || 0 === mb_strpos( $heading_lc, 'faq', 0, 'UTF-8' ) ) {
+                $faq_body = (string) $section[2];
+                break;
+            }
+        }
+    }
+    if ( '' === $faq_body ) {
+        return $data;
+    }
+
+    $entities = array();
+    if ( preg_match_all( '#<h3\\b[^>]*>(.*?)</h3>\\s*<p\\b[^>]*>(.*?)</p>#isu', $faq_body, $pairs, PREG_SET_ORDER ) ) {
+        foreach ( $pairs as $pair ) {
+            $question = trim( preg_replace( '/\\s+/u', ' ', wp_strip_all_tags( html_entity_decode( $pair[1], ENT_QUOTES | ENT_HTML5, 'UTF-8' ) ) ) );
+            $answer   = trim( preg_replace( '/\\s+/u', ' ', wp_strip_all_tags( html_entity_decode( $pair[2], ENT_QUOTES | ENT_HTML5, 'UTF-8' ) ) ) );
+            if ( '' === $question || '' === $answer ) {
+                continue;
+            }
+            $entities[] = array(
+                '@type'          => 'Question',
+                'name'           => $question,
+                'acceptedAnswer' => array(
+                    '@type' => 'Answer',
+                    'text'  => $answer,
+                ),
+            );
+            if ( count( $entities ) >= 8 ) {
+                break;
+            }
+        }
+    }
+
+    if ( empty( $entities ) ) {
+        return $data;
+    }
+
+    $post_url = get_permalink( $post_id );
+    $data['dttB16FAQ'] = array(
+        '@type'      => 'FAQPage',
+        '@id'        => trailingslashit( $post_url ) . '#faq',
+        'url'        => $post_url,
+        'inLanguage' => 'vi',
+        'mainEntity' => $entities,
+    );
+    return $data;
+}
+add_filter( 'rank_math/json_ld', 'dtt_goal_b16_faq_schema', 720, 2 );
 
 function dtt_goal_chapter_parent_id( $chapter_id = 0 ) {
     $chapter_id = $chapter_id ?: get_queried_object_id();
