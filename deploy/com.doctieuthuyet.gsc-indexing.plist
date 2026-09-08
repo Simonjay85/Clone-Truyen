@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.doctieuthuyet.gsc-indexing</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/aaronnguyen/Developer/doctieuthuyet/tools/run_indexing_queue_local_gsc.sh</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>6</integer>
+    <key>Minute</key>
+    <integer>50</integer>
+  </dict>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>Nice</key>
+  <integer>10</integer>
+  <key>StandardOutPath</key>
+  <string>/Users/aaronnguyen/Library/Logs/dtt-indexing-gsc.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/aaronnguyen/Library/Logs/dtt-indexing-gsc.err.log</string>
+</dict>
+</plist>
