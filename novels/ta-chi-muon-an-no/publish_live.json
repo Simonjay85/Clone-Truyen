@@ -1,0 +1,25 @@
+{
+  "story_id": 19378,
+  "story_url": "https://doctieuthuyet.com/truyen/ta-chi-muon-an-no-sao-lai-thanh-tien-de/",
+  "published_chapters": 10,
+  "chapter_1_id": 19379,
+  "chapter_10_id": 19388,
+  "status": "dang-ra",
+  "author": "DTT Original",
+  "genres": [
+    "Hài Hước",
+    "Phiêu Lưu",
+    "Tiên Hiệp",
+    "Tình Cảm"
+  ],
+  "verified_live": true,
+  "verified_http": {
+    "story": 200,
+    "chapter_1": 200,
+    "chapter_10": 200
+  },
+  "source_sha256": "e7c3ebbb74add35dd2cc9990296d3e7de94228922665d35fd405bed873709468",
+  "updated_at": "2026-09-15T20:54:49.574732+07:00",
+  "last_republish_reason": "editorial dedup chapters 1-10",
+  "live_backup_dir": "/Users/aaronnguyen/Developer/doctieuthuyet/novels/ta-chi-muon-an-no/backups/live_pre_republish_20260915_205339"
+}

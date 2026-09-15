@@ -1,0 +1,410 @@
+{
+  "version": 1,
+  "last_completed_chapter": 10,
+  "timeline_day": 4,
+  "current_state": {
+    "ta_tieu_bao": {
+      "age": 13,
+      "cultivation": "chưa nhập Dẫn Khí; thử cảm khí thất bại trên bề mặt",
+      "location": "đoàn xe Tống Ký, gần Hắc Nha Pha trên đường Thanh Hà",
+      "injuries": [],
+      "inventory": [
+        "ba đồng tiền cũ",
+        "dao cũ đã mài",
+        "nồi đen gia cố quai",
+        "quần áo",
+        "thuốc bà Mạnh",
+        "muối",
+        "ít bánh/thịt khô còn lại"
+      ],
+      "relationship_with_thanh_nghi": "chưa gặp",
+      "known_truths": [
+        "Lạc Kê vẫn là nhà dù hắn rời đi",
+        "người ngoài có hệ Dẫn Khí/Khai Mạch/Trúc Đài",
+        "linh thạch là tiền của tu sĩ",
+        "tu sĩ có thể dùng phù/pháp khí",
+        "bản thân chưa cảm được linh khí theo cách thông thường"
+      ]
+    },
+    "luc_thanh_nghi": {
+      "age": 17,
+      "cultivation": "Thiên tài kiếm đạo, chi tiết cảnh giới sẽ khóa khi xuất hiện",
+      "location": "ngoài màn truyện",
+      "injuries": [],
+      "relationship_with_tieu_bao": "chưa gặp",
+      "known_truths": [
+        "mình thuộc Lục gia",
+        "mình được gia tộc kỳ vọng như kiếm tu thiên tài"
+      ]
+    },
+    "o_gia": {
+      "state": "gà đen, huyết mạch bị khóa; tự ý theo Tiểu Bảo ra khỏi Lạc Kê",
+      "location": "cùng Tiểu Bảo ở đoàn xe Tống Ký",
+      "speech": false
+    }
+  },
+  "unresolved_hooks": [
+    {
+      "id": "H001",
+      "seed_range": "1-10",
+      "question": "Dân Lạc Kê thật sự là ai?",
+      "reveal_target": "601-650",
+      "status": "planned"
+    },
+    {
+      "id": "H002",
+      "seed_range": "1-20",
+      "question": "Vì sao việc nhà Lạc Kê giống đại đạo?",
+      "reveal_target": "301-350/601-650",
+      "status": "planned"
+    },
+    {
+      "id": "H003",
+      "seed_range": "3-19",
+      "question": "Cái nồi đen là gì?",
+      "reveal_target": "97/580+/620+",
+      "status": "planned"
+    },
+    {
+      "id": "H004",
+      "seed_range": "10-100",
+      "question": "Vì sao linh khí vào người Tiểu Bảo biến mất?",
+      "reveal_target": "98/150+/580+",
+      "status": "planned"
+    },
+    {
+      "id": "H005",
+      "seed_range": "47-100",
+      "question": "Vì sao đá linh căn phản ứng dị thường?",
+      "reveal_target": "580+",
+      "status": "planned"
+    },
+    {
+      "id": "H006",
+      "seed_range": "79-200",
+      "question": "Ai đang theo dõi Tiểu Bảo?",
+      "reveal_target": "191-200",
+      "status": "planned"
+    },
+    {
+      "id": "H007",
+      "seed_range": "98",
+      "question": "Nhân Gian Lô là gì?",
+      "reveal_target": "580/620/760",
+      "status": "planned"
+    },
+    {
+      "id": "H008",
+      "seed_range": "125-350",
+      "question": "Vì sao người Lạc Kê xuất hiện trong di tích cổ?",
+      "reveal_target": "325/601-650",
+      "status": "planned"
+    },
+    {
+      "id": "H009",
+      "seed_range": "201-250",
+      "question": "Quá khứ Mộc Vô Nhai và sai lầm 'vì đại cục' là gì?",
+      "reveal_target": "231-240",
+      "status": "planned"
+    },
+    {
+      "id": "H010",
+      "seed_range": "401-500",
+      "question": "Thiên Môn thu hoạch gì và cho ai?",
+      "reveal_target": "431-500",
+      "status": "planned"
+    },
+    {
+      "id": "H011",
+      "seed_range": "451-600",
+      "question": "Tại sao Thiên Mệnh Điện cần thu hoạch các giới?",
+      "reveal_target": "571-590",
+      "status": "planned"
+    },
+    {
+      "id": "H012",
+      "seed_range": "501-700",
+      "question": "Thiên Ngoại là gì?",
+      "reveal_target": "691-710",
+      "status": "planned"
+    },
+    {
+      "id": "H013",
+      "seed_range": "601-640",
+      "question": "Cha mẹ Tiểu Bảo là ai và vì sao hắn thành Nhân Gian Lô?",
+      "reveal_target": "621-640",
+      "status": "planned"
+    },
+    {
+      "id": "H014",
+      "seed_range": "651-700",
+      "question": "Cửu Thiên từng là gì và vì sao bị chia?",
+      "reveal_target": "681-700",
+      "status": "planned"
+    },
+    {
+      "id": "H015",
+      "seed_range": "741-770",
+      "question": "Reset Cửu Thiên phải trả giá gì?",
+      "reveal_target": "761-770",
+      "status": "planned"
+    }
+  ],
+  "entries": [
+    {
+      "chapter": 1,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "nhà Tiểu Bảo, Lạc Kê Thôn",
+      "end_location": "Lạc Kê Thôn",
+      "cultivation_changes": "none; thể lực/thân pháp bắt gà chỉ được show, không đặt tên cảnh giới",
+      "injuries": [],
+      "inventory_changes": [],
+      "relationship_beat": "thiết lập Lạc Kê là gia đình và nơi thuộc về",
+      "knowledge_gained": [
+        "Tiểu Bảo biết ngày mai sinh nhật 13 tuổi, không biết kế hoạch rời làng"
+      ],
+      "hooks_opened": [
+        "H001",
+        "H002"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "Ô Gia có vệt đỏ trong mắt",
+        "dân làng đồng loạt phản ứng với tuổi mười ba"
+      ],
+      "next_immediate_objective": "hoàn tất việc nhà và sinh nhật"
+    },
+    {
+      "chapter": 2,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "đường suối/làng",
+      "end_location": "Lạc Kê Thôn; kết bằng góc nhìn người khách ngoài thung lũng",
+      "cultivation_changes": "none; đường rìu cho thấy lực và độ chính xác phi chuẩn, không đặt tên cảnh giới cho Tiểu Bảo",
+      "injuries": [],
+      "inventory_changes": [
+        "nhận hai cân xương có thịt từ Thôi Đại Tráng"
+      ],
+      "relationship_beat": "Thôi Đại Tráng âm thầm chỉnh đường rìu và trả công bằng xương có thịt; Tiểu Bảo vẫn xem mọi thứ trong làng là bình thường",
+      "knowledge_gained": [
+        "Tiểu Bảo vẫn tin phiến Thanh Cương Thạch chỉ là đá mục",
+        "người khách Trúc Đài nhận ra đường rìu và dân Lạc Kê vượt xa chuẩn bên ngoài"
+      ],
+      "hooks_opened": [
+        "H002"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "khách Trúc Đài sợ đường rìu",
+        "Thôi Đại Tráng chỉ một ánh mắt đã khiến linh lực người khách tự im"
+      ],
+      "next_immediate_objective": "mang xương về nhà; tiếp tục ngày cuối trước sinh nhật"
+    },
+    {
+      "chapter": 3,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "nhà Tiểu Bảo / đường lên Vọng Phong",
+      "end_location": "nhà Tiểu Bảo",
+      "cultivation_changes": "none; không thêm bài luyện mới",
+      "injuries": [],
+      "inventory_changes": [],
+      "relationship_beat": "Tiểu Bảo và lão Kỷ có cuộc nói chuyện yên tĩnh về thế giới bên ngoài, căn nhà và ý nghĩa của việc có nơi để trở về",
+      "knowledge_gained": [
+        "thế giới ngoài Lạc Kê lớn hơn rất nhiều so với tưởng tượng",
+        "ước mơ cụ thể: mái nhà không dột, kho gạo, bếp lớn, nơi luôn có thể trở về"
+      ],
+      "hooks_opened": [
+        "H003"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "câu “nhà con mà, sao lại cần người khác cho?”",
+        "nồi đen vẫn ấm sau khi bếp tắt và lóe chấm đỏ rất nhỏ"
+      ],
+      "next_immediate_objective": "dự sinh nhật mười ba tuổi và tìm hiểu vì sao người lớn khác thường"
+    },
+    {
+      "chapter": 4,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "Lạc Kê Thôn",
+      "end_location": "đường về nhà sau khi nghe lén",
+      "cultivation_changes": "none",
+      "injuries": [],
+      "inventory_changes": [
+        "được bà Mạnh cho bánh",
+        "được Thôi Đại Tráng cho thịt khô"
+      ],
+      "relationship_beat": "bữa sinh nhật cho thấy cả làng thương hắn; Tiểu Bảo nghe nửa câu và hiểu lầm rằng mình bị đuổi",
+      "knowledge_gained": [
+        "nghe được kế hoạch cho mình xuống núi nhưng chưa biết lý do đầy đủ"
+      ],
+      "hooks_opened": [
+        "H001"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "người lớn dặn kỹ như chuẩn bị cho thế giới ngoài làng"
+      ],
+      "next_immediate_objective": "quyết định có rời làng trước khi bị nói thẳng hay không"
+    },
+    {
+      "chapter": 5,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "nhà Tiểu Bảo",
+      "end_location": "nhà Tiểu Bảo",
+      "cultivation_changes": "none",
+      "injuries": [],
+      "inventory_changes": [
+        "đóng gói bánh, thịt khô, dao cũ, dây đỏ và nồi đen để xuống núi"
+      ],
+      "relationship_beat": "hiểu rằng xuống núi không phải bị đuổi; Lạc Kê vẫn là nhà; chủ động chọn đi",
+      "knowledge_gained": [
+        "người ngoài có khái niệm Trúc Đài",
+        "dân làng che giấu nhiều chuyện",
+        "họ sẽ không ép hắn rời nếu hắn không muốn"
+      ],
+      "hooks_opened": [
+        "H001",
+        "H002",
+        "H003"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "câu “ngươi không phải chìa khóa”",
+        "Thôi nói Trúc Đài rất yếu",
+        "trận che làng và ba châu yêu được nhắc mơ hồ"
+      ],
+      "next_immediate_objective": "sáng mai chính thức rời Lạc Kê Thôn"
+    },
+    {
+      "chapter": 6,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "Lạc Kê Thôn",
+      "end_location": "ngoài trận che Lạc Kê, đường núi phía tây",
+      "cultivation_changes": "none",
+      "injuries": [],
+      "inventory_changes": [
+        "nhận ba đồng tiền cũ từ lão Kỷ",
+        "dao cũ được Thôi mài",
+        "nồi đen được Hàn Luyện gia cố quai",
+        "nhận thuốc bà Mạnh và muối Trư Bá"
+      ],
+      "relationship_beat": "chia tay Lạc Kê; xác nhận đi nhưng vẫn có nhà để về",
+      "knowledge_gained": [
+        "đường ra ngoài qua một lớp cảm giác như màn nước nhưng Tiểu Bảo cho là gió"
+      ],
+      "hooks_opened": [
+        "H001",
+        "H003"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "ba đồng tiền được nhấn là vốn đã thuộc về Tiểu Bảo",
+        "trận che Lạc Kê đóng sau khi hắn đi",
+        "ông Hàn dặn không được bán nồi"
+      ],
+      "next_immediate_objective": "đưa Ô Gia về hoặc quyết định có cho nó theo"
+    },
+    {
+      "chapter": 7,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "đường ngoài Lạc Kê",
+      "end_location": "trạm Ngũ Lý",
+      "cultivation_changes": "none",
+      "injuries": [],
+      "inventory_changes": [
+        "nhận bánh miễn phí từ Lưu Phúc như tiền công đẩy xe"
+      ],
+      "relationship_beat": "chấp nhận Ô Gia là bạn đồng hành; gặp Lưu Phúc/Lưu An và học cách tin người có kiểm chứng",
+      "knowledge_gained": [
+        "không tìm thấy lối quay về Lạc Kê từ ngoài",
+        "gặp tu sĩ đầu tiên trên đường",
+        "Thanh Hà không nằm theo dấu bánh xe hắn chọn"
+      ],
+      "hooks_opened": [
+        "H001",
+        "H002"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "vòng Cảm Linh của tu sĩ thoáng phản ứng với Tiểu Bảo",
+        "Lạc Kê không thể tìm bằng đường thường"
+      ],
+      "next_immediate_objective": "tìm hiểu tu sĩ và đường tới Thanh Hà"
+    },
+    {
+      "chapter": 8,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "trạm Ngũ Lý",
+      "end_location": "trạm Ngũ Lý",
+      "cultivation_changes": "none; biết khái niệm Dẫn Khí chín tầng/Khai Mạch/Trúc Đài",
+      "injuries": [],
+      "inventory_changes": [],
+      "relationship_beat": "người ngoài đầu tiên đối xử tử tế giúp Tiểu Bảo bớt phòng bị nhưng vẫn giữ nguyên tắc không ăn đồ lạ ngay",
+      "knowledge_gained": [
+        "Triệu Hổ Dẫn Khí tầng ba có thể vận linh khí đập vỡ Thanh Thạch",
+        "tu sĩ cấp thấp chưa thể tự bay",
+        "tu sĩ có thể kiếm tiền nhiều hơn người thường"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "Tiểu Bảo thấy cú đập đá của tu sĩ kém việc hắn từng làm nhưng tự giải thích do tu sĩ còn có linh khí"
+      ],
+      "next_immediate_objective": "đi theo hướng Thanh Hà và tìm cơ hội biết thêm về tu hành"
+    },
+    {
+      "chapter": 9,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "trạm Ngũ Lý/quan đạo",
+      "end_location": "đoàn xe Tống Ký trên đường Thanh Hà",
+      "cultivation_changes": "none",
+      "injuries": [],
+      "inventory_changes": [
+        "không đổi; được cho đi gần đoàn miễn phí"
+      ],
+      "relationship_beat": "gia nhập phạm vi bảo hộ lỏng của đoàn Tống Ký; gặp Hà thúc và Chu tiên sinh",
+      "knowledge_gained": [
+        "yêu thú hấp thu linh khí",
+        "Linh Hỏa Phù khoảng ba linh thạch",
+        "một linh thạch hạ phẩm trị giá hơn mười lượng bạc"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "Tiểu Bảo sợ mức chi tiêu của tu sĩ hơn quả cầu lửa",
+        "Ô Gia sống tám năm khiến người ngoài thấy lạ"
+      ],
+      "next_immediate_objective": "xem mình có thể tu tiên hay không"
+    },
+    {
+      "chapter": 10,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "đoàn xe Tống Ký",
+      "end_location": "đoàn xe Tống Ký gần Hắc Nha Pha; dấu hiệu phục kích xuất hiện trong rừng",
+      "cultivation_changes": "thử cảm khí theo Chu tiên sinh nhưng bề mặt không cảm được; linh khí thực tế biến mất khi chạm cơ thể",
+      "injuries": [],
+      "inventory_changes": [
+        "nhận công việc chân chạy đoàn xe, dự kiến ba trăm đồng khi tới Thanh Hà"
+      ],
+      "relationship_beat": "bắt đầu tự lập bằng lao động bên ngoài làng; Chu tiên sinh trở thành nguồn kiến thức tu hành tạm thời",
+      "knowledge_gained": [
+        "linh căn/cảm khí là chuẩn phổ biến",
+        "tài nguyên tu hành đắt nhưng Tiểu Bảo đã bắt đầu kiếm tiền bằng lao động",
+        "bản thân không cảm được linh khí theo cách thông thường"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "linh khí chạm cơ thể Tiểu Bảo liền biến mất vào tầng sâu",
+        "cảm khí thường không đo đúng cấu trúc của hắn"
+      ],
+      "next_immediate_objective": "đối phó nguy cơ phục kích ở Hắc Nha Pha"
+    }
+  ]
+}

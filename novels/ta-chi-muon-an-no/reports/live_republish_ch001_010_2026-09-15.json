@@ -1,0 +1,140 @@
+{
+  "ok": true,
+  "story_id": 19378,
+  "updated": [
+    {
+      "chapter": 1,
+      "id": 19379,
+      "title": "Chương 1: Con Gà Cuối Cùng Của Lạc Kê",
+      "http": 200
+    },
+    {
+      "chapter": 2,
+      "id": 19380,
+      "title": "Chương 2: Thôi Đồ Tể Lại Đánh Người",
+      "http": 200
+    },
+    {
+      "chapter": 3,
+      "id": 19381,
+      "title": "Chương 3: Trên Đỉnh Vọng Phong",
+      "http": 200
+    },
+    {
+      "chapter": 4,
+      "id": 19382,
+      "title": "Chương 4: Sinh Nhật Mười Ba Tuổi",
+      "http": 200
+    },
+    {
+      "chapter": 5,
+      "id": 19383,
+      "title": "Chương 5: Hội Nghị Đuổi Trẻ Con",
+      "http": 200
+    },
+    {
+      "chapter": 6,
+      "id": 19384,
+      "title": "Chương 6: Ba Đồng Tiền",
+      "http": 200
+    },
+    {
+      "chapter": 7,
+      "id": 19385,
+      "title": "Chương 7: Con Gà Tự Đi Theo",
+      "http": 200
+    },
+    {
+      "chapter": 8,
+      "id": 19386,
+      "title": "Chương 8: Người Tu Tiên Đầu Tiên",
+      "http": 200
+    },
+    {
+      "chapter": 9,
+      "id": 19387,
+      "title": "Chương 9: Tu Tiên Thật Đáng Sợ",
+      "http": 200
+    },
+    {
+      "chapter": 10,
+      "id": 19388,
+      "title": "Chương 10: Ước Mơ Mới Của Tạ Tiểu Bảo",
+      "http": 200
+    }
+  ],
+  "verified": [
+    {
+      "chapter": 1,
+      "id": 19379,
+      "slug": "chuong-1-con-ga-cuoi-cung-cua-lac-ke",
+      "link": "https://doctieuthuyet.com/chuong/chuong-1-con-ga-cuoi-cung-cua-lac-ke/",
+      "modified_gmt": "2026-09-15T13:54:05"
+    },
+    {
+      "chapter": 2,
+      "id": 19380,
+      "slug": "chuong-2-thoi-do-te-lai-danh-nguoi",
+      "link": "https://doctieuthuyet.com/chuong/chuong-2-thoi-do-te-lai-danh-nguoi/",
+      "modified_gmt": "2026-09-15T13:54:12"
+    },
+    {
+      "chapter": 3,
+      "id": 19381,
+      "slug": "chuong-3-ganh-nuoc-cung-la-mot-mon-hoc",
+      "link": "https://doctieuthuyet.com/chuong/chuong-3-ganh-nuoc-cung-la-mot-mon-hoc/",
+      "modified_gmt": "2026-09-15T13:54:14"
+    },
+    {
+      "chapter": 4,
+      "id": 19382,
+      "slug": "chuong-4-sinh-nhat-muoi-ba-tuoi",
+      "link": "https://doctieuthuyet.com/chuong/chuong-4-sinh-nhat-muoi-ba-tuoi/",
+      "modified_gmt": "2026-09-15T13:54:16"
+    },
+    {
+      "chapter": 5,
+      "id": 19383,
+      "slug": "chuong-5-hoi-nghi-duoi-tre-con",
+      "link": "https://doctieuthuyet.com/chuong/chuong-5-hoi-nghi-duoi-tre-con/",
+      "modified_gmt": "2026-09-15T13:54:19"
+    },
+    {
+      "chapter": 6,
+      "id": 19384,
+      "slug": "chuong-6-ba-dong-tien",
+      "link": "https://doctieuthuyet.com/chuong/chuong-6-ba-dong-tien/",
+      "modified_gmt": "2026-09-15T13:54:21"
+    },
+    {
+      "chapter": 7,
+      "id": 19385,
+      "slug": "chuong-7-con-ga-tu-di-theo",
+      "link": "https://doctieuthuyet.com/chuong/chuong-7-con-ga-tu-di-theo/",
+      "modified_gmt": "2026-09-15T13:54:24"
+    },
+    {
+      "chapter": 8,
+      "id": 19386,
+      "slug": "chuong-8-nguoi-tu-tien-dau-tien",
+      "link": "https://doctieuthuyet.com/chuong/chuong-8-nguoi-tu-tien-dau-tien/",
+      "modified_gmt": "2026-09-15T13:54:26"
+    },
+    {
+      "chapter": 9,
+      "id": 19387,
+      "slug": "chuong-9-tu-tien-that-dang-so",
+      "link": "https://doctieuthuyet.com/chuong/chuong-9-tu-tien-that-dang-so/",
+      "modified_gmt": "2026-09-15T13:54:29"
+    },
+    {
+      "chapter": 10,
+      "id": 19388,
+      "slug": "chuong-10-uoc-mo-moi-cua-ta-tieu-bao",
+      "link": "https://doctieuthuyet.com/chuong/chuong-10-uoc-mo-moi-cua-ta-tieu-bao/",
+      "modified_gmt": "2026-09-15T13:54:31"
+    }
+  ],
+  "backup_dir": "/Users/aaronnguyen/Developer/doctieuthuyet/novels/ta-chi-muon-an-no/backups/live_pre_republish_20260915_205339",
+  "source_sha256": "e7c3ebbb74add35dd2cc9990296d3e7de94228922665d35fd405bed873709468"
+}
