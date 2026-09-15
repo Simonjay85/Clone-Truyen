@@ -1324,8 +1324,8 @@
       "volume_title": "Thiên Hạ Sao Yếu Vậy?",
       "subarc": "V01A2",
       "subarc_title": "Không Phải Ta Mạnh",
-      "title": "Chương 11: Không Phải Ta Mạnh — Mở Cửa",
-      "title_status": "provisional_until_batch_draft",
+      "title": "Chương 11: Hắc Nha Pha Mở Cửa",
+      "title_status": "draft_locked",
       "beat_function": "setup",
       "objective": "Thiết lập tình trạng mới và mục tiêu cụ thể của sub-arc; dùng opening làm set-piece đầu. Trọng tâm riêng chương: Tiểu Bảo gia nhập thương đội.",
       "conflict": "Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
@@ -1334,7 +1334,7 @@
       "power_guardrail": "Lần đầu thử Dẫn Khí thất bại trên bề mặt; sức thân thể đánh văng Dẫn Khí cao tầng.",
       "foreshadow_or_payoff": "Linh khí vào người biến mất; nồi đen phản ứng với linh thạch.",
       "cliffhanger_type": "arrival",
-      "status": "planned",
+      "status": "draft_passed_qa",
       "draft_file": "chapters/chapter_011.md"
     },
     {
@@ -1343,8 +1343,8 @@
       "volume_title": "Thiên Hạ Sao Yếu Vậy?",
       "subarc": "V01A2",
       "subarc_title": "Không Phải Ta Mạnh",
-      "title": "Chương 12: Không Phải Ta Mạnh — Một Việc Không Đúng",
-      "title_status": "provisional_until_batch_draft",
+      "title": "Chương 12: Có Một Việc Không Đúng",
+      "title_status": "draft_locked",
       "beat_function": "complication",
       "objective": "Đưa chi tiết lệch chuẩn đầu tiên khiến kế hoạch ban đầu khó hơn; conflict phải hiện thành hành động. Trọng tâm riêng chương: Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
       "conflict": "Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
@@ -1353,7 +1353,7 @@
       "power_guardrail": "Lần đầu thử Dẫn Khí thất bại trên bề mặt; sức thân thể đánh văng Dẫn Khí cao tầng.",
       "foreshadow_or_payoff": "Giữ continuity; không reveal ngoài mốc sub-arc.",
       "cliffhanger_type": "anomaly",
-      "status": "planned",
+      "status": "draft_passed_qa",
       "draft_file": "chapters/chapter_012.md"
     },
     {
@@ -1362,8 +1362,8 @@
       "volume_title": "Thiên Hạ Sao Yếu Vậy?",
       "subarc": "V01A2",
       "subarc_title": "Không Phải Ta Mạnh",
-      "title": "Chương 13: Không Phải Ta Mạnh — Giá Của Một Lựa Chọn",
-      "title_status": "provisional_until_batch_draft",
+      "title": "Chương 13: Giá Của Một Lựa Chọn",
+      "title_status": "draft_locked",
       "beat_function": "choice",
       "objective": "Buộc nhân vật chọn giữa hai lợi ích thật, đồng thời đẩy character/romance beat tiến một nấc. Trọng tâm riêng chương: Chưa romance; định hình giới hạn đạo đức của main.",
       "conflict": "Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
@@ -1372,7 +1372,7 @@
       "power_guardrail": "Lần đầu thử Dẫn Khí thất bại trên bề mặt; sức thân thể đánh văng Dẫn Khí cao tầng.",
       "foreshadow_or_payoff": "Giữ continuity; không reveal ngoài mốc sub-arc.",
       "cliffhanger_type": "choice",
-      "status": "planned",
+      "status": "draft_passed_qa",
       "draft_file": "chapters/chapter_013.md"
     },
     {
@@ -1381,8 +1381,8 @@
       "volume_title": "Thiên Hạ Sao Yếu Vậy?",
       "subarc": "V01A2",
       "subarc_title": "Không Phải Ta Mạnh",
-      "title": "Chương 14: Không Phải Ta Mạnh — Dấu Vết",
-      "title_status": "provisional_until_batch_draft",
+      "title": "Chương 14: Dấu Vết Trong Cái Nồi",
+      "title_status": "draft_locked",
       "beat_function": "investigation",
       "objective": "Đưa bằng chứng mystery/foreshadow cụ thể nhưng chưa giải quá mốc; tăng câu hỏi đúng hướng. Trọng tâm riêng chương: Linh khí vào người biến mất; nồi đen phản ứng với linh thạch.",
       "conflict": "Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
@@ -1391,7 +1391,7 @@
       "power_guardrail": "Lần đầu thử Dẫn Khí thất bại trên bề mặt; sức thân thể đánh văng Dẫn Khí cao tầng.",
       "foreshadow_or_payoff": "Linh khí vào người biến mất; nồi đen phản ứng với linh thạch.",
       "cliffhanger_type": "evidence",
-      "status": "planned",
+      "status": "draft_passed_qa",
       "draft_file": "chapters/chapter_014.md"
     },
     {
@@ -1400,8 +1400,8 @@
       "volume_title": "Thiên Hạ Sao Yếu Vậy?",
       "subarc": "V01A2",
       "subarc_title": "Không Phải Ta Mạnh",
-      "title": "Chương 15: Không Phải Ta Mạnh — Giữa Đường",
-      "title_status": "provisional_until_batch_draft",
+      "title": "Chương 15: Một Cái Tát",
+      "title_status": "draft_locked",
       "beat_function": "midpoint",
       "objective": "Set-piece midpoint theo nội dung midpoint; thay đổi cách hiểu mục tiêu hoặc thế trận. Trọng tâm riêng chương: Một cái tát vô tình hạ tên cướp mạnh nhất.",
       "conflict": "Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
@@ -1410,7 +1410,7 @@
       "power_guardrail": "Lần đầu thử Dẫn Khí thất bại trên bề mặt; sức thân thể đánh văng Dẫn Khí cao tầng.",
       "foreshadow_or_payoff": "Linh khí vào người biến mất; nồi đen phản ứng với linh thạch.",
       "cliffhanger_type": "reversal",
-      "status": "planned",
+      "status": "draft_passed_qa",
       "draft_file": "chapters/chapter_015.md"
     },
     {
@@ -1419,8 +1419,8 @@
       "volume_title": "Thiên Hạ Sao Yếu Vậy?",
       "subarc": "V01A2",
       "subarc_title": "Không Phải Ta Mạnh",
-      "title": "Chương 16: Không Phải Ta Mạnh — Không Thể Đi Như Cũ",
-      "title_status": "provisional_until_batch_draft",
+      "title": "Chương 16: Không Thể Đi Như Cũ",
+      "title_status": "draft_locked",
       "beat_function": "setback",
       "objective": "Cho đối phương/hoàn cảnh phản công thật; phải mất tài nguyên, vị trí, niềm tin hoặc thời gian. Trọng tâm riêng chương: Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
       "conflict": "Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
@@ -1429,7 +1429,7 @@
       "power_guardrail": "Lần đầu thử Dẫn Khí thất bại trên bề mặt; sức thân thể đánh văng Dẫn Khí cao tầng.",
       "foreshadow_or_payoff": "Giữ continuity; không reveal ngoài mốc sub-arc.",
       "cliffhanger_type": "consequence",
-      "status": "planned",
+      "status": "draft_passed_qa",
       "draft_file": "chapters/chapter_016.md"
     },
     {
@@ -1438,8 +1438,8 @@
       "volume_title": "Thiên Hạ Sao Yếu Vậy?",
       "subarc": "V01A2",
       "subarc_title": "Không Phải Ta Mạnh",
-      "title": "Chương 17: Không Phải Ta Mạnh — Đổi Cách Chơi",
-      "title_status": "provisional_until_batch_draft",
+      "title": "Chương 17: Đổi Cách Chơi",
+      "title_status": "draft_locked",
       "beat_function": "counterplan",
       "objective": "Nhân vật dùng điều đã học để thiết kế cách phản công mới; không deus ex machina. Trọng tâm riêng chương: Cho Tiểu Bảo va vào chuẩn sức mạnh bên ngoài.",
       "conflict": "Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
@@ -1448,7 +1448,7 @@
       "power_guardrail": "Lần đầu thử Dẫn Khí thất bại trên bề mặt; sức thân thể đánh văng Dẫn Khí cao tầng.",
       "foreshadow_or_payoff": "Giữ continuity; không reveal ngoài mốc sub-arc.",
       "cliffhanger_type": "plan",
-      "status": "planned",
+      "status": "draft_passed_qa",
       "draft_file": "chapters/chapter_017.md"
     },
     {
@@ -1457,8 +1457,8 @@
       "volume_title": "Thiên Hạ Sao Yếu Vậy?",
       "subarc": "V01A2",
       "subarc_title": "Không Phải Ta Mạnh",
-      "title": "Chương 18: Không Phải Ta Mạnh — Người Đứng Cạnh",
-      "title_status": "provisional_until_batch_draft",
+      "title": "Chương 18: Người Đứng Cạnh",
+      "title_status": "draft_locked",
       "beat_function": "character",
       "objective": "Đẩy quan hệ/agency nhân vật phụ trong khi áp lực bên ngoài tiếp tục; romance chỉ theo mốc canon. Trọng tâm riêng chương: Chưa romance; định hình giới hạn đạo đức của main.",
       "conflict": "Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
@@ -1467,7 +1467,7 @@
       "power_guardrail": "Lần đầu thử Dẫn Khí thất bại trên bề mặt; sức thân thể đánh văng Dẫn Khí cao tầng.",
       "foreshadow_or_payoff": "Giữ continuity; không reveal ngoài mốc sub-arc.",
       "cliffhanger_type": "emotional_shift",
-      "status": "planned",
+      "status": "draft_passed_qa",
       "draft_file": "chapters/chapter_018.md"
     },
     {
@@ -1476,8 +1476,8 @@
       "volume_title": "Thiên Hạ Sao Yếu Vậy?",
       "subarc": "V01A2",
       "subarc_title": "Không Phải Ta Mạnh",
-      "title": "Chương 19: Không Phải Ta Mạnh — Đụng Mặt",
-      "title_status": "provisional_until_batch_draft",
+      "title": "Chương 19: Túi Trữ Vật Đầu Tiên",
+      "title_status": "draft_locked",
       "beat_function": "climax",
       "objective": "Thực hiện climax của sub-arc; chiến thắng/thất bại phải tuân power + cost đã ghi. Trọng tâm riêng chương: Hắn buộc phải chiến đấu để cứu người và nhận túi trữ vật đầu tiên.",
       "conflict": "Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
@@ -1486,7 +1486,7 @@
       "power_guardrail": "Lần đầu thử Dẫn Khí thất bại trên bề mặt; sức thân thể đánh văng Dẫn Khí cao tầng.",
       "foreshadow_or_payoff": "Đến Thanh Hà, thấy thông báo tuyển đồ Thái Huyền.",
       "cliffhanger_type": "impact",
-      "status": "planned",
+      "status": "draft_passed_qa",
       "draft_file": "chapters/chapter_019.md"
     },
     {
@@ -1495,8 +1495,8 @@
       "volume_title": "Thiên Hạ Sao Yếu Vậy?",
       "subarc": "V01A2",
       "subarc_title": "Không Phải Ta Mạnh",
-      "title": "Chương 20: Không Phải Ta Mạnh — Sau Khi Bụi Lắng",
-      "title_status": "provisional_until_batch_draft",
+      "title": "Chương 20: Thanh Hà Thành",
+      "title_status": "draft_locked",
       "beat_function": "payoff",
       "objective": "Trả payoff, cập nhật state và mở hook sang sub-arc kế; không reset hậu quả. Trọng tâm riêng chương: Đến Thanh Hà, thấy thông báo tuyển đồ Thái Huyền.",
       "conflict": "Thương đội bị cướp tu sĩ; hắn muốn trốn nhưng không chịu nhìn trẻ con bị giết.",
@@ -1505,7 +1505,7 @@
       "power_guardrail": "Lần đầu thử Dẫn Khí thất bại trên bề mặt; sức thân thể đánh văng Dẫn Khí cao tầng.",
       "foreshadow_or_payoff": "Linh khí vào người biến mất; nồi đen phản ứng với linh thạch.",
       "cliffhanger_type": "transition",
-      "status": "planned",
+      "status": "draft_passed_qa",
       "draft_file": "chapters/chapter_020.md"
     },
     {

@@ -1,21 +1,31 @@
 {
   "version": 1,
-  "last_completed_chapter": 10,
-  "timeline_day": 4,
+  "last_completed_chapter": 20,
+  "timeline_day": 5,
   "current_state": {
     "ta_tieu_bao": {
       "age": 13,
       "cultivation": "chưa nhập Dẫn Khí; thử cảm khí thất bại trên bề mặt",
-      "location": "đoàn xe Tống Ký, gần Hắc Nha Pha trên đường Thanh Hà",
-      "injuries": [],
+      "location": "Thanh Hà Thành, quảng trường Đông Hà",
+      "injuries": [
+        "tay phải đang lành",
+        "sườn phải bầm sâu/căng cơ, chưa gãy; hạn chế vận động mạnh 3 ngày",
+        "vết rạch vai nông đã xử lý"
+      ],
       "inventory": [
-        "ba đồng tiền cũ",
         "dao cũ đã mài",
         "nồi đen gia cố quai",
         "quần áo",
         "thuốc bà Mạnh",
         "muối",
-        "ít bánh/thịt khô còn lại"
+        "ít bánh/thịt khô còn lại",
+        "mảnh linh thạch nhỏ đã mờ linh quang",
+        "mẫu Tán Linh Tán và mảnh phù/gốm dấu chim một cánh",
+        "sợi dây thép",
+        "túi trữ vật cấp thấp chưa dùng được",
+        "ba đồng tiền cũ giữ riêng",
+        "300 đồng tiền công mới",
+        "địa chỉ Tống Ký Thanh Hà"
       ],
       "relationship_with_thanh_nghi": "chưa gặp",
       "known_truths": [
@@ -23,7 +33,10 @@
         "người ngoài có hệ Dẫn Khí/Khai Mạch/Trúc Đài",
         "linh thạch là tiền của tu sĩ",
         "tu sĩ có thể dùng phù/pháp khí",
-        "bản thân chưa cảm được linh khí theo cách thông thường"
+        "bản thân chưa cảm được linh khí theo cách thông thường",
+        "Tán Linh Tán áp chế tu sĩ nhưng gần như không tác dụng lên bản thân",
+        "linh lực ngoại lai chạm vào cơ thể bản thân có thể biến mất không rõ nguyên nhân",
+        "Thái Huyền Tông sẽ sơ tuyển tại Thanh Hà sau ba ngày; sơ trắc miễn phí"
       ]
     },
     "luc_thanh_nghi": {
@@ -39,7 +52,7 @@
     },
     "o_gia": {
       "state": "gà đen, huyết mạch bị khóa; tự ý theo Tiểu Bảo ra khỏi Lạc Kê",
-      "location": "cùng Tiểu Bảo ở đoàn xe Tống Ký",
+      "location": "cùng Tiểu Bảo tại Thanh Hà Thành",
       "speech": false
     }
   },
@@ -405,6 +418,305 @@
         "cảm khí thường không đo đúng cấu trúc của hắn"
       ],
       "next_immediate_objective": "đối phó nguy cơ phục kích ở Hắc Nha Pha"
+    },
+    {
+      "chapter": 11,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "trại tạm đoàn Tống Ký trước Hắc Nha Pha",
+      "end_location": "cùng vị trí, trong màn Tán Linh Tán giữa cuộc phục kích",
+      "timeline": "đêm ngày 4 sau khi rời Lạc Kê",
+      "cultivation_changes": "none; vẫn chưa nhập Dẫn Khí; Tán Linh Tán không làm hắn suy yếu như các tu sĩ bên cạnh",
+      "injuries": [],
+      "inventory_changes": [],
+      "relationship_beat": "Tống phu nhân và hộ vệ bắt đầu coi Tiểu Bảo là người chủ động giữ tuyến dân thường, không chỉ là chân chạy đi nhờ",
+      "knowledge_gained": [
+        "cướp tu sĩ có thể dùng sabotage và dược/phấn áp chế linh lực",
+        "bạo lực ngoài làng có ý định giết người thật",
+        "Tán Linh Tán làm tu sĩ suy yếu nhưng bản thân hắn gần như không cảm thấy gì"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "Tiểu Bảo không bị Tán Linh Tán ảnh hưởng theo cách tu sĩ bình thường",
+        "đoàn cướp biết chính xác xe hàng quan trọng và đã phá chốt bánh từ trước"
+      ],
+      "next_immediate_objective": "giữ người sống qua đợt công kích khi tu sĩ của đoàn bị Tán Linh Tán áp chế"
+    },
+    {
+      "chapter": 12,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "đoàn Tống Ký/Hắc Nha Pha trong Tán Linh Tán",
+      "end_location": "khe cạn phía nam, ba tên cướp đang chuyển hướng nhắm vào Tiểu Bảo",
+      "timeline": "đêm ngày 4",
+      "cultivation_changes": "none; linh lực ngoại lai chạm cơ thể rồi biến mất không dấu, bản thân vẫn chưa thể cảm/giữ linh khí",
+      "injuries": [
+        "vết cắt nông ở lòng bàn tay do dây thép"
+      ],
+      "inventory_changes": [],
+      "relationship_beat": "Tiểu Bảo được giao giữ dân thường; người trong khe bắt đầu dựa vào quyết định của hắn",
+      "knowledge_gained": [
+        "Tán Linh Tán có thể đảo lợi thế giữa tu sĩ và người thường",
+        "linh lực của kẻ khác đi vào cơ thể hắn rồi biến mất",
+        "phe cướp có chuẩn bị giải dược và chuyển chú ý sang hắn"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "hấp thu linh lực làm Tiểu Bảo hơi đói hơn",
+        "đối phương nhận ra cơ thể hắn có vấn đề trước chính hắn"
+      ],
+      "next_immediate_objective": "đưa dân thường rời khỏi tuyến bị phát hiện và ngăn ba kẻ cướp bắt con tin"
+    },
+    {
+      "chapter": 13,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "khe cạn phía nam Hắc Nha Pha",
+      "end_location": "nhánh khe hẹp phía nam, đối diện hai tu sĩ cướp sau khi dân thường rút xa",
+      "timeline": "đêm ngày 4",
+      "cultivation_changes": "none",
+      "injuries": [
+        "vết cắt lòng bàn tay rách lại",
+        "chấn thương sườn phải do quyền có linh lực; đau khi xoay/hít sâu nhưng chưa xác nhận gãy"
+      ],
+      "inventory_changes": [
+        "nhặt/giữ tạm sợi dây thép của tên cướp để phòng thân"
+      ],
+      "relationship_beat": "Tiểu Bảo chọn quay lại cứu bé gái dù có đường thoát; Ô Kê lần đầu nghe lệnh ở lại trông dân thường trong tình huống sống chết",
+      "knowledge_gained": [
+        "linh lực bị cơ thể làm biến mất không triệt tiêu lực vật lý của đòn đánh",
+        "đối thủ biết chia người để phá chiến thuật dụ đuổi"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "giới hạn đạo đức: không bỏ người vô tội đổi an toàn",
+        "Ô Kê hiểu mệnh lệnh bảo vệ người khi Tiểu Bảo nghiêm túc"
+      ],
+      "next_immediate_objective": "cầm chân hai tu sĩ trong khe hẹp đủ lâu để dân thường rời xa rồi tìm đường trở lại tuyến chính"
+    },
+    {
+      "chapter": 14,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "nhánh khe phía nam Hắc Nha Pha",
+      "end_location": "đường vòng trở lại tuyến chính Hắc Nha Pha",
+      "timeline": "đêm ngày 4",
+      "cultivation_changes": "none",
+      "injuries": [
+        "lòng bàn tay đã rửa/rắc thuốc đỏ và băng sơ bộ",
+        "chấn thương sườn phải còn đau khi chạy/hít sâu"
+      ],
+      "inventory_changes": [
+        "mảnh linh thạch nhỏ đã mờ bớt linh quang",
+        "mẫu bột Tán Linh Tán",
+        "mảnh phù cháy dở",
+        "mảnh gốm có dấu chim một cánh",
+        "sợi dây thép vẫn mang theo"
+      ],
+      "relationship_beat": "nhóm dân thường tin hướng dẫn rút lui của Tiểu Bảo; Ô Kê nghe lệnh ở lại với họ khi main quay lại tuyến chính",
+      "knowledge_gained": [
+        "Tán Linh Tán dùng bột + phù + mảnh linh thạch kích hoạt",
+        "đồ gốm có dấu chim một cánh cho thấy nguồn cung có tổ chức",
+        "nồi đen nóng khi gần linh thạch và làm linh quang trên mảnh đá suy đi"
+      ],
+      "hooks_opened": [
+        "H003",
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "nồi đen hấp/điều tiết linh khí từ linh thạch",
+        "dấu chim một cánh trên dụng cụ của phe cướp"
+      ],
+      "next_immediate_objective": "quay về tuyến chính theo ba tín hiệu đỏ và giúp thương đội thoát khỏi Hắc Nha Pha"
+    },
+    {
+      "chapter": 15,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "đường vòng về tuyến chính Hắc Nha Pha",
+      "end_location": "tuyến chính đoàn Tống Ký, đối đầu phe cướp sau khi Tề Hạc bị đánh ngất",
+      "timeline": "cuối đêm ngày 4",
+      "cultivation_changes": "none; vẫn chưa Dẫn Khí, nhưng anomaly làm linh lực hộ thể mất ở điểm tiếp xúc",
+      "injuries": [
+        "lòng bàn tay phải đã băng thuốc ngoài",
+        "chấn thương sườn phải đau tăng khi xoay/hít sâu",
+        "bàn tay trái tê sau cú tát"
+      ],
+      "inventory_changes": [],
+      "relationship_beat": "Tống phu nhân/Chu/Hà thôi nhìn Tiểu Bảo như chân chạy tạm; hắn tự nhận mình là người của đoàn trong lúc nguy cấp",
+      "knowledge_gained": [
+        "Tề Hạc Dẫn Khí chín tầng",
+        "vụ cướp có người thuê và mục tiêu là sáu hộp đã biết trước",
+        "đánh ngã người mạnh nhất chỉ đổi được thời gian, không tự kết thúc trận"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "câu chạy “Không phải ta mạnh. Là hắn yếu.” lần đầu",
+        "Chu tiên sinh chứng kiến hộ thể linh lực hụt tại điểm chạm nhưng không truy hỏi"
+      ],
+      "next_immediate_objective": "dùng khoảng trống sau khi Tề Hạc ngã để đưa đoàn thoát khỏi vòng vây trước khi phe cướp phản công"
+    },
+    {
+      "chapter": 16,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "tuyến chính Hắc Nha Pha",
+      "end_location": "lối mỏ cũ phía tây Hắc Nha Pha",
+      "timeline": "rạng sáng ngày 5",
+      "cultivation_changes": "none",
+      "injuries": [
+        "lòng bàn tay phải đã băng",
+        "chấn thương sườn phải còn đau",
+        "tay trái hết tê dần"
+      ],
+      "inventory_changes": [
+        "giữ mẫu/dấu vết Tán Linh Tán và mảnh gốm chim một cánh",
+        "giữ sợi dây thép; đoàn bỏ phần lớn hàng/xe, còn 5 hộp đặc biệt"
+      ],
+      "relationship_beat": "Tống phu nhân bắt đầu dùng quan sát của Tiểu Bảo như thông tin tác chiến; Hà thúc phải chấp nhận quyết định bỏ hộp bị cướp để giữ người",
+      "knowledge_gained": [
+        "Phùng Mộc là nội gián và đã phá chốt bánh",
+        "nội gián có dấu chim một cánh cùng nguồn với bình Tán Linh Tán",
+        "Hắc Nha Pha có lối mỏ cũ cắt ra quan đạo phía nam"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "dấu chim một cánh là nguồn cung có tổ chức phía sau cướp",
+        "người thuê Tề Hạc biết chính xác sáu hộp nhưng danh tính chưa lộ"
+      ],
+      "next_immediate_objective": "đưa đoàn qua lối mỏ cũ; nếu gặp dấu Phùng Mộc thì dùng thông tin thay vì truy đuổi mù quáng"
+    },
+    {
+      "chapter": 17,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "lối mỏ cũ phía tây Hắc Nha Pha",
+      "end_location": "căn hầm tròn/nhánh thông gió gần khu bốc quặng cũ",
+      "timeline": "rạng sáng ngày 5",
+      "cultivation_changes": "none",
+      "injuries": [
+        "lòng bàn tay phải đã băng",
+        "chấn thương sườn phải còn đau"
+      ],
+      "inventory_changes": [],
+      "relationship_beat": "Tống phu nhân bắt đầu giao Tiểu Bảo nhiệm vụ trinh sát có giới hạn; kế hoạch là hợp tác giữa Tiểu Bảo, Chu, Hà và Tống phu nhân",
+      "knowledge_gained": [
+        "đường ray chính là bẫy có vệt dầu giả",
+        "Phùng Mộc chưa ra khỏi mỏ và đang gặp người nhận hộp",
+        "người nhận hộp có liên hệ với kẻ thuê, quan trọng hơn bắt Phùng Mộc ngay"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "người nhận hộp là tầng trung gian phía sau vụ cướp",
+        "đường thông gió phụ nối khu bốc quặng/giếng nâng cũ"
+      ],
+      "next_immediate_objective": "Chu tiên sinh và Tiểu Bảo bám người nhận hộp, chỉ quan sát và quay về, không giao chiến"
+    },
+    {
+      "chapter": 18,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "căn hầm tròn trong mỏ Hắc Nha Pha",
+      "end_location": "căn hầm tròn sau khi trinh sát khu bốc quặng",
+      "timeline": "rạng sáng ngày 5",
+      "cultivation_changes": "none",
+      "injuries": [
+        "tay phải băng",
+        "sườn phải còn đau"
+      ],
+      "inventory_changes": [],
+      "relationship_beat": "Chu tiên sinh trở thành đồng đội ngoài Lạc Kê đầu tiên biết Tiểu Bảo bất thường nhưng chủ động không ép hỏi; hai người cùng che lưng/rút lui",
+      "knowledge_gained": [
+        "người trung gian dấu chim một cánh dùng túi trữ vật",
+        "hộp bị lấy hiện nằm trong túi trữ vật",
+        "đối phương định khóa khu bốc quặng/cửa nam để lấy 5 hộp còn lại"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "túi trữ vật cấp thấp của người trung gian sẽ thành chiến lợi phẩm",
+        "Chu tiên sinh gần hết phù/linh lực, buộc climax phải dựa vào phối hợp khác"
+      ],
+      "next_immediate_objective": "đưa 5 hộp và người bị thương vượt khu bốc quặng/cửa nam, đồng thời nếu có thể lấy lại hộp trong túi trữ vật"
+    },
+    {
+      "chapter": 19,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "căn hầm tròn gần khu bốc quặng Hắc Nha Pha",
+      "end_location": "ngoài cửa nam mỏ Hắc Nha Pha",
+      "timeline": "sáng ngày 5",
+      "cultivation_changes": "none",
+      "injuries": [
+        "lòng bàn tay phải đã băng nhưng bị kéo rát lại",
+        "chấn thương sườn phải đau tăng sau vận động",
+        "vết rạch nông ở vai do đoản kiếm"
+      ],
+      "inventory_changes": [
+        "nhận túi trữ vật cấp thấp đã xóa dấu nhưng chưa thể tự mở vì không có linh lực",
+        "giữ mẫu Tán Linh Tán/mảnh linh thạch mờ/mảnh gốm chim một cánh; sợi dây thép đã dùng trong trận"
+      ],
+      "relationship_beat": "Chu/Hà/Tống phu nhân phối hợp cùng Tiểu Bảo ở climax; hắn học làm đúng phần mình thay vì lao cứu mọi điểm",
+      "knowledge_gained": [
+        "túi trữ vật cần linh lực để tự mở",
+        "dấu chim một cánh thuộc mạng lưới chưa rõ; người trung gian biết biểu tượng nhưng nguồn chưa lộ",
+        "đối thủ có hộ thể không tự mất chỉ vì Tiểu Bảo chạm; anomaly cần điều kiện tiếp xúc linh lực"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "túi trữ vật đầu tiên hiện chưa dùng được",
+        "người thuê vụ Hắc Nha Pha/dấu chim một cánh chưa lộ"
+      ],
+      "next_immediate_objective": "rời Hắc Nha Pha, trị thương, hoàn tất công việc với Tống Ký và tới Thanh Hà"
+    },
+    {
+      "chapter": 20,
+      "pov": "Tạ Tiểu Bảo",
+      "start_location": "ngoài cửa nam mỏ Hắc Nha Pha",
+      "end_location": "quảng trường Đông Hà, Thanh Hà Thành",
+      "timeline": "chiều ngày 5",
+      "cultivation_changes": "none; vẫn chưa Dẫn Khí",
+      "injuries": [
+        "lòng bàn tay phải đang lành, đã thay băng",
+        "sườn phải bầm sâu/căng cơ, chưa gãy; được dặn 3 ngày không đánh/nâng nặng/chạy hết sức",
+        "vết rạch vai nông đã bôi thuốc"
+      ],
+      "inventory_changes": [
+        "nhận đủ 300 đồng tiền công, tổng tiền thường 303 đồng nhưng 3 đồng cũ giữ riêng",
+        "túi trữ vật cấp thấp chưa tự mở được",
+        "giữ mẫu/dấu vết Hắc Nha Pha + nồi đen + thuốc/lương khô còn lại",
+        "nhận địa chỉ Tống Ký Thanh Hà nếu cần việc"
+      ],
+      "relationship_beat": "Tống phu nhân giữ lời và mở một mối quan hệ công việc; Chu giữ ranh giới tin cậy; Tiểu Bảo bắt đầu tự định hướng ở thành phố thay vì dựa vào người làng",
+      "knowledge_gained": [
+        "Thanh Hà có nhiều điểm trắc linh/tuyển đồ",
+        "Thái Huyền Tông tuyển đệ tử tại Thanh Hà biệt viện sau ba ngày",
+        "sơ trắc linh tính của đợt tuyển Thái Huyền miễn phí"
+      ],
+      "hooks_opened": [
+        "H004"
+      ],
+      "hooks_paid": [],
+      "foreshadow_seeds": [
+        "Thái Huyền trở thành bước vào tông môn của arc tiếp",
+        "ba đồng cũ vẫn được giữ riêng dù đã có nhiều tiền hơn"
+      ],
+      "next_immediate_objective": "ở lại Thanh Hà, dưỡng thương và tham gia sơ tuyển Thái Huyền sau ba ngày"
     }
   ]
 }

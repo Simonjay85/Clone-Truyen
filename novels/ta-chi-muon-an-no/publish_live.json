@@ -1,7 +1,7 @@
 {
   "story_id": 19378,
   "story_url": "https://doctieuthuyet.com/truyen/ta-chi-muon-an-no-sao-lai-thanh-tien-de/",
-  "published_chapters": 10,
+  "published_chapters": 20,
   "chapter_1_id": 19379,
   "chapter_10_id": 19388,
   "status": "dang-ra",
@@ -19,7 +19,10 @@
     "chapter_10": 200
   },
   "source_sha256": "e7c3ebbb74add35dd2cc9990296d3e7de94228922665d35fd405bed873709468",
-  "updated_at": "2026-09-15T20:54:49.574732+07:00",
+  "updated_at": "2026-09-16T01:40:50.066696+07:00",
   "last_republish_reason": "editorial dedup chapters 1-10",
-  "live_backup_dir": "/Users/aaronnguyen/Developer/doctieuthuyet/novels/ta-chi-muon-an-no/backups/live_pre_republish_20260915_205339"
+  "live_backup_dir": "/Users/aaronnguyen/Developer/doctieuthuyet/novels/ta-chi-muon-an-no/backups/live_pre_republish_20260915_205339",
+  "chapter_last_id": 19398,
+  "last_publish_report": "/Users/aaronnguyen/Developer/doctieuthuyet/novels/ta-chi-muon-an-no/reports/live_publish_ch011_020_20260916_013932.json",
+  "source_001_to_published_sha256": "a14e49c7e8431699b2fdcec7ee29e39c5952ac9e197b01511e20d53f2d6db474"
 }

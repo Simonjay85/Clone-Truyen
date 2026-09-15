@@ -1,0 +1,157 @@
+{
+  "ok": true,
+  "story_id": 19378,
+  "range": [
+    11,
+    20
+  ],
+  "before_total": 10,
+  "after_total": 20,
+  "actions": [
+    {
+      "chapter": 11,
+      "action": "create",
+      "id": 19389
+    },
+    {
+      "chapter": 12,
+      "action": "create",
+      "id": 19390
+    },
+    {
+      "chapter": 13,
+      "action": "create",
+      "id": 19391
+    },
+    {
+      "chapter": 14,
+      "action": "create",
+      "id": 19392
+    },
+    {
+      "chapter": 15,
+      "action": "create",
+      "id": 19393
+    },
+    {
+      "chapter": 16,
+      "action": "create",
+      "id": 19394
+    },
+    {
+      "chapter": 17,
+      "action": "create",
+      "id": 19395
+    },
+    {
+      "chapter": 18,
+      "action": "create",
+      "id": 19396
+    },
+    {
+      "chapter": 19,
+      "action": "create",
+      "id": 19397
+    },
+    {
+      "chapter": 20,
+      "action": "create",
+      "id": 19398
+    }
+  ],
+  "verified": [
+    {
+      "chapter": 11,
+      "id": 19389,
+      "title": "Chương 11: Hắc Nha Pha Mở Cửa",
+      "slug": "chuong-11-hac-nha-pha-mo-cua",
+      "link": "https://doctieuthuyet.com/chuong/chuong-11-hac-nha-pha-mo-cua/",
+      "status": "publish",
+      "modified_gmt": "2026-09-15T18:39:47"
+    },
+    {
+      "chapter": 12,
+      "id": 19390,
+      "title": "Chương 12: Có Một Việc Không Đúng",
+      "slug": "chuong-12-co-mot-viec-khong-dung",
+      "link": "https://doctieuthuyet.com/chuong/chuong-12-co-mot-viec-khong-dung/",
+      "status": "publish",
+      "modified_gmt": "2026-09-15T18:39:51"
+    },
+    {
+      "chapter": 13,
+      "id": 19391,
+      "title": "Chương 13: Giá Của Một Lựa Chọn",
+      "slug": "chuong-13-gia-cua-mot-lua-chon",
+      "link": "https://doctieuthuyet.com/chuong/chuong-13-gia-cua-mot-lua-chon/",
+      "status": "publish",
+      "modified_gmt": "2026-09-15T18:39:53"
+    },
+    {
+      "chapter": 14,
+      "id": 19392,
+      "title": "Chương 14: Dấu Vết Trong Cái Nồi",
+      "slug": "chuong-14-dau-vet-trong-cai-noi",
+      "link": "https://doctieuthuyet.com/chuong/chuong-14-dau-vet-trong-cai-noi/",
+      "status": "publish",
+      "modified_gmt": "2026-09-15T18:39:55"
+    },
+    {
+      "chapter": 15,
+      "id": 19393,
+      "title": "Chương 15: Một Cái Tát",
+      "slug": "chuong-15-mot-cai-tat",
+      "link": "https://doctieuthuyet.com/chuong/chuong-15-mot-cai-tat/",
+      "status": "publish",
+      "modified_gmt": "2026-09-15T18:39:56"
+    },
+    {
+      "chapter": 16,
+      "id": 19394,
+      "title": "Chương 16: Không Thể Đi Như Cũ",
+      "slug": "chuong-16-khong-the-di-nhu-cu",
+      "link": "https://doctieuthuyet.com/chuong/chuong-16-khong-the-di-nhu-cu/",
+      "status": "publish",
+      "modified_gmt": "2026-09-15T18:39:58"
+    },
+    {
+      "chapter": 17,
+      "id": 19395,
+      "title": "Chương 17: Đổi Cách Chơi",
+      "slug": "chuong-17-doi-cach-choi",
+      "link": "https://doctieuthuyet.com/chuong/chuong-17-doi-cach-choi/",
+      "status": "publish",
+      "modified_gmt": "2026-09-15T18:40:00"
+    },
+    {
+      "chapter": 18,
+      "id": 19396,
+      "title": "Chương 18: Người Đứng Cạnh",
+      "slug": "chuong-18-nguoi-dung-canh",
+      "link": "https://doctieuthuyet.com/chuong/chuong-18-nguoi-dung-canh/",
+      "status": "publish",
+      "modified_gmt": "2026-09-15T18:40:02"
+    },
+    {
+      "chapter": 19,
+      "id": 19397,
+      "title": "Chương 19: Túi Trữ Vật Đầu Tiên",
+      "slug": "chuong-19-tui-tru-vat-dau-tien",
+      "link": "https://doctieuthuyet.com/chuong/chuong-19-tui-tru-vat-dau-tien/",
+      "status": "publish",
+      "modified_gmt": "2026-09-15T18:40:04"
+    },
+    {
+      "chapter": 20,
+      "id": 19398,
+      "title": "Chương 20: Thanh Hà Thành",
+      "slug": "chuong-20-thanh-ha-thanh",
+      "link": "https://doctieuthuyet.com/chuong/chuong-20-thanh-ha-thanh/",
+      "status": "publish",
+      "modified_gmt": "2026-09-15T18:40:06"
+    }
+  ],
+  "backup_dir": "/Users/aaronnguyen/Developer/doctieuthuyet/novels/ta-chi-muon-an-no/backups/live_pre_publish_011_020_20260916_013932",
+  "source_001_to_end_sha256": "a14e49c7e8431699b2fdcec7ee29e39c5952ac9e197b01511e20d53f2d6db474",
+  "published_at": "2026-09-16T01:40:50.065933+07:00"
+}

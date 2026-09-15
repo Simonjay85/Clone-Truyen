@@ -1,10 +1,10 @@
 {
   "status": "PASS",
   "stats": {
-    "word_count_min": 1559,
-    "word_count_max": 2951,
-    "word_count_avg": 1948.1,
-    "range": "1-10",
+    "word_count_min": 1805,
+    "word_count_max": 2596,
+    "word_count_avg": 1985.1,
+    "range": "11-20",
     "checked_files": 10,
     "missing_files": [],
     "hard_fail_count": 0,
