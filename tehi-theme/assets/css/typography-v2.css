@@ -1,0 +1,897 @@
+/*
+ * DTT Typography System v2
+ *
+ * A final, low-risk typography layer over the legacy theme. The site has
+ * hundreds of component-level px declarations, so changing body font-size
+ * alone does not materially improve readability.
+ *
+ * Scale:
+ * - desktop body: 17px
+ * - mobile body: 16px
+ * - long-form: 18px
+ * - metadata / utility text: 13px baseline
+ */
+
+:root {
+    --dtt-type-body: 17px;
+    --dtt-type-body-mobile: 16px;
+    --dtt-type-longform: 18px;
+    --dtt-type-meta: 13px;
+    --dtt-type-button: 14px;
+    --dtt-type-card-title: 16px;
+    --dtt-type-input: 16px;
+    --dtt-leading-body: 1.65;
+    --dtt-leading-copy: 1.7;
+    --dtt-leading-longform: 1.82;
+    --dtt-leading-meta: 1.5;
+    --dtt-leading-tight: 1.35;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-size: var(--dtt-type-body) !important;
+    line-height: var(--dtt-leading-body);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tailwind arbitrary-size utilities found in legacy PHP templates. */
+body [class~="text-[7px]"]:not(.material-symbols-outlined),
+body [class~="text-[8px]"]:not(.material-symbols-outlined),
+body [class~="text-[9px]"]:not(.material-symbols-outlined),
+body [class~="text-[10px]"]:not(.material-symbols-outlined),
+body [class~="text-[11px]"]:not(.material-symbols-outlined),
+body [class~="text-[12px]"]:not(.material-symbols-outlined) {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+/* Header + search ------------------------------------------------------ */
+.mkm-nav > a,
+.mkm-nav > button {
+    box-sizing: border-box;
+    font-size: 14px !important;
+    line-height: 1.25 !important;
+}
+
+.mkm-search-form input,
+.mkm-mobile-search input {
+    font-size: var(--dtt-type-input) !important;
+    line-height: 1.45 !important;
+}
+
+.dtt-nav-unread {
+    min-width: 22px !important;
+    height: 22px !important;
+    padding-inline: 6px !important;
+    font-size: var(--dtt-type-meta) !important;
+}
+
+.mkm-search-suggestion-meta,
+.mkm-search-suggestion-badge,
+.mkm-search-suggestion-footer,
+.mkm-search-suggestions-submit {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+body.dtt-premium-subpage .mkm-nav > a,
+body.dtt-premium-subpage .mkm-nav > button {
+    box-sizing: border-box !important;
+    min-height: 40px !important;
+    padding-block: 7px !important;
+    font-size: 14px !important;
+    line-height: 1.25 !important;
+}
+
+/* Homepage ------------------------------------------------------------- */
+.dtt-home-ticker__label,
+.dtt-home-ticker__group a,
+.dtt-home-hero__eyebrow,
+.dtt-home-hero__chips a,
+.dtt-home-hero__facts small,
+.dtt-home-hero__stats span,
+.dtt-home-hero__cover-mark,
+.dtt-home-hero__floating-card small,
+.dtt-home-kicker,
+.dtt-home-discover__genres a,
+.dtt-home-discover__genres small,
+.dtt-home-quick-action small,
+.dtt-home-section__more,
+.dtt-story-card__badge,
+.dtt-story-card__time,
+.dtt-story-card__genres a,
+.dtt-story-card__status,
+.dtt-story-card__meta span,
+.dtt-story-card__meta a,
+.dtt-home-trending__head small,
+.dtt-home-rank-card__body small,
+.dtt-home-rank-card__body span,
+.dtt-home-trending__all,
+.dtt-home-editorial__feature-label,
+.dtt-home-editorial__meta,
+.dtt-home-editorial__read,
+.dtt-home-editorial-card__body > a,
+.dtt-home-community__eyebrow,
+.dtt-home-community__social,
+.dtt-home-trending__tab,
+.dtt-home-trending__data-label {
+    font-size: var(--dtt-home-type-meta, 14px) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+.dtt-home-button,
+.dtt-home-hero__start,
+.dtt-story-card__actions a,
+.dtt-home .dtt-reader-install,
+.dtt-home .dtt-reader-push {
+    font-size: var(--dtt-home-type-button, 15px) !important;
+    line-height: 1.3 !important;
+}
+
+.dtt-home-hero__facts strong,
+.dtt-home-hero__floating-card strong,
+.dtt-home-quick-action strong,
+.dtt-home-rank-card__body strong {
+    font-size: 17px !important;
+    line-height: 1.5 !important;
+}
+
+.dtt-home-section__head p,
+.dtt-home-hero__excerpt,
+.dtt-home-editorial__feature-body p,
+.dtt-home-community p {
+    font-size: 17px !important;
+    line-height: var(--dtt-leading-copy) !important;
+}
+
+.dtt-story-card__title,
+.dtt-home-editorial-card__body h3 {
+    font-size: var(--dtt-home-type-title, 18px) !important;
+    line-height: 1.55 !important;
+}
+
+.dtt-story-card__meta {
+    row-gap: 6px !important;
+}
+
+.dtt-story-card__actions a {
+    min-height: 44px !important;
+    padding-block: 8px !important;
+    padding-inline: 10px !important;
+}
+
+/* Story detail --------------------------------------------------------- */
+.dtt-story-breadcrumb,
+.dtt-story-cover__brand,
+.dtt-story-badge,
+.dtt-story-eyebrow,
+.dtt-story-genre,
+.dtt-story-fact small,
+.dtt-story-reader__head small,
+.dtt-story-reader__head p,
+.dtt-story-reader__progress-row span,
+.dtt-story-reader__stat small,
+.dtt-story-tool,
+.dtt-story-panel__kicker,
+.dtt-story-summary__toggle,
+.dtt-story-chapter__index,
+.dtt-story-chapter__meta,
+.dtt-story-chapter__continue,
+.dtt-story-sidecard__head small,
+.dtt-story-status-item small,
+.dtt-story-utility button,
+.dtt-story-utility a,
+.dtt-story-unread-badge,
+.dtt-story-comment__top time,
+.dtt-story-comment__stars,
+.dtt-story-comment-form__rating,
+.dtt-story-comment-form__bottom small,
+.dtt-story-related-card__tag,
+.dtt-story-fit__label,
+.dtt-story-overview__facts small,
+.dtt-story-overview__genres a,
+.dtt-story-faq__cta span {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+.dtt-story-btn,
+.dtt-story-comment-submit,
+.dtt-story-overview__cta,
+.dtt-story-faq__cta a {
+    font-size: var(--dtt-type-button) !important;
+    line-height: 1.3 !important;
+}
+
+.dtt-story-fact strong,
+.dtt-story-reader__progress-row strong,
+.dtt-story-status-item strong,
+.dtt-story-chapter__body strong,
+.dtt-story-comment__top strong,
+.dtt-story-overview__facts strong,
+.dtt-story-faq__item summary,
+.dtt-story-faq__cta strong {
+    font-size: 15px !important;
+    line-height: var(--dtt-leading-tight) !important;
+}
+
+.dtt-story-intro,
+.dtt-story-panel__head p,
+.dtt-story-comment__bubble p,
+.dtt-story-comments__empty,
+.dtt-story-related-card__body p,
+.dtt-story-fit__card li,
+.dtt-story-faq__item p,
+.dtt-story-chapters__empty {
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+}
+
+.dtt-story-search input,
+.dtt-story-sort,
+.dtt-story-comment-form input,
+.dtt-story-comment-form textarea {
+    font-size: var(--dtt-type-input) !important;
+    line-height: 1.5 !important;
+}
+
+.dtt-story-chapter__body strong,
+.dtt-story-related-card__body h3 {
+    font-size: 15px !important;
+}
+
+.dtt-story-chapter__continue {
+    padding: 4px 8px !important;
+}
+
+/* Personalization / library / history --------------------------------- */
+.dtt-reader-personalized__eyebrow,
+.dtt-reader-for-you__eyebrow,
+.dtt-reader-sync-pill,
+.dtt-reader-continue-card__cover > span,
+.dtt-reader-continue-card__eyebrow,
+.dtt-reader-continue-card__meta,
+.dtt-reader-reco-card__badge,
+.dtt-reader-reco-card__body > div,
+.dtt-reader-story-unread,
+.dtt-reader-reco-card__reason,
+.dtt-reader-reco-card__meta,
+.dtt-reader-feedback-actions button,
+.dtt-library-kicker,
+.dtt-history-kicker,
+.dtt-library-section-head > div > span,
+.dtt-library-tabs a,
+.dtt-library-stats small,
+.dtt-library-stats span,
+.dtt-library-featured__body > span,
+.dtt-library-featured__meta,
+.dtt-library-section-head > a,
+.dtt-library-card__unread,
+.dtt-library-card__status,
+.dtt-history-hero > a,
+.dtt-history-toolbar > div,
+.dtt-history-toolbar button,
+.dtt-history-item__top small,
+.dtt-history-item__top button,
+.dtt-history-item__bottom {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+.dtt-reader-continue-card__body > p,
+.dtt-reader-empty p,
+.dtt-library-sync-banner p,
+.dtt-history-privacy p,
+.dtt-library-hero p,
+.dtt-history-hero p,
+.dtt-library-section-head p,
+.dtt-library-featured__body p,
+.dtt-library-featured-empty p,
+.dtt-library-card__body p,
+.dtt-library-empty p,
+.dtt-history-empty p,
+.dtt-history-item__body > p {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+}
+
+.dtt-reader-empty > a,
+.dtt-library-sync-banner button,
+.dtt-history-privacy button,
+.dtt-library-card__read,
+.dtt-library-empty a,
+.dtt-history-empty a {
+    font-size: var(--dtt-type-button) !important;
+    line-height: 1.3 !important;
+}
+
+.dtt-reader-reco-card h3,
+.dtt-reader-continue-card h3,
+.dtt-reader-empty strong,
+.dtt-library-sync-banner strong,
+.dtt-history-privacy strong,
+.dtt-library-featured-empty strong,
+.dtt-library-card__body h3,
+.dtt-history-item__top h2 {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+}
+
+/* Directory / completed / taxonomy / ranking / cards ----------------- */
+body.dtt-premium-subpage .dtt-subpage-hero__stat,
+body.dtt-subpage-ranking .dtt-ranking-podium::before,
+.mkm-badge-tl,
+.mkm-card-meta,
+.truyen-comic-status,
+.translator-card .rank-badge i,
+.translator-card .translator-stats,
+.translator-card .stat-label,
+.story-stats-grid .stat-item,
+.story-stats-grid .stat-item i,
+.dang-nhap-social-text,
+.dang-nhap-social-btn {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+body.dtt-premium-subpage .dtt-subpage-hero__stat strong {
+    font-size: 19px !important;
+    line-height: 1.12 !important;
+}
+
+body.dtt-premium-subpage .mkm-btn-card,
+.mkm-btn-card {
+    min-height: 38px !important;
+    padding: 8px 7px !important;
+    font-size: var(--dtt-type-button) !important;
+    line-height: 1.25 !important;
+}
+
+.mkm-card-title,
+.mkm-card p[style*="font-size:14px"],
+.mkm-card p[style*="font-size: 14px"] {
+    font-size: var(--dtt-type-card-title) !important;
+    line-height: 1.45 !important;
+}
+
+/* Target the known legacy inline metadata in story cards. */
+.mkm-card span[style*="font-size:8px"],
+.mkm-card span[style*="font-size:9px"],
+.mkm-card span[style*="font-size:10px"],
+.mkm-card span[style*="font-size:11px"],
+.mkm-card div[style*="font-size:8px"],
+.mkm-card div[style*="font-size:9px"],
+.mkm-card div[style*="font-size:10px"],
+.mkm-card div[style*="font-size:11px"] {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+.mkm-pagination a,
+.mkm-pagination span {
+    font-size: 15px !important;
+    line-height: 1 !important;
+}
+
+/* Articles + Wiki ------------------------------------------------------ */
+.dtt-article-sync .dtt-post-content,
+.dtt-kiem-lai-wiki .dtt-post-content,
+.dtt-single-post .entry-content {
+    font-size: var(--dtt-type-longform) !important;
+    line-height: var(--dtt-leading-longform) !important;
+}
+
+.dtt-article-sync .dtt-post-content p,
+.dtt-kiem-lai-wiki .dtt-post-content p,
+.dtt-single-post .entry-content p {
+    margin-bottom: 1.16em;
+    line-height: var(--dtt-leading-longform) !important;
+}
+
+.dtt-article-sync__back,
+.dtt-article-sync__status,
+.dtt-article-sync .dtt-post-kicker,
+.dtt-article-sync .dtt-post-tags a,
+.dtt-article-sync .dtt-related-meta,
+.dtt-article-sync .dtt-related-excerpt,
+.dtt-article-sync .dtt-related-read,
+.dtt-kiem-lai-breadcrumb,
+.dtt-kiem-lai-hero__stat span,
+.dtt-kiem-lai-wiki .dtt-post-content h2[id]::before,
+.dtt-kiem-lai-wiki .dtt-post-content h2#timeline + ol > li::before,
+.dtt-kiem-lai-wiki .dtt-toc-rail nav[aria-label^="Mục lục"] li,
+.dtt-article-sync .dtt-toc-rail nav[aria-label^="Mục lục"] li {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+.dtt-kiem-lai-hero__actions a {
+    font-size: var(--dtt-type-button) !important;
+}
+
+.dtt-article-sync .dtt-post-meta,
+.dtt-article-sync .dtt-post-footer,
+.dtt-article-sync .dtt-related-subtitle,
+.dtt-article-sync #respond .comment-notes,
+.dtt-article-sync #respond .logged-in-as,
+.dtt-article-sync #respond .must-log-in,
+.dtt-article-sync #respond .comment-form label {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-copy) !important;
+}
+
+/* Editorial archive / Bài viết hub. */
+body.dtt-subpage-articles .dtt-article-hero__eyebrow,
+body.dtt-subpage-articles .dtt-article-hero__category,
+body.dtt-subpage-articles .dtt-article-hero__meta,
+body.dtt-subpage-articles .dtt-article-archive-card__category,
+body.dtt-subpage-articles .dtt-article-archive-card__meta,
+body.dtt-subpage-articles .dtt-article-sidebar__cat-count,
+body.dtt-subpage-articles .dtt-article-sidebar__meta,
+body.dtt-subpage-articles .dtt-article-sidebar__meta-cat,
+body.dtt-subpage-articles .dtt-article-sidebar__count,
+body.dtt-subpage-articles .dtt-article-sidebar__rank,
+body.dtt-subpage-articles .dtt-article-sidebar__cta-eyebrow {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+body.dtt-subpage-articles .dtt-article-sidebar__cta-button {
+    font-size: var(--dtt-type-button) !important;
+    line-height: 1.3 !important;
+}
+
+/* Chapter reader: preserve user-selected novel text size; lift chrome. */
+.r-mob-nav-item,
+.r-mob-nav-center,
+.r-mob-nav-center span.chap-progress,
+.r-cmt-count,
+.r-cmt-date {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+.r-nav a,
+.r-toc-item,
+.r-toc-search,
+.r-set-btn,
+.r-cmt-form textarea,
+.r-cmt-submit,
+.r-cmt-text {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+}
+
+/* Footer --------------------------------------------------------------- */
+.mkm-footer-brand > p {
+    font-size: 15px !important;
+    line-height: 1.78 !important;
+}
+
+.mkm-footer-trust-copy strong {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+}
+
+.mkm-footer-trust-copy span,
+.mkm-footer-connect-copy,
+.mkm-footer-app-label,
+.mkm-footer-apps a span,
+.mkm-footer-disclaimer p,
+.mkm-footer-bottom {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: 1.6 !important;
+}
+
+.mkm-footer-col h4 {
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+}
+
+.mkm-footer-col ul li a,
+.mkm-footer-social a,
+.mkm-footer-apps a,
+.mkm-footer-apps a strong {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+}
+
+.mkm-footer-col ul li a {
+    min-height: 42px !important;
+}
+
+@media (min-width: 769px) and (max-width: 1280px) {
+    body.dtt-premium-subpage .mkm-nav > a,
+    body.dtt-premium-subpage .mkm-nav > button {
+        padding-inline: 8px !important;
+        font-size: 13px !important;
+    }
+}
+
+/* Mobile --------------------------------------------------------------- */
+@media (max-width: 768px) {
+    body {
+        font-size: var(--dtt-type-body-mobile) !important;
+        line-height: 1.68;
+    }
+
+    .mkm-mobile-menu a {
+        font-size: 16px !important;
+        line-height: 1.45 !important;
+    }
+
+    body.dtt-premium-subpage .mkm-nav > a,
+    body.dtt-premium-subpage .mkm-nav > button {
+        font-size: 14px !important;
+    }
+
+    .dtt-home-section__head p,
+    .dtt-home-hero__excerpt,
+    .dtt-story-intro,
+    .dtt-story-panel__head p {
+        font-size: 16px !important;
+    }
+
+    .dtt-home-hero__stats strong {
+        font-size: 23px !important;
+    }
+
+    .dtt-home-hero__stats span {
+        max-width: 112px;
+        font-size: var(--dtt-type-meta) !important;
+        line-height: 1.4 !important;
+    }
+
+    .dtt-story-comment__avatar {
+        font-size: var(--dtt-type-meta) !important;
+    }
+
+    .dtt-story-card__title,
+    .dtt-home-editorial-card__body h3,
+    .mkm-card-title,
+    .mkm-card p[style*="font-size:14px"],
+    .mkm-card p[style*="font-size: 14px"],
+    .mkm-card p {
+        font-size: 15px !important;
+    }
+
+    .dtt-story-card__actions a,
+    body.dtt-premium-subpage .mkm-btn-card,
+    .mkm-btn-card {
+        min-height: 38px !important;
+        padding-inline: 5px !important;
+        font-size: 14px !important;
+    }
+
+    .dtt-article-sync .dtt-post-content,
+    .dtt-kiem-lai-wiki .dtt-post-content,
+    .dtt-single-post .entry-content {
+        font-size: var(--dtt-type-longform) !important;
+        line-height: 1.82 !important;
+    }
+
+    .mkm-footer-brand > p {
+        font-size: 14px !important;
+    }
+
+    .mkm-footer-col ul li a,
+    .mkm-footer-social a,
+    .mkm-footer-apps a,
+    .mkm-footer-apps a strong {
+        font-size: 14px !important;
+    }
+}
+
+/* Complete the homepage scale, including reader widgets and discovery feeds. */
+body.home .dtt-home {
+    --dtt-home-type-meta: 14px;
+    --dtt-home-type-button: 15px;
+    --dtt-home-type-title: 18px;
+    font-size: 17px;
+    line-height: 1.65;
+}
+.dtt-home :is(.dtt-home-wiki-card h3, .dtt-home-chapter-card h4, .dtt-reader-reco-card h3, .dtt-reader-continue-card h3) {
+    font-size: var(--dtt-home-type-title) !important;
+    font-weight: 700;
+    line-height: 1.55 !important;
+}
+.dtt-home :is(.dtt-reader-personalized__head p, .dtt-reader-for-you__head p, .dtt-reader-empty p, .dtt-home-wiki-card p, .dtt-home-chapter-feed__head p) {
+    font-size: 17px !important;
+    line-height: 1.7 !important;
+    color: #675e57;
+}
+.dtt-home :is(.dtt-home-chapter-card__meta, .dtt-home-chapter-card__read, .dtt-home-chapter-feed__count, .dtt-home-wiki-card__badge, .dtt-home-wiki-card__open, .dtt-reader-sync-pill, .dtt-reader-reco-card__meta, .dtt-reader-reco-card__body > div, .dtt-reader-reco-card__reason, .dtt-reader-reco-card__badge, .dtt-reader-continue-card p) {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+}
+.dtt-home :is(.dtt-reader-for-you__eyebrow, .dtt-reader-personalized__eyebrow, .dtt-home-chapter-feed__kicker) { font-size: 13px !important; line-height: 1.6; }
+.dtt-home :is(.dtt-reader-empty strong, .dtt-reader-empty > a) { font-size: 16px !important; line-height: 1.5; }
+.dtt-home .dtt-reader-feedback-actions button { font-size: 14px !important; line-height: 1.5 !important; }
+.dtt-home .dtt-home-chapter-feed__head h3 { font-size: 24px; line-height: 1.4; }
+.dtt-home .dtt-home-editorial__feature-body h3 { font-size: 25px; line-height: 1.45; }
+.dtt-home .dtt-home-trending__head h3 { font-size: 18px !important; line-height: 1.4 !important; }
+.dtt-home .dtt-home-rank-card__number { font-size: 16px !important; line-height: 1.2 !important; }
+.dtt-home .dtt-home-rank-card__arrow { font-size: 14px !important; }
+@media (max-width: 640px) {
+    body.home .dtt-home { --dtt-home-type-title: 17px; --dtt-home-type-meta: 13px; --dtt-home-type-button: 14px; font-size: 16px; }
+    .dtt-home .dtt-story-card__title { line-height: 1.6 !important; }
+    .dtt-home .dtt-home-hero__stats span { font-size: 13px !important; }
+}
+
+/* Override legacy mobile rules without shrinking Vietnamese copy again. */
+.dtt-reader-install, .dtt-reader-push { font-size: var(--dtt-type-button) !important; line-height: 1.3 !important; }
+.dtt-home :is(.dtt-home-section__head p, .dtt-home-hero__excerpt) { font-size: 17px !important; line-height: 1.7 !important; }
+.dtt-home :is(.dtt-story-card__title, .dtt-home-editorial-card__body h3) { font-size: var(--dtt-home-type-title) !important; line-height: 1.55 !important; }
+.dtt-home :is(.dtt-story-card__actions a, .dtt-reader-install, .dtt-reader-push) { font-size: var(--dtt-home-type-button) !important; min-height: 44px !important; }
+
+/* Article archive / editorial hub readability ------------------------ */
+body.dtt-subpage-articles :is(
+    .dtt-article-archive__breadcrumb,
+    .dtt-article-hero__eyebrow,
+    .dtt-article-archive__kicker,
+    .dtt-article-hero__stat span,
+    .dtt-article-hero__topics-kicker,
+    .dtt-article-hero__topics-note,
+    .dtt-article-hero__topic-index,
+    .dtt-article-hero__topic-copy span,
+    .dtt-article-archive__list-count,
+    .dtt-article-archive__filter,
+    .dtt-article-archive__filter span,
+    .dtt-article-archive-card__meta,
+    .dtt-article-archive-card__category
+) {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+body.dtt-subpage-articles :is(
+    .dtt-article-hero__button,
+    .dtt-article-archive-card__read,
+    .dtt-article-archive__pagination a,
+    .dtt-article-archive__pagination span
+) {
+    font-size: var(--dtt-type-button) !important;
+}
+
+body.dtt-subpage-articles :is(
+    .dtt-article-hero__topic-copy strong,
+    .dtt-article-archive__list-intro,
+    .dtt-article-archive-card__excerpt
+) {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+}
+
+/* Latest / premium subpages ------------------------------------------ */
+body.dtt-premium-subpage :is(
+    .dtt-subpage-hero__stat,
+    .dtt-latest-live-pill,
+    .dtt-latest-toolbar__copy span:not(.material-symbols-outlined),
+    .dtt-latest-kicker,
+    .dtt-latest-page-chip,
+    .latest-date-divider span,
+    .latest-card-new,
+    .latest-card-status,
+    .latest-card-cover-meta:not(.material-symbols-outlined),
+    .latest-card-genres a,
+    .latest-card-meta > span,
+    .dtt-latest-hot-copy small,
+    .dtt-latest-genre-cloud a,
+    .dtt-latest-genre-cloud a small
+) {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+body.dtt-subpage-latest :is(
+    .dtt-latest-layout-switch button,
+    .latest-card-action,
+    .dtt-latest-side-cta
+) {
+    font-size: var(--dtt-type-button) !important;
+}
+
+body.dtt-subpage-latest :is(.latest-card-excerpt, .dtt-latest-hot-copy strong) {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+}
+
+body.dtt-premium-subpage :is(.dtt-shared-pagination .page-numbers, .template-pagination .page-numbers) {
+    font-size: var(--dtt-type-button) !important;
+}
+
+body.dtt-subpage-ranking .dtt-ranking-podium-title {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+}
+
+/* Library redesign uses high-specificity !important rules; match them. */
+html body.dtt-subpage-library :is(
+    .dtt-library-breadcrumb,
+    .dtt-library-kicker,
+    .dtt-library-hero__benefits > span,
+    .dtt-library-hero__benefits i,
+    .dtt-library-hero__mark span,
+    .dtt-library-sync-banner__eyebrow,
+    .dtt-library-stats small,
+    .dtt-library-stats span,
+    .dtt-library-featured__body > span,
+    .dtt-library-featured__meta,
+    .dtt-library-featured-empty small,
+    .dtt-library-section-head > div > span,
+    .dtt-library-section-head > a,
+    .dtt-library-card__unread,
+    .dtt-library-card__status,
+    .dtt-library-empty small
+) {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+html body.dtt-subpage-library :is(
+    .dtt-library-tabs a,
+    .dtt-library-sync-banner button,
+    .dtt-library-card__read,
+    .dtt-library-empty__actions a
+) {
+    font-size: var(--dtt-type-button) !important;
+}
+
+html body.dtt-subpage-library :is(
+    .dtt-library-hero p,
+    .dtt-library-sync-banner p,
+    .dtt-library-featured__body p,
+    .dtt-library-featured-empty p,
+    .dtt-library-section-head p,
+    .dtt-library-card__body p,
+    .dtt-library-empty p
+) {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+}
+
+html body.dtt-subpage-library :is(
+    .dtt-library-sync-banner strong,
+    .dtt-library-featured__meta strong,
+    .dtt-library-featured-empty strong,
+    .dtt-library-card__body h3
+) {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+}
+
+.dtt-history-toolbar input {
+    font-size: var(--dtt-type-input) !important;
+}
+
+/* Legacy story/directory components ---------------------------------- */
+.story-card .card-text,
+.truyen-description-text {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+}
+
+:is(.story-title-grid, .msv-comic-book-item h2) {
+    font-size: var(--dtt-type-card-title) !important;
+    line-height: 1.45 !important;
+}
+
+:is(
+    .truyen-comic-status,
+    .truyen-comic-stat,
+    .truyen-genre-tag,
+    .translator-card .rank-badge,
+    .translator-card .rank-badge i,
+    .translator-card .translator-stats,
+    .translator-card .stat-value,
+    .translator-card .stat-label,
+    .story-card .section-label,
+    .story-card .status-label,
+    .story-card .genre-badge,
+    .story-card .status-badge,
+    .story-card .stats,
+    .story-stats-grid .stat-item,
+    .story-stats-grid .stat-item i,
+    .product-category,
+    .vip-tag
+) {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+/* Legacy PHP templates print late !important CSS; use body specificity. */
+body :is(
+    .mkm-tag,
+    .mkm-badge-tl,
+    .mkm-badge-tr,
+    .mkm-badge-full-pos,
+    .mkm-card-overlay,
+    .mkm-card-chap,
+    .mkm-tab,
+    .mkm-rank-views,
+    .mkm-slider-meta,
+    .mkm-card-meta
+) {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+body :is(.mkm-btn, .mkm-view-all, .mkm-btn-card) {
+    font-size: var(--dtt-type-button) !important;
+}
+
+body .mkm-hero-desc {
+    font-size: 17px !important;
+    line-height: var(--dtt-leading-copy) !important;
+}
+
+body .mkm-card-name {
+    font-size: var(--dtt-type-card-title) !important;
+    line-height: 1.45 !important;
+}
+
+body .mkm-card p {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+}
+
+body .mkm-rank-num {
+    font-size: 14px !important;
+}
+
+body .mkm-rank-name {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+}
+
+body :is(.mkm-pagination a, .mkm-pagination span) {
+    font-size: 15px !important;
+}
+
+/* Generic pages + auth/search ---------------------------------------- */
+:is(.pg-hero-badge, .pg-contact-info-label) {
+    font-size: var(--dtt-type-meta) !important;
+}
+
+.pg-form-group label,
+#mkmAuthModal .mkm-form-group label,
+#mkmAuthModal .mkm-auth-link,
+#mkmAuthModal .mkm-auth-footer-text,
+.mkm-search-suggestion-title {
+    font-size: 14px !important;
+}
+
+#mkmAuthModal .mkm-auth-close-text,
+#mkmAuthModal .mkm-auth-alert,
+.mkm-search-suggestion-meta,
+.mkm-search-suggestions-message,
+.mkm-search-suggestions-submit {
+    font-size: var(--dtt-type-meta) !important;
+}
+
+/* Final floor for known legacy inline px utilities. Icons are excluded. */
+body :is(
+    [style*="font-size:7px"], [style*="font-size: 7px"],
+    [style*="font-size:7.5px"], [style*="font-size: 7.5px"],
+    [style*="font-size:8px"], [style*="font-size: 8px"],
+    [style*="font-size:8.5px"], [style*="font-size: 8.5px"],
+    [style*="font-size:9px"], [style*="font-size: 9px"],
+    [style*="font-size:9.5px"], [style*="font-size: 9.5px"],
+    [style*="font-size:10px"], [style*="font-size: 10px"],
+    [style*="font-size:10.5px"], [style*="font-size: 10.5px"],
+    [style*="font-size:11px"], [style*="font-size: 11px"],
+    [style*="font-size:11.5px"], [style*="font-size: 11.5px"],
+    [style*="font-size:12px"], [style*="font-size: 12px"]
+):not(.material-symbols-outlined):not(.material-icons) {
+    font-size: var(--dtt-type-meta) !important;
+    line-height: var(--dtt-leading-meta) !important;
+}
+
+/* Chapter prose is intentionally untouched: reader-core owns user-selected text size. */

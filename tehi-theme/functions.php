@@ -65,6 +65,27 @@ function tehi_clone_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'tehi_clone_scripts' );
 
+
+/**
+ * Typography System v2.
+ *
+ * Loaded late so the readable scale can safely override legacy component-level
+ * font sizes without rewriting historical stylesheets in-place.
+ */
+function dtt_enqueue_typography_v2() {
+    $css_path = get_template_directory() . '/assets/css/typography-v2.css';
+
+    if ( file_exists( $css_path ) ) {
+        wp_enqueue_style(
+            'dtt-typography-v2',
+            get_template_directory_uri() . '/assets/css/typography-v2.css',
+            array(),
+            (string) filemtime( $css_path )
+        );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'dtt_enqueue_typography_v2', 999 );
+
 /**
  * Return lightweight, public search suggestions for the header autocomplete.
  * Results are cached briefly because this endpoint is called while a visitor types.
