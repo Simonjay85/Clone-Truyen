@@ -29,6 +29,16 @@ get_header();
             $content_html = apply_filters('the_content', get_the_content());
             $toc_html = '';
 
+            // Give the existing Kiếm Lai topic directory a stable CTA target.
+            if ($dtt_is_kiem_lai_wiki) {
+                $content_html = preg_replace(
+                    '/<h2\b(?![^>]*\sid\s*=)([^>]*)>(\s*Khám phá Kiếm Lai theo từng cụm chuyên sâu\s*)<\/h2>/is',
+                    '<h2 id="thu-vien"$1>$2</h2>',
+                    $content_html,
+                    1
+                );
+            }
+
             // 1. Try extracting existing Gutenberg / theme TOC block
             if (preg_match('/<nav\\b[^>]*aria-label=["\']Mục lục[^"\']*["\'][^>]*>.*?<\\/nav>/is', $content_html, $toc_match)) {
                 $toc_html = $toc_match[0];
@@ -111,12 +121,12 @@ get_header();
 
                         <div class="dtt-kiem-lai-hero__actions" aria-label="Điều hướng nhanh">
                             <a href="#kiem-lai-noi-gi">Khởi hành từ Ly Châu <span aria-hidden="true">→</span></a>
-                            <a href="#thu-vien">Tra thư viện 108 bài <span aria-hidden="true">↗</span></a>
+                            <a href="#thu-vien">Tra thư viện <span aria-hidden="true">↗</span></a>
                         </div>
 
                         <div class="dtt-kiem-lai-hero__stats" aria-label="Tổng quan thư viện Kiếm Lai">
-                            <div class="dtt-kiem-lai-hero__stat"><strong>109</strong><span>Bài Kiếm Lai</span></div>
-                            <div class="dtt-kiem-lai-hero__stat"><strong>108</strong><span>Bài chuyên sâu</span></div>
+                            <div class="dtt-kiem-lai-hero__stat"><strong>Kiếm Lai</strong><span>Wiki tra cứu</span></div>
+                            <div class="dtt-kiem-lai-hero__stat"><strong>Chuyên sâu</strong><span>Hồ sơ theo chủ đề</span></div>
                             <div class="dtt-kiem-lai-hero__stat"><strong>05</strong><span>Thiên hạ</span></div>
                             <div class="dtt-kiem-lai-hero__stat"><strong>10</strong><span>Chặng lớn</span></div>
                         </div>
